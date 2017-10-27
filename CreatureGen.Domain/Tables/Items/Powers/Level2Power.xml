@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+    <percentile>
+        <lower>1</lower>
+        <content>Mundane</content>
+        <upper>85</upper>
+    </percentile>
+    <percentile>
+        <lower>86</lower>
+        <content>Minor</content>
+        <upper>100</upper>
+    </percentile>
+</percentiles>

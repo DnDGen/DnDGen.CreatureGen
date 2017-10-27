@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+  <percentile>
+    <lower>1</lower>
+    <content>Aasimar</content>
+    <upper>2</upper>
+  </percentile>
+  <percentile>
+    <lower>3</lower>
+    <content>Hill Dwarf</content>
+    <upper>3</upper>
+  </percentile>
+  <percentile>
+    <lower>4</lower>
+    <content>High Elf</content>
+    <upper>13</upper>
+  </percentile>
+  <percentile>
+    <lower>14</lower>
+    <content>Half-Elf</content>
+    <upper>18</upper>
+  </percentile>
+  <percentile>
+    <lower>19</lower>
+    <content>Lightfoot Halfling</content>
+    <upper>19</upper>
+  </percentile>
+  <percentile>
+    <lower>20</lower>
+    <content>Deep Halfling</content>
+    <upper>20</upper>
+  </percentile>
+  <percentile>
+    <lower>21</lower>
+    <content>Half-Orc</content>
+    <upper>25</upper>
+  </percentile>
+  <percentile>
+    <lower>26</lower>
+    <content>Human</content>
+    <upper>98</upper>
+  </percentile>
+  <percentile>
+    <lower>99</lower>
+    <content>Hound Archon</content>
+    <upper>99</upper>
+  </percentile>
+  <percentile>
+    <lower>100</lower>
+    <content>Centaur</content>
+    <upper>100</upper>
+  </percentile>
+</percentiles>

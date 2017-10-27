@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Dancing lights</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Flare</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Light</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Ray of frost</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Burning hands</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Floating disk</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Magic missile</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Shocking grasp</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Continual flame</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Darkness</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Flaming sphere</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Gust of wind</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Scorching ray</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Shatter</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Daylight</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Fireball</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Lightning bolt</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Tiny hut</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Wind wall</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Fire shield</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Ice storm</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Resilient sphere</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Shout</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Wall of fire</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Wall of ice</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Cone of cold</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Interposing hand</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Sending</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Wall of force</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Chain lightning</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Contingency</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Forceful hand</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Freezing sphere</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Delayed blast fireball</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Forcecage</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Grasping hand</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Mage's sword</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Prismatic spray</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Clenched fist</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Polar ray</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Greater shout</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Sunburst</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Telekinetic sphere</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Crushing hand</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Meteor swarm</name>
+    <entry>9</entry>
+  </collection>
+</collections>

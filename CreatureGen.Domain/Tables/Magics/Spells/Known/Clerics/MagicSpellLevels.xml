@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Magic aura</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Identify</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Dispel magic</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Imbue with spell ability</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Spell resistance</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Antimagic field</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Spell turning</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Protection from spells</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Mage's disjunction</name>
+    <entry>9</entry>
+  </collection>
+</collections>

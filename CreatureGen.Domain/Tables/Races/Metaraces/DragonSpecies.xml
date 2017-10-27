@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+    <collection>
+        <name>Lawful Evil</name>
+        <entry>Blue</entry>
+        <entry>Green</entry>
+    </collection>
+    <collection>
+        <name>Neutral Evil</name>
+        <entry>Black</entry>
+        <entry>Blue</entry>
+        <entry>Red</entry>
+        <entry>Green</entry>
+        <entry>White</entry>
+    </collection>
+    <collection>
+        <name>Chaotic Evil</name>
+        <entry>Black</entry>
+        <entry>Red</entry>
+        <entry>White</entry>
+    </collection>
+    <collection>
+        <name>Lawful Good</name>
+        <entry>Bronze</entry>
+        <entry>Gold</entry>
+        <entry>Silver</entry>
+    </collection>
+    <collection>
+        <name>Neutral Good</name>
+        <entry>Brass</entry>
+        <entry>Bronze</entry>
+        <entry>Copper</entry>
+        <entry>Gold</entry>
+        <entry>Silver</entry>
+    </collection>
+    <collection>
+        <name>Chaotic Good</name>
+        <entry>Brass</entry>
+        <entry>Copper</entry>
+    </collection>
+</collections>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+    <percentile>
+        <lower>1</lower>
+        <content>Cruelty</content>
+        <upper>5</upper>
+    </percentile>
+    <percentile>
+        <lower>6</lower>
+        <content>Aloofness</content>
+        <upper>15</upper>
+    </percentile>
+    <percentile>
+        <lower>16</lower>
+        <content>Failure</content>
+        <upper>25</upper>
+    </percentile>
+    <percentile>
+        <lower>26</lower>
+        <content></content>
+        <upper>75</upper>
+    </percentile>
+    <percentile>
+        <lower>76</lower>
+        <content>Special power</content>
+        <upper>85</upper>
+    </percentile>
+    <percentile>
+        <lower>86</lower>
+        <content>Fairness and generosity</content>
+        <upper>95</upper>
+    </percentile>
+  <percentile>
+    <lower>96</lower>
+    <content>Great renown</content>
+    <upper>100</upper>
+  </percentile>
+</percentiles>

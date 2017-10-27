@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Barbarian</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Bard</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Cleric</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Druid</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Fighter</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Monk</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Paladin</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Ranger</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Rogue</name>
+    <entry>6</entry>
+  </collection>
+    <collection>
+        <name>Sorcerer</name>
+        <entry>6</entry>
+    </collection>
+    <collection>
+        <name>Wizard</name>
+        <entry>6</entry>
+    </collection>
+</collections>

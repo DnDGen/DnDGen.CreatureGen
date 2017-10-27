@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Heavy Armor Proficiency</name>
+    <entry>Splint mail</entry>
+    <entry>Banded mail</entry>
+    <entry>Half-plate</entry>
+    <entry>Full plate</entry>
+  </collection>
+  <collection>
+    <name>Light Armor Proficiency</name>
+    <entry>Padded armor</entry>
+    <entry>Leather armor</entry>
+    <entry>Studded leather armor</entry>
+    <entry>Chain shirt</entry>
+    <entry>Elven chain</entry>
+    <entry>Celestial armor</entry>
+  </collection>
+  <collection>
+    <name>Medium Armor Proficiency</name>
+    <entry>Hide armor</entry>
+    <entry>Scale mail</entry>
+    <entry>Chainmail</entry>
+    <entry>Breastplate</entry>
+    <entry>Full plate of speed</entry>
+  </collection>
+  <collection>
+    <name>Shield Proficiency</name>
+    <entry>Buckler</entry>
+    <entry>Light wooden shield</entry>
+    <entry>Light steel shield</entry>
+    <entry>Heavy wooden shield</entry>
+    <entry>Heavy steel shield</entry>
+  </collection>
+  <collection>
+    <name>Tower Shield Proficiency</name>
+    <entry>Tower shield</entry>
+  </collection>
+</collections>

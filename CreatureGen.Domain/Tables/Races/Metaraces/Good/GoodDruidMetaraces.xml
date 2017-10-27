@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+    <percentile>
+        <lower>1</lower>
+        <content></content>
+        <upper>98</upper>
+    </percentile>
+    <percentile>
+        <lower>99</lower>
+        <content>Ghost</content>
+        <upper>99</upper>
+    </percentile>
+  <percentile>
+    <lower>100</lower>
+    <content>Half-Celestial</content>
+    <upper>100</upper>
+  </percentile>
+</percentiles>

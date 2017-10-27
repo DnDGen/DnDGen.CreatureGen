@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Acrobatic</name>
+    <entry>Jump</entry>
+    <entry>Tumble</entry>
+  </collection>
+  <collection>
+    <name>Agile</name>
+    <entry>Balance</entry>
+    <entry>Escape Artist</entry>
+  </collection>
+  <collection>
+    <name>Alertness</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>All</name>
+    <entry>Appraise</entry>
+    <entry>Balance</entry>
+    <entry>Bluff</entry>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Craft</entry>
+    <entry>Decipher Script</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disable Device</entry>
+    <entry>Disguise</entry>
+    <entry>Escape Artist</entry>
+    <entry>Forgery</entry>
+    <entry>Gather Information</entry>
+    <entry>Handle Animal</entry>
+    <entry>Heal</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Jump</entry>
+    <entry>Knowledge</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Open Lock</entry>
+    <entry>Perform</entry>
+    <entry>Ride</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Sleight of Hand</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Swim</entry>
+    <entry>Tumble</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Animal Affinity</name>
+    <entry>Handle Animal</entry>
+    <entry>Ride</entry>
+  </collection>
+  <collection>
+    <name>Armor Check Penalty</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Sleight of Hand</entry>
+    <entry>Swim</entry>
+    <entry>Tumble</entry>
+  </collection>
+  <collection>
+    <name>Athletic</name>
+    <entry>Climb</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Craft</name>
+    <entry>Alchemy</entry>
+    <entry>Armorsmithing</entry>
+    <entry>Blacksmithing</entry>
+    <entry>Bookbinding</entry>
+    <entry>Bowmaking</entry>
+    <entry>Brassmaking</entry>
+    <entry>Brewing</entry>
+    <entry>Candlemaking</entry>
+    <entry>Cloth</entry>
+    <entry>Coppersmithing</entry>
+    <entry>Dyemaking</entry>
+    <entry>Gemcutting</entry>
+    <entry>Glass</entry>
+    <entry>Goldsmithing</entry>
+    <entry>Hatmaking</entry>
+    <entry>Hornworking</entry>
+    <entry>Jewelmaking</entry>
+    <entry>Leather</entry>
+    <entry>Locksmithing</entry>
+    <entry>Mapmaking</entry>
+    <entry>Milling</entry>
+    <entry>Painting</entry>
+    <entry>Parchmentmaking</entry>
+    <entry>Pewtermaking</entry>
+    <entry>Potterymaking</entry>
+    <entry>Sculpting</entry>
+    <entry>Shipmaking</entry>
+    <entry>Shoemaking</entry>
+    <entry>Silversmithing</entry>
+    <entry>Skinning</entry>
+    <entry>Soapmaking</entry>
+    <entry>Stonemasonry</entry>
+    <entry>Tanning</entry>
+    <entry>Trapmaking</entry>
+    <entry>Weaponsmithing</entry>
+    <entry>Weaving</entry>
+    <entry>Wheelmaking</entry>
+    <entry>Winemaking</entry>
+    <entry>Woodworking</entry>
+  </collection>
+  <collection>
+    <name>Deceitful</name>
+    <entry>Disguise</entry>
+    <entry>Forgery</entry>
+  </collection>
+  <collection>
+    <name>Deft Hands</name>
+    <entry>Sleight of Hand</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Diligent</name>
+    <entry>Appraise</entry>
+    <entry>Decipher Script</entry>
+  </collection>
+  <collection>
+    <name>Investigator</name>
+    <entry>Gather Information</entry>
+    <entry>Search</entry>
+  </collection>
+  <collection>
+    <name>Knowledge</name>
+    <entry>Arcana</entry>
+    <entry>Architecture and Engineering</entry>
+    <entry>Dungeoneering</entry>
+    <entry>Geography</entry>
+    <entry>History</entry>
+    <entry>Local</entry>
+    <entry>Nature</entry>
+    <entry>Nobility and Royalty</entry>
+    <entry>Religion</entry>
+    <entry>The Planes</entry>
+  </collection>
+  <collection>
+    <name>Magical Aptitude</name>
+    <entry>Spellcraft</entry>
+    <entry>Use Magic Device</entry>
+  </collection>
+  <collection>
+    <name>Nature Sense</name>
+    <entry>Knowledge/Nature</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Negotiator</name>
+    <entry>Diplomacy</entry>
+    <entry>Sense Motive</entry>
+  </collection>
+  <collection>
+    <name>Nimble Fingers</name>
+    <entry>Disable Device</entry>
+    <entry>Open Lock</entry>
+  </collection>
+  <collection>
+    <name>Perform</name>
+    <entry>Act</entry>
+    <entry>Comedy</entry>
+    <entry>Dance</entry>
+    <entry>Keyboard instruments</entry>
+    <entry>Oratory</entry>
+    <entry>Percussion instruments</entry>
+    <entry>Sing</entry>
+    <entry>String instruments</entry>
+    <entry>Wind instruments</entry>
+  </collection>
+  <collection>
+    <name>Persuasive</name>
+    <entry>Bluff</entry>
+    <entry>Intimidate</entry>
+  </collection>
+  <collection>
+    <name>Profession</name>
+    <entry>Adviser</entry>
+    <entry>Alchemist</entry>
+    <entry>Animal Groomer</entry>
+    <entry>Animal Trainer</entry>
+    <entry>Apothecary</entry>
+    <entry>Appraiser</entry>
+    <entry>Architect</entry>
+    <entry>Armorer</entry>
+    <entry>Barrister</entry>
+    <entry>Blacksmith</entry>
+    <entry>Bookbinder</entry>
+    <entry>Bowyer</entry>
+    <entry>Brazier</entry>
+    <entry>Brewer</entry>
+    <entry>Butler</entry>
+    <entry>Carpenter</entry>
+    <entry>Cartographer</entry>
+    <entry>Cartwright</entry>
+    <entry>Chandler</entry>
+    <entry>City Guide</entry>
+    <entry>Clerk</entry>
+    <entry>Cobbler</entry>
+    <entry>Coffinmaker</entry>
+    <entry>Coiffeur</entry>
+    <entry>Cook</entry>
+    <entry>Coppersmith</entry>
+    <entry>Craftsman</entry>
+    <entry>Dowser</entry>
+    <entry>Dyer</entry>
+    <entry>Embalmer</entry>
+    <entry>Engineer</entry>
+    <entry>Entertainer</entry>
+    <entry>Exotic Animal Trainer</entry>
+    <entry>Farmer</entry>
+    <entry>Fletcher</entry>
+    <entry>Footman</entry>
+    <entry>Gemcutter</entry>
+    <entry>Goldsmith</entry>
+    <entry>Governess</entry>
+    <entry>Haberdasher</entry>
+    <entry>Healer</entry>
+    <entry>Horner</entry>
+    <entry>Hunter</entry>
+    <entry>Interpreter</entry>
+    <entry>Jeweler</entry>
+    <entry>Laborer</entry>
+    <entry>Launderer</entry>
+    <entry>Limner</entry>
+    <entry>Local Courier</entry>
+    <entry>Locksmith</entry>
+    <entry>Maid</entry>
+    <entry>Masseuse</entry>
+    <entry>Matchmaker</entry>
+    <entry>Midwife</entry>
+    <entry>Miller</entry>
+    <entry>Navigator</entry>
+    <entry>Nursemaid</entry>
+    <entry>Out-of-Town Courier</entry>
+    <entry>Painter</entry>
+    <entry>Parchmentmaker</entry>
+    <entry>Pewterer</entry>
+    <entry>Polisher</entry>
+    <entry>Porter</entry>
+    <entry>Potter</entry>
+    <entry>Sage</entry>
+    <entry>Sailor Crewmember</entry>
+    <entry>Sailor Mate</entry>
+    <entry>Scribe</entry>
+    <entry>Sculptor</entry>
+    <entry>Shepherd</entry>
+    <entry>Shipwright</entry>
+    <entry>Silversmith</entry>
+    <entry>Skinner</entry>
+    <entry>Soapmaker</entry>
+    <entry>Soothsayer</entry>
+    <entry>Tanner</entry>
+    <entry>Teacher</entry>
+    <entry>Teamster</entry>
+    <entry>Trader</entry>
+    <entry>Valet</entry>
+    <entry>Vintner</entry>
+    <entry>Weaponsmith</entry>
+    <entry>Weaver</entry>
+    <entry>Wheelwright</entry>
+    <entry>Wilderness Guide</entry>
+  </collection>
+  <collection>
+    <name>Self-Sufficient</name>
+    <entry>Heal</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Stealthy</name>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Untrained</name>
+    <entry>Appraise</entry>
+    <entry>Balance</entry>
+    <entry>Bluff</entry>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Craft</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Escape Artist</entry>
+    <entry>Forgery</entry>
+    <entry>Gather Information</entry>
+    <entry>Heal</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Perform</entry>
+    <entry>Ride</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Swim</entry>
+    <entry>Use Rope</entry>
+  </collection>
+</collections>

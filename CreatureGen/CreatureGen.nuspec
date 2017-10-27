@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>CreatureGen</id>
+    <version>1.0.0</version>
+    <title>DnDGen.CreatureGen</title>
+    <authors>Karl M. Speer</authors>
+    <owners>cidthecoatrack</owners>
+    <description>
+      This generates creatures for the Dungeons and Dragons 3.5 system.
+    </description>
+    <releaseNotes>
+      Initial release
+    </releaseNotes>
+    <summary>
+      This generates creatures for the Dungeons and Dragons 3.5 system.
+    </summary>
+    <language>en-US</language>
+    <projectUrl>https://github.com/DnDGen/CreatureGen</projectUrl>
+    <iconUrl>http://www.downloadclipart.net/thumb/18531-twenty-sided-dice-vector-thumb.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+    <copyright>Copyright 2017</copyright>
+    <dependencies>
+      <dependency id="DnDGen.TreasureGen" version="8.2.0" />
+    </dependencies>
+    <references></references>
+    <tags> creature generator dice dungeons dragons d20 dnd 3.5 gen </tags>
+  </metadata>
+  <files>
+    <file src="bin/Stress/CreatureGen.dll" target="lib" />
+  </files>
+</package>

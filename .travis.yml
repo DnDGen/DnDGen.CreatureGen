@@ -1,0 +1,27 @@
+language: csharp
+mono:
+  - 5.2.0
+solution: CreatureGen.sln
+install:
+  - nuget restore CreatureGen.sln
+  - nuget install NUnit.Runners -OutputDirectory testrunner
+script:
+  - xbuild CreatureGen.sln /p:TargetFrameworkVersion="v4.5" /p:Configuration=Stress
+  - set -e
+  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./CreatureGen.Tests.Unit/bin/Stress/CreatureGen.Tests.Unit.dll
+  - set -e
+  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./CreatureGen.Tests.Integration.IoC/bin/Stress/CreatureGen.Tests.Integration.IoC.dll
+  - set -e
+  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./CreatureGen.Tests.Integration.Tables/bin/Stress/CreatureGen.Tests.Integration.Tables.dll
+  - set -e
+  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./CreatureGen.Tests.Integration/bin/Stress/CreatureGen.Tests.Integration.dll
+  - set -e
+  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./CreatureGen.Tests.Integration.Stress/bin/Stress/CreatureGen.Tests.Integration.Stress.dll
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: chmod +x ./deploy/deploy.sh && ./deploy/deploy.sh $NUGET_API_KEY $NUGET_SOURCE
+  on:
+    branch: master
+matrix:
+  fast_finish: true

@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+  <percentile>
+    <lower>1</lower>
+    <content>Deep Dwarf</content>
+    <upper>2</upper>
+  </percentile>
+  <percentile>
+    <lower>3</lower>
+    <content>Hill Dwarf</content>
+    <upper>3</upper>
+  </percentile>
+  <percentile>
+    <lower>4</lower>
+    <content>High Elf</content>
+    <upper>4</upper>
+  </percentile>
+  <percentile>
+    <lower>5</lower>
+    <content>Wild Elf</content>
+    <upper>5</upper>
+  </percentile>
+  <percentile>
+    <lower>6</lower>
+    <content>Wood Elf</content>
+    <upper>8</upper>
+  </percentile>
+  <percentile>
+    <lower>9</lower>
+    <content>Half-Elf</content>
+    <upper>18</upper>
+  </percentile>
+  <percentile>
+    <lower>19</lower>
+    <content>Lightfoot Halfling</content>
+    <upper>20</upper>
+  </percentile>
+  <percentile>
+    <lower>21</lower>
+    <content>Deep Halfling</content>
+    <upper>21</upper>
+  </percentile>
+  <percentile>
+    <lower>22</lower>
+    <content>Tallfellow Halfling</content>
+    <upper>22</upper>
+  </percentile>
+  <percentile>
+    <lower>23</lower>
+    <content>Half-Orc</content>
+    <upper>25</upper>
+  </percentile>
+  <percentile>
+    <lower>26</lower>
+    <content>Human</content>
+    <upper>58</upper>
+  </percentile>
+  <percentile>
+    <lower>59</lower>
+    <content>Frost Giant</content>
+    <upper>59</upper>
+  </percentile>
+  <percentile>
+    <lower>60</lower>
+    <content>Fire Giant</content>
+    <upper>60</upper>
+  </percentile>
+  <percentile>
+    <lower>61</lower>
+    <content>Lizardfolk</content>
+    <upper>67</upper>
+  </percentile>
+  <percentile>
+    <lower>68</lower>
+    <content>Goblin</content>
+    <upper>68</upper>
+  </percentile>
+  <percentile>
+    <lower>69</lower>
+    <content>Hobgoblin</content>
+    <upper>69</upper>
+  </percentile>
+  <percentile>
+    <lower>70</lower>
+    <content>Kobold</content>
+    <upper>70</upper>
+  </percentile>
+  <percentile>
+    <lower>71</lower>
+    <content>Orc</content>
+    <upper>71</upper>
+  </percentile>
+  <percentile>
+    <lower>72</lower>
+    <content>Tiefling</content>
+    <upper>72</upper>
+  </percentile>
+  <percentile>
+    <lower>73</lower>
+    <content>Drow</content>
+    <upper>75</upper>
+  </percentile>
+  <percentile>
+    <lower>76</lower>
+    <content>Duergar Dwarf</content>
+    <upper>76</upper>
+  </percentile>
+  <percentile>
+    <lower>77</lower>
+    <content>Gnoll</content>
+    <upper>78</upper>
+  </percentile>
+  <percentile>
+    <lower>79</lower>
+    <content>Scorpionfolk</content>
+    <upper>79</upper>
+  </percentile>
+  <percentile>
+    <lower>80</lower>
+    <content>Troglodyte</content>
+    <upper>87</upper>
+  </percentile>
+  <percentile>
+    <lower>88</lower>
+    <content>Death Slaad</content>
+    <upper>88</upper>
+  </percentile>
+  <percentile>
+    <lower>89</lower>
+    <content>Yuan-ti Abomination</content>
+    <upper>90</upper>
+  </percentile>
+  <percentile>
+    <lower>91</lower>
+    <content>Yuan-ti Halfblood</content>
+    <upper>91</upper>
+  </percentile>
+  <percentile>
+    <lower>92</lower>
+    <content>Rakshasa</content>
+    <upper>92</upper>
+  </percentile>
+  <percentile>
+    <lower>93</lower>
+    <content>Harpy</content>
+    <upper>93</upper>
+  </percentile>
+  <percentile>
+    <lower>94</lower>
+    <content>Bugbear</content>
+    <upper>95</upper>
+  </percentile>
+  <percentile>
+    <lower>96</lower>
+    <content>Ogre</content>
+    <upper>96</upper>
+  </percentile>
+  <percentile>
+    <lower>97</lower>
+    <content>Minotaur</content>
+    <upper>97</upper>
+  </percentile>
+  <percentile>
+    <lower>98</lower>
+    <content>Mind Flayer</content>
+    <upper>98</upper>
+  </percentile>
+  <percentile>
+    <lower>99</lower>
+    <content>Ogre Mage</content>
+    <upper>99</upper>
+  </percentile>
+  <percentile>
+    <lower>100</lower>
+    <content>Cloud Giant</content>
+    <upper>100</upper>
+  </percentile>
+</percentiles>

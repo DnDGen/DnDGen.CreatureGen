@@ -1,0 +1,1476 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Dimensional anchor</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Create undead</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Acid splash</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Resistance</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Detect poison</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Detect magic</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Read magic</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Daze</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Dancing lights</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Flare</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Light</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Ray of frost</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Ghost sound</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Disrupt undead</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Touch of fatigue</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Mage hand</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Mending</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Message</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Open/Close</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Arcane mark</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Prestidigitation</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Alarm</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Endure elements</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Hold portal</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Protection from chaos/law/good/evil</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Shield</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Grease</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Disguise self</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Mage armor</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Mount</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Obscuring mist</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Summon monster I</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Unseen servant</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Comprehend languages</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Detect secret doors</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Detect undead</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Identify</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>True strike</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Charm person</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Hypnotism</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Sleep</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Burning hands</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Floating disk</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Magic missile</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Shocking grasp</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Color spray</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Magic aura</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Silent image</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Ventriloquism</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Cause fear</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Chill touch</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Ray of enfeeblement</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Animate rope</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Enlarge person</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Erase</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Expeditious retreat</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Feather fall</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Jump</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Magic weapon</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Reduce person</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Arcane lock</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Obscure object</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Protection from arrows</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Resist energy</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Acid arrow</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Fog cloud</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Glitterdust</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Summon monster II</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Summon swarm</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Web</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Detect thoughts</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Locate object</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>See invisibility</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Daze monster</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Hideous laughter</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Touch of idiocy</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Continual flame</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Darkness</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Flaming sphere</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Gust of wind</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Scorching ray</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Shatter</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Blur</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Hypnotic pattern</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Invisibility</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Magic mouth</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Minor image</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Mirror image</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Misdirection</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Phantom trap</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Blindness/deafness</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Command undead</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>False life</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Ghoul touch</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Scare</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Spectral hand</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Alter self</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bear's endurance</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bull's strength</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Cat's grace</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Darkvision</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Eagle's splendor</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Fox's cunning</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knock</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Levitate</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Owl's wisdom</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Pyrotechnics</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Rope trick</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Spider climb</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Whispering wind</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Dispel magic</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Explosive runes</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Magic circle against chaos/law/good/evil</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Nondetection</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Protection from energy</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Phantom steed</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Sepia snake sigil</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Sleet storm</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Stinking cloud</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Summon monster III</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Arcane sight</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Clairaudience/Clairvoyance</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Tongues</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Deep slumber</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Heroism</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Hold person</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Rage</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Suggestion</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Daylight</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Fireball</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Lightning bolt</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Tiny hut</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Wind wall</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Displacement</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Illusory script</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Invisibility sphere</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Major image</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Gentle repose</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Halt undead</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Ray of exhaustion</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Vampiric touch</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Blink</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Flame arrow</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Fly</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Gaseous form</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Haste</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Keen edge</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Greater magic weapon</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Secret page</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Shrink item</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Slow</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Water breathing</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Fire trap</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Lesser globe of invulnerability</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Remove curse</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Stoneskin</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Black tentacles</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Dimension door</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Minor creation</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Secure shelter</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Solid fog</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Summon monster IV</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Arcane eye</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Detect scrying</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Locate creature</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Scrying</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Shadow conjuration</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Charm monster</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Confusion</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Crushing despair</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Lesser geas</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Fire shield</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Ice storm</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Resilient sphere</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Shout</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Wall of fire</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Wall of ice</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Hallucinatory terrain</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Illusory wall</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Greater invisibility</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Phantasmal killer</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Rainbow pattern</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Animate dead</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Bestow curse</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Contagion</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Enervation</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Fear</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Mass enlarge person</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Polymorph</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Mass reduce person</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Stone shape</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Break enchantment</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Dismissal</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Mage's private sanctum</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Cloudkill</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Mage's faithful hound</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Major creation</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Lesser planar binding</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Secret chest</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Summon monster V</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Teleport</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Wall of stone</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Contact other plane</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Prying eyes</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Telepathic bond</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Dominate person</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Feeblemind</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Hold monster</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Mind fog</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Symbol of sleep</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Cone of cold</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Interposing hand</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Sending</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Wall of force</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Dream</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>False vision</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Mirage arcana</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Nightmare</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Persistent image</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Seeming</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Shadow evocation</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Blight</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Magic jar</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Symbol of pain</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Waves of fatigue</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Animal growth</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Fabricate</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Overland flight</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Passwall</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Telekinesis</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Transmute mud to rock</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Transmute rock to mud</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Permanency</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Antimagic field</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Greater dispel magic</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Globe of invulnerability</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Guards and wards</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Repulsion</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Acid fog</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Planar binding</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Summon monster VI</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Wall of iron</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Analyze dweomer</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Legend lore</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>True seeing</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Geas/Quest</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Greater heroism</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Mass suggestion</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Symbol of persuasion</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Chain lightning</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Contingency</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Forceful hand</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Freezing sphere</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Mislead</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Permanent image</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Programmed image</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Shadow walk</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Veil</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Circle of death</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Eyebite</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Symbol of fear</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Undeath to death</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Mass bear's endurance</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Mass bull's strength</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Mass cat's grace</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Control water</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Disintegrate</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Mass eagle's splendor</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Flesh to stone</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Mass fox's cunning</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Move earth</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Mass owl's wisdom</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Stone to flesh</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Transformation</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Banishment</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Sequester</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Spell turning</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Instant summons</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Mage's magnificent mansion</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Phase door</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Plane shift</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Summon monster VII</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Greater teleport</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Teleport object</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Greater arcane sight</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Greater scrying</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Vision</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Mass hold person</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Insanity</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Power word blind</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Symbol of stunning</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Delayed blast fireball</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Forcecage</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Grasping hand</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Mage's sword</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Prismatic spray</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Mass invisibility</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Project image</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Greater shadow conjuration</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Simulacrum</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Control undead</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Finger of death</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Symbol of weakness</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Waves of exhaustion</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Control weather</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Ethereal jaunt</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Reverse gravity</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Statue</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Limited wish</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Dimensional lock</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Mind blank</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Prismatic wall</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Protection from spells</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Incendiary cloud</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Maze</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Greater planar binding</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Summon monster VIII</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Trap the soul</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Discern location</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Moment of prescience</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Greater prying eyes</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Antipathy</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Binding</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Mass charm monster</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Demand</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Irresistible dance</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Power word stun</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Symbol of insanity</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Sympathy</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Clenched fist</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Polar ray</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Greater shout</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Sunburst</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Telekinetic sphere</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Scintillating pattern</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Screen</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Greater shadow evocation</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Clone</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Create greater undead</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Horrid wilting</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Symbol of death</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Iron body</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Polymorph any object</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Temporal stasis</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Freedom</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Imprisonment</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Mage's disjunction</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Prismatic sphere</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Gate</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Refuge</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Summon monster IX</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Teleportation circle</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Foresight</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Dominate monster</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Mass hold monster</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Power word kill</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Crushing hand</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Meteor swarm</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Shades</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Weird</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Astral projection</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Energy drain</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Soul bind</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Wail of the banshee</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Etherealness</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Shapechange</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Time stop</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Wish</name>
+    <entry>9</entry>
+  </collection>
+</collections>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+  <percentile><lower>1</lower><content>Lawful</content><upper>33</upper></percentile>
+  <percentile><lower>34</lower><content>Neutral</content><upper>67</upper></percentile>
+  <percentile><lower>68</lower><content>Chaotic</content><upper>100</upper></percentile>
+</percentiles>

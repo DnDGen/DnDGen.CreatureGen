@@ -1,0 +1,1081 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E0107845-B6DA-463C-A9D5-237FCD19A366}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CreatureGen.Tests.Integration.Tables</RootNamespace>
+    <AssemblyName>CreatureGen.Tests.Integration.Tables</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Stress|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Stress\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DnDGen.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.Core.3.1.1\lib\DnDGen.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EventGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EventGen.2.0.1\lib\EventGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.3.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.3\lib\net45\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RollGen, Version=12.1.6474.27172, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.RollGen.13.4.2\lib\RollGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.TreasureGen.8.2.0\lib\TreasureGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise />
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Abilities\Races\AbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\GhostAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\HalfCelestialAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\HalfDragonAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\HalfFiendAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\LichAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\MummyAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\WerebearAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\WereboarAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\WereratAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\VampireAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\WeretigerAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\WerewolfAbilityAdjustmentsTests.cs" />
+    <Compile Include="CharacterGenAssemblyLoader.cs" />
+    <Compile Include="Feats\Data\Additional\AdditionalFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\ExpertFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\CommonerFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\AdeptFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\AristocratFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\WarriorFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\PaladinFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\CrossClassFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\AirFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\AnimalFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\BarbarianFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\BardFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\CharacterClassFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\ClericFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\ChaosFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\DeathFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\EarthFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\EvilFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\GoodFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\PlantFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\TrickeryFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\TravelFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\WarFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\WaterFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Schools\AbjurationFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Schools\ConjurationFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\DestructionFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\DruidFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Schools\DivinationFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Schools\EnchantmentFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Schools\EvocationFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\FighterFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\FireFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\HealingFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Schools\IllusionFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\KnowledgeFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\LawFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\LuckFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\MagicFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\MonkFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Schools\NecromancyFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\ProtectionFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\RangerFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\RogueFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\SorcererFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\StrengthFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Domains\SunFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Classes\WizardFeatDataTests.cs" />
+    <Compile Include="Feats\Data\CharacterClasses\Schools\TransmutationFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\AasimarFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\GithyankiFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\GithzeraiFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\KapoacinthFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\GargoyleFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\GreenSlaadFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\GraySlaadFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\DeathSlaadFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\AquaticElfFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\HoundArchonFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\KuoToaFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\LocathahFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\MerfolkFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\MerrowFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\RedSlaadFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\BlueSlaadFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\CloudGiantFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\CentaurFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\BugbearFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\AzerFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\HumanFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\JanniFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\PixieFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\RakshasaFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\SahuaginFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\StormGiantFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\StoneGiantFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\ScorpionfolkFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\SatyrFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\ScragFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\TrollFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\YuanTiPurebloodFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\YuanTiHalfbloodFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\YuanTiAbominationFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\CrossRaceFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\DeepDwarfFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\DeepHalflingFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\DerroFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\DoppelgangerFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\DrowFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\DuergarDwarfFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\HillGiantFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\FrostGiantFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\FireGiantFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\ForestGnomeFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\GnollFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\GrimlockFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\GrayElfFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\HarpyFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\MindFlayerFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\MinotaurFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\OgreFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\OgreMageFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\RockGnomeFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\GoblinFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\SvirfneblinFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\TroglodyteFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\WildElfFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\GhostFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\HalfCelestialFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\HalfDragonFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\HalfElfFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\HalfOrcFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\HighElfFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\HillDwarfFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\HobgoblinFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\KoboldFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\LightfootHalflingFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\LizardfolkFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\MountainDwarfFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\OrcFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\HalfFiendFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\MummyFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\NoneFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\LichFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\Species\BlackFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\Species\BlueFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\Species\BrassFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\Species\BronzeFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\Species\CopperFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\Species\GoldFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\Species\GreenFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\Species\RedFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\Species\SilverFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\Species\WhiteFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\VampireFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\WerebearFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\WereboarFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\RacialFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\TallfellowHalflingFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\TieflingFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\WereratFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\WeretigerFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\Metaraces\WerewolfFeatDataTests.cs" />
+    <Compile Include="Feats\Data\Racial\BaseRaces\WoodElfFeatDataTests.cs" />
+    <Compile Include="Feats\FeatFociTests.cs" />
+    <Compile Include="Feats\FeatGroupsTests.cs" />
+    <Compile Include="Feats\RequiredFeatsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\CombatCastingClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\CripplingStrikeClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\DefensiveRollClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\EmpowerSpellClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\EnlargeSpellClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\EschewMaterialsClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\ExtendSpellClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\GreaterWeaponFocusClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\GreaterWeaponSpecializationClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\HeightenSpellClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\ImprovedCounterspellClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\ImprovedEvasionClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\ImprovedFamiliarClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\LeadershipClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\MaximizeSpellClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\OpportunistClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\QuickenSpellClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\ScribeScrollClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\SilentSpellCassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\SkillMasteryClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\SlipperyMindClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\SpellFocusClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\SpellMasteryClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\SpellPenetrationClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\StillSpellClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\WeaponSpecializationClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Classes\WidenSpellClassRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\AcrobaticSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\AgileSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\AlertnessSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\AnimalAffinitySkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\AthleticSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\DeceitfulSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\DeftHandsSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\DiligentSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\InvestigatorSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\MagicalAptitudeSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\MountedArcherySkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\MountedCombatSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\NatureSenseSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\NegotiatorSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\NimbleFingerSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\PersuasiveSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\RideByAttackSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\SelfSufficientSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\SpiritedChargeSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\StealthySkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Skills\TrampleSkillRankRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\CombatExpertiseAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\DeflectArrowsAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\DodgeAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\ImprovedGrappleAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\GreaterTwoWeaponFightingAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\ImprovedPreciseShotStatRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\ImprovedTwoWeaponFightingAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\ManyshotAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\MobilityAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\NaturalSpellAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\PowerAttackAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\RapidShotAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\ShotOnTheRunAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\SnatchArrowAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\SpellMasteryAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\SpringAttackAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\StunningFistAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\TwoWeaponDefenseAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\TwoWeaponFightingAbilityRequirementsTests.cs" />
+    <Compile Include="Feats\Requirements\Abilities\WhirlwindAttackAbilityRequirementsTests.cs" />
+    <Compile Include="Magics\Spells\SpellsCrossTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\AasimarAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\AquaticElfAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\AzerAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\BlueSlaadAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\BugbearAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\CentaurAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\CloudGiantAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\CrossBaseRaceAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\DeathSlaadAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\DeepDwarfAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\DeepHalflingAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\DerroAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\DoppelgangerAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\DrowAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\DuergarDwarfAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\FireGiantAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\ForestGnomeAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\FrostGiantAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\GargoyleAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\GithyankiAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\GithzeraiAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\GnollAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\GoblinAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\GrayElfAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\GraySlaadAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\GreenSlaadAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\GrimlockAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\HalfElfAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\HalfOrcAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\HarpyAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\HighElfAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\HillDwarfAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\HillGiantAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\HobgoblinAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\HoundArchonAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\HumanAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\JanniAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\KapoacinthAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\KoboldAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\KuoToaAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\LightfootHalflingAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\LizardfolkAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\LocathahAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\MerfolkAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\MerrowAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\MindFlayerAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\MinotaurAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\MountainDwarfAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\OgreAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\OgreMageAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\OrcAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\PixieAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\RakshasaAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\RedSlaadAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\RockGnomeAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\SahuaginAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\SatyrAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\ScorpionfolkAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\ScragAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\StoneGiantAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\StormGiantAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\SvirfneblinAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\TallfellowHalflingAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\TieflingAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\TroglodyteAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\TrollAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\WildElfAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\WoodElfAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\YuanTiAbominationAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\YuanTiHalfbloodAgesTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\YuanTiPurebloodAgesTests.cs" />
+    <Compile Include="Skills\AssignPointToCrossClassSkillTests.cs" />
+    <Compile Include="Skills\ClassSkillsTests.cs" />
+    <Compile Include="Skills\SkillDataTests.cs" />
+    <Compile Include="Skills\SkillGroupsTests.cs" />
+    <Compile Include="Skills\SkillPointsTests.cs" />
+    <Compile Include="Skills\SkillSynergyTests.cs" />
+    <Compile Include="Abilities\Ages\AdulthoodAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Ages\MiddleAgeAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\IncreaseFirstPriorityAbilityTests.cs" />
+    <Compile Include="Abilities\Ages\OldAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\AbilityGroupsTests.cs" />
+    <Compile Include="Abilities\Ages\VenerableAbilityAdjustmentsTests.cs" />
+    <Compile Include="AdjustmentsTests.cs" />
+    <Compile Include="Alignments\AlignmentGoodnessTests.cs" />
+    <Compile Include="Languages\AutomaticLanguagesTests.cs" />
+    <Compile Include="Languages\BonusLanguagesTests.cs" />
+    <Compile Include="Alignments\AlignmentGroupsTests.cs" />
+    <Compile Include="Alignments\AlignmentLawfulnessTests.cs" />
+    <Compile Include="BooleanPercentileTests.cs" />
+    <Compile Include="CharacterClasses\ClassNameGroupsTests.cs" />
+    <Compile Include="CharacterClasses\EvilCharacterClassesTests.cs" />
+    <Compile Include="CharacterClasses\GoodCharacterClassesTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\AdeptHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\AristocratHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\BarbarianHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\BardHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\ClericHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\CommonerHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\CrossTableClassNameGroups.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\DruidHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\ExpertHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\FighterHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\MonkHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\PaladinHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\RangerHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\RogueHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\SorcererHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\WarriorHasSpecialistFieldsTests.cs" />
+    <Compile Include="CharacterClasses\HasSpecialistFields\WizardHasSpecialistFieldsTests.cs" />
+    <Compile Include="Combats\SizeModifiersTests.cs" />
+    <Compile Include="Items\Powers\CrossPowersTests.cs" />
+    <Compile Include="Items\Powers\Level22PowerTests.cs" />
+    <Compile Include="Items\Powers\Level23PowerTests.cs" />
+    <Compile Include="Items\Powers\Level24PowerTests.cs" />
+    <Compile Include="Items\Powers\Level25PowerTests.cs" />
+    <Compile Include="Items\Powers\Level26PowerTests.cs" />
+    <Compile Include="Items\Powers\Level27PowerTests.cs" />
+    <Compile Include="Items\Powers\Level28PowerTests.cs" />
+    <Compile Include="Items\Powers\Level29PowerTests.cs" />
+    <Compile Include="Items\Powers\Level30PowerTests.cs" />
+    <Compile Include="Items\Powers\Level21PowerTests.cs" />
+    <Compile Include="Leadership\AttractCohortOfDifferentAlignmentTests.cs" />
+    <Compile Include="Leadership\CohortLevelsTests.cs" />
+    <Compile Include="Leadership\KilledCohortTests.cs" />
+    <Compile Include="Leadership\KilledFollowersTests.cs" />
+    <Compile Include="Leadership\LeadershipModifiersTests.cs" />
+    <Compile Include="Leadership\LeadershipMovementTests.cs" />
+    <Compile Include="Leadership\Level2FollowerQuantitiesTests.cs" />
+    <Compile Include="Leadership\Level3FollowerQuantitiesTests.cs" />
+    <Compile Include="Leadership\Level4FollowerQuantitiesTests.cs" />
+    <Compile Include="Leadership\Level5FollowerQuantitiesTests.cs" />
+    <Compile Include="Leadership\Level6FollowerQuantitiesTests.cs" />
+    <Compile Include="Leadership\Level1FollowerQuantitiesTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\AdeptSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level10AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level11AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level12AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level13AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level14AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level15AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level16AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level17AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level18AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level19AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level1AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level20AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level2AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level3AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level4AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level5AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level6AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level7AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level8AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Adepts\Level9AdeptKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\BardKnowsAdditionalSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\BardSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level10BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level11BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level12BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level13BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level14BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level15BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level16BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level17BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level18BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level19BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level1BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level20BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level2BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level3BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level4BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level5BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level6BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level7BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level8BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Bards\Level9BardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\AirSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\AnimalSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\ChaosSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\ClericSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\DeathSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\DestructionSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\EarthSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\EvilSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\FireSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\GoodSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\HealingSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\KnowledgeSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\LawSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level10ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level11ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level12ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level13ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level14ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level15ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level16ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level17ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level18ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level19ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level1ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level20ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level2ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level3ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level4ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level5ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level6ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level7ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level8ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\Level9ClericKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\LuckSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\MagicSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\PlantSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\ProtectionSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\StrengthSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\SunSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\TravelSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\TrickerySpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\WarSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Clerics\WaterSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\DruidSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level10DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level11DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level12DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level13DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level14DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level15DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level16DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level17DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level18DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level19DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level1DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level20DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level2DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level3DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level4DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level5DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level6DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level7DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level8DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Druids\Level9DruidKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level10PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level11PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level12PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level13PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level14PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level15PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level16PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level17PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level18PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level19PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level1PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level20PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level2PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level3PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level4PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level5PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level6PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level7PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level8PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\Level9PaladinKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Paladins\PaladinSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level10RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level11RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level12RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level13RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level14RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level15RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level16RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level17RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level18RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level19RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level1RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level20RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level2RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level3RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level4RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level5RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level6RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level7RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level8RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\Level9RangerKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Rangers\RangerSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level10SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level11SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level12SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level13SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level14SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level15SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level16SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level17SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level18SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level19SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level1SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level20SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level2SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level3SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level4SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level5SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level6SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level7SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level8SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\Level9SorcererKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\SorcererKnowsAdditionalSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Sorcerers\SorcererSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\AbjurationSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\ConjurationSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\DivinationSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\EnchantmentSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\EvocationSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\IllusionSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level10WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level11WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level12WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level13WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level14WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level15WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level16WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level17WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level18WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level19WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level1WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level20WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level2WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level3WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level4WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level5WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level6WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level7WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level8WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\Level9WizardKnownSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\NecromancySpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\TransmutationSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\WizardKnowsAdditionalSpellsTests.cs" />
+    <Compile Include="Magics\Spells\Known\Wizards\WizardSpellLevelsTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level10AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level11AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level12AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level13AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level14AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level15AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level16AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level17AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level18AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level19AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level1AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level20AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level2AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level3AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level4AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level5AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level6AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level7AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level8AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Adepts\Level9AdeptSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\ArcaneSpellFailuresTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level10BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level11BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level12BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level13BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level14BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level15BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level16BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level17BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level18BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level19BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level1BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level20BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level2BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level3BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level4BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level5BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level6BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level7BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level8BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Bards\Level9BardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level10ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level11ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level12ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level13ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level14ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level15ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level16ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level17ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level18ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level19ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level1ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level20ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level2ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level3ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level4ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level5ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level6ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level7ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level8ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Clerics\Level9ClericSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level10DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level11DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level12DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level13DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level14DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level15DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level16DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level17DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level18DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level19DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level1DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level20DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level2DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level3DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level4DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level5DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level6DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level7DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level8DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Druids\Level9DruidSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level10PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level11PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level12PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level13PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level14PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level15PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level16PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level17PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level18PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level19PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level1PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level20PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level2PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level3PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level4PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level5PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level6PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level7PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level8PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Paladins\Level9PaladinSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level10RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level11RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level12RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level13RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level14RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level15RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level16RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level17RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level18RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level19RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level1RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level20RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level2RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level3RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level4RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level5RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level6RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level7RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level8RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Rangers\Level9RangerSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level10SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level11SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level12SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level13SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level14SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level15SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level16SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level17SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level18SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level19SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level1SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level20SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level2SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level3SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level4SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level5SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level6SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level7SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level8SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Sorcerers\Level9SorcererSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level10WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level11WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level1WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level13WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level14WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level15WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level16WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level17WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level18WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level19WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level2WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level3WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level4WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level5WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level6WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level7WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level8WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level9WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level20WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\PerDay\Wizards\Level12WizardSpellsPerDayTests.cs" />
+    <Compile Include="Magics\Spells\SpellGroupsTests.cs" />
+    <Compile Include="Races\AerialManeuverabilityTests.cs" />
+    <Compile Include="Abilities\Races\AasimarAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\AzerAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\GithzeraiAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\KuoToaAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\GithyankiAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\KapoacinthAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\GargoyleAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\AquaticElfAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\HoundArchonAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\LocathahAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\MerfolkAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\MerrowAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\RedSlaadAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\GreenSlaadAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\GraySlaadAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\DeathSlaadAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\BlueSlaadAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\CentaurAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\CrossRaceAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\BugbearAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\DeepDwarfAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\DeepHalflingAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\DerroAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\DoppelgangerAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\DrowAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\DuergarDwarfAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\ForestGnomeAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\CloudGiantAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\FireGiantAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\FrostGiantAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\GnollAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\GoblinAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\GrayElfAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\HalfElfAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\HarpyAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\HalfOrcAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\HighElfAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\SahuaginAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\StoneGiantAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\StormGiantAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\HillGiantAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\HillDwarfAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\HobgoblinAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\GrimlockAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\RakshasaAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\JanniAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\KoboldAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\LightfootHalflingAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\LizardfolkAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\MindFlayerAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\MinotaurAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\MountainDwarfAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\OgreAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\OgreMageAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\PixieAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\OrcAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\RockGnomeAbilityAdjustmentsTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\Rolls\IntuitiveAgeRollsTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\Rolls\MaximumAgeRollsTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\Rolls\SelfTaughtAgeRollsTests.cs" />
+    <Compile Include="Races\BaseRaces\Ages\Rolls\TrainedAgeRollsTests.cs" />
+    <Compile Include="Abilities\Races\ScorpionfolkAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\SatyrAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\SvirfneblinAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\TallfellowHalflingAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\TieflingAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\ScragAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\TrollAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\TroglodyteAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\WildElfAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\WoodElfAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\YuanTiPurebloodAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\YuanTiHalfbloodAbilityAdjustmentsTests.cs" />
+    <Compile Include="Abilities\Races\YuanTiAbominationAbilityAdjustmentsTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilAdeptBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilAristocratBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilCommonerBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilExpertBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilWarriorBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodAristocratBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodCommonerBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodAdeptBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodExpertBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodWarriorBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Heights\FemaleHeightsTests.cs" />
+    <Compile Include="Abilities\Races\HumanAbilityAdjustmentsTests.cs" />
+    <Compile Include="Races\BaseRaces\Heights\MaleHeightsTests.cs" />
+    <Compile Include="Races\AerialSpeedsTests.cs" />
+    <Compile Include="Races\BaseRaces\SwimSpeedsTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralAristocratBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralCommonerBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralAdeptBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralExpertBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralWarriorBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Weights\FemaleWeightsTests.cs" />
+    <Compile Include="Races\BaseRaces\Weights\WeightRollsTests.cs" />
+    <Compile Include="Races\BaseRaces\Weights\MaleWeightsTests.cs" />
+    <Compile Include="Races\ChallengeRatingsTests.cs" />
+    <Compile Include="Races\LevelAdjustmentsTests.cs" />
+    <Compile Include="CharacterClasses\NeutralCharacterClassesTests.cs" />
+    <Compile Include="CharacterClasses\ProhibitedFieldQuantitiesTests.cs" />
+    <Compile Include="CharacterClasses\ProhibitedFieldsTests.cs" />
+    <Compile Include="CharacterClasses\SpecialistFieldQuantitiesTests.cs" />
+    <Compile Include="CharacterClasses\SpecialistFieldsTests.cs" />
+    <Compile Include="CollectionTests.cs" />
+    <Compile Include="Combats\ArmorClassModifiersTests.cs" />
+    <Compile Include="Combats\ClassHitDiceTests.cs" />
+    <Compile Include="Combats\MonsterHitDiceTests.cs" />
+    <Compile Include="Combats\RacialBaseAttackAdjustmentsTests.cs" />
+    <Compile Include="DataTests.cs" />
+    <Compile Include="Items\ItemGroupsTests.cs" />
+    <Compile Include="Items\Powers\Level10PowerTests.cs" />
+    <Compile Include="Items\Powers\Level11PowerTests.cs" />
+    <Compile Include="Items\Powers\Level12PowerTests.cs" />
+    <Compile Include="Items\Powers\Level13PowerTests.cs" />
+    <Compile Include="Items\Powers\Level14PowerTests.cs" />
+    <Compile Include="Items\Powers\Level15PowerTests.cs" />
+    <Compile Include="Items\Powers\Level16PowerTests.cs" />
+    <Compile Include="Items\Powers\Level17PowerTests.cs" />
+    <Compile Include="Items\Powers\Level18PowerTests.cs" />
+    <Compile Include="Items\Powers\Level19PowerTests.cs" />
+    <Compile Include="Items\Powers\Level1PowerTests.cs" />
+    <Compile Include="Items\Powers\Level20PowerTests.cs" />
+    <Compile Include="Items\Powers\Level2PowerTests.cs" />
+    <Compile Include="Items\Powers\Level3PowerTests.cs" />
+    <Compile Include="Items\Powers\Level4PowerTests.cs" />
+    <Compile Include="Items\Powers\Level5PowerTests.cs" />
+    <Compile Include="Items\Powers\Level6PowerTests.cs" />
+    <Compile Include="Items\Powers\Level7PowerTests.cs" />
+    <Compile Include="Items\Powers\Level8PowerTests.cs" />
+    <Compile Include="Items\Powers\Level9PowerTests.cs" />
+    <Compile Include="Magics\AnimalGroupsTests.cs" />
+    <Compile Include="PercentileTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Races\BaseRaces\BaseRaceGroupsTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilBarbarianBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilBardBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilClericBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilDruidBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilFighterBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilMonkBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilRangerBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilRogueBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilSorcererBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Evil\EvilWizardBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodBarbarianBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodBardBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodClericBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodDruidBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodFighterBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodMonkBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodPaladinBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodRangerBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodRogueBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodSorcererBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Good\GoodWizardBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Heights\HeightRollsTests.cs" />
+    <Compile Include="Races\BaseRaces\LandSpeedsTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralBarbarianBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralBardBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralClericBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralDruidBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralFighterBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralMonkBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralRangerBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralRogueBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralSorcererBaseRacesTests.cs" />
+    <Compile Include="Races\BaseRaces\Neutral\NeutralWizardBaseRacesTests.cs" />
+    <Compile Include="Races\MaleTests.cs" />
+    <Compile Include="Races\Metaraces\DragonSpeciesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilAdeptMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilBarbarianMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilAristocratMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilBardMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilClericMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilCommonerMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilDruidMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilExpertMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilWarriorMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilFighterMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilMonkMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilRangerMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilRogueMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilSorcererMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Evil\EvilWizardMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodAristocratMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodCommonerMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodAdeptMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodBarbarianMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodBardMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodClericMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodDruidMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodExpertMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodWarriorMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodFighterMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodMonkMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodPaladinMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodRangerMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodRogueMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodSorcererMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Good\GoodWizardMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\MetaraceGroupsTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralAristocratMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralCommonerMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralAdeptMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralBarbarianMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralBardMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralClericMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralDruidMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralExpertMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralWarriorMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralFighterMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralMonkMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralRangerMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralRogueMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralSorcererMetaracesTests.cs" />
+    <Compile Include="Races\Metaraces\Neutral\NeutralWizardMetaracesTests.cs" />
+    <Compile Include="Abilities\AbilityPrioritiesTests.cs" />
+    <Compile Include="Leadership\ReputationTests.cs" />
+    <Compile Include="TableAttribute.cs" />
+    <Compile Include="TableTests.cs" />
+    <Compile Include="TraitsTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CreatureGen.Domain\CreatureGen.Domain.csproj">
+      <Project>{8611F130-C7BF-4EF9-BE78-E2624C58861F}</Project>
+      <Name>CharacterGen.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreatureGen\CreatureGen.csproj">
+      <Project>{83f2b67c-3eb0-4e46-aad5-bafaa2e35689}</Project>
+      <Name>CharacterGen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreatureGen.Tests.Integration\CreatureGen.Tests.Integration.csproj">
+      <Project>{a9371758-2de3-43af-857d-7140b1c0a78c}</Project>
+      <Name>CharacterGen.Tests.Integration</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

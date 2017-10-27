@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Deflection</name>
+    <entry>Ring of Protection</entry>
+  </collection>
+  <collection>
+    <name>Dodge Bonus</name>
+    <entry>Dodge</entry>
+    <entry>Dodge Bonus</entry>
+  </collection>
+  <collection>
+    <name>Natural Armor</name>
+    <entry>Amulet of natural armor</entry>
+    <entry>Armor Bonus</entry>
+    <entry>Natural Armor</entry>
+  </collection>
+  <collection>
+    <name>Armor Bonus</name>
+    <entry>Bracers of armor</entry>
+    <entry>Inertial Armor</entry>
+  </collection>
+</collections>

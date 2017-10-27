@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Augment Summoning</name>
+    <entry>Spell Focus/Conjuration</entry>
+  </collection>
+  <collection>
+    <name>Cleave</name>
+    <entry>Power Attack</entry>
+  </collection>
+  <collection>
+    <name>Combat ReflexesMonk</name>
+    <entry>Monk Bonus Feat/Combat Reflexes</entry>
+  </collection>
+  <collection>
+    <name>Combat Style Mastery</name>
+    <entry>Improved Combat Style</entry>
+  </collection>
+  <collection>
+    <name>Corrupting Gaze</name>
+    <entry>Ghost Special Attack/Corrupting Gaze</entry>
+  </collection>
+  <collection>
+    <name>Corrupting Touch</name>
+    <entry>Ghost Special Attack/Corrupting Touch</entry>
+  </collection>
+  <collection>
+    <name>Deflect Arrows</name>
+    <entry>Improved Unarmed Strike</entry>
+  </collection>
+  <collection>
+    <name>Deflect ArrowsMonk</name>
+    <entry>Monk Bonus Feat/Deflect Arrows</entry>
+  </collection>
+  <collection>
+    <name>Diehard</name>
+    <entry>Endurance</entry>
+  </collection>
+  <collection>
+    <name>Draining Touch</name>
+    <entry>Ghost Special Attack/Draining Touch</entry>
+  </collection>
+  <collection>
+    <name>Extra Turning</name>
+    <entry>Turn</entry>
+  </collection>
+  <collection>
+    <name>Far Shot</name>
+    <entry>Point Blank Shot</entry>
+  </collection>
+  <collection>
+    <name>Frightful Moan</name>
+    <entry>Ghost Special Attack/Frightful Moan</entry>
+  </collection>
+  <collection>
+    <name>Great Cleave</name>
+    <entry>Cleave</entry>
+  </collection>
+  <collection>
+    <name>Greater Spell Focus</name>
+    <entry>Spell Focus</entry>
+  </collection>
+  <collection>
+    <name>Greater Spell Penetration</name>
+    <entry>Spell Penetration</entry>
+  </collection>
+  <collection>
+    <name>Greater Two-Weapon Fighting</name>
+    <entry>Improved Two-Weapon Fighting</entry>
+  </collection>
+  <collection>
+    <name>Greater Two-Weapon FightingRanger</name>
+    <entry>Combat Style Mastery/Two-Weapon Fighting</entry>
+  </collection>
+  <collection>
+    <name>Greater Weapon Focus</name>
+    <entry>Weapon Focus</entry>
+  </collection>
+  <collection>
+    <name>Greater Weapon Specialization</name>
+    <entry>Weapon Specialization</entry>
+    <entry>Greater Weapon Focus</entry>
+  </collection>
+  <collection>
+    <name>Heavy Armor Proficiency</name>
+    <entry>Medium Armor Proficiency</entry>
+  </collection>
+  <collection>
+    <name>Horrific Appearance</name>
+    <entry>Ghost Special Attack/Horrific Appearance</entry>
+  </collection>
+  <collection>
+    <name>Improved Combat Style</name>
+    <entry>Combat Style</entry>
+  </collection>
+  <collection>
+    <name>Improved Bull Rush</name>
+    <entry>Power Attack</entry>
+  </collection>
+  <collection>
+    <name>Improved Critical</name>
+    <entry>WeaponProficiency</entry>
+  </collection>
+  <collection>
+    <name>Improved Disarm</name>
+    <entry>Combat Expertise</entry>
+  </collection>
+  <collection>
+    <name>Improved DisarmMonk</name>
+    <entry>Monk Bonus Feat/Improved Disarm</entry>
+  </collection>
+  <collection>
+    <name>Improved Feint</name>
+    <entry>Combat Expertise</entry>
+  </collection>
+  <collection>
+    <name>Improved Grapple</name>
+    <entry>Improved Unarmed Strike</entry>
+  </collection>
+  <collection>
+    <name>Improved GrappleMonk</name>
+    <entry>Monk Bonus Feat/Improved Grapple</entry>
+  </collection>
+  <collection>
+    <name>Improved Overrun</name>
+    <entry>Power Attack</entry>
+  </collection>
+  <collection>
+    <name>Improved Precise Shot</name>
+    <entry>Precise Shot</entry>
+  </collection>
+  <collection>
+    <name>Improved Precise ShotRanger</name>
+    <entry>Combat Style Mastery/Archery</entry>
+  </collection>
+  <collection>
+    <name>Improved Shield Bash</name>
+    <entry>Shield Proficiency</entry>
+  </collection>
+  <collection>
+    <name>Improved Sunder</name>
+    <entry>Power Attack</entry>
+  </collection>
+  <collection>
+    <name>Improved Two-Weapon Fighting</name>
+    <entry>Two-Weapon Fighting</entry>
+  </collection>
+  <collection>
+    <name>Improved Trip</name>
+    <entry>Combat Expertise</entry>
+  </collection>
+  <collection>
+    <name>Improved TripMonk</name>
+    <entry>Monk Bonus Feat/Improved Trip</entry>
+  </collection>
+  <collection>
+    <name>Improved Turning</name>
+    <entry>Turn</entry>
+  </collection>
+  <collection>
+    <name>Improved Two-Weapon FightingRanger</name>
+    <entry>Improved Combat Style/Two-Weapon Fighting</entry>
+  </collection>
+  <collection>
+    <name>Malevolence</name>
+    <entry>Ghost Special Attack/Malevolence</entry>
+  </collection>
+  <collection>
+    <name>Manyshot</name>
+    <entry>Rapid Shot</entry>
+  </collection>
+  <collection>
+    <name>ManyshotRanger</name>
+    <entry>Improved Combat Style/Archery</entry>
+  </collection>
+  <collection>
+    <name>Medium Armor Proficiency</name>
+    <entry>Light Armor Proficiency</entry>
+  </collection>
+  <collection>
+    <name>Mobility</name>
+    <entry>Dodge</entry>
+  </collection>
+  <collection>
+    <name>Mounted Archery</name>
+    <entry>Mounted Combat</entry>
+  </collection>
+  <collection>
+    <name>Natural Spell</name>
+    <entry>Wild Shape</entry>
+  </collection>
+  <collection>
+    <name>Precise Shot</name>
+    <entry>Point Blank Shot</entry>
+  </collection>
+  <collection>
+    <name>Rapid Reload</name>
+    <entry>WeaponProficiency</entry>
+  </collection>
+  <collection>
+    <name>Rapid Shot</name>
+    <entry>Point Blank Shot</entry>
+  </collection>
+  <collection>
+    <name>Rapid ShotRanger</name>
+    <entry>Combat Style/Archery</entry>
+  </collection>
+  <collection>
+    <name>Ride-By Attack</name>
+    <entry>Mounted Combat</entry>
+  </collection>
+  <collection>
+    <name>Shot On The Run</name>
+    <entry>Dodge</entry>
+    <entry>Mobility</entry>
+    <entry>Point Blank Shot</entry>
+  </collection>
+  <collection>
+    <name>Snatch Arrows</name>
+    <entry>Improved Unarmed Strike</entry>
+    <entry>Deflect Arrows</entry>
+  </collection>
+  <collection>
+    <name>Spirited Charge</name>
+    <entry>Mounted Combat</entry>
+    <entry>Ride-By Attack</entry>
+  </collection>
+  <collection>
+    <name>Spring Attack</name>
+    <entry>Dodge</entry>
+    <entry>Mobility</entry>
+  </collection>
+  <collection>
+    <name>Stunning Fist</name>
+    <entry>Improved Unarmed Strike</entry>
+  </collection>
+  <collection>
+    <name>Stunning FistMonk</name>
+    <entry>Monk Bonus Feat/Stunning Fist</entry>
+  </collection>
+  <collection>
+    <name>Telekinesis</name>
+    <entry>Ghost Special Attack/Telekinesis</entry>
+  </collection>
+  <collection>
+    <name>Tower Shield Proficiency</name>
+    <entry>Shield Proficiency</entry>
+  </collection>
+  <collection>
+    <name>Trample</name>
+    <entry>Mounted Combat</entry>
+  </collection>
+  <collection>
+    <name>Two-Weapon Defense</name>
+    <entry>Two-Weapon Fighting</entry>
+  </collection>
+  <collection>
+    <name>Two-Weapon FightingRanger</name>
+    <entry>Combat Style/Two-Weapon Fighting</entry>
+  </collection>
+  <collection>
+    <name>Weapon Focus</name>
+    <entry>WeaponProficiency</entry>
+  </collection>
+  <collection>
+    <name>Weapon Specialization</name>
+    <entry>Weapon Focus</entry>
+  </collection>
+  <collection>
+    <name>Whirlwind Attack</name>
+    <entry>Combat Expertise</entry>
+    <entry>Dodge</entry>
+    <entry>Spring Attack</entry>
+    <entry>Mobility</entry>
+  </collection>
+</collections>

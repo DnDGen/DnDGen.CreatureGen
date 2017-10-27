@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Obscuring mist</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Fog cloud</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Water breathing</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Control water</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Ice storm</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Cone of cold</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Acid fog</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Horrid wilting</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Elemental swarm</name>
+    <entry>9</entry>
+  </collection>
+</collections>

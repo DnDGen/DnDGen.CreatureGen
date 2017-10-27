@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Absorbing shield</name>
+    <entry>15</entry>
+  </collection>
+    <collection>
+        <name>Armor of arrow attraction</name>
+    <entry>35</entry>
+    </collection>
+    <collection>
+        <name>Armor of rage</name>
+    <entry>35</entry>
+    </collection>
+    <collection>
+        <name>Banded mail</name>
+    <entry>35</entry>
+    </collection>
+    <collection>
+        <name>Banded mail of luck</name>
+    <entry>35</entry>
+    </collection>
+    <collection>
+        <name>Breastplate</name>
+      <entry>25</entry>
+    </collection>
+    <collection>
+        <name>Breastplate of command</name>
+      <entry>25</entry>
+    </collection>
+    <collection>
+        <name>Buckler</name>
+      <entry>5</entry>
+    </collection>
+  <collection>
+    <name>Caster's shield</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Celestial armor</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Chainmail</name>
+    <entry>30</entry>
+  </collection>
+  <collection>
+    <name>Chain shirt</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Demon armor</name>
+    <entry>35</entry>
+  </collection>
+    <collection>
+        <name>Dwarven plate</name>
+        <entry>35</entry>
+    </collection>
+    <collection>
+        <name>Elven chain</name>
+        <entry>30</entry>
+    </collection>
+    <collection>
+        <name>Full plate</name>
+        <entry>35</entry>
+    </collection>
+    <collection>
+        <name>Full plate of speed</name>
+        <entry>35</entry>
+    </collection>
+    <collection>
+        <name>Half-plate</name>
+        <entry>40</entry>
+    </collection>
+  <collection>
+    <name>Heavy steel shield</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Heavy wooden shield</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Hide armor</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Leather armor</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Light steel shield</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Light wooden shield</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Lion's shield</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Padded armor</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Plate armor of the deep</name>
+    <entry>35</entry>
+  </collection>
+    <collection>
+      <name>Rhino hide</name>
+      <entry>20</entry>
+    </collection>
+    <collection>
+        <name>Scale mail</name>
+        <entry>25</entry>
+    </collection>
+    <collection>
+        <name>Spined shield</name>
+      <entry>15</entry>
+    </collection>
+    <collection>
+        <name>Splint mail</name>
+      <entry>40</entry>
+    </collection>
+  <collection>
+    <name>Studded leather armor</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Tower shield</name>
+    <entry>50</entry>
+  </collection>
+  <collection>
+    <name>Winged shield</name>
+    <entry>15</entry>
+  </collection>
+</collections>

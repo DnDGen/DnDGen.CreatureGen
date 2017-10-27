@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+    <collection>
+        <name>Handle Animal</name>
+        <entry>0</entry>
+    </collection>
+  <collection>
+    <name>Ride</name>
+    <entry>0</entry>
+  </collection>
+</collections>

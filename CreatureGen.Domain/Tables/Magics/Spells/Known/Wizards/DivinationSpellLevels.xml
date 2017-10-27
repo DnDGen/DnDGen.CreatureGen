@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Detect poison</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Detect magic</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Read magic</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Comprehend languages</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Detect secret doors</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Detect undead</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Identify</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>True strike</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Detect thoughts</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Locate object</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>See invisibility</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Arcane sight</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Clairaudience/Clairvoyance</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Tongues</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Arcane eye</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Detect scrying</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Locate creature</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Scrying</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Contact other plane</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Prying eyes</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Telepathic bond</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Analyze dweomer</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Legend lore</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>True seeing</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Greater arcane sight</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Greater scrying</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Vision</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Discern location</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Moment of prescience</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Greater prying eyes</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Foresight</name>
+    <entry>9</entry>
+  </collection>
+</collections>

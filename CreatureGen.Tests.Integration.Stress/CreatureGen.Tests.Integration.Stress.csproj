@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{478CD8EC-751F-419E-97A5-44800CA4B950}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CreatureGen.Tests.Integration.Stress</RootNamespace>
+    <AssemblyName>CreatureGen.Tests.Integration.Stress</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Stress|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Stress\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;STRESS</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DnDGen.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.Core.3.1.1\lib\DnDGen.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DnDGen.Stress, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.Stress.2.0.3\lib\DnDGen.Stress.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DnDGen.Stress.Events, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.Stress.Events.2.0.3\lib\DnDGen.Stress.Events.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EventGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EventGen.2.0.1\lib\EventGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.3.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.3\lib\net45\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RollGen, Version=12.1.6474.27172, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.RollGen.13.4.2\lib\RollGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.TreasureGen.8.2.0\lib\TreasureGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise />
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Characters\CharacterGeneratorTests.cs" />
+    <Compile Include="Characters\CharacterVerifier.cs" />
+    <Compile Include="Leaders\LeadershipGeneratorTests.cs" />
+    <Compile Include="Randomizers\Alignments\SetAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\ClassNames\AnyNPCClassNameRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\ClassNames\ClassNameRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\ClassNames\SetClassNameRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\Levels\SetLevelRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\BaseRaces\BaseRaceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\BaseRaces\SetBaseRaceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\Metaraces\ForcableMetaraceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Alignments\AnyAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\Alignments\ChaoticAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\Alignments\EvilAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\Alignments\GoodAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\Alignments\LawfulAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\Alignments\NeutralAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\Alignments\NonChaoticAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\Alignments\NonEvilAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\Alignments\NonGoodAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\Alignments\NonLawfulAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\Alignments\NonNeutralAlignmentRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\ClassNames\AnyPlayerClassNameRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\ClassNames\DivineSpellcasterClassNameRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\ClassNames\ArcaneSpellcasterClassNameRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\ClassNames\NonSpellcasterClassNameRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\ClassNames\SpellcasterClassNameRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\ClassNames\StealthClassNameRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\ClassNames\PhysicalCombatClassNameRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\Levels\AnyLevelRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\Levels\HighLevelRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\Levels\LowLevelRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\Levels\MediumLevelRandomizerTests.cs" />
+    <Compile Include="Randomizers\CharacterClasses\Levels\VeryHighLevelRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\BaseRaces\AnyBaseRaceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\BaseRaces\MonsterBaseRaceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\BaseRaces\NonMonsterBaseRaceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\BaseRaces\NonStandardBaseRaceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\BaseRaces\StandardBaseRaceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\Metaraces\AnyMetaraceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\Metaraces\NoMetaraceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\Metaraces\LycanthropeMetaraceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\Metaraces\GeneticMetaraceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\Metaraces\SetMetaraceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Races\Metaraces\UndeadMetaraceRandomizerTests.cs" />
+    <Compile Include="Randomizers\Abilities\SetAbilitiesRandomizerTests.cs" />
+    <Compile Include="Randomizers\Abilities\TwoTenSidedDiceAbilitiesRandomizerTests.cs" />
+    <Compile Include="Randomizers\Abilities\RawAbilitiesRandomizerTests.cs" />
+    <Compile Include="Randomizers\Abilities\PoorAbilitiesRandomizerTests.cs" />
+    <Compile Include="Randomizers\Abilities\OnesAsSixesAbilitiesRandomizerTests.cs" />
+    <Compile Include="Randomizers\Abilities\HeroicAbilitiesRandomizerTests.cs" />
+    <Compile Include="Randomizers\Abilities\GoodAbilitiesRandomizerTests.cs" />
+    <Compile Include="Randomizers\Abilities\BestOfFourAbilitiesRandomizerTests.cs" />
+    <Compile Include="Randomizers\Abilities\AverageAbilitiesRandomizerTests.cs" />
+    <Compile Include="StressAttribute.cs" />
+    <Compile Include="StressTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Verifiers\RandomizerVerifierTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CreatureGen\CreatureGen.csproj">
+      <Project>{83f2b67c-3eb0-4e46-aad5-bafaa2e35689}</Project>
+      <Name>CharacterGen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreatureGen.Domain\CreatureGen.Domain.csproj">
+      <Project>{8611f130-c7bf-4ef9-be78-e2624c58861f}</Project>
+      <Name>CharacterGen.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreatureGen.Tests.Integration\CreatureGen.Tests.Integration.csproj">
+      <Project>{a9371758-2de3-43af-857d-7140b1c0a78c}</Project>
+      <Name>CharacterGen.Tests.Integration</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

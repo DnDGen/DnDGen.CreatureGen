@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+    <collection>
+        <name>Skill BonusAppraise</name>
+        <entry>Skill Bonus</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>2</entry>
+        <entry>Appraise (Stone or metal items)</entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+    <entry></entry>
+    </collection>
+    <collection>
+        <name>Skill BonusListen</name>
+        <entry>Skill Bonus</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>2</entry>
+        <entry>Listen</entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+    </collection>
+    <collection>
+      <name>Attack BonusThrowOrSling</name>
+      <entry>Attack Bonus</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry>1</entry>
+      <entry>Thrown weapons and slings</entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+    </collection>
+    <collection>
+        <name>Save BonusFear</name>
+        <entry>Save Bonus</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>2</entry>
+        <entry>Fear</entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+    </collection>
+    <collection>
+      <name>Save BonusAll</name>
+      <entry>Save Bonus</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry>1</entry>
+      <entry>All</entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+    </collection>
+    <collection>
+        <name>Darkvision</name>
+        <entry>Darkvision</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>60</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry>0</entry>
+    <entry></entry>
+    <entry>0</entry>
+      <entry></entry>
+    </collection>
+    <collection>
+      <name>Stonecunning</name>
+      <entry>Stonecunning</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+    </collection>
+</collections>

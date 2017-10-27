@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Ghost sound</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Color spray</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Disguise self</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Magic aura</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Silent image</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Ventriloquism</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Blur</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Hypnotic pattern</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Invisibility</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Magic mouth</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Minor image</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Mirror image</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Misdirection</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Phantom trap</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Displacement</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Illusory script</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Invisibility sphere</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Major image</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Hallucinatory terrain</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Illusory wall</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Greater invisibility</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Phantasmal killer</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Rainbow pattern</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Shadow conjuration</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Dream</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>False vision</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Mirage arcana</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Nightmare</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Persistent image</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Seeming</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Shadow evocation</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Mislead</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Permanent image</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Programmed image</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Shadow walk</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Veil</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Mass invisibility</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Project image</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Greater shadow conjuration</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Simulacrum</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Scintillating pattern</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Screen</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Greater shadow evocation</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Shades</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Weird</name>
+    <entry>9</entry>
+  </collection>
+</collections>

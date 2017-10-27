@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+    <collection>
+        <name>Supernatural Strength</name>
+        <entry>Supernatural Strength</entry>
+        <entry>0</entry>
+        <entry>Enhance strength by cleric level, lasts 1 round</entry>
+        <entry>0</entry>
+        <entry>1</entry>
+        <entry>Day</entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry></entry>
+      <entry>True</entry>
+    </collection>
+</collections>

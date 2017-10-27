@@ -1,0 +1,620 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Combat Style</name>
+    <entry>Two-Weapon Fighting</entry>
+    <entry>Archery</entry>
+  </collection>
+  <collection>
+    <name>Exotic Weapon Proficiency</name>
+    <entry>Kama</entry>
+    <entry>Nunchaku</entry>
+    <entry>Sai</entry>
+    <entry>Bolas</entry>
+    <entry>Siangham</entry>
+    <entry>Bastard sword</entry>
+    <entry>Dwarven waraxe</entry>
+    <entry>Whip</entry>
+    <entry>Orc double axe</entry>
+    <entry>Spiked chain</entry>
+    <entry>Dire flail</entry>
+    <entry>Gnome hooked hammer</entry>
+    <entry>Shuriken</entry>
+    <entry>Net</entry>
+    <entry>Two-bladed sword</entry>
+    <entry>Dwarven urgrosh</entry>
+    <entry>Hand crossbow</entry>
+    <entry>Heavy repeating crossbow</entry>
+    <entry>Light repeating crossbow</entry>
+  </collection>
+  <collection>
+    <name>Favored Enemies</name>
+    <entry>Aberration</entry>
+    <entry>Animal</entry>
+    <entry>Construct</entry>
+    <entry>Dragon</entry>
+    <entry>Elemental</entry>
+    <entry>Fey</entry>
+    <entry>Giant</entry>
+    <entry>Humanoid (aquatic)</entry>
+    <entry>Humanoid (dwarf)</entry>
+    <entry>Humanoid (elf)</entry>
+    <entry>Humanoid (goblinoid)</entry>
+    <entry>Humanoid (gnoll)</entry>
+    <entry>Humanoid (gnome)</entry>
+    <entry>Humanoid (halfling)</entry>
+    <entry>Humanoid (human)</entry>
+    <entry>Humanoid (orc)</entry>
+    <entry>Humanoid (reptilian)</entry>
+    <entry>Magical beast</entry>
+    <entry>Monstrous humanoid</entry>
+    <entry>Ooze</entry>
+    <entry>Outsider (air)</entry>
+    <entry>Outsider (chaotic)</entry>
+    <entry>Outsider (earth)</entry>
+    <entry>Outsider (evil)</entry>
+    <entry>Outsider (fire)</entry>
+    <entry>Outsider (good)</entry>
+    <entry>Outsider (lawful)</entry>
+    <entry>Outsider (native)</entry>
+    <entry>Outsider (water)</entry>
+    <entry>Plant</entry>
+    <entry>Undead</entry>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Ghost Special Attack</name>
+    <entry>Corrupting Gaze</entry>
+    <entry>Corrupting Touch</entry>
+    <entry>Draining Touch</entry>
+    <entry>Frightful Moan</entry>
+    <entry>Horrific Appearance</entry>
+    <entry>Malevolence</entry>
+    <entry>Telekinesis</entry>
+  </collection>
+  <collection>
+    <name>Martial Weapon Proficiency</name>
+    <entry>Composite longbow</entry>
+    <entry>Composite shortbow</entry>
+    <entry>Longsword</entry>
+    <entry>Longbow</entry>
+    <entry>Shortbow</entry>
+    <entry>Throwing axe</entry>
+    <entry>Light hammer</entry>
+    <entry>Handaxe</entry>
+    <entry>Kukri</entry>
+    <entry>Light pick</entry>
+    <entry>Sap</entry>
+    <entry>Short sword</entry>
+    <entry>Battleaxe</entry>
+    <entry>Flail</entry>
+    <entry>Heavy pick</entry>
+    <entry>Rapier</entry>
+    <entry>Scimitar</entry>
+    <entry>Trident</entry>
+    <entry>Warhammer</entry>
+    <entry>Falchion</entry>
+    <entry>Glaive</entry>
+    <entry>Greataxe</entry>
+    <entry>Greatclub</entry>
+    <entry>Heavy flail</entry>
+    <entry>Greatsword</entry>
+    <entry>Halberd</entry>
+    <entry>Guisarme</entry>
+    <entry>Lance</entry>
+    <entry>Ranseur</entry>
+    <entry>Scythe</entry>
+  </collection>
+  <collection>
+    <name>Monk Bonus Feat1</name>
+    <entry>Improved Grapple</entry>
+    <entry>Stunning Fist</entry>
+  </collection>
+  <collection>
+    <name>Monk Bonus Feat2</name>
+    <entry>Combat Reflexes</entry>
+    <entry>Deflect Arrows</entry>
+  </collection>
+  <collection>
+    <name>Monk Bonus Feat6</name>
+    <entry>Improved Trip</entry>
+    <entry>Improved Disarm</entry>
+  </collection>
+  <collection>
+    <name>Schools of Magic</name>
+    <entry>Abjuration</entry>
+    <entry>Conjuration</entry>
+    <entry>Divination</entry>
+    <entry>Enchantment</entry>
+    <entry>Evocation</entry>
+    <entry>Illusion</entry>
+    <entry>Necromancy</entry>
+    <entry>Transmutation</entry>
+  </collection>
+  <collection>
+    <name>Simple Weapon Proficiency</name>
+    <entry>Gauntlet</entry>
+    <entry>Unarmed Strike</entry>
+    <entry>Dagger</entry>
+    <entry>Quarterstaff</entry>
+    <entry>Club</entry>
+    <entry>Heavy crossbow</entry>
+    <entry>Light crossbow</entry>
+    <entry>Punching dagger</entry>
+    <entry>Spiked gauntlet</entry>
+    <entry>Light mace</entry>
+    <entry>Sickle</entry>
+    <entry>Heavy mace</entry>
+    <entry>Morningstar</entry>
+    <entry>Shortspear</entry>
+    <entry>Longspear</entry>
+    <entry>Spear</entry>
+    <entry>Dart</entry>
+    <entry>Javelin</entry>
+    <entry>Sling</entry>
+  </collection>
+  <collection>
+    <name>Skills</name>
+    <entry>Appraise</entry>
+    <entry>Balance</entry>
+    <entry>Bluff</entry>
+    <entry>Climb</entry>
+    <entry>Craft/Alchemy</entry>
+    <entry>Craft/Armorsmithing</entry>
+    <entry>Craft/Blacksmithing</entry>
+    <entry>Craft/Bookbinding</entry>
+    <entry>Craft/Bowmaking</entry>
+    <entry>Craft/Brassmaking</entry>
+    <entry>Craft/Brewing</entry>
+    <entry>Craft/Candlemaking</entry>
+    <entry>Craft/Cloth</entry>
+    <entry>Craft/Coppersmithing</entry>
+    <entry>Craft/Dyemaking</entry>
+    <entry>Craft/Gemcutting</entry>
+    <entry>Craft/Glass</entry>
+    <entry>Craft/Goldsmithing</entry>
+    <entry>Craft/Hatmaking</entry>
+    <entry>Craft/Hornworking</entry>
+    <entry>Craft/Jewelmaking</entry>
+    <entry>Craft/Leather</entry>
+    <entry>Craft/Locksmithing</entry>
+    <entry>Craft/Mapmaking</entry>
+    <entry>Craft/Milling</entry>
+    <entry>Craft/Painting</entry>
+    <entry>Craft/Parchmentmaking</entry>
+    <entry>Craft/Pewtermaking</entry>
+    <entry>Craft/Potterymaking</entry>
+    <entry>Craft/Sculpting</entry>
+    <entry>Craft/Shipmaking</entry>
+    <entry>Craft/Shoemaking</entry>
+    <entry>Craft/Silversmithing</entry>
+    <entry>Craft/Skinning</entry>
+    <entry>Craft/Soapmaking</entry>
+    <entry>Craft/Stonemasonry</entry>
+    <entry>Craft/Tanning</entry>
+    <entry>Craft/Trapmaking</entry>
+    <entry>Craft/Weaponsmithing</entry>
+    <entry>Craft/Weaving</entry>
+    <entry>Craft/Wheelmaking</entry>
+    <entry>Craft/Winemaking</entry>
+    <entry>Craft/Woodworking</entry>
+    <entry>Concentration</entry>
+    <entry>Decipher Script</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disable Device</entry>
+    <entry>Disguise</entry>
+    <entry>Escape Artist</entry>
+    <entry>Forgery</entry>
+    <entry>Gather Information</entry>
+    <entry>Handle Animal</entry>
+    <entry>Heal</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Jump</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Knowledge/Architecture and Engineering</entry>
+    <entry>Knowledge/Dungeoneering</entry>
+    <entry>Knowledge/Geography</entry>
+    <entry>Knowledge/History</entry>
+    <entry>Knowledge/Local</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>Knowledge/Nobility and Royalty</entry>
+    <entry>Knowledge/Religion</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Open Lock</entry>
+    <entry>Perform/Act</entry>
+    <entry>Perform/Comedy</entry>
+    <entry>Perform/Dance</entry>
+    <entry>Perform/Keyboard instruments</entry>
+    <entry>Perform/Oratory</entry>
+    <entry>Perform/Percussion instruments</entry>
+    <entry>Perform/Sing</entry>
+    <entry>Perform/String instruments</entry>
+    <entry>Perform/Wind instruments</entry>
+    <entry>Profession/Adviser</entry>
+    <entry>Profession/Alchemist</entry>
+    <entry>Profession/Animal Groomer</entry>
+    <entry>Profession/Animal Trainer</entry>
+    <entry>Profession/Apothecary</entry>
+    <entry>Profession/Appraiser</entry>
+    <entry>Profession/Architect</entry>
+    <entry>Profession/Armorer</entry>
+    <entry>Profession/Barrister</entry>
+    <entry>Profession/Blacksmith</entry>
+    <entry>Profession/Bookbinder</entry>
+    <entry>Profession/Bowyer</entry>
+    <entry>Profession/Brazier</entry>
+    <entry>Profession/Brewer</entry>
+    <entry>Profession/Butler</entry>
+    <entry>Profession/Carpenter</entry>
+    <entry>Profession/Cartographer</entry>
+    <entry>Profession/Cartwright</entry>
+    <entry>Profession/Chandler</entry>
+    <entry>Profession/City Guide</entry>
+    <entry>Profession/Clerk</entry>
+    <entry>Profession/Cobbler</entry>
+    <entry>Profession/Coffinmaker</entry>
+    <entry>Profession/Coiffeur</entry>
+    <entry>Profession/Cook</entry>
+    <entry>Profession/Coppersmith</entry>
+    <entry>Profession/Craftsman</entry>
+    <entry>Profession/Dowser</entry>
+    <entry>Profession/Dyer</entry>
+    <entry>Profession/Embalmer</entry>
+    <entry>Profession/Engineer</entry>
+    <entry>Profession/Entertainer</entry>
+    <entry>Profession/Exotic Animal Trainer</entry>
+    <entry>Profession/Farmer</entry>
+    <entry>Profession/Fletcher</entry>
+    <entry>Profession/Footman</entry>
+    <entry>Profession/Gemcutter</entry>
+    <entry>Profession/Goldsmith</entry>
+    <entry>Profession/Governess</entry>
+    <entry>Profession/Haberdasher</entry>
+    <entry>Profession/Healer</entry>
+    <entry>Profession/Horner</entry>
+    <entry>Profession/Hunter</entry>
+    <entry>Profession/Interpreter</entry>
+    <entry>Profession/Jeweler</entry>
+    <entry>Profession/Laborer</entry>
+    <entry>Profession/Launderer</entry>
+    <entry>Profession/Limner</entry>
+    <entry>Profession/Local Courier</entry>
+    <entry>Profession/Locksmith</entry>
+    <entry>Profession/Maid</entry>
+    <entry>Profession/Masseuse</entry>
+    <entry>Profession/Matchmaker</entry>
+    <entry>Profession/Midwife</entry>
+    <entry>Profession/Miller</entry>
+    <entry>Profession/Navigator</entry>
+    <entry>Profession/Nursemaid</entry>
+    <entry>Profession/Out-of-Town Courier</entry>
+    <entry>Profession/Painter</entry>
+    <entry>Profession/Parchmentmaker</entry>
+    <entry>Profession/Pewterer</entry>
+    <entry>Profession/Polisher</entry>
+    <entry>Profession/Porter</entry>
+    <entry>Profession/Potter</entry>
+    <entry>Profession/Sage</entry>
+    <entry>Profession/Sailor Crewmember</entry>
+    <entry>Profession/Sailor Mate</entry>
+    <entry>Profession/Scribe</entry>
+    <entry>Profession/Sculptor</entry>
+    <entry>Profession/Shepherd</entry>
+    <entry>Profession/Shipwright</entry>
+    <entry>Profession/Silversmith</entry>
+    <entry>Profession/Skinner</entry>
+    <entry>Profession/Soapmaker</entry>
+    <entry>Profession/Soothsayer</entry>
+    <entry>Profession/Tanner</entry>
+    <entry>Profession/Teacher</entry>
+    <entry>Profession/Teamster</entry>
+    <entry>Profession/Trader</entry>
+    <entry>Profession/Valet</entry>
+    <entry>Profession/Vintner</entry>
+    <entry>Profession/Weaponsmith</entry>
+    <entry>Profession/Weaver</entry>
+    <entry>Profession/Wheelwright</entry>
+    <entry>Profession/Wilderness Guide</entry>
+    <entry>Ride</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Sleight of Hand</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Swim</entry>
+    <entry>Tumble</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Weapons</name>
+    <entry>Bastard sword</entry>
+    <entry>Battleaxe</entry>
+    <entry>Bolas</entry>
+    <entry>Club</entry>
+    <entry>Composite longbow</entry>
+    <entry>Composite shortbow</entry>
+    <entry>Dagger</entry>
+    <entry>Dart</entry>
+    <entry>Dire flail</entry>
+    <entry>Dwarven urgrosh</entry>
+    <entry>Dwarven waraxe</entry>
+    <entry>Falchion</entry>
+    <entry>Flail</entry>
+    <entry>Gauntlet</entry>
+    <entry>Glaive</entry>
+    <entry>Gnome hooked hammer</entry>
+    <entry>Greataxe</entry>
+    <entry>Greatclub</entry>
+    <entry>Greatsword</entry>
+    <entry>Guisarme</entry>
+    <entry>Halberd</entry>
+    <entry>Handaxe</entry>
+    <entry>Hand crossbow</entry>
+    <entry>Heavy crossbow</entry>
+    <entry>Heavy flail</entry>
+    <entry>Heavy mace</entry>
+    <entry>Heavy pick</entry>
+    <entry>Javelin</entry>
+    <entry>Kama</entry>
+    <entry>Kukri</entry>
+    <entry>Lance</entry>
+    <entry>Light crossbow</entry>
+    <entry>Light hammer</entry>
+    <entry>Light mace</entry>
+    <entry>Light pick</entry>
+    <entry>Longbow</entry>
+    <entry>Longspear</entry>
+    <entry>Longsword</entry>
+    <entry>Morningstar</entry>
+    <entry>Net</entry>
+    <entry>Nunchaku</entry>
+    <entry>Orc double axe</entry>
+    <entry>Punching dagger</entry>
+    <entry>Quarterstaff</entry>
+    <entry>Ranseur</entry>
+    <entry>Rapier</entry>
+    <entry>Heavy repeating crossbow</entry>
+    <entry>Light repeating crossbow</entry>
+    <entry>Sai</entry>
+    <entry>Sap</entry>
+    <entry>Scimitar</entry>
+    <entry>Scythe</entry>
+    <entry>Shortbow</entry>
+    <entry>Shortspear</entry>
+    <entry>Short sword</entry>
+    <entry>Shuriken</entry>
+    <entry>Siangham</entry>
+    <entry>Sickle</entry>
+    <entry>Sling</entry>
+    <entry>Spear</entry>
+    <entry>Spiked chain</entry>
+    <entry>Spiked gauntlet</entry>
+    <entry>Throwing axe</entry>
+    <entry>Trident</entry>
+    <entry>Two-bladed sword</entry>
+    <entry>Warhammer</entry>
+    <entry>Whip</entry>
+  </collection>
+  <collection>
+    <name>Weapons with unarmed</name>
+    <entry>Bastard sword</entry>
+    <entry>Battleaxe</entry>
+    <entry>Bolas</entry>
+    <entry>Club</entry>
+    <entry>Composite longbow</entry>
+    <entry>Composite shortbow</entry>
+    <entry>Dagger</entry>
+    <entry>Dart</entry>
+    <entry>Dire flail</entry>
+    <entry>Dwarven urgrosh</entry>
+    <entry>Dwarven waraxe</entry>
+    <entry>Falchion</entry>
+    <entry>Flail</entry>
+    <entry>Gauntlet</entry>
+    <entry>Glaive</entry>
+    <entry>Gnome hooked hammer</entry>
+    <entry>Greataxe</entry>
+    <entry>Greatclub</entry>
+    <entry>Greatsword</entry>
+    <entry>Guisarme</entry>
+    <entry>Halberd</entry>
+    <entry>Handaxe</entry>
+    <entry>Hand crossbow</entry>
+    <entry>Heavy crossbow</entry>
+    <entry>Heavy flail</entry>
+    <entry>Heavy mace</entry>
+    <entry>Heavy pick</entry>
+    <entry>Javelin</entry>
+    <entry>Kama</entry>
+    <entry>Kukri</entry>
+    <entry>Lance</entry>
+    <entry>Light crossbow</entry>
+    <entry>Light hammer</entry>
+    <entry>Light mace</entry>
+    <entry>Light pick</entry>
+    <entry>Longbow</entry>
+    <entry>Longspear</entry>
+    <entry>Longsword</entry>
+    <entry>Morningstar</entry>
+    <entry>Net</entry>
+    <entry>Nunchaku</entry>
+    <entry>Orc double axe</entry>
+    <entry>Punching dagger</entry>
+    <entry>Quarterstaff</entry>
+    <entry>Ranseur</entry>
+    <entry>Rapier</entry>
+    <entry>Heavy repeating crossbow</entry>
+    <entry>Light repeating crossbow</entry>
+    <entry>Sai</entry>
+    <entry>Sap</entry>
+    <entry>Scimitar</entry>
+    <entry>Scythe</entry>
+    <entry>Shortbow</entry>
+    <entry>Shortspear</entry>
+    <entry>Short sword</entry>
+    <entry>Shuriken</entry>
+    <entry>Siangham</entry>
+    <entry>Sickle</entry>
+    <entry>Sling</entry>
+    <entry>Spear</entry>
+    <entry>Spiked chain</entry>
+    <entry>Spiked gauntlet</entry>
+    <entry>Throwing axe</entry>
+    <entry>Trident</entry>
+    <entry>Two-bladed sword</entry>
+    <entry>Warhammer</entry>
+    <entry>Whip</entry>
+    <entry>Unarmed Strike</entry>
+  </collection>
+  <collection>
+    <name>Weapons with unarmed and grapple</name>
+    <entry>Bastard sword</entry>
+    <entry>Battleaxe</entry>
+    <entry>Bolas</entry>
+    <entry>Club</entry>
+    <entry>Composite longbow</entry>
+    <entry>Composite shortbow</entry>
+    <entry>Dagger</entry>
+    <entry>Dart</entry>
+    <entry>Dire flail</entry>
+    <entry>Dwarven urgrosh</entry>
+    <entry>Dwarven waraxe</entry>
+    <entry>Falchion</entry>
+    <entry>Flail</entry>
+    <entry>Gauntlet</entry>
+    <entry>Glaive</entry>
+    <entry>Gnome hooked hammer</entry>
+    <entry>Greataxe</entry>
+    <entry>Greatclub</entry>
+    <entry>Greatsword</entry>
+    <entry>Guisarme</entry>
+    <entry>Halberd</entry>
+    <entry>Handaxe</entry>
+    <entry>Hand crossbow</entry>
+    <entry>Heavy crossbow</entry>
+    <entry>Heavy flail</entry>
+    <entry>Heavy mace</entry>
+    <entry>Heavy pick</entry>
+    <entry>Javelin</entry>
+    <entry>Kama</entry>
+    <entry>Kukri</entry>
+    <entry>Lance</entry>
+    <entry>Light crossbow</entry>
+    <entry>Light hammer</entry>
+    <entry>Light mace</entry>
+    <entry>Light pick</entry>
+    <entry>Longbow</entry>
+    <entry>Longspear</entry>
+    <entry>Longsword</entry>
+    <entry>Morningstar</entry>
+    <entry>Net</entry>
+    <entry>Nunchaku</entry>
+    <entry>Orc double axe</entry>
+    <entry>Punching dagger</entry>
+    <entry>Quarterstaff</entry>
+    <entry>Ranseur</entry>
+    <entry>Rapier</entry>
+    <entry>Heavy repeating crossbow</entry>
+    <entry>Light repeating crossbow</entry>
+    <entry>Sai</entry>
+    <entry>Sap</entry>
+    <entry>Scimitar</entry>
+    <entry>Scythe</entry>
+    <entry>Shortbow</entry>
+    <entry>Shortspear</entry>
+    <entry>Short sword</entry>
+    <entry>Shuriken</entry>
+    <entry>Siangham</entry>
+    <entry>Sickle</entry>
+    <entry>Sling</entry>
+    <entry>Spear</entry>
+    <entry>Spiked chain</entry>
+    <entry>Spiked gauntlet</entry>
+    <entry>Throwing axe</entry>
+    <entry>Trident</entry>
+    <entry>Two-bladed sword</entry>
+    <entry>Warhammer</entry>
+    <entry>Whip</entry>
+    <entry>Unarmed Strike</entry>
+    <entry>Grapple</entry>
+  </collection>
+  <collection>
+    <name>Weapons with unarmed, grapple, and ray</name>
+    <entry>Bastard sword</entry>
+    <entry>Battleaxe</entry>
+    <entry>Bolas</entry>
+    <entry>Club</entry>
+    <entry>Composite longbow</entry>
+    <entry>Composite shortbow</entry>
+    <entry>Dagger</entry>
+    <entry>Dart</entry>
+    <entry>Dire flail</entry>
+    <entry>Dwarven urgrosh</entry>
+    <entry>Dwarven waraxe</entry>
+    <entry>Falchion</entry>
+    <entry>Flail</entry>
+    <entry>Gauntlet</entry>
+    <entry>Glaive</entry>
+    <entry>Gnome hooked hammer</entry>
+    <entry>Greataxe</entry>
+    <entry>Greatclub</entry>
+    <entry>Greatsword</entry>
+    <entry>Guisarme</entry>
+    <entry>Halberd</entry>
+    <entry>Handaxe</entry>
+    <entry>Hand crossbow</entry>
+    <entry>Heavy crossbow</entry>
+    <entry>Heavy flail</entry>
+    <entry>Heavy mace</entry>
+    <entry>Heavy pick</entry>
+    <entry>Javelin</entry>
+    <entry>Kama</entry>
+    <entry>Kukri</entry>
+    <entry>Lance</entry>
+    <entry>Light crossbow</entry>
+    <entry>Light hammer</entry>
+    <entry>Light mace</entry>
+    <entry>Light pick</entry>
+    <entry>Longbow</entry>
+    <entry>Longspear</entry>
+    <entry>Longsword</entry>
+    <entry>Morningstar</entry>
+    <entry>Net</entry>
+    <entry>Nunchaku</entry>
+    <entry>Orc double axe</entry>
+    <entry>Punching dagger</entry>
+    <entry>Quarterstaff</entry>
+    <entry>Ranseur</entry>
+    <entry>Rapier</entry>
+    <entry>Heavy repeating crossbow</entry>
+    <entry>Light repeating crossbow</entry>
+    <entry>Sai</entry>
+    <entry>Sap</entry>
+    <entry>Scimitar</entry>
+    <entry>Scythe</entry>
+    <entry>Shortbow</entry>
+    <entry>Shortspear</entry>
+    <entry>Short sword</entry>
+    <entry>Shuriken</entry>
+    <entry>Siangham</entry>
+    <entry>Sickle</entry>
+    <entry>Sling</entry>
+    <entry>Spear</entry>
+    <entry>Spiked chain</entry>
+    <entry>Spiked gauntlet</entry>
+    <entry>Throwing axe</entry>
+    <entry>Trident</entry>
+    <entry>Two-bladed sword</entry>
+    <entry>Warhammer</entry>
+    <entry>Whip</entry>
+    <entry>Unarmed Strike</entry>
+    <entry>Grapple</entry>
+    <entry>Ray</entry>
+  </collection>
+</collections>

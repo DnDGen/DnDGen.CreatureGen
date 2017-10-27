@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Delay poison</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Read magic</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Endure elements</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Neutralize poison</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Remove disease</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Resist energy</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bear's endurance</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Cat's grace</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Aid</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Animal trance</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Animate dead</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Baleful polymorph</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Bestow curse</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Bless</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Break enchantment</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Bull's strength</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Burning hands</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Cause fear</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Command</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Commune</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Comprehend languages</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Contagion</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Continual flame</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Create water</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Cure/inflict critical wounds</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Cure/inflict light wounds</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Cure/inflict minor wounds</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Cure/inflict moderate wounds</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Cure/inflict serious wounds</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Darkness</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Daylight</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Deeper darkness</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Detect chaos/law/good/evil</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Detect magic</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Ghost sound</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Guidance</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Heal/Harm</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Invisibility</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Light</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Lightning bolt</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Major creation</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Mending</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Minor creation</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Mirror image</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Obscuring mist</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Polymorph</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Protection from chaos/law/good/evil</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Purify food and drink</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Raise dead</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Remove curse</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Restoration</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Scorching ray</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>See invisibility</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Sleep</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Stoneskin</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Tongues</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Touch of fatigue</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>True seeing</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Wall of fire</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Wall of stone</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Web</name>
+    <entry>2</entry>
+  </collection>
+</collections>

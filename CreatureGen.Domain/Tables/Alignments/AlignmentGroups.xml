@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>All</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lawful Good</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Neutral Good</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Chaotic Good</name>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Lawful Neutral</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>True Neutral</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Chaotic Neutral</name>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lawful Evil</name>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Neutral Evil</name>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Chaotic Evil</name>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+</collections>

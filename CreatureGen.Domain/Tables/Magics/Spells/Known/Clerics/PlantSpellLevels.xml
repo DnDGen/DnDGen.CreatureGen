@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Entangle</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Barkskin</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Plant growth</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Command plants</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Wall of thorns</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Repel wood</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Animate plants</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Control plants</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Shambler</name>
+    <entry>9</entry>
+  </collection>
+</collections>

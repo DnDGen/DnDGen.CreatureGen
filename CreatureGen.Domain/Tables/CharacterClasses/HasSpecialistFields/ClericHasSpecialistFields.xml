@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+  <percentile><lower>1</lower><content>True</content><upper>100</upper></percentile>
+</percentiles>

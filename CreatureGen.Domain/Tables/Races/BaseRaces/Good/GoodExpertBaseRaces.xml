@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+  <percentile>
+    <lower>1</lower>
+    <content>Aasimar</content>
+    <upper>1</upper>
+  </percentile>
+  <percentile>
+    <lower>2</lower>
+    <content>Hill Dwarf</content>
+    <upper>6</upper>
+  </percentile>
+  <percentile>
+    <lower>7</lower>
+    <content>Gray Elf</content>
+    <upper>11</upper>
+  </percentile>
+  <percentile>
+    <lower>12</lower>
+    <content>High Elf</content>
+    <upper>36</upper>
+  </percentile>
+  <percentile>
+    <lower>37</lower>
+    <content>Wild Elf</content>
+    <upper>37</upper>
+  </percentile>
+  <percentile>
+    <lower>38</lower>
+    <content>Wood Elf</content>
+    <upper>38</upper>
+  </percentile>
+  <percentile>
+    <lower>39</lower>
+    <content>Forest Gnome</content>
+    <upper>39</upper>
+  </percentile>
+  <percentile>
+    <lower>40</lower>
+    <content>Rock Gnome</content>
+    <upper>44</upper>
+  </percentile>
+  <percentile>
+    <lower>45</lower>
+    <content>Half-Elf</content>
+    <upper>53</upper>
+  </percentile>
+  <percentile>
+    <lower>54</lower>
+    <content>Lightfoot Halfling</content>
+    <upper>54</upper>
+  </percentile>
+  <percentile>
+    <lower>55</lower>
+    <content>Deep Halfling</content>
+    <upper>55</upper>
+  </percentile>
+  <percentile>
+    <lower>56</lower>
+    <content>Tallfellow Halfling</content>
+    <upper>57</upper>
+  </percentile>
+  <percentile>
+    <lower>58</lower>
+    <content>Human</content>
+    <upper>100</upper>
+  </percentile>
+</percentiles>

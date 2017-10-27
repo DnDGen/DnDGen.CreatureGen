@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+    <collection>
+        <name>Simple Weapon ProficiencyClub</name>
+        <entry>Simple Weapon Proficiency</entry>
+        <entry>1</entry>
+        <entry>Club</entry>
+        <entry>0</entry>
+        <entry>0</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry></entry>
+      <entry>True</entry>
+    </collection>
+    <collection>
+      <name>Simple Weapon ProficiencyDagger</name>
+      <entry>Simple Weapon Proficiency</entry>
+      <entry>1</entry>
+      <entry>Dagger</entry>
+      <entry>0</entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry></entry>
+      <entry>True</entry>
+    </collection>
+    <collection>
+        <name>Simple Weapon ProficiencyHeavy crossbow</name>
+        <entry>Simple Weapon Proficiency</entry>
+        <entry>1</entry>
+        <entry>Heavy crossbow</entry>
+        <entry>0</entry>
+        <entry>0</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry></entry>
+      <entry>True</entry>
+    </collection>
+    <collection>
+        <name>Simple Weapon ProficiencyLight crossbow</name>
+        <entry>Simple Weapon Proficiency</entry>
+        <entry>1</entry>
+        <entry>Light crossbow</entry>
+        <entry>0</entry>
+        <entry>0</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry></entry>
+      <entry>True</entry>
+    </collection>
+    <collection>
+        <name>Simple Weapon ProficiencyQuarterstaff</name>
+        <entry>Simple Weapon Proficiency</entry>
+        <entry>1</entry>
+        <entry>Quarterstaff</entry>
+        <entry>0</entry>
+        <entry>0</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry></entry>
+      <entry>True</entry>
+    </collection>
+    <collection>
+        <name>Scribe Scroll</name>
+        <entry>Scribe Scroll</entry>
+        <entry>1</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>0</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry></entry>
+      <entry>True</entry>
+    </collection>
+</collections>

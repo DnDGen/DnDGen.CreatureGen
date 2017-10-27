@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Cure/inflict light wounds</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Cure/inflict moderate wounds</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Cure/inflict serious wounds</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Cure/inflict critical wounds</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Mass cure/inflict light wounds</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Heal/Harm</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Regenerate</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Mass cure/inflict critical wounds</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Mass heal/harm</name>
+    <entry>9</entry>
+  </collection>
+</collections>

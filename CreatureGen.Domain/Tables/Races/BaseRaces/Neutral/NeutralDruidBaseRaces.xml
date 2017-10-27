@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+  <percentile>
+    <lower>1</lower>
+    <content>Gray Elf</content>
+    <upper>1</upper>
+  </percentile>
+  <percentile>
+    <lower>2</lower>
+    <content>High Elf</content>
+    <upper>6</upper>
+  </percentile>
+  <percentile>
+    <lower>7</lower>
+    <content>Wild Elf</content>
+    <upper>11</upper>
+  </percentile>
+  <percentile>
+    <lower>12</lower>
+    <content>Wood Elf</content>
+    <upper>30</upper>
+  </percentile>
+  <percentile>
+    <lower>31</lower>
+    <content>Azer</content>
+    <upper>31</upper>
+  </percentile>
+  <percentile>
+    <lower>32</lower>
+    <content>Forest Gnome</content>
+    <upper>32</upper>
+  </percentile>
+  <percentile>
+    <lower>33</lower>
+    <content>Half-Elf</content>
+    <upper>37</upper>
+  </percentile>
+  <percentile>
+    <lower>38</lower>
+    <content>Lightfoot Halfling</content>
+    <upper>38</upper>
+  </percentile>
+  <percentile>
+    <lower>39</lower>
+    <content>Tallfellow Halfling</content>
+    <upper>39</upper>
+  </percentile>
+  <percentile>
+    <lower>40</lower>
+    <content>Half-Orc</content>
+    <upper>40</upper>
+  </percentile>
+  <percentile>
+    <lower>41</lower>
+    <content>Human</content>
+    <upper>87</upper>
+  </percentile>
+  <percentile>
+    <lower>88</lower>
+    <content>Gray Slaad</content>
+    <upper>88</upper>
+  </percentile>
+  <percentile>
+    <lower>89</lower>
+    <content>Satyr</content>
+    <upper>89</upper>
+  </percentile>
+  <percentile>
+    <lower>90</lower>
+    <content>Lizardfolk</content>
+    <upper>99</upper>
+  </percentile>
+  <percentile>
+    <lower>100</lower>
+    <content>Janni</content>
+    <upper>100</upper>
+  </percentile>
+</percentiles>

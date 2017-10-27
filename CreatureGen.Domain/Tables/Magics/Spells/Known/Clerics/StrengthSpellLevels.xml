@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Enlarge person</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Bull's strength</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Magic vestment</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Spell immunity</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Righteous might</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Stoneskin</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Grasping hand</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Clenched fist</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Crushing hand</name>
+    <entry>9</entry>
+  </collection>
+</collections>

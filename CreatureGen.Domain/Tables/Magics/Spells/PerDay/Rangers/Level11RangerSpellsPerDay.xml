@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+    <collection>
+        <name>1</name>
+        <entry>1</entry>
+    </collection>
+  <collection>
+    <name>2</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>3</name>
+    <entry>0</entry>
+  </collection>
+</collections>

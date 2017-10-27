@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+    <collection>
+        <name>Rogue</name>
+        <entry>10</entry>
+    </collection>
+    <collection>
+        <name>Monk</name>
+        <entry>9</entry>
+    </collection>
+</collections>

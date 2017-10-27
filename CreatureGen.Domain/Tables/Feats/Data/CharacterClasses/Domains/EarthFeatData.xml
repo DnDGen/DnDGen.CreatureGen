@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+    <collection>
+        <name>Turn</name>
+        <entry>Turn</entry>
+        <entry>1</entry>
+        <entry>Turn air creatures, rebuke earth creatures</entry>
+        <entry>0</entry>
+        <entry>3</entry>
+        <entry>Day</entry>
+        <entry>0</entry>
+        <entry>Charisma</entry>
+      <entry></entry>
+      <entry>True</entry>
+    </collection>
+</collections>

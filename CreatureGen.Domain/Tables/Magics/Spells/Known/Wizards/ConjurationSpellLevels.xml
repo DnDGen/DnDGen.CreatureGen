@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Acid splash</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Grease</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Mage armor</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Mount</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Obscuring mist</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Summon monster I</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Unseen servant</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Acid arrow</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Fog cloud</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Glitterdust</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Summon monster II</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Summon swarm</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Web</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Phantom steed</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Sepia snake sigil</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Sleet storm</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Stinking cloud</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Summon monster III</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Black tentacles</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Dimension door</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Minor creation</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Secure shelter</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Solid fog</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Summon monster IV</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Cloudkill</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Mage's faithful hound</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Major creation</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Lesser planar binding</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Secret chest</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Summon monster V</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Teleport</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Wall of stone</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Acid fog</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Planar binding</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Summon monster VI</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Wall of iron</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Instant summons</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Mage's magnificent mansion</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Phase door</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Plane shift</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Summon monster VII</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Greater teleport</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Teleport object</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Incendiary cloud</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Maze</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Greater planar binding</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Summon monster VIII</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Trap the soul</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Gate</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Refuge</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Summon monster IX</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Teleportation circle</name>
+    <entry>9</entry>
+  </collection>
+</collections>

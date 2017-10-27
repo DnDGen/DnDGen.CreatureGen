@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Protection from chaos/law/good/evil</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Calm emotions</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Magic circle against chaos/law/good/evil</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Order's wrath</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Dispel good/evil/law/chaos</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Hold monster</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Dictum</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Shield of law</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Summon monster IX</name>
+    <entry>9</entry>
+  </collection>
+</collections>

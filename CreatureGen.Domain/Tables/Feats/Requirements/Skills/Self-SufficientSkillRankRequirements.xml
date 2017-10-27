@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+    <collection>
+        <name>Heal</name>
+        <entry>0</entry>
+    </collection>
+  <collection>
+    <name>Survival</name>
+    <entry>0</entry>
+  </collection>
+</collections>

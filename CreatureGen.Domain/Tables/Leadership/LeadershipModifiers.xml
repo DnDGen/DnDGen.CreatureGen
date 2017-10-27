@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name></name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Cruelty</name>
+    <entry>-2</entry>
+  </collection>
+  <collection>
+    <name>Aloofness</name>
+    <entry>-1</entry>
+  </collection>
+  <collection>
+    <name>Failure</name>
+    <entry>-1</entry>
+  </collection>
+  <collection>
+    <name>Special power</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Fairness and generosity</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Great renown</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Moves around a lot</name>
+    <entry>-1</entry>
+  </collection>
+  <collection>
+    <name>Has a stronghold, base of operations, guildhouse, or the like</name>
+    <entry>2</entry>
+  </collection>
+</collections>

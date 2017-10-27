@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+  <percentile><lower>1</lower><content>Distinctive scar</content><upper>1</upper></percentile>
+    <percentile>
+        <lower>2</lower>
+        <content>Missing tooth</content>
+        <upper>2</upper>
+    </percentile>
+    <percentile>
+        <lower>3</lower>
+        <content>Missing finger</content>
+        <upper>3</upper>
+    </percentile>
+    <percentile>
+        <lower>4</lower>
+        <content>Bad breath</content>
+        <upper>4</upper>
+    </percentile>
+    <percentile>
+        <lower>5</lower>
+        <content>Strong body odor</content>
+        <upper>5</upper>
+    </percentile>
+    <percentile>
+        <lower>6</lower>
+        <content>Pleasant smelling (perfumed)</content>
+        <upper>6</upper>
+    </percentile>
+    <percentile>
+        <lower>7</lower>
+        <content>Sweaty</content>
+        <upper>7</upper>
+    </percentile>
+    <percentile>
+        <lower>8</lower>
+        <content>Hands shake</content>
+        <upper>8</upper>
+    </percentile>
+    <percentile>
+        <lower>9</lower>
+        <content>Unusual eye color</content>
+        <upper>9</upper>
+    </percentile>
+    <percentile>
+        <lower>10</lower>
+        <content>Hacking cough</content>
+        <upper>10</upper>
+    </percentile>
+    <percentile>
+        <lower>11</lower>
+        <content>Sneezes and sniffles</content>
+        <upper>11</upper>
+    </percentile>
+    <percentile>
+        <lower>12</lower>
+        <content>Particularly low voice</content>
+        <upper>12</upper>
+    </percentile>
+    <percentile>
+        <lower>13</lower>
+        <content>Particularly high voice</content>
+        <upper>13</upper>
+    </percentile>
+    <percentile>
+        <lower>14</lower>
+        <content>Slurs words</content>
+        <upper>14</upper>
+    </percentile>
+    <percentile>
+        <lower>15</lower>
+        <content>Lisps</content>
+        <upper>15</upper>
+    </percentile>
+    <percentile>
+        <lower>16</lower>
+        <content>Stutters</content>
+        <upper>16</upper>
+    </percentile>
+    <percentile>
+        <lower>17</lower>
+        <content>Enunciates very clearly</content>
+        <upper>17</upper>
+    </percentile>
+    <percentile>
+        <lower>18</lower>
+        <content>Speaks loudly</content>
+        <upper>18</upper>
+    </percentile>
+    <percentile>
+        <lower>19</lower>
+        <content>Whispers</content>
+        <upper>19</upper>
+    </percentile>
+    <percentile>
+        <lower>20</lower>
+        <content>Hard of hearing</content>
+        <upper>20</upper>
+    </percentile>
+    <percentile>
+        <lower>21</lower>
+        <content>Tattoo</content>
+        <upper>21</upper>
+    </percentile>
+    <percentile>
+        <lower>22</lower>
+        <content>Birthmark</content>
+        <upper>22</upper>
+    </percentile>
+    <percentile>
+        <lower>23</lower>
+        <content>Unusual skin color</content>
+        <upper>23</upper>
+    </percentile>
+    <percentile>
+        <lower>24</lower>
+        <content>Bald</content>
+        <upper>24</upper>
+    </percentile>
+    <percentile>
+        <lower>25</lower>
+        <content>Particularly long hair</content>
+        <upper>25</upper>
+    </percentile>
+    <percentile>
+        <lower>26</lower>
+        <content>Completely normal and uninteresting</content>
+        <upper>26</upper>
+    </percentile>
+    <percentile>
+        <lower>27</lower>
+        <content>Unusual hair color</content>
+        <upper>27</upper>
+    </percentile>
+    <percentile>
+        <lower>28</lower>
+        <content>Walks with a limp</content>
+        <upper>28</upper>
+    </percentile>
+    <percentile>
+        <lower>29</lower>
+        <content>Distinctive jewelry</content>
+        <upper>29</upper>
+    </percentile>
+    <percentile>
+        <lower>30</lower>
+        <content>Wears flamboyant or outlandish clothes</content>
+        <upper>30</upper>
+    </percentile>
+    <percentile>
+        <lower>31</lower>
+        <content>Underdressed</content>
+        <upper>31</upper>
+    </percentile>
+    <percentile>
+        <lower>32</lower>
+        <content>Overdressed</content>
+        <upper>32</upper>
+    </percentile>
+    <percentile>
+        <lower>33</lower>
+        <content>Nervous eye twitch</content>
+        <upper>33</upper>
+    </percentile>
+    <percentile>
+        <lower>34</lower>
+        <content>Fiddles and fidgets nervously</content>
+        <upper>34</upper>
+    </percentile>
+    <percentile>
+        <lower>35</lower>
+        <content>Whistles a lot</content>
+        <upper>35</upper>
+    </percentile>
+    <percentile>
+        <lower>36</lower>
+        <content>Signs a lot</content>
+        <upper>36</upper>
+    </percentile>
+    <percentile>
+        <lower>37</lower>
+        <content>Flips a coin</content>
+        <upper>37</upper>
+    </percentile>
+    <percentile>
+        <lower>38</lower>
+        <content>Good posture</content>
+        <upper>38</upper>
+    </percentile>
+    <percentile>
+        <lower>39</lower>
+        <content>Stooped back</content>
+        <upper>39</upper>
+    </percentile>
+    <percentile>
+        <lower>40</lower>
+        <content>Talks a lot</content>
+        <upper>40</upper>
+    </percentile>
+    <percentile>
+        <lower>41</lower>
+        <content>Talks very little</content>
+        <upper>41</upper>
+    </percentile>
+    <percentile>
+        <lower>42</lower>
+        <content>Constantly quotes others</content>
+        <upper>42</upper>
+    </percentile>
+    <percentile>
+        <lower>43</lower>
+        <content>Has a thick accent</content>
+        <upper>43</upper>
+    </percentile>
+    <percentile>
+        <lower>44</lower>
+        <content>Visible wounds or sores</content>
+        <upper>44</upper>
+    </percentile>
+    <percentile>
+        <lower>45</lower>
+        <content>Squints</content>
+        <upper>45</upper>
+    </percentile>
+    <percentile>
+        <lower>46</lower>
+        <content>Stares off into distance</content>
+        <upper>46</upper>
+    </percentile>
+    <percentile>
+        <lower>47</lower>
+        <content>Frequently chewing something</content>
+        <upper>47</upper>
+    </percentile>
+    <percentile>
+        <lower>48</lower>
+        <content>Dirty and unkempt</content>
+        <upper>48</upper>
+    </percentile>
+    <percentile>
+        <lower>49</lower>
+        <content>Clean</content>
+        <upper>49</upper>
+    </percentile>
+    <percentile>
+        <lower>50</lower>
+        <content>Distinctive nose</content>
+        <upper>50</upper>
+    </percentile>
+    <percentile>
+        <lower>51</lower>
+        <content>Selfish</content>
+        <upper>51</upper>
+    </percentile>
+    <percentile>
+        <lower>52</lower>
+        <content>Obsequious</content>
+        <upper>52</upper>
+    </percentile>
+    <percentile>
+        <lower>53</lower>
+        <content>Drowsy</content>
+        <upper>53</upper>
+    </percentile>
+    <percentile>
+        <lower>54</lower>
+        <content>Bookish</content>
+        <upper>54</upper>
+    </percentile>
+    <percentile>
+        <lower>55</lower>
+        <content>Observant</content>
+        <upper>55</upper>
+    </percentile>
+    <percentile>
+        <lower>56</lower>
+        <content>Not very observant</content>
+        <upper>56</upper>
+    </percentile>
+    <percentile>
+        <lower>57</lower>
+        <content>Overly critical</content>
+        <upper>57</upper>
+    </percentile>
+    <percentile>
+        <lower>58</lower>
+        <content>Passionate artist or art lover</content>
+        <upper>58</upper>
+    </percentile>
+    <percentile>
+        <lower>59</lower>
+        <content>Passionate hobbyist (fishing, hunting, gaming, animals, etc.)</content>
+        <upper>59</upper>
+    </percentile>
+    <percentile>
+        <lower>60</lower>
+        <content>Collector (books, trophies, coins, weapons, etc.)</content>
+        <upper>60</upper>
+    </percentile>
+    <percentile>
+        <lower>61</lower>
+        <content>Skinflint</content>
+        <upper>61</upper>
+    </percentile>
+    <percentile>
+        <lower>62</lower>
+        <content>Spendthrift</content>
+        <upper>62</upper>
+    </percentile>
+    <percentile>
+        <lower>63</lower>
+        <content>Pessimist</content>
+        <upper>63</upper>
+    </percentile>
+    <percentile>
+        <lower>64</lower>
+        <content>Optimist</content>
+        <upper>64</upper>
+    </percentile>
+    <percentile>
+        <lower>65</lower>
+        <content>Drunkard</content>
+        <upper>65</upper>
+    </percentile>
+    <percentile>
+        <lower>66</lower>
+        <content>Teetotaler</content>
+        <upper>66</upper>
+    </percentile>
+    <percentile>
+        <lower>67</lower>
+        <content>Well mannered</content>
+        <upper>67</upper>
+    </percentile>
+    <percentile>
+        <lower>68</lower>
+        <content>Rude</content>
+        <upper>68</upper>
+    </percentile>
+    <percentile>
+        <lower>69</lower>
+        <content>Jumpy</content>
+        <upper>69</upper>
+    </percentile>
+    <percentile>
+        <lower>70</lower>
+        <content>Foppish</content>
+        <upper>70</upper>
+    </percentile>
+    <percentile>
+        <lower>71</lower>
+        <content>Overbearing</content>
+        <upper>71</upper>
+    </percentile>
+    <percentile>
+        <lower>72</lower>
+        <content>Aloof</content>
+        <upper>72</upper>
+    </percentile>
+    <percentile>
+        <lower>73</lower>
+        <content>Proud</content>
+        <upper>73</upper>
+    </percentile>
+    <percentile>
+        <lower>74</lower>
+        <content>Individualist</content>
+        <upper>74</upper>
+    </percentile>
+    <percentile>
+        <lower>75</lower>
+        <content>Conformist</content>
+        <upper>75</upper>
+    </percentile>
+    <percentile>
+        <lower>76</lower>
+        <content>Hot tempered</content>
+        <upper>76</upper>
+    </percentile>
+    <percentile>
+        <lower>77</lower>
+        <content>Even tempered</content>
+        <upper>77</upper>
+    </percentile>
+    <percentile>
+        <lower>78</lower>
+        <content>Neurotic</content>
+        <upper>78</upper>
+    </percentile>
+    <percentile>
+        <lower>79</lower>
+        <content>Jealous</content>
+        <upper>79</upper>
+    </percentile>
+    <percentile>
+        <lower>80</lower>
+        <content>Brave</content>
+        <upper>80</upper>
+    </percentile>
+    <percentile>
+        <lower>81</lower>
+        <content>Cowardly</content>
+        <upper>81</upper>
+    </percentile>
+    <percentile>
+        <lower>82</lower>
+        <content>Careless</content>
+        <upper>82</upper>
+    </percentile>
+    <percentile>
+        <lower>83</lower>
+        <content>Curious</content>
+        <upper>83</upper>
+    </percentile>
+    <percentile>
+        <lower>84</lower>
+        <content>Truthful</content>
+        <upper>84</upper>
+    </percentile>
+    <percentile>
+        <lower>85</lower>
+        <content>Liar</content>
+        <upper>85</upper>
+    </percentile>
+    <percentile>
+        <lower>86</lower>
+        <content>Lazy</content>
+        <upper>86</upper>
+    </percentile>
+    <percentile>
+        <lower>87</lower>
+        <content>Energetic</content>
+        <upper>87</upper>
+    </percentile>
+    <percentile>
+        <lower>88</lower>
+        <content>Reverent or pious</content>
+        <upper>88</upper>
+    </percentile>
+    <percentile>
+        <lower>89</lower>
+        <content>Irreverent or irreligious</content>
+        <upper>89</upper>
+    </percentile>
+    <percentile>
+        <lower>90</lower>
+        <content>Strong opinions on politics or morals</content>
+        <upper>90</upper>
+    </percentile>
+    <percentile>
+        <lower>91</lower>
+        <content>Moody</content>
+        <upper>91</upper>
+    </percentile>
+    <percentile>
+        <lower>92</lower>
+        <content>Cruel</content>
+        <upper>92</upper>
+    </percentile>
+    <percentile>
+        <lower>93</lower>
+        <content>Uses flowery speech or long words</content>
+        <upper>93</upper>
+    </percentile>
+    <percentile>
+        <lower>94</lower>
+        <content>Uses the same phrase over and over</content>
+        <upper>94</upper>
+    </percentile>
+    <percentile>
+        <lower>95</lower>
+        <content>Sexist, racist, or otherwise prejudiced</content>
+        <upper>95</upper>
+    </percentile>
+    <percentile>
+        <lower>96</lower>
+        <content>Fascinated by magic</content>
+        <upper>96</upper>
+    </percentile>
+    <percentile>
+        <lower>97</lower>
+        <content>Distrustful of magic</content>
+        <upper>97</upper>
+    </percentile>
+    <percentile>
+        <lower>98</lower>
+        <content>Prefers members of one class over all others</content>
+        <upper>98</upper>
+    </percentile>
+    <percentile>
+        <lower>99</lower>
+        <content>Jokester</content>
+        <upper>99</upper>
+    </percentile>
+    <percentile>
+        <lower>100</lower>
+        <content>No sense of humor</content>
+        <upper>100</upper>
+    </percentile>
+</percentiles>

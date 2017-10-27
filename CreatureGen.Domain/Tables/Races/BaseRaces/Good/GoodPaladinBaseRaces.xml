@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+  <percentile>
+    <lower>1</lower>
+    <content>Aasimar</content>
+    <upper>10</upper>
+  </percentile>
+  <percentile>
+    <lower>11</lower>
+    <content>Hill Dwarf</content>
+    <upper>20</upper>
+  </percentile>
+  <percentile>
+    <lower>21</lower>
+    <content>Mountain Dwarf</content>
+    <upper>21</upper>
+  </percentile>
+  <percentile>
+    <lower>22</lower>
+    <content>Rock Gnome</content>
+    <upper>22</upper>
+  </percentile>
+  <percentile>
+    <lower>23</lower>
+    <content>Half-Elf</content>
+    <upper>27</upper>
+  </percentile>
+  <percentile>
+    <lower>28</lower>
+    <content>Lightfoot Halfling</content>
+    <upper>28</upper>
+  </percentile>
+  <percentile>
+    <lower>29</lower>
+    <content>Deep Halfling</content>
+    <upper>29</upper>
+  </percentile>
+  <percentile>
+    <lower>30</lower>
+    <content>Half-Orc</content>
+    <upper>30</upper>
+  </percentile>
+  <percentile>
+    <lower>31</lower>
+    <content>Human</content>
+    <upper>99</upper>
+  </percentile>
+  <percentile>
+    <lower>100</lower>
+    <content>Hound Archon</content>
+    <upper>100</upper>
+  </percentile>
+</percentiles>

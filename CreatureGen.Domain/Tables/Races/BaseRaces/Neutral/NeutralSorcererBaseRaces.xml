@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+  <percentile>
+    <lower>1</lower>
+    <content>Hill Dwarf</content>
+    <upper>1</upper>
+  </percentile>
+  <percentile>
+    <lower>2</lower>
+    <content>High Elf</content>
+    <upper>2</upper>
+  </percentile>
+  <percentile>
+    <lower>3</lower>
+    <content>Wild Elf</content>
+    <upper>12</upper>
+  </percentile>
+  <percentile>
+    <lower>13</lower>
+    <content>Wood Elf</content>
+    <upper>15</upper>
+  </percentile>
+  <percentile>
+    <lower>16</lower>
+    <content>Rock Gnome</content>
+    <upper>16</upper>
+  </percentile>
+  <percentile>
+    <lower>17</lower>
+    <content>Half-Elf</content>
+    <upper>31</upper>
+  </percentile>
+  <percentile>
+    <lower>32</lower>
+    <content>Lightfoot Halfling</content>
+    <upper>41</upper>
+  </percentile>
+  <percentile>
+    <lower>42</lower>
+    <content>Deep Halfling</content>
+    <upper>42</upper>
+  </percentile>
+  <percentile>
+    <lower>43</lower>
+    <content>Tallfellow Halfling</content>
+    <upper>43</upper>
+  </percentile>
+  <percentile>
+    <lower>44</lower>
+    <content>Half-Orc</content>
+    <upper>48</upper>
+  </percentile>
+  <percentile>
+    <lower>49</lower>
+    <content>Human</content>
+    <upper>90</upper>
+  </percentile>
+  <percentile>
+    <lower>91</lower>
+    <content>Githzerai</content>
+    <upper>91</upper>
+  </percentile>
+  <percentile>
+    <lower>92</lower>
+    <content>Green Slaad</content>
+    <upper>92</upper>
+  </percentile>
+  <percentile>
+    <lower>93</lower>
+    <content>Gray Slaad</content>
+    <upper>94</upper>
+  </percentile>
+  <percentile>
+    <lower>95</lower>
+    <content>Satyr</content>
+    <upper>95</upper>
+  </percentile>
+  <percentile>
+    <lower>96</lower>
+    <content>Janni</content>
+    <upper>96</upper>
+  </percentile>
+  <percentile>
+    <lower>97</lower>
+    <content>Lizardfolk</content>
+    <upper>98</upper>
+  </percentile>
+  <percentile>
+    <lower>99</lower>
+    <content>Doppelganger</content>
+    <upper>99</upper>
+  </percentile>
+  <percentile>
+    <lower>100</lower>
+    <content>Stone Giant</content>
+    <upper>100</upper>
+  </percentile>
+</percentiles>

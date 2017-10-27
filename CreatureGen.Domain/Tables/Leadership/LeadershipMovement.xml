@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+    <percentile>
+        <lower>1</lower>
+        <content>Moves around a lot</content>
+        <upper>20</upper>
+    </percentile>
+    <percentile>
+        <lower>21</lower>
+        <content></content>
+        <upper>90</upper>
+    </percentile>
+    <percentile>
+        <lower>91</lower>
+        <content>Has a stronghold, base of operations, guildhouse, or the like</content>
+        <upper>100</upper>
+    </percentile>
+</percentiles>

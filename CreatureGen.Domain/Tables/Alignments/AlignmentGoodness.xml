@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+  <percentile><lower>1</lower><content>Good</content><upper>20</upper></percentile>
+  <percentile><lower>21</lower><content>Neutral</content><upper>50</upper></percentile>
+  <percentile><lower>51</lower><content>Evil</content><upper>100</upper></percentile>
+</percentiles>

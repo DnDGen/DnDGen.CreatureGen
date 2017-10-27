@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C7C38F7A-AFF2-4319-853F-545B62B3F2E1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CreatureGen.Tests.Unit</RootNamespace>
+    <AssemblyName>CreatureGen.Tests.Unit</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Stress|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Stress\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DnDGen.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.Core.3.1.1\lib\DnDGen.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EventGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EventGen.2.0.1\lib\EventGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.142.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.142\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.3.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.3\lib\net45\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RollGen, Version=12.1.6474.27172, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.RollGen.13.4.2\lib\RollGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.TreasureGen.8.2.0\lib\TreasureGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Generators\ConfigurableIterationGenerator.cs" />
+    <Compile Include="Generators\Feats\AdditionalFeatsGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Feats\ClassFeatsGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Feats\FeatCollectionsTests.cs" />
+    <Compile Include="Generators\Feats\FeatFocusGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Feats\RacialFeatsGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Languages\LanguageGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Feats\AdditionalFeatsGeneratorTests.cs" />
+    <Compile Include="Generators\Feats\FeatsGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Feats\ClassFeatsGeneratorTests.cs" />
+    <Compile Include="Generators\Feats\FeatConstantsTests.cs" />
+    <Compile Include="Generators\Feats\FeatFocusGeneratorTests.cs" />
+    <Compile Include="Generators\Feats\FeatsGeneratorTests.cs" />
+    <Compile Include="Generators\Feats\FeatTests.cs" />
+    <Compile Include="Generators\Feats\FrequencyTests.cs" />
+    <Compile Include="Generators\Feats\RacialFeatsGeneratorTests.cs" />
+    <Compile Include="Generators\Languages\LanguageGeneratorTests.cs" />
+    <Compile Include="Generators\Skills\SkillsGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Skills\SkillsGeneratorTests.cs" />
+    <Compile Include="Generators\Abilities\AbilitiesGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Abilities\AbilitiesGeneratorTests.cs" />
+    <Compile Include="Generators\Alignments\AlignmentGeneratorTests.cs" />
+    <Compile Include="Generators\Alignments\AlignmentConstantsTests.cs" />
+    <Compile Include="Generators\Alignments\AlignmentTests.cs" />
+    <Compile Include="Generators\Alignments\AlignmentGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Characters\CharacterGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Classes\CharacterClassGeneratorTests.cs" />
+    <Compile Include="Generators\Characters\CharacterGeneratorTests.cs" />
+    <Compile Include="Generators\Classes\CharacterClassGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Combats\ArmorClassGeneratorTests.cs" />
+    <Compile Include="Generators\Combats\ArmorClassTests.cs" />
+    <Compile Include="Generators\Characters\CharacterTests.cs" />
+    <Compile Include="Generators\Combats\BaseAttackTests.cs" />
+    <Compile Include="Generators\Classes\CharacterClassConstantsTests.cs" />
+    <Compile Include="Generators\Classes\CharacterClassTests.cs" />
+    <Compile Include="Generators\Combats\CombatGeneratorTests.cs" />
+    <Compile Include="Generators\Combats\CombatTests.cs" />
+    <Compile Include="Generators\Combats\CombatGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Combats\HitPointsGeneratorTests.cs" />
+    <Compile Include="Generators\Combats\SavingThrowConstantsTests.cs" />
+    <Compile Include="Generators\Combats\SavingThrowsGeneratorTests.cs" />
+    <Compile Include="Generators\Items\EquipmentGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Leaders\FollowerQuantitesTests.cs" />
+    <Compile Include="Generators\Items\ArmorGeneratorTests.cs" />
+    <Compile Include="Generators\Items\EquipmentGeneratorTests.cs" />
+    <Compile Include="Generators\Items\EquipmentTests.cs" />
+    <Compile Include="Generators\Items\ProficiencyConstantsTests.cs" />
+    <Compile Include="Generators\Items\WeaponGeneratorTests.cs" />
+    <Compile Include="Generators\Leaders\LeadershipGeneratorTests.cs" />
+    <Compile Include="Generators\Leaders\LeadershipTests.cs" />
+    <Compile Include="Generators\Magics\AnimalGeneratorTests.cs" />
+    <Compile Include="Generators\Magics\AnimalTests.cs" />
+    <Compile Include="Generators\Languages\LanguageConstantsTests.cs" />
+    <Compile Include="Generators\Magics\MagicGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Magics\MagicGeneratorTests.cs" />
+    <Compile Include="Generators\Magics\MagicTests.cs" />
+    <Compile Include="Generators\Magics\SpellConstantsTests.cs" />
+    <Compile Include="Generators\Magics\SpellsGeneratorTests.cs" />
+    <Compile Include="Generators\Magics\SpellQuantityTests.cs" />
+    <Compile Include="Generators\Magics\SpellTests.cs" />
+    <Compile Include="Generators\Races\RaceGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Races\RaceGeneratorTests.cs" />
+    <Compile Include="Generators\Races\MeasurementTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\AlignmentRandomizerTypeConstantsTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\AnyAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\BaseAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\ChaoticAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\EvilAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\GoodAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\LawfulAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\NeutralAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\NonChaoticAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\NonEvilAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\NonGoodAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\NonLawfulAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\NonNeutralAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Alignments\SetAlignmentRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\AnyNPCClassNameRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\AnyPlayerClassNameRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\BaseClassNameRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\ClassNameRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\ClassNameRandomizerTypeConstantsTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\DivineSpellcastersClassNameRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\ArcaneSpellcastersClassNameRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\NonSpellcasterClassNameRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\SetClassNameRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\SpellcasterClassNameRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\StealthClassNameRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\ClassNames\PhysicalCombatClassNameRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\Levels\AnyLevelRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\Levels\HighLevelRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\Levels\LevelRandomizerTypeConstantsTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\Levels\LowLevelRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\Levels\MediumLevelRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\Levels\RangedLevelRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\Levels\SetLevelRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\CharacterClasses\Levels\VeryHighLevelRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\BaseRaces\AnyBaseRaceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\BaseRaces\BaseRaceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\BaseRaces\BaseRaceRandomizerTestBase.cs" />
+    <Compile Include="Generators\Randomizers\Races\BaseRaces\AquaticBaseRaceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\BaseRaces\MonsterBaseRaceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\BaseRaces\NonMonsterBaseRaceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\BaseRaces\NonStandardBaseRaceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\BaseRaces\SetBaseRaceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\BaseRaces\StandardBaseRaceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\Metaraces\AnyMetaraceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\Metaraces\ForcableMetaraceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\Metaraces\GeneticMetaraceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\Metaraces\LycanthropeMetaraceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\Metaraces\MetaraceRandomizerTestBase.cs" />
+    <Compile Include="Generators\Randomizers\Races\Metaraces\NoMetaraceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\Metaraces\SetMetaraceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\Metaraces\UndeadMetaraceRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Races\RaceRandomizerTestBase.cs" />
+    <Compile Include="Generators\Randomizers\Races\RaceRandomizerTypeConstantsTests.cs" />
+    <Compile Include="Generators\Randomizers\Abilities\AverageAbilitiesRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Abilities\BaseAbilitiesRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Abilities\BestOfFourAbilitiesRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Abilities\GoodAbilitiesRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Abilities\HeroicAbilitiesRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Abilities\OnesAsSixesAbilitiesRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Abilities\PoorAbilitiesRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Abilities\RawAbilitiesRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Abilities\SetAbilitiesRandomizerTests.cs" />
+    <Compile Include="Generators\Randomizers\Abilities\AbilitiesRandomizerTypeConstantsTests.cs" />
+    <Compile Include="Generators\Randomizers\Abilities\TwoTenSidedDiceAbilitiesRandomizerTests.cs" />
+    <Compile Include="Generators\Verifiers\RandomizerVerifierTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Generators\Races\RaceConstantsTests.cs" />
+    <Compile Include="Generators\Races\RaceTests.cs" />
+    <Compile Include="Generators\Combats\SavingThrowTests.cs" />
+    <Compile Include="Generators\Skills\SkillConstantsTests.cs" />
+    <Compile Include="Generators\Skills\SkillTests.cs" />
+    <Compile Include="Generators\Abilities\AbilityConstantsTests.cs" />
+    <Compile Include="Generators\Abilities\AbilityTests.cs" />
+    <Compile Include="Selectors\Collections\FeatsSelectorEventGenDecoratorTests.cs" />
+    <Compile Include="Selectors\Collections\AdjustmentsSelectorTests.cs" />
+    <Compile Include="Selectors\Collections\FeatSelectorTests.cs" />
+    <Compile Include="Selectors\Collections\LanguageCollectionsSelectorTests.cs" />
+    <Compile Include="Selectors\Collections\LeadershipSelectorTests.cs" />
+    <Compile Include="Selectors\Selections\AdditionalFeatSelectionTests.cs" />
+    <Compile Include="Selectors\Selections\CharacterClassFeatSelectionTests.cs" />
+    <Compile Include="Selectors\Selections\RacialFeatSelectionTests.cs" />
+    <Compile Include="Selectors\Selections\RequiredFeatSelectionTests.cs" />
+    <Compile Include="Selectors\Selections\RequiredSkillSelectionTests.cs" />
+    <Compile Include="Selectors\Selections\SkillSelectionTests.cs" />
+    <Compile Include="Selectors\Collections\SkillSelectorTests.cs" />
+    <Compile Include="Selectors\Collections\AbilityAdjustmentsSelectorTests.cs" />
+    <Compile Include="Tables\DataIndexConstantsTests.cs" />
+    <Compile Include="Tables\GroupConstantsTests.cs" />
+    <Compile Include="Tables\TableNameConstantsTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CreatureGen.Domain\CreatureGen.Domain.csproj">
+      <Project>{8611f130-c7bf-4ef9-be78-e2624c58861f}</Project>
+      <Name>CharacterGen.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreatureGen\CreatureGen.csproj">
+      <Project>{83f2b67c-3eb0-4e46-aad5-bafaa2e35689}</Project>
+      <Name>CharacterGen</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Aasimar</name>
+    <entry>60</entry>
+  </collection>
+  <collection>
+    <name>Aquatic Elf</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Azer</name>
+    <entry>43</entry>
+  </collection>
+  <collection>
+    <name>Blue Slaad</name>
+    <entry>114</entry>
+  </collection>
+  <collection>
+    <name>Bugbear</name>
+    <entry>66</entry>
+  </collection>
+  <collection>
+    <name>Centaur</name>
+    <entry>71</entry>
+  </collection>
+  <collection>
+    <name>Cloud Giant</name>
+    <entry>198</entry>
+  </collection>
+  <collection>
+    <name>Death Slaad</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Deep Dwarf</name>
+    <entry>43</entry>
+  </collection>
+  <collection>
+    <name>Deep Halfling</name>
+    <entry>30</entry>
+  </collection>
+  <collection>
+    <name>Derro</name>
+    <entry>43</entry>
+  </collection>
+  <collection>
+    <name>Doppelganger</name>
+    <entry>66</entry>
+  </collection>
+  <collection>
+    <name>Drow</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Duergar Dwarf</name>
+    <entry>43</entry>
+  </collection>
+  <collection>
+    <name>Fire Giant</name>
+    <entry>126</entry>
+  </collection>
+  <collection>
+    <name>Forest Gnome</name>
+    <entry>34</entry>
+  </collection>
+  <collection>
+    <name>Frost Giant</name>
+    <entry>162</entry>
+  </collection>
+  <collection>
+    <name>Gargoyle</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Githyanki</name>
+    <entry>63</entry>
+  </collection>
+  <collection>
+    <name>Githzerai</name>
+    <entry>63</entry>
+  </collection>
+  <collection>
+    <name>Gnoll</name>
+    <entry>63</entry>
+  </collection>
+  <collection>
+    <name>Goblin</name>
+    <entry>30</entry>
+  </collection>
+  <collection>
+    <name>Gray Elf</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Gray Slaad</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Green Slaad</name>
+    <entry>114</entry>
+  </collection>
+  <collection>
+    <name>Grimlock</name>
+    <entry>58</entry>
+  </collection>
+  <collection>
+    <name>Half-Elf</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Half-Orc</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Harpy</name>
+    <entry>55</entry>
+  </collection>
+  <collection>
+    <name>High Elf</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Hill Dwarf</name>
+    <entry>43</entry>
+  </collection>
+  <collection>
+    <name>Hill Giant</name>
+    <entry>108</entry>
+  </collection>
+  <collection>
+    <name>Hobgoblin</name>
+    <entry>48</entry>
+  </collection>
+  <collection>
+    <name>Hound Archon</name>
+    <entry>70</entry>
+  </collection>
+  <collection>
+    <name>Human</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Janni</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Kapoacinth</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Kobold</name>
+    <entry>28</entry>
+  </collection>
+  <collection>
+    <name>Kuo-toa</name>
+    <entry>59</entry>
+  </collection>
+  <collection>
+    <name>Lightfoot Halfling</name>
+    <entry>30</entry>
+  </collection>
+  <collection>
+    <name>Lizardfolk</name>
+    <entry>50</entry>
+  </collection>
+  <collection>
+    <name>Locathah</name>
+    <entry>50</entry>
+  </collection>
+  <collection>
+    <name>Merfolk</name>
+    <entry>57</entry>
+  </collection>
+  <collection>
+    <name>Merrow</name>
+    <entry>100</entry>
+  </collection>
+  <collection>
+    <name>Mind Flayer</name>
+    <entry>72</entry>
+  </collection>
+  <collection>
+    <name>Minotaur</name>
+    <entry>74</entry>
+  </collection>
+  <collection>
+    <name>Mountain Dwarf</name>
+    <entry>43</entry>
+  </collection>
+  <collection>
+    <name>Ogre</name>
+    <entry>100</entry>
+  </collection>
+  <collection>
+    <name>Ogre Mage</name>
+    <entry>100</entry>
+  </collection>
+  <collection>
+    <name>Orc</name>
+    <entry>57</entry>
+  </collection>
+  <collection>
+    <name>Pixie</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Rakshasa</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Red Slaad</name>
+    <entry>90</entry>
+  </collection>
+  <collection>
+    <name>Rock Gnome</name>
+    <entry>34</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin</name>
+    <entry>56</entry>
+  </collection>
+  <collection>
+    <name>Satyr</name>
+    <entry>65</entry>
+  </collection>
+  <collection>
+    <name>Scorpionfolk</name>
+    <entry>72</entry>
+  </collection>
+  <collection>
+    <name>Scrag</name>
+    <entry>102</entry>
+  </collection>
+  <collection>
+    <name>Stone Giant</name>
+    <entry>126</entry>
+  </collection>
+  <collection>
+    <name>Storm Giant</name>
+    <entry>234</entry>
+  </collection>
+  <collection>
+    <name>Svirfneblin</name>
+    <entry>34</entry>
+  </collection>
+  <collection>
+    <name>Tallfellow Halfling</name>
+    <entry>46</entry>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+    <entry>60</entry>
+  </collection>
+  <collection>
+    <name>Troglodyte</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Troll</name>
+    <entry>102</entry>
+  </collection>
+  <collection>
+    <name>Wild Elf</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Wood Elf</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Abomination</name>
+    <entry>96</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood</name>
+    <entry>53</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Pureblood</name>
+    <entry>53</entry>
+  </collection>
+</collections>

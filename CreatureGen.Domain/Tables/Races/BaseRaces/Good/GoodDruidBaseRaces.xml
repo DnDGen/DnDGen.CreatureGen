@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+  <percentile>
+    <lower>1</lower>
+    <content>Gray Elf</content>
+    <upper>1</upper>
+  </percentile>
+  <percentile>
+    <lower>2</lower>
+    <content>High Elf</content>
+    <upper>11</upper>
+  </percentile>
+  <percentile>
+    <lower>12</lower>
+    <content>Wild Elf</content>
+    <upper>21</upper>
+  </percentile>
+  <percentile>
+    <lower>22</lower>
+    <content>Wood Elf</content>
+    <upper>31</upper>
+  </percentile>
+  <percentile>
+    <lower>32</lower>
+    <content>Forest Gnome</content>
+    <upper>36</upper>
+  </percentile>
+  <percentile>
+    <lower>37</lower>
+    <content>Rock Gnome</content>
+    <upper>37</upper>
+  </percentile>
+  <percentile>
+    <lower>38</lower>
+    <content>Half-Elf</content>
+    <upper>46</upper>
+  </percentile>
+  <percentile>
+    <lower>47</lower>
+    <content>Lightfoot Halfling</content>
+    <upper>47</upper>
+  </percentile>
+  <percentile>
+    <lower>48</lower>
+    <content>Tallfellow Halfling</content>
+    <upper>48</upper>
+  </percentile>
+  <percentile>
+    <lower>49</lower>
+    <content>Half-Orc</content>
+    <upper>49</upper>
+  </percentile>
+  <percentile>
+    <lower>50</lower>
+    <content>Human</content>
+    <upper>97</upper>
+  </percentile>
+  <percentile>
+    <lower>98</lower>
+    <content>Pixie</content>
+    <upper>98</upper>
+  </percentile>
+  <percentile>
+    <lower>99</lower>
+    <content>Cloud Giant</content>
+    <upper>99</upper>
+  </percentile>
+  <percentile>
+    <lower>100</lower>
+    <content>Centaur</content>
+    <upper>100</upper>
+  </percentile>
+</percentiles>

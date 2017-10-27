@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<percentiles>
+    <percentile>
+        <lower>1</lower>
+        <content></content>
+        <upper>92</upper>
+    </percentile>
+  <percentile>
+    <lower>93</lower>
+    <content>Ghost</content>
+    <upper>93</upper>
+  </percentile>
+  <percentile>
+    <lower>94</lower>
+    <content>Vampire</content>
+    <upper>94</upper>
+  </percentile>
+  <percentile>
+    <lower>95</lower>
+    <content>Werewolf</content>
+    <upper>96</upper>
+  </percentile>
+  <percentile>
+    <lower>97</lower>
+    <content>Half-Fiend</content>
+    <upper>98</upper>
+  </percentile>
+  <percentile>
+    <lower>99</lower>
+    <content>Half-Dragon</content>
+    <upper>100</upper>
+  </percentile>
+</percentiles>

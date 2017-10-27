@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Longstrider</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Locate object</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Fly</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Dimension door</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Teleport</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Find the path</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Greater teleport</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Phase door</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Astral projection</name>
+    <entry>9</entry>
+  </collection>
+</collections>

@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+    <collection>
+        <name>Skill BonusAppraise</name>
+        <entry>Skill Bonus</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>2</entry>
+        <entry>Appraise (Stone or metal items)</entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+    <entry></entry>
+    </collection>
+    <collection>
+      <name>Attack BonusGoblin</name>
+      <entry>Attack Bonus</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry>1</entry>
+      <entry>Goblinoids</entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+    <entry></entry>
+    </collection>
+    <collection>
+        <name>Attack BonusOrc</name>
+        <entry>Attack Bonus</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>1</entry>
+        <entry>Orcs</entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+    <entry></entry>
+    </collection>
+    <collection>
+      <name>Save BonusSpell</name>
+      <entry>Save Bonus</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry>3</entry>
+      <entry>Spells and spell-like effects</entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+    <entry></entry>
+    </collection>
+    <collection>
+        <name>Save BonusPoison</name>
+        <entry>Save Bonus</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>3</entry>
+        <entry>Poison</entry>
+        <entry>0</entry>
+        <entry></entry>
+        <entry>0</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry></entry>
+    </collection>
+    <collection>
+        <name>Dodge Bonus</name>
+        <entry>Dodge Bonus</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>4</entry>
+        <entry>Giants</entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+    <entry></entry>
+    </collection>
+    <collection>
+      <name>Stability</name>
+      <entry>Stability</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+    <entry></entry>
+    </collection>
+    <collection>
+        <name>Weapon FamiliarityDwarven urgrosh</name>
+        <entry>Weapon Familiarity</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>0</entry>
+        <entry>Dwarven urgrosh</entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry>0</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry></entry>
+    </collection>
+    <collection>
+        <name>Weapon FamiliarityDwarven waraxe</name>
+        <entry>Weapon Familiarity</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>0</entry>
+        <entry>Dwarven waraxe</entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+    <entry></entry>
+    </collection>
+    <collection>
+        <name>Stonecunning</name>
+        <entry>Stonecunning</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>0</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry></entry>
+        <entry>0</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry></entry>
+    </collection>
+    <collection>
+        <name>Darkvision</name>
+        <entry>Darkvision</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry>90</entry>
+        <entry></entry>
+        <entry>0</entry>
+        <entry></entry>
+      <entry>0</entry>
+      <entry></entry>
+      <entry>0</entry>
+    <entry></entry>
+    </collection>
+  <collection>
+    <name>Light Sensitivity</name>
+    <entry>Light Sensitivity</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry></entry>
+  </collection>
+</collections>

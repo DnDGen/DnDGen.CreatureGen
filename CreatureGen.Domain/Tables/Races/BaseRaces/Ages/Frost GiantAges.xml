@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Adulthood</name>
+    <entry>25</entry>
+  </collection>
+  <collection>
+    <name>Middle Age</name>
+    <entry>75</entry>
+  </collection>
+  <collection>
+    <name>Old</name>
+    <entry>163</entry>
+  </collection>
+  <collection>
+    <name>Venerable</name>
+    <entry>188</entry>
+  </collection>
+</collections>

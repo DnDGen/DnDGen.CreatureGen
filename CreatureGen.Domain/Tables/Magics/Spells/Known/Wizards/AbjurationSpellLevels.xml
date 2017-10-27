@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Resistance</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Alarm</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Endure elements</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Hold portal</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Protection from chaos/law/good/evil</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Shield</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Arcane lock</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Obscure object</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Protection from arrows</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Resist energy</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Dispel magic</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Explosive runes</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Magic circle against chaos/law/good/evil</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Nondetection</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Protection from energy</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Dimensional anchor</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Fire trap</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Lesser globe of invulnerability</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Remove curse</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Stoneskin</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Break enchantment</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Dismissal</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Mage's private sanctum</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Antimagic field</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Greater dispel magic</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Globe of invulnerability</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Guards and wards</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Repulsion</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Banishment</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Sequester</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Spell turning</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Dimensional lock</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Mind blank</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Prismatic wall</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Protection from spells</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Freedom</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Imprisonment</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Mage's disjunction</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Prismatic sphere</name>
+    <entry>9</entry>
+  </collection>
+</collections>
