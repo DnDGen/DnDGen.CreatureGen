@@ -1,4 +1,4 @@
-﻿using CreatureGen.Domain.Tables;
+﻿using CreatureGen.Tables;
 using NUnit.Framework;
 
 namespace CreatureGen.Tests.Unit.Tables
@@ -6,7 +6,7 @@ namespace CreatureGen.Tests.Unit.Tables
     [TestFixture]
     public class GroupConstantsTests
     {
-        [TestCase(GroupConstants.AddMonsterHitDiceToPower, "Add Monster Hit Dice to Power")]
+        [TestCase(GroupConstants.AddHitDiceToPower, "Add Monster Hit Dice to Power")]
         [TestCase(GroupConstants.All, "All")]
         [TestCase(GroupConstants.Aquatic, "Aquatic")]
         [TestCase(GroupConstants.ArmorBonus, "Armor Bonus")]

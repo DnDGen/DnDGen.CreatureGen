@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatureGen", "CreatureGen\CreatureGen.csproj", "{83F2B67C-3EB0-4E46-AAD5-BAFAA2E35689}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatureGen.Domain", "CreatureGen.Domain\CreatureGen.Domain.csproj", "{8611F130-C7BF-4EF9-BE78-E2624C58861F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatureGen.Tests.Unit", "CreatureGen.Tests.Unit\CreatureGen.Tests.Unit.csproj", "{C7C38F7A-AFF2-4319-853F-545B62B3F2E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatureGen.Tests.Integration", "CreatureGen.Tests.Integration\CreatureGen.Tests.Integration.csproj", "{A9371758-2DE3-43AF-857D-7140B1C0A78C}"
@@ -30,12 +28,6 @@ Global
 		{83F2B67C-3EB0-4E46-AAD5-BAFAA2E35689}.Release|Any CPU.Build.0 = Release|Any CPU
 		{83F2B67C-3EB0-4E46-AAD5-BAFAA2E35689}.Stress|Any CPU.ActiveCfg = Stress|Any CPU
 		{83F2B67C-3EB0-4E46-AAD5-BAFAA2E35689}.Stress|Any CPU.Build.0 = Stress|Any CPU
-		{8611F130-C7BF-4EF9-BE78-E2624C58861F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8611F130-C7BF-4EF9-BE78-E2624C58861F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8611F130-C7BF-4EF9-BE78-E2624C58861F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8611F130-C7BF-4EF9-BE78-E2624C58861F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8611F130-C7BF-4EF9-BE78-E2624C58861F}.Stress|Any CPU.ActiveCfg = Stress|Any CPU
-		{8611F130-C7BF-4EF9-BE78-E2624C58861F}.Stress|Any CPU.Build.0 = Stress|Any CPU
 		{C7C38F7A-AFF2-4319-853F-545B62B3F2E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C7C38F7A-AFF2-4319-853F-545B62B3F2E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7C38F7A-AFF2-4319-853F-545B62B3F2E1}.Release|Any CPU.ActiveCfg = Release|Any CPU

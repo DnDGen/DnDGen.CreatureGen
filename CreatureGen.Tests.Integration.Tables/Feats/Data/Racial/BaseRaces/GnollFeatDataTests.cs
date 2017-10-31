@@ -1,4 +1,4 @@
-﻿using CreatureGen.Domain.Tables;
+﻿using CreatureGen.Tables;
 using CreatureGen.Feats;
 using CreatureGen.Creatures;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.BaseRaces
     {
         protected override string tableName
         {
-            get { return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, SizeConstants.BaseRaces.Gnoll); }
+            get { return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, CreatureConstants.Gnoll); }
         }
 
         [Test]

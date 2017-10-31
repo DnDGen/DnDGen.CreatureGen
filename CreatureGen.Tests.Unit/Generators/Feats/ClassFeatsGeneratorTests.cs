@@ -1,8 +1,8 @@
 ﻿using CreatureGen.Abilities;
 using CreatureGen.CharacterClasses;
-using CreatureGen.Domain.Generators.Feats;
-using CreatureGen.Domain.Selectors.Collections;
-using CreatureGen.Domain.Selectors.Selections;
+using CreatureGen.Generators.Feats;
+using CreatureGen.Selectors.Collections;
+using CreatureGen.Selectors.Selections;
 using CreatureGen.Feats;
 using CreatureGen.Creatures;
 using CreatureGen.Skills;

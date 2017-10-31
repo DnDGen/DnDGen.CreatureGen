@@ -1,5 +1,5 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.Domain.Generators.Feats;
+using CreatureGen.Generators.Feats;
 using CreatureGen.Feats;
 using CreatureGen.Creatures;
 using CreatureGen.Skills;

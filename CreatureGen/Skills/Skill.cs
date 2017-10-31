@@ -8,7 +8,6 @@ namespace CreatureGen.Skills
         public string Name { get; private set; }
         public Ability BaseAbility { get; private set; }
         public string Focus { get; private set; }
-
         public int Bonus { get; set; }
         public bool ClassSkill { get; set; }
         public int ArmorCheckPenalty { get; set; }

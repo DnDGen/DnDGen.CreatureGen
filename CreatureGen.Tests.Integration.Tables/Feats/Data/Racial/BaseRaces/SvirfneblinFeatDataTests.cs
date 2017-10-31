@@ -1,5 +1,5 @@
 ﻿using CreatureGen.CharacterClasses;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Tables;
 using CreatureGen.Feats;
 using CreatureGen.Magics;
 using CreatureGen.Creatures;
@@ -15,7 +15,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.BaseRaces
     {
         protected override string tableName
         {
-            get { return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, SizeConstants.BaseRaces.Svirfneblin); }
+            get { return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, CreatureConstants.Svirfneblin); }
         }
 
         [Test]
@@ -28,8 +28,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.BaseRaces
                 FeatConstants.WeaponFamiliarity,
                 FeatConstants.SaveBonus,
                 FeatConstants.ImprovedSpell,
-                FeatConstants.AttackBonus + SizeConstants.BaseRaces.Goblin,
-                FeatConstants.AttackBonus + SizeConstants.BaseRaces.Kobold,
+                FeatConstants.AttackBonus + CreatureConstants.Goblin,
+                FeatConstants.AttackBonus + CreatureConstants.Kobold,
                 FeatConstants.DodgeBonus,
                 FeatConstants.SkillBonus + SkillConstants.Listen,
                 FeatConstants.SpellLikeAbility + SpellConstants.BlindnessDeafness,
@@ -90,7 +90,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.BaseRaces
             "",
             1,
             0, 0)]
-        [TestCase(FeatConstants.AttackBonus + SizeConstants.BaseRaces.Goblin,
+        [TestCase(FeatConstants.AttackBonus + CreatureConstants.Goblin,
             FeatConstants.AttackBonus,
             "Goblinoids",
             0,
@@ -99,9 +99,9 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.BaseRaces
             "",
             1,
             0, 0)]
-        [TestCase(FeatConstants.AttackBonus + SizeConstants.BaseRaces.Kobold,
+        [TestCase(FeatConstants.AttackBonus + CreatureConstants.Kobold,
             FeatConstants.AttackBonus,
-            SizeConstants.BaseRaces.Kobold,
+            CreatureConstants.Kobold,
             0,
             "",
             0,

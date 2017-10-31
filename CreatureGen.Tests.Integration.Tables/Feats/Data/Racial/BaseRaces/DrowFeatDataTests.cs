@@ -1,5 +1,5 @@
 ﻿using CreatureGen.CharacterClasses;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Tables;
 using CreatureGen.Feats;
 using CreatureGen.Magics;
 using CreatureGen.Creatures;
@@ -17,7 +17,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.BaseRaces
         {
             get
             {
-                return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, SizeConstants.BaseRaces.Drow);
+                return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, CreatureConstants.Drow);
             }
         }
 

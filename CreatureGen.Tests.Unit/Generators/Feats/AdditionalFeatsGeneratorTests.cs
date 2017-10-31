@@ -1,10 +1,10 @@
 ﻿using CreatureGen.Abilities;
 using CreatureGen.CharacterClasses;
 using CreatureGen.Combats;
-using CreatureGen.Domain.Generators.Feats;
-using CreatureGen.Domain.Selectors.Collections;
-using CreatureGen.Domain.Selectors.Selections;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Generators.Feats;
+using CreatureGen.Selectors.Collections;
+using CreatureGen.Selectors.Selections;
+using CreatureGen.Tables;
 using CreatureGen.Feats;
 using CreatureGen.Creatures;
 using CreatureGen.Skills;
@@ -163,7 +163,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void HumansGetAdditionalFeat()
         {
-            race.BaseRace = SizeConstants.BaseRaces.Human;
+            race.BaseRace = CreatureConstants.Human;
             characterClass.Level = 1;
             AddFeatSelections(3);
 

@@ -1,7 +1,7 @@
 ﻿using CreatureGen.CharacterClasses;
-using CreatureGen.Domain.Generators.Combats;
-using CreatureGen.Domain.Selectors.Collections;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Generators.Defenses;
+using CreatureGen.Selectors.Collections;
+using CreatureGen.Tables;
 using CreatureGen.Feats;
 using CreatureGen.Creatures;
 using DnDGen.Core.Selectors.Collections;
@@ -221,7 +221,7 @@ namespace CreatureGen.Tests.Unit.Generators.Combats
             SetUpRoll(2, 9266, 90210, 42);
 
             race.BaseRace = "baserace";
-            race.Metarace = SizeConstants.Metaraces.HalfDragon;
+            race.Metarace = CreatureConstants.Templates.HalfDragon;
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.BaseRaceGroups, GroupConstants.Monsters))
                 .Returns(new[] { "otherbaserace", "baserace" });
 

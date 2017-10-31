@@ -1,5 +1,5 @@
 ﻿using CreatureGen.Creatures;
-using CreatureGen.Domain.Generators.Creatures;
+using CreatureGen.Generators.Creatures;
 using CreatureGen.Randomizers.Abilities;
 using CreatureGen.Randomizers.Alignments;
 using CreatureGen.Randomizers.CharacterClasses;

@@ -1,5 +1,5 @@
 ﻿using CreatureGen.Combats;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Tables;
 using CreatureGen.Feats;
 using CreatureGen.Creatures;
 using CreatureGen.Skills;
@@ -13,7 +13,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.Metaraces
     {
         protected override string tableName
         {
-            get { return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, SizeConstants.Metaraces.Wereboar); }
+            get { return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, CreatureConstants.Templates.Wereboar); }
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.Metaraces
 
         [TestCase(FeatConstants.AlternateForm,
             FeatConstants.AlternateForm,
-            SizeConstants.BaseRaces.Animals.Boar,
+            CreatureConstants.Animals.Boar,
             0,
             "",
             0,
@@ -49,7 +49,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.Metaraces
             0, 0)]
         [TestCase(FeatConstants.Empathy,
             FeatConstants.Empathy,
-            SizeConstants.BaseRaces.Animals.Boar,
+            CreatureConstants.Animals.Boar,
             0,
             "",
             0,
@@ -58,7 +58,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.Metaraces
             0, 0)]
         [TestCase(FeatConstants.Lycanthropy,
             FeatConstants.Lycanthropy,
-            SizeConstants.Metaraces.Wereboar,
+            CreatureConstants.Templates.Wereboar,
             0,
             "",
             0,

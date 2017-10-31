@@ -1,5 +1,5 @@
 ﻿using CreatureGen.Combats;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Tables;
 using CreatureGen.Feats;
 using NUnit.Framework;
 using TreasureGen.Items;
@@ -22,7 +22,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
                 AttributeConstants.Shield + GroupConstants.Proficiency,
                 FeatConstants.AttackBonus,
                 FeatConstants.SkillBonus,
-                GroupConstants.AddMonsterHitDiceToPower,
+                GroupConstants.AddHitDiceToPower,
                 GroupConstants.FighterBonusFeats,
                 GroupConstants.HasAbilityRequirements,
                 GroupConstants.HasClassRequirements,
@@ -44,7 +44,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
 
         [TestCase(FeatConstants.AttackBonus,
             FeatConstants.AttackBonus)]
-        [TestCase(GroupConstants.AddMonsterHitDiceToPower,
+        [TestCase(GroupConstants.AddHitDiceToPower,
             FeatConstants.SpellResistance)]
         [TestCase(GroupConstants.HasSkillRequirements,
             FeatConstants.MountedArchery,

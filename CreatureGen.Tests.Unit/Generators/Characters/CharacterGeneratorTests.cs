@@ -3,19 +3,19 @@ using CreatureGen.Alignments;
 using CreatureGen.CharacterClasses;
 using CreatureGen.Creatures;
 using CreatureGen.Combats;
-using CreatureGen.Domain.Generators.Abilities;
-using CreatureGen.Domain.Generators.Alignments;
-using CreatureGen.Domain.Generators.Creatures;
-using CreatureGen.Domain.Generators.Classes;
-using CreatureGen.Domain.Generators.Combats;
-using CreatureGen.Domain.Generators.Feats;
-using CreatureGen.Domain.Generators.Items;
-using CreatureGen.Domain.Generators.Languages;
-using CreatureGen.Domain.Generators.Magics;
-using CreatureGen.Domain.Generators.Races;
-using CreatureGen.Domain.Generators.Skills;
-using CreatureGen.Domain.Selectors.Collections;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Generators.Abilities;
+using CreatureGen.Generators.Alignments;
+using CreatureGen.Generators.Creatures;
+using CreatureGen.Generators.Classes;
+using CreatureGen.Generators.Defenses;
+using CreatureGen.Generators.Feats;
+using CreatureGen.Generators.Items;
+using CreatureGen.Generators.Languages;
+using CreatureGen.Generators.Magics;
+using CreatureGen.Generators.Races;
+using CreatureGen.Generators.Skills;
+using CreatureGen.Selectors.Collections;
+using CreatureGen.Tables;
 using CreatureGen.Feats;
 using CreatureGen.Items;
 using CreatureGen.Magics;
@@ -54,7 +54,7 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ICombatGenerator> mockCombatGenerator;
         private Mock<IAdjustmentsSelector> mockAdjustmentsSelector;
-        private Mock<IRandomizerVerifier> mockRandomizerVerifier;
+        private Mock<ICreatureVerifier> mockRandomizerVerifier;
         private Mock<IPercentileSelector> mockPercentileSelector;
         private Mock<IEquipmentGenerator> mockTreasureGenerator;
         private Mock<IMagicGenerator> mockMagicGenerator;
@@ -96,7 +96,7 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
 
             mockAdjustmentsSelector = new Mock<IAdjustmentsSelector>();
             levelAdjustments = new Dictionary<string, int>();
-            mockRandomizerVerifier = new Mock<IRandomizerVerifier>();
+            mockRandomizerVerifier = new Mock<ICreatureVerifier>();
             mockPercentileSelector = new Mock<IPercentileSelector>();
             mockCollectionsSelector = new Mock<ICollectionSelector>();
 
@@ -119,7 +119,7 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
 
             levelAdjustments[BaseRace] = 0;
             levelAdjustments[BaseRacePlusOne] = 1;
-            levelAdjustments[SizeConstants.Metaraces.None] = 0;
+            levelAdjustments[CreatureConstants.Templates.None] = 0;
             levelAdjustments[Metarace] = 1;
 
             mockAdjustmentsSelector.Setup(p => p.SelectFrom(TableNameConstants.Set.Adjustments.LevelAdjustments, It.IsAny<string>())).Returns((string table, string name) => levelAdjustments[name]);
@@ -201,7 +201,7 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
             characterClass.Level = 1;
             characterClass.Name = "class name";
             race.BaseRace = BaseRace;
-            race.Metarace = SizeConstants.Metaraces.None;
+            race.Metarace = CreatureConstants.Templates.None;
             abilities["ability"] = new Ability("ability");
             languages.Add("1337");
             languages.Add("Dothraki");
@@ -239,7 +239,7 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
             mockRandomizerVerifier.Setup(v => v.VerifyCompatibility(mockAlignmentRandomizer.Object, mockClassNameRandomizer.Object,
                 mockLevelRandomizer.Object, mockBaseRaceRandomizer.Object, mockMetaraceRandomizer.Object)).Returns(false);
 
-            Assert.That(() => GenerateCharacter(), Throws.InstanceOf<IncompatibleRandomizersException>());
+            Assert.That(() => GenerateCharacter(), Throws.InstanceOf<IncompatibleCreatureAndTemplateException>());
         }
 
         private Character GenerateCharacter()
@@ -284,7 +284,7 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
                     mockMetaraceRandomizer.Object))
                 .Returns(false);
 
-            Assert.That(GenerateCharacter, Throws.InstanceOf<IncompatibleRandomizersException>());
+            Assert.That(GenerateCharacter, Throws.InstanceOf<IncompatibleCreatureAndTemplateException>());
         }
 
         [Test]
@@ -316,7 +316,7 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
                     mockMetaraceRandomizer.Object))
                 .Returns(false);
 
-            Assert.That(GenerateCharacter, Throws.InstanceOf<IncompatibleRandomizersException>());
+            Assert.That(GenerateCharacter, Throws.InstanceOf<IncompatibleCreatureAndTemplateException>());
         }
 
         [Test]
@@ -348,7 +348,7 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
 
             characterClass.Level = 2;
 
-            Assert.That(GenerateCharacter, Throws.InstanceOf<IncompatibleRandomizersException>());
+            Assert.That(GenerateCharacter, Throws.InstanceOf<IncompatibleCreatureAndTemplateException>());
         }
 
         [Test]

@@ -1,4 +1,4 @@
-﻿using CreatureGen.Domain.Selectors.Collections;
+﻿using CreatureGen.Selectors.Collections;
 using DnDGen.Core.Selectors.Collections;
 using Moq;
 using NUnit.Framework;

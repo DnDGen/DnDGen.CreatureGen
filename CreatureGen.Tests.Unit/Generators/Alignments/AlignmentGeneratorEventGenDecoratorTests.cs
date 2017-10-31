@@ -1,5 +1,5 @@
 ﻿using CreatureGen.Alignments;
-using CreatureGen.Domain.Generators.Alignments;
+using CreatureGen.Generators.Alignments;
 using CreatureGen.Randomizers.Alignments;
 using EventGen;
 using Moq;

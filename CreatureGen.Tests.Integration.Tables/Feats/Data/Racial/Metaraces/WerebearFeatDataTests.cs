@@ -1,5 +1,5 @@
 ﻿using CreatureGen.Combats;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Tables;
 using CreatureGen.Feats;
 using CreatureGen.Creatures;
 using CreatureGen.Skills;
@@ -13,7 +13,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.Metaraces
     {
         protected override string tableName
         {
-            get { return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, SizeConstants.Metaraces.Werebear); }
+            get { return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, CreatureConstants.Templates.Werebear); }
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.Metaraces
 
         [TestCase(FeatConstants.AlternateForm,
             FeatConstants.AlternateForm,
-            SizeConstants.BaseRaces.Animals.BrownBear,
+            CreatureConstants.Animals.BrownBear,
             0,
             "",
             0,
@@ -61,7 +61,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.Metaraces
             0, 0)]
         [TestCase(FeatConstants.Lycanthropy,
             FeatConstants.Lycanthropy,
-            SizeConstants.Metaraces.Werebear,
+            CreatureConstants.Templates.Werebear,
             0,
             "",
             0,

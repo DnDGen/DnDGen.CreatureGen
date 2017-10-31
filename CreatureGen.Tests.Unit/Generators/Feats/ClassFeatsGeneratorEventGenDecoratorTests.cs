@@ -1,7 +1,7 @@
 ﻿using CreatureGen.Abilities;
 using CreatureGen.CharacterClasses;
 using CreatureGen.Combats;
-using CreatureGen.Domain.Generators.Feats;
+using CreatureGen.Generators.Feats;
 using CreatureGen.Feats;
 using CreatureGen.Creatures;
 using CreatureGen.Skills;

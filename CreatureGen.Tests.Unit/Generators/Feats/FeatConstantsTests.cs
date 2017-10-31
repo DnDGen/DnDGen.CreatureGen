@@ -173,6 +173,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.MonkUnarmedStrike, "Monk Unarmed Strike")]
         [TestCase(FeatConstants.MountedArchery, "Mounted Archery")]
         [TestCase(FeatConstants.MountedCombat, "Mounted Combat")]
+        [TestCase(FeatConstants.MultiAttack, "Multi-Attack")]
         [TestCase(FeatConstants.MummyRot, "Mummy Rot")]
         [TestCase(FeatConstants.NaturalArmor, "Natural Armor")]
         [TestCase(FeatConstants.NaturalCunning, "Natural Cunning")]

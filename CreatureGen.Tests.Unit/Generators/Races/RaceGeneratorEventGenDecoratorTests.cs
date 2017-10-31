@@ -1,6 +1,6 @@
 ﻿using CreatureGen.Alignments;
 using CreatureGen.CharacterClasses;
-using CreatureGen.Domain.Generators.Races;
+using CreatureGen.Generators.Races;
 using CreatureGen.Creatures;
 using CreatureGen.Randomizers.Races;
 using EventGen;

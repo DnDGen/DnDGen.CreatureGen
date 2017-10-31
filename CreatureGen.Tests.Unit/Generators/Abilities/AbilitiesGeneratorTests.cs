@@ -1,8 +1,8 @@
 ﻿using CreatureGen.Abilities;
 using CreatureGen.CharacterClasses;
-using CreatureGen.Domain.Generators.Abilities;
-using CreatureGen.Domain.Selectors.Collections;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Generators.Abilities;
+using CreatureGen.Selectors.Collections;
+using CreatureGen.Tables;
 using CreatureGen.Creatures;
 using CreatureGen.Randomizers.Abilities;
 using DnDGen.Core.Selectors.Collections;

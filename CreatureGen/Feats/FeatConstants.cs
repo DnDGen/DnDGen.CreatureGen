@@ -169,6 +169,7 @@
         public const string MonkUnarmedStrike = "Monk Unarmed Strike";
         public const string MountedArchery = "Mounted Archery";
         public const string MountedCombat = "Mounted Combat";
+        public const string MultiAttack = "Multi-Attack";
         public const string MummyRot = "Mummy Rot";
         public const string NaturalArmor = "Natural Armor";
         public const string NaturalCunning = "Natural Cunning";

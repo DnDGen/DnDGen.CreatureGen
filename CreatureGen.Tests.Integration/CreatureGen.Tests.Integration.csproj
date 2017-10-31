@@ -82,7 +82,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Generators\Verifiers\RandomizerVerifierTests.cs" />
+    <Compile Include="Generators\Verifiers\CreatureVerifierTests.cs" />
     <Compile Include="IntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -96,10 +96,6 @@
     <ProjectReference Include="..\CreatureGen\CreatureGen.csproj">
       <Project>{83f2b67c-3eb0-4e46-aad5-bafaa2e35689}</Project>
       <Name>CharacterGen</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CreatureGen.Domain\CreatureGen.Domain.csproj">
-      <Project>{8611f130-c7bf-4ef9-be78-e2624c58861f}</Project>
-      <Name>CharacterGen.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

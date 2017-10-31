@@ -88,73 +88,17 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Characters\CharacterGeneratorTests.cs" />
-    <Compile Include="Characters\CharacterVerifier.cs" />
-    <Compile Include="Leaders\LeadershipGeneratorTests.cs" />
-    <Compile Include="Randomizers\Alignments\SetAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\ClassNames\AnyNPCClassNameRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\ClassNames\ClassNameRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\ClassNames\SetClassNameRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\Levels\SetLevelRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\BaseRaces\BaseRaceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\BaseRaces\SetBaseRaceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\Metaraces\ForcableMetaraceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Alignments\AnyAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\Alignments\ChaoticAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\Alignments\EvilAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\Alignments\GoodAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\Alignments\LawfulAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\Alignments\NeutralAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\Alignments\NonChaoticAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\Alignments\NonEvilAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\Alignments\NonGoodAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\Alignments\NonLawfulAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\Alignments\NonNeutralAlignmentRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\ClassNames\AnyPlayerClassNameRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\ClassNames\DivineSpellcasterClassNameRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\ClassNames\ArcaneSpellcasterClassNameRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\ClassNames\NonSpellcasterClassNameRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\ClassNames\SpellcasterClassNameRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\ClassNames\StealthClassNameRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\ClassNames\PhysicalCombatClassNameRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\Levels\AnyLevelRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\Levels\HighLevelRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\Levels\LowLevelRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\Levels\MediumLevelRandomizerTests.cs" />
-    <Compile Include="Randomizers\CharacterClasses\Levels\VeryHighLevelRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\BaseRaces\AnyBaseRaceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\BaseRaces\MonsterBaseRaceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\BaseRaces\NonMonsterBaseRaceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\BaseRaces\NonStandardBaseRaceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\BaseRaces\StandardBaseRaceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\Metaraces\AnyMetaraceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\Metaraces\NoMetaraceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\Metaraces\LycanthropeMetaraceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\Metaraces\GeneticMetaraceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\Metaraces\SetMetaraceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Races\Metaraces\UndeadMetaraceRandomizerTests.cs" />
-    <Compile Include="Randomizers\Abilities\SetAbilitiesRandomizerTests.cs" />
-    <Compile Include="Randomizers\Abilities\TwoTenSidedDiceAbilitiesRandomizerTests.cs" />
-    <Compile Include="Randomizers\Abilities\RawAbilitiesRandomizerTests.cs" />
-    <Compile Include="Randomizers\Abilities\PoorAbilitiesRandomizerTests.cs" />
-    <Compile Include="Randomizers\Abilities\OnesAsSixesAbilitiesRandomizerTests.cs" />
-    <Compile Include="Randomizers\Abilities\HeroicAbilitiesRandomizerTests.cs" />
-    <Compile Include="Randomizers\Abilities\GoodAbilitiesRandomizerTests.cs" />
-    <Compile Include="Randomizers\Abilities\BestOfFourAbilitiesRandomizerTests.cs" />
-    <Compile Include="Randomizers\Abilities\AverageAbilitiesRandomizerTests.cs" />
+    <Compile Include="Creatures\CreatureGeneratorTests.cs" />
+    <Compile Include="Creatures\CreatureAsserter.cs" />
     <Compile Include="StressAttribute.cs" />
     <Compile Include="StressTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Verifiers\RandomizerVerifierTests.cs" />
+    <Compile Include="Verifiers\CreatureVerifierTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CreatureGen\CreatureGen.csproj">
       <Project>{83f2b67c-3eb0-4e46-aad5-bafaa2e35689}</Project>
       <Name>CharacterGen</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CreatureGen.Domain\CreatureGen.Domain.csproj">
-      <Project>{8611f130-c7bf-4ef9-be78-e2624c58861f}</Project>
-      <Name>CharacterGen.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\CreatureGen.Tests.Integration\CreatureGen.Tests.Integration.csproj">
       <Project>{a9371758-2de3-43af-857d-7140b1c0a78c}</Project>

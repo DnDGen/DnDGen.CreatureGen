@@ -1,4 +1,4 @@
-﻿using CreatureGen.Domain.Tables;
+﻿using CreatureGen.Tables;
 using CreatureGen.Feats;
 using CreatureGen.Skills;
 using NUnit.Framework;

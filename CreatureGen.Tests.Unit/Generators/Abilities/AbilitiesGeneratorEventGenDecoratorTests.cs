@@ -1,6 +1,6 @@
 ﻿using CreatureGen.Abilities;
 using CreatureGen.CharacterClasses;
-using CreatureGen.Domain.Generators.Abilities;
+using CreatureGen.Generators.Abilities;
 using CreatureGen.Creatures;
 using CreatureGen.Randomizers.Abilities;
 using EventGen;

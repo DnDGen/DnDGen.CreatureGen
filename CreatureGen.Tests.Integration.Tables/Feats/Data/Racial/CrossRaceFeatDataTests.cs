@@ -1,4 +1,4 @@
-﻿using CreatureGen.Domain.Tables;
+﻿using CreatureGen.Tables;
 using CreatureGen.Creatures;
 using DnDGen.Core.Mappers.Collections;
 using Ninject;
@@ -55,16 +55,16 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial
         {
             var metaraceSpecies = new[]
             {
-                SizeConstants.Metaraces.Species.Black,
-                SizeConstants.Metaraces.Species.Blue,
-                SizeConstants.Metaraces.Species.Brass,
-                SizeConstants.Metaraces.Species.Bronze,
-                SizeConstants.Metaraces.Species.Copper,
-                SizeConstants.Metaraces.Species.Gold,
-                SizeConstants.Metaraces.Species.Green,
-                SizeConstants.Metaraces.Species.Red,
-                SizeConstants.Metaraces.Species.Silver,
-                SizeConstants.Metaraces.Species.White,
+                CreatureConstants.Templates.Species.Black,
+                CreatureConstants.Templates.Species.Blue,
+                CreatureConstants.Templates.Species.Brass,
+                CreatureConstants.Templates.Species.Bronze,
+                CreatureConstants.Templates.Species.Copper,
+                CreatureConstants.Templates.Species.Gold,
+                CreatureConstants.Templates.Species.Green,
+                CreatureConstants.Templates.Species.Red,
+                CreatureConstants.Templates.Species.Silver,
+                CreatureConstants.Templates.Species.White,
             };
 
             foreach (var species in metaraceSpecies)

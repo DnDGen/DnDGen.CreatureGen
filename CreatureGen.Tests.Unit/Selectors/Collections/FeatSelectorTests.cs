@@ -1,5 +1,5 @@
-﻿using CreatureGen.Domain.Selectors.Collections;
-using CreatureGen.Domain.Tables;
+﻿using CreatureGen.Selectors.Collections;
+using CreatureGen.Tables;
 using DnDGen.Core.Selectors.Collections;
 using Moq;
 using NUnit.Framework;

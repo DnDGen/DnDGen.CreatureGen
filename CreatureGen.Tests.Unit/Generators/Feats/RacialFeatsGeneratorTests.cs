@@ -1,8 +1,8 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.Domain.Generators.Feats;
-using CreatureGen.Domain.Selectors.Collections;
-using CreatureGen.Domain.Selectors.Selections;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Generators.Feats;
+using CreatureGen.Selectors.Collections;
+using CreatureGen.Selectors.Selections;
+using CreatureGen.Tables;
 using CreatureGen.Creatures;
 using CreatureGen.Skills;
 using DnDGen.Core.Selectors.Collections;
@@ -311,7 +311,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.MonsterHitDice, race.BaseRace)).Returns(2);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.BaseRaceGroups, GroupConstants.Monsters)).Returns(new[] { race.BaseRace });
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.AddMonsterHitDiceToPower)).Returns(new[] { metaraceFeat.Feat });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { metaraceFeat.Feat });
 
             var feats = racialFeatsGenerator.GenerateWith(race, skills, stats);
             var onlyFeat = feats.Single();
@@ -342,7 +342,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             monsterHitDice[race.BaseRace] = 2;
             mockAdjustmentsSelector.Setup(s => s.SelectAllFrom(TableNameConstants.Set.Adjustments.MonsterHitDice)).Returns(monsterHitDice);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.BaseRaceGroups, GroupConstants.Monsters)).Returns(new[] { race.BaseRace });
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.AddMonsterHitDiceToPower)).Returns(new[] { "different feat" });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { "different feat" });
 
             var feats = racialFeatsGenerator.GenerateWith(race, skills, stats);
             var first = feats.First();
@@ -366,7 +366,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             metaraceFeats.Add(metaraceFeat);
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.BaseRaceGroups, GroupConstants.Monsters)).Returns(new[] { "monster" });
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.AddMonsterHitDiceToPower)).Returns(new[] { metaraceFeat.Feat });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { metaraceFeat.Feat });
 
             var feats = racialFeatsGenerator.GenerateWith(race, skills, stats);
             var onlyFeat = feats.Single();

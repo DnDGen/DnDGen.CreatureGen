@@ -141,11 +141,11 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
             Assert.That(character.ChallengeRating, Is.EqualTo(90210));
         }
 
-        [TestCase(SizeConstants.BaseRaces.Drow)]
-        [TestCase(SizeConstants.BaseRaces.DuergarDwarf)]
-        [TestCase(SizeConstants.BaseRaces.Githyanki)]
-        [TestCase(SizeConstants.BaseRaces.Githzerai)]
-        [TestCase(SizeConstants.BaseRaces.Svirfneblin)]
+        [TestCase(CreatureConstants.Drow)]
+        [TestCase(CreatureConstants.Duergar)]
+        [TestCase(CreatureConstants.Githyanki)]
+        [TestCase(CreatureConstants.Githzerai)]
+        [TestCase(CreatureConstants.Svirfneblin)]
         public void SpecialNPCChallengeRatingIsClassLevel(string baseRace)
         {
             character.Class.Level = 9266;
@@ -155,11 +155,11 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
             Assert.That(character.ChallengeRating, Is.EqualTo(9266));
         }
 
-        [TestCase(SizeConstants.BaseRaces.Drow)]
-        [TestCase(SizeConstants.BaseRaces.DuergarDwarf)]
-        [TestCase(SizeConstants.BaseRaces.Githyanki)]
-        [TestCase(SizeConstants.BaseRaces.Githzerai)]
-        [TestCase(SizeConstants.BaseRaces.Svirfneblin)]
+        [TestCase(CreatureConstants.Drow)]
+        [TestCase(CreatureConstants.Duergar)]
+        [TestCase(CreatureConstants.Githyanki)]
+        [TestCase(CreatureConstants.Githzerai)]
+        [TestCase(CreatureConstants.Svirfneblin)]
         public void SpecialCharacterChallengeRatingIsClassLevelPlus1(string baseRace)
         {
             character.Class.Level = 9266;
@@ -169,11 +169,11 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
             Assert.That(character.ChallengeRating, Is.EqualTo(9267));
         }
 
-        [TestCase(SizeConstants.BaseRaces.Drow)]
-        [TestCase(SizeConstants.BaseRaces.DuergarDwarf)]
-        [TestCase(SizeConstants.BaseRaces.Githyanki)]
-        [TestCase(SizeConstants.BaseRaces.Githzerai)]
-        [TestCase(SizeConstants.BaseRaces.Svirfneblin)]
+        [TestCase(CreatureConstants.Drow)]
+        [TestCase(CreatureConstants.Duergar)]
+        [TestCase(CreatureConstants.Githyanki)]
+        [TestCase(CreatureConstants.Githzerai)]
+        [TestCase(CreatureConstants.Svirfneblin)]
         public void SpecialNPCChallengeRatingTakesRacialChallengeRatingIntoAccount(string baseRace)
         {
             character.Class.Level = 9266;
@@ -185,11 +185,11 @@ namespace CreatureGen.Tests.Unit.Generators.Characters
             Assert.That(character.ChallengeRating, Is.EqualTo(9266 + 90210));
         }
 
-        [TestCase(SizeConstants.BaseRaces.Drow)]
-        [TestCase(SizeConstants.BaseRaces.DuergarDwarf)]
-        [TestCase(SizeConstants.BaseRaces.Githyanki)]
-        [TestCase(SizeConstants.BaseRaces.Githzerai)]
-        [TestCase(SizeConstants.BaseRaces.Svirfneblin)]
+        [TestCase(CreatureConstants.Drow)]
+        [TestCase(CreatureConstants.Duergar)]
+        [TestCase(CreatureConstants.Githyanki)]
+        [TestCase(CreatureConstants.Githzerai)]
+        [TestCase(CreatureConstants.Svirfneblin)]
         public void SpecialCharacterChallengeRatingTakesRacialChallengeRatingIntoAccount(string baseRace)
         {
             character.Class.Level = 9266;

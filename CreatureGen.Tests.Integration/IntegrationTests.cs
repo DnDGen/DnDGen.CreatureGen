@@ -1,4 +1,4 @@
-﻿using CreatureGen.Domain.IoC;
+﻿using CreatureGen.IoC;
 using DnDGen.Core.IoC;
 using EventGen.IoC;
 using Ninject;

@@ -1,7 +1,6 @@
-﻿using CreatureGen.CharacterClasses;
-using CreatureGen.Domain.Tables;
-using CreatureGen.Feats;
+﻿using CreatureGen.Feats;
 using CreatureGen.Skills;
+using CreatureGen.Tables;
 using NUnit.Framework;
 using System.Linq;
 using TreasureGen.Items;
@@ -33,23 +32,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
                 FeatConstants.Foci.WeaponsWithUnarmed,
                 FeatConstants.Foci.WeaponsWithUnarmedAndGrapple,
                 FeatConstants.Foci.WeaponsWithUnarmedAndGrappleAndRay,
-                GroupConstants.FavoredEnemies,
-                GroupConstants.SchoolsOfMagic,
                 GroupConstants.Skills,
             };
 
             AssertCollectionNames(names);
         }
 
-        [TestCase(GroupConstants.SchoolsOfMagic,
-            CharacterClassConstants.Schools.Abjuration,
-            CharacterClassConstants.Schools.Conjuration,
-            CharacterClassConstants.Schools.Divination,
-            CharacterClassConstants.Schools.Enchantment,
-            CharacterClassConstants.Schools.Evocation,
-            CharacterClassConstants.Schools.Illusion,
-            CharacterClassConstants.Schools.Necromancy,
-            CharacterClassConstants.Schools.Transmutation)]
         [TestCase(FeatConstants.SimpleWeaponProficiency,
             WeaponConstants.Gauntlet,
             FeatConstants.Foci.UnarmedStrike,
@@ -121,18 +109,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             WeaponConstants.LightRepeatingCrossbow,
             WeaponConstants.Shuriken,
             WeaponConstants.Net)]
-        [TestCase(FeatConstants.CombatStyle,
-            FeatConstants.TwoWeaponFighting,
-            FeatConstants.Foci.Archery)]
-        [TestCase(FeatConstants.MonkBonusFeat + "1",
-            FeatConstants.StunningFist,
-            FeatConstants.ImprovedGrapple)]
-        [TestCase(FeatConstants.MonkBonusFeat + "2",
-            FeatConstants.CombatReflexes,
-            FeatConstants.DeflectArrows)]
-        [TestCase(FeatConstants.MonkBonusFeat + "6",
-            FeatConstants.ImprovedDisarm,
-            FeatConstants.ImprovedTrip)]
         [TestCase(FeatConstants.GhostSpecialAttack,
             FeatConstants.CorruptingGaze,
             FeatConstants.CorruptingTouch,
@@ -144,48 +120,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         public void FeatFoci(string feat, params string[] foci)
         {
             base.DistinctCollection(feat, foci);
-        }
-
-        [Test]
-        public void FavoredEnemyFoci()
-        {
-            var foci = new[]
-            {
-                "Aberration",
-                "Animal",
-                "Construct",
-                "Dragon",
-                "Elemental",
-                "Fey",
-                "Giant",
-                "Humanoid (aquatic)",
-                "Humanoid (dwarf)",
-                "Humanoid (elf)",
-                "Humanoid (goblinoid)",
-                "Humanoid (gnoll)",
-                "Humanoid (gnome)",
-                "Humanoid (halfling)",
-                "Humanoid (human)",
-                "Humanoid (orc)",
-                "Humanoid (reptilian)",
-                "Magical beast",
-                "Monstrous humanoid",
-                "Ooze",
-                "Outsider (air)",
-                "Outsider (chaotic)",
-                "Outsider (earth)",
-                "Outsider (evil)",
-                "Outsider (fire)",
-                "Outsider (good)",
-                "Outsider (lawful)",
-                "Outsider (native)",
-                "Outsider (water)",
-                "Plant",
-                "Undead",
-                "Vermin"
-            };
-
-            base.DistinctCollection(GroupConstants.FavoredEnemies, foci);
         }
 
         [Test]

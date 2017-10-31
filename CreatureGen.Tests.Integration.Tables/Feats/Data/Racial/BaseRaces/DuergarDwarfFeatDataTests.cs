@@ -1,4 +1,4 @@
-﻿using CreatureGen.Domain.Tables;
+﻿using CreatureGen.Tables;
 using CreatureGen.Feats;
 using CreatureGen.Magics;
 using CreatureGen.Creatures;
@@ -13,7 +13,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.BaseRaces
     {
         protected override string tableName
         {
-            get { return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, SizeConstants.BaseRaces.DuergarDwarf); }
+            get { return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, CreatureConstants.Duergar); }
         }
 
         [Test]
@@ -28,8 +28,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.BaseRaces
                 FeatConstants.ImmuneToEffect + "Phantasms",
                 FeatConstants.ImmuneToEffect + "Poison",
                 FeatConstants.SaveBonus + "Spell",
-                FeatConstants.AttackBonus + SizeConstants.BaseRaces.Orc,
-                FeatConstants.AttackBonus + SizeConstants.BaseRaces.Goblin,
+                FeatConstants.AttackBonus + CreatureConstants.Orc,
+                FeatConstants.AttackBonus + CreatureConstants.Goblin,
                 FeatConstants.DodgeBonus,
                 FeatConstants.SkillBonus + SkillConstants.Appraise,
                 FeatConstants.SpellLikeAbility + SpellConstants.EnlargePerson,
@@ -79,7 +79,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.BaseRaces
             "",
             1,
             0, 0)]
-        [TestCase(FeatConstants.AttackBonus + SizeConstants.BaseRaces.Goblin,
+        [TestCase(FeatConstants.AttackBonus + CreatureConstants.Goblin,
             FeatConstants.AttackBonus,
             "Goblinoids",
             0,
@@ -88,7 +88,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.BaseRaces
             "",
             1,
             0, 0)]
-        [TestCase(FeatConstants.AttackBonus + SizeConstants.BaseRaces.Orc,
+        [TestCase(FeatConstants.AttackBonus + CreatureConstants.Orc,
             FeatConstants.AttackBonus,
             "Orcs",
             0,

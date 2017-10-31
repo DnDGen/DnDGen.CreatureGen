@@ -1,7 +1,7 @@
 ﻿using CreatureGen.Combats;
-using CreatureGen.Domain.Generators.Combats;
-using CreatureGen.Domain.Selectors.Collections;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Generators.Defenses;
+using CreatureGen.Selectors.Collections;
+using CreatureGen.Tables;
 using CreatureGen.Feats;
 using CreatureGen.Items;
 using CreatureGen.Creatures;

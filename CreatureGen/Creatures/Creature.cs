@@ -15,7 +15,7 @@ namespace CreatureGen.Creatures
         public string Template { get; set; }
         public string Size { get; set; }
         public CreatureType Type { get; set; }
-        public int HitPoints { get; set; }
+        public HitPoints HitPoints { get; set; }
         public int InitiativeBonus { get; set; }
         public Measurement LandSpeed { get; set; }
         public Measurement AerialSpeed { get; set; }
@@ -30,13 +30,22 @@ namespace CreatureGen.Creatures
         public Measurement Space { get; set; }
         public Measurement Reach { get; set; }
         public IEnumerable<Attack> SpecialAttacks { get; set; }
-        public IEnumerable<string> SpecialQualities { get; set; }
+        public IEnumerable<Feat> SpecialQualities { get; set; }
         public Saves Saves { get; set; }
         public Dictionary<string, Ability> Abilities { get; set; }
         public IEnumerable<Skill> Skills { get; set; }
         public IEnumerable<Feat> Feats { get; set; }
         public string ChallengeRating { get; set; }
         public Alignment Alignment { get; set; }
+        public int LevelAdjustment { get; set; }
+
+        public IEnumerable<Attack> Attacks
+        {
+            get
+            {
+                return FullMeleeAttack.Union(FullRangedAttack).Union(SpecialAttacks);
+            }
+        }
 
         public string Summary
         {
@@ -62,7 +71,7 @@ namespace CreatureGen.Creatures
             Skills = Enumerable.Empty<Skill>();
             Space = new Measurement("feet");
             SpecialAttacks = Enumerable.Empty<Attack>();
-            SpecialQualities = Enumerable.Empty<string>();
+            SpecialQualities = Enumerable.Empty<Feat>();
             SwimSpeed = new Measurement("feet per round");
             Type = new CreatureType();
         }

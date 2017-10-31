@@ -10,16 +10,15 @@ namespace CreatureGen.Defenses
         public int RacialFortitudeBonus { get; set; }
         public int RacialReflexBonus { get; set; }
         public int RacialWillBonus { get; set; }
+        public int FeatFortitudeBonus { get; set; }
+        public int FeatReflexBonus { get; set; }
+        public int FeatWillBonus { get; set; }
 
         public int Fortitude
         {
             get
             {
-                var bonus = RacialFortitudeBonus;
-                if (Constitution != null)
-                    bonus += Constitution.Bonus;
-
-                return bonus;
+                return ComputeTotal(Constitution, RacialFortitudeBonus, FeatFortitudeBonus);
             }
         }
 
@@ -27,23 +26,27 @@ namespace CreatureGen.Defenses
         {
             get
             {
-                var bonus = RacialReflexBonus;
-                if (Dexterity != null)
-                    bonus += Dexterity.Bonus;
-
-                return bonus;
+                return ComputeTotal(Dexterity, RacialReflexBonus, FeatReflexBonus);
             }
+        }
+
+        private int ComputeTotal(Ability ability, int racialBonus, int featBonus)
+        {
+            var bonus = 0;
+            bonus += racialBonus;
+            bonus += featBonus;
+
+            if (ability != null)
+                bonus += ability.Bonus;
+
+            return bonus;
         }
 
         public int Will
         {
             get
             {
-                var bonus = RacialWillBonus;
-                if (Wisdom != null)
-                    bonus += Wisdom.Bonus;
-
-                return bonus;
+                return ComputeTotal(Wisdom, RacialWillBonus, FeatWillBonus);
             }
         }
     }

@@ -42,6 +42,22 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DnDGen.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.Core.3.1.1\lib\DnDGen.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EventGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EventGen.2.0.1\lib\EventGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.3.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.3\lib\net45\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RollGen, Version=12.1.6474.27172, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.RollGen.13.4.2\lib\RollGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,11 +75,56 @@
     <Compile Include="Creatures\CreatureConstants.cs" />
     <Compile Include="Creatures\CreatureType.cs" />
     <Compile Include="Defenses\ArmorClass.cs" />
+    <Compile Include="Defenses\HitPoints.cs" />
+    <Compile Include="Defenses\SaveConstants.cs" />
     <Compile Include="Defenses\Saves.cs" />
     <Compile Include="Feats\Feat.cs" />
     <Compile Include="Feats\FeatConstants.cs" />
-    <Compile Include="Feats\FeatCollections.cs" />
     <Compile Include="Feats\Frequency.cs" />
+    <Compile Include="Generators\Abilities\AbilitiesGenerator.cs" />
+    <Compile Include="Generators\Abilities\AbilitiesGeneratorEventGenDecorator.cs" />
+    <Compile Include="Generators\Abilities\IAbilitiesGenerator.cs" />
+    <Compile Include="Generators\Alignments\AlignmentGenerator.cs" />
+    <Compile Include="Generators\Alignments\AlignmentGeneratorEventGenDecorator.cs" />
+    <Compile Include="Generators\Alignments\IAlignmentGenerator.cs" />
+    <Compile Include="Generators\Creatures\CreatureGenerator.cs" />
+    <Compile Include="Generators\Creatures\CreatureGeneratorEventDecorator.cs" />
+    <Compile Include="Generators\Defenses\ArmorClassGenerator.cs" />
+    <Compile Include="Generators\Defenses\HitPointsGenerator.cs" />
+    <Compile Include="Generators\Defenses\IArmorClassGenerator.cs" />
+    <Compile Include="Generators\Defenses\IHitPointsGenerator.cs" />
+    <Compile Include="Generators\Defenses\ISavesGenerator.cs" />
+    <Compile Include="Generators\Defenses\SavesGenerator.cs" />
+    <Compile Include="Generators\Feats\FeatFocusGenerator.cs" />
+    <Compile Include="Generators\Feats\FeatFocusGeneratorEventDecorator.cs" />
+    <Compile Include="Generators\Feats\FeatsGenerator.cs" />
+    <Compile Include="Generators\Feats\FeatsGeneratorEventDecorator.cs" />
+    <Compile Include="Generators\Feats\IFeatFocusGenerator.cs" />
+    <Compile Include="Generators\Feats\IFeatsGenerator.cs" />
+    <Compile Include="Generators\Skills\ISkillsGenerator.cs" />
+    <Compile Include="Generators\Skills\SkillsGenerator.cs" />
+    <Compile Include="Generators\Skills\SkillsGeneratorEventGenDecorator.cs" />
+    <Compile Include="Generators\Verifiers\CreatureVerifier.cs" />
+    <Compile Include="IoC\CharacterGenModuleLoader.cs" />
+    <Compile Include="IoC\Modules\GeneratorsModule.cs" />
+    <Compile Include="IoC\Modules\SelectorsModule.cs" />
+    <Compile Include="Selectors\Collections\AdjustmentsSelector.cs" />
+    <Compile Include="Selectors\Collections\FeatsSelector.cs" />
+    <Compile Include="Selectors\Collections\IAdjustmentsSelector.cs" />
+    <Compile Include="Selectors\Collections\IAttackSelector.cs" />
+    <Compile Include="Selectors\Collections\ICreatureDataSelector.cs" />
+    <Compile Include="Selectors\Collections\IFeatsSelector.cs" />
+    <Compile Include="Selectors\Collections\ISkillSelector.cs" />
+    <Compile Include="Selectors\Collections\ITypeAndAmountSelector.cs" />
+    <Compile Include="Selectors\Collections\SkillSelector.cs" />
+    <Compile Include="Selectors\Selections\AttackSelection.cs" />
+    <Compile Include="Selectors\Selections\CreatureDataSelection.cs" />
+    <Compile Include="Selectors\Selections\FeatSelection.cs" />
+    <Compile Include="Selectors\Selections\RequiredFeatSelection.cs" />
+    <Compile Include="Selectors\Selections\RequiredSkillSelection.cs" />
+    <Compile Include="Selectors\Selections\SkillSelection.cs" />
+    <Compile Include="Selectors\Selections\SpecialQualitySelection.cs" />
+    <Compile Include="Selectors\Selections\TypeAndAmountSelection.cs" />
     <Compile Include="Skills\Skill.cs" />
     <Compile Include="Abilities\Ability.cs" />
     <Compile Include="Abilities\AbilityConstants.cs" />
@@ -75,12 +136,1059 @@
     <Compile Include="Creatures\SizeConstants.cs" />
     <Compile Include="Skills\SkillConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Verifiers\Exceptions\IncompatibleRandomizersException.cs" />
-    <Compile Include="Verifiers\IRandomizerVerifier.cs" />
+    <Compile Include="Tables\DataIndexConstants.cs" />
+    <Compile Include="Tables\GroupConstants.cs" />
+    <Compile Include="Tables\TableNameConstants.cs" />
+    <Compile Include="Verifiers\Exceptions\IncompatibleCreatureAndTemplateException.cs" />
+    <Compile Include="Verifiers\ICreatureVerifier.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\AbilityGroups.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\AbilityPriorities.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Ages\AdulthoodAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Ages\Middle AgeAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Ages\OldAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Ages\VenerableAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\IncreaseFirstPriorityAbility.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\AasimarAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\AbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Aquatic ElfAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\AzerAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Blue SlaadAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\BugbearAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\CentaurAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Cloud GiantAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Death SlaadAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Deep DwarfAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Deep HalflingAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\DerroAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\DoppelgangerAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\DrowAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Duergar DwarfAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Fire GiantAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Forest GnomeAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Frost GiantAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\GargoyleAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\GhostAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\GithyankiAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\GithzeraiAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\GnollAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\GoblinAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Gray ElfAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Gray SlaadAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Green SlaadAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\GrimlockAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Half-CelestialAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Half-DragonAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Half-ElfAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Half-FiendAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Half-OrcAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\HarpyAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\High ElfAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Hill DwarfAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Hill GiantAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\HobgoblinAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Hound ArchonAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\HumanAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\JanniAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\KapoacinthAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\KoboldAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Kuo-toaAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\LichAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Lightfoot HalflingAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\LizardfolkAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\LocathahAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\MerfolkAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\MerrowAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Mind FlayerAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\MinotaurAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Mountain DwarfAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\MummyAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Ogre MageAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\OgreAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\OrcAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\PixieAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\RakshasaAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Red SlaadAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Rock GnomeAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\SahuaginAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\SatyrAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\ScorpionfolkAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\ScragAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Stone GiantAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Storm GiantAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\SvirfneblinAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Tallfellow HalflingAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\TieflingAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\TroglodyteAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\TrollAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\VampireAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\WerebearAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\WereboarAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\WereratAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\WeretigerAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\WerewolfAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Wild ElfAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Wood ElfAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Yuan-ti AbominationAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Yuan-ti HalfbloodAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\Races\Yuan-ti PurebloodAbilityAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Alignments\AlignmentGoodness.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Alignments\AlignmentGroups.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Alignments\AlignmentLawfulness.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Defenses\ArmorClassModifiers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Defenses\ClassHitDice.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Defenses\MonsterHitDice.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Attacks\RacialBaseAttackAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Attacks\SizeModifiers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Additional\AdditionalFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\AdeptFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\AristocratFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\BarbarianFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\BardFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\ClericFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\CommonerFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\DruidFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\ExpertFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\FighterFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\MonkFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\PaladinFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\RangerFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\RogueFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\SorcererFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\WarriorFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Classes\WizardFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\AirFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\AnimalFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\ChaosFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\DeathFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\DestructionFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\EarthFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\EvilFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\FireFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\GoodFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\HealingFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\KnowledgeFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\LawFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\LuckFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\MagicFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\PlantFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\ProtectionFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\StrengthFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\SunFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\TravelFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\TrickeryFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\WarFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Domains\WaterFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Schools\AbjurationFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Schools\ConjurationFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Schools\DivinationFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Schools\EnchantmentFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Schools\EvocationFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Schools\IllusionFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Schools\NecromancyFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\CharacterClasses\Schools\TransmutationFeatData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\AasimarFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Aquatic ElfFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\AzerFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Blue SlaadFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\BugbearFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\CentaurFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Cloud GiantFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Death SlaadFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Deep DwarfFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Deep HalflingFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\DerroFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\DoppelgangerFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\DrowFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Duergar DwarfFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Fire GiantFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Forest GnomeFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Frost GiantFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\GargoyleFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\GithyankiFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\GithzeraiFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\GnollFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\GoblinFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Gray ElfFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Gray SlaadFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Green SlaadFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\GrimlockFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Half-ElfFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Half-OrcFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\HarpyFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\High ElfFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Hill DwarfFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Hill GiantFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\HobgoblinFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Hound ArchonFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\HumanFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\JanniFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\KapoacinthFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\KoboldFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Kuo-toaFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Lightfoot HalflingFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\LizardfolkFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\LocathahFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\MerfolkFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\MerrowFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Mind FlayerFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\MinotaurFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Mountain DwarfFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Ogre MageFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\OgreFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\OrcFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\PixieFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\RakshasaFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Red SlaadFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Rock GnomeFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\SahuaginFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\SatyrFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\ScorpionfolkFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\ScragFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Stone GiantFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Storm GiantFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\SvirfneblinFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Tallfellow HalflingFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\TieflingFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\TroglodyteFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\TrollFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Wild ElfFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Wood ElfFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Yuan-ti AbominationFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Yuan-ti HalfbloodFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\BaseRaces\Yuan-ti PurebloodFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\FeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\GhostFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Half-CelestialFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Half-DragonFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Half-FiendFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\LichFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\MummyFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Species\BlackFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Species\BlueFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Species\BrassFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Species\BronzeFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Species\CopperFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Species\GoldFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Species\GreenFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Species\RedFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Species\SilverFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\Species\WhiteFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\VampireFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\WerebearFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\WereboarFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\WereratFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\WeretigerFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\Racial\Metaraces\WerewolfFeatData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\FeatFoci.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\FeatGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\RequiredFeats.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Combat ExpertiseAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Deflect ArrowsAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\DodgeAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Greater Two-Weapon FightingAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Improved GrappleAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Improved Precise ShotAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Improved Two-Weapon FightingAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\ManyshotAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\MobilityAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Natural SpellAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Power AttackAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Rapid ShotAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Shot On The RunAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Snatch ArrowsAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Spell MasteryAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Spring AttackAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Stunning FistAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Two-Weapon DefenseAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Two-Weapon FightingAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Whirlwind AttackAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Combat CastingClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Crippling StrikeClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Defensive RollClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Empower SpellClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Enlarge SpellClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Eschew MaterialsClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Extend SpellClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Greater Weapon FocusClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Greater Weapon SpecializationClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Heighten SpellClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Improved CounterspellClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Improved EvasionClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Improved FamiliarClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\LeadershipClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Maximize SpellClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\OpportunistClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Quicken SpellClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Scribe ScrollClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Silent SpellClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Skill MasteryClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Slippery MindClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Spell FocusClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Spell MasteryClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Spell PenetrationClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Still SpellClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Weapon SpecializationClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Classes\Widen SpellClassRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\AcrobaticSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\AgileSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\AlertnessSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Animal AffinitySkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\AthleticSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\DeceitfulSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Deft HandsSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\DiligentSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\InvestigatorSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Magical AptitudeSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Mounted ArcherySkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Mounted CombatSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Nature SenseSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\NegotiatorSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Nimble FingersSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\PersuasiveSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Ride-By AttackSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Self-SufficientSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Spirited ChargeSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\StealthySkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\TrampleSkillRankRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Creatures\AerialManeuverability.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Creatures\AerialSpeeds.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Creatures\CreatureGroups.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Creatures\LandSpeeds.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Creatures\SwimSpeeds.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Creatures\ChallengeRatings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Creatures\LevelAdjustments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Creatures\DragonSpecies.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Skills\SkillData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Skills\SkillGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Skills\SkillSynergy.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Traits.xml" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

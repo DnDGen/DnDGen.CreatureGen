@@ -1,4 +1,4 @@
-﻿using CreatureGen.Domain.Tables;
+﻿using CreatureGen.Tables;
 using CreatureGen.Creatures;
 using NUnit.Framework;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data.Racial.Metaraces
         {
             get
             {
-                return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, SizeConstants.Metaraces.None);
+                return string.Format(TableNameConstants.Formattable.Collection.RACEFeatData, CreatureConstants.Templates.None);
             }
         }
 

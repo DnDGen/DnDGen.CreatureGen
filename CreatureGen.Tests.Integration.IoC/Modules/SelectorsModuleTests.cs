@@ -1,4 +1,4 @@
-﻿using CreatureGen.Domain.Selectors.Collections;
+﻿using CreatureGen.Selectors.Collections;
 using NUnit.Framework;
 
 namespace CreatureGen.Tests.Integration.IoC.Modules
@@ -7,21 +7,9 @@ namespace CreatureGen.Tests.Integration.IoC.Modules
     public class SelectorsModuleTests : IoCTests
     {
         [Test]
-        public void LanguageSelectorsAreNotGeneratedAsSingletons()
-        {
-            AssertNotSingleton<ILanguageCollectionsSelector>();
-        }
-
-        [Test]
-        public void LevelAdjustmentsSelectorsAreNotGeneratedAsSingletons()
+        public void AdjustmentsSelectorsAreNotGeneratedAsSingletons()
         {
             AssertNotSingleton<IAdjustmentsSelector>();
-        }
-
-        [Test]
-        public void StatAdjustmentsSelectorsAreNotGeneratedAsSingletons()
-        {
-            AssertNotSingleton<IAbilityAdjustmentsSelector>();
         }
 
         [Test]
@@ -34,18 +22,6 @@ namespace CreatureGen.Tests.Integration.IoC.Modules
         public void FeatsSelectorsAreNotGeneratedAsSingletons()
         {
             AssertNotSingleton<IFeatsSelector>();
-        }
-
-        [Test]
-        public void FeatsSelectorsIsDecorated()
-        {
-            AssertIsInstanceOf<IFeatsSelector, FeatsSelectorEventGenDecorator>();
-        }
-
-        [Test]
-        public void LeadershipSelectorsAreNotGeneratedAsSingletons()
-        {
-            AssertNotSingleton<ILeadershipSelector>();
         }
     }
 }

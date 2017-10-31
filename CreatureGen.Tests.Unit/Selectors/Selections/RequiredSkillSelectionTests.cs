@@ -1,5 +1,5 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.Domain.Selectors.Selections;
+using CreatureGen.Selectors.Selections;
 using CreatureGen.Skills;
 using NUnit.Framework;
 using System.Collections.Generic;

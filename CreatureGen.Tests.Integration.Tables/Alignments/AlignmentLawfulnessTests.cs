@@ -1,5 +1,5 @@
 ﻿using CreatureGen.Alignments;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Tables;
 using NUnit.Framework;
 
 namespace CreatureGen.Tests.Integration.Tables.Alignments

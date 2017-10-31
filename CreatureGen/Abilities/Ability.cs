@@ -1,15 +1,18 @@
-﻿namespace CreatureGen.Abilities
+﻿using System;
+
+namespace CreatureGen.Abilities
 {
     public class Ability
     {
         public string Name { get; private set; }
         public int BaseValue { get; set; }
         public int RacialAdjustment { get; set; }
+
         public int FullValue
         {
             get
             {
-                return BaseValue + RacialAdjustment;
+                return Math.Max(BaseValue + RacialAdjustment, 1);
             }
         }
 

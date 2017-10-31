@@ -1,4 +1,4 @@
-﻿using CreatureGen.Domain.Selectors.Selections;
+﻿using CreatureGen.Selectors.Selections;
 using CreatureGen.Feats;
 using NUnit.Framework;
 using System.Collections.Generic;

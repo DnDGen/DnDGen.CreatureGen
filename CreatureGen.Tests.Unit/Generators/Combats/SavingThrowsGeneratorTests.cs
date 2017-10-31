@@ -1,8 +1,8 @@
 ﻿using CreatureGen.Abilities;
 using CreatureGen.CharacterClasses;
 using CreatureGen.Combats;
-using CreatureGen.Domain.Generators.Combats;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Generators.Defenses;
+using CreatureGen.Tables;
 using CreatureGen.Feats;
 using DnDGen.Core.Selectors.Collections;
 using Moq;

@@ -1,8 +1,8 @@
 ﻿using CreatureGen.Alignments;
 using CreatureGen.CharacterClasses;
-using CreatureGen.Domain.Generators.Races;
-using CreatureGen.Domain.Selectors.Collections;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Generators.Races;
+using CreatureGen.Selectors.Collections;
+using CreatureGen.Tables;
 using CreatureGen.Creatures;
 using CreatureGen.Randomizers.Races;
 using DnDGen.Core.Selectors.Collections;
@@ -234,12 +234,12 @@ namespace CreatureGen.Tests.Unit.Generators.Races
         public void RaceGeneratorReturnsMaleForDrowWizard()
         {
             characterClass.Name = CharacterClassConstants.Wizard;
-            racePrototype.BaseRace = SizeConstants.BaseRaces.Drow;
+            racePrototype.BaseRace = CreatureConstants.Drow;
 
             mockCollectionsSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Set.Collection.ClassNameGroups, CharacterClassConstants.Wizard, CharacterClassConstants.TrainingTypes.Intuitive, CharacterClassConstants.TrainingTypes.SelfTaught, CharacterClassConstants.TrainingTypes.Trained))
                 .Returns(() => classType);
 
-            SetUpTablesForBaseRace(SizeConstants.BaseRaces.Drow);
+            SetUpTablesForBaseRace(CreatureConstants.Drow);
 
             var race = raceGenerator.GenerateWith(alignment, characterClass, racePrototype);
             Assert.That(race.IsMale, Is.True);
@@ -249,12 +249,12 @@ namespace CreatureGen.Tests.Unit.Generators.Races
         public void RaceGeneratorReturnsFemaleForDrowCleric()
         {
             characterClass.Name = CharacterClassConstants.Cleric;
-            racePrototype.BaseRace = SizeConstants.BaseRaces.Drow;
+            racePrototype.BaseRace = CreatureConstants.Drow;
 
             mockCollectionsSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Set.Collection.ClassNameGroups, CharacterClassConstants.Cleric, CharacterClassConstants.TrainingTypes.Intuitive, CharacterClassConstants.TrainingTypes.SelfTaught, CharacterClassConstants.TrainingTypes.Trained))
                 .Returns(() => classType);
 
-            SetUpTablesForBaseRace(SizeConstants.BaseRaces.Drow);
+            SetUpTablesForBaseRace(CreatureConstants.Drow);
 
             var race = raceGenerator.GenerateWith(alignment, characterClass, racePrototype);
             Assert.That(race.IsMale, Is.False);
@@ -309,9 +309,9 @@ namespace CreatureGen.Tests.Unit.Generators.Races
         [TestCase(SizeConstants.Sizes.Tiny)]
         public void BaseRaceAndHalfDragonHaveWings(string size)
         {
-            SetUpTablesForMetarace(SizeConstants.Metaraces.HalfDragon);
-            aerialSpeeds[SizeConstants.Metaraces.HalfDragon] = 2;
-            racePrototype.Metarace = SizeConstants.Metaraces.HalfDragon;
+            SetUpTablesForMetarace(CreatureConstants.Templates.HalfDragon);
+            aerialSpeeds[CreatureConstants.Templates.HalfDragon] = 2;
+            racePrototype.Metarace = CreatureConstants.Templates.HalfDragon;
 
             baseRacesWithWings.Add(BaseRace);
 
@@ -319,7 +319,7 @@ namespace CreatureGen.Tests.Unit.Generators.Races
 
             var race = raceGenerator.GenerateWith(alignment, characterClass, racePrototype);
             Assert.That(race.BaseRace, Is.EqualTo(BaseRace));
-            Assert.That(race.Metarace, Is.EqualTo(SizeConstants.Metaraces.HalfDragon));
+            Assert.That(race.Metarace, Is.EqualTo(CreatureConstants.Templates.HalfDragon));
             Assert.That(race.HasWings, Is.True);
         }
 
@@ -336,9 +336,9 @@ namespace CreatureGen.Tests.Unit.Generators.Races
         [TestCase(SizeConstants.Sizes.Large)]
         public void HalfDragonsHaveWings(string size)
         {
-            SetUpTablesForMetarace(SizeConstants.Metaraces.HalfDragon);
-            aerialSpeeds[SizeConstants.Metaraces.HalfDragon] = 2;
-            racePrototype.Metarace = SizeConstants.Metaraces.HalfDragon;
+            SetUpTablesForMetarace(CreatureConstants.Templates.HalfDragon);
+            aerialSpeeds[CreatureConstants.Templates.HalfDragon] = 2;
+            racePrototype.Metarace = CreatureConstants.Templates.HalfDragon;
 
             baseRaceSize = size;
 
@@ -351,9 +351,9 @@ namespace CreatureGen.Tests.Unit.Generators.Races
         [TestCase(SizeConstants.Sizes.Tiny)]
         public void HalfDragonsDoNotHaveWings(string size)
         {
-            SetUpTablesForMetarace(SizeConstants.Metaraces.HalfDragon);
-            aerialSpeeds[SizeConstants.Metaraces.HalfDragon] = 2;
-            racePrototype.Metarace = SizeConstants.Metaraces.HalfDragon;
+            SetUpTablesForMetarace(CreatureConstants.Templates.HalfDragon);
+            aerialSpeeds[CreatureConstants.Templates.HalfDragon] = 2;
+            racePrototype.Metarace = CreatureConstants.Templates.HalfDragon;
 
             baseRaceSize = size;
 
@@ -364,11 +364,11 @@ namespace CreatureGen.Tests.Unit.Generators.Races
         [Test]
         public void DetermineSpeciesOfHalfDragonByRandomWithinAlignment()
         {
-            SetUpTablesForMetarace(SizeConstants.Metaraces.HalfDragon);
+            SetUpTablesForMetarace(CreatureConstants.Templates.HalfDragon);
             alignment.Goodness = "goodness";
             alignment.Lawfulness = "lawfulness";
-            aerialSpeeds[SizeConstants.Metaraces.HalfDragon] = 2;
-            racePrototype.Metarace = SizeConstants.Metaraces.HalfDragon;
+            aerialSpeeds[CreatureConstants.Templates.HalfDragon] = 2;
+            racePrototype.Metarace = CreatureConstants.Templates.HalfDragon;
 
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(TableNameConstants.Set.Collection.DragonSpecies, "lawfulness goodness")).Returns("dragon species");
 
@@ -428,13 +428,13 @@ namespace CreatureGen.Tests.Unit.Generators.Races
         [Test]
         public void BaseRaceAerialSpeedIsSet()
         {
-            SetUpTablesForMetarace(SizeConstants.Metaraces.HalfDragon);
+            SetUpTablesForMetarace(CreatureConstants.Templates.HalfDragon);
 
-            aerialSpeeds[SizeConstants.Metaraces.HalfDragon] = 2;
+            aerialSpeeds[CreatureConstants.Templates.HalfDragon] = 2;
             aerialSpeeds[BaseRace] = 20;
             aerialManeuverability[BaseRace][0] = "awkward maneuverability";
 
-            racePrototype.Metarace = SizeConstants.Metaraces.HalfDragon;
+            racePrototype.Metarace = CreatureConstants.Templates.HalfDragon;
             baseRaceSize = SizeConstants.Sizes.Large;
 
             var race = raceGenerator.GenerateWith(alignment, characterClass, racePrototype);
@@ -446,12 +446,12 @@ namespace CreatureGen.Tests.Unit.Generators.Races
         [Test]
         public void MetaraceAerialSpeedIsMultiplierWithWings()
         {
-            SetUpTablesForMetarace(SizeConstants.Metaraces.HalfDragon);
-            aerialSpeeds[SizeConstants.Metaraces.HalfDragon] = 2;
+            SetUpTablesForMetarace(CreatureConstants.Templates.HalfDragon);
+            aerialSpeeds[CreatureConstants.Templates.HalfDragon] = 2;
             aerialSpeeds[BaseRace] = 0;
-            aerialManeuverability[SizeConstants.Metaraces.HalfDragon][0] = "awkward maneuverability";
+            aerialManeuverability[CreatureConstants.Templates.HalfDragon][0] = "awkward maneuverability";
 
-            racePrototype.Metarace = SizeConstants.Metaraces.HalfDragon;
+            racePrototype.Metarace = CreatureConstants.Templates.HalfDragon;
             baseRaceSize = SizeConstants.Sizes.Large;
 
             var race = raceGenerator.GenerateWith(alignment, characterClass, racePrototype);
@@ -463,11 +463,11 @@ namespace CreatureGen.Tests.Unit.Generators.Races
         [Test]
         public void MetaraceAerialSpeedIsMultiplierWithoutWings()
         {
-            SetUpTablesForMetarace(SizeConstants.Metaraces.HalfDragon);
-            aerialSpeeds[SizeConstants.Metaraces.HalfDragon] = 2;
+            SetUpTablesForMetarace(CreatureConstants.Templates.HalfDragon);
+            aerialSpeeds[CreatureConstants.Templates.HalfDragon] = 2;
             aerialSpeeds[BaseRace] = 0;
-            aerialManeuverability[SizeConstants.Metaraces.HalfDragon][0] = "awkward maneuverability";
-            racePrototype.Metarace = SizeConstants.Metaraces.HalfDragon;
+            aerialManeuverability[CreatureConstants.Templates.HalfDragon][0] = "awkward maneuverability";
+            racePrototype.Metarace = CreatureConstants.Templates.HalfDragon;
 
             var race = raceGenerator.GenerateWith(alignment, characterClass, racePrototype);
             Assert.That(race.AerialSpeed.Value, Is.EqualTo(0));
@@ -697,8 +697,8 @@ namespace CreatureGen.Tests.Unit.Generators.Races
         [Test]
         public void GetPixieMaximumAgeDescription()
         {
-            racePrototype.BaseRace = SizeConstants.BaseRaces.Pixie;
-            SetUpTablesForBaseRace(SizeConstants.BaseRaces.Pixie);
+            racePrototype.BaseRace = CreatureConstants.Pixie;
+            SetUpTablesForBaseRace(CreatureConstants.Pixie);
 
             var race = raceGenerator.GenerateWith(alignment, characterClass, racePrototype);
             Assert.That(race.MaximumAge.Value, Is.EqualTo(91600));

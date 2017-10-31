@@ -1,0 +1,15 @@
+﻿using CreatureGen.Abilities;
+using CreatureGen.Creatures;
+using CreatureGen.Defenses;
+using CreatureGen.Feats;
+using CreatureGen.Skills;
+using System.Collections.Generic;
+
+namespace CreatureGen.Generators.Feats
+{
+    internal interface IFeatsGenerator
+    {
+        IEnumerable<Feat> GenerateSpecialQualities(string creatureName, HitPoints hitPoints, string size, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills);
+        IEnumerable<Feat> GenerateFeats(Creature creature);
+    }
+}

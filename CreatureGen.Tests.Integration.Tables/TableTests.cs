@@ -13,7 +13,7 @@ namespace CreatureGen.Tests.Integration.Tables
         public void TableOneTimeSetup()
         {
             var coreLoader = new CoreModuleLoader();
-            coreLoader.ReplaceAssemblyLoaderWith<CharacterGenAssemblyLoader>(kernel);
+            coreLoader.ReplaceAssemblyLoaderWith<CreatureGenAssemblyLoader>(kernel);
         }
     }
 }

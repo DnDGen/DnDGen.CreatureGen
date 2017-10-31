@@ -1,5 +1,5 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.Domain.Tables;
+using CreatureGen.Tables;
 using CreatureGen.Skills;
 using NUnit.Framework;
 using System.Linq;
