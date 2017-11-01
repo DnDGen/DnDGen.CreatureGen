@@ -29,11 +29,11 @@ namespace CreatureGen.IoC.Modules
             Bind<ICreatureGenerator>().To<CreatureGenerator>().WhenInjectedInto<CreatureGeneratorEventDecorator>();
             Bind<ICreatureGenerator>().To<CreatureGeneratorEventDecorator>();
 
-            Bind<IAlignmentGenerator>().To<AlignmentGenerator>().WhenInjectedInto<AlignmentGeneratorEventGenDecorator>();
-            Bind<IAlignmentGenerator>().To<AlignmentGeneratorEventGenDecorator>();
+            Bind<IAlignmentGenerator>().To<AlignmentGenerator>().WhenInjectedInto<AlignmentGeneratorEventDecorator>();
+            Bind<IAlignmentGenerator>().To<AlignmentGeneratorEventDecorator>();
 
-            Bind<IAbilitiesGenerator>().To<AbilitiesGenerator>().WhenInjectedInto<AbilitiesGeneratorEventGenDecorator>();
-            Bind<IAbilitiesGenerator>().To<AbilitiesGeneratorEventGenDecorator>();
+            Bind<IAbilitiesGenerator>().To<AbilitiesGenerator>().WhenInjectedInto<AbilitiesGeneratorEventDecorator>();
+            Bind<IAbilitiesGenerator>().To<AbilitiesGeneratorEventDecorator>();
 
             Bind<ISkillsGenerator>().To<SkillsGenerator>().WhenInjectedInto<SkillsGeneratorEventGenDecorator>();
             Bind<ISkillsGenerator>().To<SkillsGeneratorEventGenDecorator>();

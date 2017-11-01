@@ -3,10 +3,8 @@ using CreatureGen.Attacks;
 using CreatureGen.Feats;
 using CreatureGen.Selectors.Selections;
 using CreatureGen.Skills;
-using CreatureGen.Tables;
 using NUnit.Framework;
 using System.Collections.Generic;
-using TreasureGen.Items;
 
 namespace CreatureGen.Tests.Unit.Selectors.Selections
 {
@@ -267,72 +265,6 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             {
                 new RequiredFeatSelection { Feat = "feat" },
                 new RequiredFeatSelection { Feat = "other required feat" }
-            };
-
-            var met = selection.MutableRequirementsMet(feats);
-            Assert.That(met, Is.True);
-        }
-
-        [Test]
-        public void WeaponProficiencyRequirementDoesNotAffectMutableRequirements()
-        {
-            selection.RequiredFeats = new[]
-            {
-                new RequiredFeatSelection { Feat = ItemTypeConstants.Weapon + GroupConstants.Proficiency }
-            };
-
-            var met = selection.MutableRequirementsMet(feats);
-            Assert.That(met, Is.True);
-        }
-
-        [Test]
-        public void WithWeaponProficiencyRequirement_OtherRequirementsNotIgnored()
-        {
-            selection.RequiredFeats = new[]
-            {
-                new RequiredFeatSelection { Feat = ItemTypeConstants.Weapon + GroupConstants.Proficiency },
-                new RequiredFeatSelection { Feat = "feat" }
-            };
-
-            var met = selection.MutableRequirementsMet(feats);
-            Assert.That(met, Is.False);
-        }
-
-        [Test]
-        public void WithWeaponProficiencyRequirement_OtherRequirementsAreHonored()
-        {
-            feats.Add(new Feat());
-            feats[0].Name = "feat";
-            selection.RequiredFeats = new[]
-            {
-                new RequiredFeatSelection { Feat = ItemTypeConstants.Weapon + GroupConstants.Proficiency },
-                new RequiredFeatSelection { Feat = "feat" }
-            };
-
-            var met = selection.MutableRequirementsMet(feats);
-            Assert.That(met, Is.True);
-        }
-
-        [Test]
-        public void ShieldProficiencyIsNotIngoredForMutableRequirements()
-        {
-            selection.RequiredFeats = new[]
-            {
-                new RequiredFeatSelection { Feat = FeatConstants.ShieldProficiency }
-            };
-
-            var met = selection.MutableRequirementsMet(feats);
-            Assert.That(met, Is.False);
-        }
-
-        [Test]
-        public void ShieldProficiencyIsHonoredForMutableRequirements()
-        {
-            feats.Add(new Feat());
-            feats[0].Name = FeatConstants.ShieldProficiency;
-            selection.RequiredFeats = new[]
-            {
-                new RequiredFeatSelection { Feat = FeatConstants.ShieldProficiency }
             };
 
             var met = selection.MutableRequirementsMet(feats);

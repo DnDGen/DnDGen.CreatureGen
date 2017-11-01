@@ -32,12 +32,14 @@ namespace CreatureGen.Creatures
             public const string Lich = "Lich";
             public const string Mummy = "Mummy";
             public const string None = "";
+            public const string Skeleton = "Skeleton";
             public const string Vampire = "Vampire";
             public const string Werebear = "Werebear";
             public const string Wereboar = "Wereboar";
             public const string Weretiger = "Weretiger";
             public const string Wererat = "Wererat";
             public const string Werewolf = "Werewolf";
+            public const string Zombie = "Zombie";
 
             public static IEnumerable<string> All()
             {
@@ -50,12 +52,14 @@ namespace CreatureGen.Creatures
                     Lich,
                     Mummy,
                     None,
+                    Skeleton,
                     Vampire,
                     Werebear,
                     Wereboar,
                     Weretiger,
                     Wererat,
                     Werewolf,
+                    Zombie,
                 };
             }
 
@@ -344,7 +348,7 @@ namespace CreatureGen.Creatures
         public const string Dragonne = "Dragonne";
         public const string Dretch = "Dretch";
         public const string Drider = "Drider";
-        public const string Drow = "Drow";
+        public const string Elf_Drow = "Drow";
         public const string Dryad = "Dryad";
         public const string Duergar = "Duergar";
         public const string Dwarf = "Dwarf";
@@ -645,16 +649,6 @@ namespace CreatureGen.Creatures
         public const string ShieldGuardian = "Shield guardian";
         public const string ShockerLizard = "Shocker lizard";
         public const string Shrieker = "Shrieker";
-        public const string Skeleton = "Skeleton";
-        public const string Skeleton_Chimera = "Skeleton$Chimera$";
-        public const string Skeleton_Dragon_Red_YoungAdult = "Skeleton$Red dragon$Young adult$$";
-        public const string Skeleton_Ettin = "Skeleton$Ettin$";
-        public const string Skeleton_Giant_Cloud = "Skeleton$Cloud giant$";
-        public const string Skeleton_Human = "Skeleton$Human$";
-        public const string Skeleton_Megaraptor = "Skeleton$Megaraptor$";
-        public const string Skeleton_Owlbear = "Skeleton$Owlbear$";
-        public const string Skeleton_Troll = "Skeleton$Troll$";
-        public const string Skeleton_Wolf = "Skeleton$Wolf$";
         public const string Skum = "Skum";
         public const string Slaad = "Slaad";
         public const string Slaad_Blue = "Slaad$Blue$";
@@ -753,15 +747,6 @@ namespace CreatureGen.Creatures
         public const string YuanTi_Abomination = "Yuan-ti$Abomination$";
         public const string YuanTi_Halfblood = "Yuan-ti$Halfblood$";
         public const string YuanTi_Pureblood = "Yuan-ti$Pureblood$";
-        public const string Zombie = "Zombie";
-        public const string Zombie_Kobold = "Zombie$Kobold$";
-        public const string Zombie_Human = "Zombie$Human$";
-        public const string Zombie_Troglodyte = "Zombie$Troglodyte$";
-        public const string Zombie_Bugbear = "Zombie$Bugbear$";
-        public const string Zombie_Ogre = "Zombie$Ogre$";
-        public const string Zombie_Minotaur = "Zombie$Minotaur$";
-        public const string Zombie_Wyvern = "Zombie$Wyvern$";
-        public const string Zombie_GrayRender = "Zombie$Gray render$";
 
         public static IEnumerable<string> All()
         {

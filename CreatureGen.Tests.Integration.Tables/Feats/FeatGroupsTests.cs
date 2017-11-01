@@ -1,8 +1,7 @@
-﻿using CreatureGen.Combats;
-using CreatureGen.Tables;
+﻿using CreatureGen.Defenses;
 using CreatureGen.Feats;
+using CreatureGen.Tables;
 using NUnit.Framework;
-using TreasureGen.Items;
 
 namespace CreatureGen.Tests.Integration.Tables.Feats
 {
@@ -19,24 +18,17 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         {
             var names = new[]
             {
-                AttributeConstants.Shield + GroupConstants.Proficiency,
                 FeatConstants.AttackBonus,
                 FeatConstants.SkillBonus,
                 GroupConstants.AddHitDiceToPower,
-                GroupConstants.FighterBonusFeats,
                 GroupConstants.HasAbilityRequirements,
-                GroupConstants.HasClassRequirements,
                 GroupConstants.HasSkillRequirements,
                 GroupConstants.Initiative,
                 GroupConstants.SavingThrows,
                 GroupConstants.TakenMultipleTimes,
-                GroupConstants.TwoHanded,
-                GroupConstants.WizardBonusFeats,
-                ItemTypeConstants.Weapon + GroupConstants.Proficiency,
-                ItemTypeConstants.Armor + GroupConstants.Proficiency,
-                SavingThrowConstants.Fortitude,
-                SavingThrowConstants.Reflex,
-                SavingThrowConstants.Will,
+                SaveConstants.Fortitude,
+                SaveConstants.Reflex,
+                SaveConstants.Will,
             };
 
             AssertCollectionNames(names);
@@ -117,142 +109,19 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.SkillFocus,
             FeatConstants.Stealthy,
             FeatConstants.NatureSense)]
-        [TestCase(GroupConstants.WizardBonusFeats,
-            FeatConstants.SpellMastery,
-            FeatConstants.ScribeScroll,
-            FeatConstants.EmpowerSpell,
-            FeatConstants.EnlargeSpell,
-            FeatConstants.ExtendSpell,
-            FeatConstants.HeightenSpell,
-            FeatConstants.MaximizeSpell,
-            FeatConstants.QuickenSpell,
-            FeatConstants.SilentSpell,
-            FeatConstants.StillSpell,
-            FeatConstants.WidenSpell)]
-        [TestCase(ItemTypeConstants.Weapon + GroupConstants.Proficiency,
-            FeatConstants.ExoticWeaponProficiency,
-            FeatConstants.MartialWeaponProficiency,
-            FeatConstants.SimpleWeaponProficiency)]
-        [TestCase(ItemTypeConstants.Armor + GroupConstants.Proficiency,
-            FeatConstants.HeavyArmorProficiency,
-            FeatConstants.LightArmorProficiency,
-            FeatConstants.MediumArmorProficiency)]
-        [TestCase(GroupConstants.TwoHanded,
-            FeatConstants.TwoWeaponDefense,
-            FeatConstants.TwoWeaponFighting,
-            FeatConstants.GreaterTwoWeaponFighting,
-            FeatConstants.ImprovedTwoWeaponFighting)]
-        [TestCase(SavingThrowConstants.Fortitude,
+        [TestCase(SaveConstants.Fortitude,
             FeatConstants.GreatFortitude)]
-        [TestCase(SavingThrowConstants.Reflex,
+        [TestCase(SaveConstants.Reflex,
             FeatConstants.LightningReflexes)]
-        [TestCase(SavingThrowConstants.Will,
+        [TestCase(SaveConstants.Will,
             FeatConstants.IronWill)]
         [TestCase(GroupConstants.SavingThrows,
             FeatConstants.SaveBonus)]
         [TestCase(GroupConstants.Initiative,
             FeatConstants.ImprovedInitiative)]
-        [TestCase(AttributeConstants.Shield + GroupConstants.Proficiency,
-            FeatConstants.ShieldProficiency,
-            FeatConstants.TowerShieldProficiency)]
-        public override void DistinctCollection(string name, params string[] collection)
+        public void FeatGroup(string name, params string[] collection)
         {
-            base.DistinctCollection(name, collection);
-        }
-
-        [Test]
-        public void FeatsWithClassRequirements()
-        {
-            var featNames = new[]
-            {
-                FeatConstants.CombatCasting,
-                FeatConstants.CripplingStrike,
-                FeatConstants.DefensiveRoll,
-                FeatConstants.GreaterWeaponFocus,
-                FeatConstants.GreaterWeaponSpecialization,
-                FeatConstants.ImprovedEvasion,
-                FeatConstants.ImprovedFamiliar,
-                FeatConstants.Leadership,
-                FeatConstants.Opportunist,
-                FeatConstants.SkillMastery,
-                FeatConstants.SlipperyMind,
-                FeatConstants.SpellMastery,
-                FeatConstants.WeaponSpecialization,
-                FeatConstants.EmpowerSpell,
-                FeatConstants.EnlargeSpell,
-                FeatConstants.EschewMaterials,
-                FeatConstants.ExtendSpell,
-                FeatConstants.HeightenSpell,
-                FeatConstants.ImprovedCounterspell,
-                FeatConstants.MaximizeSpell,
-                FeatConstants.QuickenSpell,
-                FeatConstants.ScribeScroll,
-                FeatConstants.SilentSpell,
-                FeatConstants.SpellFocus,
-                FeatConstants.StillSpell,
-                FeatConstants.WidenSpell,
-                FeatConstants.SpellPenetration
-            };
-
-            base.DistinctCollection(GroupConstants.HasClassRequirements, featNames);
-        }
-
-        [Test]
-        public void FighterBonusFeats()
-        {
-            var featNames = new[]
-            {
-                FeatConstants.BlindFight,
-                FeatConstants.CombatExpertise,
-                FeatConstants.ImprovedDisarm,
-                FeatConstants.ImprovedFeint,
-                FeatConstants.ImprovedTrip,
-                FeatConstants.WhirlwindAttack,
-                FeatConstants.CombatReflexes,
-                FeatConstants.Dodge,
-                FeatConstants.Mobility,
-                FeatConstants.SpringAttack,
-                FeatConstants.ExoticWeaponProficiency,
-                FeatConstants.ImprovedCritical,
-                FeatConstants.ImprovedInitiative,
-                FeatConstants.ImprovedShieldBash,
-                FeatConstants.ImprovedUnarmedStrike,
-                FeatConstants.DeflectArrows,
-                FeatConstants.ImprovedGrapple,
-                FeatConstants.SnatchArrows,
-                FeatConstants.StunningFist,
-                FeatConstants.MountedCombat,
-                FeatConstants.MountedArchery,
-                FeatConstants.RideByAttack,
-                FeatConstants.SpiritedCharge,
-                FeatConstants.Trample,
-                FeatConstants.PointBlankShot,
-                FeatConstants.FarShot,
-                FeatConstants.PreciseShot,
-                FeatConstants.RapidShot,
-                FeatConstants.Manyshot,
-                FeatConstants.ShotOnTheRun,
-                FeatConstants.ImprovedPreciseShot,
-                FeatConstants.PowerAttack,
-                FeatConstants.Cleave,
-                FeatConstants.GreatCleave,
-                FeatConstants.ImprovedBullRush,
-                FeatConstants.ImprovedOverrun,
-                FeatConstants.ImprovedSunder,
-                FeatConstants.QuickDraw,
-                FeatConstants.RapidReload,
-                FeatConstants.TwoWeaponFighting,
-                FeatConstants.TwoWeaponDefense,
-                FeatConstants.ImprovedTwoWeaponFighting,
-                FeatConstants.GreaterTwoWeaponFighting,
-                FeatConstants.WeaponFinesse,
-                FeatConstants.WeaponFocus,
-                FeatConstants.WeaponSpecialization,
-                FeatConstants.GreaterWeaponFocus,
-                FeatConstants.GreaterWeaponSpecialization
-            };
-
-            base.DistinctCollection(GroupConstants.FighterBonusFeats, featNames);
+            DistinctCollection(name, collection);
         }
     }
 }

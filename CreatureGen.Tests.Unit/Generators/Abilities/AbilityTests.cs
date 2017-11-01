@@ -19,6 +19,9 @@ namespace CreatureGen.Tests.Unit.Generators.Abilities
         {
             Assert.That(ability.Name, Is.EqualTo("ability name"));
             Assert.That(ability.BaseValue, Is.EqualTo(10));
+            Assert.That(ability.RacialAdjustment, Is.EqualTo(0));
+            Assert.That(ability.Bonus, Is.EqualTo(0));
+            Assert.That(ability.FullValue, Is.EqualTo(10));
         }
 
         [TestCase(1, -5)]
@@ -61,10 +64,34 @@ namespace CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(38, 14)]
         [TestCase(39, 14)]
         [TestCase(40, 15)]
-        public void AbilityBonus(int statValue, int bonus)
+        public void AbilityBonus(int baseValue, int bonus)
         {
-            ability.BaseValue = statValue;
+            ability.BaseValue = baseValue;
             Assert.That(ability.Bonus, Is.EqualTo(bonus));
+        }
+
+        [Test]
+        public void AddRacialBonus()
+        {
+            ability.RacialAdjustment = 9266;
+            Assert.That(ability.FullValue, Is.EqualTo(9276));
+            Assert.That(ability.Bonus, Is.EqualTo(4633));
+        }
+
+        [Test]
+        public void AddNegativeRacialBonus()
+        {
+            ability.RacialAdjustment = -6;
+            Assert.That(ability.FullValue, Is.EqualTo(4));
+            Assert.That(ability.Bonus, Is.EqualTo(-3));
+        }
+
+        [Test]
+        public void AbilityCannotHaveFullValueLessThan1()
+        {
+            ability.RacialAdjustment = -9266;
+            Assert.That(ability.FullValue, Is.EqualTo(1));
+            Assert.That(ability.Bonus, Is.EqualTo(-5));
         }
     }
 }

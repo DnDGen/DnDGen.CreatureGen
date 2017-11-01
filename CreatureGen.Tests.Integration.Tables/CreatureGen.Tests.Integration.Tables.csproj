@@ -67,10 +67,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.XML" />
-    <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DnDGen.TreasureGen.8.2.0\lib\TreasureGen.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -82,102 +78,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CreatureGenAssemblyLoader.cs" />
-    <Compile Include="Feats\Data\Additional\AdditionalFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\AasimarFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\GithyankiFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\GithzeraiFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\KapoacinthFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\GargoyleFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\GreenSlaadFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\GraySlaadFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\DeathSlaadFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\AquaticElfFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\HoundArchonFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\KuoToaFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\LocathahFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\MerfolkFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\MerrowFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\RedSlaadFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\BlueSlaadFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\CloudGiantFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\CentaurFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\BugbearFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\AzerFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\HumanFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\JanniFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\PixieFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\RakshasaFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\SahuaginFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\StormGiantFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\StoneGiantFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\ScorpionfolkFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\SatyrFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\ScragFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\TrollFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\YuanTiPurebloodFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\YuanTiHalfbloodFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\YuanTiAbominationFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\CrossRaceFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\DeepDwarfFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\DeepHalflingFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\DerroFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\DoppelgangerFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\DrowFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\DuergarDwarfFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\HillGiantFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\FrostGiantFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\FireGiantFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\ForestGnomeFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\GnollFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\GrimlockFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\GrayElfFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\HarpyFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\MindFlayerFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\MinotaurFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\OgreFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\OgreMageFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\RockGnomeFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\GoblinFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\SvirfneblinFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\TroglodyteFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\WildElfFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\GhostFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\HalfCelestialFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\HalfDragonFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\HalfElfFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\HalfOrcFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\HighElfFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\HillDwarfFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\HobgoblinFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\KoboldFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\LightfootHalflingFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\LizardfolkFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\MountainDwarfFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\OrcFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\HalfFiendFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\MummyFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\NoneFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\LichFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\Species\BlackFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\Species\BlueFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\Species\BrassFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\Species\BronzeFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\Species\CopperFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\Species\GoldFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\Species\GreenFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\Species\RedFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\Species\SilverFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\Species\WhiteFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\VampireFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\WerebearFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\WereboarFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\RacialFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\TallfellowHalflingFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\TieflingFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\WereratFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\WeretigerFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\Metaraces\WerewolfFeatDataTests.cs" />
-    <Compile Include="Feats\Data\Racial\BaseRaces\WoodElfFeatDataTests.cs" />
+    <Compile Include="Feats\Data\FeatDataTests.cs" />
     <Compile Include="Feats\FeatFociTests.cs" />
     <Compile Include="Feats\FeatGroupsTests.cs" />
     <Compile Include="Feats\RequiredFeatsTests.cs" />

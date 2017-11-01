@@ -23,8 +23,6 @@ namespace CreatureGen.Creatures
         public ArmorClass ArmorClass { get; set; }
         public int BaseAttackBonus { get; set; }
         public int GrappleBonus { get; set; }
-        public Attack MeleeAttack { get; set; }
-        public Attack RangedAttack { get; set; }
         public IEnumerable<Attack> FullMeleeAttack { get; set; }
         public IEnumerable<Attack> FullRangedAttack { get; set; }
         public Measurement Space { get; set; }
@@ -38,6 +36,22 @@ namespace CreatureGen.Creatures
         public string ChallengeRating { get; set; }
         public Alignment Alignment { get; set; }
         public int LevelAdjustment { get; set; }
+
+        public Attack MeleeAttack
+        {
+            get
+            {
+                return FullMeleeAttack.FirstOrDefault(a => a.IsPrimary);
+            }
+        }
+
+        public Attack RangedAttack
+        {
+            get
+            {
+                return FullRangedAttack.FirstOrDefault(a => a.IsPrimary);
+            }
+        }
 
         public IEnumerable<Attack> Attacks
         {

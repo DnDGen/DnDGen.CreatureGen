@@ -35,7 +35,7 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
         [TestCase(CreatureConstants.Halfling_Deep, 0)]
         [TestCase(CreatureConstants.Doppelganger, 4)]
         [TestCase(CreatureConstants.Derro, 3)]
-        [TestCase(CreatureConstants.Drow, 0)]
+        [TestCase(CreatureConstants.Elf_Drow, 0)]
         [TestCase(CreatureConstants.Duergar, 0)]
         [TestCase(CreatureConstants.Giant_Fire, 11)]
         [TestCase(CreatureConstants.Gnome_Forest, 0)]

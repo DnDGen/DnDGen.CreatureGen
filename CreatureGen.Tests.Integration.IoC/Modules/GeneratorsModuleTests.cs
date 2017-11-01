@@ -23,7 +23,7 @@ namespace CreatureGen.Tests.Integration.IoC.Modules
         [Test]
         public void AlignmentGeneratorIsDecorated()
         {
-            AssertIsInstanceOf<IAlignmentGenerator, AlignmentGeneratorEventGenDecorator>();
+            AssertIsInstanceOf<IAlignmentGenerator, AlignmentGeneratorEventDecorator>();
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace CreatureGen.Tests.Integration.IoC.Modules
         [Test]
         public void AbilitiesGeneratorIsDecorated()
         {
-            AssertIsInstanceOf<IAbilitiesGenerator, AbilitiesGeneratorEventGenDecorator>();
+            AssertIsInstanceOf<IAbilitiesGenerator, AbilitiesGeneratorEventDecorator>();
         }
 
         [Test]

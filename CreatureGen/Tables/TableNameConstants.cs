@@ -25,6 +25,7 @@
             internal static class Collection
             {
                 public const string AbilityGroups = "AbilityGroups";
+                public const string Advancements = "Advancements";
                 public const string AerialManeuverability = "AerialManeuverability";
                 public const string AlignmentGroups = "AlignmentGroups";
                 public const string ArmorClassModifiers = "ArmorClassModifiers";

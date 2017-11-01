@@ -19,8 +19,6 @@
         public const string AuraOfMenace = "Aura of Menace";
         public const string Aversion = "Aversion";
         public const string AugmentSummoning = "Augment Summoning";
-        public const string BardicKnowledge = "Bardic Knowledge";
-        public const string BardicMusic = "Bardic Music";
         public const string BlindFight = "Blind-Fight";
         public const string Blindsense = "Blindsense";
         public const string Blindsight = "Blindsight";
@@ -37,8 +35,6 @@
         public const string CombatCasting = "Combat Casting";
         public const string CombatExpertise = "Combat Expertise";
         public const string CombatReflexes = "Combat Reflexes";
-        public const string CombatStyle = "Combat Style";
-        public const string CombatStyleMastery = "Combat Style Mastery";
         public const string CorruptingGaze = "Corrupting Gaze";
         public const string CorruptingTouch = "Corrupting Touch";
         public const string Countersong = "Countersong";
@@ -73,7 +69,6 @@
         public const string EnlargeSpell = "Enlarge Spell";
         public const string EschewMaterials = "Eschew Materials";
         public const string Evasion = "Evasion";
-        public const string ExoticWeaponProficiency = "Exotic Weapon Proficiency";
         public const string ExtendSpell = "Extend Spell";
         public const string Extract = "Extract";
         public const string ExtraTurning = "Extra Turning";
@@ -104,7 +99,6 @@
         public const string GreaterWeaponSpecialization = "Greater Weapon Specialization";
         public const string GreatFortitude = "Great Fortitude";
         public const string Heat = "Heat";
-        public const string HeavyArmorProficiency = "Heavy Armor Proficiency";
         public const string HeightenSpell = "Heighten Spell";
         public const string HideInPlainSight = "Hide in Plain Sight";
         public const string HoldBreath = "Hold Breath";
@@ -113,7 +107,6 @@
         public const string ImmuneToEffect = "Immune to Effect";
         public const string Implant = "Implant";
         public const string ImprovedBullRush = "Improved Bull Rush";
-        public const string ImprovedCombatStyle = "Improved Combat Style";
         public const string ImprovedCounterspell = "Improved Counterspell";
         public const string ImprovedCritical = "Improved Critical";
         public const string ImprovedDisarm = "Improved Disarm";
@@ -142,10 +135,7 @@
         public const string Investigator = "Investigator";
         public const string IronWill = "Iron Will";
         public const string KeenSight = "Keen Sight";
-        public const string KiStrike = "Ki Strike";
         public const string LayOnHands = "Lay On Hands";
-        public const string Leadership = "Leadership";
-        public const string LightArmorProficiency = "Light Armor Proficiency";
         public const string LightBlindness = "Light Blindness";
         public const string LightningBolt = "Lightning Bolt";
         public const string LightningReflexes = "Lightning Reflexes";
@@ -158,15 +148,11 @@
         public const string Malevolence = "Malevolence";
         public const string Manifestation = "Manifestation";
         public const string Manyshot = "Manyshot";
-        public const string MartialWeaponProficiency = "Martial Weapon Proficiency";
         public const string MassSuggestion = "Mass Suggestion";
         public const string MaximizeSpell = "Maximize Spell";
-        public const string MediumArmorProficiency = "Medium Armor Proficiency";
         public const string MightyRage = "Mighty Rage";
         public const string MindBlast = "Mind Blast";
         public const string Mobility = "Mobility";
-        public const string MonkBonusFeat = "Monk Bonus Feat";
-        public const string MonkUnarmedStrike = "Monk Unarmed Strike";
         public const string MountedArchery = "Mounted Archery";
         public const string MountedCombat = "Mounted Combat";
         public const string MultiAttack = "Multi-Attack";
@@ -196,7 +182,6 @@
         public const string PurityOfBody = "Purity of Body";
         public const string QuickDraw = "Quick Draw";
         public const string QuickenSpell = "Quicken Spell";
-        public const string QuiveringPalm = "Quivering Palm";
         public const string Rage = "Rage";
         public const string Rake = "Rake";
         public const string RapidReload = "Rapid Reload";
@@ -214,10 +199,8 @@
         public const string Scent = "Scent";
         public const string ScribeScroll = "Scribe Scroll";
         public const string SelfSufficient = "Self-Sufficient";
-        public const string ShieldProficiency = "Shield Proficiency";
         public const string ShotOnTheRun = "Shot On The Run";
         public const string SilentSpell = "Silent Spell";
-        public const string SimpleWeaponProficiency = "Simple Weapon Proficiency";
         public const string SkillBonus = "Skill Bonus";
         public const string SkillFocus = "Skill Focus";
         public const string SkillMastery = "Skill Mastery";
@@ -261,7 +244,6 @@
         public const string TirelessRage = "Tireless Rage";
         public const string TongueOfSunAndMoon = "Tongue of Sun and Moon";
         public const string Toughness = "Toughness";
-        public const string TowerShieldProficiency = "Tower Shield Proficiency";
         public const string Track = "Track";
         public const string TracklessStep = "Trackless Step";
         public const string Trample = "Trample";
@@ -305,18 +287,10 @@
         {
             public const string Acid = "Acid";
             public const string All = "All";
-            public const string Archery = "Archery";
             public const string Cold = "Cold";
             public const string Electricity = "Electricity";
             public const string Fire = "Fire";
-            public const string Grapple = "Grapple";
-            public const string Ray = "Ray";
             public const string Sonic = "Sonic";
-            public const string UnarmedStrike = "Unarmed Strike";
-            public const string Weapons = "Weapons";
-            public const string WeaponsWithUnarmed = "Weapons with unarmed";
-            public const string WeaponsWithUnarmedAndGrapple = "Weapons with unarmed and grapple";
-            public const string WeaponsWithUnarmedAndGrappleAndRay = "Weapons with unarmed, grapple, and ray";
         }
     }
 }

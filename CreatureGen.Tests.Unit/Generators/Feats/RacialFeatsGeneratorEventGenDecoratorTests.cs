@@ -64,8 +64,8 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             var generatedFeats = decorator.GenerateWith(race, skills, stats);
             Assert.That(generatedFeats, Is.EqualTo(feats));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
-            mockEventQueue.Verify(q => q.Enqueue("CharacterGen", $"Generating racial feats for {race.Summary}"), Times.Once);
-            mockEventQueue.Verify(q => q.Enqueue("CharacterGen", $"Generated racial feats: [feat, other feat]"), Times.Once);
+            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating racial feats for {race.Summary}"), Times.Once);
+            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generated racial feats: [feat, other feat]"), Times.Once);
         }
     }
 }

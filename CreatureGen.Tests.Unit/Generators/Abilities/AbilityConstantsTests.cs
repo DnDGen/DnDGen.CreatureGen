@@ -1,7 +1,7 @@
 ﻿using CreatureGen.Abilities;
 using NUnit.Framework;
 
-namespace CreatureGen.Tests.Unit.Common.Abilities
+namespace CreatureGen.Tests.Unit.Generators.Abilities
 {
     [TestFixture]
     public class StatConstantsTests

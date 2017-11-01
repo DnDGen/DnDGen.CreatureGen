@@ -76,21 +76,17 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DnDGen.TreasureGen.8.2.0\lib\TreasureGen.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Generators\ConfigurableIterationGenerator.cs" />
+    <Compile Include="Generators\Creatures\ChallengeRatingConstantsTests.cs" />
+    <Compile Include="Generators\Creatures\CreatureConstantsTests.cs" />
+    <Compile Include="Generators\Creatures\CreatureTypeTests.cs" />
     <Compile Include="Generators\Feats\AdditionalFeatsGeneratorEventGenDecoratorTests.cs" />
-    <Compile Include="Generators\Feats\ClassFeatsGeneratorEventGenDecoratorTests.cs" />
-    <Compile Include="Generators\Feats\FeatCollectionsTests.cs" />
     <Compile Include="Generators\Feats\FeatFocusGeneratorEventDecoratorTests.cs" />
     <Compile Include="Generators\Feats\RacialFeatsGeneratorEventGenDecoratorTests.cs" />
     <Compile Include="Generators\Feats\AdditionalFeatsGeneratorTests.cs" />
     <Compile Include="Generators\Feats\FeatsGeneratorEventDecoratorTests.cs" />
-    <Compile Include="Generators\Feats\ClassFeatsGeneratorTests.cs" />
     <Compile Include="Generators\Feats\FeatConstantsTests.cs" />
     <Compile Include="Generators\Feats\FeatFocusGeneratorTests.cs" />
     <Compile Include="Generators\Feats\FeatsGeneratorTests.cs" />
@@ -99,37 +95,29 @@
     <Compile Include="Generators\Feats\RacialFeatsGeneratorTests.cs" />
     <Compile Include="Generators\Skills\SkillsGeneratorEventDecoratorTests.cs" />
     <Compile Include="Generators\Skills\SkillsGeneratorTests.cs" />
-    <Compile Include="Generators\Abilities\AbilitiesGeneratorEventGenDecoratorTests.cs" />
+    <Compile Include="Generators\Abilities\AbilitiesGeneratorEventDecoratorTests.cs" />
     <Compile Include="Generators\Abilities\AbilitiesGeneratorTests.cs" />
     <Compile Include="Generators\Alignments\AlignmentGeneratorTests.cs" />
     <Compile Include="Generators\Alignments\AlignmentConstantsTests.cs" />
     <Compile Include="Generators\Alignments\AlignmentTests.cs" />
-    <Compile Include="Generators\Alignments\AlignmentGeneratorEventGenDecoratorTests.cs" />
-    <Compile Include="Generators\Characters\CharacterGeneratorEventGenDecoratorTests.cs" />
-    <Compile Include="Generators\Characters\CharacterGeneratorTests.cs" />
-    <Compile Include="Generators\Combats\ArmorClassGeneratorTests.cs" />
-    <Compile Include="Generators\Combats\ArmorClassTests.cs" />
-    <Compile Include="Generators\Characters\CharacterTests.cs" />
-    <Compile Include="Generators\Combats\BaseAttackTests.cs" />
-    <Compile Include="Generators\Combats\CombatGeneratorTests.cs" />
-    <Compile Include="Generators\Combats\CombatTests.cs" />
-    <Compile Include="Generators\Combats\CombatGeneratorEventGenDecoratorTests.cs" />
-    <Compile Include="Generators\Combats\HitPointsGeneratorTests.cs" />
-    <Compile Include="Generators\Combats\SavingThrowConstantsTests.cs" />
-    <Compile Include="Generators\Combats\SavingThrowsGeneratorTests.cs" />
-    <Compile Include="Generators\Races\RaceGeneratorEventGenDecoratorTests.cs" />
-    <Compile Include="Generators\Races\RaceGeneratorTests.cs" />
-    <Compile Include="Generators\Races\MeasurementTests.cs" />
+    <Compile Include="Generators\Alignments\AlignmentGeneratorEventDecoratorTests.cs" />
+    <Compile Include="Generators\Creatures\CreatureGeneratorEventDecoratorTests.cs" />
+    <Compile Include="Generators\Creatures\CreatureGeneratorTests.cs" />
+    <Compile Include="Generators\Defenses\ArmorClassGeneratorTests.cs" />
+    <Compile Include="Generators\Defenses\ArmorClassTests.cs" />
+    <Compile Include="Generators\Creatures\CreatureTests.cs" />
+    <Compile Include="Generators\Attacks\AttackTests.cs" />
+    <Compile Include="Generators\Defenses\HitPointsGeneratorTests.cs" />
+    <Compile Include="Generators\Defenses\SavingThrowConstantsTests.cs" />
+    <Compile Include="Generators\Defenses\SavingThrowsGeneratorTests.cs" />
+    <Compile Include="Generators\Creatures\MeasurementTests.cs" />
     <Compile Include="Generators\Verifiers\CreatureVerifierTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Generators\Races\RaceConstantsTests.cs" />
-    <Compile Include="Generators\Races\RaceTests.cs" />
-    <Compile Include="Generators\Combats\SavingThrowTests.cs" />
+    <Compile Include="Generators\Defenses\SavingThrowTests.cs" />
     <Compile Include="Generators\Skills\SkillConstantsTests.cs" />
     <Compile Include="Generators\Skills\SkillTests.cs" />
     <Compile Include="Generators\Abilities\AbilityConstantsTests.cs" />
     <Compile Include="Generators\Abilities\AbilityTests.cs" />
-    <Compile Include="Selectors\Collections\FeatsSelectorEventDecoratorTests.cs" />
     <Compile Include="Selectors\Collections\AdjustmentsSelectorTests.cs" />
     <Compile Include="Selectors\Collections\FeatSelectorTests.cs" />
     <Compile Include="Selectors\Selections\FeatSelectionTests.cs" />

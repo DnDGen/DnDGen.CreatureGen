@@ -75,8 +75,8 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             var generatedFeats = decorator.GenerateWith(characterClass, race, stats, skills, baseAttack, preselectedFeats);
             Assert.That(generatedFeats, Is.EqualTo(feats));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
-            mockEventQueue.Verify(q => q.Enqueue("CharacterGen", $"Generating additional feats for {characterClass.Summary} {race.Summary}"), Times.Once);
-            mockEventQueue.Verify(q => q.Enqueue("CharacterGen", $"Generated additional feats: [feat, other feat]"), Times.Once);
+            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating additional feats for {characterClass.Summary} {race.Summary}"), Times.Once);
+            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generated additional feats: [feat, other feat]"), Times.Once);
         }
     }
 }

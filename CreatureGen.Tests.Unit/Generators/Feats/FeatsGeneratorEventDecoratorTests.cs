@@ -1,9 +1,5 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.CharacterClasses;
-using CreatureGen.Combats;
 using CreatureGen.Generators.Feats;
-using CreatureGen.Feats;
-using CreatureGen.Creatures;
 using CreatureGen.Skills;
 using EventGen;
 using Moq;
@@ -63,8 +59,8 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             var generatedFeats = decorator.GenerateWith(characterClass, race, stats, skills, baseAttack);
             Assert.That(generatedFeats, Is.EqualTo(feats));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
-            mockEventQueue.Verify(q => q.Enqueue("CharacterGen", $"Generating feats for {characterClass.Summary} {race.Summary}"), Times.Once);
-            mockEventQueue.Verify(q => q.Enqueue("CharacterGen", $"Generated feats"), Times.Once);
+            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating feats for {characterClass.Summary} {race.Summary}"), Times.Once);
+            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generated feats"), Times.Once);
         }
     }
 }

@@ -21,6 +21,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Set.Adjustments.SkillPoints, "SkillPoints")]
         [TestCase(TableNameConstants.Set.Adjustments.SwimSpeeds, "SwimSpeeds")]
         [TestCase(TableNameConstants.Set.Collection.AbilityGroups, "AbilityGroups")]
+        [TestCase(TableNameConstants.Set.Collection.Advancements, "Advancements")]
         [TestCase(TableNameConstants.Set.Collection.AerialManeuverability, "AerialManeuverability")]
         [TestCase(TableNameConstants.Set.Collection.AlignmentGroups, "AlignmentGroups")]
         [TestCase(TableNameConstants.Set.Collection.ArmorClassModifiers, "ArmorClassModifiers")]

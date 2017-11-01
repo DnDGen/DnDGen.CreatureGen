@@ -2,8 +2,6 @@
 using CreatureGen.Skills;
 using CreatureGen.Tables;
 using NUnit.Framework;
-using System.Linq;
-using TreasureGen.Items;
 
 namespace CreatureGen.Tests.Integration.Tables.Feats
 {
@@ -20,95 +18,13 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         {
             var names = new[]
             {
-                FeatConstants.CombatStyle,
-                FeatConstants.ExoticWeaponProficiency,
                 FeatConstants.GhostSpecialAttack,
-                FeatConstants.MartialWeaponProficiency,
-                FeatConstants.MonkBonusFeat + "1",
-                FeatConstants.MonkBonusFeat + "2",
-                FeatConstants.MonkBonusFeat + "6",
-                FeatConstants.SimpleWeaponProficiency,
-                FeatConstants.Foci.Weapons,
-                FeatConstants.Foci.WeaponsWithUnarmed,
-                FeatConstants.Foci.WeaponsWithUnarmedAndGrapple,
-                FeatConstants.Foci.WeaponsWithUnarmedAndGrappleAndRay,
                 GroupConstants.Skills,
             };
 
             AssertCollectionNames(names);
         }
 
-        [TestCase(FeatConstants.SimpleWeaponProficiency,
-            WeaponConstants.Gauntlet,
-            FeatConstants.Foci.UnarmedStrike,
-            WeaponConstants.Dagger,
-            WeaponConstants.PunchingDagger,
-            WeaponConstants.SpikedGauntlet,
-            WeaponConstants.LightMace,
-            WeaponConstants.Sickle,
-            WeaponConstants.Club,
-            WeaponConstants.HeavyMace,
-            WeaponConstants.Morningstar,
-            WeaponConstants.Shortspear,
-            WeaponConstants.Longspear,
-            WeaponConstants.Spear,
-            WeaponConstants.Quarterstaff,
-            WeaponConstants.HeavyCrossbow,
-            WeaponConstants.LightCrossbow,
-            WeaponConstants.Dart,
-            WeaponConstants.Javelin,
-            WeaponConstants.Sling)]
-        [TestCase(FeatConstants.MartialWeaponProficiency,
-            WeaponConstants.ThrowingAxe,
-            WeaponConstants.LightHammer,
-            WeaponConstants.Handaxe,
-            WeaponConstants.Kukri,
-            WeaponConstants.LightPick,
-            WeaponConstants.Sap,
-            WeaponConstants.ShortSword,
-            WeaponConstants.Battleaxe,
-            WeaponConstants.Flail,
-            WeaponConstants.Longsword,
-            WeaponConstants.HeavyPick,
-            WeaponConstants.Rapier,
-            WeaponConstants.Scimitar,
-            WeaponConstants.Trident,
-            WeaponConstants.Warhammer,
-            WeaponConstants.Falchion,
-            WeaponConstants.Glaive,
-            WeaponConstants.Greataxe,
-            WeaponConstants.Greatclub,
-            WeaponConstants.HeavyFlail,
-            WeaponConstants.Greatsword,
-            WeaponConstants.Guisarme,
-            WeaponConstants.Halberd,
-            WeaponConstants.Lance,
-            WeaponConstants.Ranseur,
-            WeaponConstants.Scythe,
-            WeaponConstants.Longbow,
-            WeaponConstants.CompositeLongbow,
-            WeaponConstants.CompositeShortbow,
-            WeaponConstants.Shortbow)]
-        [TestCase(FeatConstants.ExoticWeaponProficiency,
-            WeaponConstants.Kama,
-            WeaponConstants.Nunchaku,
-            WeaponConstants.Sai,
-            WeaponConstants.Bolas,
-            WeaponConstants.Siangham,
-            WeaponConstants.BastardSword,
-            WeaponConstants.DwarvenWaraxe,
-            WeaponConstants.Whip,
-            WeaponConstants.OrcDoubleAxe,
-            WeaponConstants.SpikedChain,
-            WeaponConstants.DireFlail,
-            WeaponConstants.GnomeHookedHammer,
-            WeaponConstants.TwoBladedSword,
-            WeaponConstants.DwarvenUrgrosh,
-            WeaponConstants.HandCrossbow,
-            WeaponConstants.HeavyRepeatingCrossbow,
-            WeaponConstants.LightRepeatingCrossbow,
-            WeaponConstants.Shuriken,
-            WeaponConstants.Net)]
         [TestCase(FeatConstants.GhostSpecialAttack,
             FeatConstants.CorruptingGaze,
             FeatConstants.CorruptingTouch,
@@ -120,61 +36,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         public void FeatFoci(string feat, params string[] foci)
         {
             base.DistinctCollection(feat, foci);
-        }
-
-        [Test]
-        public void WeaponFoci()
-        {
-            var allWeapons = WeaponConstants.GetBaseNames().Except(new[]
-            {
-                WeaponConstants.Arrow,
-                WeaponConstants.CrossbowBolt,
-                WeaponConstants.SlingBullet,
-            }).ToArray();
-
-            base.DistinctCollection(FeatConstants.Foci.Weapons, allWeapons);
-        }
-
-        [Test]
-        public void WeaponAndUnarmedFoci()
-        {
-            var weapons = GetCollection(FeatConstants.Foci.Weapons);
-
-            var foci = new[]
-            {
-                FeatConstants.Foci.UnarmedStrike
-            }.Union(weapons).ToArray();
-
-            base.DistinctCollection(FeatConstants.Foci.WeaponsWithUnarmed, foci);
-        }
-
-        [Test]
-        public void WeaponAndUnarmedAndGrappleFoci()
-        {
-            var weapons = GetCollection(FeatConstants.Foci.Weapons);
-
-            var foci = new[]
-            {
-                FeatConstants.Foci.UnarmedStrike,
-                FeatConstants.Foci.Grapple,
-            }.Union(weapons).ToArray();
-
-            base.DistinctCollection(FeatConstants.Foci.WeaponsWithUnarmedAndGrapple, foci);
-        }
-
-        [Test]
-        public void WeaponGrappleAndRayFoci()
-        {
-            var weapons = GetCollection(FeatConstants.Foci.Weapons);
-
-            var foci = new[]
-            {
-                FeatConstants.Foci.UnarmedStrike,
-                FeatConstants.Foci.Grapple,
-                FeatConstants.Foci.Ray,
-            }.Union(weapons).ToArray();
-
-            base.DistinctCollection(FeatConstants.Foci.WeaponsWithUnarmedAndGrappleAndRay, foci);
         }
 
         [Test]

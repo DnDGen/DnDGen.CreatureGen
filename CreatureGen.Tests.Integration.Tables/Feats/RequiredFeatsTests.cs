@@ -1,8 +1,6 @@
-﻿using CreatureGen.CharacterClasses;
+﻿using CreatureGen.Feats;
 using CreatureGen.Tables;
-using CreatureGen.Feats;
 using NUnit.Framework;
-using TreasureGen.Items;
 
 namespace CreatureGen.Tests.Integration.Tables.Feats
 {
@@ -21,20 +19,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             {
                 FeatConstants.AugmentSummoning,
                 FeatConstants.Cleave,
-                FeatConstants.CombatStyleMastery,
                 FeatConstants.DeflectArrows,
                 FeatConstants.Diehard,
                 FeatConstants.ExtraTurning,
                 FeatConstants.FarShot,
-                FeatConstants.HeavyArmorProficiency,
-                FeatConstants.ImprovedCombatStyle,
-                FeatConstants.MediumArmorProficiency,
-                FeatConstants.RapidShot + CharacterClassConstants.Ranger,
-                FeatConstants.TwoWeaponFighting + CharacterClassConstants.Ranger,
-                FeatConstants.Manyshot + CharacterClassConstants.Ranger,
-                FeatConstants.ImprovedTwoWeaponFighting + CharacterClassConstants.Ranger,
-                FeatConstants.ImprovedPreciseShot + CharacterClassConstants.Ranger,
-                FeatConstants.GreaterTwoWeaponFighting + CharacterClassConstants.Ranger,
                 FeatConstants.GreatCleave,
                 FeatConstants.GreaterSpellFocus,
                 FeatConstants.GreaterSpellPenetration,
@@ -66,18 +54,11 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
                 FeatConstants.SpiritedCharge,
                 FeatConstants.SpringAttack,
                 FeatConstants.StunningFist,
-                FeatConstants.TowerShieldProficiency,
                 FeatConstants.Trample,
                 FeatConstants.TwoWeaponDefense,
                 FeatConstants.WhirlwindAttack,
                 FeatConstants.WeaponFocus,
                 FeatConstants.WeaponSpecialization,
-                FeatConstants.ImprovedGrapple + CharacterClassConstants.Monk,
-                FeatConstants.StunningFist + CharacterClassConstants.Monk,
-                FeatConstants.CombatReflexes + CharacterClassConstants.Monk,
-                FeatConstants.DeflectArrows + CharacterClassConstants.Monk,
-                FeatConstants.ImprovedDisarm + CharacterClassConstants.Monk,
-                FeatConstants.ImprovedTrip + CharacterClassConstants.Monk,
                 FeatConstants.CorruptingGaze,
                 FeatConstants.CorruptingTouch,
                 FeatConstants.DrainingTouch,
@@ -90,10 +71,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             AssertCollectionNames(names);
         }
 
-        [TestCase(FeatConstants.CombatStyleMastery, FeatConstants.ImprovedCombatStyle)]
-        [TestCase(FeatConstants.ImprovedCombatStyle, FeatConstants.CombatStyle)]
-        [TestCase(FeatConstants.HeavyArmorProficiency, FeatConstants.MediumArmorProficiency)]
-        [TestCase(FeatConstants.MediumArmorProficiency, FeatConstants.LightArmorProficiency)]
         [TestCase(FeatConstants.Cleave, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.DeflectArrows, FeatConstants.ImprovedUnarmedStrike)]
         [TestCase(FeatConstants.Diehard, FeatConstants.Endurance)]
@@ -106,14 +83,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(FeatConstants.GreaterWeaponFocus, FeatConstants.WeaponFocus)]
         [TestCase(FeatConstants.GreaterWeaponSpecialization, FeatConstants.GreaterWeaponFocus, FeatConstants.WeaponSpecialization)]
         [TestCase(FeatConstants.ImprovedBullRush, FeatConstants.PowerAttack)]
-        [TestCase(FeatConstants.ImprovedCritical, ItemTypeConstants.Weapon + GroupConstants.Proficiency)]
         [TestCase(FeatConstants.ImprovedDisarm, FeatConstants.CombatExpertise)]
         [TestCase(FeatConstants.ImprovedFeint, FeatConstants.CombatExpertise)]
         [TestCase(FeatConstants.ImprovedGrapple, FeatConstants.ImprovedUnarmedStrike)]
         [TestCase(FeatConstants.ImprovedOverrun, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.ImprovedPreciseShot, FeatConstants.PreciseShot)]
         [TestCase(FeatConstants.PreciseShot, FeatConstants.PointBlankShot)]
-        [TestCase(FeatConstants.ImprovedShieldBash, FeatConstants.ShieldProficiency)]
         [TestCase(FeatConstants.ImprovedSunder, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.ImprovedTrip, FeatConstants.CombatExpertise)]
         [TestCase(FeatConstants.ImprovedTurning, FeatConstants.Turn)]
@@ -123,7 +98,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(FeatConstants.Mobility, FeatConstants.Dodge)]
         [TestCase(FeatConstants.MountedArchery, FeatConstants.MountedCombat)]
         [TestCase(FeatConstants.NaturalSpell, FeatConstants.WildShape)]
-        [TestCase(FeatConstants.RapidReload, ItemTypeConstants.Weapon + GroupConstants.Proficiency)]
         [TestCase(FeatConstants.RideByAttack, FeatConstants.MountedCombat)]
         [TestCase(FeatConstants.ShotOnTheRun,
             FeatConstants.Dodge,
@@ -139,10 +113,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.Dodge,
             FeatConstants.Mobility)]
         [TestCase(FeatConstants.StunningFist, FeatConstants.ImprovedUnarmedStrike)]
-        [TestCase(FeatConstants.TowerShieldProficiency, FeatConstants.ShieldProficiency)]
         [TestCase(FeatConstants.Trample, FeatConstants.MountedCombat)]
         [TestCase(FeatConstants.TwoWeaponDefense, FeatConstants.TwoWeaponFighting)]
-        [TestCase(FeatConstants.WeaponFocus, ItemTypeConstants.Weapon + GroupConstants.Proficiency)]
         [TestCase(FeatConstants.WeaponSpecialization, FeatConstants.WeaponFocus)]
         [TestCase(FeatConstants.WhirlwindAttack,
             FeatConstants.CombatExpertise,
@@ -154,46 +126,13 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             DistinctCollection(name, requiredFeats);
         }
 
-        [TestCase(FeatConstants.AugmentSummoning,
-            FeatConstants.SpellFocus, CharacterClassConstants.Schools.Conjuration)]
-        [TestCase(FeatConstants.RapidShot + CharacterClassConstants.Ranger,
-            FeatConstants.CombatStyle, FeatConstants.Foci.Archery)]
-        [TestCase(FeatConstants.TwoWeaponFighting + CharacterClassConstants.Ranger,
-            FeatConstants.CombatStyle, FeatConstants.TwoWeaponFighting)]
-        [TestCase(FeatConstants.Manyshot + CharacterClassConstants.Ranger,
-            FeatConstants.ImprovedCombatStyle, FeatConstants.Foci.Archery)]
-        [TestCase(FeatConstants.ImprovedTwoWeaponFighting + CharacterClassConstants.Ranger,
-            FeatConstants.ImprovedCombatStyle, FeatConstants.TwoWeaponFighting)]
-        [TestCase(FeatConstants.ImprovedPreciseShot + CharacterClassConstants.Ranger,
-            FeatConstants.CombatStyleMastery, FeatConstants.Foci.Archery)]
-        [TestCase(FeatConstants.GreaterTwoWeaponFighting + CharacterClassConstants.Ranger,
-            FeatConstants.CombatStyleMastery, FeatConstants.TwoWeaponFighting)]
-        [TestCase(FeatConstants.ImprovedGrapple + CharacterClassConstants.Monk,
-            FeatConstants.MonkBonusFeat, FeatConstants.ImprovedGrapple)]
-        [TestCase(FeatConstants.StunningFist + CharacterClassConstants.Monk,
-            FeatConstants.MonkBonusFeat, FeatConstants.StunningFist)]
-        [TestCase(FeatConstants.CombatReflexes + CharacterClassConstants.Monk,
-            FeatConstants.MonkBonusFeat, FeatConstants.CombatReflexes)]
-        [TestCase(FeatConstants.DeflectArrows + CharacterClassConstants.Monk,
-            FeatConstants.MonkBonusFeat, FeatConstants.DeflectArrows)]
-        [TestCase(FeatConstants.ImprovedDisarm + CharacterClassConstants.Monk,
-            FeatConstants.MonkBonusFeat, FeatConstants.ImprovedDisarm)]
-        [TestCase(FeatConstants.ImprovedTrip + CharacterClassConstants.Monk,
-            FeatConstants.MonkBonusFeat, FeatConstants.ImprovedTrip)]
-        [TestCase(FeatConstants.CorruptingGaze,
-            FeatConstants.GhostSpecialAttack, FeatConstants.CorruptingGaze)]
-        [TestCase(FeatConstants.CorruptingTouch,
-            FeatConstants.GhostSpecialAttack, FeatConstants.CorruptingTouch)]
-        [TestCase(FeatConstants.DrainingTouch,
-            FeatConstants.GhostSpecialAttack, FeatConstants.DrainingTouch)]
-        [TestCase(FeatConstants.FrightfulMoan,
-            FeatConstants.GhostSpecialAttack, FeatConstants.FrightfulMoan)]
-        [TestCase(FeatConstants.HorrificAppearance,
-            FeatConstants.GhostSpecialAttack, FeatConstants.HorrificAppearance)]
-        [TestCase(FeatConstants.Malevolence,
-            FeatConstants.GhostSpecialAttack, FeatConstants.Malevolence)]
-        [TestCase(FeatConstants.Telekinesis,
-            FeatConstants.GhostSpecialAttack, FeatConstants.Telekinesis)]
+        [TestCase(FeatConstants.CorruptingGaze, FeatConstants.GhostSpecialAttack, FeatConstants.CorruptingGaze)]
+        [TestCase(FeatConstants.CorruptingTouch, FeatConstants.GhostSpecialAttack, FeatConstants.CorruptingTouch)]
+        [TestCase(FeatConstants.DrainingTouch, FeatConstants.GhostSpecialAttack, FeatConstants.DrainingTouch)]
+        [TestCase(FeatConstants.FrightfulMoan, FeatConstants.GhostSpecialAttack, FeatConstants.FrightfulMoan)]
+        [TestCase(FeatConstants.HorrificAppearance, FeatConstants.GhostSpecialAttack, FeatConstants.HorrificAppearance)]
+        [TestCase(FeatConstants.Malevolence, FeatConstants.GhostSpecialAttack, FeatConstants.Malevolence)]
+        [TestCase(FeatConstants.Telekinesis, FeatConstants.GhostSpecialAttack, FeatConstants.Telekinesis)]
         public void RequiredFeat(string name, string requiredFeat, string requiredFocus)
         {
             var collection = new[] { $"{requiredFeat}/{requiredFocus}" };

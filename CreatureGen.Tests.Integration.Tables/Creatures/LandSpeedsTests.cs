@@ -31,7 +31,7 @@ namespace CreatureGen.Tests.Integration.Tables.Races.BaseRaces
         [TestCase(CreatureConstants.Halfling_Deep, 20)]
         [TestCase(CreatureConstants.Derro, 20)]
         [TestCase(CreatureConstants.Doppelganger, 30)]
-        [TestCase(CreatureConstants.Drow, 30)]
+        [TestCase(CreatureConstants.Elf_Drow, 30)]
         [TestCase(CreatureConstants.Duergar, 20)]
         [TestCase(CreatureConstants.Giant_Fire, 40)]
         [TestCase(CreatureConstants.Gnome_Forest, 20)]

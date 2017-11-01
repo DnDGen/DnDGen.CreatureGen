@@ -997,7 +997,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "professional skill 3")).Returns(new[] { "random", "other random" });
 
             var professionSkills = new[] { "professional skill 1", "professional skill 2", "professional skill 3" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.creatureSkills, "software developer")).Returns(professionSkills);
+            //mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.creatureSkills, "software developer")).Returns(professionSkills);
 
             var skills = skillsGenerator.GenerateFor(creature).ToArray();
 
@@ -1060,7 +1060,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, SkillConstants.Profession)).Returns(new[] { "random job", "other random job" });
 
             var professionSkills = new[] { "professional skill 1", "professional skill 2", "professional skill 3" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.creatureSkills, "random job")).Returns(professionSkills);
+            //mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.creatureSkills, "random job")).Returns(professionSkills);
 
             var skills = skillsGenerator.GenerateFor(creature).ToArray();
 
@@ -1124,7 +1124,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "professional skill 3")).Returns(new[] { "random", "other random" });
 
             var professionSkills = new[] { "professional skill 1", "professional skill 2", "professional skill 3" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.creatureSkills, "software developer")).Returns(professionSkills);
+            //mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.creatureSkills, "software developer")).Returns(professionSkills);
 
             var skills = skillsGenerator.GenerateFor(creature).ToArray();
 
@@ -1167,7 +1167,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(professionSkillSelection);
 
             var professionSkills = Enumerable.Empty<string>();
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.creatureSkills, "software developer")).Returns(professionSkills);
+            //mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.creatureSkills, "software developer")).Returns(professionSkills);
 
             var skills = skillsGenerator.GenerateFor(creature).ToArray();
 
@@ -1195,7 +1195,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(otherSkillSelection);
 
             var professionSkills = new[] { "profession skill 1", "profession skill 2", "professional skill 3" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.creatureSkills, "software developer")).Returns(professionSkills);
+            //mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.creatureSkills, "software developer")).Returns(professionSkills);
 
             var skills = skillsGenerator.GenerateFor(creature).ToArray();
 

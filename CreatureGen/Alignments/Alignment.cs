@@ -12,7 +12,7 @@
                 if (Lawfulness == AlignmentConstants.Neutral && Goodness == AlignmentConstants.Neutral)
                     return "True Neutral";
 
-                return $"{Lawfulness} {Goodness}";
+                return $"{Lawfulness} {Goodness}".Trim();
             }
         }
 

@@ -9,10 +9,13 @@ using CreatureGen.Generators.Feats;
 using CreatureGen.Generators.Skills;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Tables;
+using CreatureGen.Templates;
 using CreatureGen.Verifiers;
 using CreatureGen.Verifiers.Exceptions;
+using DnDGen.Core.Generators;
 using DnDGen.Core.Selectors.Collections;
 using DnDGen.Core.Selectors.Percentiles;
+using RollGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +37,9 @@ namespace CreatureGen.Generators.Creatures
         private readonly IArmorClassGenerator armorClassGenerator;
         private readonly IAttackSelector attackSelector;
         private readonly ISavesGenerator savesGenerator;
+        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly Dice dice;
+        private readonly JustInTimeFactory justInTimeFactory;
 
         public CreatureGenerator(IAlignmentGenerator alignmentGenerator,
             IAdjustmentsSelector adjustmentsSelector,
@@ -47,13 +53,14 @@ namespace CreatureGen.Generators.Creatures
             IHitPointsGenerator hitPointsGenerator,
             IArmorClassGenerator armorClassGenerator,
             IAttackSelector attackSelector,
-            ISavesGenerator savesGenerator)
+            ISavesGenerator savesGenerator,
+            ITypeAndAmountSelector typeAndAmountSelector,
+            Dice dice)
         {
             this.alignmentGenerator = alignmentGenerator;
             this.abilitiesGenerator = abilitiesGenerator;
             this.skillsGenerator = skillsGenerator;
             this.featsGenerator = featsGenerator;
-
             this.adjustmentsSelector = adjustmentsSelector;
             this.creatureVerifier = creatureVerifier;
             this.percentileSelector = percentileSelector;
@@ -63,6 +70,8 @@ namespace CreatureGen.Generators.Creatures
             this.armorClassGenerator = armorClassGenerator;
             this.attackSelector = attackSelector;
             this.savesGenerator = savesGenerator;
+            this.typeAndAmountSelector = typeAndAmountSelector;
+            this.dice = dice;
         }
 
         public Creature Generate(string creatureName, string template)
@@ -94,8 +103,6 @@ namespace CreatureGen.Generators.Creatures
 
             //INFO: Attacks must be done before Feats
             var attacks = attackSelector.Select(creatureName);
-            creature.MeleeAttack = attacks.First(a => a.IsPrimary && a.IsMelee && !a.IsSpecial);
-            creature.RangedAttack = attacks.First(a => a.IsPrimary && !a.IsMelee && !a.IsSpecial);
             creature.FullMeleeAttack = attacks.Where(a => a.IsMelee && !a.IsSpecial);
             creature.FullRangedAttack = attacks.Where(a => !a.IsMelee && !a.IsSpecial);
             creature.SpecialAttacks = attacks.Where(a => a.IsSpecial);
@@ -128,9 +135,20 @@ namespace CreatureGen.Generators.Creatures
             creature.Alignment = alignmentGenerator.Generate(creatureName);
             creature.LevelAdjustment = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.LevelAdjustments, creatureName);
 
-            //TODO: Advancement
+            if (percentileSelector.SelectFrom(.1))
+            {
+                var advancements = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.Advancements, creatureName);
+                var advancement = collectionsSelector.SelectRandomFrom(advancements);
 
-            //TODO: Apply template
+                creature.HitPoints.HitDiceQuantity = advancement.Amount;
+                creature.HitPoints.RollDefault(dice);
+                creature.HitPoints.Roll(dice);
+
+                throw new NotImplementedException("Have to figure out how to adjust either size or CR...");
+            }
+
+            var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
+            creature = templateApplicator.ApplyTo(creature);
 
             return creature;
         }
