@@ -4,7 +4,11 @@ namespace CreatureGen.Defenses
 {
     public class ArmorClass
     {
+        public const int BaseArmorClass = 10;
+
         public Ability Dexterity { get; set; }
+        public int ArmorBonus { get; set; }
+        public int ShieldBonus { get; set; }
         public int DeflectionBonus { get; set; }
         public int NaturalArmorBonus { get; set; }
         public int SizeModifier { get; set; }
@@ -14,7 +18,7 @@ namespace CreatureGen.Defenses
         {
             get
             {
-                return 10 + Dexterity.Bonus + DeflectionBonus + NaturalArmorBonus + SizeModifier;
+                return BaseArmorClass + ArmorBonus + ShieldBonus + Dexterity.Bonus + DeflectionBonus + NaturalArmorBonus + SizeModifier;
             }
         }
 
@@ -30,7 +34,7 @@ namespace CreatureGen.Defenses
         {
             get
             {
-                return TotalBonus - NaturalArmorBonus;
+                return TotalBonus - NaturalArmorBonus - ArmorBonus - ShieldBonus;
             }
         }
     }

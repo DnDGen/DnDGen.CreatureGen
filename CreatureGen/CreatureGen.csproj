@@ -136,6 +136,7 @@
     <Compile Include="Tables\DataIndexConstants.cs" />
     <Compile Include="Tables\GroupConstants.cs" />
     <Compile Include="Tables\TableNameConstants.cs" />
+    <Compile Include="Templates\TemplateApplicator.cs" />
     <Compile Include="Verifiers\Exceptions\IncompatibleCreatureAndTemplateException.cs" />
     <Compile Include="Verifiers\ICreatureVerifier.cs" />
   </ItemGroup>

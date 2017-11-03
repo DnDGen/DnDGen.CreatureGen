@@ -192,10 +192,12 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(creature.HitPoints.DefaultTotal, Is.Positive, creature.Summary);
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.Positive, creature.Summary);
             Assert.That(creature.HitPoints.HitDie, Is.Positive, creature.Summary);
-            Assert.That(creature.HitPoints.Roll, Is.Not.Empty, creature.Summary);
-            Assert.That(creature.HitPoints.Roll, Contains.Substring($"{creature.HitPoints.HitDiceQuantity}d{creature.HitPoints.HitDie}"), creature.Summary);
+            Assert.That(creature.HitPoints.DefaultRoll, Is.Not.Empty, creature.Summary);
+            Assert.That(creature.HitPoints.DefaultRoll, Contains.Substring($"{creature.HitPoints.HitDiceQuantity}d{creature.HitPoints.HitDie}"), creature.Summary);
             Assert.That(creature.HitPoints.Total, Is.Positive, creature.Summary);
             Assert.That(creature.HitPoints.Total, Is.AtLeast(creature.HitPoints.HitDiceQuantity), creature.Summary);
+            Assert.That(creature.HitPoints.DefaultTotal, Is.Positive, creature.Summary);
+            Assert.That(creature.HitPoints.DefaultTotal, Is.AtLeast(creature.HitPoints.HitDiceQuantity), creature.Summary);
 
             Assert.That(creature.Attacks, Is.Not.Empty);
             Assert.That(creature.MeleeAttack, Is.Not.Null);

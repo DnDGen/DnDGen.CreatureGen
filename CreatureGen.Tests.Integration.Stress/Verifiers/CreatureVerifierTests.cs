@@ -1,9 +1,7 @@
-﻿using CreatureGen.Alignments;
-using DnDGen.Core.Selectors.Collections;
+﻿using DnDGen.Core.Selectors.Collections;
 using Ninject;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace CreatureGen.Tests.Integration.Stress.Verifiers
@@ -16,25 +14,11 @@ namespace CreatureGen.Tests.Integration.Stress.Verifiers
         [Inject]
         public Stopwatch Stopwatch { get; set; }
 
-        private IEnumerable<string> alignments;
         private TimeSpan timeLimit;
 
         [SetUp]
         public void Setup()
         {
-            alignments = new[]
-            {
-                AlignmentConstants.ChaoticEvil,
-                AlignmentConstants.ChaoticGood,
-                AlignmentConstants.ChaoticNeutral,
-                AlignmentConstants.LawfulEvil,
-                AlignmentConstants.LawfulGood,
-                AlignmentConstants.LawfulNeutral,
-                AlignmentConstants.NeutralEvil,
-                AlignmentConstants.NeutralGood,
-                AlignmentConstants.TrueNeutral,
-            };
-
             Stopwatch.Reset();
             timeLimit = new TimeSpan(TimeSpan.TicksPerSecond);
         }

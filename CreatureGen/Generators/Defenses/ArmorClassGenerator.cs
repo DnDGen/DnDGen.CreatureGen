@@ -1,8 +1,8 @@
 ﻿using CreatureGen.Abilities;
 using CreatureGen.Defenses;
+using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Tables;
-using CreatureGen.Feats;
 using DnDGen.Core.Selectors.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,14 +38,6 @@ namespace CreatureGen.Generators.Defenses
             var featsWithNaturalArmorBonuses = feats.Where(f => thingsThatGrantNaturalArmorBonuses.Contains(f.Name));
 
             return featsWithNaturalArmorBonuses.Any(f => f.Foci.Any());
-        }
-
-        private bool IsDodgeBonusCircumstantial(IEnumerable<Feat> feats)
-        {
-            var deflectionBonuses = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.ArmorClassModifiers, GroupConstants.DodgeBonus);
-            var featsWithDeflectionBonuses = feats.Where(f => deflectionBonuses.Contains(f.Name));
-
-            return featsWithDeflectionBonuses.Any(f => f.Foci.Any());
         }
 
         private int GetNaturalArmorBonus(IEnumerable<Feat> feats)
