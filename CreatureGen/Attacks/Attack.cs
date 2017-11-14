@@ -9,5 +9,11 @@
         public bool IsPrimary { get; set; }
         public bool IsSpecial { get; set; }
         public bool IsNatural { get; set; }
+
+        public Attack()
+        {
+            Name = string.Empty;
+            Damage = string.Empty;
+        }
     }
 }

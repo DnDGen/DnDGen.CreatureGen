@@ -78,6 +78,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CreatureGenAssemblyLoader.cs" />
+    <Compile Include="Creatures\CreatureGroups\CreatureGroupsTableTests.cs" />
+    <Compile Include="Creatures\CreatureGroups\CreatureSubgroupsTests.cs" />
+    <Compile Include="Creatures\CreatureGroups\CreatureTypeGroupsTests.cs" />
+    <Compile Include="Creatures\CreatureGroups\CrossCreatureGroupsTests.cs" />
     <Compile Include="Feats\Data\FeatDataTests.cs" />
     <Compile Include="Feats\FeatFociTests.cs" />
     <Compile Include="Feats\FeatGroupsTests.cs" />
@@ -129,21 +133,15 @@
     <Compile Include="Skills\SkillSynergyTests.cs" />
     <Compile Include="Abilities\AbilityGroupsTests.cs" />
     <Compile Include="AdjustmentsTests.cs" />
-    <Compile Include="Alignments\AlignmentGoodnessTests.cs" />
     <Compile Include="Alignments\AlignmentGroupsTests.cs" />
-    <Compile Include="Alignments\AlignmentLawfulnessTests.cs" />
     <Compile Include="BooleanPercentileTests.cs" />
     <Compile Include="Defenses\SizeModifiersTests.cs" />
     <Compile Include="Creatures\SwimSpeedsTests.cs" />
     <Compile Include="CollectionTests.cs" />
     <Compile Include="Defenses\ArmorClassModifiersTests.cs" />
-    <Compile Include="Defenses\ClassHitDiceTests.cs" />
-    <Compile Include="Defenses\MonsterHitDiceTests.cs" />
-    <Compile Include="Attacks\RacialBaseAttackAdjustmentsTests.cs" />
     <Compile Include="DataTests.cs" />
     <Compile Include="PercentileTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Creatures\CreatureGroupsTests.cs" />
     <Compile Include="Creatures\LandSpeedsTests.cs" />
     <Compile Include="Creatures\DragonSpeciesTests.cs" />
     <Compile Include="TableAttribute.cs" />
@@ -165,6 +163,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Attacks\" />
     <Folder Include="Combats\" />
   </ItemGroup>
   <Choose>

@@ -47,7 +47,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             var generatedCharacter = decorator.Generate("creature name", "template name");
             Assert.That(generatedCharacter, Is.EqualTo(creature));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
-            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating {creature.Template} {creature.Name}"), Times.Once);
+            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating template name creature name"), Times.Once);
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generated {creature.Summary}"), Times.Once);
         }
 
@@ -57,12 +57,12 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             var creature = new Creature();
             creature.Name = Guid.NewGuid().ToString();
 
-            mockInnerGenerator.Setup(g => g.Generate("creature name", "template name")).Returns(creature);
+            mockInnerGenerator.Setup(g => g.Generate("creature name", string.Empty)).Returns(creature);
 
-            var generatedCharacter = decorator.Generate("creature name", "template name");
+            var generatedCharacter = decorator.Generate("creature name", string.Empty);
             Assert.That(generatedCharacter, Is.EqualTo(creature));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
-            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating {creature.Name}"), Times.Once);
+            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating creature name"), Times.Once);
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generated {creature.Summary}"), Times.Once);
         }
     }

@@ -19,7 +19,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void SkillSelectionInitialized()
         {
-            Assert.That(selection.BaseStatName, Is.Empty);
+            Assert.That(selection.BaseAbilityName, Is.Empty);
             Assert.That(selection.SkillName, Is.Empty);
             Assert.That(selection.RandomFociQuantity, Is.EqualTo(0));
             Assert.That(selection.Focus, Is.Empty);

@@ -25,10 +25,17 @@ namespace CreatureGen.Tests.Integration.Generators.Verifiers
         }
 
         [TestCase(CreatureConstants.Bison, CreatureConstants.Templates.Ghost, true)]
-        [TestCase(CreatureConstants.Genie, CreatureConstants.Templates.Ghost, false)]
+        [TestCase(CreatureConstants.Djinni, CreatureConstants.Templates.Ghost, false)]
+        [TestCase(CreatureConstants.Djinni, CreatureConstants.Templates.None, true)]
+        [TestCase(CreatureConstants.Djinni_Noble, CreatureConstants.Templates.Ghost, false)]
+        [TestCase(CreatureConstants.Djinni_Noble, CreatureConstants.Templates.None, true)]
+        [TestCase(CreatureConstants.Efreeti, CreatureConstants.Templates.Ghost, false)]
+        [TestCase(CreatureConstants.Efreeti, CreatureConstants.Templates.None, true)]
+        [TestCase(CreatureConstants.Janni, CreatureConstants.Templates.Ghost, false)]
+        [TestCase(CreatureConstants.Janni, CreatureConstants.Templates.None, true)]
+        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Ghost, true)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.None, true)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Vampire, true)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Ghost, true)]
         public void CreatureVerificationIsFast(string creatureName, string templateName, bool isValid)
         {
             Stopwatch.Restart();

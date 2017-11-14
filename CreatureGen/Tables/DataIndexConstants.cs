@@ -12,8 +12,8 @@
             public const int FrequencyQuantityIndex = 5;
             public const int FrequencyTimePeriodIndex = 6;
             public const int MaximumHitDiceRequirementIndex = 7;
-            public const int RequiredStatIndex = 8;
-            public const int RequiredStatMinimumValueIndex = 9;
+            public const int RequiredAbilityIndex = 8;
+            public const int RequiredAbilityMinimumValueIndex = 9;
             public const int RandomFociQuantity = 10;
         }
 

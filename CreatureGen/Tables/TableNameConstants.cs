@@ -34,7 +34,7 @@
                 public const string DragonSpecies = "DragonSpecies";
                 public const string EquivalentFeats = "EquivalentFeats";
                 public const string FeatData = "FeatData";
-                public const string SpecialQualityData = "FeatFoci";
+                public const string SpecialQualityData = "SpecialQualityData";
                 public const string FeatFoci = "FeatFoci";
                 public const string FeatGroups = "FeatGroups";
                 public const string FeatHitDieRequirements = "FeatHitDieRequirements";
@@ -45,6 +45,7 @@
                 public const string SkillGroups = "SkillGroups";
                 public const string SkillSynergy = "SkillSynergy";
                 public const string SpellGroups = "SpellGroups";
+                public const string TemplateGroups = "TemplateGroups";
                 public const string WeightRolls = "WeightRolls";
             }
 

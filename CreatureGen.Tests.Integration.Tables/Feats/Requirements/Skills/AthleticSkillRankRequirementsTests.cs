@@ -1,6 +1,6 @@
-﻿using CreatureGen.Tables;
-using CreatureGen.Feats;
+﻿using CreatureGen.Feats;
 using CreatureGen.Skills;
+using CreatureGen.Tables;
 using NUnit.Framework;
 
 namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements.Skills
@@ -14,7 +14,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements.Skills
         }
 
         [Test]
-        public override void CollectionNames()
+        public void CollectionNames()
         {
             var skills = new[] { SkillConstants.Climb, SkillConstants.Swim };
             AssertCollectionNames(skills);

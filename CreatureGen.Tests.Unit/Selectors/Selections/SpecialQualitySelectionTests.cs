@@ -101,7 +101,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void RequirementsNotMetIfDoesNotHaveMinimumStat()
         {
-            selection.MinimumAbilities["stat"] = 9266;
+            selection.MinimumAbilities["ability"] = 9266;
 
             var met = selection.RequirementsMet("size", 4, abilities, feats);
             Assert.That(met, Is.False);
@@ -110,11 +110,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void RequirementsMetIfAnyMinimumStatIsMet()
         {
-            selection.MinimumAbilities["stat"] = 9266;
-            selection.MinimumAbilities["stat 2"] = 600;
+            selection.MinimumAbilities["ability"] = 9266;
+            selection.MinimumAbilities["ability 2"] = 600;
 
-            abilities["stat 2"] = new Ability("stat 2");
-            abilities["stat 2"].BaseValue = 600;
+            abilities["ability 2"] = new Ability("ability 2");
+            abilities["ability 2"].BaseValue = 600;
 
             var met = selection.RequirementsMet("size", 4, abilities, feats);
             Assert.That(met, Is.True);
@@ -231,7 +231,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             selection.SizeRequirement = "size";
             selection.MinimumHitDieRequirement = 3;
             selection.MaximumHitDieRequirement = 5;
-            selection.MinimumAbilities["stat"] = 42;
+            selection.MinimumAbilities["ability"] = 42;
 
             selection.RequiredFeats = new[]
             {

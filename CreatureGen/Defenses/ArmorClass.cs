@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using System;
 
 namespace CreatureGen.Defenses
 {
@@ -18,7 +19,26 @@ namespace CreatureGen.Defenses
         {
             get
             {
-                return BaseArmorClass + ArmorBonus + ShieldBonus + Dexterity.Bonus + DeflectionBonus + NaturalArmorBonus + SizeModifier;
+                var total = UnroundedTotal;
+                return Math.Max(total, 1);
+            }
+        }
+
+        private int UnroundedTotal
+        {
+            get
+            {
+                var total = BaseArmorClass;
+                total += ArmorBonus;
+                total += ShieldBonus;
+                total += DeflectionBonus;
+                total += NaturalArmorBonus;
+                total += SizeModifier;
+
+                if (Dexterity != null)
+                    total += Dexterity.Bonus;
+
+                return total;
             }
         }
 
@@ -26,7 +46,12 @@ namespace CreatureGen.Defenses
         {
             get
             {
-                return TotalBonus - Dexterity.Bonus;
+                var total = UnroundedTotal;
+
+                if (Dexterity != null)
+                    total -= Dexterity.Bonus;
+
+                return Math.Max(total, 1);
             }
         }
 
@@ -34,7 +59,12 @@ namespace CreatureGen.Defenses
         {
             get
             {
-                return TotalBonus - NaturalArmorBonus - ArmorBonus - ShieldBonus;
+                var total = UnroundedTotal;
+                total -= NaturalArmorBonus;
+                total -= ArmorBonus;
+                total -= ShieldBonus;
+
+                return Math.Max(total, 1);
             }
         }
     }

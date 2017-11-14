@@ -1,4 +1,6 @@
-﻿using CreatureGen.Creatures;
+﻿using CreatureGen.Abilities;
+using CreatureGen.Defenses;
+using CreatureGen.Feats;
 using CreatureGen.Skills;
 using EventGen;
 using System.Collections.Generic;
@@ -17,13 +19,18 @@ namespace CreatureGen.Generators.Skills
             this.eventQueue = eventQueue;
         }
 
-        public IEnumerable<Skill> GenerateFor(Creature creature)
+        public IEnumerable<Skill> ApplyBonusesFromFeats(IEnumerable<Skill> skills, IEnumerable<Feat> feats)
         {
-            eventQueue.Enqueue("CreatureGen", $"Generating skills for {creature.Summary}");
-            var skills = innerGenerator.GenerateFor(creature);
+            var updatedSkills = innerGenerator.ApplyBonusesFromFeats(skills, feats);
 
-            var skillNames = skills.Select(s => s.Name);
-            eventQueue.Enqueue("CreatureGen", $"Generated skills: [{string.Join(", ", skillNames)}]");
+            return updatedSkills;
+        }
+
+        public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, Dictionary<string, Ability> abilities)
+        {
+            eventQueue.Enqueue("CreatureGen", $"Generating skills for {creatureName}");
+            var skills = innerGenerator.GenerateFor(hitPoints, creatureName, abilities);
+            eventQueue.Enqueue("CreatureGen", $"Generated {skills.Count()} skills");
 
             return skills;
         }

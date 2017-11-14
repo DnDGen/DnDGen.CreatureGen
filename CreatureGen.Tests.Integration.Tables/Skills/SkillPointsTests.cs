@@ -13,7 +13,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         }
 
         [Test]
-        public override void CollectionNames()
+        public void CollectionNames()
         {
             var names = CreatureConstants.All();
             AssertCollectionNames(names);

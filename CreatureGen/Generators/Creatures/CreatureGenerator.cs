@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Attacks;
 using CreatureGen.Creatures;
 using CreatureGen.Defenses;
 using CreatureGen.Feats;
@@ -55,7 +56,8 @@ namespace CreatureGen.Generators.Creatures
             IAttackSelector attackSelector,
             ISavesGenerator savesGenerator,
             ITypeAndAmountSelector typeAndAmountSelector,
-            Dice dice)
+            Dice dice,
+            JustInTimeFactory justInTimeFactory)
         {
             this.alignmentGenerator = alignmentGenerator;
             this.abilitiesGenerator = abilitiesGenerator;
@@ -72,6 +74,7 @@ namespace CreatureGen.Generators.Creatures
             this.savesGenerator = savesGenerator;
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.dice = dice;
+            this.justInTimeFactory = justInTimeFactory;
         }
 
         public Creature Generate(string creatureName, string template)
@@ -85,67 +88,54 @@ namespace CreatureGen.Generators.Creatures
 
             var creatureData = creatureDataSelector.SelectFor(creatureName);
             creature.Size = creatureData.Size;
-
-            //INFO: Creature Type must be computed before Hit Points
             creature.Type = GetCreatureType(creatureName);
-
-            //INFO: Abilities must be computed before Hit Points
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName);
 
-            //INFO: Hit Points must be done before Skills
-            creature.HitPoints = hitPointsGenerator.GenerateFor(creature);
+            creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Abilities[AbilityConstants.Constitution]);
 
-            //INFO: Skills must be computed before Feats or Special Qualities
-            creature.Skills = skillsGenerator.GenerateFor(creature);
+            var advancements = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.Advancements, creatureName);
+            if (percentileSelector.SelectFrom(.1) && advancements.Any())
+            {
+                var advancement = collectionsSelector.SelectRandomFrom(advancements);
 
-            //INFO: Special Qualities must be computed before Feats
+                creature.HitPoints.HitDiceQuantity = advancement.Amount;
+
+                creature.HitPoints.RollDefault(dice);
+                creature.HitPoints.Roll(dice);
+
+                creature.Size = advancement.Type;
+            }
+
+            creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Abilities);
             creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(creatureName, creature.HitPoints, creature.Size, creature.Abilities, creature.Skills);
-
-            //INFO: Attacks must be done before Feats
-            var attacks = attackSelector.Select(creatureName);
-            creature.FullMeleeAttack = attacks.Where(a => a.IsMelee && !a.IsSpecial);
-            creature.FullRangedAttack = attacks.Where(a => !a.IsMelee && !a.IsSpecial);
-            creature.SpecialAttacks = attacks.Where(a => a.IsSpecial);
-
-            //INFO: Feats must be computed before Initiative Bonus and Attack Bonuses
-            creature.Feats = featsGenerator.GenerateFeats(creature);
-
-            //InFO: Base Attack bonus must be computed before Attack Bonuses
+            creature.Attacks = attackSelector.Select(creatureName);
             creature.BaseAttackBonus = ComputeBaseAttackBonus(creatureName, creature.HitPoints);
-            creature.GrappleBonus = ComputeGrappleBonus(creature);
+            creature.Feats = featsGenerator.GenerateFeats(creature.HitPoints, creature.BaseAttackBonus, creature.Abilities, creature.Skills, creature.Attacks, creature.SpecialQualities);
 
-            ComputeAttackBonuses(creature);
+            creature.Skills = skillsGenerator.ApplyBonusesFromFeats(creature.Skills, creature.Feats);
+            creature.HitPoints = hitPointsGenerator.RegenerateWith(creature.HitPoints, creature.Feats);
+
+            creature.GrappleBonus = ComputeGrappleBonus(creature.Size, creature.BaseAttackBonus, creature.Abilities[AbilityConstants.Strength]);
+
+            var allFeats = creature.Feats.Union(creature.SpecialQualities);
+            ComputeAttackBonuses(creature.Attacks, creature.Abilities[AbilityConstants.Strength], creature.Abilities[AbilityConstants.Dexterity], creature.BaseAttackBonus, allFeats);
 
             creature.InitiativeBonus = ComputeInitiative(creature.Abilities[AbilityConstants.Dexterity], creature.Feats);
-
             creature.LandSpeed.Value = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.LandSpeeds, creatureName);
             creature.AerialSpeed.Value = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.AerialSpeeds, creatureName);
             creature.AerialSpeed.Description = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.AerialManeuverability, creatureName).Single();
             creature.SwimSpeed.Value = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.SwimSpeeds, creatureName);
 
-            var allFeats = creature.Feats.Union(creature.SpecialQualities);
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities[AbilityConstants.Dexterity], creature.Size, creatureName, allFeats);
 
             creature.Space.Value = creatureData.Space;
             creature.Reach.Value = creatureData.Reach;
 
-            creature.Saves = savesGenerator.GenerateWith(creatureName, allFeats, creature.Abilities);
+            creature.Saves = savesGenerator.GenerateWith(creatureName, creature.HitPoints, allFeats, creature.Abilities);
 
             creature.ChallengeRating = creatureData.ChallengeRating;
             creature.Alignment = alignmentGenerator.Generate(creatureName);
             creature.LevelAdjustment = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.LevelAdjustments, creatureName);
-
-            if (percentileSelector.SelectFrom(.1))
-            {
-                var advancements = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.Advancements, creatureName);
-                var advancement = collectionsSelector.SelectRandomFrom(advancements);
-
-                creature.HitPoints.HitDiceQuantity = advancement.Amount;
-                creature.HitPoints.RollDefault(dice);
-                creature.HitPoints.Roll(dice);
-
-                throw new NotImplementedException("Have to figure out how to adjust either size or CR...");
-            }
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = templateApplicator.ApplyTo(creature);
@@ -153,32 +143,34 @@ namespace CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private void ComputeAttackBonuses(Creature creature)
+        private void ComputeAttackBonuses(IEnumerable<Attack> attacks, Ability strength, Ability dexterity, int baseAttackBonus, IEnumerable<Feat> feats)
         {
-            foreach (var attack in creature.Attacks)
+            foreach (var attack in attacks)
             {
                 if (attack.IsSpecial)
                     continue;
 
-                var ability = attack.IsMelee ? creature.Abilities[AbilityConstants.Strength] : creature.Abilities[AbilityConstants.Dexterity];
-                attack.TotalAttackBonus = ability.Bonus + creature.BaseAttackBonus;
+                var ability = attack.IsMelee ? strength : dexterity;
+                attack.TotalAttackBonus = ability.Bonus + baseAttackBonus;
 
-                if (!attack.IsPrimary)
+                if (!attack.IsPrimary && attack.IsNatural && feats.Any(f => f.Name == FeatConstants.MultiAttack))
+                    attack.TotalAttackBonus -= 2;
+                else if (!attack.IsPrimary)
                     attack.TotalAttackBonus -= 5;
-
-                if (!attack.IsPrimary && attack.IsNatural && creature.Feats.Any(f => f.Name == FeatConstants.MultiAttack))
-                    attack.TotalAttackBonus += 3;
             }
         }
 
-        private int ComputeGrappleBonus(Creature creature)
+        private int ComputeGrappleBonus(string size, int baseAttackBonus, Ability strength)
         {
-            var sizeModifier = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, creature.Size);
-            return creature.BaseAttackBonus + creature.Abilities[AbilityConstants.Strength].Bonus + sizeModifier;
+            var sizeModifier = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, size);
+            return baseAttackBonus + strength.Bonus + sizeModifier;
         }
 
         private int ComputeBaseAttackBonus(string creatureName, HitPoints hitPoints)
         {
+            if (hitPoints.HitDiceQuantity == 0)
+                return 0;
+
             var baseAttackQuality = collectionsSelector.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, creatureName, GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
 
             switch (baseAttackQuality)
@@ -221,14 +213,15 @@ namespace CreatureGen.Generators.Creatures
             var creatureType = new CreatureType();
             var types = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creatureName);
 
+            creatureType.Name = types.First();
             var pointer = creatureType;
-            foreach (var type in types)
-            {
-                if (pointer == null)
-                    pointer = new CreatureType();
 
-                pointer.Name = type;
-                pointer = creatureType.SubType;
+            foreach (var subtype in types.Skip(1))
+            {
+                pointer.SubType = new CreatureType();
+                pointer.SubType.Name = subtype;
+
+                pointer = pointer.SubType;
             }
 
             return creatureType;

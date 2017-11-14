@@ -13,7 +13,7 @@ namespace CreatureGen.Tests.Integration.Tables.Races.BaseRaces
         }
 
         [Test]
-        public override void CollectionNames()
+        public void CollectionNames()
         {
             var names = CreatureConstants.All();
             AssertCollectionNames(names);
@@ -79,7 +79,7 @@ namespace CreatureGen.Tests.Integration.Tables.Races.BaseRaces
         [TestCase(CreatureConstants.Troll_Scrag, 20)]
         [TestCase(CreatureConstants.Giant_Stone, 40)]
         [TestCase(CreatureConstants.Giant_Storm, 50)]
-        [TestCase(CreatureConstants.Svirfneblin, 20)]
+        [TestCase(CreatureConstants.Gnome_Svirfneblin, 20)]
         [TestCase(CreatureConstants.Halfling_Tallfellow, 20)]
         [TestCase(CreatureConstants.Tiefling, 30)]
         [TestCase(CreatureConstants.Troglodyte, 30)]

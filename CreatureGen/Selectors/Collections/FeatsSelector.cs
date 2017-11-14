@@ -25,14 +25,14 @@ namespace CreatureGen.Selectors.Collections
 
             foreach (var dataKVP in featData)
             {
-                var featSelection = Select(dataKVP);
+                var featSelection = SelectFeat(dataKVP);
                 featSelections.Add(featSelection);
             }
 
             return featSelections;
         }
 
-        private FeatSelection Select(KeyValuePair<string, IEnumerable<string>> dataKVP)
+        private FeatSelection SelectFeat(KeyValuePair<string, IEnumerable<string>> dataKVP)
         {
             var featSelection = new FeatSelection();
             featSelection.Feat = dataKVP.Key;
@@ -88,38 +88,39 @@ namespace CreatureGen.Selectors.Collections
 
         public IEnumerable<SpecialQualitySelection> SelectSpecialQualities(string creature)
         {
-            var tableName = string.Format(TableNameConstants.Formattable.Collection.CREATURESpecialQualityData, creature);
-            var featData = collectionsSelector.SelectAllFrom(tableName);
-            var racialFeatSelections = new List<SpecialQualitySelection>();
+            var specialQualities = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SpecialQualityData, creature);
+            if (!specialQualities.Any())
+                return Enumerable.Empty<SpecialQualitySelection>();
 
-            foreach (var dataKVP in featData)
+            var specialQualitySelections = new List<SpecialQualitySelection>();
+
+            foreach (var specialQuality in specialQualities)
             {
-                //INFO: Calling ToArray so we can access indices
-                var data = dataKVP.Value.ToArray();
+                var data = specialQuality.Split('/');
 
-                var racialFeatSelection = new SpecialQualitySelection();
-                racialFeatSelection.Feat = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
-                racialFeatSelection.SizeRequirement = data[DataIndexConstants.SpecialQualityData.SizeRequirementIndex];
-                racialFeatSelection.Power = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]);
-                racialFeatSelection.MinimumHitDieRequirement = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.MinimumHitDiceRequirementIndex]);
-                racialFeatSelection.FocusType = data[DataIndexConstants.SpecialQualityData.FocusIndex];
-                racialFeatSelection.Frequency.Quantity = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]);
-                racialFeatSelection.Frequency.TimePeriod = data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex];
-                racialFeatSelection.MaximumHitDieRequirement = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.MaximumHitDiceRequirementIndex]);
-                racialFeatSelection.RandomFociQuantity = data[DataIndexConstants.SpecialQualityData.RandomFociQuantity];
-                racialFeatSelection.RequiredFeats = GetRequiredFeats(dataKVP.Key);
+                var specialQualitySelection = new SpecialQualitySelection();
+                specialQualitySelection.Feat = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
+                specialQualitySelection.SizeRequirement = data[DataIndexConstants.SpecialQualityData.SizeRequirementIndex];
+                specialQualitySelection.Power = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]);
+                specialQualitySelection.MinimumHitDieRequirement = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.MinimumHitDiceRequirementIndex]);
+                specialQualitySelection.FocusType = data[DataIndexConstants.SpecialQualityData.FocusIndex];
+                specialQualitySelection.Frequency.Quantity = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]);
+                specialQualitySelection.Frequency.TimePeriod = data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex];
+                specialQualitySelection.MaximumHitDieRequirement = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.MaximumHitDiceRequirementIndex]);
+                specialQualitySelection.RandomFociQuantity = data[DataIndexConstants.SpecialQualityData.RandomFociQuantity];
+                specialQualitySelection.RequiredFeats = GetRequiredFeats(specialQualitySelection.Feat);
 
-                var statNames = data[DataIndexConstants.SpecialQualityData.RequiredStatIndex].Split(',');
-                var statValue = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.RequiredStatMinimumValueIndex]);
+                var abilityNames = data[DataIndexConstants.SpecialQualityData.RequiredAbilityIndex].Split(',');
+                var abilityValue = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.RequiredAbilityMinimumValueIndex]);
 
-                if (string.IsNullOrEmpty(statNames[0]) == false)
-                    for (var i = 0; i < statNames.Length; i++)
-                        racialFeatSelection.MinimumAbilities[statNames[i]] = statValue;
+                if (!string.IsNullOrEmpty(abilityNames[0]))
+                    for (var i = 0; i < abilityNames.Length; i++)
+                        specialQualitySelection.MinimumAbilities[abilityNames[i]] = abilityValue;
 
-                racialFeatSelections.Add(racialFeatSelection);
+                specialQualitySelections.Add(specialQualitySelection);
             }
 
-            return racialFeatSelections;
+            return specialQualitySelections;
         }
 
         private IEnumerable<RequiredFeatSelection> GetRequiredFeats(string feat)
@@ -127,7 +128,7 @@ namespace CreatureGen.Selectors.Collections
             var allRequiredFeats = collectionsSelector.SelectAllFrom(TableNameConstants.Set.Collection.RequiredFeats);
             var requiredFeats = new List<RequiredFeatSelection>();
 
-            if (allRequiredFeats.ContainsKey(feat) == false)
+            if (!allRequiredFeats.ContainsKey(feat))
                 return requiredFeats;
 
             var requiredFeatsData = allRequiredFeats[feat];

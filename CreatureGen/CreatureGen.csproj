@@ -101,8 +101,11 @@
     <Compile Include="Generators\Skills\ISkillsGenerator.cs" />
     <Compile Include="Generators\Skills\SkillsGenerator.cs" />
     <Compile Include="Generators\Skills\SkillsGeneratorEventGenDecorator.cs" />
-    <Compile Include="Generators\Verifiers\CreatureVerifier.cs" />
-    <Compile Include="IoC\CharacterGenModuleLoader.cs" />
+    <Compile Include="Selectors\Collections\AttackSelector.cs" />
+    <Compile Include="Selectors\Collections\CreatureDataSelector.cs" />
+    <Compile Include="Selectors\Collections\TypeAndAmountSelector.cs" />
+    <Compile Include="Verifiers\CreatureVerifier.cs" />
+    <Compile Include="IoC\CreatureGenModuleLoader.cs" />
     <Compile Include="IoC\Modules\GeneratorsModule.cs" />
     <Compile Include="IoC\Modules\SelectorsModule.cs" />
     <Compile Include="Selectors\Collections\AdjustmentsSelector.cs" />
@@ -128,7 +131,7 @@
     <Compile Include="Alignments\Alignment.cs" />
     <Compile Include="Alignments\AlignmentConstants.cs" />
     <Compile Include="Creatures\Creature.cs" />
-    <Compile Include="Creatures\ICreatureGenerator.cs" />
+    <Compile Include="Generators\Creatures\ICreatureGenerator.cs" />
     <Compile Include="Creatures\Measurement.cs" />
     <Compile Include="Creatures\SizeConstants.cs" />
     <Compile Include="Skills\SkillConstants.cs" />
@@ -415,13 +418,7 @@
     <EmbeddedResource Include="Tables\Abilities\Races\Yuan-ti PurebloodAbilityAdjustments.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\Alignments\AlignmentGoodness.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Tables\Alignments\AlignmentGroups.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Alignments\AlignmentLawfulness.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Tables\Defenses\ArmorClassModifiers.xml" />
@@ -703,7 +700,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Tables\Traits.xml" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

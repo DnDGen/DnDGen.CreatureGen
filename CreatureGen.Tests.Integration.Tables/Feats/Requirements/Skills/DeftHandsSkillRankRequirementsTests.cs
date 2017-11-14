@@ -14,7 +14,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements.Skills
         }
 
         [Test]
-        public override void CollectionNames()
+        public void CollectionNames()
         {
             var skills = new[] { SkillConstants.SleightOfHand, SkillConstants.UseRope };
             AssertCollectionNames(skills);

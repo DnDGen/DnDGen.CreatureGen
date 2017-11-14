@@ -78,42 +78,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Generators\ConfigurableIterationGenerator.cs" />
-    <Compile Include="Generators\Creatures\ChallengeRatingConstantsTests.cs" />
-    <Compile Include="Generators\Creatures\CreatureConstantsTests.cs" />
-    <Compile Include="Generators\Creatures\CreatureTypeTests.cs" />
+    <Compile Include="Creatures\SizeConstantsTests.cs" />
+    <Compile Include="Defenses\HitPointsTests.cs" />
+    <Compile Include="Creatures\ChallengeRatingConstantsTests.cs" />
+    <Compile Include="Creatures\CreatureConstantsTests.cs" />
+    <Compile Include="Creatures\CreatureTypeTests.cs" />
     <Compile Include="Generators\Feats\FeatsGeneratorEventDecoratorTests.cs" />
     <Compile Include="Generators\Feats\FeatFocusGeneratorEventDecoratorTests.cs" />
     <Compile Include="Generators\Feats\FeatsGeneratorTests.cs" />
-    <Compile Include="Generators\Feats\FeatConstantsTests.cs" />
+    <Compile Include="Feats\FeatConstantsTests.cs" />
     <Compile Include="Generators\Feats\FeatFocusGeneratorTests.cs" />
-    <Compile Include="Generators\Feats\FeatTests.cs" />
-    <Compile Include="Generators\Feats\FrequencyTests.cs" />
+    <Compile Include="Feats\FeatTests.cs" />
+    <Compile Include="Feats\FrequencyTests.cs" />
     <Compile Include="Generators\Skills\SkillsGeneratorEventDecoratorTests.cs" />
     <Compile Include="Generators\Skills\SkillsGeneratorTests.cs" />
     <Compile Include="Generators\Abilities\AbilitiesGeneratorEventDecoratorTests.cs" />
     <Compile Include="Generators\Abilities\AbilitiesGeneratorTests.cs" />
     <Compile Include="Generators\Alignments\AlignmentGeneratorTests.cs" />
-    <Compile Include="Generators\Alignments\AlignmentConstantsTests.cs" />
-    <Compile Include="Generators\Alignments\AlignmentTests.cs" />
+    <Compile Include="Alignments\AlignmentConstantsTests.cs" />
+    <Compile Include="Alignments\AlignmentTests.cs" />
     <Compile Include="Generators\Alignments\AlignmentGeneratorEventDecoratorTests.cs" />
     <Compile Include="Generators\Creatures\CreatureGeneratorEventDecoratorTests.cs" />
     <Compile Include="Generators\Creatures\CreatureGeneratorTests.cs" />
     <Compile Include="Generators\Defenses\ArmorClassGeneratorTests.cs" />
-    <Compile Include="Generators\Defenses\ArmorClassTests.cs" />
-    <Compile Include="Generators\Creatures\CreatureTests.cs" />
-    <Compile Include="Generators\Attacks\AttackTests.cs" />
+    <Compile Include="Defenses\ArmorClassTests.cs" />
+    <Compile Include="Creatures\CreatureTests.cs" />
+    <Compile Include="Attacks\AttackTests.cs" />
     <Compile Include="Generators\Defenses\HitPointsGeneratorTests.cs" />
-    <Compile Include="Generators\Defenses\SavingThrowConstantsTests.cs" />
-    <Compile Include="Generators\Defenses\SavingThrowsGeneratorTests.cs" />
-    <Compile Include="Generators\Creatures\MeasurementTests.cs" />
-    <Compile Include="Generators\Verifiers\CreatureVerifierTests.cs" />
+    <Compile Include="Defenses\SaveConstantsTests.cs" />
+    <Compile Include="Generators\Defenses\SavesGeneratorTests.cs" />
+    <Compile Include="Creatures\MeasurementTests.cs" />
+    <Compile Include="Selectors\Selections\AttackSelectionTests.cs" />
+    <Compile Include="Selectors\Selections\CreatureDataSelectionTests.cs" />
+    <Compile Include="Selectors\Selections\TypeAndAmountSelectionTests.cs" />
+    <Compile Include="Verifiers\CreatureVerifierTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Generators\Defenses\SavingThrowTests.cs" />
-    <Compile Include="Generators\Skills\SkillConstantsTests.cs" />
-    <Compile Include="Generators\Skills\SkillTests.cs" />
-    <Compile Include="Generators\Abilities\AbilityConstantsTests.cs" />
-    <Compile Include="Generators\Abilities\AbilityTests.cs" />
+    <Compile Include="Defenses\SavesTests.cs" />
+    <Compile Include="Skills\SkillConstantsTests.cs" />
+    <Compile Include="Skills\SkillTests.cs" />
+    <Compile Include="Abilities\AbilityConstantsTests.cs" />
+    <Compile Include="Abilities\AbilityTests.cs" />
     <Compile Include="Selectors\Collections\AdjustmentsSelectorTests.cs" />
     <Compile Include="Selectors\Collections\FeatSelectorTests.cs" />
     <Compile Include="Selectors\Selections\FeatSelectionTests.cs" />
@@ -139,7 +143,9 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Templates\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

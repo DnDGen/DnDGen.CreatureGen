@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Creatures;
+using CreatureGen.Generators.Creatures;
 using DnDGen.Core.Selectors.Collections;
 using Ninject;
 using NUnit.Framework;

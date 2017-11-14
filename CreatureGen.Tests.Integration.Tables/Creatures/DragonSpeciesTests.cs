@@ -14,7 +14,7 @@ namespace CreatureGen.Tests.Integration.Tables.Races.Metaraces
         }
 
         [Test]
-        public override void CollectionNames()
+        public void CollectionNames()
         {
             var names = new[]
             {

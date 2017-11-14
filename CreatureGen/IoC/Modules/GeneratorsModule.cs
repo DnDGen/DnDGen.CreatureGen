@@ -1,11 +1,9 @@
-﻿using CreatureGen.Creatures;
-using CreatureGen.Generators.Abilities;
+﻿using CreatureGen.Generators.Abilities;
 using CreatureGen.Generators.Alignments;
 using CreatureGen.Generators.Creatures;
 using CreatureGen.Generators.Defenses;
 using CreatureGen.Generators.Feats;
 using CreatureGen.Generators.Skills;
-using CreatureGen.Generators.Verifiers;
 using CreatureGen.Verifiers;
 using Ninject.Modules;
 
@@ -37,9 +35,6 @@ namespace CreatureGen.IoC.Modules
 
             Bind<ISkillsGenerator>().To<SkillsGenerator>().WhenInjectedInto<SkillsGeneratorEventGenDecorator>();
             Bind<ISkillsGenerator>().To<SkillsGeneratorEventGenDecorator>();
-
-            Bind<IFeatsGenerator>().To<FeatsGenerator>().WhenInjectedInto<FeatsGeneratorEventDecorator>();
-            Bind<IFeatsGenerator>().To<FeatsGeneratorEventDecorator>();
 
             Bind<IFeatsGenerator>().To<FeatsGenerator>().WhenInjectedInto<FeatsGeneratorEventDecorator>();
             Bind<IFeatsGenerator>().To<FeatsGeneratorEventDecorator>();

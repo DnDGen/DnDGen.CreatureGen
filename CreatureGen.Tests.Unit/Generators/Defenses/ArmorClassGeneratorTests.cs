@@ -10,7 +10,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CreatureGen.Tests.Unit.Generators.Combats
+namespace CreatureGen.Tests.Unit.Generators.Defenses
 {
     [TestFixture]
     public class ArmorClassGeneratorTests
@@ -182,14 +182,19 @@ namespace CreatureGen.Tests.Unit.Generators.Combats
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.ArmorClassModifiers, GroupConstants.NaturalArmor))
                 .Returns(new[] { "feat 1" });
 
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.SizeModifiers, "size")).Returns(1);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.ArmorClassModifiers, GroupConstants.ArmorBonus))
+                .Returns(new[] { "feat 1" });
 
-            var armorClass = GenerateAndAssertArmorClass(19, 17, 14);
-            Assert.That(armorClass.ArmorBonus, Is.EqualTo(0));
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.SizeModifiers, "size")).Returns(1);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.ArmorDeflectionBonuses, "creature")).Returns(1);
+
+            var armorClass = GenerateAndAssertArmorClass(15, 14, 13);
+            Assert.That(armorClass.ArmorBonus, Is.EqualTo(1));
             Assert.That(armorClass.DeflectionBonus, Is.EqualTo(1));
             Assert.That(armorClass.NaturalArmorBonus, Is.EqualTo(1));
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(0));
             Assert.That(armorClass.SizeModifier, Is.EqualTo(1));
+            Assert.That(armorClass.Dexterity.Bonus, Is.EqualTo(1));
         }
     }
 }

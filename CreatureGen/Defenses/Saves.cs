@@ -13,6 +13,7 @@ namespace CreatureGen.Defenses
         public int FeatFortitudeBonus { get; set; }
         public int FeatReflexBonus { get; set; }
         public int FeatWillBonus { get; set; }
+        public bool CircumstantialBonus { get; set; }
 
         public int Fortitude
         {

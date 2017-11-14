@@ -1,11 +1,11 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.Creatures;
+using CreatureGen.Attacks;
 using CreatureGen.Defenses;
+using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Selectors.Selections;
-using CreatureGen.Tables;
-using CreatureGen.Feats;
 using CreatureGen.Skills;
+using CreatureGen.Tables;
 using DnDGen.Core.Selectors.Collections;
 using RollGen;
 using System.Collections.Generic;
@@ -80,10 +80,10 @@ namespace CreatureGen.Generators.Feats
             return feats;
         }
 
-        public IEnumerable<Feat> GenerateFeats(Creature creature)
+        public IEnumerable<Feat> GenerateFeats(HitPoints hitPoints, int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attacks, IEnumerable<Feat> specialQualities)
         {
-            var numberOfAdditionalFeats = GetAdditionalFeatQuantity(creature.HitPoints);
-            var feats = GetFeats(numberOfAdditionalFeats, creature);
+            var numberOfAdditionalFeats = GetAdditionalFeatQuantity(hitPoints);
+            var feats = GetFeats(numberOfAdditionalFeats, baseAttackBonus, abilities, skills, attacks, specialQualities);
 
             return feats;
         }
@@ -205,13 +205,13 @@ namespace CreatureGen.Generators.Feats
             return newFeatSelectionsWithRequirementsMet;
         }
 
-        private IEnumerable<Feat> GetFeats(int quantity, Creature creature)
+        private IEnumerable<Feat> GetFeats(int quantity, int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attacks, IEnumerable<Feat> specialQualities)
         {
             var featSelections = featsSelector.SelectFeats();
 
             //INFO: Calling immediate execution, so this doesn't reevaluate every time the collection is called
-            var availableFeats = featSelections.Where(f => f.ImmutableRequirementsMet(creature.BaseAttackBonus, creature.Abilities, creature.Skills, creature.Attacks)).ToArray();
-            var feats = PopulateFeatsFrom(creature.Abilities, creature.Skills, creature.BaseAttackBonus, creature.SpecialQualities, availableFeats, quantity);
+            var availableFeats = featSelections.Where(f => f.ImmutableRequirementsMet(baseAttackBonus, abilities, skills, attacks)).ToArray();
+            var feats = PopulateFeatsFrom(abilities, skills, baseAttackBonus, specialQualities, availableFeats, quantity);
 
             return feats;
         }

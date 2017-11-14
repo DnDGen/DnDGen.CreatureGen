@@ -13,9 +13,9 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         }
 
         [Test]
-        public override void CollectionNames()
+        public void CollectionNames()
         {
-            var featFoci = CollectionsMapper.Map(TableNameConstants.Set.Collection.FeatFoci);
+            var featFoci = CollectionMapper.Map(TableNameConstants.Set.Collection.FeatFoci);
             AssertCollectionNames(featFoci[GroupConstants.Skills]);
         }
 

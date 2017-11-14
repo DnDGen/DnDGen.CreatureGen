@@ -1,10 +1,10 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.Creatures;
 using CreatureGen.Defenses;
+using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Selectors.Selections;
-using CreatureGen.Tables;
 using CreatureGen.Skills;
+using CreatureGen.Tables;
 using DnDGen.Core.Selectors.Collections;
 using DnDGen.Core.Selectors.Percentiles;
 using System;
@@ -30,16 +30,16 @@ namespace CreatureGen.Generators.Skills
             this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
-        public IEnumerable<Skill> GenerateFor(Creature creature)
+        public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, Dictionary<string, Ability> abilities)
         {
-            if (creature.HitPoints.HitDiceQuantity == 0)
+            if (hitPoints.HitDiceQuantity == 0)
                 return Enumerable.Empty<Skill>();
 
-            var skillNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, creature.Name);
+            var skillNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, creatureName);
             var skillSelections = GetSkillSelections(skillNames);
-            var skills = InitializeSkills(creature.Abilities, skillSelections, creature.HitPoints);
+            var skills = InitializeSkills(abilities, skillSelections, hitPoints);
 
-            var points = GetTotalSkillPoints(creature.Name, creature.HitPoints.HitDiceQuantity, creature.Abilities[AbilityConstants.Intelligence]);
+            var points = GetTotalSkillPoints(creatureName, hitPoints.HitDiceQuantity, abilities[AbilityConstants.Intelligence]);
             var validSkills = GetValidSkills(skillSelections, skills);
 
             while (points-- > 0 && validSkills.Any())
@@ -126,11 +126,15 @@ namespace CreatureGen.Generators.Skills
 
         private int GetTotalSkillPoints(string creatureName, int hitDieQuantity, Ability intelligence)
         {
-            var points = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.SkillPoints, creatureName);
-            var perLevel = points + intelligence.Bonus;
-            var multiplier = hitDieQuantity + 3;
+            if (hitDieQuantity == 0)
+                return 0;
 
-            return Math.Max(perLevel * multiplier, hitDieQuantity);
+            var points = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.SkillPoints, creatureName);
+            var perHitDie = Math.Max(1, points + intelligence.Bonus);
+            var multiplier = hitDieQuantity + 3;
+            var total = perHitDie * multiplier;
+
+            return total;
         }
 
         private IEnumerable<SkillSelection> GetValidSkills(IEnumerable<SkillSelection> skillSelections, IEnumerable<Skill> skills)
@@ -153,6 +157,51 @@ namespace CreatureGen.Generators.Skills
 
                     if (synergySkill != null)
                         synergySkill.Bonus += 2;
+                }
+            }
+
+            return skills;
+        }
+
+        public IEnumerable<Skill> ApplyBonusesFromFeats(IEnumerable<Skill> skills, IEnumerable<Feat> feats)
+        {
+            var allFeatGrantingSkillBonuses = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, FeatConstants.SkillBonus);
+            var featGrantingSkillBonuses = feats.Where(f => allFeatGrantingSkillBonuses.Contains(f.Name));
+            var allSkillFocusNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, GroupConstants.Skills);
+
+            foreach (var feat in featGrantingSkillBonuses)
+            {
+                if (feat.Foci.Any())
+                {
+                    foreach (var focus in feat.Foci)
+                    {
+                        if (!allSkillFocusNames.Any(s => focus.StartsWith(s)))
+                            continue;
+
+                        var skillName = allSkillFocusNames.First(s => focus.StartsWith(s));
+                        var skill = skills.FirstOrDefault(s => s.IsEqualTo(skillName));
+
+                        if (skill == null)
+                            continue;
+
+                        var circumstantial = !allSkillFocusNames.Contains(focus);
+                        skill.CircumstantialBonus |= circumstantial;
+
+                        if (!circumstantial)
+                            skill.Bonus += feat.Power;
+                    }
+                }
+                else
+                {
+                    var skillsToReceiveBonus = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, feat.Name);
+
+                    foreach (var skillName in skillsToReceiveBonus)
+                    {
+                        var skill = skills.FirstOrDefault(s => s.IsEqualTo(skillName));
+
+                        if (skill != null)
+                            skill.Bonus += feat.Power;
+                    }
                 }
             }
 

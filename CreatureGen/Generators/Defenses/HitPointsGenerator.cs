@@ -1,10 +1,11 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.Creatures;
 using CreatureGen.Defenses;
+using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Tables;
 using RollGen;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CreatureGen.Generators.Defenses
@@ -20,18 +21,24 @@ namespace CreatureGen.Generators.Defenses
             this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
-        public HitPoints GenerateFor(Creature creature)
+        public HitPoints GenerateFor(string creatureName, Ability constitution)
         {
             var hitPoints = new HitPoints();
 
-            var hitDice = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.HitDice, creature.Name).Single();
+            var hitDice = typeAndAmountSelector.SelectOne(TableNameConstants.Set.Collection.HitDice, creatureName);
             hitPoints.HitDiceQuantity = Convert.ToInt32(hitDice.Type);
             hitPoints.HitDie = hitDice.Amount;
-            hitPoints.Constitution = creature.Abilities[AbilityConstants.Constitution];
+            hitPoints.Constitution = constitution;
 
-            var templateHitDice = typeAndAmountSelector.SelectOne(TableNameConstants.Set.Collection.HitDice, creature.Template);
-            if (templateHitDice.Amount > 0)
-                hitPoints.HitDie = templateHitDice.Amount;
+            hitPoints.RollDefault(dice);
+            hitPoints.Roll(dice);
+
+            return hitPoints;
+        }
+
+        public HitPoints RegenerateWith(HitPoints hitPoints, IEnumerable<Feat> feats)
+        {
+            hitPoints.Bonus = feats.Where(f => f.Name == FeatConstants.Toughness).Sum(f => f.Power);
 
             hitPoints.RollDefault(dice);
             hitPoints.Roll(dice);

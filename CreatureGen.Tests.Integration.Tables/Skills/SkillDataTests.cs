@@ -1,6 +1,6 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.Tables;
 using CreatureGen.Skills;
+using CreatureGen.Tables;
 using NUnit.Framework;
 using System.Linq;
 
@@ -15,16 +15,12 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         }
 
         [Test]
-        public override void CollectionNames()
+        public void CollectionNames()
         {
-            var classSkills = CollectionsMapper.Map(TableNameConstants.Set.Collection.ClassSkills);
-            var skillGroups = CollectionsMapper.Map(TableNameConstants.Set.Collection.SkillGroups);
-            var featFoci = CollectionsMapper.Map(TableNameConstants.Set.Collection.FeatFoci);
+            var skillGroups = CollectionMapper.Map(TableNameConstants.Set.Collection.SkillGroups);
+            var featFoci = CollectionMapper.Map(TableNameConstants.Set.Collection.FeatFoci);
 
-            var allClassSkills = classSkills.Values.SelectMany(v => v);
-
-            var names = allClassSkills
-                .Union(skillGroups[GroupConstants.All])
+            var names = skillGroups[GroupConstants.All]
                 .Union(skillGroups[GroupConstants.Untrained])
                 .Union(featFoci[GroupConstants.Skills]);
 

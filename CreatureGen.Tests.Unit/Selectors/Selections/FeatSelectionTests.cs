@@ -129,10 +129,10 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void StatRequirementsNotMet()
         {
-            selection.RequiredAbilities["stat"] = 16;
-            abilities["stat"].BaseValue = 15;
-            abilities["other stat"] = new Ability("other stat");
-            abilities["other stat"].BaseValue = 157;
+            selection.RequiredAbilities["ability"] = 16;
+            abilities["ability"].BaseValue = 15;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseValue = 157;
 
             var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks);
             Assert.That(met, Is.False);
@@ -142,8 +142,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         public void SkillRequirementsNotMet()
         {
             selection.RequiredSkills = new[] { new RequiredSkillSelection { Skill = "skill", Ranks = 5 } };
-            skills.Add(new Skill("skill", abilities["stat"], 10));
-            skills.Add(new Skill("other skill", abilities["stat"], 10));
+            skills.Add(new Skill("skill", abilities["ability"], 10));
+            skills.Add(new Skill("other skill", abilities["ability"], 10));
             skills[0].Ranks = 9;
             skills[0].ClassSkill = false;
             skills[1].Ranks = 10;
@@ -162,8 +162,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
                 new RequiredSkillSelection { Skill = "other skill", Ranks = 1 }
             };
 
-            skills.Add(new Skill("skill", abilities["stat"], 10));
-            skills.Add(new Skill("other skill", abilities["stat"], 10));
+            skills.Add(new Skill("skill", abilities["ability"], 10));
+            skills.Add(new Skill("other skill", abilities["ability"], 10));
             skills[0].Ranks = 4;
             skills[0].ClassSkill = true;
             skills[1].Ranks = 1;
@@ -177,7 +177,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         public void MeetSkillRequirementOf0Ranks()
         {
             selection.RequiredSkills = new[] { new RequiredSkillSelection { Skill = "skill", Ranks = 0 } };
-            skills.Add(new Skill("skill", abilities["stat"], 10));
+            skills.Add(new Skill("skill", abilities["ability"], 10));
             skills[0].ClassSkill = false;
 
             var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks);
@@ -189,11 +189,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredBaseAttack = 2;
 
-            selection.RequiredAbilities["stat"] = 16;
-            abilities["stat"] = new Ability("stat");
-            abilities["stat"].BaseValue = 16;
-            abilities["other stat"] = new Ability("other stat");
-            abilities["other stat"].BaseValue = 15;
+            selection.RequiredAbilities["ability"] = 16;
+            abilities["ability"] = new Ability("ability");
+            abilities["ability"].BaseValue = 16;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseValue = 15;
 
             selection.RequiredSkills = new[]
             {
@@ -201,10 +201,10 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
                 new RequiredSkillSelection { Skill = "cross-class skill", Ranks = 5 }
             };
 
-            skills.Add(new Skill("class skill", abilities["stat"], 10));
-            skills.Add(new Skill("other class skill", abilities["stat"], 10));
-            skills.Add(new Skill("cross-class skill", abilities["stat"], 10));
-            skills.Add(new Skill("other cross-class skill", abilities["stat"], 10));
+            skills.Add(new Skill("class skill", abilities["ability"], 10));
+            skills.Add(new Skill("other class skill", abilities["ability"], 10));
+            skills.Add(new Skill("cross-class skill", abilities["ability"], 10));
+            skills.Add(new Skill("other cross-class skill", abilities["ability"], 10));
 
             skills[0].Ranks = 10;
             skills[0].ClassSkill = false;

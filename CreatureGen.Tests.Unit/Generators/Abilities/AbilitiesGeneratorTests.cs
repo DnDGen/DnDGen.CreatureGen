@@ -15,8 +15,8 @@ namespace CreatureGen.Tests.Unit.Generators.Abilities
         private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<Dice> mockDice;
         private IAbilitiesGenerator abilitiesGenerator;
-
         private List<TypeAndAmountSelection> abilitySelections;
+        private Mock<PartialRoll> mockPartialTotal;
 
         [SetUp]
         public void Setup()
@@ -26,11 +26,19 @@ namespace CreatureGen.Tests.Unit.Generators.Abilities
             abilitiesGenerator = new AbilitiesGenerator(mockTypeAndAmountSelector.Object, mockDice.Object);
 
             abilitySelections = new List<TypeAndAmountSelection>();
+            mockPartialTotal = new Mock<PartialRoll>();
+
             abilitySelections.Add(new TypeAndAmountSelection { Type = "ability", Amount = 0 });
             abilitySelections.Add(new TypeAndAmountSelection { Type = "other ability", Amount = 9266 });
             abilitySelections.Add(new TypeAndAmountSelection { Type = "last ability", Amount = -90210 });
 
             mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.AbilityGroups, "creature name")).Returns(abilitySelections);
+
+            var mockPartialDie = new Mock<PartialRoll>();
+            mockDice.Setup(d => d.Roll(3)).Returns(mockPartialDie.Object);
+            mockPartialDie.Setup(d => d.d(6)).Returns(mockPartialTotal.Object);
+
+            mockPartialTotal.SetupSequence(d => d.AsSum()).Returns(42).Returns(600).Returns(1337);
         }
 
         [Test]
@@ -48,14 +56,6 @@ namespace CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void RollBaseValuesForAbilities()
         {
-            var mockPartialDie = new Mock<PartialRoll>();
-            mockDice.Setup(d => d.Roll(3)).Returns(mockPartialDie.Object);
-
-            var mockPartialTotal = new Mock<PartialRoll>();
-            mockPartialDie.Setup(d => d.d(6)).Returns(mockPartialTotal.Object);
-
-            mockPartialTotal.SetupSequence(d => d.AsSum()).Returns(42).Returns(600).Returns(1337);
-
             var abilities = abilitiesGenerator.GenerateFor("creature name");
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseValue, Is.EqualTo(42));

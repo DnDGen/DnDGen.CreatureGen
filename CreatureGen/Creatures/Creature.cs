@@ -23,11 +23,8 @@ namespace CreatureGen.Creatures
         public ArmorClass ArmorClass { get; set; }
         public int BaseAttackBonus { get; set; }
         public int GrappleBonus { get; set; }
-        public IEnumerable<Attack> FullMeleeAttack { get; set; }
-        public IEnumerable<Attack> FullRangedAttack { get; set; }
         public Measurement Space { get; set; }
         public Measurement Reach { get; set; }
-        public IEnumerable<Attack> SpecialAttacks { get; set; }
         public IEnumerable<Feat> SpecialQualities { get; set; }
         public Saves Saves { get; set; }
         public Dictionary<string, Ability> Abilities { get; set; }
@@ -36,6 +33,35 @@ namespace CreatureGen.Creatures
         public string ChallengeRating { get; set; }
         public Alignment Alignment { get; set; }
         public int LevelAdjustment { get; set; }
+
+        public IEnumerable<Attack> Attacks { get; set; }
+
+        public IEnumerable<Attack> FullMeleeAttack
+        {
+            get
+            {
+                //INFO: Ordering by descending because false is 0 and true is 1
+                return Attacks.Where(a => a.IsMelee && !a.IsSpecial).OrderByDescending(a => a.IsPrimary);
+            }
+        }
+
+        public IEnumerable<Attack> FullRangedAttack
+        {
+            get
+            {
+                //INFO: Ordering by descending because false is 0 and true is 1
+                return Attacks.Where(a => !a.IsMelee && !a.IsSpecial).OrderByDescending(a => a.IsPrimary);
+            }
+        }
+
+        public IEnumerable<Attack> SpecialAttacks
+        {
+            get
+            {
+                //INFO: Ordering by descending because false is 0 and true is 1
+                return Attacks.Where(a => a.IsSpecial).OrderByDescending(a => a.IsPrimary).ThenByDescending(a => a.IsMelee);
+            }
+        }
 
         public Attack MeleeAttack
         {
@@ -53,14 +79,6 @@ namespace CreatureGen.Creatures
             }
         }
 
-        public IEnumerable<Attack> Attacks
-        {
-            get
-            {
-                return FullMeleeAttack.Union(FullRangedAttack).Union(SpecialAttacks);
-            }
-        }
-
         public string Summary
         {
             get
@@ -75,18 +93,20 @@ namespace CreatureGen.Creatures
             AerialSpeed = new Measurement("feet per round");
             Alignment = new Alignment();
             ArmorClass = new ArmorClass();
+            Attacks = Enumerable.Empty<Attack>();
             ChallengeRating = string.Empty;
             Feats = Enumerable.Empty<Feat>();
-            FullMeleeAttack = Enumerable.Empty<Attack>();
-            FullRangedAttack = Enumerable.Empty<Attack>();
+            HitPoints = new HitPoints();
             LandSpeed = new Measurement("feet per round");
+            Name = string.Empty;
             Reach = new Measurement("feet");
             Saves = new Saves();
+            Size = string.Empty;
             Skills = Enumerable.Empty<Skill>();
             Space = new Measurement("feet");
-            SpecialAttacks = Enumerable.Empty<Attack>();
             SpecialQualities = Enumerable.Empty<Feat>();
             SwimSpeed = new Measurement("feet per round");
+            Template = string.Empty;
             Type = new CreatureType();
         }
     }

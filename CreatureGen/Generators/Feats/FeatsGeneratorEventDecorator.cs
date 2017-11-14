@@ -1,5 +1,5 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.Creatures;
+using CreatureGen.Attacks;
 using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Skills;
@@ -20,10 +20,10 @@ namespace CreatureGen.Generators.Feats
             this.eventQueue = eventQueue;
         }
 
-        public IEnumerable<Feat> GenerateFeats(Creature creature)
+        public IEnumerable<Feat> GenerateFeats(HitPoints hitPoints, int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attacks, IEnumerable<Feat> specialQualities)
         {
-            eventQueue.Enqueue("CreatureGen", $"Generating feats for {creature.Summary}");
-            var feats = innerGenerator.GenerateFeats(creature);
+            eventQueue.Enqueue("CreatureGen", $"Generating feats");
+            var feats = innerGenerator.GenerateFeats(hitPoints, baseAttackBonus, abilities, skills, attacks, specialQualities);
             eventQueue.Enqueue("CreatureGen", $"Generated {feats.Count()} feats");
 
             return feats;

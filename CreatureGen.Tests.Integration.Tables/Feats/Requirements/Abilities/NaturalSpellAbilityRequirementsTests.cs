@@ -1,6 +1,6 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.Tables;
 using CreatureGen.Feats;
+using CreatureGen.Tables;
 using NUnit.Framework;
 
 namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements.Abilities
@@ -14,7 +14,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements.Abilities
         }
 
         [Test]
-        public override void CollectionNames()
+        public void CollectionNames()
         {
             var stats = new[] { AbilityConstants.Wisdom };
             AssertCollectionNames(stats);

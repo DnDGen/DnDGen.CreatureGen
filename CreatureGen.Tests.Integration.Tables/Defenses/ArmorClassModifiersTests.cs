@@ -1,7 +1,6 @@
-﻿using CreatureGen.Tables;
-using CreatureGen.Feats;
+﻿using CreatureGen.Feats;
+using CreatureGen.Tables;
 using NUnit.Framework;
-using TreasureGen.Items.Magical;
 
 namespace CreatureGen.Tests.Integration.Tables.Combats
 {
@@ -14,7 +13,7 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
         }
 
         [Test]
-        public override void CollectionNames()
+        public void CollectionNames()
         {
             var names = new[]
             {
@@ -27,18 +26,15 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
             AssertCollectionNames(names);
         }
 
-        [TestCase(GroupConstants.Deflection,
-            RingConstants.Protection)]
+        [TestCase(GroupConstants.Deflection)]
         [TestCase(GroupConstants.NaturalArmor,
             FeatConstants.NaturalArmor,
-            FeatConstants.ArmorBonus,
-            WondrousItemConstants.AmuletOfNaturalArmor)]
+            FeatConstants.ArmorBonus)]
         [TestCase(GroupConstants.DodgeBonus,
             FeatConstants.DodgeBonus,
             FeatConstants.Dodge)]
         [TestCase(GroupConstants.ArmorBonus,
-            FeatConstants.InertialArmor,
-            WondrousItemConstants.BracersOfArmor)]
+            FeatConstants.InertialArmor)]
         public void ArmorClassModifier(string name, params string[] collection)
         {
             base.DistinctCollection(name, collection);

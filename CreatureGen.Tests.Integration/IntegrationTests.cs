@@ -4,7 +4,6 @@ using EventGen.IoC;
 using Ninject;
 using NUnit.Framework;
 using RollGen.Domain.IoC;
-using TreasureGen.Domain.IoC;
 
 namespace CreatureGen.Tests.Integration
 {
@@ -27,11 +26,8 @@ namespace CreatureGen.Tests.Integration
             var coreLoader = new CoreModuleLoader();
             coreLoader.LoadModules(kernel);
 
-            var treasureGenLoader = new TreasureGenModuleLoader();
-            treasureGenLoader.LoadModules(kernel);
-
-            var characterGenLoader = new CharacterGenModuleLoader();
-            characterGenLoader.LoadModules(kernel);
+            var creatureGenLoader = new CreatureGenModuleLoader();
+            creatureGenLoader.LoadModules(kernel);
         }
 
         [SetUp]

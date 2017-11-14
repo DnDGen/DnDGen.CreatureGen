@@ -15,7 +15,8 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        public override void CollectionNames()
+        [Test]
+        public void CollectionNames()
         {
             var names = new[]
             {

@@ -7,6 +7,6 @@ namespace CreatureGen.Generators.Defenses
 {
     internal interface ISavesGenerator
     {
-        Saves GenerateWith(string creatureName, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities);
+        Saves GenerateWith(string creatureName, HitPoints hitPoints, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities);
     }
 }

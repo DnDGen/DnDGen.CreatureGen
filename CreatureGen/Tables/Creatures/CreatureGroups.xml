@@ -2,1662 +2,883 @@
 
 <collections>
   <collection>
-    <name>Adept</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
+    <name></name>
+  </collection>
+  <collection>
+    <name>Aberration</name>
+    <entry>Aboleth</entry>
+    <entry>Aboleth Mage</entry>
+    <entry>Athach</entry>
+    <entry>Beholder</entry>
+    <entry>Carrion Crawler</entry>
+    <entry>Choker</entry>
+    <entry>Chuul</entry>
+    <entry>Cloaker</entry>
+    <entry>Delver</entry>
+    <entry>Destrachan</entry>
+    <entry>Drider</entry>
+    <entry>Ethereal Filcher</entry>
+    <entry>Ettercap</entry>
+    <entry>Gibbering Mouther</entry>
+    <entry>Grick</entry>
+    <entry>Mimic</entry>
+    <entry>Mind flayer</entry>
+    <entry>Naga</entry>
+    <entry>Otyugh</entry>
+    <entry>Phasm</entry>
+    <entry>Rust Monster</entry>
+    <entry>Skum</entry>
+    <entry>Umber hulk</entry>
+    <entry>Will-O'-Wisp</entry>
+  </collection>
+  <collection>
+    <name>Angel</name>
+    <entry>Astral Deva</entry>
+    <entry>Planetar</entry>
+    <entry>Solar</entry>
+  </collection>
+  <collection>
+    <name>Animal</name>
+    <entry>Ape</entry>
+    <entry>Baboon</entry>
+    <entry>Badger</entry>
+    <entry>Bat</entry>
+    <entry>Bear</entry>
+    <entry>Bison</entry>
+    <entry>Boar</entry>
+    <entry>Camel</entry>
+    <entry>Cat</entry>
+    <entry>Cheetah</entry>
+    <entry>Constrictor Snake</entry>
+    <entry>Crocodile</entry>
+    <entry>Dinosaur</entry>
+    <entry>Dog</entry>
+    <entry>Donkey</entry>
+    <entry>Eagle</entry>
+    <entry>Elephant</entry>
+    <entry>Hawk</entry>
+    <entry>Horse</entry>
+    <entry>Hyena</entry>
+    <entry>Leopard</entry>
+    <entry>Lion</entry>
+    <entry>Lizard</entry>
+    <entry>Manta Ray</entry>
+    <entry>Monitor Lizard</entry>
+    <entry>Monkey</entry>
+    <entry>Mule</entry>
+    <entry>Octopus</entry>
+    <entry>Owl</entry>
+    <entry>Pony</entry>
+    <entry>Porpoise</entry>
+    <entry>Rat</entry>
+    <entry>Raven</entry>
+    <entry>Rhinoceras</entry>
+    <entry>Roc</entry>
+    <entry>Shark</entry>
+    <entry>Squid</entry>
+    <entry>Tiger</entry>
+    <entry>Toad</entry>
+    <entry>Viper Snake</entry>
+    <entry>Weasel</entry>
+    <entry>Whale</entry>
+    <entry>Wolf</entry>
+    <entry>Wolverine</entry>
+  </collection>
+  <collection>
+    <name>Animated Object</name>
+    <entry>Animated Object, Tiny</entry>
+    <entry>Animated Object, Small</entry>
+    <entry>Animated Object, Medium</entry>
+    <entry>Animated Object, Large</entry>
+    <entry>Animated Object, Huge</entry>
+    <entry>Animated Object, Gargantuan</entry>
+    <entry>Animated Object, Colossal</entry>
+  </collection>
+  <collection>
+    <name>Archon</name>
     <entry>Hound Archon</entry>
-    <entry>Human</entry>
+    <entry>Lantern Archon</entry>
+    <entry>Trumpet Archon</entry>
+  </collection>
+  <collection>
+    <name>Arrowhawk</name>
+    <entry>Juvenile Arrowhawk</entry>
+    <entry>Adult Arrowhawk</entry>
+    <entry>Elder Arrowhawk</entry>
+  </collection>
+  <collection>
+    <name>Bear</name>
+    <entry>Black Bear</entry>
+    <entry>Brown Bear</entry>
+    <entry>Dire Bear</entry>
+    <entry>Polar Bear</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon</name>
+    <entry>Black Dragon, Wyrmling</entry>
+    <entry>Black Dragon, Very Young</entry>
+    <entry>Black Dragon, Young</entry>
+    <entry>Black Dragon, Juvenile</entry>
+    <entry>Black Dragon, Young Adult</entry>
+    <entry>Black Dragon, Adult</entry>
+    <entry>Black Dragon, Mature Adult</entry>
+    <entry>Black Dragon, Old</entry>
+    <entry>Black Dragon, Very Old</entry>
+    <entry>Black Dragon, Ancient</entry>
+    <entry>Black Dragon, Wyrm</entry>
+    <entry>Black Dragon, Great Wyrm</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon</name>
+    <entry>Blue Dragon, Wyrmling</entry>
+    <entry>Blue Dragon, Very Young</entry>
+    <entry>Blue Dragon, Young</entry>
+    <entry>Blue Dragon, Juvenile</entry>
+    <entry>Blue Dragon, Young Adult</entry>
+    <entry>Blue Dragon, Adult</entry>
+    <entry>Blue Dragon, Mature Adult</entry>
+    <entry>Blue Dragon, Old</entry>
+    <entry>Blue Dragon, Very Old</entry>
+    <entry>Blue Dragon, Ancient</entry>
+    <entry>Blue Dragon, Wyrm</entry>
+    <entry>Blue Dragon, Great Wyrm</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon</name>
+    <entry>Brass Dragon, Wyrmling</entry>
+    <entry>Brass Dragon, Very Young</entry>
+    <entry>Brass Dragon, Young</entry>
+    <entry>Brass Dragon, Juvenile</entry>
+    <entry>Brass Dragon, Young Adult</entry>
+    <entry>Brass Dragon, Adult</entry>
+    <entry>Brass Dragon, Mature Adult</entry>
+    <entry>Brass Dragon, Old</entry>
+    <entry>Brass Dragon, Very Old</entry>
+    <entry>Brass Dragon, Ancient</entry>
+    <entry>Brass Dragon, Wyrm</entry>
+    <entry>Brass Dragon, Great Wyrm</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon</name>
+    <entry>Bronze Dragon, Wyrmling</entry>
+    <entry>Bronze Dragon, Very Young</entry>
+    <entry>Bronze Dragon, Young</entry>
+    <entry>Bronze Dragon, Juvenile</entry>
+    <entry>Bronze Dragon, Young Adult</entry>
+    <entry>Bronze Dragon, Adult</entry>
+    <entry>Bronze Dragon, Mature Adult</entry>
+    <entry>Bronze Dragon, Old</entry>
+    <entry>Bronze Dragon, Very Old</entry>
+    <entry>Bronze Dragon, Ancient</entry>
+    <entry>Bronze Dragon, Wyrm</entry>
+    <entry>Bronze Dragon, Great Wyrm</entry>
+  </collection>
+  <collection>
+    <name>Celestial Creature</name>
+  </collection>
+  <collection>
+    <name>Construct</name>
+    <entry>Animated Object</entry>
+    <entry>Golem</entry>
+    <entry>Homunculus</entry>
+    <entry>Inevitable</entry>
+    <entry>Retriever</entry>
+    <entry>Shield Guardian</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon</name>
+    <entry>Copper Dragon, Wyrmling</entry>
+    <entry>Copper Dragon, Very Young</entry>
+    <entry>Copper Dragon, Young</entry>
+    <entry>Copper Dragon, Juvenile</entry>
+    <entry>Copper Dragon, Young Adult</entry>
+    <entry>Copper Dragon, Adult</entry>
+    <entry>Copper Dragon, Mature Adult</entry>
+    <entry>Copper Dragon, Old</entry>
+    <entry>Copper Dragon, Very Old</entry>
+    <entry>Copper Dragon, Ancient</entry>
+    <entry>Copper Dragon, Wyrm</entry>
+    <entry>Copper Dragon, Great Wyrm</entry>
+  </collection>
+  <collection>
+    <name>Cryohydra</name>
+    <entry>Five-Headed Cryohydra</entry>
+    <entry>Six-Headed Cryohydra</entry>
+    <entry>Seven-Headed Cryohydra</entry>
+    <entry>Eight-Headed Cryohydra</entry>
+    <entry>Nine-Headed Cryohydra</entry>
+    <entry>Ten-Headed Cryohydra</entry>
+    <entry>Eleven-Headed Cryohydra</entry>
+    <entry>Twelve-Headed Cryohydra</entry>
+  </collection>
+  <collection>
+    <name>Demon</name>
+    <entry>Babau</entry>
+    <entry>Balor</entry>
+    <entry>Bebilith</entry>
+    <entry>Dretch</entry>
+    <entry>Glabrezu</entry>
+    <entry>Hezrou</entry>
+    <entry>Marilith</entry>
+    <entry>Nalfeshnee</entry>
+    <entry>Quasit</entry>
+    <entry>Retriever</entry>
+    <entry>Succubus</entry>
+    <entry>Vrock</entry>
+  </collection>
+  <collection>
+    <name>Devil</name>
+    <entry>Barbed Devil (Hamatula)</entry>
+    <entry>Bearded Devil (Barbazu)</entry>
+    <entry>Bone Devil (Osyluth)</entry>
+    <entry>Chain Devil (Kyton)</entry>
+    <entry>Erinyes</entry>
+    <entry>Hellcat (Bezekira)</entry>
+    <entry>Horned Devil (Cornugon)</entry>
+    <entry>Ice Devil (Gelugon)</entry>
+    <entry>Imp</entry>
+    <entry>Lemure</entry>
+    <entry>Pit Fiend</entry>
+  </collection>
+  <collection>
+    <name>Dinosaur</name>
+    <entry>Deinonychus</entry>
+    <entry>Elasmosaurus</entry>
+    <entry>Megaraptor</entry>
+    <entry>Triceratops</entry>
+    <entry>Tyrannosaurus</entry>
+  </collection>
+  <collection>
+    <name>Dragon</name>
+    <entry>Black Dragon</entry>
+    <entry>Blue Dragon</entry>
+    <entry>Brass Dragon</entry>
+    <entry>Bronze Dragon</entry>
+    <entry>Copper Dragon</entry>
+    <entry>Dragon turtle</entry>
+    <entry>Gold Dragon</entry>
+    <entry>Green Dragon</entry>
+    <entry>Red Dragon</entry>
+    <entry>Silver Dragon</entry>
+    <entry>Pseudodragon</entry>
+    <entry>White Dragon</entry>
+    <entry>Wyvern</entry>
+  </collection>
+  <collection>
+    <name>Dwarf</name>
+    <entry>Deep Dwarf</entry>
+    <entry>Hill Dwarf</entry>
+    <entry>Mountain Dwarf</entry>
+  </collection>
+  <collection>
+    <name>Elemental</name>
+    <entry>Belker</entry>
+    <entry>Air Elemental</entry>
+    <entry>Earth Elemental</entry>
+    <entry>Fire Elemental</entry>
+    <entry>Water Elemental</entry>
+    <entry>Invisible stalker</entry>
+    <entry>Magmin</entry>
+    <entry>Thoqqua</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental</name>
+    <entry>Air Elemental, Elder</entry>
+    <entry>Air Elemental, Greater</entry>
+    <entry>Air Elemental, Huge</entry>
+    <entry>Air Elemental, Large</entry>
+    <entry>Air Elemental, Medium</entry>
+    <entry>Air Elemental, Small</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental</name>
+    <entry>Earth Elemental, Elder</entry>
+    <entry>Earth Elemental, Greater</entry>
+    <entry>Earth Elemental, Huge</entry>
+    <entry>Earth Elemental, Large</entry>
+    <entry>Earth Elemental, Medium</entry>
+    <entry>Earth Elemental, Small</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental</name>
+    <entry>Fire Elemental, Elder</entry>
+    <entry>Fire Elemental, Greater</entry>
+    <entry>Fire Elemental, Huge</entry>
+    <entry>Fire Elemental, Large</entry>
+    <entry>Fire Elemental, Medium</entry>
+    <entry>Fire Elemental, Small</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental</name>
+    <entry>Water Elemental, Elder</entry>
+    <entry>Water Elemental, Greater</entry>
+    <entry>Water Elemental, Huge</entry>
+    <entry>Water Elemental, Large</entry>
+    <entry>Water Elemental, Medium</entry>
+    <entry>Water Elemental, Small</entry>
+  </collection>
+  <collection>
+    <name>Elf</name>
+    <entry>Aquatic Elf</entry>
+    <entry>Drow</entry>
+    <entry>Gray Elf</entry>
+    <entry>Half-Elf</entry>
+    <entry>High Elf</entry>
+    <entry>Wild Elf</entry>
+    <entry>Wood Elf</entry>
+  </collection>
+  <collection>
+    <name>Fey</name>
+    <entry>Dryad</entry>
+    <entry>Nymph</entry>
+    <entry>Satyr</entry>
+    <entry>Sprite</entry>
+  </collection>
+  <collection>
+    <name>Fiendish Creature</name>
+  </collection>
+  <collection>
+    <name>Formian</name>
+    <entry>Formian Myrmarch</entry>
+    <entry>Formian Queen</entry>
+    <entry>Formian Taskmaster</entry>
+    <entry>Formian Warrior</entry>
+    <entry>Formian Worker</entry>
+  </collection>
+  <collection>
+    <name>Fungus</name>
+    <entry>Shrieker</entry>
+    <entry>Violet Fungus</entry>
+  </collection>
+  <collection>
+    <name>Genie</name>
+    <entry>Djinni</entry>
+    <entry>Efreeti</entry>
     <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
+  </collection>
+  <collection>
+    <name>Ghost</name>
+  </collection>
+  <collection>
+    <name>Giant</name>
+    <entry>Ettin</entry>
+    <entry>Cloud Giant</entry>
+    <entry>Fire Giant</entry>
+    <entry>Frost Giant</entry>
+    <entry>Hill Giant</entry>
+    <entry>Stone Giant</entry>
+    <entry>Storm Giant</entry>
+    <entry>Ogre</entry>
+    <entry>Merrow</entry>
+    <entry>Ogre Mage</entry>
+    <entry>Troll</entry>
+    <entry>Scrag</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant</name>
+    <entry>Giant Ant, Queen</entry>
+    <entry>Giant Ant, Soldier</entry>
+    <entry>Giant Ant, Worker</entry>
+  </collection>
+  <collection>
+    <name>Gnome</name>
+    <entry>Forest Gnome</entry>
+    <entry>Rock Gnome</entry>
+    <entry>Svirfneblin</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon</name>
+    <entry>Gold Dragon, Wyrmling</entry>
+    <entry>Gold Dragon, Very Young</entry>
+    <entry>Gold Dragon, Young</entry>
+    <entry>Gold Dragon, Juvenile</entry>
+    <entry>Gold Dragon, Young Adult</entry>
+    <entry>Gold Dragon, Adult</entry>
+    <entry>Gold Dragon, Mature Adult</entry>
+    <entry>Gold Dragon, Old</entry>
+    <entry>Gold Dragon, Very Old</entry>
+    <entry>Gold Dragon, Ancient</entry>
+    <entry>Gold Dragon, Wyrm</entry>
+    <entry>Gold Dragon, Great Wyrm</entry>
+  </collection>
+  <collection>
+    <name>Golem</name>
+    <entry>Clay Golem</entry>
+    <entry>Flesh Golem</entry>
+    <entry>Iron Golem</entry>
+    <entry>Stone Golem</entry>
+    <entry>Greater Stone Golem</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon</name>
+    <entry>Green Dragon, Wyrmling</entry>
+    <entry>Green Dragon, Very Young</entry>
+    <entry>Green Dragon, Young</entry>
+    <entry>Green Dragon, Juvenile</entry>
+    <entry>Green Dragon, Young Adult</entry>
+    <entry>Green Dragon, Adult</entry>
+    <entry>Green Dragon, Mature Adult</entry>
+    <entry>Green Dragon, Old</entry>
+    <entry>Green Dragon, Very Old</entry>
+    <entry>Green Dragon, Ancient</entry>
+    <entry>Green Dragon, Wyrm</entry>
+    <entry>Green Dragon, Great Wyrm</entry>
+  </collection>
+  <collection>
+    <name>Hag</name>
+    <entry>Annis</entry>
+    <entry>Green Hag</entry>
+    <entry>Sea Hag</entry>
+  </collection>
+  <collection>
+    <name>Half-Celestial</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon</name>
+  </collection>
+  <collection>
+    <name>Half-Fiend</name>
+  </collection>
+  <collection>
+    <name>Halfling</name>
+    <entry>Deep Halfling</entry>
+    <entry>Lightfoot Halfling</entry>
+    <entry>Tallfellow Halfling</entry>
+  </collection>
+  <collection>
+    <name>Has Skeleton</name>
+    <entry>Aberration</entry>
+    <entry>Animal</entry>
+    <entry>Dragon</entry>
+    <entry>Fey</entry>
+    <entry>Giant</entry>
+    <entry>Humanoid</entry>
+    <entry>Magical Beast</entry>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Horse</name>
+    <entry>Heavy Horse</entry>
+    <entry>Heavy Warhorse</entry>
+    <entry>Light Horse</entry>
+    <entry>Light Warhorse</entry>
+  </collection>
+  <collection>
+    <name>Humanoid</name>
+    <entry>Aasimar</entry>
+    <entry>Bugbear</entry>
+    <entry>Character</entry>
+    <entry>Duergar</entry>
+    <entry>Dwarf</entry>
+    <entry>Elf</entry>
+    <entry>Gnoll</entry>
+    <entry>Gnome</entry>
+    <entry>Goblin</entry>
+    <entry>Half-Orc</entry>
+    <entry>Halfling</entry>
+    <entry>Hobgoblin</entry>
+    <entry>Human</entry>
     <entry>Kobold</entry>
     <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
     <entry>Lizardfolk</entry>
     <entry>Locathah</entry>
     <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
     <entry>Orc</entry>
-    <entry>Pixie</entry>
+    <entry>Tiefling</entry>
+    <entry>Troglodyte</entry>
+  </collection>
+  <collection>
+    <name>Hydra</name>
+    <entry>Cryohydra</entry>
+    <entry>Five-Headed Hydra</entry>
+    <entry>Six-Headed Hydra</entry>
+    <entry>Seven-Headed Hydra</entry>
+    <entry>Eight-Headed Hydra</entry>
+    <entry>Nine-Headed Hydra</entry>
+    <entry>Ten-Headed Hydra</entry>
+    <entry>Eleven-Headed Hydra</entry>
+    <entry>Twelve-Headed Hydra</entry>
+    <entry>Pyrohydra</entry>
+  </collection>
+  <collection>
+    <name>Inevitable</name>
+    <entry>Kolyarut</entry>
+    <entry>Marut</entry>
+    <entry>Zelekhut</entry>
+  </collection>
+  <collection>
+    <name>Lich</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope</name>
+    <entry>Werebear</entry>
+    <entry>Wereboar</entry>
+    <entry>Wererat</entry>
+    <entry>Weretiger</entry>
+    <entry>Werewolf</entry>
+  </collection>
+  <collection>
+    <name>Magical Beast</name>
+    <entry>Androsphinx</entry>
+    <entry>Ankheg</entry>
+    <entry>Aranea</entry>
+    <entry>Basilisk</entry>
+    <entry>Behir</entry>
+    <entry>Blink Dog</entry>
+    <entry>Bulette</entry>
+    <entry>Celestial Creature</entry>
+    <entry>Chimera</entry>
+    <entry>Cockatrice</entry>
+    <entry>Criosphinx</entry>
+    <entry>Displacer Beast</entry>
+    <entry>Darkmantle</entry>
+    <entry>Digester</entry>
+    <entry>Dragonne</entry>
+    <entry>Ethereal Marauder</entry>
+    <entry>Fiendish Creature</entry>
+    <entry>Frost Worm</entry>
+    <entry>Giant Eagle</entry>
+    <entry>Giant Owl</entry>
+    <entry>Girallon</entry>
+    <entry>Gorgon</entry>
+    <entry>Gray Render</entry>
+    <entry>Griffon</entry>
+    <entry>Gynosphinx</entry>
+    <entry>Hieracosphinx</entry>
+    <entry>Hippogriff</entry>
+    <entry>Hydra</entry>
+    <entry>Kraken</entry>
+    <entry>Krenshar</entry>
+    <entry>Lamia</entry>
+    <entry>Lammasu</entry>
+    <entry>Manticore</entry>
+    <entry>Owlbear</entry>
+    <entry>Pegasus</entry>
+    <entry>Phase Spider</entry>
+    <entry>Purple Worm</entry>
+    <entry>Razor Boar</entry>
+    <entry>Remorhaz</entry>
+    <entry>Roper</entry>
+    <entry>Sea Cat</entry>
+    <entry>Shocker Lizard</entry>
+    <entry>Spider Eater</entry>
+    <entry>Stirge</entry>
+    <entry>Tarrasque</entry>
+    <entry>Unicorn</entry>
+    <entry>Winter Wolf</entry>
+    <entry>Worg</entry>
+    <entry>Yrthak</entry>
+  </collection>
+  <collection>
+    <name>Mephit</name>
+    <entry>Air Mephit</entry>
+    <entry>Dust Mephit</entry>
+    <entry>Earth Mephit</entry>
+    <entry>Fire Mephit</entry>
+    <entry>Ice Mephit</entry>
+    <entry>Magma Mephit</entry>
+    <entry>Ooze Mephit</entry>
+    <entry>Salt Mephit</entry>
+    <entry>Steam Mephit</entry>
+    <entry>Water Mephit</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede</name>
+    <entry>Monstrous Centipede, Tiny</entry>
+    <entry>Monstrous Centipede, Small</entry>
+    <entry>Monstrous Centipede, Medium</entry>
+    <entry>Monstrous Centipede, Large</entry>
+    <entry>Monstrous Centipede, Huge</entry>
+    <entry>Monstrous Centipede, Gargantuan</entry>
+    <entry>Monstrous Centipede, Colossal</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Humanoid</name>
+    <entry>Centaur</entry>
+    <entry>Derro</entry>
+    <entry>Doppelganger</entry>
+    <entry>Gargoyle</entry>
+    <entry>Kapoacinth</entry>
+    <entry>Grimlock</entry>
+    <entry>Hag</entry>
+    <entry>Harpy</entry>
+    <entry>Lycanthrope</entry>
+    <entry>Medusa</entry>
+    <entry>Minotaur</entry>
+    <entry>Sahuagin</entry>
+    <entry>Scorpionfolk</entry>
+    <entry>Yuan-ti</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion</name>
+    <entry>Monstrous Scorpion, Tiny</entry>
+    <entry>Monstrous Scorpion, Small</entry>
+    <entry>Monstrous Scorpion, Medium</entry>
+    <entry>Monstrous Scorpion, Large</entry>
+    <entry>Monstrous Scorpion, Huge</entry>
+    <entry>Monstrous Scorpion, Gargantuan</entry>
+    <entry>Monstrous Scorpion, Colossal</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider</name>
+    <entry>Monstrous Spider, Tiny</entry>
+    <entry>Monstrous Spider, Small</entry>
+    <entry>Monstrous Spider, Medium</entry>
+    <entry>Monstrous Spider, Large</entry>
+    <entry>Monstrous Spider, Huge</entry>
+    <entry>Monstrous Spider, Gargantuan</entry>
+    <entry>Monstrous Spider, Colossal</entry>
+  </collection>
+  <collection>
+    <name>Mummy</name>
+  </collection>
+  <collection>
+    <name>Naga</name>
+    <entry>Dark Naga</entry>
+    <entry>Guardian Naga</entry>
+    <entry>Spirit Naga</entry>
+    <entry>Water Naga</entry>
+  </collection>
+  <collection>
+    <name>Nightshade</name>
+    <entry>Nightcrawler</entry>
+    <entry>Nightwalker</entry>
+    <entry>Nightwing</entry>
+  </collection>
+  <collection>
+    <name>Ooze</name>
+    <entry>Black Pudding</entry>
+    <entry>Gelatinous Cube</entry>
+    <entry>Gray Ooze</entry>
+    <entry>Ochre Jelly</entry>
+  </collection>
+  <collection>
+    <name>Outsider</name>
+    <entry>Achaierai</entry>
+    <entry>Angel</entry>
+    <entry>Archon</entry>
+    <entry>Arrowhawk</entry>
+    <entry>Avoral</entry>
+    <entry>Azer</entry>
+    <entry>Barghest</entry>
+    <entry>Abyssal Greater Basilisk</entry>
+    <entry>Bralani</entry>
+    <entry>Celestial Creature</entry>
+    <entry>Chaos Beast</entry>
+    <entry>Couatl</entry>
+    <entry>Demon</entry>
+    <entry>Devil</entry>
+    <entry>Ethereal Marauder</entry>
+    <entry>Fiendish Creature</entry>
+    <entry>Formian</entry>
+    <entry>Genie</entry>
+    <entry>Ghaele</entry>
+    <entry>Githyanki</entry>
+    <entry>Githzerai</entry>
+    <entry>Hell Hound</entry>
+    <entry>Hellwasp</entry>
+    <entry>Howler</entry>
+    <entry>Inevitable</entry>
+    <entry>Leonal</entry>
+    <entry>Lillend</entry>
+    <entry>Mephit</entry>
+    <entry>Nessian Warhound</entry>
+    <entry>Night Hag</entry>
+    <entry>Nightmare</entry>
     <entry>Rakshasa</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
+    <entry>Rast</entry>
+    <entry>Ravid</entry>
+    <entry>Salamander</entry>
+    <entry>Shadow Mastiff</entry>
+    <entry>Slaad</entry>
+    <entry>Titan</entry>
+    <entry>Tojanida</entry>
+    <entry>Triton</entry>
+    <entry>Vargouille</entry>
+    <entry>Xill</entry>
+    <entry>Xorn</entry>
+    <entry>Yeth hound</entry>
   </collection>
   <collection>
-    <name>All</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
+    <name>Plant</name>
+    <entry>Assassin Vine</entry>
+    <entry>Fungus</entry>
+    <entry>Phantom Fungus</entry>
+    <entry>Shambling Mound</entry>
+    <entry>Tendriculos</entry>
+    <entry>Treant</entry>
+  </collection>
+  <collection>
+    <name>Pyrohydra</name>
+    <entry>Five-Headed Pyrohydra</entry>
+    <entry>Six-Headed Pyrohydra</entry>
+    <entry>Seven-Headed Pyrohydra</entry>
+    <entry>Eight-Headed Pyrohydra</entry>
+    <entry>Nine-Headed Pyrohydra</entry>
+    <entry>Ten-Headed Pyrohydra</entry>
+    <entry>Eleven-Headed Pyrohydra</entry>
+    <entry>Twelve-Headed Pyrohydra</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon</name>
+    <entry>Red Dragon, Wyrmling</entry>
+    <entry>Red Dragon, Very Young</entry>
+    <entry>Red Dragon, Young</entry>
+    <entry>Red Dragon, Juvenile</entry>
+    <entry>Red Dragon, Young Adult</entry>
+    <entry>Red Dragon, Adult</entry>
+    <entry>Red Dragon, Mature Adult</entry>
+    <entry>Red Dragon, Old</entry>
+    <entry>Red Dragon, Very Old</entry>
+    <entry>Red Dragon, Ancient</entry>
+    <entry>Red Dragon, Wyrm</entry>
+    <entry>Red Dragon, Great Wyrm</entry>
+  </collection>
+  <collection>
+    <name>Salamander</name>
+    <entry>Flamebrother Salamander</entry>
+    <entry>Average Salamander</entry>
+    <entry>Noble Salamander</entry>
+  </collection>
+  <collection>
+    <name>Shark</name>
+    <entry>Dire Shark</entry>
+    <entry>Shark, Medium</entry>
+    <entry>Shark, Large</entry>
+    <entry>Shark, Huge</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon</name>
+    <entry>Silver Dragon, Wyrmling</entry>
+    <entry>Silver Dragon, Very Young</entry>
+    <entry>Silver Dragon, Young</entry>
+    <entry>Silver Dragon, Juvenile</entry>
+    <entry>Silver Dragon, Young Adult</entry>
+    <entry>Silver Dragon, Adult</entry>
+    <entry>Silver Dragon, Mature Adult</entry>
+    <entry>Silver Dragon, Old</entry>
+    <entry>Silver Dragon, Very Old</entry>
+    <entry>Silver Dragon, Ancient</entry>
+    <entry>Silver Dragon, Wyrm</entry>
+    <entry>Silver Dragon, Great Wyrm</entry>
+  </collection>
+  <collection>
+    <name>Skeleton</name>
+    <entry>Has Skeleton</entry>
+  </collection>
+  <collection>
+    <name>Slaad</name>
     <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
+    <entry>Red Slaad</entry>
+    <entry>Green Slaad</entry>
+    <entry>Gray Slaad</entry>
     <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Rakshasa</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
   </collection>
   <collection>
-    <name>Aquatic</name>
-    <entry>Aquatic Elf</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Sahuagin</entry>
-    <entry>Scrag</entry>
-  </collection>
-  <collection>
-    <name>Aristocrat</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Rakshasa</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Barbarian</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Bard</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Rakshasa</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Chaotic Evil</name>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Derro</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>Hill Giant</entry>
-    <entry>Human</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Merrow</entry>
-    <entry>Minotaur</entry>
-    <entry>Ogre</entry>
-    <entry>Orc</entry>
-    <entry>Red Slaad</entry>
-    <entry>Satyr</entry>
-    <entry>Scrag</entry>
-    <entry>Storm Giant</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Chaotic Good</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Human</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Orc</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Satyr</entry>
-    <entry>Storm Giant</entry>
-    <entry>Wild Elf</entry>
-  </collection>
-  <collection>
-    <name>Chaotic Neutral</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Minotaur</entry>
-    <entry>Ogre</entry>
-    <entry>Orc</entry>
-    <entry>Red Slaad</entry>
-    <entry>Satyr</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Cleric</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Rakshasa</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Colossal</name>
-  </collection>
-  <collection>
-    <name>Commoner</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Rakshasa</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Druid</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Rakshasa</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Expert</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Rakshasa</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Fighter</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Has Wings</name>
-    <entry>Gargoyle</entry>
-    <entry>Harpy</entry>
+    <name>Sprite</name>
+    <entry>Grig</entry>
+    <entry>Nixie</entry>
     <entry>Pixie</entry>
   </collection>
   <collection>
-    <name>Huge</name>
-    <entry>Cloud Giant</entry>
-    <entry>Storm Giant</entry>
+    <name>Tojanida</name>
+    <entry>Juvenile Tojanida</entry>
+    <entry>Adult Tojanida</entry>
+    <entry>Elder Tojanida</entry>
   </collection>
   <collection>
-    <name>Large</name>
-    <entry>Blue Slaad</entry>
-    <entry>Centaur</entry>
-    <entry>Fire Giant</entry>
-    <entry>Frost Giant</entry>
-    <entry>Green Slaad</entry>
-    <entry>Hill Giant</entry>
-    <entry>Merrow</entry>
-    <entry>Minotaur</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Red Slaad</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Troll</entry>
-    <entry>Yuan-ti Abomination</entry>
+    <name>Undead</name>
+    <entry>Allip</entry>
+    <entry>Bodak</entry>
+    <entry>Devourer</entry>
+    <entry>Ghoul</entry>
+    <entry>Lacedon</entry>
+    <entry>Mummy</entry>
+    <entry>Mohrg</entry>
+    <entry>Nightshade</entry>
+    <entry>Shadow</entry>
+    <entry>Spectre</entry>
+    <entry>Wight</entry>
+    <entry>Wraith</entry>
   </collection>
   <collection>
-    <name>Lawful Evil</name>
-    <entry>Cloud Giant</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Frost Giant</entry>
-    <entry>Githyanki</entry>
-    <entry>Goblin</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Human</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Rakshasa</entry>
-    <entry>Sahuagin</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Tiefling</entry>
+    <name>Vampire</name>
   </collection>
   <collection>
-    <name>Lawful Good</name>
-    <entry>Aasimar</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Storm Giant</entry>
+    <name>Vermin</name>
+    <entry>Centipede Swarm</entry>
+    <entry>Giant Ant</entry>
+    <entry>Giant Bee</entry>
+    <entry>Giant Bombardier Beetle</entry>
+    <entry>Giant Fire Beetle</entry>
+    <entry>Giant Praying Mantis</entry>
+    <entry>Giant Stag Beetle</entry>
+    <entry>Giant Wasp</entry>
+    <entry>Locust</entry>
+    <entry>Monstrous Centipede</entry>
+    <entry>Monstrous Scorpion</entry>
+    <entry>Monstrous Spider</entry>
+    <entry>Spider Swarm</entry>
   </collection>
   <collection>
-    <name>Lawful Neutral</name>
-    <entry>Aasimar</entry>
-    <entry>Azer</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Doppelganger</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kobold</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Sahuagin</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Stone Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
+    <name>Viper Snake</name>
+    <entry>Viper Snake, Huge</entry>
+    <entry>Viper Snake, Large</entry>
+    <entry>Viper Snake, Medium</entry>
+    <entry>Viper Snake, Small</entry>
+    <entry>Viper Snake, Tiny</entry>
   </collection>
   <collection>
-    <name>Medium</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Bugbear</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Orc</entry>
-    <entry>Rakshasa</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
+    <name>Werebear</name>
   </collection>
   <collection>
-    <name>Monk</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
+    <name>Wereboar</name>
+  </collection>
+  <collection>
+    <name>Wererat</name>
+  </collection>
+  <collection>
+    <name>Weretiger</name>
+  </collection>
+  <collection>
+    <name>Werewolf</name>
+  </collection>
+  <collection>
+    <name>Whale</name>
+    <entry>Baleen Whale</entry>
+    <entry>Cachalot Whale</entry>
+    <entry>Orca Whale</entry>
+  </collection>
+  <collection>
+    <name>White Dragon</name>
+    <entry>White Dragon, Wyrmling</entry>
+    <entry>White Dragon, Very Young</entry>
+    <entry>White Dragon, Young</entry>
+    <entry>White Dragon, Juvenile</entry>
+    <entry>White Dragon, Young Adult</entry>
+    <entry>White Dragon, Adult</entry>
+    <entry>White Dragon, Mature Adult</entry>
+    <entry>White Dragon, Old</entry>
+    <entry>White Dragon, Very Old</entry>
+    <entry>White Dragon, Ancient</entry>
+    <entry>White Dragon, Wyrm</entry>
+    <entry>White Dragon, Great Wyrm</entry>
+  </collection>
+  <collection>
+    <name>Xorn</name>
+    <entry>Average Xorn</entry>
+    <entry>Minor Xorn</entry>
+    <entry>Elder Xorn</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti</name>
     <entry>Yuan-ti Abomination</entry>
     <entry>Yuan-ti Halfblood</entry>
     <entry>Yuan-ti Pureblood</entry>
   </collection>
   <collection>
-    <name>Monsters</name>
-    <entry>Azer</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Fire Giant</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Harpy</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Rakshasa</entry>
-    <entry>Red Slaad</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Neutral Evil</name>
-    <entry>Bugbear</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Sahuagin</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Neutral Good</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Doppelganger</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Gray Elf</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Pixie</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-  </collection>
-  <collection>
-    <name>Paladin</name>
-    <entry>Aasimar</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Storm Giant</entry>
-  </collection>
-  <collection>
-    <name>Ranger</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Rogue</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Small</name>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Goblin</entry>
-    <entry>Kobold</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Pixie</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-  </collection>
-  <collection>
-    <name>Sorcerer</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Rakshasa</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Standard</name>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Human</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Rock Gnome</entry>
-  </collection>
-  <collection>
-    <name>Tiny</name>
-  </collection>
-  <collection>
-    <name>True Neutral</name>
-    <entry>Aasimar</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Satyr</entry>
-    <entry>Stone Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Wood Elf</entry>
-  </collection>
-  <collection>
-    <name>Warrior</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
-  </collection>
-  <collection>
-    <name>Wizard</name>
-    <entry>Aasimar</entry>
-    <entry>Aquatic Elf</entry>
-    <entry>Azer</entry>
-    <entry>Blue Slaad</entry>
-    <entry>Bugbear</entry>
-    <entry>Centaur</entry>
-    <entry>Cloud Giant</entry>
-    <entry>Death Slaad</entry>
-    <entry>Deep Dwarf</entry>
-    <entry>Deep Halfling</entry>
-    <entry>Derro</entry>
-    <entry>Doppelganger</entry>
-    <entry>Drow</entry>
-    <entry>Duergar Dwarf</entry>
-    <entry>Fire Giant</entry>
-    <entry>Forest Gnome</entry>
-    <entry>Frost Giant</entry>
-    <entry>Gargoyle</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
-    <entry>Gnoll</entry>
-    <entry>Goblin</entry>
-    <entry>Gray Elf</entry>
-    <entry>Gray Slaad</entry>
-    <entry>Green Slaad</entry>
-    <entry>Grimlock</entry>
-    <entry>Half-Elf</entry>
-    <entry>Half-Orc</entry>
-    <entry>Harpy</entry>
-    <entry>High Elf</entry>
-    <entry>Hill Dwarf</entry>
-    <entry>Hill Giant</entry>
-    <entry>Hobgoblin</entry>
-    <entry>Hound Archon</entry>
-    <entry>Human</entry>
-    <entry>Janni</entry>
-    <entry>Kapoacinth</entry>
-    <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
-    <entry>Lightfoot Halfling</entry>
-    <entry>Lizardfolk</entry>
-    <entry>Locathah</entry>
-    <entry>Merfolk</entry>
-    <entry>Merrow</entry>
-    <entry>Mind Flayer</entry>
-    <entry>Minotaur</entry>
-    <entry>Mountain Dwarf</entry>
-    <entry>Ogre</entry>
-    <entry>Ogre Mage</entry>
-    <entry>Orc</entry>
-    <entry>Pixie</entry>
-    <entry>Rakshasa</entry>
-    <entry>Red Slaad</entry>
-    <entry>Rock Gnome</entry>
-    <entry>Sahuagin</entry>
-    <entry>Satyr</entry>
-    <entry>Scorpionfolk</entry>
-    <entry>Scrag</entry>
-    <entry>Stone Giant</entry>
-    <entry>Storm Giant</entry>
-    <entry>Svirfneblin</entry>
-    <entry>Tallfellow Halfling</entry>
-    <entry>Tiefling</entry>
-    <entry>Troglodyte</entry>
-    <entry>Troll</entry>
-    <entry>Wild Elf</entry>
-    <entry>Wood Elf</entry>
-    <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
-    <entry>Yuan-ti Pureblood</entry>
+    <name>Zombie</name>
+    <entry>Has Skeleton</entry>
   </collection>
 </collections>

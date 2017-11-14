@@ -1,5 +1,5 @@
-﻿using CreatureGen.Tables;
-using CreatureGen.Creatures;
+﻿using CreatureGen.Creatures;
+using CreatureGen.Tables;
 using NUnit.Framework;
 
 namespace CreatureGen.Tests.Integration.Tables.Races.BaseRaces
@@ -13,7 +13,7 @@ namespace CreatureGen.Tests.Integration.Tables.Races.BaseRaces
         }
 
         [Test]
-        public override void CollectionNames()
+        public void CollectionNames()
         {
             var names = CreatureConstants.All();
             AssertCollectionNames(names);
@@ -79,7 +79,7 @@ namespace CreatureGen.Tests.Integration.Tables.Races.BaseRaces
         [TestCase(CreatureConstants.Troll_Scrag, 40)]
         [TestCase(CreatureConstants.Giant_Stone, 0)]
         [TestCase(CreatureConstants.Giant_Storm, 40)]
-        [TestCase(CreatureConstants.Svirfneblin, 0)]
+        [TestCase(CreatureConstants.Gnome_Svirfneblin, 0)]
         [TestCase(CreatureConstants.Halfling_Tallfellow, 0)]
         [TestCase(CreatureConstants.Tiefling, 0)]
         [TestCase(CreatureConstants.Troglodyte, 0)]

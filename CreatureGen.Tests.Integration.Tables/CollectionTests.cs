@@ -10,7 +10,7 @@ namespace CreatureGen.Tests.Integration.Tables
     public abstract class CollectionTests : TableTests
     {
         [Inject]
-        internal CollectionMapper CollectionsMapper { get; set; }
+        internal CollectionMapper CollectionMapper { get; set; }
 
         protected Dictionary<string, IEnumerable<string>> table;
         protected Dictionary<int, string> indices;
@@ -18,11 +18,9 @@ namespace CreatureGen.Tests.Integration.Tables
         [SetUp]
         public void CollectionSetup()
         {
-            table = CollectionsMapper.Map(tableName);
+            table = CollectionMapper.Map(tableName);
             indices = new Dictionary<int, string>();
         }
-
-        public abstract void CollectionNames();
 
         protected void AssertCollectionNames(IEnumerable<string> names)
         {

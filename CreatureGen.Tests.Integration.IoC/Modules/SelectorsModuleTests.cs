@@ -23,5 +23,23 @@ namespace CreatureGen.Tests.Integration.IoC.Modules
         {
             AssertNotSingleton<IFeatsSelector>();
         }
+
+        [Test]
+        public void TypeAndAmountSelectorIsInjected()
+        {
+            AssertNotSingleton<ITypeAndAmountSelector>();
+        }
+
+        [Test]
+        public void CreatureDataSelectorIsInjected()
+        {
+            AssertNotSingleton<ICreatureDataSelector>();
+        }
+
+        [Test]
+        public void AttackSelectorIsInjected()
+        {
+            AssertNotSingleton<IAttackSelector>();
+        }
     }
 }

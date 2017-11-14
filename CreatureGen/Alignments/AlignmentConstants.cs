@@ -1,6 +1,6 @@
 ﻿namespace CreatureGen.Alignments
 {
-    public class AlignmentConstants
+    public static class AlignmentConstants
     {
         public const string Lawful = "Lawful";
         public const string Good = "Good";
@@ -16,5 +16,13 @@
         public const string ChaoticGood = "Chaotic Good";
         public const string ChaoticNeutral = "Chaotic Neutral";
         public const string ChaoticEvil = "Chaotic Evil";
+
+        public static class Modifiers
+        {
+            public const string Always = "Always";
+            public const string Usually = "Usually";
+            public const string Often = "Often";
+            public const string Any = "Any";
+        }
     }
 }

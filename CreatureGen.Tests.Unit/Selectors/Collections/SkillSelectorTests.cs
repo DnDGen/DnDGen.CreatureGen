@@ -31,7 +31,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             mockInnerSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillData, "skill")).Returns(skillData);
 
             var selection = skillSelector.SelectFor("skill");
-            Assert.That(selection.BaseStatName, Is.EqualTo("base stat"));
+            Assert.That(selection.BaseAbilityName, Is.EqualTo("base stat"));
             Assert.That(selection.SkillName, Is.EqualTo("skill name"));
             Assert.That(selection.Focus, Is.EqualTo("focus"));
             Assert.That(selection.RandomFociQuantity, Is.EqualTo(9266));

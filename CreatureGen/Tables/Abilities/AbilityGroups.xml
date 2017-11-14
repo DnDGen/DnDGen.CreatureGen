@@ -2,10 +2,6 @@
 
 <collections>
   <collection>
-    <name>AdeptSpellcasters</name>
-    <entry>Wisdom</entry>
-  </collection>
-  <collection>
     <name>All</name>
     <entry>Charisma</entry>
     <entry>Intelligence</entry>
@@ -13,33 +9,5 @@
     <entry>Strength</entry>
     <entry>Constitution</entry>
     <entry>Dexterity</entry>
-  </collection>
-  <collection>
-    <name>BardSpellcasters</name>
-    <entry>Charisma</entry>
-  </collection>
-  <collection>
-    <name>ClericSpellcasters</name>
-    <entry>Wisdom</entry>
-  </collection>
-  <collection>
-    <name>DruidSpellcasters</name>
-    <entry>Wisdom</entry>
-  </collection>
-  <collection>
-    <name>PaladinSpellcasters</name>
-    <entry>Wisdom</entry>
-  </collection>
-  <collection>
-    <name>RangerSpellcasters</name>
-    <entry>Wisdom</entry>
-  </collection>
-  <collection>
-    <name>SorcererSpellcasters</name>
-    <entry>Charisma</entry>
-  </collection>
-  <collection>
-    <name>WizardSpellcasters</name>
-    <entry>Intelligence</entry>
   </collection>
 </collections>
