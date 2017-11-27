@@ -22,13 +22,13 @@
     <entry>Gibbering Mouther</entry>
     <entry>Grick</entry>
     <entry>Mimic</entry>
-    <entry>Mind flayer</entry>
+    <entry>Mind Flayer</entry>
     <entry>Naga</entry>
     <entry>Otyugh</entry>
     <entry>Phasm</entry>
     <entry>Rust Monster</entry>
     <entry>Skum</entry>
-    <entry>Umber hulk</entry>
+    <entry>Umber Hulk</entry>
     <entry>Will-O'-Wisp</entry>
   </collection>
   <collection>
@@ -255,7 +255,7 @@
     <entry>Brass Dragon</entry>
     <entry>Bronze Dragon</entry>
     <entry>Copper Dragon</entry>
-    <entry>Dragon turtle</entry>
+    <entry>Dragon Turtle</entry>
     <entry>Gold Dragon</entry>
     <entry>Green Dragon</entry>
     <entry>Red Dragon</entry>
@@ -277,7 +277,7 @@
     <entry>Earth Elemental</entry>
     <entry>Fire Elemental</entry>
     <entry>Water Elemental</entry>
-    <entry>Invisible stalker</entry>
+    <entry>Invisible Stalker</entry>
     <entry>Magmin</entry>
     <entry>Thoqqua</entry>
   </collection>
@@ -468,7 +468,6 @@
     <name>Humanoid</name>
     <entry>Aasimar</entry>
     <entry>Bugbear</entry>
-    <entry>Character</entry>
     <entry>Duergar</entry>
     <entry>Dwarf</entry>
     <entry>Elf</entry>
@@ -527,7 +526,6 @@
     <entry>Behir</entry>
     <entry>Blink Dog</entry>
     <entry>Bulette</entry>
-    <entry>Celestial Creature</entry>
     <entry>Chimera</entry>
     <entry>Cockatrice</entry>
     <entry>Criosphinx</entry>
@@ -536,7 +534,6 @@
     <entry>Digester</entry>
     <entry>Dragonne</entry>
     <entry>Ethereal Marauder</entry>
-    <entry>Fiendish Creature</entry>
     <entry>Frost Worm</entry>
     <entry>Giant Eagle</entry>
     <entry>Giant Owl</entry>
@@ -664,20 +661,18 @@
     <entry>Barghest</entry>
     <entry>Abyssal Greater Basilisk</entry>
     <entry>Bralani</entry>
-    <entry>Celestial Creature</entry>
     <entry>Chaos Beast</entry>
     <entry>Couatl</entry>
     <entry>Demon</entry>
     <entry>Devil</entry>
     <entry>Ethereal Marauder</entry>
-    <entry>Fiendish Creature</entry>
     <entry>Formian</entry>
     <entry>Genie</entry>
     <entry>Ghaele</entry>
     <entry>Githyanki</entry>
     <entry>Githzerai</entry>
     <entry>Hell Hound</entry>
-    <entry>Hellwasp</entry>
+    <entry>Hellwasp Swarm</entry>
     <entry>Howler</entry>
     <entry>Inevitable</entry>
     <entry>Leonal</entry>
@@ -698,7 +693,7 @@
     <entry>Vargouille</entry>
     <entry>Xill</entry>
     <entry>Xorn</entry>
-    <entry>Yeth hound</entry>
+    <entry>Yeth Hound</entry>
   </collection>
   <collection>
     <name>Plant</name>
@@ -815,7 +810,7 @@
     <entry>Giant Praying Mantis</entry>
     <entry>Giant Stag Beetle</entry>
     <entry>Giant Wasp</entry>
-    <entry>Locust</entry>
+    <entry>Locust Swarm</entry>
     <entry>Monstrous Centipede</entry>
     <entry>Monstrous Scorpion</entry>
     <entry>Monstrous Spider</entry>

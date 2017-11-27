@@ -501,6 +501,10 @@
     <name>Cat</name>
   </collection>
   <collection>
+    <name>Centaur</name>
+    <entry>UsuallyNeutral Good</entry>
+  </collection>
+  <collection>
     <name>Centipede Swarm</name>
   </collection>
   <collection>
@@ -508,10 +512,72 @@
     <entry>AlwaysLawful Evil</entry>
   </collection>
   <collection>
+    <name>Chaos Beast</name>
+    <entry>AlwaysChaotic Neutral</entry>
+  </collection>
+  <collection>
     <name>Cheetah</name>
   </collection>
   <collection>
+    <name>Chimera</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Choker</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Chuul</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Cloaker</name>
+    <entry>UsuallyChaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Cockatrice</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Constrictor Snake</name>
+  </collection>
+  <collection>
+    <name>Couatl</name>
+    <entry>AlwaysLawful Good</entry>
+  </collection>
+  <collection>
     <name>Criosphinx</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Crocodile</name>
+  </collection>
+  <collection>
+    <name>Darkmantle</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Deinonychus</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Delver</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Derro</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Destrachan</name>
+    <entry>UsuallyNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Devourer</name>
+    <entry>AlwaysNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Digester</name>
     <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
@@ -530,8 +596,38 @@
     <name>Dire Boar</name>
   </collection>
   <collection>
+    <name>Displacer Beast</name>
+    <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack Lord</name>
+    <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Djinni</name>
+    <entry>AlwaysChaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Noble Djinni</name>
+    <entry>AlwaysChaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Dog</name>
+  </collection>
+  <collection>
+    <name>Dog, Riding</name>
+  </collection>
+  <collection>
     <name>Dretch</name>
     <entry>AlwaysChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Efreeti</name>
+    <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Elasmosaurus</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
@@ -563,6 +659,12 @@
   </collection>
   <collection>
     <name>Giant Bombardier Beetle</name>
+  </collection>
+  <collection>
+    <name>Giant Constrictor Snake</name>
+  </collection>
+  <collection>
+    <name>Giant Crocodile</name>
   </collection>
   <collection>
     <name>Giant Fire Beetle</name>
@@ -613,12 +715,112 @@
     <entry>AlwaysLawful Evil</entry>
   </collection>
   <collection>
+    <name>Five-Headed Cryohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Cryohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Cryohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Cryohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Cryohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Cryohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Cryohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Cryohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Hydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Hydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Hydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Hydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Hydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Hydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Hydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Hydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Pyrohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Pyrohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Pyrohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Pyrohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Pyrohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Pyrohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Pyrohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Pyrohydra</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Ice Devil (Gelugon)</name>
     <entry>AlwaysLawful Evil</entry>
   </collection>
   <collection>
     <name>Imp</name>
     <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Janni</name>
+    <entry>UsuallyTrue Neutral</entry>
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
@@ -629,8 +831,15 @@
     <entry>AlwaysLawful Evil</entry>
   </collection>
   <collection>
+    <name>Locust Swarm</name>
+  </collection>
+  <collection>
     <name>Marilith</name>
     <entry>AlwaysChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Megaraptor</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
@@ -731,12 +940,38 @@
     <entry>AlwaysGood</entry>
   </collection>
   <collection>
+    <name>Spider Swarm</name>
+  </collection>
+  <collection>
     <name>Succubus</name>
     <entry>AlwaysChaotic Evil</entry>
   </collection>
   <collection>
     <name>Tiefling</name>
     <entry>UsuallyEvil</entry>
+  </collection>
+  <collection>
+    <name>Triceratops</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Tyrannosaurus</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Huge</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Large</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Medium</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Small</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Tiny</name>
   </collection>
   <collection>
     <name>Vrock</name>

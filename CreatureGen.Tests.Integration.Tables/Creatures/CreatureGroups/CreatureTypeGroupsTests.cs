@@ -18,6 +18,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var creatures = new[]
             {
                 CreatureConstants.Aboleth,
+                CreatureConstants.Aboleth_Mage,
                 CreatureConstants.Athach,
                 CreatureConstants.Beholder,
                 CreatureConstants.CarrionCrawler,
