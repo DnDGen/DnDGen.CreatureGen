@@ -513,8 +513,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             var alignments = new[]
             {
-                AlignmentConstants.Evil,
-                AlignmentConstants.Neutral,
+                AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil,
+                AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral,
             };
 
             var typeCreatures = new List<string>();
@@ -616,6 +616,31 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             };
 
             DistinctCollection(CreatureConstants.Groups.HasSkeleton, entries);
+        }
+
+        [Test]
+        public void NoCircularSubgroups()
+        {
+            foreach (var kvp in table)
+            {
+                AssertGroupDoesNotContain(kvp.Key, kvp.Key);
+            }
+        }
+
+        private void AssertGroupDoesNotContain(string name, string forbiddenEntry)
+        {
+            var group = table[name];
+
+            if (name != forbiddenEntry)
+                Assert.That(group, Does.Not.Contain(forbiddenEntry));
+
+            var subgroupNames = group.Intersect(table.Keys);
+
+            foreach (var subgroupName in subgroupNames)
+            {
+                AssertGroupDoesNotContain(subgroupName, forbiddenEntry);
+                AssertGroupDoesNotContain(subgroupName, subgroupName);
+            }
         }
     }
 }

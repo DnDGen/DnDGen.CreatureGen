@@ -1,11 +1,27 @@
 ﻿using CreatureGen.Creatures;
+using DnDGen.Core.Selectors.Collections;
+using EventGen;
+using Ninject;
 using NUnit.Framework;
+using System;
 
 namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 {
     [TestFixture]
     public class CreatureTypeGroupsTests : CreatureGroupsTableTests
     {
+        [Inject]
+        public ICollectionSelector CollectionSelector { get; set; }
+        [Inject]
+        public ClientIDManager ClientIdManager { get; set; }
+
+        [SetUp]
+        public void Setup()
+        {
+            var clientID = Guid.NewGuid();
+            ClientIdManager.SetClientID(clientID);
+        }
+
         [Test]
         public void EntriesAreComplete()
         {
@@ -429,6 +445,38 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             };
 
             base.DistinctCollection(CreatureConstants.Types.Vermin, creatures);
+        }
+
+        [Test]
+        public void AllCreaturesHaveType()
+        {
+            var allCreatures = CreatureConstants.All();
+            var allTypes = new[]
+            {
+                CreatureConstants.Types.Aberration,
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Construct,
+                CreatureConstants.Types.Dragon,
+                CreatureConstants.Types.Elemental,
+                CreatureConstants.Types.Fey,
+                CreatureConstants.Types.Giant,
+                CreatureConstants.Types.Humanoid,
+                CreatureConstants.Types.MagicalBeast,
+                CreatureConstants.Types.MonstrousHumanoid,
+                CreatureConstants.Types.Ooze,
+                CreatureConstants.Types.Outsider,
+                CreatureConstants.Types.Plant,
+                CreatureConstants.Types.Undead,
+                CreatureConstants.Types.Vermin,
+            };
+
+            foreach (var creature in allCreatures)
+            {
+                var type = CollectionSelector.FindCollectionOf(tableName, creature, allTypes);
+                Assert.That(type, Is.Not.Null, creature);
+                Assert.That(type, Is.Not.Empty, creature);
+                Assert.That(new[] { type }, Is.SubsetOf(allTypes), creature);
+            }
         }
     }
 }
