@@ -553,6 +553,10 @@
     <name>Crocodile</name>
   </collection>
   <collection>
+    <name>Dark Naga</name>
+    <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
     <name>Darkmantle</name>
     <entry>AlwaysTrue Neutral</entry>
   </collection>
@@ -1528,8 +1532,16 @@
     <entry>OftenNeutral Evil</entry>
   </collection>
   <collection>
+    <name>Guardian Naga</name>
+    <entry>UsuallyLawful Good</entry>
+  </collection>
+  <collection>
     <name>Gynosphinx</name>
     <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Half-Orc</name>
+    <entry>OftenChaotic Evil</entry>
   </collection>
   <collection>
     <name>Deep Halfling</name>
@@ -1561,6 +1573,14 @@
   <collection>
     <name>Hieracosphinx</name>
     <entry>AlwaysChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Hobgoblin</name>
+    <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Homunculus</name>
+    <entry>Any</entry>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
@@ -1674,6 +1694,10 @@
     <entry>AlwaysLawful Evil</entry>
   </collection>
   <collection>
+    <name>Invisible Stalker</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Janni</name>
     <entry>UsuallyTrue Neutral</entry>
   </collection>
@@ -1682,8 +1706,16 @@
     <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
+    <name>Kobold</name>
+    <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
     <name>Kolyarut</name>
     <entry>AlwaysLawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Kuo-toa</name>
+    <entry>OftenNeutral Evil</entry>
   </collection>
   <collection>
     <name>Lemure</name>
@@ -1699,7 +1731,19 @@
     <name>Lizard</name>
   </collection>
   <collection>
+    <name>Lizardfolk</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Locathah</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Locust Swarm</name>
+  </collection>
+  <collection>
+    <name>Magmin</name>
+    <entry>AlwaysChaotic Neutral</entry>
   </collection>
   <collection>
     <name>Manta Ray</name>
@@ -1715,6 +1759,22 @@
   <collection>
     <name>Megaraptor</name>
     <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Merfolk</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Merrow</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Mimic</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Mind Flayer</name>
+    <entry>UsuallyLawful Evil</entry>
   </collection>
   <collection>
     <name>Monitor Lizard</name>
@@ -1797,6 +1857,10 @@
     <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
+    <name>Nymph</name>
+    <entry>UsuallyChaotic Good</entry>
+  </collection>
+  <collection>
     <name>Ochre Jelly</name>
     <entry>AlwaysTrue Neutral</entry>
   </collection>
@@ -1804,7 +1868,27 @@
     <name>Octopus</name>
   </collection>
   <collection>
+    <name>Ogre</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Ogre Mage</name>
+    <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Orc</name>
+    <entry>OftenChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Otyugh</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Owl</name>
+  </collection>
+  <collection>
+    <name>Phasm</name>
+    <entry>UsuallyChaotic Neutral</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
@@ -1833,6 +1917,10 @@
   </collection>
   <collection>
     <name>Porpoise</name>
+  </collection>
+  <collection>
+    <name>Pseudodragon</name>
+    <entry>AlwaysNeutral Good</entry>
   </collection>
   <collection>
     <name>Quasit</name>

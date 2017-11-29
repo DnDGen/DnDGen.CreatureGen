@@ -6,7 +6,6 @@ using EventGen;
 using Ninject;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace CreatureGen.Tests.Integration.Tables.Alignments
@@ -806,34 +805,11 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         public void UsuallyAlignmentHasMajority(string alignment)
         {
             var group = AlignmentConstants.Modifiers.Usually + alignment;
-            var weightedAlignments = ExplodeAndPreserveDuplicates(group);
+            var weightedAlignments = CollectionSelector.ExplodeAndPreserveDuplicates(tableName, group);
 
             var alignmentCount = weightedAlignments.Count(a => a == alignment);
             var halfCount = weightedAlignments.Count() / 2;
             Assert.That(alignmentCount, Is.AtLeast(halfCount));
-        }
-
-        private IEnumerable<string> ExplodeAndPreserveDuplicates(string group)
-        {
-            //INFO: Not using Explode from CollectionSelector, as that does deduplication, and we want duplication/weighting with these alignments
-            var alignmentGroups = table[group];
-            var weightedAlignments = new List<string>(alignmentGroups);
-
-            alignmentGroups = weightedAlignments.Where(a => table.ContainsKey(a)).ToArray();
-
-            while (alignmentGroups.Any())
-            {
-                foreach (var alignmentGroup in alignmentGroups)
-                {
-                    var alignments = table[alignmentGroup];
-                    weightedAlignments.AddRange(alignments);
-                    weightedAlignments.Remove(alignmentGroup);
-                }
-
-                alignmentGroups = weightedAlignments.Where(a => table.ContainsKey(a)).ToArray();
-            }
-
-            return weightedAlignments;
         }
 
         [TestCase(AlignmentConstants.LawfulEvil)]
@@ -848,7 +824,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         public void OftenAlignmentIsMode(string alignment)
         {
             var group = AlignmentConstants.Modifiers.Often + alignment;
-            var weightedAlignments = ExplodeAndPreserveDuplicates(group);
+            var weightedAlignments = CollectionSelector.ExplodeAndPreserveDuplicates(tableName, group);
 
             var modeCount = weightedAlignments
                 .GroupBy(a => a)
@@ -874,7 +850,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
 
             foreach (var creature in creatures)
             {
-                var alignments = ExplodeAndPreserveDuplicates(creature);
+                var alignments = CollectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
                 Assert.That(alignments, Is.Empty, creature);
             }
         }
@@ -900,7 +876,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
 
             foreach (var creature in creatures)
             {
-                var alignments = ExplodeAndPreserveDuplicates(creature);
+                var alignments = CollectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
                 Assert.That(alignments, Is.Not.Empty, creature);
             }
         }
