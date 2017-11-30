@@ -4,6 +4,8 @@ using EventGen;
 using Ninject;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 {
@@ -56,6 +58,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.RustMonster,
                 CreatureConstants.Skum,
                 CreatureConstants.UmberHulk,
+                CreatureConstants.UmberHulk_TrulyHorrid,
                 CreatureConstants.WillOWisp,
             };
 
@@ -68,18 +71,25 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var creatures = new[]
             {
                 CreatureConstants.Ape,
+                CreatureConstants.Ape_Dire,
                 CreatureConstants.Baboon,
                 CreatureConstants.Badger,
+                CreatureConstants.Badger_Dire,
                 CreatureConstants.Bat,
+                CreatureConstants.Bat_Dire,
+                CreatureConstants.Bat_Swarm,
                 CreatureConstants.Groups.Bear,
                 CreatureConstants.Bison,
                 CreatureConstants.Boar,
+                CreatureConstants.Boar_Dire,
                 CreatureConstants.Camel,
                 CreatureConstants.Cat,
                 CreatureConstants.Cheetah,
                 CreatureConstants.Crocodile,
+                CreatureConstants.Crocodile_Giant,
                 CreatureConstants.Groups.Dinosaur,
                 CreatureConstants.Dog,
+                CreatureConstants.Dog_Riding,
                 CreatureConstants.Donkey,
                 CreatureConstants.Eagle,
                 CreatureConstants.Elephant,
@@ -88,29 +98,40 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Hyena,
                 CreatureConstants.Leopard,
                 CreatureConstants.Lion,
+                CreatureConstants.Lion_Dire,
                 CreatureConstants.Lizard,
                 CreatureConstants.Lizard_Monitor,
                 CreatureConstants.MantaRay,
                 CreatureConstants.Monkey,
                 CreatureConstants.Mule,
                 CreatureConstants.Octopus,
+                CreatureConstants.Octopus_Giant,
                 CreatureConstants.Owl,
                 CreatureConstants.Pony,
+                CreatureConstants.Pony_War,
                 CreatureConstants.Porpoise,
                 CreatureConstants.Rat,
+                CreatureConstants.Rat_Dire,
+                CreatureConstants.Rat_Swarm,
                 CreatureConstants.Raven,
                 CreatureConstants.Rhinoceras,
                 CreatureConstants.Roc,
                 CreatureConstants.Snake_Constrictor,
+                CreatureConstants.Snake_Constrictor_Giant,
                 CreatureConstants.Groups.Snake_Viper,
                 CreatureConstants.Groups.Shark,
                 CreatureConstants.Squid,
+                CreatureConstants.Squid_Giant,
                 CreatureConstants.Tiger,
+                CreatureConstants.Tiger_Dire,
                 CreatureConstants.Toad,
                 CreatureConstants.Weasel,
+                CreatureConstants.Weasel_Dire,
                 CreatureConstants.Groups.Whale,
                 CreatureConstants.Wolf,
+                CreatureConstants.Wolf_Dire,
                 CreatureConstants.Wolverine,
+                CreatureConstants.Wolverine_Dire,
             };
 
             base.DistinctCollection(CreatureConstants.Types.Animal, creatures);
@@ -181,6 +202,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Dryad,
                 CreatureConstants.Nymph,
                 CreatureConstants.Satyr,
+                CreatureConstants.Satyr_WithPipes,
                 CreatureConstants.Groups.Sprite,
             };
 
@@ -198,6 +220,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Giant_Frost,
                 CreatureConstants.Giant_Hill,
                 CreatureConstants.Giant_Stone,
+                CreatureConstants.Giant_Stone_Elder,
                 CreatureConstants.Giant_Storm,
                 CreatureConstants.Ogre,
                 CreatureConstants.Ogre_Merrow,
@@ -255,6 +278,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Darkmantle,
                 CreatureConstants.Digester,
                 CreatureConstants.DisplacerBeast,
+                CreatureConstants.DisplacerBeast_PackLord,
                 CreatureConstants.Dragonne,
                 CreatureConstants.Eagle_Giant,
                 CreatureConstants.EtherealMarauder,
@@ -269,6 +293,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Krenshar,
                 CreatureConstants.Lamia,
                 CreatureConstants.Lammasu,
+                CreatureConstants.Lammasu_GoldenProtector,
                 CreatureConstants.Manticore,
                 CreatureConstants.Owl_Giant,
                 CreatureConstants.Owlbear,
@@ -280,14 +305,12 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Roper,
                 CreatureConstants.SeaCat,
                 CreatureConstants.ShockerLizard,
-                CreatureConstants.Androsphinx,
-                CreatureConstants.Criosphinx,
-                CreatureConstants.Gynosphinx,
-                CreatureConstants.Hieracosphinx,
+                CreatureConstants.Groups.Sphinx,
                 CreatureConstants.SpiderEater,
                 CreatureConstants.Stirge,
                 CreatureConstants.Tarrasque,
                 CreatureConstants.Unicorn,
+                CreatureConstants.Unicorn_CelestialCharger,
                 CreatureConstants.WinterWolf,
                 CreatureConstants.Worg,
                 CreatureConstants.Yrthak,
@@ -309,7 +332,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Grimlock,
                 CreatureConstants.Groups.Hag,
                 CreatureConstants.Harpy,
-                CreatureConstants.Groups.Lycanthrope,
                 CreatureConstants.Medusa,
                 CreatureConstants.Minotaur,
                 CreatureConstants.Sahuagin,
@@ -326,6 +348,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var creatures = new[]
             {
                 CreatureConstants.BlackPudding,
+                CreatureConstants.BlackPudding_Elder,
                 CreatureConstants.GelatinousCube,
                 CreatureConstants.Ooze_Gray,
                 CreatureConstants.Ooze_OchreJelly,
@@ -346,6 +369,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Avoral,
                 CreatureConstants.Azer,
                 CreatureConstants.Barghest,
+                CreatureConstants.Barghest_Greater,
                 CreatureConstants.Basilisk_AbyssalGreater,
                 CreatureConstants.Bralani,
                 CreatureConstants.ChaosBeast,
@@ -365,9 +389,10 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Leonal,
                 CreatureConstants.Lillend,
                 CreatureConstants.Groups.Mephit,
-                CreatureConstants.NessianWarhound,
+                CreatureConstants.HellHound_NessianWarhound,
                 CreatureConstants.NightHag,
                 CreatureConstants.Nightmare,
+                CreatureConstants.Nightmare_Cauchemar,
                 CreatureConstants.Rakshasa,
                 CreatureConstants.Rast,
                 CreatureConstants.Ravid,
@@ -411,14 +436,18 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Bodak,
                 CreatureConstants.Devourer,
                 CreatureConstants.Ghoul,
+                CreatureConstants.Ghoul_Ghast,
                 CreatureConstants.Ghoul_Lacedon,
                 CreatureConstants.Mohrg,
                 CreatureConstants.Mummy,
                 CreatureConstants.Groups.Nightshade,
                 CreatureConstants.Shadow,
+                CreatureConstants.Shadow_Greater,
                 CreatureConstants.Spectre,
+                CreatureConstants.VampireSpawn,
                 CreatureConstants.Wight,
                 CreatureConstants.Wraith,
+                CreatureConstants.Wraith_Dread,
             };
 
             base.DistinctCollection(CreatureConstants.Types.Undead, creatures);
@@ -470,13 +499,15 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Types.Vermin,
             };
 
-            foreach (var creature in allCreatures)
+            var allCreaturesOfType = new List<string>();
+
+            foreach (var type in allTypes)
             {
-                var type = CollectionSelector.FindCollectionOf(tableName, creature, allTypes);
-                Assert.That(type, Is.Not.Null, creature);
-                Assert.That(type, Is.Not.Empty, creature);
-                Assert.That(new[] { type }, Is.SubsetOf(allTypes), creature);
+                var creaturesOfType = CollectionSelector.Explode(tableName, type);
+                allCreaturesOfType.AddRange(creaturesOfType);
             }
+
+            AssertCollection(allCreaturesOfType.Distinct(), allCreatures);
         }
     }
 }

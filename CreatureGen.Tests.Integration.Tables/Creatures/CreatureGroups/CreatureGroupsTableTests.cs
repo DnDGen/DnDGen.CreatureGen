@@ -70,6 +70,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Groups.Shark,
                 CreatureConstants.Groups.Slaad,
                 CreatureConstants.Groups.Snake_Viper,
+                CreatureConstants.Groups.Sphinx,
                 CreatureConstants.Groups.Spider_Monstrous,
                 CreatureConstants.Groups.Sprite,
                 CreatureConstants.Groups.Tojanida,

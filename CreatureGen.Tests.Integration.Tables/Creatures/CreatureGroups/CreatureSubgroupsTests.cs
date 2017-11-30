@@ -290,6 +290,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.VioletFungus)]
         [TestCase(CreatureConstants.Groups.Genie,
             CreatureConstants.Djinni,
+            CreatureConstants.Djinni_Noble,
             CreatureConstants.Efreeti,
             CreatureConstants.Janni)]
         [TestCase(CreatureConstants.Groups.Gnome,
@@ -394,6 +395,11 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Snake_Viper_Medium,
             CreatureConstants.Snake_Viper_Small,
             CreatureConstants.Snake_Viper_Tiny)]
+        [TestCase(CreatureConstants.Groups.Sphinx,
+            CreatureConstants.Androsphinx,
+            CreatureConstants.Criosphinx,
+            CreatureConstants.Gynosphinx,
+            CreatureConstants.Hieracosphinx)]
         [TestCase(CreatureConstants.Groups.Spider_Monstrous,
             CreatureConstants.Spider_Monstrous_Colossal,
             CreatureConstants.Spider_Monstrous_Gargantuan,
@@ -405,6 +411,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [TestCase(CreatureConstants.Groups.Sprite,
             CreatureConstants.Grig,
             CreatureConstants.Pixie,
+            CreatureConstants.Pixie_WithIrresistableDance,
             CreatureConstants.Nixie)]
         [TestCase(CreatureConstants.Groups.Tojanida,
             CreatureConstants.Tojanida_Juvenile,
@@ -422,20 +429,49 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.YuanTi_Abomination,
             CreatureConstants.YuanTi_Halfblood,
             CreatureConstants.YuanTi_Pureblood)]
-        [TestCase(CreatureConstants.Templates.Ghost)]
-        [TestCase(CreatureConstants.Templates.HalfCelestial)]
-        [TestCase(CreatureConstants.Templates.HalfDragon)]
-        [TestCase(CreatureConstants.Templates.HalfFiend)]
-        [TestCase(CreatureConstants.Templates.Lich)]
+        [TestCase(CreatureConstants.Templates.Ghost,
+            CreatureConstants.Types.Aberration,
+            CreatureConstants.Types.Animal,
+            CreatureConstants.Types.Dragon,
+            CreatureConstants.Types.Giant,
+            CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.MagicalBeast,
+            CreatureConstants.Types.MonstrousHumanoid,
+            CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Templates.HalfDragon,
+            CreatureConstants.Types.Aberration,
+            CreatureConstants.Types.Animal,
+            CreatureConstants.Types.Dragon,
+            CreatureConstants.Types.Fey,
+            CreatureConstants.Types.Giant,
+            CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.MagicalBeast,
+            CreatureConstants.Types.MonstrousHumanoid,
+            CreatureConstants.Types.Plant,
+            CreatureConstants.Types.Vermin)]
+        [TestCase(CreatureConstants.Templates.Lich,
+            CreatureConstants.Types.Humanoid)]
         [TestCase(CreatureConstants.Templates.None)]
         [TestCase(CreatureConstants.Templates.Skeleton,
             CreatureConstants.Groups.HasSkeleton)]
-        [TestCase(CreatureConstants.Templates.Vampire)]
-        [TestCase(CreatureConstants.Templates.Werebear)]
-        [TestCase(CreatureConstants.Templates.Wereboar)]
-        [TestCase(CreatureConstants.Templates.Wererat)]
-        [TestCase(CreatureConstants.Templates.Weretiger)]
-        [TestCase(CreatureConstants.Templates.Werewolf)]
+        [TestCase(CreatureConstants.Templates.Vampire,
+            CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Templates.Werebear,
+            CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Templates.Wereboar,
+            CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Templates.Wererat,
+            CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Templates.Weretiger,
+            CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Templates.Werewolf,
+            CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Giant)]
         [TestCase(CreatureConstants.Templates.Zombie,
             CreatureConstants.Groups.HasSkeleton)]
         public void CreatureSubgroup(string creature, params string[] subgroup)
@@ -446,8 +482,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [Test]
         public void CelestialCreatureGroup()
         {
-            Assert.Fail("need to figure out alignment groupings better than currently done for this test");
-
             var types = new[]
             {
                 CreatureConstants.Types.Aberration,
@@ -462,14 +496,20 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Types.Vermin,
             };
 
-            var alignments = new[]
+            var alignments = new List<string>();
+            var alignmentGroups = new[]
             {
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Good,
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral,
+                AlignmentConstants.Modifiers.Always + AlignmentConstants.Good,
+                AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral,
             };
 
+            foreach (var alignmentGroup in alignmentGroups)
+            {
+                var explodedAlignments = CollectionSelector.Explode(TableNameConstants.Set.Collection.AlignmentGroups, alignmentGroup);
+                alignments.AddRange(explodedAlignments);
+            }
+
             var typeCreatures = new List<string>();
-            var alignmentCreatures = new List<string>();
 
             foreach (var creatureType in types)
             {
@@ -477,21 +517,106 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 typeCreatures.AddRange(explodedType);
             }
 
-            var allCreatures = CreatureConstants.All();
+            var alignmentCreatures = new List<string>();
 
-            foreach (var alignment in alignments)
+            foreach (var creature in typeCreatures)
             {
-                var explodedAlignment = CollectionSelector.Explode(TableNameConstants.Set.Collection.AlignmentGroups, alignment);
-                var allAlignmentGroups = CollectionSelector.SelectAllFrom(TableNameConstants.Set.Collection.AlignmentGroups);
-                var matchingGroups = allAlignmentGroups.Where(kvp => allCreatures.Contains(kvp.Key))
-                    .Where(kvp => kvp.Value.Intersect(explodedAlignment).Any());
+                var creatureAlignments = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.AlignmentGroups, creature);
+                if (!creatureAlignments.Any())
+                    creatureAlignments = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral };
 
-                var matchingCreatures = matchingGroups.Select(kvp => kvp.Key);
-                alignmentCreatures.AddRange(matchingCreatures);
+                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))))
+                    alignmentCreatures.Add(creature);
             }
 
-            var entries = alignmentCreatures.Intersect(typeCreatures).ToArray();
-            DistinctCollection(CreatureConstants.Templates.CelestialCreature, entries);
+            DistinctCollection(CreatureConstants.Templates.CelestialCreature, alignmentCreatures.ToArray());
+
+            Assert.Fail("Verify all creatures are corporeal");
+        }
+
+        [Test]
+        public void HalfCelestialCreatureGroup()
+        {
+            var types = new[]
+            {
+                CreatureConstants.Types.Aberration,
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Dragon,
+                CreatureConstants.Types.Fey,
+                CreatureConstants.Types.Giant,
+                CreatureConstants.Types.Humanoid,
+                CreatureConstants.Types.MagicalBeast,
+                CreatureConstants.Types.MonstrousHumanoid,
+                CreatureConstants.Types.Plant,
+                CreatureConstants.Types.Vermin,
+            };
+
+            var alignments = new List<string>();
+            var alignmentGroups = new[]
+            {
+                AlignmentConstants.Modifiers.Always + AlignmentConstants.Good,
+                AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral,
+            };
+
+            foreach (var alignmentGroup in alignmentGroups)
+            {
+                var explodedAlignments = CollectionSelector.Explode(TableNameConstants.Set.Collection.AlignmentGroups, alignmentGroup);
+                alignments.AddRange(explodedAlignments);
+            }
+
+            var typeCreatures = new List<string>();
+
+            foreach (var creatureType in types)
+            {
+                var explodedType = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);
+                typeCreatures.AddRange(explodedType);
+            }
+
+            var alignmentCreatures = new List<string>();
+
+            foreach (var creature in typeCreatures)
+            {
+                var creatureAlignments = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.AlignmentGroups, creature);
+                if (!creatureAlignments.Any())
+                    creatureAlignments = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral };
+
+                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))))
+                    alignmentCreatures.Add(creature);
+            }
+
+            DistinctCollection(CreatureConstants.Templates.HalfCelestial, alignmentCreatures.ToArray());
+
+            Assert.Fail("Verify all creatures are corporeal");
+        }
+
+        [Test]
+        public void HalfDragonCreatureGroup()
+        {
+            var types = new[]
+            {
+                CreatureConstants.Types.Aberration,
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Dragon,
+                CreatureConstants.Types.Fey,
+                CreatureConstants.Types.Giant,
+                CreatureConstants.Types.Humanoid,
+                CreatureConstants.Types.MagicalBeast,
+                CreatureConstants.Types.MonstrousHumanoid,
+                CreatureConstants.Types.Plant,
+                CreatureConstants.Types.Vermin,
+            };
+
+            var typeCreatures = new List<string>();
+
+            foreach (var creatureType in types)
+            {
+                var explodedType = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);
+                typeCreatures.AddRange(explodedType);
+            }
+
+            DistinctCollection(CreatureConstants.Templates.HalfDragon, typeCreatures.ToArray());
+
+            Assert.Fail("Verify all creatures are corporeal");
         }
 
         [Test]
@@ -511,14 +636,20 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Types.Vermin,
             };
 
-            var alignments = new[]
+            var alignments = new List<string>();
+            var alignmentGroups = new[]
             {
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil,
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral,
+                AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil,
+                AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral,
             };
 
+            foreach (var alignmentGroup in alignmentGroups)
+            {
+                var explodedAlignments = CollectionSelector.Explode(TableNameConstants.Set.Collection.AlignmentGroups, alignmentGroup);
+                alignments.AddRange(explodedAlignments);
+            }
+
             var typeCreatures = new List<string>();
-            var alignmentCreatures = new List<string>();
 
             foreach (var creatureType in types)
             {
@@ -526,14 +657,76 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 typeCreatures.AddRange(explodedType);
             }
 
-            foreach (var alignment in alignments)
+            var alignmentCreatures = new List<string>();
+
+            foreach (var creature in typeCreatures)
             {
-                var explodedAlignment = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, alignment);
-                alignmentCreatures.AddRange(explodedAlignment);
+                var creatureAlignments = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.AlignmentGroups, creature);
+                if (!creatureAlignments.Any())
+                    creatureAlignments = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral };
+
+                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))))
+                    alignmentCreatures.Add(creature);
             }
 
-            var entries = alignmentCreatures.Intersect(typeCreatures).ToArray();
-            DistinctCollection(CreatureConstants.Templates.FiendishCreature, entries);
+            DistinctCollection(CreatureConstants.Templates.FiendishCreature, alignmentCreatures.ToArray());
+
+            Assert.Fail("Verify all creatures are corporeal");
+        }
+
+        [Test]
+        public void HalfFiendCreatureGroup()
+        {
+            var types = new[]
+            {
+                CreatureConstants.Types.Aberration,
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Dragon,
+                CreatureConstants.Types.Fey,
+                CreatureConstants.Types.Giant,
+                CreatureConstants.Types.Humanoid,
+                CreatureConstants.Types.MagicalBeast,
+                CreatureConstants.Types.MonstrousHumanoid,
+                CreatureConstants.Types.Plant,
+                CreatureConstants.Types.Vermin,
+            };
+
+            var alignments = new List<string>();
+            var alignmentGroups = new[]
+            {
+                AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil,
+                AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral,
+            };
+
+            foreach (var alignmentGroup in alignmentGroups)
+            {
+                var explodedAlignments = CollectionSelector.Explode(TableNameConstants.Set.Collection.AlignmentGroups, alignmentGroup);
+                alignments.AddRange(explodedAlignments);
+            }
+
+            var typeCreatures = new List<string>();
+
+            foreach (var creatureType in types)
+            {
+                var explodedType = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);
+                typeCreatures.AddRange(explodedType);
+            }
+
+            var alignmentCreatures = new List<string>();
+
+            foreach (var creature in typeCreatures)
+            {
+                var creatureAlignments = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.AlignmentGroups, creature);
+                if (!creatureAlignments.Any())
+                    creatureAlignments = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral };
+
+                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))))
+                    alignmentCreatures.Add(creature);
+            }
+
+            DistinctCollection(CreatureConstants.Templates.HalfFiend, alignmentCreatures.ToArray());
+
+            Assert.Fail("Verify all creatures are corporeal");
         }
 
         [Test]
@@ -543,6 +736,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             {
                 //Aberration
                 CreatureConstants.Aboleth,
+                CreatureConstants.Aboleth_Mage,
                 CreatureConstants.Athach,
                 CreatureConstants.Beholder,
                 CreatureConstants.CarrionCrawler,
@@ -565,16 +759,21 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 
                 //Animal
                 CreatureConstants.Ape,
+                CreatureConstants.Ape_Dire,
                 CreatureConstants.Baboon,
                 CreatureConstants.Badger,
+                CreatureConstants.Badger_Dire,
                 CreatureConstants.Bat,
+                CreatureConstants.Bat_Dire,
                 CreatureConstants.Groups.Bear,
                 CreatureConstants.Bison,
                 CreatureConstants.Boar,
+                CreatureConstants.Boar_Dire,
                 CreatureConstants.Camel,
                 CreatureConstants.Cat,
                 CreatureConstants.Cheetah,
                 CreatureConstants.Crocodile,
+                CreatureConstants.Crocodile_Giant,
                 CreatureConstants.Groups.Dinosaur,
                 CreatureConstants.Dog,
                 CreatureConstants.Donkey,
@@ -585,6 +784,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Hyena,
                 CreatureConstants.Leopard,
                 CreatureConstants.Lion,
+                CreatureConstants.Lion_Dire,
                 CreatureConstants.Lizard,
                 CreatureConstants.Lizard_Monitor,
                 CreatureConstants.MantaRay,
@@ -594,24 +794,71 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Pony,
                 CreatureConstants.Porpoise,
                 CreatureConstants.Rat,
+                CreatureConstants.Rat_Dire,
                 CreatureConstants.Raven,
                 CreatureConstants.Rhinoceras,
                 CreatureConstants.Roc,
                 CreatureConstants.Snake_Constrictor,
+                CreatureConstants.Snake_Constrictor_Giant,
                 CreatureConstants.Groups.Snake_Viper,
                 CreatureConstants.Groups.Shark,
                 CreatureConstants.Tiger,
+                CreatureConstants.Tiger_Dire,
                 CreatureConstants.Toad,
                 CreatureConstants.Weasel,
+                CreatureConstants.Weasel_Dire,
                 CreatureConstants.Groups.Whale,
                 CreatureConstants.Wolf,
+                CreatureConstants.Wolf_Dire,
                 CreatureConstants.Wolverine,
+                CreatureConstants.Wolverine_Dire,
+
+                //Magical Beasts
+                CreatureConstants.Ankheg,
+                CreatureConstants.Aranea,
+                CreatureConstants.Basilisk,
+                CreatureConstants.Behir,
+                CreatureConstants.BlinkDog,
+                CreatureConstants.Bulette,
+                CreatureConstants.Chimera,
+                CreatureConstants.Cockatrice,
+                CreatureConstants.Darkmantle,
+                CreatureConstants.Digester,
+                CreatureConstants.DisplacerBeast,
+                CreatureConstants.DisplacerBeast_PackLord,
+                CreatureConstants.Dragonne,
+                CreatureConstants.Eagle_Giant,
+                CreatureConstants.EtherealMarauder,
+                CreatureConstants.Girallon,
+                CreatureConstants.Gorgon,
+                CreatureConstants.GrayRender,
+                CreatureConstants.Griffon,
+                CreatureConstants.Hippogriff,
+                CreatureConstants.Groups.Hydra,
+                CreatureConstants.Krenshar,
+                CreatureConstants.Lamia,
+                CreatureConstants.Lammasu,
+                CreatureConstants.Manticore,
+                CreatureConstants.Owl_Giant,
+                CreatureConstants.Owlbear,
+                CreatureConstants.Pegasus,
+                CreatureConstants.RazorBoar,
+                CreatureConstants.SeaCat,
+                CreatureConstants.ShockerLizard,
+                CreatureConstants.Androsphinx,
+                CreatureConstants.Criosphinx,
+                CreatureConstants.Gynosphinx,
+                CreatureConstants.Hieracosphinx,
+                CreatureConstants.Tarrasque,
+                CreatureConstants.Unicorn,
+                CreatureConstants.WinterWolf,
+                CreatureConstants.Worg,
+                CreatureConstants.Yrthak,
 
                 CreatureConstants.Types.Dragon,
                 CreatureConstants.Types.Fey,
                 CreatureConstants.Types.Giant,
                 CreatureConstants.Types.Humanoid,
-                CreatureConstants.Types.MagicalBeast,
                 CreatureConstants.Types.MonstrousHumanoid,
             };
 

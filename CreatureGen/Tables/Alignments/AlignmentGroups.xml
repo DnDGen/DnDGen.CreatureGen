@@ -32,6 +32,18 @@
     <entry>OftenEvil</entry>
   </collection>
   <collection>
+    <name>AnyChaotic</name>
+    <entry>AlwaysChaotic</entry>
+    <entry>UsuallyChaotic</entry>
+    <entry>OftenChaotic</entry>
+  </collection>
+  <collection>
+    <name>AnyLawful</name>
+    <entry>AlwaysLawful</entry>
+    <entry>UsuallyLawful</entry>
+    <entry>OftenLawful</entry>
+  </collection>
+  <collection>
     <name>AnyNeutral</name>
     <entry>AlwaysNeutral</entry>
     <entry>UsuallyNeutral</entry>
@@ -56,6 +68,18 @@
     <entry>AlwaysChaotic Evil</entry>
   </collection>
   <collection>
+    <name>AlwaysChaotic</name>
+    <entry>AlwaysChaotic Good</entry>
+    <entry>AlwaysChaotic Neutral</entry>
+    <entry>AlwaysChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>AlwaysLawful</name>
+    <entry>AlwaysLawful Evil</entry>
+    <entry>AlwaysLawful Neutral</entry>
+    <entry>AlwaysLawful Good</entry>
+  </collection>
+  <collection>
     <name>OftenGood</name>
     <entry>OftenLawful Good</entry>
     <entry>OftenNeutral Good</entry>
@@ -74,6 +98,18 @@
     <entry>OftenChaotic Evil</entry>
   </collection>
   <collection>
+    <name>OftenChaotic</name>
+    <entry>OftenChaotic Good</entry>
+    <entry>OftenChaotic Neutral</entry>
+    <entry>OftenChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>OftenLawful</name>
+    <entry>OftenLawful Evil</entry>
+    <entry>OftenLawful Neutral</entry>
+    <entry>OftenLawful Good</entry>
+  </collection>
+  <collection>
     <name>UsuallyGood</name>
     <entry>UsuallyLawful Good</entry>
     <entry>UsuallyNeutral Good</entry>
@@ -90,6 +126,18 @@
     <entry>UsuallyLawful Evil</entry>
     <entry>UsuallyNeutral Evil</entry>
     <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>UsuallyChaotic</name>
+    <entry>UsuallyChaotic Good</entry>
+    <entry>UsuallyChaotic Neutral</entry>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>UsuallyLawful</name>
+    <entry>UsuallyLawful Evil</entry>
+    <entry>UsuallyLawful Neutral</entry>
+    <entry>UsuallyLawful Good</entry>
   </collection>
   <collection>
     <name>AlwaysLawful Good</name>
@@ -409,6 +457,9 @@
     <name>Badger</name>
   </collection>
   <collection>
+    <name>Baleen Whale</name>
+  </collection>
+  <collection>
     <name>Balor</name>
     <entry>AlwaysChaotic Evil</entry>
   </collection>
@@ -429,6 +480,7 @@
   </collection>
   <collection>
     <name>Bat Swarm</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
@@ -491,6 +543,9 @@
     <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
+    <name>Cachalot Whale</name>
+  </collection>
+  <collection>
     <name>Camel</name>
   </collection>
   <collection>
@@ -501,11 +556,16 @@
     <name>Cat</name>
   </collection>
   <collection>
+    <name>Celestial Charger</name>
+    <entry>AlwaysChaotic Good</entry>
+  </collection>
+  <collection>
     <name>Centaur</name>
     <entry>UsuallyNeutral Good</entry>
   </collection>
   <collection>
     <name>Centipede Swarm</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
@@ -1563,7 +1623,15 @@
     <name>Hawk</name>
   </collection>
   <collection>
+    <name>Hell Hound</name>
+    <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
     <name>Hellcat (Bezekira)</name>
+    <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Hellwasp Swarm</name>
     <entry>AlwaysLawful Evil</entry>
   </collection>
   <collection>
@@ -1575,8 +1643,16 @@
     <entry>AlwaysChaotic Evil</entry>
   </collection>
   <collection>
+    <name>Hippogriff</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Hobgoblin</name>
     <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Howler</name>
+    <entry>AlwaysChaotic Evil</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
@@ -1585,6 +1661,26 @@
   <collection>
     <name>Horned Devil (Cornugon)</name>
     <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Hound Archon</name>
+    <entry>AlwaysLawful Good</entry>
+  </collection>
+  <collection>
+    <name>Heavy Horse</name>
+  </collection>
+  <collection>
+    <name>Heavy Warhorse</name>
+  </collection>
+  <collection>
+    <name>Light Horse</name>
+  </collection>
+  <collection>
+    <name>Light Warhorse</name>
+  </collection>
+  <collection>
+    <name>Human</name>
+    <entry>Any</entry>
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
@@ -1714,15 +1810,47 @@
     <entry>AlwaysLawful Neutral</entry>
   </collection>
   <collection>
+    <name>Kraken</name>
+    <entry>UsuallyNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Krenshar</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Kuo-toa</name>
     <entry>OftenNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Lamia</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lammasu</name>
+    <entry>AlwaysLawful Good</entry>
+  </collection>
+  <collection>
+    <name>Golden Protector (Celestial Half-Dragon Lammasu)</name>
+    <entry>AlwaysLawful Good</entry>
+  </collection>
+  <collection>
+    <name>Lantern Archon</name>
+    <entry>AlwaysLawful Good</entry>
   </collection>
   <collection>
     <name>Lemure</name>
     <entry>AlwaysLawful Evil</entry>
   </collection>
   <collection>
+    <name>Leonal</name>
+    <entry>AlwaysNeutral Good</entry>
+  </collection>
+  <collection>
     <name>Leopard</name>
+  </collection>
+  <collection>
+    <name>Lillend</name>
+    <entry>AlwaysChaotic Good</entry>
   </collection>
   <collection>
     <name>Lion</name>
@@ -1740,6 +1868,7 @@
   </collection>
   <collection>
     <name>Locust Swarm</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Magmin</name>
@@ -1747,6 +1876,10 @@
   </collection>
   <collection>
     <name>Manta Ray</name>
+  </collection>
+  <collection>
+    <name>Manticore</name>
+    <entry>UsuallyLawful Evil</entry>
   </collection>
   <collection>
     <name>Marut</name>
@@ -1757,8 +1890,52 @@
     <entry>AlwaysChaotic Evil</entry>
   </collection>
   <collection>
+    <name>Medusa</name>
+    <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
     <name>Megaraptor</name>
     <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Air Mephit</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dust Mephit</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Earth Mephit</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Fire Mephit</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ice Mephit</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Magma Mephit</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ooze Mephit</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Salt Mephit</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Steam Mephit</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Water Mephit</name>
+    <entry>UsuallyTrue Neutral</entry>
   </collection>
   <collection>
     <name>Merfolk</name>
@@ -1775,6 +1952,14 @@
   <collection>
     <name>Mind Flayer</name>
     <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Minotaur</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Mohrg</name>
+    <entry>AlwaysChaotic Evil</entry>
   </collection>
   <collection>
     <name>Monitor Lizard</name>
@@ -1853,6 +2038,34 @@
     <entry>AlwaysChaotic Evil</entry>
   </collection>
   <collection>
+    <name>Nessian Warhound</name>
+    <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Night Hag</name>
+    <entry>AlwaysNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Nightcrawler</name>
+    <entry>AlwaysChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Nightmare</name>
+    <entry>AlwaysNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Nightmare, Cauchemar</name>
+    <entry>AlwaysNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Nightwalker</name>
+    <entry>AlwaysChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Nightwing</name>
+    <entry>AlwaysChaotic Evil</entry>
+  </collection>
+  <collection>
     <name>Nixie</name>
     <entry>AlwaysTrue Neutral</entry>
   </collection>
@@ -1880,11 +2093,34 @@
     <entry>OftenChaotic Evil</entry>
   </collection>
   <collection>
+    <name>Orca Whale</name>
+  </collection>
+  <collection>
     <name>Otyugh</name>
     <entry>UsuallyTrue Neutral</entry>
   </collection>
   <collection>
     <name>Owl</name>
+  </collection>
+  <collection>
+    <name>Giant Owl</name>
+    <entry>UsuallyNeutral Good</entry>
+  </collection>
+  <collection>
+    <name>Owlbear</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Pegasus</name>
+    <entry>UsuallyChaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Phantom Fungus</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Phase Spider</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Phasm</name>
@@ -1923,8 +2159,20 @@
     <entry>AlwaysNeutral Good</entry>
   </collection>
   <collection>
+    <name>Purple Worm</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Quasit</name>
     <entry>AlwaysChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Rakshasa</name>
+    <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Rast</name>
+    <entry>UsuallyTrue Neutral</entry>
   </collection>
   <collection>
     <name>Rat</name>
@@ -1934,9 +2182,22 @@
   </collection>
   <collection>
     <name>Rat Swarm</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Raven</name>
+  </collection>
+  <collection>
+    <name>Ravid</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Razor Boar</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Remorhaz</name>
+    <entry>UsuallyTrue Neutral</entry>
   </collection>
   <collection>
     <name>Retriever</name>
@@ -1949,15 +2210,100 @@
     <name>Roc</name>
   </collection>
   <collection>
+    <name>Roper</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Rust Monster</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin</name>
+    <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Satyr</name>
+    <entry>UsuallyChaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Scorpionfolk</name>
+    <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Scrag</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Sea Cat</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Sea Hag</name>
     <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Shadow</name>
+    <entry>AlwaysChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Greater Shadow</name>
+    <entry>AlwaysChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Shadow Mastiff</name>
+    <entry>AlwaysNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Shambling Mound</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire Shark</name>
+  </collection>
+  <collection>
+    <name>Shark, Huge</name>
+  </collection>
+  <collection>
+    <name>Shark, Large</name>
+  </collection>
+  <collection>
+    <name>Shark, Medium</name>
+  </collection>
+  <collection>
+    <name>Shield Guardian</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Shocker Lizard</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Shrieker</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Skum</name>
+    <entry>UsuallyLawful Evil</entry>
   </collection>
   <collection>
     <name>Solar</name>
     <entry>AlwaysGood</entry>
   </collection>
   <collection>
+    <name>Spectre</name>
+    <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Spider Eater</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Spider Swarm</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Spirit Naga</name>
+    <entry>UsuallyChaotic Evil</entry>
   </collection>
   <collection>
     <name>Squid</name>
@@ -1966,8 +2312,24 @@
     <name>Giant Squid</name>
   </collection>
   <collection>
+    <name>Stirge</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Succubus</name>
     <entry>AlwaysChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Tarrasque</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Tendriculos</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Thoqqua</name>
+    <entry>UsuallyTrue Neutral</entry>
   </collection>
   <collection>
     <name>Tiefling</name>
@@ -1980,14 +2342,58 @@
     <name>Dire Tiger</name>
   </collection>
   <collection>
+    <name>Titan</name>
+    <entry>AlwaysChaotic</entry>
+  </collection>
+  <collection>
     <name>Toad</name>
+  </collection>
+  <collection>
+    <name>Treant</name>
+    <entry>UsuallyNeutral Good</entry>
   </collection>
   <collection>
     <name>Triceratops</name>
     <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
+    <name>Triton</name>
+    <entry>UsuallyNeutral Good</entry>
+  </collection>
+  <collection>
+    <name>Troglodyte</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Troll</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber Hulk</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Trumpet Archon</name>
+    <entry>AlwaysLawful Good</entry>
+  </collection>
+  <collection>
     <name>Tyrannosaurus</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Umber Hulk</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Unicorn</name>
+    <entry>AlwaysChaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Vargouille</name>
+    <entry>AlwaysNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Violet Fungus</name>
     <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
@@ -2010,10 +2416,26 @@
     <entry>AlwaysChaotic Evil</entry>
   </collection>
   <collection>
+    <name>Water Naga</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Weasel</name>
   </collection>
   <collection>
     <name>Dire Weasel</name>
+  </collection>
+  <collection>
+    <name>Wight</name>
+    <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Will-O'-Wisp</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Winter Wolf</name>
+    <entry>UsuallyNeutral Evil</entry>
   </collection>
   <collection>
     <name>Wolf</name>
@@ -2026,6 +2448,46 @@
   </collection>
   <collection>
     <name>Dire Wolverine</name>
+  </collection>
+  <collection>
+    <name>Worg</name>
+    <entry>UsuallyNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Wraith</name>
+    <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Dread Wraith</name>
+    <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Wyvern</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Xill</name>
+    <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Yeth Hound</name>
+    <entry>AlwaysNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Yrthak</name>
+    <entry>OftenTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Pureblood</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Abomination</name>
+    <entry>UsuallyChaotic Evil</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>

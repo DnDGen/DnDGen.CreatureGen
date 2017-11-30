@@ -53,7 +53,6 @@ namespace CreatureGen.Creatures
                     HalfDragon,
                     HalfFiend,
                     Lich,
-                    Mummy,
                     None,
                     Skeleton,
                     Vampire,
@@ -132,6 +131,7 @@ namespace CreatureGen.Creatures
             public const string Shark = "Shark";
             public const string Slaad = "Slaad";
             public const string Snake_Viper = "Viper Snake";
+            public const string Sphinx = "Sphinx";
             public const string Spider_Monstrous = "Monstrous Spider";
             public const string Sprite = "Sprite";
             public const string Tojanida = "Tojanida";
@@ -549,7 +549,7 @@ namespace CreatureGen.Creatures
         public const string Naga_Spirit = "Spirit Naga";
         public const string Naga_Water = "Water Naga";
         public const string Nalfeshnee = "Nalfeshnee";
-        public const string NessianWarhound = "Nessian Warhound";
+        public const string HellHound_NessianWarhound = "Nessian Warhound";
         public const string Nightcrawler = "Nightcrawler";
         public const string NightHag = "Night Hag";
         public const string Nightmare = "Nightmare";
@@ -1138,7 +1138,7 @@ namespace CreatureGen.Creatures
                 Naga_Spirit,
                 Naga_Water,
                 Nalfeshnee,
-                NessianWarhound,
+                HellHound_NessianWarhound,
                 Nightcrawler,
                 NightHag,
                 Nightmare,
@@ -1284,12 +1284,6 @@ namespace CreatureGen.Creatures
                 Wasp_Giant,
                 Weasel,
                 Weasel_Dire,
-                Werebear,
-                Wereboar,
-                Wereboar_HillGiantDire,
-                Wererat,
-                Weretiger,
-                Werewolf,
                 Whale_Baleen,
                 Whale_Cachalot,
                 Whale_Orca,

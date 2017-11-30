@@ -76,9 +76,17 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
                 AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil,
                 AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil,
                 AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil,
+                AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful,
+                AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful,
+                AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful,
+                AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic,
+                AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic,
+                AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic,
                 AlignmentConstants.Modifiers.Any + AlignmentConstants.Good,
                 AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral,
                 AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil,
+                AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful,
+                AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic,
                 AlignmentConstants.Modifiers.Any,
                 GroupConstants.All,
             };
@@ -149,6 +157,38 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil,
             AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil,
             AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil,
+            AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful,
+            AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful,
+            AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful,
+            AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful,
+            AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil,
+            AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood,
+            AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful,
+            AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil,
+            AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulGood,
+            AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulNeutral)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful,
+            AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil,
+            AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulGood,
+            AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulNeutral)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic,
+            AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic,
+            AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic,
+            AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic,
+            AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood,
+            AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic,
+            AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood,
+            AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic,
+            AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticGood,
+            AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral,
             AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil)]
         [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil, AlignmentConstants.LawfulEvil)]
         [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood, AlignmentConstants.LawfulGood)]
@@ -340,7 +380,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Basilisk_AbyssalGreater, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Bat)]
         [TestCase(CreatureConstants.Bat_Dire)]
-        [TestCase(CreatureConstants.Bat_Swarm)]
+        [TestCase(CreatureConstants.Bat_Swarm, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Bear_Black)]
         [TestCase(CreatureConstants.Bear_Brown)]
         [TestCase(CreatureConstants.Bear_Dire)]
@@ -374,7 +414,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Centipede_Monstrous_Medium)]
         [TestCase(CreatureConstants.Centipede_Monstrous_Small)]
         [TestCase(CreatureConstants.Centipede_Monstrous_Tiny)]
-        [TestCase(CreatureConstants.Centipede_Swarm)]
+        [TestCase(CreatureConstants.Centipede_Swarm, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.ChainDevil_Kyton, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.ChaosBeast, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral)]
         [TestCase(CreatureConstants.Cheetah)]
@@ -634,11 +674,22 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Harpy, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Hawk)]
         [TestCase(CreatureConstants.Hellcat_Bezekira, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.HellHound, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.HellHound_NessianWarhound, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.Hellwasp_Swarm, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Hezrou, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Hieracosphinx, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Hippogriff, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Hobgoblin, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Homunculus, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.HornedDevil_Cornugon, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.Horse_Heavy)]
+        [TestCase(CreatureConstants.Horse_Heavy_War)]
+        [TestCase(CreatureConstants.Horse_Light)]
+        [TestCase(CreatureConstants.Horse_Light_War)]
+        [TestCase(CreatureConstants.HoundArchon, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood)]
+        [TestCase(CreatureConstants.Howler, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Human, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Hydra_10Heads, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Hydra_11Heads, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Hydra_12Heads, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
@@ -654,24 +705,46 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Janni, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Kobold, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Kolyarut, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral)]
+        [TestCase(CreatureConstants.Kraken, AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil)]
+        [TestCase(CreatureConstants.Krenshar, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.KuoToa, AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil)]
+        [TestCase(CreatureConstants.Lamia, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Lammasu, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood)]
+        [TestCase(CreatureConstants.Lammasu_GoldenProtector, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood)]
         [TestCase(CreatureConstants.Lemure, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.LanternArchon, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood)]
+        [TestCase(CreatureConstants.Leonal, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood)]
         [TestCase(CreatureConstants.Leopard)]
+        [TestCase(CreatureConstants.Lillend, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood)]
         [TestCase(CreatureConstants.Lion)]
         [TestCase(CreatureConstants.Lion_Dire)]
         [TestCase(CreatureConstants.Lizard)]
         [TestCase(CreatureConstants.Lizard_Monitor)]
         [TestCase(CreatureConstants.Lizardfolk, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Locathah, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.Locust_Swarm)]
+        [TestCase(CreatureConstants.Locust_Swarm, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Magmin, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral)]
         [TestCase(CreatureConstants.MantaRay)]
+        [TestCase(CreatureConstants.Manticore, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Marilith, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Marut, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral)]
+        [TestCase(CreatureConstants.Medusa, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Megaraptor, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Mephit_Air, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Mephit_Dust, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Mephit_Earth, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Mephit_Fire, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Mephit_Ice, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Mephit_Magma, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Mephit_Ooze, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Mephit_Salt, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Mephit_Steam, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Mephit_Water, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Merfolk, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Mimic, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.MindFlayer, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.Minotaur, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Mohrg, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Monkey)]
         [TestCase(CreatureConstants.Mule)]
         [TestCase(CreatureConstants.Naga_Dark, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
@@ -679,6 +752,12 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Naga_Spirit, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Naga_Water, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Nalfeshnee, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.NightHag, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
+        [TestCase(CreatureConstants.Nightcrawler, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Nightmare, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
+        [TestCase(CreatureConstants.Nightmare_Cauchemar, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
+        [TestCase(CreatureConstants.Nightwalker, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Nightwing, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Nixie, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Nymph, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood)]
         [TestCase(CreatureConstants.Octopus)]
@@ -690,9 +769,14 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Orc_Half, AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Otyugh, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Owl)]
+        [TestCase(CreatureConstants.Owl_Giant, AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood)]
+        [TestCase(CreatureConstants.Owlbear, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Ooze_Gray, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Ooze_OchreJelly, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Pegasus, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood)]
         [TestCase(CreatureConstants.Planetar, AlignmentConstants.Modifiers.Always + AlignmentConstants.Good)]
+        [TestCase(CreatureConstants.PhantomFungus, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.PhaseSpider, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Phasm, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral)]
         [TestCase(CreatureConstants.PitFiend, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Pixie, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood)]
@@ -702,6 +786,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Porpoise)]
         [TestCase(CreatureConstants.PrayingMantis_Giant)]
         [TestCase(CreatureConstants.Pseudodragon, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood)]
+        [TestCase(CreatureConstants.PurpleWorm, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Pyrohydra_10Heads, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Pyrohydra_11Heads, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Pyrohydra_12Heads, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
@@ -711,14 +796,21 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Pyrohydra_8Heads, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Pyrohydra_9Heads, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Quasit, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Rakshasa, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.Rast, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Rat)]
         [TestCase(CreatureConstants.Rat_Dire)]
-        [TestCase(CreatureConstants.Rat_Swarm)]
+        [TestCase(CreatureConstants.Rat_Swarm, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Raven)]
+        [TestCase(CreatureConstants.Ravid, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.RazorBoar, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Remorhaz, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Retriever, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Rhinoceras)]
         [TestCase(CreatureConstants.Roc)]
+        [TestCase(CreatureConstants.Roper, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.RustMonster, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Sahuagin, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Satyr, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral)]
         [TestCase(CreatureConstants.Scorpion_Monstrous_Colossal)]
         [TestCase(CreatureConstants.Scorpion_Monstrous_Gargantuan)]
@@ -727,8 +819,20 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Scorpion_Monstrous_Medium)]
         [TestCase(CreatureConstants.Scorpion_Monstrous_Small)]
         [TestCase(CreatureConstants.Scorpion_Monstrous_Tiny)]
+        [TestCase(CreatureConstants.Scorpionfolk, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.SeaCat, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.SeaHag, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Shadow, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Shadow_Greater, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.ShadowMastiff, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
+        [TestCase(CreatureConstants.ShamblingMound, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Shark_Dire)]
+        [TestCase(CreatureConstants.Shark_Huge)]
+        [TestCase(CreatureConstants.Shark_Large)]
+        [TestCase(CreatureConstants.Shark_Medium)]
         [TestCase(CreatureConstants.ShieldGuardian, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.ShockerLizard, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Shrieker, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Skum, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Solar, AlignmentConstants.Modifiers.Always + AlignmentConstants.Good)]
         [TestCase(CreatureConstants.Snake_Constrictor)]
@@ -738,6 +842,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Snake_Viper_Medium)]
         [TestCase(CreatureConstants.Snake_Viper_Small)]
         [TestCase(CreatureConstants.Snake_Viper_Tiny)]
+        [TestCase(CreatureConstants.Spectre, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Spider_Monstrous_Colossal)]
         [TestCase(CreatureConstants.Spider_Monstrous_Gargantuan)]
         [TestCase(CreatureConstants.Spider_Monstrous_Huge)]
@@ -745,33 +850,59 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Spider_Monstrous_Medium)]
         [TestCase(CreatureConstants.Spider_Monstrous_Small)]
         [TestCase(CreatureConstants.Spider_Monstrous_Tiny)]
-        [TestCase(CreatureConstants.Spider_Swarm)]
+        [TestCase(CreatureConstants.Spider_Swarm, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.SpiderEater, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Squid)]
         [TestCase(CreatureConstants.Squid_Giant)]
         [TestCase(CreatureConstants.StagBeetle_Giant)]
+        [TestCase(CreatureConstants.Stirge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Succubus, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Tarrasque, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Tendriculos, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Thoqqua, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Tiefling, AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil)]
         [TestCase(CreatureConstants.Tiger)]
         [TestCase(CreatureConstants.Tiger_Dire)]
+        [TestCase(CreatureConstants.Titan, AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic)]
         [TestCase(CreatureConstants.Toad)]
+        [TestCase(CreatureConstants.Treant, AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood)]
         [TestCase(CreatureConstants.Triceratops, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Triton, AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood)]
         [TestCase(CreatureConstants.Troglodyte, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Troll, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Troll_Scrag, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.TrumpetArchon, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood)]
         [TestCase(CreatureConstants.Tyrannosaurus, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.UmberHulk, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.UmberHulk_TrulyHorrid, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Unicorn, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood)]
+        [TestCase(CreatureConstants.Unicorn_CelestialCharger, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood)]
+        [TestCase(CreatureConstants.Vargouille, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
+        [TestCase(CreatureConstants.VioletFungus, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Vrock, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Wasp_Giant)]
         [TestCase(CreatureConstants.Weasel)]
         [TestCase(CreatureConstants.Weasel_Dire)]
+        [TestCase(CreatureConstants.Whale_Baleen)]
+        [TestCase(CreatureConstants.Whale_Cachalot)]
+        [TestCase(CreatureConstants.Whale_Orca)]
+        [TestCase(CreatureConstants.Wight, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.WillOWisp, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.WinterWolf, AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil)]
         [TestCase(CreatureConstants.Wolf)]
         [TestCase(CreatureConstants.Wolf_Dire)]
         [TestCase(CreatureConstants.Wolverine)]
         [TestCase(CreatureConstants.Wolverine_Dire)]
+        [TestCase(CreatureConstants.Worg, AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil)]
+        [TestCase(CreatureConstants.Wraith, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.Wraith_Dread, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Wyvern, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Xill, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.YethHound, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
+        [TestCase(CreatureConstants.Yrthak, AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.YuanTi_Abomination, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.YuanTi_Pureblood, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Zelekhut, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral)]
         public void AlignmentGroup(string name, params string[] collection)
         {
@@ -842,7 +973,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
 
         [TestCase(CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Types.Vermin)]
-        public void AllCreaturesOfTypeHaveNoAlignment(string creatureType)
+        public void AllCreaturesOfTypeHaveNoAlignmentOrAreTrueNeutral(string creatureType)
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);
 
@@ -851,7 +982,8 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
             foreach (var creature in creatures)
             {
                 var alignments = CollectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
-                Assert.That(alignments, Is.Empty, creature);
+                Assert.That(alignments.Count, Is.EqualTo(0).Or.EqualTo(1), creature);
+                Assert.That(alignments, Is.Empty.Or.Contains(AlignmentConstants.TrueNeutral), creature);
             }
         }
 
@@ -878,6 +1010,21 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
             {
                 var alignments = CollectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
                 Assert.That(alignments, Is.Not.Empty, creature);
+            }
+        }
+
+        [Test]
+        public void AllCreatureAlignmentGroupsBoilDownToSetAlignments()
+        {
+            var allAlignments = table[GroupConstants.All];
+            var creatures = CreatureConstants.All();
+
+            AssertCollection(creatures.Intersect(table.Keys), creatures);
+
+            foreach (var creature in creatures)
+            {
+                var creatureAlignments = CollectionSelector.Explode(tableName, creature);
+                Assert.That(creatureAlignments, Is.Empty.Or.SubsetOf(allAlignments), creature);
             }
         }
     }

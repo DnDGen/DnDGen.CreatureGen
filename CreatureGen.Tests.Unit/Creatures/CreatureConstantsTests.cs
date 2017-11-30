@@ -192,7 +192,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Mule, "Mule")]
         [TestCase(CreatureConstants.Mummy, "Mummy")]
         [TestCase(CreatureConstants.Nalfeshnee, "Nalfeshnee")]
-        [TestCase(CreatureConstants.NessianWarhound, "Nessian Warhound")]
+        [TestCase(CreatureConstants.HellHound_NessianWarhound, "Nessian Warhound")]
         [TestCase(CreatureConstants.Nightcrawler, "Nightcrawler")]
         [TestCase(CreatureConstants.NightHag, "Night Hag")]
         [TestCase(CreatureConstants.Nightmare, "Nightmare")]
@@ -656,6 +656,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Groups.Pyrohydra, "Pyrohydra")]
         [TestCase(CreatureConstants.Groups.Salamander, "Salamander")]
         [TestCase(CreatureConstants.Groups.Scorpion_Monstrous, "Monstrous Scorpion")]
+        [TestCase(CreatureConstants.Groups.Sphinx, "Sphinx")]
         [TestCase(CreatureConstants.Groups.Spider_Monstrous, "Monstrous Spider")]
         [TestCase(CreatureConstants.Groups.Shark, "Shark")]
         [TestCase(CreatureConstants.Groups.Slaad, "Slaad")]
@@ -1104,7 +1105,7 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creatures, Contains.Item(CreatureConstants.Naga_Spirit));
             Assert.That(creatures, Contains.Item(CreatureConstants.Naga_Water));
             Assert.That(creatures, Contains.Item(CreatureConstants.Nalfeshnee));
-            Assert.That(creatures, Contains.Item(CreatureConstants.NessianWarhound));
+            Assert.That(creatures, Contains.Item(CreatureConstants.HellHound_NessianWarhound));
             Assert.That(creatures, Contains.Item(CreatureConstants.Nightcrawler));
             Assert.That(creatures, Contains.Item(CreatureConstants.NightHag));
             Assert.That(creatures, Contains.Item(CreatureConstants.Nightmare));
