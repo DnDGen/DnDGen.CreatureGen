@@ -214,15 +214,7 @@ namespace CreatureGen.Generators.Creatures
             var types = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creatureName);
 
             creatureType.Name = types.First();
-            var pointer = creatureType;
-
-            foreach (var subtype in types.Skip(1))
-            {
-                pointer.SubType = new CreatureType();
-                pointer.SubType.Name = subtype;
-
-                pointer = pointer.SubType;
-            }
+            creatureType.SubTypes = types.Skip(1);
 
             return creatureType;
         }

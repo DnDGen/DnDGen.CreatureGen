@@ -64,6 +64,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Groups.Mephit,
                 CreatureConstants.Groups.Naga,
                 CreatureConstants.Groups.Nightshade,
+                CreatureConstants.Groups.Planetouched,
                 CreatureConstants.Groups.Pyrohydra,
                 CreatureConstants.Groups.Salamander,
                 CreatureConstants.Groups.Scorpion_Monstrous,

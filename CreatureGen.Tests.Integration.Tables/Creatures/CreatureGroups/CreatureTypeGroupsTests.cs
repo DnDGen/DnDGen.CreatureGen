@@ -39,6 +39,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Aboleth_Mage,
                 CreatureConstants.Athach,
                 CreatureConstants.Beholder,
+                CreatureConstants.Beholder_Gauth,
                 CreatureConstants.CarrionCrawler,
                 CreatureConstants.Choker,
                 CreatureConstants.Chuul,
@@ -237,9 +238,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         {
             var creatures = new[]
             {
-                CreatureConstants.Aasimar,
                 CreatureConstants.Bugbear,
-                CreatureConstants.Duergar,
+                CreatureConstants.Dwarf_Duergar,
                 CreatureConstants.Groups.Dwarf,
                 CreatureConstants.Groups.Elf,
                 CreatureConstants.Gnoll,
@@ -255,7 +255,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Merfolk,
                 CreatureConstants.Orc,
                 CreatureConstants.Orc_Half,
-                CreatureConstants.Tiefling,
                 CreatureConstants.Troglodyte,
             };
 
@@ -350,8 +349,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.BlackPudding,
                 CreatureConstants.BlackPudding_Elder,
                 CreatureConstants.GelatinousCube,
-                CreatureConstants.Ooze_Gray,
-                CreatureConstants.Ooze_OchreJelly,
+                CreatureConstants.GrayOoze,
+                CreatureConstants.OchreJelly,
             };
 
             base.DistinctCollection(CreatureConstants.Types.Ooze, creatures);
@@ -383,16 +382,17 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Githyanki,
                 CreatureConstants.Githzerai,
                 CreatureConstants.HellHound,
+                CreatureConstants.HellHound_NessianWarhound,
                 CreatureConstants.Hellwasp_Swarm,
                 CreatureConstants.Howler,
                 CreatureConstants.Groups.Inevitable,
                 CreatureConstants.Leonal,
                 CreatureConstants.Lillend,
                 CreatureConstants.Groups.Mephit,
-                CreatureConstants.HellHound_NessianWarhound,
                 CreatureConstants.NightHag,
                 CreatureConstants.Nightmare,
                 CreatureConstants.Nightmare_Cauchemar,
+                CreatureConstants.Groups.Planetouched,
                 CreatureConstants.Rakshasa,
                 CreatureConstants.Rast,
                 CreatureConstants.Ravid,

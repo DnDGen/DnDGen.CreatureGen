@@ -200,7 +200,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Type.Name, Is.EqualTo("type"));
-            Assert.That(creature.Type.SubType, Is.Null);
+            Assert.That(creature.Type.SubTypes, Is.Empty);
         }
 
         [Test]
@@ -210,9 +210,9 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Type.Name, Is.EqualTo("type"));
-            Assert.That(creature.Type.SubType, Is.Not.Null);
-            Assert.That(creature.Type.SubType.Name, Is.EqualTo("subtype"));
-            Assert.That(creature.Type.SubType.SubType, Is.Null);
+            Assert.That(creature.Type.SubTypes, Is.Not.Empty);
+            Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
+            Assert.That(creature.Type.SubTypes.Count, Is.EqualTo(1));
         }
 
         [Test]
@@ -223,11 +223,10 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Type.Name, Is.EqualTo("type"));
-            Assert.That(creature.Type.SubType, Is.Not.Null);
-            Assert.That(creature.Type.SubType.Name, Is.EqualTo("subtype"));
-            Assert.That(creature.Type.SubType.SubType, Is.Not.Null);
-            Assert.That(creature.Type.SubType.SubType.Name, Is.EqualTo("other subtype"));
-            Assert.That(creature.Type.SubType.SubType.SubType, Is.Null);
+            Assert.That(creature.Type.SubTypes, Is.Not.Empty);
+            Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
+            Assert.That(creature.Type.SubTypes, Contains.Item("other subtype"));
+            Assert.That(creature.Type.SubTypes.Count, Is.EqualTo(2));
         }
 
         [Test]

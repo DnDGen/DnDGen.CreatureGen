@@ -10,6 +10,7 @@
     <entry>Aboleth Mage</entry>
     <entry>Athach</entry>
     <entry>Beholder</entry>
+    <entry>Gauth</entry>
     <entry>Carrion Crawler</entry>
     <entry>Choker</entry>
     <entry>Chuul</entry>
@@ -34,9 +35,9 @@
   </collection>
   <collection>
     <name>Angel</name>
-    <entry>Astral Deva</entry>
-    <entry>Planetar</entry>
-    <entry>Solar</entry>
+    <entry>Angel, Astral Deva</entry>
+    <entry>Angel, Planetar</entry>
+    <entry>Angel, Solar</entry>
   </collection>
   <collection>
     <name>Animal</name>
@@ -421,6 +422,14 @@
   </collection>
   <collection>
     <name>Ghost</name>
+    <entry>Aberration</entry>
+    <entry>Animal</entry>
+    <entry>Dragon</entry>
+    <entry>Giant</entry>
+    <entry>Humanoid</entry>
+    <entry>Magical Beast</entry>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Plant</entry>
   </collection>
   <collection>
     <name>Giant</name>
@@ -499,6 +508,16 @@
   </collection>
   <collection>
     <name>Half-Dragon</name>
+    <entry>Aberration</entry>
+    <entry>Animal</entry>
+    <entry>Dragon</entry>
+    <entry>Fey</entry>
+    <entry>Giant</entry>
+    <entry>Humanoid</entry>
+    <entry>Magical Beast</entry>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Plant</entry>
+    <entry>Vermin</entry>
   </collection>
   <collection>
     <name>Half-Fiend</name>
@@ -530,7 +549,6 @@
   </collection>
   <collection>
     <name>Humanoid</name>
-    <entry>Aasimar</entry>
     <entry>Bugbear</entry>
     <entry>Duergar</entry>
     <entry>Dwarf</entry>
@@ -548,7 +566,6 @@
     <entry>Locathah</entry>
     <entry>Merfolk</entry>
     <entry>Orc</entry>
-    <entry>Tiefling</entry>
     <entry>Troglodyte</entry>
   </collection>
   <collection>
@@ -572,6 +589,7 @@
   </collection>
   <collection>
     <name>Lich</name>
+    <entry>Humanoid</entry>
   </collection>
   <collection>
     <name>Lycanthrope</name>
@@ -751,6 +769,7 @@
     <entry>Night Hag</entry>
     <entry>Nightmare</entry>
     <entry>Nightmare, Cauchemar</entry>
+    <entry>Planetouched</entry>
     <entry>Rakshasa</entry>
     <entry>Rast</entry>
     <entry>Ravid</entry>
@@ -773,6 +792,11 @@
     <entry>Shambling Mound</entry>
     <entry>Tendriculos</entry>
     <entry>Treant</entry>
+  </collection>
+  <collection>
+    <name>Planetouched</name>
+    <entry>Aasimar</entry>
+    <entry>Tiefling</entry>
   </collection>
   <collection>
     <name>Pyrohydra</name>
@@ -874,6 +898,8 @@
   </collection>
   <collection>
     <name>Vampire</name>
+    <entry>Humanoid</entry>
+    <entry>Monstrous Humanoid</entry>
   </collection>
   <collection>
     <name>Vermin</name>
@@ -901,18 +927,28 @@
   </collection>
   <collection>
     <name>Werebear</name>
+    <entry>Giant</entry>
+    <entry>Humanoid</entry>
   </collection>
   <collection>
     <name>Wereboar</name>
+    <entry>Giant</entry>
+    <entry>Humanoid</entry>
   </collection>
   <collection>
     <name>Wererat</name>
+    <entry>Giant</entry>
+    <entry>Humanoid</entry>
   </collection>
   <collection>
     <name>Weretiger</name>
+    <entry>Giant</entry>
+    <entry>Humanoid</entry>
   </collection>
   <collection>
     <name>Werewolf</name>
+    <entry>Giant</entry>
+    <entry>Humanoid</entry>
   </collection>
   <collection>
     <name>Whale</name>

@@ -1,0 +1,1991 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Aasimar</name>
+    <entry>Outsider</entry>
+    <entry>Native</entry>
+  </collection>
+  <collection>
+    <name>Aboleth</name>
+    <entry>Aberration</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Aboleth Mage</name>
+    <entry>Aberration</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Achaierai</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Adult Arrowhawk</name>
+    <entry>Outsider</entry>
+    <entry>Air</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Allip</name>
+    <entry>Undead</entry>
+    <entry>Incorporeal</entry>
+  </collection>
+  <collection>
+    <name>Androsphinx</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Colossal</name>
+    <entry>Construct</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Gargantuan</name>
+    <entry>Construct</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Huge</name>
+    <entry>Construct</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Large</name>
+    <entry>Construct</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Medium</name>
+    <entry>Construct</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Small</name>
+    <entry>Construct</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tiny</name>
+    <entry>Construct</entry>
+  </collection>
+  <collection>
+    <name>Ankheg</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Annis</name>
+    <entry>Monstrous Humanoid</entry>
+  </collection>
+  <collection>
+    <name>Ape</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dire Ape</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Aquatic Elf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Aranea</name>
+    <entry>Magical Beast</entry>
+    <entry>Shapechanger</entry>
+  </collection>
+  <collection>
+    <name>Angel, Astral Deva</name>
+    <entry>Outsider</entry>
+    <entry>Angel</entry>
+    <entry>Extraplanar</entry>
+    <entry>Good</entry>
+  </collection>
+  <collection>
+    <name>Angel, Planetar</name>
+    <entry>Outsider</entry>
+    <entry>Angel</entry>
+    <entry>Extraplanar</entry>
+    <entry>Good</entry>
+  </collection>
+  <collection>
+    <name>Angel, Solar</name>
+    <entry>Outsider</entry>
+    <entry>Angel</entry>
+    <entry>Extraplanar</entry>
+    <entry>Good</entry>
+  </collection>
+  <collection>
+    <name>Assassin Vine</name>
+    <entry>Plant</entry>
+  </collection>
+  <collection>
+    <name>Athach</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
+    <name>Avoral</name>
+    <entry>Outsider</entry>
+    <entry>Good</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Azer</name>
+    <entry>Outsider</entry>
+    <entry>Fire</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Babau</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Baboon</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Badger</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dire Badger</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Baleen Whale</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Balor</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Barbed Devil (Hamatula)</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Barghest</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+    <entry>Shapechanger</entry>
+  </collection>
+  <collection>
+    <name>Basilisk</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Abyssal Greater Basilisk</name>
+    <entry>Outsider</entry>
+    <entry>Augmented</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Bat</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dire Bat</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Bat Swarm</name>
+    <entry>Animal</entry>
+    <entry>Swarm</entry>
+  </collection>
+  <collection>
+    <name>Black Bear</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Brown Bear</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Polar Bear</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dire Bear</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Bearded Devil (Barbazu)</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Bebilith</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Behir</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Beholder</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
+    <name>Gauth</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
+    <name>Belker</name>
+    <entry>Elemental</entry>
+    <entry>Air</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Bison</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Black Pudding</name>
+    <entry>Ooze</entry>
+  </collection>
+  <collection>
+    <name>Elder Black Pudding</name>
+    <entry>Ooze</entry>
+  </collection>
+  <collection>
+    <name>Blink Dog</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Blue Slaad</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Boar</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dire Boar</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Bodak</name>
+    <entry>Undead</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Bralani</name>
+    <entry>Outsider</entry>
+    <entry>Good</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Bugbear</name>
+    <entry>Humanoid</entry>
+    <entry>Goblinoid</entry>
+  </collection>
+  <collection>
+    <name>Bulette</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Cachalot Whale</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Camel</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Carrion Crawler</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
+    <name>Cat</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Centaur</name>
+    <entry>Monstrous Humanoid</entry>
+  </collection>
+  <collection>
+    <name>Centipede Swarm</name>
+    <entry>Vermin</entry>
+    <entry>Swarm</entry>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Chaos Beast</name>
+    <entry>Outsider</entry>
+    <entry>Chaotic</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Cloud Giant</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
+    <name>Cheetah</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Chimera</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Choker</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
+    <name>Chuul</name>
+    <entry>Aberration</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Cloaker</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
+    <name>Cockatrice</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Constrictor Snake</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Couatl</name>
+    <entry>Outsider</entry>
+    <entry>Native</entry>
+  </collection>
+  <collection>
+    <name>Criosphinx</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Crocodile</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Giant Crocodile</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Darkmantle</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Death Slaad</name>
+    <entry>13</entry>
+  </collection>
+  <collection>
+    <name>Deep Halfling</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Deep Dwarf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Deinonychus</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Delver</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
+    <name>Derro</name>
+    <entry>Monstrous Humanoid</entry>
+  </collection>
+  <collection>
+    <name>Destrachan</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
+    <name>Devourer</name>
+    <entry>Undead</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Digester</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack Lord</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Djinni</name>
+    <entry>Outsider</entry>
+    <entry>Air</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Noble Djinni</name>
+    <entry>Outsider</entry>
+    <entry>Air</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Dog</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dog, Riding</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Donkey</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Doppelganger</name>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Shapechanger</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Adult</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Ancient</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Juvenile</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature Adult</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Old</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Old</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Young</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrmling</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young Adult</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Adult</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Ancient</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Juvenile</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature Adult</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Old</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Old</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Young</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrmling</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young Adult</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Adult</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Ancient</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Juvenile</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature Adult</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Old</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Old</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Young</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrmling</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young Adult</name>
+    <entry>Dragon</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Adult</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Ancient</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Juvenile</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature Adult</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Old</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Old</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Young</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrmling</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young Adult</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Adult</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Ancient</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Great Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Juvenile</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature Adult</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Old</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very Old</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very Young</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrmling</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Young</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Young Adult</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Adult</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Ancient</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Juvenile</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature Adult</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Old</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Old</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Young</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrmling</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young Adult</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Adult</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Ancient</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Juvenile</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature Adult</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Old</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Old</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Young</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrmling</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young Adult</name>
+    <entry>Dragon</entry>
+    <entry>Water</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Adult</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Ancient</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Juvenile</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature Adult</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Old</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Old</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Young</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrmling</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young Adult</name>
+    <entry>Dragon</entry>
+    <entry>Earth</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Adult</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Ancient</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Juvenile</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature Adult</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Old</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Old</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Young</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrmling</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young Adult</name>
+    <entry>Dragon</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Adult</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Ancient</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Juvenile</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature Adult</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Old</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Old</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Young</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrm</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrmling</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young Adult</name>
+    <entry>Dragon</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Dretch</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Drow</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Duergar Dwarf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Eagle</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Efreeti</name>
+    <entry>Outsider</entry>
+    <entry>Fire</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Elasmosaurus</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Elder Arrowhawk</name>
+    <entry>Outsider</entry>
+    <entry>Air</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Elephant</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Erinyes</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Fire Giant</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Forest Gnome</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Frost Giant</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Gargoyle</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Gelatinous Cube</name>
+    <entry>Ooze</entry>
+  </collection>
+  <collection>
+    <name>Ghost</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Queen</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Soldier</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Worker</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Giant Bee</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Giant Bombardier Beetle</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Giant Constrictor Snake</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Giant Fire Beetle</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Giant Octopus</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Giant Praying Mantis</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Giant Squid</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Giant Stag Beetle</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Giant Wasp</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Githyanki</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Githzerai</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Glabrezu</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Gnoll</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Goblin</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Gray Elf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Gray Ooze</name>
+    <entry>Ooze</entry>
+  </collection>
+  <collection>
+    <name>Gray Slaad</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Greater Barghest</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+    <entry>Shapechanger</entry>
+  </collection>
+  <collection>
+    <name>Green Hag</name>
+    <entry>Monstrous Humanoid</entry>
+  </collection>
+  <collection>
+    <name>Green Slaad</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Grimlock</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Gynosphinx</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Half-Celestial</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Half-Elf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Half-Fiend</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Half-Orc</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Harpy</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Hawk</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Hellwasp Swarm</name>
+    <entry>Magical Beast</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Swarm</entry>
+  </collection>
+  <collection>
+    <name>Hezrou</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Hieracosphinx</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>High Elf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Hill Dwarf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Hill Giant</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Hobgoblin</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Heavy Horse</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Heavy Warhorse</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Light Horse</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Light Warhorse</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Hound Archon</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Human</name>
+    <entry>Humanoid</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Hydra</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Hydra</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Hydra</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Hydra</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Hydra</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Hydra</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Hydra</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Hydra</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Cryohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Cryohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Cryohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Cryohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Cryohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Cryohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Cryohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Cryohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Pyrohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Pyrohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Pyrohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Pyrohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Pyrohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Pyrohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Pyrohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Pyrohydra</name>
+    <entry>Magical Beast</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Hyena</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Imp</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Janni</name>
+    <entry>Outsider</entry>
+    <entry>Native</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Arrowhawk</name>
+    <entry>Outsider</entry>
+    <entry>Air</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Kapoacinth</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Kobold</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Kuo-toa</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Lemure</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Leopard</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Lich</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Lightfoot Halfling</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Lion</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dire Lion</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Lizard</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Monitor Lizard</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Lizardfolk</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Locathah</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Locust Swarm</name>
+    <entry>Vermin</entry>
+    <entry>Swarm</entry>
+  </collection>
+  <collection>
+    <name>Manta Ray</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Marilith</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Megaraptor</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Merfolk</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Merrow</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Mind Flayer</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Minotaur</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Colossal</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Gargantuan</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Huge</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Large</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Medium</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Small</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Tiny</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Colossal</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Gargantuan</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Huge</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Large</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Medium</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Small</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Tiny</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Colossal</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Gargantuan</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Huge</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Large</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Medium</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Small</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Tiny</name>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Mountain Dwarf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Mule</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Mummy</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Nalfeshnee</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Ochre Jelly</name>
+    <entry>Ooze</entry>
+  </collection>
+  <collection>
+    <name>Octopus</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Ogre Mage</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Ogre</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Orc</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Orca Whale</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Owl</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Pit Fiend</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Lawful</entry>
+  </collection>
+  <collection>
+    <name>Pixie</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Pony</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Warpony</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Porpoise</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Quasit</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Rakshasa</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Raven</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Rat</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dire Rat</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Rat Swarm</name>
+    <entry>Animal</entry>
+    <entry>Swarm</entry>
+  </collection>
+  <collection>
+    <name>Retriever</name>
+    <entry>Construct</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Rhinoceras</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Shark, Huge</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Shark, Large</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Shark, Medium</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Dire Shark</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Red Slaad</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Rock Gnome</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Satyr</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Scorpionfolk</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Scrag</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Sea Hag</name>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Spider Swarm</name>
+    <entry>Vermin</entry>
+    <entry>Swarm</entry>
+  </collection>
+  <collection>
+    <name>Squid</name>
+    <entry>Animal</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Stone Giant</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Storm Giant</name>
+    <entry>13</entry>
+  </collection>
+  <collection>
+    <name>Succubus</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Svirfneblin</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Tallfellow Halfling</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+    <entry>Outsider</entry>
+    <entry>Native</entry>
+  </collection>
+  <collection>
+    <name>Tiger</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dire Tiger</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Toad</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Triceratops</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Troglodyte</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Troll</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Tyrannosaurus</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Vampire</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Huge</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Large</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Medium</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Small</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Tiny</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Vrock</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+    <entry>Chaotic</entry>
+  </collection>
+  <collection>
+    <name>Weasel</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dire Weasel</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Werebear</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Wereboar</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Wererat</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Weretiger</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Werewolf</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Wild Elf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Wolf</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dire Wolf</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Wolverine</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Dire Wolverine</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Wood Elf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Abomination</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Pureblood</name>
+    <entry>3</entry>
+  </collection>
+</collections>

@@ -18,7 +18,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Ape_Dire, "Dire Ape")]
         [TestCase(CreatureConstants.Aranea, "Aranea")]
         [TestCase(CreatureConstants.AssassinVine, "Assassin Vine")]
-        [TestCase(CreatureConstants.AstralDeva, "Astral Deva")]
+        [TestCase(CreatureConstants.Angel_AstralDeva, "Angel, Astral Deva")]
         [TestCase(CreatureConstants.Athach, "Athach")]
         [TestCase(CreatureConstants.Avoral, "Avoral")]
         [TestCase(CreatureConstants.Azer, "Azer")]
@@ -40,6 +40,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Bee_Giant, "Giant Bee")]
         [TestCase(CreatureConstants.Behir, "Behir")]
         [TestCase(CreatureConstants.Beholder, "Beholder")]
+        [TestCase(CreatureConstants.Beholder_Gauth, "Gauth")]
         [TestCase(CreatureConstants.Belker, "Belker")]
         [TestCase(CreatureConstants.Bison, "Bison")]
         [TestCase(CreatureConstants.BlackPudding, "Black Pudding")]
@@ -84,7 +85,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Dretch, "Dretch")]
         [TestCase(CreatureConstants.Drider, "Drider")]
         [TestCase(CreatureConstants.Dryad, "Dryad")]
-        [TestCase(CreatureConstants.Duergar, "Duergar")]
+        [TestCase(CreatureConstants.Dwarf_Duergar, "Duergar")]
         [TestCase(CreatureConstants.Dwarf_Deep, "Deep Dwarf")]
         [TestCase(CreatureConstants.Dwarf_Hill, "Hill Dwarf")]
         [TestCase(CreatureConstants.Dwarf_Mountain, "Mountain Dwarf")]
@@ -204,8 +205,8 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Octopus_Giant, "Giant Octopus")]
         [TestCase(CreatureConstants.Ogre, "Ogre")]
         [TestCase(CreatureConstants.OgreMage, "Ogre Mage")]
-        [TestCase(CreatureConstants.Ooze_Gray, "Gray Ooze")]
-        [TestCase(CreatureConstants.Ooze_OchreJelly, "Ochre jelly")]
+        [TestCase(CreatureConstants.GrayOoze, "Gray Ooze")]
+        [TestCase(CreatureConstants.OchreJelly, "Ochre Jelly")]
         [TestCase(CreatureConstants.Orc, "Orc")]
         [TestCase(CreatureConstants.Orc_Half, "Half-Orc")]
         [TestCase(CreatureConstants.Otyugh, "Otyugh")]
@@ -218,7 +219,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Phasm, "Phasm")]
         [TestCase(CreatureConstants.PitFiend, "Pit Fiend")]
         [TestCase(CreatureConstants.Pixie, "Pixie")]
-        [TestCase(CreatureConstants.Planetar, "Planetar")]
+        [TestCase(CreatureConstants.Angel_Planetar, "Angel, Planetar")]
         [TestCase(CreatureConstants.Pony, "Pony")]
         [TestCase(CreatureConstants.Pony_War, "Warpony")]
         [TestCase(CreatureConstants.Porpoise, "Porpoise")]
@@ -255,7 +256,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Skum, "Skum")]
         [TestCase(CreatureConstants.Snake_Constrictor, "Constrictor Snake")]
         [TestCase(CreatureConstants.Snake_Constrictor_Giant, "Giant Constrictor Snake")]
-        [TestCase(CreatureConstants.Solar, "Solar")]
+        [TestCase(CreatureConstants.Angel_Solar, "Angel, Solar")]
         [TestCase(CreatureConstants.Spectre, "Spectre")]
         [TestCase(CreatureConstants.Spider_Swarm, "Spider Swarm")]
         [TestCase(CreatureConstants.SpiderEater, "Spider Eater")]
@@ -289,12 +290,6 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Wasp_Giant, "Giant Wasp")]
         [TestCase(CreatureConstants.Weasel, "Weasel")]
         [TestCase(CreatureConstants.Weasel_Dire, "Dire Weasel")]
-        [TestCase(CreatureConstants.Werebear, "Werebear")]
-        [TestCase(CreatureConstants.Wereboar, "Wereboar")]
-        [TestCase(CreatureConstants.Wereboar_HillGiantDire, "Hill Giant Dire Wereboar")]
-        [TestCase(CreatureConstants.Wererat, "Wererat")]
-        [TestCase(CreatureConstants.Weretiger, "Weretiger")]
-        [TestCase(CreatureConstants.Werewolf, "Werewolf")]
         [TestCase(CreatureConstants.Wight, "Wight")]
         [TestCase(CreatureConstants.WillOWisp, "Will-O'-Wisp")]
         [TestCase(CreatureConstants.WinterWolf, "Winter Wolf")]
@@ -653,6 +648,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Groups.Mephit, "Mephit")]
         [TestCase(CreatureConstants.Groups.Naga, "Naga")]
         [TestCase(CreatureConstants.Groups.Nightshade, "Nightshade")]
+        [TestCase(CreatureConstants.Groups.Planetouched, "Planetouched")]
         [TestCase(CreatureConstants.Groups.Pyrohydra, "Pyrohydra")]
         [TestCase(CreatureConstants.Groups.Salamander, "Salamander")]
         [TestCase(CreatureConstants.Groups.Scorpion_Monstrous, "Monstrous Scorpion")]
@@ -686,6 +682,27 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Types.Plant, "Plant")]
         [TestCase(CreatureConstants.Types.Undead, "Undead")]
         [TestCase(CreatureConstants.Types.Vermin, "Vermin")]
+        [TestCase(CreatureConstants.Types.Subtypes.Air, "Air")]
+        [TestCase(CreatureConstants.Types.Subtypes.Angel, "Angel")]
+        [TestCase(CreatureConstants.Types.Subtypes.Aquatic, "Aquatic")]
+        [TestCase(CreatureConstants.Types.Subtypes.Archon, "Archon")]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, "Augmented")]
+        [TestCase(CreatureConstants.Types.Subtypes.Chaotic, "Chaotic")]
+        [TestCase(CreatureConstants.Types.Subtypes.Cold, "Cold")]
+        [TestCase(CreatureConstants.Types.Subtypes.Dwarf, "Dwarf")]
+        [TestCase(CreatureConstants.Types.Subtypes.Earth, "Earth")]
+        [TestCase(CreatureConstants.Types.Subtypes.Evil, "Evil")]
+        [TestCase(CreatureConstants.Types.Subtypes.Extraplanar, "Extraplanar")]
+        [TestCase(CreatureConstants.Types.Subtypes.Fire, "Fire")]
+        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid, "Goblinoid")]
+        [TestCase(CreatureConstants.Types.Subtypes.Good, "Good")]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal, "Incorporeal")]
+        [TestCase(CreatureConstants.Types.Subtypes.Lawful, "Lawful")]
+        [TestCase(CreatureConstants.Types.Subtypes.Native, "Native")]
+        [TestCase(CreatureConstants.Types.Subtypes.Reptilian, "Reptilian")]
+        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger, "Shapechanger")]
+        [TestCase(CreatureConstants.Types.Subtypes.Swarm, "Swarm")]
+        [TestCase(CreatureConstants.Types.Subtypes.Water, "Water")]
         public void CreatureTypeConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));
@@ -721,7 +738,7 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creatures, Contains.Item(CreatureConstants.Arrowhawk_Elder));
             Assert.That(creatures, Contains.Item(CreatureConstants.Arrowhawk_Juvenile));
             Assert.That(creatures, Contains.Item(CreatureConstants.AssassinVine));
-            Assert.That(creatures, Contains.Item(CreatureConstants.AstralDeva));
+            Assert.That(creatures, Contains.Item(CreatureConstants.Angel_AstralDeva));
             Assert.That(creatures, Contains.Item(CreatureConstants.Athach));
             Assert.That(creatures, Contains.Item(CreatureConstants.Avoral));
             Assert.That(creatures, Contains.Item(CreatureConstants.Azer));
@@ -747,6 +764,7 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creatures, Contains.Item(CreatureConstants.Bee_Giant));
             Assert.That(creatures, Contains.Item(CreatureConstants.Behir));
             Assert.That(creatures, Contains.Item(CreatureConstants.Beholder));
+            Assert.That(creatures, Contains.Item(CreatureConstants.Beholder_Gauth));
             Assert.That(creatures, Contains.Item(CreatureConstants.Belker));
             Assert.That(creatures, Contains.Item(CreatureConstants.Bison));
             Assert.That(creatures, Contains.Item(CreatureConstants.BlackPudding));
@@ -932,7 +950,7 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creatures, Contains.Item(CreatureConstants.Dretch));
             Assert.That(creatures, Contains.Item(CreatureConstants.Drider));
             Assert.That(creatures, Contains.Item(CreatureConstants.Dryad));
-            Assert.That(creatures, Contains.Item(CreatureConstants.Duergar));
+            Assert.That(creatures, Contains.Item(CreatureConstants.Dwarf_Duergar));
             Assert.That(creatures, Contains.Item(CreatureConstants.Dwarf_Deep));
             Assert.That(creatures, Contains.Item(CreatureConstants.Dwarf_Hill));
             Assert.That(creatures, Contains.Item(CreatureConstants.Dwarf_Mountain));
@@ -1119,8 +1137,8 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creatures, Contains.Item(CreatureConstants.Ogre));
             Assert.That(creatures, Contains.Item(CreatureConstants.OgreMage));
             Assert.That(creatures, Contains.Item(CreatureConstants.Ogre_Merrow));
-            Assert.That(creatures, Contains.Item(CreatureConstants.Ooze_Gray));
-            Assert.That(creatures, Contains.Item(CreatureConstants.Ooze_OchreJelly));
+            Assert.That(creatures, Contains.Item(CreatureConstants.GrayOoze));
+            Assert.That(creatures, Contains.Item(CreatureConstants.OchreJelly));
             Assert.That(creatures, Contains.Item(CreatureConstants.Orc));
             Assert.That(creatures, Contains.Item(CreatureConstants.Orc_Half));
             Assert.That(creatures, Contains.Item(CreatureConstants.Otyugh));
@@ -1134,7 +1152,7 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creatures, Contains.Item(CreatureConstants.PitFiend));
             Assert.That(creatures, Contains.Item(CreatureConstants.Pixie));
             Assert.That(creatures, Contains.Item(CreatureConstants.Pixie_WithIrresistableDance));
-            Assert.That(creatures, Contains.Item(CreatureConstants.Planetar));
+            Assert.That(creatures, Contains.Item(CreatureConstants.Angel_Planetar));
             Assert.That(creatures, Contains.Item(CreatureConstants.Pony));
             Assert.That(creatures, Contains.Item(CreatureConstants.Pony_War));
             Assert.That(creatures, Contains.Item(CreatureConstants.Porpoise));
@@ -1204,7 +1222,7 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creatures, Contains.Item(CreatureConstants.Snake_Viper_Medium));
             Assert.That(creatures, Contains.Item(CreatureConstants.Snake_Viper_Small));
             Assert.That(creatures, Contains.Item(CreatureConstants.Snake_Viper_Tiny));
-            Assert.That(creatures, Contains.Item(CreatureConstants.Solar));
+            Assert.That(creatures, Contains.Item(CreatureConstants.Angel_Solar));
             Assert.That(creatures, Contains.Item(CreatureConstants.Spectre));
             Assert.That(creatures, Contains.Item(CreatureConstants.SpiderEater));
             Assert.That(creatures, Contains.Item(CreatureConstants.Spider_Monstrous_Colossal));
@@ -1250,12 +1268,6 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creatures, Contains.Item(CreatureConstants.Wasp_Giant));
             Assert.That(creatures, Contains.Item(CreatureConstants.Weasel));
             Assert.That(creatures, Contains.Item(CreatureConstants.Weasel_Dire));
-            Assert.That(creatures, Contains.Item(CreatureConstants.Werebear));
-            Assert.That(creatures, Contains.Item(CreatureConstants.Wereboar));
-            Assert.That(creatures, Contains.Item(CreatureConstants.Wereboar_HillGiantDire));
-            Assert.That(creatures, Contains.Item(CreatureConstants.Wererat));
-            Assert.That(creatures, Contains.Item(CreatureConstants.Weretiger));
-            Assert.That(creatures, Contains.Item(CreatureConstants.Werewolf));
             Assert.That(creatures, Contains.Item(CreatureConstants.Whale_Baleen));
             Assert.That(creatures, Contains.Item(CreatureConstants.Whale_Cachalot));
             Assert.That(creatures, Contains.Item(CreatureConstants.Whale_Orca));
@@ -1280,7 +1292,7 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creatures, Contains.Item(CreatureConstants.YuanTi_Halfblood));
             Assert.That(creatures, Contains.Item(CreatureConstants.YuanTi_Pureblood));
             Assert.That(creatures, Contains.Item(CreatureConstants.Zelekhut));
-            Assert.That(creatures.Count(), Is.EqualTo(584));
+            Assert.That(creatures.Count(), Is.EqualTo(579));
         }
 
         [Test]

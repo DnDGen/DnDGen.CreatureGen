@@ -59,35 +59,41 @@ namespace CreatureGen.Tests.Integration.Tables
 
         protected void AssertCollection(IEnumerable<string> actual, IEnumerable<string> expected)
         {
-            AssertMissingItems(expected, actual);
-            AssertExtraItems(expected, actual);
+            AssertMissingItems(actual, expected);
+            AssertExtraItems(actual, expected);
             Assert.That(actual, Is.EquivalentTo(expected));
             Assert.That(expected, Is.EquivalentTo(actual));
             Assert.That(actual.Count(), Is.EqualTo(expected.Count()));
         }
 
-        protected void AssertMissingItems(IEnumerable<string> expected, IEnumerable<string> collection)
+        protected void AssertMissingItems(IEnumerable<string> actual, IEnumerable<string> expected)
         {
-            var missingItems = expected.Except(collection);
+            var missingItems = expected.Except(actual);
             Assert.That(missingItems, Is.Empty, $"{missingItems.Count()} of {expected.Count()} missing");
         }
 
-        protected void AssertExtraItems(IEnumerable<string> expected, IEnumerable<string> collection)
+        protected void AssertExtraItems(IEnumerable<string> actual, IEnumerable<string> expected)
         {
-            var extras = collection.Except(expected);
+            var extras = actual.Except(expected);
             Assert.That(extras, Is.Empty, $"{extras.Count()} extra");
         }
 
         public virtual void OrderedCollection(string name, params string[] collection)
         {
-            Assert.That(table.Keys, Contains.Item(name), tableName);
+            Collection(name, collection);
+            AssertOrdered(table[name], collection);
+        }
 
-            PopulateIndices(collection);
+        private void AssertOrdered(IEnumerable<string> actual, IEnumerable<string> expected)
+        {
+            PopulateIndices(actual);
+            var expectedArray = expected.ToArray();
+            var actualArray = actual.ToArray();
 
             foreach (var index in indices.Keys.OrderBy(k => k))
             {
-                var actualItem = table[name].ElementAt(index);
-                var expectedItem = collection[index];
+                var actualItem = expectedArray[index];
+                var expectedItem = actualArray[index];
 
                 var message = string.Format("Index {0}", index);
                 if (string.IsNullOrEmpty(indices[index]) == false)
@@ -95,8 +101,6 @@ namespace CreatureGen.Tests.Integration.Tables
 
                 Assert.That(actualItem, Is.EqualTo(expectedItem), message);
             }
-
-            AssertExtraItems(table[name], collection);
         }
 
         public virtual void DistinctCollection(string name, params string[] collection)

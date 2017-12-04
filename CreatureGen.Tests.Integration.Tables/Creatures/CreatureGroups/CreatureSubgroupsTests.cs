@@ -33,9 +33,9 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         }
 
         [TestCase(CreatureConstants.Groups.Angel,
-            CreatureConstants.AstralDeva,
-            CreatureConstants.Planetar,
-            CreatureConstants.Solar)]
+            CreatureConstants.Angel_AstralDeva,
+            CreatureConstants.Angel_Planetar,
+            CreatureConstants.Angel_Solar)]
         [TestCase(CreatureConstants.Groups.AnimatedObject,
             CreatureConstants.AnimatedObject_Colossal,
             CreatureConstants.AnimatedObject_Gargantuan,
@@ -241,6 +241,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Dragon_White_YoungAdult)]
         [TestCase(CreatureConstants.Groups.Dwarf,
             CreatureConstants.Dwarf_Deep,
+            CreatureConstants.Dwarf_Duergar,
             CreatureConstants.Dwarf_Hill,
             CreatureConstants.Dwarf_Mountain)]
         [TestCase(CreatureConstants.Groups.Elemental_Air,
@@ -332,11 +333,11 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Marut,
             CreatureConstants.Zelekhut)]
         [TestCase(CreatureConstants.Groups.Lycanthrope,
-            CreatureConstants.Werebear,
-            CreatureConstants.Wereboar,
-            CreatureConstants.Wererat,
-            CreatureConstants.Weretiger,
-            CreatureConstants.Werewolf)]
+            CreatureConstants.Templates.Werebear,
+            CreatureConstants.Templates.Wereboar,
+            CreatureConstants.Templates.Wererat,
+            CreatureConstants.Templates.Weretiger,
+            CreatureConstants.Templates.Werewolf)]
         [TestCase(CreatureConstants.Groups.Mephit,
             CreatureConstants.Mephit_Air,
             CreatureConstants.Mephit_Dust,
@@ -357,6 +358,9 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Nightcrawler,
             CreatureConstants.Nightwalker,
             CreatureConstants.Nightwing)]
+        [TestCase(CreatureConstants.Groups.Planetouched,
+            CreatureConstants.Aasimar,
+            CreatureConstants.Tiefling)]
         [TestCase(CreatureConstants.Groups.Pyrohydra,
             CreatureConstants.Pyrohydra_10Heads,
             CreatureConstants.Pyrohydra_11Heads,
@@ -517,7 +521,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 typeCreatures.AddRange(explodedType);
             }
 
-            var alignmentCreatures = new List<string>();
+            var validCreatures = new List<string>();
 
             foreach (var creature in typeCreatures)
             {
@@ -525,13 +529,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 if (!creatureAlignments.Any())
                     creatureAlignments = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral };
 
-                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))))
-                    alignmentCreatures.Add(creature);
+                var creatureTypes = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creature);
+
+                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))) && !creatureTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
+                    validCreatures.Add(creature);
             }
 
-            DistinctCollection(CreatureConstants.Templates.CelestialCreature, alignmentCreatures.ToArray());
-
-            Assert.Fail("Verify all creatures are corporeal");
+            DistinctCollection(CreatureConstants.Templates.CelestialCreature, validCreatures.ToArray());
         }
 
         [Test]
@@ -572,7 +576,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 typeCreatures.AddRange(explodedType);
             }
 
-            var alignmentCreatures = new List<string>();
+            var validCreatures = new List<string>();
 
             foreach (var creature in typeCreatures)
             {
@@ -580,13 +584,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 if (!creatureAlignments.Any())
                     creatureAlignments = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral };
 
-                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))))
-                    alignmentCreatures.Add(creature);
+                var creatureTypes = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creature);
+
+                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))) && !creatureTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
+                    validCreatures.Add(creature);
             }
 
-            DistinctCollection(CreatureConstants.Templates.HalfCelestial, alignmentCreatures.ToArray());
-
-            Assert.Fail("Verify all creatures are corporeal");
+            DistinctCollection(CreatureConstants.Templates.HalfCelestial, validCreatures.ToArray());
         }
 
         [Test]
@@ -614,9 +618,17 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 typeCreatures.AddRange(explodedType);
             }
 
-            DistinctCollection(CreatureConstants.Templates.HalfDragon, typeCreatures.ToArray());
+            var validCreatures = new List<string>();
 
-            Assert.Fail("Verify all creatures are corporeal");
+            foreach (var creature in typeCreatures)
+            {
+                var creatureTypes = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creature);
+
+                if (!creatureTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
+                    validCreatures.Add(creature);
+            }
+
+            DistinctCollection(CreatureConstants.Templates.HalfDragon, validCreatures.ToArray());
         }
 
         [Test]
@@ -657,7 +669,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 typeCreatures.AddRange(explodedType);
             }
 
-            var alignmentCreatures = new List<string>();
+            var validCreatures = new List<string>();
 
             foreach (var creature in typeCreatures)
             {
@@ -665,13 +677,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 if (!creatureAlignments.Any())
                     creatureAlignments = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral };
 
-                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))))
-                    alignmentCreatures.Add(creature);
+                var creatureTypes = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creature);
+
+                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))) && !creatureTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
+                    validCreatures.Add(creature);
             }
 
-            DistinctCollection(CreatureConstants.Templates.FiendishCreature, alignmentCreatures.ToArray());
-
-            Assert.Fail("Verify all creatures are corporeal");
+            DistinctCollection(CreatureConstants.Templates.FiendishCreature, validCreatures.ToArray());
         }
 
         [Test]
@@ -712,7 +724,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 typeCreatures.AddRange(explodedType);
             }
 
-            var alignmentCreatures = new List<string>();
+            var validCreatures = new List<string>();
 
             foreach (var creature in typeCreatures)
             {
@@ -720,13 +732,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 if (!creatureAlignments.Any())
                     creatureAlignments = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral };
 
-                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))))
-                    alignmentCreatures.Add(creature);
+                var creatureTypes = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creature);
+
+                if (creatureAlignments.Any(ca => alignments.Any(a => ca.Contains(a))) && !creatureTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
+                    validCreatures.Add(creature);
             }
 
-            DistinctCollection(CreatureConstants.Templates.HalfFiend, alignmentCreatures.ToArray());
-
-            Assert.Fail("Verify all creatures are corporeal");
+            DistinctCollection(CreatureConstants.Templates.HalfFiend, validCreatures.ToArray());
         }
 
         [Test]

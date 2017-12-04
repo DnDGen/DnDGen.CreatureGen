@@ -21,6 +21,31 @@ namespace CreatureGen.Creatures
             public const string Plant = "Plant";
             public const string Undead = "Undead";
             public const string Vermin = "Vermin";
+
+            public static class Subtypes
+            {
+                public const string Air = "Air";
+                public const string Angel = "Angel";
+                public const string Aquatic = "Aquatic";
+                public const string Archon = "Archon";
+                public const string Augmented = "Augmented";
+                public const string Chaotic = "Chaotic";
+                public const string Cold = "Cold";
+                public const string Dwarf = "Dwarf";
+                public const string Earth = "Earth";
+                public const string Evil = "Evil";
+                public const string Extraplanar = "Extraplanar";
+                public const string Fire = "Fire";
+                public const string Goblinoid = "Goblinoid";
+                public const string Good = "Good";
+                public const string Incorporeal = "Incorporeal";
+                public const string Lawful = "Lawful";
+                public const string Native = "Native";
+                public const string Reptilian = "Reptilian";
+                public const string Shapechanger = "Shapechanger";
+                public const string Swarm = "Swarm";
+                public const string Water = "Water";
+            }
         }
 
         public static class Templates
@@ -125,6 +150,7 @@ namespace CreatureGen.Creatures
             public const string Mephit = "Mephit";
             public const string Naga = "Naga";
             public const string Nightshade = "Nightshade";
+            public const string Planetouched = "Planetouched";
             public const string Pyrohydra = "Pyrohydra";
             public const string Salamander = "Salamander";
             public const string Scorpion_Monstrous = "Monstrous Scorpion";
@@ -146,6 +172,7 @@ namespace CreatureGen.Creatures
         public const string Achaierai = "Achaierai";
         public const string Allip = "Allip";
         public const string Androsphinx = "Androsphinx";
+        public const string Angel_AstralDeva = "Angel, Astral Deva";
         public const string AnimatedObject_Colossal = "Animated Object, Colossal";
         public const string AnimatedObject_Gargantuan = "Animated Object, Gargantuan";
         public const string AnimatedObject_Huge = "Animated Object, Huge";
@@ -165,7 +192,6 @@ namespace CreatureGen.Creatures
         public const string Arrowhawk_Elder = "Elder Arrowhawk";
         public const string Arrowhawk_Juvenile = "Juvenile Arrowhawk";
         public const string AssassinVine = "Assassin Vine";
-        public const string AstralDeva = "Astral Deva";
         public const string Athach = "Athach";
         public const string Avoral = "Avoral";
         public const string Azer = "Azer";
@@ -191,6 +217,7 @@ namespace CreatureGen.Creatures
         public const string Bee_Giant = "Giant Bee";
         public const string Behir = "Behir";
         public const string Beholder = "Beholder";
+        public const string Beholder_Gauth = "Gauth";
         public const string Belker = "Belker";
         public const string Bison = "Bison";
         public const string BlackPudding = "Black Pudding";
@@ -378,7 +405,7 @@ namespace CreatureGen.Creatures
         public const string Drider = "Drider";
         public const string Elf_Drow = "Drow";
         public const string Dryad = "Dryad";
-        public const string Duergar = "Duergar";
+        public const string Dwarf_Duergar = "Duergar";
         public const string Dwarf_Deep = "Deep Dwarf";
         public const string Dwarf_Hill = "Hill Dwarf";
         public const string Dwarf_Mountain = "Mountain Dwarf";
@@ -563,8 +590,8 @@ namespace CreatureGen.Creatures
         public const string Ogre = "Ogre";
         public const string Ogre_Merrow = "Merrow";
         public const string OgreMage = "Ogre Mage";
-        public const string Ooze_Gray = "Gray Ooze";
-        public const string Ooze_OchreJelly = "Ochre Jelly";
+        public const string GrayOoze = "Gray Ooze";
+        public const string OchreJelly = "Ochre Jelly";
         public const string Orc = "Orc";
         public const string Orc_Half = "Half-Orc";
         public const string Otyugh = "Otyugh";
@@ -578,7 +605,7 @@ namespace CreatureGen.Creatures
         public const string PitFiend = "Pit Fiend";
         public const string Pixie = "Pixie";
         public const string Pixie_WithIrresistableDance = "Pixie with Irresistable Dance";
-        public const string Planetar = "Planetar";
+        public const string Angel_Planetar = "Angel, Planetar";
         public const string Pony = "Pony";
         public const string Pony_War = "Warpony";
         public const string Porpoise = "Porpoise";
@@ -648,7 +675,7 @@ namespace CreatureGen.Creatures
         public const string Snake_Viper_Medium = "Viper Snake, Medium";
         public const string Snake_Viper_Small = "Viper Snake, Small";
         public const string Snake_Viper_Tiny = "Viper Snake, Tiny";
-        public const string Solar = "Solar";
+        public const string Angel_Solar = "Angel, Solar";
         public const string Spectre = "Spectre";
         public const string Spider_Monstrous_Colossal = "Monstrous Spider, Colossal";
         public const string Spider_Monstrous_Gargantuan = "Monstrous Spider, Gargantuan";
@@ -695,12 +722,6 @@ namespace CreatureGen.Creatures
         public const string Wasp_Giant = "Giant Wasp";
         public const string Weasel = "Weasel";
         public const string Weasel_Dire = "Dire Weasel";
-        public const string Werebear = "Werebear";
-        public const string Wereboar = "Wereboar";
-        public const string Wereboar_HillGiantDire = "Hill Giant Dire Wereboar";
-        public const string Wererat = "Wererat";
-        public const string Weretiger = "Weretiger";
-        public const string Werewolf = "Werewolf";
         public const string Whale_Baleen = "Baleen Whale";
         public const string Whale_Cachalot = "Cachalot Whale";
         public const string Whale_Orca = "Orca Whale";
@@ -754,7 +775,7 @@ namespace CreatureGen.Creatures
                 Arrowhawk_Elder,
                 Arrowhawk_Juvenile,
                 AssassinVine,
-                AstralDeva,
+                Angel_AstralDeva,
                 Athach,
                 Avoral,
                 Azer,
@@ -780,6 +801,7 @@ namespace CreatureGen.Creatures
                 Bee_Giant,
                 Behir,
                 Beholder,
+                Beholder_Gauth,
                 Belker,
                 Bison,
                 BlackPudding,
@@ -967,7 +989,7 @@ namespace CreatureGen.Creatures
                 Drider,
                 Elf_Drow,
                 Dryad,
-                Duergar,
+                Dwarf_Duergar,
                 Dwarf_Deep,
                 Dwarf_Hill,
                 Dwarf_Mountain,
@@ -1152,8 +1174,8 @@ namespace CreatureGen.Creatures
                 Ogre,
                 Ogre_Merrow,
                 OgreMage,
-                Ooze_Gray,
-                Ooze_OchreJelly,
+                GrayOoze,
+                OchreJelly,
                 Orc,
                 Orc_Half,
                 Otyugh,
@@ -1167,7 +1189,7 @@ namespace CreatureGen.Creatures
                 PitFiend,
                 Pixie,
                 Pixie_WithIrresistableDance,
-                Planetar,
+                Angel_Planetar,
                 Pony,
                 Pony_War,
                 Porpoise,
@@ -1237,7 +1259,7 @@ namespace CreatureGen.Creatures
                 Snake_Viper_Medium,
                 Snake_Viper_Small,
                 Snake_Viper_Tiny,
-                Solar,
+                Angel_Solar,
                 Spectre,
                 Spider_Monstrous_Colossal,
                 Spider_Monstrous_Gargantuan,

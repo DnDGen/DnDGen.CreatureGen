@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Creatures;
 using NUnit.Framework;
+using System.Linq;
 
 namespace CreatureGen.Tests.Unit.Creatures
 {
@@ -18,15 +19,24 @@ namespace CreatureGen.Tests.Unit.Creatures
         public void CreatureTypeInitialized()
         {
             Assert.That(creatureType.Name, Is.Empty);
-            Assert.That(creatureType.SubType, Is.Null);
+            Assert.That(creatureType.SubTypes, Is.Empty);
         }
 
         [Test]
         public void CreateSubtype()
         {
-            creatureType.SubType = new CreatureType();
-            Assert.That(creatureType.SubType.Name, Is.Empty);
-            Assert.That(creatureType.SubType.SubType, Is.Null);
+            creatureType.SubTypes = new[] { "subtype" };
+            Assert.That(creatureType.SubTypes, Contains.Item("subtype"));
+            Assert.That(creatureType.SubTypes.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void CreateMultipleSubtypes()
+        {
+            creatureType.SubTypes = new[] { "subtype", "other subtype" };
+            Assert.That(creatureType.SubTypes, Contains.Item("subtype"));
+            Assert.That(creatureType.SubTypes, Contains.Item("other subtype"));
+            Assert.That(creatureType.SubTypes.Count, Is.EqualTo(2));
         }
 
         [Test]
@@ -42,8 +52,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         public void CreatureTypeIsViaSubType()
         {
             creatureType.Name = "creature type";
-            creatureType.SubType = new CreatureType();
-            creatureType.SubType.Name = "subtype";
+            creatureType.SubTypes = new[] { "subtype", "other subtype" };
 
             var isType = creatureType.Is("subtype");
             Assert.That(isType, Is.True);
@@ -53,10 +62,18 @@ namespace CreatureGen.Tests.Unit.Creatures
         public void CreatureTypeIsNot()
         {
             creatureType.Name = "creature type";
-            creatureType.SubType = new CreatureType();
-            creatureType.SubType.Name = "subtype";
+            creatureType.SubTypes = new[] { "subtype", "other subtype" };
 
             var isType = creatureType.Is("wrong subtype");
+            Assert.That(isType, Is.False);
+        }
+
+        [Test]
+        public void CreatureTypeIsNotWithNoSubtypes()
+        {
+            creatureType.Name = "creature type";
+
+            var isType = creatureType.Is("subtype");
             Assert.That(isType, Is.False);
         }
     }

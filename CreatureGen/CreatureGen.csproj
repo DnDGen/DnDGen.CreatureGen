@@ -664,7 +664,9 @@
     <EmbeddedResource Include="Tables\Creatures\AerialSpeeds.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\Creatures\CreatureGroups.xml" />
+    <EmbeddedResource Include="Tables\Creatures\CreatureGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Tables\Creatures\LandSpeeds.xml" />
@@ -699,6 +701,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Tables\Traits.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Creatures\CreatureTypes.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

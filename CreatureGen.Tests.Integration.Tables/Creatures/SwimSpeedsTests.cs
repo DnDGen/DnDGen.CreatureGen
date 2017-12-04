@@ -32,7 +32,7 @@ namespace CreatureGen.Tests.Integration.Tables.Races.BaseRaces
         [TestCase(CreatureConstants.Derro, 0)]
         [TestCase(CreatureConstants.Doppelganger, 0)]
         [TestCase(CreatureConstants.Elf_Drow, 0)]
-        [TestCase(CreatureConstants.Duergar, 0)]
+        [TestCase(CreatureConstants.Dwarf_Duergar, 0)]
         [TestCase(CreatureConstants.Giant_Fire, 0)]
         [TestCase(CreatureConstants.Gnome_Forest, 0)]
         [TestCase(CreatureConstants.Giant_Frost, 0)]

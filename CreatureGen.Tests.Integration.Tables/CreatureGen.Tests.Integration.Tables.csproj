@@ -81,6 +81,7 @@
     <Compile Include="Creatures\CreatureGroups\CreatureGroupsTableTests.cs" />
     <Compile Include="Creatures\CreatureGroups\CreatureSubgroupsTests.cs" />
     <Compile Include="Creatures\CreatureGroups\CreatureTypeGroupsTests.cs" />
+    <Compile Include="Creatures\CreatureTypesTests.cs" />
     <Compile Include="Feats\Data\FeatDataTests.cs" />
     <Compile Include="Feats\FeatFociTests.cs" />
     <Compile Include="Feats\FeatGroupsTests.cs" />
