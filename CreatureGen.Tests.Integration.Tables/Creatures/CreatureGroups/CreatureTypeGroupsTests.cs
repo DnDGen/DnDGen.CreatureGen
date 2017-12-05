@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Creatures;
+using CreatureGen.Tables;
 using DnDGen.Core.Selectors.Collections;
 using EventGen;
 using Ninject;
@@ -25,9 +26,260 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         }
 
         [Test]
-        public void EntriesAreComplete()
+        public void NamesAreComplete()
         {
-            AssertCreatureGroupEntriesAreComplete();
+            AssertCreatureGroupNamesAreComplete();
+        }
+
+        [TestCase(CreatureConstants.Types.Construct,
+            CreatureConstants.Groups.Inevitable,
+            CreatureConstants.Groups.AnimatedObject,
+            CreatureConstants.Groups.Golem,
+            CreatureConstants.Homunculus,
+            CreatureConstants.Retriever,
+            CreatureConstants.ShieldGuardian)]
+        [TestCase(CreatureConstants.Types.Dragon,
+            CreatureConstants.Groups.Dragon_Black,
+            CreatureConstants.Groups.Dragon_Blue,
+            CreatureConstants.Groups.Dragon_Green,
+            CreatureConstants.Groups.Dragon_Red,
+            CreatureConstants.Groups.Dragon_White,
+            CreatureConstants.Groups.Dragon_Brass,
+            CreatureConstants.Groups.Dragon_Bronze,
+            CreatureConstants.Groups.Dragon_Copper,
+            CreatureConstants.Groups.Dragon_Gold,
+            CreatureConstants.Groups.Dragon_Silver,
+            CreatureConstants.DragonTurtle,
+            CreatureConstants.Lammasu_GoldenProtector,
+            CreatureConstants.Pseudodragon,
+            CreatureConstants.Wyvern)]
+        [TestCase(CreatureConstants.Types.Elemental,
+            CreatureConstants.Belker,
+            CreatureConstants.Groups.Elemental_Air,
+            CreatureConstants.Groups.Elemental_Earth,
+            CreatureConstants.Groups.Elemental_Fire,
+            CreatureConstants.Groups.Elemental_Water,
+            CreatureConstants.InvisibleStalker,
+            CreatureConstants.Magmin,
+            CreatureConstants.Thoqqua)]
+        [TestCase(CreatureConstants.Types.Fey,
+            CreatureConstants.Dryad,
+            CreatureConstants.Nymph,
+            CreatureConstants.Satyr,
+            CreatureConstants.Satyr_WithPipes,
+            CreatureConstants.Groups.Sprite)]
+        [TestCase(CreatureConstants.Types.Giant,
+            CreatureConstants.Ettin,
+            CreatureConstants.Giant_Cloud,
+            CreatureConstants.Giant_Fire,
+            CreatureConstants.Giant_Frost,
+            CreatureConstants.Giant_Hill,
+            CreatureConstants.Giant_Stone,
+            CreatureConstants.Giant_Stone_Elder,
+            CreatureConstants.Giant_Storm,
+            CreatureConstants.Ogre,
+            CreatureConstants.Ogre_Merrow,
+            CreatureConstants.OgreMage,
+            CreatureConstants.Troll,
+            CreatureConstants.Troll_Scrag)]
+        [TestCase(CreatureConstants.Types.Humanoid,
+            CreatureConstants.Bugbear,
+            CreatureConstants.Groups.Dwarf,
+            CreatureConstants.Groups.Elf,
+            CreatureConstants.Githyanki,
+            CreatureConstants.Githzerai,
+            CreatureConstants.Gnoll,
+            CreatureConstants.Groups.Gnome,
+            CreatureConstants.Goblin,
+            CreatureConstants.Groups.Halfling,
+            CreatureConstants.Hobgoblin,
+            CreatureConstants.Human,
+            CreatureConstants.Kobold,
+            CreatureConstants.KuoToa,
+            CreatureConstants.Lizardfolk,
+            CreatureConstants.Locathah,
+            CreatureConstants.Merfolk,
+            CreatureConstants.Groups.Orc,
+            CreatureConstants.Troglodyte)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid,
+            CreatureConstants.Centaur,
+            CreatureConstants.Derro,
+            CreatureConstants.Doppelganger,
+            CreatureConstants.Gargoyle,
+            CreatureConstants.Gargoyle_Kapoacinth,
+            CreatureConstants.Grimlock,
+            CreatureConstants.Groups.Hag,
+            CreatureConstants.Harpy,
+            CreatureConstants.Medusa,
+            CreatureConstants.Minotaur,
+            CreatureConstants.Sahuagin,
+            CreatureConstants.Scorpionfolk,
+            CreatureConstants.Groups.YuanTi)]
+        [TestCase(CreatureConstants.Types.Ooze,
+            CreatureConstants.BlackPudding,
+            CreatureConstants.BlackPudding_Elder,
+            CreatureConstants.GelatinousCube,
+            CreatureConstants.GrayOoze,
+            CreatureConstants.OchreJelly)]
+        [TestCase(CreatureConstants.Types.Plant,
+            CreatureConstants.AssassinVine,
+            CreatureConstants.Groups.Fungus,
+            CreatureConstants.PhantomFungus,
+            CreatureConstants.ShamblingMound,
+            CreatureConstants.Tendriculos,
+            CreatureConstants.Treant)]
+        [TestCase(CreatureConstants.Types.Undead,
+            CreatureConstants.Allip,
+            CreatureConstants.Bodak,
+            CreatureConstants.Devourer,
+            CreatureConstants.Ghoul,
+            CreatureConstants.Ghoul_Ghast,
+            CreatureConstants.Ghoul_Lacedon,
+            CreatureConstants.Mohrg,
+            CreatureConstants.Mummy,
+            CreatureConstants.Groups.Nightshade,
+            CreatureConstants.Shadow,
+            CreatureConstants.Shadow_Greater,
+            CreatureConstants.Spectre,
+            CreatureConstants.VampireSpawn,
+            CreatureConstants.Wight,
+            CreatureConstants.Wraith,
+            CreatureConstants.Wraith_Dread)]
+        [TestCase(CreatureConstants.Types.Vermin,
+            CreatureConstants.Groups.Ant_Giant,
+            CreatureConstants.Bee_Giant,
+            CreatureConstants.BombardierBeetle_Giant,
+            CreatureConstants.Groups.Centipede_Monstrous,
+            CreatureConstants.Centipede_Swarm,
+            CreatureConstants.FireBeetle_Giant,
+            CreatureConstants.Locust_Swarm,
+            CreatureConstants.PrayingMantis_Giant,
+            CreatureConstants.Groups.Scorpion_Monstrous,
+            CreatureConstants.Groups.Spider_Monstrous,
+            CreatureConstants.Spider_Swarm,
+            CreatureConstants.StagBeetle_Giant,
+            CreatureConstants.Wasp_Giant)]
+        [TestCase(CreatureConstants.Types.Subtypes.Air,
+            CreatureConstants.Groups.Elemental_Air,
+            CreatureConstants.Giant_Cloud)]
+        [TestCase(CreatureConstants.Types.Subtypes.Angel,
+            CreatureConstants.Angel_AstralDeva,
+            CreatureConstants.Angel_Planetar,
+            CreatureConstants.Angel_Solar)]
+        [TestCase(CreatureConstants.Types.Subtypes.Aquatic,
+            CreatureConstants.Aboleth,
+            CreatureConstants.Aboleth_Mage,
+            CreatureConstants.Elf_Aquatic,
+            CreatureConstants.Ghoul_Lacedon,
+            CreatureConstants.KuoToa,
+            CreatureConstants.Locathah,
+            CreatureConstants.Merfolk,
+            CreatureConstants.Ogre_Merrow,
+            CreatureConstants.Troll_Scrag)]
+        [TestCase(CreatureConstants.Types.Subtypes.Archon,
+            CreatureConstants.HoundArchon,
+            CreatureConstants.LanternArchon,
+            CreatureConstants.TrumpetArchon)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
+        [TestCase(CreatureConstants.Types.Subtypes.Chaotic,
+            CreatureConstants.ChaosBeast,
+            CreatureConstants.Babau,
+            CreatureConstants.Balor,
+            CreatureConstants.Bebilith,
+            CreatureConstants.Dretch,
+            CreatureConstants.Ghaele,
+            CreatureConstants.Glabrezu,
+            CreatureConstants.Hezrou,
+            CreatureConstants.Marilith,
+            CreatureConstants.Nalfeshnee,
+            CreatureConstants.Quasit,
+            CreatureConstants.Succubus,
+            CreatureConstants.Vrock)]
+        [TestCase(CreatureConstants.Types.Subtypes.Cold,
+            CreatureConstants.FrostWorm,
+            CreatureConstants.Giant_Frost)]
+        [TestCase(CreatureConstants.Types.Subtypes.Dwarf,
+            CreatureConstants.Dwarf_Deep,
+            CreatureConstants.Dwarf_Duergar,
+            CreatureConstants.Dwarf_Hill,
+            CreatureConstants.Dwarf_Mountain)]
+        [TestCase(CreatureConstants.Types.Subtypes.Earth,
+            CreatureConstants.Groups.Elemental_Earth,
+            CreatureConstants.Giant_Stone,
+            CreatureConstants.Giant_Stone_Elder)]
+        [TestCase(CreatureConstants.Types.Subtypes.Elf,
+            CreatureConstants.Elf_Aquatic,
+            CreatureConstants.Elf_Drow,
+            CreatureConstants.Elf_Gray,
+            CreatureConstants.Elf_Half,
+            CreatureConstants.Elf_High,
+            CreatureConstants.Elf_Wild,
+            CreatureConstants.Elf_Wood)]
+        [TestCase(CreatureConstants.Types.Subtypes.Evil,
+            CreatureConstants.Achaierai,
+            CreatureConstants.Babau,
+            CreatureConstants.Balor,
+            CreatureConstants.Bebilith,
+            CreatureConstants.Groups.Devil,
+            CreatureConstants.Dretch,
+            CreatureConstants.Glabrezu,
+            CreatureConstants.Hezrou,
+            CreatureConstants.Marilith,
+            CreatureConstants.Nalfeshnee,
+            CreatureConstants.Quasit,
+            CreatureConstants.Succubus,
+            CreatureConstants.Vrock)]
+        [TestCase(CreatureConstants.Types.Subtypes.Fire,
+            CreatureConstants.Groups.Elemental_Fire,
+            CreatureConstants.Giant_Fire)]
+        [TestCase(CreatureConstants.Types.Subtypes.Gnoll,
+            CreatureConstants.Gnoll)]
+        [TestCase(CreatureConstants.Types.Subtypes.Gnome,
+            CreatureConstants.Gnome_Forest,
+            CreatureConstants.Gnome_Rock,
+            CreatureConstants.Gnome_Svirfneblin)]
+        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid,
+            CreatureConstants.Goblin,
+            CreatureConstants.Hobgoblin)]
+        [TestCase(CreatureConstants.Types.Subtypes.Good,
+            CreatureConstants.Groups.Angel,
+            CreatureConstants.Groups.Archon,
+            CreatureConstants.Ghaele)]
+        [TestCase(CreatureConstants.Types.Subtypes.Halfling,
+            CreatureConstants.Halfling_Deep,
+            CreatureConstants.Halfling_Lightfoot,
+            CreatureConstants.Halfling_Tallfellow)]
+        [TestCase(CreatureConstants.Types.Subtypes.Human,
+            CreatureConstants.Human)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal)]
+        [TestCase(CreatureConstants.Types.Subtypes.Lawful,
+            CreatureConstants.Groups.Devil,
+            CreatureConstants.Groups.Inevitable)]
+        [TestCase(CreatureConstants.Types.Subtypes.Native,
+            CreatureConstants.Couatl,
+            CreatureConstants.Groups.Planetouched)]
+        [TestCase(CreatureConstants.Types.Subtypes.Orc,
+            CreatureConstants.Orc,
+            CreatureConstants.Orc_Half)]
+        [TestCase(CreatureConstants.Types.Subtypes.Reptilian,
+            CreatureConstants.Lizardfolk,
+            CreatureConstants.Troglodyte,
+            CreatureConstants.Kobold)]
+        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger,
+            CreatureConstants.Doppelganger,
+            CreatureConstants.Mimic)]
+        [TestCase(CreatureConstants.Types.Subtypes.Swarm,
+            CreatureConstants.Bat_Swarm,
+            CreatureConstants.Centipede_Swarm,
+            CreatureConstants.Hellwasp_Swarm,
+            CreatureConstants.Locust_Swarm,
+            CreatureConstants.Rat_Swarm,
+            CreatureConstants.Spider_Swarm)]
+        [TestCase(CreatureConstants.Types.Subtypes.Water,
+            CreatureConstants.Groups.Elemental_Water)]
+        public void CreatureTypeGroup(string name, params string[] entries)
+        {
+            DistinctCollection(name, entries);
         }
 
         [Test]
@@ -63,7 +315,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.WillOWisp,
             };
 
-            base.DistinctCollection(CreatureConstants.Types.Aberration, creatures);
+            DistinctCollection(CreatureConstants.Types.Aberration, creatures);
         }
 
         [Test]
@@ -135,130 +387,32 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Wolverine_Dire,
             };
 
-            base.DistinctCollection(CreatureConstants.Types.Animal, creatures);
+            DistinctCollection(CreatureConstants.Types.Animal, creatures);
         }
 
         [Test]
-        public void ConstructGroup()
+        public void ExtraplanarGroup()
         {
             var creatures = new[]
             {
+                CreatureConstants.Achaierai,
+                CreatureConstants.Groups.Archon,
+                CreatureConstants.Groups.Angel,
+                CreatureConstants.Groups.Arrowhawk,
+                CreatureConstants.Groups.Demon,
+                CreatureConstants.Groups.Devil,
+                CreatureConstants.Groups.Elemental,
+                CreatureConstants.Groups.Formian,
+                CreatureConstants.Groups.Genie,
                 CreatureConstants.Groups.Inevitable,
-                CreatureConstants.Groups.AnimatedObject,
-                CreatureConstants.Groups.Golem,
-                CreatureConstants.Homunculus,
-                CreatureConstants.Retriever,
-                CreatureConstants.ShieldGuardian,
+                CreatureConstants.Groups.Mephit,
+                CreatureConstants.Groups.Salamander,
+                CreatureConstants.Groups.Slaad,
+                CreatureConstants.Groups.Tojanida,
+                CreatureConstants.Groups.Xorn,
             };
 
-            base.DistinctCollection(CreatureConstants.Types.Construct, creatures);
-        }
-
-        [Test]
-        public void DragonGroup()
-        {
-            var creatures = new[]
-            {
-                CreatureConstants.Groups.Dragon_Black,
-                CreatureConstants.Groups.Dragon_Blue,
-                CreatureConstants.Groups.Dragon_Green,
-                CreatureConstants.Groups.Dragon_Red,
-                CreatureConstants.Groups.Dragon_White,
-                CreatureConstants.Groups.Dragon_Brass,
-                CreatureConstants.Groups.Dragon_Bronze,
-                CreatureConstants.Groups.Dragon_Copper,
-                CreatureConstants.Groups.Dragon_Gold,
-                CreatureConstants.Groups.Dragon_Silver,
-                CreatureConstants.DragonTurtle,
-                CreatureConstants.Pseudodragon,
-                CreatureConstants.Wyvern,
-            };
-
-            base.DistinctCollection(CreatureConstants.Types.Dragon, creatures);
-        }
-
-        [Test]
-        public void ElementalGroup()
-        {
-            var creatures = new[]
-            {
-                CreatureConstants.Belker,
-                CreatureConstants.Groups.Elemental_Air,
-                CreatureConstants.Groups.Elemental_Earth,
-                CreatureConstants.Groups.Elemental_Fire,
-                CreatureConstants.Groups.Elemental_Water,
-                CreatureConstants.InvisibleStalker,
-                CreatureConstants.Magmin,
-                CreatureConstants.Thoqqua
-            };
-
-            base.DistinctCollection(CreatureConstants.Types.Elemental, creatures);
-        }
-
-        [Test]
-        public void FeyGroup()
-        {
-            var creatures = new[]
-            {
-                CreatureConstants.Dryad,
-                CreatureConstants.Nymph,
-                CreatureConstants.Satyr,
-                CreatureConstants.Satyr_WithPipes,
-                CreatureConstants.Groups.Sprite,
-            };
-
-            base.DistinctCollection(CreatureConstants.Types.Fey, creatures);
-        }
-
-        [Test]
-        public void GiantGroup()
-        {
-            var creatures = new[]
-            {
-                CreatureConstants.Ettin,
-                CreatureConstants.Giant_Cloud,
-                CreatureConstants.Giant_Fire,
-                CreatureConstants.Giant_Frost,
-                CreatureConstants.Giant_Hill,
-                CreatureConstants.Giant_Stone,
-                CreatureConstants.Giant_Stone_Elder,
-                CreatureConstants.Giant_Storm,
-                CreatureConstants.Ogre,
-                CreatureConstants.Ogre_Merrow,
-                CreatureConstants.OgreMage,
-                CreatureConstants.Troll,
-                CreatureConstants.Troll_Scrag,
-            };
-
-            base.DistinctCollection(CreatureConstants.Types.Giant, creatures);
-        }
-
-        [Test]
-        public void HumanoidGroup()
-        {
-            var creatures = new[]
-            {
-                CreatureConstants.Bugbear,
-                CreatureConstants.Dwarf_Duergar,
-                CreatureConstants.Groups.Dwarf,
-                CreatureConstants.Groups.Elf,
-                CreatureConstants.Gnoll,
-                CreatureConstants.Groups.Gnome,
-                CreatureConstants.Goblin,
-                CreatureConstants.Groups.Halfling,
-                CreatureConstants.Hobgoblin,
-                CreatureConstants.Human,
-                CreatureConstants.Kobold,
-                CreatureConstants.KuoToa,
-                CreatureConstants.Lizardfolk,
-                CreatureConstants.Locathah,
-                CreatureConstants.Merfolk,
-                CreatureConstants.Orc,
-                CreatureConstants.Orc_Half,
-                CreatureConstants.Troglodyte,
-            };
-
-            base.DistinctCollection(CreatureConstants.Types.Humanoid, creatures);
+            DistinctCollection(CreatureConstants.Types.Subtypes.Extraplanar, creatures);
         }
 
         [Test]
@@ -286,13 +440,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Gorgon,
                 CreatureConstants.GrayRender,
                 CreatureConstants.Griffon,
+                CreatureConstants.Hellwasp_Swarm,
                 CreatureConstants.Hippogriff,
                 CreatureConstants.Groups.Hydra,
                 CreatureConstants.Kraken,
                 CreatureConstants.Krenshar,
                 CreatureConstants.Lamia,
                 CreatureConstants.Lammasu,
-                CreatureConstants.Lammasu_GoldenProtector,
                 CreatureConstants.Manticore,
                 CreatureConstants.Owl_Giant,
                 CreatureConstants.Owlbear,
@@ -315,45 +469,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Yrthak,
             };
 
-            base.DistinctCollection(CreatureConstants.Types.MagicalBeast, creatures);
-        }
-
-        [Test]
-        public void MonstrousHumanoidGroup()
-        {
-            var creatures = new[]
-            {
-                CreatureConstants.Centaur,
-                CreatureConstants.Derro,
-                CreatureConstants.Doppelganger,
-                CreatureConstants.Gargoyle,
-                CreatureConstants.Gargoyle_Kapoacinth,
-                CreatureConstants.Grimlock,
-                CreatureConstants.Groups.Hag,
-                CreatureConstants.Harpy,
-                CreatureConstants.Medusa,
-                CreatureConstants.Minotaur,
-                CreatureConstants.Sahuagin,
-                CreatureConstants.Scorpionfolk,
-                CreatureConstants.Groups.YuanTi,
-            };
-
-            base.DistinctCollection(CreatureConstants.Types.MonstrousHumanoid, creatures);
-        }
-
-        [Test]
-        public void OozeGroup()
-        {
-            var creatures = new[]
-            {
-                CreatureConstants.BlackPudding,
-                CreatureConstants.BlackPudding_Elder,
-                CreatureConstants.GelatinousCube,
-                CreatureConstants.GrayOoze,
-                CreatureConstants.OchreJelly,
-            };
-
-            base.DistinctCollection(CreatureConstants.Types.Ooze, creatures);
+            DistinctCollection(CreatureConstants.Types.MagicalBeast, creatures);
         }
 
         [Test]
@@ -412,92 +528,10 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         }
 
         [Test]
-        public void PlantGroup()
-        {
-            var creatures = new[]
-            {
-                CreatureConstants.AssassinVine,
-                CreatureConstants.Groups.Fungus,
-                CreatureConstants.PhantomFungus,
-                CreatureConstants.ShamblingMound,
-                CreatureConstants.Tendriculos,
-                CreatureConstants.Treant,
-            };
-
-            base.DistinctCollection(CreatureConstants.Types.Plant, creatures);
-        }
-
-        [Test]
-        public void UndeadGroup()
-        {
-            var creatures = new[]
-            {
-                CreatureConstants.Allip,
-                CreatureConstants.Bodak,
-                CreatureConstants.Devourer,
-                CreatureConstants.Ghoul,
-                CreatureConstants.Ghoul_Ghast,
-                CreatureConstants.Ghoul_Lacedon,
-                CreatureConstants.Mohrg,
-                CreatureConstants.Mummy,
-                CreatureConstants.Groups.Nightshade,
-                CreatureConstants.Shadow,
-                CreatureConstants.Shadow_Greater,
-                CreatureConstants.Spectre,
-                CreatureConstants.VampireSpawn,
-                CreatureConstants.Wight,
-                CreatureConstants.Wraith,
-                CreatureConstants.Wraith_Dread,
-            };
-
-            base.DistinctCollection(CreatureConstants.Types.Undead, creatures);
-        }
-
-        [Test]
-        public void VerminGroup()
-        {
-            var creatures = new[]
-            {
-                CreatureConstants.Groups.Ant_Giant,
-                CreatureConstants.Bee_Giant,
-                CreatureConstants.BombardierBeetle_Giant,
-                CreatureConstants.Groups.Centipede_Monstrous,
-                CreatureConstants.Centipede_Swarm,
-                CreatureConstants.FireBeetle_Giant,
-                CreatureConstants.Locust_Swarm,
-                CreatureConstants.PrayingMantis_Giant,
-                CreatureConstants.Groups.Scorpion_Monstrous,
-                CreatureConstants.Groups.Spider_Monstrous,
-                CreatureConstants.Spider_Swarm,
-                CreatureConstants.StagBeetle_Giant,
-                CreatureConstants.Wasp_Giant,
-            };
-
-            base.DistinctCollection(CreatureConstants.Types.Vermin, creatures);
-        }
-
-        [Test]
         public void AllCreaturesHaveType()
         {
             var allCreatures = CreatureConstants.All();
-            var allTypes = new[]
-            {
-                CreatureConstants.Types.Aberration,
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Construct,
-                CreatureConstants.Types.Dragon,
-                CreatureConstants.Types.Elemental,
-                CreatureConstants.Types.Fey,
-                CreatureConstants.Types.Giant,
-                CreatureConstants.Types.Humanoid,
-                CreatureConstants.Types.MagicalBeast,
-                CreatureConstants.Types.MonstrousHumanoid,
-                CreatureConstants.Types.Ooze,
-                CreatureConstants.Types.Outsider,
-                CreatureConstants.Types.Plant,
-                CreatureConstants.Types.Undead,
-                CreatureConstants.Types.Vermin,
-            };
+            var allTypes = CreatureConstants.Types.All();
 
             var allCreaturesOfType = new List<string>();
 
@@ -508,6 +542,43 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             }
 
             AssertCollection(allCreaturesOfType.Distinct(), allCreatures);
+        }
+
+        [Test]
+        public void CreatureTypeMatchesCreatureGroupType()
+        {
+            var allTypes = CreatureConstants.Types.All();
+
+            foreach (var type in allTypes)
+            {
+                Assert.That(table.Keys, Contains.Item(type), "Table keys");
+                var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, type);
+
+                foreach (var creature in creaturesOfType)
+                {
+                    var types = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creature);
+                    Assert.That(types.First, Is.EqualTo(type), creature);
+                }
+            }
+        }
+
+        [Test]
+        public void CreatureSubtypesMatchCreatureGroupSubtypes()
+        {
+            var allSubTypes = CreatureConstants.Types.Subtypes.All();
+
+            foreach (var subtype in allSubTypes)
+            {
+                Assert.That(table.Keys, Contains.Item(subtype), "Table keys");
+                var creaturesOfSubtype = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, subtype);
+
+                foreach (var creature in creaturesOfSubtype)
+                {
+                    var types = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creature);
+                    var subtypes = types.Skip(1);
+                    Assert.That(subtypes, Contains.Item(subtype), creature);
+                }
+            }
         }
     }
 }

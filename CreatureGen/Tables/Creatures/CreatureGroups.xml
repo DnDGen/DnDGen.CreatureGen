@@ -34,6 +34,11 @@
     <entry>Will-O'-Wisp</entry>
   </collection>
   <collection>
+    <name>Air</name>
+    <entry>Air Elemental</entry>
+    <entry>Cloud Giant</entry>
+  </collection>
+  <collection>
     <name>Angel</name>
     <entry>Angel, Astral Deva</entry>
     <entry>Angel, Planetar</entry>
@@ -115,6 +120,18 @@
     <entry>Animated Object, Colossal</entry>
   </collection>
   <collection>
+    <name>Aquatic</name>
+    <entry>Aboleth</entry>
+    <entry>Aboleth Mage</entry>
+    <entry>Aquatic Elf</entry>
+    <entry>Lacedon</entry>
+    <entry>Kuo-toa</entry>
+    <entry>Locathah</entry>
+    <entry>Merfolk</entry>
+    <entry>Merrow</entry>
+    <entry>Scrag</entry>
+  </collection>
+  <collection>
     <name>Archon</name>
     <entry>Hound Archon</entry>
     <entry>Lantern Archon</entry>
@@ -125,6 +142,9 @@
     <entry>Juvenile Arrowhawk</entry>
     <entry>Adult Arrowhawk</entry>
     <entry>Elder Arrowhawk</entry>
+  </collection>
+  <collection>
+    <name>Augmented</name>
   </collection>
   <collection>
     <name>Bear</name>
@@ -212,6 +232,27 @@
     <entry>Will-O'-Wisp</entry>
   </collection>
   <collection>
+    <name>Chaotic</name>
+    <entry>Chaos Beast</entry>
+    <entry>Babau</entry>
+    <entry>Balor</entry>
+    <entry>Bebilith</entry>
+    <entry>Dretch</entry>
+    <entry>Ghaele</entry>
+    <entry>Glabrezu</entry>
+    <entry>Hezrou</entry>
+    <entry>Marilith</entry>
+    <entry>Nalfeshnee</entry>
+    <entry>Quasit</entry>
+    <entry>Succubus</entry>
+    <entry>Vrock</entry>
+  </collection>
+  <collection>
+    <name>Cold</name>
+    <entry>Frost Worm</entry>
+    <entry>Frost Giant</entry>
+  </collection>
+  <collection>
     <name>Construct</name>
     <entry>Animated Object</entry>
     <entry>Golem</entry>
@@ -295,6 +336,7 @@
     <entry>Green Dragon</entry>
     <entry>Red Dragon</entry>
     <entry>Silver Dragon</entry>
+    <entry>Golden Protector (Celestial Half-Dragon Lammasu)</entry>
     <entry>Pseudodragon</entry>
     <entry>White Dragon</entry>
     <entry>Wyvern</entry>
@@ -302,8 +344,15 @@
   <collection>
     <name>Dwarf</name>
     <entry>Deep Dwarf</entry>
+    <entry>Duergar</entry>
     <entry>Hill Dwarf</entry>
     <entry>Mountain Dwarf</entry>
+  </collection>
+  <collection>
+    <name>Earth</name>
+    <entry>Earth Elemental</entry>
+    <entry>Stone Giant</entry>
+    <entry>Stone Giant Elder</entry>
   </collection>
   <collection>
     <name>Elemental</name>
@@ -363,6 +412,40 @@
     <entry>Wood Elf</entry>
   </collection>
   <collection>
+    <name>Evil</name>
+    <entry>Achaierai</entry>
+    <entry>Babau</entry>
+    <entry>Balor</entry>
+    <entry>Bebilith</entry>
+    <entry>Devil</entry>
+    <entry>Dretch</entry>
+    <entry>Glabrezu</entry>
+    <entry>Hezrou</entry>
+    <entry>Marilith</entry>
+    <entry>Nalfeshnee</entry>
+    <entry>Quasit</entry>
+    <entry>Succubus</entry>
+    <entry>Vrock</entry>
+  </collection>
+  <collection>
+    <name>Extraplanar</name>
+    <entry>Achaierai</entry>
+    <entry>Angel</entry>
+    <entry>Archon</entry>
+    <entry>Arrowhawk</entry>
+    <entry>Demon</entry>
+    <entry>Devil</entry>
+    <entry>Elemental</entry>
+    <entry>Formian</entry>
+    <entry>Genie</entry>
+    <entry>Inevitable</entry>
+    <entry>Mephit</entry>
+    <entry>Salamander</entry>
+    <entry>Slaad</entry>
+    <entry>Tojanida</entry>
+    <entry>Xorn</entry>
+  </collection>
+  <collection>
     <name>Fey</name>
     <entry>Dryad</entry>
     <entry>Nymph</entry>
@@ -399,6 +482,11 @@
     <entry>Skum</entry>
     <entry>Umber Hulk</entry>
     <entry>Will-O'-Wisp</entry>
+  </collection>
+  <collection>
+    <name>Fire</name>
+    <entry>Fire Elemental</entry>
+    <entry>Fire Giant</entry>
   </collection>
   <collection>
     <name>Formian</name>
@@ -454,10 +542,19 @@
     <entry>Giant Ant, Worker</entry>
   </collection>
   <collection>
+    <name>Gnoll</name>
+    <entry>Gnoll</entry>
+  </collection>
+  <collection>
     <name>Gnome</name>
     <entry>Forest Gnome</entry>
     <entry>Rock Gnome</entry>
     <entry>Svirfneblin</entry>
+  </collection>
+  <collection>
+    <name>Goblinoid</name>
+    <entry>Goblin</entry>
+    <entry>Hobgoblin</entry>
   </collection>
   <collection>
     <name>Gold Dragon</name>
@@ -481,6 +578,12 @@
     <entry>Iron Golem</entry>
     <entry>Stone Golem</entry>
     <entry>Greater Stone Golem</entry>
+  </collection>
+  <collection>
+    <name>Good</name>
+    <entry>Angel</entry>
+    <entry>Archon</entry>
+    <entry>Ghaele</entry>
   </collection>
   <collection>
     <name>Green Dragon</name>
@@ -548,15 +651,19 @@
     <entry>Light Warhorse</entry>
   </collection>
   <collection>
+    <name>Human</name>
+    <entry>Human</entry>
+  </collection>
+  <collection>
     <name>Humanoid</name>
     <entry>Bugbear</entry>
-    <entry>Duergar</entry>
     <entry>Dwarf</entry>
     <entry>Elf</entry>
+    <entry>Githyanki</entry>
+    <entry>Githzerai</entry>
     <entry>Gnoll</entry>
     <entry>Gnome</entry>
     <entry>Goblin</entry>
-    <entry>Half-Orc</entry>
     <entry>Halfling</entry>
     <entry>Hobgoblin</entry>
     <entry>Human</entry>
@@ -582,10 +689,18 @@
     <entry>Pyrohydra</entry>
   </collection>
   <collection>
+    <name>Incorporeal</name>
+  </collection>
+  <collection>
     <name>Inevitable</name>
     <entry>Kolyarut</entry>
     <entry>Marut</entry>
     <entry>Zelekhut</entry>
+  </collection>
+  <collection>
+    <name>Lawful</name>
+    <entry>Devil</entry>
+    <entry>Inevitable</entry>
   </collection>
   <collection>
     <name>Lich</name>
@@ -622,13 +737,13 @@
     <entry>Gorgon</entry>
     <entry>Gray Render</entry>
     <entry>Griffon</entry>
+    <entry>Hellwasp Swarm</entry>
     <entry>Hippogriff</entry>
     <entry>Hydra</entry>
     <entry>Kraken</entry>
     <entry>Krenshar</entry>
     <entry>Lamia</entry>
     <entry>Lammasu</entry>
-    <entry>Golden Protector (Celestial Half-Dragon Lammasu)</entry>
     <entry>Manticore</entry>
     <entry>Owlbear</entry>
     <entry>Pegasus</entry>
@@ -648,6 +763,11 @@
     <entry>Winter Wolf</entry>
     <entry>Worg</entry>
     <entry>Yrthak</entry>
+  </collection>
+  <collection>
+    <name>Native</name>
+    <entry>Couatl</entry>
+    <entry>Planetouched</entry>
   </collection>
   <collection>
     <name>Sphinx</name>
@@ -735,6 +855,11 @@
     <entry>Gelatinous Cube</entry>
     <entry>Gray Ooze</entry>
     <entry>Ochre Jelly</entry>
+  </collection>
+  <collection>
+    <name>Orc</name>
+    <entry>Orc</entry>
+    <entry>Half-Orc</entry>
   </collection>
   <collection>
     <name>Outsider</name>
@@ -825,10 +950,21 @@
     <entry>Red Dragon, Great Wyrm</entry>
   </collection>
   <collection>
+    <name>Reptilian</name>
+    <entry>Kobold</entry>
+    <entry>Lizardfolk</entry>
+    <entry>Troglodyte</entry>
+  </collection>
+  <collection>
     <name>Salamander</name>
     <entry>Flamebrother Salamander</entry>
     <entry>Average Salamander</entry>
     <entry>Noble Salamander</entry>
+  </collection>
+  <collection>
+    <name>Shapechanger</name>
+    <entry>Doppelganger</entry>
+    <entry>Mimic</entry>
   </collection>
   <collection>
     <name>Shark</name>
@@ -870,6 +1006,15 @@
     <entry>Nixie</entry>
     <entry>Pixie</entry>
     <entry>Pixie with Irresistable Dance</entry>
+  </collection>
+  <collection>
+    <name>Swarm</name>
+    <entry>Bat Swarm</entry>
+    <entry>Centipede Swarm</entry>
+    <entry>Hellwasp Swarm</entry>
+    <entry>Locust Swarm</entry>
+    <entry>Rat Swarm</entry>
+    <entry>Spider Swarm</entry>
   </collection>
   <collection>
     <name>Tojanida</name>
@@ -924,6 +1069,10 @@
     <entry>Viper Snake, Medium</entry>
     <entry>Viper Snake, Small</entry>
     <entry>Viper Snake, Tiny</entry>
+  </collection>
+  <collection>
+    <name>Water</name>
+    <entry>Water Elemental</entry>
   </collection>
   <collection>
     <name>Werebear</name>

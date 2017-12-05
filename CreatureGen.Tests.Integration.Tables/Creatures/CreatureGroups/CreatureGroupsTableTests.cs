@@ -16,9 +16,11 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             }
         }
 
-        protected void AssertCreatureGroupEntriesAreComplete()
+        protected void AssertCreatureGroupNamesAreComplete()
         {
             var templates = CreatureConstants.Templates.All();
+            var types = CreatureConstants.Types.All();
+            var subtypes = CreatureConstants.Types.Subtypes.All();
 
             var entries = new[]
             {
@@ -78,24 +80,9 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Groups.Whale,
                 CreatureConstants.Groups.Xorn,
                 CreatureConstants.Groups.YuanTi,
-                CreatureConstants.Types.Aberration,
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Construct,
-                CreatureConstants.Types.Dragon,
-                CreatureConstants.Types.Elemental,
-                CreatureConstants.Types.Fey,
-                CreatureConstants.Types.Giant,
-                CreatureConstants.Types.Humanoid,
-                CreatureConstants.Types.MagicalBeast,
-                CreatureConstants.Types.MonstrousHumanoid,
-                CreatureConstants.Types.Ooze,
-                CreatureConstants.Types.Outsider,
-                CreatureConstants.Types.Plant,
-                CreatureConstants.Types.Undead,
-                CreatureConstants.Types.Vermin,
             };
 
-            var names = entries.Union(templates);
+            var names = entries.Union(templates).Union(types).Union(subtypes);
 
             AssertCollectionNames(names);
         }

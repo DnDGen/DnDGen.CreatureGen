@@ -22,6 +22,28 @@ namespace CreatureGen.Creatures
             public const string Undead = "Undead";
             public const string Vermin = "Vermin";
 
+            public static IEnumerable<string> All()
+            {
+                return new[]
+                {
+                    Aberration,
+                    Animal,
+                    Construct,
+                    Dragon,
+                    Elemental,
+                    Fey,
+                    Giant,
+                    Humanoid,
+                    MagicalBeast,
+                    MonstrousHumanoid,
+                    Ooze,
+                    Outsider,
+                    Plant,
+                    Undead,
+                    Vermin,
+                };
+            }
+
             public static class Subtypes
             {
                 public const string Air = "Air";
@@ -33,18 +55,58 @@ namespace CreatureGen.Creatures
                 public const string Cold = "Cold";
                 public const string Dwarf = "Dwarf";
                 public const string Earth = "Earth";
+                public const string Elf = "Elf";
                 public const string Evil = "Evil";
                 public const string Extraplanar = "Extraplanar";
                 public const string Fire = "Fire";
+                public const string Gnoll = "Gnoll";
+                public const string Gnome = "Gnome";
                 public const string Goblinoid = "Goblinoid";
                 public const string Good = "Good";
+                public const string Halfling = "Halfling";
+                public const string Human = "Human";
                 public const string Incorporeal = "Incorporeal";
                 public const string Lawful = "Lawful";
                 public const string Native = "Native";
+                public const string Orc = "Orc";
                 public const string Reptilian = "Reptilian";
                 public const string Shapechanger = "Shapechanger";
                 public const string Swarm = "Swarm";
                 public const string Water = "Water";
+
+                public static IEnumerable<string> All()
+                {
+                    return new[]
+                    {
+                        Air,
+                        Angel,
+                        Aquatic,
+                        Archon,
+                        Augmented,
+                        Chaotic,
+                        Cold,
+                        Dwarf,
+                        Earth,
+                        Elf,
+                        Evil,
+                        Extraplanar,
+                        Fire,
+                        Gnoll,
+                        Gnome,
+                        Goblinoid,
+                        Good,
+                        Halfling,
+                        Human,
+                        Incorporeal,
+                        Lawful,
+                        Native,
+                        Orc,
+                        Reptilian,
+                        Shapechanger,
+                        Swarm,
+                        Water,
+                    };
+                }
             }
         }
 
@@ -150,6 +212,7 @@ namespace CreatureGen.Creatures
             public const string Mephit = "Mephit";
             public const string Naga = "Naga";
             public const string Nightshade = "Nightshade";
+            public const string Orc = "Orc";
             public const string Planetouched = "Planetouched";
             public const string Pyrohydra = "Pyrohydra";
             public const string Salamander = "Salamander";
