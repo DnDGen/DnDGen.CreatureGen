@@ -35,8 +35,18 @@
   </collection>
   <collection>
     <name>Air</name>
+    <entry>Arrowhawk</entry>
+    <entry>Belker</entry>
+    <entry>Djinni</entry>
+    <entry>Noble Djinni</entry>
+    <entry>Green Dragon</entry>
     <entry>Air Elemental</entry>
     <entry>Cloud Giant</entry>
+    <entry>Invisible Stalker</entry>
+    <entry>Air Mephit</entry>
+    <entry>Dust Mephit</entry>
+    <entry>Ice Mephit</entry>
+    <entry>Will-O'-Wisp</entry>
   </collection>
   <collection>
     <name>Angel</name>
@@ -123,13 +133,30 @@
     <name>Aquatic</name>
     <entry>Aboleth</entry>
     <entry>Aboleth Mage</entry>
+    <entry>Chuul</entry>
+    <entry>Dragon Turtle</entry>
     <entry>Aquatic Elf</entry>
+    <entry>Kapoacinth</entry>
+    <entry>Kraken</entry>
     <entry>Lacedon</entry>
     <entry>Kuo-toa</entry>
     <entry>Locathah</entry>
+    <entry>Manta Ray</entry>
     <entry>Merfolk</entry>
     <entry>Merrow</entry>
+    <entry>Water Naga</entry>
+    <entry>Nixie</entry>
+    <entry>Octopus</entry>
+    <entry>Giant Octopus</entry>
+    <entry>Porpoise</entry>
+    <entry>Sahuagin</entry>
+    <entry>Sea Hag</entry>
+    <entry>Shark</entry>
+    <entry>Squid</entry>
+    <entry>Giant Squid</entry>
+    <entry>Skum</entry>
     <entry>Scrag</entry>
+    <entry>Whale</entry>
   </collection>
   <collection>
     <name>Archon</name>
@@ -145,6 +172,7 @@
   </collection>
   <collection>
     <name>Augmented</name>
+    <entry>Abyssal Greater Basilisk</entry>
   </collection>
   <collection>
     <name>Bear</name>
@@ -215,9 +243,19 @@
   </collection>
   <collection>
     <name>Celestial Creature</name>
+    <entry>Animal</entry>
+    <entry>Vermin</entry>
     <entry>Carrion Crawler</entry>
     <entry>Cloaker</entry>
     <entry>Delver</entry>
+    <entry>Dragon Turtle</entry>
+    <entry>Pseudodragon</entry>
+    <entry>Wyvern</entry>
+    <entry>Brass Dragon</entry>
+    <entry>Bronze Dragon</entry>
+    <entry>Copper Dragon</entry>
+    <entry>Gold Dragon</entry>
+    <entry>Silver Dragon</entry>
     <entry>Ethereal Filcher</entry>
     <entry>Gibbering Mouther</entry>
     <entry>Grick</entry>
@@ -227,9 +265,67 @@
     <entry>Otyugh</entry>
     <entry>Phasm</entry>
     <entry>Rust Monster</entry>
-    <entry>Skum</entry>
-    <entry>Umber Hulk</entry>
-    <entry>Will-O'-Wisp</entry>
+    <entry>Fey</entry>
+    <entry>Cloud Giant</entry>
+    <entry>Stone Giant</entry>
+    <entry>Stone Giant Elder</entry>
+    <entry>Storm Giant</entry>
+    <entry>Lizardfolk</entry>
+    <entry>Locathah</entry>
+    <entry>Merfolk</entry>
+    <entry>Deep Dwarf</entry>
+    <entry>Hill Dwarf</entry>
+    <entry>Mountain Dwarf</entry>
+    <entry>Aquatic Elf</entry>
+    <entry>Gray Elf</entry>
+    <entry>Half-Elf</entry>
+    <entry>High Elf</entry>
+    <entry>Wild Elf</entry>
+    <entry>Wood Elf</entry>
+    <entry>Gnome</entry>
+    <entry>Halfling</entry>
+    <entry>Githzerai</entry>
+    <entry>Ankheg</entry>
+    <entry>Aranea</entry>
+    <entry>Basilisk</entry>
+    <entry>Behir</entry>
+    <entry>Blink Dog</entry>
+    <entry>Bulette</entry>
+    <entry>Cockatrice</entry>
+    <entry>Darkmantle</entry>
+    <entry>Digester</entry>
+    <entry>Dragonne</entry>
+    <entry>Ethereal Marauder</entry>
+    <entry>Frost Worm</entry>
+    <entry>Giant Eagle</entry>
+    <entry>Giant Owl</entry>
+    <entry>Girallon</entry>
+    <entry>Gorgon</entry>
+    <entry>Gray Render</entry>
+    <entry>Griffon</entry>
+    <entry>Hippogriff</entry>
+    <entry>Krenshar</entry>
+    <entry>Lammasu</entry>
+    <entry>Owlbear</entry>
+    <entry>Pegasus</entry>
+    <entry>Phase Spider</entry>
+    <entry>Purple Worm</entry>
+    <entry>Razor Boar</entry>
+    <entry>Remorhaz</entry>
+    <entry>Sea Cat</entry>
+    <entry>Shocker Lizard</entry>
+    <entry>Spider Eater</entry>
+    <entry>Stirge</entry>
+    <entry>Tarrasque</entry>
+    <entry>Unicorn</entry>
+    <entry>Yrthak</entry>
+    <entry>Hydra</entry>
+    <entry>Androsphinx</entry>
+    <entry>Criosphinx</entry>
+    <entry>Gynosphinx</entry>
+    <entry>Centaur</entry>
+    <entry>Doppelganger</entry>
+    <entry>Plant</entry>
   </collection>
   <collection>
     <name>Chaotic</name>
@@ -237,20 +333,30 @@
     <entry>Babau</entry>
     <entry>Balor</entry>
     <entry>Bebilith</entry>
+    <entry>Bralani</entry>
     <entry>Dretch</entry>
     <entry>Ghaele</entry>
     <entry>Glabrezu</entry>
     <entry>Hezrou</entry>
+    <entry>Howler</entry>
+    <entry>Lillend</entry>
     <entry>Marilith</entry>
     <entry>Nalfeshnee</entry>
     <entry>Quasit</entry>
+    <entry>Slaad</entry>
     <entry>Succubus</entry>
+    <entry>Titan</entry>
     <entry>Vrock</entry>
   </collection>
   <collection>
     <name>Cold</name>
+    <entry>Silver Dragon</entry>
+    <entry>White Dragon</entry>
     <entry>Frost Worm</entry>
     <entry>Frost Giant</entry>
+    <entry>Cryohydra</entry>
+    <entry>Ice Mephit</entry>
+    <entry>Winter Wolf</entry>
   </collection>
   <collection>
     <name>Construct</name>
@@ -350,9 +456,17 @@
   </collection>
   <collection>
     <name>Earth</name>
+    <entry>Blue Dragon</entry>
+    <entry>Copper Dragon</entry>
     <entry>Earth Elemental</entry>
+    <entry>Gargoyle</entry>
+    <entry>Kapoacinth</entry>
     <entry>Stone Giant</entry>
     <entry>Stone Giant Elder</entry>
+    <entry>Earth Mephit</entry>
+    <entry>Salt Mephit</entry>
+    <entry>Thoqqua</entry>
+    <entry>Xorn</entry>
   </collection>
   <collection>
     <name>Elemental</name>
@@ -416,16 +530,27 @@
     <entry>Achaierai</entry>
     <entry>Babau</entry>
     <entry>Balor</entry>
+    <entry>Barghest</entry>
+    <entry>Greater Barghest</entry>
     <entry>Bebilith</entry>
     <entry>Devil</entry>
     <entry>Dretch</entry>
     <entry>Glabrezu</entry>
+    <entry>Hell Hound</entry>
+    <entry>Nessian Warhound</entry>
+    <entry>Hellwasp Swarm</entry>
     <entry>Hezrou</entry>
+    <entry>Howler</entry>
     <entry>Marilith</entry>
     <entry>Nalfeshnee</entry>
+    <entry>Night Hag</entry>
+    <entry>Nightmare</entry>
+    <entry>Nightmare, Cauchemar</entry>
     <entry>Quasit</entry>
     <entry>Succubus</entry>
+    <entry>Vargouille</entry>
     <entry>Vrock</entry>
+    <entry>Yeth Hound</entry>
   </collection>
   <collection>
     <name>Extraplanar</name>
@@ -433,17 +558,51 @@
     <entry>Angel</entry>
     <entry>Archon</entry>
     <entry>Arrowhawk</entry>
+    <entry>Avoral</entry>
+    <entry>Azer</entry>
+    <entry>Barghest</entry>
+    <entry>Greater Barghest</entry>
+    <entry>Abyssal Greater Basilisk</entry>
+    <entry>Bodak</entry>
+    <entry>Bralani</entry>
+    <entry>Chaos Beast</entry>
     <entry>Demon</entry>
     <entry>Devil</entry>
+    <entry>Devourer</entry>
+    <entry>Djinni</entry>
+    <entry>Noble Djinni</entry>
+    <entry>Efreeti</entry>
     <entry>Elemental</entry>
+    <entry>Ethereal Marauder</entry>
     <entry>Formian</entry>
-    <entry>Genie</entry>
+    <entry>Ghaele</entry>
+    <entry>Githyanki</entry>
+    <entry>Githzerai</entry>
+    <entry>Hell Hound</entry>
+    <entry>Nessian Warhound</entry>
+    <entry>Hellwasp Swarm</entry>
+    <entry>Howler</entry>
     <entry>Inevitable</entry>
+    <entry>Golden Protector (Celestial Half-Dragon Lammasu)</entry>
+    <entry>Leonal</entry>
+    <entry>Lillend</entry>
     <entry>Mephit</entry>
+    <entry>Night Hag</entry>
+    <entry>Nightmare</entry>
+    <entry>Nightmare, Cauchemar</entry>
+    <entry>Nightshade</entry>
+    <entry>Rast</entry>
+    <entry>Ravid</entry>
     <entry>Salamander</entry>
+    <entry>Shadow Mastiff</entry>
     <entry>Slaad</entry>
+    <entry>Titan</entry>
     <entry>Tojanida</entry>
+    <entry>Celestial Charger</entry>
+    <entry>Vargouille</entry>
+    <entry>Xill</entry>
     <entry>Xorn</entry>
+    <entry>Yeth Hound</entry>
   </collection>
   <collection>
     <name>Fey</name>
@@ -457,14 +616,24 @@
     <name>Fiendish Creature</name>
     <entry>Aboleth</entry>
     <entry>Aboleth Mage</entry>
+    <entry>Animal</entry>
+    <entry>Vermin</entry>
     <entry>Athach</entry>
     <entry>Beholder</entry>
+    <entry>Gauth</entry>
     <entry>Carrion Crawler</entry>
     <entry>Choker</entry>
     <entry>Chuul</entry>
     <entry>Cloaker</entry>
     <entry>Delver</entry>
     <entry>Destrachan</entry>
+    <entry>Dragon Turtle</entry>
+    <entry>Wyvern</entry>
+    <entry>Black Dragon</entry>
+    <entry>Blue Dragon</entry>
+    <entry>Green Dragon</entry>
+    <entry>Red Dragon</entry>
+    <entry>White Dragon</entry>
     <entry>Drider</entry>
     <entry>Ethereal Filcher</entry>
     <entry>Ettercap</entry>
@@ -473,7 +642,6 @@
     <entry>Mimic</entry>
     <entry>Mind Flayer</entry>
     <entry>Dark Naga</entry>
-    <entry>Guardian Naga</entry>
     <entry>Spirit Naga</entry>
     <entry>Water Naga</entry>
     <entry>Otyugh</entry>
@@ -481,12 +649,121 @@
     <entry>Rust Monster</entry>
     <entry>Skum</entry>
     <entry>Umber Hulk</entry>
+    <entry>Truly Horrid Umber Hulk</entry>
     <entry>Will-O'-Wisp</entry>
+    <entry>Ettin</entry>
+    <entry>Cloud Giant</entry>
+    <entry>Fire Giant</entry>
+    <entry>Frost Giant</entry>
+    <entry>Hill Giant</entry>
+    <entry>Stone Giant</entry>
+    <entry>Stone Giant Elder</entry>
+    <entry>Ogre</entry>
+    <entry>Merrow</entry>
+    <entry>Ogre Mage</entry>
+    <entry>Troll</entry>
+    <entry>Scrag</entry>
+    <entry>Bugbear</entry>
+    <entry>Githzerai</entry>
+    <entry>Goblin</entry>
+    <entry>Hobgoblin</entry>
+    <entry>Kobold</entry>
+    <entry>Lizardfolk</entry>
+    <entry>Locathah</entry>
+    <entry>Merfolk</entry>
+    <entry>Troglodyte</entry>
+    <entry>Deep Dwarf</entry>
+    <entry>Duergar</entry>
+    <entry>Drow</entry>
+    <entry>Wood Elf</entry>
+    <entry>Gnoll</entry>
+    <entry>Svirfneblin</entry>
+    <entry>Halfling</entry>
+    <entry>Orc</entry>
+    <entry>Ankheg</entry>
+    <entry>Aranea</entry>
+    <entry>Basilisk</entry>
+    <entry>Behir</entry>
+    <entry>Bulette</entry>
+    <entry>Chimera</entry>
+    <entry>Cockatrice</entry>
+    <entry>Displacer Beast</entry>
+    <entry>Displacer Beast Pack Lord</entry>
+    <entry>Darkmantle</entry>
+    <entry>Digester</entry>
+    <entry>Dragonne</entry>
+    <entry>Ethereal Marauder</entry>
+    <entry>Frost Worm</entry>
+    <entry>Girallon</entry>
+    <entry>Gorgon</entry>
+    <entry>Gray Render</entry>
+    <entry>Griffon</entry>
+    <entry>Hellwasp Swarm</entry>
+    <entry>Hippogriff</entry>
+    <entry>Kraken</entry>
+    <entry>Krenshar</entry>
+    <entry>Lamia</entry>
+    <entry>Manticore</entry>
+    <entry>Owlbear</entry>
+    <entry>Phase Spider</entry>
+    <entry>Purple Worm</entry>
+    <entry>Razor Boar</entry>
+    <entry>Remorhaz</entry>
+    <entry>Roper</entry>
+    <entry>Sea Cat</entry>
+    <entry>Shocker Lizard</entry>
+    <entry>Spider Eater</entry>
+    <entry>Stirge</entry>
+    <entry>Tarrasque</entry>
+    <entry>Winter Wolf</entry>
+    <entry>Worg</entry>
+    <entry>Yrthak</entry>
+    <entry>Hydra</entry>
+    <entry>Criosphinx</entry>
+    <entry>Gynosphinx</entry>
+    <entry>Hieracosphinx</entry>
+    <entry>Derro</entry>
+    <entry>Doppelganger</entry>
+    <entry>Gargoyle</entry>
+    <entry>Kapoacinth</entry>
+    <entry>Grimlock</entry>
+    <entry>Harpy</entry>
+    <entry>Kuo-toa</entry>
+    <entry>Medusa</entry>
+    <entry>Minotaur</entry>
+    <entry>Sahuagin</entry>
+    <entry>Scorpionfolk</entry>
+    <entry>Hag</entry>
+    <entry>Yuan-ti</entry>
+    <entry>Satyr</entry>
+    <entry>Satyr with pipes</entry>
+    <entry>Nixie</entry>
+    <entry>Assassin Vine</entry>
+    <entry>Phantom Fungus</entry>
+    <entry>Shambling Mound</entry>
+    <entry>Shrieker</entry>
+    <entry>Tendriculos</entry>
+    <entry>Violet Fungus</entry>
   </collection>
   <collection>
     <name>Fire</name>
+    <entry>Azer</entry>
+    <entry>Brass Dragon</entry>
+    <entry>Gold Dragon</entry>
+    <entry>Red Dragon</entry>
+    <entry>Efreeti</entry>
     <entry>Fire Elemental</entry>
+    <entry>Hell Hound</entry>
+    <entry>Nessian Warhound</entry>
     <entry>Fire Giant</entry>
+    <entry>Pyrohydra</entry>
+    <entry>Magmin</entry>
+    <entry>Fire Mephit</entry>
+    <entry>Magma Mephit</entry>
+    <entry>Steam Mephit</entry>
+    <entry>Rast</entry>
+    <entry>Salamander</entry>
+    <entry>Thoqqua</entry>
   </collection>
   <collection>
     <name>Formian</name>
@@ -553,6 +830,7 @@
   </collection>
   <collection>
     <name>Goblinoid</name>
+    <entry>Bugbear</entry>
     <entry>Goblin</entry>
     <entry>Hobgoblin</entry>
   </collection>
@@ -583,7 +861,11 @@
     <name>Good</name>
     <entry>Angel</entry>
     <entry>Archon</entry>
+    <entry>Avoral</entry>
+    <entry>Bralani</entry>
     <entry>Ghaele</entry>
+    <entry>Leonal</entry>
+    <entry>Lillend</entry>
   </collection>
   <collection>
     <name>Green Dragon</name>
@@ -608,6 +890,89 @@
   </collection>
   <collection>
     <name>Half-Celestial</name>
+    <entry>Animal</entry>
+    <entry>Vermin</entry>
+    <entry>Carrion Crawler</entry>
+    <entry>Cloaker</entry>
+    <entry>Delver</entry>
+    <entry>Dragon Turtle</entry>
+    <entry>Pseudodragon</entry>
+    <entry>Wyvern</entry>
+    <entry>Brass Dragon</entry>
+    <entry>Bronze Dragon</entry>
+    <entry>Copper Dragon</entry>
+    <entry>Gold Dragon</entry>
+    <entry>Silver Dragon</entry>
+    <entry>Ethereal Filcher</entry>
+    <entry>Gibbering Mouther</entry>
+    <entry>Grick</entry>
+    <entry>Mimic</entry>
+    <entry>Guardian Naga</entry>
+    <entry>Water Naga</entry>
+    <entry>Otyugh</entry>
+    <entry>Phasm</entry>
+    <entry>Rust Monster</entry>
+    <entry>Fey</entry>
+    <entry>Cloud Giant</entry>
+    <entry>Stone Giant</entry>
+    <entry>Stone Giant Elder</entry>
+    <entry>Storm Giant</entry>
+    <entry>Lizardfolk</entry>
+    <entry>Locathah</entry>
+    <entry>Merfolk</entry>
+    <entry>Deep Dwarf</entry>
+    <entry>Hill Dwarf</entry>
+    <entry>Mountain Dwarf</entry>
+    <entry>Aquatic Elf</entry>
+    <entry>Gray Elf</entry>
+    <entry>Half-Elf</entry>
+    <entry>High Elf</entry>
+    <entry>Wild Elf</entry>
+    <entry>Wood Elf</entry>
+    <entry>Gnome</entry>
+    <entry>Halfling</entry>
+    <entry>Githzerai</entry>
+    <entry>Ankheg</entry>
+    <entry>Aranea</entry>
+    <entry>Basilisk</entry>
+    <entry>Behir</entry>
+    <entry>Blink Dog</entry>
+    <entry>Bulette</entry>
+    <entry>Cockatrice</entry>
+    <entry>Darkmantle</entry>
+    <entry>Digester</entry>
+    <entry>Dragonne</entry>
+    <entry>Ethereal Marauder</entry>
+    <entry>Frost Worm</entry>
+    <entry>Giant Eagle</entry>
+    <entry>Giant Owl</entry>
+    <entry>Girallon</entry>
+    <entry>Gorgon</entry>
+    <entry>Gray Render</entry>
+    <entry>Griffon</entry>
+    <entry>Hippogriff</entry>
+    <entry>Krenshar</entry>
+    <entry>Lammasu</entry>
+    <entry>Owlbear</entry>
+    <entry>Pegasus</entry>
+    <entry>Phase Spider</entry>
+    <entry>Purple Worm</entry>
+    <entry>Razor Boar</entry>
+    <entry>Remorhaz</entry>
+    <entry>Sea Cat</entry>
+    <entry>Shocker Lizard</entry>
+    <entry>Spider Eater</entry>
+    <entry>Stirge</entry>
+    <entry>Tarrasque</entry>
+    <entry>Unicorn</entry>
+    <entry>Yrthak</entry>
+    <entry>Hydra</entry>
+    <entry>Androsphinx</entry>
+    <entry>Criosphinx</entry>
+    <entry>Gynosphinx</entry>
+    <entry>Centaur</entry>
+    <entry>Doppelganger</entry>
+    <entry>Plant</entry>
   </collection>
   <collection>
     <name>Half-Dragon</name>
@@ -624,6 +989,136 @@
   </collection>
   <collection>
     <name>Half-Fiend</name>
+    <entry>Aboleth</entry>
+    <entry>Aboleth Mage</entry>
+    <entry>Animal</entry>
+    <entry>Vermin</entry>
+    <entry>Athach</entry>
+    <entry>Beholder</entry>
+    <entry>Gauth</entry>
+    <entry>Carrion Crawler</entry>
+    <entry>Choker</entry>
+    <entry>Chuul</entry>
+    <entry>Cloaker</entry>
+    <entry>Delver</entry>
+    <entry>Destrachan</entry>
+    <entry>Dragon Turtle</entry>
+    <entry>Wyvern</entry>
+    <entry>Black Dragon</entry>
+    <entry>Blue Dragon</entry>
+    <entry>Green Dragon</entry>
+    <entry>Red Dragon</entry>
+    <entry>White Dragon</entry>
+    <entry>Drider</entry>
+    <entry>Ethereal Filcher</entry>
+    <entry>Ettercap</entry>
+    <entry>Gibbering Mouther</entry>
+    <entry>Grick</entry>
+    <entry>Mimic</entry>
+    <entry>Mind Flayer</entry>
+    <entry>Dark Naga</entry>
+    <entry>Spirit Naga</entry>
+    <entry>Water Naga</entry>
+    <entry>Otyugh</entry>
+    <entry>Phasm</entry>
+    <entry>Rust Monster</entry>
+    <entry>Skum</entry>
+    <entry>Umber Hulk</entry>
+    <entry>Truly Horrid Umber Hulk</entry>
+    <entry>Will-O'-Wisp</entry>
+    <entry>Ettin</entry>
+    <entry>Cloud Giant</entry>
+    <entry>Fire Giant</entry>
+    <entry>Frost Giant</entry>
+    <entry>Hill Giant</entry>
+    <entry>Stone Giant</entry>
+    <entry>Stone Giant Elder</entry>
+    <entry>Ogre</entry>
+    <entry>Merrow</entry>
+    <entry>Ogre Mage</entry>
+    <entry>Troll</entry>
+    <entry>Scrag</entry>
+    <entry>Bugbear</entry>
+    <entry>Githzerai</entry>
+    <entry>Goblin</entry>
+    <entry>Hobgoblin</entry>
+    <entry>Kobold</entry>
+    <entry>Lizardfolk</entry>
+    <entry>Locathah</entry>
+    <entry>Merfolk</entry>
+    <entry>Troglodyte</entry>
+    <entry>Deep Dwarf</entry>
+    <entry>Duergar</entry>
+    <entry>Drow</entry>
+    <entry>Wood Elf</entry>
+    <entry>Gnoll</entry>
+    <entry>Svirfneblin</entry>
+    <entry>Halfling</entry>
+    <entry>Orc</entry>
+    <entry>Ankheg</entry>
+    <entry>Aranea</entry>
+    <entry>Basilisk</entry>
+    <entry>Behir</entry>
+    <entry>Bulette</entry>
+    <entry>Chimera</entry>
+    <entry>Cockatrice</entry>
+    <entry>Displacer Beast</entry>
+    <entry>Displacer Beast Pack Lord</entry>
+    <entry>Darkmantle</entry>
+    <entry>Digester</entry>
+    <entry>Dragonne</entry>
+    <entry>Ethereal Marauder</entry>
+    <entry>Frost Worm</entry>
+    <entry>Girallon</entry>
+    <entry>Gorgon</entry>
+    <entry>Gray Render</entry>
+    <entry>Griffon</entry>
+    <entry>Hellwasp Swarm</entry>
+    <entry>Hippogriff</entry>
+    <entry>Kraken</entry>
+    <entry>Krenshar</entry>
+    <entry>Lamia</entry>
+    <entry>Manticore</entry>
+    <entry>Owlbear</entry>
+    <entry>Phase Spider</entry>
+    <entry>Purple Worm</entry>
+    <entry>Razor Boar</entry>
+    <entry>Remorhaz</entry>
+    <entry>Roper</entry>
+    <entry>Sea Cat</entry>
+    <entry>Shocker Lizard</entry>
+    <entry>Spider Eater</entry>
+    <entry>Stirge</entry>
+    <entry>Tarrasque</entry>
+    <entry>Winter Wolf</entry>
+    <entry>Worg</entry>
+    <entry>Yrthak</entry>
+    <entry>Hydra</entry>
+    <entry>Criosphinx</entry>
+    <entry>Gynosphinx</entry>
+    <entry>Hieracosphinx</entry>
+    <entry>Derro</entry>
+    <entry>Doppelganger</entry>
+    <entry>Gargoyle</entry>
+    <entry>Kapoacinth</entry>
+    <entry>Grimlock</entry>
+    <entry>Harpy</entry>
+    <entry>Kuo-toa</entry>
+    <entry>Medusa</entry>
+    <entry>Minotaur</entry>
+    <entry>Sahuagin</entry>
+    <entry>Scorpionfolk</entry>
+    <entry>Hag</entry>
+    <entry>Yuan-ti</entry>
+    <entry>Satyr</entry>
+    <entry>Satyr with pipes</entry>
+    <entry>Nixie</entry>
+    <entry>Assassin Vine</entry>
+    <entry>Phantom Fungus</entry>
+    <entry>Shambling Mound</entry>
+    <entry>Shrieker</entry>
+    <entry>Tendriculos</entry>
+    <entry>Violet Fungus</entry>
   </collection>
   <collection>
     <name>Halfling</name>
@@ -633,15 +1128,130 @@
   </collection>
   <collection>
     <name>Has Skeleton</name>
-    <entry>Aberration</entry>
-    <entry>Animal</entry>
+    <entry>Aboleth</entry>
+    <entry>Aboleth Mage</entry>
+    <entry>Athach</entry>
+    <entry>Beholder</entry>
+    <entry>Gauth</entry>
+    <entry>Carrion Crawler</entry>
+    <entry>Choker</entry>
+    <entry>Chuul</entry>
+    <entry>Cloaker</entry>
+    <entry>Delver</entry>
+    <entry>Destrachan</entry>
+    <entry>Drider</entry>
+    <entry>Ethereal Filcher</entry>
+    <entry>Ettercap</entry>
+    <entry>Gibbering Mouther</entry>
+    <entry>Grick</entry>
+    <entry>Mind Flayer</entry>
+    <entry>Naga</entry>
+    <entry>Otyugh</entry>
+    <entry>Rust Monster</entry>
+    <entry>Skum</entry>
+    <entry>Umber Hulk</entry>
+    <entry>Truly Horrid Umber Hulk</entry>
+    <entry>Ape</entry>
+    <entry>Dire Ape</entry>
+    <entry>Baboon</entry>
+    <entry>Badger</entry>
+    <entry>Dire Badger</entry>
+    <entry>Bat</entry>
+    <entry>Dire Bat</entry>
+    <entry>Bat Swarm</entry>
+    <entry>Bear</entry>
+    <entry>Bison</entry>
+    <entry>Boar</entry>
+    <entry>Dire Boar</entry>
+    <entry>Camel</entry>
+    <entry>Cat</entry>
+    <entry>Cheetah</entry>
+    <entry>Crocodile</entry>
+    <entry>Giant Crocodile</entry>
+    <entry>Dinosaur</entry>
+    <entry>Dog</entry>
+    <entry>Donkey</entry>
+    <entry>Eagle</entry>
+    <entry>Elephant</entry>
+    <entry>Hawk</entry>
+    <entry>Horse</entry>
+    <entry>Hyena</entry>
+    <entry>Leopard</entry>
+    <entry>Lion</entry>
+    <entry>Dire Lion</entry>
+    <entry>Lizard</entry>
+    <entry>Monitor Lizard</entry>
+    <entry>Manta Ray</entry>
+    <entry>Monkey</entry>
+    <entry>Mule</entry>
+    <entry>Owl</entry>
+    <entry>Pony</entry>
+    <entry>Porpoise</entry>
+    <entry>Rat</entry>
+    <entry>Dire Rat</entry>
+    <entry>Rat Swarm</entry>
+    <entry>Raven</entry>
+    <entry>Rhinoceras</entry>
+    <entry>Roc</entry>
+    <entry>Constrictor Snake</entry>
+    <entry>Giant Constrictor Snake</entry>
+    <entry>Viper Snake</entry>
+    <entry>Shark</entry>
+    <entry>Tiger</entry>
+    <entry>Dire Tiger</entry>
+    <entry>Toad</entry>
+    <entry>Weasel</entry>
+    <entry>Dire Weasel</entry>
+    <entry>Whale</entry>
+    <entry>Wolf</entry>
+    <entry>Dire Wolf</entry>
+    <entry>Wolverine</entry>
+    <entry>Dire Wolverine</entry>
     <entry>Dragon</entry>
     <entry>Fey</entry>
     <entry>Giant</entry>
     <entry>Humanoid</entry>
-    <entry>Magical Beast</entry>
+    <entry>Ankheg</entry>
+    <entry>Aranea</entry>
+    <entry>Basilisk</entry>
+    <entry>Behir</entry>
+    <entry>Blink Dog</entry>
+    <entry>Bulette</entry>
+    <entry>Chimera</entry>
+    <entry>Cockatrice</entry>
+    <entry>Darkmantle</entry>
+    <entry>Digester</entry>
+    <entry>Displacer Beast</entry>
+    <entry>Displacer Beast Pack Lord</entry>
+    <entry>Dragonne</entry>
+    <entry>Giant Eagle</entry>
+    <entry>Ethereal Marauder</entry>
+    <entry>Girallon</entry>
+    <entry>Gorgon</entry>
+    <entry>Gray Render</entry>
+    <entry>Griffon</entry>
+    <entry>Hippogriff</entry>
+    <entry>Hydra</entry>
+    <entry>Krenshar</entry>
+    <entry>Lamia</entry>
+    <entry>Lammasu</entry>
+    <entry>Manticore</entry>
+    <entry>Giant Owl</entry>
+    <entry>Owlbear</entry>
+    <entry>Pegasus</entry>
+    <entry>Razor Boar</entry>
+    <entry>Sea Cat</entry>
+    <entry>Shocker Lizard</entry>
+    <entry>Androsphinx</entry>
+    <entry>Criosphinx</entry>
+    <entry>Gynosphinx</entry>
+    <entry>Hieracosphinx</entry>
+    <entry>Tarrasque</entry>
+    <entry>Unicorn</entry>
+    <entry>Winter Wolf</entry>
+    <entry>Worg</entry>
+    <entry>Yrthak</entry>
     <entry>Monstrous Humanoid</entry>
-    <entry>Vermin</entry>
   </collection>
   <collection>
     <name>Horse</name>
@@ -668,7 +1278,6 @@
     <entry>Hobgoblin</entry>
     <entry>Human</entry>
     <entry>Kobold</entry>
-    <entry>Kuo-toa</entry>
     <entry>Lizardfolk</entry>
     <entry>Locathah</entry>
     <entry>Merfolk</entry>
@@ -690,6 +1299,12 @@
   </collection>
   <collection>
     <name>Incorporeal</name>
+    <entry>Allip</entry>
+    <entry>Shadow</entry>
+    <entry>Greater Shadow</entry>
+    <entry>Spectre</entry>
+    <entry>Wraith</entry>
+    <entry>Dread Wraith</entry>
   </collection>
   <collection>
     <name>Inevitable</name>
@@ -699,7 +1314,14 @@
   </collection>
   <collection>
     <name>Lawful</name>
+    <entry>Achaierai</entry>
+    <entry>Archon</entry>
+    <entry>Barghest</entry>
+    <entry>Greater Barghest</entry>
     <entry>Devil</entry>
+    <entry>Formian</entry>
+    <entry>Hell Hound</entry>
+    <entry>Nessian Warhound</entry>
     <entry>Inevitable</entry>
   </collection>
   <collection>
@@ -767,14 +1389,10 @@
   <collection>
     <name>Native</name>
     <entry>Couatl</entry>
+    <entry>Janni</entry>
     <entry>Planetouched</entry>
-  </collection>
-  <collection>
-    <name>Sphinx</name>
-    <entry>Androsphinx</entry>
-    <entry>Criosphinx</entry>
-    <entry>Gynosphinx</entry>
-    <entry>Hieracosphinx</entry>
+    <entry>Rakshasa</entry>
+    <entry>Triton</entry>
   </collection>
   <collection>
     <name>Mephit</name>
@@ -809,6 +1427,7 @@
     <entry>Grimlock</entry>
     <entry>Hag</entry>
     <entry>Harpy</entry>
+    <entry>Kuo-toa</entry>
     <entry>Medusa</entry>
     <entry>Minotaur</entry>
     <entry>Sahuagin</entry>
@@ -875,18 +1494,23 @@
     <entry>Bralani</entry>
     <entry>Chaos Beast</entry>
     <entry>Couatl</entry>
-    <entry>Demon</entry>
+    <entry>Babau</entry>
+    <entry>Balor</entry>
+    <entry>Bebilith</entry>
+    <entry>Dretch</entry>
+    <entry>Glabrezu</entry>
+    <entry>Hezrou</entry>
+    <entry>Marilith</entry>
+    <entry>Nalfeshnee</entry>
+    <entry>Quasit</entry>
+    <entry>Succubus</entry>
+    <entry>Vrock</entry>
     <entry>Devil</entry>
-    <entry>Ethereal Marauder</entry>
     <entry>Formian</entry>
     <entry>Genie</entry>
     <entry>Ghaele</entry>
-    <entry>Githyanki</entry>
-    <entry>Githzerai</entry>
     <entry>Hell Hound</entry>
-    <entry>Hellwasp Swarm</entry>
     <entry>Howler</entry>
-    <entry>Inevitable</entry>
     <entry>Leonal</entry>
     <entry>Lillend</entry>
     <entry>Mephit</entry>
@@ -963,8 +1587,12 @@
   </collection>
   <collection>
     <name>Shapechanger</name>
+    <entry>Aranea</entry>
+    <entry>Barghest</entry>
+    <entry>Greater Barghest</entry>
     <entry>Doppelganger</entry>
     <entry>Mimic</entry>
+    <entry>Phasm</entry>
   </collection>
   <collection>
     <name>Shark</name>
@@ -999,6 +1627,13 @@
     <entry>Green Slaad</entry>
     <entry>Gray Slaad</entry>
     <entry>Death Slaad</entry>
+  </collection>
+  <collection>
+    <name>Sphinx</name>
+    <entry>Androsphinx</entry>
+    <entry>Criosphinx</entry>
+    <entry>Gynosphinx</entry>
+    <entry>Hieracosphinx</entry>
   </collection>
   <collection>
     <name>Sprite</name>
@@ -1072,7 +1707,13 @@
   </collection>
   <collection>
     <name>Water</name>
+    <entry>Black Dragon</entry>
+    <entry>Bronze Dragon</entry>
     <entry>Water Elemental</entry>
+    <entry>Ooze Mephit</entry>
+    <entry>Water Mephit</entry>
+    <entry>Tojanida</entry>
+    <entry>Triton</entry>
   </collection>
   <collection>
     <name>Werebear</name>

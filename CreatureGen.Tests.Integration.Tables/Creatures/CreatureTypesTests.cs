@@ -885,6 +885,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Nightwing, CreatureConstants.Types.Undead,
             CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Nymph, CreatureConstants.Types.Fey)]
         [TestCase(CreatureConstants.OchreJelly, CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.Octopus, CreatureConstants.Types.Animal,
             CreatureConstants.Types.Subtypes.Aquatic)]
@@ -898,7 +899,15 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Orc)]
         [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Types.Humanoid,
             CreatureConstants.Types.Subtypes.Orc)]
+        [TestCase(CreatureConstants.Otyugh, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Owl, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Owl_Giant, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Owlbear, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Pegasus, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.PhantomFungus, CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.PhaseSpider, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Phasm, CreatureConstants.Types.Aberration,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
         [TestCase(CreatureConstants.PitFiend, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Evil,
             CreatureConstants.Types.Subtypes.Extraplanar,
@@ -908,6 +917,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Porpoise, CreatureConstants.Types.Animal,
             CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.PrayingMantis_Giant, CreatureConstants.Types.Vermin)]
+        [TestCase(CreatureConstants.Pseudodragon, CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.PurpleWorm, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Pyrohydra_10Heads, CreatureConstants.Types.MagicalBeast,
             CreatureConstants.Types.Subtypes.Fire)]
         [TestCase(CreatureConstants.Pyrohydra_11Heads, CreatureConstants.Types.MagicalBeast,
@@ -928,14 +939,39 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Evil,
             CreatureConstants.Types.Subtypes.Extraplanar,
             CreatureConstants.Types.Subtypes.Chaotic)]
+        [TestCase(CreatureConstants.Rakshasa, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Native)]
+        [TestCase(CreatureConstants.Rast, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Extraplanar,
+            CreatureConstants.Types.Subtypes.Fire)]
         [TestCase(CreatureConstants.Rat, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Rat_Dire, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Rat_Swarm, CreatureConstants.Types.Animal,
             CreatureConstants.Types.Subtypes.Swarm)]
         [TestCase(CreatureConstants.Raven, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Ravid, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.RazorBoar, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Remorhaz, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Retriever, CreatureConstants.Types.Construct,
             CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Rhinoceras, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Roc, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Roper, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.RustMonster, CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Sahuagin, CreatureConstants.Types.MonstrousHumanoid,
+            CreatureConstants.Types.Subtypes.Aquatic)]
+        [TestCase(CreatureConstants.Salamander_Average, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Extraplanar,
+            CreatureConstants.Types.Subtypes.Fire)]
+        [TestCase(CreatureConstants.Salamander_Flamebrother, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Extraplanar,
+            CreatureConstants.Types.Subtypes.Fire)]
+        [TestCase(CreatureConstants.Salamander_Noble, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Extraplanar,
+            CreatureConstants.Types.Subtypes.Fire)]
+        [TestCase(CreatureConstants.Satyr, CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Satyr_WithPipes, CreatureConstants.Types.Fey)]
         [TestCase(CreatureConstants.Scorpion_Monstrous_Colossal, CreatureConstants.Types.Vermin)]
         [TestCase(CreatureConstants.Scorpion_Monstrous_Gargantuan, CreatureConstants.Types.Vermin)]
         [TestCase(CreatureConstants.Scorpion_Monstrous_Huge, CreatureConstants.Types.Vermin)]
@@ -943,8 +979,17 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Scorpion_Monstrous_Medium, CreatureConstants.Types.Vermin)]
         [TestCase(CreatureConstants.Scorpion_Monstrous_Small, CreatureConstants.Types.Vermin)]
         [TestCase(CreatureConstants.Scorpion_Monstrous_Tiny, CreatureConstants.Types.Vermin)]
+        [TestCase(CreatureConstants.Scorpionfolk, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.SeaCat, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.SeaHag, CreatureConstants.Types.MonstrousHumanoid,
             CreatureConstants.Types.Subtypes.Aquatic)]
+        [TestCase(CreatureConstants.Shadow, CreatureConstants.Types.Undead,
+            CreatureConstants.Types.Subtypes.Incorporeal)]
+        [TestCase(CreatureConstants.Shadow_Greater, CreatureConstants.Types.Undead,
+            CreatureConstants.Types.Subtypes.Incorporeal)]
+        [TestCase(CreatureConstants.ShadowMastiff, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.ShamblingMound, CreatureConstants.Types.Plant)]
         [TestCase(CreatureConstants.Shark_Dire, CreatureConstants.Types.Animal,
             CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Shark_Huge, CreatureConstants.Types.Animal,
@@ -953,6 +998,27 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Shark_Medium, CreatureConstants.Types.Animal,
             CreatureConstants.Types.Subtypes.Aquatic)]
+        [TestCase(CreatureConstants.ShieldGuardian, CreatureConstants.Types.Construct)]
+        [TestCase(CreatureConstants.ShockerLizard, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Shrieker, CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.VioletFungus, CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Skum, CreatureConstants.Types.Aberration,
+            CreatureConstants.Types.Subtypes.Aquatic)]
+        [TestCase(CreatureConstants.Slaad_Blue, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Chaotic,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Slaad_Death, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Chaotic,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Slaad_Gray, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Chaotic,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Slaad_Green, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Chaotic,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Slaad_Red, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Chaotic,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Snake_Constrictor, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Snake_Constrictor_Giant, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Snake_Viper_Huge, CreatureConstants.Types.Animal)]
@@ -960,6 +1026,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Snake_Viper_Medium, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Snake_Viper_Small, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Snake_Viper_Tiny, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Spectre, CreatureConstants.Types.Undead,
+            CreatureConstants.Types.Subtypes.Incorporeal)]
         [TestCase(CreatureConstants.Spider_Monstrous_Colossal, CreatureConstants.Types.Vermin)]
         [TestCase(CreatureConstants.Spider_Monstrous_Gargantuan, CreatureConstants.Types.Vermin)]
         [TestCase(CreatureConstants.Spider_Monstrous_Huge, CreatureConstants.Types.Vermin)]
@@ -969,27 +1037,60 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Spider_Monstrous_Tiny, CreatureConstants.Types.Vermin)]
         [TestCase(CreatureConstants.Spider_Swarm, CreatureConstants.Types.Vermin,
             CreatureConstants.Types.Subtypes.Swarm)]
+        [TestCase(CreatureConstants.SpiderEater, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Squid, CreatureConstants.Types.Animal,
             CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Squid_Giant, CreatureConstants.Types.Animal,
             CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.StagBeetle_Giant, CreatureConstants.Types.Vermin)]
+        [TestCase(CreatureConstants.Stirge, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Succubus, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Evil,
             CreatureConstants.Types.Subtypes.Extraplanar,
             CreatureConstants.Types.Subtypes.Chaotic)]
+        [TestCase(CreatureConstants.Tarrasque, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Tendriculos, CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Thoqqua, CreatureConstants.Types.Elemental,
+            CreatureConstants.Types.Subtypes.Earth,
+            CreatureConstants.Types.Subtypes.Extraplanar,
+            CreatureConstants.Types.Subtypes.Fire)]
         [TestCase(CreatureConstants.Tiefling, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Native)]
         [TestCase(CreatureConstants.Tiger, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Tiger_Dire, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Titan, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Chaotic,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Toad, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Tojanida_Adult, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Water,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Tojanida_Elder, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Water,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Tojanida_Juvenile, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Water,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Treant, CreatureConstants.Types.Plant)]
         [TestCase(CreatureConstants.Triceratops, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Triton, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Water,
+            CreatureConstants.Types.Subtypes.Native)]
         [TestCase(CreatureConstants.Troglodyte, CreatureConstants.Types.Humanoid,
             CreatureConstants.Types.Subtypes.Reptilian)]
         [TestCase(CreatureConstants.Troll, CreatureConstants.Types.Giant)]
         [TestCase(CreatureConstants.Troll_Scrag, CreatureConstants.Types.Giant,
             CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Tyrannosaurus, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.UmberHulk, CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.UmberHulk_TrulyHorrid, CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Unicorn, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Unicorn_CelestialCharger, CreatureConstants.Types.MagicalBeast,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.VampireSpawn, CreatureConstants.Types.Undead)]
+        [TestCase(CreatureConstants.Vargouille, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Evil,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Vrock, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Evil,
             CreatureConstants.Types.Subtypes.Extraplanar,
@@ -1003,10 +1104,39 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Whale_Orca, CreatureConstants.Types.Animal,
             CreatureConstants.Types.Subtypes.Aquatic)]
+        [TestCase(CreatureConstants.Wight, CreatureConstants.Types.Undead)]
+        [TestCase(CreatureConstants.WillOWisp, CreatureConstants.Types.Aberration,
+            CreatureConstants.Types.Subtypes.Air)]
+        [TestCase(CreatureConstants.WinterWolf, CreatureConstants.Types.MagicalBeast,
+            CreatureConstants.Types.Subtypes.Cold)]
         [TestCase(CreatureConstants.Wolf, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Wolf_Dire, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Wolverine, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Wolverine_Dire, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Worg, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Wraith, CreatureConstants.Types.Undead,
+            CreatureConstants.Types.Subtypes.Incorporeal)]
+        [TestCase(CreatureConstants.Wraith_Dread, CreatureConstants.Types.Undead,
+            CreatureConstants.Types.Subtypes.Incorporeal)]
+        [TestCase(CreatureConstants.Wyvern, CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Xill, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Xorn_Average, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Earth,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Xorn_Elder, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Earth,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Xorn_Minor, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Earth,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.YethHound, CreatureConstants.Types.Outsider,
+            CreatureConstants.Types.Subtypes.Evil,
+            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Yrthak, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.YuanTi_Abomination, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.YuanTi_Pureblood, CreatureConstants.Types.MonstrousHumanoid)]
         public void CreatureTypes(string creature, params string[] types)
         {
             OrderedCollection(creature, types);

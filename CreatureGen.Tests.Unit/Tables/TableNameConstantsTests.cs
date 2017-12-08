@@ -40,6 +40,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Set.Collection.SkillGroups, "SkillGroups")]
         [TestCase(TableNameConstants.Set.Collection.SkillSynergy, "SkillSynergy")]
         [TestCase(TableNameConstants.Set.Collection.SpecialQualityData, "SpecialQualityData")]
+        [TestCase(TableNameConstants.Set.Collection.Speeds, "Speeds")]
         [TestCase(TableNameConstants.Set.Collection.SpellGroups, "SpellGroups")]
         [TestCase(TableNameConstants.Set.Collection.TemplateGroups, "TemplateGroups")]
         [TestCase(TableNameConstants.Set.Collection.WeightRolls, "WeightRolls")]

@@ -22,32 +22,22 @@
   <collection>
     <name>AnyGood</name>
     <entry>AlwaysGood</entry>
-    <entry>UsuallyGood</entry>
-    <entry>OftenGood</entry>
   </collection>
   <collection>
     <name>AnyEvil</name>
     <entry>AlwaysEvil</entry>
-    <entry>UsuallyEvil</entry>
-    <entry>OftenEvil</entry>
   </collection>
   <collection>
     <name>AnyChaotic</name>
     <entry>AlwaysChaotic</entry>
-    <entry>UsuallyChaotic</entry>
-    <entry>OftenChaotic</entry>
   </collection>
   <collection>
     <name>AnyLawful</name>
     <entry>AlwaysLawful</entry>
-    <entry>UsuallyLawful</entry>
-    <entry>OftenLawful</entry>
   </collection>
   <collection>
     <name>AnyNeutral</name>
     <entry>AlwaysNeutral</entry>
-    <entry>UsuallyNeutral</entry>
-    <entry>OftenNeutral</entry>
   </collection>
   <collection>
     <name>AlwaysGood</name>
@@ -431,7 +421,7 @@
     <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
-    <name>Astral Deva</name>
+    <name>Angel, Astral Deva</name>
     <entry>AlwaysGood</entry>
   </collection>
   <collection>
@@ -496,6 +486,10 @@
   </collection>
   <collection>
     <name>Beholder</name>
+    <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Gauth</name>
     <entry>UsuallyLawful Evil</entry>
   </collection>
   <collection>
@@ -2034,6 +2028,10 @@
     <name>Mule</name>
   </collection>
   <collection>
+    <name>Mummy</name>
+    <entry>UsuallyLawful Evil</entry>
+  </collection>
+  <collection>
     <name>Nalfeshnee</name>
     <entry>AlwaysChaotic Evil</entry>
   </collection>
@@ -2131,7 +2129,7 @@
     <entry>AlwaysLawful Evil</entry>
   </collection>
   <collection>
-    <name>Planetar</name>
+    <name>Angel, Planetar</name>
     <entry>AlwaysGood</entry>
   </collection>
   <collection>
@@ -2222,6 +2220,18 @@
     <entry>UsuallyLawful Evil</entry>
   </collection>
   <collection>
+    <name>Average Salamander</name>
+    <entry>UsuallyEvil</entry>
+  </collection>
+  <collection>
+    <name>Flamebrother Salamander</name>
+    <entry>UsuallyEvil</entry>
+  </collection>
+  <collection>
+    <name>Noble Salamander</name>
+    <entry>UsuallyEvil</entry>
+  </collection>
+  <collection>
     <name>Satyr</name>
     <entry>UsuallyChaotic Neutral</entry>
   </collection>
@@ -2290,7 +2300,27 @@
     <entry>UsuallyLawful Evil</entry>
   </collection>
   <collection>
-    <name>Solar</name>
+    <name>Red Slaad</name>
+    <entry>UsuallyChaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Blue Slaad</name>
+    <entry>UsuallyChaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Green Slaad</name>
+    <entry>UsuallyChaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Gray Slaad</name>
+    <entry>UsuallyChaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Death Slaad</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Angel, Solar</name>
     <entry>AlwaysGood</entry>
   </collection>
   <collection>
@@ -2353,6 +2383,18 @@
     <name>Toad</name>
   </collection>
   <collection>
+    <name>Adult Tojanida</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Tojanida</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Elder Tojanida</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
     <name>Treant</name>
     <entry>UsuallyNeutral Good</entry>
   </collection>
@@ -2391,6 +2433,10 @@
   <collection>
     <name>Unicorn</name>
     <entry>AlwaysChaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Vampire Spawn</name>
+    <entry>AlwaysEvil</entry>
   </collection>
   <collection>
     <name>Vargouille</name>
@@ -2472,6 +2518,18 @@
   <collection>
     <name>Xill</name>
     <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Average Xorn</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Elder Xorn</name>
+    <entry>UsuallyTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Minor Xorn</name>
+    <entry>UsuallyTrue Neutral</entry>
   </collection>
   <collection>
     <name>Yeth Hound</name>

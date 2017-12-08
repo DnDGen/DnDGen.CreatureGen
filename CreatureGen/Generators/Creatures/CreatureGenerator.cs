@@ -121,10 +121,19 @@ namespace CreatureGen.Generators.Creatures
             ComputeAttackBonuses(creature.Attacks, creature.Abilities[AbilityConstants.Strength], creature.Abilities[AbilityConstants.Dexterity], creature.BaseAttackBonus, allFeats);
 
             creature.InitiativeBonus = ComputeInitiative(creature.Abilities[AbilityConstants.Dexterity], creature.Feats);
-            creature.LandSpeed.Value = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.LandSpeeds, creatureName);
-            creature.AerialSpeed.Value = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.AerialSpeeds, creatureName);
-            creature.AerialSpeed.Description = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.AerialManeuverability, creatureName).Single();
-            creature.SwimSpeed.Value = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.SwimSpeeds, creatureName);
+
+            var speeds = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.Speeds, creatureName);
+
+            foreach (var speedKvp in speeds)
+            {
+                var measurement = new Measurement("feet per round");
+                measurement.Value = speedKvp.Amount;
+
+                if (speedKvp.Type == SpeedConstants.Fly)
+                    measurement.Description = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.AerialManeuverability, creatureName).Single();
+
+                creature.Speeds[speedKvp.Type] = measurement;
+            }
 
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities[AbilityConstants.Dexterity], creature.Size, creatureName, allFeats);
 

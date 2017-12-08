@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Aasimar</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Aboleth</name>
+    <entry>Walk/10</entry>
+    <entry>Swim/60</entry>
+  </collection>
+  <collection>
+    <name>Aboleth Mage</name>
+    <entry>Walk/10</entry>
+    <entry>Swim/60</entry>
+  </collection>
+  <collection>
+    <name>Ankheg</name>
+    <entry>Walk/30</entry>
+    <entry>Burrow/20</entry>
+  </collection>
+  <collection>
+    <name>Annis</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Aquatic Elf</name>
+    <entry>Walk/30</entry>
+    <entry>Swim/40</entry>
+  </collection>
+  <collection>
+    <name>Aranea</name>
+    <entry>Walk/50</entry>
+    <entry>Climb/25</entry>
+  </collection>
+  <collection>
+    <name>Azer</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Babau</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Balor</name>
+    <entry>Walk/40</entry>
+    <entry>Fly/90</entry>
+  </collection>
+  <collection>
+    <name>Bebilith</name>
+    <entry>Walk/40</entry>
+    <entry>Climb/20</entry>
+  </collection>
+  <collection>
+    <name>Blue Slaad</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Bugbear</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Centaur</name>
+    <entry>Walk/50</entry>
+  </collection>
+  <collection>
+    <name>Cloud Giant</name>
+    <entry>Walk/50</entry>
+  </collection>
+  <collection>
+    <name>Death Slaad</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Deep Halfling</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Deep Dwarf</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Derro</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Djinni</name>
+    <entry>Walk/20</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Noble Djinni</name>
+    <entry>Walk/20</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Doppelganger</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Dretch</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Drow</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Duergar</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Efreeti</name>
+    <entry>Walk/20</entry>
+    <entry>Fly/40</entry>
+  </collection>
+  <collection>
+    <name>Fire Giant</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Forest Gnome</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Frost Giant</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Gargoyle</name>
+    <entry>Walk/40</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Githyanki</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Githzerai</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Glabrezu</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Gnoll</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Goblin</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Gray Elf</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Gray Slaad</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Green Hag</name>
+    <entry>Walk/30</entry>
+    <entry>Swim/30</entry>
+  </collection>
+  <collection>
+    <name>Green Slaad</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Grig</name>
+    <entry>Walk/20</entry>
+    <entry>Fly/40</entry>
+  </collection>
+  <collection>
+    <name>Grimlock</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Half-Elf</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Half-Orc</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Harpy</name>
+    <entry>Walk/20</entry>
+    <entry>Fly/80</entry>
+  </collection>
+  <collection>
+    <name>Hezrou</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>High Elf</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Hill Dwarf</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Hill Giant</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Hobgoblin</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Hound Archon</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Human</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Janni</name>
+    <entry>Walk/30</entry>
+    <entry>Fly/20</entry>
+  </collection>
+  <collection>
+    <name>Kapoacinth</name>
+    <entry>Walk/40</entry>
+    <entry>Swim/60</entry>
+  </collection>
+  <collection>
+    <name>Kobold</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Kuo-toa</name>
+    <entry>Walk/20</entry>
+    <entry>Swim/50</entry>
+  </collection>
+  <collection>
+    <name>Lightfoot Halfling</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Lizardfolk</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Locathah</name>
+    <entry>Walk/10</entry>
+    <entry>Swim/60</entry>
+  </collection>
+  <collection>
+    <name>Marilith</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Merfolk</name>
+    <entry>Walk/5</entry>
+    <entry>Swim/50</entry>
+  </collection>
+  <collection>
+    <name>Merrow</name>
+    <entry>Walk/30</entry>
+    <entry>Swim/40</entry>
+  </collection>
+  <collection>
+    <name>Mind Flayer</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Minotaur</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Mountain Dwarf</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Nalfeshnee</name>
+    <entry>Walk/30</entry>
+    <entry>Fly/40</entry>
+  </collection>
+  <collection>
+    <name>Nixie</name>
+    <entry>Walk/20</entry>
+    <entry>Swim/30</entry>
+  </collection>
+  <collection>
+    <name>Ogre Mage</name>
+    <entry>Walk/40</entry>
+    <entry>Fly/40</entry>
+  </collection>
+  <collection>
+    <name>Ogre</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Orc</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Pixie</name>
+    <entry>Walk/20</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistable Dance</name>
+    <entry>Walk/20</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Quasit</name>
+    <entry>Walk/20</entry>
+    <entry>Fly/50</entry>
+  </collection>
+  <collection>
+    <name>Rakshasa</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Red Slaad</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Retriever</name>
+    <entry>Walk/50</entry>
+  </collection>
+  <collection>
+    <name>Rock Gnome</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin</name>
+    <entry>Walk/30</entry>
+    <entry>Swim/60</entry>
+  </collection>
+  <collection>
+    <name>Satyr</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Satyr with pipes</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Scorpionfolk</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Scrag</name>
+    <entry>Walk/20</entry>
+    <entry>Swim/40</entry>
+  </collection>
+  <collection>
+    <name>Sea Hag</name>
+    <entry>Walk/30</entry>
+    <entry>Swim/40</entry>
+  </collection>
+  <collection>
+    <name>Stone Giant</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Stone Giant Elder</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Storm Giant</name>
+    <entry>Walk/50</entry>
+    <entry>Swim/40</entry>
+  </collection>
+  <collection>
+    <name>Succubus</name>
+    <entry>Walk/30</entry>
+    <entry>Fly/50</entry>
+  </collection>
+  <collection>
+    <name>Svirfneblin</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Tallfellow Halfling</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Troglodyte</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Troll</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Vrock</name>
+    <entry>Walk/30</entry>
+    <entry>Fly/50</entry>
+  </collection>
+  <collection>
+    <name>Wild Elf</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Wood Elf</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Abomination</name>
+    <entry>Walk/30</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Pureblood</name>
+    <entry>Walk/30</entry>
+  </collection>
+</collections>

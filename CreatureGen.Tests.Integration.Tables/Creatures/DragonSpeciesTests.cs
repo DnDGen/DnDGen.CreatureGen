@@ -3,7 +3,7 @@ using CreatureGen.Creatures;
 using CreatureGen.Tables;
 using NUnit.Framework;
 
-namespace CreatureGen.Tests.Integration.Tables.Races.Metaraces
+namespace CreatureGen.Tests.Integration.Tables.Creatures.Metaraces
 {
     [TestFixture]
     public class DragonSpeciesTests : CollectionTests

@@ -263,7 +263,9 @@
   </collection>
   <collection>
     <name>Blue Slaad</name>
-    <entry>8</entry>
+    <entry>Outsider</entry>
+    <entry>Chaotic</entry>
+    <entry>Extraplanar</entry>
   </collection>
   <collection>
     <name>Boar</name>
@@ -392,7 +394,9 @@
   </collection>
   <collection>
     <name>Death Slaad</name>
-    <entry>13</entry>
+    <entry>Outsider</entry>
+    <entry>Chaotic</entry>
+    <entry>Extraplanar</entry>
   </collection>
   <collection>
     <name>Deep Halfling</name>
@@ -1564,7 +1568,9 @@
   </collection>
   <collection>
     <name>Gray Slaad</name>
-    <entry>10</entry>
+    <entry>Outsider</entry>
+    <entry>Chaotic</entry>
+    <entry>Extraplanar</entry>
   </collection>
   <collection>
     <name>Greater Barghest</name>
@@ -1580,7 +1586,9 @@
   </collection>
   <collection>
     <name>Green Slaad</name>
-    <entry>9</entry>
+    <entry>Outsider</entry>
+    <entry>Chaotic</entry>
+    <entry>Extraplanar</entry>
   </collection>
   <collection>
     <name>Grick</name>
@@ -1956,10 +1964,6 @@
     <entry>Animal</entry>
   </collection>
   <collection>
-    <name>Lich</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
     <name>Lightfoot Halfling</name>
     <entry>Humanoid</entry>
     <entry>Halfling</entry>
@@ -2274,6 +2278,10 @@
     <entry>Extraplanar</entry>
   </collection>
   <collection>
+    <name>Nymph</name>
+    <entry>Fey</entry>
+  </collection>
+  <collection>
     <name>Ochre Jelly</name>
     <entry>Ooze</entry>
   </collection>
@@ -2301,8 +2309,37 @@
     <entry>Aquatic</entry>
   </collection>
   <collection>
+    <name>Otyugh</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
     <name>Owl</name>
     <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Giant Owl</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Owlbear</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Pegasus</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Phantom Fungus</name>
+    <entry>Plant</entry>
+  </collection>
+  <collection>
+    <name>Phase Spider</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Phasm</name>
+    <entry>Aberration</entry>
+    <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
@@ -2325,6 +2362,14 @@
     <entry>Aquatic</entry>
   </collection>
   <collection>
+    <name>Pseudodragon</name>
+    <entry>Dragon</entry>
+  </collection>
+  <collection>
+    <name>Purple Worm</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
     <name>Quasit</name>
     <entry>Outsider</entry>
     <entry>Evil</entry>
@@ -2333,11 +2378,14 @@
   </collection>
   <collection>
     <name>Rakshasa</name>
-    <entry>10</entry>
+    <entry>Outsider</entry>
+    <entry>Native</entry>
   </collection>
   <collection>
-    <name>Raven</name>
-    <entry>Animal</entry>
+    <name>Rast</name>
+    <entry>Outsider</entry>
+    <entry>Extraplanar</entry>
+    <entry>Fire</entry>
   </collection>
   <collection>
     <name>Rat</name>
@@ -2353,6 +2401,23 @@
     <entry>Swarm</entry>
   </collection>
   <collection>
+    <name>Raven</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Ravid</name>
+    <entry>Outsider</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Razor Boar</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Remorhaz</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
     <name>Retriever</name>
     <entry>Construct</entry>
     <entry>Extraplanar</entry>
@@ -2360,6 +2425,36 @@
   <collection>
     <name>Rhinoceras</name>
     <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Roc</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Roper</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Rust Monster</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
+    <name>Average Salamander</name>
+    <entry>Outsider</entry>
+    <entry>Extraplanar</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Flamebrother Salamander</name>
+    <entry>Outsider</entry>
+    <entry>Extraplanar</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
+    <name>Noble Salamander</name>
+    <entry>Outsider</entry>
+    <entry>Extraplanar</entry>
+    <entry>Fire</entry>
   </collection>
   <collection>
     <name>Shark, Huge</name>
@@ -2383,7 +2478,9 @@
   </collection>
   <collection>
     <name>Red Slaad</name>
-    <entry>7</entry>
+    <entry>Outsider</entry>
+    <entry>Chaotic</entry>
+    <entry>Extraplanar</entry>
   </collection>
   <collection>
     <name>Rock Gnome</name>
@@ -2392,15 +2489,20 @@
   </collection>
   <collection>
     <name>Sahuagin</name>
-    <entry>2</entry>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Aquatic</entry>
   </collection>
   <collection>
     <name>Satyr</name>
-    <entry>2</entry>
+    <entry>Fey</entry>
+  </collection>
+  <collection>
+    <name>Satyr with pipes</name>
+    <entry>Fey</entry>
   </collection>
   <collection>
     <name>Scorpionfolk</name>
-    <entry>7</entry>
+    <entry>Monstrous Humanoid</entry>
   </collection>
   <collection>
     <name>Scrag</name>
@@ -2408,9 +2510,62 @@
     <entry>Aquatic</entry>
   </collection>
   <collection>
+    <name>Sea Cat</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
     <name>Sea Hag</name>
     <entry>Monstrous Humanoid</entry>
     <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Shadow</name>
+    <entry>Undead</entry>
+    <entry>Incorporeal</entry>
+  </collection>
+  <collection>
+    <name>Greater Shadow</name>
+    <entry>Undead</entry>
+    <entry>Incorporeal</entry>
+  </collection>
+  <collection>
+    <name>Shadow Mastiff</name>
+    <entry>Outsider</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Shambling Mound</name>
+    <entry>Plant</entry>
+  </collection>
+  <collection>
+    <name>Shield Guardian</name>
+    <entry>Construct</entry>
+  </collection>
+  <collection>
+    <name>Shocker Lizard</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Shrieker</name>
+    <entry>Plant</entry>
+  </collection>
+  <collection>
+    <name>Violet Fungus</name>
+    <entry>Plant</entry>
+  </collection>
+  <collection>
+    <name>Skum</name>
+    <entry>Aberration</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Spectre</name>
+    <entry>Undead</entry>
+    <entry>Incorporeal</entry>
+  </collection>
+  <collection>
+    <name>Spider Eater</name>
+    <entry>Magical Beast</entry>
   </collection>
   <collection>
     <name>Spider Swarm</name>
@@ -2421,6 +2576,10 @@
     <name>Squid</name>
     <entry>Animal</entry>
     <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Stirge</name>
+    <entry>Magical Beast</entry>
   </collection>
   <collection>
     <name>Succubus</name>
@@ -2440,6 +2599,21 @@
     <entry>Halfling</entry>
   </collection>
   <collection>
+    <name>Tarrasque</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Tendriculos</name>
+    <entry>Plant</entry>
+  </collection>
+  <collection>
+    <name>Thoqqua</name>
+    <entry>Elemental</entry>
+    <entry>Earth</entry>
+    <entry>Extraplanar</entry>
+    <entry>Fire</entry>
+  </collection>
+  <collection>
     <name>Tiefling</name>
     <entry>Outsider</entry>
     <entry>Native</entry>
@@ -2453,12 +2627,46 @@
     <entry>Animal</entry>
   </collection>
   <collection>
+    <name>Titan</name>
+    <entry>Outsider</entry>
+    <entry>Chaotic</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
     <name>Toad</name>
     <entry>Animal</entry>
   </collection>
   <collection>
+    <name>Adult Tojanida</name>
+    <entry>Outsider</entry>
+    <entry>Water</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Elder Tojanida</name>
+    <entry>Outsider</entry>
+    <entry>Water</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Tojanida</name>
+    <entry>Outsider</entry>
+    <entry>Water</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Treant</name>
+    <entry>Plant</entry>
+  </collection>
+  <collection>
     <name>Triceratops</name>
     <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Triton</name>
+    <entry>Outsider</entry>
+    <entry>Water</entry>
+    <entry>Native</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
@@ -2472,6 +2680,33 @@
   <collection>
     <name>Tyrannosaurus</name>
     <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Umber Hulk</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber Hulk</name>
+    <entry>Aberration</entry>
+  </collection>
+  <collection>
+    <name>Unicorn</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Celestial Charger</name>
+    <entry>Magical Beast</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Vampire Spawn</name>
+    <entry>Undead</entry>
+  </collection>
+  <collection>
+    <name>Vargouille</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
@@ -2509,6 +2744,20 @@
     <entry>Animal</entry>
   </collection>
   <collection>
+    <name>Wight</name>
+    <entry>Undead</entry>
+  </collection>
+  <collection>
+    <name>Will-O'-Wisp</name>
+    <entry>Aberration</entry>
+    <entry>Air</entry>
+  </collection>
+  <collection>
+    <name>Winter Wolf</name>
+    <entry>Magical Beast</entry>
+    <entry>Cold</entry>
+  </collection>
+  <collection>
     <name>Wolf</name>
     <entry>Animal</entry>
   </collection>
@@ -2525,15 +2774,66 @@
     <entry>Animal</entry>
   </collection>
   <collection>
+    <name>Worg</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
+    <name>Wraith</name>
+    <entry>Undead</entry>
+    <entry>Incorporeal</entry>
+  </collection>
+  <collection>
+    <name>Dread Wraith</name>
+    <entry>Undead</entry>
+    <entry>Incorporeal</entry>
+  </collection>
+  <collection>
+    <name>Wyvern</name>
+    <entry>Dragon</entry>
+  </collection>
+  <collection>
+    <name>Xill</name>
+    <entry>Outsider</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Average Xorn</name>
+    <entry>Outsider</entry>
+    <entry>Earth</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Minor Xorn</name>
+    <entry>Outsider</entry>
+    <entry>Earth</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Elder Xorn</name>
+    <entry>Outsider</entry>
+    <entry>Earth</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Yeth Hound</name>
+    <entry>Outsider</entry>
+    <entry>Evil</entry>
+    <entry>Extraplanar</entry>
+  </collection>
+  <collection>
+    <name>Yrthak</name>
+    <entry>Magical Beast</entry>
+  </collection>
+  <collection>
     <name>Yuan-ti Abomination</name>
-    <entry>7</entry>
+    <entry>Monstrous Humanoid</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood</name>
-    <entry>5</entry>
+    <entry>Monstrous Humanoid</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
-    <entry>3</entry>
+    <entry>Monstrous Humanoid</entry>
   </collection>
 </collections>

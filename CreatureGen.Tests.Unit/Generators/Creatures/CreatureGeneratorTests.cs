@@ -1016,32 +1016,46 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureLandSpeed()
+        public void GenerateCreatureSpeeds()
         {
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.LandSpeeds, "creature")).Returns(1234);
+            var speeds = new[]
+            {
+                new TypeAndAmountSelection { Type = "on foot", Amount = 1234 },
+                new TypeAndAmountSelection { Type = "in a car", Amount = 2345 },
+            };
+
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.Speeds, "creature")).Returns(speeds);
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.LandSpeed.Value, Is.EqualTo(1234));
+            Assert.That(creature.Speeds["on foot"].Unit, Is.EqualTo("feet per round"));
+            Assert.That(creature.Speeds["on foot"].Value, Is.EqualTo(1234));
+            Assert.That(creature.Speeds["on foot"].Description, Is.Empty);
+            Assert.That(creature.Speeds["in a car"].Unit, Is.EqualTo("feet per round"));
+            Assert.That(creature.Speeds["in a car"].Value, Is.EqualTo(2345));
+            Assert.That(creature.Speeds["in a car"].Description, Is.Empty);
+            Assert.That(creature.Speeds.Count, Is.EqualTo(2));
         }
 
         [Test]
         public void GenerateCreatureAerialSpeedAndDescription()
         {
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.AerialSpeeds, "creature")).Returns(1234);
+            var speeds = new[]
+            {
+                new TypeAndAmountSelection { Type = "on foot", Amount = 1234 },
+                new TypeAndAmountSelection { Type = SpeedConstants.Fly, Amount = 2345 },
+            };
+
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.Speeds, "creature")).Returns(speeds);
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.AerialManeuverability, "creature")).Returns(new[] { "maneuverability" });
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.AerialSpeed.Value, Is.EqualTo(1234));
-            Assert.That(creature.AerialSpeed.Description, Is.EqualTo("maneuverability"));
-        }
-
-        [Test]
-        public void GenerateCreatureSwimSpeed()
-        {
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.SwimSpeeds, "creature")).Returns(1234);
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.SwimSpeed.Value, Is.EqualTo(1234));
+            Assert.That(creature.Speeds["on foot"].Unit, Is.EqualTo("feet per round"));
+            Assert.That(creature.Speeds["on foot"].Value, Is.EqualTo(1234));
+            Assert.That(creature.Speeds["on foot"].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("feet per round"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(2345));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("maneuverability"));
+            Assert.That(creature.Speeds.Count, Is.EqualTo(2));
         }
 
         [Test]

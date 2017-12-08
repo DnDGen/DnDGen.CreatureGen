@@ -14,8 +14,14 @@ namespace CreatureGen.Tests.Integration.Tables
         {
             Assert.That(table.Keys, Contains.Item(name), tableName);
 
-            var actualAdjustment = Convert.ToInt32(table[name].Single());
+            var actualAdjustment = GetAdjustment(name);
             Assert.That(actualAdjustment, Is.EqualTo(adjustment));
+        }
+
+        protected int GetAdjustment(string name)
+        {
+            var adjustment = table[name].Single();
+            return Convert.ToInt32(adjustment);
         }
     }
 }

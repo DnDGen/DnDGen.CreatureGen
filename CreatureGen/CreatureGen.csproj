@@ -71,6 +71,7 @@
     <Compile Include="Creatures\ChallengeRatingConstants.cs" />
     <Compile Include="Creatures\CreatureConstants.cs" />
     <Compile Include="Creatures\CreatureType.cs" />
+    <Compile Include="Creatures\SpeedConstants.cs" />
     <Compile Include="Defenses\ArmorClass.cs" />
     <Compile Include="Defenses\HitPoints.cs" />
     <Compile Include="Defenses\SaveConstants.cs" />
@@ -661,18 +662,12 @@
     <EmbeddedResource Include="Tables\Creatures\AerialManeuverability.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\Creatures\AerialSpeeds.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Tables\Creatures\CreatureGroups.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\Creatures\LandSpeeds.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Creatures\SwimSpeeds.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Speeds.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Tables\Creatures\ChallengeRatings.xml" />

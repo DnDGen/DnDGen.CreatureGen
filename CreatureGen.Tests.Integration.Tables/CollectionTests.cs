@@ -57,25 +57,25 @@ namespace CreatureGen.Tests.Integration.Tables
             AssertCollection(table[name], collection);
         }
 
-        protected void AssertCollection(IEnumerable<string> actual, IEnumerable<string> expected)
+        protected void AssertCollection(IEnumerable<string> actual, IEnumerable<string> expected, string message = "")
         {
-            AssertMissingItems(actual, expected);
-            AssertExtraItems(actual, expected);
-            Assert.That(actual, Is.EquivalentTo(expected));
-            Assert.That(expected, Is.EquivalentTo(actual));
-            Assert.That(actual.Count(), Is.EqualTo(expected.Count()));
+            AssertMissingItems(actual, expected, message);
+            AssertExtraItems(actual, expected, message);
+            Assert.That(actual, Is.EquivalentTo(expected), message);
+            Assert.That(expected, Is.EquivalentTo(actual), message);
+            Assert.That(actual.Count(), Is.EqualTo(expected.Count()), message);
         }
 
-        protected void AssertMissingItems(IEnumerable<string> actual, IEnumerable<string> expected)
+        protected void AssertMissingItems(IEnumerable<string> actual, IEnumerable<string> expected, string message = "")
         {
             var missingItems = expected.Except(actual);
-            Assert.That(missingItems, Is.Empty, $"{missingItems.Count()} of {expected.Count()} missing");
+            Assert.That(missingItems, Is.Empty, $"{message}: {missingItems.Count()} of {expected.Count()} missing");
         }
 
-        protected void AssertExtraItems(IEnumerable<string> actual, IEnumerable<string> expected)
+        protected void AssertExtraItems(IEnumerable<string> actual, IEnumerable<string> expected, string message = "")
         {
             var extras = actual.Except(expected);
-            Assert.That(extras, Is.Empty, $"{extras.Count()} extra");
+            Assert.That(extras, Is.Empty, $"{message}: {extras.Count()} extra");
         }
 
         public virtual void OrderedCollection(string name, params string[] collection)

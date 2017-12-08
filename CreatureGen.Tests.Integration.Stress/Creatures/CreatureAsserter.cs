@@ -73,45 +73,33 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
                 .Or.EqualTo(SizeConstants.Medium)
                 .Or.EqualTo(SizeConstants.Small), creature.Summary);
 
-            VerifyLandSpeed(creature);
-            VerifyAerialSpeed(creature);
-            VerifySwimSpeed(creature);
+            VerifySpeeds(creature);
         }
 
-        private void VerifyLandSpeed(Creature creature)
+        private void VerifySpeeds(Creature creature)
         {
-            Assert.That(creature.LandSpeed.Value, Is.Positive, creature.Summary);
-            Assert.That(creature.LandSpeed.Value % 5, Is.EqualTo(0), creature.Summary);
+            Assert.That(creature.Speeds.Keys, Contains.Item(SpeedConstants.Walk), creature.Summary);
 
-            if (creature.LandSpeed.Value >= 10)
-                Assert.That(creature.LandSpeed.Value % 10, Is.EqualTo(0), creature.Summary);
-
-            Assert.That(creature.LandSpeed.Unit, Is.EqualTo("feet per round"), creature.Summary);
-            Assert.That(creature.LandSpeed.Description, Is.Empty, creature.Summary);
+            foreach (var speedKVP in creature.Speeds)
+            {
+                VerifySpeed(speedKVP.Value, creature.Summary, speedKVP.Key);
+            }
         }
 
-        private void VerifyAerialSpeed(Creature creature)
+        private void VerifySpeed(Measurement speed, string creatureSummary, string name)
         {
-            Assert.That(creature.AerialSpeed.Value, Is.Not.Negative, creature.Summary);
-            Assert.That(creature.AerialSpeed.Value % 5, Is.EqualTo(0), creature.Summary);
+            var message = $"{creatureSummary} {name}";
+            Assert.That(speed.Value, Is.Positive, message);
+            Assert.That(speed.Value % 5, Is.EqualTo(0), message);
+            Assert.That(speed.Unit, Is.EqualTo("feet per round"), message);
 
-            if (creature.AerialSpeed.Value >= 10)
-                Assert.That(creature.AerialSpeed.Value % 10, Is.EqualTo(0), creature.Summary);
+            if (speed.Value >= 10)
+                Assert.That(speed.Value % 10, Is.EqualTo(0), message);
 
-            Assert.That(creature.AerialSpeed.Unit, Is.EqualTo("feet per round"), creature.Summary);
-
-            if (creature.AerialSpeed.Value == 0)
-                Assert.That(creature.AerialSpeed.Description, Is.Empty, creature.Summary);
+            if (name == SpeedConstants.Fly)
+                Assert.That(speed.Description, Is.Not.Empty, message);
             else
-                Assert.That(creature.AerialSpeed.Description, Is.Not.Empty, creature.Summary);
-        }
-
-        private void VerifySwimSpeed(Creature creature)
-        {
-            Assert.That(creature.SwimSpeed.Value, Is.Not.Negative, creature.Summary);
-            Assert.That(creature.SwimSpeed.Value % 10, Is.EqualTo(0), creature.Summary);
-            Assert.That(creature.SwimSpeed.Unit, Is.EqualTo("feet per round"), creature.Summary);
-            Assert.That(creature.SwimSpeed.Description, Is.Empty, creature.Summary);
+                Assert.That(speed.Description, Is.Empty, message);
         }
 
         private void VerifyAbilities(Creature creature)

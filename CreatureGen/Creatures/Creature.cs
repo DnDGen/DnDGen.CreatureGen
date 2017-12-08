@@ -17,9 +17,7 @@ namespace CreatureGen.Creatures
         public CreatureType Type { get; set; }
         public HitPoints HitPoints { get; set; }
         public int InitiativeBonus { get; set; }
-        public Measurement LandSpeed { get; set; }
-        public Measurement AerialSpeed { get; set; }
-        public Measurement SwimSpeed { get; set; }
+        public Dictionary<string, Measurement> Speeds { get; private set; }
         public ArmorClass ArmorClass { get; set; }
         public int BaseAttackBonus { get; set; }
         public int GrappleBonus { get; set; }
@@ -90,14 +88,12 @@ namespace CreatureGen.Creatures
         public Creature()
         {
             Abilities = new Dictionary<string, Ability>();
-            AerialSpeed = new Measurement("feet per round");
             Alignment = new Alignment();
             ArmorClass = new ArmorClass();
             Attacks = Enumerable.Empty<Attack>();
             ChallengeRating = string.Empty;
             Feats = Enumerable.Empty<Feat>();
             HitPoints = new HitPoints();
-            LandSpeed = new Measurement("feet per round");
             Name = string.Empty;
             Reach = new Measurement("feet");
             Saves = new Saves();
@@ -105,9 +101,9 @@ namespace CreatureGen.Creatures
             Skills = Enumerable.Empty<Skill>();
             Space = new Measurement("feet");
             SpecialQualities = Enumerable.Empty<Feat>();
-            SwimSpeed = new Measurement("feet per round");
             Template = string.Empty;
             Type = new CreatureType();
+            Speeds = new Dictionary<string, Measurement>();
         }
     }
 }
