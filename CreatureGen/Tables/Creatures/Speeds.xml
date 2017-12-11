@@ -16,6 +16,47 @@
     <entry>Swim/60</entry>
   </collection>
   <collection>
+    <name>Achaierai</name>
+    <entry>Walk/50</entry>
+  </collection>
+  <collection>
+    <name>Allip</name>
+    <entry>Fly/30</entry>
+  </collection>
+  <collection>
+    <name>Androsphinx</name>
+    <entry>Walk/50</entry>
+    <entry>Fly/80</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Colossal</name>
+    <entry>Walk/10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Gargantuan</name>
+    <entry>Walk/10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Huge</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Large</name>
+    <entry>Walk/20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Medium</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Small</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tiny</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
     <name>Ankheg</name>
     <entry>Walk/30</entry>
     <entry>Burrow/20</entry>
@@ -43,6 +84,10 @@
     <entry>Walk/30</entry>
   </collection>
   <collection>
+    <name>Baleen Whale</name>
+    <entry>Swim/40</entry>
+  </collection>
+  <collection>
     <name>Balor</name>
     <entry>Walk/40</entry>
     <entry>Fly/90</entry>
@@ -61,12 +106,30 @@
     <entry>Walk/30</entry>
   </collection>
   <collection>
+    <name>Cachalot Whale</name>
+    <entry>Swim/40</entry>
+  </collection>
+  <collection>
     <name>Centaur</name>
     <entry>Walk/50</entry>
   </collection>
   <collection>
+    <name>Chuul</name>
+    <entry>Walk/30</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
     <name>Cloud Giant</name>
     <entry>Walk/50</entry>
+  </collection>
+  <collection>
+    <name>Criosphinx</name>
+    <entry>Walk/30</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Dark Naga</name>
+    <entry>Walk/40</entry>
   </collection>
   <collection>
     <name>Death Slaad</name>
@@ -97,6 +160,11 @@
   <collection>
     <name>Doppelganger</name>
     <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Dragon Turtle</name>
+    <entry>Walk/20</entry>
+    <entry>Swim/30</entry>
   </collection>
   <collection>
     <name>Dretch</name>
@@ -131,6 +199,23 @@
     <name>Gargoyle</name>
     <entry>Walk/40</entry>
     <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Ghast</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Ghoul</name>
+    <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Giant Octopus</name>
+    <entry>Walk/20</entry>
+    <entry>Swim/30</entry>
+  </collection>
+  <collection>
+    <name>Giant Squid</name>
+    <entry>Swim/80</entry>
   </collection>
   <collection>
     <name>Githyanki</name>
@@ -179,6 +264,15 @@
     <entry>Walk/30</entry>
   </collection>
   <collection>
+    <name>Guardian Naga</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Gynosphinx</name>
+    <entry>Walk/40</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
     <name>Half-Elf</name>
     <entry>Walk/30</entry>
   </collection>
@@ -194,6 +288,11 @@
   <collection>
     <name>Hezrou</name>
     <entry>Walk/30</entry>
+  </collection>
+  <collection>
+    <name>Hieracosphinx</name>
+    <entry>Walk/30</entry>
+    <entry>Fly/90</entry>
   </collection>
   <collection>
     <name>High Elf</name>
@@ -234,9 +333,18 @@
     <entry>Walk/30</entry>
   </collection>
   <collection>
+    <name>Kraken</name>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
     <name>Kuo-toa</name>
     <entry>Walk/20</entry>
     <entry>Swim/50</entry>
+  </collection>
+  <collection>
+    <name>Lacedon</name>
+    <entry>Walk/30</entry>
+    <entry>Swim/30</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
@@ -250,6 +358,10 @@
     <name>Locathah</name>
     <entry>Walk/10</entry>
     <entry>Swim/60</entry>
+  </collection>
+  <collection>
+    <name>Manta Ray</name>
+    <entry>Swim/30</entry>
   </collection>
   <collection>
     <name>Marilith</name>
@@ -288,6 +400,11 @@
     <entry>Swim/30</entry>
   </collection>
   <collection>
+    <name>Octopus</name>
+    <entry>Walk/20</entry>
+    <entry>Swim/30</entry>
+  </collection>
+  <collection>
     <name>Ogre Mage</name>
     <entry>Walk/40</entry>
     <entry>Fly/40</entry>
@@ -301,6 +418,10 @@
     <entry>Walk/30</entry>
   </collection>
   <collection>
+    <name>Orca Whale</name>
+    <entry>Swim/50</entry>
+  </collection>
+  <collection>
     <name>Pixie</name>
     <entry>Walk/20</entry>
     <entry>Fly/60</entry>
@@ -309,6 +430,10 @@
     <name>Pixie with Irresistable Dance</name>
     <entry>Walk/20</entry>
     <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Porpoise</name>
+    <entry>Swim/80</entry>
   </collection>
   <collection>
     <name>Quasit</name>
@@ -359,6 +484,14 @@
     <entry>Swim/40</entry>
   </collection>
   <collection>
+    <name>Spirit Naga</name>
+    <entry>Walk/40</entry>
+  </collection>
+  <collection>
+    <name>Squid</name>
+    <entry>Swim/60</entry>
+  </collection>
+  <collection>
     <name>Stone Giant</name>
     <entry>Walk/40</entry>
   </collection>
@@ -400,6 +533,11 @@
     <name>Vrock</name>
     <entry>Walk/30</entry>
     <entry>Fly/50</entry>
+  </collection>
+  <collection>
+    <name>Water Naga</name>
+    <entry>Walk/30</entry>
+    <entry>Swim/50</entry>
   </collection>
   <collection>
     <name>Wild Elf</name>

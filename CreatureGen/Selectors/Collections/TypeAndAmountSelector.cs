@@ -11,6 +11,11 @@ namespace CreatureGen.Selectors.Collections
             throw new NotImplementedException();
         }
 
+        public Dictionary<string, IEnumerable<TypeAndAmountSelection>> SelectAll(string tableName)
+        {
+            throw new NotImplementedException();
+        }
+
         public TypeAndAmountSelection SelectOne(string tableName, string name)
         {
             throw new NotImplementedException();

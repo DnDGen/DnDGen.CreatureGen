@@ -59,19 +59,43 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Aasimar] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Aboleth] = new[] { Tuple.Create(SpeedConstants.Walk, 10), Tuple.Create(SpeedConstants.Swim, 60) };
                     testCases[CreatureConstants.Aboleth_Mage] = new[] { Tuple.Create(SpeedConstants.Walk, 10), Tuple.Create(SpeedConstants.Swim, 60) };
+                    testCases[CreatureConstants.Achaierai] = new[] { Tuple.Create(SpeedConstants.Walk, 50) };
+                    testCases[CreatureConstants.Allip] = new[] { Tuple.Create(SpeedConstants.Fly, 30) };
+                    testCases[CreatureConstants.Androsphinx] = new[] { Tuple.Create(SpeedConstants.Walk, 50), Tuple.Create(SpeedConstants.Fly, 80) };
+                    testCases[CreatureConstants.Angel_AstralDeva] = new[] { Tuple.Create(SpeedConstants.Walk, 50), Tuple.Create(SpeedConstants.Fly, 100) };
+                    testCases[CreatureConstants.Angel_Planetar] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Fly, 90) };
+                    testCases[CreatureConstants.Angel_Solar] = new[] { Tuple.Create(SpeedConstants.Walk, 50), Tuple.Create(SpeedConstants.Fly, 150) };
+                    testCases[CreatureConstants.AnimatedObject_Colossal] = new[] { Tuple.Create(SpeedConstants.Walk, 10) };
+                    testCases[CreatureConstants.AnimatedObject_Gargantuan] = new[] { Tuple.Create(SpeedConstants.Walk, 10) };
+                    testCases[CreatureConstants.AnimatedObject_Huge] = new[] { Tuple.Create(SpeedConstants.Walk, 20) };
+                    testCases[CreatureConstants.AnimatedObject_Large] = new[] { Tuple.Create(SpeedConstants.Walk, 20) };
+                    testCases[CreatureConstants.AnimatedObject_Medium] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
+                    testCases[CreatureConstants.AnimatedObject_Small] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
+                    testCases[CreatureConstants.AnimatedObject_Tiny] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
                     testCases[CreatureConstants.Ankheg] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Burrow, 20) };
                     testCases[CreatureConstants.Annis] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
+                    testCases[CreatureConstants.Ant_Giant_Queen] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
+                    testCases[CreatureConstants.Ant_Giant_Soldier] = new[] { Tuple.Create(SpeedConstants.Walk, 50), Tuple.Create(SpeedConstants.Climb, 20) };
+                    testCases[CreatureConstants.Ant_Giant_Worker] = new[] { Tuple.Create(SpeedConstants.Walk, 50), Tuple.Create(SpeedConstants.Climb, 20) };
+                    testCases[CreatureConstants.Ape_Dire] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Climb, 15) };
                     testCases[CreatureConstants.Aranea] = new[] { Tuple.Create(SpeedConstants.Walk, 50), Tuple.Create(SpeedConstants.Climb, 25) };
+                    testCases[CreatureConstants.Arrowhawk_Adult] = new[] { Tuple.Create(SpeedConstants.Fly, 60) };
+                    testCases[CreatureConstants.Arrowhawk_Elder] = new[] { Tuple.Create(SpeedConstants.Fly, 60) };
+                    testCases[CreatureConstants.Arrowhawk_Juvenile] = new[] { Tuple.Create(SpeedConstants.Fly, 60) };
+                    testCases[CreatureConstants.AssassinVine] = new[] { Tuple.Create(SpeedConstants.Walk, 5) };
                     testCases[CreatureConstants.Azer] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Babau] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Balor] = new[] { Tuple.Create(SpeedConstants.Walk, 40), Tuple.Create(SpeedConstants.Fly, 90) };
                     testCases[CreatureConstants.Bebilith] = new[] { Tuple.Create(SpeedConstants.Walk, 40), Tuple.Create(SpeedConstants.Climb, 20) };
                     testCases[CreatureConstants.Bugbear] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Centaur] = new[] { Tuple.Create(SpeedConstants.Walk, 50) };
+                    testCases[CreatureConstants.Chuul] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Swim, 20) };
+                    testCases[CreatureConstants.Criosphinx] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Fly, 60) };
                     testCases[CreatureConstants.Derro] = new[] { Tuple.Create(SpeedConstants.Walk, 20) };
                     testCases[CreatureConstants.Djinni] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Fly, 60) };
                     testCases[CreatureConstants.Djinni_Noble] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Fly, 60) };
                     testCases[CreatureConstants.Doppelganger] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
+                    testCases[CreatureConstants.DragonTurtle] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Swim, 30) };
                     testCases[CreatureConstants.Dretch] = new[] { Tuple.Create(SpeedConstants.Walk, 20) };
                     testCases[CreatureConstants.Dwarf_Deep] = new[] { Tuple.Create(SpeedConstants.Walk, 20) };
                     testCases[CreatureConstants.Dwarf_Duergar] = new[] { Tuple.Create(SpeedConstants.Walk, 20) };
@@ -87,6 +111,9 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Elf_Wood] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Gargoyle] = new[] { Tuple.Create(SpeedConstants.Walk, 40), Tuple.Create(SpeedConstants.Fly, 60) };
                     testCases[CreatureConstants.Gargoyle_Kapoacinth] = new[] { Tuple.Create(SpeedConstants.Walk, 40), Tuple.Create(SpeedConstants.Swim, 60) };
+                    testCases[CreatureConstants.Ghoul] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
+                    testCases[CreatureConstants.Ghoul_Ghast] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
+                    testCases[CreatureConstants.Ghoul_Lacedon] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Swim, 30) };
                     testCases[CreatureConstants.Giant_Cloud] = new[] { Tuple.Create(SpeedConstants.Walk, 50) };
                     testCases[CreatureConstants.Giant_Fire] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
                     testCases[CreatureConstants.Giant_Frost] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
@@ -105,25 +132,35 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.GreenHag] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Swim, 30) };
                     testCases[CreatureConstants.Grig] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Fly, 40) };
                     testCases[CreatureConstants.Grimlock] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
+                    testCases[CreatureConstants.Gynosphinx] = new[] { Tuple.Create(SpeedConstants.Walk, 40), Tuple.Create(SpeedConstants.Fly, 60) };
                     testCases[CreatureConstants.Halfling_Deep] = new[] { Tuple.Create(SpeedConstants.Walk, 20) };
                     testCases[CreatureConstants.Halfling_Lightfoot] = new[] { Tuple.Create(SpeedConstants.Walk, 20) };
                     testCases[CreatureConstants.Halfling_Tallfellow] = new[] { Tuple.Create(SpeedConstants.Walk, 20) };
                     testCases[CreatureConstants.Harpy] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Fly, 80) };
                     testCases[CreatureConstants.Hezrou] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
+                    testCases[CreatureConstants.Hieracosphinx] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Fly, 90) };
                     testCases[CreatureConstants.Hobgoblin] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.HoundArchon] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
                     testCases[CreatureConstants.Human] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Janni] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Fly, 20) };
                     testCases[CreatureConstants.Kobold] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
+                    testCases[CreatureConstants.Kraken] = new[] { Tuple.Create(SpeedConstants.Swim, 20) };
                     testCases[CreatureConstants.KuoToa] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Swim, 50) };
                     testCases[CreatureConstants.Lizardfolk] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Locathah] = new[] { Tuple.Create(SpeedConstants.Walk, 10), Tuple.Create(SpeedConstants.Swim, 60) };
+                    testCases[CreatureConstants.MantaRay] = new[] { Tuple.Create(SpeedConstants.Swim, 30) };
                     testCases[CreatureConstants.Marilith] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
                     testCases[CreatureConstants.Merfolk] = new[] { Tuple.Create(SpeedConstants.Walk, 5), Tuple.Create(SpeedConstants.Swim, 50) };
                     testCases[CreatureConstants.MindFlayer] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Minotaur] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
+                    testCases[CreatureConstants.Naga_Dark] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
+                    testCases[CreatureConstants.Naga_Guardian] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
+                    testCases[CreatureConstants.Naga_Spirit] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
+                    testCases[CreatureConstants.Naga_Water] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Swim, 50) };
                     testCases[CreatureConstants.Nalfeshnee] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Fly, 40) };
                     testCases[CreatureConstants.Nixie] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Swim, 30) };
+                    testCases[CreatureConstants.Octopus] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Swim, 30) };
+                    testCases[CreatureConstants.Octopus_Giant] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Swim, 30) };
                     testCases[CreatureConstants.Orc] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Orc_Half] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Ogre] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
@@ -131,6 +168,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.OgreMage] = new[] { Tuple.Create(SpeedConstants.Walk, 40), Tuple.Create(SpeedConstants.Fly, 40) };
                     testCases[CreatureConstants.Pixie] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Fly, 60) };
                     testCases[CreatureConstants.Pixie_WithIrresistableDance] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Fly, 60) };
+                    testCases[CreatureConstants.Porpoise] = new[] { Tuple.Create(SpeedConstants.Swim, 80) };
                     testCases[CreatureConstants.Quasit] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Fly, 50) };
                     testCases[CreatureConstants.Rakshasa] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
                     testCases[CreatureConstants.Retriever] = new[] { Tuple.Create(SpeedConstants.Walk, 50) };
@@ -139,27 +177,51 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Satyr_WithPipes] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
                     testCases[CreatureConstants.Scorpionfolk] = new[] { Tuple.Create(SpeedConstants.Walk, 40) };
                     testCases[CreatureConstants.SeaHag] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Swim, 40) };
+                    testCases[CreatureConstants.Shark_Dire] = new[] { Tuple.Create(SpeedConstants.Swim, 60) };
+                    testCases[CreatureConstants.Shark_Huge] = new[] { Tuple.Create(SpeedConstants.Swim, 60) };
+                    testCases[CreatureConstants.Shark_Large] = new[] { Tuple.Create(SpeedConstants.Swim, 60) };
+                    testCases[CreatureConstants.Shark_Medium] = new[] { Tuple.Create(SpeedConstants.Swim, 60) };
+                    testCases[CreatureConstants.Skum] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Swim, 40) };
                     testCases[CreatureConstants.Slaad_Blue] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Slaad_Death] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Slaad_Gray] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Slaad_Green] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Slaad_Red] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
+                    testCases[CreatureConstants.Squid] = new[] { Tuple.Create(SpeedConstants.Swim, 60) };
+                    testCases[CreatureConstants.Squid_Giant] = new[] { Tuple.Create(SpeedConstants.Swim, 80) };
                     testCases[CreatureConstants.Succubus] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Fly, 50) };
                     testCases[CreatureConstants.Tiefling] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Troglodyte] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Troll] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.Troll_Scrag] = new[] { Tuple.Create(SpeedConstants.Walk, 20), Tuple.Create(SpeedConstants.Swim, 40) };
                     testCases[CreatureConstants.Vrock] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Fly, 50) };
+                    testCases[CreatureConstants.Whale_Baleen] = new[] { Tuple.Create(SpeedConstants.Swim, 40) };
+                    testCases[CreatureConstants.Whale_Cachalot] = new[] { Tuple.Create(SpeedConstants.Swim, 40) };
+                    testCases[CreatureConstants.Whale_Orca] = new[] { Tuple.Create(SpeedConstants.Swim, 50) };
                     testCases[CreatureConstants.YuanTi_Abomination] = new[] { Tuple.Create(SpeedConstants.Walk, 30), Tuple.Create(SpeedConstants.Swim, 20) };
                     testCases[CreatureConstants.YuanTi_Halfblood] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
                     testCases[CreatureConstants.YuanTi_Pureblood] = new[] { Tuple.Create(SpeedConstants.Walk, 30) };
 
                     foreach (var testCase in testCases)
                     {
+                        var speeds = testCase.Value.Select(v => $"{v.Item1}:{v.Item2}");
                         yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"Speeds({testCase.Key}, [{string.Join("], [", testCase.Value.Select(v => $"{v.Item1}:{v.Item2}"))}])");
+                            .SetName($"Speeds({testCase.Key}, [{string.Join("], [", speeds)}])");
                     }
                 }
+            }
+        }
+
+        [Test]
+        public void AllCreaturesHaveAtLeast1Speed()
+        {
+            var creatures = CreatureConstants.All();
+            AssertCollection(table.Keys, creatures);
+
+            foreach (var creature in creatures)
+            {
+                var speeds = GetCollection(creature);
+                Assert.That(speeds, Is.Not.Empty, creature);
             }
         }
 
