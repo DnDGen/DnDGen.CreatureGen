@@ -109,6 +109,7 @@
     <Compile Include="Defenses\SaveConstantsTests.cs" />
     <Compile Include="Generators\Defenses\SavesGeneratorTests.cs" />
     <Compile Include="Creatures\MeasurementTests.cs" />
+    <Compile Include="Selectors\Collections\TypeAndAmountSelectorTests.cs" />
     <Compile Include="Selectors\Selections\AttackSelectionTests.cs" />
     <Compile Include="Selectors\Selections\CreatureDataSelectionTests.cs" />
     <Compile Include="Selectors\Selections\TypeAndAmountSelectionTests.cs" />

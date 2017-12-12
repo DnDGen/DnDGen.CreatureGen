@@ -78,7 +78,7 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
 
         private void VerifySpeeds(Creature creature)
         {
-            Assert.That(creature.Speeds.Keys, Contains.Item(SpeedConstants.Walk), creature.Summary);
+            Assert.That(creature.Speeds.Keys, Contains.Item(SpeedConstants.Land), creature.Summary);
 
             foreach (var speedKVP in creature.Speeds)
             {
