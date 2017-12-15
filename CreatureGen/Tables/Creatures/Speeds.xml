@@ -201,12 +201,12 @@
   <collection>
     <name>Bat</name>
     <entry>Land/5</entry>
-    <entry>Land/40</entry>
+    <entry>Fly/40</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
     <entry>Land/5</entry>
-    <entry>Land/40</entry>
+    <entry>Fly/40</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>

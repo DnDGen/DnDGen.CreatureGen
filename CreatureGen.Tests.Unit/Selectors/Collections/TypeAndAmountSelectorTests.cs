@@ -129,7 +129,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
 
             SetUpRoll("amount", 42);
-            SetUpRoll("other amount", 600); ;
+            SetUpRoll("other amount", 600);
 
             var typesAndAmounts = selector.Select("table name", "name");
             Assert.That(typesAndAmounts.Count, Is.EqualTo(2));
@@ -155,7 +155,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
 
             SetUpRoll("amount", 42);
-            SetUpRoll("other amount", 600); ;
+            SetUpRoll("other amount", 600);
 
             var typesAndAmounts = selector.Select("table name", "name");
             Assert.That(typesAndAmounts.Count, Is.EqualTo(2));

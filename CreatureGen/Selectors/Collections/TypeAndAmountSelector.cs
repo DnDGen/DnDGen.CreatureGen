@@ -20,7 +20,7 @@ namespace CreatureGen.Selectors.Collections
         public IEnumerable<TypeAndAmountSelection> Select(string tableName, string name)
         {
             var collection = collectionSelector.SelectFrom(tableName, name);
-            var typesAndAmounts = collection.Select(e => Parse(e));
+            var typesAndAmounts = collection.Select(e => Parse(e)).ToArray(); //INFO: We want to execute this immediately, so random rolls are not re-iterated and re-rolled
 
             return typesAndAmounts;
         }

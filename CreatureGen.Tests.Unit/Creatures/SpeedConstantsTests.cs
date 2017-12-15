@@ -9,7 +9,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(SpeedConstants.Fly, "Fly")]
         [TestCase(SpeedConstants.Burrow, "Burrow")]
         [TestCase(SpeedConstants.Climb, "Climb")]
-        [TestCase(SpeedConstants.Land, "Walk")]
+        [TestCase(SpeedConstants.Land, "Land")]
         [TestCase(SpeedConstants.Swim, "Swim")]
         public void SpeedConstant(string constant, string value)
         {
