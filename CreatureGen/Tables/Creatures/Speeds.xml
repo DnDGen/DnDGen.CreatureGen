@@ -1931,6 +1931,11 @@
     <entry>Land/20</entry>
   </collection>
   <collection>
+    <name>Nymph</name>
+    <entry>Land/30</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
     <name>Ochre Jelly</name>
     <entry>Land/10</entry>
     <entry>Climb/10</entry>
@@ -1964,9 +1969,35 @@
     <entry>Swim/50</entry>
   </collection>
   <collection>
+    <name>Otyugh</name>
+    <entry>Land/20</entry>
+  </collection>
+  <collection>
     <name>Owl</name>
     <entry>Land/10</entry>
     <entry>Fly/40</entry>
+  </collection>
+  <collection>
+    <name>Owlbear</name>
+    <entry>Land/30</entry>
+  </collection>
+  <collection>
+    <name>Pegasus</name>
+    <entry>Land/60</entry>
+    <entry>Fly/120</entry>
+  </collection>
+  <collection>
+    <name>Phantom Fungus</name>
+    <entry>Land/20</entry>
+  </collection>
+  <collection>
+    <name>Phase Spider</name>
+    <entry>Land/40</entry>
+    <entry>Climb/20</entry>
+  </collection>
+  <collection>
+    <name>Phasm</name>
+    <entry>Land/30</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
@@ -1989,8 +2020,23 @@
     <entry>Swim/30</entry>
   </collection>
   <collection>
+    <name>Pony</name>
+    <entry>Land/40</entry>
+  </collection>
+  <collection>
     <name>Porpoise</name>
     <entry>Swim/80</entry>
+  </collection>
+  <collection>
+    <name>Pseudodragon</name>
+    <entry>Land/15</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Purple Worm</name>
+    <entry>Land/20</entry>
+    <entry>Burrow/20</entry>
+    <entry>Swim/10</entry>
   </collection>
   <collection>
     <name>Quasit</name>
@@ -2000,6 +2046,11 @@
   <collection>
     <name>Rakshasa</name>
     <entry>Land/40</entry>
+  </collection>
+  <collection>
+    <name>Rast</name>
+    <entry>Land/5</entry>
+    <entry>Fly/60</entry>
   </collection>
   <collection>
     <name>Rat</name>
@@ -2013,76 +2064,78 @@
     <entry>Climb/15</entry>
   </collection>
   <collection>
+    <name>Raven</name>
+    <entry>Land/10</entry>
+    <entry>Fly/40</entry>
+  </collection>
+  <collection>
+    <name>Ravid</name>
+    <entry>Land/20</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Razor Boar</name>
+    <entry>Land/50</entry>
+  </collection>
+  <collection>
     <name>Red Dragon, Adult</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Red Dragon, Ancient</name>
-    <entry>Land/60</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
+    <entry>Land/40</entry>
+    <entry>Fly/200</entry>
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/200</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Red Dragon, Mature Adult</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Red Dragon, Old</name>
-    <entry>Land/60</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
+    <entry>Land/40</entry>
+    <entry>Fly/200</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Old</name>
-    <entry>Land/60</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
+    <entry>Land/40</entry>
+    <entry>Fly/200</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Young</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/100</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrm</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/200</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrmling</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/100</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young Adult</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Red Slaad</name>

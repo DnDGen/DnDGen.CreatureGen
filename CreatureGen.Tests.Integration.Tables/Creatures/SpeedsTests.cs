@@ -916,7 +916,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Ravid][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Ravid][SpeedConstants.Fly] = 60;
                     testCases[CreatureConstants.RazorBoar][SpeedConstants.Land] = 50;
+                    testCases[CreatureConstants.Remorhaz][SpeedConstants.Land] = 30;
+                    testCases[CreatureConstants.Remorhaz][SpeedConstants.Burrow] = 20;
                     testCases[CreatureConstants.Retriever][SpeedConstants.Land] = 50;
+                    testCases[CreatureConstants.Rhinoceras][SpeedConstants.Land] = 30;
+                    testCases[CreatureConstants.Roc][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.Roc][SpeedConstants.Fly] = 80;
+                    testCases[CreatureConstants.Roper][SpeedConstants.Land] = 10;
                     testCases[CreatureConstants.Sahuagin][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Sahuagin][SpeedConstants.Swim] = 60;
                     testCases[CreatureConstants.Salamander_Average][SpeedConstants.Land] = 20;
