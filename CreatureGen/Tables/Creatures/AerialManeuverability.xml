@@ -2,12 +2,58 @@
 
 <collections>
   <collection>
-    <name></name>
-    <entry></entry>
+    <name>Aasimar</name>
   </collection>
   <collection>
-    <name>Aasimar</name>
-    <entry></entry>
+    <name>Aboleth</name>
+  </collection>
+  <collection>
+    <name>Aboleth Mage</name>
+  </collection>
+  <collection>
+    <name>Achaierai</name>
+  </collection>
+  <collection>
+    <name>Allip</name>
+  </collection>
+  <collection>
+    <name>Androsphinx</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral Deva</name>
+  </collection>
+  <collection>
+    <name>Angel, Planetar</name>
+  </collection>
+  <collection>
+    <name>Angel, Solar</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tiny</name>
+  </collection>
+  <collection>
+    <name>Ankheg</name>
+  </collection>
+  <collection>
+    <name>Annis</name>
   </collection>
   <collection>
     <name>Aquatic Elf</name>
@@ -114,20 +160,8 @@
     <entry></entry>
   </collection>
   <collection>
-    <name>Half-Celestial</name>
-    <entry>Good Maneuverability</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon</name>
-    <entry>Average Maneuverability</entry>
-  </collection>
-  <collection>
     <name>Half-Elf</name>
     <entry></entry>
-  </collection>
-  <collection>
-    <name>Half-Fiend</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Half-Orc</name>
@@ -287,30 +321,6 @@
   </collection>
   <collection>
     <name>Troll</name>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Vampire</name>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Werebear</name>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Wereboar</name>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Wererat</name>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Weretiger</name>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Werewolf</name>
     <entry></entry>
   </collection>
   <collection>

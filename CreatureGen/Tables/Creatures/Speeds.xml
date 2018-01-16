@@ -2115,7 +2115,7 @@
   <collection>
     <name>Red Dragon, Very Young</name>
     <entry>Land/40</entry>
-    <entry>Fly/100</entry>
+    <entry>Fly/150</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrm</name>
@@ -2125,7 +2125,7 @@
   <collection>
     <name>Red Dragon, Wyrmling</name>
     <entry>Land/40</entry>
-    <entry>Fly/100</entry>
+    <entry>Fly/150</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young Adult</name>
@@ -2142,17 +2142,44 @@
     <entry>Land/30</entry>
   </collection>
   <collection>
+    <name>Remorhaz</name>
+    <entry>Land/30</entry>
+    <entry>Burrow/20</entry>
+  </collection>
+  <collection>
     <name>Retriever</name>
     <entry>Land/50</entry>
+  </collection>
+  <collection>
+    <name>Rhinoceras</name>
+    <entry>Land/30</entry>
+  </collection>
+  <collection>
+    <name>Roc</name>
+    <entry>Land/20</entry>
+    <entry>Fly/80</entry>
   </collection>
   <collection>
     <name>Rock Gnome</name>
     <entry>Land/20</entry>
   </collection>
   <collection>
+    <name>Roper</name>
+    <entry>Land/10</entry>
+  </collection>
+  <collection>
+    <name>Rust Monster</name>
+    <entry>Land/40</entry>
+  </collection>
+  <collection>
     <name>Sahuagin</name>
     <entry>Land/30</entry>
     <entry>Swim/60</entry>
+  </collection>
+  <collection>
+    <name>Salt Mephit</name>
+    <entry>Land/30</entry>
+    <entry>Fly/40</entry>
   </collection>
   <collection>
     <name>Satyr</name>
@@ -2172,9 +2199,42 @@
     <entry>Swim/40</entry>
   </collection>
   <collection>
+    <name>Sea Cat</name>
+    <entry>Land/10</entry>
+    <entry>Swim/40</entry>
+  </collection>
+  <collection>
     <name>Sea Hag</name>
     <entry>Land/30</entry>
     <entry>Swim/40</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Cryohydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Hydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Pyrohydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Shadow</name>
+    <entry>Fly/40</entry>
+  </collection>
+  <collection>
+    <name>Shadow Mastiff</name>
+    <entry>Land/50</entry>
+  </collection>
+  <collection>
+    <name>Shambling Mound</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
   </collection>
   <collection>
     <name>Shark, Huge</name>
@@ -2189,81 +2249,113 @@
     <entry>Swim/60</entry>
   </collection>
   <collection>
+    <name>Shield Guardian</name>
+    <entry>Land/30</entry>
+  </collection>
+  <collection>
+    <name>Shocker Lizard</name>
+    <entry>Land/40</entry>
+    <entry>Climb/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Shrieker</name>
+    <entry>Land/0</entry>
+  </collection>
+  <collection>
     <name>Silver Dragon, Adult</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Ancient</name>
-    <entry>Land/60</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
+    <entry>Land/40</entry>
+    <entry>Fly/200</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Great Wyrm</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/200</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Mature Adult</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Old</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Old</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Young</name>
-    <entry>Land/60</entry>
-    <entry>Fly/100</entry>
-    <entry>Swim/60</entry>
+    <entry>Land/40</entry>
+    <entry>Fly/150</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrm</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/200</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrmling</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/100</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young Adult</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young</name>
-    <entry>Land/60</entry>
+    <entry>Land/40</entry>
     <entry>Fly/150</entry>
-    <entry>Swim/60</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Cryohydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Hydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Pyrohydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
   </collection>
   <collection>
     <name>Skum</name>
     <entry>Land/20</entry>
     <entry>Swim/40</entry>
+  </collection>
+  <collection>
+    <name>Spectre</name>
+    <entry>Land/40</entry>
+    <entry>Fly/80</entry>
+  </collection>
+  <collection>
+    <name>Spider Eater</name>
+    <entry>Land/30</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Spider Swarm</name>
+    <entry>Land/20</entry>
+    <entry>Climb/20</entry>
   </collection>
   <collection>
     <name>Spirit Naga</name>
@@ -2274,12 +2366,26 @@
     <entry>Swim/60</entry>
   </collection>
   <collection>
+    <name>Steam Mephit</name>
+    <entry>Land/30</entry>
+    <entry>Fly/50</entry>
+  </collection>
+  <collection>
+    <name>Stirge</name>
+    <entry>Land/10</entry>
+    <entry>Fly/40</entry>
+  </collection>
+  <collection>
     <name>Stone Giant</name>
     <entry>Land/40</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
     <entry>Land/40</entry>
+  </collection>
+  <collection>
+    <name>Stone Golem</name>
+    <entry>Land/20</entry>
   </collection>
   <collection>
     <name>Storm Giant</name>
@@ -2300,8 +2406,61 @@
     <entry>Land/20</entry>
   </collection>
   <collection>
+    <name>Tarrasque</name>
+    <entry>Land/20</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Cryohydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Hydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Pyrohydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Tendriculos</name>
+    <entry>Land/20</entry>
+  </collection>
+  <collection>
+    <name>Thoqqua</name>
+    <entry>Land/30</entry>
+    <entry>Burrow/20</entry>
+  </collection>
+  <collection>
     <name>Tiefling</name>
     <entry>Land/30</entry>
+  </collection>
+  <collection>
+    <name>Tiger</name>
+    <entry>Land/40</entry>
+  </collection>
+  <collection>
+    <name>Titan</name>
+    <entry>Land/60</entry>
+  </collection>
+  <collection>
+    <name>Toad</name>
+    <entry>Land/5</entry>
+  </collection>
+  <collection>
+    <name>Treant</name>
+    <entry>Land/30</entry>
+  </collection>
+  <collection>
+    <name>Triceratops</name>
+    <entry>Land/30</entry>
+  </collection>
+  <collection>
+    <name>Triton</name>
+    <entry>Land/5</entry>
+    <entry>Swim/40</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
@@ -2310,6 +2469,56 @@
   <collection>
     <name>Troll</name>
     <entry>Land/30</entry>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber Hulk</name>
+    <entry>Land/20</entry>
+    <entry>Burrow/20</entry>
+  </collection>
+  <collection>
+    <name>Trumpet Archon</name>
+    <entry>Land/40</entry>
+    <entry>Fly/90</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Cryohydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Hydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Pyrohydra</name>
+    <entry>Land/20</entry>
+    <entry>Swim/20</entry>
+  </collection>
+  <collection>
+    <name>Tyrannosaurus</name>
+    <entry>Land/40</entry>
+  </collection>
+  <collection>
+    <name>Umber Hulk</name>
+    <entry>Land/20</entry>
+    <entry>Burrow/20</entry>
+  </collection>
+  <collection>
+    <name>Unicorn</name>
+    <entry>Land/60</entry>
+  </collection>
+  <collection>
+    <name>Vampire Spawn</name>
+    <entry>Land/30</entry>
+  </collection>
+  <collection>
+    <name>Vargouille</name>
+    <entry>Fly/30</entry>
+  </collection>
+  <collection>
+    <name>Violet Fungus</name>
+    <entry>Land/10</entry>
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
@@ -2347,92 +2556,194 @@
     <entry>Fly/50</entry>
   </collection>
   <collection>
+    <name>Warpony</name>
+    <entry>Land/40</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Elder</name>
+    <entry>Land/30</entry>
+    <entry>Swim/120</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Greater</name>
+    <entry>Land/30</entry>
+    <entry>Swim/120</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Huge</name>
+    <entry>Land/30</entry>
+    <entry>Swim/120</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Large</name>
+    <entry>Land/20</entry>
+    <entry>Swim/90</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Medium</name>
+    <entry>Land/20</entry>
+    <entry>Swim/90</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Small</name>
+    <entry>Land/20</entry>
+    <entry>Swim/90</entry>
+  </collection>
+  <collection>
+    <name>Water Mephit</name>
+    <entry>Land/30</entry>
+    <entry>Fly/40</entry>
+    <entry>Swim/30</entry>
+  </collection>
+  <collection>
     <name>Water Naga</name>
     <entry>Land/30</entry>
     <entry>Swim/50</entry>
   </collection>
   <collection>
+    <name>Weasel</name>
+    <entry>Land/20</entry>
+    <entry>Climb/20</entry>
+  </collection>
+  <collection>
     <name>White Dragon, Adult</name>
     <entry>Land/60</entry>
-    <entry>Fly/150</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/200</entry>
     <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>White Dragon, Ancient</name>
     <entry>Land/60</entry>
-    <entry>Fly/150</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/200</entry>
     <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
     <entry>Land/60</entry>
-    <entry>Fly/200</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/250</entry>
     <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>White Dragon, Juvenile</name>
     <entry>Land/60</entry>
-    <entry>Fly/150</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/200</entry>
     <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>White Dragon, Mature Adult</name>
     <entry>Land/60</entry>
-    <entry>Fly/150</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/200</entry>
     <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>White Dragon, Old</name>
     <entry>Land/60</entry>
-    <entry>Fly/150</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/200</entry>
     <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Old</name>
     <entry>Land/60</entry>
-    <entry>Fly/150</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/200</entry>
     <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Young</name>
     <entry>Land/60</entry>
-    <entry>Fly/100</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/150</entry>
     <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrm</name>
     <entry>Land/60</entry>
-    <entry>Fly/200</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/250</entry>
     <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrmling</name>
     <entry>Land/60</entry>
-    <entry>Fly/100</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/150</entry>
     <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>White Dragon, Young Adult</name>
     <entry>Land/60</entry>
-    <entry>Fly/150</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/200</entry>
     <entry>Swim/60</entry>
   </collection>
   <collection>
     <name>White Dragon, Young</name>
     <entry>Land/60</entry>
-    <entry>Fly/150</entry>
+    <entry>Burrow/30</entry>
+    <entry>Fly/200</entry>
     <entry>Swim/60</entry>
+  </collection>
+  <collection>
+    <name>Wight</name>
+    <entry>Land/30</entry>
   </collection>
   <collection>
     <name>Wild Elf</name>
     <entry>Land/30</entry>
   </collection>
   <collection>
+    <name>Will-O'-Wisp</name>
+    <entry>Fly/50</entry>
+  </collection>
+  <collection>
+    <name>Winter Wolf</name>
+    <entry>Land/50</entry>
+  </collection>
+  <collection>
+    <name>Wolf</name>
+    <entry>Land/50</entry>
+  </collection>
+  <collection>
+    <name>Wolverine</name>
+    <entry>Land/30</entry>
+    <entry>Burrow/10</entry>
+    <entry>Climb/10</entry>
+  </collection>
+  <collection>
     <name>Wood Elf</name>
     <entry>Land/30</entry>
   </collection>
   <collection>
+    <name>Worg</name>
+    <entry>Land/50</entry>
+  </collection>
+  <collection>
     <name>Wraith</name>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Wyvern</name>
+    <entry>Land/20</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Xill</name>
+    <entry>Land/40</entry>
+  </collection>
+  <collection>
+    <name>Yeth Hound</name>
+    <entry>Land/40</entry>
+    <entry>Fly/60</entry>
+  </collection>
+  <collection>
+    <name>Yrthak</name>
+    <entry>Land/20</entry>
     <entry>Fly/60</entry>
   </collection>
   <collection>
@@ -2447,5 +2758,10 @@
   <collection>
     <name>Yuan-ti Pureblood</name>
     <entry>Land/30</entry>
+  </collection>
+  <collection>
+    <name>Zelekhut</name>
+    <entry>Land/50</entry>
+    <entry>Fly/60</entry>
   </collection>
 </collections>

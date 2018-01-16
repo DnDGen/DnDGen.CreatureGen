@@ -923,6 +923,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Roc][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Roc][SpeedConstants.Fly] = 80;
                     testCases[CreatureConstants.Roper][SpeedConstants.Land] = 10;
+                    testCases[CreatureConstants.RustMonster][SpeedConstants.Land] = 40;
                     testCases[CreatureConstants.Sahuagin][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Sahuagin][SpeedConstants.Swim] = 60;
                     testCases[CreatureConstants.Salamander_Average][SpeedConstants.Land] = 20;
@@ -938,14 +939,24 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Scorpion_Monstrous_Gargantuan][SpeedConstants.Land] = 50;
                     testCases[CreatureConstants.Scorpion_Monstrous_Colossal][SpeedConstants.Land] = 50;
                     testCases[CreatureConstants.Scorpionfolk][SpeedConstants.Land] = 40;
+                    testCases[CreatureConstants.SeaCat][SpeedConstants.Land] = 10;
+                    testCases[CreatureConstants.SeaCat][SpeedConstants.Swim] = 40;
                     testCases[CreatureConstants.SeaHag][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.SeaHag][SpeedConstants.Swim] = 40;
                     testCases[CreatureConstants.Shadow][SpeedConstants.Fly] = 40;
                     testCases[CreatureConstants.Shadow_Greater][SpeedConstants.Fly] = 40;
+                    testCases[CreatureConstants.ShadowMastiff][SpeedConstants.Land] = 50;
+                    testCases[CreatureConstants.ShamblingMound][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.ShamblingMound][SpeedConstants.Swim] = 20;
                     testCases[CreatureConstants.Shark_Dire][SpeedConstants.Swim] = 60;
                     testCases[CreatureConstants.Shark_Huge][SpeedConstants.Swim] = 60;
                     testCases[CreatureConstants.Shark_Large][SpeedConstants.Swim] = 60;
                     testCases[CreatureConstants.Shark_Medium][SpeedConstants.Swim] = 60;
+                    testCases[CreatureConstants.ShieldGuardian][SpeedConstants.Land] = 30;
+                    testCases[CreatureConstants.ShockerLizard][SpeedConstants.Land] = 40;
+                    testCases[CreatureConstants.ShockerLizard][SpeedConstants.Climb] = 20;
+                    testCases[CreatureConstants.ShockerLizard][SpeedConstants.Swim] = 20;
+                    testCases[CreatureConstants.Shrieker][SpeedConstants.Land] = 0;
                     testCases[CreatureConstants.Skum][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Skum][SpeedConstants.Swim] = 40;
                     testCases[CreatureConstants.Slaad_Blue][SpeedConstants.Land] = 30;
@@ -974,6 +985,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Snake_Viper_Huge][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Snake_Viper_Huge][SpeedConstants.Climb] = 20;
                     testCases[CreatureConstants.Snake_Viper_Huge][SpeedConstants.Swim] = 20;
+                    testCases[CreatureConstants.Spectre][SpeedConstants.Land] = 40;
+                    testCases[CreatureConstants.Spectre][SpeedConstants.Fly] = 80;
                     testCases[CreatureConstants.Spider_Monstrous_Tiny][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Spider_Monstrous_Tiny][SpeedConstants.Climb] = 10;
                     testCases[CreatureConstants.Spider_Monstrous_Small][SpeedConstants.Land] = 30;
@@ -990,21 +1003,34 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Spider_Monstrous_Colossal][SpeedConstants.Climb] = 20;
                     testCases[CreatureConstants.Spider_Swarm][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Spider_Swarm][SpeedConstants.Climb] = 20;
+                    testCases[CreatureConstants.SpiderEater][SpeedConstants.Land] = 30;
+                    testCases[CreatureConstants.SpiderEater][SpeedConstants.Fly] = 60;
                     testCases[CreatureConstants.Squid][SpeedConstants.Swim] = 60;
                     testCases[CreatureConstants.Squid_Giant][SpeedConstants.Swim] = 80;
                     testCases[CreatureConstants.StagBeetle_Giant][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.Stirge][SpeedConstants.Land] = 10;
+                    testCases[CreatureConstants.Stirge][SpeedConstants.Fly] = 40;
                     testCases[CreatureConstants.Succubus][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Succubus][SpeedConstants.Fly] = 50;
+                    testCases[CreatureConstants.Tarrasque][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.Tendriculos][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.Thoqqua][SpeedConstants.Land] = 30;
+                    testCases[CreatureConstants.Thoqqua][SpeedConstants.Burrow] = 20;
                     testCases[CreatureConstants.Tiefling][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Tiger][SpeedConstants.Land] = 40;
                     testCases[CreatureConstants.Tiger_Dire][SpeedConstants.Land] = 40;
+                    testCases[CreatureConstants.Titan][SpeedConstants.Land] = 60;
+                    testCases[CreatureConstants.Toad][SpeedConstants.Land] = 5;
                     testCases[CreatureConstants.Tojanida_Adult][SpeedConstants.Land] = 10;
                     testCases[CreatureConstants.Tojanida_Adult][SpeedConstants.Swim] = 90;
                     testCases[CreatureConstants.Tojanida_Elder][SpeedConstants.Land] = 10;
                     testCases[CreatureConstants.Tojanida_Elder][SpeedConstants.Swim] = 90;
                     testCases[CreatureConstants.Tojanida_Juvenile][SpeedConstants.Land] = 10;
                     testCases[CreatureConstants.Tojanida_Juvenile][SpeedConstants.Swim] = 90;
+                    testCases[CreatureConstants.Treant][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Triceratops][SpeedConstants.Land] = 30;
+                    testCases[CreatureConstants.Triton][SpeedConstants.Land] = 5;
+                    testCases[CreatureConstants.Triton][SpeedConstants.Swim] = 40;
                     testCases[CreatureConstants.Troglodyte][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Troll][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Troll_Scrag][SpeedConstants.Land] = 20;
@@ -1012,8 +1038,15 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.TrumpetArchon][SpeedConstants.Land] = 40;
                     testCases[CreatureConstants.TrumpetArchon][SpeedConstants.Fly] = 90;
                     testCases[CreatureConstants.Tyrannosaurus][SpeedConstants.Land] = 40;
+                    testCases[CreatureConstants.UmberHulk][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.UmberHulk][SpeedConstants.Burrow] = 20;
+                    testCases[CreatureConstants.UmberHulk_TrulyHorrid][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.UmberHulk_TrulyHorrid][SpeedConstants.Burrow] = 20;
                     testCases[CreatureConstants.Unicorn][SpeedConstants.Land] = 60;
                     testCases[CreatureConstants.Unicorn_CelestialCharger][SpeedConstants.Land] = 60;
+                    testCases[CreatureConstants.VampireSpawn][SpeedConstants.Land] = 30;
+                    testCases[CreatureConstants.Vargouille][SpeedConstants.Fly] = 30;
+                    testCases[CreatureConstants.VioletFungus][SpeedConstants.Land] = 10;
                     testCases[CreatureConstants.Vrock][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Vrock][SpeedConstants.Fly] = 50;
                     testCases[CreatureConstants.Wasp_Giant][SpeedConstants.Land] = 20;
@@ -1024,6 +1057,9 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Whale_Baleen][SpeedConstants.Swim] = 40;
                     testCases[CreatureConstants.Whale_Cachalot][SpeedConstants.Swim] = 40;
                     testCases[CreatureConstants.Whale_Orca][SpeedConstants.Swim] = 50;
+                    testCases[CreatureConstants.Wight][SpeedConstants.Land] = 30;
+                    testCases[CreatureConstants.WillOWisp][SpeedConstants.Fly] = 50;
+                    testCases[CreatureConstants.WinterWolf][SpeedConstants.Land] = 50;
                     testCases[CreatureConstants.Wolf][SpeedConstants.Land] = 50;
                     testCases[CreatureConstants.Wolf_Dire][SpeedConstants.Land] = 50;
                     testCases[CreatureConstants.Wolverine][SpeedConstants.Land] = 30;
@@ -1031,14 +1067,22 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Wolverine][SpeedConstants.Climb] = 10;
                     testCases[CreatureConstants.Wolverine_Dire][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Wolverine_Dire][SpeedConstants.Climb] = 10;
+                    testCases[CreatureConstants.Worg][SpeedConstants.Land] = 50;
                     testCases[CreatureConstants.Wraith][SpeedConstants.Fly] = 60;
                     testCases[CreatureConstants.Wraith_Dread][SpeedConstants.Fly] = 60;
+                    testCases[CreatureConstants.Wyvern][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.Wyvern][SpeedConstants.Fly] = 60;
+                    testCases[CreatureConstants.Xill][SpeedConstants.Land] = 40;
                     testCases[CreatureConstants.Xorn_Average][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Xorn_Average][SpeedConstants.Burrow] = 20;
                     testCases[CreatureConstants.Xorn_Elder][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Xorn_Elder][SpeedConstants.Burrow] = 20;
                     testCases[CreatureConstants.Xorn_Minor][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Xorn_Minor][SpeedConstants.Burrow] = 20;
+                    testCases[CreatureConstants.YethHound][SpeedConstants.Land] = 40;
+                    testCases[CreatureConstants.YethHound][SpeedConstants.Fly] = 60;
+                    testCases[CreatureConstants.Yrthak][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.Yrthak][SpeedConstants.Fly] = 60;
                     testCases[CreatureConstants.YuanTi_Abomination][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.YuanTi_Abomination][SpeedConstants.Swim] = 20;
                     testCases[CreatureConstants.YuanTi_Halfblood][SpeedConstants.Land] = 30;
@@ -1066,6 +1110,20 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             {
                 var speeds = GetCollection(creature);
                 Assert.That(speeds, Is.Not.Empty, creature);
+            }
+        }
+
+        [Test]
+        public void AllCreaturesHaveNonNegativeSpeedsAsMultiplesOf5()
+        {
+            var creatures = CreatureConstants.All();
+            AssertCollection(table.Keys, creatures);
+
+            foreach (var creature in creatures)
+            {
+                var speeds = TypesAndAmountsSelector.Select(tableName, creature);
+                Assert.That(speeds.Select(s => s.Amount), Is.All.Not.Negative, creature);
+                Assert.That(speeds.Select(s => s.Amount % 5), Is.All.EqualTo(0), creature);
             }
         }
 
@@ -1101,42 +1159,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
 
                 Assert.That(aquaticSpeed, Is.Not.Null, creature);
                 Assert.That(aquaticSpeed.Type, Is.EqualTo(SpeedConstants.Swim), creature);
-                Assert.That(aquaticSpeed.Amount, Is.Positive, creature);
-            }
-        }
-
-        [Test]
-        public void AllAirCreaturesHaveFlySpeeds()
-        {
-            var aquaticCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Air);
-
-            AssertCollection(aquaticCreatures.Intersect(table.Keys), aquaticCreatures);
-
-            foreach (var creature in aquaticCreatures)
-            {
-                var speeds = TypesAndAmountsSelector.Select(tableName, creature);
-                var aquaticSpeed = speeds.FirstOrDefault(s => s.Type == SpeedConstants.Fly);
-
-                Assert.That(aquaticSpeed, Is.Not.Null, creature);
-                Assert.That(aquaticSpeed.Type, Is.EqualTo(SpeedConstants.Fly), creature);
-                Assert.That(aquaticSpeed.Amount, Is.Positive, creature);
-            }
-        }
-
-        [Test]
-        public void AllEarthCreaturesHaveBurrowSpeeds()
-        {
-            var aquaticCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Earth);
-
-            AssertCollection(aquaticCreatures.Intersect(table.Keys), aquaticCreatures);
-
-            foreach (var creature in aquaticCreatures)
-            {
-                var speeds = TypesAndAmountsSelector.Select(tableName, creature);
-                var aquaticSpeed = speeds.FirstOrDefault(s => s.Type == SpeedConstants.Burrow);
-
-                Assert.That(aquaticSpeed, Is.Not.Null, creature);
-                Assert.That(aquaticSpeed.Type, Is.EqualTo(SpeedConstants.Burrow), creature);
                 Assert.That(aquaticSpeed.Amount, Is.Positive, creature);
             }
         }
