@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Creatures;
 using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
@@ -30,28 +31,48 @@ namespace CreatureGen.Generators.Skills
             this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
-        public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, Dictionary<string, Ability> abilities)
+        public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, CreatureType creatureType, Dictionary<string, Ability> abilities)
         {
             if (hitPoints.HitDiceQuantity == 0)
                 return Enumerable.Empty<Skill>();
 
             var skillNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, creatureName);
+            if (!skillNames.Any())
+                return Enumerable.Empty<Skill>();
+
             var skillSelections = GetSkillSelections(skillNames);
             var skills = InitializeSkills(abilities, skillSelections, hitPoints);
 
-            var points = GetTotalSkillPoints(creatureName, hitPoints.HitDiceQuantity, abilities[AbilityConstants.Intelligence]);
-            var validSkills = GetValidSkills(skillSelections, skills);
+            var points = GetTotalSkillPoints(creatureType, hitPoints.HitDiceQuantity, abilities[AbilityConstants.Intelligence]);
+            var totalRanksAvailable = skills.Count() * (hitPoints.HitDiceQuantity + 3);
 
-            while (points-- > 0 && validSkills.Any())
+            if (points >= totalRanksAvailable)
             {
-                var skillSelection = collectionsSelector.SelectRandomFrom(validSkills);
-                var skill = skills.First(s => skillSelection.IsEqualTo(s));
+                return MaxOutSkills(skills);
+            }
+
+            var skillsWithAvailableRanks = skills.Where(s => !s.RanksMaxedOut).ToList();
+
+            while (points-- > 0)
+            {
+                var skill = collectionsSelector.SelectRandomFrom(skillsWithAvailableRanks);
                 skill.Ranks++;
 
-                validSkills = GetValidSkills(skillSelections, skills);
+                if (skill.RanksMaxedOut)
+                    skillsWithAvailableRanks.Remove(skill);
             }
 
             skills = ApplySkillSynergies(skills);
+
+            return skills;
+        }
+
+        private IEnumerable<Skill> MaxOutSkills(IEnumerable<Skill> skills)
+        {
+            foreach (var skill in skills)
+            {
+                skill.Ranks = skill.RankCap;
+            }
 
             return skills;
         }
@@ -104,42 +125,30 @@ namespace CreatureGen.Generators.Skills
                 if (!abilities.ContainsKey(skillSelection.BaseAbilityName))
                     continue;
 
-                var skill = skills.FirstOrDefault(s => skillSelection.IsEqualTo(s));
+                var skill = new Skill(skillSelection.SkillName, abilities[skillSelection.BaseAbilityName], hitPoints.HitDiceQuantity + 3, skillSelection.Focus);
 
-                if (skill == null)
-                {
-                    skill = new Skill(skillSelection.SkillName, abilities[skillSelection.BaseAbilityName], 3, skillSelection.Focus);
-
-                    var skillsWithArmorCheckPenalties = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, GroupConstants.ArmorCheckPenalty);
-                    skill.HasArmorCheckPenalty = skillsWithArmorCheckPenalties.Contains(skill.Name);
-                    skill.RankCap += hitPoints.HitDiceQuantity;
-
-                    skills.Add(skill);
-                }
-
+                var skillsWithArmorCheckPenalties = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, GroupConstants.ArmorCheckPenalty);
+                skill.HasArmorCheckPenalty = skillsWithArmorCheckPenalties.Contains(skill.Name);
                 //INFO: all creature skills are class skills
                 skill.ClassSkill = true;
+
+                skills.Add(skill);
             }
 
             return skills;
         }
 
-        private int GetTotalSkillPoints(string creatureName, int hitDieQuantity, Ability intelligence)
+        private int GetTotalSkillPoints(CreatureType creatureType, int hitDieQuantity, Ability intelligence)
         {
             if (hitDieQuantity == 0)
                 return 0;
 
-            var points = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.SkillPoints, creatureName);
+            var points = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.SkillPoints, creatureType.Name);
             var perHitDie = Math.Max(1, points + intelligence.Bonus);
             var multiplier = hitDieQuantity + 3;
             var total = perHitDie * multiplier;
 
             return total;
-        }
-
-        private IEnumerable<SkillSelection> GetValidSkills(IEnumerable<SkillSelection> skillSelections, IEnumerable<Skill> skills)
-        {
-            return skillSelections.Where(ss => skills.Any(s => ss.IsEqualTo(s) && !s.RanksMaxedOut));
         }
 
         private IEnumerable<Skill> ApplySkillSynergies(IEnumerable<Skill> skills)

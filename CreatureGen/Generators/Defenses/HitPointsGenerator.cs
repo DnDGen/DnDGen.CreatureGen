@@ -1,10 +1,10 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Creatures;
 using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Tables;
 using RollGen;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,20 +14,21 @@ namespace CreatureGen.Generators.Defenses
     {
         private readonly Dice dice;
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly IAdjustmentsSelector adjustmentSelector;
 
-        public HitPointsGenerator(Dice dice, ITypeAndAmountSelector typeAndAmountSelector)
+        public HitPointsGenerator(Dice dice, ITypeAndAmountSelector typeAndAmountSelector, IAdjustmentsSelector adjustmentSelector)
         {
             this.dice = dice;
             this.typeAndAmountSelector = typeAndAmountSelector;
+            this.adjustmentSelector = adjustmentSelector;
         }
 
-        public HitPoints GenerateFor(string creatureName, Ability constitution)
+        public HitPoints GenerateFor(string creatureName, CreatureType creatureType, Ability constitution)
         {
             var hitPoints = new HitPoints();
 
-            var hitDice = typeAndAmountSelector.SelectOne(TableNameConstants.Set.Collection.HitDice, creatureName);
-            hitPoints.HitDiceQuantity = Convert.ToInt32(hitDice.Type);
-            hitPoints.HitDie = hitDice.Amount;
+            hitPoints.HitDiceQuantity = adjustmentSelector.SelectFrom(TableNameConstants.Set.Collection.HitDice, creatureName);
+            hitPoints.HitDie = adjustmentSelector.SelectFrom(TableNameConstants.Set.Collection.HitDice, creatureType.Name);
             hitPoints.Constitution = constitution;
 
             hitPoints.RollDefault(dice);

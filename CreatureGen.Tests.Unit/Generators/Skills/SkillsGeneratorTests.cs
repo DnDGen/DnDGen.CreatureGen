@@ -1343,6 +1343,12 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
+        public void CreaturesWithoutIntelligenceReceiveNoSkills()
+        {
+            Assert.Fail("Not yet written");
+        }
+
+        [Test]
         public void ApplyFeatThatGrantSkillBonusesToSkills()
         {
             var baseAbility = new Ability("base ability");

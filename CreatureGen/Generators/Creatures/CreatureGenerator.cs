@@ -91,7 +91,7 @@ namespace CreatureGen.Generators.Creatures
             creature.Type = GetCreatureType(creatureName);
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName);
 
-            creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Abilities[AbilityConstants.Constitution]);
+            creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution]);
 
             var advancements = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.Advancements, creatureName);
             if (percentileSelector.SelectFrom(.1) && advancements.Any())
@@ -106,7 +106,7 @@ namespace CreatureGen.Generators.Creatures
                 creature.Size = advancement.Type;
             }
 
-            creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Abilities);
+            creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities);
             creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(creatureName, creature.HitPoints, creature.Size, creature.Abilities, creature.Skills);
             creature.Attacks = attackSelector.Select(creatureName);
             creature.BaseAttackBonus = ComputeBaseAttackBonus(creatureName, creature.HitPoints);

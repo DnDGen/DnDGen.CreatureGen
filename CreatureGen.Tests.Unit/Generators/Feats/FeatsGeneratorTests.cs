@@ -60,6 +60,12 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatSelection>>())).Returns((IEnumerable<FeatSelection> fs) => fs.First());
         }
 
+        [Test]
+        public void CreaturesWithoutIntelligenceReceiveNoFeats()
+        {
+            Assert.Fail("Not yet written");
+        }
+
         [TestCase(1, 1)]
         [TestCase(2, 1)]
         [TestCase(3, 2)]
