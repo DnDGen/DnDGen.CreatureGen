@@ -670,12 +670,6 @@
     <EmbeddedResource Include="Tables\Creatures\Speeds.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\Creatures\ChallengeRatings.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Creatures\LevelAdjustments.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Tables\Creatures\DragonSpecies.xml" />
   </ItemGroup>
   <ItemGroup>

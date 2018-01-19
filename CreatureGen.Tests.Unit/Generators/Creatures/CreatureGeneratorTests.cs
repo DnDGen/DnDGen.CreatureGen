@@ -1147,10 +1147,28 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureLevelAdjustment()
         {
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.LevelAdjustments, "creature")).Returns(1234);
+            creatureData.LevelAdjustment = 1234;
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.LevelAdjustment, Is.EqualTo(1234));
+        }
+
+        [Test]
+        public void GenerateNoCreatureLevelAdjustment()
+        {
+            creatureData.LevelAdjustment = null;
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.LevelAdjustment, Is.Null);
+        }
+
+        [Test]
+        public void GenerateCreatureLevelAdjustmentOf0()
+        {
+            creatureData.LevelAdjustment = 0;
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.LevelAdjustment, Is.EqualTo(0));
         }
 
         [Test]

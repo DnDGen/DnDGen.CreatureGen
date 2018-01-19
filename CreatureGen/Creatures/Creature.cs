@@ -30,7 +30,7 @@ namespace CreatureGen.Creatures
         public IEnumerable<Feat> Feats { get; set; }
         public string ChallengeRating { get; set; }
         public Alignment Alignment { get; set; }
-        public int LevelAdjustment { get; set; }
+        public int? LevelAdjustment { get; set; }
 
         public IEnumerable<Attack> Attacks { get; set; }
 

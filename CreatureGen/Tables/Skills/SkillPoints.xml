@@ -2,28 +2,16 @@
 
 <collections>
   <collection>
-    <name>Adept</name>
-    <entry>2</entry>
+    <name>Aasimar</name>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Aquatic Elf</name>
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Aristocrat</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
     <name>Azer</name>
     <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Barbarian</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Bard</name>
-    <entry>6</entry>
   </collection>
   <collection>
     <name>Blue Slaad</name>
@@ -38,20 +26,20 @@
     <entry>2</entry>
   </collection>
   <collection>
-    <name>Cleric</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
     <name>Cloud Giant</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Commoner</name>
     <entry>2</entry>
   </collection>
   <collection>
     <name>Death Slaad</name>
     <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Deep Dwarf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Deep Halfling</name>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Derro</name>
@@ -62,20 +50,20 @@
     <entry>2</entry>
   </collection>
   <collection>
-    <name>Druid</name>
-    <entry>4</entry>
+    <name>Drow</name>
+    <entry>0</entry>
   </collection>
   <collection>
-    <name>Expert</name>
-    <entry>6</entry>
-  </collection>
-  <collection>
-    <name>Fighter</name>
-    <entry>2</entry>
+    <name>Duergar</name>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Fire Giant</name>
     <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Forest Gnome</name>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Frost Giant</name>
@@ -102,6 +90,10 @@
     <entry>0</entry>
   </collection>
   <collection>
+    <name>Gray Elf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
     <name>Gray Slaad</name>
     <entry>2</entry>
   </collection>
@@ -114,8 +106,20 @@
     <entry>2</entry>
   </collection>
   <collection>
+    <name>Half-Elf</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Half-Orc</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
     <name>Harpy</name>
     <entry>2</entry>
+  </collection>
+  <collection>
+    <name>High Elf</name>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Hill Giant</name>
@@ -128,6 +132,10 @@
   <collection>
     <name>Hound Archon</name>
     <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Human</name>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Janni</name>
@@ -144,6 +152,10 @@
   <collection>
     <name>Kuo-toa</name>
     <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Lightfoot Halfling</name>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
@@ -166,12 +178,12 @@
     <entry>2</entry>
   </collection>
   <collection>
-    <name>Monk</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
     <name>Minotaur</name>
     <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Mountain Dwarf</name>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Ogre</name>
@@ -186,11 +198,11 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Paladin</name>
+    <name>Pixie</name>
     <entry>2</entry>
   </collection>
   <collection>
-    <name>Pixie</name>
+    <name>Pixie with Irresistable Dance</name>
     <entry>2</entry>
   </collection>
   <collection>
@@ -198,16 +210,12 @@
     <entry>8</entry>
   </collection>
   <collection>
-    <name>Ranger</name>
-    <entry>6</entry>
-  </collection>
-  <collection>
     <name>Red Slaad</name>
     <entry>2</entry>
   </collection>
   <collection>
-    <name>Rogue</name>
-    <entry>8</entry>
+    <name>Rock Gnome</name>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Sahuagin</name>
@@ -215,6 +223,10 @@
   </collection>
   <collection>
     <name>Satyr</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Satyr with pipes</name>
     <entry>6</entry>
   </collection>
   <collection>
@@ -226,16 +238,28 @@
     <entry>2</entry>
   </collection>
   <collection>
-    <name>Sorcerer</name>
+    <name>Stone Giant</name>
     <entry>2</entry>
   </collection>
   <collection>
-    <name>Stone Giant</name>
+    <name>Stone Giant Elder</name>
     <entry>2</entry>
   </collection>
   <collection>
     <name>Storm Giant</name>
     <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Svirfneblin</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Tallfellow Halfling</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
@@ -246,12 +270,12 @@
     <entry>2</entry>
   </collection>
   <collection>
-    <name>Warrior</name>
-    <entry>2</entry>
+    <name>Wild Elf</name>
+    <entry>0</entry>
   </collection>
   <collection>
-    <name>Wizard</name>
-    <entry>2</entry>
+    <name>Wood Elf</name>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Yuan-ti Abomination</name>

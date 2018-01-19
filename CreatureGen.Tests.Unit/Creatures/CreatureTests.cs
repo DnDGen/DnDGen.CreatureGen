@@ -32,7 +32,7 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creature.GrappleBonus, Is.EqualTo(0));
             Assert.That(creature.HitPoints, Is.Not.Null);
             Assert.That(creature.InitiativeBonus, Is.EqualTo(0));
-            Assert.That(creature.LevelAdjustment, Is.EqualTo(0));
+            Assert.That(creature.LevelAdjustment, Is.Null);
             Assert.That(creature.MeleeAttack, Is.Null);
             Assert.That(creature.Name, Is.Empty);
             Assert.That(creature.RangedAttack, Is.Null);

@@ -118,7 +118,7 @@ namespace CreatureGen.Generators.Creatures
             creature.GrappleBonus = ComputeGrappleBonus(creature.Size, creature.BaseAttackBonus, creature.Abilities[AbilityConstants.Strength]);
 
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
-            ComputeAttackBonuses(creature.Attacks, creature.Abilities[AbilityConstants.Strength], creature.Abilities[AbilityConstants.Dexterity], creature.BaseAttackBonus, allFeats);
+            creature.Attacks = ComputeAttackBonuses(creature.Attacks, creature.Abilities[AbilityConstants.Strength], creature.Abilities[AbilityConstants.Dexterity], creature.BaseAttackBonus, allFeats);
 
             creature.InitiativeBonus = ComputeInitiative(creature.Abilities[AbilityConstants.Dexterity], creature.Feats);
 
@@ -144,7 +144,7 @@ namespace CreatureGen.Generators.Creatures
 
             creature.ChallengeRating = creatureData.ChallengeRating;
             creature.Alignment = alignmentGenerator.Generate(creatureName);
-            creature.LevelAdjustment = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.LevelAdjustments, creatureName);
+            creature.LevelAdjustment = creatureData.LevelAdjustment;
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = templateApplicator.ApplyTo(creature);
@@ -152,7 +152,7 @@ namespace CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private void ComputeAttackBonuses(IEnumerable<Attack> attacks, Ability strength, Ability dexterity, int baseAttackBonus, IEnumerable<Feat> feats)
+        private IEnumerable<Attack> ComputeAttackBonuses(IEnumerable<Attack> attacks, Ability strength, Ability dexterity, int baseAttackBonus, IEnumerable<Feat> feats)
         {
             foreach (var attack in attacks)
             {
@@ -167,6 +167,8 @@ namespace CreatureGen.Generators.Creatures
                 else if (!attack.IsPrimary)
                     attack.TotalAttackBonus -= 5;
             }
+
+            return attacks;
         }
 
         private int ComputeGrappleBonus(string size, int baseAttackBonus, Ability strength)
