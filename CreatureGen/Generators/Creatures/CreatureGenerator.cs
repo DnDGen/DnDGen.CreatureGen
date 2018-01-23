@@ -81,7 +81,7 @@ namespace CreatureGen.Generators.Creatures
         {
             var compatible = creatureVerifier.VerifyCompatibility(creatureName, template);
             if (!compatible)
-                throw new IncompatibleCreatureAndTemplateException();
+                throw new IncompatibleCreatureAndTemplateException(creatureName, template);
 
             var creature = new Creature();
             creature.Name = creatureName;
@@ -109,7 +109,7 @@ namespace CreatureGen.Generators.Creatures
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities);
             creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(creatureName, creature.HitPoints, creature.Size, creature.Abilities, creature.Skills);
             creature.Attacks = attackSelector.Select(creatureName);
-            creature.BaseAttackBonus = ComputeBaseAttackBonus(creatureName, creature.HitPoints);
+            creature.BaseAttackBonus = ComputeBaseAttackBonus(creature.Type, creature.HitPoints);
             creature.Feats = featsGenerator.GenerateFeats(creature.HitPoints, creature.BaseAttackBonus, creature.Abilities, creature.Skills, creature.Attacks, creature.SpecialQualities);
 
             creature.Skills = skillsGenerator.ApplyBonusesFromFeats(creature.Skills, creature.Feats);
@@ -118,9 +118,9 @@ namespace CreatureGen.Generators.Creatures
             creature.GrappleBonus = ComputeGrappleBonus(creature.Size, creature.BaseAttackBonus, creature.Abilities[AbilityConstants.Strength]);
 
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
-            creature.Attacks = ComputeAttackBonuses(creature.Attacks, creature.Abilities[AbilityConstants.Strength], creature.Abilities[AbilityConstants.Dexterity], creature.BaseAttackBonus, allFeats);
+            creature.Attacks = ComputeAttackBonuses(creature.Attacks, creature.Abilities, creature.BaseAttackBonus, allFeats);
 
-            creature.InitiativeBonus = ComputeInitiative(creature.Abilities[AbilityConstants.Dexterity], creature.Feats);
+            creature.InitiativeBonus = ComputeInitiative(creature.Abilities, creature.Feats);
 
             var speeds = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.Speeds, creatureName);
 
@@ -140,7 +140,7 @@ namespace CreatureGen.Generators.Creatures
             creature.Space.Value = creatureData.Space;
             creature.Reach.Value = creatureData.Reach;
 
-            creature.Saves = savesGenerator.GenerateWith(creatureName, creature.HitPoints, allFeats, creature.Abilities);
+            creature.Saves = savesGenerator.GenerateWith(creature.Type, creature.HitPoints, allFeats, creature.Abilities);
 
             creature.ChallengeRating = creatureData.ChallengeRating;
             creature.Alignment = alignmentGenerator.Generate(creatureName);
@@ -152,15 +152,15 @@ namespace CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private IEnumerable<Attack> ComputeAttackBonuses(IEnumerable<Attack> attacks, Ability strength, Ability dexterity, int baseAttackBonus, IEnumerable<Feat> feats)
+        private IEnumerable<Attack> ComputeAttackBonuses(IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities, int baseAttackBonus, IEnumerable<Feat> feats)
         {
             foreach (var attack in attacks)
             {
                 if (attack.IsSpecial)
                     continue;
 
-                var ability = attack.IsMelee ? strength : dexterity;
-                attack.TotalAttackBonus = ability.Bonus + baseAttackBonus;
+                var ability = GetAbilityForAttack(abilities, attack);
+                attack.TotalAttackBonus = ability.Modifier + baseAttackBonus;
 
                 if (!attack.IsPrimary && attack.IsNatural && feats.Any(f => f.Name == FeatConstants.MultiAttack))
                     attack.TotalAttackBonus -= 2;
@@ -171,25 +171,36 @@ namespace CreatureGen.Generators.Creatures
             return attacks;
         }
 
-        private int ComputeGrappleBonus(string size, int baseAttackBonus, Ability strength)
+        private Ability GetAbilityForAttack(Dictionary<string, Ability> abilities, Attack attack)
         {
-            var sizeModifier = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, size);
-            return baseAttackBonus + strength.Bonus + sizeModifier;
+            if (!attack.IsMelee || !abilities[AbilityConstants.Strength].HasScore)
+                return abilities[AbilityConstants.Dexterity];
+
+            return abilities[AbilityConstants.Strength];
         }
 
-        private int ComputeBaseAttackBonus(string creatureName, HitPoints hitPoints)
+        private int? ComputeGrappleBonus(string size, int baseAttackBonus, Ability strength)
+        {
+            if (!strength.HasScore)
+                return null;
+
+            var sizeModifier = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, size);
+            return baseAttackBonus + strength.Modifier + sizeModifier;
+        }
+
+        private int ComputeBaseAttackBonus(CreatureType creatureType, HitPoints hitPoints)
         {
             if (hitPoints.HitDiceQuantity == 0)
                 return 0;
 
-            var baseAttackQuality = collectionsSelector.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, creatureName, GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
+            var baseAttackQuality = collectionsSelector.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, creatureType.Name, GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
 
             switch (baseAttackQuality)
             {
                 case GroupConstants.GoodBaseAttack: return GetGoodBaseAttackBonus(hitPoints.HitDiceQuantity);
                 case GroupConstants.AverageBaseAttack: return GetAverageBaseAttackBonus(hitPoints.HitDiceQuantity);
                 case GroupConstants.PoorBaseAttack: return GetPoorBaseAttackBonus(hitPoints.HitDiceQuantity);
-                default: throw new ArgumentException($"{creatureName} has no base attack");
+                default: throw new ArgumentException($"{creatureType.Name} has no base attack");
             }
         }
 
@@ -208,9 +219,12 @@ namespace CreatureGen.Generators.Creatures
             return hitDiceQuantity / 2;
         }
 
-        private int ComputeInitiative(Ability ability, IEnumerable<Feat> feats)
+        private int ComputeInitiative(Dictionary<string, Ability> abilities, IEnumerable<Feat> feats)
         {
-            var initiativeBonus = ability.Bonus;
+            var initiativeBonus = abilities[AbilityConstants.Dexterity].Modifier;
+
+            if (!abilities[AbilityConstants.Dexterity].HasScore)
+                initiativeBonus = abilities[AbilityConstants.Intelligence].Modifier;
 
             var improvedInitiative = feats.FirstOrDefault(f => f.Name == FeatConstants.ImprovedInitiative);
             if (improvedInitiative != null)

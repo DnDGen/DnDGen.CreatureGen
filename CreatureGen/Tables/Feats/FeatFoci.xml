@@ -2,11 +2,6 @@
 
 <collections>
   <collection>
-    <name>Combat Style</name>
-    <entry>Two-Weapon Fighting</entry>
-    <entry>Archery</entry>
-  </collection>
-  <collection>
     <name>Exotic Weapon Proficiency</name>
     <entry>Kama</entry>
     <entry>Nunchaku</entry>
@@ -27,41 +22,6 @@
     <entry>Hand crossbow</entry>
     <entry>Heavy repeating crossbow</entry>
     <entry>Light repeating crossbow</entry>
-  </collection>
-  <collection>
-    <name>Favored Enemies</name>
-    <entry>Aberration</entry>
-    <entry>Animal</entry>
-    <entry>Construct</entry>
-    <entry>Dragon</entry>
-    <entry>Elemental</entry>
-    <entry>Fey</entry>
-    <entry>Giant</entry>
-    <entry>Humanoid (aquatic)</entry>
-    <entry>Humanoid (dwarf)</entry>
-    <entry>Humanoid (elf)</entry>
-    <entry>Humanoid (goblinoid)</entry>
-    <entry>Humanoid (gnoll)</entry>
-    <entry>Humanoid (gnome)</entry>
-    <entry>Humanoid (halfling)</entry>
-    <entry>Humanoid (human)</entry>
-    <entry>Humanoid (orc)</entry>
-    <entry>Humanoid (reptilian)</entry>
-    <entry>Magical beast</entry>
-    <entry>Monstrous humanoid</entry>
-    <entry>Ooze</entry>
-    <entry>Outsider (air)</entry>
-    <entry>Outsider (chaotic)</entry>
-    <entry>Outsider (earth)</entry>
-    <entry>Outsider (evil)</entry>
-    <entry>Outsider (fire)</entry>
-    <entry>Outsider (good)</entry>
-    <entry>Outsider (lawful)</entry>
-    <entry>Outsider (native)</entry>
-    <entry>Outsider (water)</entry>
-    <entry>Plant</entry>
-    <entry>Undead</entry>
-    <entry>Vermin</entry>
   </collection>
   <collection>
     <name>Ghost Special Attack</name>
@@ -105,21 +65,6 @@
     <entry>Lance</entry>
     <entry>Ranseur</entry>
     <entry>Scythe</entry>
-  </collection>
-  <collection>
-    <name>Monk Bonus Feat1</name>
-    <entry>Improved Grapple</entry>
-    <entry>Stunning Fist</entry>
-  </collection>
-  <collection>
-    <name>Monk Bonus Feat2</name>
-    <entry>Combat Reflexes</entry>
-    <entry>Deflect Arrows</entry>
-  </collection>
-  <collection>
-    <name>Monk Bonus Feat6</name>
-    <entry>Improved Trip</entry>
-    <entry>Improved Disarm</entry>
   </collection>
   <collection>
     <name>Schools of Magic</name>

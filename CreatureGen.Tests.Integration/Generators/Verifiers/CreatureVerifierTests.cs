@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Verifiers;
+using EventGen;
 using Ninject;
 using NUnit.Framework;
 using System;
@@ -14,12 +15,17 @@ namespace CreatureGen.Tests.Integration.Generators.Verifiers
         public ICreatureVerifier CreatureVerifier { get; set; }
         [Inject]
         public Stopwatch Stopwatch { get; set; }
+        [Inject]
+        public ClientIDManager ClientIdManager { get; set; }
 
         private TimeSpan timeLimit;
 
         [SetUp]
         public void Setup()
         {
+            var clientId = Guid.NewGuid();
+            ClientIdManager.SetClientID(clientId);
+
             Stopwatch.Reset();
             timeLimit = new TimeSpan(TimeSpan.TicksPerSecond);
         }

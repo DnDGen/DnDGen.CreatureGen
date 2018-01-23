@@ -40,9 +40,9 @@ namespace CreatureGen.Tests.Unit.Generators.Abilities
         {
             var abilities = new Dictionary<string, Ability>();
             abilities["ability"] = new Ability("ability");
-            abilities["ability"].BaseValue = 9266;
+            abilities["ability"].BaseScore = 9266;
             abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseValue = 90210;
+            abilities["other ability"].BaseScore = 90210;
 
             mockInnerGenerator.Setup(g => g.GenerateFor("creature name")).Returns(abilities);
 

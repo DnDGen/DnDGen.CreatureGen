@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Creatures;
 using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Tables;
@@ -17,26 +18,21 @@ namespace CreatureGen.Generators.Defenses
             this.collectionsSelector = collectionsSelector;
         }
 
-        public Saves GenerateWith(string creatureName, HitPoints hitPoints, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
+        public Saves GenerateWith(CreatureType creatureType, HitPoints hitPoints, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
         {
             var saves = new Saves();
 
-            if (abilities.ContainsKey(AbilityConstants.Constitution))
-                saves.Constitution = abilities[AbilityConstants.Constitution];
-
-            if (abilities.ContainsKey(AbilityConstants.Dexterity))
-                saves.Dexterity = abilities[AbilityConstants.Dexterity];
-
-            if (abilities.ContainsKey(AbilityConstants.Wisdom))
-                saves.Wisdom = abilities[AbilityConstants.Wisdom];
+            saves.Constitution = abilities[AbilityConstants.Constitution];
+            saves.Dexterity = abilities[AbilityConstants.Dexterity];
+            saves.Wisdom = abilities[AbilityConstants.Wisdom];
 
             saves.FeatFortitudeBonus = GetFeatSavingThrowBonus(feats, SaveConstants.Fortitude);
             saves.FeatReflexBonus = GetFeatSavingThrowBonus(feats, SaveConstants.Reflex);
             saves.FeatWillBonus = GetFeatSavingThrowBonus(feats, SaveConstants.Will);
 
-            saves.RacialFortitudeBonus = GetRacialSavingThrowBonus(creatureName, hitPoints, SaveConstants.Fortitude);
-            saves.RacialReflexBonus = GetRacialSavingThrowBonus(creatureName, hitPoints, SaveConstants.Reflex);
-            saves.RacialWillBonus = GetRacialSavingThrowBonus(creatureName, hitPoints, SaveConstants.Will);
+            saves.RacialFortitudeBonus = GetRacialSavingThrowBonus(creatureType, hitPoints, SaveConstants.Fortitude);
+            saves.RacialReflexBonus = GetRacialSavingThrowBonus(creatureType, hitPoints, SaveConstants.Reflex);
+            saves.RacialWillBonus = GetRacialSavingThrowBonus(creatureType, hitPoints, SaveConstants.Will);
 
             saves.CircumstantialBonus = IsBonusCircumstantial(feats);
 
@@ -65,14 +61,14 @@ namespace CreatureGen.Generators.Defenses
             return focus.StartsWith(save) && focus != save;
         }
 
-        private int GetRacialSavingThrowBonus(string creatureName, HitPoints hitPoints, string saveName)
+        private int GetRacialSavingThrowBonus(CreatureType creatureType, HitPoints hitPoints, string saveName)
         {
             if (hitPoints.HitDiceQuantity == 0)
                 return 0;
 
             var strongSaves = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureGroups, saveName);
 
-            if (strongSaves.Contains(creatureName))
+            if (strongSaves.Contains(creatureType.Name))
                 return hitPoints.HitDiceQuantity / 2 + 2;
 
             return hitPoints.HitDiceQuantity / 3;

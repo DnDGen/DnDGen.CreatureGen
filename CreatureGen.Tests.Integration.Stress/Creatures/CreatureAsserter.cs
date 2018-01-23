@@ -118,7 +118,7 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
             {
                 var stat = statKVP.Value;
                 Assert.That(stat.Name, Is.EqualTo(statKVP.Key), creature.Summary);
-                Assert.That(stat.BaseValue, Is.AtLeast(3), creature.Summary);
+                Assert.That(stat.BaseScore, Is.AtLeast(3), creature.Summary);
             }
         }
 
@@ -211,11 +211,11 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(creature.ArmorClass.FlatFootedBonus, Is.Positive, creature.Summary);
             Assert.That(creature.ArmorClass.TouchBonus, Is.Positive, creature.Summary);
 
-            Assert.That(creature.InitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Bonus));
+            Assert.That(creature.InitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier));
 
-            Assert.That(creature.Saves.Reflex, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Bonus));
-            Assert.That(creature.Saves.Will, Is.AtLeast(creature.Abilities[AbilityConstants.Wisdom].Bonus));
-            Assert.That(creature.Saves.Fortitude, Is.AtLeast(creature.Abilities[AbilityConstants.Constitution].Bonus));
+            Assert.That(creature.Saves.Reflex, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(creature.Saves.Will, Is.AtLeast(creature.Abilities[AbilityConstants.Wisdom].Modifier));
+            Assert.That(creature.Saves.Fortitude, Is.AtLeast(creature.Abilities[AbilityConstants.Constitution].Modifier));
         }
 
         private void AssertAttack(Attack attack)

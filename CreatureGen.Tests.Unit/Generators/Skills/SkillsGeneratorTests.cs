@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Creatures;
 using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Generators.Skills;
@@ -27,10 +28,11 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         private Dictionary<string, Ability> abilities;
         private List<string> creatureSkills;
         private Mock<ISkillSelector> mockSkillSelector;
-        private int creatureSkillPoints;
+        private int creatureTypeSkillPoints;
         private List<string> allSkills;
         private HitPoints hitPoints;
         private List<string> featSkillFoci;
+        private CreatureType creatureType;
 
         [SetUp]
         public void Setup()
@@ -47,8 +49,10 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             creatureSkills = new List<string>();
             hitPoints = new HitPoints();
             featSkillFoci = new List<string>();
+            creatureType = new CreatureType();
 
             hitPoints.HitDiceQuantity = 1;
+            creatureType.Name = "creature type";
 
             featSkillFoci.Add("skill 1");
             featSkillFoci.Add("skill 2");
@@ -59,14 +63,11 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, GroupConstants.Skills)).Returns(featSkillFoci);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, GroupConstants.All)).Returns(allSkills);
 
-            var emptyAdjustments = new Dictionary<string, int>();
-            mockAdjustmentsSelector.Setup(s => s.SelectAllFrom(It.IsAny<string>())).Returns(emptyAdjustments);
-
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.SkillPoints, "creature")).Returns(() => creatureSkillPoints);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.SkillPoints, creatureType.Name)).Returns(() => creatureTypeSkillPoints);
 
             var index = 0;
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> ss) => ss.ElementAt(index++ % ss.Count()));
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<SkillSelection>>())).Returns((IEnumerable<SkillSelection> ss) => ss.ElementAt(index++ % ss.Count()));
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> s) => s.ElementAt(index++ % s.Count()));
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<Skill>>())).Returns((IEnumerable<Skill> s) => s.ElementAt(index++ % s.Count()));
 
             mockSkillSelector.Setup(s => s.SelectFor(It.IsAny<string>())).Returns((string skill) => new SkillSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Intelligence });
 
@@ -76,10 +77,10 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void GetSkills()
         {
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             Assert.That(skills, Is.Not.Empty);
 
             foreach (var skill in skills)
@@ -96,23 +97,23 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         public void GetNoSkills()
         {
             hitPoints.HitDiceQuantity = 0;
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             Assert.That(skills, Is.Empty);
         }
 
         [Test]
         public void SkillHasArmorCheckPenalty()
         {
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
 
             var armorCheckSkills = new[] { "other skill", creatureSkills[0] };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, GroupConstants.ArmorCheckPenalty)).Returns(armorCheckSkills);
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             var skill = skills.First(s => s.Name == creatureSkills[0]);
             Assert.That(skill.HasArmorCheckPenalty, Is.True);
         }
@@ -120,13 +121,13 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void SkillDoesNotHaveArmorCheckPenalty()
         {
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
 
             var armorCheckSkills = new[] { "other skill", "different skill" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, GroupConstants.ArmorCheckPenalty)).Returns(armorCheckSkills);
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             var skill = skills.First(s => s.Name == creatureSkills[0]);
             Assert.That(skill.HasArmorCheckPenalty, Is.False);
         }
@@ -152,7 +153,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             abilities["ability 1"] = new Ability("ability 1");
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("class skill name"));
             Assert.That(skills[0].BaseAbility, Is.EqualTo(abilities["ability 1"]));
@@ -163,7 +164,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         {
             AddCreatureSkills(2);
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
 
             Assert.That(skills.Single(s => s.Name == "creature skill 1").ClassSkill, Is.True);
             Assert.That(skills.Single(s => s.Name == "creature skill 2").ClassSkill, Is.True);
@@ -181,7 +182,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             var skill = skills.Single();
             Assert.That(skill.Name, Is.EqualTo(skillSelection.SkillName));
             Assert.That(skill.Focus, Is.EqualTo(skillSelection.Focus));
@@ -201,7 +202,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, skillSelection.SkillName)).Returns(new[] { "random", "other random" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             var skill = skills.Single();
             Assert.That(skill.Name, Is.EqualTo(skillSelection.SkillName));
             Assert.That(skill.Focus, Is.EqualTo("random"));
@@ -221,7 +222,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, skillSelection.SkillName)).Returns(new[] { "random", "other random", "third random" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo(skillSelection.SkillName));
             Assert.That(skills[0].Focus, Is.EqualTo("random"));
@@ -250,7 +251,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var index = 0;
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> ss) => ss.ElementAt((index++ / 2) % ss.Count()));
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo(skillSelection.SkillName));
             Assert.That(skills[0].Focus, Is.EqualTo("random"));
@@ -276,7 +277,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, skillSelection.SkillName)).Returns(new[] { "random", "other random", "third random" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo(skillSelection.SkillName));
             Assert.That(skills[0].Focus, Is.EqualTo("random"));
@@ -296,11 +297,11 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void AllSkillsMaxedOut()
         {
-            creatureSkillPoints = 3;
+            creatureTypeSkillPoints = 3;
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
 
             Assert.That(skills.Single(s => s.Name == "skill 1").Ranks, Is.EqualTo(hitPoints.HitDiceQuantity + 3));
             Assert.That(skills.Single(s => s.Name == "skill 2").Ranks, Is.EqualTo(hitPoints.HitDiceQuantity + 3));
@@ -312,7 +313,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, "skill 1")).Returns(new[] { "synergy 1", "synergy 2" });
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, "skill 2")).Returns(new[] { "synergy 3" });
 
-            creatureSkillPoints = 3;
+            creatureTypeSkillPoints = 3;
             hitPoints.HitDiceQuantity = 4;
 
             creatureSkills.Add("skill 1");
@@ -321,7 +322,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             creatureSkills.Add("synergy 2");
             creatureSkills.Add("synergy 3");
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Ranks, Is.EqualTo(5));
@@ -354,7 +355,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         {
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, "skill 1")).Returns(new[] { "synergy 1", "synergy 2/focus" });
 
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             hitPoints.HitDiceQuantity = 13;
 
             creatureSkills.Add("skill 1");
@@ -368,7 +369,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectFor("skill 3")).Returns(new SkillSelection { SkillName = "synergy 2", BaseAbilityName = AbilityConstants.Intelligence, Focus = "other focus" });
             mockSkillSelector.Setup(s => s.SelectFor("synergy 2/focus")).Returns(new SkillSelection { SkillName = "synergy 2", BaseAbilityName = AbilityConstants.Intelligence, Focus = "focus" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
@@ -410,7 +411,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void ApplySkillSynergyIfSufficientRanksWithFoci()
         {
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             hitPoints.HitDiceQuantity = 13;
 
             creatureSkills.Add("skill 1");
@@ -424,7 +425,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, "skill 1/focus")).Returns(new[] { "synergy 1", "synergy 2" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.EqualTo("focus"));
@@ -469,14 +470,14 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, "skill 1")).Returns(new[] { "synergy 1", "synergy 2" });
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, "skill 2")).Returns(new[] { "synergy 1" });
 
-            creatureSkillPoints = 4;
+            creatureTypeSkillPoints = 4;
             hitPoints.HitDiceQuantity = 2;
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
             creatureSkills.Add("synergy 1");
             creatureSkills.Add("synergy 2");
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Ranks, Is.EqualTo(5));
@@ -505,14 +506,14 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, "skill 1")).Returns(Enumerable.Empty<string>());
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, "skill 2")).Returns(new[] { "synergy 1" });
 
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             hitPoints.HitDiceQuantity = 2;
 
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
             creatureSkills.Add("synergy 2");
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Ranks, Is.EqualTo(4));
@@ -538,7 +539,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, "skill 1")).Returns(Enumerable.Empty<string>());
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, "skill 2")).Returns(new[] { "synergy 1/focus" });
 
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             hitPoints.HitDiceQuantity = 2;
 
             creatureSkills.Add("skill 1");
@@ -548,7 +549,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectFor("synergy 1/focus")).Returns(new SkillSelection { SkillName = "synergy 1", BaseAbilityName = AbilityConstants.Intelligence, Focus = "focus" });
             mockSkillSelector.Setup(s => s.SelectFor("synergy 1/other focus")).Returns(new SkillSelection { SkillName = "synergy 1", BaseAbilityName = AbilityConstants.Intelligence, Focus = "other focus" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
@@ -576,13 +577,13 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         {
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, "skill 1")).Returns(new[] { "synergy 1" });
 
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             hitPoints.HitDiceQuantity = 1;
 
             creatureSkills.Add("skill 1");
             creatureSkills.Add("synergy 1");
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Ranks, Is.EqualTo(4));
@@ -658,10 +659,10 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         public void SkillPointsDeterminedByHitDice(int hitDiceQuantity, int skillPointsPerDie, int skillPoints)
         {
             hitPoints.HitDiceQuantity = hitDiceQuantity;
-            creatureSkillPoints = skillPointsPerDie;
+            creatureTypeSkillPoints = skillPointsPerDie;
             AddCreatureSkills(hitDiceQuantity + skillPointsPerDie);
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             var totalRanks = skills.Sum(s => s.Ranks);
 
             Assert.That(totalRanks, Is.EqualTo(skillPoints));
@@ -775,11 +776,11 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         public void ApplyIntelligenceBonusToSkillPoints(int hitDie, int intelligence, int skillPoints)
         {
             hitPoints.HitDiceQuantity = hitDie;
-            creatureSkillPoints = 2;
-            abilities[AbilityConstants.Intelligence].BaseValue = intelligence;
+            creatureTypeSkillPoints = 2;
+            abilities[AbilityConstants.Intelligence].BaseScore = intelligence;
             AddCreatureSkills(hitDie + intelligence);
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             var totalRanks = skills.Sum(s => s.Ranks);
 
             Assert.That(totalRanks, Is.EqualTo(skillPoints));
@@ -795,7 +796,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockSkillSelector.Setup(s => s.SelectFor("skill 2")).Returns(() => new SkillSelection { BaseAbilityName = AbilityConstants.Constitution, SkillName = "skill 2" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             var skillNames = skills.Select(s => s.Name);
 
             Assert.That(skillNames, Contains.Item("skill 1"));
@@ -811,7 +812,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockSkillSelector.Setup(s => s.SelectFor("skill 2")).Returns(() => new SkillSelection { BaseAbilityName = AbilityConstants.Constitution, SkillName = "skill 2" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities);
+            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution) { BaseScore = 0 };
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             var skillNames = skills.Select(s => s.Name);
 
             Assert.That(skillNames, Contains.Item("skill 1"));
@@ -822,7 +825,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void DoNotAssignSkillPointsToSkillsThatTheCreatureDoesNotHaveDueToNotHavingTheBaseAbility()
         {
-            creatureSkillPoints = 1;
+            creatureTypeSkillPoints = 1;
             hitPoints.HitDiceQuantity = 2;
 
             creatureSkills.Add("skill 1");
@@ -831,7 +834,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var constitutionSelection = new SkillSelection { BaseAbilityName = AbilityConstants.Constitution, SkillName = "skill 1" };
             mockSkillSelector.Setup(s => s.SelectFor("skill 2")).Returns(constitutionSelection);
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution) { BaseScore = 0 };
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Ranks, Is.EqualTo(5));
@@ -841,7 +846,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void SelectPresetFocusForSkill()
         {
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
@@ -851,7 +856,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "skill with random foci")).Returns(new[] { "random", "other random" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
@@ -867,7 +872,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void SelectRandomFocusForSkill()
         {
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
@@ -877,7 +882,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "skill with random foci")).Returns(new[] { "random", "other random" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
@@ -892,9 +897,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         public void SelectMultipleRandomFociForSkill()
         {
             hitPoints.HitDiceQuantity = 20;
-            creatureSkillPoints = 0;
-            creatureSkillPoints = 2;
-            abilities[AbilityConstants.Intelligence].BaseValue = 10;
+            creatureTypeSkillPoints = 0;
+            creatureTypeSkillPoints = 2;
+            abilities[AbilityConstants.Intelligence].BaseScore = 10;
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
@@ -907,7 +912,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "skill with random foci")).Returns(new[] { "random", "other random" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
@@ -925,9 +930,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         public void DoNotSelectRepeatedRandomFociForSkill()
         {
             hitPoints.HitDiceQuantity = 20;
-            creatureSkillPoints = 0;
-            creatureSkillPoints = 2;
-            abilities[AbilityConstants.Intelligence].BaseValue = 10;
+            creatureTypeSkillPoints = 0;
+            creatureTypeSkillPoints = 2;
+            abilities[AbilityConstants.Intelligence].BaseScore = 10;
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
@@ -940,7 +945,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "skill with random foci")).Returns(new[] { "random", "other random" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
@@ -958,9 +963,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         public void SelectAllRandomFociForSkill()
         {
             hitPoints.HitDiceQuantity = 20;
-            creatureSkillPoints = 0;
-            creatureSkillPoints = 2;
-            abilities[AbilityConstants.Intelligence].BaseValue = 10;
+            creatureTypeSkillPoints = 0;
+            creatureTypeSkillPoints = 2;
+            abilities[AbilityConstants.Intelligence].BaseScore = 10;
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
@@ -970,7 +975,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "skill with random foci")).Returns(new[] { "random", "other random" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
@@ -1022,7 +1027,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "professional skill 3")).Returns(new[] { "random", "other random" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo(SkillConstants.Profession));
             Assert.That(skills[0].Focus, Is.EqualTo("software developer"));
@@ -1086,7 +1091,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "professional skill 3")).Returns(new[] { "random", "other random" });
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, SkillConstants.Profession)).Returns(new[] { "random job", "other random job" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo(SkillConstants.Profession));
             Assert.That(skills[0].Focus, Is.EqualTo("random job"));
@@ -1149,7 +1154,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "professional skill 3")).Returns(new[] { "random", "other random" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo(SkillConstants.Profession));
             Assert.That(skills[0].Focus, Is.EqualTo("software developer"));
@@ -1175,7 +1180,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ProfessionSkillGrantsNoAdditionalcreatureSkills()
+        public void ProfessionSkillGrantsNoAdditionalCreatureSkills()
         {
             AddCreatureSkills(1);
             abilities["stat 1"] = new Ability("stat 1");
@@ -1192,7 +1197,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var professionSkills = Enumerable.Empty<string>();
             //mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.creatureSkills, "software developer")).Returns(professionSkills);
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo(SkillConstants.Profession));
             Assert.That(skills[0].Focus, Is.EqualTo("software developer"));
@@ -1218,7 +1223,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(otherSkillSelection);
 
             var professionSkills = new[] { "profession skill 1", "profession skill 2", "professional skill 3" };
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("other skill"));
             Assert.That(skills[0].Focus, Is.EqualTo("software developer"));
@@ -1231,7 +1236,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void GetSynergyFromProfessionSkill()
         {
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             hitPoints.HitDiceQuantity = 13;
 
             AddCreatureSkills(4);
@@ -1246,7 +1251,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(professionSkillSelection);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, $"{SkillConstants.Profession}/software developer")).Returns(new[] { "synergy 1", "synergy 2" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo(SkillConstants.Profession));
             Assert.That(skills[0].Focus, Is.EqualTo("software developer"));
@@ -1288,7 +1293,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void ApplySynergyToProfessionSkill()
         {
-            creatureSkillPoints = 2;
+            creatureTypeSkillPoints = 2;
             hitPoints.HitDiceQuantity = 13;
 
             AddCreatureSkills(4);
@@ -1303,7 +1308,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(professionSkillSelection);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, creatureSkills[1])).Returns(new[] { "synergy 1", $"{SkillConstants.Profession}/software developer" });
 
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", abilities).ToArray();
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo(SkillConstants.Profession));
             Assert.That(skills[0].Focus, Is.EqualTo("software developer"));
@@ -1345,7 +1350,10 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void CreaturesWithoutIntelligenceReceiveNoSkills()
         {
-            Assert.Fail("Not yet written");
+            abilities[AbilityConstants.Intelligence].BaseScore = 0;
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
+            Assert.That(skills, Is.Empty);
         }
 
         [Test]

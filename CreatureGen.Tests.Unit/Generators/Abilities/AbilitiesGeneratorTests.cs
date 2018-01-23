@@ -33,6 +33,7 @@ namespace CreatureGen.Tests.Unit.Generators.Abilities
             abilitySelections.Add(new TypeAndAmountSelection { Type = "last ability", Amount = -90210 });
 
             mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.AbilityGroups, "creature name")).Returns(abilitySelections);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.AbilityGroups, GroupConstants.All)).Returns(abilitySelections);
 
             var mockPartialDie = new Mock<PartialRoll>();
             mockDice.Setup(d => d.Roll(3)).Returns(mockPartialDie.Object);
@@ -54,21 +55,56 @@ namespace CreatureGen.Tests.Unit.Generators.Abilities
         }
 
         [Test]
-        public void RollBaseValuesForAbilities()
+        public void RollBaseScoresForAbilities()
         {
             var abilities = abilitiesGenerator.GenerateFor("creature name");
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
-            Assert.That(abilities["ability"].BaseValue, Is.EqualTo(42));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.EqualTo(0));
-            Assert.That(abilities["ability"].FullValue, Is.EqualTo(42));
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
             Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
-            Assert.That(abilities["other ability"].BaseValue, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
             Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
-            Assert.That(abilities["other ability"].FullValue, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
             Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
-            Assert.That(abilities["last ability"].BaseValue, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
             Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
-            Assert.That(abilities["last ability"].FullValue, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [Test]
+        public void MissingAbilitiesHaveNoScore()
+        {
+            var allAbilities = new[]
+            {
+                new TypeAndAmountSelection { Type = "ability" },
+                new TypeAndAmountSelection { Type = "other ability" },
+                new TypeAndAmountSelection { Type = "last ability" }
+            };
+
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.AbilityGroups, GroupConstants.All)).Returns(allAbilities);
+
+            abilitySelections.RemoveAt(1);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name");
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.EqualTo(0));
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(0));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(0));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(0));
+            Assert.That(abilities["other ability"].HasScore, Is.False);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(600)); //INFO: 600 instead of 1337 because we never rolled for the ability without a score
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
         }
     }
 }

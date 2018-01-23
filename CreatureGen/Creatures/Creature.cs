@@ -20,7 +20,7 @@ namespace CreatureGen.Creatures
         public Dictionary<string, Measurement> Speeds { get; private set; }
         public ArmorClass ArmorClass { get; set; }
         public int BaseAttackBonus { get; set; }
-        public int GrappleBonus { get; set; }
+        public int? GrappleBonus { get; set; }
         public Measurement Space { get; set; }
         public Measurement Reach { get; set; }
         public IEnumerable<Feat> SpecialQualities { get; set; }

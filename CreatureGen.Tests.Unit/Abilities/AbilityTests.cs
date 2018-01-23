@@ -18,10 +18,10 @@ namespace CreatureGen.Tests.Unit.Abilities
         public void AbilityInitialized()
         {
             Assert.That(ability.Name, Is.EqualTo("ability name"));
-            Assert.That(ability.BaseValue, Is.EqualTo(10));
+            Assert.That(ability.BaseScore, Is.EqualTo(10));
             Assert.That(ability.RacialAdjustment, Is.EqualTo(0));
-            Assert.That(ability.Bonus, Is.EqualTo(0));
-            Assert.That(ability.FullValue, Is.EqualTo(10));
+            Assert.That(ability.Modifier, Is.EqualTo(0));
+            Assert.That(ability.FullScore, Is.EqualTo(10));
         }
 
         [TestCase(1, -5)]
@@ -64,34 +64,70 @@ namespace CreatureGen.Tests.Unit.Abilities
         [TestCase(38, 14)]
         [TestCase(39, 14)]
         [TestCase(40, 15)]
-        public void AbilityBonus(int baseValue, int bonus)
+        [TestCase(41, 15)]
+        [TestCase(42, 16)]
+        [TestCase(43, 16)]
+        [TestCase(44, 17)]
+        [TestCase(45, 17)]
+        public void AbilityModifier(int baseValue, int bonus)
         {
-            ability.BaseValue = baseValue;
-            Assert.That(ability.Bonus, Is.EqualTo(bonus));
+            ability.BaseScore = baseValue;
+            Assert.That(ability.Modifier, Is.EqualTo(bonus));
         }
 
         [Test]
-        public void AddRacialBonus()
+        public void AddRacialAdjustment()
         {
             ability.RacialAdjustment = 9266;
-            Assert.That(ability.FullValue, Is.EqualTo(9276));
-            Assert.That(ability.Bonus, Is.EqualTo(4633));
+            Assert.That(ability.FullScore, Is.EqualTo(9276));
+            Assert.That(ability.Modifier, Is.EqualTo(4633));
         }
 
         [Test]
-        public void AddNegativeRacialBonus()
+        public void AddNegativeRacialAdjustment()
         {
             ability.RacialAdjustment = -6;
-            Assert.That(ability.FullValue, Is.EqualTo(4));
-            Assert.That(ability.Bonus, Is.EqualTo(-3));
+            Assert.That(ability.FullScore, Is.EqualTo(4));
+            Assert.That(ability.Modifier, Is.EqualTo(-3));
         }
 
         [Test]
-        public void AbilityCannotHaveFullValueLessThan1()
+        public void AbilityCannotHaveFullScoreLessThan1()
         {
             ability.RacialAdjustment = -9266;
-            Assert.That(ability.FullValue, Is.EqualTo(1));
-            Assert.That(ability.Bonus, Is.EqualTo(-5));
+            Assert.That(ability.FullScore, Is.EqualTo(1));
+            Assert.That(ability.Modifier, Is.EqualTo(-5));
+        }
+
+        [Test]
+        public void AbilityCanHaveScoreOfZero()
+        {
+            ability.BaseScore = 0;
+            Assert.That(ability.BaseScore, Is.Zero);
+            Assert.That(ability.Modifier, Is.Zero);
+        }
+
+        [Test]
+        public void AbilityHasScore()
+        {
+            ability.BaseScore = 1;
+            Assert.That(ability.HasScore, Is.True);
+        }
+
+        [Test]
+        public void AbilityDoesNotHaveScore()
+        {
+            ability.BaseScore = 0;
+            Assert.That(ability.HasScore, Is.False);
+        }
+
+        [Test]
+        public void AbilityHasFullScoreOfZero()
+        {
+            ability.BaseScore = 0;
+            ability.RacialAdjustment = 9266;
+            Assert.That(ability.BaseScore, Is.Zero);
+            Assert.That(ability.Modifier, Is.Zero);
         }
     }
 }

@@ -137,9 +137,7 @@ namespace CreatureGen.Tests.Unit.Defenses
             hitPoints.HitDiceQuantity = quantity;
             hitPoints.HitDie = die;
             hitPoints.Bonus = bonus;
-
-            if (constitution > 0)
-                hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseValue = constitution };
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = constitution };
 
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo(roll));
         }
@@ -149,8 +147,7 @@ namespace CreatureGen.Tests.Unit.Defenses
         {
             hitPoints.HitDiceQuantity = 9266;
             hitPoints.HitDie = 90210;
-
-            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseValue = 42 };
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 42 };
 
             SetUpRoll(9266, 90210, 600);
 
@@ -163,8 +160,7 @@ namespace CreatureGen.Tests.Unit.Defenses
         {
             hitPoints.HitDiceQuantity = 9266;
             hitPoints.HitDie = 90210;
-
-            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseValue = 42 };
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 42 };
 
             SetUpRoll(9266, 90210, 600);
 
@@ -178,10 +174,11 @@ namespace CreatureGen.Tests.Unit.Defenses
         }
 
         [Test]
-        public void RollTotalWithoutConstitution()
+        public void RollTotalWithoutConstitutionScore()
         {
             hitPoints.HitDiceQuantity = 9266;
             hitPoints.HitDie = 90210;
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 0 };
 
             SetUpRoll(9266, 90210, 600);
 
@@ -205,8 +202,8 @@ namespace CreatureGen.Tests.Unit.Defenses
         {
             hitPoints.HitDiceQuantity = 9266;
             hitPoints.HitDie = 90210;
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 20 };
 
-            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseValue = 20 };
             SetUpRoll(9266, 90210, 42, 600);
 
             hitPoints.Roll(mockDice.Object);
@@ -218,8 +215,8 @@ namespace CreatureGen.Tests.Unit.Defenses
         {
             hitPoints.HitDiceQuantity = 9266;
             hitPoints.HitDie = 90210;
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 1 };
 
-            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseValue = int.MinValue };
             SetUpRoll(9266, 90210, 1, 3, 5);
 
             hitPoints.Roll(mockDice.Object);
@@ -231,8 +228,7 @@ namespace CreatureGen.Tests.Unit.Defenses
         {
             hitPoints.HitDiceQuantity = 9266;
             hitPoints.HitDie = 90210;
-
-            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseValue = 6 };
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 6 };
 
             SetUpRoll(9266, 90210, 1, 2, 4);
 

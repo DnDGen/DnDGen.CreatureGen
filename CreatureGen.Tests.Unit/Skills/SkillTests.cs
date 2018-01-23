@@ -157,7 +157,7 @@ namespace CreatureGen.Tests.Unit.Skills
             skill.ClassSkill = false;
             skill.Bonus = 42;
             skill.ArmorCheckPenalty = -600;
-            baseAbility.BaseValue = 7;
+            baseAbility.BaseScore = 7;
 
             Assert.That(skill.TotalBonus, Is.EqualTo(4073));
         }
@@ -169,7 +169,7 @@ namespace CreatureGen.Tests.Unit.Skills
             skill.ClassSkill = false;
             skill.Bonus = 42;
             skill.ArmorCheckPenalty = -600;
-            baseAbility.BaseValue = 7;
+            baseAbility.BaseScore = 7;
 
             Assert.That(skill.TotalBonus, Is.EqualTo(4072));
         }

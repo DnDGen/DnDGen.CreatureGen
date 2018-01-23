@@ -127,12 +127,26 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
-        public void StatRequirementsNotMet()
+        public void AbilityRequirementsNotMetBecauseScoreNotHighEnough()
         {
             selection.RequiredAbilities["ability"] = 16;
-            abilities["ability"].BaseValue = 15;
+
+            abilities["ability"].BaseScore = 15;
             abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseValue = 157;
+            abilities["other ability"].BaseScore = 157;
+
+            var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks);
+            Assert.That(met, Is.False);
+        }
+
+        [Test]
+        public void AbilityRequirementsNotMetBecauseAbilityHasNoScore()
+        {
+            selection.RequiredAbilities["ability"] = 1;
+
+            abilities["ability"].BaseScore = 0;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseScore = 157;
 
             var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks);
             Assert.That(met, Is.False);
@@ -191,9 +205,9 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
 
             selection.RequiredAbilities["ability"] = 16;
             abilities["ability"] = new Ability("ability");
-            abilities["ability"].BaseValue = 16;
+            abilities["ability"].BaseScore = 16;
             abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseValue = 15;
+            abilities["other ability"].BaseScore = 15;
 
             selection.RequiredSkills = new[]
             {

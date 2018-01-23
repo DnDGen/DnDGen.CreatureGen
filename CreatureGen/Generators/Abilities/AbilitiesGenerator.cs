@@ -3,6 +3,7 @@ using CreatureGen.Selectors.Collections;
 using CreatureGen.Tables;
 using RollGen;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CreatureGen.Generators.Abilities
 {
@@ -20,13 +21,25 @@ namespace CreatureGen.Generators.Abilities
         public Dictionary<string, Ability> GenerateFor(string creatureName)
         {
             var abilitySelections = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.AbilityGroups, creatureName);
+            var allAbilities = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.AbilityGroups, GroupConstants.All);
             var abilities = new Dictionary<string, Ability>();
+
+            foreach (var selection in allAbilities)
+            {
+                abilities[selection.Type] = new Ability(selection.Type);
+            }
 
             foreach (var selection in abilitySelections)
             {
-                abilities[selection.Type] = new Ability(selection.Type);
                 abilities[selection.Type].RacialAdjustment = selection.Amount;
-                abilities[selection.Type].BaseValue = dice.Roll(3).d6().AsSum();
+                abilities[selection.Type].BaseScore = dice.Roll(3).d6().AsSum();
+            }
+
+            var missingAbilities = allAbilities.Select(a => a.Type).Except(abilitySelections.Select(a => a.Type));
+
+            foreach (var abilityName in missingAbilities)
+            {
+                abilities[abilityName].BaseScore = 0;
             }
 
             return abilities;

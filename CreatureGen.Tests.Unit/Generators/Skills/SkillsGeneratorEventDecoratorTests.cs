@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Creatures;
 using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Generators.Skills;
@@ -18,6 +19,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         private Mock<GenEventQueue> mockEventQueue;
         private Dictionary<string, Ability> abilities;
         private HitPoints hitPoints;
+        private CreatureType creatureType;
 
         [SetUp]
         public void Setup()
@@ -28,6 +30,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             abilities = new Dictionary<string, Ability>();
             hitPoints = new HitPoints();
+            creatureType = new CreatureType();
 
             hitPoints.HitDiceQuantity = 9266;
             abilities["ability"] = new Ability("ability");
@@ -42,9 +45,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
                 new Skill("skill 2", abilities["ability"], 90210),
             };
 
-            mockInnerGenerator.Setup(g => g.GenerateFor(hitPoints, "creature", abilities)).Returns(skills);
+            mockInnerGenerator.Setup(g => g.GenerateFor(hitPoints, "creature", creatureType, abilities)).Returns(skills);
 
-            var generatedSkills = decorator.GenerateFor(hitPoints, "creature", abilities);
+            var generatedSkills = decorator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             Assert.That(generatedSkills, Is.EqualTo(skills));
         }
 
@@ -57,9 +60,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
                 new Skill("skill 2", abilities["ability"], 90210),
             };
 
-            mockInnerGenerator.Setup(g => g.GenerateFor(hitPoints, "creature", abilities)).Returns(skills);
+            mockInnerGenerator.Setup(g => g.GenerateFor(hitPoints, "creature", creatureType, abilities)).Returns(skills);
 
-            var generatedSkills = decorator.GenerateFor(hitPoints, "creature", abilities);
+            var generatedSkills = decorator.GenerateFor(hitPoints, "creature", creatureType, abilities);
             Assert.That(generatedSkills, Is.EqualTo(skills));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating skills for creature"), Times.Once);

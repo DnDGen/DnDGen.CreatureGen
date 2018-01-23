@@ -38,7 +38,7 @@ namespace CreatureGen.Defenses
             bonus += featBonus;
 
             if (ability != null)
-                bonus += ability.Bonus;
+                bonus += ability.Modifier;
 
             return bonus;
         }

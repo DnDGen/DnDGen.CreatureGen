@@ -13,13 +13,11 @@ namespace CreatureGen.Generators.Defenses
     internal class HitPointsGenerator : IHitPointsGenerator
     {
         private readonly Dice dice;
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
 
-        public HitPointsGenerator(Dice dice, ITypeAndAmountSelector typeAndAmountSelector, IAdjustmentsSelector adjustmentSelector)
+        public HitPointsGenerator(Dice dice, IAdjustmentsSelector adjustmentSelector)
         {
             this.dice = dice;
-            this.typeAndAmountSelector = typeAndAmountSelector;
             this.adjustmentSelector = adjustmentSelector;
         }
 

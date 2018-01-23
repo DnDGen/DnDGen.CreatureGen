@@ -63,7 +63,7 @@ namespace CreatureGen.Skills
         {
             get
             {
-                var total = EffectiveRanks + Bonus + BaseAbility.Bonus + ArmorCheckPenalty;
+                var total = EffectiveRanks + Bonus + BaseAbility.Modifier + ArmorCheckPenalty;
                 var floor = Math.Floor(total);
 
                 return Convert.ToInt32(floor);

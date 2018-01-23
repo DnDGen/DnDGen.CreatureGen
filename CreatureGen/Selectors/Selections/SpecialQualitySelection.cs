@@ -60,7 +60,7 @@ namespace CreatureGen.Selectors.Selections
                 return true;
 
             foreach (var stat in MinimumAbilities)
-                if (stats[stat.Key].BaseValue >= stat.Value)
+                if (stats[stat.Key].BaseScore >= stat.Value)
                     return true;
 
             return false;

@@ -24,14 +24,14 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creature.Alignment, Is.Not.Null);
             Assert.That(creature.ArmorClass, Is.Not.Null);
             Assert.That(creature.Attacks, Is.Empty);
-            Assert.That(creature.BaseAttackBonus, Is.EqualTo(0));
+            Assert.That(creature.BaseAttackBonus, Is.Zero);
             Assert.That(creature.ChallengeRating, Is.Empty);
             Assert.That(creature.Feats, Is.Empty);
             Assert.That(creature.FullMeleeAttack, Is.Empty);
             Assert.That(creature.FullRangedAttack, Is.Empty);
-            Assert.That(creature.GrappleBonus, Is.EqualTo(0));
+            Assert.That(creature.GrappleBonus, Is.Null);
             Assert.That(creature.HitPoints, Is.Not.Null);
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(0));
+            Assert.That(creature.InitiativeBonus, Is.Zero);
             Assert.That(creature.LevelAdjustment, Is.Null);
             Assert.That(creature.MeleeAttack, Is.Null);
             Assert.That(creature.Name, Is.Empty);

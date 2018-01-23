@@ -21,7 +21,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             feats = new List<Feat>();
 
             abilities["ability"] = new Ability("ability");
-            abilities["ability"].BaseValue = 42;
+            abilities["ability"].BaseScore = 42;
         }
 
         [Test]
@@ -114,7 +114,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             selection.MinimumAbilities["ability 2"] = 600;
 
             abilities["ability 2"] = new Ability("ability 2");
-            abilities["ability 2"].BaseValue = 600;
+            abilities["ability 2"].BaseScore = 600;
 
             var met = selection.RequirementsMet("size", 4, abilities, feats);
             Assert.That(met, Is.True);

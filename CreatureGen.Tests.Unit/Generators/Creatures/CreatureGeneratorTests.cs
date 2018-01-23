@@ -114,6 +114,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
             abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
             abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
+            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
 
             hitPoints.Constitution = abilities[AbilityConstants.Constitution];
             hitPoints.HitDiceQuantity = 9266;
@@ -126,7 +127,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills)).Returns(specialQualities);
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 4633, abilities, skills, attacks, specialQualities)).Returns(feats);
 
-            mockSkillsGenerator.Setup(g => g.GenerateFor(hitPoints, "creature", abilities)).Returns(skills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(hitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities)).Returns(skills);
             mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, It.IsAny<IEnumerable<Feat>>())).Returns(skills);
 
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility("creature", "template")).Returns(true);
@@ -139,14 +140,14 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             mockAbilitiesGenerator.Setup(g => g.GenerateFor("creature")).Returns(abilities);
 
-            mockHitPointsGenerator.Setup(g => g.GenerateFor("creature", abilities[AbilityConstants.Constitution])).Returns(hitPoints);
+            mockHitPointsGenerator.Setup(g => g.GenerateFor("creature", It.IsAny<CreatureType>(), abilities[AbilityConstants.Constitution])).Returns(hitPoints);
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, It.IsAny<IEnumerable<Feat>>())).Returns(hitPoints);
 
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, "creature")).Returns(types);
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.AerialManeuverability, "creature")).Returns(new[] { string.Empty });
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.First());
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<TypeAndAmountSelection>>())).Returns((IEnumerable<TypeAndAmountSelection> c) => c.First());
-            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, "creature",
+            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, types[0],
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack)).Returns(GroupConstants.PoorBaseAttack);
@@ -364,7 +365,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreatureAdvancement();
 
             var advancedSkills = new List<Skill>();
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "creature", abilities)).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities)).Returns(advancedSkills);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Skills, Is.EqualTo(advancedSkills));
@@ -383,7 +384,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreatureAdvancement();
 
             var advancedSkills = new List<Skill>();
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "creature", abilities)).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities)).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>();
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "advanced size", abilities, advancedSkills)).Returns(advancedSpecialQualities);
@@ -468,7 +469,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateCreatureBaseAttackBonus(int hitDiceQuantity, string bonusQuality, int bonus)
         {
             hitPoints.HitDiceQuantity = hitDiceQuantity;
-            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, "creature",
+            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, types[0],
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack)).Returns(bonusQuality);
@@ -548,7 +549,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement(advancedHitDiceQuantity);
 
-            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, "creature",
+            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, types[0],
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack)).Returns(bonusQuality);
@@ -570,7 +571,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreatureAdvancement();
 
             var advancedSkills = new List<Skill>();
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "creature", abilities)).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities)).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>();
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "advanced size", abilities, advancedSkills)).Returns(advancedSpecialQualities);
@@ -598,7 +599,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreatureAdvancement();
 
             var advancedSkills = new List<Skill>();
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "creature", abilities)).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities)).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>();
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "advanced size", abilities, advancedSkills)).Returns(advancedSpecialQualities);
@@ -629,7 +630,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreatureAdvancement();
 
             var advancedSkills = new List<Skill>();
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "creature", abilities)).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities)).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>();
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "advanced size", abilities, advancedSkills)).Returns(advancedSpecialQualities);
@@ -647,7 +648,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureGrappleBonus()
         {
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
             mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -659,7 +660,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
             mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, "advanced size")).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -667,9 +668,29 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
+        public void GenerateCreatureNegativeGrappleBonus()
+        {
+            abilities[AbilityConstants.Strength].BaseScore = 1;
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.GrappleBonus, Is.EqualTo(-5 + 4633 + 2345));
+        }
+
+        [Test]
+        public void NoGrappleBonusIfNoStrengthScore()
+        {
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.GrappleBonus, Is.Null);
+        }
+
+        [Test]
         public void GenerateCreaturePrimaryMeleeAttackBonuses()
         {
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = true });
 
@@ -685,7 +706,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = true });
 
@@ -700,7 +721,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreaturePrimaryRangedAttackBonuses()
         {
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = true });
 
@@ -716,7 +737,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = true });
 
@@ -731,7 +752,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureSecondaryMeleeAttackBonuses()
         {
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false });
 
@@ -747,7 +768,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false });
 
@@ -762,7 +783,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureSecondaryRangedAttackBonuses()
         {
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false });
 
@@ -778,7 +799,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false });
 
@@ -793,7 +814,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureSecondaryNaturalMeleeAttackBonuses()
         {
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
@@ -809,7 +830,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
@@ -824,7 +845,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureSecondaryNaturalRangedAttackBonuses()
         {
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
@@ -840,7 +861,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
@@ -855,7 +876,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureSecondaryNaturalMeleeAttackBonusesWithMultiAttack()
         {
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
@@ -871,7 +892,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
@@ -886,7 +907,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureSecondaryNaturalRangedAttackBonusesWithMultiAttack()
         {
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
@@ -902,7 +923,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
@@ -917,8 +938,8 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureSpecialAttackBonuses()
         {
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = false, IsSpecial = true });
             attacks.Add(new Attack { Name = "attack 2", Damage = "damage 2", IsMelee = false, IsPrimary = false, IsNatural = true, IsSpecial = true });
@@ -944,8 +965,325 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
-            abilities[AbilityConstants.Strength].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 1234;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = false, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 2", Damage = "damage 2", IsMelee = false, IsPrimary = false, IsNatural = true, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 3", Damage = "damage 3", IsMelee = false, IsPrimary = true, IsNatural = false, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 4", Damage = "damage 4", IsMelee = false, IsPrimary = true, IsNatural = true, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 5", Damage = "damage 5", IsMelee = true, IsPrimary = false, IsNatural = false, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 6", Damage = "damage 6", IsMelee = true, IsPrimary = false, IsNatural = true, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 7", Damage = "damage 7", IsMelee = true, IsPrimary = true, IsNatural = false, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 8", Damage = "damage 8", IsMelee = true, IsPrimary = true, IsNatural = true, IsSpecial = true });
+
+            feats.Add(new Feat { Name = "other feat" });
+            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+
+            Assert.That(creature.SpecialAttacks, Is.EquivalentTo(attacks));
+            foreach (var attack in creature.SpecialAttacks)
+                Assert.That(attack.TotalAttackBonus, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void GenerateCreaturePrimaryMeleeAttackBonusesWithNoStrengthScore()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = true });
+
+            feats.Add(new Feat { Name = "other feat" });
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.MeleeAttack, Is.EqualTo(attacks[0]));
+            Assert.That(creature.MeleeAttack.TotalAttackBonus, Is.EqualTo(612 + 4633));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreaturePrimaryMeleeAttackBonusesWithNoStrengthScore()
+        {
+            SetUpCreatureAdvancement();
+
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = true });
+
+            feats.Add(new Feat { Name = "other feat" });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.MeleeAttack, Is.EqualTo(attacks[0]));
+            Assert.That(creature.MeleeAttack.TotalAttackBonus, Is.EqualTo(612 + 668));
+        }
+
+        [Test]
+        public void GenerateCreaturePrimaryRangedAttackBonusesWithNoStrengthScore()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = true });
+
+            feats.Add(new Feat { Name = "other feat" });
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.RangedAttack, Is.EqualTo(attacks[0]));
+            Assert.That(creature.RangedAttack.TotalAttackBonus, Is.EqualTo(612 + 4633));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreaturePrimaryRangedAttackBonusesWithNoStrengthScore()
+        {
+            SetUpCreatureAdvancement();
+
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = true });
+
+            feats.Add(new Feat { Name = "other feat" });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.RangedAttack, Is.EqualTo(attacks[0]));
+            Assert.That(creature.RangedAttack.TotalAttackBonus, Is.EqualTo(612 + 668));
+        }
+
+        [Test]
+        public void GenerateCreatureSecondaryMeleeAttackBonusesWithNoStrengthScore()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false });
+
+            feats.Add(new Feat { Name = "other feat" });
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 4633 - 5));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureSecondaryMeleeAttackBonusesWithNoStrengthScore()
+        {
+            SetUpCreatureAdvancement();
+
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false });
+
+            feats.Add(new Feat { Name = "other feat" });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 668 - 5));
+        }
+
+        [Test]
+        public void GenerateCreatureSecondaryRangedAttackBonusesWithNoStrengthScore()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false });
+
+            feats.Add(new Feat { Name = "other feat" });
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 4633 - 5));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureSecondaryRangedAttackBonusesWithNoStrengthScore()
+        {
+            SetUpCreatureAdvancement();
+
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false });
+
+            feats.Add(new Feat { Name = "other feat" });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 668 - 5));
+        }
+
+        [Test]
+        public void GenerateCreatureSecondaryNaturalMeleeAttackBonusesWithNoStrengthScore()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
+
+            feats.Add(new Feat { Name = "other feat" });
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 4633 - 5));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureSecondaryNaturalMeleeAttackBonusesWithNoStrengthScore()
+        {
+            SetUpCreatureAdvancement();
+
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
+
+            feats.Add(new Feat { Name = "other feat" });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 668 - 5));
+        }
+
+        [Test]
+        public void GenerateCreatureSecondaryNaturalRangedAttackBonusesWithNoStrengthScore()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
+
+            feats.Add(new Feat { Name = "other feat" });
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 4633 - 5));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureSecondaryNaturalRangedAttackBonusesWithNoStrengthScore()
+        {
+            SetUpCreatureAdvancement();
+
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
+
+            feats.Add(new Feat { Name = "other feat" });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 668 - 5));
+        }
+
+        [Test]
+        public void GenerateCreatureSecondaryNaturalMeleeAttackBonusesWithMultiAttackWithNoStrengthScore()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
+
+            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 4633 - 2));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureSecondaryNaturalMeleeAttackBonusesWithMultiAttackWithNoStrengthScore()
+        {
+            SetUpCreatureAdvancement();
+
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
+
+            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 668 - 2));
+        }
+
+        [Test]
+        public void GenerateCreatureSecondaryNaturalRangedAttackBonusesWithMultiAttackWithNoStrengthScore()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
+
+            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 4633 - 2));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureSecondaryNaturalRangedAttackBonusesWithMultiAttackWithNoStrengthScore()
+        {
+            SetUpCreatureAdvancement();
+
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
+
+            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
+            Assert.That(attacks[0].TotalAttackBonus, Is.EqualTo(612 + 668 - 2));
+        }
+
+        [Test]
+        public void GenerateCreatureSpecialAttackBonusesWithNoStrengthScore()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+
+            attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = false, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 2", Damage = "damage 2", IsMelee = false, IsPrimary = false, IsNatural = true, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 3", Damage = "damage 3", IsMelee = false, IsPrimary = true, IsNatural = false, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 4", Damage = "damage 4", IsMelee = false, IsPrimary = true, IsNatural = true, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 5", Damage = "damage 5", IsMelee = true, IsPrimary = false, IsNatural = false, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 6", Damage = "damage 6", IsMelee = true, IsPrimary = false, IsNatural = true, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 7", Damage = "damage 7", IsMelee = true, IsPrimary = true, IsNatural = false, IsSpecial = true });
+            attacks.Add(new Attack { Name = "attack 8", Damage = "damage 8", IsMelee = true, IsPrimary = true, IsNatural = true, IsSpecial = true });
+
+            feats.Add(new Feat { Name = "other feat" });
+            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+
+            var creature = creatureGenerator.Generate("creature", "template");
+
+            Assert.That(creature.SpecialAttacks, Is.EquivalentTo(attacks));
+            foreach (var attack in creature.SpecialAttacks)
+                Assert.That(attack.TotalAttackBonus, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureSpecialAttackBonusesWithNoStrengthScore()
+        {
+            SetUpCreatureAdvancement();
+
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+            abilities[AbilityConstants.Strength].BaseScore = 0;
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = false, IsSpecial = true });
             attacks.Add(new Attack { Name = "attack 2", Damage = "damage 2", IsMelee = false, IsPrimary = false, IsNatural = true, IsSpecial = true });
@@ -970,7 +1308,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureInitiativeBonus()
         {
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
 
@@ -981,7 +1319,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreatureInitiativeBonus()
         {
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
@@ -993,7 +1331,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureInitiativeBonusWithImprovedInitiative()
         {
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.ImprovedInitiative, Power = 4 });
@@ -1005,7 +1343,59 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiative()
         {
-            abilities[AbilityConstants.Dexterity].BaseValue = 1234;
+            abilities[AbilityConstants.Dexterity].BaseScore = 1234;
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+            feats.Add(new Feat { Name = FeatConstants.ImprovedInitiative, Power = 4 });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
+        }
+
+        [Test]
+        public void GenerateCreatureInitiativeBonusWithoutDexterity()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Intelligence].BaseScore = 1234;
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(612));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureInitiativeBonusWithoutDexterity()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Intelligence].BaseScore = 1234;
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(612));
+        }
+
+        [Test]
+        public void GenerateCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Intelligence].BaseScore = 1234;
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+            feats.Add(new Feat { Name = FeatConstants.ImprovedInitiative, Power = 4 });
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.ImprovedInitiative, Power = 4 });
@@ -1104,7 +1494,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateCreatureSaves()
         {
             var saves = new Saves();
-            mockSavesGenerator.Setup(g => g.GenerateWith("creature", hitPoints, feats, abilities)).Returns(saves);
+            mockSavesGenerator.Setup(g => g.GenerateWith(It.IsAny<CreatureType>(), hitPoints, feats, abilities)).Returns(saves);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Saves, Is.EqualTo(saves));
@@ -1118,7 +1508,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668, abilities, skills, attacks, specialQualities)).Returns(feats);
 
             var saves = new Saves();
-            mockSavesGenerator.Setup(g => g.GenerateWith("creature", hitPoints, feats, abilities)).Returns(saves);
+            mockSavesGenerator.Setup(g => g.GenerateWith(It.IsAny<CreatureType>(), hitPoints, feats, abilities)).Returns(saves);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Saves, Is.EqualTo(saves));

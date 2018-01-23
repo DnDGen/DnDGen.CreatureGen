@@ -5,22 +5,36 @@ namespace CreatureGen.Abilities
     public class Ability
     {
         public string Name { get; private set; }
-        public int BaseValue { get; set; }
+        public int BaseScore { get; set; }
         public int RacialAdjustment { get; set; }
 
-        public int FullValue
+        public bool HasScore
         {
             get
             {
-                return Math.Max(BaseValue + RacialAdjustment, 1);
+                return BaseScore > 0;
             }
         }
 
-        public int Bonus
+        public int FullScore
         {
             get
             {
-                var even = FullValue - FullValue % 2;
+                if (!HasScore)
+                    return 0;
+
+                return Math.Max(BaseScore + RacialAdjustment, 1);
+            }
+        }
+
+        public int Modifier
+        {
+            get
+            {
+                if (!HasScore)
+                    return 0;
+
+                var even = FullScore - FullScore % 2;
                 return (even - 10) / 2;
             }
         }
@@ -28,7 +42,7 @@ namespace CreatureGen.Abilities
         public Ability(string name)
         {
             Name = name;
-            BaseValue = 10;
+            BaseScore = 10;
         }
     }
 }

@@ -82,13 +82,16 @@ namespace CreatureGen.Generators.Feats
 
         public IEnumerable<Feat> GenerateFeats(HitPoints hitPoints, int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attacks, IEnumerable<Feat> specialQualities)
         {
-            var numberOfAdditionalFeats = GetAdditionalFeatQuantity(hitPoints);
+            if (!abilities[AbilityConstants.Intelligence].HasScore)
+                return Enumerable.Empty<Feat>();
+
+            var numberOfAdditionalFeats = GetFeatQuantity(hitPoints);
             var feats = GetFeats(numberOfAdditionalFeats, baseAttackBonus, abilities, skills, attacks, specialQualities);
 
             return feats;
         }
 
-        private int GetAdditionalFeatQuantity(HitPoints hitPoints)
+        private int GetFeatQuantity(HitPoints hitPoints)
         {
             return hitPoints.HitDiceQuantity / 3 + 1;
         }
@@ -141,7 +144,7 @@ namespace CreatureGen.Generators.Feats
                     feat.CanBeTakenMultipleTimes = featSelection.CanBeTakenMultipleTimes;
 
                     if (featSelection.Feat == FeatConstants.SpellMastery)
-                        feat.Power = abilities[AbilityConstants.Intelligence].Bonus;
+                        feat.Power = abilities[AbilityConstants.Intelligence].Modifier;
 
                     feats.Add(feat);
                     chosenFeats.Add(feat);
@@ -161,7 +164,7 @@ namespace CreatureGen.Generators.Feats
 
                 var featFociQuantity = 0;
                 if (featSelection.Feat == FeatConstants.SkillMastery)
-                    featFociQuantity = abilities[AbilityConstants.Intelligence].Bonus + featSelection.Power - 1;
+                    featFociQuantity = abilities[AbilityConstants.Intelligence].Modifier + featSelection.Power - 1;
 
                 while (featFociQuantity-- > 0 && preliminaryFocus != FeatConstants.Foci.All && string.IsNullOrEmpty(preliminaryFocus) == false)
                 {

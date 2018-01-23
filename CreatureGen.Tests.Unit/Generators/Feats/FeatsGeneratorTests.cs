@@ -63,7 +63,12 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void CreaturesWithoutIntelligenceReceiveNoFeats()
         {
-            Assert.Fail("Not yet written");
+            abilities[AbilityConstants.Intelligence].BaseScore = 0;
+            hitPoints.HitDiceQuantity = 20;
+            AddFeatSelections(8);
+
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities);
+            Assert.That(feats, Is.Empty);
         }
 
         [TestCase(1, 1)]
@@ -275,13 +280,13 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             hitPoints.HitDiceQuantity = 1;
             AddFeatSelections(1);
             featSelections[0].Feat = FeatConstants.SpellMastery;
-            abilities[AbilityConstants.Intelligence].BaseValue = 14;
+            abilities[AbilityConstants.Intelligence].BaseScore = 14;
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities); ;
             var firstFeat = feats.First();
 
             Assert.That(firstFeat.Name, Is.EqualTo(FeatConstants.SpellMastery));
-            Assert.That(firstFeat.Power, Is.EqualTo(abilities[AbilityConstants.Intelligence].Bonus));
+            Assert.That(firstFeat.Power, Is.EqualTo(abilities[AbilityConstants.Intelligence].Modifier));
             Assert.That(feats.Count(), Is.EqualTo(1));
         }
 
@@ -347,7 +352,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             featSelections[0].Feat = FeatConstants.SkillMastery;
             featSelections[0].Power = 2;
             featSelections[0].FocusType = GroupConstants.Skills;
-            abilities[AbilityConstants.Intelligence].BaseValue = 12;
+            abilities[AbilityConstants.Intelligence].BaseScore = 12;
 
             mockFeatFocusGenerator.SetupSequence(g => g.GenerateFrom(FeatConstants.SkillMastery, GroupConstants.Skills, skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>()))
                 .Returns("skill 1").Returns("skill 2").Returns("skill 3").Returns("skill 4");
@@ -371,7 +376,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             featSelections[0].Feat = FeatConstants.SkillMastery;
             featSelections[0].Power = 1;
             featSelections[0].FocusType = GroupConstants.Skills;
-            abilities[AbilityConstants.Intelligence].BaseValue = 12;
+            abilities[AbilityConstants.Intelligence].BaseScore = 12;
 
             mockFeatFocusGenerator.Setup(g => g.GenerateFrom(FeatConstants.SkillMastery, GroupConstants.Skills, skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>()))
                 .Returns("skill 1");
@@ -516,9 +521,9 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             specialQualitySelections.Add(feat1);
             specialQualitySelections.Add(feat2);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
-            var first = feats.First();
-            var last = feats.Last();
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            var first = specialQualities.First();
+            var last = specialQualities.Last();
 
             Assert.That(first.Name, Is.EqualTo("special quality 1"));
             Assert.That(first.Power, Is.EqualTo(0));
@@ -532,6 +537,27 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         }
 
         [Test]
+        public void CanGetSpecialQualitiesWhenNoIntelligence()
+        {
+            abilities[AbilityConstants.Intelligence].BaseScore = 0;
+
+            var feat1 = new SpecialQualitySelection();
+            feat1.Feat = "special quality 1";
+
+            specialQualitySelections.Add(feat1);
+
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            Assert.That(specialQualities, Is.Not.Empty);
+
+            var specialQuality = specialQualities.Single();
+
+            Assert.That(specialQuality.Name, Is.EqualTo("special quality 1"));
+            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+        }
+
+        [Test]
         public void DoNotGetSpecialQualityThatDoNotMeetRequirements()
         {
             var baseRaceFeat = new SpecialQualitySelection();
@@ -539,8 +565,8 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             baseRaceFeat.MinimumHitDieRequirement = 2;
             specialQualitySelections.Add(baseRaceFeat);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
-            Assert.That(feats, Is.Empty);
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            Assert.That(specialQualities, Is.Empty);
         }
 
         [Test]

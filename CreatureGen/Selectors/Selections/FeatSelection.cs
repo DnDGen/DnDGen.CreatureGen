@@ -32,7 +32,7 @@ namespace CreatureGen.Selectors.Selections
         public bool ImmutableRequirementsMet(int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attack)
         {
             foreach (var requiredAbility in RequiredAbilities)
-                if (!abilities.ContainsKey(requiredAbility.Key) || abilities[requiredAbility.Key].FullValue < requiredAbility.Value)
+                if (abilities[requiredAbility.Key].FullScore < requiredAbility.Value)
                     return false;
 
             if (baseAttackBonus < RequiredBaseAttack)

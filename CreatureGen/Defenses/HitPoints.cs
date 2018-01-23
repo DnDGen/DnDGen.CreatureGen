@@ -24,32 +24,28 @@ namespace CreatureGen.Defenses
                 }
 
                 var roll = $"{HitDiceQuantity}d{HitDie}";
-
-                if (Constitution != null)
-                {
-                    var product = Constitution.Bonus * HitDiceQuantity;
-
-                    if (product > 0)
-                        roll = $"{roll}+{product}";
-                    else if (product < 0)
-                        roll = $"{roll}{product}";
-                }
-
-                if (Bonus > 0)
-                    roll = $"{roll}+{Bonus}";
-                else if (Bonus < 0)
-                    roll = $"{roll}{Bonus}";
+                roll = AppendBonus(roll, Constitution.Modifier * HitDiceQuantity);
+                roll = AppendBonus(roll, Bonus);
 
                 return roll;
             }
         }
 
+        private string AppendBonus(string roll, int bonus)
+        {
+            if (bonus > 0)
+                return $"{roll}+{bonus}";
+
+            if (bonus < 0)
+                return $"{roll}{bonus}";
+
+            return roll;
+        }
+
         public void Roll(Dice dice)
         {
             var rolls = dice.Roll(HitDiceQuantity).d(HitDie).AsIndividualRolls();
-
-            if (Constitution != null)
-                rolls = rolls.Select(r => Math.Max(r + Constitution.Bonus, 1));
+            rolls = rolls.Select(r => Math.Max(r + Constitution.Modifier, 1));
 
             Total = rolls.Sum() + Bonus;
         }

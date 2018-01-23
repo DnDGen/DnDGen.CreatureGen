@@ -18,16 +18,16 @@ namespace CreatureGen.Tests.Unit.Defenses
         [Test]
         public void ArmorClassInitialized()
         {
-            Assert.That(armorClass.FlatFootedBonus, Is.EqualTo(10));
-            Assert.That(armorClass.TotalBonus, Is.EqualTo(10));
-            Assert.That(armorClass.TouchBonus, Is.EqualTo(10));
+            Assert.That(armorClass.FlatFootedBonus, Is.EqualTo(ArmorClass.BaseArmorClass));
+            Assert.That(armorClass.TotalBonus, Is.EqualTo(ArmorClass.BaseArmorClass));
+            Assert.That(armorClass.TouchBonus, Is.EqualTo(ArmorClass.BaseArmorClass));
             Assert.That(armorClass.CircumstantialBonus, Is.False);
             Assert.That(armorClass.Dexterity, Is.Null);
-            Assert.That(armorClass.ArmorBonus, Is.EqualTo(0));
-            Assert.That(armorClass.DeflectionBonus, Is.EqualTo(0));
-            Assert.That(armorClass.NaturalArmorBonus, Is.EqualTo(0));
-            Assert.That(armorClass.ShieldBonus, Is.EqualTo(0));
-            Assert.That(armorClass.SizeModifier, Is.EqualTo(0));
+            Assert.That(armorClass.ArmorBonus, Is.Zero);
+            Assert.That(armorClass.DeflectionBonus, Is.Zero);
+            Assert.That(armorClass.NaturalArmorBonus, Is.Zero);
+            Assert.That(armorClass.ShieldBonus, Is.Zero);
+            Assert.That(armorClass.SizeModifier, Is.Zero);
         }
 
         [Test]
@@ -40,21 +40,29 @@ namespace CreatureGen.Tests.Unit.Defenses
         public void FullArmorClassIsEverything()
         {
             armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
-            armorClass.Dexterity.BaseValue = 9266;
+            armorClass.Dexterity.BaseScore = 9266;
             armorClass.ArmorBonus = 90210;
             armorClass.DeflectionBonus = 42;
             armorClass.NaturalArmorBonus = 1337;
             armorClass.ShieldBonus = 1234;
             armorClass.SizeModifier = 600;
 
-            Assert.That(armorClass.TotalBonus, Is.EqualTo(98061));
+            var total = ArmorClass.BaseArmorClass;
+            total += armorClass.Dexterity.Modifier;
+            total += armorClass.ArmorBonus;
+            total += armorClass.DeflectionBonus;
+            total += armorClass.NaturalArmorBonus;
+            total += armorClass.ShieldBonus;
+            total += armorClass.SizeModifier;
+
+            Assert.That(armorClass.TotalBonus, Is.EqualTo(total));
         }
 
         [Test]
         public void FullArmorClassMustBePositive()
         {
             armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
-            armorClass.Dexterity.BaseValue = -9266;
+            armorClass.Dexterity.BaseScore = -9266;
             armorClass.ArmorBonus = -90210;
             armorClass.DeflectionBonus = -42;
             armorClass.NaturalArmorBonus = -1337;
@@ -68,21 +76,28 @@ namespace CreatureGen.Tests.Unit.Defenses
         public void FlatFootedArmorClassDoesNotIncludeDodgeOrDexterity()
         {
             armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
-            armorClass.Dexterity.BaseValue = 9266;
+            armorClass.Dexterity.BaseScore = 9266;
             armorClass.ArmorBonus = 90210;
             armorClass.DeflectionBonus = 42;
             armorClass.NaturalArmorBonus = 1337;
             armorClass.ShieldBonus = 1234;
             armorClass.SizeModifier = 600;
 
-            Assert.That(armorClass.FlatFootedBonus, Is.EqualTo(93433));
+            var total = ArmorClass.BaseArmorClass;
+            total += armorClass.ArmorBonus;
+            total += armorClass.DeflectionBonus;
+            total += armorClass.NaturalArmorBonus;
+            total += armorClass.ShieldBonus;
+            total += armorClass.SizeModifier;
+
+            Assert.That(armorClass.FlatFootedBonus, Is.EqualTo(total));
         }
 
         [Test]
         public void FlatFootedArmorClassMustBePositive()
         {
             armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
-            armorClass.Dexterity.BaseValue = -9266;
+            armorClass.Dexterity.BaseScore = -9266;
             armorClass.ArmorBonus = -90210;
             armorClass.DeflectionBonus = -42;
             armorClass.NaturalArmorBonus = -1337;
@@ -96,21 +111,128 @@ namespace CreatureGen.Tests.Unit.Defenses
         public void TouchArmorClassDoesNotIncludeArmorOrShieldOrNatural()
         {
             armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
-            armorClass.Dexterity.BaseValue = 9266;
+            armorClass.Dexterity.BaseScore = 9266;
             armorClass.ArmorBonus = 90210;
             armorClass.DeflectionBonus = 42;
             armorClass.NaturalArmorBonus = 1337;
             armorClass.ShieldBonus = 1234;
             armorClass.SizeModifier = 600;
 
-            Assert.That(armorClass.TouchBonus, Is.EqualTo(5280));
+            var total = ArmorClass.BaseArmorClass;
+            total += armorClass.Dexterity.Modifier;
+            total += armorClass.DeflectionBonus;
+            total += armorClass.SizeModifier;
+
+            Assert.That(armorClass.TouchBonus, Is.EqualTo(total));
         }
 
         [Test]
         public void TouchArmorClassMustBePositive()
         {
             armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
-            armorClass.Dexterity.BaseValue = -9266;
+            armorClass.Dexterity.BaseScore = -9266;
+            armorClass.ArmorBonus = -90210;
+            armorClass.DeflectionBonus = -42;
+            armorClass.NaturalArmorBonus = -1337;
+            armorClass.ShieldBonus = -1234;
+            armorClass.SizeModifier = -600;
+
+            Assert.That(armorClass.TouchBonus, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void FullArmorClassIsEverythingWhenDexterityHasNoScore()
+        {
+            armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
+            armorClass.Dexterity.BaseScore = 0;
+            armorClass.ArmorBonus = 90210;
+            armorClass.DeflectionBonus = 42;
+            armorClass.NaturalArmorBonus = 1337;
+            armorClass.ShieldBonus = 1234;
+            armorClass.SizeModifier = 600;
+
+            var total = ArmorClass.BaseArmorClass;
+            total += armorClass.ArmorBonus;
+            total += armorClass.DeflectionBonus;
+            total += armorClass.NaturalArmorBonus;
+            total += armorClass.ShieldBonus;
+            total += armorClass.SizeModifier;
+
+            Assert.That(armorClass.TotalBonus, Is.EqualTo(total));
+        }
+
+        [Test]
+        public void FullArmorClassMustBePositiveWhenDexterityHasNoScore()
+        {
+            armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
+            armorClass.Dexterity.BaseScore = 0;
+            armorClass.ArmorBonus = -90210;
+            armorClass.DeflectionBonus = -42;
+            armorClass.NaturalArmorBonus = -1337;
+            armorClass.ShieldBonus = -1234;
+            armorClass.SizeModifier = -600;
+
+            Assert.That(armorClass.TotalBonus, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void FlatFootedArmorClassDoesNotIncludeDodgeOrDexterityWhenDexterityHasNoScore()
+        {
+            armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
+            armorClass.Dexterity.BaseScore = 0;
+            armorClass.ArmorBonus = 90210;
+            armorClass.DeflectionBonus = 42;
+            armorClass.NaturalArmorBonus = 1337;
+            armorClass.ShieldBonus = 1234;
+            armorClass.SizeModifier = 600;
+
+            var total = ArmorClass.BaseArmorClass;
+            total += armorClass.ArmorBonus;
+            total += armorClass.DeflectionBonus;
+            total += armorClass.NaturalArmorBonus;
+            total += armorClass.ShieldBonus;
+            total += armorClass.SizeModifier;
+
+            Assert.That(armorClass.FlatFootedBonus, Is.EqualTo(total));
+        }
+
+        [Test]
+        public void FlatFootedArmorClassMustBePositiveWhenDexterityHasNoScore()
+        {
+            armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
+            armorClass.Dexterity.BaseScore = 0;
+            armorClass.ArmorBonus = -90210;
+            armorClass.DeflectionBonus = -42;
+            armorClass.NaturalArmorBonus = -1337;
+            armorClass.ShieldBonus = -1234;
+            armorClass.SizeModifier = -600;
+
+            Assert.That(armorClass.FlatFootedBonus, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void TouchArmorClassDoesNotIncludeArmorOrShieldOrNaturalWhenDexterityHasNoScore()
+        {
+            armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
+            armorClass.Dexterity.BaseScore = 0;
+            armorClass.ArmorBonus = 90210;
+            armorClass.DeflectionBonus = 42;
+            armorClass.NaturalArmorBonus = 1337;
+            armorClass.ShieldBonus = 1234;
+            armorClass.SizeModifier = 600;
+
+            var total = ArmorClass.BaseArmorClass;
+            total += armorClass.DeflectionBonus;
+            total += armorClass.SizeModifier;
+
+            Assert.That(armorClass.TouchBonus, Is.EqualTo(total));
+        }
+
+        [Test]
+        public void TouchArmorClassMustBePositiveWhenDexterityHasNoScore()
+        {
+            armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
+            armorClass.Dexterity.BaseScore = 0;
             armorClass.ArmorBonus = -90210;
             armorClass.DeflectionBonus = -42;
             armorClass.NaturalArmorBonus = -1337;

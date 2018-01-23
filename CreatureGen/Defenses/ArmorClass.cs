@@ -36,7 +36,7 @@ namespace CreatureGen.Defenses
                 total += SizeModifier;
 
                 if (Dexterity != null)
-                    total += Dexterity.Bonus;
+                    total += Dexterity.Modifier;
 
                 return total;
             }
@@ -49,7 +49,7 @@ namespace CreatureGen.Defenses
                 var total = UnroundedTotal;
 
                 if (Dexterity != null)
-                    total -= Dexterity.Bonus;
+                    total -= Dexterity.Modifier;
 
                 return Math.Max(total, 1);
             }

@@ -73,14 +73,14 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         [Test]
         public void DexterityBonusApplied()
         {
-            dexterity.BaseValue = 12;
+            dexterity.BaseScore = 12;
             var armorClass = GenerateAndAssertArmorClass(11, touch: 11);
         }
 
         [Test]
         public void NegativeDexterityBonusApplied()
         {
-            dexterity.BaseValue = 9;
+            dexterity.BaseScore = 9;
             var armorClass = GenerateAndAssertArmorClass(9, touch: 9);
         }
 
@@ -167,7 +167,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         [Test]
         public void ArmorClassesAreSummed()
         {
-            dexterity.BaseValue = 12;
+            dexterity.BaseScore = 12;
 
             var feat = new Feat();
             feat.Name = "feat 1";
@@ -194,7 +194,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.NaturalArmorBonus, Is.EqualTo(1));
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(0));
             Assert.That(armorClass.SizeModifier, Is.EqualTo(1));
-            Assert.That(armorClass.Dexterity.Bonus, Is.EqualTo(1));
+            Assert.That(armorClass.Dexterity.Modifier, Is.EqualTo(1));
         }
     }
 }

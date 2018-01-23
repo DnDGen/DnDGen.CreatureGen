@@ -10,14 +10,6 @@
     <entry>Power Attack</entry>
   </collection>
   <collection>
-    <name>Combat ReflexesMonk</name>
-    <entry>Monk Bonus Feat/Combat Reflexes</entry>
-  </collection>
-  <collection>
-    <name>Combat Style Mastery</name>
-    <entry>Improved Combat Style</entry>
-  </collection>
-  <collection>
     <name>Corrupting Gaze</name>
     <entry>Ghost Special Attack/Corrupting Gaze</entry>
   </collection>
@@ -28,10 +20,6 @@
   <collection>
     <name>Deflect Arrows</name>
     <entry>Improved Unarmed Strike</entry>
-  </collection>
-  <collection>
-    <name>Deflect ArrowsMonk</name>
-    <entry>Monk Bonus Feat/Deflect Arrows</entry>
   </collection>
   <collection>
     <name>Diehard</name>
@@ -70,10 +58,6 @@
     <entry>Improved Two-Weapon Fighting</entry>
   </collection>
   <collection>
-    <name>Greater Two-Weapon FightingRanger</name>
-    <entry>Combat Style Mastery/Two-Weapon Fighting</entry>
-  </collection>
-  <collection>
     <name>Greater Weapon Focus</name>
     <entry>Weapon Focus</entry>
   </collection>
@@ -91,10 +75,6 @@
     <entry>Ghost Special Attack/Horrific Appearance</entry>
   </collection>
   <collection>
-    <name>Improved Combat Style</name>
-    <entry>Combat Style</entry>
-  </collection>
-  <collection>
     <name>Improved Bull Rush</name>
     <entry>Power Attack</entry>
   </collection>
@@ -107,10 +87,6 @@
     <entry>Combat Expertise</entry>
   </collection>
   <collection>
-    <name>Improved DisarmMonk</name>
-    <entry>Monk Bonus Feat/Improved Disarm</entry>
-  </collection>
-  <collection>
     <name>Improved Feint</name>
     <entry>Combat Expertise</entry>
   </collection>
@@ -119,20 +95,12 @@
     <entry>Improved Unarmed Strike</entry>
   </collection>
   <collection>
-    <name>Improved GrappleMonk</name>
-    <entry>Monk Bonus Feat/Improved Grapple</entry>
-  </collection>
-  <collection>
     <name>Improved Overrun</name>
     <entry>Power Attack</entry>
   </collection>
   <collection>
     <name>Improved Precise Shot</name>
     <entry>Precise Shot</entry>
-  </collection>
-  <collection>
-    <name>Improved Precise ShotRanger</name>
-    <entry>Combat Style Mastery/Archery</entry>
   </collection>
   <collection>
     <name>Improved Shield Bash</name>
@@ -151,16 +119,8 @@
     <entry>Combat Expertise</entry>
   </collection>
   <collection>
-    <name>Improved TripMonk</name>
-    <entry>Monk Bonus Feat/Improved Trip</entry>
-  </collection>
-  <collection>
     <name>Improved Turning</name>
     <entry>Turn</entry>
-  </collection>
-  <collection>
-    <name>Improved Two-Weapon FightingRanger</name>
-    <entry>Improved Combat Style/Two-Weapon Fighting</entry>
   </collection>
   <collection>
     <name>Malevolence</name>
@@ -169,10 +129,6 @@
   <collection>
     <name>Manyshot</name>
     <entry>Rapid Shot</entry>
-  </collection>
-  <collection>
-    <name>ManyshotRanger</name>
-    <entry>Improved Combat Style/Archery</entry>
   </collection>
   <collection>
     <name>Medium Armor Proficiency</name>
@@ -201,10 +157,6 @@
   <collection>
     <name>Rapid Shot</name>
     <entry>Point Blank Shot</entry>
-  </collection>
-  <collection>
-    <name>Rapid ShotRanger</name>
-    <entry>Combat Style/Archery</entry>
   </collection>
   <collection>
     <name>Ride-By Attack</name>
@@ -236,10 +188,6 @@
     <entry>Improved Unarmed Strike</entry>
   </collection>
   <collection>
-    <name>Stunning FistMonk</name>
-    <entry>Monk Bonus Feat/Stunning Fist</entry>
-  </collection>
-  <collection>
     <name>Telekinesis</name>
     <entry>Ghost Special Attack/Telekinesis</entry>
   </collection>
@@ -254,10 +202,6 @@
   <collection>
     <name>Two-Weapon Defense</name>
     <entry>Two-Weapon Fighting</entry>
-  </collection>
-  <collection>
-    <name>Two-Weapon FightingRanger</name>
-    <entry>Combat Style/Two-Weapon Fighting</entry>
   </collection>
   <collection>
     <name>Weapon Focus</name>
