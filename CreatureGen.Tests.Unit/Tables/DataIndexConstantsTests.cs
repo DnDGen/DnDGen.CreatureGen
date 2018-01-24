@@ -40,5 +40,15 @@ namespace CreatureGen.Tests.Unit.Tables
         {
             Assert.That(constant, Is.EqualTo(value));
         }
+
+        [TestCase(DataIndexConstants.CreatureData.ChallengeRating, 0)]
+        [TestCase(DataIndexConstants.CreatureData.LevelAdjustment, 1)]
+        [TestCase(DataIndexConstants.CreatureData.Reach, 2)]
+        [TestCase(DataIndexConstants.CreatureData.Size, 3)]
+        [TestCase(DataIndexConstants.CreatureData.Space, 4)]
+        public void CreatureDataIndex(int constant, int value)
+        {
+            Assert.That(constant, Is.EqualTo(value));
+        }
     }
 }

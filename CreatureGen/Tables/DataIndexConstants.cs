@@ -33,5 +33,14 @@
             public const int RandomFociQuantity = 2;
             public const int Focus = 3;
         }
+
+        internal static class CreatureData
+        {
+            public const int ChallengeRating = 0;
+            public const int LevelAdjustment = 1;
+            public const int Reach = 2;
+            public const int Size = 3;
+            public const int Space = 4;
+        }
     }
 }

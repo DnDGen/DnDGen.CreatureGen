@@ -25,6 +25,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Set.Collection.AerialManeuverability, "AerialManeuverability")]
         [TestCase(TableNameConstants.Set.Collection.AlignmentGroups, "AlignmentGroups")]
         [TestCase(TableNameConstants.Set.Collection.ArmorClassModifiers, "ArmorClassModifiers")]
+        [TestCase(TableNameConstants.Set.Collection.CreatureData, "CreatureData")]
         [TestCase(TableNameConstants.Set.Collection.CreatureGroups, "CreatureGroups")]
         [TestCase(TableNameConstants.Set.Collection.CreatureTypes, "CreatureTypes")]
         [TestCase(TableNameConstants.Set.Collection.DragonSpecies, "DragonSpecies")]

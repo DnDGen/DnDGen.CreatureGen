@@ -78,6 +78,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Creatures\AerialManeuverabilityTests.cs" />
+    <Compile Include="Creatures\CreatureDataTests.cs" />
     <Compile Include="TypesAndAmountsTests.cs" />
     <Compile Include="CreatureGenAssemblyLoader.cs" />
     <Compile Include="Creatures\CreatureGroups\CreatureGroupsTableTests.cs" />
