@@ -25,9 +25,9 @@ namespace CreatureGen.Selectors.Collections
             if (!string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
                 selection.LevelAdjustment = Convert.ToInt32(data[DataIndexConstants.CreatureData.LevelAdjustment]);
 
-            selection.Reach = Convert.ToInt32(data[DataIndexConstants.CreatureData.Reach]);
+            selection.Reach = Convert.ToDouble(data[DataIndexConstants.CreatureData.Reach]);
             selection.Size = data[DataIndexConstants.CreatureData.Size];
-            selection.Space = Convert.ToInt32(data[DataIndexConstants.CreatureData.Space]);
+            selection.Space = Convert.ToDouble(data[DataIndexConstants.CreatureData.Space]);
 
             return selection;
         }

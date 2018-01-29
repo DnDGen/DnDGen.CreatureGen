@@ -24,15 +24,26 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             AssertCollectionNames(names);
         }
 
-        [TestCase(CreatureConstants.Aasimar, ChallengeRatingConstants.OneHalf, 1, 5, SizeConstants.Medium, 5)]
-        [TestCase(CreatureConstants.Aboleth, ChallengeRatingConstants.Seven, null, 10, SizeConstants.Huge, 15)]
-        [TestCase(CreatureConstants.Aboleth_Mage, ChallengeRatingConstants.Seventeen, null, 10, SizeConstants.Huge, 15)]
-        [TestCase(CreatureConstants.Achaierai, ChallengeRatingConstants.Five, null, 10, SizeConstants.Large, 10)]
-        [TestCase(CreatureConstants.Arrowhawk_Adult, ChallengeRatingConstants.Five, null, 5, SizeConstants.Medium, 5)]
-        [TestCase(CreatureConstants.Arrowhawk_Elder, ChallengeRatingConstants.Eight, null, 5, SizeConstants.Large, 10)]
-        [TestCase(CreatureConstants.Arrowhawk_Juvenile, ChallengeRatingConstants.Three, null, 5, SizeConstants.Small, 5)]
-        [TestCase(CreatureConstants.Tiefling, ChallengeRatingConstants.OneHalf, 1, 5, SizeConstants.Medium, 5)]
-        public void CreatureData(string creature, string challengeRating, int? levelAdjustment, int reach, string size, int space)
+        [TestCase(CreatureConstants.Aasimar, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 1)]
+        [TestCase(CreatureConstants.Aboleth, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Seven, null)]
+        [TestCase(CreatureConstants.Aboleth_Mage, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Seventeen, null)]
+        [TestCase(CreatureConstants.Achaierai, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Five, null)]
+        [TestCase(CreatureConstants.Androsphinx, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Nine, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.Ten, null)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.Seven, null)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Five, null)]
+        [TestCase(CreatureConstants.AnimatedObject_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Three, null)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Two, null)]
+        [TestCase(CreatureConstants.AnimatedObject_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, null)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.OneHalf, null)]
+        [TestCase(CreatureConstants.Arrowhawk_Adult, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Five, null)]
+        [TestCase(CreatureConstants.Arrowhawk_Elder, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Eight, null)]
+        [TestCase(CreatureConstants.Arrowhawk_Juvenile, SizeConstants.Small, 5, 5, ChallengeRatingConstants.Three, null)]
+        [TestCase(CreatureConstants.Criosphinx, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Seven, 3)]
+        [TestCase(CreatureConstants.Gynosphinx, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Eight, 4)]
+        [TestCase(CreatureConstants.Hieracosphinx, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Five, 3)]
+        [TestCase(CreatureConstants.Tiefling, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 1)]
+        public void CreatureData(string creature, string size, double space, double reach, string challengeRating, int? levelAdjustment)
         {
             var collection = new string[5];
             collection[DataIndexConstants.CreatureData.ChallengeRating] = challengeRating;
@@ -45,7 +56,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [Test]
-        public void AllCreaturesHaveCorrectNumberOfEntries()
+        public void AllCreaturesHaveCorrectEntries()
         {
             var sizes = new[]
             {
@@ -57,6 +68,11 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 SizeConstants.Small,
                 SizeConstants.Tiny,
             };
+
+            var wrongEntries = table.Where(kvp => kvp.Value.Count() != 5);
+            var wrongCreatures = wrongEntries.Select(kvp => kvp.Key);
+            var message = $"{wrongCreatures.Count()} of {table.Count} incorrect";
+            Assert.That(wrongCreatures, Is.Empty, message);
 
             foreach (var kvp in table)
             {

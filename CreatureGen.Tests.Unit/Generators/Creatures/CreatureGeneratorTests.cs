@@ -1475,19 +1475,19 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureSpace()
         {
-            creatureData.Space = 1234;
+            creatureData.Space = 12.34;
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.Space.Value, Is.EqualTo(1234));
+            Assert.That(creature.Space.Value, Is.EqualTo(12.34));
         }
 
         [Test]
         public void GenerateCreatureReach()
         {
-            creatureData.Reach = 1234;
+            creatureData.Reach = 12.34;
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.Reach.Value, Is.EqualTo(1234));
+            Assert.That(creature.Reach.Value, Is.EqualTo(12.34));
         }
 
         [Test]

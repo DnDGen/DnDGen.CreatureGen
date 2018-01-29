@@ -4,8 +4,8 @@
     {
         public string Size { get; set; }
         public string ChallengeRating { get; set; }
-        public int Space { get; set; }
-        public int Reach { get; set; }
+        public double Space { get; set; }
+        public double Reach { get; set; }
         public int? LevelAdjustment { get; set; }
 
         public CreatureDataSelection()

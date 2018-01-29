@@ -2,7 +2,7 @@
 {
     public class Measurement
     {
-        public int Value { get; set; }
+        public double Value { get; set; }
         public string Description { get; set; }
 
         public readonly string Unit;
