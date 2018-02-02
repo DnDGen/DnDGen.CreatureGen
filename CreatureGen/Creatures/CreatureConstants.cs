@@ -231,7 +231,6 @@ namespace CreatureGen.Creatures
 
         public const string Aasimar = "Aasimar";
         public const string Aboleth = "Aboleth";
-        public const string Aboleth_Mage = "Aboleth Mage";
         public const string Achaierai = "Achaierai";
         public const string Allip = "Allip";
         public const string Androsphinx = "Androsphinx";
@@ -815,7 +814,6 @@ namespace CreatureGen.Creatures
             {
                 Aasimar,
                 Aboleth,
-                Aboleth_Mage,
                 Achaierai,
                 Allip,
                 Androsphinx,

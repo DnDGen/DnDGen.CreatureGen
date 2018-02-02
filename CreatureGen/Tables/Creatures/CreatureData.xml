@@ -48,35 +48,67 @@
   </collection>
   <collection>
     <name>Androsphinx</name>
-    <entry>Magical Beast</entry>
+    <entry>9</entry>
+    <entry>5</entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Animated Object, Colossal</name>
-    <entry>Construct</entry>
+    <entry>9</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Animated Object, Gargantuan</name>
-    <entry>Construct</entry>
+    <entry>9</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Gargantuan</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Animated Object, Huge</name>
-    <entry>Construct</entry>
+    <entry>9</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Huge</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Animated Object, Large</name>
-    <entry>Construct</entry>
+    <entry>9</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Animated Object, Medium</name>
-    <entry>Construct</entry>
+    <entry>9</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Animated Object, Small</name>
-    <entry>Construct</entry>
+    <entry>9</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Animated Object, Tiny</name>
-    <entry>Construct</entry>
+    <entry>9</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Tiny</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Ankheg</name>
@@ -390,7 +422,11 @@
   </collection>
   <collection>
     <name>Criosphinx</name>
-    <entry>Magical Beast</entry>
+    <entry>7</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Crocodile</name>
@@ -1635,7 +1671,11 @@
   </collection>
   <collection>
     <name>Gynosphinx</name>
-    <entry>Magical Beast</entry>
+    <entry>8</entry>
+    <entry>4</entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Half-Orc</name>
@@ -1689,7 +1729,11 @@
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-    <entry>Magical Beast</entry>
+    <entry>5</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>

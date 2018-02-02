@@ -78,8 +78,6 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
 
         private void VerifySpeeds(Creature creature)
         {
-            Assert.That(creature.Speeds.Keys, Contains.Item(SpeedConstants.Land), creature.Summary);
-
             foreach (var speedKVP in creature.Speeds)
             {
                 VerifySpeed(speedKVP.Value, creature.Summary, speedKVP.Key);
@@ -89,12 +87,9 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
         private void VerifySpeed(Measurement speed, string creatureSummary, string name)
         {
             var message = $"{creatureSummary} {name}";
-            Assert.That(speed.Value, Is.Positive, message);
+            Assert.That(speed.Value, Is.Not.Negative, message);
             Assert.That(speed.Value % 5, Is.EqualTo(0), message);
             Assert.That(speed.Unit, Is.EqualTo("feet per round"), message);
-
-            if (speed.Value >= 10)
-                Assert.That(speed.Value % 10, Is.EqualTo(0), message);
 
             if (name == SpeedConstants.Fly)
                 Assert.That(speed.Description, Is.Not.Empty, message);
@@ -104,21 +99,19 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
 
         private void VerifyAbilities(Creature creature)
         {
-            Assert.That(creature.Abilities.Count, Is.InRange(5, 6), creature.Summary);
             Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Charisma), creature.Summary);
+            Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Constitution), creature.Summary);
             Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Dexterity), creature.Summary);
             Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Intelligence), creature.Summary);
             Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Strength), creature.Summary);
             Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Wisdom), creature.Summary);
-
-            if (creature.Abilities.Count == 6)
-                Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Constitution), creature.Summary);
+            Assert.That(creature.Abilities.Count, Is.EqualTo(6), creature.Summary);
 
             foreach (var statKVP in creature.Abilities)
             {
                 var stat = statKVP.Value;
                 Assert.That(stat.Name, Is.EqualTo(statKVP.Key), creature.Summary);
-                Assert.That(stat.BaseScore, Is.AtLeast(3), creature.Summary);
+                Assert.That(stat.FullScore, Is.Not.Negative, creature.Summary);
             }
         }
 
