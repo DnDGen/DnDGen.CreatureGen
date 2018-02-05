@@ -731,7 +731,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             {
                 //Aberration
                 CreatureConstants.Aboleth,
-                CreatureConstants.Aboleth_Mage,
                 CreatureConstants.Athach,
                 CreatureConstants.Beholder,
                 CreatureConstants.Beholder_Gauth,
@@ -767,7 +766,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Bison,
                 CreatureConstants.Boar,
                 CreatureConstants.Boar_Dire,
-                CreatureConstants.Camel,
+                CreatureConstants.Camel_Bactrian,
+                CreatureConstants.Camel_Dromedary,
                 CreatureConstants.Cat,
                 CreatureConstants.Cheetah,
                 CreatureConstants.Crocodile,

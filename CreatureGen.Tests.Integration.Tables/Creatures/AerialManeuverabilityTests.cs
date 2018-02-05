@@ -44,7 +44,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
 
         [TestCase(CreatureConstants.Aasimar)]
         [TestCase(CreatureConstants.Aboleth)]
-        [TestCase(CreatureConstants.Aboleth_Mage)]
         [TestCase(CreatureConstants.Achaierai)]
         [TestCase(CreatureConstants.Allip, "Perfect Maneuverability")]
         [TestCase(CreatureConstants.Androsphinx, "Poor Maneuverability")]
@@ -109,7 +108,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Bralani, "Perfect Maneuverability")]
         [TestCase(CreatureConstants.Bugbear)]
         [TestCase(CreatureConstants.Bulette)]
-        [TestCase(CreatureConstants.Camel)]
+        [TestCase(CreatureConstants.Camel_Bactrian)]
+        [TestCase(CreatureConstants.Camel_Dromedary)]
         [TestCase(CreatureConstants.CarrionCrawler)]
         [TestCase(CreatureConstants.Cat)]
         [TestCase(CreatureConstants.Centaur)]

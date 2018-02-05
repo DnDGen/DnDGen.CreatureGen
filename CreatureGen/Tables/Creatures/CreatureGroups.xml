@@ -7,7 +7,6 @@
   <collection>
     <name>Aberration</name>
     <entry>Aboleth</entry>
-    <entry>Aboleth Mage</entry>
     <entry>Athach</entry>
     <entry>Beholder</entry>
     <entry>Gauth</entry>
@@ -132,7 +131,6 @@
   <collection>
     <name>Aquatic</name>
     <entry>Aboleth</entry>
-    <entry>Aboleth Mage</entry>
     <entry>Chuul</entry>
     <entry>Dragon Turtle</entry>
     <entry>Aquatic Elf</entry>
@@ -615,7 +613,6 @@
   <collection>
     <name>Fiendish Creature</name>
     <entry>Aboleth</entry>
-    <entry>Aboleth Mage</entry>
     <entry>Animal</entry>
     <entry>Vermin</entry>
     <entry>Athach</entry>
@@ -990,7 +987,6 @@
   <collection>
     <name>Half-Fiend</name>
     <entry>Aboleth</entry>
-    <entry>Aboleth Mage</entry>
     <entry>Animal</entry>
     <entry>Vermin</entry>
     <entry>Athach</entry>
@@ -1129,7 +1125,6 @@
   <collection>
     <name>Has Skeleton</name>
     <entry>Aboleth</entry>
-    <entry>Aboleth Mage</entry>
     <entry>Athach</entry>
     <entry>Beholder</entry>
     <entry>Gauth</entry>

@@ -27,6 +27,8 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
                 SizeConstants.Medium,
                 SizeConstants.Small,
                 SizeConstants.Tiny,
+                SizeConstants.Diminutive,
+                SizeConstants.Fine,
             };
 
             AssertCollectionNames(names);
@@ -39,9 +41,11 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
         [TestCase(SizeConstants.Medium, 0)]
         [TestCase(SizeConstants.Small, 1)]
         [TestCase(SizeConstants.Tiny, 2)]
-        public void SizeModifier(string size, int adjustment)
+        [TestCase(SizeConstants.Diminutive, 4)]
+        [TestCase(SizeConstants.Fine, 8)]
+        public void SizeModifier(string size, int modifier)
         {
-            base.Adjustment(size, adjustment);
+            base.Adjustment(size, modifier);
         }
     }
 }

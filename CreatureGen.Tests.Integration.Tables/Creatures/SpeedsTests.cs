@@ -66,8 +66,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Aasimar][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Aboleth][SpeedConstants.Land] = 10;
                     testCases[CreatureConstants.Aboleth][SpeedConstants.Swim] = 60;
-                    testCases[CreatureConstants.Aboleth_Mage][SpeedConstants.Land] = 10;
-                    testCases[CreatureConstants.Aboleth_Mage][SpeedConstants.Swim] = 60;
                     testCases[CreatureConstants.Achaierai][SpeedConstants.Land] = 50;
                     testCases[CreatureConstants.Allip][SpeedConstants.Fly] = 30;
                     testCases[CreatureConstants.Androsphinx][SpeedConstants.Land] = 50;
@@ -161,7 +159,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Bugbear][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Bulette][SpeedConstants.Land] = 40;
                     testCases[CreatureConstants.Bulette][SpeedConstants.Burrow] = 10;
-                    testCases[CreatureConstants.Camel][SpeedConstants.Land] = 50;
+                    testCases[CreatureConstants.Camel_Bactrian][SpeedConstants.Land] = 40;
+                    testCases[CreatureConstants.Camel_Dromedary][SpeedConstants.Land] = 50;
                     testCases[CreatureConstants.CarrionCrawler][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.CarrionCrawler][SpeedConstants.Climb] = 15;
                     testCases[CreatureConstants.Cat][SpeedConstants.Land] = 30;

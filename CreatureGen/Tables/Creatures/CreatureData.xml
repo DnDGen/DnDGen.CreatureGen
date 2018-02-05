@@ -12,15 +12,7 @@
   <collection>
     <name>Aboleth</name>
     <entry>7</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Huge</entry>
-    <entry>15</entry>
-  </collection>
-  <collection>
-    <name>Aboleth Mage</name>
-    <entry>17</entry>
-    <entry></entry>
+    <entry>0</entry>
     <entry>10</entry>
     <entry>Huge</entry>
     <entry>15</entry>
@@ -43,8 +35,11 @@
   </collection>
   <collection>
     <name>Allip</name>
-    <entry>Undead</entry>
-    <entry>Incorporeal</entry>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Androsphinx</name>
@@ -55,32 +50,56 @@
     <entry>10</entry>
   </collection>
   <collection>
-    <name>Animated Object, Colossal</name>
-    <entry>9</entry>
-    <entry></entry>
+    <name>Angel, Astral Deva</name>
+    <entry>14</entry>
+    <entry>8</entry>
     <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Angel, Planetar</name>
+    <entry>16</entry>
+    <entry></entry>
+    <entry>10</entry>
     <entry>Large</entry>
     <entry>10</entry>
   </collection>
   <collection>
-    <name>Animated Object, Gargantuan</name>
-    <entry>9</entry>
+    <name>Angel, Solar</name>
+    <entry>23</entry>
     <entry></entry>
-    <entry>5</entry>
-    <entry>Gargantuan</entry>
     <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
   </collection>
   <collection>
     <name>Animated Object, Huge</name>
-    <entry>9</entry>
-    <entry></entry>
     <entry>5</entry>
-    <entry>Huge</entry>
+    <entry></entry>
     <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Animated Object, Large</name>
-    <entry>9</entry>
+    <entry>3</entry>
     <entry></entry>
     <entry>5</entry>
     <entry>Large</entry>
@@ -88,255 +107,363 @@
   </collection>
   <collection>
     <name>Animated Object, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+  </collection>
+  <collection>
+    <name>Ankheg</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Annis</name>
+    <entry>6</entry>
+    <entry>0</entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Ape</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Dire Ape</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Aranea</name>
+    <entry>4</entry>
+    <entry>4</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Assassin Vine</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Athach</name>
+    <entry>8</entry>
+    <entry>5</entry>
+    <entry>15</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Avoral</name>
     <entry>9</entry>
     <entry></entry>
     <entry>5</entry>
     <entry>Medium</entry>
-    <entry>10</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Small</name>
-    <entry>9</entry>
-    <entry></entry>
     <entry>5</entry>
-    <entry>Small</entry>
-    <entry>10</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tiny</name>
-    <entry>9</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Tiny</entry>
-    <entry>10</entry>
-  </collection>
-  <collection>
-    <name>Ankheg</name>
-    <entry>Magical Beast</entry>
-  </collection>
-  <collection>
-    <name>Annis</name>
-    <entry>Monstrous Humanoid</entry>
-  </collection>
-  <collection>
-    <name>Ape</name>
-    <entry>Animal</entry>
-  </collection>
-  <collection>
-    <name>Dire Ape</name>
-    <entry>Animal</entry>
-  </collection>
-  <collection>
-    <name>Aranea</name>
-    <entry>Magical Beast</entry>
-    <entry>Shapechanger</entry>
-  </collection>
-  <collection>
-    <name>Angel, Astral Deva</name>
-    <entry>Outsider</entry>
-    <entry>Angel</entry>
-    <entry>Extraplanar</entry>
-    <entry>Good</entry>
-  </collection>
-  <collection>
-    <name>Angel, Planetar</name>
-    <entry>Outsider</entry>
-    <entry>Angel</entry>
-    <entry>Extraplanar</entry>
-    <entry>Good</entry>
-  </collection>
-  <collection>
-    <name>Angel, Solar</name>
-    <entry>Outsider</entry>
-    <entry>Angel</entry>
-    <entry>Extraplanar</entry>
-    <entry>Good</entry>
-  </collection>
-  <collection>
-    <name>Assassin Vine</name>
-    <entry>Plant</entry>
-  </collection>
-  <collection>
-    <name>Athach</name>
-    <entry>Aberration</entry>
-  </collection>
-  <collection>
-    <name>Avoral</name>
-    <entry>Outsider</entry>
-    <entry>Good</entry>
-    <entry>Extraplanar</entry>
   </collection>
   <collection>
     <name>Azer</name>
-    <entry>Outsider</entry>
-    <entry>Fire</entry>
-    <entry>Extraplanar</entry>
+    <entry>2</entry>
+    <entry>4</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Babau</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>6</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Baboon</name>
-    <entry>Animal</entry>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Badger</name>
-    <entry>Animal</entry>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Dire Badger</name>
-    <entry>Animal</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Baleen Whale</name>
-    <entry>Animal</entry>
-    <entry>Aquatic</entry>
+    <entry>6</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
   </collection>
   <collection>
     <name>Balor</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>20</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
+    <entry>11</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Barghest</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
-    <entry>Shapechanger</entry>
+    <entry>4</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Basilisk</name>
-    <entry>Magical Beast</entry>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Abyssal Greater Basilisk</name>
-    <entry>Outsider</entry>
-    <entry>Augmented</entry>
-    <entry>Extraplanar</entry>
+    <entry>12</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Bat</name>
-    <entry>Animal</entry>
+    <entry>1/10</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Diminutive</entry>
+    <entry>1</entry>
   </collection>
   <collection>
     <name>Dire Bat</name>
-    <entry>Animal</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
-    <entry>Animal</entry>
-    <entry>Swarm</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Diminutive</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Black Bear</name>
-    <entry>Animal</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Brown Bear</name>
-    <entry>Animal</entry>
+    <entry>4</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Polar Bear</name>
-    <entry>Animal</entry>
+    <entry>4</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Dire Bear</name>
-    <entry>Animal</entry>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
+    <entry>5</entry>
+    <entry>6</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Bebilith</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Behir</name>
-    <entry>Magical Beast</entry>
+    <entry>8</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Beholder</name>
-    <entry>Aberration</entry>
+    <entry>13</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Gauth</name>
-    <entry>Aberration</entry>
+    <entry>6</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Belker</name>
-    <entry>Elemental</entry>
-    <entry>Air</entry>
-    <entry>Extraplanar</entry>
+    <entry>6</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Bison</name>
-    <entry>Animal</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Black Pudding</name>
-    <entry>Ooze</entry>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Elder Black Pudding</name>
-    <entry>Ooze</entry>
+    <entry>12</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
   </collection>
   <collection>
     <name>Blink Dog</name>
-    <entry>Magical Beast</entry>
+    <entry>2</entry>
+    <entry>2</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Blue Slaad</name>
-    <entry>Outsider</entry>
-    <entry>Chaotic</entry>
-    <entry>Extraplanar</entry>
+    <entry>8</entry>
+    <entry>6</entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Boar</name>
-    <entry>Animal</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Dire Boar</name>
-    <entry>Animal</entry>
+    <entry>4</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Bodak</name>
-    <entry>Undead</entry>
-    <entry>Extraplanar</entry>
+    <entry>8</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Bone Devil (Osyluth)</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
+    <entry>9</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Bralani</name>
-    <entry>Outsider</entry>
-    <entry>Good</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>6</entry>
+    <entry>5</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Bugbear</name>
@@ -349,11 +476,18 @@
   </collection>
   <collection>
     <name>Cachalot Whale</name>
-    <entry>Animal</entry>
-    <entry>Aquatic</entry>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
   </collection>
   <collection>
-    <name>Camel</name>
+    <name>Camel, Bactrian (Two-Humped)</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)</name>
     <entry>Animal</entry>
   </collection>
   <collection>
@@ -370,15 +504,19 @@
   </collection>
   <collection>
     <name>Centipede Swarm</name>
-    <entry>Vermin</entry>
-    <entry>Swarm</entry>
+    <entry>4</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Diminutive</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
+    <entry>6</entry>
+    <entry>6</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Chaos Beast</name>
@@ -413,7 +551,11 @@
   </collection>
   <collection>
     <name>Constrictor Snake</name>
-    <entry>Animal</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Couatl</name>
@@ -442,9 +584,11 @@
   </collection>
   <collection>
     <name>Death Slaad</name>
-    <entry>Outsider</entry>
-    <entry>Chaotic</entry>
-    <entry>Extraplanar</entry>
+    <entry>13</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Deep Halfling</name>
@@ -1124,10 +1268,11 @@
   </collection>
   <collection>
     <name>Dretch</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>2</entry>
+    <entry>2</entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Drider</name>
@@ -1369,10 +1514,11 @@
   </collection>
   <collection>
     <name>Erinyes</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
+    <entry>8</entry>
+    <entry>7</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Ethereal Filcher</name>
@@ -1444,7 +1590,11 @@
   </collection>
   <collection>
     <name>Gelatinous Cube</name>
-    <entry>Ooze</entry>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Ghaele</name>
@@ -1521,7 +1671,11 @@
   </collection>
   <collection>
     <name>Giant Constrictor Snake</name>
-    <entry>Animal</entry>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Giant Fire Beetle</name>
@@ -1569,10 +1723,11 @@
   </collection>
   <collection>
     <name>Glabrezu</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>13</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Gnoll</name>
@@ -1610,7 +1765,11 @@
   </collection>
   <collection>
     <name>Gray Ooze</name>
-    <entry>Ooze</entry>
+    <entry>4</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Gray Render</name>
@@ -1618,27 +1777,35 @@
   </collection>
   <collection>
     <name>Gray Slaad</name>
-    <entry>Outsider</entry>
-    <entry>Chaotic</entry>
-    <entry>Extraplanar</entry>
+    <entry>10</entry>
+    <entry>6</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Greater Barghest</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
-    <entry>Shapechanger</entry>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Green Hag</name>
-    <entry>Monstrous Humanoid</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Green Slaad</name>
-    <entry>Outsider</entry>
-    <entry>Chaotic</entry>
-    <entry>Extraplanar</entry>
+    <entry>9</entry>
+    <entry>7</entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Grick</name>
@@ -1708,24 +1875,27 @@
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Hellwasp Swarm</name>
-    <entry>Magical Beast</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Swarm</entry>
+    <entry>8</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Diminutive</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>11</entry>
+    <entry>9</entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
@@ -1750,10 +1920,11 @@
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
+    <entry>16</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Heavy Horse</name>
@@ -1925,10 +2096,11 @@
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
+    <entry>13</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Imp</name>
@@ -2008,10 +2180,11 @@
   </collection>
   <collection>
     <name>Lemure</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Leonal</name>
@@ -2037,11 +2210,19 @@
   </collection>
   <collection>
     <name>Lion</name>
-    <entry>Animal</entry>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Dire Lion</name>
-    <entry>Animal</entry>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Lizard</name>
@@ -2063,8 +2244,11 @@
   </collection>
   <collection>
     <name>Locust Swarm</name>
-    <entry>Vermin</entry>
-    <entry>Swarm</entry>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Diminutive</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Magmin</name>
@@ -2083,10 +2267,11 @@
   </collection>
   <collection>
     <name>Marilith</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>17</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Medusa</name>
@@ -2299,10 +2484,11 @@
   </collection>
   <collection>
     <name>Nalfeshnee</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>14</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Night Hag</name>
@@ -2343,7 +2529,11 @@
   </collection>
   <collection>
     <name>Ochre Jelly</name>
-    <entry>Ooze</entry>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Octopus</name>
@@ -2365,8 +2555,11 @@
   </collection>
   <collection>
     <name>Orca Whale</name>
-    <entry>Animal</entry>
-    <entry>Aquatic</entry>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Otyugh</name>
@@ -2403,10 +2596,11 @@
   </collection>
   <collection>
     <name>Pit Fiend</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Lawful</entry>
+    <entry>20</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Pony</name>
@@ -2431,10 +2625,11 @@
   </collection>
   <collection>
     <name>Quasit</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
   </collection>
   <collection>
     <name>Rakshasa</name>
@@ -2449,16 +2644,27 @@
   </collection>
   <collection>
     <name>Rat</name>
-    <entry>Animal</entry>
+    <entry>1/8</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
   </collection>
   <collection>
     <name>Dire Rat</name>
-    <entry>Animal</entry>
+    <entry>1/3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Rat Swarm</name>
-    <entry>Animal</entry>
-    <entry>Swarm</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Raven</name>
@@ -2479,8 +2685,11 @@
   </collection>
   <collection>
     <name>Retriever</name>
-    <entry>Construct</entry>
-    <entry>Extraplanar</entry>
+    <entry>11</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Rhinoceras</name>
@@ -2518,29 +2727,43 @@
   </collection>
   <collection>
     <name>Shark, Huge</name>
-    <entry>Animal</entry>
-    <entry>Aquatic</entry>
+    <entry>4</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Shark, Large</name>
-    <entry>Animal</entry>
-    <entry>Aquatic</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Shark, Medium</name>
-    <entry>Animal</entry>
-    <entry>Aquatic</entry>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Dire Shark</name>
-    <entry>Animal</entry>
-    <entry>Aquatic</entry>
+    <entry>9</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Red Slaad</name>
-    <entry>Outsider</entry>
-    <entry>Chaotic</entry>
-    <entry>Extraplanar</entry>
+    <entry>7</entry>
+    <entry>6</entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Rock Gnome</name>
@@ -2575,8 +2798,11 @@
   </collection>
   <collection>
     <name>Sea Hag</name>
-    <entry>Monstrous Humanoid</entry>
-    <entry>Aquatic</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Shadow</name>
@@ -2629,8 +2855,11 @@
   </collection>
   <collection>
     <name>Spider Swarm</name>
-    <entry>Vermin</entry>
-    <entry>Swarm</entry>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Diminutive</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Squid</name>
@@ -2643,10 +2872,11 @@
   </collection>
   <collection>
     <name>Succubus</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>7</entry>
+    <entry>6</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Svirfneblin</name>
@@ -2683,11 +2913,19 @@
   </collection>
   <collection>
     <name>Tiger</name>
-    <entry>Animal</entry>
+    <entry>4</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Dire Tiger</name>
-    <entry>Animal</entry>
+    <entry>8</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Titan</name>
@@ -2773,38 +3011,67 @@
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
-    <entry>Animal</entry>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Viper Snake, Large</name>
-    <entry>Animal</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Viper Snake, Medium</name>
-    <entry>Animal</entry>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Viper Snake, Small</name>
-    <entry>Animal</entry>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Viper Snake, Tiny</name>
-    <entry>Animal</entry>
+    <entry>1/3</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
   </collection>
   <collection>
     <name>Vrock</name>
-    <entry>Outsider</entry>
-    <entry>Evil</entry>
-    <entry>Extraplanar</entry>
-    <entry>Chaotic</entry>
+    <entry>9</entry>
+    <entry>8</entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Weasel</name>
-    <entry>Animal</entry>
+    <entry>1/4</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
   </collection>
   <collection>
     <name>Dire Weasel</name>
-    <entry>Animal</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Wight</name>
@@ -2822,19 +3089,35 @@
   </collection>
   <collection>
     <name>Wolf</name>
-    <entry>Animal</entry>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Dire Wolf</name>
-    <entry>Animal</entry>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Wolverine</name>
-    <entry>Animal</entry>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Dire Wolverine</name>
-    <entry>Animal</entry>
+    <entry>4</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Worg</name>

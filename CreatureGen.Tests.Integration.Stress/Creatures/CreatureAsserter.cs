@@ -70,6 +70,7 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
                 .Or.EqualTo(SizeConstants.Gargantuan)
                 .Or.EqualTo(SizeConstants.Huge)
                 .Or.EqualTo(SizeConstants.Tiny)
+                .Or.EqualTo(SizeConstants.Diminutive)
                 .Or.EqualTo(SizeConstants.Medium)
                 .Or.EqualTo(SizeConstants.Small), creature.Summary);
 

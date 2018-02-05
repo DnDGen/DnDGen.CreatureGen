@@ -178,7 +178,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Angel_Solar)]
         [TestCase(CreatureConstants.Types.Subtypes.Aquatic,
             CreatureConstants.Aboleth,
-            CreatureConstants.Aboleth_Mage,
             CreatureConstants.Chuul,
             CreatureConstants.DragonTurtle,
             CreatureConstants.Elf_Aquatic,
@@ -391,7 +390,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var creatures = new[]
             {
                 CreatureConstants.Aboleth,
-                CreatureConstants.Aboleth_Mage,
                 CreatureConstants.Athach,
                 CreatureConstants.Beholder,
                 CreatureConstants.Beholder_Gauth,
@@ -438,7 +436,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Bison,
                 CreatureConstants.Boar,
                 CreatureConstants.Boar_Dire,
-                CreatureConstants.Camel,
+                CreatureConstants.Camel_Bactrian,
+                CreatureConstants.Camel_Dromedary,
                 CreatureConstants.Cat,
                 CreatureConstants.Cheetah,
                 CreatureConstants.Crocodile,

@@ -13,6 +13,8 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(SizeConstants.Medium, "Medium")]
         [TestCase(SizeConstants.Small, "Small")]
         [TestCase(SizeConstants.Tiny, "Tiny")]
+        [TestCase(SizeConstants.Diminutive, "Diminutive")]
+        [TestCase(SizeConstants.Fine, "Fine")]
         public void SizeConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));

@@ -293,7 +293,8 @@ namespace CreatureGen.Creatures
         public const string Bralani = "Bralani";
         public const string Bugbear = "Bugbear";
         public const string Bulette = "Bulette";
-        public const string Camel = "Camel";
+        public const string Camel_Dromedary = "Camel, Dromedary (One-Humped)";
+        public const string Camel_Bactrian = "Camel, Bactrian (Two-Humped)";
         public const string CarrionCrawler = "Carrion Crawler";
         public const string Cat = "Cat";
         public const string Centaur = "Centaur";
@@ -876,7 +877,8 @@ namespace CreatureGen.Creatures
                 Bralani,
                 Bugbear,
                 Bulette,
-                Camel,
+                Camel_Bactrian,
+                Camel_Dromedary,
                 CarrionCrawler,
                 Cat,
                 Centaur,

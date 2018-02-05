@@ -80,7 +80,6 @@ namespace CreatureGen.Tests.Integration.Tables
 
         public virtual void OrderedCollection(string name, params string[] collection)
         {
-            Collection(name, collection);
             AssertOrdered(table[name], collection);
         }
 
@@ -96,11 +95,13 @@ namespace CreatureGen.Tests.Integration.Tables
                 var expectedItem = actualArray[index];
 
                 var message = string.Format("Index {0}", index);
-                if (string.IsNullOrEmpty(indices[index]) == false)
+                if (!string.IsNullOrEmpty(indices[index]))
                     message += string.Format(" ({0})", indices[index]);
 
                 Assert.That(actualItem, Is.EqualTo(expectedItem), message);
             }
+
+            Assert.That(actual.Count(), Is.EqualTo(expected.Count()));
         }
 
         public virtual void DistinctCollection(string name, params string[] collection)

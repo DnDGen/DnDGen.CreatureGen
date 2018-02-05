@@ -43,8 +43,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Native)]
         [TestCase(CreatureConstants.Aboleth, CreatureConstants.Types.Aberration,
             CreatureConstants.Types.Subtypes.Aquatic)]
-        [TestCase(CreatureConstants.Aboleth_Mage, CreatureConstants.Types.Aberration,
-            CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Achaierai, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Evil,
             CreatureConstants.Types.Subtypes.Extraplanar,
@@ -184,7 +182,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Bugbear, CreatureConstants.Types.Humanoid,
             CreatureConstants.Types.Subtypes.Goblinoid)]
         [TestCase(CreatureConstants.Bulette, CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Camel, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Camel_Bactrian, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Camel_Dromedary, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.CarrionCrawler, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Cat, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Centaur, CreatureConstants.Types.MonstrousHumanoid)]
