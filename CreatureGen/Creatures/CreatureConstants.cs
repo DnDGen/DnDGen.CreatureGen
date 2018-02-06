@@ -330,6 +330,7 @@ namespace CreatureGen.Creatures
         public const string Deinonychus = "Deinonychus";
         public const string Delver = "Delver";
         public const string Derro = "Derro";
+        public const string Derro_Sane = "Derro (Sane)";
         public const string Destrachan = "Destrachan";
         public const string Devourer = "Devourer";
         public const string Digester = "Digester";
@@ -914,6 +915,7 @@ namespace CreatureGen.Creatures
                 Deinonychus,
                 Delver,
                 Derro,
+                Derro_Sane,
                 Destrachan,
                 Devourer,
                 Digester,

@@ -353,6 +353,36 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
+        public void GenerateAdvancedCreatureHitPointsWithSizeChangeAndSpaceReachChange()
+        {
+            SetUpCreatureAdvancement();
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(1337));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
+            Assert.That(creature.Size, Is.EqualTo("advanced size"));
+            Assert.Fail("Need to write test to asset that space and reach are updated");
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureHitPointsWithSizeChangeAndIrregularSpaceReachChange()
+        {
+            SetUpCreatureAdvancement();
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(1337));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
+            Assert.That(creature.Size, Is.EqualTo("advanced size"));
+            Assert.Fail("Need to write test to asset that irregular space and reach are updated");
+        }
+
+        [Test]
         public void GenerateCreatureSkills()
         {
             var creature = creatureGenerator.Generate("creature", "template");
