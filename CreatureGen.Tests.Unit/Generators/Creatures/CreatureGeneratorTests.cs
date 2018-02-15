@@ -197,6 +197,22 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
+        public void GenerateCreatureCanUseEquipment()
+        {
+            creatureData.CanUseEquipment = true;
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.CanUseEquipment, Is.True);
+        }
+
+        [Test]
+        public void GenerateCreatureCannotUseEquipment()
+        {
+            creatureData.CanUseEquipment = false;
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.CanUseEquipment, Is.False);
+        }
+
+        [Test]
         public void GenerateCreatureType()
         {
             var creature = creatureGenerator.Generate("creature", "template");
@@ -364,7 +380,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
-            Assert.Fail("Need to write test to asset that space and reach are updated");
+            Assert.Fail("Need to write test to assert that space and reach are updated");
         }
 
         [Test]
@@ -379,7 +395,37 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
-            Assert.Fail("Need to write test to asset that irregular space and reach are updated");
+            Assert.Fail("Need to write test to assert that irregular space and reach are updated");
+        }
+
+        [Test]
+        public void GenerateAdvancedBarghestHitPoints()
+        {
+            SetUpCreatureAdvancement();
+
+            var creature = creatureGenerator.Generate(CreatureConstants.Barghest, CreatureConstants.Templates.None);
+            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(1337));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
+            Assert.That(creature.Size, Is.EqualTo("advanced size"));
+            Assert.Fail("Need to write test to assert barghest special advancement");
+        }
+
+        [Test]
+        public void GenerateAdvancedGreaterBarghestHitPoints()
+        {
+            SetUpCreatureAdvancement();
+
+            var creature = creatureGenerator.Generate(CreatureConstants.Barghest_Greater, CreatureConstants.Templates.None);
+            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(1337));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
+            Assert.That(creature.Size, Is.EqualTo("advanced size"));
+            Assert.Fail("Need to write test to asset greater barghest special advancement");
         }
 
         [Test]

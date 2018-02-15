@@ -25,6 +25,7 @@ namespace CreatureGen.Tests.Unit.Creatures
             Assert.That(creature.ArmorClass, Is.Not.Null);
             Assert.That(creature.Attacks, Is.Empty);
             Assert.That(creature.BaseAttackBonus, Is.Zero);
+            Assert.That(creature.CanUseEquipment, Is.False);
             Assert.That(creature.ChallengeRating, Is.Empty);
             Assert.That(creature.Feats, Is.Empty);
             Assert.That(creature.FullMeleeAttack, Is.Empty);

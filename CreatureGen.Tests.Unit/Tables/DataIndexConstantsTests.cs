@@ -46,6 +46,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.CreatureData.Reach, 2)]
         [TestCase(DataIndexConstants.CreatureData.Size, 3)]
         [TestCase(DataIndexConstants.CreatureData.Space, 4)]
+        [TestCase(DataIndexConstants.CreatureData.CanUseEquipment, 5)]
         public void CreatureDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));

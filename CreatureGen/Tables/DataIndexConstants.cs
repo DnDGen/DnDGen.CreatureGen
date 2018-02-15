@@ -41,6 +41,7 @@
             public const int Reach = 2;
             public const int Size = 3;
             public const int Space = 4;
+            public const int CanUseEquipment = 5;
         }
     }
 }

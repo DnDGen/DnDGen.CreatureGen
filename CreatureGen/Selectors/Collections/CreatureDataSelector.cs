@@ -28,6 +28,7 @@ namespace CreatureGen.Selectors.Collections
             selection.Reach = Convert.ToDouble(data[DataIndexConstants.CreatureData.Reach]);
             selection.Size = data[DataIndexConstants.CreatureData.Size];
             selection.Space = Convert.ToDouble(data[DataIndexConstants.CreatureData.Space]);
+            selection.CanUseEquipment = Convert.ToBoolean(data[DataIndexConstants.CreatureData.CanUseEquipment]);
 
             return selection;
         }
