@@ -199,7 +199,7 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
             }
 
             foreach (var attack in creature.Attacks)
-                AssertAttack(attack);
+                AssertAttack(attack, creature);
 
             Assert.That(creature.ArmorClass.TotalBonus, Is.Positive, creature.Summary);
             Assert.That(creature.ArmorClass.FlatFootedBonus, Is.Positive, creature.Summary);
@@ -212,10 +212,15 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(creature.Saves.Fortitude, Is.AtLeast(creature.Abilities[AbilityConstants.Constitution].Modifier));
         }
 
-        private void AssertAttack(Attack attack)
+        private void AssertAttack(Attack attack, Creature creature)
         {
             Assert.That(attack.Name, Is.Not.Empty);
             Assert.That(attack.Damage, Is.Not.Empty, attack.Name);
+
+            if (!attack.IsNatural)
+            {
+                Assert.That(creature.CanUseEquipment, Is.True);
+            }
         }
 
         private string GetAllFeatsMessage(IEnumerable<Feat> feats)

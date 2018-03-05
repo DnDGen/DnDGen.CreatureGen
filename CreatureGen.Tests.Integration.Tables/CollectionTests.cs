@@ -91,8 +91,8 @@ namespace CreatureGen.Tests.Integration.Tables
 
             foreach (var index in indices.Keys.OrderBy(k => k))
             {
-                var actualItem = expectedArray[index];
-                var expectedItem = actualArray[index];
+                var expectedItem = expectedArray[index];
+                var actualItem = actualArray[index];
 
                 var message = string.Format("Index {0}", index);
                 if (!string.IsNullOrEmpty(indices[index]))
