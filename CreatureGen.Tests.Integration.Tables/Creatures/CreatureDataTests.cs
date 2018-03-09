@@ -251,14 +251,43 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Dragon_White_Ancient, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Eighteen, null, false)]
         [TestCase(CreatureConstants.Dragon_White_Wyrm, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.Nineteen, null, false)]
         [TestCase(CreatureConstants.Dragon_White_GreatWyrm, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.TwentyOne, null, false)]
+        [TestCase(CreatureConstants.DragonTurtle, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Nine, null, false)]
+        [TestCase(CreatureConstants.Dragonne, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Seven, 4, false)]
         [TestCase(CreatureConstants.Dretch, SizeConstants.Small, 5, 5, ChallengeRatingConstants.Two, 2, true)]
+        [TestCase(CreatureConstants.Drider, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Seven, 4, true)]
+        [TestCase(CreatureConstants.Dryad, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, 0, true)]
         [TestCase(CreatureConstants.Dwarf_Deep, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Dwarf_Duergar, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, 1, true)]
         [TestCase(CreatureConstants.Dwarf_Hill, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Dwarf_Mountain, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Eagle, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneHalf, null, false)]
+        [TestCase(CreatureConstants.Eagle_Giant, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Three, 2, false)]
         [TestCase(CreatureConstants.Efreeti, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eight, null, false)]
         [TestCase(CreatureConstants.Elasmosaurus, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Seven, null, false)]
+        [TestCase(CreatureConstants.Elemental_Air_Elder, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Eleven, null, false)]
+        [TestCase(CreatureConstants.Elemental_Air_Greater, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Nine, null, false)]
+        [TestCase(CreatureConstants.Elemental_Air_Huge, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Seven, null, false)]
+        [TestCase(CreatureConstants.Elemental_Air_Large, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Five, null, false)]
+        [TestCase(CreatureConstants.Elemental_Air_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, null, false)]
+        [TestCase(CreatureConstants.Elemental_Air_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, null, false)]
+        [TestCase(CreatureConstants.Elemental_Earth_Elder, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Eleven, null, false)]
+        [TestCase(CreatureConstants.Elemental_Earth_Greater, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Nine, null, false)]
+        [TestCase(CreatureConstants.Elemental_Earth_Huge, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Seven, null, false)]
+        [TestCase(CreatureConstants.Elemental_Earth_Large, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Five, null, false)]
+        [TestCase(CreatureConstants.Elemental_Earth_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, null, false)]
+        [TestCase(CreatureConstants.Elemental_Earth_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, null, false)]
+        [TestCase(CreatureConstants.Elemental_Fire_Elder, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Eleven, null, false)]
+        [TestCase(CreatureConstants.Elemental_Fire_Greater, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Nine, null, false)]
+        [TestCase(CreatureConstants.Elemental_Fire_Huge, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Seven, null, false)]
+        [TestCase(CreatureConstants.Elemental_Fire_Large, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Five, null, false)]
+        [TestCase(CreatureConstants.Elemental_Fire_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, null, false)]
+        [TestCase(CreatureConstants.Elemental_Fire_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, null, false)]
+        [TestCase(CreatureConstants.Elemental_Water_Elder, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Eleven, null, false)]
+        [TestCase(CreatureConstants.Elemental_Water_Greater, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Nine, null, false)]
+        [TestCase(CreatureConstants.Elemental_Water_Huge, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Seven, null, false)]
+        [TestCase(CreatureConstants.Elemental_Water_Large, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Five, null, false)]
+        [TestCase(CreatureConstants.Elemental_Water_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, null, false)]
+        [TestCase(CreatureConstants.Elemental_Water_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, null, false)]
         [TestCase(CreatureConstants.Elephant, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Seven, null, false)]
         [TestCase(CreatureConstants.Elf_Aquatic, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Elf_Drow, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, 2, true)]
@@ -268,14 +297,52 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Elf_Wild, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Elf_Wood, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Erinyes, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Eight, 7, true)]
+        [TestCase(CreatureConstants.EtherealFilcher, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, null, false)]
+        [TestCase(CreatureConstants.EtherealMarauder, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, null, false)]
+        [TestCase(CreatureConstants.Ettercap, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, 4, false)]
+        [TestCase(CreatureConstants.Ettin, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Six, 5, true)]
         [TestCase(CreatureConstants.FireBeetle_Giant, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneThird, null, false)]
+        [TestCase(CreatureConstants.FormianMyrmarch, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Ten, null, true)]
+        [TestCase(CreatureConstants.FormianQueen, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Seventeen, null, true)]
+        [TestCase(CreatureConstants.FormianTaskmaster, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Seven, null, true)]
+        [TestCase(CreatureConstants.FormianWarrior, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, null, true)]
+        [TestCase(CreatureConstants.FormianWorker, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneHalf, null, true)]
+        [TestCase(CreatureConstants.FrostWorm, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Twelve, null, false)]
+        [TestCase(CreatureConstants.Gargoyle, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Four, 5, true)]
+        [TestCase(CreatureConstants.Gargoyle_Kapoacinth, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Four, 5, true)]
         [TestCase(CreatureConstants.GelatinousCube, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Three, null, false)]
+        [TestCase(CreatureConstants.Ghaele, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Thirteen, null, true)]
+        [TestCase(CreatureConstants.Ghoul, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, null, false)]
+        [TestCase(CreatureConstants.Ghoul_Ghast, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, null, false)]
+        [TestCase(CreatureConstants.Ghoul_Lacedon, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, null, false)]
+        [TestCase(CreatureConstants.Giant_Cloud, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Eleven, 0, true)]
+        [TestCase(CreatureConstants.Giant_Fire, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Ten, 4, true)]
+        [TestCase(CreatureConstants.Giant_Frost, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Nine, 4, true)]
+        [TestCase(CreatureConstants.Giant_Hill, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Seven, 4, true)]
+        [TestCase(CreatureConstants.Giant_Stone, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eight, 4, true)]
+        [TestCase(CreatureConstants.Giant_Stone_Elder, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Nine, 6, true)]
+        [TestCase(CreatureConstants.Giant_Storm, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Thirteen, 0, true)]
+        [TestCase(CreatureConstants.GibberingMouther, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Five, null, false)]
+        [TestCase(CreatureConstants.Girallon, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Six, null, false)]
+        [TestCase(CreatureConstants.Githyanki, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, 2, true)]
+        [TestCase(CreatureConstants.Githzerai, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, 2, true)]
         [TestCase(CreatureConstants.Glabrezu, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Thirteen, null, false)]
+        [TestCase(CreatureConstants.Gnoll, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, 1, true)]
         [TestCase(CreatureConstants.Gnome_Forest, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Gnome_Rock, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Gnome_Svirfneblin, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, 3, true)]
+        [TestCase(CreatureConstants.Goblin, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneThird, 0, true)]
+        [TestCase(CreatureConstants.Golem_Clay, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Ten, null, false)]
+        [TestCase(CreatureConstants.Golem_Flesh, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Seven, null, false)]
+        [TestCase(CreatureConstants.Golem_Iron, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Thirteen, null, false)]
+        [TestCase(CreatureConstants.Golem_Stone, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eleven, null, false)]
+        [TestCase(CreatureConstants.Golem_Stone_Greater, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Sixteen, null, false)]
+        [TestCase(CreatureConstants.Gorgon, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Eight, null, false)]
         [TestCase(CreatureConstants.GrayOoze, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Four, null, false)]
+        [TestCase(CreatureConstants.GrayRender, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eight, 5, false)]
         [TestCase(CreatureConstants.GreenHag, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Five, 0, true)]
+        [TestCase(CreatureConstants.Grick, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, null, false)]
+        [TestCase(CreatureConstants.Grig, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.One, 3, true)]
         [TestCase(CreatureConstants.Gynosphinx, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Eight, 4, false)]
         [TestCase(CreatureConstants.Halfling_Deep, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Halfling_Lightfoot, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
@@ -302,16 +369,19 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Lizard_Monitor, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Two, null, false)]
         [TestCase(CreatureConstants.Locust_Swarm, SizeConstants.Diminutive, 10, 0, ChallengeRatingConstants.Three, null, false)]
         [TestCase(CreatureConstants.MantaRay, SizeConstants.Large, 10, 5, ChallengeRatingConstants.One, null, false)]
-        [TestCase(CreatureConstants.Marilith, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Seventeen, null, false)]
+        [TestCase(CreatureConstants.Marilith, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Seventeen, null, true)]
         [TestCase(CreatureConstants.Megaraptor, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Six, null, false)]
         [TestCase(CreatureConstants.Monkey, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.OneSixth, null, false)]
         [TestCase(CreatureConstants.Mule, SizeConstants.Large, 10, 5, ChallengeRatingConstants.One, null, false)]
         [TestCase(CreatureConstants.Nalfeshnee, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Fourteen, null, false)]
+        [TestCase(CreatureConstants.Nixie, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, 3, true)]
         [TestCase(CreatureConstants.OchreJelly, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Five, null, false)]
         [TestCase(CreatureConstants.Octopus, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, null, false)]
         [TestCase(CreatureConstants.Octopus_Giant, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eight, null, false)]
         [TestCase(CreatureConstants.Owl, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.OneFourth, null, false)]
-        [TestCase(CreatureConstants.PitFiend, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Twenty, null, false)]
+        [TestCase(CreatureConstants.PitFiend, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Twenty, null, true)]
+        [TestCase(CreatureConstants.Pixie, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, 3, true)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistableDance, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, 3, true)]
         [TestCase(CreatureConstants.Pony, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneFourth, null, false)]
         [TestCase(CreatureConstants.Pony_War, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, null, false)]
         [TestCase(CreatureConstants.Porpoise, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, null, false)]
@@ -335,6 +405,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Shark_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Four, null, false)]
         [TestCase(CreatureConstants.Shark_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Two, null, false)]
         [TestCase(CreatureConstants.Shark_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, null, false)]
+        [TestCase(CreatureConstants.Shrieker, SizeConstants.Medium, 5, 0, ChallengeRatingConstants.One, null, false)]
         [TestCase(CreatureConstants.Slaad_Blue, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eight, 6, true)]
         [TestCase(CreatureConstants.Slaad_Death, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Thirteen, null, true)]
         [TestCase(CreatureConstants.Slaad_Gray, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Ten, 6, true)]
@@ -365,6 +436,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Toad, SizeConstants.Diminutive, 1, 0, ChallengeRatingConstants.OneTenth, null, false)]
         [TestCase(CreatureConstants.Triceratops, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Nine, null, false)]
         [TestCase(CreatureConstants.Tyrannosaurus, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Eight, null, false)]
+        [TestCase(CreatureConstants.VioletFungus, SizeConstants.Medium, 5, 10, ChallengeRatingConstants.Three, null, false)]
         [TestCase(CreatureConstants.Vrock, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Nine, 8, true)]
         [TestCase(CreatureConstants.Wasp_Giant, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Three, null, false)]
         [TestCase(CreatureConstants.Weasel, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.OneFourth, null, false)]
@@ -394,63 +466,62 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         {
             var wrongEntries = table.Where(kvp => kvp.Value.Count() != 6);
             var wrongCreatures = wrongEntries.Select(kvp => kvp.Key);
-            var message = $"{wrongCreatures.Count()} of {table.Count} incorrect";
+            var message = $"{wrongCreatures.Count()} of {table.Count} have incorrect number of entries";
             Assert.That(wrongCreatures, Is.Empty, message);
-
-            foreach (var kvp in table)
-            {
-                var creature = kvp.Key;
-                var data = kvp.Value.ToArray();
-
-                Assert.That(data.Length, Is.EqualTo(6), creature);
-            }
         }
 
         [Test]
         public void AllCreaturesHaveCorrectChallengeRatings()
         {
-            var sizes = new[]
+            var challengeRatings = new[]
             {
-                SizeConstants.Colossal,
-                SizeConstants.Gargantuan,
-                SizeConstants.Huge,
-                SizeConstants.Large,
-                SizeConstants.Medium,
-                SizeConstants.Small,
-                SizeConstants.Tiny,
+                ChallengeRatingConstants.Eight,
+                ChallengeRatingConstants.Eighteen,
+                ChallengeRatingConstants.Eleven,
+                ChallengeRatingConstants.Fifteen,
+                ChallengeRatingConstants.Five,
+                ChallengeRatingConstants.Four,
+                ChallengeRatingConstants.Fourteen,
+                ChallengeRatingConstants.Nine,
+                ChallengeRatingConstants.Nineteen,
+                ChallengeRatingConstants.One,
+                ChallengeRatingConstants.OneEighth,
+                ChallengeRatingConstants.OneFourth,
+                ChallengeRatingConstants.OneHalf,
+                ChallengeRatingConstants.OneSixth,
+                ChallengeRatingConstants.OneTenth,
+                ChallengeRatingConstants.OneThird,
+                ChallengeRatingConstants.Seven,
+                ChallengeRatingConstants.Seventeen,
+                ChallengeRatingConstants.Six,
+                ChallengeRatingConstants.Sixteen,
+                ChallengeRatingConstants.Ten,
+                ChallengeRatingConstants.Thirteen,
+                ChallengeRatingConstants.Thirty,
+                ChallengeRatingConstants.Three,
+                ChallengeRatingConstants.Twelve,
+                ChallengeRatingConstants.Twenty,
+                ChallengeRatingConstants.TwentyEight,
+                ChallengeRatingConstants.TwentyFive,
+                ChallengeRatingConstants.TwentyFour,
+                ChallengeRatingConstants.TwentyNine,
+                ChallengeRatingConstants.TwentyOne,
+                ChallengeRatingConstants.TwentySeven,
+                ChallengeRatingConstants.TwentySix,
+                ChallengeRatingConstants.TwentyThree,
+                ChallengeRatingConstants.TwentyTwo,
+                ChallengeRatingConstants.Two,
+                ChallengeRatingConstants.Zero,
             };
-
-            var wrongEntries = table.Where(kvp => kvp.Value.Count() != 6);
-            var wrongCreatures = wrongEntries.Select(kvp => kvp.Key);
-            var message = $"{wrongCreatures.Count()} of {table.Count} incorrect";
-            Assert.That(wrongCreatures, Is.Empty, message);
 
             foreach (var kvp in table)
             {
                 var creature = kvp.Key;
                 var data = kvp.Value.ToArray();
-                var doubleJunk = 0d;
-                var intJunk = 0;
 
-                Assert.That(data.Length, Is.EqualTo(6), creature);
                 Assert.That(data[DataIndexConstants.CreatureData.ChallengeRating], Is.Not.Empty, creature);
-                Assert.That(new[] { data[DataIndexConstants.CreatureData.Size] }, Is.SubsetOf(sizes), creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Reach], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Space], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
-
-                if (!string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
-                {
-                    Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.LevelAdjustment], out intJunk), Is.True, creature);
-                    Assert.That(intJunk, Is.Not.Negative, creature);
-                }
-                else
-                {
-                    Assert.That(data[DataIndexConstants.CreatureData.LevelAdjustment], Is.Empty, creature);
-                }
-
-                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString).Or.EqualTo(bool.FalseString));
+                Assert.That(new[] { data[DataIndexConstants.CreatureData.ChallengeRating] }, Is.SubsetOf(challengeRatings), creature);
+                Assert.That(data[DataIndexConstants.CreatureData.ChallengeRating], Is.Not.EqualTo(ChallengeRatingConstants.Zero), creature);
             }
         }
 
@@ -466,229 +537,75 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 SizeConstants.Medium,
                 SizeConstants.Small,
                 SizeConstants.Tiny,
+                SizeConstants.Diminutive,
             };
-
-            var wrongEntries = table.Where(kvp => kvp.Value.Count() != 6);
-            var wrongCreatures = wrongEntries.Select(kvp => kvp.Key);
-            var message = $"{wrongCreatures.Count()} of {table.Count} incorrect";
-            Assert.That(wrongCreatures, Is.Empty, message);
 
             foreach (var kvp in table)
             {
                 var creature = kvp.Key;
                 var data = kvp.Value.ToArray();
-                var doubleJunk = 0d;
-                var intJunk = 0;
 
-                Assert.That(data.Length, Is.EqualTo(6), creature);
-                Assert.That(data[DataIndexConstants.CreatureData.ChallengeRating], Is.Not.Empty, creature);
+                Assert.That(data[DataIndexConstants.CreatureData.Size], Is.Not.Empty, creature);
                 Assert.That(new[] { data[DataIndexConstants.CreatureData.Size] }, Is.SubsetOf(sizes), creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Reach], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Space], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
-
-                if (!string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
-                {
-                    Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.LevelAdjustment], out intJunk), Is.True, creature);
-                    Assert.That(intJunk, Is.Not.Negative, creature);
-                }
-                else
-                {
-                    Assert.That(data[DataIndexConstants.CreatureData.LevelAdjustment], Is.Empty, creature);
-                }
-
-                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString).Or.EqualTo(bool.FalseString));
             }
         }
 
         [Test]
         public void AllCreaturesHaveCorrectReach()
         {
-            var sizes = new[]
-            {
-                SizeConstants.Colossal,
-                SizeConstants.Gargantuan,
-                SizeConstants.Huge,
-                SizeConstants.Large,
-                SizeConstants.Medium,
-                SizeConstants.Small,
-                SizeConstants.Tiny,
-            };
-
-            var wrongEntries = table.Where(kvp => kvp.Value.Count() != 6);
-            var wrongCreatures = wrongEntries.Select(kvp => kvp.Key);
-            var message = $"{wrongCreatures.Count()} of {table.Count} incorrect";
-            Assert.That(wrongCreatures, Is.Empty, message);
-
             foreach (var kvp in table)
             {
                 var creature = kvp.Key;
                 var data = kvp.Value.ToArray();
-                var doubleJunk = 0d;
-                var intJunk = 0;
+                var reach = 0d;
 
-                Assert.That(data.Length, Is.EqualTo(6), creature);
-                Assert.That(data[DataIndexConstants.CreatureData.ChallengeRating], Is.Not.Empty, creature);
-                Assert.That(new[] { data[DataIndexConstants.CreatureData.Size] }, Is.SubsetOf(sizes), creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Reach], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Space], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
-
-                if (!string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
-                {
-                    Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.LevelAdjustment], out intJunk), Is.True, creature);
-                    Assert.That(intJunk, Is.Not.Negative, creature);
-                }
-                else
-                {
-                    Assert.That(data[DataIndexConstants.CreatureData.LevelAdjustment], Is.Empty, creature);
-                }
-
-                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString).Or.EqualTo(bool.FalseString));
+                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Reach], out reach), Is.True, creature);
+                Assert.That(reach, Is.Not.Negative, creature);
             }
         }
 
         [Test]
         public void AllCreaturesHaveCorrectSpace()
         {
-            var sizes = new[]
-            {
-                SizeConstants.Colossal,
-                SizeConstants.Gargantuan,
-                SizeConstants.Huge,
-                SizeConstants.Large,
-                SizeConstants.Medium,
-                SizeConstants.Small,
-                SizeConstants.Tiny,
-            };
-
-            var wrongEntries = table.Where(kvp => kvp.Value.Count() != 6);
-            var wrongCreatures = wrongEntries.Select(kvp => kvp.Key);
-            var message = $"{wrongCreatures.Count()} of {table.Count} incorrect";
-            Assert.That(wrongCreatures, Is.Empty, message);
-
             foreach (var kvp in table)
             {
                 var creature = kvp.Key;
                 var data = kvp.Value.ToArray();
-                var doubleJunk = 0d;
-                var intJunk = 0;
+                var space = 0d;
 
-                Assert.That(data.Length, Is.EqualTo(6), creature);
-                Assert.That(data[DataIndexConstants.CreatureData.ChallengeRating], Is.Not.Empty, creature);
-                Assert.That(new[] { data[DataIndexConstants.CreatureData.Size] }, Is.SubsetOf(sizes), creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Reach], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Space], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
-
-                if (!string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
-                {
-                    Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.LevelAdjustment], out intJunk), Is.True, creature);
-                    Assert.That(intJunk, Is.Not.Negative, creature);
-                }
-                else
-                {
-                    Assert.That(data[DataIndexConstants.CreatureData.LevelAdjustment], Is.Empty, creature);
-                }
-
-                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString).Or.EqualTo(bool.FalseString));
+                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Space], out space), Is.True, creature);
+                Assert.That(space, Is.Positive, creature);
             }
         }
 
         [Test]
         public void AllCreaturesHaveCorrectLevelAdjustment()
         {
-            var sizes = new[]
-            {
-                SizeConstants.Colossal,
-                SizeConstants.Gargantuan,
-                SizeConstants.Huge,
-                SizeConstants.Large,
-                SizeConstants.Medium,
-                SizeConstants.Small,
-                SizeConstants.Tiny,
-            };
-
-            var wrongEntries = table.Where(kvp => kvp.Value.Count() != 6);
-            var wrongCreatures = wrongEntries.Select(kvp => kvp.Key);
-            var message = $"{wrongCreatures.Count()} of {table.Count} incorrect";
-            Assert.That(wrongCreatures, Is.Empty, message);
-
             foreach (var kvp in table)
             {
                 var creature = kvp.Key;
                 var data = kvp.Value.ToArray();
-                var doubleJunk = 0d;
-                var intJunk = 0;
-
-                Assert.That(data.Length, Is.EqualTo(6), creature);
-                Assert.That(data[DataIndexConstants.CreatureData.ChallengeRating], Is.Not.Empty, creature);
-                Assert.That(new[] { data[DataIndexConstants.CreatureData.Size] }, Is.SubsetOf(sizes), creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Reach], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Space], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
+                var levelAdjustment = 0;
 
                 if (!string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
                 {
-                    Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.LevelAdjustment], out intJunk), Is.True, creature);
-                    Assert.That(intJunk, Is.Not.Negative, creature);
+                    Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.LevelAdjustment], out levelAdjustment), Is.True, creature);
+                    Assert.That(levelAdjustment, Is.Not.Negative, creature);
                 }
                 else
                 {
                     Assert.That(data[DataIndexConstants.CreatureData.LevelAdjustment], Is.Empty, creature);
                 }
-
-                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString).Or.EqualTo(bool.FalseString));
             }
         }
 
         [Test]
         public void AllCreaturesHaveCorrectCanUseEquipment()
         {
-            var sizes = new[]
-            {
-                SizeConstants.Colossal,
-                SizeConstants.Gargantuan,
-                SizeConstants.Huge,
-                SizeConstants.Large,
-                SizeConstants.Medium,
-                SizeConstants.Small,
-                SizeConstants.Tiny,
-            };
-
-            var wrongEntries = table.Where(kvp => kvp.Value.Count() != 6);
-            var wrongCreatures = wrongEntries.Select(kvp => kvp.Key);
-            var message = $"{wrongCreatures.Count()} of {table.Count} incorrect";
-            Assert.That(wrongCreatures, Is.Empty, message);
-
             foreach (var kvp in table)
             {
                 var creature = kvp.Key;
                 var data = kvp.Value.ToArray();
-                var doubleJunk = 0d;
-                var intJunk = 0;
-
-                Assert.That(data.Length, Is.EqualTo(6), creature);
-                Assert.That(data[DataIndexConstants.CreatureData.ChallengeRating], Is.Not.Empty, creature);
-                Assert.That(new[] { data[DataIndexConstants.CreatureData.Size] }, Is.SubsetOf(sizes), creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Reach], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
-                Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Space], out doubleJunk), Is.True, creature);
-                Assert.That(doubleJunk, Is.Not.Negative, creature);
-
-                if (!string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
-                {
-                    Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.LevelAdjustment], out intJunk), Is.True, creature);
-                    Assert.That(intJunk, Is.Not.Negative, creature);
-                }
-                else
-                {
-                    Assert.That(data[DataIndexConstants.CreatureData.LevelAdjustment], Is.Empty, creature);
-                }
 
                 Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString).Or.EqualTo(bool.FalseString));
             }

@@ -219,7 +219,8 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
 
             if (!attack.IsNatural)
             {
-                Assert.That(creature.CanUseEquipment, Is.True);
+                var message = $"Creature: {creature.Summary}\nAttack: {attack.Name}";
+                Assert.That(creature.CanUseEquipment, Is.True, message);
             }
         }
 
