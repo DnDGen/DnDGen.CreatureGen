@@ -343,24 +343,34 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.GreenHag, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Five, 0, true)]
         [TestCase(CreatureConstants.Grick, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, null, false)]
         [TestCase(CreatureConstants.Grig, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.One, 3, true)]
+        [TestCase(CreatureConstants.Griffon, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Four, 3, false)]
+        [TestCase(CreatureConstants.Grimlock, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, 2, true)]
         [TestCase(CreatureConstants.Gynosphinx, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Eight, 4, false)]
         [TestCase(CreatureConstants.Halfling_Deep, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Halfling_Lightfoot, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Halfling_Tallfellow, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
+        [TestCase(CreatureConstants.Harpy, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Four, 3, true)]
         [TestCase(CreatureConstants.Hawk, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.OneThird, null, false)]
         [TestCase(CreatureConstants.Hellcat_Bezekira, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Seven, null, false)]
         [TestCase(CreatureConstants.Hellwasp_Swarm, SizeConstants.Diminutive, 10, 0, ChallengeRatingConstants.Eight, null, false)]
+        [TestCase(CreatureConstants.HellHound, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, 3, false)]
+        [TestCase(CreatureConstants.HellHound_NessianWarhound, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Nine, 4, false)]
         [TestCase(CreatureConstants.Hezrou, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eleven, 9, true)]
         [TestCase(CreatureConstants.Hieracosphinx, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Five, 3, false)]
+        [TestCase(CreatureConstants.Hippogriff, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Two, null, false)]
+        [TestCase(CreatureConstants.Hobgoblin, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 1, true)]
+        [TestCase(CreatureConstants.Homunculus, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.One, null, false)]
         [TestCase(CreatureConstants.HornedDevil_Cornugon, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Sixteen, null, false)]
         [TestCase(CreatureConstants.Horse_Heavy, SizeConstants.Large, 10, 5, ChallengeRatingConstants.One, null, false)]
         [TestCase(CreatureConstants.Horse_Heavy_War, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Two, null, false)]
         [TestCase(CreatureConstants.Horse_Light, SizeConstants.Large, 10, 5, ChallengeRatingConstants.One, null, false)]
         [TestCase(CreatureConstants.Horse_Light_War, SizeConstants.Large, 10, 5, ChallengeRatingConstants.One, null, false)]
+        [TestCase(CreatureConstants.HoundArchon, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Four, 5, true)]
         [TestCase(CreatureConstants.Human, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Hyena, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, null, false)]
         [TestCase(CreatureConstants.IceDevil_Gelugon, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Thirteen, null, false)]
         [TestCase(CreatureConstants.Janni, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Four, 5, true)]
+        [TestCase(CreatureConstants.LanternArchon, SizeConstants.Small, 5, 5, ChallengeRatingConstants.Two, null, false)]
         [TestCase(CreatureConstants.Lemure, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, null, false)]
         [TestCase(CreatureConstants.Leopard, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Two, null, false)]
         [TestCase(CreatureConstants.Lion, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Three, null, false)]
@@ -378,10 +388,12 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.OchreJelly, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Five, null, false)]
         [TestCase(CreatureConstants.Octopus, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, null, false)]
         [TestCase(CreatureConstants.Octopus_Giant, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eight, null, false)]
+        [TestCase(CreatureConstants.Orc, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
+        [TestCase(CreatureConstants.Orc_Half, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 0, true)]
         [TestCase(CreatureConstants.Owl, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.OneFourth, null, false)]
         [TestCase(CreatureConstants.PitFiend, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Twenty, null, true)]
-        [TestCase(CreatureConstants.Pixie, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, 3, true)]
-        [TestCase(CreatureConstants.Pixie_WithIrresistableDance, SizeConstants.Small, 5, 5, ChallengeRatingConstants.One, 3, true)]
+        [TestCase(CreatureConstants.Pixie, SizeConstants.Small, 5, 5, ChallengeRatingConstants.Four, 4, true)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistableDance, SizeConstants.Small, 5, 5, ChallengeRatingConstants.Five, 6, true)]
         [TestCase(CreatureConstants.Pony, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneFourth, null, false)]
         [TestCase(CreatureConstants.Pony_War, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, null, false)]
         [TestCase(CreatureConstants.Porpoise, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, null, false)]
@@ -435,6 +447,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Tiger_Dire, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Eight, null, false)]
         [TestCase(CreatureConstants.Toad, SizeConstants.Diminutive, 1, 0, ChallengeRatingConstants.OneTenth, null, false)]
         [TestCase(CreatureConstants.Triceratops, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Nine, null, false)]
+        [TestCase(CreatureConstants.TrumpetArchon, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Fourteen, 8, true)]
         [TestCase(CreatureConstants.Tyrannosaurus, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Eight, null, false)]
         [TestCase(CreatureConstants.VioletFungus, SizeConstants.Medium, 5, 10, ChallengeRatingConstants.Three, null, false)]
         [TestCase(CreatureConstants.Vrock, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Nine, 8, true)]
@@ -519,6 +532,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 var creature = kvp.Key;
                 var data = kvp.Value.ToArray();
 
+                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.ChallengeRating), creature);
                 Assert.That(data[DataIndexConstants.CreatureData.ChallengeRating], Is.Not.Empty, creature);
                 Assert.That(new[] { data[DataIndexConstants.CreatureData.ChallengeRating] }, Is.SubsetOf(challengeRatings), creature);
                 Assert.That(data[DataIndexConstants.CreatureData.ChallengeRating], Is.Not.EqualTo(ChallengeRatingConstants.Zero), creature);
@@ -545,6 +559,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 var creature = kvp.Key;
                 var data = kvp.Value.ToArray();
 
+                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.Size), creature);
                 Assert.That(data[DataIndexConstants.CreatureData.Size], Is.Not.Empty, creature);
                 Assert.That(new[] { data[DataIndexConstants.CreatureData.Size] }, Is.SubsetOf(sizes), creature);
             }
@@ -559,6 +574,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 var data = kvp.Value.ToArray();
                 var reach = 0d;
 
+                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.Reach), creature);
                 Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Reach], out reach), Is.True, creature);
                 Assert.That(reach, Is.Not.Negative, creature);
             }
@@ -573,6 +589,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 var data = kvp.Value.ToArray();
                 var space = 0d;
 
+                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.Space), creature);
                 Assert.That(double.TryParse(data[DataIndexConstants.CreatureData.Space], out space), Is.True, creature);
                 Assert.That(space, Is.Positive, creature);
             }
@@ -586,6 +603,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 var creature = kvp.Key;
                 var data = kvp.Value.ToArray();
                 var levelAdjustment = 0;
+
+                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.LevelAdjustment), creature);
 
                 if (!string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
                 {
@@ -607,7 +626,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 var creature = kvp.Key;
                 var data = kvp.Value.ToArray();
 
-                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString).Or.EqualTo(bool.FalseString));
+                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.CanUseEquipment), creature);
+                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString).Or.EqualTo(bool.FalseString), creature);
             }
         }
     }
