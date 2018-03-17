@@ -759,8 +759,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Lamia][SpeedConstants.Land] = 60;
                     testCases[CreatureConstants.Lammasu][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Lammasu][SpeedConstants.Fly] = 60;
-                    testCases[CreatureConstants.Lammasu_GoldenProtector][SpeedConstants.Land] = 30;
-                    testCases[CreatureConstants.Lammasu_GoldenProtector][SpeedConstants.Fly] = 60;
                     testCases[CreatureConstants.LanternArchon][SpeedConstants.Fly] = 60;
                     testCases[CreatureConstants.Lemure][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Leonal][SpeedConstants.Land] = 60;

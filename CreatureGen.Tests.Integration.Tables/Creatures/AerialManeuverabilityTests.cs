@@ -413,7 +413,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.KuoToa)]
         [TestCase(CreatureConstants.Lamia)]
         [TestCase(CreatureConstants.Lammasu, "Average Maneuverability")]
-        [TestCase(CreatureConstants.Lammasu_GoldenProtector, "Average Maneuverability")]
         [TestCase(CreatureConstants.LanternArchon, "Perfect Maneuverability")]
         [TestCase(CreatureConstants.Lemure)]
         [TestCase(CreatureConstants.Leonal)]

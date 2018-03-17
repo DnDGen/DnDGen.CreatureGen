@@ -783,8 +783,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Lamia, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Lammasu, CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Lammasu_GoldenProtector, CreatureConstants.Types.Dragon,
-            CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Lemure, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Evil,
             CreatureConstants.Types.Subtypes.Extraplanar,

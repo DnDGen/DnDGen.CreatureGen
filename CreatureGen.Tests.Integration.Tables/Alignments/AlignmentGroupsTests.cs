@@ -701,7 +701,6 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.KuoToa, AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil)]
         [TestCase(CreatureConstants.Lamia, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Lammasu, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood)]
-        [TestCase(CreatureConstants.Lammasu_GoldenProtector, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood)]
         [TestCase(CreatureConstants.Lemure, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.LanternArchon, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood)]
         [TestCase(CreatureConstants.Leonal, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood)]

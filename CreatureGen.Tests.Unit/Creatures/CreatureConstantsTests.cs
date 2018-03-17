@@ -512,7 +512,6 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Hydra_10Heads, "Ten-Headed " + CreatureConstants.Groups.Hydra)]
         [TestCase(CreatureConstants.Hydra_11Heads, "Eleven-Headed " + CreatureConstants.Groups.Hydra)]
         [TestCase(CreatureConstants.Hydra_12Heads, "Twelve-Headed " + CreatureConstants.Groups.Hydra)]
-        [TestCase(CreatureConstants.Lammasu_GoldenProtector, "Golden Protector (Celestial Half-Dragon Lammasu)")]
         [TestCase(CreatureConstants.Mephit_Air, "Air " + CreatureConstants.Groups.Mephit)]
         [TestCase(CreatureConstants.Mephit_Dust, "Dust " + CreatureConstants.Groups.Mephit)]
         [TestCase(CreatureConstants.Mephit_Earth, "Earth " + CreatureConstants.Groups.Mephit)]

@@ -88,22 +88,31 @@ namespace CreatureGen.Generators.Creatures
 
             var creatureData = creatureDataSelector.SelectFor(creatureName);
             creature.Size = creatureData.Size;
+            creature.CanUseEquipment = creatureData.CanUseEquipment;
             creature.Type = GetCreatureType(creatureName);
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName);
 
             creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution]);
 
             var advancements = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.Advancements, creatureName);
+            var naturalArmorAdvancementAmount = 0;
+
             if (percentileSelector.SelectFrom(.1) && advancements.Any())
             {
                 var advancement = collectionsSelector.SelectRandomFrom(advancements);
-
-                creature.HitPoints.HitDiceQuantity = advancement.Amount;
+                creature.HitPoints.HitDiceQuantity += advancement.Amount;
 
                 creature.HitPoints.RollDefault(dice);
                 creature.HitPoints.Roll(dice);
 
                 creature.Size = advancement.Type;
+
+                if (creature.Name == CreatureConstants.Barghest || creature.Name == CreatureConstants.Barghest_Greater)
+                {
+                    creature.Abilities[AbilityConstants.Strength].BaseScore += advancement.Amount;
+                    creature.Abilities[AbilityConstants.Constitution].BaseScore += advancement.Amount;
+                    naturalArmorAdvancementAmount = advancement.Amount;
+                }
             }
 
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities);
@@ -136,6 +145,7 @@ namespace CreatureGen.Generators.Creatures
             }
 
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities[AbilityConstants.Dexterity], creature.Size, creatureName, allFeats);
+            creature.ArmorClass.NaturalArmorBonus += naturalArmorAdvancementAmount;
 
             creature.Space.Value = creatureData.Space;
             creature.Reach.Value = creatureData.Reach;

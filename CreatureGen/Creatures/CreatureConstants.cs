@@ -598,7 +598,6 @@ namespace CreatureGen.Creatures
         public const string KuoToa = "Kuo-toa";
         public const string Lamia = "Lamia";
         public const string Lammasu = "Lammasu";
-        public const string Lammasu_GoldenProtector = "Golden Protector (Celestial Half-Dragon Lammasu)";
         public const string LanternArchon = "Lantern Archon";
         public const string Lemure = "Lemure";
         public const string Leonal = "Leonal";
@@ -1183,7 +1182,6 @@ namespace CreatureGen.Creatures
                 KuoToa,
                 Lamia,
                 Lammasu,
-                Lammasu_GoldenProtector,
                 LanternArchon,
                 Lemure,
                 Leonal,

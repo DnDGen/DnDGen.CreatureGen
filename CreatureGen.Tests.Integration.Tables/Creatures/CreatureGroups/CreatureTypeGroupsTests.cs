@@ -50,7 +50,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Groups.Dragon_Gold,
             CreatureConstants.Groups.Dragon_Silver,
             CreatureConstants.DragonTurtle,
-            CreatureConstants.Lammasu_GoldenProtector,
             CreatureConstants.Pseudodragon,
             CreatureConstants.Wyvern)]
         [TestCase(CreatureConstants.Types.Elemental,
@@ -526,7 +525,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Hellwasp_Swarm,
                 CreatureConstants.Howler,
                 CreatureConstants.Groups.Inevitable,
-                CreatureConstants.Lammasu_GoldenProtector,
                 CreatureConstants.Leonal,
                 CreatureConstants.Lillend,
                 CreatureConstants.Groups.Mephit,
