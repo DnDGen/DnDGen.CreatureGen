@@ -102,6 +102,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [TestCase(CreatureConstants.Types.MonstrousHumanoid,
             CreatureConstants.Centaur,
             CreatureConstants.Derro,
+            CreatureConstants.Derro_Sane,
             CreatureConstants.Doppelganger,
             CreatureConstants.Gargoyle,
             CreatureConstants.Gargoyle_Kapoacinth,

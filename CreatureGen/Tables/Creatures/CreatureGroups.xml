@@ -720,6 +720,7 @@
     <entry>Gynosphinx</entry>
     <entry>Hieracosphinx</entry>
     <entry>Derro</entry>
+    <entry>Derro (Sane)</entry>
     <entry>Doppelganger</entry>
     <entry>Gargoyle</entry>
     <entry>Kapoacinth</entry>
@@ -1094,6 +1095,7 @@
     <entry>Gynosphinx</entry>
     <entry>Hieracosphinx</entry>
     <entry>Derro</entry>
+    <entry>Derro (Sane)</entry>
     <entry>Doppelganger</entry>
     <entry>Gargoyle</entry>
     <entry>Kapoacinth</entry>
@@ -1416,6 +1418,7 @@
     <name>Monstrous Humanoid</name>
     <entry>Centaur</entry>
     <entry>Derro</entry>
+    <entry>Derro (Sane)</entry>
     <entry>Doppelganger</entry>
     <entry>Gargoyle</entry>
     <entry>Kapoacinth</entry>

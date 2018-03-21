@@ -430,6 +430,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Deinonychus, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Delver, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Derro, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Derro_Sane, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Destrachan, AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil)]
         [TestCase(CreatureConstants.Devourer, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
         [TestCase(CreatureConstants.Digester, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]

@@ -13,6 +13,7 @@ namespace CreatureGen.IoC.Modules
             Bind<ITypeAndAmountSelector>().To<TypeAndAmountSelector>();
             Bind<ICreatureDataSelector>().To<CreatureDataSelector>();
             Bind<IAttackSelector>().To<AttackSelector>();
+            Bind<IAdvancementSelector>().To<AdvancementSelector>();
         }
     }
 }

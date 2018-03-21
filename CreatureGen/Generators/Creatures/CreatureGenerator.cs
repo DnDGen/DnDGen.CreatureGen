@@ -87,7 +87,12 @@ namespace CreatureGen.Generators.Creatures
 
             var creatureData = creatureDataSelector.SelectFor(creatureName);
             creature.Size = creatureData.Size;
+            creature.Space.Value = creatureData.Space;
+            creature.Reach.Value = creatureData.Reach;
             creature.CanUseEquipment = creatureData.CanUseEquipment;
+            creature.ChallengeRating = creatureData.ChallengeRating;
+            creature.LevelAdjustment = creatureData.LevelAdjustment;
+
             creature.Type = GetCreatureType(creatureName);
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName);
 
@@ -111,6 +116,8 @@ namespace CreatureGen.Generators.Creatures
                 creature.HitPoints.Roll(dice);
 
                 creature.Size = advancement.Size;
+                creature.Space.Value = advancement.Space;
+                creature.Reach.Value = advancement.Reach;
             }
 
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities);
@@ -145,14 +152,9 @@ namespace CreatureGen.Generators.Creatures
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities[AbilityConstants.Dexterity], creature.Size, creatureName, allFeats);
             creature.ArmorClass.NaturalArmorBonus += naturalArmorAdvancementAmount;
 
-            creature.Space.Value = creatureData.Space;
-            creature.Reach.Value = creatureData.Reach;
-
             creature.Saves = savesGenerator.GenerateWith(creature.Type, creature.HitPoints, allFeats, creature.Abilities);
 
-            creature.ChallengeRating = creatureData.ChallengeRating;
             creature.Alignment = alignmentGenerator.Generate(creatureName);
-            creature.LevelAdjustment = creatureData.LevelAdjustment;
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = templateApplicator.ApplyTo(creature);

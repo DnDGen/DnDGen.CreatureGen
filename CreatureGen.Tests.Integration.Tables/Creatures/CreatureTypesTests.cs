@@ -235,6 +235,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Deinonychus, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Delver, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Derro, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Derro_Sane, CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.Destrachan, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Devourer, CreatureConstants.Types.Undead,
             CreatureConstants.Types.Subtypes.Extraplanar)]

@@ -571,7 +571,11 @@
     <entry>Swim/40</entry>
   </collection>
   <collection>
-    <name>Camel</name>
+    <name>Camel, Bactrian (Two-Humped)</name>
+    <entry>Land/50</entry>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)</name>
     <entry>Land/50</entry>
   </collection>
   <collection>
@@ -754,6 +758,10 @@
   </collection>
   <collection>
     <name>Derro</name>
+    <entry>Land/20</entry>
+  </collection>
+  <collection>
+    <name>Derro (Sane)</name>
     <entry>Land/20</entry>
   </collection>
   <collection>
@@ -1297,11 +1305,6 @@
     <entry>Land/60</entry>
     <entry>Fly/200</entry>
     <entry>Swim/60</entry>
-  </collection>
-  <collection>
-    <name>Golden Protector (Celestial Half-Dragon Lammasu)</name>
-    <entry>Land/30</entry>
-    <entry>Fly/60</entry>
   </collection>
   <collection>
     <name>Gorgon</name>

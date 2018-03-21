@@ -221,6 +221,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Darkmantle][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Darkmantle][SpeedConstants.Fly] = 30;
                     testCases[CreatureConstants.Derro][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.Derro_Sane][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Deinonychus][SpeedConstants.Land] = 60;
                     testCases[CreatureConstants.Delver][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Delver][SpeedConstants.Burrow] = 10;

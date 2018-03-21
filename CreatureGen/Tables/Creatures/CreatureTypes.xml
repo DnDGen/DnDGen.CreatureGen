@@ -304,7 +304,11 @@
     <entry>Aquatic</entry>
   </collection>
   <collection>
-    <name>Camel</name>
+    <name>Camel, Bactrian (Two-Humped)</name>
+    <entry>Animal</entry>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)</name>
     <entry>Animal</entry>
   </collection>
   <collection>
@@ -408,6 +412,10 @@
   </collection>
   <collection>
     <name>Derro</name>
+    <entry>Monstrous Humanoid</entry>
+  </collection>
+  <collection>
+    <name>Derro (Sane)</name>
     <entry>Monstrous Humanoid</entry>
   </collection>
   <collection>
