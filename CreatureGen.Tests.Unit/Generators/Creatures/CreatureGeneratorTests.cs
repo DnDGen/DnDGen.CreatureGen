@@ -19,7 +19,6 @@ using CreatureGen.Verifiers;
 using CreatureGen.Verifiers.Exceptions;
 using DnDGen.Core.Generators;
 using DnDGen.Core.Selectors.Collections;
-using DnDGen.Core.Selectors.Percentiles;
 using Moq;
 using NUnit.Framework;
 using RollGen;
@@ -37,7 +36,6 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<IAdjustmentsSelector> mockAdjustmentsSelector;
         private Mock<ICreatureVerifier> mockCreatureVerifier;
-        private Mock<IPercentileSelector> mockPercentileSelector;
         private ICreatureGenerator creatureGenerator;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<IHitPointsGenerator> mockHitPointsGenerator;
@@ -48,6 +46,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         private Mock<Dice> mockDice;
         private Mock<ICreatureDataSelector> mockCreatureDataSelector;
         private Mock<JustInTimeFactory> mockJustInTimeFactory;
+        private Mock<IAdvancementSelector> mockAdvancementSelector;
 
         private Dictionary<string, Ability> abilities;
         private List<Skill> skills;
@@ -66,7 +65,6 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             mockAlignmentGenerator = new Mock<IAlignmentGenerator>();
             mockAdjustmentsSelector = new Mock<IAdjustmentsSelector>();
             mockCreatureVerifier = new Mock<ICreatureVerifier>();
-            mockPercentileSelector = new Mock<IPercentileSelector>();
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockAbilitiesGenerator = new Mock<IAbilitiesGenerator>();
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
@@ -79,12 +77,12 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
             mockDice = new Mock<Dice>();
             mockJustInTimeFactory = new Mock<JustInTimeFactory>();
+            mockAdvancementSelector = new Mock<IAdvancementSelector>();
 
             creatureGenerator = new CreatureGenerator(
                 mockAlignmentGenerator.Object,
                 mockAdjustmentsSelector.Object,
                 mockCreatureVerifier.Object,
-                mockPercentileSelector.Object,
                 mockCollectionSelector.Object,
                 mockAbilitiesGenerator.Object,
                 mockSkillsGenerator.Object,
@@ -96,7 +94,8 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
                 mockSavesGenerator.Object,
                 mockTypeAndAmountSelector.Object,
                 mockDice.Object,
-                mockJustInTimeFactory.Object);
+                mockJustInTimeFactory.Object,
+                mockAdvancementSelector.Object);
 
             feats = new List<Feat>();
             abilities = new Dictionary<string, Ability>();
@@ -175,7 +174,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             mockAbilitiesGenerator.Setup(g => g.GenerateFor(creature)).Returns(abilities);
             mockHitPointsGenerator.Setup(g => g.GenerateFor(creature, It.IsAny<CreatureType>(), abilities[AbilityConstants.Constitution])).Returns(hitPoints);
-            
+
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creature)).Returns(types);
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.AerialManeuverability, creature)).Returns(new[] { string.Empty });
             mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities[AbilityConstants.Dexterity], creatureData.Size, creature, feats)).Returns(armorClass);
@@ -272,34 +271,10 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void DoNotGenerateAdvancedCreatureHitPointsIfPercentileSaysNo()
+        public void DoNotGenerateAdvancedCreatureHitPoints()
         {
-            mockPercentileSelector.Setup(s => s.SelectFrom(.1)).Returns(false);
-
-            var advancements = new[]
-            {
-                new TypeAndAmountSelection { Type = "advanced size", Amount = 1337 }
-            };
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.Advancements, "creature")).Returns(advancements);
-
-            SetUpRoll(1337, 90210, 42);
-            SetUpAverageRoll("1337d90210", 12.34);
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
-            Assert.That(creature.Size, Is.EqualTo("size"));
-            mockDice.Verify(d => d.Roll(It.IsAny<int>()), Times.Never);
-            mockDice.Verify(d => d.Roll(It.IsAny<string>()), Times.Never);
-        }
-
-        [Test]
-        public void DoNotGenerateAdvancedCreatureHitPointsIfCreatureCannotAdvance()
-        {
-            mockPercentileSelector.Setup(s => s.SelectFrom(.1)).Returns(true);
+            SetUpCreatureAdvancement();
+            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(false);
 
             var advancements = Enumerable.Empty<TypeAndAmountSelection>();
             mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.Advancements, "creature")).Returns(advancements);
@@ -322,88 +297,36 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(1337));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 1337));
             Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
+            Assert.That(creature.Space, Is.EqualTo(54.32));
+            Assert.That(creature.Reach, Is.EqualTo(98.76));
         }
 
         private void SetUpCreatureAdvancement(int advancementAmount = 1337, string creature = "creature")
         {
-            mockPercentileSelector.Setup(s => s.SelectFrom(.1)).Returns(true);
+            mockAdvancementSelector.Setup(s => s.IsAdvanced(creature)).Returns(true);
 
-            var advancements = new[]
-            {
-                new TypeAndAmountSelection { Type = "advanced size", Amount = advancementAmount }
-            };
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.Advancements, creature)).Returns(advancements);
+            var advancement = new AdvancementSelection();
+            advancement.AdditionalHitDice = advancementAmount;
+            advancement.Reach = 98.76;
+            advancement.Size = "advanced size";
+            advancement.Space = 54.32;
+
+            mockAdvancementSelector.Setup(s => s.SelectRandomFor(creature)).Returns(advancement);
 
             var newQuantity = hitPoints.HitDiceQuantity + advancementAmount;
             SetUpRoll(newQuantity, hitPoints.HitDie, 1234);
 
-            if (advancementAmount > 0)
+            if (newQuantity > 0)
                 SetUpAverageRoll($"{newQuantity}d{hitPoints.HitDie}", 23.45);
             else
                 SetUpAverageRoll($"0", 0);
-        }
 
-        [Test]
-        public void GenerateRandomAdvancedCreatureHitPoints()
-        {
-            mockPercentileSelector.Setup(s => s.SelectFrom(.1)).Returns(true);
-
-            var advancements = new[]
-            {
-                new TypeAndAmountSelection { Type = "advanced size", Amount = 1337 },
-                new TypeAndAmountSelection { Type = "other advanced size", Amount = 3456 },
-            };
-
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.Advancements, "creature")).Returns(advancements);
-            mockCollectionSelector.Setup(s => s.SelectRandomFrom(advancements)).Returns(advancements.Last());
-
-            SetUpRoll(1337, 90210, 1234);
-            SetUpAverageRoll("1337d90210", 23.45);
-            SetUpRoll(3456, 90210, 4567);
-            SetUpAverageRoll("3456d90210", 56.78);
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(3456));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(57));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(4567));
-            Assert.That(creature.Size, Is.EqualTo("other advanced size"));
-        }
-
-        [Test]
-        public void GenerateAdvancedCreatureHitPointsWithSizeChangeAndSpaceReachChange()
-        {
-            SetUpCreatureAdvancement();
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(1337));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
-            Assert.That(creature.Size, Is.EqualTo("advanced size"));
-            Assert.Fail("Need to write test to assert that space and reach are updated");
-        }
-
-        [Test]
-        public void GenerateAdvancedCreatureHitPointsWithSizeChangeAndIrregularSpaceReachChange()
-        {
-            SetUpCreatureAdvancement();
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(1337));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
-            Assert.That(creature.Size, Is.EqualTo("advanced size"));
-            Assert.Fail("Need to write test to assert that irregular space and reach are updated");
+            mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities[AbilityConstants.Dexterity], advancement.Size, creature, feats)).Returns(armorClass);
         }
 
         [Test]
@@ -413,15 +336,17 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreatureAdvancement(creature: CreatureConstants.Barghest);
             armorClass.NaturalArmorBonus = 6;
 
+            SetUpAverageRoll($"{9266 + 1337}d{hitPoints.HitDie}+668", 67.89);
+
             var creature = creatureGenerator.Generate(CreatureConstants.Barghest, CreatureConstants.Templates.None);
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(1337));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 1337));
             Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(67));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234 + 668 * (9266 + 1337)));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
-            Assert.That(creature.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(10 + 1337));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(10 + 1337));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(10));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.EqualTo(10));
             Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(10));
@@ -601,72 +526,72 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
         }
 
-        [TestCase(0, GroupConstants.GoodBaseAttack, 0)]
-        [TestCase(1, GroupConstants.GoodBaseAttack, 1)]
-        [TestCase(2, GroupConstants.GoodBaseAttack, 2)]
-        [TestCase(3, GroupConstants.GoodBaseAttack, 3)]
-        [TestCase(4, GroupConstants.GoodBaseAttack, 4)]
-        [TestCase(5, GroupConstants.GoodBaseAttack, 5)]
-        [TestCase(6, GroupConstants.GoodBaseAttack, 6)]
-        [TestCase(7, GroupConstants.GoodBaseAttack, 7)]
-        [TestCase(8, GroupConstants.GoodBaseAttack, 8)]
-        [TestCase(9, GroupConstants.GoodBaseAttack, 9)]
-        [TestCase(10, GroupConstants.GoodBaseAttack, 10)]
-        [TestCase(11, GroupConstants.GoodBaseAttack, 11)]
-        [TestCase(12, GroupConstants.GoodBaseAttack, 12)]
-        [TestCase(13, GroupConstants.GoodBaseAttack, 13)]
-        [TestCase(14, GroupConstants.GoodBaseAttack, 14)]
-        [TestCase(15, GroupConstants.GoodBaseAttack, 15)]
-        [TestCase(16, GroupConstants.GoodBaseAttack, 16)]
-        [TestCase(17, GroupConstants.GoodBaseAttack, 17)]
-        [TestCase(18, GroupConstants.GoodBaseAttack, 18)]
-        [TestCase(19, GroupConstants.GoodBaseAttack, 19)]
-        [TestCase(20, GroupConstants.GoodBaseAttack, 20)]
-        [TestCase(1337, GroupConstants.GoodBaseAttack, 1337)]
-        [TestCase(0, GroupConstants.AverageBaseAttack, 0)]
-        [TestCase(1, GroupConstants.AverageBaseAttack, 0)]
-        [TestCase(2, GroupConstants.AverageBaseAttack, 1)]
-        [TestCase(3, GroupConstants.AverageBaseAttack, 2)]
-        [TestCase(4, GroupConstants.AverageBaseAttack, 3)]
-        [TestCase(5, GroupConstants.AverageBaseAttack, 3)]
-        [TestCase(6, GroupConstants.AverageBaseAttack, 4)]
-        [TestCase(7, GroupConstants.AverageBaseAttack, 5)]
-        [TestCase(8, GroupConstants.AverageBaseAttack, 6)]
-        [TestCase(9, GroupConstants.AverageBaseAttack, 6)]
-        [TestCase(10, GroupConstants.AverageBaseAttack, 7)]
-        [TestCase(11, GroupConstants.AverageBaseAttack, 8)]
-        [TestCase(12, GroupConstants.AverageBaseAttack, 9)]
-        [TestCase(13, GroupConstants.AverageBaseAttack, 9)]
-        [TestCase(14, GroupConstants.AverageBaseAttack, 10)]
-        [TestCase(15, GroupConstants.AverageBaseAttack, 11)]
-        [TestCase(16, GroupConstants.AverageBaseAttack, 12)]
-        [TestCase(17, GroupConstants.AverageBaseAttack, 12)]
-        [TestCase(18, GroupConstants.AverageBaseAttack, 13)]
-        [TestCase(19, GroupConstants.AverageBaseAttack, 14)]
-        [TestCase(20, GroupConstants.AverageBaseAttack, 15)]
-        [TestCase(1337, GroupConstants.AverageBaseAttack, 1002)]
-        [TestCase(0, GroupConstants.PoorBaseAttack, 0)]
-        [TestCase(1, GroupConstants.PoorBaseAttack, 0)]
-        [TestCase(2, GroupConstants.PoorBaseAttack, 1)]
-        [TestCase(3, GroupConstants.PoorBaseAttack, 1)]
-        [TestCase(4, GroupConstants.PoorBaseAttack, 2)]
-        [TestCase(5, GroupConstants.PoorBaseAttack, 2)]
-        [TestCase(6, GroupConstants.PoorBaseAttack, 3)]
-        [TestCase(7, GroupConstants.PoorBaseAttack, 3)]
-        [TestCase(8, GroupConstants.PoorBaseAttack, 4)]
-        [TestCase(9, GroupConstants.PoorBaseAttack, 4)]
-        [TestCase(10, GroupConstants.PoorBaseAttack, 5)]
-        [TestCase(11, GroupConstants.PoorBaseAttack, 5)]
-        [TestCase(12, GroupConstants.PoorBaseAttack, 6)]
-        [TestCase(13, GroupConstants.PoorBaseAttack, 6)]
-        [TestCase(14, GroupConstants.PoorBaseAttack, 7)]
-        [TestCase(15, GroupConstants.PoorBaseAttack, 7)]
-        [TestCase(16, GroupConstants.PoorBaseAttack, 8)]
-        [TestCase(17, GroupConstants.PoorBaseAttack, 8)]
-        [TestCase(18, GroupConstants.PoorBaseAttack, 9)]
-        [TestCase(19, GroupConstants.PoorBaseAttack, 9)]
-        [TestCase(20, GroupConstants.PoorBaseAttack, 10)]
-        [TestCase(1337, GroupConstants.PoorBaseAttack, 668)]
+        [TestCase(0, GroupConstants.GoodBaseAttack, 9266 + 0)]
+        [TestCase(1, GroupConstants.GoodBaseAttack, 9266 + 1)]
+        [TestCase(2, GroupConstants.GoodBaseAttack, 9266 + 2)]
+        [TestCase(3, GroupConstants.GoodBaseAttack, 9266 + 3)]
+        [TestCase(4, GroupConstants.GoodBaseAttack, 9266 + 4)]
+        [TestCase(5, GroupConstants.GoodBaseAttack, 9266 + 5)]
+        [TestCase(6, GroupConstants.GoodBaseAttack, 9266 + 6)]
+        [TestCase(7, GroupConstants.GoodBaseAttack, 9266 + 7)]
+        [TestCase(8, GroupConstants.GoodBaseAttack, 9266 + 8)]
+        [TestCase(9, GroupConstants.GoodBaseAttack, 9266 + 9)]
+        [TestCase(10, GroupConstants.GoodBaseAttack, 9266 + 10)]
+        [TestCase(11, GroupConstants.GoodBaseAttack, 9266 + 11)]
+        [TestCase(12, GroupConstants.GoodBaseAttack, 9266 + 12)]
+        [TestCase(13, GroupConstants.GoodBaseAttack, 9266 + 13)]
+        [TestCase(14, GroupConstants.GoodBaseAttack, 9266 + 14)]
+        [TestCase(15, GroupConstants.GoodBaseAttack, 9266 + 15)]
+        [TestCase(16, GroupConstants.GoodBaseAttack, 9266 + 16)]
+        [TestCase(17, GroupConstants.GoodBaseAttack, 9266 + 17)]
+        [TestCase(18, GroupConstants.GoodBaseAttack, 9266 + 18)]
+        [TestCase(19, GroupConstants.GoodBaseAttack, 9266 + 19)]
+        [TestCase(20, GroupConstants.GoodBaseAttack, 9266 + 20)]
+        [TestCase(1337, GroupConstants.GoodBaseAttack, 9266 + 1337)]
+        [TestCase(0, GroupConstants.AverageBaseAttack, 6949 + 0)]
+        [TestCase(1, GroupConstants.AverageBaseAttack, 6949 + 0)]
+        [TestCase(2, GroupConstants.AverageBaseAttack, 6949 + 1)]
+        [TestCase(3, GroupConstants.AverageBaseAttack, 6949 + 2)]
+        [TestCase(4, GroupConstants.AverageBaseAttack, 6949 + 3)]
+        [TestCase(5, GroupConstants.AverageBaseAttack, 6949 + 3)]
+        [TestCase(6, GroupConstants.AverageBaseAttack, 6949 + 4)]
+        [TestCase(7, GroupConstants.AverageBaseAttack, 6949 + 5)]
+        [TestCase(8, GroupConstants.AverageBaseAttack, 6949 + 6)]
+        [TestCase(9, GroupConstants.AverageBaseAttack, 6949 + 6)]
+        [TestCase(10, GroupConstants.AverageBaseAttack, 6949 + 7)]
+        [TestCase(11, GroupConstants.AverageBaseAttack, 6949 + 8)]
+        [TestCase(12, GroupConstants.AverageBaseAttack, 6949 + 9)]
+        [TestCase(13, GroupConstants.AverageBaseAttack, 6949 + 9)]
+        [TestCase(14, GroupConstants.AverageBaseAttack, 6949 + 10)]
+        [TestCase(15, GroupConstants.AverageBaseAttack, 6949 + 11)]
+        [TestCase(16, GroupConstants.AverageBaseAttack, 6949 + 12)]
+        [TestCase(17, GroupConstants.AverageBaseAttack, 6949 + 12)]
+        [TestCase(18, GroupConstants.AverageBaseAttack, 6949 + 13)]
+        [TestCase(19, GroupConstants.AverageBaseAttack, 6949 + 14)]
+        [TestCase(20, GroupConstants.AverageBaseAttack, 6949 + 15)]
+        [TestCase(1337, GroupConstants.AverageBaseAttack, 6949 + 1002)]
+        [TestCase(0, GroupConstants.PoorBaseAttack, 4633 + 0)]
+        [TestCase(1, GroupConstants.PoorBaseAttack, 4633 + 0)]
+        [TestCase(2, GroupConstants.PoorBaseAttack, 4633 + 1)]
+        [TestCase(3, GroupConstants.PoorBaseAttack, 4633 + 1)]
+        [TestCase(4, GroupConstants.PoorBaseAttack, 4633 + 2)]
+        [TestCase(5, GroupConstants.PoorBaseAttack, 4633 + 2)]
+        [TestCase(6, GroupConstants.PoorBaseAttack, 4633 + 3)]
+        [TestCase(7, GroupConstants.PoorBaseAttack, 4633 + 3)]
+        [TestCase(8, GroupConstants.PoorBaseAttack, 4633 + 4)]
+        [TestCase(9, GroupConstants.PoorBaseAttack, 4633 + 4)]
+        [TestCase(10, GroupConstants.PoorBaseAttack, 4633 + 5)]
+        [TestCase(11, GroupConstants.PoorBaseAttack, 4633 + 5)]
+        [TestCase(12, GroupConstants.PoorBaseAttack, 4633 + 6)]
+        [TestCase(13, GroupConstants.PoorBaseAttack, 4633 + 6)]
+        [TestCase(14, GroupConstants.PoorBaseAttack, 4633 + 7)]
+        [TestCase(15, GroupConstants.PoorBaseAttack, 4633 + 7)]
+        [TestCase(16, GroupConstants.PoorBaseAttack, 4633 + 8)]
+        [TestCase(17, GroupConstants.PoorBaseAttack, 4633 + 8)]
+        [TestCase(18, GroupConstants.PoorBaseAttack, 4633 + 9)]
+        [TestCase(19, GroupConstants.PoorBaseAttack, 4633 + 9)]
+        [TestCase(20, GroupConstants.PoorBaseAttack, 4633 + 10)]
+        [TestCase(1337, GroupConstants.PoorBaseAttack, 4633 + 668)]
         public void GenerateAdvancedCreatureBaseAttackBonus(int advancedHitDiceQuantity, string bonusQuality, int bonus)
         {
             SetUpCreatureAdvancement(advancedHitDiceQuantity);
@@ -1577,6 +1502,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities[AbilityConstants.Dexterity], "size", "creature", feats)).Returns(armorClass);
 
             var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.ArmorClass, Is.Not.Null);
             Assert.That(creature.ArmorClass, Is.EqualTo(armorClass));
         }
 
@@ -1591,6 +1517,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities[AbilityConstants.Dexterity], "advanced size", "creature", feats)).Returns(armorClass);
 
             var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.ArmorClass, Is.Not.Null);
             Assert.That(creature.ArmorClass, Is.EqualTo(armorClass));
         }
 

@@ -3504,12 +3504,12 @@
   </collection>
   <collection>
     <name>Lammasu</name>
-    <entry>Magical Beast</entry>
-  </collection>
-  <collection>
-    <name>Golden Protector (Celestial Half-Dragon Lammasu)</name>
-    <entry>Dragon</entry>
-    <entry>Extraplanar</entry>
+    <entry>8</entry>
+    <entry>5</entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Lemure</name>
@@ -3522,9 +3522,12 @@
   </collection>
   <collection>
     <name>Leonal</name>
-    <entry>Outsider</entry>
-    <entry>Extraplanar</entry>
-    <entry>Good</entry>
+    <entry>12</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Leopard</name>
@@ -3546,10 +3549,12 @@
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>Outsider</entry>
-    <entry>Chaotic</entry>
-    <entry>Extraplanar</entry>
-    <entry>Good</entry>
+    <entry>7</entry>
+    <entry>6</entry>
+    <entry>10</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Lion</name>
@@ -3589,13 +3594,21 @@
   </collection>
   <collection>
     <name>Lizardfolk</name>
-    <entry>Humanoid</entry>
-    <entry>Reptilian</entry>
+    <entry>1</entry>
+    <entry>1</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Locathah</name>
-    <entry>Humanoid</entry>
-    <entry>Aquatic</entry>
+    <entry>1/2</entry>
+    <entry>1</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Locust Swarm</name>
@@ -3608,9 +3621,12 @@
   </collection>
   <collection>
     <name>Magmin</name>
-    <entry>Elemental</entry>
-    <entry>Fire</entry>
-    <entry>Extraplanar</entry>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Manta Ray</name>
@@ -3623,7 +3639,12 @@
   </collection>
   <collection>
     <name>Manticore</name>
-    <entry>Magical Beast</entry>
+    <entry>5</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Marilith</name>
@@ -3636,7 +3657,12 @@
   </collection>
   <collection>
     <name>Medusa</name>
-    <entry>Monstrous Humanoid</entry>
+    <entry>7</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Megaraptor</name>
@@ -3649,64 +3675,93 @@
   </collection>
   <collection>
     <name>Air Mephit</name>
-    <entry>Outsider</entry>
-    <entry>Air</entry>
-    <entry>Extraplanar</entry>
+    <entry>3</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Dust Mephit</name>
-    <entry>Outsider</entry>
-    <entry>Air</entry>
-    <entry>Extraplanar</entry>
+    <entry>3</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Earth Mephit</name>
-    <entry>Outsider</entry>
-    <entry>Earth</entry>
-    <entry>Extraplanar</entry>
+    <entry>3</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Fire Mephit</name>
-    <entry>Outsider</entry>
-    <entry>Fire</entry>
-    <entry>Extraplanar</entry>
+    <entry>3</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Ice Mephit</name>
-    <entry>Outsider</entry>
-    <entry>Air</entry>
-    <entry>Cold</entry>
-    <entry>Extraplanar</entry>
+    <entry>3</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Magma Mephit</name>
-    <entry>Outsider</entry>
-    <entry>Fire</entry>
-    <entry>Extraplanar</entry>
+    <entry>3</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Ooze Mephit</name>
-    <entry>Outsider</entry>
-    <entry>Water</entry>
-    <entry>Extraplanar</entry>
+    <entry>3</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
-    <entry>Outsider</entry>
-    <entry>Earth</entry>
-    <entry>Extraplanar</entry>
+    <entry>3</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
-    <entry>Outsider</entry>
-    <entry>Fire</entry>
-    <entry>Extraplanar</entry>
+    <entry>3</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
-    <entry>Outsider</entry>
-    <entry>Water</entry>
-    <entry>Extraplanar</entry>
+    <entry>3</entry>
+    <entry>3</entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Merfolk</name>

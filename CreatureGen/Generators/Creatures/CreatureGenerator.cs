@@ -15,7 +15,6 @@ using CreatureGen.Verifiers;
 using CreatureGen.Verifiers.Exceptions;
 using DnDGen.Core.Generators;
 using DnDGen.Core.Selectors.Collections;
-using DnDGen.Core.Selectors.Percentiles;
 using RollGen;
 using System;
 using System.Collections.Generic;
@@ -28,7 +27,6 @@ namespace CreatureGen.Generators.Creatures
         private readonly IAlignmentGenerator alignmentGenerator;
         private readonly IAdjustmentsSelector adjustmentsSelector;
         private readonly ICreatureVerifier creatureVerifier;
-        private readonly IPercentileSelector percentileSelector;
         private readonly ICollectionSelector collectionsSelector;
         private readonly IAbilitiesGenerator abilitiesGenerator;
         private readonly ISkillsGenerator skillsGenerator;
@@ -41,11 +39,11 @@ namespace CreatureGen.Generators.Creatures
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly Dice dice;
         private readonly JustInTimeFactory justInTimeFactory;
+        private readonly IAdvancementSelector advancementSelector;
 
         public CreatureGenerator(IAlignmentGenerator alignmentGenerator,
             IAdjustmentsSelector adjustmentsSelector,
             ICreatureVerifier creatureVerifier,
-            IPercentileSelector percentileSelector,
             ICollectionSelector collectionsSelector,
             IAbilitiesGenerator abilitiesGenerator,
             ISkillsGenerator skillsGenerator,
@@ -57,7 +55,8 @@ namespace CreatureGen.Generators.Creatures
             ISavesGenerator savesGenerator,
             ITypeAndAmountSelector typeAndAmountSelector,
             Dice dice,
-            JustInTimeFactory justInTimeFactory)
+            JustInTimeFactory justInTimeFactory,
+            IAdvancementSelector advancementSelector)
         {
             this.alignmentGenerator = alignmentGenerator;
             this.abilitiesGenerator = abilitiesGenerator;
@@ -65,7 +64,6 @@ namespace CreatureGen.Generators.Creatures
             this.featsGenerator = featsGenerator;
             this.adjustmentsSelector = adjustmentsSelector;
             this.creatureVerifier = creatureVerifier;
-            this.percentileSelector = percentileSelector;
             this.collectionsSelector = collectionsSelector;
             this.creatureDataSelector = creatureDataSelector;
             this.hitPointsGenerator = hitPointsGenerator;
@@ -75,6 +73,7 @@ namespace CreatureGen.Generators.Creatures
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.dice = dice;
             this.justInTimeFactory = justInTimeFactory;
+            this.advancementSelector = advancementSelector;
         }
 
         public Creature Generate(string creatureName, string template)
@@ -94,25 +93,24 @@ namespace CreatureGen.Generators.Creatures
 
             creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution]);
 
-            var advancements = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.Advancements, creatureName);
             var naturalArmorAdvancementAmount = 0;
 
-            if (percentileSelector.SelectFrom(.1) && advancements.Any())
+            if (advancementSelector.IsAdvanced(creatureName))
             {
-                var advancement = collectionsSelector.SelectRandomFrom(advancements);
-                creature.HitPoints.HitDiceQuantity += advancement.Amount;
+                var advancement = advancementSelector.SelectRandomFor(creatureName);
+                creature.HitPoints.HitDiceQuantity += advancement.AdditionalHitDice;
+
+                if (creature.Name == CreatureConstants.Barghest || creature.Name == CreatureConstants.Barghest_Greater)
+                {
+                    creature.Abilities[AbilityConstants.Strength].BaseScore += advancement.AdditionalHitDice;
+                    creature.Abilities[AbilityConstants.Constitution].BaseScore += advancement.AdditionalHitDice;
+                    naturalArmorAdvancementAmount = advancement.AdditionalHitDice;
+                }
 
                 creature.HitPoints.RollDefault(dice);
                 creature.HitPoints.Roll(dice);
 
-                creature.Size = advancement.Type;
-
-                if (creature.Name == CreatureConstants.Barghest || creature.Name == CreatureConstants.Barghest_Greater)
-                {
-                    creature.Abilities[AbilityConstants.Strength].BaseScore += advancement.Amount;
-                    creature.Abilities[AbilityConstants.Constitution].BaseScore += advancement.Amount;
-                    naturalArmorAdvancementAmount = advancement.Amount;
-                }
+                creature.Size = advancement.Size;
             }
 
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities);

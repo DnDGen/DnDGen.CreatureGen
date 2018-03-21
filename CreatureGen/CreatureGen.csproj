@@ -102,9 +102,12 @@
     <Compile Include="Generators\Skills\ISkillsGenerator.cs" />
     <Compile Include="Generators\Skills\SkillsGenerator.cs" />
     <Compile Include="Generators\Skills\SkillsGeneratorEventGenDecorator.cs" />
+    <Compile Include="Selectors\Collections\AdvancementSelector.cs" />
     <Compile Include="Selectors\Collections\AttackSelector.cs" />
     <Compile Include="Selectors\Collections\CreatureDataSelector.cs" />
+    <Compile Include="Selectors\Collections\IAdvancementSelector.cs" />
     <Compile Include="Selectors\Collections\TypeAndAmountSelector.cs" />
+    <Compile Include="Selectors\Selections\AdvancementSelection.cs" />
     <Compile Include="Verifiers\CreatureVerifier.cs" />
     <Compile Include="IoC\CreatureGenModuleLoader.cs" />
     <Compile Include="IoC\Modules\GeneratorsModule.cs" />
