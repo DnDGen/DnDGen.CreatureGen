@@ -67,7 +67,8 @@
     <entry>Bison</entry>
     <entry>Boar</entry>
     <entry>Dire Boar</entry>
-    <entry>Camel</entry>
+    <entry>Camel, Bactrian (Two-Humped)</entry>
+    <entry>Camel, Dromedary (One-Humped)</entry>
     <entry>Cat</entry>
     <entry>Cheetah</entry>
     <entry>Constrictor Snake</entry>
@@ -148,6 +149,8 @@
     <entry>Giant Octopus</entry>
     <entry>Porpoise</entry>
     <entry>Sahuagin</entry>
+    <entry>Sahuagin Mutant</entry>
+    <entry>Malenti</entry>
     <entry>Sea Hag</entry>
     <entry>Shark</entry>
     <entry>Squid</entry>
@@ -730,6 +733,8 @@
     <entry>Medusa</entry>
     <entry>Minotaur</entry>
     <entry>Sahuagin</entry>
+    <entry>Sahuagin Mutant</entry>
+    <entry>Malenti</entry>
     <entry>Scorpionfolk</entry>
     <entry>Hag</entry>
     <entry>Yuan-ti</entry>
@@ -1105,6 +1110,8 @@
     <entry>Medusa</entry>
     <entry>Minotaur</entry>
     <entry>Sahuagin</entry>
+    <entry>Sahuagin Mutant</entry>
+    <entry>Malenti</entry>
     <entry>Scorpionfolk</entry>
     <entry>Hag</entry>
     <entry>Yuan-ti</entry>
@@ -1160,7 +1167,8 @@
     <entry>Bison</entry>
     <entry>Boar</entry>
     <entry>Dire Boar</entry>
-    <entry>Camel</entry>
+    <entry>Camel, Bactrian (Two-Humped)</entry>
+    <entry>Camel, Dromedary (One-Humped)</entry>
     <entry>Cat</entry>
     <entry>Cheetah</entry>
     <entry>Crocodile</entry>
@@ -1429,6 +1437,8 @@
     <entry>Medusa</entry>
     <entry>Minotaur</entry>
     <entry>Sahuagin</entry>
+    <entry>Sahuagin Mutant</entry>
+    <entry>Malenti</entry>
     <entry>Scorpionfolk</entry>
     <entry>Yuan-ti</entry>
   </collection>

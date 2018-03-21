@@ -803,6 +803,8 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Roper, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.RustMonster, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Sahuagin, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.Sahuagin_Malenti, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.Sahuagin_Mutant, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Salamander_Average, AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil)]
         [TestCase(CreatureConstants.Salamander_Flamebrother, AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil)]
         [TestCase(CreatureConstants.Salamander_Noble, AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil)]

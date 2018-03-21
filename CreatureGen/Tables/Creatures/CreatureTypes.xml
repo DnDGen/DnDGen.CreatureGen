@@ -2496,6 +2496,16 @@
     <entry>Aquatic</entry>
   </collection>
   <collection>
+    <name>Sahuagin Mutant</name>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
+    <name>Malenti</name>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Aquatic</entry>
+  </collection>
+  <collection>
     <name>Satyr</name>
     <entry>Fey</entry>
   </collection>

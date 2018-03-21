@@ -2175,6 +2175,16 @@
     <entry>Swim/60</entry>
   </collection>
   <collection>
+    <name>Sahuagin Mutant</name>
+    <entry>Land/30</entry>
+    <entry>Swim/60</entry>
+  </collection>
+  <collection>
+    <name>Malenti</name>
+    <entry>Land/30</entry>
+    <entry>Swim/40</entry>
+  </collection>
+  <collection>
     <name>Salt Mephit</name>
     <entry>Land/30</entry>
     <entry>Fly/40</entry>

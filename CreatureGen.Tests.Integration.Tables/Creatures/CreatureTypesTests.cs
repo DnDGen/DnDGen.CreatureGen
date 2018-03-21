@@ -959,6 +959,10 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.RustMonster, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Sahuagin, CreatureConstants.Types.MonstrousHumanoid,
             CreatureConstants.Types.Subtypes.Aquatic)]
+        [TestCase(CreatureConstants.Sahuagin_Malenti, CreatureConstants.Types.MonstrousHumanoid,
+            CreatureConstants.Types.Subtypes.Aquatic)]
+        [TestCase(CreatureConstants.Sahuagin_Mutant, CreatureConstants.Types.MonstrousHumanoid,
+            CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Salamander_Average, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Extraplanar,
             CreatureConstants.Types.Subtypes.Fire)]

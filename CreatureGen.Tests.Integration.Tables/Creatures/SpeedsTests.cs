@@ -924,6 +924,10 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.RustMonster][SpeedConstants.Land] = 40;
                     testCases[CreatureConstants.Sahuagin][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Sahuagin][SpeedConstants.Swim] = 60;
+                    testCases[CreatureConstants.Sahuagin_Malenti][SpeedConstants.Land] = 30;
+                    testCases[CreatureConstants.Sahuagin_Malenti][SpeedConstants.Swim] = 40;
+                    testCases[CreatureConstants.Sahuagin_Mutant][SpeedConstants.Land] = 30;
+                    testCases[CreatureConstants.Sahuagin_Mutant][SpeedConstants.Swim] = 60;
                     testCases[CreatureConstants.Salamander_Average][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Salamander_Flamebrother][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Salamander_Noble][SpeedConstants.Land] = 20;

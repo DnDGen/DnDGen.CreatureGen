@@ -113,6 +113,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Medusa,
             CreatureConstants.Minotaur,
             CreatureConstants.Sahuagin,
+            CreatureConstants.Sahuagin_Malenti,
+            CreatureConstants.Sahuagin_Mutant,
             CreatureConstants.Scorpionfolk,
             CreatureConstants.Groups.YuanTi)]
         [TestCase(CreatureConstants.Types.Ooze,
@@ -195,6 +197,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Ogre_Merrow,
             CreatureConstants.Porpoise,
             CreatureConstants.Sahuagin,
+            CreatureConstants.Sahuagin_Malenti,
+            CreatureConstants.Sahuagin_Mutant,
             CreatureConstants.SeaHag,
             CreatureConstants.Groups.Shark,
             CreatureConstants.Skum,

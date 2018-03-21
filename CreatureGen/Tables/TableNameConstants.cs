@@ -39,7 +39,6 @@
                 public const string FeatFoci = "FeatFoci";
                 public const string FeatGroups = "FeatGroups";
                 public const string FeatHitDieRequirements = "FeatHitDieRequirements";
-                public const string HitDice = "HitDice";
                 public const string RequiredFeats = "RequiredFeats";
                 public const string SaveBonuses = "SaveBonuses";
                 public const string SkillData = "SkillData";

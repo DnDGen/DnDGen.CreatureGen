@@ -699,6 +699,8 @@ namespace CreatureGen.Creatures
         public const string Roper = "Roper";
         public const string RustMonster = "Rust Monster";
         public const string Sahuagin = "Sahuagin";
+        public const string Sahuagin_Mutant = "Sahuagin Mutant";
+        public const string Sahuagin_Malenti = "Malenti";
         public const string Satyr = "Satyr";
         public const string Satyr_WithPipes = "Satyr with pipes";
         public const string Salamander_Average = "Average Salamander";
@@ -1283,6 +1285,8 @@ namespace CreatureGen.Creatures
                 Roper,
                 RustMonster,
                 Sahuagin,
+                Sahuagin_Malenti,
+                Sahuagin_Mutant,
                 Satyr,
                 Satyr_WithPipes,
                 Salamander_Average,

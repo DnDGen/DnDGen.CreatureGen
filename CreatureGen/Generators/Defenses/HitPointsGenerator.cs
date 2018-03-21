@@ -25,8 +25,8 @@ namespace CreatureGen.Generators.Defenses
         {
             var hitPoints = new HitPoints();
 
-            hitPoints.HitDiceQuantity = adjustmentSelector.SelectFrom(TableNameConstants.Set.Collection.HitDice, creatureName);
-            hitPoints.HitDie = adjustmentSelector.SelectFrom(TableNameConstants.Set.Collection.HitDice, creatureType.Name);
+            hitPoints.HitDiceQuantity = adjustmentSelector.SelectFrom(TableNameConstants.Set.Adjustments.HitDice, creatureName);
+            hitPoints.HitDie = adjustmentSelector.SelectFrom(TableNameConstants.Set.Adjustments.HitDice, creatureType.Name);
             hitPoints.Constitution = constitution;
 
             hitPoints.RollDefault(dice);

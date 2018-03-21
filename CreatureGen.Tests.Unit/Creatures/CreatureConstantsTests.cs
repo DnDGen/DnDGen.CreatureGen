@@ -244,6 +244,8 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Roper, "Roper")]
         [TestCase(CreatureConstants.RustMonster, "Rust Monster")]
         [TestCase(CreatureConstants.Sahuagin, "Sahuagin")]
+        [TestCase(CreatureConstants.Sahuagin_Malenti, "Malenti")]
+        [TestCase(CreatureConstants.Sahuagin_Mutant, "Sahuagin Mutant")]
         [TestCase(CreatureConstants.Satyr, "Satyr")]
         [TestCase(CreatureConstants.Scorpionfolk, "Scorpionfolk")]
         [TestCase(CreatureConstants.SeaCat, "Sea Cat")]
