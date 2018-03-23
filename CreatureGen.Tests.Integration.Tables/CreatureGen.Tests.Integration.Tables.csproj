@@ -148,7 +148,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Creatures\SpeedsTests.cs" />
     <Compile Include="Creatures\DragonSpeciesTests.cs" />
-    <Compile Include="TableAttribute.cs" />
     <Compile Include="TableTests.cs" />
     <Compile Include="TraitsTests.cs" />
   </ItemGroup>
@@ -168,7 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Attacks\" />
-    <Folder Include="Combats\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

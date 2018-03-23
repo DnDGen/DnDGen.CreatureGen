@@ -13,8 +13,6 @@
         public const string DodgeBonus = "Dodge Bonus";
         public const string Genetic = "Genetic";
         public const string GoodBaseAttack = "Good Base Attack";
-        public const string HasAbilityRequirements = "Has Ability Requirements";
-        public const string HasSkillRequirements = "Has Skill Requirements";
         public const string Initiative = "Initiative";
         public const string Lycanthrope = "Lycanthrope";
         public const string NaturalArmor = "Natural Armor";
@@ -25,5 +23,6 @@
         public const string TakenMultipleTimes = "Taken Multiple Times";
         public const string Undead = "Undead";
         public const string Untrained = "Untrained";
+        public const string WeaponProficiency = "Weapon Proficiency";
     }
 }

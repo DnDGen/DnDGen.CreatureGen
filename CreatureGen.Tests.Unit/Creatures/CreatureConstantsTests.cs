@@ -572,7 +572,6 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Tojanida_Juvenile, "Juvenile " + CreatureConstants.Groups.Tojanida)]
         [TestCase(CreatureConstants.Troll_Scrag, "Scrag")]
         [TestCase(CreatureConstants.UmberHulk_TrulyHorrid, "Truly Horrid " + CreatureConstants.UmberHulk)]
-        [TestCase(CreatureConstants.Unicorn_CelestialCharger, "Celestial Charger")]
         [TestCase(CreatureConstants.Whale_Baleen, "Baleen " + CreatureConstants.Groups.Whale)]
         [TestCase(CreatureConstants.Whale_Cachalot, "Cachalot " + CreatureConstants.Groups.Whale)]
         [TestCase(CreatureConstants.Whale_Orca, "Orca " + CreatureConstants.Groups.Whale)]

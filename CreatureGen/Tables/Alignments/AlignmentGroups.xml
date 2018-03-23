@@ -549,10 +549,6 @@
     <name>Cat</name>
   </collection>
   <collection>
-    <name>Celestial Charger</name>
-    <entry>AlwaysChaotic Good</entry>
-  </collection>
-  <collection>
     <name>Centaur</name>
     <entry>UsuallyNeutral Good</entry>
   </collection>
@@ -1824,10 +1820,6 @@
   </collection>
   <collection>
     <name>Lammasu</name>
-    <entry>AlwaysLawful Good</entry>
-  </collection>
-  <collection>
-    <name>Golden Protector (Celestial Half-Dragon Lammasu)</name>
     <entry>AlwaysLawful Good</entry>
   </collection>
   <collection>

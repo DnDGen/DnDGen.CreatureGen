@@ -17,8 +17,6 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(GroupConstants.DodgeBonus, "Dodge Bonus")]
         [TestCase(GroupConstants.Genetic, "Genetic")]
         [TestCase(GroupConstants.GoodBaseAttack, "Good Base Attack")]
-        [TestCase(GroupConstants.HasAbilityRequirements, "Has Ability Requirements")]
-        [TestCase(GroupConstants.HasSkillRequirements, "Has Skill Requirements")]
         [TestCase(GroupConstants.Initiative, "Initiative")]
         [TestCase(GroupConstants.Lycanthrope, "Lycanthrope")]
         [TestCase(GroupConstants.NaturalArmor, "Natural Armor")]
@@ -29,6 +27,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(GroupConstants.TakenMultipleTimes, "Taken Multiple Times")]
         [TestCase(GroupConstants.Undead, "Undead")]
         [TestCase(GroupConstants.Untrained, "Untrained")]
+        [TestCase(GroupConstants.WeaponProficiency, "Weapon Proficiency")]
         public void GroupConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));

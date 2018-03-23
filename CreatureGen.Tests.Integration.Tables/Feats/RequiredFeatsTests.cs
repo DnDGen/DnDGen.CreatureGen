@@ -21,26 +21,26 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
                 FeatConstants.Cleave,
                 FeatConstants.DeflectArrows,
                 FeatConstants.Diehard,
-                FeatConstants.ExtraTurning,
+                FeatConstants.Turning_Extra,
                 FeatConstants.FarShot,
-                FeatConstants.GreatCleave,
-                FeatConstants.GreaterSpellFocus,
-                FeatConstants.GreaterSpellPenetration,
-                FeatConstants.GreaterTwoWeaponFighting,
-                FeatConstants.GreaterWeaponFocus,
-                FeatConstants.GreaterWeaponSpecialization,
-                FeatConstants.ImprovedBullRush,
-                FeatConstants.ImprovedCritical,
-                FeatConstants.ImprovedDisarm,
-                FeatConstants.ImprovedFeint,
-                FeatConstants.ImprovedGrapple,
+                FeatConstants.Cleave_Great,
+                FeatConstants.SpellFocus_Greater,
+                FeatConstants.SpellPenetration_Greater,
+                FeatConstants.TwoWeaponFighting_Greater,
+                FeatConstants.WeaponFocus_Greater,
+                FeatConstants.WeaponSpecialization_Greater,
+                FeatConstants.BullRush_Improved,
+                FeatConstants.Critical_Improved,
+                FeatConstants.Disarm_Improved,
+                FeatConstants.Feint_Improved,
+                FeatConstants.Grapple_Improved,
                 FeatConstants.ImprovedOverrun,
-                FeatConstants.ImprovedPreciseShot,
+                FeatConstants.PreciseShot_Improved,
                 FeatConstants.ImprovedShieldBash,
-                FeatConstants.ImprovedSunder,
-                FeatConstants.ImprovedTrip,
-                FeatConstants.ImprovedTurning,
-                FeatConstants.ImprovedTwoWeaponFighting,
+                FeatConstants.Sunder_Improved,
+                FeatConstants.Trip_Improved,
+                FeatConstants.Turning_Improved,
+                FeatConstants.TwoWeaponFighting_Improved,
                 FeatConstants.Manyshot,
                 FeatConstants.MountedArchery,
                 FeatConstants.Mobility,
@@ -72,27 +72,27 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         }
 
         [TestCase(FeatConstants.Cleave, FeatConstants.PowerAttack)]
-        [TestCase(FeatConstants.DeflectArrows, FeatConstants.ImprovedUnarmedStrike)]
+        [TestCase(FeatConstants.DeflectArrows, FeatConstants.UnarmedStrike_Improved)]
         [TestCase(FeatConstants.Diehard, FeatConstants.Endurance)]
-        [TestCase(FeatConstants.ExtraTurning, FeatConstants.Turn)]
+        [TestCase(FeatConstants.Turning_Extra, FeatConstants.Turn)]
         [TestCase(FeatConstants.FarShot, FeatConstants.PointBlankShot)]
-        [TestCase(FeatConstants.GreatCleave, FeatConstants.Cleave)]
-        [TestCase(FeatConstants.GreaterSpellFocus, FeatConstants.SpellFocus)]
-        [TestCase(FeatConstants.GreaterSpellPenetration, FeatConstants.SpellPenetration)]
-        [TestCase(FeatConstants.GreaterTwoWeaponFighting, FeatConstants.ImprovedTwoWeaponFighting)]
-        [TestCase(FeatConstants.GreaterWeaponFocus, FeatConstants.WeaponFocus)]
-        [TestCase(FeatConstants.GreaterWeaponSpecialization, FeatConstants.GreaterWeaponFocus, FeatConstants.WeaponSpecialization)]
-        [TestCase(FeatConstants.ImprovedBullRush, FeatConstants.PowerAttack)]
-        [TestCase(FeatConstants.ImprovedDisarm, FeatConstants.CombatExpertise)]
-        [TestCase(FeatConstants.ImprovedFeint, FeatConstants.CombatExpertise)]
-        [TestCase(FeatConstants.ImprovedGrapple, FeatConstants.ImprovedUnarmedStrike)]
+        [TestCase(FeatConstants.Cleave_Great, FeatConstants.Cleave)]
+        [TestCase(FeatConstants.SpellFocus_Greater, FeatConstants.SpellFocus)]
+        [TestCase(FeatConstants.SpellPenetration_Greater, FeatConstants.SpellPenetration)]
+        [TestCase(FeatConstants.TwoWeaponFighting_Greater, FeatConstants.TwoWeaponFighting_Improved)]
+        [TestCase(FeatConstants.WeaponFocus_Greater, FeatConstants.WeaponFocus)]
+        [TestCase(FeatConstants.WeaponSpecialization_Greater, FeatConstants.WeaponFocus_Greater, FeatConstants.WeaponSpecialization)]
+        [TestCase(FeatConstants.BullRush_Improved, FeatConstants.PowerAttack)]
+        [TestCase(FeatConstants.Disarm_Improved, FeatConstants.CombatExpertise)]
+        [TestCase(FeatConstants.Feint_Improved, FeatConstants.CombatExpertise)]
+        [TestCase(FeatConstants.Grapple_Improved, FeatConstants.UnarmedStrike_Improved)]
         [TestCase(FeatConstants.ImprovedOverrun, FeatConstants.PowerAttack)]
-        [TestCase(FeatConstants.ImprovedPreciseShot, FeatConstants.PreciseShot)]
+        [TestCase(FeatConstants.PreciseShot_Improved, FeatConstants.PreciseShot)]
         [TestCase(FeatConstants.PreciseShot, FeatConstants.PointBlankShot)]
-        [TestCase(FeatConstants.ImprovedSunder, FeatConstants.PowerAttack)]
-        [TestCase(FeatConstants.ImprovedTrip, FeatConstants.CombatExpertise)]
-        [TestCase(FeatConstants.ImprovedTurning, FeatConstants.Turn)]
-        [TestCase(FeatConstants.ImprovedTwoWeaponFighting, FeatConstants.TwoWeaponFighting)]
+        [TestCase(FeatConstants.Sunder_Improved, FeatConstants.PowerAttack)]
+        [TestCase(FeatConstants.Trip_Improved, FeatConstants.CombatExpertise)]
+        [TestCase(FeatConstants.Turning_Improved, FeatConstants.Turn)]
+        [TestCase(FeatConstants.TwoWeaponFighting_Improved, FeatConstants.TwoWeaponFighting)]
         [TestCase(FeatConstants.Manyshot, FeatConstants.RapidShot)]
         [TestCase(FeatConstants.RapidShot, FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.Mobility, FeatConstants.Dodge)]
@@ -105,14 +105,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.SnatchArrows,
             FeatConstants.DeflectArrows,
-            FeatConstants.ImprovedUnarmedStrike)]
+            FeatConstants.UnarmedStrike_Improved)]
         [TestCase(FeatConstants.SpiritedCharge,
             FeatConstants.MountedCombat,
             FeatConstants.RideByAttack)]
         [TestCase(FeatConstants.SpringAttack,
             FeatConstants.Dodge,
             FeatConstants.Mobility)]
-        [TestCase(FeatConstants.StunningFist, FeatConstants.ImprovedUnarmedStrike)]
+        [TestCase(FeatConstants.StunningFist, FeatConstants.UnarmedStrike_Improved)]
         [TestCase(FeatConstants.Trample, FeatConstants.MountedCombat)]
         [TestCase(FeatConstants.TwoWeaponDefense, FeatConstants.TwoWeaponFighting)]
         [TestCase(FeatConstants.WeaponSpecialization, FeatConstants.WeaponFocus)]

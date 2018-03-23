@@ -1087,8 +1087,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.UmberHulk, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.UmberHulk_TrulyHorrid, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Unicorn, CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Unicorn_CelestialCharger, CreatureConstants.Types.MagicalBeast,
-            CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.VampireSpawn, CreatureConstants.Types.Undead)]
         [TestCase(CreatureConstants.Vargouille, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Evil,

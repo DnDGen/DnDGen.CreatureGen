@@ -572,7 +572,7 @@
   </collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
-    <entry>Land/50</entry>
+    <entry>Land/40</entry>
   </collection>
   <collection>
     <name>Camel, Dromedary (One-Humped)</name>
@@ -586,10 +586,6 @@
   <collection>
     <name>Cat</name>
     <entry>Land/30</entry>
-  </collection>
-  <collection>
-    <name>Celestial Charger</name>
-    <entry>Land/60</entry>
   </collection>
   <collection>
     <name>Centaur</name>

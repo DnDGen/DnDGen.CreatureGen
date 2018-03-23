@@ -52,33 +52,33 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 FeatConstants.EnlargeSpell,
                 FeatConstants.EschewMaterials,
                 FeatConstants.ExtendSpell,
-                FeatConstants.ExtraTurning,
+                FeatConstants.Turning_Extra,
                 FeatConstants.FarShot,
-                FeatConstants.GreatCleave,
-                FeatConstants.GreaterSpellFocus,
-                FeatConstants.GreaterSpellPenetration,
-                FeatConstants.GreaterTwoWeaponFighting,
-                FeatConstants.GreaterWeaponFocus,
-                FeatConstants.GreaterWeaponSpecialization,
+                FeatConstants.Cleave_Great,
+                FeatConstants.SpellFocus_Greater,
+                FeatConstants.SpellPenetration_Greater,
+                FeatConstants.TwoWeaponFighting_Greater,
+                FeatConstants.WeaponFocus_Greater,
+                FeatConstants.WeaponSpecialization_Greater,
                 FeatConstants.GreatFortitude,
                 FeatConstants.HeightenSpell,
-                FeatConstants.ImprovedBullRush,
-                FeatConstants.ImprovedCounterspell,
-                FeatConstants.ImprovedCritical,
-                FeatConstants.ImprovedDisarm,
+                FeatConstants.BullRush_Improved,
+                FeatConstants.Counterspell_Improved,
+                FeatConstants.Critical_Improved,
+                FeatConstants.Disarm_Improved,
                 FeatConstants.ImprovedEvasion,
-                FeatConstants.ImprovedFamiliar,
-                FeatConstants.ImprovedFeint,
-                FeatConstants.ImprovedGrapple,
-                FeatConstants.ImprovedInitiative,
+                FeatConstants.Familiar_Improved,
+                FeatConstants.Feint_Improved,
+                FeatConstants.Grapple_Improved,
+                FeatConstants.Initiative_Improved,
                 FeatConstants.ImprovedOverrun,
-                FeatConstants.ImprovedPreciseShot,
+                FeatConstants.PreciseShot_Improved,
                 FeatConstants.ImprovedShieldBash,
-                FeatConstants.ImprovedSunder,
-                FeatConstants.ImprovedTrip,
-                FeatConstants.ImprovedTurning,
-                FeatConstants.ImprovedTwoWeaponFighting,
-                FeatConstants.ImprovedUnarmedStrike,
+                FeatConstants.Sunder_Improved,
+                FeatConstants.Trip_Improved,
+                FeatConstants.Turning_Improved,
+                FeatConstants.TwoWeaponFighting_Improved,
+                FeatConstants.UnarmedStrike_Improved,
                 FeatConstants.Investigator,
                 FeatConstants.IronWill,
                 FeatConstants.LightningReflexes,
@@ -157,29 +157,29 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCase(FeatConstants.EnlargeSpell, 0, "", 0, "", 0)]
         [TestCase(FeatConstants.EschewMaterials, 0, "", 0, "", 0)]
         [TestCase(FeatConstants.ExtendSpell, 0, "", 0, "", 0)]
-        [TestCase(FeatConstants.ExtraTurning, 0, "", 0, "", 4)]
+        [TestCase(FeatConstants.Turning_Extra, 0, "", 0, "", 4)]
         [TestCase(FeatConstants.FarShot, 0, "", 0, "", 0)]
-        [TestCase(FeatConstants.GreatCleave, 4, "", 0, "", 0)]
-        [TestCase(FeatConstants.GreaterSpellPenetration, 0, "", 0, "", 2)]
-        [TestCase(FeatConstants.GreaterTwoWeaponFighting, 11, "", 0, "", 0)]
+        [TestCase(FeatConstants.Cleave_Great, 4, "", 0, "", 0)]
+        [TestCase(FeatConstants.SpellPenetration_Greater, 0, "", 0, "", 2)]
+        [TestCase(FeatConstants.TwoWeaponFighting_Greater, 11, "", 0, "", 0)]
         [TestCase(FeatConstants.GreatFortitude, 0, "", 0, "", 2)]
         [TestCase(FeatConstants.HeightenSpell, 0, "", 0, "", 0)]
-        [TestCase(FeatConstants.ImprovedBullRush, 0, "", 0, "", 4)]
-        [TestCase(FeatConstants.ImprovedCounterspell, 0, "", 0, "", 0)]
-        [TestCase(FeatConstants.ImprovedDisarm, 0, "", 0, "", 4)]
+        [TestCase(FeatConstants.BullRush_Improved, 0, "", 0, "", 4)]
+        [TestCase(FeatConstants.Counterspell_Improved, 0, "", 0, "", 0)]
+        [TestCase(FeatConstants.Disarm_Improved, 0, "", 0, "", 4)]
         [TestCase(FeatConstants.ImprovedEvasion, 0, "", 0, "", 0)]
-        [TestCase(FeatConstants.ImprovedFamiliar, 0, "", 0, "", 0)]
-        [TestCase(FeatConstants.ImprovedFeint, 0, "", 0, "", 0)]
-        [TestCase(FeatConstants.ImprovedGrapple, 0, "", 0, "", 4)]
-        [TestCase(FeatConstants.ImprovedInitiative, 0, "", 0, "", 4)]
+        [TestCase(FeatConstants.Familiar_Improved, 0, "", 0, "", 0)]
+        [TestCase(FeatConstants.Feint_Improved, 0, "", 0, "", 0)]
+        [TestCase(FeatConstants.Grapple_Improved, 0, "", 0, "", 4)]
+        [TestCase(FeatConstants.Initiative_Improved, 0, "", 0, "", 4)]
         [TestCase(FeatConstants.ImprovedOverrun, 0, "", 0, "", 4)]
-        [TestCase(FeatConstants.ImprovedPreciseShot, 11, "", 0, "", 0)]
+        [TestCase(FeatConstants.PreciseShot_Improved, 11, "", 0, "", 0)]
         [TestCase(FeatConstants.ImprovedShieldBash, 0, "", 0, "", 0)]
-        [TestCase(FeatConstants.ImprovedSunder, 0, "", 0, "", 4)]
-        [TestCase(FeatConstants.ImprovedTrip, 0, "", 0, "", 4)]
-        [TestCase(FeatConstants.ImprovedTurning, 0, "", 0, "", 4)]
-        [TestCase(FeatConstants.ImprovedTwoWeaponFighting, 6, "", 0, "", 0)]
-        [TestCase(FeatConstants.ImprovedUnarmedStrike, 0, "", 0, "", 0)]
+        [TestCase(FeatConstants.Sunder_Improved, 0, "", 0, "", 4)]
+        [TestCase(FeatConstants.Trip_Improved, 0, "", 0, "", 4)]
+        [TestCase(FeatConstants.Turning_Improved, 0, "", 0, "", 4)]
+        [TestCase(FeatConstants.TwoWeaponFighting_Improved, 6, "", 0, "", 0)]
+        [TestCase(FeatConstants.UnarmedStrike_Improved, 0, "", 0, "", 0)]
         [TestCase(FeatConstants.Investigator, 0, "", 0, "", 2)]
         [TestCase(FeatConstants.IronWill, 0, "", 0, "", 2)]
         [TestCase(FeatConstants.LightningReflexes, 0, "", 0, "", 2)]

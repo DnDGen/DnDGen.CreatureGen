@@ -418,9 +418,6 @@
     <name>Cat</name>
   </collection>
   <collection>
-    <name>Celestial Charger</name>
-  </collection>
-  <collection>
     <name>Centaur</name>
   </collection>
   <collection>
@@ -545,6 +542,9 @@
   </collection>
   <collection>
     <name>Derro</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)</name>
   </collection>
   <collection>
     <name>Destrachan</name>
@@ -930,10 +930,6 @@
   <collection>
     <name>Gold Dragon, Young</name>
     <entry>Poor Maneuverability</entry>
-  </collection>
-  <collection>
-    <name>Golden Protector (Celestial Half-Dragon Lammasu)</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Gorgon</name>
@@ -1560,6 +1556,12 @@
   </collection>
   <collection>
     <name>Sahuagin</name>
+  </collection>
+  <collection>
+    <name>Sahuagin Mutant</name>
+  </collection>
+  <collection>
+    <name>Malenti</name>
   </collection>
   <collection>
     <name>Salt Mephit</name>

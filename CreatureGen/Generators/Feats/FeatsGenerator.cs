@@ -30,27 +30,6 @@ namespace CreatureGen.Generators.Feats
             this.dice = dice;
         }
 
-        private IEnumerable<string> GetFoci(SpecialQualitySelection racialFeatSelection, IEnumerable<Skill> skills)
-        {
-            if (string.IsNullOrEmpty(racialFeatSelection.FocusType))
-                return Enumerable.Empty<string>();
-
-            var foci = new HashSet<string>();
-
-            var fociQuantity = 1;
-            if (racialFeatSelection.RandomFociQuantity.Any())
-                fociQuantity = dice.Roll(racialFeatSelection.RandomFociQuantity).AsSum();
-
-            while (fociQuantity > foci.Count)
-            {
-                var focus = featFocusGenerator.GenerateAllowingFocusOfAllFrom(racialFeatSelection.Feat, racialFeatSelection.FocusType, skills);
-                if (string.IsNullOrEmpty(focus) == false)
-                    foci.Add(focus);
-            }
-
-            return foci;
-        }
-
         public IEnumerable<Feat> GenerateSpecialQualities(string creatureName, HitPoints hitPoints, string size, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills)
         {
             var featSelections = featsSelector.SelectSpecialQualities(creatureName);
@@ -78,6 +57,27 @@ namespace CreatureGen.Generators.Feats
             }
 
             return feats;
+        }
+
+        private IEnumerable<string> GetFoci(SpecialQualitySelection specialQualitySelection, IEnumerable<Skill> skills)
+        {
+            if (string.IsNullOrEmpty(specialQualitySelection.FocusType))
+                return Enumerable.Empty<string>();
+
+            var foci = new HashSet<string>();
+
+            var fociQuantity = 1;
+            if (specialQualitySelection.RandomFociQuantity.Any())
+                fociQuantity = dice.Roll(specialQualitySelection.RandomFociQuantity).AsSum();
+
+            while (fociQuantity > foci.Count)
+            {
+                var focus = featFocusGenerator.GenerateAllowingFocusOfAllFrom(specialQualitySelection.Feat, specialQualitySelection.FocusType, skills);
+                if (string.IsNullOrEmpty(focus) == false)
+                    foci.Add(focus);
+            }
+
+            return foci;
         }
 
         public IEnumerable<Feat> GenerateFeats(HitPoints hitPoints, int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attacks, IEnumerable<Feat> specialQualities)

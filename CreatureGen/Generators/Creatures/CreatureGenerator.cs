@@ -236,7 +236,7 @@ namespace CreatureGen.Generators.Creatures
             if (!abilities[AbilityConstants.Dexterity].HasScore)
                 initiativeBonus = abilities[AbilityConstants.Intelligence].Modifier;
 
-            var improvedInitiative = feats.FirstOrDefault(f => f.Name == FeatConstants.ImprovedInitiative);
+            var improvedInitiative = feats.FirstOrDefault(f => f.Name == FeatConstants.Initiative_Improved);
             if (improvedInitiative != null)
                 initiativeBonus += improvedInitiative.Power;
 

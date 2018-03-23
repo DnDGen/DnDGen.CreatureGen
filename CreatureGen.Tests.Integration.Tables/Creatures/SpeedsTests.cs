@@ -1045,7 +1045,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.UmberHulk_TrulyHorrid][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.UmberHulk_TrulyHorrid][SpeedConstants.Burrow] = 20;
                     testCases[CreatureConstants.Unicorn][SpeedConstants.Land] = 60;
-                    testCases[CreatureConstants.Unicorn_CelestialCharger][SpeedConstants.Land] = 60;
                     testCases[CreatureConstants.VampireSpawn][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Vargouille][SpeedConstants.Fly] = 30;
                     testCases[CreatureConstants.VioletFungus][SpeedConstants.Land] = 10;

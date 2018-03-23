@@ -779,7 +779,6 @@ namespace CreatureGen.Creatures
         public const string UmberHulk = "Umber Hulk";
         public const string UmberHulk_TrulyHorrid = "Truly Horrid Umber Hulk";
         public const string Unicorn = "Unicorn";
-        public const string Unicorn_CelestialCharger = "Celestial Charger";
         public const string VampireSpawn = "Vampire Spawn";
         public const string Vargouille = "Vargouille";
         public const string VioletFungus = "Violet Fungus";
@@ -1365,7 +1364,6 @@ namespace CreatureGen.Creatures
                 UmberHulk,
                 UmberHulk_TrulyHorrid,
                 Unicorn,
-                Unicorn_CelestialCharger,
                 VampireSpawn,
                 Vargouille,
                 VioletFungus,

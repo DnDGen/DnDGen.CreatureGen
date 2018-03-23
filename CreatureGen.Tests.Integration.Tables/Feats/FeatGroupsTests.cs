@@ -65,10 +65,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.CombatExpertise,
             FeatConstants.DeflectArrows,
             FeatConstants.Dodge,
-            FeatConstants.GreaterTwoWeaponFighting,
-            FeatConstants.ImprovedGrapple,
-            FeatConstants.ImprovedPreciseShot,
-            FeatConstants.ImprovedTwoWeaponFighting,
+            FeatConstants.TwoWeaponFighting_Greater,
+            FeatConstants.Grapple_Improved,
+            FeatConstants.PreciseShot_Improved,
+            FeatConstants.TwoWeaponFighting_Improved,
             FeatConstants.Manyshot,
             FeatConstants.Mobility,
             FeatConstants.NaturalSpell,
@@ -89,7 +89,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.SkillBonus,
             FeatConstants.DodgeBonus,
             FeatConstants.SaveBonus,
-            FeatConstants.ExtraTurning)]
+            FeatConstants.Turning_Extra)]
         [TestCase(FeatConstants.SkillBonus,
             FeatConstants.SkillBonus,
             FeatConstants.Acrobatic,
@@ -118,7 +118,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(GroupConstants.SavingThrows,
             FeatConstants.SaveBonus)]
         [TestCase(GroupConstants.Initiative,
-            FeatConstants.ImprovedInitiative)]
+            FeatConstants.Initiative_Improved)]
         public void FeatGroup(string name, params string[] collection)
         {
             DistinctCollection(name, collection);

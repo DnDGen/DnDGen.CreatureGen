@@ -882,7 +882,6 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.UmberHulk, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.UmberHulk_TrulyHorrid, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Unicorn, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood)]
-        [TestCase(CreatureConstants.Unicorn_CelestialCharger, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood)]
         [TestCase(CreatureConstants.VampireSpawn, AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil)]
         [TestCase(CreatureConstants.Vargouille, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
         [TestCase(CreatureConstants.VioletFungus, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]

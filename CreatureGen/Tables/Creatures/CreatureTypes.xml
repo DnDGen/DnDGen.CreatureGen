@@ -1945,11 +1945,6 @@
     <entry>Magical Beast</entry>
   </collection>
   <collection>
-    <name>Golden Protector (Celestial Half-Dragon Lammasu)</name>
-    <entry>Dragon</entry>
-    <entry>Extraplanar</entry>
-  </collection>
-  <collection>
     <name>Lemure</name>
     <entry>Outsider</entry>
     <entry>Evil</entry>
@@ -2705,11 +2700,6 @@
   <collection>
     <name>Unicorn</name>
     <entry>Magical Beast</entry>
-  </collection>
-  <collection>
-    <name>Celestial Charger</name>
-    <entry>Magical Beast</entry>
-    <entry>Extraplanar</entry>
   </collection>
   <collection>
     <name>Vampire Spawn</name>

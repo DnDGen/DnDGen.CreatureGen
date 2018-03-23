@@ -1391,7 +1391,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
-            feats.Add(new Feat { Name = FeatConstants.ImprovedInitiative, Power = 4 });
+            feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
@@ -1403,7 +1403,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
-            feats.Add(new Feat { Name = FeatConstants.ImprovedInitiative, Power = 4 });
+            feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities)).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -1442,7 +1442,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
-            feats.Add(new Feat { Name = FeatConstants.ImprovedInitiative, Power = 4 });
+            feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
@@ -1455,7 +1455,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
-            feats.Add(new Feat { Name = FeatConstants.ImprovedInitiative, Power = 4 });
+            feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities)).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");

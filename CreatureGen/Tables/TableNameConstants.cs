@@ -50,6 +50,12 @@
                 public const string WeightRolls = "WeightRolls";
             }
 
+            internal static class TypeAndAmount
+            {
+                public const string FeatAbilityRequirements = "FeatAbilityRequirements";
+                public const string FeatSkillRankRequirements = "FeatSkillRankRequirements";
+            }
+
             internal static class Percentile
             {
                 public const string AlignmentGoodness = "AlignmentGoodness";
@@ -65,12 +71,6 @@
 
         internal static class Formattable
         {
-            internal static class Adjustments
-            {
-                public const string FEATSkillRankRequirements = "{0}SkillRankRequirements";
-                public const string FEATAbilityRequirements = "{0}AbilityRequirements";
-            }
-
             internal static class Collection
             {
                 public const string CREATURESpecialQualityData = "{0}SpecialQualityData";

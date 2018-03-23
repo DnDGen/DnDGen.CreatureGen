@@ -29,4 +29,12 @@
     <name>Tiny</name>
     <entry>2</entry>
   </collection>
+  <collection>
+    <name>Diminutive</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Fine</name>
+    <entry>8</entry>
+  </collection>
 </collections>
