@@ -12,9 +12,9 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.Agile, "Agile")]
         [TestCase(FeatConstants.Alertness, "Alertness")]
         [TestCase(FeatConstants.AnimalAffinity, "Animal Affinity")]
-        [TestCase(FeatConstants.ArmorProficiency_Heavy, "Armor Bonus")]
-        [TestCase(FeatConstants.ArmorProficiency_Light, "Armor Bonus")]
-        [TestCase(FeatConstants.ArmorProficiency_Medium, "Armor Bonus")]
+        [TestCase(FeatConstants.ArmorProficiency_Heavy, "Armor Proficiency (Heavy)")]
+        [TestCase(FeatConstants.ArmorProficiency_Light, "Armor Proficiency (Light)")]
+        [TestCase(FeatConstants.ArmorProficiency_Medium, "Armor Proficiency (Medium)")]
         [TestCase(FeatConstants.Athletic, "Athletic")]
         [TestCase(FeatConstants.AugmentSummoning, "Augment Summoning")]
         [TestCase(FeatConstants.BlindFight, "Blind-Fight")]
@@ -85,11 +85,11 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.Track, "Track")]
         [TestCase(FeatConstants.Trample, "Trample")]
         [TestCase(FeatConstants.Trip_Improved, "Improved Trip")]
-        [TestCase(FeatConstants.Turning_Extra, "Extra turning")]
+        [TestCase(FeatConstants.Turning_Extra, "Extra Turning")]
         [TestCase(FeatConstants.Turning_Improved, "Improved Turning")]
         [TestCase(FeatConstants.TwoWeaponDefense, "Two-Weapon Defense")]
         [TestCase(FeatConstants.TwoWeaponFighting, "Two-Weapon Fighting")]
-        [TestCase(FeatConstants.TwoWeaponFighting_Greater, "Improved Two-Weapon Fighting")]
+        [TestCase(FeatConstants.TwoWeaponFighting_Greater, "Greater Two-Weapon Fighting")]
         [TestCase(FeatConstants.TwoWeaponFighting_Improved, "Improved Two-Weapon Fighting")]
         [TestCase(FeatConstants.UnarmedStrike_Improved, "Improved Unarmed Strike")]
         [TestCase(FeatConstants.WeaponFinesse, "Weapon Finesse")]
@@ -203,6 +203,13 @@ namespace CreatureGen.Tests.Unit.Feats
             Assert.That(creatures, Is.EquivalentTo(constants));
         }
 
+        [TestCase(FeatConstants.SpecialQualities.AttackBonus, "Attack Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.DodgeBonus, "Dodge Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.DodgeBonus, "Dodge Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.InertialArmor, "Inertial Armor")]
+        [TestCase(FeatConstants.SpecialQualities.SaveBonus, "Save Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.SkillBonus, "Skill Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.SpellResistance, "Spell Resistance")]
         [TestCase(FeatConstants.SpecialQualities.WeaponFamiliarity, "Weapon Familiarity")]
         public void SpecialQualityTests(string constant, string value)
         {

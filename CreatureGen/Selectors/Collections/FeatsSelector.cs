@@ -115,8 +115,8 @@ namespace CreatureGen.Selectors.Collections
                 specialQualitySelection.Frequency.TimePeriod = data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex];
                 specialQualitySelection.MaximumHitDieRequirement = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.MaximumHitDiceRequirementIndex]);
                 specialQualitySelection.RandomFociQuantity = data[DataIndexConstants.SpecialQualityData.RandomFociQuantity];
-                specialQualitySelection.RequiredFeats = GetRequiredFeats(specialQualitySelection.Feat);
-                specialQualitySelection.MinimumAbilities = GetRequiredAbilities(specialQualitySelection.Feat);
+                specialQualitySelection.RequiredFeats = GetRequiredFeats(creature + specialQualitySelection.Feat);
+                specialQualitySelection.MinimumAbilities = GetRequiredAbilities(creature + specialQualitySelection.Feat);
 
                 specialQualitySelections.Add(specialQualitySelection);
             }

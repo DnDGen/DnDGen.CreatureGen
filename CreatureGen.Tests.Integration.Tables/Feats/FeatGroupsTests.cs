@@ -18,13 +18,11 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         {
             var names = new[]
             {
-                FeatConstants.AttackBonus,
-                FeatConstants.SkillBonus,
                 GroupConstants.AddHitDiceToPower,
-                GroupConstants.HasAbilityRequirements,
-                GroupConstants.HasSkillRequirements,
+                GroupConstants.AttackBonus,
                 GroupConstants.Initiative,
                 GroupConstants.SavingThrows,
+                GroupConstants.SkillBonus,
                 GroupConstants.TakenMultipleTimes,
                 SaveConstants.Fortitude,
                 SaveConstants.Reflex,
@@ -34,64 +32,20 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             AssertCollectionNames(names);
         }
 
-        [TestCase(FeatConstants.AttackBonus,
-            FeatConstants.AttackBonus)]
+        [TestCase(GroupConstants.AttackBonus,
+            FeatConstants.SpecialQualities.AttackBonus)]
         [TestCase(GroupConstants.AddHitDiceToPower,
-            FeatConstants.SpellResistance)]
-        [TestCase(GroupConstants.HasSkillRequirements,
-            FeatConstants.MountedArchery,
-            FeatConstants.MountedCombat,
-            FeatConstants.RideByAttack,
-            FeatConstants.SpiritedCharge,
-            FeatConstants.Trample,
-            FeatConstants.Acrobatic,
-            FeatConstants.Agile,
-            FeatConstants.Alertness,
-            FeatConstants.AnimalAffinity,
-            FeatConstants.Athletic,
-            FeatConstants.Deceitful,
-            FeatConstants.DeftHands,
-            FeatConstants.Diligent,
-            FeatConstants.Investigator,
-            FeatConstants.MagicalAptitude,
-            FeatConstants.NatureSense,
-            FeatConstants.Negotiator,
-            FeatConstants.NimbleFingers,
-            FeatConstants.Persuasive,
-            FeatConstants.SelfSufficient,
-            FeatConstants.Stealthy)]
-        [TestCase(GroupConstants.HasAbilityRequirements,
-            FeatConstants.PowerAttack,
-            FeatConstants.CombatExpertise,
-            FeatConstants.DeflectArrows,
-            FeatConstants.Dodge,
-            FeatConstants.TwoWeaponFighting_Greater,
-            FeatConstants.Grapple_Improved,
-            FeatConstants.PreciseShot_Improved,
-            FeatConstants.TwoWeaponFighting_Improved,
-            FeatConstants.Manyshot,
-            FeatConstants.Mobility,
-            FeatConstants.NaturalSpell,
-            FeatConstants.RapidShot,
-            FeatConstants.SnatchArrows,
-            FeatConstants.SpellMastery,
-            FeatConstants.SpringAttack,
-            FeatConstants.StunningFist,
-            FeatConstants.ShotOnTheRun,
-            FeatConstants.TwoWeaponDefense,
-            FeatConstants.TwoWeaponFighting,
-            FeatConstants.WhirlwindAttack)]
+            FeatConstants.SpecialQualities.SpellResistance)]
         [TestCase(GroupConstants.TakenMultipleTimes,
-            FeatConstants.AttackBonus,
+            FeatConstants.SpecialQualities.AttackBonus,
             FeatConstants.SpellMastery,
             FeatConstants.Toughness,
-            FeatConstants.SkillMastery,
-            FeatConstants.SkillBonus,
-            FeatConstants.DodgeBonus,
-            FeatConstants.SaveBonus,
+            FeatConstants.SpecialQualities.SkillBonus,
+            FeatConstants.SpecialQualities.DodgeBonus,
+            FeatConstants.SpecialQualities.SaveBonus,
             FeatConstants.Turning_Extra)]
-        [TestCase(FeatConstants.SkillBonus,
-            FeatConstants.SkillBonus,
+        [TestCase(GroupConstants.SkillBonus,
+            FeatConstants.SpecialQualities.SkillBonus,
             FeatConstants.Acrobatic,
             FeatConstants.Agile,
             FeatConstants.Alertness,
@@ -102,13 +56,13 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.Diligent,
             FeatConstants.Investigator,
             FeatConstants.MagicalAptitude,
+            //FeatConstants.NatureSense,
             FeatConstants.Negotiator,
             FeatConstants.NimbleFingers,
             FeatConstants.Persuasive,
             FeatConstants.SelfSufficient,
             FeatConstants.SkillFocus,
-            FeatConstants.Stealthy,
-            FeatConstants.NatureSense)]
+            FeatConstants.Stealthy)]
         [TestCase(SaveConstants.Fortitude,
             FeatConstants.GreatFortitude)]
         [TestCase(SaveConstants.Reflex,
@@ -116,7 +70,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(SaveConstants.Will,
             FeatConstants.IronWill)]
         [TestCase(GroupConstants.SavingThrows,
-            FeatConstants.SaveBonus)]
+            FeatConstants.SpecialQualities.SaveBonus)]
         [TestCase(GroupConstants.Initiative,
             FeatConstants.Initiative_Improved)]
         public void FeatGroup(string name, params string[] collection)

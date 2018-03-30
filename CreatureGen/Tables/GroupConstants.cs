@@ -7,6 +7,7 @@
         public const string Aquatic = "Aquatic";
         public const string ArmorBonus = "Armor Bonus";
         public const string ArmorCheckPenalty = "Armor Check Penalty";
+        public const string AttackBonus = "Attack Bonus";
         public const string AverageBaseAttack = "Average Base Attack";
         public const string CharacterClasses = "Character Classes";
         public const string Deflection = "Deflection";
@@ -20,6 +21,7 @@
         public const string SavingThrows = "Saving Throws";
         public const string Size = "Size";
         public const string Skills = "Skills";
+        public const string SkillBonus = "Skill Bonus";
         public const string TakenMultipleTimes = "Taken Multiple Times";
         public const string Undead = "Undead";
         public const string Untrained = "Untrained";

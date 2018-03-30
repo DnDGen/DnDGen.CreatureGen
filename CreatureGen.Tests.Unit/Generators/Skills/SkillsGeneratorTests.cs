@@ -1383,7 +1383,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[2].Power = 3;
 
             var featGrantingSkillBonuses = new[] { "feat3", "feat1" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, FeatConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "feat1")).Returns(new[] { "skill 1" });
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "feat3")).Returns(new[] { "skill 2", "skill 4" });
@@ -1424,7 +1424,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[2].Power = 3;
 
             var featGrantingSkillBonuses = new[] { "feat3", "feat1" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, FeatConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "feat1")).Returns(new[] { "skill 1" });
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "feat3")).Returns(new[] { "skill 2", "skill 3/focus" });
@@ -1466,7 +1466,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[2].Power = 3;
 
             var featGrantingSkillBonuses = new[] { "feat2", "feat1" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, FeatConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
             Assert.That(updatedSkills, Is.EqualTo(skills));
@@ -1509,7 +1509,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             featSkillFoci.Remove("skill 1"); //INFO: Doing this because a skill either has focus all the time or never
 
             var featGrantingSkillBonuses = new[] { "feat2", "feat1" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, FeatConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
             Assert.That(updatedSkills, Is.EqualTo(skills));
@@ -1535,7 +1535,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[0].Power = 1;
 
             var featGrantingSkillBonuses = new[] { "feat2", "feat1" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, FeatConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
             Assert.That(updatedSkills, Is.EqualTo(skills));
@@ -1564,7 +1564,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[1].Power = 2;
 
             var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, FeatConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, "feat1")).Returns(new[] { "skill 1" });
 
@@ -1593,7 +1593,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[0].Power = 1;
 
             var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, FeatConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
             Assert.That(updatedSkills, Is.EqualTo(skills));
@@ -1619,7 +1619,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[0].Power = 1;
 
             var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, FeatConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
             Assert.That(updatedSkills, Is.EqualTo(skills));
@@ -1650,7 +1650,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[1].Power = 1;
 
             var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, FeatConstants.SkillBonus))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SkillBonus))
                 .Returns(featGrantingSkillBonuses);
 
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);

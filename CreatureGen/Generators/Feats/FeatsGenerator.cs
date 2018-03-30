@@ -159,18 +159,8 @@ namespace CreatureGen.Generators.Feats
                 newAvailableFeatSelections = AddNewlyAvailableFeatSelections(availableFeatSelections, sourceFeatSelections, chosenFeatSelections, chosenFeats);
                 availableFeatSelections.AddRange(newAvailableFeatSelections);
 
-                if (string.IsNullOrEmpty(preliminaryFocus) == false)
+                if (!string.IsNullOrEmpty(preliminaryFocus))
                     feat.Foci = feat.Foci.Union(new[] { preliminaryFocus });
-
-                var featFociQuantity = 0;
-                if (featSelection.Feat == FeatConstants.SkillMastery)
-                    featFociQuantity = abilities[AbilityConstants.Intelligence].Modifier + featSelection.Power - 1;
-
-                while (featFociQuantity-- > 0 && preliminaryFocus != FeatConstants.Foci.All && string.IsNullOrEmpty(preliminaryFocus) == false)
-                {
-                    preliminaryFocus = featFocusGenerator.GenerateFrom(featSelection.Feat, featSelection.FocusType, skills, featSelection.RequiredFeats, chosenFeats);
-                    feat.Foci = feat.Foci.Union(new[] { preliminaryFocus });
-                }
             }
 
             return feats;

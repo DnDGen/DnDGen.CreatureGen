@@ -27,14 +27,12 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
         }
 
         [TestCase(GroupConstants.Deflection)]
-        [TestCase(GroupConstants.NaturalArmor,
-            FeatConstants.NaturalArmor,
-            FeatConstants.ArmorBonus)]
+        [TestCase(GroupConstants.NaturalArmor)]
         [TestCase(GroupConstants.DodgeBonus,
-            FeatConstants.DodgeBonus,
+            FeatConstants.SpecialQualities.DodgeBonus,
             FeatConstants.Dodge)]
         [TestCase(GroupConstants.ArmorBonus,
-            FeatConstants.InertialArmor)]
+            FeatConstants.SpecialQualities.InertialArmor)]
         public void ArmorClassModifier(string name, params string[] collection)
         {
             base.DistinctCollection(name, collection);

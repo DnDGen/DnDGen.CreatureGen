@@ -208,11 +208,46 @@ namespace CreatureGen.Feats
             public const string CraftWondrousItem = "Craft Wondrous Item";
             public const string ForgeRing = "Forge Ring";
             public const string ScribeScroll = "Scribe Scroll";
+
+            public static IEnumerable<string> All()
+            {
+                return new[]
+                {
+                    BrewPotion,
+                    CraftMagicArmsAndArmor,
+                    CraftRod,
+                    CraftStaff,
+                    CraftWand,
+                    CraftWondrousItem,
+                    ForgeRing,
+                    ScribeScroll
+                };
+            }
         }
 
         public static class SpecialQualities
         {
+            public const string AttackBonus = "Attack Bonus";
+            public const string DodgeBonus = "Dodge Bonus";
+            public const string InertialArmor = "Inertial Armor";
+            public const string SaveBonus = "Save Bonus";
+            public const string SkillBonus = "Skill Bonus";
+            public const string SpellResistance = "Spell Resistance";
             public const string WeaponFamiliarity = "Weapon Familiarity";
+
+            public static IEnumerable<string> All()
+            {
+                return new[]
+                {
+                    AttackBonus,
+                    DodgeBonus,
+                    InertialArmor,
+                    SaveBonus,
+                    SkillBonus,
+                    SpellResistance,
+                    WeaponFamiliarity,
+                };
+            }
         }
 
         public static class Metamagic
@@ -226,6 +261,22 @@ namespace CreatureGen.Feats
             public const string SilentSpell = "Silent Spell";
             public const string StillSpell = "Still Spell";
             public const string WidenSpell = "Widen Spell";
+
+            public static IEnumerable<string> All()
+            {
+                return new[]
+                {
+                    EmpowerSpell,
+                    EnlargeSpell,
+                    ExtendSpell,
+                    HeightenSpell,
+                    MaximizeSpell,
+                    QuickenSpell,
+                    SilentSpell,
+                    StillSpell,
+                    WidenSpell
+                };
+            }
         }
 
         public static class Monster
@@ -247,6 +298,30 @@ namespace CreatureGen.Feats
             public const string QuickenSpellLikeAbility = "Quicken Spell-Like Ability";
             public const string Snatch = "Snatch";
             public const string Wingover = "Wingover";
+
+            public static IEnumerable<string> All()
+            {
+                return new[]
+                {
+                    AbilityFocus,
+                    AwesomeBlow,
+                    CraftConstruct,
+                    EmpowerSpellLikeAbility,
+                    FlybyAttack,
+                    FlybyAttack_Improved,
+                    Hover,
+                    Multiattack,
+                    Multiattack_Improved,
+                    NaturalArmor_Improved,
+                    NaturalAttack_Improved,
+                    MultiweaponFighting,
+                    MultiweaponFighting_Improved,
+                    MultiweaponFighting_Greater,
+                    QuickenSpellLikeAbility,
+                    Snatch,
+                    Wingover,
+                };
+            }
         }
 
         public static class Frequencies

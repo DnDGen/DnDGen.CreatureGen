@@ -1,5 +1,4 @@
-﻿using CreatureGen.Feats;
-using CreatureGen.Skills;
+﻿using CreatureGen.Skills;
 using CreatureGen.Tables;
 using NUnit.Framework;
 
@@ -18,25 +17,25 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         {
             var names = new[]
             {
-                FeatConstants.GhostSpecialAttack,
+                //FeatConstants.GhostSpecialAttack,
                 GroupConstants.Skills,
             };
 
             AssertCollectionNames(names);
         }
 
-        [TestCase(FeatConstants.GhostSpecialAttack,
-            FeatConstants.CorruptingGaze,
-            FeatConstants.CorruptingTouch,
-            FeatConstants.DrainingTouch,
-            FeatConstants.FrightfulMoan,
-            FeatConstants.HorrificAppearance,
-            FeatConstants.Malevolence,
-            FeatConstants.Telekinesis)]
-        public void FeatFoci(string feat, params string[] foci)
-        {
-            base.DistinctCollection(feat, foci);
-        }
+        //[TestCase(FeatConstants.GhostSpecialAttack,
+        //    FeatConstants.CorruptingGaze,
+        //    FeatConstants.CorruptingTouch,
+        //    FeatConstants.DrainingTouch,
+        //    FeatConstants.FrightfulMoan,
+        //    FeatConstants.HorrificAppearance,
+        //    FeatConstants.Malevolence,
+        //    FeatConstants.Telekinesis)]
+        //public void FeatFoci(string feat, params string[] foci)
+        //{
+        //    base.DistinctCollection(feat, foci);
+        //}
 
         [Test]
         public void SkillsFoci()

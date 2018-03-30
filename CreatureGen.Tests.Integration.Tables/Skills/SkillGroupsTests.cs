@@ -1,6 +1,6 @@
-﻿using CreatureGen.Tables;
-using CreatureGen.Feats;
+﻿using CreatureGen.Feats;
 using CreatureGen.Skills;
+using CreatureGen.Tables;
 using NUnit.Framework;
 
 namespace CreatureGen.Tests.Integration.Tables.Skills
@@ -28,7 +28,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 FeatConstants.Diligent,
                 FeatConstants.Investigator,
                 FeatConstants.MagicalAptitude,
-                FeatConstants.NatureSense,
                 FeatConstants.Negotiator,
                 FeatConstants.NimbleFingers,
                 FeatConstants.Persuasive,
@@ -76,9 +75,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(FeatConstants.MagicalAptitude,
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
-        [TestCase(FeatConstants.NatureSense,
-            SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Nature,
-            SkillConstants.Survival)]
         [TestCase(FeatConstants.Negotiator,
             SkillConstants.Diplomacy,
             SkillConstants.SenseMotive)]

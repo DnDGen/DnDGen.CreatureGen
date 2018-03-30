@@ -162,7 +162,7 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
                     .Or.EqualTo(FeatConstants.Frequencies.Week)
                     .Or.Empty, feat.Name);
 
-                if (feat.Name == FeatConstants.SaveBonus)
+                if (feat.Name == FeatConstants.SpecialQualities.SaveBonus)
                     Assert.That(feat.Foci, Is.Not.Empty, creature.Summary);
             }
         }

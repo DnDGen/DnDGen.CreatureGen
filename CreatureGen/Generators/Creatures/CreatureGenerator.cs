@@ -172,7 +172,7 @@ namespace CreatureGen.Generators.Creatures
                 var ability = GetAbilityForAttack(abilities, attack);
                 attack.TotalAttackBonus = ability.Modifier + baseAttackBonus;
 
-                if (!attack.IsPrimary && attack.IsNatural && feats.Any(f => f.Name == FeatConstants.MultiAttack))
+                if (!attack.IsPrimary && attack.IsNatural && feats.Any(f => f.Name == FeatConstants.Monster.Multiattack))
                     attack.TotalAttackBonus -= 2;
                 else if (!attack.IsPrimary)
                     attack.TotalAttackBonus -= 5;

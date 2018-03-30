@@ -34,9 +34,9 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
                 FeatConstants.Disarm_Improved,
                 FeatConstants.Feint_Improved,
                 FeatConstants.Grapple_Improved,
-                FeatConstants.ImprovedOverrun,
+                //FeatConstants.ImprovedOverrun,
                 FeatConstants.PreciseShot_Improved,
-                FeatConstants.ImprovedShieldBash,
+                //FeatConstants.ImprovedShieldBash,
                 FeatConstants.Sunder_Improved,
                 FeatConstants.Trip_Improved,
                 FeatConstants.Turning_Improved,
@@ -59,13 +59,13 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
                 FeatConstants.WhirlwindAttack,
                 FeatConstants.WeaponFocus,
                 FeatConstants.WeaponSpecialization,
-                FeatConstants.CorruptingGaze,
-                FeatConstants.CorruptingTouch,
-                FeatConstants.DrainingTouch,
-                FeatConstants.FrightfulMoan,
-                FeatConstants.HorrificAppearance,
-                FeatConstants.Malevolence,
-                FeatConstants.Telekinesis,
+                //FeatConstants.CorruptingGaze,
+                //FeatConstants.CorruptingTouch,
+                //FeatConstants.DrainingTouch,
+                //FeatConstants.FrightfulMoan,
+                //FeatConstants.HorrificAppearance,
+                //FeatConstants.Malevolence,
+                //FeatConstants.Telekinesis,
             };
 
             AssertCollectionNames(names);
@@ -74,7 +74,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(FeatConstants.Cleave, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.DeflectArrows, FeatConstants.UnarmedStrike_Improved)]
         [TestCase(FeatConstants.Diehard, FeatConstants.Endurance)]
-        [TestCase(FeatConstants.Turning_Extra, FeatConstants.Turn)]
+        //[TestCase(FeatConstants.Turning_Extra, FeatConstants.Turn)]
         [TestCase(FeatConstants.FarShot, FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.Cleave_Great, FeatConstants.Cleave)]
         [TestCase(FeatConstants.SpellFocus_Greater, FeatConstants.SpellFocus)]
@@ -86,18 +86,18 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(FeatConstants.Disarm_Improved, FeatConstants.CombatExpertise)]
         [TestCase(FeatConstants.Feint_Improved, FeatConstants.CombatExpertise)]
         [TestCase(FeatConstants.Grapple_Improved, FeatConstants.UnarmedStrike_Improved)]
-        [TestCase(FeatConstants.ImprovedOverrun, FeatConstants.PowerAttack)]
+        //[TestCase(FeatConstants.ImprovedOverrun, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.PreciseShot_Improved, FeatConstants.PreciseShot)]
         [TestCase(FeatConstants.PreciseShot, FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.Sunder_Improved, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.Trip_Improved, FeatConstants.CombatExpertise)]
-        [TestCase(FeatConstants.Turning_Improved, FeatConstants.Turn)]
+        //[TestCase(FeatConstants.Turning_Improved, FeatConstants.Turn)]
         [TestCase(FeatConstants.TwoWeaponFighting_Improved, FeatConstants.TwoWeaponFighting)]
         [TestCase(FeatConstants.Manyshot, FeatConstants.RapidShot)]
         [TestCase(FeatConstants.RapidShot, FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.Mobility, FeatConstants.Dodge)]
         [TestCase(FeatConstants.MountedArchery, FeatConstants.MountedCombat)]
-        [TestCase(FeatConstants.NaturalSpell, FeatConstants.WildShape)]
+        //[TestCase(FeatConstants.NaturalSpell, FeatConstants.WildShape)]
         [TestCase(FeatConstants.RideByAttack, FeatConstants.MountedCombat)]
         [TestCase(FeatConstants.ShotOnTheRun,
             FeatConstants.Dodge,
@@ -126,17 +126,17 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             DistinctCollection(name, requiredFeats);
         }
 
-        [TestCase(FeatConstants.CorruptingGaze, FeatConstants.GhostSpecialAttack, FeatConstants.CorruptingGaze)]
-        [TestCase(FeatConstants.CorruptingTouch, FeatConstants.GhostSpecialAttack, FeatConstants.CorruptingTouch)]
-        [TestCase(FeatConstants.DrainingTouch, FeatConstants.GhostSpecialAttack, FeatConstants.DrainingTouch)]
-        [TestCase(FeatConstants.FrightfulMoan, FeatConstants.GhostSpecialAttack, FeatConstants.FrightfulMoan)]
-        [TestCase(FeatConstants.HorrificAppearance, FeatConstants.GhostSpecialAttack, FeatConstants.HorrificAppearance)]
-        [TestCase(FeatConstants.Malevolence, FeatConstants.GhostSpecialAttack, FeatConstants.Malevolence)]
-        [TestCase(FeatConstants.Telekinesis, FeatConstants.GhostSpecialAttack, FeatConstants.Telekinesis)]
-        public void RequiredFeat(string name, string requiredFeat, string requiredFocus)
-        {
-            var collection = new[] { $"{requiredFeat}/{requiredFocus}" };
-            DistinctCollection(name, collection);
-        }
+        //[TestCase(FeatConstants.CorruptingGaze, FeatConstants.GhostSpecialAttack, FeatConstants.CorruptingGaze)]
+        //[TestCase(FeatConstants.CorruptingTouch, FeatConstants.GhostSpecialAttack, FeatConstants.CorruptingTouch)]
+        //[TestCase(FeatConstants.DrainingTouch, FeatConstants.GhostSpecialAttack, FeatConstants.DrainingTouch)]
+        //[TestCase(FeatConstants.FrightfulMoan, FeatConstants.GhostSpecialAttack, FeatConstants.FrightfulMoan)]
+        //[TestCase(FeatConstants.HorrificAppearance, FeatConstants.GhostSpecialAttack, FeatConstants.HorrificAppearance)]
+        //[TestCase(FeatConstants.Malevolence, FeatConstants.GhostSpecialAttack, FeatConstants.Malevolence)]
+        //[TestCase(FeatConstants.Telekinesis, FeatConstants.GhostSpecialAttack, FeatConstants.Telekinesis)]
+        //public void RequiredFeat(string name, string requiredFeat, string requiredFocus)
+        //{
+        //    var collection = new[] { $"{requiredFeat}/{requiredFocus}" };
+        //    DistinctCollection(name, collection);
+        //}
     }
 }

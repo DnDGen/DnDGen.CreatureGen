@@ -707,7 +707,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             abilities[AbilityConstants.Strength].BaseScore = 1234;
             mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
-            
+
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.EqualTo(612 + 4633 + 2345));
         }
@@ -937,7 +937,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
@@ -953,7 +953,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities)).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -968,7 +968,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
@@ -984,7 +984,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities)).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -1008,7 +1008,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 8", Damage = "damage 8", IsMelee = true, IsPrimary = true, IsNatural = true, IsSpecial = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
 
             var creature = creatureGenerator.Generate("creature", "template");
 
@@ -1035,7 +1035,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 8", Damage = "damage 8", IsMelee = true, IsPrimary = true, IsNatural = true, IsSpecial = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities)).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -1251,7 +1251,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1268,7 +1268,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities)).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -1284,7 +1284,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1301,7 +1301,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities)).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -1325,7 +1325,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 8", Damage = "damage 8", IsMelee = true, IsPrimary = true, IsNatural = true, IsSpecial = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
 
             var creature = creatureGenerator.Generate("creature", "template");
 
@@ -1352,7 +1352,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 8", Damage = "damage 8", IsMelee = true, IsPrimary = true, IsNatural = true, IsSpecial = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            feats.Add(new Feat { Name = FeatConstants.MultiAttack });
+            feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities)).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
