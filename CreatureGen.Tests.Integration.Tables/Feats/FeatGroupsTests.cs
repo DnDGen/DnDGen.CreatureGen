@@ -24,6 +24,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
                 GroupConstants.SavingThrows,
                 GroupConstants.SkillBonus,
                 GroupConstants.TakenMultipleTimes,
+                GroupConstants.WeaponProficiency,
                 SaveConstants.Fortitude,
                 SaveConstants.Reflex,
                 SaveConstants.Will,
@@ -36,14 +37,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.SpecialQualities.AttackBonus)]
         [TestCase(GroupConstants.AddHitDiceToPower,
             FeatConstants.SpecialQualities.SpellResistance)]
-        [TestCase(GroupConstants.TakenMultipleTimes,
-            FeatConstants.SpecialQualities.AttackBonus,
-            FeatConstants.SpellMastery,
-            FeatConstants.Toughness,
-            FeatConstants.SpecialQualities.SkillBonus,
-            FeatConstants.SpecialQualities.DodgeBonus,
-            FeatConstants.SpecialQualities.SaveBonus,
-            FeatConstants.Turning_Extra)]
+        [TestCase(GroupConstants.Initiative,
+            FeatConstants.Initiative_Improved)]
         [TestCase(GroupConstants.SkillBonus,
             FeatConstants.SpecialQualities.SkillBonus,
             FeatConstants.Acrobatic,
@@ -56,23 +51,33 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.Diligent,
             FeatConstants.Investigator,
             FeatConstants.MagicalAptitude,
-            //FeatConstants.NatureSense,
             FeatConstants.Negotiator,
             FeatConstants.NimbleFingers,
             FeatConstants.Persuasive,
             FeatConstants.SelfSufficient,
             FeatConstants.SkillFocus,
             FeatConstants.Stealthy)]
+        [TestCase(GroupConstants.SavingThrows,
+            FeatConstants.SpecialQualities.SaveBonus)]
+        [TestCase(GroupConstants.TakenMultipleTimes,
+            FeatConstants.SpecialQualities.AttackBonus,
+            FeatConstants.SpellMastery,
+            FeatConstants.Toughness,
+            FeatConstants.SpecialQualities.SkillBonus,
+            FeatConstants.SpecialQualities.DodgeBonus,
+            FeatConstants.SpecialQualities.SaveBonus,
+            FeatConstants.Monster.NaturalArmor_Improved,
+            FeatConstants.Turning_Extra)]
+        [TestCase(GroupConstants.WeaponProficiency,
+            FeatConstants.WeaponProficiency_Exotic,
+            FeatConstants.WeaponProficiency_Martial,
+            FeatConstants.WeaponProficiency_Simple)]
         [TestCase(SaveConstants.Fortitude,
             FeatConstants.GreatFortitude)]
         [TestCase(SaveConstants.Reflex,
             FeatConstants.LightningReflexes)]
         [TestCase(SaveConstants.Will,
             FeatConstants.IronWill)]
-        [TestCase(GroupConstants.SavingThrows,
-            FeatConstants.SpecialQualities.SaveBonus)]
-        [TestCase(GroupConstants.Initiative,
-            FeatConstants.Initiative_Improved)]
         public void FeatGroup(string name, params string[] collection)
         {
             DistinctCollection(name, collection);

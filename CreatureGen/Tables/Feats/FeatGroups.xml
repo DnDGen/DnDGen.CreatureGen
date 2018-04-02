@@ -20,53 +20,6 @@
     <entry>Great Fortitude</entry>
   </collection>
   <collection>
-    <name>Has Skill Requirements</name>
-    <entry>Mounted Archery</entry>
-    <entry>Mounted Combat</entry>
-    <entry>Ride-By Attack</entry>
-    <entry>Spirited Charge</entry>
-    <entry>Trample</entry>
-    <entry>Acrobatic</entry>
-    <entry>Agile</entry>
-    <entry>Alertness</entry>
-    <entry>Animal Affinity</entry>
-    <entry>Athletic</entry>
-    <entry>Deceitful</entry>
-    <entry>Deft Hands</entry>
-    <entry>Diligent</entry>
-    <entry>Investigator</entry>
-    <entry>Magical Aptitude</entry>
-    <entry>Negotiator</entry>
-    <entry>Nature Sense</entry>
-    <entry>Nimble Fingers</entry>
-    <entry>Persuasive</entry>
-    <entry>Self-Sufficient</entry>
-    <entry>Stealthy</entry>
-  </collection>
-  <collection>
-    <name>Has Ability Requirements</name>
-    <entry>Power Attack</entry>
-    <entry>Combat Expertise</entry>
-    <entry>Deflect Arrows</entry>
-    <entry>Dodge</entry>
-    <entry>Greater Two-Weapon Fighting</entry>
-    <entry>Improved Grapple</entry>
-    <entry>Improved Precise Shot</entry>
-    <entry>Improved Two-Weapon Fighting</entry>
-    <entry>Manyshot</entry>
-    <entry>Mobility</entry>
-    <entry>Natural Spell</entry>
-    <entry>Rapid Shot</entry>
-    <entry>Shot On The Run</entry>
-    <entry>Snatch Arrows</entry>
-    <entry>Spell Mastery</entry>
-    <entry>Spring Attack</entry>
-    <entry>Stunning Fist</entry>
-    <entry>Two-Weapon Fighting</entry>
-    <entry>Two-Weapon Defense</entry>
-    <entry>Whirlwind Attack</entry>
-  </collection>
-  <collection>
     <name>Initiative</name>
     <entry>Improved Initiative</entry>
   </collection>
@@ -97,7 +50,6 @@
     <entry>Magical Aptitude</entry>
     <entry>Negotiator</entry>
     <entry>Skill Bonus</entry>
-    <entry>Nature Sense</entry>
     <entry>Nimble Fingers</entry>
     <entry>Persuasive</entry>
     <entry>Self-Sufficient</entry>
