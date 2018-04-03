@@ -18,11 +18,18 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         public void CollectionNames()
         {
             var skillGroups = CollectionMapper.Map(TableNameConstants.Set.Collection.SkillGroups);
+            //INFO: Getting the feat foci of skills includes foci for skills such as profession or craft
             var featFoci = CollectionMapper.Map(TableNameConstants.Set.Collection.FeatFoci);
+            var otherSkills = new[]
+            {
+                SkillConstants.Craft + "2",
+                SkillConstants.Knowledge + "2",
+                SkillConstants.Knowledge + GroupConstants.All,
+            };
 
             var names = skillGroups[GroupConstants.All]
-                .Union(skillGroups[GroupConstants.Untrained])
-                .Union(featFoci[GroupConstants.Skills]);
+                .Union(featFoci[GroupConstants.Skills])
+                .Union(otherSkills);
 
             AssertCollectionNames(names);
         }

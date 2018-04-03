@@ -69,6 +69,14 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.XML" />
+    <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.TreasureGen.8.2.0\lib\TreasureGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TreasureGen.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.TreasureGen.Domain.8.2.0\lib\TreasureGen.Domain.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">

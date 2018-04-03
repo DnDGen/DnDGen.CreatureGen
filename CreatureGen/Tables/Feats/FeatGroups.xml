@@ -6,12 +6,6 @@
     <entry>Spell Resistance</entry>
   </collection>
   <collection>
-    <name>ArmorProficiency</name>
-    <entry>Heavy Armor Proficiency</entry>
-    <entry>Light Armor Proficiency</entry>
-    <entry>Medium Armor Proficiency</entry>
-  </collection>
-  <collection>
     <name>Attack Bonus</name>
     <entry>Attack Bonus</entry>
   </collection>
@@ -30,11 +24,6 @@
   <collection>
     <name>Saving Throws</name>
     <entry>Save Bonus</entry>
-  </collection>
-  <collection>
-    <name>ShieldProficiency</name>
-    <entry>Shield Proficiency</entry>
-    <entry>Tower Shield Proficiency</entry>
   </collection>
   <collection>
     <name>Skill Bonus</name>
@@ -67,14 +56,7 @@
     <entry>Extra Turning</entry>
   </collection>
   <collection>
-    <name>Two-Handed</name>
-    <entry>Two-Weapon Fighting</entry>
-    <entry>Two-Weapon Defense</entry>
-    <entry>Improved Two-Weapon Fighting</entry>
-    <entry>Greater Two-Weapon Fighting</entry>
-  </collection>
-  <collection>
-    <name>WeaponProficiency</name>
+    <name>Weapon Proficiency</name>
     <entry>Exotic Weapon Proficiency</entry>
     <entry>Martial Weapon Proficiency</entry>
     <entry>Simple Weapon Proficiency</entry>

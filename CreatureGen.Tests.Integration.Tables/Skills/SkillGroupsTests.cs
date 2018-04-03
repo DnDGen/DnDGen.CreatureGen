@@ -35,7 +35,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 FeatConstants.Stealthy,
                 GroupConstants.All,
                 GroupConstants.ArmorCheckPenalty,
-                GroupConstants.Untrained,
                 SkillConstants.Craft,
                 SkillConstants.Knowledge,
                 SkillConstants.Perform,
@@ -133,6 +132,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.MoveSilently,
                 SkillConstants.OpenLock,
                 SkillConstants.Perform,
+                SkillConstants.Profession,
                 SkillConstants.Ride,
                 SkillConstants.Search,
                 SkillConstants.SenseMotive,
@@ -147,41 +147,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             };
 
             base.DistinctCollection(GroupConstants.All, skills);
-        }
-
-        [Test]
-        public void UntrainedSkills()
-        {
-            var skills = new[]
-            {
-                SkillConstants.Appraise,
-                SkillConstants.Balance,
-                SkillConstants.Bluff,
-                SkillConstants.Climb,
-                SkillConstants.Concentration,
-                SkillConstants.Craft,
-                SkillConstants.Diplomacy,
-                SkillConstants.Disguise,
-                SkillConstants.EscapeArtist,
-                SkillConstants.Forgery,
-                SkillConstants.GatherInformation,
-                SkillConstants.Heal,
-                SkillConstants.Hide,
-                SkillConstants.Intimidate,
-                SkillConstants.Jump,
-                SkillConstants.Listen,
-                SkillConstants.MoveSilently,
-                SkillConstants.Perform,
-                SkillConstants.Ride,
-                SkillConstants.Search,
-                SkillConstants.SenseMotive,
-                SkillConstants.Spot,
-                SkillConstants.Survival,
-                SkillConstants.Swim,
-                SkillConstants.UseRope,
-            };
-
-            base.DistinctCollection(GroupConstants.Untrained, skills);
         }
 
         [Test]

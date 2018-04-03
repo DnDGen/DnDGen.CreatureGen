@@ -27,7 +27,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
             AssertCollectionNames(names);
         }
 
-        public static IEnumerable<string> GetNames()
+        private IEnumerable<string> GetNames()
         {
             var feats = FeatConstants.All();
             var metamagic = FeatConstants.Metamagic.All();
@@ -40,7 +40,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         }
 
         [Test]
-        [TestCaseSource(typeof(AbilityRequirementsTestData), "TestCases")]
+        [TestCaseSource(typeof(AbilityRequirementsTestData), "Feats")]
+        [TestCaseSource(typeof(AbilityRequirementsTestData), "Metamagic")]
+        [TestCaseSource(typeof(AbilityRequirementsTestData), "Monster")]
+        [TestCaseSource(typeof(AbilityRequirementsTestData), "Craft")]
         public void AbilityRequirements(string name, Dictionary<string, int> typesAndAmounts)
         {
             AssertTypesAndAmounts(name, typesAndAmounts);
@@ -48,12 +51,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
         private class AbilityRequirementsTestData
         {
-            public static IEnumerable TestCases
+            public static IEnumerable Feats
             {
                 get
                 {
                     var testCases = new Dictionary<string, Dictionary<string, int>>();
-                    var feats = GetNames();
+                    var feats = FeatConstants.All();
 
                     foreach (var feat in feats)
                     {
@@ -89,11 +92,75 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[FeatConstants.TwoWeaponFighting_Improved][AbilityConstants.Dexterity] = 17;
                     testCases[FeatConstants.WhirlwindAttack][AbilityConstants.Dexterity] = 13;
                     testCases[FeatConstants.WhirlwindAttack][AbilityConstants.Intelligence] = 13;
+
+                    foreach (var testCase in testCases)
+                    {
+                        var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
+                        yield return new TestCaseData(testCase.Key, testCase.Value)
+                            .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                    }
+                }
+            }
+
+            public static IEnumerable Metamagic
+            {
+                get
+                {
+                    var testCases = new Dictionary<string, Dictionary<string, int>>();
+                    var feats = FeatConstants.Metamagic.All();
+
+                    foreach (var feat in feats)
+                    {
+                        testCases[feat] = new Dictionary<string, int>();
+                    }
+
+                    foreach (var testCase in testCases)
+                    {
+                        var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
+                        yield return new TestCaseData(testCase.Key, testCase.Value)
+                            .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                    }
+                }
+            }
+
+            public static IEnumerable Monster
+            {
+                get
+                {
+                    var testCases = new Dictionary<string, Dictionary<string, int>>();
+                    var feats = FeatConstants.Monster.All();
+
+                    foreach (var feat in feats)
+                    {
+                        testCases[feat] = new Dictionary<string, int>();
+                    }
+
                     testCases[FeatConstants.Monster.AwesomeBlow][AbilityConstants.Strength] = 25;
                     testCases[FeatConstants.Monster.MultiweaponFighting][AbilityConstants.Dexterity] = 13;
                     testCases[FeatConstants.Monster.MultiweaponFighting_Greater][AbilityConstants.Dexterity] = 19;
                     testCases[FeatConstants.Monster.MultiweaponFighting_Improved][AbilityConstants.Dexterity] = 15;
                     testCases[FeatConstants.Monster.NaturalArmor_Improved][AbilityConstants.Constitution] = 13;
+
+                    foreach (var testCase in testCases)
+                    {
+                        var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
+                        yield return new TestCaseData(testCase.Key, testCase.Value)
+                            .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                    }
+                }
+            }
+
+            public static IEnumerable Craft
+            {
+                get
+                {
+                    var testCases = new Dictionary<string, Dictionary<string, int>>();
+                    var feats = FeatConstants.MagicItemCreation.All();
+
+                    foreach (var feat in feats)
+                    {
+                        testCases[feat] = new Dictionary<string, int>();
+                    }
 
                     foreach (var testCase in testCases)
                     {

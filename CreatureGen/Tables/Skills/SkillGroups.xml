@@ -41,6 +41,7 @@
     <entry>Move Silently</entry>
     <entry>Open Lock</entry>
     <entry>Perform</entry>
+    <entry>Profession</entry>
     <entry>Ride</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
@@ -279,33 +280,5 @@
     <name>Stealthy</name>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-  </collection>
-  <collection>
-    <name>Untrained</name>
-    <entry>Appraise</entry>
-    <entry>Balance</entry>
-    <entry>Bluff</entry>
-    <entry>Climb</entry>
-    <entry>Concentration</entry>
-    <entry>Craft</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Escape Artist</entry>
-    <entry>Forgery</entry>
-    <entry>Gather Information</entry>
-    <entry>Heal</entry>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Perform</entry>
-    <entry>Ride</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Swim</entry>
-    <entry>Use Rope</entry>
   </collection>
 </collections>

@@ -65,6 +65,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.TreasureGen.8.2.0\lib\TreasureGen.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TreasureGen.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.TreasureGen.Domain.8.2.0\lib\TreasureGen.Domain.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attacks\Attack.cs" />
@@ -182,129 +190,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Combat ExpertiseAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Deflect ArrowsAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\DodgeAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Greater Two-Weapon FightingAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Improved GrappleAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Improved Precise ShotAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Improved Two-Weapon FightingAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\ManyshotAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\MobilityAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Natural SpellAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Power AttackAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Rapid ShotAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Shot On The RunAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Snatch ArrowsAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Spell MasteryAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Spring AttackAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Stunning FistAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Two-Weapon DefenseAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Two-Weapon FightingAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Abilities\Whirlwind AttackAbilityRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\AcrobaticSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\AgileSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\AlertnessSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Animal AffinitySkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\AthleticSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\DeceitfulSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Deft HandsSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\DiligentSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\InvestigatorSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Magical AptitudeSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Mounted ArcherySkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Mounted CombatSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Nature SenseSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\NegotiatorSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Nimble FingersSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\PersuasiveSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Ride-By AttackSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Self-SufficientSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\Spirited ChargeSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\StealthySkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Requirements\Skills\TrampleSkillRankRequirements.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Tables\Creatures\AerialManeuverability.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -349,6 +234,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tables\Attacks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\FeatAbilityRequirements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\FeatSkillRankRequirements.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
