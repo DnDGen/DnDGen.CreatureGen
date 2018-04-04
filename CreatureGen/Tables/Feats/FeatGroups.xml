@@ -47,13 +47,14 @@
   </collection>
   <collection>
     <name>Taken Multiple Times</name>
-    <entry>Spell Mastery</entry>
-    <entry>Toughness</entry>
-    <entry>Skill Bonus</entry>
     <entry>Attack Bonus</entry>
-    <entry>Save Bonus</entry>
     <entry>Dodge Bonus</entry>
     <entry>Extra Turning</entry>
+    <entry>Improved Natural Armor</entry>
+    <entry>Save Bonus</entry>
+    <entry>Skill Bonus</entry>
+    <entry>Spell Mastery</entry>
+    <entry>Toughness</entry>
   </collection>
   <collection>
     <name>Weapon Proficiency</name>

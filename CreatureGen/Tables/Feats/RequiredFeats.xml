@@ -2,12 +2,45 @@
 
 <collections>
   <collection>
+    <name>Acrobatic</name>
+  </collection>
+  <collection>
+    <name>Agile</name>
+  </collection>
+  <collection>
+    <name>Alertness</name>
+  </collection>
+  <collection>
+    <name>Animal Affinity</name>
+  </collection>
+  <collection>
+    <name>Armor Proficiency (Heavy)</name>
+    <entry>Armor Proficiency (Light)</entry>
+    <entry>Armor Proficiency (Medium)</entry>
+  </collection>
+  <collection>
+    <name>Armor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Armor Proficiency (Medium)</name>
+    <entry>Armor Proficiency (Light)</entry>
+  </collection>
+  <collection>
+    <name>Athletic</name>
+  </collection>
+  <collection>
     <name>Augment Summoning</name>
     <entry>Spell Focus/Conjuration</entry>
   </collection>
   <collection>
+    <name>Blind-Fight</name>
+  </collection>
+  <collection>
     <name>Cleave</name>
     <entry>Power Attack</entry>
+  </collection>
+  <collection>
+    <name>Combat Casting</name>
   </collection>
   <collection>
     <name>Corrupting Gaze</name>

@@ -62,7 +62,7 @@ namespace CreatureGen.Feats
         public const string Run = "Run";
         public const string SelfSufficient = "Self-Sufficient";
         public const string ShieldProficiency = "Shield Proficiency";
-        public const string ShieldProficiency_Improved = "Improved Shield Proficiency";
+        public const string ShieldBash_Improved = "Improved Shield Bash";
         public const string ShieldProficiency_Tower = "Tower Shield Proficiency";
         public const string ShotOnTheRun = "Shot On The Run";
         public const string SkillFocus = "Skill Focus";
@@ -160,7 +160,7 @@ namespace CreatureGen.Feats
                 Run,
                 SelfSufficient,
                 ShieldProficiency,
-                ShieldProficiency_Improved,
+                ShieldBash_Improved,
                 ShieldProficiency_Tower,
                 ShotOnTheRun,
                 SkillFocus,
@@ -337,13 +337,31 @@ namespace CreatureGen.Feats
 
         public static class Foci
         {
-            public const string Acid = "Acid";
             public const string All = "All";
-            public const string Cold = "Cold";
-            public const string Electricity = "Electricity";
-            public const string Fire = "Fire";
-            public const string Sonic = "Sonic";
-            public const string Weapons = "Weapons";
+            public const string Weapon = "Weapon";
+            public const string Element = "Element";
+            public const string School = "School";
+
+            public static class Elements
+            {
+                public const string Acid = "Acid";
+                public const string Cold = "Cold";
+                public const string Electricity = "Electricity";
+                public const string Fire = "Fire";
+                public const string Sonic = "Sonic";
+            }
+
+            public static class Schools
+            {
+                public const string Abjuration = "Abjuration";
+                public const string Conjuration = "Conjuration";
+                public const string Divination = "Divination";
+                public const string Enchantment = "Enchantment";
+                public const string Evocation = "Evocation";
+                public const string Illusion = "Illusion";
+                public const string Necromancy = "Necromancy";
+                public const string Transmutation = "Transmutation";
+            }
         }
     }
 }

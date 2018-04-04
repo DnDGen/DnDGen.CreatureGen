@@ -97,9 +97,9 @@ namespace CreatureGen.Generators.Feats
 
             var applicableFoci = requiredFoci.Intersect(sourceFeatFoci);
 
-            if (focusType.StartsWith(FeatConstants.Foci.Weapons) && requiredFeatWithFoci.Any() == false)
+            if (focusType.StartsWith(FeatConstants.Foci.Weapon) && requiredFeatWithFoci.Any() == false)
             {
-                var automaticFoci = allSourceFeatFoci[focusType].Except(allSourceFeatFoci[FeatConstants.Foci.Weapons]);
+                var automaticFoci = allSourceFeatFoci[focusType].Except(allSourceFeatFoci[FeatConstants.Foci.Weapon]);
                 applicableFoci = applicableFoci.Union(automaticFoci);
             }
 

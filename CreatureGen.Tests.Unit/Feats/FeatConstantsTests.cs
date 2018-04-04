@@ -66,7 +66,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.Run, "Run")]
         [TestCase(FeatConstants.SelfSufficient, "Self-Sufficient")]
         [TestCase(FeatConstants.ShieldProficiency, "Shield Proficiency")]
-        [TestCase(FeatConstants.ShieldProficiency_Improved, "Improved Shield Proficiency")]
+        [TestCase(FeatConstants.ShieldBash_Improved, "Improved Shield Bash")]
         [TestCase(FeatConstants.ShieldProficiency_Tower, "Tower Shield Proficiency")]
         [TestCase(FeatConstants.ShotOnTheRun, "Shot On The Run")]
         [TestCase(FeatConstants.SkillFocus, "Skill Focus")]
@@ -240,13 +240,23 @@ namespace CreatureGen.Tests.Unit.Feats
             Assert.That(constant, Is.EqualTo(value));
         }
 
-        [TestCase(FeatConstants.Foci.Acid, "Acid")]
         [TestCase(FeatConstants.Foci.All, "All")]
-        [TestCase(FeatConstants.Foci.Cold, "Cold")]
-        [TestCase(FeatConstants.Foci.Electricity, "Electricity")]
-        [TestCase(FeatConstants.Foci.Fire, "Fire")]
-        [TestCase(FeatConstants.Foci.Sonic, "Sonic")]
-        [TestCase(FeatConstants.Foci.Weapons, "Weapons")]
+        [TestCase(FeatConstants.Foci.Element, "Element")]
+        [TestCase(FeatConstants.Foci.School, "School")]
+        [TestCase(FeatConstants.Foci.Weapon, "Weapon")]
+        [TestCase(FeatConstants.Foci.Elements.Acid, "Acid")]
+        [TestCase(FeatConstants.Foci.Elements.Cold, "Cold")]
+        [TestCase(FeatConstants.Foci.Elements.Electricity, "Electricity")]
+        [TestCase(FeatConstants.Foci.Elements.Fire, "Fire")]
+        [TestCase(FeatConstants.Foci.Elements.Sonic, "Sonic")]
+        [TestCase(FeatConstants.Foci.Schools.Abjuration, "Abjuration")]
+        [TestCase(FeatConstants.Foci.Schools.Conjuration, "Conjuration")]
+        [TestCase(FeatConstants.Foci.Schools.Divination, "Divination")]
+        [TestCase(FeatConstants.Foci.Schools.Enchantment, "Enchantment")]
+        [TestCase(FeatConstants.Foci.Schools.Evocation, "Evocation")]
+        [TestCase(FeatConstants.Foci.Schools.Illusion, "Illusion")]
+        [TestCase(FeatConstants.Foci.Schools.Necromancy, "Necromancy")]
+        [TestCase(FeatConstants.Foci.Schools.Transmutation, "Transmutation")]
         public void FeatFocusConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));
