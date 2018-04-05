@@ -308,5 +308,29 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             var focus = featFocusGenerator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats);
             Assert.That(focus, Is.EqualTo(FeatConstants.Foci.All));
         }
+
+        [Test]
+        public void FocusCanBeFromProficiencyOfSimpleWeapons()
+        {
+            Assert.Fail("need to write this, and figure out how it would work");
+        }
+
+        [Test]
+        public void FocusCanBeFromProficiencyOfMartialWeapons()
+        {
+            Assert.Fail("need to write this, and figure out how it would work");
+        }
+
+        [Test]
+        public void FocusCanBeFromProficiencyOfExoticWeapons()
+        {
+            Assert.Fail("need to write this, and figure out how it would work");
+        }
+
+        [Test]
+        public void FocusCanBeFromProficiencyOfNaturalWeapons()
+        {
+            Assert.Fail("need to write this, and figure out how it would work");
+        }
     }
 }

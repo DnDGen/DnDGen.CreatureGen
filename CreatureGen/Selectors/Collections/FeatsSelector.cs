@@ -43,6 +43,8 @@ namespace CreatureGen.Selectors.Collections
             featSelection.Frequency.Quantity = Convert.ToInt32(data[DataIndexConstants.FeatData.FrequencyQuantityIndex]);
             featSelection.Frequency.TimePeriod = data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex];
             featSelection.Power = Convert.ToInt32(data[DataIndexConstants.FeatData.PowerIndex]);
+            featSelection.MinimumCasterLevel = Convert.ToInt32(data[DataIndexConstants.FeatData.CasterLevelIndex]);
+
             featSelection.RequiredFeats = GetRequiredFeats(featSelection.Feat);
             featSelection.RequiredSkills = GetRequiredSkills(featSelection.Feat);
             featSelection.RequiredAbilities = GetRequiredAbilities(featSelection.Feat);
@@ -115,6 +117,7 @@ namespace CreatureGen.Selectors.Collections
                 specialQualitySelection.Frequency.TimePeriod = data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex];
                 specialQualitySelection.MaximumHitDieRequirement = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.MaximumHitDiceRequirementIndex]);
                 specialQualitySelection.RandomFociQuantity = data[DataIndexConstants.SpecialQualityData.RandomFociQuantity];
+
                 specialQualitySelection.RequiredFeats = GetRequiredFeats(creature + specialQualitySelection.Feat);
                 specialQualitySelection.MinimumAbilities = GetRequiredAbilities(creature + specialQualitySelection.Feat);
 

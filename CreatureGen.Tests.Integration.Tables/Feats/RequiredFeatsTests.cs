@@ -37,7 +37,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(FeatConstants.BlindFight)]
         [TestCase(FeatConstants.BullRush_Improved, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.Cleave, FeatConstants.PowerAttack)]
-        [TestCase(FeatConstants.Cleave_Great, FeatConstants.Cleave)]
+        [TestCase(FeatConstants.Cleave_Great, FeatConstants.Cleave, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.CombatCasting)]
         [TestCase(FeatConstants.DeflectArrows, FeatConstants.UnarmedStrike_Improved)]
         [TestCase(FeatConstants.Diehard, FeatConstants.Endurance)]
@@ -45,13 +45,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(FeatConstants.FarShot, FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.Feint_Improved, FeatConstants.CombatExpertise)]
         [TestCase(FeatConstants.Grapple_Improved, FeatConstants.UnarmedStrike_Improved)]
-        [TestCase(FeatConstants.Manyshot, FeatConstants.RapidShot)]
+        [TestCase(FeatConstants.Manyshot, FeatConstants.PointBlankShot, FeatConstants.RapidShot)]
         [TestCase(FeatConstants.Mobility, FeatConstants.Dodge)]
         [TestCase(FeatConstants.MountedArchery, FeatConstants.MountedCombat)]
+        //INFO: Wild Shape is only had by Druid classes
         //[TestCase(FeatConstants.NaturalSpell, FeatConstants.WildShape)]
         [TestCase(FeatConstants.Overrun_Improved, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.PreciseShot, FeatConstants.PointBlankShot)]
-        [TestCase(FeatConstants.PreciseShot_Improved, FeatConstants.PreciseShot)]
+        [TestCase(FeatConstants.PreciseShot_Improved, FeatConstants.PointBlankShot, FeatConstants.PreciseShot)]
         [TestCase(FeatConstants.RapidShot, FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.RideByAttack, FeatConstants.MountedCombat)]
         [TestCase(FeatConstants.ShieldBash_Improved, FeatConstants.ShieldProficiency)]
@@ -75,14 +76,23 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(FeatConstants.Sunder_Improved, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.Trample, FeatConstants.MountedCombat)]
         [TestCase(FeatConstants.Trip_Improved, FeatConstants.CombatExpertise)]
+        //INFO: No monsters can natively turn or rebuke
         //[TestCase(FeatConstants.Turning_Extra, FeatConstants.Turn)]
         //[TestCase(FeatConstants.Turning_Improved, FeatConstants.Turn)]
         [TestCase(FeatConstants.TwoWeaponDefense, FeatConstants.TwoWeaponFighting)]
-        [TestCase(FeatConstants.TwoWeaponFighting_Greater, FeatConstants.TwoWeaponFighting_Improved)]
+        [TestCase(FeatConstants.TwoWeaponFighting_Greater, FeatConstants.TwoWeaponFighting_Improved, FeatConstants.TwoWeaponFighting)]
         [TestCase(FeatConstants.TwoWeaponFighting_Improved, FeatConstants.TwoWeaponFighting)]
-        [TestCase(FeatConstants.WeaponFocus_Greater, FeatConstants.WeaponFocus)]
-        [TestCase(FeatConstants.WeaponSpecialization, FeatConstants.WeaponFocus)]
-        [TestCase(FeatConstants.WeaponSpecialization_Greater, FeatConstants.WeaponFocus_Greater, FeatConstants.WeaponSpecialization)]
+        [TestCase(FeatConstants.UnarmedStrike_Improved)]
+        [TestCase(FeatConstants.WeaponFinesse)]
+        //INFO: Being a Fighter is a requirement for these feats
+        //[TestCase(FeatConstants.WeaponFocus)]
+        //[TestCase(FeatConstants.WeaponFocus_Greater, FeatConstants.WeaponFocus)]
+        [TestCase(FeatConstants.WeaponProficiency_Exotic)]
+        [TestCase(FeatConstants.WeaponProficiency_Martial)]
+        [TestCase(FeatConstants.WeaponProficiency_Simple)]
+        //INFO: Being a Fighter is a requirement for these feats
+        //[TestCase(FeatConstants.WeaponSpecialization)]
+        //[TestCase(FeatConstants.WeaponSpecialization_Greater, FeatConstants.WeaponSpecialization)]
         [TestCase(FeatConstants.WhirlwindAttack,
             FeatConstants.CombatExpertise,
             FeatConstants.Dodge,

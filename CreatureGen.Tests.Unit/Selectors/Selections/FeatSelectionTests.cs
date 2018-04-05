@@ -45,7 +45,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void ImmutableRequirementsMetIfNoRequirements()
         {
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
             Assert.That(met, Is.True);
         }
 
@@ -122,7 +122,16 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredBaseAttack = 2;
 
-            var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks);
+            var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks, 0);
+            Assert.That(met, Is.False);
+        }
+
+        [Test]
+        public void CasterLevelRequirementNotMet()
+        {
+            selection.MinimumCasterLevel = 2;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 1);
             Assert.That(met, Is.False);
         }
 
@@ -135,7 +144,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["other ability"] = new Ability("other ability");
             abilities["other ability"].BaseScore = 157;
 
-            var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
             Assert.That(met, Is.False);
         }
 
@@ -148,7 +157,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["other ability"] = new Ability("other ability");
             abilities["other ability"].BaseScore = 157;
 
-            var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
             Assert.That(met, Is.False);
         }
 
@@ -163,7 +172,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills[1].Ranks = 10;
             skills[1].ClassSkill = false;
 
-            var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
             Assert.That(met, Is.False);
         }
 
@@ -183,7 +192,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills[1].Ranks = 1;
             skills[1].ClassSkill = true;
 
-            var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
             Assert.That(met, Is.True);
         }
 
@@ -194,7 +203,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills.Add(new Skill("skill", abilities["ability"], 10));
             skills[0].ClassSkill = false;
 
-            var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
             Assert.That(met, Is.True);
         }
 
@@ -202,6 +211,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         public void AllImmutableRequirementsMet()
         {
             selection.RequiredBaseAttack = 2;
+            selection.MinimumCasterLevel = 2;
 
             selection.RequiredAbilities["ability"] = 16;
             abilities["ability"] = new Ability("ability");
@@ -229,7 +239,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills[3].Ranks = 4;
             skills[3].ClassSkill = true;
 
-            var met = selection.ImmutableRequirementsMet(2, abilities, skills, attacks);
+            var met = selection.ImmutableRequirementsMet(2, abilities, skills, attacks, 2);
             Assert.That(met, Is.True);
         }
 

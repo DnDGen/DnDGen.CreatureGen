@@ -31,7 +31,8 @@ namespace CreatureGen.Feats
         public const string Dodge = "Dodge";
         public const string Endurance = "Endurance";
         public const string EschewMaterials = "Eschew Materials";
-        public const string Familiar_Improved = "Improved Familiar";
+        //INFO: Creatures cannot get familiars without being a character class
+        //public const string Familiar_Improved = "Improved Familiar";
         public const string FarShot = "Far Shot";
         public const string Feint_Improved = "Improved Feint";
         public const string GreatFortitude = "Great Fortitude";
@@ -39,14 +40,16 @@ namespace CreatureGen.Feats
         public const string Initiative_Improved = "Improved Initiative";
         public const string Investigator = "Investigator";
         public const string IronWill = "Iron Will";
-        public const string Leadership = "Leadership";
+        //INFO: Requires character level 6
+        //public const string Leadership = "Leadership";
         public const string LightningReflexes = "Lightning Reflexes";
         public const string MagicalAptitude = "Magical Aptitude";
         public const string Manyshot = "Manyshot";
         public const string Mobility = "Mobility";
         public const string MountedArchery = "Mounted Archery";
         public const string MountedCombat = "Mounted Combat";
-        public const string NaturalSpell = "Natural Spell";
+        //INFO: Wild Shape, a prerequisite, is only had by Druid classes
+        //public const string NaturalSpell = "Natural Spell";
         public const string Negotiator = "Negotiator";
         public const string NimbleFingers = "Nimble Fingers";
         public const string Overrun_Improved = "Improved Overrun";
@@ -81,21 +84,24 @@ namespace CreatureGen.Feats
         public const string Track = "Track";
         public const string Trample = "Trample";
         public const string Trip_Improved = "Improved Trip";
-        public const string Turning_Extra = "Extra Turning";
-        public const string Turning_Improved = "Improved Turning";
+        //INFO: No monsters can natively turn or rebuke
+        //public const string Turning_Extra = "Extra Turning";
+        //public const string Turning_Improved = "Improved Turning";
         public const string TwoWeaponDefense = "Two-Weapon Defense";
         public const string TwoWeaponFighting = "Two-Weapon Fighting";
         public const string TwoWeaponFighting_Greater = "Greater Two-Weapon Fighting";
         public const string TwoWeaponFighting_Improved = "Improved Two-Weapon Fighting";
         public const string UnarmedStrike_Improved = "Improved Unarmed Strike";
         public const string WeaponFinesse = "Weapon Finesse";
-        public const string WeaponFocus = "Weapon Focus";
-        public const string WeaponFocus_Greater = "Greater Weapon Focus";
+        //INFO: Being a Fighter is a requirement for these feats
+        //public const string WeaponFocus = "Weapon Focus";
+        //public const string WeaponFocus_Greater = "Greater Weapon Focus";
         public const string WeaponProficiency_Exotic = "Exotic Weapon Proficiency";
         public const string WeaponProficiency_Martial = "Martial Weapon Proficiency";
         public const string WeaponProficiency_Simple = "Simple Weapon Proficiency";
-        public const string WeaponSpecialization = "Weapon Specialization";
-        public const string WeaponSpecialization_Greater = "Greater Weapon Specialization";
+        //INFO: Being a Fighter is a requirement for these feats
+        //public const string WeaponSpecialization = "Weapon Specialization";
+        //public const string WeaponSpecialization_Greater = "Greater Weapon Specialization";
         public const string WhirlwindAttack = "Whirlwind Attack";
 
         public static IEnumerable<string> All()

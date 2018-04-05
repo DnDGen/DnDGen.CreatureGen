@@ -18,6 +18,7 @@ namespace CreatureGen.Selectors.Selections
         public IEnumerable<RequiredSkillSelection> RequiredSkills { get; set; }
         public string FocusType { get; set; }
         public bool CanBeTakenMultipleTimes { get; set; }
+        public int MinimumCasterLevel { get; set; }
 
         public FeatSelection()
         {
@@ -29,13 +30,13 @@ namespace CreatureGen.Selectors.Selections
             Frequency = new Frequency();
         }
 
-        public bool ImmutableRequirementsMet(int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attack)
+        public bool ImmutableRequirementsMet(int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attack, int casterLevel)
         {
             foreach (var requiredAbility in RequiredAbilities)
                 if (abilities[requiredAbility.Key].FullScore < requiredAbility.Value)
                     return false;
 
-            if (baseAttackBonus < RequiredBaseAttack)
+            if (baseAttackBonus < RequiredBaseAttack || casterLevel < MinimumCasterLevel)
                 return false;
 
             return !RequiredSkills.Any() || RequiredSkills.Any(s => s.RequirementMet(skills));

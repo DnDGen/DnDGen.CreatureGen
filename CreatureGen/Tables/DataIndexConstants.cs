@@ -22,6 +22,7 @@
             public const int PowerIndex = 2;
             public const int FrequencyQuantityIndex = 3;
             public const int FrequencyTimePeriodIndex = 4;
+            public const int CasterLevelIndex = 5;
         }
 
         internal static class SkillSelectionData

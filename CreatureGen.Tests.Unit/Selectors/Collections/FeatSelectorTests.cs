@@ -33,6 +33,18 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         }
 
         [Test]
+        public void GetSpecialQuality()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void GetNoSpecialQualities()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
         public void GetSpecialQualities()
         {
             var specialQualities = new[]
@@ -110,6 +122,67 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             data[DataIndexConstants.SpecialQualityData.SizeRequirementIndex] = size;
 
             return string.Join("/", data);
+        }
+
+        [Test]
+        public void GetSpecialQualityWithSizeRequirement()
+        {
+            var specialQualities = new[]
+            {
+                BuildSpecialQualityData("special quality 1", string.Empty, 0, string.Empty, 600, 9266, 0, string.Empty, "ginormous"),
+                BuildSpecialQualityData("special quality 2", "focusness", 42, "fortnight", 0, 0, 90210, "12d34", string.Empty),
+            };
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SpecialQualityData, "creature")).Returns(specialQualities);
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "creaturespecial quality 1")).Returns(new[] { "feat 1", "feat 2/focus" });
+
+            var abilityRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "ability", Amount = 14 },
+                new TypeAndAmountSelection { Type = "other ability", Amount = 14 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality 2")).Returns(abilityRequirements);
+
+            var racialFeats = featsSelector.SelectSpecialQualities("creature");
+            Assert.That(racialFeats.Count(), Is.EqualTo(2));
+
+            var first = racialFeats.First();
+            var last = racialFeats.Last();
+
+            Assert.That(first.Feat, Is.EqualTo("special quality 1"));
+            Assert.That(first.SizeRequirement, Is.EqualTo("ginormous"));
+            Assert.That(first.MinimumHitDieRequirement, Is.EqualTo(9266));
+            Assert.That(first.Power, Is.EqualTo(0));
+            Assert.That(first.FocusType, Is.Empty);
+            Assert.That(first.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(first.Frequency.TimePeriod, Is.Empty);
+            Assert.That(first.MaximumHitDieRequirement, Is.EqualTo(600));
+            Assert.That(first.MinimumAbilities, Is.Empty);
+            Assert.That(first.RandomFociQuantity, Is.Empty);
+
+            var firstRequirement = first.RequiredFeats.First();
+            var lastRequirement = first.RequiredFeats.Last();
+            Assert.That(firstRequirement.Feat, Is.EqualTo("feat 1"));
+            Assert.That(firstRequirement.Focus, Is.Empty);
+            Assert.That(lastRequirement.Feat, Is.EqualTo("feat 2"));
+            Assert.That(lastRequirement.Focus, Is.EqualTo("focus"));
+            Assert.That(first.RequiredFeats.Count(), Is.EqualTo(2));
+
+            Assert.That(last.Feat, Is.EqualTo("special quality 2"));
+            Assert.That(last.SizeRequirement, Is.Empty);
+            Assert.That(last.MinimumHitDieRequirement, Is.EqualTo(0));
+            Assert.That(last.Power, Is.EqualTo(90210));
+            Assert.That(last.FocusType, Is.EqualTo("focusness"));
+            Assert.That(last.Frequency.Quantity, Is.EqualTo(42));
+            Assert.That(last.Frequency.TimePeriod, Is.EqualTo("fortnight"));
+            Assert.That(last.MaximumHitDieRequirement, Is.EqualTo(0));
+            Assert.That(last.MinimumAbilities["ability"], Is.EqualTo(14));
+            Assert.That(last.MinimumAbilities["other ability"], Is.EqualTo(14));
+            Assert.That(last.MinimumAbilities.Count, Is.EqualTo(2));
+            Assert.That(last.RandomFociQuantity, Is.EqualTo("12d34"));
+            Assert.That(last.RequiredFeats, Is.Empty);
         }
 
         [Test]
@@ -301,6 +374,18 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(requiredSkills[1].Ranks, Is.EqualTo(4));
             Assert.That(requiredSkills[1].Focus, Is.EqualTo("focus"));
             Assert.That(requiredSkills.Length, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void GetFeatsWithWeaponProficiencyRequirement()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatsWithCrossbowProficiencyRequirement()
+        {
+            Assert.Fail("not yet written");
         }
     }
 }

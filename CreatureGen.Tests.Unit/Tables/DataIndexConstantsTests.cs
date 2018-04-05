@@ -25,6 +25,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.FeatData.PowerIndex, 2)]
         [TestCase(DataIndexConstants.FeatData.FrequencyQuantityIndex, 3)]
         [TestCase(DataIndexConstants.FeatData.FrequencyTimePeriodIndex, 4)]
+        [TestCase(DataIndexConstants.FeatData.CasterLevelIndex, 5)]
         public void FeatDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
