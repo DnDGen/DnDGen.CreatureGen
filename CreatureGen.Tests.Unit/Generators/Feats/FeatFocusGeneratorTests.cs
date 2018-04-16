@@ -332,5 +332,23 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         {
             Assert.Fail("need to write this, and figure out how it would work");
         }
+
+        [Test]
+        public void FocusForFeatCanHaveAbilityRequirement()
+        {
+            Assert.Fail("need to write this, and figure out how it would work");
+        }
+
+        [Test]
+        public void FocusForFeatCanHaveNoAbilityRequirementForFocus()
+        {
+            Assert.Fail("need to write this, and figure out how it would work");
+        }
+
+        [Test]
+        public void FocusForFeatCanHaveNoAbilityRequirementForFeat()
+        {
+            Assert.Fail("need to write this, and figure out how it would work");
+        }
     }
 }
