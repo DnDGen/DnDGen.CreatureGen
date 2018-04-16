@@ -80,13 +80,13 @@ namespace CreatureGen.Generators.Feats
             return foci;
         }
 
-        public IEnumerable<Feat> GenerateFeats(HitPoints hitPoints, int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attacks, IEnumerable<Feat> specialQualities)
+        public IEnumerable<Feat> GenerateFeats(HitPoints hitPoints, int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attacks, IEnumerable<Feat> specialQualities, int casterLevel)
         {
             if (!abilities[AbilityConstants.Intelligence].HasScore)
                 return Enumerable.Empty<Feat>();
 
             var numberOfAdditionalFeats = GetFeatQuantity(hitPoints);
-            var feats = GetFeats(numberOfAdditionalFeats, baseAttackBonus, abilities, skills, attacks, specialQualities);
+            var feats = GetFeats(numberOfAdditionalFeats, baseAttackBonus, abilities, skills, attacks, specialQualities, casterLevel);
 
             return feats;
         }
@@ -198,12 +198,12 @@ namespace CreatureGen.Generators.Feats
             return newFeatSelectionsWithRequirementsMet;
         }
 
-        private IEnumerable<Feat> GetFeats(int quantity, int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attacks, IEnumerable<Feat> specialQualities)
+        private IEnumerable<Feat> GetFeats(int quantity, int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attacks, IEnumerable<Feat> specialQualities, int casterLevel)
         {
             var featSelections = featsSelector.SelectFeats();
 
             //INFO: Calling immediate execution, so this doesn't reevaluate every time the collection is called
-            var availableFeats = featSelections.Where(f => f.ImmutableRequirementsMet(baseAttackBonus, abilities, skills, attacks)).ToArray();
+            var availableFeats = featSelections.Where(f => f.ImmutableRequirementsMet(baseAttackBonus, abilities, skills, attacks, casterLevel)).ToArray();
             var feats = PopulateFeatsFrom(abilities, skills, baseAttackBonus, specialQualities, availableFeats, quantity);
 
             return feats;

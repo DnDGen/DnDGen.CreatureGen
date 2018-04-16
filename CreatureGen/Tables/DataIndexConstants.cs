@@ -1,7 +1,20 @@
-﻿namespace CreatureGen.Tables
+﻿using System.Collections.Generic;
+
+namespace CreatureGen.Tables
 {
     internal static class DataIndexConstants
     {
+        private static List<string> InitializeData(int maxIndex)
+        {
+            var capacity = maxIndex + 1;
+            var data = new List<string>(capacity);
+
+            while (data.Count < data.Capacity)
+                data.Add(string.Empty);
+
+            return data;
+        }
+
         internal static class SpecialQualityData
         {
             public const int FeatNameIndex = 0;
@@ -22,7 +35,12 @@
             public const int PowerIndex = 2;
             public const int FrequencyQuantityIndex = 3;
             public const int FrequencyTimePeriodIndex = 4;
-            public const int CasterLevelIndex = 5;
+            public const int MinimumCasterLevelIndex = 5;
+
+            public static List<string> InitializeData()
+            {
+                return DataIndexConstants.InitializeData(MinimumCasterLevelIndex);
+            }
         }
 
         internal static class SkillSelectionData

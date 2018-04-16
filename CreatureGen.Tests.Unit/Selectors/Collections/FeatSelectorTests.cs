@@ -590,40 +590,38 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeat()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Empty);
+            Assert.That(feat.RequiredSkills, Is.Empty);
         }
 
         [Test]
         public void GetNoFeats()
         {
-            Assert.Fail();
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats, Is.Empty);
         }
 
         [Test]
         public void GetFeats()
         {
-            featsData["feat 1"] = BuildFeatData(string.Empty, 0, string.Empty, 9266, 42);
-            featsData["feat 2"] = BuildFeatData("focus", 9266, "occasionally", 0, 0);
-
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat 1")).Returns(new[] { "feat 1", "feat 2/focus" });
-
-            var abilityRequirements = new[]
-            {
-                new TypeAndAmountSelection { Type = "ability 1", Amount = 13 },
-                new TypeAndAmountSelection { Type = "ability 2", Amount = 16 },
-            };
-
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat 2")).Returns(abilityRequirements);
-
-            var skillRankRequirements = new[]
-            {
-                new TypeAndAmountSelection { Type = "skill 1", Amount = 0 },
-                new TypeAndAmountSelection { Type = "skill 2", Amount = 4 },
-            };
-
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "feat 2")).Returns(skillRankRequirements);
-
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.TakenMultipleTimes)).Returns(new[] { "feat 2", "feat 3" });
+            featsData["feat 1"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat 2"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(2));
@@ -632,59 +630,40 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             var last = feats.Last();
 
             Assert.That(first.Feat, Is.EqualTo("feat 1"));
-            Assert.That(first.Power, Is.EqualTo(42));
+            Assert.That(first.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(first.FocusType, Is.Empty);
             Assert.That(first.Frequency.Quantity, Is.EqualTo(0));
             Assert.That(first.Frequency.TimePeriod, Is.Empty);
-            Assert.That(first.RequiredBaseAttack, Is.EqualTo(9266));
-            Assert.That(first.CanBeTakenMultipleTimes, Is.False);
-
-            var firstRequirement = first.RequiredFeats.First();
-            var lastRequirement = first.RequiredFeats.Last();
-            Assert.That(firstRequirement.Feat, Is.EqualTo("feat 1"));
-            Assert.That(firstRequirement.Focus, Is.Empty);
-            Assert.That(lastRequirement.Feat, Is.EqualTo("feat 2"));
-            Assert.That(lastRequirement.Focus, Is.EqualTo("focus"));
-            Assert.That(first.RequiredFeats.Count(), Is.EqualTo(2));
-
-            Assert.That(first.RequiredSkills, Is.Empty);
+            Assert.That(first.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(first.Power, Is.EqualTo(0));
             Assert.That(first.RequiredAbilities, Is.Empty);
-            Assert.That(first.FocusType, Is.Empty);
+            Assert.That(first.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(first.RequiredFeats, Is.Empty);
+            Assert.That(first.RequiredSkills, Is.Empty);
 
             Assert.That(last.Feat, Is.EqualTo("feat 2"));
+            Assert.That(last.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(last.FocusType, Is.Empty);
+            Assert.That(last.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(last.Frequency.TimePeriod, Is.Empty);
+            Assert.That(last.MinimumCasterLevel, Is.EqualTo(0));
             Assert.That(last.Power, Is.EqualTo(0));
-            Assert.That(last.Frequency.Quantity, Is.EqualTo(9266));
-            Assert.That(last.Frequency.TimePeriod, Is.EqualTo("occasionally"));
+            Assert.That(last.RequiredAbilities, Is.Empty);
             Assert.That(last.RequiredBaseAttack, Is.EqualTo(0));
             Assert.That(last.RequiredFeats, Is.Empty);
-            Assert.That(last.CanBeTakenMultipleTimes, Is.True);
-
-            var requiredSkills = last.RequiredSkills.ToArray();
-            Assert.That(requiredSkills[0].Skill, Is.EqualTo("skill 1"));
-            Assert.That(requiredSkills[0].Ranks, Is.EqualTo(0));
-            Assert.That(requiredSkills[0].Focus, Is.Empty);
-            Assert.That(requiredSkills[1].Skill, Is.EqualTo("skill 2"));
-            Assert.That(requiredSkills[1].Ranks, Is.EqualTo(4));
-            Assert.That(requiredSkills[1].Focus, Is.Empty);
-            Assert.That(requiredSkills.Length, Is.EqualTo(2));
-
-            Assert.That(last.RequiredSkills.Count, Is.EqualTo(2));
-            Assert.That(last.RequiredAbilities["ability 1"], Is.EqualTo(13));
-            Assert.That(last.RequiredAbilities["ability 2"], Is.EqualTo(16));
-            Assert.That(last.RequiredAbilities.Count, Is.EqualTo(2));
-            Assert.That(last.FocusType, Is.EqualTo("focus"));
+            Assert.That(last.RequiredSkills, Is.Empty);
         }
 
-        private IEnumerable<string> BuildFeatData(string focus, int frequencyQuantity, string frequencyTimePeriod, int baseAttack, int power)
+        private IEnumerable<string> BuildFeatData(string focus, int frequencyQuantity, string frequencyTimePeriod, int baseAttack, int power, int minimumCasterLevel)
         {
-            var data = new List<string>(5);
-            while (data.Count < data.Capacity)
-                data.Add(string.Empty);
+            var data = DataIndexConstants.FeatData.InitializeData();
 
             data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = baseAttack.ToString();
             data[DataIndexConstants.FeatData.FocusTypeIndex] = focus;
             data[DataIndexConstants.FeatData.FrequencyQuantityIndex] = frequencyQuantity.ToString();
             data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex] = frequencyTimePeriod;
             data[DataIndexConstants.FeatData.PowerIndex] = power.ToString();
+            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = minimumCasterLevel.ToString();
 
             return data;
         }
@@ -692,91 +671,443 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatThatCanBeTakenMultipleTimes()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.TakenMultipleTimes)).Returns(new[] { "wrong feat", "feat" });
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.True);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Empty);
+            Assert.That(feat.RequiredSkills, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithFocusType()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData("focus type", 0, string.Empty, 0, 0, 0);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.EqualTo("focus type"));
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Empty);
+            Assert.That(feat.RequiredSkills, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithFrequency()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 9266, "fortnight", 0, 0, 0);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(9266));
+            Assert.That(feat.Frequency.TimePeriod, Is.EqualTo("fortnight"));
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Empty);
+            Assert.That(feat.RequiredSkills, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithMinimumCasterLevel()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 9266);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(9266));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Empty);
+            Assert.That(feat.RequiredSkills, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithPower()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 9266, 0);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(9266));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Empty);
+            Assert.That(feat.RequiredSkills, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithRequiredAbility()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var abilityRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "ability", Amount = 9266 }
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat"))
+                .Returns(abilityRequirements);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Not.Empty);
+            Assert.That(feat.RequiredAbilities.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredAbilities.Keys, Contains.Item("ability"));
+            Assert.That(feat.RequiredAbilities["ability"], Is.EqualTo(9266));
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Empty);
+            Assert.That(feat.RequiredSkills, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithRequiredAbilities()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var abilityRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "ability", Amount = 9266 },
+                new TypeAndAmountSelection { Type = "other ability", Amount = 90210 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat"))
+                .Returns(abilityRequirements);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Not.Empty);
+            Assert.That(feat.RequiredAbilities.Count, Is.EqualTo(2));
+            Assert.That(feat.RequiredAbilities.Keys, Contains.Item("ability"));
+            Assert.That(feat.RequiredAbilities.Keys, Contains.Item("other ability"));
+            Assert.That(feat.RequiredAbilities["ability"], Is.EqualTo(9266));
+            Assert.That(feat.RequiredAbilities["other ability"], Is.EqualTo(90210));
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Empty);
+            Assert.That(feat.RequiredSkills, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithRequiredBaseAttack()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 9266, 0, 0);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(9266));
+            Assert.That(feat.RequiredFeats, Is.Empty);
+            Assert.That(feat.RequiredSkills, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithRequiredFeat()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var requiredFeats = new[]
+            {
+                "required feat"
+            };
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Not.Empty);
+            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredSkills, Is.Empty);
+
+            var requiredFeat = feat.RequiredFeats.Single();
+            Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(requiredFeat.Focus, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithRequiredFeatWithFocus()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var requiredFeats = new[]
+            {
+                "required feat/required focus"
+            };
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Not.Empty);
+            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredSkills, Is.Empty);
+
+            var requiredFeat = feat.RequiredFeats.Single();
+            Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(requiredFeat.Focus, Is.EqualTo("required focus"));
         }
 
         [Test]
         public void GetFeatWithRequiredFeats()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var requiredFeats = new[]
+            {
+                "required feat",
+                "other required feat",
+            };
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Not.Empty);
+            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(2));
+            Assert.That(feat.RequiredSkills, Is.Empty);
+
+            var requiredFeat = feat.RequiredFeats.First();
+            Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(requiredFeat.Focus, Is.Empty);
+
+            var otherRequiredFeat = feat.RequiredFeats.Last();
+            Assert.That(otherRequiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(otherRequiredFeat.Focus, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithRequiredFeatsWithFoci()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var requiredFeats = new[]
+            {
+                "required feat/required focus",
+                "other required feat/other required focus",
+            };
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Not.Empty);
+            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(2));
+            Assert.That(feat.RequiredSkills, Is.Empty);
+
+            var requiredFeat = feat.RequiredFeats.First();
+            Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(requiredFeat.Focus, Is.EqualTo("required focus"));
+
+            var otherRequiredFeat = feat.RequiredFeats.Last();
+            Assert.That(otherRequiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(otherRequiredFeat.Focus, Is.EqualTo("other required focus"));
         }
 
         [Test]
-        public void GetFeatWithrequiredFeatsWithAndWithoutFoci()
+        public void GetFeatWithRequiredFeatsWithAndWithoutFoci()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var requiredFeats = new[]
+            {
+                "required feat",
+                "other required feat/other required focus",
+            };
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Not.Empty);
+            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(2));
+            Assert.That(feat.RequiredSkills, Is.Empty);
+
+            var requiredFeat = feat.RequiredFeats.First();
+            Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(requiredFeat.Focus, Is.Empty);
+
+            var otherRequiredFeat = feat.RequiredFeats.Last();
+            Assert.That(otherRequiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(otherRequiredFeat.Focus, Is.EqualTo("other required focus"));
         }
 
         [Test]
         public void GetFeatWithRequiredSkill()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var skillRankRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "skill", Amount = 9266 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
+
+            var additionalFeats = featsSelector.SelectFeats();
+            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+
+            var featSelection = additionalFeats.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo("feat"));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
+            Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(1));
+
+            var requiredSkill = featSelection.RequiredSkills.Single();
+            Assert.That(requiredSkill.Skill, Is.EqualTo("skill"));
+            Assert.That(requiredSkill.Ranks, Is.EqualTo(9266));
+            Assert.That(requiredSkill.Focus, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithRequiredSkillWithFocus()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0);
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
 
             var skillRankRequirements = new[]
             {
@@ -786,6 +1117,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
 
             var additionalFeats = featsSelector.SelectFeats();
+            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
@@ -809,19 +1142,124 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredSkills()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var skillRankRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "skill", Amount = 9266 },
+                new TypeAndAmountSelection { Type = "other skill", Amount = 90210 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
+
+            var additionalFeats = featsSelector.SelectFeats();
+            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+
+            var featSelection = additionalFeats.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo("feat"));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
+            Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(2));
+
+            var requiredSkill = featSelection.RequiredSkills.First();
+            Assert.That(requiredSkill.Skill, Is.EqualTo("skill"));
+            Assert.That(requiredSkill.Ranks, Is.EqualTo(9266));
+            Assert.That(requiredSkill.Focus, Is.Empty);
+
+            var otherRequiredSkill = featSelection.RequiredSkills.Last();
+            Assert.That(otherRequiredSkill.Skill, Is.EqualTo("other skill"));
+            Assert.That(otherRequiredSkill.Ranks, Is.EqualTo(90210));
+            Assert.That(otherRequiredSkill.Focus, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithRequiredSkillsWithFoci()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var skillRankRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "skill/focus", Amount = 9266 },
+                new TypeAndAmountSelection { Type = "other skill/other focus", Amount = 90210 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
+
+            var additionalFeats = featsSelector.SelectFeats();
+            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+
+            var featSelection = additionalFeats.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo("feat"));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
+            Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(2));
+
+            var requiredSkill = featSelection.RequiredSkills.First();
+            Assert.That(requiredSkill.Skill, Is.EqualTo("skill"));
+            Assert.That(requiredSkill.Ranks, Is.EqualTo(9266));
+            Assert.That(requiredSkill.Focus, Is.EqualTo("focus"));
+
+            var otherRequiredSkill = featSelection.RequiredSkills.Last();
+            Assert.That(otherRequiredSkill.Skill, Is.EqualTo("other skill"));
+            Assert.That(otherRequiredSkill.Ranks, Is.EqualTo(90210));
+            Assert.That(otherRequiredSkill.Focus, Is.EqualTo("other focus"));
         }
 
         [Test]
         public void GetFeatWithRequiredSkillsWithAndWithoutFoci()
         {
-            Assert.Fail();
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var skillRankRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "skill", Amount = 9266 },
+                new TypeAndAmountSelection { Type = "other skill/other focus", Amount = 90210 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
+
+            var additionalFeats = featsSelector.SelectFeats();
+            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+
+            var featSelection = additionalFeats.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo("feat"));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
+            Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(2));
+
+            var requiredSkill = featSelection.RequiredSkills.First();
+            Assert.That(requiredSkill.Skill, Is.EqualTo("skill"));
+            Assert.That(requiredSkill.Ranks, Is.EqualTo(9266));
+            Assert.That(requiredSkill.Focus, Is.Empty);
+
+            var otherRequiredSkill = featSelection.RequiredSkills.Last();
+            Assert.That(otherRequiredSkill.Skill, Is.EqualTo("other skill"));
+            Assert.That(otherRequiredSkill.Ranks, Is.EqualTo(90210));
+            Assert.That(otherRequiredSkill.Focus, Is.EqualTo("other focus"));
         }
 
         [Test]

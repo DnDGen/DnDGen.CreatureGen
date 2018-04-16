@@ -25,10 +25,23 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.FeatData.PowerIndex, 2)]
         [TestCase(DataIndexConstants.FeatData.FrequencyQuantityIndex, 3)]
         [TestCase(DataIndexConstants.FeatData.FrequencyTimePeriodIndex, 4)]
-        [TestCase(DataIndexConstants.FeatData.CasterLevelIndex, 5)]
+        [TestCase(DataIndexConstants.FeatData.MinimumCasterLevelIndex, 5)]
         public void FeatDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
+        }
+
+        [TestCase(DataIndexConstants.FeatData.BaseAttackRequirementIndex)]
+        [TestCase(DataIndexConstants.FeatData.FocusTypeIndex)]
+        [TestCase(DataIndexConstants.FeatData.PowerIndex)]
+        [TestCase(DataIndexConstants.FeatData.FrequencyQuantityIndex)]
+        [TestCase(DataIndexConstants.FeatData.FrequencyTimePeriodIndex)]
+        [TestCase(DataIndexConstants.FeatData.MinimumCasterLevelIndex)]
+        public void FeatDataIndicesInitialized(int index)
+        {
+            var data = DataIndexConstants.FeatData.InitializeData();
+            Assert.That(data.Count, Is.GreaterThan(index));
+            Assert.That(data, Is.All.Empty);
         }
 
         [TestCase(DataIndexConstants.SkillSelectionData.BaseStatName, 0)]

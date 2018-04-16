@@ -72,7 +72,8 @@ namespace CreatureGen.Feats
         public const string SnatchArrows = "Snatch Arrows";
         public const string SpellFocus = "Spell Focus";
         public const string SpellFocus_Greater = "Greater Spell Focus";
-        public const string SpellMastery = "Spell Mastery";
+        //INFO: Requirement is being a Wizard level 1
+        //public const string SpellMastery = "Spell Mastery";
         public const string SpellPenetration = "Spell Penetration";
         public const string SpellPenetration_Greater = "Greater Spell Penetration";
         public const string SpiritedCharge = "Spirited Charge";
@@ -135,7 +136,7 @@ namespace CreatureGen.Feats
                 Dodge,
                 Endurance,
                 EschewMaterials,
-                Familiar_Improved,
+                //Familiar_Improved,
                 FarShot,
                 Feint_Improved,
                 GreatFortitude,
@@ -143,14 +144,14 @@ namespace CreatureGen.Feats
                 Initiative_Improved,
                 Investigator,
                 IronWill,
-                Leadership,
+                //Leadership,
                 LightningReflexes,
                 MagicalAptitude,
                 Manyshot,
                 Mobility,
                 MountedArchery,
                 MountedCombat,
-                NaturalSpell,
+                //NaturalSpell,
                 Negotiator,
                 NimbleFingers,
                 Overrun_Improved,
@@ -185,21 +186,21 @@ namespace CreatureGen.Feats
                 Track,
                 Trample,
                 Trip_Improved,
-                Turning_Extra,
-                Turning_Improved,
+                //Turning_Extra,
+                //Turning_Improved,
                 TwoWeaponDefense,
                 TwoWeaponFighting,
                 TwoWeaponFighting_Greater,
                 TwoWeaponFighting_Improved,
                 UnarmedStrike_Improved,
                 WeaponFinesse,
-                WeaponFocus,
-                WeaponFocus_Greater,
+                //WeaponFocus,
+                //WeaponFocus_Greater,
                 WeaponProficiency_Exotic,
                 WeaponProficiency_Martial,
                 WeaponProficiency_Simple,
-                WeaponSpecialization,
-                WeaponSpecialization_Greater,
+                //WeaponSpecialization,
+                //WeaponSpecialization_Greater,
                 WhirlwindAttack,
             };
         }

@@ -226,6 +226,42 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
+        public void NotMetIfNoSpecialAttacks()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void MetIfSpecialAttacks()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void NotMetIfNoSpellLikeAbilities()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void MetIfSpellLikeAbilities()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void NotMetIfNoRequiredSpeed()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void MetIfRequiredSpeed()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
         public void AllRequirementsMet()
         {
             selection.SizeRequirement = "size";

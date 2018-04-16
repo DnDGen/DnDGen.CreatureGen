@@ -74,7 +74,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[FeatConstants.Grapple_Improved][AbilityConstants.Dexterity] = 13;
                     testCases[FeatConstants.Manyshot][AbilityConstants.Dexterity] = 17;
                     testCases[FeatConstants.Mobility][AbilityConstants.Dexterity] = 13;
-                    testCases[FeatConstants.NaturalSpell][AbilityConstants.Wisdom] = 13;
+                    //INFO: Natural Spell is only available to Druids
+                    //testCases[FeatConstants.NaturalSpell][AbilityConstants.Wisdom] = 13;
                     testCases[FeatConstants.Overrun_Improved][AbilityConstants.Strength] = 13;
                     testCases[FeatConstants.PowerAttack][AbilityConstants.Strength] = 13;
                     testCases[FeatConstants.PreciseShot_Improved][AbilityConstants.Dexterity] = 19;

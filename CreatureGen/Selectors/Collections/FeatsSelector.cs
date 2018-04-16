@@ -43,7 +43,7 @@ namespace CreatureGen.Selectors.Collections
             featSelection.Frequency.Quantity = Convert.ToInt32(data[DataIndexConstants.FeatData.FrequencyQuantityIndex]);
             featSelection.Frequency.TimePeriod = data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex];
             featSelection.Power = Convert.ToInt32(data[DataIndexConstants.FeatData.PowerIndex]);
-            featSelection.MinimumCasterLevel = Convert.ToInt32(data[DataIndexConstants.FeatData.CasterLevelIndex]);
+            featSelection.MinimumCasterLevel = Convert.ToInt32(data[DataIndexConstants.FeatData.MinimumCasterLevelIndex]);
 
             featSelection.RequiredFeats = GetRequiredFeats(featSelection.Feat);
             featSelection.RequiredSkills = GetRequiredSkills(featSelection.Feat);

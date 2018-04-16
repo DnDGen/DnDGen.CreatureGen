@@ -45,15 +45,15 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCase(FeatConstants.ArmorProficiency_Light, 0, "", 0, "", 0, 0)]
         [TestCase(FeatConstants.ArmorProficiency_Medium, 0, "", 0, "", 0, 0)]
         [TestCase(FeatConstants.Athletic, 0, "", 0, "", 2, 0)]
-        [TestCase(FeatConstants.AugmentSummoning, 0, "", 0, "", 4, 0)]
+        [TestCase(FeatConstants.AugmentSummoning, 0, "", 0, "", 4, 1)]
         [TestCase(FeatConstants.BlindFight, 0, "", 0, "", 2, 0)]
         [TestCase(FeatConstants.BullRush_Improved, 0, "", 0, "", 4, 0)]
         [TestCase(FeatConstants.Cleave, 0, "", 0, "", 2, 0)]
         [TestCase(FeatConstants.Cleave_Great, 4, "", 0, "", 0, 0)]
-        [TestCase(FeatConstants.CombatCasting, 0, "", 0, "", 4, 0)]
+        [TestCase(FeatConstants.CombatCasting, 0, "", 0, "", 4, 1)]
         [TestCase(FeatConstants.CombatExpertise, 0, "", 0, "", 4, 0)]
         [TestCase(FeatConstants.CombatReflexes, 0, "", 0, "", 0, 0)]
-        [TestCase(FeatConstants.Counterspell_Improved, 0, "", 0, "", 0, 0)]
+        [TestCase(FeatConstants.Counterspell_Improved, 0, "", 0, "", 0, 1)]
         [TestCase(FeatConstants.Critical_Improved, 8, FeatConstants.Foci.Weapon, 0, "", 0, 0)]
         [TestCase(FeatConstants.Deceitful, 0, "", 0, "", 2, 0)]
         [TestCase(FeatConstants.DeflectArrows, 0, "", 1, FeatConstants.Frequencies.Round, 0, 0)]
@@ -63,7 +63,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCase(FeatConstants.Disarm_Improved, 0, "", 0, "", 4, 0)]
         [TestCase(FeatConstants.Dodge, 0, "", 0, "", 1, 0)]
         [TestCase(FeatConstants.Endurance, 0, "", 0, "", 4, 0)]
-        [TestCase(FeatConstants.EschewMaterials, 0, "", 0, "", 0, 0)]
+        [TestCase(FeatConstants.EschewMaterials, 0, "", 0, "", 0, 1)]
         //INFO: Creatures cannot get familiars without being a character class
         //[TestCase(FeatConstants.Familiar_Improved, 0, "", 0, "", 0, 0)]
         [TestCase(FeatConstants.FarShot, 0, "", 0, "", 0, 0)]
@@ -100,11 +100,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCase(FeatConstants.ShotOnTheRun, 4, "", 0, "", 0, 0)]
         [TestCase(FeatConstants.SkillFocus, 0, GroupConstants.Skills, 0, "", 3, 0)]
         [TestCase(FeatConstants.SnatchArrows, 0, "", 0, "", 0, 0)]
-        [TestCase(FeatConstants.SpellFocus, 0, FeatConstants.Foci.School, 0, "", 1, 0)]
-        [TestCase(FeatConstants.SpellFocus_Greater, 0, FeatConstants.Foci.School, 0, "", 1, 0)]
-        [TestCase(FeatConstants.SpellMastery, 0, "", 0, "", 0, 0)]
-        [TestCase(FeatConstants.SpellPenetration, 0, "", 0, "", 2, 0)]
-        [TestCase(FeatConstants.SpellPenetration_Greater, 0, "", 0, "", 2, 0)]
+        [TestCase(FeatConstants.SpellFocus, 0, FeatConstants.Foci.School, 0, "", 1, 1)]
+        [TestCase(FeatConstants.SpellFocus_Greater, 0, FeatConstants.Foci.School, 0, "", 1, 1)]
+        //INFO: Spell Mastery requires being a Wizard Level 1
+        //[TestCase(FeatConstants.SpellMastery, 0, "", 0, "", 0, 0)]
+        [TestCase(FeatConstants.SpellPenetration, 0, "", 0, "", 2, 1)]
+        [TestCase(FeatConstants.SpellPenetration_Greater, 0, "", 0, "", 2, 1)]
         [TestCase(FeatConstants.SpiritedCharge, 0, "", 0, "", 0, 0)]
         [TestCase(FeatConstants.SpringAttack, 4, "", 0, "", 0, 0)]
         [TestCase(FeatConstants.Stealthy, 0, "", 0, "", 2, 0)]
@@ -157,7 +158,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 data.Add(string.Empty);
 
             data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = Convert.ToString(baseAttackRequirement);
-            data[DataIndexConstants.FeatData.CasterLevelIndex] = Convert.ToString(casterLevel);
+            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = Convert.ToString(casterLevel);
             data[DataIndexConstants.FeatData.FocusTypeIndex] = focusType;
             data[DataIndexConstants.FeatData.FrequencyQuantityIndex] = Convert.ToString(frequencyQuantity);
             data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex] = frequencyTimePeriod;

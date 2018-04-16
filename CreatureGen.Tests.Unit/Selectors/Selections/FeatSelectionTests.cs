@@ -294,5 +294,77 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             var met = selection.MutableRequirementsMet(feats);
             Assert.That(met, Is.True);
         }
+
+        [Test]
+        public void NotMetIfNoSpecialAttacks()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void MetIfSpecialAttacks()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void NotMetIfNoSpellLikeAbilities()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void MetIfSpellLikeAbilities()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void NotMetIfNoRequiredSpeed()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void MetIfRequiredSpeed()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void NotMetIfNoNaturalArmor()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void MetIfNaturalArmor()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void NotMetIfNaturalWeaponQuantityNotEnough()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void MetIfNaturalWeaponQuantityEnough()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void NotMetIfInsufficientHands()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void MetIfSufficfientHands()
+        {
+            Assert.Fail();
+        }
     }
 }
