@@ -174,7 +174,7 @@ namespace CreatureGen.Feats
                 SnatchArrows,
                 SpellFocus,
                 SpellFocus_Greater,
-                SpellMastery,
+                //SpellMastery,
                 SpellPenetration,
                 SpellPenetration_Greater,
                 SpiritedCharge,

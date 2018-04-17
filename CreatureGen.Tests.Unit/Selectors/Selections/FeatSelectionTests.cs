@@ -320,13 +320,13 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
-        public void NotMetIfNoRequiredSpeed()
+        public void NotMetIfDoesNotHaveRequiredSpeed()
         {
             Assert.Fail();
         }
 
         [Test]
-        public void MetIfRequiredSpeed()
+        public void MetIfHasRequiredSpeed()
         {
             Assert.Fail();
         }

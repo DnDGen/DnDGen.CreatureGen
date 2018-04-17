@@ -99,8 +99,7 @@ namespace CreatureGen.Generators.Feats
         private List<Feat> PopulateFeatsFrom(Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, int baseAttackBonus, IEnumerable<Feat> preselectedFeats, IEnumerable<FeatSelection> sourceFeatSelections, int quantity)
         {
             var feats = new List<Feat>();
-            var chosenFeats = new List<Feat>();
-            chosenFeats.AddRange(preselectedFeats);
+            var chosenFeats = new List<Feat>(preselectedFeats);
 
             var chosenFeatSelections = new List<FeatSelection>();
             var preselectedFeatSelections = GetSelectedSelections(sourceFeatSelections, preselectedFeats);
@@ -142,9 +141,6 @@ namespace CreatureGen.Generators.Feats
                     feat.Frequency = featSelection.Frequency;
                     feat.Power = featSelection.Power;
                     feat.CanBeTakenMultipleTimes = featSelection.CanBeTakenMultipleTimes;
-
-                    if (featSelection.Feat == FeatConstants.SpellMastery)
-                        feat.Power = abilities[AbilityConstants.Intelligence].Modifier;
 
                     feats.Add(feat);
                     chosenFeats.Add(feat);

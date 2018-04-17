@@ -141,7 +141,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCase(FeatConstants.MagicItemCreation.CraftWand, 0, "", 0, "", 0, 5)]
         [TestCase(FeatConstants.MagicItemCreation.CraftWondrousItem, 0, "", 0, "", 0, 3)]
         [TestCase(FeatConstants.MagicItemCreation.ForgeRing, 0, "", 0, "", 0, 12)]
-        [TestCase(FeatConstants.MagicItemCreation.ScribeScroll, 0, "", 0, "", 0, 0)]
+        [TestCase(FeatConstants.MagicItemCreation.ScribeScroll, 0, "", 0, "", 0, 1)]
         [TestCase(FeatConstants.Metamagic.EmpowerSpell, 0, "", 0, "", 0, 1)]
         [TestCase(FeatConstants.Metamagic.EnlargeSpell, 0, "", 0, "", 0, 1)]
         [TestCase(FeatConstants.Metamagic.ExtendSpell, 0, "", 0, "", 0, 1)]
@@ -158,10 +158,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 data.Add(string.Empty);
 
             data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = Convert.ToString(baseAttackRequirement);
-            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = Convert.ToString(casterLevel);
             data[DataIndexConstants.FeatData.FocusTypeIndex] = focusType;
             data[DataIndexConstants.FeatData.FrequencyQuantityIndex] = Convert.ToString(frequencyQuantity);
             data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex] = frequencyTimePeriod;
+            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = Convert.ToString(casterLevel);
             data[DataIndexConstants.FeatData.PowerIndex] = Convert.ToString(power);
 
             Data(name, data);

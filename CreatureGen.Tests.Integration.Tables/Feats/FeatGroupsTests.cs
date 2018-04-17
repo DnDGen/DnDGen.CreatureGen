@@ -60,14 +60,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(GroupConstants.SavingThrows,
             FeatConstants.SpecialQualities.SaveBonus)]
         [TestCase(GroupConstants.TakenMultipleTimes,
-            FeatConstants.SpecialQualities.AttackBonus,
-            FeatConstants.SpellMastery,
+            //FeatConstants.SpellMastery,
             FeatConstants.Toughness,
-            FeatConstants.SpecialQualities.SkillBonus,
+            //FeatConstants.Turning_Extra,
+            FeatConstants.Monster.NaturalArmor_Improved,
+            FeatConstants.SpecialQualities.AttackBonus,
             FeatConstants.SpecialQualities.DodgeBonus,
             FeatConstants.SpecialQualities.SaveBonus,
-            FeatConstants.Monster.NaturalArmor_Improved,
-            FeatConstants.Turning_Extra)]
+            FeatConstants.SpecialQualities.SkillBonus)]
         [TestCase(GroupConstants.WeaponProficiency,
             FeatConstants.WeaponProficiency_Exotic,
             FeatConstants.WeaponProficiency_Martial,
