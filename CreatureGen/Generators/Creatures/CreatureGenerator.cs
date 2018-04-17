@@ -92,6 +92,7 @@ namespace CreatureGen.Generators.Creatures
             creature.CanUseEquipment = creatureData.CanUseEquipment;
             creature.ChallengeRating = creatureData.ChallengeRating;
             creature.LevelAdjustment = creatureData.LevelAdjustment;
+            creature.CasterLevel = creatureData.CasterLevel;
 
             creature.Type = GetCreatureType(creatureName);
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName);
@@ -125,8 +126,7 @@ namespace CreatureGen.Generators.Creatures
             creature.Attacks = attackSelector.Select(creatureName);
             creature.BaseAttackBonus = ComputeBaseAttackBonus(creature.Type, creature.HitPoints);
 
-            var casterLevel = GetCasterLevel(creature);
-            creature.Feats = featsGenerator.GenerateFeats(creature.HitPoints, creature.BaseAttackBonus, creature.Abilities, creature.Skills, creature.Attacks, creature.SpecialQualities, casterLevel);
+            creature.Feats = featsGenerator.GenerateFeats(creature.HitPoints, creature.BaseAttackBonus, creature.Abilities, creature.Skills, creature.Attacks, creature.SpecialQualities, creature.CasterLevel);
 
             creature.Skills = skillsGenerator.ApplyBonusesFromFeats(creature.Skills, creature.Feats);
             creature.HitPoints = hitPointsGenerator.RegenerateWith(creature.HitPoints, creature.Feats);
@@ -162,13 +162,6 @@ namespace CreatureGen.Generators.Creatures
             creature = templateApplicator.ApplyTo(creature);
 
             return creature;
-        }
-
-        private int GetCasterLevel(Creature creature)
-        {
-            //TODO: Figure out how caster level works
-            //I think it's that, if they have spell-like abilities, then their caster level is their HD quantity?
-            throw new NotImplementedException();
         }
 
         private IEnumerable<Attack> ComputeAttackBonuses(IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities, int baseAttackBonus, IEnumerable<Feat> feats)

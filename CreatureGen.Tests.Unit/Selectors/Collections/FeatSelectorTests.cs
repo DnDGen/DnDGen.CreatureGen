@@ -346,7 +346,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "required feat"
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "special quality")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -417,7 +417,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "special quality")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -457,7 +457,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat/other required focus",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "special quality")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -497,7 +497,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "special quality")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -985,7 +985,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(requiredFeat.Focus, Is.Empty);
 
             var otherRequiredFeat = feat.RequiredFeats.Last();
-            Assert.That(otherRequiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(otherRequiredFeat.Feat, Is.EqualTo("other required feat"));
             Assert.That(otherRequiredFeat.Focus, Is.Empty);
         }
 
@@ -1025,7 +1025,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(requiredFeat.Focus, Is.EqualTo("required focus"));
 
             var otherRequiredFeat = feat.RequiredFeats.Last();
-            Assert.That(otherRequiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(otherRequiredFeat.Feat, Is.EqualTo("other required feat"));
             Assert.That(otherRequiredFeat.Focus, Is.EqualTo("other required focus"));
         }
 
@@ -1065,7 +1065,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(requiredFeat.Focus, Is.Empty);
 
             var otherRequiredFeat = feat.RequiredFeats.Last();
-            Assert.That(otherRequiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(otherRequiredFeat.Feat, Is.EqualTo("other required feat"));
             Assert.That(otherRequiredFeat.Focus, Is.EqualTo("other required focus"));
         }
 

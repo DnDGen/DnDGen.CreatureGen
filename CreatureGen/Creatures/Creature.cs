@@ -31,6 +31,7 @@ namespace CreatureGen.Creatures
         public string ChallengeRating { get; set; }
         public Alignment Alignment { get; set; }
         public int? LevelAdjustment { get; set; }
+        public int CasterLevel { get; set; }
         public bool CanUseEquipment { get; set; }
 
         public IEnumerable<Attack> Attacks { get; set; }

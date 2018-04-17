@@ -7,6 +7,7 @@
         public double Space { get; set; }
         public double Reach { get; set; }
         public int? LevelAdjustment { get; set; }
+        public int CasterLevel { get; set; }
         public bool CanUseEquipment { get; set; }
 
         public CreatureDataSelection()

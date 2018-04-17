@@ -604,15 +604,16 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.YuanTi_Halfblood, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Five, 5, true)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, 2, true)]
         [TestCase(CreatureConstants.Zelekhut, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Nine, 7, true)]
-        public void CreatureData(string creature, string size, double space, double reach, string challengeRating, int? levelAdjustment, bool canUseEquipment)
+        public void CreatureData(string creature, string size, double space, double reach, string challengeRating, int? levelAdjustment, bool canUseEquipment, int casterLevel)
         {
-            var collection = new string[6];
+            var collection = DataIndexConstants.CreatureData.InitializeData();
             collection[DataIndexConstants.CreatureData.ChallengeRating] = challengeRating;
             collection[DataIndexConstants.CreatureData.LevelAdjustment] = Convert.ToString(levelAdjustment);
             collection[DataIndexConstants.CreatureData.Reach] = reach.ToString();
             collection[DataIndexConstants.CreatureData.Size] = size;
             collection[DataIndexConstants.CreatureData.Space] = space.ToString();
             collection[DataIndexConstants.CreatureData.CanUseEquipment] = canUseEquipment.ToString();
+            collection[DataIndexConstants.CreatureData.CasterLevel] = casterLevel.ToString();
 
             Data(creature, collection);
         }
@@ -620,7 +621,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AllCreaturesHaveCorrectNumberOfEntries()
         {
-            var wrongEntries = table.Where(kvp => kvp.Value.Count() != 6);
+            var data = DataIndexConstants.CreatureData.InitializeData();
+            var wrongEntries = table.Where(kvp => kvp.Value.Count() != data.Count());
             var wrongCreatures = wrongEntries.Select(kvp => kvp.Key);
             var message = $"{wrongCreatures.Count()} of {table.Count} have incorrect number of entries";
             Assert.That(wrongCreatures, Is.Empty, message);
@@ -771,6 +773,21 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
 
                 Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.CanUseEquipment), creature);
                 Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString).Or.EqualTo(bool.FalseString), creature);
+            }
+        }
+
+        [Test]
+        public void AllCreaturesHaveCorrectCasterLevel()
+        {
+            foreach (var kvp in table)
+            {
+                var creature = kvp.Key;
+                var data = kvp.Value.ToArray();
+                var casterLevel = 0;
+
+                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.CasterLevel), creature);
+                Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.CasterLevel], out casterLevel), Is.True, creature);
+                Assert.That(casterLevel, Is.Not.Negative, creature);
             }
         }
     }

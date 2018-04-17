@@ -59,9 +59,24 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.CreatureData.Size, 3)]
         [TestCase(DataIndexConstants.CreatureData.Space, 4)]
         [TestCase(DataIndexConstants.CreatureData.CanUseEquipment, 5)]
+        [TestCase(DataIndexConstants.CreatureData.CasterLevel, 6)]
         public void CreatureDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
+        }
+
+        [TestCase(DataIndexConstants.CreatureData.ChallengeRating)]
+        [TestCase(DataIndexConstants.CreatureData.LevelAdjustment)]
+        [TestCase(DataIndexConstants.CreatureData.Reach)]
+        [TestCase(DataIndexConstants.CreatureData.Size)]
+        [TestCase(DataIndexConstants.CreatureData.Space)]
+        [TestCase(DataIndexConstants.CreatureData.CanUseEquipment)]
+        [TestCase(DataIndexConstants.CreatureData.CasterLevel)]
+        public void CreatureDataIndicesInitialized(int index)
+        {
+            var data = DataIndexConstants.CreatureData.InitializeData();
+            Assert.That(data.Count, Is.GreaterThan(index));
+            Assert.That(data, Is.All.Empty);
         }
     }
 }

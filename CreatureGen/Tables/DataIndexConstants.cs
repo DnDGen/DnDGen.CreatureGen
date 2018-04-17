@@ -59,6 +59,12 @@ namespace CreatureGen.Tables
             public const int Size = 3;
             public const int Space = 4;
             public const int CanUseEquipment = 5;
+            public const int CasterLevel = 6;
+
+            public static List<string> InitializeData()
+            {
+                return DataIndexConstants.InitializeData(CasterLevel);
+            }
         }
     }
 }
