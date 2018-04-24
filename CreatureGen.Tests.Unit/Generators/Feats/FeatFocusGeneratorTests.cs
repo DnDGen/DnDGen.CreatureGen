@@ -9,6 +9,7 @@ using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using TreasureGen.Items;
 
 namespace CreatureGen.Tests.Unit.Generators.Feats
 {
@@ -28,6 +29,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         {
             mockCollectionsSelector = new Mock<ICollectionSelector>();
             featFocusGenerator = new FeatFocusGenerator(mockCollectionsSelector.Object);
+
             requiredFeats = new List<RequiredFeatSelection>();
             otherFeats = new List<Feat>();
             skills = new List<Skill>();
@@ -263,7 +265,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes["focus type"] = new[] { "school 1" };
 
             var focus = featFocusGenerator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats);
-            Assert.That(focus, Is.EqualTo(FeatConstants.Foci.All));
+            Assert.That(focus, Is.EqualTo(FeatConstants.Foci.NoValidFociAvailable));
         }
 
         [Test]
@@ -276,7 +278,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes["focus type"] = new[] { "school 1", "school 2" };
 
             var focus = featFocusGenerator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats);
-            Assert.That(focus, Is.EqualTo(FeatConstants.Foci.All));
+            Assert.That(focus, Is.EqualTo(FeatConstants.Foci.NoValidFociAvailable));
         }
 
         [Test]
@@ -306,33 +308,50 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             skills.Add(new Skill("skill 2", stat, 1));
 
             var focus = featFocusGenerator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats);
-            Assert.That(focus, Is.EqualTo(FeatConstants.Foci.All));
+            Assert.That(focus, Is.EqualTo(FeatConstants.Foci.NoValidFociAvailable));
+        }
+
+        [TestCase("proficiency feat", "proficiency focus")]
+        [TestCase(FeatConstants.WeaponProficiency_Simple, WeaponConstants.Club)]
+        [TestCase(FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longsword)]
+        [TestCase(FeatConstants.WeaponProficiency_Exotic, WeaponConstants.GnomeHookedHammer)]
+        [TestCase(FeatConstants.SpecialQualities.NaturalWeapon, "Claw")]
+        public void FocusCanBeFromProficiency(string featName, string proficiencyFocus)
+        {
+            otherFeats.Add(new Feat());
+            otherFeats[0].Name = featName;
+            otherFeats[0].Foci = new[] { proficiencyFocus };
+
+            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+
+            focusTypes["focus type"] = new[] { "focus", proficiencyFocus };
+
+            var proficiencyFeats = new[] { "other proficiency feat", featName };
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+
+            var focus = featFocusGenerator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats);
+            Assert.That(focus, Is.EqualTo(proficiencyFocus));
         }
 
         [Test]
-        public void FocusCanBeFromProficiencyOfSimpleWeapons()
+        public void FocusCannotBeFulfilledBecauseCannotUseWeaponsAndHasNoNaturalWeapons()
         {
-            Assert.Fail("need to write this, and figure out how it would work");
+            otherFeats.Add(new Feat());
+            otherFeats[0].Name = "other feat";
+            otherFeats[0].Foci = new[] { "other focus" };
+
+            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+
+            var proficiencyFeats = new[] { "other proficiency feat", "proficiency feat" };
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+
+            focusTypes["focus type"] = new[] { "focus", "other focus" };
+
+            var focus = featFocusGenerator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats);
+            Assert.That(focus, Is.EqualTo(FeatConstants.Foci.NoValidFociAvailable));
         }
 
-        [Test]
-        public void FocusCanBeFromProficiencyOfMartialWeapons()
-        {
-            Assert.Fail("need to write this, and figure out how it would work");
-        }
-
-        [Test]
-        public void FocusCanBeFromProficiencyOfExoticWeapons()
-        {
-            Assert.Fail("need to write this, and figure out how it would work");
-        }
-
-        [Test]
-        public void FocusCanBeFromProficiencyOfNaturalWeapons()
-        {
-            Assert.Fail("need to write this, and figure out how it would work");
-        }
-
+        //INFO: Example is Bastard Sword for exotic weapon proficiency requiring Strength of 13
         [Test]
         public void FocusForFeatCanHaveAbilityRequirement()
         {

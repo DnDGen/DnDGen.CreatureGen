@@ -10,10 +10,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
     [TestFixture]
     public class CreatureDataSelectorTests
     {
+        private const string Creature = "creature";
+
         private ICreatureDataSelector creatureDataSelector;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private List<string> data;
-        private const string Creature = "creature";
 
         [SetUp]
         public void Setup()

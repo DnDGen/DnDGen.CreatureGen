@@ -207,6 +207,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.DodgeBonus, "Dodge Bonus")]
         [TestCase(FeatConstants.SpecialQualities.DodgeBonus, "Dodge Bonus")]
         [TestCase(FeatConstants.SpecialQualities.InertialArmor, "Inertial Armor")]
+        [TestCase(FeatConstants.SpecialQualities.NaturalWeapon, "Natural Weapon")]
         [TestCase(FeatConstants.SpecialQualities.SaveBonus, "Save Bonus")]
         [TestCase(FeatConstants.SpecialQualities.SkillBonus, "Skill Bonus")]
         [TestCase(FeatConstants.SpecialQualities.SpellResistance, "Spell Resistance")]
@@ -242,6 +243,7 @@ namespace CreatureGen.Tests.Unit.Feats
 
         [TestCase(FeatConstants.Foci.All, "All")]
         [TestCase(FeatConstants.Foci.Element, "Element")]
+        [TestCase(FeatConstants.Foci.NoValidFociAvailable, "No Valid Foci Available")]
         [TestCase(FeatConstants.Foci.School, "School")]
         [TestCase(FeatConstants.Foci.Weapon, "Weapon")]
         [TestCase(FeatConstants.Foci.Elements.Acid, "Acid")]

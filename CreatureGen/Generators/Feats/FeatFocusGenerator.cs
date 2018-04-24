@@ -32,7 +32,7 @@ namespace CreatureGen.Generators.Feats
             var usedFoci = usedFeats.SelectMany(f => f.Foci);
 
             if (usedFoci.Contains(FeatConstants.Foci.All))
-                return FeatConstants.Foci.All;
+                return FeatConstants.Foci.NoValidFociAvailable;
 
             foci = foci.Except(usedFoci);
             var skillFoci = allSourceFeatFoci[GroupConstants.Skills].Intersect(foci);
@@ -44,7 +44,7 @@ namespace CreatureGen.Generators.Feats
             }
 
             if (!foci.Any())
-                return FeatConstants.Foci.All;
+                return FeatConstants.Foci.NoValidFociAvailable;
 
             return collectionsSelector.SelectRandomFrom(foci);
         }

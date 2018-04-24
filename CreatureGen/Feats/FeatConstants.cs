@@ -237,6 +237,7 @@ namespace CreatureGen.Feats
             public const string AttackBonus = "Attack Bonus";
             public const string DodgeBonus = "Dodge Bonus";
             public const string InertialArmor = "Inertial Armor";
+            public const string NaturalWeapon = "Natural Weapon";
             public const string SaveBonus = "Save Bonus";
             public const string SkillBonus = "Skill Bonus";
             public const string SpellResistance = "Spell Resistance";
@@ -249,6 +250,7 @@ namespace CreatureGen.Feats
                     AttackBonus,
                     DodgeBonus,
                     InertialArmor,
+                    NaturalWeapon,
                     SaveBonus,
                     SkillBonus,
                     SpellResistance,
@@ -345,6 +347,7 @@ namespace CreatureGen.Feats
         public static class Foci
         {
             public const string All = "All";
+            public const string NoValidFociAvailable = "No Valid Foci Available";
             public const string Weapon = "Weapon";
             public const string Element = "Element";
             public const string School = "School";
