@@ -215,7 +215,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         {
             AddFeatSelections(1);
             featSelections[0].FocusType = "focus type";
-            mockFeatFocusGenerator.Setup(g => g.GenerateFrom("feat1", "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>()))
+            mockFeatFocusGenerator.Setup(g => g.GenerateFrom("feat1", "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities))
                 .Returns("focus");
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210);
@@ -233,9 +233,9 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             featSelections[0].FocusType = "focus type 1";
             featSelections[1].FocusType = "focus type 2";
 
-            mockFeatFocusGenerator.Setup(g => g.GenerateFrom("feat1", "focus type 1", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>()))
+            mockFeatFocusGenerator.Setup(g => g.GenerateFrom("feat1", "focus type 1", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities))
                 .Returns("focus 1");
-            mockFeatFocusGenerator.Setup(g => g.GenerateFrom("feat2", "focus type 2", skills, featSelections[1].RequiredFeats, It.IsAny<IEnumerable<Feat>>()))
+            mockFeatFocusGenerator.Setup(g => g.GenerateFrom("feat2", "focus type 2", skills, featSelections[1].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities))
                 .Returns("focus 2");
 
             var index = 0;
@@ -262,7 +262,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             AddFeatSelections(1);
             featSelections[0].FocusType = "focus type";
 
-            mockFeatFocusGenerator.SetupSequence(g => g.GenerateFrom("feat1", "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>()))
+            mockFeatFocusGenerator.SetupSequence(g => g.GenerateFrom("feat1", "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities))
                 .Returns("focus 1").Returns("focus 2");
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210);
@@ -291,24 +291,26 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         }
 
         [Test]
-        public void IfAllFocusGenerated_CannotSelectFeat()
+        public void IfNoValidFocusGenerated_CannotSelectFeat()
         {
             AddFeatSelections(1);
             featSelections[0].FocusType = "focus type";
 
-            mockFeatFocusGenerator.Setup(g => g.GenerateFrom(featSelections[0].Feat, "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>())).Returns(FeatConstants.Foci.All);
+            mockFeatFocusGenerator.Setup(g => g.GenerateFrom(featSelections[0].Feat, "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities))
+                .Returns(FeatConstants.Foci.NoValidFociAvailable);
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210);
             Assert.That(feats, Is.Empty);
         }
 
         [Test]
-        public void IfAllFocusGenerated_DoNotTryToSelectFeatAgain()
+        public void IfNoValidFocusGenerated_DoNotTryToSelectFeatAgain()
         {
             AddFeatSelections(2);
             featSelections[0].FocusType = "focus type";
 
-            mockFeatFocusGenerator.Setup(g => g.GenerateFrom(featSelections[0].Feat, "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>())).Returns(FeatConstants.Foci.All);
+            mockFeatFocusGenerator.Setup(g => g.GenerateFrom(featSelections[0].Feat, "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities))
+                .Returns(FeatConstants.Foci.NoValidFociAvailable);
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210);
             var onlyFeat = feats.Single();
@@ -319,7 +321,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         public void CanHaveFeatWithoutFocus()
         {
             AddFeatSelections(1);
-            mockFeatFocusGenerator.Setup(g => g.GenerateFrom(featSelections[0].Feat, string.Empty, skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>()))
+            mockFeatFocusGenerator.Setup(g => g.GenerateFrom(featSelections[0].Feat, string.Empty, skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities))
                 .Returns(string.Empty);
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210);
@@ -341,8 +343,8 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             featSelections.Add(selection);
 
-            mockFeatFocusGenerator.SetupSequence(g => g.GenerateFrom("additional feat", "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>()))
-                .Returns("focus").Returns(FeatConstants.Foci.All);
+            mockFeatFocusGenerator.SetupSequence(g => g.GenerateFrom("additional feat", "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities))
+                .Returns("focus").Returns("wrong focus");
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210);
             var feat = feats.Single();
@@ -431,14 +433,14 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         }
 
         [Test]
-        public void GetFociForFeat()
+        public void GetFociForSpecialQualities()
         {
             var specialQualitySelectionselection = new SpecialQualitySelection();
             specialQualitySelectionselection.Feat = "racial feat";
             specialQualitySelectionselection.FocusType = "base focus type";
             specialQualitySelections.Add(specialQualitySelectionselection);
 
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "base focus type", skills)).Returns("base focus");
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "base focus type", skills, abilities)).Returns("base focus");
 
             var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
             var baseFeat = feats.First(f => f.Name == specialQualitySelectionselection.Feat);
@@ -447,14 +449,14 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         }
 
         [Test]
-        public void DoNotGetEmptyFoci()
+        public void DoNotGetEmptyFociStrings()
         {
             var specialQualitySelectionselection = new SpecialQualitySelection();
             specialQualitySelectionselection.Feat = "racial feat";
             specialQualitySelectionselection.FocusType = string.Empty;
             specialQualitySelections.Add(specialQualitySelectionselection);
 
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", string.Empty, skills)).Returns(string.Empty);
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", string.Empty, skills, abilities)).Returns(string.Empty);
 
             var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
             var baseFeat = feats.First(f => f.Name == specialQualitySelectionselection.Feat);
@@ -508,7 +510,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             featSelection.FocusType = "focus type";
 
             var count = 1;
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills)).Returns(() => $"focus {count++}");
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
             mockDice.Setup(d => d.Roll("dice roll").AsSum()).Returns(3);
 
             specialQualitySelections.Add(featSelection);
@@ -529,7 +531,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             featSelection.RandomFociQuantity = "dice roll";
 
             var count = 1;
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills)).Returns(() => $"focus {count++}");
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
             mockDice.Setup(d => d.Roll("dice roll").AsSum()).Returns(3);
 
             specialQualitySelections.Add(featSelection);
@@ -550,7 +552,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             featSelection.RandomFociQuantity = "dice roll";
 
             var count = 1;
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills)).Returns(() => $"focus {count++ / 2}");
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++ / 2}");
             mockDice.Setup(d => d.Roll("dice roll").AsSum()).Returns(3);
 
             specialQualitySelections.Add(featSelection);
@@ -571,7 +573,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             featSelection.RandomFociQuantity = "dice roll";
 
             var count = 1;
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills)).Returns(() => $"focus {count++}");
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
             mockDice.Setup(d => d.Roll("dice roll").AsSum()).Returns(3);
 
             specialQualitySelections.Add(featSelection);

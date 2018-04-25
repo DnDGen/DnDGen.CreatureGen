@@ -1,4 +1,6 @@
-﻿using CreatureGen.Feats;
+﻿using CreatureGen.Abilities;
+using CreatureGen.Feats;
+using CreatureGen.Selectors.Collections;
 using CreatureGen.Selectors.Selections;
 using CreatureGen.Skills;
 using CreatureGen.Tables;
@@ -11,23 +13,25 @@ namespace CreatureGen.Generators.Feats
     internal class FeatFocusGenerator : IFeatFocusGenerator
     {
         private readonly ICollectionSelector collectionsSelector;
+        private readonly ITypeAndAmountSelector typeAndAmountSelector;
 
-        public FeatFocusGenerator(ICollectionSelector collectionsSelector)
+        public FeatFocusGenerator(ICollectionSelector collectionsSelector, ITypeAndAmountSelector typeAndAmountSelector)
         {
             this.collectionsSelector = collectionsSelector;
+            this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
-        public string GenerateFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats)
+        public string GenerateFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats, int casterLevel, Dictionary<string, Ability> abilities)
         {
             if (string.IsNullOrEmpty(focusType))
                 return string.Empty;
 
-            var allSourceFeatFoci = collectionsSelector.SelectAllFrom(TableNameConstants.Set.Collection.FeatFoci);
-            if (focusType != FeatConstants.Foci.All && !allSourceFeatFoci.ContainsKey(focusType))
+            var isPreset = FocusTypeIsPreset(focusType);
+            if (isPreset)
                 return focusType;
 
             var requiredFeatNames = requiredFeats.Select(f => f.Feat);
-            var foci = GetFoci(feat, focusType, allSourceFeatFoci, otherFeats, requiredFeatNames);
+            var foci = GetFoci(feat, focusType, otherFeats, requiredFeatNames, casterLevel, abilities);
             var usedFeats = otherFeats.Where(f => f.Name == feat);
             var usedFoci = usedFeats.SelectMany(f => f.Foci);
 
@@ -35,12 +39,19 @@ namespace CreatureGen.Generators.Feats
                 return FeatConstants.Foci.NoValidFociAvailable;
 
             foci = foci.Except(usedFoci);
-            var skillFoci = allSourceFeatFoci[GroupConstants.Skills].Intersect(foci);
 
-            if (skillFoci.Any())
+            return SelectRandomAndIncludeSkills(foci, skills);
+        }
+
+        private string SelectRandomAndIncludeSkills(IEnumerable<string> foci, IEnumerable<Skill> skills)
+        {
+            var skillFoci = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, GroupConstants.Skills);
+            var applicableSkillFoci = skillFoci.Intersect(foci);
+
+            if (applicableSkillFoci.Any())
             {
                 var potentialSkillFoci = skills.Select(s => s.Focus.Any() ? $"{s.Name}/{s.Focus}" : s.Name);
-                foci = skillFoci.Intersect(potentialSkillFoci);
+                foci = applicableSkillFoci.Intersect(potentialSkillFoci);
             }
 
             if (!foci.Any())
@@ -49,58 +60,116 @@ namespace CreatureGen.Generators.Feats
             return collectionsSelector.SelectRandomFrom(foci);
         }
 
-        private IEnumerable<string> GetExplodedFoci(Dictionary<string, IEnumerable<string>> allSourceFeatFoci, string feat, string focusType, IEnumerable<Feat> otherFeats)
+        private bool FocusTypeIsPreset(string focusType)
+        {
+            var isCollection = collectionsSelector.IsCollection(TableNameConstants.Set.Collection.FeatFoci, focusType);
+            return focusType != FeatConstants.Foci.All && !isCollection;
+        }
+
+        private IEnumerable<string> GetExplodedFoci(string feat, string focusType, IEnumerable<Feat> otherFeats)
         {
             if (focusType != FeatConstants.Foci.All)
-                return allSourceFeatFoci[focusType];
+                return collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, focusType);
+
+            var featFoci = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, feat);
 
             if (feat != FeatConstants.WeaponProficiency_Martial && feat != FeatConstants.WeaponProficiency_Exotic)
-                return allSourceFeatFoci[feat];
+                return featFoci;
 
             var weaponFamiliarityFeats = otherFeats.Where(f => f.Name == FeatConstants.SpecialQualities.WeaponFamiliarity);
             var familiarityFoci = weaponFamiliarityFeats.SelectMany(f => f.Foci);
 
             if (feat == FeatConstants.WeaponProficiency_Martial)
-                return allSourceFeatFoci[feat].Union(familiarityFoci);
+                return featFoci.Union(familiarityFoci);
 
-            return allSourceFeatFoci[feat].Except(familiarityFoci);
+            return featFoci.Except(familiarityFoci);
         }
 
-        private IEnumerable<string> GetFoci(string feat, string focusType, Dictionary<string, IEnumerable<string>> allSourceFeatFoci, IEnumerable<Feat> otherFeats, IEnumerable<string> requiredFeatNames)
+        private IEnumerable<string> GetFoci(string feat, string focusType, IEnumerable<Feat> otherFeats, IEnumerable<string> requiredFeatNames, int casterLevel, Dictionary<string, Ability> abilities)
         {
             var proficiencyRequired = requiredFeatNames.Contains(GroupConstants.WeaponProficiency);
-            var sourceFeatFoci = GetExplodedFoci(allSourceFeatFoci, feat, focusType, otherFeats);
+            var applicableFoci = GetExplodedFoci(feat, focusType, otherFeats);
+
+            applicableFoci = FilterByAbilityRequirements(applicableFoci, feat, abilities);
 
             if (!proficiencyRequired && !otherFeats.Any(f => RequirementHasFocus(requiredFeatNames, f)))
-                return sourceFeatFoci;
+                return applicableFoci;
 
-            var requiredFeatWithFoci = otherFeats.Where(f => RequirementHasFocus(requiredFeatNames, f));
+            var requiredFeatsWithFoci = otherFeats.Where(f => RequirementHasFocus(requiredFeatNames, f));
 
             if (proficiencyRequired)
             {
-                var proficiencyFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency);
-                var proficiencyFeats = otherFeats.Where(f => proficiencyFeatNames.Contains(f.Name));
+                //INFO: Add in automatic proficiencies as well
+                var automaticProficiency = new Feat();
+                automaticProficiency.Name = GroupConstants.WeaponProficiency;
+                automaticProficiency.Foci = GetProficiencies(focusType, otherFeats);
 
-                requiredFeatWithFoci = requiredFeatWithFoci.Union(proficiencyFeats);
+                requiredFeatsWithFoci = requiredFeatsWithFoci.Union(new[] { automaticProficiency });
             }
 
-            var requiredFeats = requiredFeatWithFoci.Where(f => !f.Foci.Contains(FeatConstants.Foci.All));
-            var requiredFoci = requiredFeats.SelectMany(f => f.Foci);
+            var requiredFociByFeat = requiredFeatsWithFoci.ToDictionary(f => f.Name, f => f.Foci);
 
-            var featsWithAllFocus = requiredFeatWithFoci.Where(f => f.Foci.Contains(FeatConstants.Foci.All));
-
-            foreach (var featWithAllFocus in featsWithAllFocus)
+            foreach (var kvp in requiredFociByFeat)
             {
-                var explodedFoci = GetExplodedFoci(allSourceFeatFoci, featWithAllFocus.Name, FeatConstants.Foci.All, otherFeats);
-                requiredFoci = requiredFoci.Union(explodedFoci);
+                var featName = kvp.Key;
+                var foci = kvp.Value;
+
+                if (foci.Contains(FeatConstants.Foci.All))
+                    foci = GetExplodedFoci(featName, FeatConstants.Foci.All, otherFeats);
+
+                applicableFoci = applicableFoci.Intersect(foci);
             }
 
-            var applicableFoci = requiredFoci.Intersect(sourceFeatFoci);
+            if (casterLevel <= 0)
+                applicableFoci = applicableFoci.Except(new[] { FeatConstants.Foci.Weapons.Ray });
 
-            if (focusType.StartsWith(FeatConstants.Foci.Weapon) && requiredFeatWithFoci.Any() == false)
+            return applicableFoci;
+        }
+
+        //INFO: Automatic Proficiencies include things such as Unarmed Strike, Grapple, and Ray
+        private IEnumerable<string> GetProficiencies(string focusType, IEnumerable<Feat> otherFeats)
+        {
+            var proficiencyFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency);
+            var proficiencyFeats = otherFeats.Where(f => proficiencyFeatNames.Contains(f.Name));
+            var proficiencyFoci = new List<string>();
+
+            foreach (var proficiencyFeat in proficiencyFeats)
             {
-                var automaticFoci = allSourceFeatFoci[focusType].Except(allSourceFeatFoci[FeatConstants.Foci.Weapon]);
-                applicableFoci = applicableFoci.Union(automaticFoci);
+                foreach (var focus in proficiencyFeat.Foci)
+                {
+                    if (focus != FeatConstants.Foci.All)
+                    {
+                        proficiencyFoci.Add(focus);
+                    }
+                    else
+                    {
+                        var explodedFoci = GetExplodedFoci(proficiencyFeat.Name, FeatConstants.Foci.All, otherFeats);
+                        proficiencyFoci.AddRange(explodedFoci);
+                    }
+                }
+            }
+
+            var foci = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, focusType);
+            var weaponFoci = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, FeatConstants.Foci.Weapon);
+            var automaticFoci = foci.Except(weaponFoci);
+
+            return proficiencyFoci.Union(automaticFoci);
+        }
+
+        private IEnumerable<string> FilterByAbilityRequirements(IEnumerable<string> foci, string featName, Dictionary<string, Ability> abilities)
+        {
+            var applicableFoci = new List<string>(foci);
+
+            foreach (var focus in foci)
+            {
+                var combo = $"{featName}/{focus}";
+                var abilityRequirements = typeAndAmountSelector.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, combo);
+
+                if (!abilityRequirements.Any())
+                    continue;
+
+                if (!abilityRequirements.Any(r => abilities[r.Type].FullScore >= r.Amount))
+                    applicableFoci.Remove(focus);
             }
 
             return applicableFoci;
@@ -111,44 +180,34 @@ namespace CreatureGen.Generators.Feats
             return requiredFeatNames.Contains(feat.Name) && feat.Foci.Any();
         }
 
-        public string GenerateFrom(string feat, string focusType, IEnumerable<Skill> skills)
+        public string GenerateFrom(string feat, string focusType, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
         {
             if (string.IsNullOrEmpty(focusType))
                 return string.Empty;
 
-            var allSourceFeatFoci = collectionsSelector.SelectAllFrom(TableNameConstants.Set.Collection.FeatFoci);
-            if (focusType != FeatConstants.Foci.All && allSourceFeatFoci.Keys.Contains(focusType) == false)
+            var isPreset = FocusTypeIsPreset(focusType);
+            if (isPreset)
                 return focusType;
 
-            var foci = GetFoci(feat, focusType, allSourceFeatFoci, Enumerable.Empty<Feat>(), Enumerable.Empty<string>());
-            var skillFoci = allSourceFeatFoci[GroupConstants.Skills].Intersect(foci);
+            var foci = GetFoci(feat, focusType, Enumerable.Empty<Feat>(), Enumerable.Empty<string>(), 0, abilities);
 
-            if (skillFoci.Any())
-            {
-                var potentialSkillFoci = skills.Select(s => s.Focus.Any() ? $"{s.Name}/{s.Focus}" : s.Name);
-                foci = skillFoci.Intersect(potentialSkillFoci);
-            }
-
-            if (foci.Any() == false)
-                return FeatConstants.Foci.All;
-
-            return collectionsSelector.SelectRandomFrom(foci);
+            return SelectRandomAndIncludeSkills(foci, skills);
         }
 
-        public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats)
+        public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats, int casterLevel, Dictionary<string, Ability> abilities)
         {
             if (focusType == FeatConstants.Foci.All)
                 return focusType;
 
-            return GenerateFrom(feat, focusType, skills, requiredFeats, otherFeats);
+            return GenerateFrom(feat, focusType, skills, requiredFeats, otherFeats, casterLevel, abilities);
         }
 
-        public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills)
+        public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
         {
             if (focusType == FeatConstants.Foci.All)
                 return focusType;
 
-            return GenerateFrom(feat, focusType, skills);
+            return GenerateFrom(feat, focusType, skills, abilities);
         }
     }
 }

@@ -349,8 +349,18 @@ namespace CreatureGen.Feats
             public const string All = "All";
             public const string NoValidFociAvailable = "No Valid Foci Available";
             public const string Weapon = "Weapon";
+            public const string WeaponWithUnarmed = "Weapon with Unarmed";
+            public const string WeaponWithUnarmedAndGrapple = "Weapon with Unarmed and Grapple";
+            public const string WeaponWithUnarmedAndGrappleAndRay = "Weapon with Unarmed, Grapple, and Ray";
             public const string Element = "Element";
             public const string School = "School";
+
+            public static class Weapons
+            {
+                public const string Grapple = "Grapple";
+                public const string UnarmedStrike = "Unarmed Strike";
+                public const string Ray = "Ray";
+            }
 
             public static class Elements
             {

@@ -48,7 +48,7 @@ namespace CreatureGen.Generators.Feats
 
                 var feat = new Feat();
                 feat.Name = featSelection.Feat;
-                feat.Foci = GetFoci(featSelection, skills);
+                feat.Foci = GetFoci(featSelection, skills, abilities);
 
                 feat.Frequency = featSelection.Frequency;
                 feat.Power = featSelection.Power;
@@ -59,7 +59,7 @@ namespace CreatureGen.Generators.Feats
             return feats;
         }
 
-        private IEnumerable<string> GetFoci(SpecialQualitySelection specialQualitySelection, IEnumerable<Skill> skills)
+        private IEnumerable<string> GetFoci(SpecialQualitySelection specialQualitySelection, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
         {
             if (string.IsNullOrEmpty(specialQualitySelection.FocusType))
                 return Enumerable.Empty<string>();
@@ -72,7 +72,7 @@ namespace CreatureGen.Generators.Feats
 
             while (fociQuantity > foci.Count)
             {
-                var focus = featFocusGenerator.GenerateAllowingFocusOfAllFrom(specialQualitySelection.Feat, specialQualitySelection.FocusType, skills);
+                var focus = featFocusGenerator.GenerateAllowingFocusOfAllFrom(specialQualitySelection.Feat, specialQualitySelection.FocusType, skills, abilities);
                 if (string.IsNullOrEmpty(focus) == false)
                     foci.Add(focus);
             }
@@ -96,7 +96,7 @@ namespace CreatureGen.Generators.Feats
             return hitPoints.HitDiceQuantity / 3 + 1;
         }
 
-        private List<Feat> PopulateFeatsFrom(Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, int baseAttackBonus, IEnumerable<Feat> preselectedFeats, IEnumerable<FeatSelection> sourceFeatSelections, int quantity)
+        private List<Feat> PopulateFeatsFrom(Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, int baseAttackBonus, IEnumerable<Feat> preselectedFeats, IEnumerable<FeatSelection> sourceFeatSelections, int quantity, int casterLevel)
         {
             var feats = new List<Feat>();
             var chosenFeats = new List<Feat>(preselectedFeats);
@@ -114,8 +114,8 @@ namespace CreatureGen.Generators.Feats
             {
                 var featSelection = collectionsSelector.SelectRandomFrom(availableFeatSelections);
 
-                var preliminaryFocus = featFocusGenerator.GenerateFrom(featSelection.Feat, featSelection.FocusType, skills, featSelection.RequiredFeats, chosenFeats);
-                if (preliminaryFocus == FeatConstants.Foci.All)
+                var preliminaryFocus = featFocusGenerator.GenerateFrom(featSelection.Feat, featSelection.FocusType, skills, featSelection.RequiredFeats, chosenFeats, casterLevel, abilities);
+                if (preliminaryFocus == FeatConstants.Foci.NoValidFociAvailable)
                 {
                     quantity++;
 
@@ -200,7 +200,7 @@ namespace CreatureGen.Generators.Feats
 
             //INFO: Calling immediate execution, so this doesn't reevaluate every time the collection is called
             var availableFeats = featSelections.Where(f => f.ImmutableRequirementsMet(baseAttackBonus, abilities, skills, attacks, casterLevel)).ToArray();
-            var feats = PopulateFeatsFrom(abilities, skills, baseAttackBonus, specialQualities, availableFeats, quantity);
+            var feats = PopulateFeatsFrom(abilities, skills, baseAttackBonus, specialQualities, availableFeats, quantity, casterLevel);
 
             return feats;
         }

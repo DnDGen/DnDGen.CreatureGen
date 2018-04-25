@@ -246,6 +246,9 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.Foci.NoValidFociAvailable, "No Valid Foci Available")]
         [TestCase(FeatConstants.Foci.School, "School")]
         [TestCase(FeatConstants.Foci.Weapon, "Weapon")]
+        [TestCase(FeatConstants.Foci.WeaponWithUnarmed, "Weapon with Unarmed")]
+        [TestCase(FeatConstants.Foci.WeaponWithUnarmedAndGrapple, "Weapon with Unarmed and Grapple")]
+        [TestCase(FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay, "Weapon with Unarmed, Grapple, and Ray")]
         [TestCase(FeatConstants.Foci.Elements.Acid, "Acid")]
         [TestCase(FeatConstants.Foci.Elements.Cold, "Cold")]
         [TestCase(FeatConstants.Foci.Elements.Electricity, "Electricity")]
@@ -259,6 +262,9 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.Foci.Schools.Illusion, "Illusion")]
         [TestCase(FeatConstants.Foci.Schools.Necromancy, "Necromancy")]
         [TestCase(FeatConstants.Foci.Schools.Transmutation, "Transmutation")]
+        [TestCase(FeatConstants.Foci.Weapons.Grapple, "Grapple")]
+        [TestCase(FeatConstants.Foci.Weapons.Ray, "Ray")]
+        [TestCase(FeatConstants.Foci.Weapons.UnarmedStrike, "Unarmed Strike")]
         public void FeatFocusConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));

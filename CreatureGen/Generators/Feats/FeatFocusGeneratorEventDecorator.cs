@@ -1,5 +1,6 @@
-﻿using CreatureGen.Selectors.Selections;
+﻿using CreatureGen.Abilities;
 using CreatureGen.Feats;
+using CreatureGen.Selectors.Selections;
 using CreatureGen.Skills;
 using EventGen;
 using System.Collections.Generic;
@@ -17,10 +18,10 @@ namespace CreatureGen.Generators.Feats
             this.eventQueue = eventQueue;
         }
 
-        public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills)
+        public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
         {
             LogOpeningEvent(feat);
-            var focus = innerGenerator.GenerateAllowingFocusOfAllFrom(feat, focusType, skills);
+            var focus = innerGenerator.GenerateAllowingFocusOfAllFrom(feat, focusType, skills, abilities);
             LogClosingEvent(feat, focus);
 
             return focus;
@@ -39,28 +40,28 @@ namespace CreatureGen.Generators.Feats
                 eventQueue.Enqueue("CreatureGen", $"Generated {feat}: {focus}");
         }
 
-        public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats)
+        public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats, int casterLevel, Dictionary<string, Ability> abilities)
         {
             LogOpeningEvent(feat);
-            var focus = innerGenerator.GenerateAllowingFocusOfAllFrom(feat, focusType, skills, requiredFeats, otherFeats);
+            var focus = innerGenerator.GenerateAllowingFocusOfAllFrom(feat, focusType, skills, requiredFeats, otherFeats, casterLevel, abilities);
             LogClosingEvent(feat, focus);
 
             return focus;
         }
 
-        public string GenerateFrom(string feat, string focusType, IEnumerable<Skill> skills)
+        public string GenerateFrom(string feat, string focusType, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
         {
             LogOpeningEvent(feat);
-            var focus = innerGenerator.GenerateFrom(feat, focusType, skills);
+            var focus = innerGenerator.GenerateFrom(feat, focusType, skills, abilities);
             LogClosingEvent(feat, focus);
 
             return focus;
         }
 
-        public string GenerateFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats)
+        public string GenerateFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats, int casterLevel, Dictionary<string, Ability> abilities)
         {
             LogOpeningEvent(feat);
-            var focus = innerGenerator.GenerateFrom(feat, focusType, skills, requiredFeats, otherFeats);
+            var focus = innerGenerator.GenerateFrom(feat, focusType, skills, requiredFeats, otherFeats, casterLevel, abilities);
             LogClosingEvent(feat, focus);
 
             return focus;

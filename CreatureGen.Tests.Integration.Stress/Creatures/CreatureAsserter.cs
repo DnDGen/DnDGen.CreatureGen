@@ -151,6 +151,8 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
             {
                 Assert.That(feat.Name, Is.Not.Empty, creature.Summary);
                 Assert.That(feat.Foci, Is.Not.Null, feat.Name);
+                Assert.That(feat.Foci, Is.All.Not.Null, feat.Name);
+                Assert.That(feat.Foci, Is.All.Not.EqualTo(FeatConstants.Foci.NoValidFociAvailable), feat.Name);
                 Assert.That(feat.Power, Is.Not.Negative, feat.Name);
                 Assert.That(feat.Frequency.Quantity, Is.Not.Negative, feat.Name);
                 Assert.That(feat.Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Constant)
