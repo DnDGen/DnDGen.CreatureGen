@@ -148,7 +148,7 @@ namespace CreatureGen.Selectors.Collections
             requiredFeat.Feat = splitData[0];
 
             if (splitData.Length > 1)
-                requiredFeat.Focus = splitData[1];
+                requiredFeat.Foci = splitData[1].Split(',');
 
             return requiredFeat;
         }

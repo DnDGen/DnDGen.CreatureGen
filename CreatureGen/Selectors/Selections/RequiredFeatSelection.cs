@@ -7,25 +7,26 @@ namespace CreatureGen.Selectors.Selections
     internal class RequiredFeatSelection
     {
         public string Feat { get; set; }
-        public string Focus { get; set; }
+        public IEnumerable<string> Foci { get; set; }
 
         public RequiredFeatSelection()
         {
             Feat = string.Empty;
-            Focus = string.Empty;
+            Foci = Enumerable.Empty<string>();
         }
 
         public bool RequirementMet(IEnumerable<Feat> otherFeats)
         {
             var requiredFeats = otherFeats.Where(f => f.Name == Feat);
 
-            if (requiredFeats.Any() == false)
+            if (!requiredFeats.Any())
                 return false;
 
-            if (string.IsNullOrEmpty(Focus))
+            if (!Foci.Any())
                 return true;
 
-            return requiredFeats.Any(f => f.Foci.Contains(Focus));
+            var requiredFoci = requiredFeats.SelectMany(f => f.Foci);
+            return Foci.Intersect(requiredFoci).Any();
         }
     }
 }

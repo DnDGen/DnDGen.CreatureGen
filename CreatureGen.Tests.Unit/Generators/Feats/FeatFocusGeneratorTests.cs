@@ -258,6 +258,79 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         }
 
         [Test]
+        public void ProficiencyFulfillsSpecificProficiencyRequirement()
+        {
+            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "specific weapon" } });
+            otherFeats.Add(new Feat());
+            otherFeats[0].Name = "proficiency2";
+            otherFeats[0].Foci = new[] { "wrong weapon", "specific weapon" };
+
+            focusTypes["focus type"] = new[] { "wrong weapon", "other weapon", "specific weapon" };
+            focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "specific weapon", "other weapon", "wrong weapon" };
+
+            var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+
+            var focus = featFocusGenerator.GenerateFrom("featToFill", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
+            Assert.That(focus, Is.EqualTo("specific weapon"));
+        }
+
+        [Test]
+        public void ProficiencyFulfillsAnySpecificProficiencyRequirement()
+        {
+            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "other specific weapon", "specific weapon" } });
+            otherFeats.Add(new Feat());
+            otherFeats[0].Name = "proficiency2";
+            otherFeats[0].Foci = new[] { "wrong weapon", "specific weapon" };
+
+            focusTypes["focus type"] = new[] { "wrong weapon", "other weapon", "specific weapon" };
+            focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "specific weapon", "other weapon", "wrong weapon" };
+
+            var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+
+            var focus = featFocusGenerator.GenerateFrom("featToFill", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
+            Assert.That(focus, Is.EqualTo("specific weapon"));
+        }
+
+        [Test]
+        public void ProficiencyWithAllFulfillsSpecificProficiencyRequirement()
+        {
+            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "specific weapon" } });
+            otherFeats.Add(new Feat());
+            otherFeats[0].Name = "proficiency2";
+            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+
+            focusTypes["focus type"] = new[] { "wrong weapon", "other weapon", "specific weapon" };
+            focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "specific weapon", "other weapon", "wrong weapon" };
+            focusTypes["proficiency2"] = new[] { "other weapon", "specific weapon" };
+
+            var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+
+            var focus = featFocusGenerator.GenerateFrom("featToFill", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
+            Assert.That(focus, Is.EqualTo("specific weapon"));
+        }
+
+        [Test]
+        public void SpecificProficiencyRequirementUnfulfilled()
+        {
+            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "specific weapon" } });
+            otherFeats.Add(new Feat());
+            otherFeats[0].Name = "proficiency2";
+            otherFeats[0].Foci = new[] { "wrong weapon" };
+
+            focusTypes["focus type"] = new[] { "wrong weapon", "other weapon" };
+            focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "specific weapon", "other weapon", "wrong weapon" };
+
+            var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+
+            var focus = featFocusGenerator.GenerateFrom("featToFill", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
+            Assert.That(focus, Is.EqualTo(FeatConstants.Foci.NoValidFociAvailable));
+        }
+
+        [Test]
         public void IfWeaponFamiliarityAndMartialWeaponFocusType_AddInFamiliarityTypes()
         {
             otherFeats.Add(new Feat());

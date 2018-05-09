@@ -6,6 +6,7 @@ using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using TreasureGen.Items;
 
 namespace CreatureGen.Tests.Unit.Selectors.Collections
 {
@@ -368,7 +369,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var requiredFeat = specialQuality.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
-            Assert.That(requiredFeat.Focus, Is.Empty);
+            Assert.That(requiredFeat.Foci, Is.Empty);
         }
 
         [Test]
@@ -381,7 +382,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "required feat/required focus"
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "special quality")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -403,7 +404,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var requiredFeat = specialQuality.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
-            Assert.That(requiredFeat.Focus, Is.EqualTo("required focus"));
+            Assert.That(requiredFeat.Foci.Single(), Is.EqualTo("required focus"));
         }
 
         [Test]
@@ -439,11 +440,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
-            Assert.That(requiredFeat.Focus, Is.Empty);
+            Assert.That(requiredFeat.Foci, Is.Empty);
 
             var otherRequiredFeat = specialQuality.RequiredFeats.Last();
             Assert.That(otherRequiredFeat.Feat, Is.EqualTo("other required feat"));
-            Assert.That(otherRequiredFeat.Focus, Is.Empty);
+            Assert.That(otherRequiredFeat.Foci, Is.Empty);
         }
 
         [Test]
@@ -479,11 +480,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
-            Assert.That(requiredFeat.Focus, Is.EqualTo("required focus"));
+            Assert.That(requiredFeat.Foci.Single(), Is.EqualTo("required focus"));
 
             var otherRequiredFeat = specialQuality.RequiredFeats.Last();
             Assert.That(otherRequiredFeat.Feat, Is.EqualTo("other required feat"));
-            Assert.That(otherRequiredFeat.Focus, Is.EqualTo("other required focus"));
+            Assert.That(otherRequiredFeat.Foci.Single(), Is.EqualTo("other required focus"));
         }
 
         [Test]
@@ -519,11 +520,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
-            Assert.That(requiredFeat.Focus, Is.EqualTo("required focus"));
+            Assert.That(requiredFeat.Foci.Single(), Is.EqualTo("required focus"));
 
             var otherRequiredFeat = specialQuality.RequiredFeats.Last();
             Assert.That(otherRequiredFeat.Feat, Is.EqualTo("other required feat"));
-            Assert.That(otherRequiredFeat.Focus, Is.Empty);
+            Assert.That(otherRequiredFeat.Foci, Is.Empty);
         }
 
         [Test]
@@ -911,7 +912,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var requiredFeat = feat.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
-            Assert.That(requiredFeat.Focus, Is.Empty);
+            Assert.That(requiredFeat.Foci, Is.Empty);
         }
 
         [Test]
@@ -946,7 +947,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var requiredFeat = feat.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
-            Assert.That(requiredFeat.Focus, Is.EqualTo("required focus"));
+            Assert.That(requiredFeat.Foci.Single(), Is.EqualTo("required focus"));
         }
 
         [Test]
@@ -982,15 +983,15 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var requiredFeat = feat.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
-            Assert.That(requiredFeat.Focus, Is.Empty);
+            Assert.That(requiredFeat.Foci, Is.Empty);
 
             var otherRequiredFeat = feat.RequiredFeats.Last();
             Assert.That(otherRequiredFeat.Feat, Is.EqualTo("other required feat"));
-            Assert.That(otherRequiredFeat.Focus, Is.Empty);
+            Assert.That(otherRequiredFeat.Foci, Is.Empty);
         }
 
         [Test]
-        public void GetFeatWithRequiredFeatsWithFoci()
+        public void GetFeatWithRequiredFeatsWithFocus()
         {
             featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
 
@@ -1022,11 +1023,48 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var requiredFeat = feat.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
-            Assert.That(requiredFeat.Focus, Is.EqualTo("required focus"));
+            Assert.That(requiredFeat.Foci.Single(), Is.EqualTo("required focus"));
 
             var otherRequiredFeat = feat.RequiredFeats.Last();
             Assert.That(otherRequiredFeat.Feat, Is.EqualTo("other required feat"));
-            Assert.That(otherRequiredFeat.Focus, Is.EqualTo("other required focus"));
+            Assert.That(otherRequiredFeat.Foci.Single(), Is.EqualTo("other required focus"));
+        }
+
+        [Test]
+        public void GetFeatWithRequiredFeatsWithFoci()
+        {
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var requiredFeats = new[]
+            {
+                "required feat/required focus,other required focus",
+            };
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Not.Empty);
+            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredSkills, Is.Empty);
+
+            var requiredFeat = feat.RequiredFeats.Single();
+            Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(requiredFeat.Foci.First, Is.EqualTo("required focus"));
+            Assert.That(requiredFeat.Foci.Last, Is.EqualTo("other required focus"));
+            Assert.That(requiredFeat.Foci.Count, Is.EqualTo(2));
         }
 
         [Test]
@@ -1062,11 +1100,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var requiredFeat = feat.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
-            Assert.That(requiredFeat.Focus, Is.Empty);
+            Assert.That(requiredFeat.Foci, Is.Empty);
 
             var otherRequiredFeat = feat.RequiredFeats.Last();
             Assert.That(otherRequiredFeat.Feat, Is.EqualTo("other required feat"));
-            Assert.That(otherRequiredFeat.Focus, Is.EqualTo("other required focus"));
+            Assert.That(otherRequiredFeat.Foci.Single(), Is.EqualTo("other required focus"));
         }
 
         [Test]
@@ -1265,11 +1303,103 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithWeaponProficiencyRequirement()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var requiredFeats = new[]
+            {
+                GroupConstants.WeaponProficiency
+            };
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Not.Empty);
+            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredSkills, Is.Empty);
+
+            var requiredFeat = feat.RequiredFeats.Single();
+            Assert.That(requiredFeat.Feat, Is.EqualTo(GroupConstants.WeaponProficiency));
+            Assert.That(requiredFeat.Foci, Is.Empty);
         }
 
         [Test]
         public void GetFeatWithCrossbowProficiencyRequirement()
+        {
+            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+
+            var requiredFeats = new[]
+            {
+                $"{GroupConstants.WeaponProficiency}/{WeaponConstants.HandCrossbow},{WeaponConstants.HeavyCrossbow},{WeaponConstants.LightCrossbow}"
+            };
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Not.Empty);
+            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredSkills, Is.Empty);
+
+            var requiredFeat = feat.RequiredFeats.Single();
+            Assert.That(requiredFeat.Feat, Is.EqualTo(GroupConstants.WeaponProficiency));
+            Assert.That(requiredFeat.Foci, Is.Not.Empty);
+            Assert.That(requiredFeat.Foci.Count, Is.EqualTo(3));
+            Assert.That(requiredFeat.Foci, Contains.Item(WeaponConstants.HandCrossbow));
+            Assert.That(requiredFeat.Foci, Contains.Item(WeaponConstants.HeavyCrossbow));
+            Assert.That(requiredFeat.Foci, Contains.Item(WeaponConstants.LightCrossbow));
+        }
+
+        [Test]
+        public void GetFeatRequiringSpecialAttack()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatNotRequiringSpecialAttack()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatRequiringSpeed()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatRequiringSpeeds()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatNotRequiringSpeeds()
         {
             Assert.Fail("not yet written");
         }

@@ -108,6 +108,44 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
+        public void RequirementsMetIfMinimumStatIsMet()
+        {
+            selection.MinimumAbilities["ability"] = 9266;
+
+            abilities["ability"] = new Ability("ability");
+            abilities["ability"].BaseScore = 9267;
+
+            var met = selection.RequirementsMet("size", 4, abilities, feats);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void RequirementsMetIfMinimumStatIsMetWithRacialBonus()
+        {
+            selection.MinimumAbilities["ability"] = 9266;
+
+            abilities["ability"] = new Ability("ability");
+            abilities["ability"].BaseScore = 10;
+            abilities["ability"].RacialAdjustment = 9256;
+
+            var met = selection.RequirementsMet("size", 4, abilities, feats);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void RequirementsNotMetIfMinimumStatIsNotMetWithRacialBonus()
+        {
+            selection.MinimumAbilities["ability"] = 9266;
+
+            abilities["ability"] = new Ability("ability");
+            abilities["ability"].BaseScore = 10;
+            abilities["ability"].RacialAdjustment = 9255;
+
+            var met = selection.RequirementsMet("size", 4, abilities, feats);
+            Assert.That(met, Is.False);
+        }
+
+        [Test]
         public void RequirementsMetIfAnyMinimumStatIsMet()
         {
             selection.MinimumAbilities["ability"] = 9266;
@@ -162,8 +200,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredFeats = new[]
             {
-                new RequiredFeatSelection { Feat = "feat 1", Focus = "focus 1" },
-                new RequiredFeatSelection { Feat = "feat 2", Focus = "focus 2" }
+                new RequiredFeatSelection { Feat = "feat 1", Foci = new[] { "focus 1" } },
+                new RequiredFeatSelection { Feat = "feat 2", Foci = new[] { "focus 2" } }
             };
 
             feats.Add(new Feat { Name = "feat 1", Foci = new[] { "focus 1", "focus 3" } });
@@ -178,8 +216,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredFeats = new[]
             {
-                new RequiredFeatSelection { Feat = "feat 1", Focus = "focus 1" },
-                new RequiredFeatSelection { Feat = "feat 2", Focus = "focus 2" }
+                new RequiredFeatSelection { Feat = "feat 1", Foci = new[] { "focus 1" } },
+                new RequiredFeatSelection { Feat = "feat 2", Foci = new[] { "focus 2" } }
             };
 
             feats.Add(new Feat { Name = "feat 1", Foci = new[] { "focus 1", "focus 2" } });
@@ -196,8 +234,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredFeats = new[]
             {
-                new RequiredFeatSelection { Feat = "feat 1", Focus = "focus 1" },
-                new RequiredFeatSelection { Feat = "feat 2", Focus = "focus 2" }
+                new RequiredFeatSelection { Feat = "feat 1", Foci = new[] { "focus 1" } },
+                new RequiredFeatSelection { Feat = "feat 2", Foci = new[] { "focus 2" } }
             };
 
             feats.Add(new Feat { Name = "feat 1", Foci = new[] { "focus 2" } });
@@ -213,8 +251,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredFeats = new[]
             {
-                new RequiredFeatSelection { Feat = "feat 1", Focus = "focus 1" },
-                new RequiredFeatSelection { Feat = "feat 2", Focus = "focus 2" }
+                new RequiredFeatSelection { Feat = "feat 1", Foci = new[] { "focus 1" } },
+                new RequiredFeatSelection { Feat = "feat 2", Foci = new[] { "focus 2" } }
             };
 
             feats.Add(new Feat { Name = "feat 1", Foci = new[] { "focus 2" } });
@@ -236,7 +274,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             selection.RequiredFeats = new[]
             {
                 new RequiredFeatSelection { Feat = "feat 1" },
-                new RequiredFeatSelection { Feat = "feat 2", Focus = "focus 2" }
+                new RequiredFeatSelection { Feat = "feat 2", Foci = new[] { "focus 2" } }
             };
 
             feats.Add(new Feat { Name = "feat 1" });

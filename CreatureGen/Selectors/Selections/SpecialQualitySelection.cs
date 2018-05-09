@@ -31,13 +31,13 @@ namespace CreatureGen.Selectors.Selections
 
         public bool RequirementsMet(string size, int hitDice, Dictionary<string, Ability> abilities, IEnumerable<Feat> feats)
         {
-            if (string.IsNullOrEmpty(SizeRequirement) == false && SizeRequirement != size)
+            if (!string.IsNullOrEmpty(SizeRequirement) && SizeRequirement != size)
                 return false;
 
             if (MaximumHitDieRequirement > 0 && hitDice > MaximumHitDieRequirement)
                 return false;
 
-            if (MinimumAbilityMet(abilities) == false)
+            if (!MinimumAbilityMet(abilities))
                 return false;
 
             foreach (var requirement in RequiredFeats)
@@ -47,7 +47,7 @@ namespace CreatureGen.Selectors.Selections
                 if (requirementFeats.Any() == false)
                     return false;
 
-                if (requirement.Focus != string.Empty && requirementFeats.Any(f => f.Foci.Contains(requirement.Focus)) == false)
+                if (requirement.Foci.Any() && !requirementFeats.Any(f => f.Foci.Intersect(requirement.Foci).Any()))
                     return false;
             }
 
@@ -56,11 +56,11 @@ namespace CreatureGen.Selectors.Selections
 
         private bool MinimumAbilityMet(Dictionary<string, Ability> stats)
         {
-            if (MinimumAbilities.Any() == false)
+            if (!MinimumAbilities.Any())
                 return true;
 
             foreach (var stat in MinimumAbilities)
-                if (stats[stat.Key].BaseScore >= stat.Value)
+                if (stats[stat.Key].FullScore >= stat.Value)
                     return true;
 
             return false;

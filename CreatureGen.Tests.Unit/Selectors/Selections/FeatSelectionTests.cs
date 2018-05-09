@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Abilities;
 using CreatureGen.Attacks;
+using CreatureGen.Creatures;
 using CreatureGen.Feats;
 using CreatureGen.Selectors.Selections;
 using CreatureGen.Skills;
@@ -14,6 +15,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         private FeatSelection selection;
         private List<Feat> feats;
         private Dictionary<string, Ability> abilities;
+        private Dictionary<string, Measurement> speeds;
         private List<Skill> skills;
         private List<Attack> attacks;
 
@@ -25,18 +27,22 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities = new Dictionary<string, Ability>();
             skills = new List<Skill>();
             attacks = new List<Attack>();
+            speeds = new Dictionary<string, Measurement>();
 
             abilities["ability"] = new Ability("ability");
+            speeds["speed"] = new Measurement("mph");
         }
 
         [Test]
         public void FeatSelectionInitialized()
         {
             Assert.That(selection.Feat, Is.Empty);
+            Assert.That(selection.RequiredAbilities, Is.Empty);
             Assert.That(selection.RequiredBaseAttack, Is.EqualTo(0));
             Assert.That(selection.RequiredFeats, Is.Empty);
             Assert.That(selection.RequiredSkills, Is.Empty);
-            Assert.That(selection.RequiredAbilities, Is.Empty);
+            Assert.That(selection.RequiredSpeeds, Is.Empty);
+            Assert.That(selection.RequiresSpecialAttack, Is.False);
             Assert.That(selection.FocusType, Is.Empty);
             Assert.That(selection.Power, Is.EqualTo(0));
             Assert.That(selection.Frequency, Is.Not.Null);
@@ -45,7 +51,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void ImmutableRequirementsMetIfNoRequirements()
         {
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
             Assert.That(met, Is.True);
         }
 
@@ -122,7 +128,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredBaseAttack = 2;
 
-            var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks, 0);
+            var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks, 0, speeds);
             Assert.That(met, Is.False);
         }
 
@@ -131,7 +137,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.MinimumCasterLevel = 2;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 1);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 1, speeds);
             Assert.That(met, Is.False);
         }
 
@@ -144,7 +150,75 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["other ability"] = new Ability("other ability");
             abilities["other ability"].BaseScore = 157;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.False);
+        }
+
+        [Test]
+        public void AbilityRequirementsMet()
+        {
+            selection.RequiredAbilities["ability"] = 16;
+
+            abilities["ability"].BaseScore = 16;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseScore = 157;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void AbilityRequirementsMetWithRacialAdjustment()
+        {
+            selection.RequiredAbilities["ability"] = 16;
+
+            abilities["ability"].BaseScore = 10;
+            abilities["ability"].RacialAdjustment = 6;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseScore = 157;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void AbilityRequirementsMoreThanMet()
+        {
+            selection.RequiredAbilities["ability"] = 16;
+
+            abilities["ability"].BaseScore = 17;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseScore = 157;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void AbilityRequirementsMoreThanMetWithRacialAdjustment()
+        {
+            selection.RequiredAbilities["ability"] = 16;
+
+            abilities["ability"].BaseScore = 11;
+            abilities["ability"].RacialAdjustment = 6;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseScore = 157;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void AbilityRequirementsNotMetBecauseScoreNotHighEnoughWithRacialAdjustment()
+        {
+            selection.RequiredAbilities["ability"] = 16;
+
+            abilities["ability"].BaseScore = 10;
+            abilities["ability"].RacialAdjustment = 5;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseScore = 157;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
             Assert.That(met, Is.False);
         }
 
@@ -157,7 +231,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["other ability"] = new Ability("other ability");
             abilities["other ability"].BaseScore = 157;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
             Assert.That(met, Is.False);
         }
 
@@ -172,7 +246,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills[1].Ranks = 10;
             skills[1].ClassSkill = false;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
             Assert.That(met, Is.False);
         }
 
@@ -192,18 +266,18 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills[1].Ranks = 1;
             skills[1].ClassSkill = true;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
             Assert.That(met, Is.True);
         }
 
         [Test]
-        public void MeetSkillRequirementOf0Ranks()
+        public void MeetSkillRequirementOfZeroRanks()
         {
             selection.RequiredSkills = new[] { new RequiredSkillSelection { Skill = "skill", Ranks = 0 } };
             skills.Add(new Skill("skill", abilities["ability"], 10));
             skills[0].ClassSkill = false;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
             Assert.That(met, Is.True);
         }
 
@@ -239,8 +313,82 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills[3].Ranks = 4;
             skills[3].ClassSkill = true;
 
-            var met = selection.ImmutableRequirementsMet(2, abilities, skills, attacks, 2);
+            var met = selection.ImmutableRequirementsMet(2, abilities, skills, attacks, 2, speeds);
             Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void FeatRequirementsMet()
+        {
+            feats.Add(new Feat());
+            feats[0].Name = "feat";
+            selection.RequiredFeats = new[]
+            {
+                new RequiredFeatSelection { Feat = "feat" },
+            };
+
+            var met = selection.MutableRequirementsMet(feats);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void FeatRequirementsWithFocusMet()
+        {
+            feats.Add(new Feat());
+            feats[0].Name = "feat";
+            feats[0].Foci = new[] { "focus", "other focus" };
+            selection.RequiredFeats = new[]
+            {
+                new RequiredFeatSelection { Feat = "feat", Foci = new[] { "focus" } },
+            };
+
+            var met = selection.MutableRequirementsMet(feats);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void FeatRequirementsWithFociMet()
+        {
+            feats.Add(new Feat());
+            feats[0].Name = "feat";
+            feats[0].Foci = new[] { "focus" };
+            selection.RequiredFeats = new[]
+            {
+                new RequiredFeatSelection { Feat = "feat", Foci = new[] { "focus", "other focus" } },
+            };
+
+            var met = selection.MutableRequirementsMet(feats);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void FeatRequirementsWithFocusNotMetByFeatName()
+        {
+            feats.Add(new Feat());
+            feats[0].Name = "other feat";
+            feats[0].Foci = new[] { "focus", "other focus" };
+            selection.RequiredFeats = new[]
+            {
+                new RequiredFeatSelection { Feat = "feat", Foci = new[] { "focus" } },
+            };
+
+            var met = selection.MutableRequirementsMet(feats);
+            Assert.That(met, Is.False);
+        }
+
+        [Test]
+        public void FeatRequirementsWithFocusNotMetByFocus()
+        {
+            feats.Add(new Feat());
+            feats[0].Name = "feat";
+            feats[0].Foci = new[] { "wrong focus", "other focus" };
+            selection.RequiredFeats = new[]
+            {
+                new RequiredFeatSelection { Feat = "feat", Foci = new[] { "focus" } },
+            };
+
+            var met = selection.MutableRequirementsMet(feats);
+            Assert.That(met, Is.False);
         }
 
         [Test]
@@ -298,73 +446,130 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void NotMetIfNoSpecialAttacks()
         {
-            Assert.Fail();
+            attacks.Add(new Attack { IsSpecial = false, Name = "attack" });
+            attacks.Add(new Attack { IsSpecial = false, Name = "other attack" });
+
+            selection.RequiresSpecialAttack = true;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.False);
         }
 
         [Test]
         public void MetIfSpecialAttacks()
         {
-            Assert.Fail();
+            attacks.Add(new Attack { IsSpecial = false, Name = "attack" });
+            attacks.Add(new Attack { IsSpecial = true, Name = "other attack" });
+
+            selection.RequiresSpecialAttack = true;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void MetIfSpecialAttacksNotRequired()
+        {
+            attacks.Add(new Attack { IsSpecial = false, Name = "attack" });
+            attacks.Add(new Attack { IsSpecial = false, Name = "other attack" });
+
+            selection.RequiresSpecialAttack = false;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.True);
         }
 
         [Test]
         public void NotMetIfNoSpellLikeAbilities()
         {
-            Assert.Fail();
+            Assert.Fail("not yet written");
         }
 
         [Test]
         public void MetIfSpellLikeAbilities()
         {
-            Assert.Fail();
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void MetIfSpellLikeAbilitiesNotRequired()
+        {
+            Assert.Fail("not yet written");
         }
 
         [Test]
         public void NotMetIfDoesNotHaveRequiredSpeed()
         {
-            Assert.Fail();
+            selection.RequiredSpeeds["other speed"] = 0;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.False);
+        }
+
+        [Test]
+        public void NotMetIfDoesNotHaveRequiredSpeedValue()
+        {
+            speeds["speed"].Value = 9265;
+            selection.RequiredSpeeds["speed"] = 9266;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.False);
         }
 
         [Test]
         public void MetIfHasRequiredSpeed()
         {
-            Assert.Fail();
+            speeds["speed"].Value = 9266;
+            selection.RequiredSpeeds["speed"] = 9266;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void MetIfHasMoreThanRequiredSpeed()
+        {
+            speeds["speed"].Value = 9267;
+            selection.RequiredSpeeds["speed"] = 9266;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            Assert.That(met, Is.True);
         }
 
         [Test]
         public void NotMetIfNoNaturalArmor()
         {
-            Assert.Fail();
+            Assert.Fail("not yet written");
         }
 
         [Test]
         public void MetIfNaturalArmor()
         {
-            Assert.Fail();
+            Assert.Fail("not yet written");
         }
 
         [Test]
         public void NotMetIfNaturalWeaponQuantityNotEnough()
         {
-            Assert.Fail();
+            Assert.Fail("not yet written");
         }
 
         [Test]
         public void MetIfNaturalWeaponQuantityEnough()
         {
-            Assert.Fail();
+            Assert.Fail("not yet written");
         }
 
         [Test]
         public void NotMetIfInsufficientHands()
         {
-            Assert.Fail();
+            Assert.Fail("not yet written");
         }
 
         [Test]
         public void MetIfSufficfientHands()
         {
-            Assert.Fail();
+            Assert.Fail("not yet written");
         }
     }
 }
