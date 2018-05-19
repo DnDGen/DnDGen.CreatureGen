@@ -94,41 +94,6 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         }
 
         [Test]
-        public void TotalNaturalArmorBonusFromFeatApplied()
-        {
-            feats.Add(new Feat());
-            feats.Add(new Feat());
-            feats[0].Name = "feat 1";
-            feats[0].Power = 1;
-            feats[1].Name = "feat 2";
-            feats[1].Power = 1;
-
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.ArmorClassModifiers, GroupConstants.NaturalArmor))
-                .Returns(new[] { "feat 1", "feat 2", "other feat" });
-
-            var armorClass = GenerateAndAssertArmorClass(12, 12);
-            Assert.That(armorClass.NaturalArmorBonus, Is.EqualTo(2));
-        }
-
-        [Test]
-        public void IfNaturalArmorHasCircumstantialArmorBonus_MarkCircumstantialBonus()
-        {
-            feats.Add(new Feat());
-            feats.Add(new Feat());
-            feats[0].Name = "feat 1";
-            feats[0].Power = 1;
-            feats[1].Name = "feat 2";
-            feats[1].Foci = new[] { "focus" };
-            feats[1].Power = 1;
-
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.ArmorClassModifiers, GroupConstants.NaturalArmor))
-                .Returns(new[] { "feat 1", "feat 2", "other feat" });
-
-            var armorClass = GenerateAndAssertArmorClass(11, 11, circumstantial: true);
-            Assert.That(armorClass.NaturalArmorBonus, Is.EqualTo(1));
-        }
-
-        [Test]
         public void SizeModifiesArmorClass()
         {
             mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.SizeModifiers, "size")).Returns(9266);
