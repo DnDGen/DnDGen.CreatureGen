@@ -54,6 +54,7 @@
             {
                 public const string FeatAbilityRequirements = "FeatAbilityRequirements";
                 public const string FeatSkillRankRequirements = "FeatSkillRankRequirements";
+                public const string FeatSpeedRequirements = "FeatSpeedRequirements";
             }
 
             internal static class Percentile

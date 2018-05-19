@@ -48,8 +48,9 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Set.Percentile.AlignmentLawfulness, "AlignmentLawfulness")]
         [TestCase(TableNameConstants.Set.Percentile.Traits, "Traits")]
         [TestCase(TableNameConstants.Set.TrueOrFalse.Male, "Male")]
-        [TestCase(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "FeatSkillRankRequirements")]
         [TestCase(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "FeatAbilityRequirements")]
+        [TestCase(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "FeatSkillRankRequirements")]
+        [TestCase(TableNameConstants.Set.TypeAndAmount.FeatSpeedRequirements, "FeatSpeedRequirements")]
         public void TableNameConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));

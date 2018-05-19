@@ -1433,19 +1433,98 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringSpeed()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData();
+
+            var speedRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "speed", Amount = 9266 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(speedRequirements);
+
+            var additionalFeats = featsSelector.SelectFeats();
+            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+
+            var featSelection = additionalFeats.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo("feat"));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Empty);
+            Assert.That(featSelection.RequiredSpeeds, Is.Not.Empty);
+            Assert.That(featSelection.RequiredSpeeds.Count(), Is.EqualTo(1));
+
+            Assert.That(featSelection.RequiredSpeeds.Keys, Contains.Item("speed"));
+            Assert.That(featSelection.RequiredSpeeds["speed"], Is.EqualTo(9266));
         }
 
         [Test]
         public void GetFeatRequiringSpeeds()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData();
+
+            var speedRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "speed", Amount = 9266 },
+                new TypeAndAmountSelection { Type = "other speed", Amount = 90210 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(speedRequirements);
+
+            var additionalFeats = featsSelector.SelectFeats();
+            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+
+            var featSelection = additionalFeats.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo("feat"));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Empty);
+            Assert.That(featSelection.RequiredSpeeds, Is.Not.Empty);
+            Assert.That(featSelection.RequiredSpeeds.Count(), Is.EqualTo(2));
+
+            Assert.That(featSelection.RequiredSpeeds.Keys, Contains.Item("speed"));
+            Assert.That(featSelection.RequiredSpeeds["speed"], Is.EqualTo(9266));
+
+            Assert.That(featSelection.RequiredSpeeds.Keys, Contains.Item("other speed"));
+            Assert.That(featSelection.RequiredSpeeds["other speed"], Is.EqualTo(90210));
         }
 
         [Test]
         public void GetFeatNotRequiringSpeeds()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData();
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(Enumerable.Empty<TypeAndAmountSelection>());
+
+            var additionalFeats = featsSelector.SelectFeats();
+            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+
+            var featSelection = additionalFeats.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo("feat"));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Empty);
+            Assert.That(featSelection.RequiredSpeeds, Is.Empty);
         }
 
         [Test]
