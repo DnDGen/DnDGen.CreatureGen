@@ -60,6 +60,8 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.CreatureData.Space, 4)]
         [TestCase(DataIndexConstants.CreatureData.CanUseEquipment, 5)]
         [TestCase(DataIndexConstants.CreatureData.CasterLevel, 6)]
+        [TestCase(DataIndexConstants.CreatureData.NaturalArmor, 7)]
+        [TestCase(DataIndexConstants.CreatureData.NumberOfHands, 8)]
         public void CreatureDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
@@ -72,6 +74,8 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.CreatureData.Space)]
         [TestCase(DataIndexConstants.CreatureData.CanUseEquipment)]
         [TestCase(DataIndexConstants.CreatureData.CasterLevel)]
+        [TestCase(DataIndexConstants.CreatureData.NaturalArmor)]
+        [TestCase(DataIndexConstants.CreatureData.NumberOfHands)]
         public void CreatureDataIndicesInitialized(int index)
         {
             var data = DataIndexConstants.CreatureData.InitializeData();

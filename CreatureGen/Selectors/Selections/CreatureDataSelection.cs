@@ -8,6 +8,8 @@
         public double Reach { get; set; }
         public int? LevelAdjustment { get; set; }
         public int CasterLevel { get; set; }
+        public int NumberOfHands { get; set; }
+        public int NaturalArmor { get; set; }
         public bool CanUseEquipment { get; set; }
 
         public CreatureDataSelection()

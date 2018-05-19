@@ -5,7 +5,10 @@ using CreatureGen.Feats;
 using CreatureGen.Selectors.Selections;
 using CreatureGen.Skills;
 using NUnit.Framework;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CreatureGen.Tests.Unit.Selectors.Selections
 {
@@ -40,9 +43,13 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.RequiredAbilities, Is.Empty);
             Assert.That(selection.RequiredBaseAttack, Is.EqualTo(0));
             Assert.That(selection.RequiredFeats, Is.Empty);
+            Assert.That(selection.RequiredHands, Is.EqualTo(0));
+            Assert.That(selection.RequiredNaturalWeapons, Is.EqualTo(0));
             Assert.That(selection.RequiredSkills, Is.Empty);
             Assert.That(selection.RequiredSpeeds, Is.Empty);
+            Assert.That(selection.RequiresNaturalArmor, Is.False);
             Assert.That(selection.RequiresSpecialAttack, Is.False);
+            Assert.That(selection.RequiresSpellLikeAbility, Is.False);
             Assert.That(selection.FocusType, Is.Empty);
             Assert.That(selection.Power, Is.EqualTo(0));
             Assert.That(selection.Frequency, Is.Not.Null);
@@ -51,7 +58,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void ImmutableRequirementsMetIfNoRequirements()
         {
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.True);
         }
 
@@ -124,149 +131,338 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
-        public void BaseAttackRequirementNotMet()
+        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        public void BaseAttackRequirementNotMet(int requiredBaseAttack, int baseAttack)
         {
-            selection.RequiredBaseAttack = 2;
+            selection.RequiredBaseAttack = requiredBaseAttack;
 
-            var met = selection.ImmutableRequirementsMet(1, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(baseAttack, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.False);
         }
 
-        [Test]
-        public void CasterLevelRequirementNotMet()
+        private class NumericTestData
         {
-            selection.MinimumCasterLevel = 2;
+            private static IEnumerable<int> testValues = new[]
+            {
+                -90210,
+                -9266,
+                -1337,
+                -1336,
+                -620,
+                -600,
+                -96,
+                -42,
+                -2,
+                -1,
+                0,
+                1,
+                2,
+                42,
+                96,
+                600,
+                620,
+                1336,
+                1337,
+                9266,
+                90210
+            };
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 1, speeds);
-            Assert.That(met, Is.False);
+            public static IEnumerable ValueLessThanPositiveRequirement
+            {
+                get
+                {
+                    var positive = testValues.Where(v => v > 0);
+
+                    foreach (var requirement in positive)
+                    {
+                        var values = testValues.Where(v => v < requirement);
+
+                        foreach (var value in values)
+                        {
+                            yield return new TestCaseData(requirement, value);
+                        }
+                    }
+                }
+            }
+
+            public static IEnumerable ValueGreaterThanOrEqualToPositiveRequirement
+            {
+                get
+                {
+                    var positive = testValues.Where(v => v > 0);
+
+                    foreach (var requirement in testValues)
+                    {
+                        var values = testValues.Where(v => v >= requirement);
+
+                        foreach (var value in values)
+                        {
+                            yield return new TestCaseData(requirement, value);
+                        }
+                    }
+                }
+            }
+
+            public static IEnumerable SumOfValuesLessThanPositiveRequirement
+            {
+                get
+                {
+                    var positive = testValues.Where(v => v > 0);
+
+                    foreach (var requirement in positive)
+                    {
+                        foreach (var value1 in positive)
+                        {
+                            foreach (var value2 in testValues)
+                            {
+                                if (value1 + value2 < requirement)
+                                    yield return new TestCaseData(requirement, value1, value2);
+                            }
+                        }
+                    }
+                }
+            }
+
+            public static IEnumerable SumOfValuesLessThanPositiveRequirementWithMinimumOne
+            {
+                get
+                {
+                    var positive = testValues.Where(v => v > 0);
+
+                    foreach (var requirement in positive)
+                    {
+                        foreach (var value1 in positive)
+                        {
+                            foreach (var value2 in testValues)
+                            {
+                                var sum = Math.Max(value1 + value2, 1);
+
+                                if (sum < requirement)
+                                    yield return new TestCaseData(requirement, value1, value2);
+                            }
+                        }
+                    }
+                }
+            }
+
+            public static IEnumerable SumOfValuesGreaterThanOrEqualToPositiveRequirement
+            {
+                get
+                {
+                    var positive = testValues.Where(v => v > 0);
+
+                    foreach (var requirement in positive)
+                    {
+                        foreach (var value1 in positive)
+                        {
+                            foreach (var value2 in testValues)
+                            {
+                                if (value1 + value2 >= requirement)
+                                    yield return new TestCaseData(requirement, value1, value2);
+                            }
+                        }
+                    }
+                }
+            }
+
+            public static IEnumerable AllValuesAndAllPositiveRequirements
+            {
+                get
+                {
+                    var positive = testValues.Where(v => v > 0);
+
+                    foreach (var requirement in positive)
+                    {
+                        foreach (var value in testValues)
+                        {
+                            yield return new TestCaseData(requirement, value);
+                        }
+                    }
+                }
+            }
         }
 
         [Test]
-        public void AbilityRequirementsNotMetBecauseScoreNotHighEnough()
+        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        public void BaseAttackRequirementMet(int requiredBaseAttack, int baseAttack)
         {
-            selection.RequiredAbilities["ability"] = 16;
+            selection.RequiredBaseAttack = requiredBaseAttack;
 
-            abilities["ability"].BaseScore = 15;
-            abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseScore = 157;
-
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
-            Assert.That(met, Is.False);
-        }
-
-        [Test]
-        public void AbilityRequirementsMet()
-        {
-            selection.RequiredAbilities["ability"] = 16;
-
-            abilities["ability"].BaseScore = 16;
-            abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseScore = 157;
-
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(baseAttack, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.True);
         }
 
         [Test]
-        public void AbilityRequirementsMetWithRacialAdjustment()
+        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        public void CasterLevelRequirementNotMet(int requiredCasterLevel, int casterLevel)
         {
-            selection.RequiredAbilities["ability"] = 16;
+            selection.MinimumCasterLevel = requiredCasterLevel;
 
-            abilities["ability"].BaseScore = 10;
-            abilities["ability"].RacialAdjustment = 6;
-            abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseScore = 157;
-
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
-            Assert.That(met, Is.True);
-        }
-
-        [Test]
-        public void AbilityRequirementsMoreThanMet()
-        {
-            selection.RequiredAbilities["ability"] = 16;
-
-            abilities["ability"].BaseScore = 17;
-            abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseScore = 157;
-
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
-            Assert.That(met, Is.True);
-        }
-
-        [Test]
-        public void AbilityRequirementsMoreThanMetWithRacialAdjustment()
-        {
-            selection.RequiredAbilities["ability"] = 16;
-
-            abilities["ability"].BaseScore = 11;
-            abilities["ability"].RacialAdjustment = 6;
-            abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseScore = 157;
-
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
-            Assert.That(met, Is.True);
-        }
-
-        [Test]
-        public void AbilityRequirementsNotMetBecauseScoreNotHighEnoughWithRacialAdjustment()
-        {
-            selection.RequiredAbilities["ability"] = 16;
-
-            abilities["ability"].BaseScore = 10;
-            abilities["ability"].RacialAdjustment = 5;
-            abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseScore = 157;
-
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, casterLevel, speeds, 0, 0);
             Assert.That(met, Is.False);
         }
 
         [Test]
-        public void AbilityRequirementsNotMetBecauseAbilityHasNoScore()
+        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        public void CasterLevelRequirementMet(int requiredCasterLevel, int casterLevel)
         {
-            selection.RequiredAbilities["ability"] = 1;
+            selection.MinimumCasterLevel = requiredCasterLevel;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, casterLevel, speeds, 0, 0);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        [TestCaseSource(typeof(NumericTestData), "SumOfValuesLessThanPositiveRequirementWithMinimumOne")]
+        public void AbilityRequirementsNotMet(int requiredScore, int baseScore, int racialAdjustment)
+        {
+            selection.RequiredAbilities["ability"] = requiredScore;
+
+            abilities["ability"].BaseScore = baseScore;
+            abilities["ability"].RacialAdjustment = racialAdjustment;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseScore = int.MaxValue;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
+            Assert.That(met, Is.False);
+        }
+
+        [Test]
+        [TestCaseSource(typeof(NumericTestData), "AllValuesAndAllPositiveRequirements")]
+        public void AbilityRequirementsNotMetBecauseBaseScoreOfZero(int requiredScore, int racialAdjustment)
+        {
+            selection.RequiredAbilities["ability"] = requiredScore;
 
             abilities["ability"].BaseScore = 0;
+            abilities["ability"].RacialAdjustment = racialAdjustment;
             abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseScore = 157;
+            abilities["other ability"].BaseScore = int.MaxValue;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.False);
         }
 
         [Test]
-        public void SkillRequirementsNotMet()
+        [TestCaseSource(typeof(NumericTestData), "SumOfValuesGreaterThanOrEqualToPositiveRequirement")]
+        public void AbilityRequirementsMet(int requiredScore, int baseScore, int racialAdjustment)
         {
-            selection.RequiredSkills = new[] { new RequiredSkillSelection { Skill = "skill", Ranks = 5 } };
-            skills.Add(new Skill("skill", abilities["ability"], 10));
-            skills.Add(new Skill("other skill", abilities["ability"], 10));
-            skills[0].Ranks = 9;
+            selection.RequiredAbilities["ability"] = requiredScore;
+
+            abilities["ability"].BaseScore = baseScore;
+            abilities["ability"].RacialAdjustment = racialAdjustment;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseScore = int.MinValue;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void AbilityRequirementsMetIfNotRequired()
+        {
+            abilities["ability"].BaseScore = 0;
+            abilities["ability"].RacialAdjustment = 0;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseScore = 0;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        public void ClassSkillRequirementsNotMet(int requiredRanks, int ranks)
+        {
+            selection.RequiredSkills = new[] {
+                new RequiredSkillSelection { Skill = "skill", Ranks = requiredRanks }
+            };
+
+            skills.Add(new Skill("skill", abilities["ability"], int.MaxValue));
+            skills.Add(new Skill("other skill", abilities["ability"], int.MaxValue));
+            skills[0].Ranks = ranks;
+            skills[0].ClassSkill = true;
+            skills[1].Ranks = int.MaxValue;
+            skills[1].ClassSkill = true;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
+            Assert.That(met, Is.False);
+        }
+
+        [Test]
+        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        public void CrossClassSkillRequirementsNotMet(int requiredRanks, int ranks)
+        {
+            selection.RequiredSkills = new[] {
+                new RequiredSkillSelection { Skill = "skill", Ranks = requiredRanks }
+            };
+
+            skills.Add(new Skill("skill", abilities["ability"], int.MaxValue));
+            skills.Add(new Skill("other skill", abilities["ability"], int.MaxValue));
+            skills[0].Ranks = ranks * 2;
             skills[0].ClassSkill = false;
-            skills[1].Ranks = 10;
+            skills[1].Ranks = int.MaxValue;
             skills[1].ClassSkill = false;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.False);
         }
 
         [Test]
-        public void AnyRequiredSkillWithSufficientRanksMeetRequirement()
+        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        public void ClassSkillRequirementsMet(int requiredRanks, int ranks)
+        {
+            selection.RequiredSkills = new[] {
+                new RequiredSkillSelection { Skill = "skill", Ranks = requiredRanks }
+            };
+
+            skills.Add(new Skill("skill", abilities["ability"], int.MaxValue));
+            skills.Add(new Skill("other skill", abilities["ability"], int.MaxValue));
+            skills[0].Ranks = ranks;
+            skills[0].ClassSkill = true;
+            skills[1].Ranks = int.MinValue;
+            skills[1].ClassSkill = true;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        public void CrossClassSkillRequirementsMet(int requiredRanks, int ranks)
+        {
+            selection.RequiredSkills = new[] {
+                new RequiredSkillSelection { Skill = "skill", Ranks = requiredRanks }
+            };
+
+            skills.Add(new Skill("skill", abilities["ability"], int.MaxValue));
+            skills.Add(new Skill("other skill", abilities["ability"], int.MaxValue));
+            skills[0].Ranks = ranks * 2;
+            skills[0].ClassSkill = false;
+            skills[1].Ranks = int.MinValue;
+            skills[1].ClassSkill = false;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        public void AnyRequiredSkillWithSufficientRanksMeetRequirement(int requiredRanks, int ranks)
         {
             selection.RequiredSkills = new[]
             {
-                new RequiredSkillSelection { Skill = "skill", Ranks = 5 },
-                new RequiredSkillSelection { Skill = "other skill", Ranks = 1 }
+                new RequiredSkillSelection { Skill = "skill", Ranks = requiredRanks },
+                new RequiredSkillSelection { Skill = "other skill", Ranks = int.MaxValue }
             };
 
-            skills.Add(new Skill("skill", abilities["ability"], 10));
-            skills.Add(new Skill("other skill", abilities["ability"], 10));
-            skills[0].Ranks = 4;
+            skills.Add(new Skill("skill", abilities["ability"], int.MaxValue));
+            skills.Add(new Skill("other skill", abilities["ability"], int.MaxValue));
+            skills[0].Ranks = ranks;
             skills[0].ClassSkill = true;
-            skills[1].Ranks = 1;
+            skills[1].Ranks = int.MinValue;
             skills[1].ClassSkill = true;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.True);
         }
 
@@ -277,43 +473,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills.Add(new Skill("skill", abilities["ability"], 10));
             skills[0].ClassSkill = false;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
-            Assert.That(met, Is.True);
-        }
-
-        [Test]
-        public void AllImmutableRequirementsMet()
-        {
-            selection.RequiredBaseAttack = 2;
-            selection.MinimumCasterLevel = 2;
-
-            selection.RequiredAbilities["ability"] = 16;
-            abilities["ability"] = new Ability("ability");
-            abilities["ability"].BaseScore = 16;
-            abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseScore = 15;
-
-            selection.RequiredSkills = new[]
-            {
-                new RequiredSkillSelection { Skill = "class skill", Ranks = 5 },
-                new RequiredSkillSelection { Skill = "cross-class skill", Ranks = 5 }
-            };
-
-            skills.Add(new Skill("class skill", abilities["ability"], 10));
-            skills.Add(new Skill("other class skill", abilities["ability"], 10));
-            skills.Add(new Skill("cross-class skill", abilities["ability"], 10));
-            skills.Add(new Skill("other cross-class skill", abilities["ability"], 10));
-
-            skills[0].Ranks = 10;
-            skills[0].ClassSkill = false;
-            skills[1].Ranks = 9;
-            skills[1].ClassSkill = false;
-            skills[2].Ranks = 5;
-            skills[2].ClassSkill = true;
-            skills[3].Ranks = 4;
-            skills[3].ClassSkill = true;
-
-            var met = selection.ImmutableRequirementsMet(2, abilities, skills, attacks, 2, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.True);
         }
 
@@ -451,7 +611,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
 
             selection.RequiresSpecialAttack = true;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.False);
         }
 
@@ -463,7 +623,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
 
             selection.RequiresSpecialAttack = true;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.True);
         }
 
@@ -475,26 +635,50 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
 
             selection.RequiresSpecialAttack = false;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.True);
         }
 
         [Test]
         public void NotMetIfNoSpellLikeAbilities()
         {
-            Assert.Fail("not yet written");
+            feats.Add(new Feat());
+            feats.Add(new Feat());
+            feats[0].Name = "feat";
+            feats[1].Name = "other required feat";
+
+            selection.RequiresSpellLikeAbility = true;
+
+            var met = selection.MutableRequirementsMet(feats);
+            Assert.That(met, Is.False);
         }
 
         [Test]
         public void MetIfSpellLikeAbilities()
         {
-            Assert.Fail("not yet written");
+            feats.Add(new Feat());
+            feats.Add(new Feat());
+            feats[0].Name = "feat";
+            feats[1].Name = FeatConstants.SpecialQualities.SpellLikeAbility;
+
+            selection.RequiresSpellLikeAbility = true;
+
+            var met = selection.MutableRequirementsMet(feats);
+            Assert.That(met, Is.True);
         }
 
         [Test]
         public void MetIfSpellLikeAbilitiesNotRequired()
         {
-            Assert.Fail("not yet written");
+            feats.Add(new Feat());
+            feats.Add(new Feat());
+            feats[0].Name = "feat";
+            feats[1].Name = "other required feat";
+
+            selection.RequiresSpellLikeAbility = false;
+
+            var met = selection.MutableRequirementsMet(feats);
+            Assert.That(met, Is.True);
         }
 
         [Test]
@@ -502,74 +686,140 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredSpeeds["other speed"] = 0;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.False);
         }
 
         [Test]
-        public void NotMetIfDoesNotHaveRequiredSpeedValue()
+        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        public void NotMetIfDoesNotHaveRequiredSpeedValue(int requiredSpeed, int speed)
         {
-            speeds["speed"].Value = 9265;
-            selection.RequiredSpeeds["speed"] = 9266;
+            speeds["speed"].Value = speed;
+            selection.RequiredSpeeds["speed"] = requiredSpeed;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.False);
         }
 
         [Test]
-        public void MetIfHasRequiredSpeed()
+        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        public void MetIfHasRequiredSpeed(int requiredSpeed, int speed)
         {
-            speeds["speed"].Value = 9266;
-            selection.RequiredSpeeds["speed"] = 9266;
+            speeds["speed"].Value = speed;
+            selection.RequiredSpeeds["speed"] = requiredSpeed;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
+            Assert.That(met, Is.True);
+        }
+
+        [TestCase(-2)]
+        [TestCase(-1)]
+        [TestCase(0)]
+        public void NotMetIfNoNaturalArmor(int naturalArmor)
+        {
+            selection.RequiresNaturalArmor = true;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, naturalArmor, 0);
+            Assert.That(met, Is.False);
+        }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(42)]
+        [TestCase(96)]
+        [TestCase(600)]
+        [TestCase(620)]
+        [TestCase(1336)]
+        [TestCase(1337)]
+        [TestCase(9266)]
+        [TestCase(90210)]
+        public void MetIfNaturalArmor(int naturalArmor)
+        {
+            selection.RequiresNaturalArmor = true;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, naturalArmor, 0);
             Assert.That(met, Is.True);
         }
 
         [Test]
-        public void MetIfHasMoreThanRequiredSpeed()
+        public void MetIfNaturalArmorNotRequired()
         {
-            speeds["speed"].Value = 9267;
-            selection.RequiredSpeeds["speed"] = 9266;
+            selection.RequiresNaturalArmor = false;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
             Assert.That(met, Is.True);
         }
 
         [Test]
-        public void NotMetIfNoNaturalArmor()
+        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        public void NotMetIfNaturalWeaponQuantityNotEnough(int requiredNaturalWeapons, int naturalWeapons)
         {
-            Assert.Fail("not yet written");
+            selection.RequiredNaturalWeapons = requiredNaturalWeapons;
+
+            attacks.Add(new Attack { IsNatural = false, Name = "not natural attack" });
+
+            while (naturalWeapons-- > 0)
+            {
+                attacks.Add(new Attack { IsNatural = true, Name = $"natural attack {naturalWeapons}" });
+            }
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
+            Assert.That(met, Is.False);
         }
 
         [Test]
-        public void MetIfNaturalArmor()
+        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        public void MetIfNaturalWeaponQuantityEnough(int requiredNaturalWeapons, int naturalWeapons)
         {
-            Assert.Fail("not yet written");
+            selection.RequiredNaturalWeapons = requiredNaturalWeapons;
+
+            attacks.Add(new Attack { IsNatural = false, Name = "not natural attack" });
+
+            while (naturalWeapons-- > 0)
+            {
+                attacks.Add(new Attack { IsNatural = true, Name = $"natural attack {naturalWeapons}" });
+            }
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
+            Assert.That(met, Is.True);
         }
 
         [Test]
-        public void NotMetIfNaturalWeaponQuantityNotEnough()
+        public void MetIfNaturalWeaponQuantityNotRequired()
         {
-            Assert.Fail("not yet written");
+            selection.RequiredNaturalWeapons = 0;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
+            Assert.That(met, Is.True);
         }
 
         [Test]
-        public void MetIfNaturalWeaponQuantityEnough()
+        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        public void NotMetIfInsufficientHands(int requiredHands, int hands)
         {
-            Assert.Fail("not yet written");
+            selection.RequiredHands = requiredHands;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, hands);
+            Assert.That(met, Is.False);
         }
 
         [Test]
-        public void NotMetIfInsufficientHands()
+        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        public void MetIfSufficientHands(int requiredHands, int hands)
         {
-            Assert.Fail("not yet written");
+            selection.RequiredHands = requiredHands;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, hands);
+            Assert.That(met, Is.True);
         }
 
         [Test]
-        public void MetIfSufficfientHands()
+        public void MetIfSufficientHandsNotRequired()
         {
-            Assert.Fail("not yet written");
+            selection.RequiredHands = 0;
+
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0);
+            Assert.That(met, Is.True);
         }
     }
 }

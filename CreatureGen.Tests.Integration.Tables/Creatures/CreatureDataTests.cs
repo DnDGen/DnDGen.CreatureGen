@@ -604,7 +604,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.YuanTi_Halfblood, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Five, 5, true)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, 2, true)]
         [TestCase(CreatureConstants.Zelekhut, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Nine, 7, true)]
-        public void CreatureData(string creature, string size, double space, double reach, string challengeRating, int? levelAdjustment, bool canUseEquipment, int casterLevel)
+        public void CreatureData(string creature, string size, double space, double reach, string challengeRating, int? levelAdjustment, bool canUseEquipment, int casterLevel, int naturalArmor, int numberOfHands)
         {
             var collection = DataIndexConstants.CreatureData.InitializeData();
             collection[DataIndexConstants.CreatureData.ChallengeRating] = challengeRating;
@@ -614,6 +614,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             collection[DataIndexConstants.CreatureData.Space] = space.ToString();
             collection[DataIndexConstants.CreatureData.CanUseEquipment] = canUseEquipment.ToString();
             collection[DataIndexConstants.CreatureData.CasterLevel] = casterLevel.ToString();
+            collection[DataIndexConstants.CreatureData.NaturalArmor] = naturalArmor.ToString();
+            collection[DataIndexConstants.CreatureData.NumberOfHands] = numberOfHands.ToString();
 
             Data(creature, collection);
         }
@@ -788,6 +790,36 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.CasterLevel), creature);
                 Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.CasterLevel], out casterLevel), Is.True, creature);
                 Assert.That(casterLevel, Is.Not.Negative, creature);
+            }
+        }
+
+        [Test]
+        public void AllCreaturesHaveCorrectNaturalArmor()
+        {
+            foreach (var kvp in table)
+            {
+                var creature = kvp.Key;
+                var data = kvp.Value.ToArray();
+                var naturalArmor = 0;
+
+                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.NaturalArmor), creature);
+                Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.NaturalArmor], out naturalArmor), Is.True, creature);
+                Assert.That(naturalArmor, Is.Not.Negative, creature);
+            }
+        }
+
+        [Test]
+        public void AllCreaturesHaveCorrectNumberOfHands()
+        {
+            foreach (var kvp in table)
+            {
+                var creature = kvp.Key;
+                var data = kvp.Value.ToArray();
+                var numberOfHands = 0;
+
+                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.NumberOfHands), creature);
+                Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.NumberOfHands], out numberOfHands), Is.True, creature);
+                Assert.That(numberOfHands, Is.Not.Negative, creature);
             }
         }
     }

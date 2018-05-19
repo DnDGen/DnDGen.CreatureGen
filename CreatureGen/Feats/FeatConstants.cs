@@ -240,6 +240,7 @@ namespace CreatureGen.Feats
             public const string NaturalWeapon = "Natural Weapon";
             public const string SaveBonus = "Save Bonus";
             public const string SkillBonus = "Skill Bonus";
+            public const string SpellLikeAbility = "Spell-Like Ability";
             public const string SpellResistance = "Spell Resistance";
             public const string WeaponFamiliarity = "Weapon Familiarity";
 
@@ -253,6 +254,7 @@ namespace CreatureGen.Feats
                     NaturalWeapon,
                     SaveBonus,
                     SkillBonus,
+                    SpellLikeAbility,
                     SpellResistance,
                     WeaponFamiliarity,
                 };

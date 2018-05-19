@@ -25,20 +25,10 @@ namespace CreatureGen.Generators.Defenses
             var armorClass = new ArmorClass();
             armorClass.Dexterity = dexterity;
             armorClass.DeflectionBonus = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.ArmorDeflectionBonuses, creatureName);
-            armorClass.NaturalArmorBonus = GetNaturalArmorBonus(feats);
             armorClass.SizeModifier = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.SizeModifiers, size);
-            armorClass.CircumstantialBonus = IsNaturalArmorBonusCircumstantial(feats);
             armorClass.ArmorBonus = GetArmorBonus(feats);
 
             return armorClass;
-        }
-
-        private bool IsNaturalArmorBonusCircumstantial(IEnumerable<Feat> feats)
-        {
-            var thingsThatGrantNaturalArmorBonuses = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.ArmorClassModifiers, GroupConstants.NaturalArmor);
-            var featsWithNaturalArmorBonuses = feats.Where(f => thingsThatGrantNaturalArmorBonuses.Contains(f.Name));
-
-            return featsWithNaturalArmorBonuses.Any(f => f.Foci.Any());
         }
 
         private int GetArmorBonus(IEnumerable<Feat> feats)
@@ -49,16 +39,6 @@ namespace CreatureGen.Generators.Defenses
             var featArmorBonus = featArmorBonuses.Sum();
 
             return featArmorBonus;
-        }
-
-        private int GetNaturalArmorBonus(IEnumerable<Feat> feats)
-        {
-            var thingsThatGrantNaturalArmorBonuses = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.ArmorClassModifiers, GroupConstants.NaturalArmor);
-            var featsWithNaturalArmorBonuses = feats.Where(f => thingsThatGrantNaturalArmorBonuses.Contains(f.Name) && !f.Foci.Any());
-            var featNaturalArmorBonuses = featsWithNaturalArmorBonuses.Select(f => f.Power);
-            var featNaturalArmorBonus = featNaturalArmorBonuses.Sum();
-
-            return featNaturalArmorBonus;
         }
     }
 }

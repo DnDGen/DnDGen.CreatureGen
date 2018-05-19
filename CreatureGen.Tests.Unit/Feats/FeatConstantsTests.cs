@@ -210,6 +210,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.NaturalWeapon, "Natural Weapon")]
         [TestCase(FeatConstants.SpecialQualities.SaveBonus, "Save Bonus")]
         [TestCase(FeatConstants.SpecialQualities.SkillBonus, "Skill Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.SpellLikeAbility, "Spell-Like Ability")]
         [TestCase(FeatConstants.SpecialQualities.SpellResistance, "Spell Resistance")]
         [TestCase(FeatConstants.SpecialQualities.WeaponFamiliarity, "Weapon Familiarity")]
         public void SpecialQualityTests(string constant, string value)

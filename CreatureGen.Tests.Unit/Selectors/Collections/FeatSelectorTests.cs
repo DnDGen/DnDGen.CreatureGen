@@ -655,7 +655,14 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(last.RequiredSkills, Is.Empty);
         }
 
-        private IEnumerable<string> BuildFeatData(string focus, int frequencyQuantity, string frequencyTimePeriod, int baseAttack, int power, int minimumCasterLevel)
+        private IEnumerable<string> BuildFeatData(
+            string focus = "",
+            int frequencyQuantity = 0,
+            string frequencyTimePeriod = "",
+            int baseAttack = 0,
+            int power = 0,
+            int minimumCasterLevel = 0,
+            bool requiresSpecialAttack = false)
         {
             var data = DataIndexConstants.FeatData.InitializeData();
 
@@ -665,6 +672,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex] = frequencyTimePeriod;
             data[DataIndexConstants.FeatData.PowerIndex] = power.ToString();
             data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = minimumCasterLevel.ToString();
+            data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = requiresSpecialAttack.ToString();
 
             return data;
         }
@@ -1377,13 +1385,49 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringSpecialAttack()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData(requiresSpecialAttack: true);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Empty);
+            Assert.That(feat.RequiredSkills, Is.Empty);
+            Assert.That(feat.RequiresSpecialAttack, Is.True);
         }
 
         [Test]
         public void GetFeatNotRequiringSpecialAttack()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData(requiresSpecialAttack: false);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(feat.FocusType, Is.Empty);
+            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.RequiredAbilities, Is.Empty);
+            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredFeats, Is.Empty);
+            Assert.That(feat.RequiredSkills, Is.Empty);
+            Assert.That(feat.RequiresSpecialAttack, Is.False);
         }
 
         [Test]
@@ -1400,6 +1444,54 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
         [Test]
         public void GetFeatNotRequiringSpeeds()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatRequiringSpellLikeAbility()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatNotRequiringSpellLikeAbility()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatRequiringNaturalArmor()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatNotRequiringNaturalArmor()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatRequiringNaturalWeaponQuantity()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatNotRequiringNaturalWeaponQuantity()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatRequiringHands()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetFeatNotRequiringHands()
         {
             Assert.Fail("not yet written");
         }

@@ -36,6 +36,8 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
             VerifyCombat(creature);
 
             Assert.That(creature.ChallengeRating, Is.Not.Empty, creature.Summary);
+            Assert.That(creature.CasterLevel, Is.Not.Negative, creature.Summary);
+            Assert.That(creature.NumberOfHands, Is.Not.Negative, creature.Summary);
         }
 
         private void VerifySummary(Creature creature)

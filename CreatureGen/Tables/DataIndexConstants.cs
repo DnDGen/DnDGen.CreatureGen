@@ -60,10 +60,12 @@ namespace CreatureGen.Tables
             public const int Space = 4;
             public const int CanUseEquipment = 5;
             public const int CasterLevel = 6;
+            public const int NaturalArmor = 7;
+            public const int NumberOfHands = 8;
 
             public static List<string> InitializeData()
             {
-                return DataIndexConstants.InitializeData(CasterLevel);
+                return DataIndexConstants.InitializeData(NumberOfHands);
             }
         }
     }

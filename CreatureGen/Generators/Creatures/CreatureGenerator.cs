@@ -93,6 +93,7 @@ namespace CreatureGen.Generators.Creatures
             creature.ChallengeRating = creatureData.ChallengeRating;
             creature.LevelAdjustment = creatureData.LevelAdjustment;
             creature.CasterLevel = creatureData.CasterLevel;
+            creature.NumberOfHands = creatureData.NumberOfHands;
 
             creature.Type = GetCreatureType(creatureName);
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName);
@@ -126,7 +127,18 @@ namespace CreatureGen.Generators.Creatures
             creature.Attacks = attackSelector.Select(creatureName);
             creature.BaseAttackBonus = ComputeBaseAttackBonus(creature.Type, creature.HitPoints);
 
-            creature.Feats = featsGenerator.GenerateFeats(creature.HitPoints, creature.BaseAttackBonus, creature.Abilities, creature.Skills, creature.Attacks, creature.SpecialQualities, creature.CasterLevel);
+            var naturalArmor = creatureData.NaturalArmor + naturalArmorAdvancementAmount;
+            creature.Feats = featsGenerator.GenerateFeats(
+                creature.HitPoints,
+                creature.BaseAttackBonus,
+                creature.Abilities,
+                creature.Skills,
+                creature.Attacks,
+                creature.SpecialQualities,
+                creature.CasterLevel,
+                creature.Speeds,
+                naturalArmor,
+                creature.NumberOfHands);
 
             creature.Skills = skillsGenerator.ApplyBonusesFromFeats(creature.Skills, creature.Feats);
             creature.HitPoints = hitPointsGenerator.RegenerateWith(creature.HitPoints, creature.Feats);
@@ -152,7 +164,7 @@ namespace CreatureGen.Generators.Creatures
             }
 
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities[AbilityConstants.Dexterity], creature.Size, creatureName, allFeats);
-            creature.ArmorClass.NaturalArmorBonus += naturalArmorAdvancementAmount;
+            creature.ArmorClass.NaturalArmorBonus += naturalArmor;
 
             creature.Saves = savesGenerator.GenerateWith(creature.Type, creature.HitPoints, allFeats, creature.Abilities);
 

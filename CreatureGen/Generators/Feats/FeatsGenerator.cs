@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Abilities;
 using CreatureGen.Attacks;
+using CreatureGen.Creatures;
 using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
@@ -80,13 +81,33 @@ namespace CreatureGen.Generators.Feats
             return foci;
         }
 
-        public IEnumerable<Feat> GenerateFeats(HitPoints hitPoints, int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attacks, IEnumerable<Feat> specialQualities, int casterLevel)
+        public IEnumerable<Feat> GenerateFeats(
+            HitPoints hitPoints,
+            int baseAttackBonus,
+            Dictionary<string, Ability> abilities,
+            IEnumerable<Skill> skills,
+            IEnumerable<Attack> attacks,
+            IEnumerable<Feat> specialQualities,
+            int casterLevel,
+            Dictionary<string, Measurement> speeds,
+            int naturalArmor,
+            int hands)
         {
             if (!abilities[AbilityConstants.Intelligence].HasScore)
                 return Enumerable.Empty<Feat>();
 
             var numberOfAdditionalFeats = GetFeatQuantity(hitPoints);
-            var feats = GetFeats(numberOfAdditionalFeats, baseAttackBonus, abilities, skills, attacks, specialQualities, casterLevel);
+            var feats = GetFeats(
+                numberOfAdditionalFeats,
+                baseAttackBonus,
+                abilities,
+                skills,
+                attacks,
+                specialQualities,
+                casterLevel,
+                speeds,
+                naturalArmor,
+                hands);
 
             return feats;
         }
@@ -194,12 +215,32 @@ namespace CreatureGen.Generators.Feats
             return newFeatSelectionsWithRequirementsMet;
         }
 
-        private IEnumerable<Feat> GetFeats(int quantity, int baseAttackBonus, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, IEnumerable<Attack> attacks, IEnumerable<Feat> specialQualities, int casterLevel)
+        private IEnumerable<Feat> GetFeats(
+            int quantity,
+            int baseAttackBonus,
+            Dictionary<string, Ability> abilities,
+            IEnumerable<Skill> skills,
+            IEnumerable<Attack> attacks,
+            IEnumerable<Feat> specialQualities,
+            int casterLevel,
+            Dictionary<string, Measurement> speeds,
+            int naturalArmor,
+            int hands)
         {
             var featSelections = featsSelector.SelectFeats();
 
             //INFO: Calling immediate execution, so this doesn't reevaluate every time the collection is called
-            var availableFeats = featSelections.Where(f => f.ImmutableRequirementsMet(baseAttackBonus, abilities, skills, attacks, casterLevel)).ToArray();
+            var availableFeats = featSelections
+                .Where(f => f.ImmutableRequirementsMet(
+                    baseAttackBonus,
+                    abilities,
+                    skills,
+                    attacks,
+                    casterLevel,
+                    speeds,
+                    naturalArmor,
+                    hands))
+                .ToArray();
             var feats = PopulateFeatsFrom(abilities, skills, baseAttackBonus, specialQualities, availableFeats, quantity, casterLevel);
 
             return feats;

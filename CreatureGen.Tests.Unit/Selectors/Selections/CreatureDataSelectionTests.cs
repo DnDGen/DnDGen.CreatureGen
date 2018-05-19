@@ -18,6 +18,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         public void CreatureDataSelectionInitialized()
         {
             Assert.That(selection.ChallengeRating, Is.Empty);
+            Assert.That(selection.NumberOfHands, Is.EqualTo(0));
+            Assert.That(selection.NaturalArmor, Is.EqualTo(0));
             Assert.That(selection.Reach, Is.EqualTo(0));
             Assert.That(selection.Size, Is.Empty);
             Assert.That(selection.Space, Is.EqualTo(0));

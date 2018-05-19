@@ -21,7 +21,11 @@ namespace CreatureGen.Selectors.Selections
         public string FocusType { get; set; }
         public bool CanBeTakenMultipleTimes { get; set; }
         public int MinimumCasterLevel { get; set; }
+        public bool RequiresNaturalArmor { get; set; }
         public bool RequiresSpecialAttack { get; set; }
+        public bool RequiresSpellLikeAbility { get; set; }
+        public int RequiredNaturalWeapons { get; set; }
+        public int RequiredHands { get; set; }
 
         public FeatSelection()
         {
@@ -40,13 +44,21 @@ namespace CreatureGen.Selectors.Selections
             IEnumerable<Skill> skills,
             IEnumerable<Attack> attacks,
             int casterLevel,
-            Dictionary<string, Measurement> speeds)
+            Dictionary<string, Measurement> speeds,
+            int naturalArmor,
+            int hands)
         {
             foreach (var requiredAbility in RequiredAbilities)
                 if (abilities[requiredAbility.Key].FullScore < requiredAbility.Value)
                     return false;
 
-            if (baseAttackBonus < RequiredBaseAttack || casterLevel < MinimumCasterLevel)
+            if (baseAttackBonus < RequiredBaseAttack)
+                return false;
+
+            if (casterLevel < MinimumCasterLevel)
+                return false;
+
+            if (hands < RequiredHands)
                 return false;
 
             if (RequiredSkills.Any() && !RequiredSkills.Any(s => s.RequirementMet(skills)))
@@ -55,8 +67,14 @@ namespace CreatureGen.Selectors.Selections
             if (RequiresSpecialAttack && !attacks.Any(a => a.IsSpecial))
                 return false;
 
+            if (attacks.Count(a => a.IsNatural) < RequiredNaturalWeapons)
+                return false;
+
+            if (RequiresNaturalArmor && naturalArmor <= 0)
+                return false;
+
             foreach (var requiredSpeed in RequiredSpeeds)
-                if (speeds[requiredSpeed.Key].Value < requiredSpeed.Value)
+                if (!speeds.ContainsKey(requiredSpeed.Key) || speeds[requiredSpeed.Key].Value < requiredSpeed.Value)
                     return false;
 
             return true;
@@ -65,6 +83,9 @@ namespace CreatureGen.Selectors.Selections
         public bool MutableRequirementsMet(IEnumerable<Feat> feats)
         {
             if (FeatSelected(feats) && !CanBeTakenMultipleTimes)
+                return false;
+
+            if (RequiresSpellLikeAbility && !feats.Any(f => f.Name == FeatConstants.SpecialQualities.SpellLikeAbility))
                 return false;
 
             if (!RequiredFeats.Any())

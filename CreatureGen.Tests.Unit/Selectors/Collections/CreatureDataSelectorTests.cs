@@ -30,6 +30,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             data[DataIndexConstants.CreatureData.Space] = "4.2";
             data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
             data[DataIndexConstants.CreatureData.CasterLevel] = "600";
+            data[DataIndexConstants.CreatureData.NaturalArmor] = "1337";
+            data[DataIndexConstants.CreatureData.NumberOfHands] = "1336";
 
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.CreatureData, Creature))
                 .Returns(data);
@@ -104,6 +106,20 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var selection = creatureDataSelector.SelectFor(Creature);
             Assert.That(selection.CanUseEquipment, Is.False);
+        }
+
+        [Test]
+        public void SelectNaturalArmor()
+        {
+            var selection = creatureDataSelector.SelectFor(Creature);
+            Assert.That(selection.NaturalArmor, Is.EqualTo(1337));
+        }
+
+        [Test]
+        public void SelectNumberOfHands()
+        {
+            var selection = creatureDataSelector.SelectFor(Creature);
+            Assert.That(selection.NumberOfHands, Is.EqualTo(1336));
         }
     }
 }
