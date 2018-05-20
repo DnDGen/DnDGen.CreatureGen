@@ -591,7 +591,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeat()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData();
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -621,8 +621,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeats()
         {
-            featsData["feat 1"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
-            featsData["feat 2"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat 1"] = BuildFeatData();
+            featsData["feat 2"] = BuildFeatData();
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(2));
@@ -662,7 +662,9 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             int baseAttack = 0,
             int power = 0,
             int minimumCasterLevel = 0,
-            bool requiresSpecialAttack = false)
+            bool requiresSpecialAttack = false,
+            bool requiresSpellLikeAbility = false,
+            bool requiresNaturalArmor = false)
         {
             var data = DataIndexConstants.FeatData.InitializeData();
 
@@ -673,6 +675,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             data[DataIndexConstants.FeatData.PowerIndex] = power.ToString();
             data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = minimumCasterLevel.ToString();
             data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = requiresSpecialAttack.ToString();
+            data[DataIndexConstants.FeatData.RequiresSpellLikeAbility] = requiresSpellLikeAbility.ToString();
+            data[DataIndexConstants.FeatData.RequiresNaturalArmor] = requiresNaturalArmor.ToString();
 
             return data;
         }
@@ -680,7 +684,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatThatCanBeTakenMultipleTimes()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData();
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.TakenMultipleTimes)).Returns(new[] { "wrong feat", "feat" });
 
@@ -705,7 +709,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithFocusType()
         {
-            featsData["feat"] = BuildFeatData("focus type", 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("focus type");
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1311,7 +1315,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithWeaponProficiencyRequirement()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData();
 
             var requiredFeats = new[]
             {
@@ -1346,7 +1350,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithCrossbowProficiencyRequirement()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData();
 
             var requiredFeats = new[]
             {
@@ -1393,16 +1397,6 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             var feat = feats.Single();
 
             Assert.That(feat.Feat, Is.EqualTo("feat"));
-            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
-            Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
-            Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
-            Assert.That(feat.RequiredFeats, Is.Empty);
-            Assert.That(feat.RequiredSkills, Is.Empty);
             Assert.That(feat.RequiresSpecialAttack, Is.True);
         }
 
@@ -1417,16 +1411,6 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             var feat = feats.Single();
 
             Assert.That(feat.Feat, Is.EqualTo("feat"));
-            Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
-            Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
-            Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
-            Assert.That(feat.RequiredFeats, Is.Empty);
-            Assert.That(feat.RequiredSkills, Is.Empty);
             Assert.That(feat.RequiresSpecialAttack, Is.False);
         }
 
@@ -1447,16 +1431,6 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
-            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
-            Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
-            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
-            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(featSelection.Power, Is.EqualTo(0));
-            Assert.That(featSelection.RequiredAbilities, Is.Empty);
-            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
-            Assert.That(featSelection.RequiredFeats, Is.Empty);
-            Assert.That(featSelection.RequiredSkills, Is.Empty);
             Assert.That(featSelection.RequiredSpeeds, Is.Not.Empty);
             Assert.That(featSelection.RequiredSpeeds.Count(), Is.EqualTo(1));
 
@@ -1482,16 +1456,6 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
-            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
-            Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
-            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
-            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(featSelection.Power, Is.EqualTo(0));
-            Assert.That(featSelection.RequiredAbilities, Is.Empty);
-            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
-            Assert.That(featSelection.RequiredFeats, Is.Empty);
-            Assert.That(featSelection.RequiredSkills, Is.Empty);
             Assert.That(featSelection.RequiredSpeeds, Is.Not.Empty);
             Assert.That(featSelection.RequiredSpeeds.Count(), Is.EqualTo(2));
 
@@ -1514,41 +1478,63 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
-            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
-            Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
-            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
-            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(featSelection.Power, Is.EqualTo(0));
-            Assert.That(featSelection.RequiredAbilities, Is.Empty);
-            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
-            Assert.That(featSelection.RequiredFeats, Is.Empty);
-            Assert.That(featSelection.RequiredSkills, Is.Empty);
             Assert.That(featSelection.RequiredSpeeds, Is.Empty);
         }
 
         [Test]
         public void GetFeatRequiringSpellLikeAbility()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData(requiresSpellLikeAbility: true);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiresSpellLikeAbility, Is.True);
         }
 
         [Test]
         public void GetFeatNotRequiringSpellLikeAbility()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData(requiresSpellLikeAbility: false);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiresSpellLikeAbility, Is.False);
         }
 
         [Test]
         public void GetFeatRequiringNaturalArmor()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData(requiresNaturalArmor: true);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiresNaturalArmor, Is.True);
         }
 
         [Test]
         public void GetFeatNotRequiringNaturalArmor()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData(requiresNaturalArmor: false);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiresNaturalArmor, Is.False);
         }
 
         [Test]
