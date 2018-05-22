@@ -37,10 +37,14 @@ namespace CreatureGen.Tables
             public const int FrequencyTimePeriodIndex = 4;
             public const int MinimumCasterLevelIndex = 5;
             public const int RequiresSpecialAttackIndex = 6;
+            public const int RequiresSpellLikeAbility = 7;
+            public const int RequiresNaturalArmor = 8;
+            public const int RequiredNaturalWeaponQuantityIndex = 9;
+            public const int RequiredHandQuantityIndex = 10;
 
             public static List<string> InitializeData()
             {
-                return DataIndexConstants.InitializeData(RequiresSpecialAttackIndex);
+                return DataIndexConstants.InitializeData(RequiredHandQuantityIndex);
             }
         }
 

@@ -390,7 +390,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.InvisibleStalker, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Seven, null, false)]
         [TestCase(CreatureConstants.Janni, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Four, 5, true)]
         [TestCase(CreatureConstants.Kobold, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneFourth, 0, true)]
-        [TestCase(CreatureConstants.Kolyarut, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Twelve, null, true)]
+        [TestCase(CreatureConstants.Kolyarut, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Twelve, null, true, 13, 10, 2)]
         [TestCase(CreatureConstants.Kraken, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.Twelve, null, false)]
         [TestCase(CreatureConstants.Krenshar, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, 2, false)]
         [TestCase(CreatureConstants.KuoToa, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Two, 3, true)]
@@ -412,7 +412,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.MantaRay, SizeConstants.Large, 10, 5, ChallengeRatingConstants.One, null, false)]
         [TestCase(CreatureConstants.Manticore, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Five, 3, false)]
         [TestCase(CreatureConstants.Marilith, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Seventeen, null, true)]
-        [TestCase(CreatureConstants.Marut, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Fifteen, null, false)]
+        [TestCase(CreatureConstants.Marut, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Fifteen, null, false, 14, 16, 2)]
         [TestCase(CreatureConstants.Medusa, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Seven, 0, true)]
         [TestCase(CreatureConstants.Megaraptor, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Six, null, false)]
         [TestCase(CreatureConstants.Mephit_Air, SizeConstants.Small, 5, 5, ChallengeRatingConstants.Three, 3, false)]
@@ -603,7 +603,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.YuanTi_Abomination, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Seven, 7, true)]
         [TestCase(CreatureConstants.YuanTi_Halfblood, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Five, 5, true)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, 2, true)]
-        [TestCase(CreatureConstants.Zelekhut, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Nine, 7, true)]
+        [TestCase(CreatureConstants.Zelekhut, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Nine, 7, true, 8, 10, 2)]
         public void CreatureData(string creature, string size, double space, double reach, string challengeRating, int? levelAdjustment, bool canUseEquipment, int casterLevel, int naturalArmor, int numberOfHands)
         {
             var collection = DataIndexConstants.CreatureData.InitializeData();

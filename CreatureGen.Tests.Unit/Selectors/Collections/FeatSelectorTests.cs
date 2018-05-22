@@ -664,7 +664,9 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             int minimumCasterLevel = 0,
             bool requiresSpecialAttack = false,
             bool requiresSpellLikeAbility = false,
-            bool requiresNaturalArmor = false)
+            bool requiresNaturalArmor = false,
+            int requiredNaturalWeaponQuantity = 0,
+            int requiredHandQuantity = 0)
         {
             var data = DataIndexConstants.FeatData.InitializeData();
 
@@ -677,6 +679,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = requiresSpecialAttack.ToString();
             data[DataIndexConstants.FeatData.RequiresSpellLikeAbility] = requiresSpellLikeAbility.ToString();
             data[DataIndexConstants.FeatData.RequiresNaturalArmor] = requiresNaturalArmor.ToString();
+            data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = requiredNaturalWeaponQuantity.ToString();
+            data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = requiredHandQuantity.ToString();
 
             return data;
         }
@@ -1540,25 +1544,57 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringNaturalWeaponQuantity()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData(requiredNaturalWeaponQuantity: 9266);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiredNaturalWeapons, Is.EqualTo(9266));
         }
 
         [Test]
         public void GetFeatNotRequiringNaturalWeaponQuantity()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData(requiredNaturalWeaponQuantity: 0);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiredNaturalWeapons, Is.EqualTo(0));
         }
 
         [Test]
         public void GetFeatRequiringHands()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData(requiredHandQuantity: 9266);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiredHands, Is.EqualTo(9266));
         }
 
         [Test]
         public void GetFeatNotRequiringHands()
         {
-            Assert.Fail("not yet written");
+            featsData["feat"] = BuildFeatData(requiredHandQuantity: 0);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiredHands, Is.EqualTo(0));
         }
     }
 }

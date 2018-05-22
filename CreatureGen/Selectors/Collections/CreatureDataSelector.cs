@@ -30,6 +30,8 @@ namespace CreatureGen.Selectors.Collections
             selection.Space = Convert.ToDouble(data[DataIndexConstants.CreatureData.Space]);
             selection.CanUseEquipment = Convert.ToBoolean(data[DataIndexConstants.CreatureData.CanUseEquipment]);
             selection.CasterLevel = Convert.ToInt32(data[DataIndexConstants.CreatureData.CasterLevel]);
+            selection.NaturalArmor = Convert.ToInt32(data[DataIndexConstants.CreatureData.NaturalArmor]);
+            selection.NumberOfHands = Convert.ToInt32(data[DataIndexConstants.CreatureData.NumberOfHands]);
 
             return selection;
         }

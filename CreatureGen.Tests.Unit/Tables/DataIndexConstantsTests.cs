@@ -27,6 +27,10 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.FeatData.FrequencyTimePeriodIndex, 4)]
         [TestCase(DataIndexConstants.FeatData.MinimumCasterLevelIndex, 5)]
         [TestCase(DataIndexConstants.FeatData.RequiresSpecialAttackIndex, 6)]
+        [TestCase(DataIndexConstants.FeatData.RequiresSpellLikeAbility, 7)]
+        [TestCase(DataIndexConstants.FeatData.RequiresNaturalArmor, 8)]
+        [TestCase(DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex, 9)]
+        [TestCase(DataIndexConstants.FeatData.RequiredHandQuantityIndex, 10)]
         public void FeatDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
@@ -39,6 +43,10 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.FeatData.FrequencyTimePeriodIndex)]
         [TestCase(DataIndexConstants.FeatData.MinimumCasterLevelIndex)]
         [TestCase(DataIndexConstants.FeatData.RequiresSpecialAttackIndex)]
+        [TestCase(DataIndexConstants.FeatData.RequiresSpellLikeAbility)]
+        [TestCase(DataIndexConstants.FeatData.RequiresNaturalArmor)]
+        [TestCase(DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex)]
+        [TestCase(DataIndexConstants.FeatData.RequiredHandQuantityIndex)]
         public void FeatDataIndicesInitialized(int index)
         {
             var data = DataIndexConstants.FeatData.InitializeData();

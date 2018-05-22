@@ -21,7 +21,13 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             indices[DataIndexConstants.FeatData.FocusTypeIndex] = "Focus Type";
             indices[DataIndexConstants.FeatData.FrequencyQuantityIndex] = "Frequency Quantity";
             indices[DataIndexConstants.FeatData.FrequencyTimePeriodIndex] = "Frequency Time Period";
+            indices[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = "Minimum Caster Level";
             indices[DataIndexConstants.FeatData.PowerIndex] = "Power";
+            indices[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = "Hands";
+            indices[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = "Natural Weapons";
+            indices[DataIndexConstants.FeatData.RequiresNaturalArmor] = "Natural Armor";
+            indices[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = "Special Attack";
+            indices[DataIndexConstants.FeatData.RequiresSpellLikeAbility] = "Spell-Like Ability";
         }
 
         [Test]
@@ -151,11 +157,21 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCase(FeatConstants.Metamagic.SilentSpell, 0, "", 0, "", 0, 1)]
         [TestCase(FeatConstants.Metamagic.StillSpell, 0, "", 0, "", 0, 1)]
         [TestCase(FeatConstants.Metamagic.WidenSpell, 0, "", 0, "", 0, 1)]
-        public void FeatData(string name, int baseAttackRequirement, string focusType, int frequencyQuantity, string frequencyTimePeriod, int power, int casterLevel)
+        public void FeatData(
+            string name, 
+            int baseAttackRequirement, 
+            string focusType, 
+            int frequencyQuantity,
+            string frequencyTimePeriod,
+            int power,
+            int casterLevel,
+            int hands,
+            int naturalWeapons,
+            bool naturalArmor,
+            bool specialAttacks,
+            bool spellLikeAbility)
         {
-            var data = new List<string>();
-            for (var i = 0; i < 6; i++)
-                data.Add(string.Empty);
+            var data = DataIndexConstants.FeatData.InitializeData();
 
             data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = Convert.ToString(baseAttackRequirement);
             data[DataIndexConstants.FeatData.FocusTypeIndex] = focusType;
@@ -163,10 +179,13 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex] = frequencyTimePeriod;
             data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = Convert.ToString(casterLevel);
             data[DataIndexConstants.FeatData.PowerIndex] = Convert.ToString(power);
+            data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = Convert.ToString(hands);
+            data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = Convert.ToString(naturalWeapons);
+            data[DataIndexConstants.FeatData.RequiresNaturalArmor] = Convert.ToString(naturalArmor);
+            data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = Convert.ToString(specialAttacks);
+            data[DataIndexConstants.FeatData.RequiresSpellLikeAbility] = Convert.ToString(spellLikeAbility);
 
             Data(name, data);
-
-            Assert.Fail("Review data/requirements for all currently-listed feats");
         }
     }
 }

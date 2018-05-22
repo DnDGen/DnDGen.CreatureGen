@@ -44,10 +44,16 @@ namespace CreatureGen.Selectors.Collections
             featSelection.Frequency.TimePeriod = data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex];
             featSelection.Power = Convert.ToInt32(data[DataIndexConstants.FeatData.PowerIndex]);
             featSelection.MinimumCasterLevel = Convert.ToInt32(data[DataIndexConstants.FeatData.MinimumCasterLevelIndex]);
+            featSelection.RequiredHands = Convert.ToInt32(data[DataIndexConstants.FeatData.RequiredHandQuantityIndex]);
+            featSelection.RequiredNaturalWeapons = Convert.ToInt32(data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex]);
+            featSelection.RequiresNaturalArmor = Convert.ToBoolean(data[DataIndexConstants.FeatData.RequiresNaturalArmor]);
+            featSelection.RequiresSpecialAttack = Convert.ToBoolean(data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex]);
+            featSelection.RequiresSpellLikeAbility = Convert.ToBoolean(data[DataIndexConstants.FeatData.RequiresSpellLikeAbility]);
 
             featSelection.RequiredFeats = GetRequiredFeats(featSelection.Feat);
             featSelection.RequiredSkills = GetRequiredSkills(featSelection.Feat);
             featSelection.RequiredAbilities = GetRequiredAbilities(featSelection.Feat);
+            featSelection.RequiredSpeeds = GetRequiredSpeeds(featSelection.Feat);
 
             var featsTakenMultipleTimes = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.TakenMultipleTimes);
             featSelection.CanBeTakenMultipleTimes = featsTakenMultipleTimes.Contains(featSelection.Feat);
@@ -66,6 +72,19 @@ namespace CreatureGen.Selectors.Collections
             }
 
             return requiredAbilities;
+        }
+
+        private Dictionary<string, int> GetRequiredSpeeds(string feat)
+        {
+            var requiredSpeedsAndValues = typeAndAmountSelector.Select(TableNameConstants.Set.TypeAndAmount.FeatSpeedRequirements, feat);
+            var requiredSpeeds = new Dictionary<string, int>();
+
+            foreach (var selection in requiredSpeedsAndValues)
+            {
+                requiredSpeeds[selection.Type] = selection.Amount;
+            }
+
+            return requiredSpeeds;
         }
 
         private IEnumerable<RequiredSkillSelection> GetRequiredSkills(string feat)
