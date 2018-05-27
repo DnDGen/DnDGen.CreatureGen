@@ -9,7 +9,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>1</entry>
+<entry>0</entry>
+<entry>2</entry>
+</collection>
   <collection>
     <name>Aboleth</name>
     <entry>7</entry>
@@ -18,7 +21,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>16</entry>
+<entry>7</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Achaierai</name>
     <entry>5</entry>
@@ -27,7 +33,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>16</entry>
+<entry>10</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Adult Arrowhawk</name>
     <entry>5</entry>
@@ -36,7 +45,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>6</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Allip</name>
     <entry>3</entry>
@@ -45,7 +57,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Androsphinx</name>
     <entry>9</entry>
@@ -54,7 +69,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>6</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Angel, Astral Deva</name>
     <entry>14</entry>
@@ -63,7 +81,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>12</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Angel, Planetar</name>
     <entry>16</entry>
@@ -72,7 +93,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>17</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Angel, Solar</name>
     <entry>23</entry>
@@ -81,7 +105,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>20</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Animated Object, Colossal</name>
     <entry>10</entry>
@@ -90,7 +117,10 @@
     <entry>Colossal</entry>
     <entry>30</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Animated Object, Gargantuan</name>
     <entry>7</entry>
@@ -99,7 +129,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Animated Object, Huge</name>
     <entry>5</entry>
@@ -108,7 +141,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Animated Object, Large</name>
     <entry>3</entry>
@@ -117,7 +153,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Animated Object, Medium</name>
     <entry>2</entry>
@@ -126,7 +165,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Animated Object, Small</name>
     <entry>1</entry>
@@ -135,7 +177,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Animated Object, Tiny</name>
     <entry>1/2</entry>
@@ -144,7 +189,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ankheg</name>
     <entry>3</entry>
@@ -153,7 +201,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Annis</name>
     <entry>6</entry>
@@ -162,7 +213,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ape</name>
     <entry>2</entry>
@@ -171,7 +225,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Ape</name>
     <entry>3</entry>
@@ -180,7 +237,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Aranea</name>
     <entry>4</entry>
@@ -189,7 +249,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Assassin Vine</name>
     <entry>3</entry>
@@ -198,7 +261,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Athach</name>
     <entry>8</entry>
@@ -207,7 +273,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Avoral</name>
     <entry>9</entry>
@@ -216,7 +285,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Azer</name>
     <entry>2</entry>
@@ -225,7 +297,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Babau</name>
     <entry>6</entry>
@@ -234,7 +309,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Baboon</name>
     <entry>1/2</entry>
@@ -243,7 +321,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Badger</name>
     <entry>1/2</entry>
@@ -252,7 +333,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Badger</name>
     <entry>2</entry>
@@ -261,7 +345,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Baleen Whale</name>
     <entry>6</entry>
@@ -270,7 +357,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Balor</name>
     <entry>20</entry>
@@ -279,7 +369,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
     <entry>11</entry>
@@ -288,7 +381,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Barghest</name>
     <entry>4</entry>
@@ -297,7 +393,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Basilisk</name>
     <entry>5</entry>
@@ -306,7 +405,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Abyssal Greater Basilisk</name>
     <entry>12</entry>
@@ -315,7 +417,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>9</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bat</name>
     <entry>1/10</entry>
@@ -324,7 +429,10 @@
     <entry>Diminutive</entry>
     <entry>1</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Bat</name>
     <entry>2</entry>
@@ -333,7 +441,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bat Swarm</name>
     <entry>2</entry>
@@ -342,7 +453,10 @@
     <entry>Diminutive</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Bear</name>
     <entry>2</entry>
@@ -351,7 +465,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brown Bear</name>
     <entry>4</entry>
@@ -360,7 +477,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Polar Bear</name>
     <entry>4</entry>
@@ -369,7 +489,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Bear</name>
     <entry>7</entry>
@@ -378,7 +501,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
     <entry>5</entry>
@@ -387,7 +513,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bebilith</name>
     <entry>10</entry>
@@ -396,7 +525,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Behir</name>
     <entry>8</entry>
@@ -405,7 +537,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Beholder</name>
     <entry>13</entry>
@@ -414,7 +549,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gauth</name>
     <entry>6</entry>
@@ -423,7 +561,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Belker</name>
     <entry>6</entry>
@@ -432,7 +573,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bison</name>
     <entry>2</entry>
@@ -441,7 +585,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Pudding</name>
     <entry>7</entry>
@@ -450,7 +597,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Elder Black Pudding</name>
     <entry>12</entry>
@@ -459,7 +609,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blink Dog</name>
     <entry>2</entry>
@@ -468,7 +621,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Slaad</name>
     <entry>8</entry>
@@ -477,7 +633,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Boar</name>
     <entry>2</entry>
@@ -486,7 +645,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Boar</name>
     <entry>4</entry>
@@ -495,7 +657,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bodak</name>
     <entry>8</entry>
@@ -504,7 +669,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bone Devil (Osyluth)</name>
     <entry>9</entry>
@@ -513,7 +681,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bralani</name>
     <entry>6</entry>
@@ -522,7 +693,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bugbear</name>
     <entry>2</entry>
@@ -531,7 +705,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bulette</name>
     <entry>7</entry>
@@ -540,7 +717,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Cachalot Whale</name>
     <entry>7</entry>
@@ -549,7 +729,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
     <entry>1</entry>
@@ -558,7 +741,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Camel, Dromedary (One-Humped)</name>
     <entry>1</entry>
@@ -567,7 +753,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Carrion Crawler</name>
     <entry>4</entry>
@@ -576,7 +765,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Cat</name>
     <entry>1/4</entry>
@@ -585,7 +777,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Centaur</name>
     <entry>3</entry>
@@ -594,7 +789,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Centipede Swarm</name>
     <entry>4</entry>
@@ -603,7 +801,10 @@
     <entry>Diminutive</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
     <entry>6</entry>
@@ -612,7 +813,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Chaos Beast</name>
     <entry>7</entry>
@@ -621,7 +825,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Cheetah</name>
     <entry>2</entry>
@@ -630,7 +837,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Chimera</name>
     <entry>7</entry>
@@ -639,7 +849,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Choker</name>
     <entry>2</entry>
@@ -648,7 +861,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Chuul</name>
     <entry>7</entry>
@@ -657,7 +873,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Cloaker</name>
     <entry>5</entry>
@@ -666,7 +885,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Cockatrice</name>
     <entry>3</entry>
@@ -675,7 +897,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Constrictor Snake</name>
     <entry>2</entry>
@@ -684,7 +909,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Couatl</name>
     <entry>10</entry>
@@ -693,7 +921,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Criosphinx</name>
     <entry>7</entry>
@@ -702,7 +933,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Crocodile</name>
     <entry>2</entry>
@@ -711,7 +945,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Crocodile</name>
     <entry>4</entry>
@@ -720,7 +957,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Darkmantle</name>
     <entry>1</entry>
@@ -729,7 +969,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Death Slaad</name>
     <entry>13</entry>
@@ -738,7 +981,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Deep Halfling</name>
     <entry>1/2</entry>
@@ -747,7 +993,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Deinonychus</name>
     <entry>3</entry>
@@ -756,7 +1005,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Delver</name>
     <entry>9</entry>
@@ -765,7 +1017,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Derro</name>
     <entry>3</entry>
@@ -774,7 +1029,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Derro (Sane)</name>
     <entry>3</entry>
@@ -783,7 +1041,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Destrachan</name>
     <entry>8</entry>
@@ -792,7 +1053,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Devourer</name>
     <entry>11</entry>
@@ -801,7 +1065,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Digester</name>
     <entry>6</entry>
@@ -810,7 +1077,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Displacer Beast</name>
     <entry>4</entry>
@@ -819,7 +1089,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Displacer Beast Pack Lord</name>
     <entry>12</entry>
@@ -828,7 +1101,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Djinni</name>
     <entry>5</entry>
@@ -837,7 +1113,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Noble Djinni</name>
     <entry>8</entry>
@@ -846,7 +1125,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dog</name>
     <entry>1/3</entry>
@@ -855,7 +1137,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dog, Riding</name>
     <entry>1</entry>
@@ -864,7 +1149,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Donkey</name>
     <entry>1/6</entry>
@@ -873,7 +1161,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Doppelganger</name>
     <entry>3</entry>
@@ -882,7 +1173,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Adult</name>
     <entry>11</entry>
@@ -891,7 +1185,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Ancient</name>
     <entry>19</entry>
@@ -900,7 +1197,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Great Wyrm</name>
     <entry>22</entry>
@@ -909,7 +1209,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Juvenile</name>
     <entry>7</entry>
@@ -918,7 +1221,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Mature Adult</name>
     <entry>14</entry>
@@ -927,7 +1233,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Old</name>
     <entry>16</entry>
@@ -936,7 +1245,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Very Old</name>
     <entry>18</entry>
@@ -945,7 +1257,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Very Young</name>
     <entry>4</entry>
@@ -954,7 +1269,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Wyrm</name>
     <entry>20</entry>
@@ -963,7 +1281,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Wyrmling</name>
     <entry>3</entry>
@@ -972,7 +1293,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Young</name>
     <entry>5</entry>
@@ -981,7 +1305,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Black Dragon, Young Adult</name>
     <entry>9</entry>
@@ -990,7 +1317,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Adult</name>
     <entry>14</entry>
@@ -999,7 +1329,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Ancient</name>
     <entry>21</entry>
@@ -1008,7 +1341,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Great Wyrm</name>
     <entry>25</entry>
@@ -1017,7 +1353,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Juvenile</name>
     <entry>8</entry>
@@ -1026,7 +1365,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Mature Adult</name>
     <entry>16</entry>
@@ -1035,7 +1377,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Old</name>
     <entry>18</entry>
@@ -1044,7 +1389,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Very Old</name>
     <entry>19</entry>
@@ -1053,7 +1401,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Very Young</name>
     <entry>4</entry>
@@ -1062,7 +1413,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Wyrm</name>
     <entry>23</entry>
@@ -1071,7 +1425,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Wyrmling</name>
     <entry>3</entry>
@@ -1080,7 +1437,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Young</name>
     <entry>6</entry>
@@ -1089,7 +1449,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Blue Dragon, Young Adult</name>
     <entry>11</entry>
@@ -1098,7 +1461,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Adult</name>
     <entry>13</entry>
@@ -1107,7 +1473,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Ancient</name>
     <entry>21</entry>
@@ -1116,7 +1485,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
     <entry>24</entry>
@@ -1125,7 +1497,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
     <entry>8</entry>
@@ -1134,7 +1509,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Mature Adult</name>
     <entry>16</entry>
@@ -1143,7 +1521,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Old</name>
     <entry>18</entry>
@@ -1152,7 +1533,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Very Old</name>
     <entry>19</entry>
@@ -1161,7 +1545,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Very Young</name>
     <entry>4</entry>
@@ -1170,7 +1557,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Wyrm</name>
     <entry>22</entry>
@@ -1179,7 +1569,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Wyrmling</name>
     <entry>3</entry>
@@ -1188,7 +1581,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Young</name>
     <entry>5</entry>
@@ -1197,7 +1593,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Dragon, Young Adult</name>
     <entry>11</entry>
@@ -1206,7 +1605,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Adult</name>
     <entry>15</entry>
@@ -1215,7 +1617,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Ancient</name>
     <entry>23</entry>
@@ -1224,7 +1629,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
     <entry>26</entry>
@@ -1233,7 +1641,10 @@
     <entry>Colossal</entry>
     <entry>30</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
     <entry>10</entry>
@@ -1242,7 +1653,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Mature Adult</name>
     <entry>18</entry>
@@ -1251,7 +1665,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Old</name>
     <entry>20</entry>
@@ -1260,7 +1677,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Very Old</name>
     <entry>21</entry>
@@ -1269,7 +1689,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Very Young</name>
     <entry>5</entry>
@@ -1278,7 +1701,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Wyrm</name>
     <entry>24</entry>
@@ -1287,7 +1713,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Wyrmling</name>
     <entry>4</entry>
@@ -1296,7 +1725,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Young</name>
     <entry>7</entry>
@@ -1305,7 +1737,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Dragon, Young Adult</name>
     <entry>13</entry>
@@ -1314,7 +1749,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Adult</name>
     <entry>10</entry>
@@ -1323,7 +1761,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Ancient</name>
     <entry>18</entry>
@@ -1332,7 +1773,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
     <entry>21</entry>
@@ -1341,7 +1785,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Juvenile</name>
     <entry>6</entry>
@@ -1350,7 +1797,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Mature Adult</name>
     <entry>12</entry>
@@ -1359,7 +1809,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Old</name>
     <entry>15</entry>
@@ -1368,7 +1821,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Very Old</name>
     <entry>17</entry>
@@ -1377,7 +1833,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Very Young</name>
     <entry>3</entry>
@@ -1386,7 +1845,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Wyrm</name>
     <entry>19</entry>
@@ -1395,7 +1857,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Wyrmling</name>
     <entry>2</entry>
@@ -1404,7 +1869,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Young</name>
     <entry>4</entry>
@@ -1413,7 +1881,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>White Dragon, Young Adult</name>
     <entry>8</entry>
@@ -1422,7 +1893,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Adult</name>
     <entry>12</entry>
@@ -1431,7 +1905,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Ancient</name>
     <entry>20</entry>
@@ -1440,7 +1917,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Great Wyrm</name>
     <entry>23</entry>
@@ -1449,7 +1929,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Juvenile</name>
     <entry>8</entry>
@@ -1458,7 +1941,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Mature Adult</name>
     <entry>15</entry>
@@ -1467,7 +1953,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Old</name>
     <entry>17</entry>
@@ -1476,7 +1965,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Very Old</name>
     <entry>19</entry>
@@ -1485,7 +1977,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Very Young</name>
     <entry>4</entry>
@@ -1494,7 +1989,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Wyrm</name>
     <entry>21</entry>
@@ -1503,7 +2001,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Wyrmling</name>
     <entry>3</entry>
@@ -1512,7 +2013,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Young</name>
     <entry>6</entry>
@@ -1521,7 +2025,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Brass Dragon, Young Adult</name>
     <entry>10</entry>
@@ -1530,7 +2037,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Adult</name>
     <entry>15</entry>
@@ -1539,7 +2049,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Ancient</name>
     <entry>22</entry>
@@ -1548,7 +2061,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Great Wyrm</name>
     <entry>25</entry>
@@ -1557,7 +2073,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Juvenile</name>
     <entry>9</entry>
@@ -1566,7 +2085,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Mature Adult</name>
     <entry>17</entry>
@@ -1575,7 +2097,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Old</name>
     <entry>19</entry>
@@ -1584,7 +2109,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Very Old</name>
     <entry>20</entry>
@@ -1593,7 +2121,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Very Young</name>
     <entry>5</entry>
@@ -1602,7 +2133,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Wyrm</name>
     <entry>23</entry>
@@ -1611,7 +2145,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Wyrmling</name>
     <entry>3</entry>
@@ -1620,7 +2157,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Young</name>
     <entry>7</entry>
@@ -1629,7 +2169,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Bronze Dragon, Young Adult</name>
     <entry>12</entry>
@@ -1638,7 +2181,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Adult</name>
     <entry>14</entry>
@@ -1647,7 +2193,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Ancient</name>
     <entry>22</entry>
@@ -1656,7 +2205,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
     <entry>25</entry>
@@ -1665,7 +2217,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
     <entry>9</entry>
@@ -1674,7 +2229,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Mature Adult</name>
     <entry>16</entry>
@@ -1683,7 +2241,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Old</name>
     <entry>19</entry>
@@ -1692,7 +2253,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Very Old</name>
     <entry>20</entry>
@@ -1701,7 +2265,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Very Young</name>
     <entry>5</entry>
@@ -1710,7 +2277,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Wyrm</name>
     <entry>23</entry>
@@ -1719,7 +2289,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Wyrmling</name>
     <entry>3</entry>
@@ -1728,7 +2301,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Young</name>
     <entry>7</entry>
@@ -1737,7 +2313,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Copper Dragon, Young Adult</name>
     <entry>11</entry>
@@ -1746,7 +2325,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Adult</name>
     <entry>16</entry>
@@ -1755,7 +2337,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Ancient</name>
     <entry>24</entry>
@@ -1764,7 +2349,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Great Wyrm</name>
     <entry>27</entry>
@@ -1773,7 +2361,10 @@
     <entry>Colossal</entry>
     <entry>30</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
     <entry>11</entry>
@@ -1782,7 +2373,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Mature Adult</name>
     <entry>19</entry>
@@ -1791,7 +2385,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Old</name>
     <entry>21</entry>
@@ -1800,7 +2397,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Very Old</name>
     <entry>22</entry>
@@ -1809,7 +2409,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Very Young</name>
     <entry>7</entry>
@@ -1818,7 +2421,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Wyrm</name>
     <entry>25</entry>
@@ -1827,7 +2433,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Wyrmling</name>
     <entry>5</entry>
@@ -1836,7 +2445,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Young</name>
     <entry>9</entry>
@@ -1845,7 +2457,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gold Dragon, Young Adult</name>
     <entry>14</entry>
@@ -1854,7 +2469,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Adult</name>
     <entry>15</entry>
@@ -1863,7 +2481,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Ancient</name>
     <entry>23</entry>
@@ -1872,7 +2493,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Great Wyrm</name>
     <entry>26</entry>
@@ -1881,7 +2505,10 @@
     <entry>Colossal</entry>
     <entry>30</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
     <entry>10</entry>
@@ -1890,7 +2517,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Mature Adult</name>
     <entry>18</entry>
@@ -1899,7 +2529,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Old</name>
     <entry>20</entry>
@@ -1908,7 +2541,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Very Old</name>
     <entry>21</entry>
@@ -1917,7 +2553,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Very Young</name>
     <entry>5</entry>
@@ -1926,7 +2565,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Wyrm</name>
     <entry>24</entry>
@@ -1935,7 +2577,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Wyrmling</name>
     <entry>4</entry>
@@ -1944,7 +2589,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Young</name>
     <entry>7</entry>
@@ -1953,7 +2601,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Silver Dragon, Young Adult</name>
     <entry>13</entry>
@@ -1962,7 +2613,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dragon Turtle</name>
     <entry>9</entry>
@@ -1971,7 +2625,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dragonne</name>
     <entry>7</entry>
@@ -1980,7 +2637,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dretch</name>
     <entry>2</entry>
@@ -1989,7 +2649,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Drider</name>
     <entry>7</entry>
@@ -1998,7 +2661,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dryad</name>
     <entry>3</entry>
@@ -2007,7 +2673,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Deep Dwarf</name>
     <entry>1/2</entry>
@@ -2016,7 +2685,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Duergar</name>
     <entry>1</entry>
@@ -2025,7 +2697,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hill Dwarf</name>
     <entry>1/2</entry>
@@ -2034,7 +2709,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Mountain Dwarf</name>
     <entry>1/2</entry>
@@ -2043,7 +2721,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Eagle</name>
     <entry>1/2</entry>
@@ -2052,7 +2733,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Eagle</name>
     <entry>3</entry>
@@ -2061,7 +2745,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Efreeti</name>
     <entry>8</entry>
@@ -2070,7 +2757,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Elasmosaurus</name>
     <entry>7</entry>
@@ -2079,7 +2769,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Elder Arrowhawk</name>
     <entry>8</entry>
@@ -2088,7 +2781,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Air Elemental, Elder</name>
     <entry>11</entry>
@@ -2097,7 +2793,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>8</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Air Elemental, Greater</name>
     <entry>9</entry>
@@ -2106,7 +2805,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>8</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Air Elemental, Huge</name>
     <entry>7</entry>
@@ -2115,7 +2817,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>4</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Air Elemental, Large</name>
     <entry>5</entry>
@@ -2124,7 +2829,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>4</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Air Elemental, Medium</name>
     <entry>3</entry>
@@ -2133,7 +2841,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>3</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Air Elemental, Small</name>
     <entry>1</entry>
@@ -2142,7 +2853,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>3</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Earth Elemental, Elder</name>
     <entry>11</entry>
@@ -2151,7 +2865,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Earth Elemental, Greater</name>
     <entry>9</entry>
@@ -2160,7 +2877,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Earth Elemental, Huge</name>
     <entry>7</entry>
@@ -2169,7 +2889,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Earth Elemental, Large</name>
     <entry>5</entry>
@@ -2178,7 +2901,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Earth Elemental, Medium</name>
     <entry>3</entry>
@@ -2187,7 +2913,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Earth Elemental, Small</name>
     <entry>1</entry>
@@ -2196,7 +2925,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Fire Elemental, Elder</name>
     <entry>11</entry>
@@ -2205,7 +2937,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Fire Elemental, Greater</name>
     <entry>9</entry>
@@ -2214,7 +2949,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Fire Elemental, Huge</name>
     <entry>7</entry>
@@ -2223,7 +2961,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Fire Elemental, Large</name>
     <entry>5</entry>
@@ -2232,7 +2973,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Fire Elemental, Medium</name>
     <entry>3</entry>
@@ -2241,7 +2985,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Fire Elemental, Small</name>
     <entry>1</entry>
@@ -2250,7 +2997,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Water Elemental, Elder</name>
     <entry>11</entry>
@@ -2259,7 +3009,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Water Elemental, Greater</name>
     <entry>9</entry>
@@ -2268,7 +3021,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Water Elemental, Huge</name>
     <entry>7</entry>
@@ -2277,7 +3033,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Water Elemental, Large</name>
     <entry>5</entry>
@@ -2286,7 +3045,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Water Elemental, Medium</name>
     <entry>3</entry>
@@ -2295,7 +3057,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Water Elemental, Small</name>
     <entry>1</entry>
@@ -2304,7 +3069,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Elephant</name>
     <entry>7</entry>
@@ -2313,7 +3081,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Drow</name>
     <entry>1</entry>
@@ -2322,7 +3093,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Aquatic Elf</name>
     <entry>1/2</entry>
@@ -2331,7 +3105,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gray Elf</name>
     <entry>1/2</entry>
@@ -2340,7 +3117,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Half-Elf</name>
     <entry>1/2</entry>
@@ -2349,7 +3129,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>High Elf</name>
     <entry>1/2</entry>
@@ -2358,7 +3141,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Wild Elf</name>
     <entry>1/2</entry>
@@ -2367,7 +3153,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Wood Elf</name>
     <entry>1/2</entry>
@@ -2376,7 +3165,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Erinyes</name>
     <entry>8</entry>
@@ -2385,7 +3177,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ethereal Filcher</name>
     <entry>3</entry>
@@ -2394,7 +3189,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ethereal Marauder</name>
     <entry>3</entry>
@@ -2403,7 +3201,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ettercap</name>
     <entry>3</entry>
@@ -2412,7 +3213,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ettin</name>
     <entry>6</entry>
@@ -2421,7 +3225,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Forest Gnome</name>
     <entry>1/2</entry>
@@ -2430,7 +3237,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Formian Myrmarch</name>
     <entry>10</entry>
@@ -2439,7 +3249,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Formian Queen</name>
     <entry>17</entry>
@@ -2448,7 +3261,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Formian Taskmaster</name>
     <entry>7</entry>
@@ -2457,7 +3273,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Formian Warrior</name>
     <entry>3</entry>
@@ -2466,7 +3285,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Formian Worker</name>
     <entry>1/2</entry>
@@ -2475,7 +3297,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Frost Worm</name>
     <entry>12</entry>
@@ -2484,7 +3309,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gargoyle</name>
     <entry>4</entry>
@@ -2493,7 +3321,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Kapoacinth</name>
     <entry>4</entry>
@@ -2502,7 +3333,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gelatinous Cube</name>
     <entry>3</entry>
@@ -2511,7 +3345,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ghaele</name>
     <entry>13</entry>
@@ -2520,7 +3357,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ghoul</name>
     <entry>1</entry>
@@ -2529,7 +3369,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ghast</name>
     <entry>3</entry>
@@ -2538,7 +3381,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Lacedon</name>
     <entry>1</entry>
@@ -2547,7 +3393,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Cloud Giant</name>
     <entry>11</entry>
@@ -2556,7 +3405,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Fire Giant</name>
     <entry>10</entry>
@@ -2565,7 +3417,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Frost Giant</name>
     <entry>9</entry>
@@ -2574,7 +3429,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hill Giant</name>
     <entry>7</entry>
@@ -2583,7 +3441,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Stone Giant</name>
     <entry>8</entry>
@@ -2592,7 +3453,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Stone Giant Elder</name>
     <entry>9</entry>
@@ -2601,7 +3465,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Storm Giant</name>
     <entry>13</entry>
@@ -2610,7 +3477,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Ant, Queen</name>
     <entry>2</entry>
@@ -2619,7 +3489,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Ant, Soldier</name>
     <entry>2</entry>
@@ -2628,7 +3501,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Ant, Worker</name>
     <entry>1</entry>
@@ -2637,7 +3513,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Bee</name>
     <entry>1</entry>
@@ -2646,7 +3525,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Bombardier Beetle</name>
     <entry>2</entry>
@@ -2655,7 +3537,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Constrictor Snake</name>
     <entry>5</entry>
@@ -2664,7 +3549,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Fire Beetle</name>
     <entry>1/3</entry>
@@ -2673,7 +3561,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Octopus</name>
     <entry>8</entry>
@@ -2682,7 +3573,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Praying Mantis</name>
     <entry>3</entry>
@@ -2691,7 +3585,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Squid</name>
     <entry>9</entry>
@@ -2700,7 +3597,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Stag Beetle</name>
     <entry>4</entry>
@@ -2709,7 +3609,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Wasp</name>
     <entry>3</entry>
@@ -2718,7 +3621,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gibbering Mouther</name>
     <entry>5</entry>
@@ -2727,7 +3633,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Girallon</name>
     <entry>6</entry>
@@ -2736,7 +3645,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Githyanki</name>
     <entry>1</entry>
@@ -2745,7 +3657,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Githzerai</name>
     <entry>1</entry>
@@ -2754,7 +3669,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Glabrezu</name>
     <entry>13</entry>
@@ -2763,7 +3681,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gnoll</name>
     <entry>1</entry>
@@ -2772,7 +3693,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Goblin</name>
     <entry>1/3</entry>
@@ -2781,7 +3705,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Clay Golem</name>
     <entry>10</entry>
@@ -2790,7 +3717,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Flesh Golem</name>
     <entry>7</entry>
@@ -2799,7 +3729,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Iron Golem</name>
     <entry>13</entry>
@@ -2808,7 +3741,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Stone Golem</name>
     <entry>11</entry>
@@ -2817,7 +3753,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Greater Stone Golem</name>
     <entry>16</entry>
@@ -2826,7 +3765,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gorgon</name>
     <entry>8</entry>
@@ -2835,7 +3777,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gray Ooze</name>
     <entry>4</entry>
@@ -2844,7 +3789,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gray Render</name>
     <entry>8</entry>
@@ -2853,7 +3801,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gray Slaad</name>
     <entry>10</entry>
@@ -2862,7 +3813,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Greater Barghest</name>
     <entry>5</entry>
@@ -2871,7 +3825,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Hag</name>
     <entry>5</entry>
@@ -2880,7 +3837,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Green Slaad</name>
     <entry>9</entry>
@@ -2889,7 +3849,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Grick</name>
     <entry>3</entry>
@@ -2898,7 +3861,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Grig</name>
     <entry>1</entry>
@@ -2907,7 +3873,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nixie</name>
     <entry>1</entry>
@@ -2916,7 +3885,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Pixie</name>
     <entry>4</entry>
@@ -2925,7 +3897,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Pixie with Irresistable Dance</name>
     <entry>5</entry>
@@ -2934,7 +3909,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Griffon</name>
     <entry>4</entry>
@@ -2943,7 +3921,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Grimlock</name>
     <entry>1</entry>
@@ -2952,7 +3933,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Gynosphinx</name>
     <entry>8</entry>
@@ -2961,7 +3945,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Half-Orc</name>
     <entry>1/2</entry>
@@ -2970,7 +3957,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Harpy</name>
     <entry>4</entry>
@@ -2979,7 +3969,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hawk</name>
     <entry>1/3</entry>
@@ -2988,7 +3981,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hell Hound</name>
     <entry>3</entry>
@@ -2997,7 +3993,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nessian Warhound</name>
     <entry>9</entry>
@@ -3006,7 +4005,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
     <entry>7</entry>
@@ -3015,7 +4017,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hellwasp Swarm</name>
     <entry>8</entry>
@@ -3024,7 +4029,10 @@
     <entry>Diminutive</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hezrou</name>
     <entry>11</entry>
@@ -3033,7 +4041,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hieracosphinx</name>
     <entry>5</entry>
@@ -3042,7 +4053,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hippogriff</name>
     <entry>2</entry>
@@ -3051,7 +4065,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hobgoblin</name>
     <entry>1/2</entry>
@@ -3060,7 +4077,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Homunculus</name>
     <entry>1</entry>
@@ -3069,7 +4089,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
     <entry>16</entry>
@@ -3078,7 +4101,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Heavy Horse</name>
     <entry>1</entry>
@@ -3087,7 +4113,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Heavy Warhorse</name>
     <entry>2</entry>
@@ -3096,7 +4125,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Light Horse</name>
     <entry>1</entry>
@@ -3105,7 +4137,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Light Warhorse</name>
     <entry>1</entry>
@@ -3114,7 +4149,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hound Archon</name>
     <entry>4</entry>
@@ -3123,7 +4161,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Lantern Archon</name>
     <entry>2</entry>
@@ -3132,7 +4173,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Trumpet Archon</name>
     <entry>14</entry>
@@ -3141,7 +4185,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Howler</name>
     <entry>3</entry>
@@ -3150,7 +4197,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Human</name>
     <entry>1/2</entry>
@@ -3159,7 +4209,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Five-Headed Hydra</name>
     <entry>4</entry>
@@ -3168,7 +4221,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Six-Headed Hydra</name>
     <entry>5</entry>
@@ -3177,7 +4233,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Seven-Headed Hydra</name>
     <entry>6</entry>
@@ -3186,7 +4245,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Eight-Headed Hydra</name>
     <entry>7</entry>
@@ -3195,7 +4257,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nine-Headed Hydra</name>
     <entry>8</entry>
@@ -3204,7 +4269,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ten-Headed Hydra</name>
     <entry>9</entry>
@@ -3213,7 +4281,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Eleven-Headed Hydra</name>
     <entry>10</entry>
@@ -3222,7 +4293,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Twelve-Headed Hydra</name>
     <entry>11</entry>
@@ -3231,7 +4305,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
     <entry>6</entry>
@@ -3240,7 +4317,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Six-Headed Cryohydra</name>
     <entry>7</entry>
@@ -3249,7 +4329,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Seven-Headed Cryohydra</name>
     <entry>8</entry>
@@ -3258,7 +4341,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Eight-Headed Cryohydra</name>
     <entry>9</entry>
@@ -3267,7 +4353,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
     <entry>10</entry>
@@ -3276,7 +4365,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
     <entry>11</entry>
@@ -3285,7 +4377,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Eleven-Headed Cryohydra</name>
     <entry>12</entry>
@@ -3294,7 +4389,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
     <entry>13</entry>
@@ -3303,7 +4401,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Five-Headed Pyrohydra</name>
     <entry>6</entry>
@@ -3312,7 +4413,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Six-Headed Pyrohydra</name>
     <entry>7</entry>
@@ -3321,7 +4425,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Seven-Headed Pyrohydra</name>
     <entry>8</entry>
@@ -3330,7 +4437,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
     <entry>9</entry>
@@ -3339,7 +4449,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nine-Headed Pyrohydra</name>
     <entry>10</entry>
@@ -3348,7 +4461,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ten-Headed Pyrohydra</name>
     <entry>11</entry>
@@ -3357,7 +4473,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Eleven-Headed Pyrohydra</name>
     <entry>12</entry>
@@ -3366,7 +4485,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Twelve-Headed Pyrohydra</name>
     <entry>13</entry>
@@ -3375,7 +4497,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Hyena</name>
     <entry>1</entry>
@@ -3384,7 +4509,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
     <entry>13</entry>
@@ -3393,7 +4521,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Imp</name>
     <entry>2</entry>
@@ -3402,7 +4533,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Invisible Stalker</name>
     <entry>7</entry>
@@ -3411,7 +4545,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Janni</name>
     <entry>4</entry>
@@ -3420,7 +4557,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
     <entry>3</entry>
@@ -3429,7 +4569,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Kobold</name>
     <entry>1/4</entry>
@@ -3438,7 +4581,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Kolyarut</name>
     <entry>12</entry>
@@ -3447,7 +4593,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Marut</name>
     <entry>15</entry>
@@ -3456,7 +4605,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Zelekhut</name>
     <entry>9</entry>
@@ -3465,7 +4617,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Kraken</name>
     <entry>12</entry>
@@ -3474,7 +4629,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Krenshar</name>
     <entry>1</entry>
@@ -3483,7 +4641,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Kuo-toa</name>
     <entry>2</entry>
@@ -3492,7 +4653,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Lamia</name>
     <entry>6</entry>
@@ -3501,7 +4665,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Lammasu</name>
     <entry>8</entry>
@@ -3510,7 +4677,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Lemure</name>
     <entry>1</entry>
@@ -3519,7 +4689,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Leonal</name>
     <entry>12</entry>
@@ -3528,7 +4701,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Leopard</name>
     <entry>2</entry>
@@ -3537,7 +4713,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Lightfoot Halfling</name>
     <entry>1/2</entry>
@@ -3546,7 +4725,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Lillend</name>
     <entry>7</entry>
@@ -3555,7 +4737,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Lion</name>
     <entry>3</entry>
@@ -3564,7 +4749,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Lion</name>
     <entry>5</entry>
@@ -3573,7 +4761,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Lizard</name>
     <entry>1/6</entry>
@@ -3582,7 +4773,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monitor Lizard</name>
     <entry>2</entry>
@@ -3591,7 +4785,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Lizardfolk</name>
     <entry>1</entry>
@@ -3600,7 +4797,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Locathah</name>
     <entry>1/2</entry>
@@ -3609,7 +4809,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Locust Swarm</name>
     <entry>3</entry>
@@ -3618,7 +4821,10 @@
     <entry>Diminutive</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Magmin</name>
     <entry>3</entry>
@@ -3627,7 +4833,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Manta Ray</name>
     <entry>1</entry>
@@ -3636,7 +4845,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Manticore</name>
     <entry>5</entry>
@@ -3645,7 +4857,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Marilith</name>
     <entry>17</entry>
@@ -3654,7 +4869,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Medusa</name>
     <entry>7</entry>
@@ -3663,7 +4881,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Megaraptor</name>
     <entry>6</entry>
@@ -3672,7 +4893,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Air Mephit</name>
     <entry>3</entry>
@@ -3680,8 +4904,11 @@
     <entry>5</entry>
     <entry>Small</entry>
     <entry>5</entry>
-    <entry>False</entry>
-  </collection>
+    <entry>True</entry>
+  <entry>3</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dust Mephit</name>
     <entry>3</entry>
@@ -3690,7 +4917,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Earth Mephit</name>
     <entry>3</entry>
@@ -3699,7 +4929,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Fire Mephit</name>
     <entry>3</entry>
@@ -3708,7 +4941,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ice Mephit</name>
     <entry>3</entry>
@@ -3717,7 +4953,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Magma Mephit</name>
     <entry>3</entry>
@@ -3726,7 +4965,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ooze Mephit</name>
     <entry>3</entry>
@@ -3735,7 +4977,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Salt Mephit</name>
     <entry>3</entry>
@@ -3744,7 +4989,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Steam Mephit</name>
     <entry>3</entry>
@@ -3753,7 +5001,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Water Mephit</name>
     <entry>3</entry>
@@ -3762,7 +5013,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Merfolk</name>
     <entry>1/2</entry>
@@ -3771,7 +5025,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Merrow</name>
     <entry>3</entry>
@@ -3780,7 +5037,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Mimic</name>
     <entry>4</entry>
@@ -3789,7 +5049,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Mind Flayer</name>
     <entry>8</entry>
@@ -3798,7 +5061,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Minotaur</name>
     <entry>4</entry>
@@ -3807,7 +5073,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Mohrg</name>
     <entry>8</entry>
@@ -3816,7 +5085,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monkey</name>
     <entry>1/6</entry>
@@ -3825,7 +5097,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
     <entry>9</entry>
@@ -3834,7 +5109,10 @@
     <entry>Colossal</entry>
     <entry>30</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
     <entry>6</entry>
@@ -3843,7 +5121,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
     <entry>2</entry>
@@ -3852,7 +5133,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
     <entry>1</entry>
@@ -3861,7 +5145,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
     <entry>1/2</entry>
@@ -3870,7 +5157,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
     <entry>1/4</entry>
@@ -3879,7 +5169,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
     <entry>1/8</entry>
@@ -3888,7 +5181,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
     <entry>12</entry>
@@ -3897,7 +5193,10 @@
     <entry>Colossal</entry>
     <entry>40</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
     <entry>10</entry>
@@ -3906,7 +5205,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
     <entry>7</entry>
@@ -3915,7 +5217,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
     <entry>3</entry>
@@ -3924,7 +5229,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Scorpion, Medium</name>
     <entry>1</entry>
@@ -3933,7 +5241,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Scorpion, Small</name>
     <entry>1/2</entry>
@@ -3942,7 +5253,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
     <entry>1/4</entry>
@@ -3951,7 +5265,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Spider, Colossal</name>
     <entry>11</entry>
@@ -3960,7 +5277,10 @@
     <entry>Colossal</entry>
     <entry>40</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Spider, Gargantuan</name>
     <entry>8</entry>
@@ -3969,7 +5289,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Spider, Huge</name>
     <entry>5</entry>
@@ -3978,7 +5301,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Spider, Large</name>
     <entry>2</entry>
@@ -3987,7 +5313,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Spider, Medium</name>
     <entry>1</entry>
@@ -3996,7 +5325,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Spider, Small</name>
     <entry>1/2</entry>
@@ -4005,7 +5337,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Monstrous Spider, Tiny</name>
     <entry>1/4</entry>
@@ -4014,7 +5349,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Mule</name>
     <entry>1</entry>
@@ -4023,7 +5361,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Mummy</name>
     <entry>5</entry>
@@ -4032,7 +5373,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dark Naga</name>
     <entry>8</entry>
@@ -4041,7 +5385,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Guardian Naga</name>
     <entry>10</entry>
@@ -4050,7 +5397,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Spirit Naga</name>
     <entry>9</entry>
@@ -4059,7 +5409,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Water Naga</name>
     <entry>7</entry>
@@ -4068,7 +5421,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nalfeshnee</name>
     <entry>14</entry>
@@ -4077,7 +5433,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Night Hag</name>
     <entry>9</entry>
@@ -4086,7 +5445,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nightmare</name>
     <entry>5</entry>
@@ -4095,7 +5457,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nightmare, Cauchemar</name>
     <entry>11</entry>
@@ -4104,7 +5469,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nightcrawler</name>
     <entry>18</entry>
@@ -4113,7 +5481,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nightwalker</name>
     <entry>16</entry>
@@ -4122,7 +5493,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nightwing</name>
     <entry>14</entry>
@@ -4131,7 +5505,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Nymph</name>
     <entry>7</entry>
@@ -4140,7 +5517,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ochre Jelly</name>
     <entry>5</entry>
@@ -4149,7 +5529,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Octopus</name>
     <entry>1</entry>
@@ -4158,7 +5541,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ogre Mage</name>
     <entry>8</entry>
@@ -4167,7 +5553,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ogre</name>
     <entry>3</entry>
@@ -4176,7 +5565,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Orc</name>
     <entry>1/2</entry>
@@ -4185,7 +5577,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Orca Whale</name>
     <entry>5</entry>
@@ -4194,7 +5589,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Otyugh</name>
     <entry>4</entry>
@@ -4203,7 +5601,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Owl</name>
     <entry>1/4</entry>
@@ -4212,7 +5613,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Giant Owl</name>
     <entry>3</entry>
@@ -4221,7 +5625,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Owlbear</name>
     <entry>4</entry>
@@ -4230,7 +5637,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Pegasus</name>
     <entry>3</entry>
@@ -4239,7 +5649,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Phantom Fungus</name>
     <entry>3</entry>
@@ -4248,7 +5661,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Phase Spider</name>
     <entry>5</entry>
@@ -4257,7 +5673,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Phasm</name>
     <entry>7</entry>
@@ -4266,7 +5685,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Pit Fiend</name>
     <entry>20</entry>
@@ -4275,7 +5697,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Pony</name>
     <entry>1/4</entry>
@@ -4284,7 +5709,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Warpony</name>
     <entry>1/2</entry>
@@ -4293,7 +5721,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Porpoise</name>
     <entry>1/2</entry>
@@ -4302,7 +5733,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Pseudodragon</name>
     <entry>1</entry>
@@ -4311,7 +5745,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Purple Worm</name>
     <entry>12</entry>
@@ -4320,7 +5757,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Quasit</name>
     <entry>2</entry>
@@ -4329,7 +5769,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Rakshasa</name>
     <entry>10</entry>
@@ -4338,7 +5781,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Rast</name>
     <entry>5</entry>
@@ -4347,7 +5793,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Rat</name>
     <entry>1/8</entry>
@@ -4356,7 +5805,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Rat</name>
     <entry>1/3</entry>
@@ -4365,7 +5817,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Rat Swarm</name>
     <entry>2</entry>
@@ -4374,7 +5829,10 @@
     <entry>Tiny</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Raven</name>
     <entry>1/6</entry>
@@ -4383,7 +5841,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Ravid</name>
     <entry>5</entry>
@@ -4392,7 +5853,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Razor Boar</name>
     <entry>10</entry>
@@ -4401,7 +5865,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Remorhaz</name>
     <entry>7</entry>
@@ -4410,7 +5877,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Retriever</name>
     <entry>11</entry>
@@ -4419,7 +5889,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Rhinoceras</name>
     <entry>4</entry>
@@ -4428,7 +5901,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Roc</name>
     <entry>9</entry>
@@ -4437,7 +5913,10 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Roper</name>
     <entry>12</entry>
@@ -4446,7 +5925,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Rust Monster</name>
     <entry>3</entry>
@@ -4455,7 +5937,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Average Salamander</name>
     <entry>6</entry>
@@ -4464,7 +5949,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Flamebrother Salamander</name>
     <entry>3</entry>
@@ -4473,7 +5961,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Noble Salamander</name>
     <entry>10</entry>
@@ -4482,7 +5973,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Shark, Huge</name>
     <entry>4</entry>
@@ -4491,7 +5985,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Shark, Large</name>
     <entry>2</entry>
@@ -4500,7 +5997,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Shark, Medium</name>
     <entry>1</entry>
@@ -4509,7 +6009,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Shark</name>
     <entry>9</entry>
@@ -4518,7 +6021,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Red Slaad</name>
     <entry>7</entry>
@@ -4527,7 +6033,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Rock Gnome</name>
     <entry>1/2</entry>
@@ -4536,7 +6045,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Sahuagin</name>
     <entry>2</entry>
@@ -4545,7 +6057,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Sahuagin Mutant</name>
     <entry>2</entry>
@@ -4554,7 +6069,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Malenti</name>
     <entry>2</entry>
@@ -4563,7 +6081,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Satyr</name>
     <entry>2</entry>
@@ -4572,7 +6093,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Satyr with pipes</name>
     <entry>4</entry>
@@ -4581,7 +6105,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Scorpionfolk</name>
     <entry>7</entry>
@@ -4590,7 +6117,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Scrag</name>
     <entry>5</entry>
@@ -4599,7 +6129,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Sea Cat</name>
     <entry>4</entry>
@@ -4608,7 +6141,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Sea Hag</name>
     <entry>4</entry>
@@ -4617,7 +6153,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Shadow</name>
     <entry>3</entry>
@@ -4626,7 +6165,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Greater Shadow</name>
     <entry>8</entry>
@@ -4635,7 +6177,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Shadow Mastiff</name>
     <entry>5</entry>
@@ -4644,7 +6189,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Shambling Mound</name>
     <entry>6</entry>
@@ -4653,7 +6201,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Shield Guardian</name>
     <entry>8</entry>
@@ -4662,7 +6213,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Shocker Lizard</name>
     <entry>2</entry>
@@ -4671,7 +6225,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Shrieker</name>
     <entry>1</entry>
@@ -4680,7 +6237,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Violet Fungus</name>
     <entry>3</entry>
@@ -4689,7 +6249,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Skum</name>
     <entry>2</entry>
@@ -4698,7 +6261,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Spectre</name>
     <entry>7</entry>
@@ -4707,7 +6273,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Spider Eater</name>
     <entry>5</entry>
@@ -4716,7 +6285,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Spider Swarm</name>
     <entry>1</entry>
@@ -4725,7 +6297,10 @@
     <entry>Diminutive</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Squid</name>
     <entry>1</entry>
@@ -4734,7 +6309,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Stirge</name>
     <entry>1/2</entry>
@@ -4743,7 +6321,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Succubus</name>
     <entry>7</entry>
@@ -4752,7 +6333,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Svirfneblin</name>
     <entry>1</entry>
@@ -4761,7 +6345,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Tallfellow Halfling</name>
     <entry>1/2</entry>
@@ -4770,7 +6357,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Tarrasque</name>
     <entry>20</entry>
@@ -4779,7 +6369,10 @@
     <entry>Colossal</entry>
     <entry>30</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Tendriculos</name>
     <entry>6</entry>
@@ -4788,7 +6381,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Thoqqua</name>
     <entry>2</entry>
@@ -4797,7 +6393,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Tiefling</name>
     <entry>1/2</entry>
@@ -4806,7 +6405,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Tiger</name>
     <entry>4</entry>
@@ -4815,7 +6417,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Tiger</name>
     <entry>8</entry>
@@ -4824,7 +6429,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Titan</name>
     <entry>21</entry>
@@ -4833,7 +6441,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Toad</name>
     <entry>1/10</entry>
@@ -4842,7 +6453,10 @@
     <entry>Diminutive</entry>
     <entry>1</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Adult Tojanida</name>
     <entry>5</entry>
@@ -4851,7 +6465,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>12</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Elder Tojanida</name>
     <entry>9</entry>
@@ -4860,7 +6477,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Juvenile Tojanida</name>
     <entry>3</entry>
@@ -4869,7 +6489,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Treant</name>
     <entry>8</entry>
@@ -4878,7 +6501,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Triceratops</name>
     <entry>9</entry>
@@ -4887,7 +6513,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Triton</name>
     <entry>2</entry>
@@ -4896,7 +6525,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Troglodyte</name>
     <entry>1</entry>
@@ -4905,7 +6537,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Troll</name>
     <entry>5</entry>
@@ -4914,7 +6549,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Tyrannosaurus</name>
     <entry>8</entry>
@@ -4923,7 +6561,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Umber Hulk</name>
     <entry>7</entry>
@@ -4932,7 +6573,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Truly Horrid Umber Hulk</name>
     <entry>14</entry>
@@ -4941,7 +6585,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Unicorn</name>
     <entry>3</entry>
@@ -4950,7 +6597,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Vampire Spawn</name>
     <entry>4</entry>
@@ -4959,7 +6609,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Vargouille</name>
     <entry>2</entry>
@@ -4968,7 +6621,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Viper Snake, Huge</name>
     <entry>3</entry>
@@ -4977,7 +6633,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Viper Snake, Large</name>
     <entry>2</entry>
@@ -4986,7 +6645,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Viper Snake, Medium</name>
     <entry>1</entry>
@@ -4995,7 +6657,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Viper Snake, Small</name>
     <entry>1/2</entry>
@@ -5004,7 +6669,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Viper Snake, Tiny</name>
     <entry>1/3</entry>
@@ -5013,7 +6681,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Vrock</name>
     <entry>9</entry>
@@ -5022,7 +6693,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Weasel</name>
     <entry>1/4</entry>
@@ -5031,7 +6705,10 @@
     <entry>Tiny</entry>
     <entry>2.5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Weasel</name>
     <entry>2</entry>
@@ -5040,7 +6717,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Wight</name>
     <entry>3</entry>
@@ -5049,7 +6729,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Will-O'-Wisp</name>
     <entry>6</entry>
@@ -5058,7 +6741,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Winter Wolf</name>
     <entry>5</entry>
@@ -5067,7 +6753,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Wolf</name>
     <entry>1</entry>
@@ -5076,7 +6765,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Wolf</name>
     <entry>3</entry>
@@ -5085,7 +6777,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Wolverine</name>
     <entry>2</entry>
@@ -5094,7 +6789,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dire Wolverine</name>
     <entry>4</entry>
@@ -5103,7 +6801,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Worg</name>
     <entry>2</entry>
@@ -5112,7 +6813,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Wraith</name>
     <entry>5</entry>
@@ -5121,7 +6825,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Dread Wraith</name>
     <entry>11</entry>
@@ -5130,7 +6837,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Wyvern</name>
     <entry>6</entry>
@@ -5139,7 +6849,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Xill</name>
     <entry>6</entry>
@@ -5148,7 +6861,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Average Xorn</name>
     <entry>6</entry>
@@ -5157,7 +6873,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Minor Xorn</name>
     <entry>3</entry>
@@ -5166,7 +6885,10 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Elder Xorn</name>
     <entry>8</entry>
@@ -5175,7 +6897,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Yeth Hound</name>
     <entry>3</entry>
@@ -5184,7 +6909,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Yrthak</name>
     <entry>9</entry>
@@ -5193,7 +6921,10 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Yuan-ti Abomination</name>
     <entry>7</entry>
@@ -5202,7 +6933,10 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Yuan-ti Halfblood</name>
     <entry>5</entry>
@@ -5211,7 +6945,10 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
     <entry>3</entry>
@@ -5220,5 +6957,8 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-  </collection>
+  <entry>0</entry>
+<entry>0</entry>
+<entry>0</entry>
+</collection>
 </collections>
