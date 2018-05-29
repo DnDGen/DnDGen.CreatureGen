@@ -361,6 +361,52 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
+        public void GenerateBarghest()
+        {
+            SetUpCreature(CreatureConstants.Barghest, CreatureConstants.Templates.None);
+
+            var creature = creatureGenerator.Generate(CreatureConstants.Barghest, CreatureConstants.Templates.None);
+            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
+            Assert.That(creature.Size, Is.EqualTo("size"));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1336));
+            //INFO: Barghest caster level is equal to the hit die quantity
+            Assert.That(creature.CasterLevel, Is.EqualTo(9266));
+        }
+
+        [Test]
+        public void GenerateGreaterBarghest()
+        {
+            SetUpCreature(CreatureConstants.Barghest_Greater, CreatureConstants.Templates.None);
+
+            var creature = creatureGenerator.Generate(CreatureConstants.Barghest_Greater, CreatureConstants.Templates.None);
+            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
+            Assert.That(creature.Size, Is.EqualTo("size"));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(10));
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1336));
+            //INFO: Barghest caster level is equal to the hit die quantity
+            Assert.That(creature.CasterLevel, Is.EqualTo(9266));
+        }
+
+        [Test]
         public void GenerateAdvancedBarghestHitPoints()
         {
             SetUpCreature(CreatureConstants.Barghest, CreatureConstants.Templates.None);
@@ -386,6 +432,8 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(10));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(10));
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1336 + 1337));
+            //INFO: Barghest caster level is equal to the hit die quantity
+            Assert.That(creature.CasterLevel, Is.EqualTo(newHitDiceQuantity));
         }
 
         [Test]
@@ -414,6 +462,8 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(10));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(10));
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1336 + 1337));
+            //INFO: Barghest caster level is equal to the hit die quantity
+            Assert.That(creature.CasterLevel, Is.EqualTo(newHitDiceQuantity));
         }
 
         [Test]
@@ -435,6 +485,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(10));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(10));
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1336));
+            Assert.That(creature.CasterLevel, Is.EqualTo(creatureData.CasterLevel));
         }
 
         [Test]

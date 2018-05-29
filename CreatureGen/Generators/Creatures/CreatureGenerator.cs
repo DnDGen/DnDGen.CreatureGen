@@ -107,7 +107,7 @@ namespace CreatureGen.Generators.Creatures
                 var advancement = advancementSelector.SelectRandomFor(creatureName);
                 creature.HitPoints.HitDiceQuantity += advancement.AdditionalHitDice;
 
-                if (creature.Name == CreatureConstants.Barghest || creature.Name == CreatureConstants.Barghest_Greater)
+                if (IsBarghest(creature))
                 {
                     creature.Abilities[AbilityConstants.Strength].BaseScore += advancement.AdditionalHitDice;
                     creature.Abilities[AbilityConstants.Constitution].BaseScore += advancement.AdditionalHitDice;
@@ -120,6 +120,11 @@ namespace CreatureGen.Generators.Creatures
                 creature.Size = advancement.Size;
                 creature.Space.Value = advancement.Space;
                 creature.Reach.Value = advancement.Reach;
+            }
+
+            if (IsBarghest(creature))
+            {
+                creature.CasterLevel = creature.HitPoints.HitDiceQuantity;
             }
 
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities);
@@ -174,6 +179,11 @@ namespace CreatureGen.Generators.Creatures
             creature = templateApplicator.ApplyTo(creature);
 
             return creature;
+        }
+
+        private bool IsBarghest(Creature creature)
+        {
+            return creature.Name == CreatureConstants.Barghest || creature.Name == CreatureConstants.Barghest_Greater;
         }
 
         private IEnumerable<Attack> ComputeAttackBonuses(IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities, int baseAttackBonus, IEnumerable<Feat> feats)
