@@ -32,6 +32,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             specialQualitiesData = new List<string>();
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, It.IsAny<string>())).Returns(Enumerable.Empty<string>());
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredSizes, It.IsAny<string>())).Returns(Enumerable.Empty<string>());
             mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, It.IsAny<string>()))
                 .Returns(Enumerable.Empty<TypeAndAmountSelection>());
             mockCollectionsSelector.Setup(s => s.SelectAllFrom(TableNameConstants.Set.Collection.FeatData)).Returns(featsData);
@@ -1595,6 +1596,57 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.RequiredHands, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void GetFeatRequiringSize()
+        {
+            featsData["feat"] = BuildFeatData();
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredSizes, "feat"))
+                .Returns(new[] { "size" });
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiredSizes.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredSizes, Contains.Item("size"));
+        }
+
+        [Test]
+        public void GetFeatRequiringSizes()
+        {
+            featsData["feat"] = BuildFeatData();
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredSizes, "feat"))
+                .Returns(new[] { "size", "other size" });
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiredSizes.Count, Is.EqualTo(2));
+            Assert.That(feat.RequiredSizes, Contains.Item("size"));
+            Assert.That(feat.RequiredSizes, Contains.Item("other size"));
+        }
+
+        [Test]
+        public void GetFeatNotRequiringSizes()
+        {
+            featsData["feat"] = BuildFeatData();
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiredSizes, Is.Empty);
         }
     }
 }

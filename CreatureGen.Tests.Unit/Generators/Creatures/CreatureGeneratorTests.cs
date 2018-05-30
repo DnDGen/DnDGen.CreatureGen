@@ -141,7 +141,8 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
                     1029,
                     It.IsAny<Dictionary<string, Measurement>>(),
                     1336,
-                    96
+                    96,
+                    "size"
                 )
             ).Returns(feats);
 
@@ -713,7 +714,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "advanced size", abilities, advancedSkills)).Returns(advancedSpecialQualities);
 
             var advancedFeats = new List<Feat>();
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), 668, abilities, advancedSkills, attacks, advancedSpecialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(advancedFeats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), 668, abilities, advancedSkills, attacks, advancedSpecialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(advancedFeats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Feats, Is.EqualTo(advancedFeats));
@@ -741,7 +742,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "advanced size", abilities, advancedSkills)).Returns(advancedSpecialQualities);
 
             var advancedFeats = new List<Feat>();
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), 668, abilities, advancedSkills, attacks, advancedSpecialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(advancedFeats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), 668, abilities, advancedSkills, attacks, advancedSpecialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(advancedFeats);
 
             var advancedUpdatedHitPoints = new HitPoints();
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, advancedFeats)).Returns(advancedUpdatedHitPoints);
@@ -772,7 +773,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), "advanced size", abilities, advancedSkills)).Returns(advancedSpecialQualities);
 
             var advancedFeats = new List<Feat>();
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), 668, abilities, advancedSkills, attacks, advancedSpecialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(advancedFeats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 1337), 668, abilities, advancedSkills, attacks, advancedSpecialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(advancedFeats);
 
             var updatedSkills = new List<Skill>();
             mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(advancedSkills, advancedFeats)).Returns(updatedSkills);
@@ -847,7 +848,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.MeleeAttack, Is.EqualTo(attacks[0]));
@@ -878,7 +879,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.RangedAttack, Is.EqualTo(attacks[0]));
@@ -909,7 +910,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
@@ -940,7 +941,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
@@ -971,7 +972,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1002,7 +1003,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1033,7 +1034,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
             feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1064,7 +1065,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
             feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1115,7 +1116,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             feats.Add(new Feat { Name = "other feat" });
             feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
 
@@ -1150,7 +1151,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.MeleeAttack, Is.EqualTo(attacks[0]));
@@ -1183,7 +1184,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.RangedAttack, Is.EqualTo(attacks[0]));
@@ -1216,7 +1217,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1249,7 +1250,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1282,7 +1283,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1315,7 +1316,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
             feats.Add(new Feat { Name = "other feat" });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1348,7 +1349,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = true, IsPrimary = false, IsNatural = true });
 
             feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullMeleeAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1381,7 +1382,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             attacks.Add(new Attack { Name = "attack 1", Damage = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = true });
 
             feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.FullRangedAttack.Single(), Is.EqualTo(attacks[0]));
@@ -1432,7 +1433,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             feats.Add(new Feat { Name = "other feat" });
             feats.Add(new Feat { Name = FeatConstants.Monster.Multiattack });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
 
@@ -1458,7 +1459,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].BaseScore = 1234;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.InitiativeBonus, Is.EqualTo(612));
@@ -1483,7 +1484,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
@@ -1508,7 +1509,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.InitiativeBonus, Is.EqualTo(612));
@@ -1535,7 +1536,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
@@ -1600,7 +1601,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var armorClass = new ArmorClass();
             mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities[AbilityConstants.Dexterity], "advanced size", "creature", feats)).Returns(armorClass);
@@ -1643,7 +1644,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96)).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029, It.IsAny<Dictionary<string, Measurement>>(), 1336, 96, "advanced size")).Returns(feats);
 
             var saves = new Saves();
             mockSavesGenerator.Setup(g => g.GenerateWith(It.IsAny<CreatureType>(), hitPoints, feats, abilities)).Returns(saves);

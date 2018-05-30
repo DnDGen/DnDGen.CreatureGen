@@ -31,7 +31,8 @@ namespace CreatureGen.Generators.Feats
             int casterLevel,
             Dictionary<string, Measurement> speeds,
             int naturalArmor,
-            int hands)
+            int hands,
+            string size)
         {
             eventQueue.Enqueue("CreatureGen", $"Generating feats");
             var feats = innerGenerator.GenerateFeats(
@@ -44,7 +45,8 @@ namespace CreatureGen.Generators.Feats
                 casterLevel,
                 speeds,
                 naturalArmor,
-                hands);
+                hands,
+                size);
 
             eventQueue.Enqueue("CreatureGen", $"Generated {feats.Count()} feats");
 

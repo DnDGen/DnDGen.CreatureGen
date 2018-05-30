@@ -26,6 +26,7 @@ namespace CreatureGen.Generators.Feats
             int casterLevel,
             Dictionary<string, Measurement> speeds,
             int naturalArmor,
-            int hands);
+            int hands,
+            string size);
     }
 }

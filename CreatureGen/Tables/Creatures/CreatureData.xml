@@ -1761,8 +1761,8 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>1</entry>
+    <entry>17</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1773,8 +1773,8 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>9</entry>
+    <entry>29</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1785,8 +1785,8 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>13</entry>
+    <entry>35</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1798,7 +1798,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>11</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1809,8 +1809,8 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>3</entry>
+    <entry>20</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1821,8 +1821,8 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>5</entry>
+    <entry>23</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1833,8 +1833,8 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>7</entry>
+    <entry>26</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1846,7 +1846,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>5</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1857,8 +1857,8 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>11</entry>
+    <entry>32</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1870,7 +1870,7 @@
     <entry>2.5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>2</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1882,7 +1882,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>8</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1894,7 +1894,7 @@
     <entry>10</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>14</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2517,8 +2517,8 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>3</entry>
+    <entry>15</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2529,8 +2529,8 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>9</entry>
+    <entry>24</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2541,8 +2541,8 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>11</entry>
+    <entry>27</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2553,8 +2553,8 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>13</entry>
+    <entry>30</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2566,7 +2566,7 @@
     <entry>10</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>9</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2577,8 +2577,8 @@
     <entry>Gargantuan</entry>
     <entry>20</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>17</entry>
+    <entry>36</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2590,7 +2590,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>6</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2601,8 +2601,8 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>1</entry>
+    <entry>12</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2613,8 +2613,8 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>5</entry>
+    <entry>18</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -3010,7 +3010,7 @@
     <entry>15</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>9</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -3022,7 +3022,7 @@
     <entry>15</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>9</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -3034,7 +3034,7 @@
     <entry>15</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>9</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -3046,7 +3046,7 @@
     <entry>10</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>9</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -3058,7 +3058,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>8</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -3070,7 +3070,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>6</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -3454,7 +3454,7 @@
     <entry>10</entry>
     <entry>True</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>11</entry>
     <entry>2</entry>
   </collection>
   <collection>
@@ -3465,8 +3465,8 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>10</entry>
+    <entry>11</entry>
     <entry>2</entry>
   </collection>
   <collection>
@@ -3477,8 +3477,8 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>20</entry>
+    <entry>12</entry>
     <entry>2</entry>
   </collection>
   <collection>
@@ -3754,7 +3754,7 @@
     <entry>10</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>18</entry>
     <entry>2</entry>
   </collection>
   <collection>
@@ -4185,9 +4185,9 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>12</entry>
+    <entry>14</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Howler</name>
@@ -4617,9 +4617,9 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>8</entry>
+    <entry>10</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Kraken</name>
@@ -5001,8 +5001,8 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>3</entry>
+    <entry>4</entry>
     <entry>2</entry>
   </collection>
   <collection>
@@ -5013,8 +5013,8 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>3</entry>
+    <entry>5</entry>
     <entry>2</entry>
   </collection>
   <collection>
@@ -5409,8 +5409,8 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>7</entry>
+    <entry>6</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -5421,8 +5421,8 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>7</entry>
+    <entry>5</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -5722,7 +5722,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>2</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6250,7 +6250,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>4</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6262,8 +6262,8 @@
     <entry>5</entry>
     <entry>True</entry>
     <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>2</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Spectre</name>
@@ -6285,8 +6285,8 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>12</entry>
+    <entry>4</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6310,7 +6310,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>3</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6333,9 +6333,9 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>12</entry>
+    <entry>9</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Svirfneblin</name>
@@ -6345,9 +6345,9 @@
     <entry>Small</entry>
     <entry>5</entry>
     <entry>True</entry>
+    <entry>1</entry>
     <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
@@ -6370,8 +6370,8 @@
     <entry>30</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>30</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Tendriculos</name>
@@ -6382,7 +6382,7 @@
     <entry>15</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>9</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6394,7 +6394,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>7</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6405,9 +6405,9 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
+    <entry>1</entry>
     <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Tiger</name>
@@ -6418,7 +6418,7 @@
     <entry>10</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>3</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6441,9 +6441,9 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>20</entry>
+    <entry>19</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Toad</name>
@@ -6501,9 +6501,9 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>12</entry>
+    <entry>13</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Triceratops</name>
@@ -6514,7 +6514,7 @@
     <entry>15</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>11</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6525,9 +6525,9 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>7</entry>
+    <entry>6</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
@@ -6538,8 +6538,8 @@
     <entry>5</entry>
     <entry>True</entry>
     <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>6</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Troll</name>
@@ -6550,8 +6550,8 @@
     <entry>10</entry>
     <entry>True</entry>
     <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>5</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
@@ -6562,7 +6562,7 @@
     <entry>15</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>5</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6573,8 +6573,8 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>8</entry>
+    <entry>8</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6585,8 +6585,8 @@
     <entry>Huge</entry>
     <entry>15</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>8</entry>
+    <entry>14</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6597,8 +6597,8 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>5</entry>
+    <entry>6</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6609,9 +6609,9 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>6</entry>
+    <entry>3</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Vargouille</name>
@@ -6634,7 +6634,7 @@
     <entry>15</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>3</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6646,7 +6646,7 @@
     <entry>10</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>3</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6658,7 +6658,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>3</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6670,7 +6670,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>3</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6682,7 +6682,7 @@
     <entry>2.5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>2</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6693,9 +6693,9 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>12</entry>
+    <entry>11</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Weasel</name>
@@ -6730,8 +6730,8 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>4</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
@@ -6754,7 +6754,7 @@
     <entry>10</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>5</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6766,7 +6766,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>2</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6790,7 +6790,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>2</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6814,7 +6814,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>2</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6850,7 +6850,7 @@
     <entry>10</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>8</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6862,8 +6862,8 @@
     <entry>5</entry>
     <entry>True</entry>
     <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>7</entry>
+    <entry>4</entry>
   </collection>
   <collection>
     <name>Average Xorn</name>
@@ -6910,7 +6910,7 @@
     <entry>5</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>8</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6922,7 +6922,7 @@
     <entry>15</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>8</entry>
     <entry>0</entry>
   </collection>
   <collection>
@@ -6933,9 +6933,9 @@
     <entry>Large</entry>
     <entry>10</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>10</entry>
+    <entry>10</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood</name>
@@ -6945,9 +6945,9 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>4</entry>
+    <entry>4</entry>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
@@ -6957,8 +6957,8 @@
     <entry>Medium</entry>
     <entry>5</entry>
     <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>4</entry>
+    <entry>1</entry>
+    <entry>2</entry>
   </collection>
 </collections>

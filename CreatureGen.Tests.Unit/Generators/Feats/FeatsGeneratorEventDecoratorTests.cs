@@ -51,9 +51,9 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 new Feat(),
             };
 
-            mockInnerGenerator.Setup(g => g.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337)).Returns(feats);
+            mockInnerGenerator.Setup(g => g.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size")).Returns(feats);
 
-            var generatedFeats = decorator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337);
+            var generatedFeats = decorator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
             Assert.That(generatedFeats, Is.EqualTo(feats));
         }
 
@@ -66,9 +66,9 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 new Feat { Name = "other feat" },
             };
 
-            mockInnerGenerator.Setup(g => g.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337)).Returns(feats);
+            mockInnerGenerator.Setup(g => g.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size")).Returns(feats);
 
-            var generatedFeats = decorator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337);
+            var generatedFeats = decorator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
             Assert.That(generatedFeats, Is.EqualTo(feats));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating feats"), Times.Once);

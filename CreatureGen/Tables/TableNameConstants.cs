@@ -40,6 +40,7 @@
                 public const string FeatGroups = "FeatGroups";
                 public const string FeatHitDieRequirements = "FeatHitDieRequirements";
                 public const string RequiredFeats = "RequiredFeats";
+                public const string RequiredSizes = "RequiredSizes";
                 public const string SaveBonuses = "SaveBonuses";
                 public const string SkillData = "SkillData";
                 public const string SkillGroups = "SkillGroups";

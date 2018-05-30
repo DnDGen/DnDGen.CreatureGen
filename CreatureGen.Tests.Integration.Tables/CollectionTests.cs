@@ -92,11 +92,14 @@ namespace CreatureGen.Tests.Integration.Tables
             foreach (var index in indices.Keys.OrderBy(k => k))
             {
                 var expectedItem = expectedArray[index];
-                var actualItem = actualArray[index];
 
                 var message = string.Format("Index {0}", index);
                 if (!string.IsNullOrEmpty(indices[index]))
                     message += string.Format(" ({0})", indices[index]);
+
+                Assert.That(actualArray.Length - 1, Is.AtLeast(index), message);
+
+                var actualItem = actualArray[index];
 
                 Assert.That(actualItem, Is.EqualTo(expectedItem), message);
             }

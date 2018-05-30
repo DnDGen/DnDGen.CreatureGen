@@ -26,6 +26,7 @@ namespace CreatureGen.Selectors.Selections
         public bool RequiresSpellLikeAbility { get; set; }
         public int RequiredNaturalWeapons { get; set; }
         public int RequiredHands { get; set; }
+        public IEnumerable<string> RequiredSizes { get; set; }
 
         public FeatSelection()
         {
@@ -36,6 +37,7 @@ namespace CreatureGen.Selectors.Selections
             RequiredSkills = Enumerable.Empty<RequiredSkillSelection>();
             FocusType = string.Empty;
             Frequency = new Frequency();
+            RequiredSizes = Enumerable.Empty<string>();
         }
 
         public bool ImmutableRequirementsMet(
@@ -46,7 +48,8 @@ namespace CreatureGen.Selectors.Selections
             int casterLevel,
             Dictionary<string, Measurement> speeds,
             int naturalArmor,
-            int hands)
+            int hands,
+            string size)
         {
             foreach (var requiredAbility in RequiredAbilities)
                 if (abilities[requiredAbility.Key].FullScore < requiredAbility.Value)
@@ -71,6 +74,9 @@ namespace CreatureGen.Selectors.Selections
                 return false;
 
             if (RequiresNaturalArmor && naturalArmor <= 0)
+                return false;
+
+            if (RequiredSizes.Any() && !RequiredSizes.Contains(size))
                 return false;
 
             foreach (var requiredSpeed in RequiredSpeeds)

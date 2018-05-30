@@ -54,6 +54,7 @@ namespace CreatureGen.Selectors.Collections
             featSelection.RequiredSkills = GetRequiredSkills(featSelection.Feat);
             featSelection.RequiredAbilities = GetRequiredAbilities(featSelection.Feat);
             featSelection.RequiredSpeeds = GetRequiredSpeeds(featSelection.Feat);
+            featSelection.RequiredSizes = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.RequiredSizes, featSelection.Feat);
 
             var featsTakenMultipleTimes = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.TakenMultipleTimes);
             featSelection.CanBeTakenMultipleTimes = featsTakenMultipleTimes.Contains(featSelection.Feat);

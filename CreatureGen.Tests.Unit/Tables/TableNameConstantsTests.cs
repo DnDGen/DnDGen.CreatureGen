@@ -35,6 +35,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Set.Collection.FeatGroups, "FeatGroups")]
         [TestCase(TableNameConstants.Set.Collection.FeatHitDieRequirements, "FeatHitDieRequirements")]
         [TestCase(TableNameConstants.Set.Collection.RequiredFeats, "RequiredFeats")]
+        [TestCase(TableNameConstants.Set.Collection.RequiredSizes, "RequiredSizes")]
         [TestCase(TableNameConstants.Set.Collection.SaveBonuses, "SaveBonuses")]
         [TestCase(TableNameConstants.Set.Collection.SkillData, "SkillData")]
         [TestCase(TableNameConstants.Set.Collection.SkillGroups, "SkillGroups")]
