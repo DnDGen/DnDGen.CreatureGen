@@ -12,6 +12,7 @@
         public const string DodgeBonus = "Dodge Bonus";
         public const string GoodBaseAttack = "Good Base Attack";
         public const string Initiative = "Initiative";
+        public const string ManualCrossbows = "Manual Crossbows";
         public const string NaturalArmor = "Natural Armor";
         public const string PoorBaseAttack = "Poor Base Attack";
         public const string SavingThrows = "Saving Throws";

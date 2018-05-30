@@ -39,7 +39,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
             return names;
         }
 
-        [Test]
         [TestCaseSource(typeof(AbilityRequirementsTestData), "Feats")]
         [TestCaseSource(typeof(AbilityRequirementsTestData), "Metamagic")]
         [TestCaseSource(typeof(AbilityRequirementsTestData), "Monster")]
@@ -49,7 +48,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
             AssertTypesAndAmounts(name, typesAndAmounts);
         }
 
-        private class AbilityRequirementsTestData
+        public class AbilityRequirementsTestData
         {
             public static IEnumerable Feats
             {
@@ -73,7 +72,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     {
                         var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
                         yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"SkillRankRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                            .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
                     }
                 }
             }
@@ -94,7 +93,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     {
                         var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
                         yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"SkillRankRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                            .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
                     }
                 }
             }
@@ -115,7 +114,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     {
                         var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
                         yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"SkillRankRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                            .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
                     }
                 }
             }
@@ -136,7 +135,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     {
                         var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
                         yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"SkillRankRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                            .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
                     }
                 }
             }

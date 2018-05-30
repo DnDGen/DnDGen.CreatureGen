@@ -43,6 +43,12 @@
     <name>Combat Casting</name>
   </collection>
   <collection>
+    <name>Combat Expertise</name>
+  </collection>
+  <collection>
+    <name>Combat Reflexes</name>
+  </collection>
+  <collection>
     <name>Corrupting Gaze</name>
     <entry>Ghost Special Attack/Corrupting Gaze</entry>
   </collection>
@@ -51,16 +57,46 @@
     <entry>Ghost Special Attack/Corrupting Touch</entry>
   </collection>
   <collection>
+    <name>Deceitful</name>
+  </collection>
+  <collection>
     <name>Deflect Arrows</name>
     <entry>Improved Unarmed Strike</entry>
+  </collection>
+  <collection>
+    <name>Deft Hands</name>
   </collection>
   <collection>
     <name>Diehard</name>
     <entry>Endurance</entry>
   </collection>
   <collection>
+    <name>Diligent</name>
+  </collection>
+  <collection>
+    <name>Dodge</name>
+  </collection>
+  <collection>
     <name>Draining Touch</name>
     <entry>Ghost Special Attack/Draining Touch</entry>
+  </collection>
+  <collection>
+    <name>Empower Spell</name>
+  </collection>
+  <collection>
+    <name>Endurance</name>
+  </collection>
+  <collection>
+    <name>Enlarge Spell</name>
+  </collection>
+  <collection>
+    <name>Eschew Materials</name>
+  </collection>
+  <collection>
+    <name>Exotic Weapon Proficiency</name>
+  </collection>
+  <collection>
+    <name>Extend Spell</name>
   </collection>
   <collection>
     <name>Extra Turning</name>
@@ -77,6 +113,10 @@
   <collection>
     <name>Great Cleave</name>
     <entry>Cleave</entry>
+    <entry>Power Attack</entry>
+  </collection>
+  <collection>
+    <name>Great Fortitude</name>
   </collection>
   <collection>
     <name>Greater Spell Focus</name>
@@ -89,6 +129,7 @@
   <collection>
     <name>Greater Two-Weapon Fighting</name>
     <entry>Improved Two-Weapon Fighting</entry>
+    <entry>Two-Weapon Fighting</entry>
   </collection>
   <collection>
     <name>Greater Weapon Focus</name>
@@ -104,12 +145,18 @@
     <entry>Medium Armor Proficiency</entry>
   </collection>
   <collection>
+    <name>Heighten Spell</name>
+  </collection>
+  <collection>
     <name>Horrific Appearance</name>
     <entry>Ghost Special Attack/Horrific Appearance</entry>
   </collection>
   <collection>
     <name>Improved Bull Rush</name>
     <entry>Power Attack</entry>
+  </collection>
+  <collection>
+    <name>Improved Counterspell</name>
   </collection>
   <collection>
     <name>Improved Critical</name>
@@ -128,11 +175,15 @@
     <entry>Improved Unarmed Strike</entry>
   </collection>
   <collection>
+    <name>Improved Initiative</name>
+  </collection>
+  <collection>
     <name>Improved Overrun</name>
     <entry>Power Attack</entry>
   </collection>
   <collection>
     <name>Improved Precise Shot</name>
+    <entry>Point Blank Shot</entry>
     <entry>Precise Shot</entry>
   </collection>
   <collection>
@@ -156,12 +207,34 @@
     <entry>Turn</entry>
   </collection>
   <collection>
+    <name>Improved Unarmed Strike</name>
+  </collection>
+  <collection>
+    <name>Investigator</name>
+  </collection>
+  <collection>
+    <name>Iron Will</name>
+  </collection>
+  <collection>
+    <name>Lightning Reflexes</name>
+  </collection>
+  <collection>
+    <name>Magical Aptitude</name>
+  </collection>
+  <collection>
     <name>Malevolence</name>
     <entry>Ghost Special Attack/Malevolence</entry>
   </collection>
   <collection>
     <name>Manyshot</name>
+    <entry>Point Blank Shot</entry>
     <entry>Rapid Shot</entry>
+  </collection>
+  <collection>
+    <name>Martial Weapon Proficiency</name>
+  </collection>
+  <collection>
+    <name>Maximize Spell</name>
   </collection>
   <collection>
     <name>Medium Armor Proficiency</name>
@@ -176,12 +249,36 @@
     <entry>Mounted Combat</entry>
   </collection>
   <collection>
+    <name>Mounted Combat</name>
+  </collection>
+  <collection>
     <name>Natural Spell</name>
     <entry>Wild Shape</entry>
   </collection>
   <collection>
+    <name>Negotiator</name>
+  </collection>
+  <collection>
+    <name>Nimble Fingers</name>
+  </collection>
+  <collection>
+    <name>Persuasive</name>
+  </collection>
+  <collection>
+    <name>Point Blank Shot</name>
+  </collection>
+  <collection>
+    <name>Power Attack</name>
+  </collection>
+  <collection>
     <name>Precise Shot</name>
     <entry>Point Blank Shot</entry>
+  </collection>
+  <collection>
+    <name>Quick Draw</name>
+  </collection>
+  <collection>
+    <name>Quicken Spell</name>
   </collection>
   <collection>
     <name>Rapid Reload</name>
@@ -196,15 +293,39 @@
     <entry>Mounted Combat</entry>
   </collection>
   <collection>
+    <name>Run</name>
+  </collection>
+  <collection>
+    <name>Self-Sufficient</name>
+  </collection>
+  <collection>
+    <name>Shield Proficiency</name>
+  </collection>
+  <collection>
     <name>Shot On The Run</name>
     <entry>Dodge</entry>
     <entry>Mobility</entry>
     <entry>Point Blank Shot</entry>
   </collection>
   <collection>
+    <name>Silent Spell</name>
+  </collection>
+  <collection>
+    <name>Simple Weapon Proficiency</name>
+  </collection>
+  <collection>
+    <name>Skill Focus</name>
+  </collection>
+  <collection>
     <name>Snatch Arrows</name>
     <entry>Improved Unarmed Strike</entry>
     <entry>Deflect Arrows</entry>
+  </collection>
+  <collection>
+    <name>Spell Focus</name>
+  </collection>
+  <collection>
+    <name>Spell Penetration</name>
   </collection>
   <collection>
     <name>Spirited Charge</name>
@@ -217,6 +338,12 @@
     <entry>Mobility</entry>
   </collection>
   <collection>
+    <name>Stealthy</name>
+  </collection>
+  <collection>
+    <name>Still Spell</name>
+  </collection>
+  <collection>
     <name>Stunning Fist</name>
     <entry>Improved Unarmed Strike</entry>
   </collection>
@@ -225,8 +352,14 @@
     <entry>Ghost Special Attack/Telekinesis</entry>
   </collection>
   <collection>
+    <name>Toughness</name>
+  </collection>
+  <collection>
     <name>Tower Shield Proficiency</name>
     <entry>Shield Proficiency</entry>
+  </collection>
+  <collection>
+    <name>Track</name>
   </collection>
   <collection>
     <name>Trample</name>
@@ -235,6 +368,12 @@
   <collection>
     <name>Two-Weapon Defense</name>
     <entry>Two-Weapon Fighting</entry>
+  </collection>
+  <collection>
+    <name>Two-Weapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Weapon Finesse</name>
   </collection>
   <collection>
     <name>Weapon Focus</name>
@@ -250,5 +389,8 @@
     <entry>Dodge</entry>
     <entry>Spring Attack</entry>
     <entry>Mobility</entry>
+  </collection>
+  <collection>
+    <name>Widen Spell</name>
   </collection>
 </collections>

@@ -16,6 +16,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(GroupConstants.DodgeBonus, "Dodge Bonus")]
         [TestCase(GroupConstants.GoodBaseAttack, "Good Base Attack")]
         [TestCase(GroupConstants.Initiative, "Initiative")]
+        [TestCase(GroupConstants.ManualCrossbows, "Manual Crossbows")]
         [TestCase(GroupConstants.NaturalArmor, "Natural Armor")]
         [TestCase(GroupConstants.PoorBaseAttack, "Poor Base Attack")]
         [TestCase(GroupConstants.SavingThrows, "Saving Throws")]

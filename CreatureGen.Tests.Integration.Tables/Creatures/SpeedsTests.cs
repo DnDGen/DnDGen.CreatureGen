@@ -41,7 +41,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             AssertCollectionNames(names);
         }
 
-        [Test]
         [TestCaseSource(typeof(SpeedsTestData), "TestCases")]
         public void Speeds(string name, Dictionary<string, int> typesAndAmounts)
         {
@@ -49,7 +48,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             AssertTypesAndAmounts(name, typesAndAmounts);
         }
 
-        private class SpeedsTestData
+        public class SpeedsTestData
         {
             public static IEnumerable TestCases
             {

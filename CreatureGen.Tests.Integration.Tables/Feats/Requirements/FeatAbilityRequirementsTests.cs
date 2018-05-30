@@ -39,7 +39,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
             return names;
         }
 
-        [Test]
         [TestCaseSource(typeof(AbilityRequirementsTestData), "Feats")]
         [TestCaseSource(typeof(AbilityRequirementsTestData), "Metamagic")]
         [TestCaseSource(typeof(AbilityRequirementsTestData), "Monster")]
@@ -49,7 +48,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
             AssertTypesAndAmounts(name, typesAndAmounts);
         }
 
-        private class AbilityRequirementsTestData
+        public class AbilityRequirementsTestData
         {
             public static IEnumerable Feats
             {

@@ -110,9 +110,6 @@
     <name>Extend Spell</name>
   </collection>
   <collection>
-    <name>Extra Turning</name>
-  </collection>
-  <collection>
     <name>Far Shot</name>
   </collection>
   <collection>
@@ -140,12 +137,6 @@
     <name>Greater Two-Weapon Fighting</name>
   </collection>
   <collection>
-    <name>Greater Weapon Focus</name>
-  </collection>
-  <collection>
-    <name>Greater Weapon Specialization</name>
-  </collection>
-  <collection>
     <name>Heighten Spell</name>
   </collection>
   <collection>
@@ -162,9 +153,6 @@
   </collection>
   <collection>
     <name>Improved Disarm</name>
-  </collection>
-  <collection>
-    <name>Improved Familiar</name>
   </collection>
   <collection>
     <name>Improved Feint</name>
@@ -206,9 +194,6 @@
     <name>Improved Trip</name>
   </collection>
   <collection>
-    <name>Improved Turning</name>
-  </collection>
-  <collection>
     <name>Improved Two-Weapon Fighting</name>
   </collection>
   <collection>
@@ -219,9 +204,6 @@
   </collection>
   <collection>
     <name>Iron Will</name>
-  </collection>
-  <collection>
-    <name>Leadership</name>
   </collection>
   <collection>
     <name>Lightning Reflexes</name>
@@ -254,9 +236,6 @@
   </collection>
   <collection>
     <name>Multiweapon Fighting</name>
-  </collection>
-  <collection>
-    <name>Natural Spell</name>
   </collection>
   <collection>
     <name>Negotiator</name>
@@ -329,9 +308,6 @@
     <name>Spell Focus</name>
   </collection>
   <collection>
-    <name>Spell Mastery</name>
-  </collection>
-  <collection>
     <name>Spell Penetration</name>
   </collection>
   <collection>
@@ -371,12 +347,6 @@
   </collection>
   <collection>
     <name>Weapon Finesse</name>
-  </collection>
-  <collection>
-    <name>Weapon Focus</name>
-  </collection>
-  <collection>
-    <name>Weapon Specialization</name>
   </collection>
   <collection>
     <name>Whirlwind Attack</name>

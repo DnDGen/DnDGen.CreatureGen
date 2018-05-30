@@ -52,6 +52,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             hitPoints = new HitPoints();
             attacks = new List<Attack>();
             specialQualities = new List<Feat>();
+            speeds = new Dictionary<string, Measurement>();
 
             hitPoints.HitDiceQuantity = 1;
 

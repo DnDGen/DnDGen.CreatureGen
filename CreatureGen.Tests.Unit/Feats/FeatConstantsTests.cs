@@ -205,7 +205,6 @@ namespace CreatureGen.Tests.Unit.Feats
 
         [TestCase(FeatConstants.SpecialQualities.AttackBonus, "Attack Bonus")]
         [TestCase(FeatConstants.SpecialQualities.DodgeBonus, "Dodge Bonus")]
-        [TestCase(FeatConstants.SpecialQualities.DodgeBonus, "Dodge Bonus")]
         [TestCase(FeatConstants.SpecialQualities.InertialArmor, "Inertial Armor")]
         [TestCase(FeatConstants.SpecialQualities.NaturalWeapon, "Natural Weapon")]
         [TestCase(FeatConstants.SpecialQualities.SaveBonus, "Save Bonus")]

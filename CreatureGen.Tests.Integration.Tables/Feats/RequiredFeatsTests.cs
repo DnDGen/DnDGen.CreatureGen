@@ -39,32 +39,60 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(FeatConstants.Cleave, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.Cleave_Great, FeatConstants.Cleave, FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.CombatCasting)]
+        [TestCase(FeatConstants.CombatExpertise)]
+        [TestCase(FeatConstants.CombatReflexes)]
+        [TestCase(FeatConstants.Counterspell_Improved)]
+        [TestCase(FeatConstants.Deceitful)]
         [TestCase(FeatConstants.DeflectArrows, FeatConstants.UnarmedStrike_Improved)]
+        [TestCase(FeatConstants.DeftHands)]
         [TestCase(FeatConstants.Diehard, FeatConstants.Endurance)]
+        [TestCase(FeatConstants.Diligent)]
         [TestCase(FeatConstants.Disarm_Improved, FeatConstants.CombatExpertise)]
+        [TestCase(FeatConstants.Dodge)]
+        [TestCase(FeatConstants.Endurance)]
+        [TestCase(FeatConstants.EschewMaterials)]
         [TestCase(FeatConstants.FarShot, FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.Feint_Improved, FeatConstants.CombatExpertise)]
         [TestCase(FeatConstants.Grapple_Improved, FeatConstants.UnarmedStrike_Improved)]
+        [TestCase(FeatConstants.GreatFortitude)]
+        [TestCase(FeatConstants.Initiative_Improved)]
+        [TestCase(FeatConstants.Investigator)]
+        [TestCase(FeatConstants.IronWill)]
+        [TestCase(FeatConstants.LightningReflexes)]
+        [TestCase(FeatConstants.MagicalAptitude)]
         [TestCase(FeatConstants.Manyshot, FeatConstants.PointBlankShot, FeatConstants.RapidShot)]
         [TestCase(FeatConstants.Mobility, FeatConstants.Dodge)]
         [TestCase(FeatConstants.MountedArchery, FeatConstants.MountedCombat)]
+        [TestCase(FeatConstants.MountedCombat)]
         //INFO: Wild Shape is only had by Druid classes
         //[TestCase(FeatConstants.NaturalSpell, FeatConstants.WildShape)]
+        [TestCase(FeatConstants.Negotiator)]
+        [TestCase(FeatConstants.NimbleFingers)]
         [TestCase(FeatConstants.Overrun_Improved, FeatConstants.PowerAttack)]
+        [TestCase(FeatConstants.Persuasive)]
+        [TestCase(FeatConstants.PointBlankShot)]
+        [TestCase(FeatConstants.PowerAttack)]
         [TestCase(FeatConstants.PreciseShot, FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.PreciseShot_Improved, FeatConstants.PointBlankShot, FeatConstants.PreciseShot)]
+        [TestCase(FeatConstants.QuickDraw)]
         [TestCase(FeatConstants.RapidShot, FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.RideByAttack, FeatConstants.MountedCombat)]
+        [TestCase(FeatConstants.Run)]
+        [TestCase(FeatConstants.SelfSufficient)]
         [TestCase(FeatConstants.ShieldBash_Improved, FeatConstants.ShieldProficiency)]
+        [TestCase(FeatConstants.ShieldProficiency)]
         [TestCase(FeatConstants.ShieldProficiency_Tower, FeatConstants.ShieldProficiency)]
         [TestCase(FeatConstants.ShotOnTheRun,
             FeatConstants.Dodge,
             FeatConstants.Mobility,
             FeatConstants.PointBlankShot)]
+        [TestCase(FeatConstants.SkillFocus)]
         [TestCase(FeatConstants.SnatchArrows,
             FeatConstants.DeflectArrows,
             FeatConstants.UnarmedStrike_Improved)]
+        [TestCase(FeatConstants.SpellFocus)]
         [TestCase(FeatConstants.SpellFocus_Greater, FeatConstants.SpellFocus)]
+        [TestCase(FeatConstants.SpellPenetration)]
         [TestCase(FeatConstants.SpellPenetration_Greater, FeatConstants.SpellPenetration)]
         [TestCase(FeatConstants.SpiritedCharge,
             FeatConstants.MountedCombat,
@@ -72,14 +100,18 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(FeatConstants.SpringAttack,
             FeatConstants.Dodge,
             FeatConstants.Mobility)]
+        [TestCase(FeatConstants.Stealthy)]
         [TestCase(FeatConstants.StunningFist, FeatConstants.UnarmedStrike_Improved)]
         [TestCase(FeatConstants.Sunder_Improved, FeatConstants.PowerAttack)]
+        [TestCase(FeatConstants.Toughness)]
+        [TestCase(FeatConstants.Track)]
         [TestCase(FeatConstants.Trample, FeatConstants.MountedCombat)]
         [TestCase(FeatConstants.Trip_Improved, FeatConstants.CombatExpertise)]
         //INFO: No monsters can natively turn or rebuke
         //[TestCase(FeatConstants.Turning_Extra, FeatConstants.Turn)]
         //[TestCase(FeatConstants.Turning_Improved, FeatConstants.Turn)]
         [TestCase(FeatConstants.TwoWeaponDefense, FeatConstants.TwoWeaponFighting)]
+        [TestCase(FeatConstants.TwoWeaponFighting)]
         [TestCase(FeatConstants.TwoWeaponFighting_Greater, FeatConstants.TwoWeaponFighting_Improved, FeatConstants.TwoWeaponFighting)]
         [TestCase(FeatConstants.TwoWeaponFighting_Improved, FeatConstants.TwoWeaponFighting)]
         [TestCase(FeatConstants.UnarmedStrike_Improved)]
@@ -98,6 +130,42 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.Dodge,
             FeatConstants.Mobility,
             FeatConstants.SpringAttack)]
+        [TestCase(FeatConstants.Metamagic.EmpowerSpell)]
+        [TestCase(FeatConstants.Metamagic.EnlargeSpell)]
+        [TestCase(FeatConstants.Metamagic.ExtendSpell)]
+        [TestCase(FeatConstants.Metamagic.HeightenSpell)]
+        [TestCase(FeatConstants.Metamagic.MaximizeSpell)]
+        [TestCase(FeatConstants.Metamagic.QuickenSpell)]
+        [TestCase(FeatConstants.Metamagic.SilentSpell)]
+        [TestCase(FeatConstants.Metamagic.StillSpell)]
+        [TestCase(FeatConstants.Metamagic.WidenSpell)]
+        [TestCase(FeatConstants.Monster.AbilityFocus)]
+        [TestCase(FeatConstants.Monster.AwesomeBlow,
+            FeatConstants.PowerAttack,
+            FeatConstants.BullRush_Improved)]
+        [TestCase(FeatConstants.Monster.CraftConstruct,
+            FeatConstants.MagicItemCreation.CraftMagicArmsAndArmor,
+            FeatConstants.MagicItemCreation.CraftWondrousItem)]
+        [TestCase(FeatConstants.Monster.EmpowerSpellLikeAbility)]
+        [TestCase(FeatConstants.Monster.FlybyAttack)]
+        [TestCase(FeatConstants.Monster.FlybyAttack_Improved,
+            FeatConstants.Dodge,
+            FeatConstants.Mobility,
+            FeatConstants.Monster.FlybyAttack)]
+        [TestCase(FeatConstants.Monster.Hover)]
+        [TestCase(FeatConstants.Monster.Multiattack)]
+        [TestCase(FeatConstants.Monster.Multiattack_Improved,
+            FeatConstants.Monster.Multiattack)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Greater,
+            FeatConstants.Monster.MultiweaponFighting,
+            FeatConstants.Monster.MultiweaponFighting_Improved)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Improved, FeatConstants.Monster.MultiweaponFighting)]
+        [TestCase(FeatConstants.Monster.NaturalArmor_Improved)]
+        [TestCase(FeatConstants.Monster.NaturalAttack_Improved)]
+        [TestCase(FeatConstants.Monster.QuickenSpellLikeAbility)]
+        [TestCase(FeatConstants.Monster.Snatch)]
+        [TestCase(FeatConstants.Monster.Wingover)]
         public void RequiredFeats(string name, params string[] requiredFeats)
         {
             DistinctCollection(name, requiredFeats);

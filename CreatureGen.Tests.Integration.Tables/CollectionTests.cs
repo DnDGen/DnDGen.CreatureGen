@@ -89,22 +89,19 @@ namespace CreatureGen.Tests.Integration.Tables
             var expectedArray = expected.ToArray();
             var actualArray = actual.ToArray();
 
+            Assert.That(actualArray.Length, Is.EqualTo(expectedArray.Length));
+
             foreach (var index in indices.Keys.OrderBy(k => k))
             {
                 var expectedItem = expectedArray[index];
+                var actualItem = actualArray[index];
 
                 var message = string.Format("Index {0}", index);
                 if (!string.IsNullOrEmpty(indices[index]))
                     message += string.Format(" ({0})", indices[index]);
 
-                Assert.That(actualArray.Length - 1, Is.AtLeast(index), message);
-
-                var actualItem = actualArray[index];
-
                 Assert.That(actualItem, Is.EqualTo(expectedItem), message);
             }
-
-            Assert.That(actual.Count(), Is.EqualTo(expected.Count()));
         }
 
         public virtual void DistinctCollection(string name, params string[] collection)
