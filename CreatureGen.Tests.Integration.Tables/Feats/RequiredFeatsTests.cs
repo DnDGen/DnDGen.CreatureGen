@@ -130,6 +130,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.Dodge,
             FeatConstants.Mobility,
             FeatConstants.SpringAttack)]
+        [TestCase(FeatConstants.MagicItemCreation.BrewPotion)]
+        [TestCase(FeatConstants.MagicItemCreation.CraftMagicArmsAndArmor)]
+        [TestCase(FeatConstants.MagicItemCreation.CraftRod)]
+        [TestCase(FeatConstants.MagicItemCreation.CraftStaff)]
+        [TestCase(FeatConstants.MagicItemCreation.CraftWand)]
+        [TestCase(FeatConstants.MagicItemCreation.CraftWondrousItem)]
+        [TestCase(FeatConstants.MagicItemCreation.ForgeRing)]
+        [TestCase(FeatConstants.MagicItemCreation.ScribeScroll)]
         [TestCase(FeatConstants.Metamagic.EmpowerSpell)]
         [TestCase(FeatConstants.Metamagic.EnlargeSpell)]
         [TestCase(FeatConstants.Metamagic.ExtendSpell)]

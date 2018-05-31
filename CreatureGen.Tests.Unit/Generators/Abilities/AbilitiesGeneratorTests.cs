@@ -32,8 +32,8 @@ namespace CreatureGen.Tests.Unit.Generators.Abilities
             abilitySelections.Add(new TypeAndAmountSelection { Type = "other ability", Amount = 9266 });
             abilitySelections.Add(new TypeAndAmountSelection { Type = "last ability", Amount = -90210 });
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.AbilityGroups, "creature name")).Returns(abilitySelections);
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.AbilityGroups, GroupConstants.All)).Returns(abilitySelections);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.AbilityAdjustments, "creature name")).Returns(abilitySelections);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.AbilityAdjustments, GroupConstants.All)).Returns(abilitySelections);
 
             var mockPartialDie = new Mock<PartialRoll>();
             mockDice.Setup(d => d.Roll(3)).Returns(mockPartialDie.Object);
@@ -85,7 +85,7 @@ namespace CreatureGen.Tests.Unit.Generators.Abilities
                 new TypeAndAmountSelection { Type = "last ability" }
             };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.AbilityGroups, GroupConstants.All)).Returns(allAbilities);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.AbilityAdjustments, GroupConstants.All)).Returns(allAbilities);
 
             abilitySelections.RemoveAt(1);
 

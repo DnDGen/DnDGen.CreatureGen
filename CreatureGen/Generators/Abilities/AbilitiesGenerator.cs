@@ -20,8 +20,8 @@ namespace CreatureGen.Generators.Abilities
 
         public Dictionary<string, Ability> GenerateFor(string creatureName)
         {
-            var abilitySelections = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.AbilityGroups, creatureName);
-            var allAbilities = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.AbilityGroups, GroupConstants.All);
+            var abilitySelections = typeAndAmountSelector.Select(TableNameConstants.Set.TypeAndAmount.AbilityAdjustments, creatureName);
+            var allAbilities = typeAndAmountSelector.Select(TableNameConstants.Set.TypeAndAmount.AbilityAdjustments, GroupConstants.All);
             var abilities = new Dictionary<string, Ability>();
 
             foreach (var selection in allAbilities)

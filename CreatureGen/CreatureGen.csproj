@@ -160,7 +160,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\Abilities\AbilityGroups.xml" />
+    <EmbeddedResource Include="Tables\Abilities\AbilityAdjustments.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Tables\Alignments\AlignmentGroups.xml" />

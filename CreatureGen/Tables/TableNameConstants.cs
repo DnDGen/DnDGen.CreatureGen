@@ -6,25 +6,15 @@
         {
             internal static class Adjustments
             {
-                public const string AbilityAdjustments = "AbilityAdjustments";
-                public const string AerialSpeeds = "AerialSpeeds";
                 public const string ArmorDeflectionBonuses = "ArmorDeflectionBonuses";
-                public const string ChallengeRatings = "ChallengeRatings";
-                public const string FeatArmorAdjustments = "FeatArmorAdjustments";
-                public const string FeatInitiativeBonuses = "FeatInitiativeBonuses";
                 public const string GrappleBonuses = "GrappleBonuses";
-                public const string LandSpeeds = "LandSpeeds";
-                public const string LevelAdjustments = "LevelAdjustments";
                 public const string HitDice = "HitDice";
-                public const string BaseAttackAdjustments = "BaseAttackAdjustments";
                 public const string SizeModifiers = "SizeModifiers";
                 public const string SkillPoints = "SkillPoints";
-                public const string SwimSpeeds = "SwimSpeeds";
             }
 
             internal static class Collection
             {
-                public const string AbilityGroups = "AbilityGroups";
                 public const string Advancements = "Advancements";
                 public const string AerialManeuverability = "AerialManeuverability";
                 public const string AlignmentGroups = "AlignmentGroups";
@@ -33,12 +23,10 @@
                 public const string CreatureGroups = "CreatureGroups";
                 public const string CreatureTypes = "CreatureTypes";
                 public const string DragonSpecies = "DragonSpecies";
-                public const string EquivalentFeats = "EquivalentFeats";
                 public const string FeatData = "FeatData";
                 public const string SpecialQualityData = "SpecialQualityData";
                 public const string FeatFoci = "FeatFoci";
                 public const string FeatGroups = "FeatGroups";
-                public const string FeatHitDieRequirements = "FeatHitDieRequirements";
                 public const string RequiredFeats = "RequiredFeats";
                 public const string RequiredSizes = "RequiredSizes";
                 public const string SaveBonuses = "SaveBonuses";
@@ -53,6 +41,7 @@
 
             internal static class TypeAndAmount
             {
+                public const string AbilityAdjustments = "AbilityAdjustments";
                 public const string FeatAbilityRequirements = "FeatAbilityRequirements";
                 public const string FeatSkillRankRequirements = "FeatSkillRankRequirements";
                 public const string FeatSpeedRequirements = "FeatSpeedRequirements";
@@ -68,14 +57,6 @@
             internal static class TrueOrFalse
             {
                 public const string Male = "Male";
-            }
-        }
-
-        internal static class Formattable
-        {
-            internal static class Collection
-            {
-                public const string CREATURESpecialQualityData = "{0}SpecialQualityData";
             }
         }
     }
