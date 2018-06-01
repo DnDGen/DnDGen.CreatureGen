@@ -1209,24 +1209,48 @@
   </collection>
   <collection>
     <name>Eagle</name>
-    <entry>Land/10</entry>
-    <entry>Fly/80</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
-    <entry>Land/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Greater</name>
-    <entry>Land/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Huge</name>
-    <entry>Land/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Large</name>
-    <entry>Land/20</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Medium</name>
@@ -1258,27 +1282,48 @@
   </collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
-    <entry>Land/20</entry>
-    <entry>Swim/20</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Elasmosaurus</name>
-    <entry>Land/20</entry>
-    <entry>Swim/50</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
-    <entry>Fly/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Elder Black Pudding</name>
-    <entry>Land/20</entry>
-    <entry>Climb/20</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Elder Tojanida</name>
-    <entry>Land/10</entry>
-    <entry>Swim/90</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Elder Xorn</name>
@@ -1879,42 +1924,84 @@
   </collection>
   <collection>
     <name>High Elf</name>
-    <entry>Land/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Hill Dwarf</name>
-    <entry>Land/20</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Hill Giant</name>
-    <entry>Land/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>
-    <entry>Land/50</entry>
-    <entry>Fly/100</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Hobgoblin</name>
-    <entry>Land/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
-    <entry>Land/20</entry>
-    <entry>Fly/50</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
-    <entry>Land/20</entry>
-    <entry>Fly/50</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Hound Archon</name>
-    <entry>Land/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Howler</name>
-    <entry>Land/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Human</name>
@@ -1927,11 +2014,21 @@
   </collection>
   <collection>
     <name>Hyena</name>
-    <entry>Land/50</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
-    <entry>Land/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Ice Mephit</name>
@@ -2762,35 +2859,66 @@
   </collection>
   <collection>
     <name>Steam Mephit</name>
-    <entry>Land/30</entry>
-    <entry>Fly/50</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Stirge</name>
-    <entry>Land/10</entry>
-    <entry>Fly/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Stone Giant</name>
-    <entry>Land/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
-    <entry>Land/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
-    <entry>Land/20</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Storm Giant</name>
-    <entry>Land/50</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Succubus</name>
-    <entry>Land/30</entry>
-    <entry>Fly/50</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Svirfneblin</name>
@@ -2952,27 +3080,48 @@
   </collection>
   <collection>
     <name>Vrock</name>
-    <entry>Land/30</entry>
-    <entry>Fly/50</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Warpony</name>
-    <entry>Land/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
-    <entry>Land/30</entry>
-    <entry>Swim/120</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Elemental, Greater</name>
-    <entry>Land/30</entry>
-    <entry>Swim/120</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Elemental, Huge</name>
-    <entry>Land/30</entry>
-    <entry>Swim/120</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Elemental, Large</name>

@@ -7,6 +7,7 @@ using CreatureGen.Skills;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using TreasureGen.Items;
 
 namespace CreatureGen.Tests.Integration.Stress.Creatures
 {
@@ -147,16 +148,17 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(creature.Feats, Is.Not.Null, creature.Summary);
             Assert.That(creature.SpecialQualities, Is.Not.Null, creature.Summary);
 
+            var weapons = WeaponConstants.GetAllWeapons();
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
 
             foreach (var feat in allFeats)
             {
                 Assert.That(feat.Name, Is.Not.Empty, creature.Summary);
-                Assert.That(feat.Foci, Is.Not.Null, feat.Name);
-                Assert.That(feat.Foci, Is.All.Not.Null, feat.Name);
-                Assert.That(feat.Foci, Is.All.Not.EqualTo(FeatConstants.Foci.NoValidFociAvailable), feat.Name);
-                Assert.That(feat.Power, Is.Not.Negative, feat.Name);
-                Assert.That(feat.Frequency.Quantity, Is.Not.Negative, feat.Name);
+                Assert.That(feat.Foci, Is.Not.Null, $"{creature.Summary} {feat.Name}");
+                Assert.That(feat.Foci, Is.All.Not.Null, $"{creature.Summary} {feat.Name}");
+                Assert.That(feat.Foci, Is.All.Not.EqualTo(FeatConstants.Foci.NoValidFociAvailable), $"{creature.Summary} {feat.Name}");
+                Assert.That(feat.Power, Is.Not.Negative, $"{creature.Summary} {feat.Name}");
+                Assert.That(feat.Frequency.Quantity, Is.Not.Negative, $"{creature.Summary} {feat.Name}");
                 Assert.That(feat.Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Constant)
                     .Or.EqualTo(FeatConstants.Frequencies.AtWill)
                     .Or.EqualTo(FeatConstants.Frequencies.Hit)
@@ -164,10 +166,19 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
                     .Or.EqualTo(FeatConstants.Frequencies.Turn)
                     .Or.EqualTo(FeatConstants.Frequencies.Day)
                     .Or.EqualTo(FeatConstants.Frequencies.Week)
-                    .Or.Empty, feat.Name);
+                    .Or.Empty, $"{creature.Summary} {feat.Name}");
 
                 if (feat.Name == FeatConstants.SpecialQualities.SaveBonus)
                     Assert.That(feat.Foci, Is.Not.Empty, creature.Summary);
+
+                if (!creature.CanUseEquipment)
+                {
+                    var weaponFoci = feat.Foci.Intersect(weapons);
+                    Assert.That(weaponFoci, Is.Empty, $"{creature.Summary} {feat.Name}");
+
+                    //Also should assert that equipment is empty, but equipment does not exist on creatures yet
+                    //add it once we have added that
+                }
             }
         }
 
