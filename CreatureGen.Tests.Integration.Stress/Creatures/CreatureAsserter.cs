@@ -196,21 +196,21 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(creature.HitPoints.DefaultTotal, Is.Positive, creature.Summary);
             Assert.That(creature.HitPoints.DefaultTotal, Is.AtLeast(creature.HitPoints.HitDiceQuantity), creature.Summary);
 
-            Assert.That(creature.Attacks, Is.Not.Empty);
-            Assert.That(creature.MeleeAttack, Is.Not.Null);
-            Assert.That(creature.MeleeAttack.IsMelee, Is.True);
-            Assert.That(creature.MeleeAttack.IsSpecial, Is.False);
-            Assert.That(creature.FullMeleeAttack, Is.Not.Empty);
-            Assert.That(creature.FullMeleeAttack.All(a => a.IsMelee && !a.IsSpecial), Is.True);
-            Assert.That(creature.FullRangedAttack, Is.Not.Null);
+            Assert.That(creature.Attacks, Is.Not.Empty, creature.Summary);
+            Assert.That(creature.MeleeAttack, Is.Not.Null, creature.Summary);
+            Assert.That(creature.MeleeAttack.IsMelee, Is.True, creature.Summary);
+            Assert.That(creature.MeleeAttack.IsSpecial, Is.False, creature.Summary);
+            Assert.That(creature.FullMeleeAttack, Is.Not.Empty, creature.Summary);
+            Assert.That(creature.FullMeleeAttack.All(a => a.IsMelee && !a.IsSpecial), Is.True, creature.Summary);
+            Assert.That(creature.FullRangedAttack, Is.Not.Null, creature.Summary);
 
             if (creature.FullRangedAttack.Any())
             {
-                Assert.That(creature.RangedAttack, Is.Not.Null);
-                Assert.That(creature.RangedAttack.IsMelee, Is.False);
-                Assert.That(creature.RangedAttack.IsSpecial, Is.False);
-                Assert.That(creature.FullRangedAttack, Is.Not.Empty);
-                Assert.That(creature.FullRangedAttack.All(a => !a.IsMelee && !a.IsSpecial), Is.True);
+                Assert.That(creature.RangedAttack, Is.Not.Null, creature.Summary);
+                Assert.That(creature.RangedAttack.IsMelee, Is.False, creature.Summary);
+                Assert.That(creature.RangedAttack.IsSpecial, Is.False, creature.Summary);
+                Assert.That(creature.FullRangedAttack, Is.Not.Empty, creature.Summary);
+                Assert.That(creature.FullRangedAttack.All(a => !a.IsMelee && !a.IsSpecial), Is.True, creature.Summary);
             }
 
             foreach (var attack in creature.Attacks)
@@ -220,16 +220,16 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(creature.ArmorClass.FlatFootedBonus, Is.Positive, creature.Summary);
             Assert.That(creature.ArmorClass.TouchBonus, Is.Positive, creature.Summary);
 
-            Assert.That(creature.InitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(creature.InitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
 
-            Assert.That(creature.Saves.Reflex, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier));
-            Assert.That(creature.Saves.Will, Is.AtLeast(creature.Abilities[AbilityConstants.Wisdom].Modifier));
-            Assert.That(creature.Saves.Fortitude, Is.AtLeast(creature.Abilities[AbilityConstants.Constitution].Modifier));
+            Assert.That(creature.Saves.Reflex, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
+            Assert.That(creature.Saves.Will, Is.AtLeast(creature.Abilities[AbilityConstants.Wisdom].Modifier), creature.Summary);
+            Assert.That(creature.Saves.Fortitude, Is.AtLeast(creature.Abilities[AbilityConstants.Constitution].Modifier), creature.Summary);
         }
 
         private void AssertAttack(Attack attack, Creature creature)
         {
-            Assert.That(attack.Name, Is.Not.Empty);
+            Assert.That(attack.Name, Is.Not.Empty, creature.Summary);
             Assert.That(attack.Damage, Is.Not.Empty, attack.Name);
 
             if (!attack.IsNatural)

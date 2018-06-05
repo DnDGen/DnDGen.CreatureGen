@@ -1084,7 +1084,7 @@
     <entry>Charisma/0</entry>
     <entry>Constitution/6</entry>
     <entry>Dexterity/2</entry>
-    <entry>Intelligence/6</entry>
+    <entry>Intelligence/-6</entry>
     <entry>Strength/8</entry>
     <entry>Wisdom/2</entry>
   </collection>
@@ -1099,20 +1099,18 @@
   </collection>
   <collection>
     <name>Chuul</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-6</entry>
+    <entry>Constitution/8</entry>
+    <entry>Dexterity/6</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/10</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Clay Golem</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-10</entry>
+    <entry>Dexterity/-2</entry>
+    <entry>Strength/14</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
@@ -1126,160 +1124,192 @@
   </collection>
   <collection>
     <name>Cloud Giant</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/2</entry>
+    <entry>Constitution/12</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/2</entry>
+    <entry>Strength/24</entry>
+    <entry>Wisdom/6</entry>
   </collection>
   <collection>
     <name>Cockatrice</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/-2</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Dexterity/6</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/-4</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Constrictor Snake</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-8</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/6</entry>
     <entry>Intelligence/-10</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/6</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/6</entry>
+    <entry>Constitution/8</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/6</entry>
+    <entry>Strength/12</entry>
+    <entry>Wisdom/6</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Ancient</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/10</entry>
+    <entry>Constitution/12</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/10</entry>
+    <entry>Strength/22</entry>
+    <entry>Wisdom/10</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
-    <entry>Land/40</entry>
-    <entry>Fly/200</entry>
+    <entry>Charisma/12</entry>
+    <entry>Constitution/16</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/12</entry>
+    <entry>Strength/26</entry>
+    <entry>Wisdom/12</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
+    <entry>Charisma/4</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/4</entry>
+    <entry>Strength/6</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Mature Adult</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
+    <entry>Charisma/8</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/8</entry>
+    <entry>Strength/16</entry>
+    <entry>Wisdom/8</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Old</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
+    <entry>Charisma/8</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/8</entry>
+    <entry>Strength/18</entry>
+    <entry>Wisdom/8</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Old</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
+    <entry>Charisma/10</entry>
+    <entry>Constitution/12</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/10</entry>
+    <entry>Strength/20</entry>
+    <entry>Wisdom/10</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Young</name>
-    <entry>Land/40</entry>
-    <entry>Fly/100</entry>
+    <entry>Charisma/2</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/2</entry>
+    <entry>Strength/2</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrm</name>
-    <entry>Land/40</entry>
-    <entry>Fly/200</entry>
+    <entry>Charisma/12</entry>
+    <entry>Constitution/14</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/12</entry>
+    <entry>Strength/24</entry>
+    <entry>Wisdom/12</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrmling</name>
-    <entry>Land/40</entry>
-    <entry>Fly/100</entry>
+    <entry>Charisma/2</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/2</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Young Adult</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/6</entry>
+    <entry>Constitution/6</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/6</entry>
+    <entry>Strength/8</entry>
+    <entry>Wisdom/6</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Young</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Constitution/4</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/4</entry>
+    <entry>Strength/4</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Couatl</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/6</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/6</entry>
+    <entry>Intelligence/6</entry>
+    <entry>Strength/8</entry>
+    <entry>Wisdom/8</entry>
   </collection>
   <collection>
     <name>Criosphinx</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Constitution/6</entry>
     <entry>Dexterity/0</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/12</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Crocodile</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-8</entry>
+    <entry>Constitution/6</entry>
+    <entry>Dexterity/2</entry>
     <entry>Intelligence/-10</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/8</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Dark Naga</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/6</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/6</entry>
+    <entry>Strength/4</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Darkmantle</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Constitution/2</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/6</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Death Slaad</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/8</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/12</entry>
+    <entry>Intelligence/8</entry>
+    <entry>Strength/10</entry>
+    <entry>Wisdom/8</entry>
   </collection>
   <collection>
     <name>Deep Halfling</name>
@@ -1292,8 +1322,8 @@
   </collection>
   <collection>
     <name>Deep Dwarf</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/2</entry>
     <entry>Dexterity/0</entry>
     <entry>Intelligence/0</entry>
     <entry>Strength/0</entry>
@@ -1302,11 +1332,11 @@
   <collection>
     <name>Deinonychus</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Constitution/8</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/8</entry>
+    <entry>Strength/8</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Delver</name>
@@ -1472,7 +1502,12 @@
   </collection>
   <collection>
     <name>Displacer Beast</name>
-    <entry>Land/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Displacer Beast Pack Lord</name>
@@ -1601,7 +1636,7 @@
     <entry>Charisma/0</entry>
     <entry>Constitution/0</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
+    <entry>Intelligence/-8</entry>
     <entry>Strength/0</entry>
     <entry>Wisdom/0</entry>
   </collection>
@@ -1754,7 +1789,7 @@
     <entry>Charisma/0</entry>
     <entry>Constitution/0</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
+    <entry>Intelligence/-8</entry>
     <entry>Strength/0</entry>
     <entry>Wisdom/0</entry>
   </collection>
@@ -2124,95 +2159,156 @@
   </collection>
   <collection>
     <name>Glabrezu</name>
-    <entry>Land/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gnoll</name>
-    <entry>Land/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Goblin</name>
-    <entry>Land/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
-    <entry>Land/60</entry>
-    <entry>Fly/200</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Ancient</name>
-    <entry>Land/60</entry>
-    <entry>Fly/250</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Great Wyrm</name>
-    <entry>Land/60</entry>
-    <entry>Fly/250</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
-    <entry>Land/60</entry>
-    <entry>Fly/200</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Mature Adult</name>
-    <entry>Land/60</entry>
-    <entry>Fly/200</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Old</name>
-    <entry>Land/60</entry>
-    <entry>Fly/250</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Old</name>
-    <entry>Land/60</entry>
-    <entry>Fly/250</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Young</name>
-    <entry>Land/60</entry>
-    <entry>Fly/200</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Wyrm</name>
-    <entry>Land/60</entry>
-    <entry>Fly/250</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Wyrmling</name>
-    <entry>Land/60</entry>
-    <entry>Fly/200</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young Adult</name>
-    <entry>Land/60</entry>
-    <entry>Fly/200</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young</name>
-    <entry>Land/60</entry>
-    <entry>Fly/200</entry>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gorgon</name>
-    <entry>Land/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gray Elf</name>
-    <entry>Land/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Gray Ooze</name>
@@ -2270,80 +2366,120 @@
   </collection>
   <collection>
     <name>Green Dragon, Adult</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Ancient</name>
-    <entry>Land/40</entry>
-    <entry>Fly/200</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
-    <entry>Land/40</entry>
-    <entry>Fly/200</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Mature Adult</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Old</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Old</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Young</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrm</name>
-    <entry>Land/40</entry>
-    <entry>Fly/200</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrmling</name>
-    <entry>Land/40</entry>
-    <entry>Fly/100</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young Adult</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young</name>
-    <entry>Land/40</entry>
-    <entry>Fly/150</entry>
-    <entry>Swim/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Hag</name>
-    <entry>Land/30</entry>
-    <entry>Swim/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Green Slaad</name>
@@ -2379,23 +2515,37 @@
   </collection>
   <collection>
     <name>Half-Elf</name>
-    <entry>Land/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Half-Orc</name>
-    <entry>Land/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Harpy</name>
-    <entry>Land/20</entry>
-    <entry>Fly/80</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Hawk</name>
     <entry>Charisma/0</entry>
     <entry>Constitution/0</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
+    <entry>Intelligence/-8</entry>
     <entry>Strength/0</entry>
     <entry>Wisdom/0</entry>
   </collection>
@@ -2548,7 +2698,7 @@
     <entry>Charisma/0</entry>
     <entry>Constitution/0</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
+    <entry>Intelligence/-8</entry>
     <entry>Strength/0</entry>
     <entry>Wisdom/0</entry>
   </collection>
@@ -3045,22 +3195,39 @@
   </collection>
   <collection>
     <name>Nixie</name>
-    <entry>Land/20</entry>
-    <entry>Swim/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Noble Djinni</name>
-    <entry>Land/20</entry>
-    <entry>Fly/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Noble Salamander</name>
-    <entry>Land/20</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Nymph</name>
-    <entry>Land/30</entry>
-    <entry>Swim/20</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Ochre Jelly</name>
@@ -3583,21 +3750,39 @@
   </collection>
   <collection>
     <name>Spider Eater</name>
-    <entry>Land/30</entry>
-    <entry>Fly/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Spider Swarm</name>
-    <entry>Land/20</entry>
-    <entry>Climb/20</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Spirit Naga</name>
-    <entry>Land/40</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Squid</name>
-    <entry>Swim/60</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
@@ -3997,24 +4182,39 @@
   </collection>
   <collection>
     <name>Water Elemental, Small</name>
-    <entry>Land/20</entry>
-    <entry>Swim/90</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
-    <entry>Land/30</entry>
-    <entry>Fly/40</entry>
-    <entry>Swim/30</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Naga</name>
-    <entry>Land/30</entry>
-    <entry>Swim/50</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Weasel</name>
-    <entry>Land/20</entry>
-    <entry>Climb/20</entry>
+    <entry>Charisma/0</entry>
+    <entry>Constitution/0</entry>
+    <entry>Dexterity/0</entry>
+    <entry>Intelligence/0</entry>
+    <entry>Strength/0</entry>
+    <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
