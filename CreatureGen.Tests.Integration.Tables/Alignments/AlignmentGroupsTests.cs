@@ -1,6 +1,7 @@
 ﻿using CreatureGen.Alignments;
 using CreatureGen.Creatures;
 using CreatureGen.Tables;
+using CreatureGen.Tests.Integration.Tables.TestData;
 using DnDGen.Core.Selectors.Collections;
 using EventGen;
 using Ninject;
@@ -1022,19 +1023,15 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
             }
         }
 
-        [Test]
-        public void AllCreatureAlignmentGroupsBoilDownToSetAlignments()
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void CreatureAlignmentGroupsBoilDownToSetAlignments(string creature)
         {
             var allAlignments = table[GroupConstants.All];
-            var creatures = CreatureConstants.All();
 
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
+            Assert.That(table.Keys, Contains.Item(creature));
 
-            foreach (var creature in creatures)
-            {
-                var creatureAlignments = CollectionSelector.Explode(tableName, creature);
-                Assert.That(creatureAlignments, Is.Empty.Or.SubsetOf(allAlignments), creature);
-            }
+            var creatureAlignments = CollectionSelector.Explode(tableName, creature);
+            Assert.That(creatureAlignments, Is.Empty.Or.SubsetOf(allAlignments), creature);
         }
     }
 }

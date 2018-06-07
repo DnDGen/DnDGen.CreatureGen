@@ -1,6 +1,7 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Tables;
+using CreatureGen.Tests.Integration.Tables.TestData;
 using DnDGen.Core.Selectors.Collections;
 using EventGen;
 using Ninject;
@@ -1100,31 +1101,23 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [Test]
-        public void AllCreaturesHaveAtLeast1Speed()
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void CreatureHasAtLeast1Speed(string creature)
         {
-            var creatures = CreatureConstants.All();
-            AssertCollection(table.Keys, creatures);
+            Assert.That(table.Keys, Contains.Item(creature));
 
-            foreach (var creature in creatures)
-            {
-                var speeds = GetCollection(creature);
-                Assert.That(speeds, Is.Not.Empty, creature);
-            }
+            var speeds = GetCollection(creature);
+            Assert.That(speeds, Is.Not.Empty, creature);
         }
 
-        [Test]
-        public void AllCreaturesHaveNonNegativeSpeedsAsMultiplesOf5()
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void CreatureHasNonNegativeSpeedsAsMultiplesOf5(string creature)
         {
-            var creatures = CreatureConstants.All();
-            AssertCollection(table.Keys, creatures);
+            Assert.That(table.Keys, Contains.Item(creature));
 
-            foreach (var creature in creatures)
-            {
-                var speeds = TypesAndAmountsSelector.Select(tableName, creature);
-                Assert.That(speeds.Select(s => s.Amount), Is.All.Not.Negative, creature);
-                Assert.That(speeds.Select(s => s.Amount % 5), Is.All.EqualTo(0), creature);
-            }
+            var speeds = TypesAndAmountsSelector.Select(tableName, creature);
+            Assert.That(speeds.Select(s => s.Amount), Is.All.Not.Negative, creature);
+            Assert.That(speeds.Select(s => s.Amount % 5), Is.All.EqualTo(0), creature);
         }
 
         [Test]

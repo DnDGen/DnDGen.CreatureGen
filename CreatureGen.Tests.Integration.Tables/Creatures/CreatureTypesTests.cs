@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Tables;
+using CreatureGen.Tests.Integration.Tables.TestData;
 using DnDGen.Core.Selectors.Collections;
 using EventGen;
 using Ninject;
@@ -1183,27 +1184,23 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [Test]
-        public void CreatureSubtypesMatchCreatureGroupSubtypes()
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void CreatureSubtypesMatchCreatureGroupSubtypes(string creature)
         {
-            var creatures = CreatureConstants.All();
             var allSubTypes = CreatureConstants.Types.Subtypes.All();
 
-            foreach (var creature in creatures)
+            Assert.That(table.Keys, Contains.Item(creature), "Table keys");
+
+            var types = table[creature];
+            Assert.That(types, Is.Not.Empty, creature);
+
+            var subtypes = types.Skip(1);
+            Assert.That(subtypes, Is.SubsetOf(allSubTypes), creature);
+
+            foreach (var subtype in subtypes)
             {
-                Assert.That(table.Keys, Contains.Item(creature), "Table keys");
-
-                var types = table[creature];
-                Assert.That(types, Is.Not.Empty, creature);
-
-                var subtypes = types.Skip(1);
-                Assert.That(subtypes, Is.SubsetOf(allSubTypes), creature);
-
-                foreach (var subtype in subtypes)
-                {
-                    var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, subtype);
-                    Assert.That(creaturesOfType, Contains.Item(creature), subtype);
-                }
+                var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, subtype);
+                Assert.That(creaturesOfType, Contains.Item(creature), subtype);
             }
         }
     }
