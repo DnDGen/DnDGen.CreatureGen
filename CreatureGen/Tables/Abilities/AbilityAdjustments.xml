@@ -1002,19 +1002,19 @@
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
     <entry>Charisma/-6</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/6</entry>
     <entry>Intelligence/-8</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/8</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Camel, Dromedary (One-Humped)</name>
     <entry>Charisma/-6</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/6</entry>
     <entry>Intelligence/-8</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/8</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
@@ -4114,11 +4114,11 @@
   <collection>
     <name>Sea Cat</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Constitution/6</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/8</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Sea Hag</name>
@@ -4158,264 +4158,254 @@
   </collection>
   <collection>
     <name>Shadow</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/2</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Shadow Mastiff</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/2</entry>
+    <entry>Constitution/6</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-6</entry>
+    <entry>Strength/6</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Shambling Mound</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/6</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/10</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Shark, Huge</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-8</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/4</entry>
     <entry>Intelligence/-10</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/10</entry>
     <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Shark, Large</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-8</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/4</entry>
     <entry>Intelligence/-10</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/6</entry>
     <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Shark, Medium</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-8</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/4</entry>
     <entry>Intelligence/-10</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/2</entry>
     <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Shield Guardian</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/-10</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/12</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Shocker Lizard</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
+    <entry>Charisma/-4</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/-8</entry>
     <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Shrieker</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/-10</entry>
+    <entry>Constitution/2</entry>
+    <entry>Wisdom/-8</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/10</entry>
+    <entry>Constitution/10</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/10</entry>
+    <entry>Strength/16</entry>
+    <entry>Wisdom/10</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Ancient</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/16</entry>
+    <entry>Constitution/14</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/16</entry>
+    <entry>Strength/24</entry>
+    <entry>Wisdom/16</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Great Wyrm</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/20</entry>
+    <entry>Constitution/20</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/20</entry>
+    <entry>Strength/32</entry>
+    <entry>Wisdom/20</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/8</entry>
+    <entry>Constitution/6</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/8</entry>
+    <entry>Strength/8</entry>
+    <entry>Wisdom/8</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Mature Adult</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/10</entry>
+    <entry>Constitution/10</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/10</entry>
+    <entry>Strength/18</entry>
+    <entry>Wisdom/10</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Old</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/12</entry>
+    <entry>Constitution/12</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/12</entry>
+    <entry>Strength/20</entry>
+    <entry>Wisdom/12</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Old</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/14</entry>
+    <entry>Constitution/12</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/14</entry>
+    <entry>Strength/22</entry>
+    <entry>Wisdom/14</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Young</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Constitution/4</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/4</entry>
+    <entry>Strength/4</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrm</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/18</entry>
+    <entry>Constitution/18</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/18</entry>
+    <entry>Strength/28</entry>
+    <entry>Wisdom/18</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrmling</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Constitution/2</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/4</entry>
+    <entry>Strength/2</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young Adult</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/8</entry>
+    <entry>Constitution/8</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/8</entry>
+    <entry>Strength/12</entry>
+    <entry>Wisdom/8</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/6</entry>
+    <entry>Constitution/4</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/6</entry>
+    <entry>Strength/6</entry>
+    <entry>Wisdom/6</entry>
   </collection>
   <collection>
     <name>Six-Headed Cryohydra</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/6</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Six-Headed Hydra</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/6</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Six-Headed Pyrohydra</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/6</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Skum</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-4</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/2</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/8</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Spectre</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Dexterity/6</entry>
+    <entry>Intelligence/4</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Spider Eater</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/10</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Spider Swarm</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/-8</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Dexterity/6</entry>
+    <entry>Strength/-10</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Spirit Naga</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/6</entry>
+    <entry>Constitution/8</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/2</entry>
+    <entry>Strength/8</entry>
+    <entry>Wisdom/6</entry>
   </collection>
   <collection>
     <name>Squid</name>
@@ -4428,722 +4418,714 @@
   </collection>
   <collection>
     <name>Steam Mephit</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/4</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-4</entry>
     <entry>Strength/0</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Stirge</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/-4</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Dexterity/8</entry>
+    <entry>Intelligence/-10</entry>
+    <entry>Strength/-8</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Stone Giant</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Constitution/8</entry>
+    <entry>Dexterity/4</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/16</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/6</entry>
+    <entry>Constitution/8</entry>
+    <entry>Dexterity/4</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/16</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-10</entry>
+    <entry>Dexterity/-2</entry>
+    <entry>Strength/18</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Storm Giant</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Constitution/12</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/6</entry>
+    <entry>Strength/28</entry>
+    <entry>Wisdom/10</entry>
   </collection>
   <collection>
     <name>Succubus</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/16</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/6</entry>
+    <entry>Strength/2</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Svirfneblin</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/-4</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Dexterity/2</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/-2</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
     <entry>Charisma/0</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Dexterity/2</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/-2</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Tarrasque</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Constitution/24</entry>
+    <entry>Dexterity/6</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/34</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/10</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Ten-Headed Hydra</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/10</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Ten-Headed Pyrohydra</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/10</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Tendriculos</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/-8</entry>
+    <entry>Constitution/12</entry>
+    <entry>Dexterity/-2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/18</entry>
+    <entry>Wisdom/-2</entry>
   </collection>
   <collection>
     <name>Thoqqua</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/4</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Tiefling</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/-4</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/2</entry>
+    <entry>Strength/2</entry>
+    <entry>Wisdom/-2</entry>
   </collection>
   <collection>
     <name>Tiger</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-4</entry>
+    <entry>Constitution/6</entry>
+    <entry>Dexterity/4</entry>
     <entry>Intelligence/-8</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/12</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Titan</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/14</entry>
+    <entry>Constitution/28</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/10</entry>
+    <entry>Strength/32</entry>
+    <entry>Wisdom/18</entry>
   </collection>
   <collection>
     <name>Toad</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/-6</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Dexterity/2</entry>
     <entry>Intelligence/-10</entry>
     <entry>Strength/-10</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Treant</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/2</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/-2</entry>
+    <entry>Intelligence/2</entry>
+    <entry>Strength/18</entry>
+    <entry>Wisdom/6</entry>
   </collection>
   <collection>
     <name>Triceratops</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-4</entry>
+    <entry>Constitution/14</entry>
+    <entry>Dexterity/-2</entry>
     <entry>Intelligence/-10</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/20</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Triton</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Constitution/2</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/2</entry>
+    <entry>Strength/2</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/-2</entry>
+    <entry>Intelligence/-2</entry>
     <entry>Strength/0</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Troll</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/-4</entry>
+    <entry>Constitution/12</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/12</entry>
+    <entry>Wisdom/-2</entry>
   </collection>
   <collection>
     <name>Truly Horrid Umber Hulk</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Constitution/18</entry>
     <entry>Dexterity/0</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/26</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Trumpet Archon</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/6</entry>
+    <entry>Constitution/12</entry>
+    <entry>Dexterity/6</entry>
+    <entry>Intelligence/6</entry>
+    <entry>Strength/10</entry>
+    <entry>Wisdom/6</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/12</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Hydra</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/12</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Pyrohydra</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-8</entry>
+    <entry>Strength/12</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/2</entry>
     <entry>Intelligence/-8</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/18</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Umber Hulk</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/2</entry>
+    <entry>Constitution/8</entry>
+    <entry>Dexterity/2</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/12</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Unicorn</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/14</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/6</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/10</entry>
+    <entry>Wisdom/10</entry>
   </collection>
   <collection>
     <name>Vampire Spawn</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/2</entry>
+    <entry>Strength/6</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Vargouille</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-6</entry>
     <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Violet Fungus</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/6</entry>
+    <entry>Dexterity/-2</entry>
+    <entry>Strength/4</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-8</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/4</entry>
     <entry>Intelligence/-10</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/6</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Viper Snake, Large</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/-8</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Dexterity/6</entry>
     <entry>Intelligence/-10</entry>
     <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Viper Snake, Medium</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/-8</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Dexterity/6</entry>
     <entry>Intelligence/-10</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/-2</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Viper Snake, Small</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/-8</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Dexterity/6</entry>
     <entry>Intelligence/-10</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/-4</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Viper Snake, Tiny</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/-8</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Dexterity/6</entry>
     <entry>Intelligence/-10</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/-6</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Vrock</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/6</entry>
+    <entry>Constitution/14</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/4</entry>
+    <entry>Strength/12</entry>
+    <entry>Wisdom/6</entry>
   </collection>
   <collection>
     <name>Warpony</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-6</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/2</entry>
     <entry>Intelligence/-8</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/4</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/12</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/18</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Elemental, Greater</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/10</entry>
+    <entry>Intelligence/-2</entry>
+    <entry>Strength/16</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Elemental, Huge</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Constitution/10</entry>
+    <entry>Dexterity/8</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/14</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Elemental, Large</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Constitution/8</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/10</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Elemental, Medium</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Constitution/6</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-6</entry>
+    <entry>Strength/6</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Elemental, Small</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Constitution/2</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Intelligence/-6</entry>
+    <entry>Strength/4</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Constitution/2</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/4</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Water Naga</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Constitution/8</entry>
+    <entry>Dexterity/2</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/6</entry>
+    <entry>Wisdom/6</entry>
   </collection>
   <collection>
     <name>Weasel</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/-6</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Dexterity/4</entry>
     <entry>Intelligence/-8</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/-8</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/2</entry>
+    <entry>Constitution/8</entry>
     <entry>Dexterity/0</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Strength/12</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>White Dragon, Ancient</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Constitution/12</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/4</entry>
+    <entry>Strength/22</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/8</entry>
+    <entry>Constitution/16</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/8</entry>
+    <entry>Strength/26</entry>
+    <entry>Wisdom/8</entry>
   </collection>
   <collection>
     <name>White Dragon, Juvenile</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/4</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Intelligence/-2</entry>
+    <entry>Strength/6</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>White Dragon, Mature Adult</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/2</entry>
+    <entry>Constitution/10</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/2</entry>
+    <entry>Strength/16</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>White Dragon, Old</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/2</entry>
+    <entry>Constitution/10</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/2</entry>
+    <entry>Strength/18</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Old</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Constitution/12</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/4</entry>
+    <entry>Strength/20</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Young</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/-4</entry>
+    <entry>Constitution/2</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/2</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrm</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/6</entry>
+    <entry>Constitution/14</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Intelligence/4</entry>
+    <entry>Strength/24</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrmling</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/-4</entry>
+    <entry>Constitution/2</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
+    <entry>Intelligence/-4</entry>
     <entry>Strength/0</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>White Dragon, Young Adult</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Constitution/6</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Intelligence/-2</entry>
+    <entry>Strength/8</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>White Dragon, Young</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/-4</entry>
+    <entry>Constitution/4</entry>
     <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/4</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Wight</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Dexterity/2</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/2</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Wild Elf</name>
     <entry>Charisma/0</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-2</entry>
     <entry>Strength/0</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/2</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Dexterity/18</entry>
+    <entry>Intelligence/4</entry>
+    <entry>Strength/-10</entry>
+    <entry>Wisdom/6</entry>
   </collection>
   <collection>
     <name>Winter Wolf</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Constitution/6</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-2</entry>
+    <entry>Strength/8</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Wolf</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Charisma/-4</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/4</entry>
     <entry>Intelligence/-8</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/2</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Wolverine</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
+    <entry>Constitution/8</entry>
+    <entry>Dexterity/4</entry>
     <entry>Intelligence/-8</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/4</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Wood Elf</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
+    <entry>Constitution/-2</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-2</entry>
+    <entry>Strength/2</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Worg</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/6</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Wraith</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/4</entry>
+    <entry>Dexterity/6</entry>
+    <entry>Intelligence/4</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Wyvern</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/-2</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/8</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Xill</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/6</entry>
+    <entry>Intelligence/2</entry>
+    <entry>Strength/4</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Yeth Hound</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Constitution/4</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/6</entry>
+    <entry>Wisdom/4</entry>
   </collection>
   <collection>
     <name>Yrthak</name>
     <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Constitution/6</entry>
+    <entry>Dexterity/4</entry>
+    <entry>Intelligence/-4</entry>
+    <entry>Strength/10</entry>
+    <entry>Wisdom/2</entry>
   </collection>
   <collection>
     <name>Yuan-ti Abomination</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/8</entry>
+    <entry>Constitution/6</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/10</entry>
+    <entry>Strength/8</entry>
+    <entry>Wisdom/10</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Charisma/6</entry>
+    <entry>Constitution/2</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/8</entry>
+    <entry>Strength/4</entry>
+    <entry>Wisdom/8</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
-    <entry>Charisma/0</entry>
+    <entry>Charisma/2</entry>
     <entry>Constitution/0</entry>
-    <entry>Dexterity/0</entry>
-    <entry>Intelligence/0</entry>
+    <entry>Dexterity/2</entry>
+    <entry>Intelligence/2</entry>
     <entry>Strength/0</entry>
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>
-    <entry>Charisma/0</entry>
-    <entry>Constitution/0</entry>
+    <entry>Charisma/4</entry>
     <entry>Dexterity/0</entry>
     <entry>Intelligence/0</entry>
-    <entry>Strength/0</entry>
-    <entry>Wisdom/0</entry>
+    <entry>Strength/10</entry>
+    <entry>Wisdom/6</entry>
   </collection>
 </collections>

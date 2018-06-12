@@ -2989,6 +2989,12 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Shrieker][AbilityConstants.Charisma] = -10;
                     testCases[CreatureConstants.Shrieker][AbilityConstants.Constitution] = 2;
                     testCases[CreatureConstants.Shrieker][AbilityConstants.Wisdom] = -8;
+                    testCases[CreatureConstants.Skum][AbilityConstants.Charisma] = -4;
+                    testCases[CreatureConstants.Skum][AbilityConstants.Constitution] = 2;
+                    testCases[CreatureConstants.Skum][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.Skum][AbilityConstants.Intelligence] = 0;
+                    testCases[CreatureConstants.Skum][AbilityConstants.Strength] = 8;
+                    testCases[CreatureConstants.Skum][AbilityConstants.Wisdom] = 0;
                     testCases[CreatureConstants.Slaad_Red][AbilityConstants.Charisma] = -2;
                     testCases[CreatureConstants.Slaad_Red][AbilityConstants.Constitution] = 6;
                     testCases[CreatureConstants.Slaad_Red][AbilityConstants.Dexterity] = 4;
@@ -3061,6 +3067,10 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Snake_Viper_Tiny][AbilityConstants.Intelligence] = -10;
                     testCases[CreatureConstants.Snake_Viper_Tiny][AbilityConstants.Strength] = -6;
                     testCases[CreatureConstants.Snake_Viper_Tiny][AbilityConstants.Wisdom] = 2;
+                    testCases[CreatureConstants.Spectre][AbilityConstants.Charisma] = 4;
+                    testCases[CreatureConstants.Spectre][AbilityConstants.Dexterity] = 6;
+                    testCases[CreatureConstants.Spectre][AbilityConstants.Intelligence] = 4;
+                    testCases[CreatureConstants.Spectre][AbilityConstants.Wisdom] = 4;
                     testCases[CreatureConstants.Spider_Monstrous_Colossal][AbilityConstants.Charisma] = -8;
                     testCases[CreatureConstants.Spider_Monstrous_Colossal][AbilityConstants.Constitution] = 4;
                     testCases[CreatureConstants.Spider_Monstrous_Colossal][AbilityConstants.Dexterity] = 4;
@@ -3101,6 +3111,12 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Spider_Swarm][AbilityConstants.Dexterity] = 6;
                     testCases[CreatureConstants.Spider_Swarm][AbilityConstants.Strength] = -10;
                     testCases[CreatureConstants.Spider_Swarm][AbilityConstants.Wisdom] = 0;
+                    testCases[CreatureConstants.SpiderEater][AbilityConstants.Charisma] = 0;
+                    testCases[CreatureConstants.SpiderEater][AbilityConstants.Constitution] = 10;
+                    testCases[CreatureConstants.SpiderEater][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.SpiderEater][AbilityConstants.Intelligence] = -8;
+                    testCases[CreatureConstants.SpiderEater][AbilityConstants.Strength] = 10;
+                    testCases[CreatureConstants.SpiderEater][AbilityConstants.Wisdom] = 2;
                     testCases[CreatureConstants.Squid][AbilityConstants.Charisma] = -8;
                     testCases[CreatureConstants.Squid][AbilityConstants.Constitution] = 0;
                     testCases[CreatureConstants.Squid][AbilityConstants.Dexterity] = 6;
@@ -3118,12 +3134,36 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.StagBeetle_Giant][AbilityConstants.Dexterity] = 0;
                     testCases[CreatureConstants.StagBeetle_Giant][AbilityConstants.Strength] = 12;
                     testCases[CreatureConstants.StagBeetle_Giant][AbilityConstants.Wisdom] = 0;
+                    testCases[CreatureConstants.Stirge][AbilityConstants.Charisma] = -4;
+                    testCases[CreatureConstants.Stirge][AbilityConstants.Constitution] = 0;
+                    testCases[CreatureConstants.Stirge][AbilityConstants.Dexterity] = 8;
+                    testCases[CreatureConstants.Stirge][AbilityConstants.Intelligence] = -10;
+                    testCases[CreatureConstants.Stirge][AbilityConstants.Strength] = -8;
+                    testCases[CreatureConstants.Stirge][AbilityConstants.Wisdom] = 2;
                     testCases[CreatureConstants.Succubus][AbilityConstants.Charisma] = 16;
                     testCases[CreatureConstants.Succubus][AbilityConstants.Constitution] = 2;
                     testCases[CreatureConstants.Succubus][AbilityConstants.Dexterity] = 2;
                     testCases[CreatureConstants.Succubus][AbilityConstants.Intelligence] = 6;
                     testCases[CreatureConstants.Succubus][AbilityConstants.Strength] = 2;
                     testCases[CreatureConstants.Succubus][AbilityConstants.Wisdom] = 4;
+                    testCases[CreatureConstants.Tarrasque][AbilityConstants.Charisma] = 4;
+                    testCases[CreatureConstants.Tarrasque][AbilityConstants.Constitution] = 24;
+                    testCases[CreatureConstants.Tarrasque][AbilityConstants.Dexterity] = 6;
+                    testCases[CreatureConstants.Tarrasque][AbilityConstants.Intelligence] = -8;
+                    testCases[CreatureConstants.Tarrasque][AbilityConstants.Strength] = 34;
+                    testCases[CreatureConstants.Tarrasque][AbilityConstants.Wisdom] = 4;
+                    testCases[CreatureConstants.Tendriculos][AbilityConstants.Charisma] = -8;
+                    testCases[CreatureConstants.Tendriculos][AbilityConstants.Constitution] = 12;
+                    testCases[CreatureConstants.Tendriculos][AbilityConstants.Dexterity] = -2;
+                    testCases[CreatureConstants.Tendriculos][AbilityConstants.Intelligence] = -8;
+                    testCases[CreatureConstants.Tendriculos][AbilityConstants.Strength] = 18;
+                    testCases[CreatureConstants.Tendriculos][AbilityConstants.Wisdom] = -2;
+                    testCases[CreatureConstants.Thoqqua][AbilityConstants.Charisma] = 0;
+                    testCases[CreatureConstants.Thoqqua][AbilityConstants.Constitution] = 2;
+                    testCases[CreatureConstants.Thoqqua][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.Thoqqua][AbilityConstants.Intelligence] = -4;
+                    testCases[CreatureConstants.Thoqqua][AbilityConstants.Strength] = 4;
+                    testCases[CreatureConstants.Thoqqua][AbilityConstants.Wisdom] = 2;
                     testCases[CreatureConstants.Tiefling][AbilityConstants.Charisma] = -4;
                     testCases[CreatureConstants.Tiefling][AbilityConstants.Constitution] = 2;
                     testCases[CreatureConstants.Tiefling][AbilityConstants.Dexterity] = 2;
@@ -3142,6 +3182,12 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Tiger_Dire][AbilityConstants.Intelligence] = -8;
                     testCases[CreatureConstants.Tiger_Dire][AbilityConstants.Strength] = 16;
                     testCases[CreatureConstants.Tiger_Dire][AbilityConstants.Wisdom] = 2;
+                    testCases[CreatureConstants.Titan][AbilityConstants.Charisma] = 14;
+                    testCases[CreatureConstants.Titan][AbilityConstants.Constitution] = 28;
+                    testCases[CreatureConstants.Titan][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.Titan][AbilityConstants.Intelligence] = 10;
+                    testCases[CreatureConstants.Titan][AbilityConstants.Strength] = 32;
+                    testCases[CreatureConstants.Titan][AbilityConstants.Wisdom] = 18;
                     testCases[CreatureConstants.Toad][AbilityConstants.Charisma] = -6;
                     testCases[CreatureConstants.Toad][AbilityConstants.Constitution] = 0;
                     testCases[CreatureConstants.Toad][AbilityConstants.Dexterity] = 2;
@@ -3166,6 +3212,12 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Tojanida_Juvenile][AbilityConstants.Intelligence] = 0;
                     testCases[CreatureConstants.Tojanida_Juvenile][AbilityConstants.Strength] = 4;
                     testCases[CreatureConstants.Tojanida_Juvenile][AbilityConstants.Wisdom] = 2;
+                    testCases[CreatureConstants.Treant][AbilityConstants.Charisma] = 2;
+                    testCases[CreatureConstants.Treant][AbilityConstants.Constitution] = 10;
+                    testCases[CreatureConstants.Treant][AbilityConstants.Dexterity] = -2;
+                    testCases[CreatureConstants.Treant][AbilityConstants.Intelligence] = 2;
+                    testCases[CreatureConstants.Treant][AbilityConstants.Strength] = 18;
+                    testCases[CreatureConstants.Treant][AbilityConstants.Wisdom] = 6;
                     testCases[CreatureConstants.Triceratops][AbilityConstants.Charisma] = -4;
                     testCases[CreatureConstants.Triceratops][AbilityConstants.Constitution] = 14;
                     testCases[CreatureConstants.Triceratops][AbilityConstants.Dexterity] = -2;
@@ -3178,6 +3230,12 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Triton][AbilityConstants.Intelligence] = 2;
                     testCases[CreatureConstants.Triton][AbilityConstants.Strength] = 2;
                     testCases[CreatureConstants.Triton][AbilityConstants.Wisdom] = 2;
+                    testCases[CreatureConstants.Troglodyte][AbilityConstants.Charisma] = 0;
+                    testCases[CreatureConstants.Troglodyte][AbilityConstants.Constitution] = 4;
+                    testCases[CreatureConstants.Troglodyte][AbilityConstants.Dexterity] = -2;
+                    testCases[CreatureConstants.Troglodyte][AbilityConstants.Intelligence] = -2;
+                    testCases[CreatureConstants.Troglodyte][AbilityConstants.Strength] = 0;
+                    testCases[CreatureConstants.Troglodyte][AbilityConstants.Wisdom] = 0;
                     testCases[CreatureConstants.Troll][AbilityConstants.Charisma] = -4;
                     testCases[CreatureConstants.Troll][AbilityConstants.Constitution] = 12;
                     testCases[CreatureConstants.Troll][AbilityConstants.Dexterity] = 4;
@@ -3202,6 +3260,35 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Tyrannosaurus][AbilityConstants.Intelligence] = -8;
                     testCases[CreatureConstants.Tyrannosaurus][AbilityConstants.Strength] = 18;
                     testCases[CreatureConstants.Tyrannosaurus][AbilityConstants.Wisdom] = 4;
+                    testCases[CreatureConstants.UmberHulk][AbilityConstants.Charisma] = 2;
+                    testCases[CreatureConstants.UmberHulk][AbilityConstants.Constitution] = 8;
+                    testCases[CreatureConstants.UmberHulk][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.UmberHulk][AbilityConstants.Intelligence] = 0;
+                    testCases[CreatureConstants.UmberHulk][AbilityConstants.Strength] = 12;
+                    testCases[CreatureConstants.UmberHulk][AbilityConstants.Wisdom] = 0;
+                    testCases[CreatureConstants.UmberHulk_TrulyHorrid][AbilityConstants.Charisma] = 4;
+                    testCases[CreatureConstants.UmberHulk_TrulyHorrid][AbilityConstants.Constitution] = 18;
+                    testCases[CreatureConstants.UmberHulk_TrulyHorrid][AbilityConstants.Dexterity] = 0;
+                    testCases[CreatureConstants.UmberHulk_TrulyHorrid][AbilityConstants.Intelligence] = 0;
+                    testCases[CreatureConstants.UmberHulk_TrulyHorrid][AbilityConstants.Strength] = 26;
+                    testCases[CreatureConstants.UmberHulk_TrulyHorrid][AbilityConstants.Wisdom] = 2;
+                    testCases[CreatureConstants.Unicorn][AbilityConstants.Charisma] = 14;
+                    testCases[CreatureConstants.Unicorn][AbilityConstants.Constitution] = 10;
+                    testCases[CreatureConstants.Unicorn][AbilityConstants.Dexterity] = 6;
+                    testCases[CreatureConstants.Unicorn][AbilityConstants.Intelligence] = 0;
+                    testCases[CreatureConstants.Unicorn][AbilityConstants.Strength] = 10;
+                    testCases[CreatureConstants.Unicorn][AbilityConstants.Wisdom] = 10;
+                    testCases[CreatureConstants.VampireSpawn][AbilityConstants.Charisma] = 4;
+                    testCases[CreatureConstants.VampireSpawn][AbilityConstants.Dexterity] = 4;
+                    testCases[CreatureConstants.VampireSpawn][AbilityConstants.Intelligence] = 2;
+                    testCases[CreatureConstants.VampireSpawn][AbilityConstants.Strength] = 6;
+                    testCases[CreatureConstants.VampireSpawn][AbilityConstants.Wisdom] = 2;
+                    testCases[CreatureConstants.Vargouille][AbilityConstants.Charisma] = -2;
+                    testCases[CreatureConstants.Vargouille][AbilityConstants.Constitution] = 2;
+                    testCases[CreatureConstants.Vargouille][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.Vargouille][AbilityConstants.Intelligence] = -6;
+                    testCases[CreatureConstants.Vargouille][AbilityConstants.Strength] = 0;
+                    testCases[CreatureConstants.Vargouille][AbilityConstants.Wisdom] = 2;
                     testCases[CreatureConstants.VioletFungus][AbilityConstants.Charisma] = -2;
                     testCases[CreatureConstants.VioletFungus][AbilityConstants.Constitution] = 6;
                     testCases[CreatureConstants.VioletFungus][AbilityConstants.Dexterity] = -2;
@@ -3248,6 +3335,23 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Whale_Orca][AbilityConstants.Intelligence] = -8;
                     testCases[CreatureConstants.Whale_Orca][AbilityConstants.Strength] = 16;
                     testCases[CreatureConstants.Whale_Orca][AbilityConstants.Wisdom] = 4;
+                    testCases[CreatureConstants.Wight][AbilityConstants.Charisma] = 4;
+                    testCases[CreatureConstants.Wight][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.Wight][AbilityConstants.Intelligence] = 0;
+                    testCases[CreatureConstants.Wight][AbilityConstants.Strength] = 2;
+                    testCases[CreatureConstants.Wight][AbilityConstants.Wisdom] = 2;
+                    testCases[CreatureConstants.WillOWisp][AbilityConstants.Charisma] = 2;
+                    testCases[CreatureConstants.WillOWisp][AbilityConstants.Constitution] = 0;
+                    testCases[CreatureConstants.WillOWisp][AbilityConstants.Dexterity] = 18;
+                    testCases[CreatureConstants.WillOWisp][AbilityConstants.Intelligence] = 4;
+                    testCases[CreatureConstants.WillOWisp][AbilityConstants.Strength] = -10;
+                    testCases[CreatureConstants.WillOWisp][AbilityConstants.Wisdom] = 6;
+                    testCases[CreatureConstants.WinterWolf][AbilityConstants.Charisma] = 0;
+                    testCases[CreatureConstants.WinterWolf][AbilityConstants.Constitution] = 6;
+                    testCases[CreatureConstants.WinterWolf][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.WinterWolf][AbilityConstants.Intelligence] = -2;
+                    testCases[CreatureConstants.WinterWolf][AbilityConstants.Strength] = 8;
+                    testCases[CreatureConstants.WinterWolf][AbilityConstants.Wisdom] = 2;
                     testCases[CreatureConstants.Wolf][AbilityConstants.Charisma] = -4;
                     testCases[CreatureConstants.Wolf][AbilityConstants.Constitution] = 4;
                     testCases[CreatureConstants.Wolf][AbilityConstants.Dexterity] = 4;
@@ -3272,6 +3376,12 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Wolverine_Dire][AbilityConstants.Intelligence] = -8;
                     testCases[CreatureConstants.Wolverine_Dire][AbilityConstants.Strength] = 12;
                     testCases[CreatureConstants.Wolverine_Dire][AbilityConstants.Wisdom] = 2;
+                    testCases[CreatureConstants.Worg][AbilityConstants.Charisma] = 0;
+                    testCases[CreatureConstants.Worg][AbilityConstants.Constitution] = 4;
+                    testCases[CreatureConstants.Worg][AbilityConstants.Dexterity] = 4;
+                    testCases[CreatureConstants.Worg][AbilityConstants.Intelligence] = -4;
+                    testCases[CreatureConstants.Worg][AbilityConstants.Strength] = 6;
+                    testCases[CreatureConstants.Worg][AbilityConstants.Wisdom] = 4;
                     testCases[CreatureConstants.Wraith][AbilityConstants.Charisma] = 4;
                     testCases[CreatureConstants.Wraith][AbilityConstants.Dexterity] = 6;
                     testCases[CreatureConstants.Wraith][AbilityConstants.Intelligence] = 4;
@@ -3280,6 +3390,18 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Wraith_Dread][AbilityConstants.Dexterity] = 18;
                     testCases[CreatureConstants.Wraith_Dread][AbilityConstants.Intelligence] = 6;
                     testCases[CreatureConstants.Wraith_Dread][AbilityConstants.Wisdom] = 8;
+                    testCases[CreatureConstants.Wyvern][AbilityConstants.Charisma] = -2;
+                    testCases[CreatureConstants.Wyvern][AbilityConstants.Constitution] = 4;
+                    testCases[CreatureConstants.Wyvern][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.Wyvern][AbilityConstants.Intelligence] = -4;
+                    testCases[CreatureConstants.Wyvern][AbilityConstants.Strength] = 8;
+                    testCases[CreatureConstants.Wyvern][AbilityConstants.Wisdom] = 2;
+                    testCases[CreatureConstants.Xill][AbilityConstants.Charisma] = 0;
+                    testCases[CreatureConstants.Xill][AbilityConstants.Constitution] = 4;
+                    testCases[CreatureConstants.Xill][AbilityConstants.Dexterity] = 6;
+                    testCases[CreatureConstants.Xill][AbilityConstants.Intelligence] = 2;
+                    testCases[CreatureConstants.Xill][AbilityConstants.Strength] = 4;
+                    testCases[CreatureConstants.Xill][AbilityConstants.Wisdom] = 2;
                     testCases[CreatureConstants.Xorn_Average][AbilityConstants.Charisma] = 0;
                     testCases[CreatureConstants.Xorn_Average][AbilityConstants.Constitution] = 4;
                     testCases[CreatureConstants.Xorn_Average][AbilityConstants.Dexterity] = 0;
@@ -3298,6 +3420,36 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Xorn_Minor][AbilityConstants.Intelligence] = 0;
                     testCases[CreatureConstants.Xorn_Minor][AbilityConstants.Strength] = 4;
                     testCases[CreatureConstants.Xorn_Minor][AbilityConstants.Wisdom] = 0;
+                    testCases[CreatureConstants.YethHound][AbilityConstants.Charisma] = 0;
+                    testCases[CreatureConstants.YethHound][AbilityConstants.Constitution] = 4;
+                    testCases[CreatureConstants.YethHound][AbilityConstants.Dexterity] = 4;
+                    testCases[CreatureConstants.YethHound][AbilityConstants.Intelligence] = -4;
+                    testCases[CreatureConstants.YethHound][AbilityConstants.Strength] = 6;
+                    testCases[CreatureConstants.YethHound][AbilityConstants.Wisdom] = 4;
+                    testCases[CreatureConstants.Yrthak][AbilityConstants.Charisma] = 0;
+                    testCases[CreatureConstants.Yrthak][AbilityConstants.Constitution] = 6;
+                    testCases[CreatureConstants.Yrthak][AbilityConstants.Dexterity] = 4;
+                    testCases[CreatureConstants.Yrthak][AbilityConstants.Intelligence] = -4;
+                    testCases[CreatureConstants.Yrthak][AbilityConstants.Strength] = 10;
+                    testCases[CreatureConstants.Yrthak][AbilityConstants.Wisdom] = 2;
+                    testCases[CreatureConstants.YuanTi_Abomination][AbilityConstants.Charisma] = 8;
+                    testCases[CreatureConstants.YuanTi_Abomination][AbilityConstants.Constitution] = 6;
+                    testCases[CreatureConstants.YuanTi_Abomination][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.YuanTi_Abomination][AbilityConstants.Intelligence] = 10;
+                    testCases[CreatureConstants.YuanTi_Abomination][AbilityConstants.Strength] = 8;
+                    testCases[CreatureConstants.YuanTi_Abomination][AbilityConstants.Wisdom] = 10;
+                    testCases[CreatureConstants.YuanTi_Halfblood][AbilityConstants.Charisma] = 6;
+                    testCases[CreatureConstants.YuanTi_Halfblood][AbilityConstants.Constitution] = 2;
+                    testCases[CreatureConstants.YuanTi_Halfblood][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.YuanTi_Halfblood][AbilityConstants.Intelligence] = 8;
+                    testCases[CreatureConstants.YuanTi_Halfblood][AbilityConstants.Strength] = 4;
+                    testCases[CreatureConstants.YuanTi_Halfblood][AbilityConstants.Wisdom] = 8;
+                    testCases[CreatureConstants.YuanTi_Pureblood][AbilityConstants.Charisma] = 2;
+                    testCases[CreatureConstants.YuanTi_Pureblood][AbilityConstants.Constitution] = 0;
+                    testCases[CreatureConstants.YuanTi_Pureblood][AbilityConstants.Dexterity] = 2;
+                    testCases[CreatureConstants.YuanTi_Pureblood][AbilityConstants.Intelligence] = 2;
+                    testCases[CreatureConstants.YuanTi_Pureblood][AbilityConstants.Strength] = 0;
+                    testCases[CreatureConstants.YuanTi_Pureblood][AbilityConstants.Wisdom] = 0;
                     testCases[CreatureConstants.Zelekhut][AbilityConstants.Charisma] = 4;
                     testCases[CreatureConstants.Zelekhut][AbilityConstants.Dexterity] = 0;
                     testCases[CreatureConstants.Zelekhut][AbilityConstants.Intelligence] = 0;
@@ -3402,7 +3554,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCase(CreatureConstants.Types.Construct)]
+        [TestCase(CreatureConstants.Types.Construct, Ignore = "Homunculi have intelligence")]
         [TestCase(CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.Types.Vermin)]
         public void DoNotHaveIntelligence(string creatureType)
@@ -3446,8 +3598,8 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Humanoid)]
         [TestCase(CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
-        [TestCase(CreatureConstants.Types.Outsider)]
-        [TestCase(CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Outsider, Ignore = "Some outsiders lack intelligence")]
+        [TestCase(CreatureConstants.Types.Plant, Ignore = "Some plants lack intelligence")]
         public void HaveAllAbilities(string creatureType)
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);

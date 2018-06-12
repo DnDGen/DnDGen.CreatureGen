@@ -45,7 +45,7 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
         [TestCase(SizeConstants.Fine, 8)]
         public void SizeModifier(string size, int modifier)
         {
-            base.Adjustment(size, modifier);
+            base.AssertAdjustment(size, modifier);
         }
     }
 }

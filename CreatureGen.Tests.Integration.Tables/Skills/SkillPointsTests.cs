@@ -36,7 +36,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Types.Vermin, 2)]
         public void SkillPoints(string creatureType, int points)
         {
-            base.Adjustment(creatureType, points);
+            base.AssertAdjustment(creatureType, points);
         }
     }
 }
