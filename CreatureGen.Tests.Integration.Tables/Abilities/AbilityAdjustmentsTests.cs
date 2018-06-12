@@ -3554,7 +3554,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCase(CreatureConstants.Types.Construct, Ignore = "Homunculi have intelligence")]
+        [TestCase(CreatureConstants.Types.Construct, Ignore = "Some constructs have intelligence")]
         [TestCase(CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.Types.Vermin)]
         public void DoNotHaveIntelligence(string creatureType)
