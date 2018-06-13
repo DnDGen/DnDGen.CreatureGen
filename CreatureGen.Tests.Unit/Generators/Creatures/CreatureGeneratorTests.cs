@@ -350,7 +350,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             mockAdvancementSelector.Setup(s => s.SelectRandomFor(creature)).Returns(advancement);
 
-            var newQuantity = hitPoints.HitDiceQuantity + advancementAmount;
+            var newQuantity = hitPoints.RoundedHitDiceQuantity + advancementAmount;
             SetUpRoll(newQuantity, hitPoints.HitDie, 1234);
 
             if (newQuantity > 0)

@@ -8,11 +8,28 @@ namespace CreatureGen.Defenses
     public class HitPoints
     {
         public int HitDie { get; set; }
-        public int HitDiceQuantity { get; set; }
+        public double HitDiceQuantity { get; set; }
         public Ability Constitution { get; set; }
         public int Total { get; set; }
         public int DefaultTotal { get; set; }
         public int Bonus { get; set; }
+
+        public int RoundedHitDiceQuantity
+        {
+            get
+            {
+                if (HitDiceQuantity == 0)
+                    return 0;
+
+                if (HitDiceQuantity < 1)
+                    return 1;
+
+                var rawRoundedHitDiceQuantity = Math.Floor(HitDiceQuantity);
+                var roundedHitDiceQuantity = Convert.ToInt32(rawRoundedHitDiceQuantity);
+
+                return roundedHitDiceQuantity;
+            }
+        }
 
         public string DefaultRoll
         {
@@ -23,11 +40,36 @@ namespace CreatureGen.Defenses
                     return Bonus.ToString();
                 }
 
-                var roll = $"{HitDiceQuantity}d{HitDie}";
-                roll = AppendBonus(roll, Constitution.Modifier * HitDiceQuantity);
+                var roll = $"{RoundedHitDiceQuantity}d{HitDie}";
+
+                if (HitDiceQuantity < 1)
+                {
+                    roll += $"/{divisor}";
+                }
+
+                roll = AppendBonus(roll, totalConstitutionBonus);
                 roll = AppendBonus(roll, Bonus);
 
                 return roll;
+            }
+        }
+
+        private int divisor
+        {
+            get
+            {
+                var rawDenominator = 1 / HitDiceQuantity;
+                var divisor = Convert.ToInt32(rawDenominator);
+
+                return divisor;
+            }
+        }
+
+        private int totalConstitutionBonus
+        {
+            get
+            {
+                return Constitution.Modifier * RoundedHitDiceQuantity;
             }
         }
 
@@ -44,7 +86,11 @@ namespace CreatureGen.Defenses
 
         public void Roll(Dice dice)
         {
-            var rolls = dice.Roll(HitDiceQuantity).d(HitDie).AsIndividualRolls();
+            var rolls = dice.Roll(RoundedHitDiceQuantity).d(HitDie).AsIndividualRolls();
+
+            if (HitDiceQuantity < 1)
+                rolls = rolls.Select(r => r / divisor);
+
             rolls = rolls.Select(r => Math.Max(r + Constitution.Modifier, 1));
 
             Total = rolls.Sum() + Bonus;

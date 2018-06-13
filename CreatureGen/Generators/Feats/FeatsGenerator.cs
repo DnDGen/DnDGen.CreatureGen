@@ -38,13 +38,13 @@ namespace CreatureGen.Generators.Feats
 
             foreach (var selection in featSelections)
                 if (featToIncreasePower.Contains(selection.Feat))
-                    selection.Power += hitPoints.HitDiceQuantity;
+                    selection.Power += hitPoints.RoundedHitDiceQuantity;
 
             var feats = new List<Feat>();
 
             foreach (var featSelection in featSelections)
             {
-                if (!featSelection.RequirementsMet(size, hitPoints.HitDiceQuantity, abilities, feats))
+                if (!featSelection.RequirementsMet(size, hitPoints.RoundedHitDiceQuantity, abilities, feats))
                     continue;
 
                 var feat = new Feat();
@@ -116,7 +116,7 @@ namespace CreatureGen.Generators.Feats
 
         private int GetFeatQuantity(HitPoints hitPoints)
         {
-            return hitPoints.HitDiceQuantity / 3 + 1;
+            return hitPoints.RoundedHitDiceQuantity / 3 + 1;
         }
 
         private List<Feat> PopulateFeatsFrom(Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, int baseAttackBonus, IEnumerable<Feat> preselectedFeats, IEnumerable<FeatSelection> sourceFeatSelections, int quantity, int casterLevel)

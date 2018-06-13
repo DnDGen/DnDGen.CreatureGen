@@ -64,7 +64,7 @@ namespace CreatureGen.Generators.Skills
 
         private IEnumerable<Skill> ApplySkillPointsAsRanks(IEnumerable<Skill> skills, HitPoints hitPoints, CreatureType creatureType, Dictionary<string, Ability> abilities)
         {
-            var points = GetTotalSkillPoints(creatureType, hitPoints.HitDiceQuantity, abilities[AbilityConstants.Intelligence]);
+            var points = GetTotalSkillPoints(creatureType, hitPoints.RoundedHitDiceQuantity, abilities[AbilityConstants.Intelligence]);
             var totalRanksAvailable = skills.Count() * (hitPoints.HitDiceQuantity + 3);
 
             if (points >= totalRanksAvailable)
@@ -135,7 +135,7 @@ namespace CreatureGen.Generators.Skills
                 if (!abilities[skillSelection.BaseAbilityName].HasScore)
                     continue;
 
-                var skill = new Skill(skillSelection.SkillName, abilities[skillSelection.BaseAbilityName], hitPoints.HitDiceQuantity + 3, skillSelection.Focus);
+                var skill = new Skill(skillSelection.SkillName, abilities[skillSelection.BaseAbilityName], hitPoints.RoundedHitDiceQuantity + 3, skillSelection.Focus);
 
                 skill.HasArmorCheckPenalty = skillsWithArmorCheckPenalties.Contains(skill.Name);
                 //INFO: all creature skills are class skills

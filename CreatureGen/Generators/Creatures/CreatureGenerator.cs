@@ -124,7 +124,7 @@ namespace CreatureGen.Generators.Creatures
 
             if (IsBarghest(creature))
             {
-                creature.CasterLevel = creature.HitPoints.HitDiceQuantity;
+                creature.CasterLevel = creature.HitPoints.RoundedHitDiceQuantity;
             }
 
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities);
@@ -232,9 +232,9 @@ namespace CreatureGen.Generators.Creatures
 
             switch (baseAttackQuality)
             {
-                case GroupConstants.GoodBaseAttack: return GetGoodBaseAttackBonus(hitPoints.HitDiceQuantity);
-                case GroupConstants.AverageBaseAttack: return GetAverageBaseAttackBonus(hitPoints.HitDiceQuantity);
-                case GroupConstants.PoorBaseAttack: return GetPoorBaseAttackBonus(hitPoints.HitDiceQuantity);
+                case GroupConstants.GoodBaseAttack: return GetGoodBaseAttackBonus(hitPoints.RoundedHitDiceQuantity);
+                case GroupConstants.AverageBaseAttack: return GetAverageBaseAttackBonus(hitPoints.RoundedHitDiceQuantity);
+                case GroupConstants.PoorBaseAttack: return GetPoorBaseAttackBonus(hitPoints.RoundedHitDiceQuantity);
                 default: throw new ArgumentException($"{creatureType.Name} has no base attack");
             }
         }

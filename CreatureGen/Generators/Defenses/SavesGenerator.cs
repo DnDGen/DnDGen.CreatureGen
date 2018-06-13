@@ -69,9 +69,9 @@ namespace CreatureGen.Generators.Defenses
             var strongSaves = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureGroups, saveName);
 
             if (strongSaves.Contains(creatureType.Name))
-                return hitPoints.HitDiceQuantity / 2 + 2;
+                return hitPoints.RoundedHitDiceQuantity / 2 + 2;
 
-            return hitPoints.HitDiceQuantity / 3;
+            return hitPoints.RoundedHitDiceQuantity / 3;
         }
 
         private int GetBonus(Feat feat, string savingThrow)
