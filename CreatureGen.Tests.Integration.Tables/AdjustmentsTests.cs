@@ -10,7 +10,7 @@ namespace CreatureGen.Tests.Integration.Tables
         protected const string TrueString = "True";
         protected const string FalseString = "False";
 
-        public virtual void AssertAdjustment(string name, int adjustment)
+        public virtual void AssertAdjustment(string name, double adjustment)
         {
             Assert.That(table.Keys, Contains.Item(name), tableName);
 
@@ -18,12 +18,12 @@ namespace CreatureGen.Tests.Integration.Tables
             Assert.That(actualAdjustment, Is.EqualTo(adjustment));
         }
 
-        protected int GetAdjustment(string name)
+        protected double GetAdjustment(string name)
         {
             Assert.That(table.Keys, Contains.Item(name), tableName);
 
             var adjustment = table[name].Single();
-            return Convert.ToInt32(adjustment);
+            return Convert.ToDouble(adjustment);
         }
     }
 }

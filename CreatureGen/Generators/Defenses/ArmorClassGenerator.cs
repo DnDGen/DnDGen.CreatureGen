@@ -24,8 +24,8 @@ namespace CreatureGen.Generators.Defenses
         {
             var armorClass = new ArmorClass();
             armorClass.Dexterity = dexterity;
-            armorClass.DeflectionBonus = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.ArmorDeflectionBonuses, creatureName);
-            armorClass.SizeModifier = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.SizeModifiers, size);
+            armorClass.DeflectionBonus = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Set.Adjustments.ArmorDeflectionBonuses, creatureName);
+            armorClass.SizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Set.Adjustments.SizeModifiers, size);
             armorClass.ArmorBonus = GetArmorBonus(feats);
 
             return armorClass;

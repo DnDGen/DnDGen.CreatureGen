@@ -219,7 +219,7 @@ namespace CreatureGen.Generators.Creatures
             if (!strength.HasScore)
                 return null;
 
-            var sizeModifier = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, size);
+            var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Set.Adjustments.GrappleBonuses, size);
             return baseAttackBonus + strength.Modifier + sizeModifier;
         }
 

@@ -108,7 +108,7 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Orc_Half, 1)]
         [TestCase(CreatureConstants.SeaHag, 3)]
         [TestCase(CreatureConstants.Tiefling, 1)]
-        public void HitDiceQuantity(string creature, int quantity)
+        public void HitDiceQuantity(string creature, double quantity)
         {
             AssertAdjustment(creature, quantity);
         }

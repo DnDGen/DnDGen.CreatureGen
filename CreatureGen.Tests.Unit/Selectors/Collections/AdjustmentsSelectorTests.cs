@@ -50,13 +50,23 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         }
 
         [Test]
-        public void SelectAdjustment()
+        public void SelectAdjustmentAsInt()
         {
             collections["first"] = new[] { "9266" };
             collections["second"] = new[] { "42" };
 
-            var adjustment = adjustmentsSelector.SelectFrom(TableName, "second");
+            var adjustment = adjustmentsSelector.SelectFrom<int>(TableName, "second");
             Assert.That(adjustment, Is.EqualTo(42));
+        }
+
+        [Test]
+        public void SelectAdjustmentAsDouble()
+        {
+            collections["first"] = new[] { "92.66" };
+            collections["second"] = new[] { "4.2" };
+
+            var adjustment = adjustmentsSelector.SelectFrom<double>(TableName, "second");
+            Assert.That(adjustment, Is.EqualTo(4.2));
         }
 
         [Test]
@@ -65,7 +75,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             collections["first"] = Enumerable.Empty<string>();
             collections["second"] = new[] { "42" };
 
-            Assert.That(() => adjustmentsSelector.SelectFrom(TableName, "first"), Throws.InstanceOf<InvalidOperationException>());
+            Assert.That(() => adjustmentsSelector.SelectFrom<int>(TableName, "first"), Throws.InstanceOf<InvalidOperationException>());
         }
 
         [Test]
@@ -73,7 +83,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             collections["first"] = new[] { "9266" };
 
-            Assert.That(() => adjustmentsSelector.SelectFrom(TableName, "second"), Throws.Exception);
+            Assert.That(() => adjustmentsSelector.SelectFrom<int>(TableName, "second"), Throws.Exception);
         }
     }
 }

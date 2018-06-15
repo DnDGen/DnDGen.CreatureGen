@@ -63,7 +63,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, GroupConstants.Skills)).Returns(featSkillFoci);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, GroupConstants.All)).Returns(allSkills);
 
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.SkillPoints, creatureType.Name)).Returns(() => creatureTypeSkillPoints);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.SkillPoints, creatureType.Name)).Returns(() => creatureTypeSkillPoints);
 
             var index = 0;
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> s) => s.ElementAt(index++ % s.Count()));

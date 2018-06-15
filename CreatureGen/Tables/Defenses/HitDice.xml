@@ -10,16 +10,180 @@
     <entry>8</entry>
   </collection>
   <collection>
+    <name>Aboleth</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Abyssal Greater Basilisk</name>
+    <entry>18</entry>
+  </collection>
+  <collection>
+    <name>Achaierai</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Adult Arrowhawk</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Elder</name>
+    <entry>24</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Greater</name>
+    <entry>21</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Huge</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Large</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Medium</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Small</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Air Mephit</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Allip</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Androsphinx</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Angel, Astral Deva</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Angel, Planetar</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Angel, Solar</name>
+    <entry>22</entry>
+  </collection>
+  <collection>
     <name>Animal</name>
     <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Colossal</name>
+    <entry>32</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Gargantuan</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Huge</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Large</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Medium</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Small</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tiny</name>
+    <entry>0.5</entry>
+  </collection>
+  <collection>
+    <name>Ankheg</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Annis</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Aquatic Elf</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Basilisk</name>
+    <entry>6</entry>
   </collection>
   <collection>
     <name>Construct</name>
     <entry>10</entry>
   </collection>
   <collection>
+    <name>Criosphinx</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Deep Dwarf</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Deep Halfling</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
     <name>Dragon</name>
     <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Drow</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Duergar</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Dust Mephit</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Elder</name>
+    <entry>24</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Greater</name>
+    <entry>21</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Huge</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Large</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Medium</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Small</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Earth Mephit</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Elder Arrowhawk</name>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Elemental</name>
@@ -28,6 +192,30 @@
   <collection>
     <name>Fey</name>
     <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Elder</name>
+    <entry>24</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Greater</name>
+    <entry>21</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Huge</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Large</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Medium</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Small</name>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Giant</name>

@@ -5,6 +5,6 @@ namespace CreatureGen.Selectors.Collections
     internal interface IAdjustmentsSelector
     {
         Dictionary<string, int> SelectAllFrom(string tableName);
-        int SelectFrom(string tableName, string name);
+        T SelectFrom<T>(string tableName, string name);
     }
 }

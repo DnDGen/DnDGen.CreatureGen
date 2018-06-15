@@ -786,7 +786,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateCreatureGrappleBonus()
         {
             abilities[AbilityConstants.Strength].BaseScore = 1234;
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.EqualTo(612 + 4633 + 2345));
@@ -798,7 +798,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreatureAdvancement();
 
             abilities[AbilityConstants.Strength].BaseScore = 1234;
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, "advanced size")).Returns(2345);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.GrappleBonuses, "advanced size")).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.EqualTo(612 + 4633 + 668 + 2345));
@@ -808,7 +808,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateCreatureNegativeGrappleBonus()
         {
             abilities[AbilityConstants.Strength].BaseScore = 1;
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.EqualTo(-5 + 4633 + 2345));
@@ -818,7 +818,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void NoGrappleBonusIfNoStrengthScore()
         {
             abilities[AbilityConstants.Strength].BaseScore = 0;
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.Null);

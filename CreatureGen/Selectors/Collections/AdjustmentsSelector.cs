@@ -21,24 +21,24 @@ namespace CreatureGen.Selectors.Collections
 
             foreach (var kvp in collectionTable)
             {
-                adjustmentTable[kvp.Key] = GetAdjustment(kvp.Value);
+                adjustmentTable[kvp.Key] = GetAdjustment<int>(kvp.Value);
             }
 
             return adjustmentTable;
         }
 
-        public int SelectFrom(string tableName, string name)
+        public T SelectFrom<T>(string tableName, string name)
         {
             var collection = collectionsSelector.SelectFrom(tableName, name);
-            var adjustment = GetAdjustment(collection);
+            var adjustment = GetAdjustment<T>(collection);
 
             return adjustment;
         }
 
-        private int GetAdjustment(IEnumerable<string> collection)
+        private T GetAdjustment<T>(IEnumerable<string> collection)
         {
             var firstItem = collection.First();
-            var adjustment = Convert.ToInt32(firstItem);
+            var adjustment = (T)Convert.ChangeType(firstItem, typeof(T));
 
             return adjustment;
         }

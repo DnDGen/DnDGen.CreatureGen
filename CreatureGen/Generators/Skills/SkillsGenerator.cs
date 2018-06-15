@@ -152,7 +152,7 @@ namespace CreatureGen.Generators.Skills
             if (hitDieQuantity == 0)
                 return 0;
 
-            var points = adjustmentsSelector.SelectFrom(TableNameConstants.Set.Adjustments.SkillPoints, creatureType.Name);
+            var points = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Set.Adjustments.SkillPoints, creatureType.Name);
             var perHitDie = Math.Max(1, points + intelligence.Modifier);
             var multiplier = hitDieQuantity + 3;
             var total = perHitDie * multiplier;
