@@ -26,6 +26,10 @@
     <entry>7</entry>
   </collection>
   <collection>
+    <name>Adult Tojanida</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
     <name>Air Elemental, Elder</name>
     <entry>24</entry>
   </collection>
@@ -114,16 +118,408 @@
     <entry>7</entry>
   </collection>
   <collection>
+    <name>Ape</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
     <name>Aquatic Elf</name>
     <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Aranea</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Assassin Vine</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Athach</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Average Salamander</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Average Xorn</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Avoral</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Azer</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Babau</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Baboon</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Badger</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Baleen Whale</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Balor</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Barbed Devil (Hamatula)</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Barghest</name>
+    <entry>6</entry>
   </collection>
   <collection>
     <name>Basilisk</name>
     <entry>6</entry>
   </collection>
   <collection>
+    <name>Bat</name>
+    <entry>.25</entry>
+  </collection>
+  <collection>
+    <name>Bat Swarm</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Bearded Devil (Barbazu)</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Bebilith</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Behir</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Beholder</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
+    <name>Belker</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Bison</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Black Bear</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Adult</name>
+    <entry>19</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Ancient</name>
+    <entry>31</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great Wyrm</name>
+    <entry>37</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Juvenile</name>
+    <entry>13</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature Adult</name>
+    <entry>22</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Old</name>
+    <entry>25</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Old</name>
+    <entry>28</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Young</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrm</name>
+    <entry>34</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrmling</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young Adult</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Black Pudding</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Blink Dog</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Adult</name>
+    <entry>21</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Ancient</name>
+    <entry>33</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great Wyrm</name>
+    <entry>39</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Juvenile</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature Adult</name>
+    <entry>24</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Old</name>
+    <entry>27</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Old</name>
+    <entry>30</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Young</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrm</name>
+    <entry>36</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrmling</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young Adult</name>
+    <entry>18</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Boar</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Bodak</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Adult</name>
+    <entry>19</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Ancient</name>
+    <entry>31</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great Wyrm</name>
+    <entry>37</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Juvenile</name>
+    <entry>13</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature Adult</name>
+    <entry>22</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Old</name>
+    <entry>25</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Old</name>
+    <entry>28</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Young</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrm</name>
+    <entry>34</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrmling</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young Adult</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Adult</name>
+    <entry>21</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Ancient</name>
+    <entry>33</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great Wyrm</name>
+    <entry>39</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Juvenile</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature Adult</name>
+    <entry>24</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Old</name>
+    <entry>27</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Old</name>
+    <entry>30</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Young</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrm</name>
+    <entry>36</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrmling</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young Adult</name>
+    <entry>18</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Brown Bear</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Bulette</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Cachalot Whale</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Camel, Bactirna (Two-Humped)</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Carrion Crawler</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Cat</name>
+    <entry>.5</entry>
+  </collection>
+  <collection>
+    <name>Centipede Swarm</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
     <name>Construct</name>
     <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Adult</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Ancient</name>
+    <entry>32</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great Wyrm</name>
+    <entry>38</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Juvenile</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature Adult</name>
+    <entry>23</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Old</name>
+    <entry>26</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Old</name>
+    <entry>29</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Young</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrm</name>
+    <entry>35</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrmling</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young Adult</name>
+    <entry>17</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young</name>
+    <entry>11</entry>
   </collection>
   <collection>
     <name>Criosphinx</name>
@@ -138,8 +534,32 @@
     <entry>1</entry>
   </collection>
   <collection>
+    <name>Dire Ape</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Dire Badger</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Dire Bat</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Dire Bear</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Dire Boar</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
     <name>Dragon</name>
     <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Dretch</name>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Drow</name>
@@ -186,8 +606,24 @@
     <entry>15</entry>
   </collection>
   <collection>
+    <name>Elder Black Pudding</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Elder Tojanida</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Elder Xorn</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
     <name>Elemental</name>
     <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Erinyes</name>
+    <entry>9</entry>
   </collection>
   <collection>
     <name>Fey</name>
@@ -218,32 +654,460 @@
     <entry>2</entry>
   </collection>
   <collection>
+    <name>Fire Mephit</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Flamebrother Salamander</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Forest Gnome</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Gauth</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Gelatinous Cube</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
     <name>Giant</name>
     <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Queen</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Soldier</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Worker</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Giant Bee</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Giant Bombardier Beetle</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Glabrezu</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Goblin</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Adult</name>
+    <entry>23</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Ancient</name>
+    <entry>35</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great Wyrm</name>
+    <entry>41</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Juvenile</name>
+    <entry>17</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature Adult</name>
+    <entry>26</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Old</name>
+    <entry>29</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Old</name>
+    <entry>32</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Young</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrm</name>
+    <entry>38</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrmling</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young Adult</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Gray Elf</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Gray Ooze</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Greater Barghest</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Adult</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Ancient</name>
+    <entry>32</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great Wyrm</name>
+    <entry>38</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Juvenile</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature Adult</name>
+    <entry>23</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Old</name>
+    <entry>26</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Old</name>
+    <entry>29</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Young</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrm</name>
+    <entry>35</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrmling</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young Adult</name>
+    <entry>17</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
+    <name>Green Hag</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Gynosphinx</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Half-Elf</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Half-Orc</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Hellwasp Swarm</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Hezrou</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Hieracosphinx</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>High Elf</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Hill Dwarf</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Human</name>
+    <entry>1</entry>
   </collection>
   <collection>
     <name>Humanoid</name>
     <entry>8</entry>
   </collection>
   <collection>
+    <name>Ice Devil (Gelugon)</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Ice Mephit</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Imp</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Arrowhawk</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Tojanida</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Lemure</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Lightfoot Halfling</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Locust Swarm</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
     <name>Magical Beast</name>
     <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Magma Mephit</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Marilith</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Minor Xorn</name>
+    <entry>3</entry>
   </collection>
   <collection>
     <name>Monstrous Humanoid</name>
     <entry>8</entry>
   </collection>
   <collection>
+    <name>Mountain Dwarf</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Nalfeshnee</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Noble Salamander</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Ochre Jelly</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
     <name>Ooze</name>
     <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Ooze Mephit</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Orc</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Orca Whale</name>
+    <entry>9</entry>
   </collection>
   <collection>
     <name>Outsider</name>
     <entry>8</entry>
   </collection>
   <collection>
+    <name>Pit Fiend</name>
+    <entry>18</entry>
+  </collection>
+  <collection>
     <name>Plant</name>
     <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Polar Bear</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Quasit</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Rat Swarm</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Adult</name>
+    <entry>22</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Ancient</name>
+    <entry>34</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great Wyrm</name>
+    <entry>40</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Juvenile</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature Adult</name>
+    <entry>25</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Old</name>
+    <entry>28</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Old</name>
+    <entry>31</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Young</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrm</name>
+    <entry>37</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrmling</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young Adult</name>
+    <entry>19</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young</name>
+    <entry>13</entry>
+  </collection>
+  <collection>
+    <name>Retriever</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Rock Gnome</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Salt Mephit</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Sea Hag</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Adult</name>
+    <entry>22</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Ancient</name>
+    <entry>34</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great Wyrm</name>
+    <entry>40</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Juvenile</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature Adult</name>
+    <entry>25</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Old</name>
+    <entry>28</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Old</name>
+    <entry>31</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Young</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrm</name>
+    <entry>37</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrmling</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young Adult</name>
+    <entry>19</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young</name>
+    <entry>13</entry>
+  </collection>
+  <collection>
+    <name>Spider Swarm</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Steam Mephit</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Succubus</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Svirfneblin</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Tallfellow Halfling</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+    <entry>1</entry>
   </collection>
   <collection>
     <name>Undead</name>
@@ -252,5 +1116,93 @@
   <collection>
     <name>Vermin</name>
     <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Vrock</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Elder</name>
+    <entry>24</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Greater</name>
+    <entry>21</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Huge</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Large</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Medium</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Small</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Water Mephit</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Adult</name>
+    <entry>18</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Ancient</name>
+    <entry>30</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Great Wyrm</name>
+    <entry>36</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Juvenile</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature Adult</name>
+    <entry>21</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Old</name>
+    <entry>24</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very Old</name>
+    <entry>27</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very Young</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrm</name>
+    <entry>33</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrmling</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Young Adult</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Young</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Wild Elf</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Wood Elf</name>
+    <entry>1</entry>
   </collection>
 </collections>
