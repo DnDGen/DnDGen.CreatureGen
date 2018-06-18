@@ -338,6 +338,10 @@
     <entry>10</entry>
   </collection>
   <collection>
+    <name>Bralani</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
     <name>Brass Dragon, Adult</name>
     <entry>19</entry>
   </collection>
@@ -438,6 +442,10 @@
     <entry>6</entry>
   </collection>
   <collection>
+    <name>Bugbear</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
     <name>Bulette</name>
     <entry>9</entry>
   </collection>
@@ -446,7 +454,7 @@
     <entry>12</entry>
   </collection>
   <collection>
-    <name>Camel, Bactirna (Two-Humped)</name>
+    <name>Camel, Bactrian (Two-Humped)</name>
     <entry>3</entry>
   </collection>
   <collection>
@@ -912,6 +920,34 @@
   <collection>
     <name>Minor Xorn</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Colossal</name>
+    <entry>24</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Gargantuan</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Huge</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Large</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Medium</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Small</name>
+    <entry>.5</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Tiny</name>
+    <entry>.25</entry>
   </collection>
   <collection>
     <name>Monstrous Humanoid</name>
