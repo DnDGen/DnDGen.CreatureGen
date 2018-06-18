@@ -279,7 +279,7 @@ namespace CreatureGen.Creatures
         public const string Bee_Giant = "Giant Bee";
         public const string Behir = "Behir";
         public const string Beholder = "Beholder";
-        public const string Beholder_Gauth = "Gauth";
+        public const string Beholder_Gauth = "Gauth (Lesser Beholder)";
         public const string Belker = "Belker";
         public const string Bison = "Bison";
         public const string BlackPudding = "Black Pudding";
@@ -628,7 +628,7 @@ namespace CreatureGen.Creatures
         public const string Mephit_Water = "Water Mephit";
         public const string Merfolk = "Merfolk";
         public const string Mimic = "Mimic";
-        public const string MindFlayer = "Mind Flayer";
+        public const string MindFlayer = "Mind Flayer (Illithid)";
         public const string Minotaur = "Minotaur";
         public const string Mohrg = "Mohrg";
         public const string Monkey = "Monkey";

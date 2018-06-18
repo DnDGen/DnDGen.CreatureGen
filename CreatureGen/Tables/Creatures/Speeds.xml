@@ -1108,7 +1108,7 @@
     <entry>Fly/60</entry>
   </collection>
   <collection>
-    <name>Gauth</name>
+    <name>Gauth (Lesser Beholder)</name>
     <entry>Land/5</entry>
     <entry>Fly/20</entry>
   </collection>
@@ -1721,7 +1721,7 @@
     <entry>Land/10</entry>
   </collection>
   <collection>
-    <name>Mind Flayer</name>
+    <name>Mind Flayer (Illithid)</name>
     <entry>Land/30</entry>
   </collection>
   <collection>

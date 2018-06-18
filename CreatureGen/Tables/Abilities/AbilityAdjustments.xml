@@ -2069,7 +2069,7 @@
     <entry>Wisdom/0</entry>
   </collection>
   <collection>
-    <name>Gauth</name>
+    <name>Gauth (Lesser Beholder)</name>
     <entry>Charisma/2</entry>
     <entry>Constitution/6</entry>
     <entry>Dexterity/4</entry>
@@ -3214,7 +3214,7 @@
     <entry>Wisdom/2</entry>
   </collection>
   <collection>
-    <name>Mind Flayer</name>
+    <name>Mind Flayer (Illithid)</name>
     <entry>Charisma/6</entry>
     <entry>Constitution/2</entry>
     <entry>Dexterity/4</entry>

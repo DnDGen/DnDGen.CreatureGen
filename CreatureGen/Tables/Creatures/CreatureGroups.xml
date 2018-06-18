@@ -9,7 +9,7 @@
     <entry>Aboleth</entry>
     <entry>Athach</entry>
     <entry>Beholder</entry>
-    <entry>Gauth</entry>
+    <entry>Gauth (Lesser Beholder)</entry>
     <entry>Carrion Crawler</entry>
     <entry>Choker</entry>
     <entry>Chuul</entry>
@@ -22,7 +22,7 @@
     <entry>Gibbering Mouther</entry>
     <entry>Grick</entry>
     <entry>Mimic</entry>
-    <entry>Mind Flayer</entry>
+    <entry>Mind Flayer (Illithid)</entry>
     <entry>Naga</entry>
     <entry>Otyugh</entry>
     <entry>Phasm</entry>
@@ -617,7 +617,7 @@
     <entry>Vermin</entry>
     <entry>Athach</entry>
     <entry>Beholder</entry>
-    <entry>Gauth</entry>
+    <entry>Gauth (Lesser Beholder)</entry>
     <entry>Carrion Crawler</entry>
     <entry>Choker</entry>
     <entry>Chuul</entry>
@@ -637,7 +637,7 @@
     <entry>Gibbering Mouther</entry>
     <entry>Grick</entry>
     <entry>Mimic</entry>
-    <entry>Mind Flayer</entry>
+    <entry>Mind Flayer (Illithid)</entry>
     <entry>Dark Naga</entry>
     <entry>Spirit Naga</entry>
     <entry>Water Naga</entry>
@@ -994,7 +994,7 @@
     <entry>Vermin</entry>
     <entry>Athach</entry>
     <entry>Beholder</entry>
-    <entry>Gauth</entry>
+    <entry>Gauth (Lesser Beholder)</entry>
     <entry>Carrion Crawler</entry>
     <entry>Choker</entry>
     <entry>Chuul</entry>
@@ -1014,7 +1014,7 @@
     <entry>Gibbering Mouther</entry>
     <entry>Grick</entry>
     <entry>Mimic</entry>
-    <entry>Mind Flayer</entry>
+    <entry>Mind Flayer (Illithid)</entry>
     <entry>Dark Naga</entry>
     <entry>Spirit Naga</entry>
     <entry>Water Naga</entry>
@@ -1133,7 +1133,7 @@
     <entry>Aboleth</entry>
     <entry>Athach</entry>
     <entry>Beholder</entry>
-    <entry>Gauth</entry>
+    <entry>Gauth (Lesser Beholder)</entry>
     <entry>Carrion Crawler</entry>
     <entry>Choker</entry>
     <entry>Chuul</entry>
@@ -1145,7 +1145,7 @@
     <entry>Ettercap</entry>
     <entry>Gibbering Mouther</entry>
     <entry>Grick</entry>
-    <entry>Mind Flayer</entry>
+    <entry>Mind Flayer (Illithid)</entry>
     <entry>Naga</entry>
     <entry>Otyugh</entry>
     <entry>Rust Monster</entry>

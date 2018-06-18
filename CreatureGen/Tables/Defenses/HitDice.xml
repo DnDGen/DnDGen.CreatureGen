@@ -326,6 +326,10 @@
     <entry>12</entry>
   </collection>
   <collection>
+    <name>Blue Slaad</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
     <name>Boar</name>
     <entry>3</entry>
   </collection>
@@ -470,12 +474,56 @@
     <entry>.5</entry>
   </collection>
   <collection>
+    <name>Centaur</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
     <name>Centipede Swarm</name>
     <entry>9</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
     <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Chaos Beast</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Cheetah</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Chimera</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Choker</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Chuul</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
+    <name>Clay Golem</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
+    <name>Cloaker</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Cloud Giant</name>
+    <entry>17</entry>
+  </collection>
+  <collection>
+    <name>Cockatrice</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Constrictor Snake</name>
+    <entry>3</entry>
   </collection>
   <collection>
     <name>Construct</name>
@@ -530,8 +578,28 @@
     <entry>11</entry>
   </collection>
   <collection>
+    <name>Couatl</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
     <name>Criosphinx</name>
     <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Crocodile</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Dark Naga</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Darkmantle</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Death Slaad</name>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Deep Dwarf</name>
@@ -540,6 +608,34 @@
   <collection>
     <name>Deep Halfling</name>
     <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Deinonychus</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Delver</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Derro (Sane)</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Derro</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Destrachan</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Devourer</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Digester</name>
+    <entry>8</entry>
   </collection>
   <collection>
     <name>Dire Ape</name>
@@ -562,16 +658,92 @@
     <entry>7</entry>
   </collection>
   <collection>
+    <name>Dire Lion</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Dire Rat</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Dire Shark</name>
+    <entry>18</entry>
+  </collection>
+  <collection>
+    <name>Dire Tiger</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Dire Weasel</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Dire Wolf</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Dire Wolverine</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack Lord</name>
+    <entry>18</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Djinni</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Dog</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Dog, Riding</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Donkey</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Doppelganger</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
     <name>Dragon</name>
     <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Dragon Turtle</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Dragonne</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Dread Wraith</name>
+    <entry>16</entry>
   </collection>
   <collection>
     <name>Dretch</name>
     <entry>2</entry>
   </collection>
   <collection>
+    <name>Drider</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
     <name>Drow</name>
     <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Dryad</name>
+    <entry>4</entry>
   </collection>
   <collection>
     <name>Duergar</name>
@@ -580,6 +752,10 @@
   <collection>
     <name>Dust Mephit</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Eagle</name>
+    <entry>1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
@@ -610,6 +786,26 @@
     <entry>3</entry>
   </collection>
   <collection>
+    <name>Efreeti</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Cryohydra</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Hydra</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Pyrohydra</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Elasmosaurus</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
     <name>Elder Arrowhawk</name>
     <entry>15</entry>
   </collection>
@@ -630,8 +826,40 @@
     <entry>8</entry>
   </collection>
   <collection>
+    <name>Elephant</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Cryohydra</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Hydra</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Pyrohydra</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
     <name>Erinyes</name>
     <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Ethereal Filcher</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Ethereal Marauder</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Ettercap</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Ettin</name>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Fey</name>
@@ -662,24 +890,88 @@
     <entry>2</entry>
   </collection>
   <collection>
+    <name>Fire Giant</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
     <name>Fire Mephit</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Cryohydra</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Hydra</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Pyrohydra</name>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
     <entry>4</entry>
   </collection>
   <collection>
+    <name>Flesh Golem</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
     <name>Forest Gnome</name>
     <entry>1</entry>
   </collection>
   <collection>
-    <name>Gauth</name>
+    <name>Formian Myrmarch</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Formian Queen</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Formian Taskmaster</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Formian Warrior</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Formian Worker</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Frost Giant</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Frost Worm</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Gargoyle</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Gauth (Lesser Beholder)</name>
     <entry>6</entry>
   </collection>
   <collection>
     <name>Gelatinous Cube</name>
     <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Ghaele</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Ghast</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Ghoul</name>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Giant</name>
@@ -704,6 +996,50 @@
   <collection>
     <name>Giant Bombardier Beetle</name>
     <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Giant Constrictor Snake</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
+    <name>Giant Crocodile</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Giant Eagle</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Giant Fire Beetle</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Giant Octopus</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Giant Owl</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Giant Praying Mantis</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Giant Squid</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Giant Stag Beetle</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Giant Wasp</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Gibbering Mouther</name>
+    <entry>4</entry>
   </collection>
   <collection>
     <name>Glabrezu</name>
@@ -770,8 +1106,16 @@
     <entry>3</entry>
   </collection>
   <collection>
+    <name>Gray Slaad</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
     <name>Greater Barghest</name>
     <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Greater Stone Golem</name>
+    <entry>42</entry>
   </collection>
   <collection>
     <name>Green Dragon, Adult</name>
@@ -826,6 +1170,14 @@
     <entry>9</entry>
   </collection>
   <collection>
+    <name>Green Slaad</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Guardian Naga</name>
+    <entry>11</entry>
+  </collection>
+  <collection>
     <name>Gynosphinx</name>
     <entry>8</entry>
   </collection>
@@ -862,6 +1214,10 @@
     <entry>1</entry>
   </collection>
   <collection>
+    <name>Hill Giant</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
     <name>Horned Devil (Cornugon)</name>
     <entry>15</entry>
   </collection>
@@ -886,12 +1242,28 @@
     <entry>3</entry>
   </collection>
   <collection>
+    <name>Iron Golem</name>
+    <entry>18</entry>
+  </collection>
+  <collection>
+    <name>Janni</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
     <name>Juvenile Arrowhawk</name>
     <entry>3</entry>
   </collection>
   <collection>
     <name>Juvenile Tojanida</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Kapoacinth</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Lacedon</name>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Lemure</name>
@@ -916,6 +1288,10 @@
   <collection>
     <name>Marilith</name>
     <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Megaraptor</name>
+    <entry>8</entry>
   </collection>
   <collection>
     <name>Minor Xorn</name>
@@ -960,6 +1336,22 @@
   <collection>
     <name>Nalfeshnee</name>
     <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Cryohydra</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Hydra</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Pyrohydra</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Noble Djinni</name>
+    <entry>10</entry>
   </collection>
   <collection>
     <name>Noble Salamander</name>
@@ -1058,6 +1450,10 @@
     <entry>13</entry>
   </collection>
   <collection>
+    <name>Red Slaad</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
     <name>Retriever</name>
     <entry>10</entry>
   </collection>
@@ -1072,6 +1468,18 @@
   <collection>
     <name>Sea Hag</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Cryohydra</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Hydra</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Pyrohydra</name>
+    <entry>7</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
@@ -1122,12 +1530,44 @@
     <entry>13</entry>
   </collection>
   <collection>
+    <name>Six-Headed Cryohydra</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Hydra</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Pyrohydra</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
     <name>Spider Swarm</name>
     <entry>2</entry>
   </collection>
   <collection>
+    <name>Spirit Naga</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
     <name>Steam Mephit</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Stone Giant Elder</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Stone Giant</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Stone Golem</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
+    <name>Storm Giant</name>
+    <entry>19</entry>
   </collection>
   <collection>
     <name>Succubus</name>
@@ -1142,8 +1582,40 @@
     <entry>1</entry>
   </collection>
   <collection>
+    <name>Ten-Headed Cryohydra</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Hydra</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Pyrohydra</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
     <name>Tiefling</name>
     <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Triceratops</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Cryohydra</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Hydra</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Pyrohydra</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Tyrannosaurus</name>
+    <entry>18</entry>
   </collection>
   <collection>
     <name>Undead</name>
@@ -1152,6 +1624,26 @@
   <collection>
     <name>Vermin</name>
     <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Huge</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Large</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Medium</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Small</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Tiny</name>
+    <entry>.25</entry>
   </collection>
   <collection>
     <name>Vrock</name>
@@ -1184,6 +1676,10 @@
   <collection>
     <name>Water Mephit</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Water Naga</name>
+    <entry>7</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
@@ -1240,5 +1736,9 @@
   <collection>
     <name>Wood Elf</name>
     <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Wraith</name>
+    <entry>5</entry>
   </collection>
 </collections>
