@@ -1042,8 +1042,24 @@
     <entry>4</entry>
   </collection>
   <collection>
+    <name>Girallon</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Githyanki</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Githzerai</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
     <name>Glabrezu</name>
     <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Gnoll</name>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Goblin</name>
@@ -1098,6 +1114,10 @@
     <entry>14</entry>
   </collection>
   <collection>
+    <name>Gorgon</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
     <name>Gray Elf</name>
     <entry>1</entry>
   </collection>
@@ -1106,11 +1126,19 @@
     <entry>3</entry>
   </collection>
   <collection>
+    <name>Gray Render</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
     <name>Gray Slaad</name>
     <entry>10</entry>
   </collection>
   <collection>
     <name>Greater Barghest</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Greater Shadow</name>
     <entry>9</entry>
   </collection>
   <collection>
@@ -1174,6 +1202,22 @@
     <entry>9</entry>
   </collection>
   <collection>
+    <name>Grick</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Griffon</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Grig</name>
+    <entry>.5</entry>
+  </collection>
+  <collection>
+    <name>Grimlock</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
     <name>Guardian Naga</name>
     <entry>11</entry>
   </collection>
@@ -1188,6 +1232,26 @@
   <collection>
     <name>Half-Orc</name>
     <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Harpy</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Hawk</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Heavy Horse</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Heavy Warhorse</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Hell Hound</name>
+    <entry>4</entry>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
@@ -1218,8 +1282,28 @@
     <entry>12</entry>
   </collection>
   <collection>
+    <name>Hippogriff</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Hobgoblin</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Homunculus</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
     <name>Horned Devil (Cornugon)</name>
     <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Hound Archon</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Howler</name>
+    <entry>6</entry>
   </collection>
   <collection>
     <name>Human</name>
@@ -1228,6 +1312,10 @@
   <collection>
     <name>Humanoid</name>
     <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Hyena</name>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
@@ -1240,6 +1328,10 @@
   <collection>
     <name>Imp</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Invisible Stalker</name>
+    <entry>8</entry>
   </collection>
   <collection>
     <name>Iron Golem</name>
@@ -1262,16 +1354,84 @@
     <entry>4</entry>
   </collection>
   <collection>
+    <name>Kobold</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Kolyarut</name>
+    <entry>13</entry>
+  </collection>
+  <collection>
+    <name>Kraken</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Krenshar</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Kuo-toa</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
     <name>Lacedon</name>
     <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Lamia</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Lammasu</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Lantern Archon</name>
+    <entry>1</entry>
   </collection>
   <collection>
     <name>Lemure</name>
     <entry>2</entry>
   </collection>
   <collection>
+    <name>Leonal</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Leopard</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Light Horse</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Light Warhorse</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
     <name>Lightfoot Halfling</name>
     <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Lillend</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Lion</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Lizard</name>
+    <entry>.5</entry>
+  </collection>
+  <collection>
+    <name>Lizardfolk</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Locathah</name>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Locust Swarm</name>
@@ -1286,15 +1446,47 @@
     <entry>3</entry>
   </collection>
   <collection>
+    <name>Magmin</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Malenti</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Manta Ray</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Manticore</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
     <name>Marilith</name>
     <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Marut</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Medusa</name>
+    <entry>6</entry>
   </collection>
   <collection>
     <name>Megaraptor</name>
     <entry>8</entry>
   </collection>
   <collection>
+    <name>Merfolk</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
     <name>Minor Xorn</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Monitor Lizard</name>
     <entry>3</entry>
   </collection>
   <collection>
@@ -1338,6 +1530,10 @@
     <entry>14</entry>
   </collection>
   <collection>
+    <name>Nessian Warhound</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
     <name>Nine-Headed Cryohydra</name>
     <entry>9</entry>
   </collection>
@@ -1348,6 +1544,10 @@
   <collection>
     <name>Nine-Headed Pyrohydra</name>
     <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Nixie</name>
+    <entry>1</entry>
   </collection>
   <collection>
     <name>Noble Djinni</name>
@@ -1384,6 +1584,14 @@
   <collection>
     <name>Pit Fiend</name>
     <entry>18</entry>
+  </collection>
+  <collection>
+    <name>Pixie</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistable Dance</name>
+    <entry>1</entry>
   </collection>
   <collection>
     <name>Plant</name>
@@ -1462,6 +1670,14 @@
     <entry>1</entry>
   </collection>
   <collection>
+    <name>Sahuagin</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin Mutant</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
     <name>Salt Mephit</name>
     <entry>3</entry>
   </collection>
@@ -1480,6 +1696,10 @@
   <collection>
     <name>Seven-Headed Pyrohydra</name>
     <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Shadow</name>
+    <entry>3</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
@@ -1600,6 +1820,10 @@
   <collection>
     <name>Triceratops</name>
     <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Trumpet Archon</name>
+    <entry>12</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
@@ -1740,5 +1964,9 @@
   <collection>
     <name>Wraith</name>
     <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Zelekhut</name>
+    <entry>8</entry>
   </collection>
 </collections>
