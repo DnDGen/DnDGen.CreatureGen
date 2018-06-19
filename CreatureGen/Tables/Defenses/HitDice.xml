@@ -1482,12 +1482,36 @@
     <entry>1</entry>
   </collection>
   <collection>
+    <name>Merrow</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Mimic</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
     <name>Minor Xorn</name>
     <entry>3</entry>
   </collection>
   <collection>
+    <name>Minotaur</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Mohrg</name>
+    <entry>14</entry>
+  </collection>
+  <collection>
     <name>Monitor Lizard</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Monkey</name>
+    <entry>1</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
@@ -1522,8 +1546,72 @@
     <entry>8</entry>
   </collection>
   <collection>
+    <name>Monstrous Scorpion, Colossal</name>
+    <entry>40</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Gargantuan</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Huge</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Large</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Medium</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Small</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Tiny</name>
+    <entry>.5</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Colossal</name>
+    <entry>32</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Gargantuan</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Huge</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Large</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Medium</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Small</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Tiny</name>
+    <entry>.5</entry>
+  </collection>
+  <collection>
     <name>Mountain Dwarf</name>
     <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Mule</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Mummy</name>
+    <entry>8</entry>
   </collection>
   <collection>
     <name>Nalfeshnee</name>
@@ -1532,6 +1620,30 @@
   <collection>
     <name>Nessian Warhound</name>
     <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Night Hag</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Nightcrawler</name>
+    <entry>25</entry>
+  </collection>
+  <collection>
+    <name>Nightmare</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Nightmare, Cauchemar</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Nightwalker</name>
+    <entry>21</entry>
+  </collection>
+  <collection>
+    <name>Nightwing</name>
+    <entry>17</entry>
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
@@ -1558,8 +1670,24 @@
     <entry>15</entry>
   </collection>
   <collection>
+    <name>Nymph</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
     <name>Ochre Jelly</name>
     <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Octopus</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Ogre</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Ogre Mage</name>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Ooze</name>
@@ -1578,8 +1706,36 @@
     <entry>9</entry>
   </collection>
   <collection>
+    <name>Otyugh</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
     <name>Outsider</name>
     <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Owl</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Owlbear</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Pegasus</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Phantom Fungus</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Phase Spider</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Phasm</name>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
@@ -1602,12 +1758,52 @@
     <entry>8</entry>
   </collection>
   <collection>
+    <name>Pony</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Porpoise</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Pseudodragon</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Purple Worm</name>
+    <entry>16</entry>
+  </collection>
+  <collection>
     <name>Quasit</name>
     <entry>3</entry>
   </collection>
   <collection>
+    <name>Rakshasa</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Rast</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Rat</name>
+    <entry>.25</entry>
+  </collection>
+  <collection>
     <name>Rat Swarm</name>
     <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Raven</name>
+    <entry>.25</entry>
+  </collection>
+  <collection>
+    <name>Ravid</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Razor Boar</name>
+    <entry>15</entry>
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
@@ -1662,12 +1858,32 @@
     <entry>7</entry>
   </collection>
   <collection>
+    <name>Remorhaz</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
     <name>Retriever</name>
     <entry>10</entry>
   </collection>
   <collection>
+    <name>Rhinoceras</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Roc</name>
+    <entry>18</entry>
+  </collection>
+  <collection>
     <name>Rock Gnome</name>
     <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Roper</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Rust Monster</name>
+    <entry>5</entry>
   </collection>
   <collection>
     <name>Sahuagin</name>
@@ -1680,6 +1896,26 @@
   <collection>
     <name>Salt Mephit</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Satyr with pipes</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Satyr</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Scorpionfolk</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Scrag</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Sea Cat</name>
+    <entry>6</entry>
   </collection>
   <collection>
     <name>Sea Hag</name>
@@ -1700,6 +1936,38 @@
   <collection>
     <name>Shadow</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Shadow Mastiff</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Shambling Mound</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Shark, Huge</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Shark, Large</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Shark, Medium</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Shield Guardian</name>
+    <entry>15</entry>
+  </collection>
+  <collection>
+    <name>Shocker Lizard</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Shrieker</name>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
@@ -1762,6 +2030,18 @@
     <entry>6</entry>
   </collection>
   <collection>
+    <name>Skum</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Spectre</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Spider Eater</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
     <name>Spider Swarm</name>
     <entry>2</entry>
   </collection>
@@ -1770,8 +2050,16 @@
     <entry>9</entry>
   </collection>
   <collection>
+    <name>Squid</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
     <name>Steam Mephit</name>
     <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Stirge</name>
+    <entry>1</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
@@ -1802,6 +2090,10 @@
     <entry>1</entry>
   </collection>
   <collection>
+    <name>Tarrasque</name>
+    <entry>48</entry>
+  </collection>
+  <collection>
     <name>Ten-Headed Cryohydra</name>
     <entry>10</entry>
   </collection>
@@ -1814,12 +2106,52 @@
     <entry>10</entry>
   </collection>
   <collection>
+    <name>Tendriculos</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Thoqqua</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
     <name>Tiefling</name>
     <entry>1</entry>
   </collection>
   <collection>
+    <name>Tiger</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Titan</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Toad</name>
+    <entry>.25</entry>
+  </collection>
+  <collection>
+    <name>Treant</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
     <name>Triceratops</name>
     <entry>16</entry>
+  </collection>
+  <collection>
+    <name>Triton</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Troglodyte</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Troll</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber Hulk</name>
+    <entry>20</entry>
   </collection>
   <collection>
     <name>Trumpet Archon</name>
@@ -1842,12 +2174,32 @@
     <entry>18</entry>
   </collection>
   <collection>
+    <name>Umber Hulk</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
     <name>Undead</name>
     <entry>12</entry>
   </collection>
   <collection>
+    <name>Unicorn</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Vampire Spawn</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Vargouille</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
     <name>Vermin</name>
     <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Violet Fungus</name>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
@@ -1872,6 +2224,10 @@
   <collection>
     <name>Vrock</name>
     <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Warpony</name>
+    <entry>2</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
@@ -1904,6 +2260,10 @@
   <collection>
     <name>Water Naga</name>
     <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Weasel</name>
+    <entry>.5</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
@@ -1954,16 +2314,68 @@
     <entry>9</entry>
   </collection>
   <collection>
+    <name>Wight</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
     <name>Wild Elf</name>
     <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Will-O'-Wisp</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Winter Wolf</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Wolf</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Wolverine</name>
+    <entry>3</entry>
   </collection>
   <collection>
     <name>Wood Elf</name>
     <entry>1</entry>
   </collection>
   <collection>
+    <name>Worg</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
     <name>Wraith</name>
     <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Wyvern</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Xill</name>
+    <entry>5</entry>
+  </collection>
+  <collection>
+    <name>Yeth Hound</name>
+    <entry>3</entry>
+  </collection>
+  <collection>
+    <name>Yrthak</name>
+    <entry>12</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Abomination</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Pureblood</name>
+    <entry>4</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>

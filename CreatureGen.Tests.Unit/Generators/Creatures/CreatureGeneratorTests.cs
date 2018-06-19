@@ -362,6 +362,54 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
+        public void GenerateAdvancedCreatureWithoutSizeChange()
+        {
+            SetUpCreatureAdvancement();
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.Fail("Strength increases");
+            Assert.Fail("Dexterity decreases");
+            Assert.Fail("Constitution increases");
+            Assert.Fail("Natural Armor increases");
+            Assert.Fail("Armor Class decrease");
+            Assert.Fail("Attack Bonus decrease");
+            Assert.Fail("Natural Attack damage increase");
+            Assert.Fail("Challenge Rating increase");
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureWithSizeChange()
+        {
+            SetUpCreatureAdvancement();
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.Fail("Strength increases");
+            Assert.Fail("Dexterity decreases");
+            Assert.Fail("Constitution increases");
+            Assert.Fail("Natural Armor increases");
+            Assert.Fail("Armor Class decrease");
+            Assert.Fail("Attack Bonus decrease");
+            Assert.Fail("Natural Attack damage increase");
+            Assert.Fail("Challenge Rating increase");
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureWithMultipleSizeChanges()
+        {
+            SetUpCreatureAdvancement();
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.Fail("Strength increases");
+            Assert.Fail("Dexterity decreases");
+            Assert.Fail("Constitution increases");
+            Assert.Fail("Natural Armor increases");
+            Assert.Fail("Armor Class decrease");
+            Assert.Fail("Attack Bonus decrease");
+            Assert.Fail("Natural Attack damage increase");
+            Assert.Fail("Challenge Rating increase");
+        }
+
+        [Test]
         public void GenerateBarghest()
         {
             SetUpCreature(CreatureConstants.Barghest, CreatureConstants.Templates.None);

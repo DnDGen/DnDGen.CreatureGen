@@ -109,9 +109,18 @@ namespace CreatureGen.Generators.Creatures
 
                 if (IsBarghest(creature))
                 {
-                    creature.Abilities[AbilityConstants.Strength].BaseScore += advancement.AdditionalHitDice;
-                    creature.Abilities[AbilityConstants.Constitution].BaseScore += advancement.AdditionalHitDice;
+                    creature.Abilities[AbilityConstants.Strength].RacialAdjustment += advancement.AdditionalHitDice;
+                    creature.Abilities[AbilityConstants.Constitution].RacialAdjustment += advancement.AdditionalHitDice;
+
                     naturalArmorAdvancementAmount = advancement.AdditionalHitDice;
+                }
+                else
+                {
+                    creature.Abilities[AbilityConstants.Strength].RacialAdjustment += advancement.StrengthAdjustment;
+                    creature.Abilities[AbilityConstants.Dexterity].RacialAdjustment += advancement.DexterityAdjustment;
+                    creature.Abilities[AbilityConstants.Constitution].RacialAdjustment += advancement.ConstitutionAdjustment;
+
+                    naturalArmorAdvancementAmount = advancement.NaturalArmorAdjustment;
                 }
 
                 creature.HitPoints.RollDefault(dice);
