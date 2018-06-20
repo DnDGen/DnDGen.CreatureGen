@@ -367,14 +367,14 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreatureAdvancement();
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.Fail("Strength increases");
-            Assert.Fail("Dexterity decreases");
-            Assert.Fail("Constitution increases");
-            Assert.Fail("Natural Armor increases");
-            Assert.Fail("Armor Class decrease");
-            Assert.Fail("Attack Bonus decrease");
-            Assert.Fail("Natural Attack damage increase");
-            Assert.Fail("Challenge Rating increase");
+            Assert.Fail("Strength stay same");
+            Assert.Fail("Dexterity stay same");
+            Assert.Fail("Constitution stay same");
+            Assert.Fail("Natural Armor stay same");
+            Assert.Fail("Armor Class stay same");
+            Assert.Fail("Attack Bonus stay same");
+            Assert.Fail("Natural Attack damage stay same");
+            Assert.Fail("Challenge Rating increase by hit dice proportional to type");
         }
 
         [Test]
@@ -390,7 +390,8 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             Assert.Fail("Armor Class decrease");
             Assert.Fail("Attack Bonus decrease");
             Assert.Fail("Natural Attack damage increase");
-            Assert.Fail("Challenge Rating increase");
+            Assert.Fail("Challenge Rating increase by hit dice proportional to type");
+            Assert.Fail("Challenge Rating increase by size change");
         }
 
         [Test]
@@ -406,7 +407,25 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             Assert.Fail("Armor Class decrease");
             Assert.Fail("Attack Bonus decrease");
             Assert.Fail("Natural Attack damage increase");
-            Assert.Fail("Challenge Rating increase");
+            Assert.Fail("Challenge Rating increase by hit dice proportional to type");
+            Assert.Fail("Challenge Rating increase by size change");
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureWithSizeChangeAndMissingAbilities()
+        {
+            SetUpCreatureAdvancement();
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.Fail("Strength increases");
+            Assert.Fail("Dexterity decreases");
+            Assert.Fail("Constitution increases");
+            Assert.Fail("Natural Armor increases");
+            Assert.Fail("Armor Class decrease");
+            Assert.Fail("Attack Bonus decrease");
+            Assert.Fail("Natural Attack damage increase");
+            Assert.Fail("Challenge Rating increase by hit dice proportional to type");
+            Assert.Fail("Challenge Rating increase by size change");
         }
 
         [Test]

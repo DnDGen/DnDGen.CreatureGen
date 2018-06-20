@@ -125,5 +125,101 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             var isAdvanced = advancementSelector.IsAdvanced("creature");
             Assert.That(isAdvanced, Is.False);
         }
+
+        [Test]
+        public void GetAdvancedStrength()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedDexterity()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedConstitution()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedNaturalArmor()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedChallengeRatingBySize()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedChallengeRatingByHitDice()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedChallengeRatingBySizeAndHitDice()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedCasterLevel()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedBarghestStrengthAsAdditionalHitDice()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedBarghestConstitutionAsAdditionalHitDice()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedBarghestNaturalArmorAsAdditionalHitDice()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedBarghestCasterLevelAsAdditionalHitDice()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedGreaterBarghestStrengthAsAdditionalHitDice()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedGreaterBarghestConstitutionAsAdditionalHitDice()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedGreaterBarghestNaturalArmorAsAdditionalHitDice()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetAdvancedGreaterBarghestCasterLevelAsAdditionalHitDice()
+        {
+            Assert.Fail("not yet written");
+        }
     }
 }

@@ -121,6 +121,10 @@ namespace CreatureGen.Generators.Creatures
                     creature.Abilities[AbilityConstants.Constitution].RacialAdjustment += advancement.ConstitutionAdjustment;
 
                     naturalArmorAdvancementAmount = advancement.NaturalArmorAdjustment;
+
+                    //CR increases - per number of additional hit dice by creature type (computed here)
+                    //CR increases - if size increases (from advancement object)
+                    //Caster level - increase by advancement object
                 }
 
                 creature.HitPoints.RollDefault(dice);
@@ -138,7 +142,9 @@ namespace CreatureGen.Generators.Creatures
 
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities);
             creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(creatureName, creature.HitPoints, creature.Size, creature.Abilities, creature.Skills);
+            //Advanced - need to take size into account when computing the damage of natural attacks
             creature.Attacks = attackSelector.Select(creatureName);
+            //Take size attack bonus into account
             creature.BaseAttackBonus = ComputeBaseAttackBonus(creature.Type, creature.HitPoints);
 
             var naturalArmor = creatureData.NaturalArmor + naturalArmorAdvancementAmount;
