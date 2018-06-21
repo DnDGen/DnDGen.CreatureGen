@@ -1,4 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <collections>
+  <collection>
+    <name>Aasimar</name>
+  </collection>
+  <collection>
+    <name>Aberration</name>
+    <entry>Aberration/4</entry>
+  </collection>
+  <collection>
+    <name>Animal</name>
+    <entry>Animal/3</entry>
+  </collection>
+  <collection>
+    <name>Construct</name>
+    <entry>Construct/4</entry>
+  </collection>
+  <collection>
+    <name>Dragon</name>
+    <entry>Dragon/2</entry>
+  </collection>
+  <collection>
+    <name>Elemental</name>
+    <entry>Elemental/4</entry>
+  </collection>
+  <collection>
+    <name>Fey</name>
+    <entry>Fey/4</entry>
+  </collection>
+  <collection>
+    <name>Giant</name>
+    <entry>Giant/4</entry>
+  </collection>
+  <collection>
+    <name>Humanoid</name>
+    <entry>Humanoid/4</entry>
+  </collection>
+  <collection>
+    <name>Magical Beast</name>
+    <entry>Magical Beast/3</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Humanoid</name>
+    <entry>Monstrous Humanoid/3</entry>
+  </collection>
+  <collection>
+    <name>Ooze</name>
+    <entry>Ooze/4</entry>
+  </collection>
+  <collection>
+    <name>Outsider</name>
+    <entry>Outsider/2</entry>
+  </collection>
+  <collection>
+    <name>Plant</name>
+    <entry>Plant/4</entry>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+  </collection>
+  <collection>
+    <name>Undead</name>
+    <entry>Undead/4</entry>
+  </collection>
+  <collection>
+    <name>Vermin</name>
+    <entry>Vermin/4</entry>
+  </collection>
 </collections>
