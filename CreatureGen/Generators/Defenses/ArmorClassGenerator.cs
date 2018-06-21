@@ -24,8 +24,8 @@ namespace CreatureGen.Generators.Defenses
         {
             var armorClass = new ArmorClass();
             armorClass.Dexterity = dexterity;
-            armorClass.DeflectionBonus = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Set.Adjustments.ArmorDeflectionBonuses, creatureName);
-            armorClass.SizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Set.Adjustments.SizeModifiers, size);
+            armorClass.DeflectionBonus = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.ArmorDeflectionBonuses, creatureName);
+            armorClass.SizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, size);
             armorClass.ArmorBonus = GetArmorBonus(feats);
 
             return armorClass;
@@ -33,7 +33,7 @@ namespace CreatureGen.Generators.Defenses
 
         private int GetArmorBonus(IEnumerable<Feat> feats)
         {
-            var thingsThatGrantArmorBonuses = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.ArmorClassModifiers, GroupConstants.ArmorBonus);
+            var thingsThatGrantArmorBonuses = collectionsSelector.SelectFrom(TableNameConstants.Collection.ArmorClassModifiers, GroupConstants.ArmorBonus);
             var featsWithArmorBonuses = feats.Where(f => thingsThatGrantArmorBonuses.Contains(f.Name) && !f.Foci.Any());
             var featArmorBonuses = featsWithArmorBonuses.Select(f => f.Power);
             var featArmorBonus = featArmorBonuses.Sum();

@@ -73,5 +73,18 @@ namespace CreatureGen.Tables
                 return DataIndexConstants.InitializeData(NumberOfHands);
             }
         }
+
+        internal static class AdvancementSelectionData
+        {
+            public const int Size = 0;
+            public const int Space = 1;
+            public const int Reach = 2;
+            public const int StrengthAdjustment = 3;
+            public const int DexterityAdjustment = 4;
+            public const int ConstitutionAdjustment = 5;
+            public const int NaturalArmorAdjustment = 6;
+            public const int ChallengeRating = 7;
+            public const int CasterLevel = 8;
+        }
     }
 }

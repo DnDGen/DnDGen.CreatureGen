@@ -9,7 +9,7 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
     {
         protected override string tableName
         {
-            get { return TableNameConstants.Set.Collection.ArmorClassModifiers; }
+            get { return TableNameConstants.Collection.ArmorClassModifiers; }
         }
 
         [Test]

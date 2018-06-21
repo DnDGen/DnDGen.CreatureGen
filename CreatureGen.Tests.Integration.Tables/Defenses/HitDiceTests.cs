@@ -11,7 +11,7 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
     {
         protected override string tableName
         {
-            get { return TableNameConstants.Set.Adjustments.HitDice; }
+            get { return TableNameConstants.Adjustments.HitDice; }
         }
 
         [Test]

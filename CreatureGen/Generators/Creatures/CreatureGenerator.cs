@@ -104,28 +104,14 @@ namespace CreatureGen.Generators.Creatures
 
             if (advancementSelector.IsAdvanced(creatureName))
             {
-                var advancement = advancementSelector.SelectRandomFor(creatureName);
+                var advancement = advancementSelector.SelectRandomFor(creatureName, creature.Type);
                 creature.HitPoints.HitDiceQuantity += advancement.AdditionalHitDice;
 
-                if (IsBarghest(creature))
-                {
-                    creature.Abilities[AbilityConstants.Strength].RacialAdjustment += advancement.AdditionalHitDice;
-                    creature.Abilities[AbilityConstants.Constitution].RacialAdjustment += advancement.AdditionalHitDice;
+                creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment += advancement.StrengthAdjustment;
+                creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment += advancement.DexterityAdjustment;
+                creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment += advancement.ConstitutionAdjustment;
 
-                    naturalArmorAdvancementAmount = advancement.AdditionalHitDice;
-                }
-                else
-                {
-                    creature.Abilities[AbilityConstants.Strength].RacialAdjustment += advancement.StrengthAdjustment;
-                    creature.Abilities[AbilityConstants.Dexterity].RacialAdjustment += advancement.DexterityAdjustment;
-                    creature.Abilities[AbilityConstants.Constitution].RacialAdjustment += advancement.ConstitutionAdjustment;
-
-                    naturalArmorAdvancementAmount = advancement.NaturalArmorAdjustment;
-
-                    //CR increases - per number of additional hit dice by creature type (computed here)
-                    //CR increases - if size increases (from advancement object)
-                    //Caster level - increase by advancement object
-                }
+                naturalArmorAdvancementAmount = advancement.NaturalArmorAdjustment;
 
                 creature.HitPoints.RollDefault(dice);
                 creature.HitPoints.Roll(dice);
@@ -133,11 +119,8 @@ namespace CreatureGen.Generators.Creatures
                 creature.Size = advancement.Size;
                 creature.Space.Value = advancement.Space;
                 creature.Reach.Value = advancement.Reach;
-            }
-
-            if (IsBarghest(creature))
-            {
-                creature.CasterLevel = creature.HitPoints.RoundedHitDiceQuantity;
+                creature.CasterLevel += advancement.CasterLevelAdjustment;
+                creature.ChallengeRating = advancement.AdjustedChallengeRating;
             }
 
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities);
@@ -171,7 +154,7 @@ namespace CreatureGen.Generators.Creatures
 
             creature.InitiativeBonus = ComputeInitiative(creature.Abilities, creature.Feats);
 
-            var speeds = typeAndAmountSelector.Select(TableNameConstants.Set.Collection.Speeds, creatureName);
+            var speeds = typeAndAmountSelector.Select(TableNameConstants.Collection.Speeds, creatureName);
 
             foreach (var speedKvp in speeds)
             {
@@ -179,7 +162,7 @@ namespace CreatureGen.Generators.Creatures
                 measurement.Value = speedKvp.Amount;
 
                 if (speedKvp.Type == SpeedConstants.Fly)
-                    measurement.Description = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.AerialManeuverability, creatureName).Single();
+                    measurement.Description = collectionsSelector.SelectFrom(TableNameConstants.Collection.AerialManeuverability, creatureName).Single();
 
                 creature.Speeds[speedKvp.Type] = measurement;
             }
@@ -195,11 +178,6 @@ namespace CreatureGen.Generators.Creatures
             creature = templateApplicator.ApplyTo(creature);
 
             return creature;
-        }
-
-        private bool IsBarghest(Creature creature)
-        {
-            return creature.Name == CreatureConstants.Barghest || creature.Name == CreatureConstants.Barghest_Greater;
         }
 
         private IEnumerable<Attack> ComputeAttackBonuses(IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities, int baseAttackBonus, IEnumerable<Feat> feats)
@@ -234,7 +212,7 @@ namespace CreatureGen.Generators.Creatures
             if (!strength.HasScore)
                 return null;
 
-            var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Set.Adjustments.GrappleBonuses, size);
+            var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, size);
             return baseAttackBonus + strength.Modifier + sizeModifier;
         }
 
@@ -243,7 +221,7 @@ namespace CreatureGen.Generators.Creatures
             if (hitPoints.HitDiceQuantity == 0)
                 return 0;
 
-            var baseAttackQuality = collectionsSelector.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, creatureType.Name, GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
+            var baseAttackQuality = collectionsSelector.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, creatureType.Name, GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
 
             switch (baseAttackQuality)
             {
@@ -286,7 +264,7 @@ namespace CreatureGen.Generators.Creatures
         private CreatureType GetCreatureType(string creatureName)
         {
             var creatureType = new CreatureType();
-            var types = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creatureName);
+            var types = collectionsSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creatureName);
 
             creatureType.Name = types.First();
             creatureType.SubTypes = types.Skip(1);

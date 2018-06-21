@@ -31,7 +31,7 @@ namespace CreatureGen.Tests.Unit.Verifiers
         public void CompatibleIfNoTemplateContainsCreature()
         {
             var creatures = new[] { "other creature", "creature" };
-            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Set.Collection.CreatureGroups, "template")).Returns(creatures);
+            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "template")).Returns(creatures);
 
             var compatible = verifier.VerifyCompatibility("creature", "template");
             Assert.That(compatible, Is.True);
@@ -41,7 +41,7 @@ namespace CreatureGen.Tests.Unit.Verifiers
         public void NotCompatibleIfNoTemplateDoesNotContainCreature()
         {
             var creatures = new[] { "wrong creature", "other creature" };
-            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Set.Collection.CreatureGroups, "template")).Returns(creatures);
+            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "template")).Returns(creatures);
 
             var compatible = verifier.VerifyCompatibility("creature", "template");
             Assert.That(compatible, Is.False);

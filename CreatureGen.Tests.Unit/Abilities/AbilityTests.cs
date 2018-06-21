@@ -19,8 +19,9 @@ namespace CreatureGen.Tests.Unit.Abilities
         {
             Assert.That(ability.Name, Is.EqualTo("ability name"));
             Assert.That(ability.BaseScore, Is.EqualTo(10));
-            Assert.That(ability.RacialAdjustment, Is.EqualTo(0));
-            Assert.That(ability.Modifier, Is.EqualTo(0));
+            Assert.That(ability.RacialAdjustment, Is.Zero);
+            Assert.That(ability.AdvancementAdjustment, Is.Zero);
+            Assert.That(ability.Modifier, Is.Zero);
             Assert.That(ability.FullScore, Is.EqualTo(10));
         }
 
@@ -92,6 +93,24 @@ namespace CreatureGen.Tests.Unit.Abilities
         }
 
         [Test]
+        public void AddAdvancementAdjustment()
+        {
+            ability.AdvancementAdjustment = 9266;
+            Assert.That(ability.FullScore, Is.EqualTo(9276));
+            Assert.That(ability.Modifier, Is.EqualTo(4633));
+        }
+
+        [Test]
+        public void AddAdvancementAndRacialAdjustment()
+        {
+            ability.AdvancementAdjustment = 9266;
+            ability.RacialAdjustment = 90210;
+
+            Assert.That(ability.FullScore, Is.EqualTo(10 + 9266 + 90210));
+            Assert.That(ability.Modifier, Is.EqualTo(49738));
+        }
+
+        [Test]
         public void AbilityCannotHaveFullScoreLessThan1()
         {
             ability.RacialAdjustment = -9266;
@@ -126,6 +145,8 @@ namespace CreatureGen.Tests.Unit.Abilities
         {
             ability.BaseScore = 0;
             ability.RacialAdjustment = 9266;
+            ability.AdvancementAdjustment = 90210;
+
             Assert.That(ability.BaseScore, Is.Zero);
             Assert.That(ability.Modifier, Is.Zero);
         }

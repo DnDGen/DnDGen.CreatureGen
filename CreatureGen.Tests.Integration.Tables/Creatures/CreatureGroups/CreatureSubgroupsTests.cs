@@ -517,13 +517,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             foreach (var creature in typeCreatures)
             {
-                var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+                var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
 
                 if (AlignmentMatches(creature, alignmentGroups) && !incorporealCreatures.Contains(creature) && !creature.Contains("Celestial"))
                     validCreatures.Add(creature);
             }
 
-            var celestialCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature);
+            var celestialCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature);
 
             AssertCollection(celestialCreatures, validCreatures);
         }
@@ -531,7 +531,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         private bool AlignmentMatches(string creature, params string[] alignmentGroups)
         {
             var alignments = GetAlignments(alignmentGroups);
-            var creatureAlignmentGroups = CollectionSelector.SelectFrom(TableNameConstants.Set.Collection.AlignmentGroups, creature);
+            var creatureAlignmentGroups = CollectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, creature);
             if (!creatureAlignmentGroups.Any())
                 creatureAlignmentGroups = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral };
 
@@ -545,7 +545,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             foreach (var alignmentGroup in alignmentGroups)
             {
-                var explodedAlignments = CollectionSelector.Explode(TableNameConstants.Set.Collection.AlignmentGroups, alignmentGroup);
+                var explodedAlignments = CollectionSelector.Explode(TableNameConstants.Collection.AlignmentGroups, alignmentGroup);
                 alignments.AddRange(explodedAlignments);
             }
 
@@ -558,7 +558,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             foreach (var creatureType in types)
             {
-                var explodedType = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);
+                var explodedType = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
                 typeCreatures.AddRange(explodedType);
             }
 
@@ -596,13 +596,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             foreach (var creature in typeCreatures)
             {
-                var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+                var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
 
                 if (AlignmentMatches(creature, alignmentGroups) && !incorporealCreatures.Contains(creature) && !creature.Contains("Celestial"))
                     validCreatures.Add(creature);
             }
 
-            var celestialCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Templates.HalfCelestial);
+            var celestialCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfCelestial);
 
             AssertCollection(celestialCreatures, validCreatures);
         }
@@ -629,13 +629,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             foreach (var creature in typeCreatures)
             {
-                var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+                var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
 
                 if (!incorporealCreatures.Contains(creature))
                     validCreatures.Add(creature);
             }
 
-            var dragonCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Templates.HalfDragon);
+            var dragonCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfDragon);
 
             AssertCollection(dragonCreatures, validCreatures);
         }
@@ -671,13 +671,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             foreach (var creature in typeCreatures)
             {
-                var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+                var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
 
                 if (AlignmentMatches(creature, alignmentGroups) && !incorporealCreatures.Contains(creature) && !creature.Contains("Fiendish"))
                     validCreatures.Add(creature);
             }
 
-            var fiendishCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Templates.FiendishCreature);
+            var fiendishCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.FiendishCreature);
 
             AssertCollection(fiendishCreatures, validCreatures);
         }
@@ -713,13 +713,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             foreach (var creature in typeCreatures)
             {
-                var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+                var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
 
                 if (AlignmentMatches(creature, alignmentGroups) && !incorporealCreatures.Contains(creature) && !creature.Contains("Fiendish"))
                     validCreatures.Add(creature);
             }
 
-            var fiendishCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend);
+            var fiendishCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend);
 
             AssertCollection(fiendishCreatures, validCreatures);
         }

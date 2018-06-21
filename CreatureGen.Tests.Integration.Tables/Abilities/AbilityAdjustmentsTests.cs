@@ -28,7 +28,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         {
             get
             {
-                return TableNameConstants.Set.TypeAndAmount.AbilityAdjustments;
+                return TableNameConstants.TypeAndAmount.AbilityAdjustments;
             }
         }
 
@@ -3527,7 +3527,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Undead)]
         public void DoNotHaveConstitution(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);
+            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             AssertCollection(creatures.Intersect(table.Keys), creatures);
 
@@ -3542,7 +3542,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Subtypes.Incorporeal)]
         public void DoNotHaveStrength(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);
+            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             AssertCollection(creatures.Intersect(table.Keys), creatures);
 
@@ -3559,7 +3559,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Vermin)]
         public void DoNotHaveIntelligence(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);
+            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             AssertCollection(creatures.Intersect(table.Keys), creatures);
 
@@ -3574,7 +3574,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         [Test]
         public void AnimalsHaveLowIntelligence()
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Types.Animal);
+            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
 
             AssertCollection(creatures.Intersect(table.Keys), creatures);
 
@@ -3602,7 +3602,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Plant, Ignore = "Some plants lack intelligence")]
         public void HaveAllAbilities(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);
+            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             AssertCollection(creatures.Intersect(table.Keys), creatures);
 

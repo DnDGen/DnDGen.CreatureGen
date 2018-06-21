@@ -19,6 +19,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             Assert.That(selection.AdditionalHitDice, Is.EqualTo(0));
             Assert.That(selection.AdjustedChallengeRating, Is.Empty);
+            Assert.That(selection.CasterLevelAdjustment, Is.EqualTo(0));
             Assert.That(selection.ConstitutionAdjustment, Is.EqualTo(0));
             Assert.That(selection.DexterityAdjustment, Is.EqualTo(0));
             Assert.That(selection.NaturalArmorAdjustment, Is.EqualTo(0));

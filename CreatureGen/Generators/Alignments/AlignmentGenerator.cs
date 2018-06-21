@@ -15,7 +15,7 @@ namespace CreatureGen.Generators.Alignments
 
         public Alignment Generate(string creatureName)
         {
-            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(TableNameConstants.Set.Collection.AlignmentGroups, creatureName);
+            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, creatureName);
             var randomAlignment = collectionSelector.SelectRandomFrom(weightedAlignments);
 
             return new Alignment(randomAlignment);

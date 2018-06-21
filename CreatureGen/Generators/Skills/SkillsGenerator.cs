@@ -39,7 +39,7 @@ namespace CreatureGen.Generators.Skills
             if (!abilities[AbilityConstants.Intelligence].HasScore)
                 return Enumerable.Empty<Skill>();
 
-            var skillNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, creatureName);
+            var skillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, creatureName);
             if (!skillNames.Any())
                 return Enumerable.Empty<Skill>();
 
@@ -100,7 +100,7 @@ namespace CreatureGen.Generators.Skills
             if (skillSelection.RandomFociQuantity == 0)
                 return new[] { skillSelection };
 
-            var skillFoci = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, skillSelection.SkillName).ToList();
+            var skillFoci = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, skillSelection.SkillName).ToList();
 
             if (skillSelection.RandomFociQuantity >= skillFoci.Count)
             {
@@ -128,7 +128,7 @@ namespace CreatureGen.Generators.Skills
         private IEnumerable<Skill> InitializeSkills(Dictionary<string, Ability> abilities, IEnumerable<SkillSelection> skillSelections, HitPoints hitPoints)
         {
             var skills = new List<Skill>();
-            var skillsWithArmorCheckPenalties = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, GroupConstants.ArmorCheckPenalty);
+            var skillsWithArmorCheckPenalties = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.ArmorCheckPenalty);
 
             foreach (var skillSelection in skillSelections)
             {
@@ -152,7 +152,7 @@ namespace CreatureGen.Generators.Skills
             if (hitDieQuantity == 0)
                 return 0;
 
-            var points = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Set.Adjustments.SkillPoints, creatureType.Name);
+            var points = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SkillPoints, creatureType.Name);
             var perHitDie = Math.Max(1, points + intelligence.Modifier);
             var multiplier = hitDieQuantity + 3;
             var total = perHitDie * multiplier;
@@ -167,7 +167,7 @@ namespace CreatureGen.Generators.Skills
             foreach (var skill in skillsWarrantingSynergy)
             {
                 var name = skill.Focus.Any() ? $"{skill.Name}/{skill.Focus}" : skill.Name;
-                var synergySkillNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SkillSynergy, name);
+                var synergySkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillSynergy, name);
 
                 foreach (var synergySkillName in synergySkillNames)
                 {
@@ -183,9 +183,9 @@ namespace CreatureGen.Generators.Skills
 
         public IEnumerable<Skill> ApplyBonusesFromFeats(IEnumerable<Skill> skills, IEnumerable<Feat> feats)
         {
-            var allFeatGrantingSkillBonuses = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, FeatConstants.SpecialQualities.SkillBonus);
+            var allFeatGrantingSkillBonuses = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, FeatConstants.SpecialQualities.SkillBonus);
             var featGrantingSkillBonuses = feats.Where(f => allFeatGrantingSkillBonuses.Contains(f.Name));
-            var allSkillFocusNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, GroupConstants.Skills);
+            var allSkillFocusNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, GroupConstants.Skills);
 
             foreach (var feat in featGrantingSkillBonuses)
             {
@@ -211,7 +211,7 @@ namespace CreatureGen.Generators.Skills
                 }
                 else
                 {
-                    var skillsToReceiveBonus = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SkillGroups, feat.Name);
+                    var skillsToReceiveBonus = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, feat.Name);
 
                     foreach (var skillName in skillsToReceiveBonus)
                     {

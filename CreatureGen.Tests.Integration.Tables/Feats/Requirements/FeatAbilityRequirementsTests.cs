@@ -15,7 +15,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         {
             get
             {
-                return TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements;
+                return TableNameConstants.TypeAndAmount.FeatAbilityRequirements;
             }
         }
 

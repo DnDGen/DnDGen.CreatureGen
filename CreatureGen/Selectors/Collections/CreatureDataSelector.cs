@@ -18,7 +18,7 @@ namespace CreatureGen.Selectors.Collections
         public CreatureDataSelection SelectFor(string creatureName)
         {
             var selection = new CreatureDataSelection();
-            var data = collectionSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureData, creatureName).ToArray();
+            var data = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureData, creatureName).ToArray();
 
             selection.ChallengeRating = data[DataIndexConstants.CreatureData.ChallengeRating];
 

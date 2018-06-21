@@ -9,7 +9,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
     {
         protected override string tableName
         {
-            get { return TableNameConstants.Set.Adjustments.SkillPoints; }
+            get { return TableNameConstants.Adjustments.SkillPoints; }
         }
 
         [Test]

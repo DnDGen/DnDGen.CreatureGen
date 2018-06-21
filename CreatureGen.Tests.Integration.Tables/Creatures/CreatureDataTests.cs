@@ -14,7 +14,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         {
             get
             {
-                return TableNameConstants.Set.Collection.CreatureData;
+                return TableNameConstants.Collection.CreatureData;
             }
         }
 
@@ -647,46 +647,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AllCreaturesHaveCorrectChallengeRatings()
         {
-            var challengeRatings = new[]
-            {
-                ChallengeRatingConstants.Eight,
-                ChallengeRatingConstants.Eighteen,
-                ChallengeRatingConstants.Eleven,
-                ChallengeRatingConstants.Fifteen,
-                ChallengeRatingConstants.Five,
-                ChallengeRatingConstants.Four,
-                ChallengeRatingConstants.Fourteen,
-                ChallengeRatingConstants.Nine,
-                ChallengeRatingConstants.Nineteen,
-                ChallengeRatingConstants.One,
-                ChallengeRatingConstants.OneEighth,
-                ChallengeRatingConstants.OneFourth,
-                ChallengeRatingConstants.OneHalf,
-                ChallengeRatingConstants.OneSixth,
-                ChallengeRatingConstants.OneTenth,
-                ChallengeRatingConstants.OneThird,
-                ChallengeRatingConstants.Seven,
-                ChallengeRatingConstants.Seventeen,
-                ChallengeRatingConstants.Six,
-                ChallengeRatingConstants.Sixteen,
-                ChallengeRatingConstants.Ten,
-                ChallengeRatingConstants.Thirteen,
-                ChallengeRatingConstants.Thirty,
-                ChallengeRatingConstants.Three,
-                ChallengeRatingConstants.Twelve,
-                ChallengeRatingConstants.Twenty,
-                ChallengeRatingConstants.TwentyEight,
-                ChallengeRatingConstants.TwentyFive,
-                ChallengeRatingConstants.TwentyFour,
-                ChallengeRatingConstants.TwentyNine,
-                ChallengeRatingConstants.TwentyOne,
-                ChallengeRatingConstants.TwentySeven,
-                ChallengeRatingConstants.TwentySix,
-                ChallengeRatingConstants.TwentyThree,
-                ChallengeRatingConstants.TwentyTwo,
-                ChallengeRatingConstants.Two,
-                ChallengeRatingConstants.Zero,
-            };
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
 
             foreach (var kvp in table)
             {

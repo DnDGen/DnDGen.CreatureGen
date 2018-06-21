@@ -11,7 +11,7 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
         {
             get
             {
-                return TableNameConstants.Set.Adjustments.SizeModifiers;
+                return TableNameConstants.Adjustments.SizeModifiers;
             }
         }
 

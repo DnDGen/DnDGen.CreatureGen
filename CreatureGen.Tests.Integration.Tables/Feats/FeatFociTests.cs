@@ -11,7 +11,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
     {
         protected override string tableName
         {
-            get { return TableNameConstants.Set.Collection.FeatFoci; }
+            get { return TableNameConstants.Collection.FeatFoci; }
         }
 
         [Test]

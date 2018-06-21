@@ -31,12 +31,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             featsData = new Dictionary<string, IEnumerable<string>>();
             specialQualitiesData = new List<string>();
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, It.IsAny<string>())).Returns(Enumerable.Empty<string>());
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredSizes, It.IsAny<string>())).Returns(Enumerable.Empty<string>());
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, It.IsAny<string>()))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, It.IsAny<string>())).Returns(Enumerable.Empty<string>());
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, It.IsAny<string>())).Returns(Enumerable.Empty<string>());
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, It.IsAny<string>()))
                 .Returns(Enumerable.Empty<TypeAndAmountSelection>());
-            mockCollectionsSelector.Setup(s => s.SelectAllFrom(TableNameConstants.Set.Collection.FeatData)).Returns(featsData);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SpecialQualityData, "creature")).Returns(specialQualitiesData);
+            mockCollectionsSelector.Setup(s => s.SelectAllFrom(TableNameConstants.Collection.FeatData)).Returns(featsData);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SpecialQualityData, "creature")).Returns(specialQualitiesData);
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetNoSpecialQualities()
         {
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SpecialQualityData, "creature")).Returns(Enumerable.Empty<string>());
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SpecialQualityData, "creature")).Returns(Enumerable.Empty<string>());
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities, Is.Empty);
@@ -208,7 +208,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "ability", Amount = 9266 }
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality"))
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality"))
                 .Returns(abilityRequirements);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
@@ -243,7 +243,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "other ability", Amount = 90210 }
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality"))
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality"))
                 .Returns(abilityRequirements);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
@@ -348,7 +348,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "required feat"
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -383,7 +383,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "required feat/required focus"
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -419,7 +419,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -459,7 +459,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat/other required focus",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -499,7 +499,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -691,7 +691,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             featsData["feat"] = BuildFeatData();
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.TakenMultipleTimes)).Returns(new[] { "wrong feat", "feat" });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.TakenMultipleTimes)).Returns(new[] { "wrong feat", "feat" });
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -813,7 +813,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "ability", Amount = 9266 }
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat"))
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat"))
                 .Returns(abilityRequirements);
 
             var feats = featsSelector.SelectFeats();
@@ -848,7 +848,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "other ability", Amount = 90210 },
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat"))
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat"))
                 .Returns(abilityRequirements);
 
             var feats = featsSelector.SelectFeats();
@@ -907,7 +907,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "required feat"
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -942,7 +942,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "required feat/required focus"
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -978,7 +978,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1018,7 +1018,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat/other required focus",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1057,7 +1057,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "required feat/required focus,other required focus",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1095,7 +1095,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat/other required focus",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1134,7 +1134,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "skill", Amount = 9266 },
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1169,7 +1169,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "skill/focus", Amount = 9266 },
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1205,7 +1205,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "other skill", Amount = 90210 },
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1246,7 +1246,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "other skill/other focus", Amount = 90210 },
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1287,7 +1287,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "other skill/other focus", Amount = 90210 },
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "feat")).Returns(skillRankRequirements);
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1327,7 +1327,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 GroupConstants.WeaponProficiency
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1362,7 +1362,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 $"{GroupConstants.WeaponProficiency}/{WeaponConstants.HandCrossbow},{WeaponConstants.HeavyCrossbow},{WeaponConstants.LightCrossbow}"
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "feat")).Returns(requiredFeats);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1429,7 +1429,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "speed", Amount = 9266 },
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(speedRequirements);
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(speedRequirements);
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1454,7 +1454,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "other speed", Amount = 90210 },
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(speedRequirements);
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(speedRequirements);
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1476,7 +1476,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             featsData["feat"] = BuildFeatData();
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(Enumerable.Empty<TypeAndAmountSelection>());
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(Enumerable.Empty<TypeAndAmountSelection>());
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1603,7 +1603,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             featsData["feat"] = BuildFeatData();
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredSizes, "feat"))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "feat"))
                 .Returns(new[] { "size" });
 
             var feats = featsSelector.SelectFeats();
@@ -1621,7 +1621,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             featsData["feat"] = BuildFeatData();
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.RequiredSizes, "feat"))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "feat"))
                 .Returns(new[] { "size", "other size" });
 
             var feats = featsSelector.SelectFeats();

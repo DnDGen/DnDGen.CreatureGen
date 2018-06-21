@@ -55,19 +55,19 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             fortitudeSaveFeats.Add("other feat");
             willSaveFeats.Add("other feat");
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SavingThrows))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SavingThrows))
                 .Returns(allSaveFeats);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, SaveConstants.Fortitude))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Fortitude))
                 .Returns(fortitudeSaveFeats);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, SaveConstants.Reflex))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Reflex))
                 .Returns(reflexSaveFeats);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, SaveConstants.Will))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Will))
                 .Returns(willSaveFeats);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.CreatureGroups, SaveConstants.Fortitude))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, SaveConstants.Fortitude))
                 .Returns(strongFortitude);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.CreatureGroups, SaveConstants.Reflex))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, SaveConstants.Reflex))
                 .Returns(strongReflex);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.CreatureGroups, SaveConstants.Will))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, SaveConstants.Will))
                 .Returns(strongWill);
         }
 

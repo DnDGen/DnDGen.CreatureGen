@@ -1,5 +1,5 @@
-﻿using CreatureGen.Tables;
-using CreatureGen.Skills;
+﻿using CreatureGen.Skills;
+using CreatureGen.Tables;
 using NUnit.Framework;
 
 namespace CreatureGen.Tests.Integration.Tables.Skills
@@ -9,13 +9,13 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
     {
         protected override string tableName
         {
-            get { return TableNameConstants.Set.Collection.SkillSynergy; }
+            get { return TableNameConstants.Collection.SkillSynergy; }
         }
 
         [Test]
         public void CollectionNames()
         {
-            var featFoci = CollectionMapper.Map(TableNameConstants.Set.Collection.FeatFoci);
+            var featFoci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
             AssertCollectionNames(featFoci[GroupConstants.Skills]);
         }
 

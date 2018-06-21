@@ -30,7 +30,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         {
             get
             {
-                return TableNameConstants.Set.Collection.AlignmentGroups;
+                return TableNameConstants.Collection.AlignmentGroups;
             }
         }
 
@@ -985,7 +985,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Types.Vermin)]
         public void AllCreaturesOfTypeHaveNoAlignmentOrAreTrueNeutral(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);
+            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             AssertCollection(creatures.Intersect(table.Keys), creatures);
 
@@ -1012,7 +1012,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Types.Undead)]
         public void AllCreaturesOfTypeHaveAlignment(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, creatureType);
+            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             AssertCollection(creatures.Intersect(table.Keys), creatures);
 

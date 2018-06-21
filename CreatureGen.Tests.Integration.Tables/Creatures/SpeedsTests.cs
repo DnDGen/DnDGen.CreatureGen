@@ -25,7 +25,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
 
         protected override string tableName
         {
-            get { return TableNameConstants.Set.Collection.Speeds; }
+            get { return TableNameConstants.Collection.Speeds; }
         }
 
         [SetUp]
@@ -1123,7 +1123,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AllAquaticCreaturesHaveSwimSpeeds()
         {
-            var aquaticCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Aquatic);
+            var aquaticCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Aquatic);
 
             AssertCollection(aquaticCreatures.Intersect(table.Keys), aquaticCreatures);
 
@@ -1141,7 +1141,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AllWaterCreaturesHaveSwimSpeeds()
         {
-            var aquaticCreatures = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Water);
+            var aquaticCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Water);
 
             AssertCollection(aquaticCreatures.Intersect(table.Keys), aquaticCreatures);
 

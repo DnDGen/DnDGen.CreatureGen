@@ -19,7 +19,7 @@ namespace CreatureGen.Verifiers
             if (templateName == CreatureConstants.Templates.None)
                 return true;
 
-            var templateCreatures = collectionsSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, templateName);
+            var templateCreatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, templateName);
             return templateCreatures.Contains(creatureName);
         }
     }

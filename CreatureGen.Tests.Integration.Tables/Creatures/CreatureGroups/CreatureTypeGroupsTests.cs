@@ -694,9 +694,9 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             foreach (var type in allTypes)
             {
                 Assert.That(table.Keys, Contains.Item(type), "Table keys");
-                var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, type);
+                var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
 
-                var allCreatureTypes = CollectionSelector.SelectAllFrom(TableNameConstants.Set.Collection.CreatureTypes);
+                var allCreatureTypes = CollectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
                 var creatures = allCreatureTypes.Where(t => t.Value.First() == type).Select(t => t.Key);
 
                 AssertCollection(creaturesOfType, creatures, type);
@@ -711,9 +711,9 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             foreach (var subtype in allSubTypes)
             {
                 Assert.That(table.Keys, Contains.Item(subtype), "Table keys");
-                var creaturesOfSubtype = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, subtype);
+                var creaturesOfSubtype = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
 
-                var allCreatureTypes = CollectionSelector.SelectAllFrom(TableNameConstants.Set.Collection.CreatureTypes);
+                var allCreatureTypes = CollectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
                 var creatures = allCreatureTypes.Where(t => t.Value.Skip(1).Contains(subtype)).Select(t => t.Key);
 
                 AssertCollection(creaturesOfSubtype, creatures, subtype);

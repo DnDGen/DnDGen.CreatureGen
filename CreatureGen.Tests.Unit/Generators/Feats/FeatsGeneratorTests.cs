@@ -477,7 +477,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             hitPoints.HitDiceQuantity = 2;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { metaraceFeat.Feat });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { metaraceFeat.Feat });
 
             var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
             var onlyFeat = feats.Single();
@@ -496,7 +496,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             hitPoints.HitDiceQuantity = 2;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { "other feat" });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { "other feat" });
 
             var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
             var feat = feats.Single();

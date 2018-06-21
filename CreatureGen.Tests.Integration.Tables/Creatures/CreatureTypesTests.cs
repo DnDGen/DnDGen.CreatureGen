@@ -22,7 +22,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         {
             get
             {
-                return TableNameConstants.Set.Collection.CreatureTypes;
+                return TableNameConstants.Collection.CreatureTypes;
             }
         }
 
@@ -1179,7 +1179,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(types.Take(1), Is.SubsetOf(allTypes), creature);
 
                 var type = types.First();
-                var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, type);
+                var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
                 Assert.That(creaturesOfType, Contains.Item(creature), type);
             }
         }
@@ -1199,7 +1199,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var subtype in subtypes)
             {
-                var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Set.Collection.CreatureGroups, subtype);
+                var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
                 Assert.That(creaturesOfType, Contains.Item(creature), subtype);
             }
         }

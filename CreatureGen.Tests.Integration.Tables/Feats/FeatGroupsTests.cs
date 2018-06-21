@@ -10,7 +10,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
     {
         protected override string tableName
         {
-            get { return TableNameConstants.Set.Collection.FeatGroups; }
+            get { return TableNameConstants.Collection.FeatGroups; }
         }
 
         [Test]

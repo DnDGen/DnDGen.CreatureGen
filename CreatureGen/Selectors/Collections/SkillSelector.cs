@@ -17,7 +17,7 @@ namespace CreatureGen.Selectors.Collections
 
         public SkillSelection SelectFor(string skill)
         {
-            var data = innerSelector.SelectFrom(TableNameConstants.Set.Collection.SkillData, skill).ToArray();
+            var data = innerSelector.SelectFrom(TableNameConstants.Collection.SkillData, skill).ToArray();
 
             var selection = new SkillSelection();
             selection.BaseAbilityName = data[DataIndexConstants.SkillSelectionData.BaseStatName];

@@ -33,7 +33,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             data[DataIndexConstants.CreatureData.NaturalArmor] = "1337";
             data[DataIndexConstants.CreatureData.NumberOfHands] = "1336";
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.CreatureData, Creature))
+            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureData, Creature))
                 .Returns(data);
         }
 

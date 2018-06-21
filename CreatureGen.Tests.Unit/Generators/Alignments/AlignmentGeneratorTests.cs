@@ -29,7 +29,7 @@ namespace CreatureGen.Tests.Unit.Generators.Alignments
         [Test]
         public void GenerateAlignment()
         {
-            mockCollectionSelector.Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Set.Collection.AlignmentGroups, "creature name"))
+            mockCollectionSelector.Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness"
@@ -42,7 +42,7 @@ namespace CreatureGen.Tests.Unit.Generators.Alignments
         [Test]
         public void GenerateRandomAlignment()
         {
-            mockCollectionSelector.Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Set.Collection.AlignmentGroups, "creature name"))
+            mockCollectionSelector.Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -58,7 +58,7 @@ namespace CreatureGen.Tests.Unit.Generators.Alignments
         [Test]
         public void GenerateRandomWeightedAlignment()
         {
-            mockCollectionSelector.Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Set.Collection.AlignmentGroups, "creature name"))
+            mockCollectionSelector.Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -75,7 +75,7 @@ namespace CreatureGen.Tests.Unit.Generators.Alignments
         [Test]
         public void GenerateRandomAlignmentFromMultipleGroups()
         {
-            mockCollectionSelector.Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Set.Collection.AlignmentGroups, "creature name"))
+            mockCollectionSelector.Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -93,7 +93,7 @@ namespace CreatureGen.Tests.Unit.Generators.Alignments
         [Test]
         public void GenerateRandomWeightedAlignmentFromMultipleGroups()
         {
-            mockCollectionSelector.Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Set.Collection.AlignmentGroups, "creature name"))
+            mockCollectionSelector.Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",

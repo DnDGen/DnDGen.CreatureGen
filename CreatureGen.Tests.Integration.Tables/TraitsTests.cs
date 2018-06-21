@@ -8,7 +8,7 @@ namespace CreatureGen.Tests.Integration.Tables
     {
         protected override string tableName
         {
-            get { return TableNameConstants.Set.Percentile.Traits; }
+            get { return TableNameConstants.Percentile.Traits; }
         }
 
         [TestCase(1, 1, "Distinctive scar")]

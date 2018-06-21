@@ -12,7 +12,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         {
             get
             {
-                return TableNameConstants.Set.Collection.CreatureGroups;
+                return TableNameConstants.Collection.CreatureGroups;
             }
         }
 

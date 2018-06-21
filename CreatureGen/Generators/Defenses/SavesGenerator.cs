@@ -41,7 +41,7 @@ namespace CreatureGen.Generators.Defenses
 
         private bool IsBonusCircumstantial(IEnumerable<Feat> feats)
         {
-            var anySavingThrowFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SavingThrows);
+            var anySavingThrowFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SavingThrows);
             var anySavingThrowFeats = feats.Where(f => anySavingThrowFeatNames.Contains(f.Name));
 
             var isCircumstantial = anySavingThrowFeats.Any(ft => ft.Foci.Any(f => FocusHasCircumstance(f)));
@@ -66,7 +66,7 @@ namespace CreatureGen.Generators.Defenses
             if (hitPoints.HitDiceQuantity == 0)
                 return 0;
 
-            var strongSaves = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.CreatureGroups, saveName);
+            var strongSaves = collectionsSelector.SelectFrom(TableNameConstants.Collection.CreatureGroups, saveName);
 
             if (strongSaves.Contains(creatureType.Name))
                 return hitPoints.RoundedHitDiceQuantity / 2 + 2;
@@ -84,12 +84,12 @@ namespace CreatureGen.Generators.Defenses
 
         private int GetFeatSavingThrowBonus(IEnumerable<Feat> feats, string saveName)
         {
-            var saveFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, saveName);
+            var saveFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, saveName);
             var saveFeats = feats.Where(f => saveFeatNames.Contains(f.Name));
 
             var bonus = saveFeats.Sum(f => f.Power);
 
-            var anySavingThrowFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.SavingThrows);
+            var anySavingThrowFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SavingThrows);
             var anySavingThrowFeats = feats.Where(f => anySavingThrowFeatNames.Contains(f.Name));
 
             foreach (var feat in anySavingThrowFeats)

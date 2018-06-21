@@ -20,7 +20,7 @@ namespace CreatureGen.Selectors.Collections
 
         public IEnumerable<FeatSelection> SelectFeats()
         {
-            var featData = collectionsSelector.SelectAllFrom(TableNameConstants.Set.Collection.FeatData);
+            var featData = collectionsSelector.SelectAllFrom(TableNameConstants.Collection.FeatData);
             var featSelections = new List<FeatSelection>();
 
             foreach (var dataKVP in featData)
@@ -54,9 +54,9 @@ namespace CreatureGen.Selectors.Collections
             featSelection.RequiredSkills = GetRequiredSkills(featSelection.Feat);
             featSelection.RequiredAbilities = GetRequiredAbilities(featSelection.Feat);
             featSelection.RequiredSpeeds = GetRequiredSpeeds(featSelection.Feat);
-            featSelection.RequiredSizes = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.RequiredSizes, featSelection.Feat);
+            featSelection.RequiredSizes = collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredSizes, featSelection.Feat);
 
-            var featsTakenMultipleTimes = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.TakenMultipleTimes);
+            var featsTakenMultipleTimes = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.TakenMultipleTimes);
             featSelection.CanBeTakenMultipleTimes = featsTakenMultipleTimes.Contains(featSelection.Feat);
 
             return featSelection;
@@ -64,7 +64,7 @@ namespace CreatureGen.Selectors.Collections
 
         private Dictionary<string, int> GetRequiredAbilities(string feat)
         {
-            var requiredAbilitiesAndValues = typeAndAmountSelector.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, feat);
+            var requiredAbilitiesAndValues = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, feat);
             var requiredAbilities = new Dictionary<string, int>();
 
             foreach (var selection in requiredAbilitiesAndValues)
@@ -77,7 +77,7 @@ namespace CreatureGen.Selectors.Collections
 
         private Dictionary<string, int> GetRequiredSpeeds(string feat)
         {
-            var requiredSpeedsAndValues = typeAndAmountSelector.Select(TableNameConstants.Set.TypeAndAmount.FeatSpeedRequirements, feat);
+            var requiredSpeedsAndValues = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, feat);
             var requiredSpeeds = new Dictionary<string, int>();
 
             foreach (var selection in requiredSpeedsAndValues)
@@ -90,7 +90,7 @@ namespace CreatureGen.Selectors.Collections
 
         private IEnumerable<RequiredSkillSelection> GetRequiredSkills(string feat)
         {
-            var requiredSkillsAndRanks = typeAndAmountSelector.Select(TableNameConstants.Set.TypeAndAmount.FeatSkillRankRequirements, feat);
+            var requiredSkillsAndRanks = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, feat);
             var requiredSkillSelections = new List<RequiredSkillSelection>();
 
             foreach (var selection in requiredSkillsAndRanks)
@@ -117,7 +117,7 @@ namespace CreatureGen.Selectors.Collections
 
         public IEnumerable<SpecialQualitySelection> SelectSpecialQualities(string creature)
         {
-            var specialQualities = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.SpecialQualityData, creature);
+            var specialQualities = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpecialQualityData, creature);
             if (!specialQualities.Any())
                 return Enumerable.Empty<SpecialQualitySelection>();
 
@@ -149,7 +149,7 @@ namespace CreatureGen.Selectors.Collections
 
         private IEnumerable<RequiredFeatSelection> GetRequiredFeats(string feat)
         {
-            var requiredFeatsData = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.RequiredFeats, feat);
+            var requiredFeatsData = collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredFeats, feat);
             var requiredFeatsSelections = new List<RequiredFeatSelection>();
 
             foreach (var requiredFeatData in requiredFeatsData)

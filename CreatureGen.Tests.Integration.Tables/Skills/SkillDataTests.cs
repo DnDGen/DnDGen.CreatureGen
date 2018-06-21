@@ -11,15 +11,15 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
     {
         protected override string tableName
         {
-            get { return TableNameConstants.Set.Collection.SkillData; }
+            get { return TableNameConstants.Collection.SkillData; }
         }
 
         [Test]
         public void CollectionNames()
         {
-            var skillGroups = CollectionMapper.Map(TableNameConstants.Set.Collection.SkillGroups);
+            var skillGroups = CollectionMapper.Map(TableNameConstants.Collection.SkillGroups);
             //INFO: Getting the feat foci of skills includes foci for skills such as profession or craft
-            var featFoci = CollectionMapper.Map(TableNameConstants.Set.Collection.FeatFoci);
+            var featFoci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
             var otherSkills = new[]
             {
                 SkillConstants.Craft + "2",

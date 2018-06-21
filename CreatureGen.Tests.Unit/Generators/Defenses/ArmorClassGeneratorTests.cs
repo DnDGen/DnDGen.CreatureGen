@@ -30,9 +30,9 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             feats = new List<Feat>();
             dexterity = new Ability(AbilityConstants.Dexterity);
 
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.SizeModifiers, "size")).Returns(0);
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.ArmorDeflectionBonuses, "creature")).Returns(0);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.ArmorClassModifiers, GroupConstants.NaturalArmor)).Returns(Enumerable.Empty<string>());
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(0);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.ArmorDeflectionBonuses, "creature")).Returns(0);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.ArmorClassModifiers, GroupConstants.NaturalArmor)).Returns(Enumerable.Empty<string>());
         }
 
         [Test]
@@ -56,7 +56,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         [Test]
         public void AddArmorBonusFromFeats()
         {
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.ArmorClassModifiers, GroupConstants.ArmorBonus))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.ArmorClassModifiers, GroupConstants.ArmorBonus))
                 .Returns(new[] { "bracers", "other item", "feat", "wrong feat" });
 
             feats.Add(new Feat());
@@ -87,7 +87,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         [Test]
         public void DeflectionBonusApplied()
         {
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.ArmorDeflectionBonuses, "creature")).Returns(1);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.ArmorDeflectionBonuses, "creature")).Returns(1);
 
             var armorClass = GenerateAndAssertArmorClass(11, 11, 11);
             Assert.That(armorClass.DeflectionBonus, Is.EqualTo(1));
@@ -96,7 +96,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         [Test]
         public void SizeModifiesArmorClass()
         {
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.SizeModifiers, "size")).Returns(9266);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(9266);
 
             var armorClass = GenerateAndAssertArmorClass(9276, 9276, 9276);
             Assert.That(armorClass.SizeModifier, Is.EqualTo(9266));
@@ -105,7 +105,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         [Test]
         public void SizeModifiesArmorClassNegatively()
         {
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.SizeModifiers, "size")).Returns(-4);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(-4);
 
             var armorClass = GenerateAndAssertArmorClass(6, 6, 6);
             Assert.That(armorClass.SizeModifier, Is.EqualTo(-4));
@@ -126,11 +126,11 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             otherFeat.Power = 1;
             feats.Add(otherFeat);
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.ArmorClassModifiers, GroupConstants.ArmorBonus))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.ArmorClassModifiers, GroupConstants.ArmorBonus))
                 .Returns(new[] { "feat 1" });
 
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.SizeModifiers, "size")).Returns(1);
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.ArmorDeflectionBonuses, "creature")).Returns(1);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(1);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.ArmorDeflectionBonuses, "creature")).Returns(1);
 
             var armorClass = GenerateAndAssertArmorClass(14, 13, 13);
             Assert.That(armorClass.ArmorBonus, Is.EqualTo(1));

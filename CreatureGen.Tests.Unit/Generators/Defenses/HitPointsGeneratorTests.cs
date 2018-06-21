@@ -40,8 +40,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             SetUpRoll(9266, 90210, 42);
             SetUpAverageRoll("9266d90210", 600.5);
 
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<double>(TableNameConstants.Set.Adjustments.HitDice, "creature")).Returns(9266);
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.HitDice, creatureType.Name)).Returns(90210);
+            mockAdjustmentSelector.Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "creature")).Returns(9266);
+            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, creatureType.Name)).Returns(90210);
 
             mockDice.Setup(d => d.Roll(It.IsAny<int>())).Returns((int q) => mockPartialRolls[q].Object);
         }

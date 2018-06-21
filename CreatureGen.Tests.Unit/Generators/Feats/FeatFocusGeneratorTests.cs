@@ -43,10 +43,10 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             focusTypes[GroupConstants.Skills] = featSkillFoci;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, It.IsAny<string>())).Returns((string table, string name) => focusTypes[name]);
-            mockCollectionsSelector.Setup(s => s.IsCollection(TableNameConstants.Set.Collection.FeatFoci, It.IsAny<string>())).Returns((string table, string name) => focusTypes.ContainsKey(name));
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatFoci, It.IsAny<string>())).Returns((string table, string name) => focusTypes[name]);
+            mockCollectionsSelector.Setup(s => s.IsCollection(TableNameConstants.Collection.FeatFoci, It.IsAny<string>())).Returns((string table, string name) => focusTypes.ContainsKey(name));
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.First());
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, It.IsAny<string>())).Returns(Enumerable.Empty<TypeAndAmountSelection>());
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, It.IsAny<string>())).Returns(Enumerable.Empty<TypeAndAmountSelection>());
         }
 
         [Test]
@@ -55,7 +55,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[""] = new[] { "school 1" };
 
             var focus = featFocusGenerator.GenerateFrom("featToFill", string.Empty, skills, requiredFeats, otherFeats, 1, abilities);
-            mockCollectionsSelector.Verify(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, It.IsAny<string>()), Times.Never);
+            mockCollectionsSelector.Verify(s => s.SelectFrom(TableNameConstants.Collection.FeatFoci, It.IsAny<string>()), Times.Never);
             Assert.That(focus, Is.Empty);
         }
 
@@ -212,7 +212,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "school 2", "school 3", "school 1", "weird weapon", "school 5" };
 
             var proficiencyFeats = new[] { "proficiency1", "proficiency2", FeatConstants.WeaponProficiency_Martial };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.ElementAt(1));
 
@@ -232,7 +232,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "school 2", "school 3", "school 1", "school 4", "school 5" };
 
             var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             var focus = featFocusGenerator.GenerateFrom("featToFill", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
             Assert.That(focus, Is.EqualTo("school 2"));
@@ -251,7 +251,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "school 2", "school 3", "school 1", "school 4", "school 5" };
 
             var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             var focus = featFocusGenerator.GenerateFrom("featToFill", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
             Assert.That(focus, Is.EqualTo("school 2"));
@@ -269,7 +269,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "specific weapon", "other weapon", "wrong weapon" };
 
             var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             var focus = featFocusGenerator.GenerateFrom("featToFill", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
             Assert.That(focus, Is.EqualTo("specific weapon"));
@@ -287,7 +287,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "specific weapon", "other weapon", "wrong weapon" };
 
             var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             var focus = featFocusGenerator.GenerateFrom("featToFill", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
             Assert.That(focus, Is.EqualTo("specific weapon"));
@@ -306,7 +306,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes["proficiency2"] = new[] { "other weapon", "specific weapon" };
 
             var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             var focus = featFocusGenerator.GenerateFrom("featToFill", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
             Assert.That(focus, Is.EqualTo("specific weapon"));
@@ -324,7 +324,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "specific weapon", "other weapon", "wrong weapon" };
 
             var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             var focus = featFocusGenerator.GenerateFrom("featToFill", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
             Assert.That(focus, Is.EqualTo(FeatConstants.Foci.NoValidFociAvailable));
@@ -392,7 +392,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "school 2", "school 3", "school 1", "school 4", "school 5" };
 
             var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             var focus = featFocusGenerator.GenerateFrom("greater feat", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
             Assert.That(focus, Is.EqualTo("school 2"));
@@ -404,7 +404,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[""] = new[] { "school 1" };
 
             var focus = featFocusGenerator.GenerateFrom("featToFill", string.Empty, skills, abilities);
-            mockCollectionsSelector.Verify(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, It.IsAny<string>()), Times.Never);
+            mockCollectionsSelector.Verify(s => s.SelectFrom(TableNameConstants.Collection.FeatFoci, It.IsAny<string>()), Times.Never);
             Assert.That(focus, Is.Empty);
         }
 
@@ -651,7 +651,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon" };
 
             var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.Last());
 
@@ -678,7 +678,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon" };
 
             var proficiencyFeats = new[] { "proficiency1", "proficiency2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.Last());
 
@@ -772,7 +772,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes["all proficiency"] = new[] { "proficiency weapon", "other weapon", "weapon" };
 
             var proficiencyFeats = new[] { "all proficiency", "specific proficiency" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(c => c.Single() == "weapon"))).Returns("only weapon");
 
@@ -797,7 +797,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon", proficiencyFocus };
 
             var proficiencyFeats = new[] { "other proficiency feat", featName };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             var focus = featFocusGenerator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
             Assert.That(focus, Is.EqualTo(proficiencyFocus));
@@ -813,7 +813,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
 
             var proficiencyFeats = new[] { "other proficiency feat", "proficiency feat" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
 
             focusTypes["focus type"] = new[] { "weapon", "other weapon" };
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon" };
@@ -833,7 +833,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 Amount = 13
             });
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
 
             focusTypes["focus type"] = new[] { "focus", "other focus" };
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
@@ -854,7 +854,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 Amount = 13
             });
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
 
             focusTypes["focus type"] = new[] { "focus", "other focus" };
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
@@ -879,7 +879,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 Amount = 10
             });
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
 
             focusTypes["focus type"] = new[] { "focus", "other focus" };
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
@@ -899,7 +899,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 Amount = 13
             });
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
 
             focusTypes["focus type"] = new[] { "focus", "other focus" };
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
@@ -919,7 +919,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 Amount = 13
             });
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
 
             focusTypes["focus type"] = new[] { "focus", "other focus" };
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
@@ -940,7 +940,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 Amount = 13
             });
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
 
             focusTypes["focus type"] = new[] { "focus", "other focus" };
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
@@ -961,7 +961,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 Amount = 13
             });
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
 
             focusTypes["focus type"] = new[] { "focus", "other focus" };
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
@@ -986,7 +986,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 Amount = 10
             });
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
 
             focusTypes["focus type"] = new[] { "focus", "other focus" };
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
@@ -1006,7 +1006,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 Amount = 13
             });
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
 
             focusTypes["focus type"] = new[] { "focus", "other focus" };
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
@@ -1026,7 +1026,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 Amount = 13
             });
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
 
             focusTypes["focus type"] = new[] { "focus", "other focus" };
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };

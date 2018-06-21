@@ -24,7 +24,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         {
             get
             {
-                return TableNameConstants.Set.Collection.AerialManeuverability;
+                return TableNameConstants.Collection.AerialManeuverability;
             }
         }
 
@@ -631,7 +631,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AllCreaturesWithAerialSpeedHaveManeuverability()
         {
-            var speeds = TypesAndAmountsSelector.SelectAll(TableNameConstants.Set.Collection.Speeds);
+            var speeds = TypesAndAmountsSelector.SelectAll(TableNameConstants.Collection.Speeds);
             var aerialSpeeds = speeds.Where(kvp => kvp.Value.Any(s => s.Type == SpeedConstants.Fly));
             var aerialCreatures = aerialSpeeds.Select(kvp => kvp.Key);
 
@@ -650,7 +650,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AllCreaturesWithoutAerialSpeedHaveNoManeuverability()
         {
-            var speeds = TypesAndAmountsSelector.SelectAll(TableNameConstants.Set.Collection.Speeds);
+            var speeds = TypesAndAmountsSelector.SelectAll(TableNameConstants.Collection.Speeds);
             var aerialSpeeds = speeds.Where(kvp => kvp.Value.Any(s => s.Type == SpeedConstants.Fly));
             var nonAerialSpeeds = speeds.Except(aerialSpeeds);
             var nonAerialCreatures = nonAerialSpeeds.Select(kvp => kvp.Key);

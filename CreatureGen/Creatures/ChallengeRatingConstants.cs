@@ -39,5 +39,49 @@
         public const string TwentyEight = "28";
         public const string TwentyNine = "29";
         public const string Thirty = "30";
+
+        internal static string[] GetOrdered()
+        {
+            return new[]
+            {
+                Zero,
+                OneTenth,
+                OneEighth,
+                OneSixth,
+                OneFourth,
+                OneThird,
+                OneHalf,
+                One,
+                Two,
+                Three,
+                Four,
+                Five,
+                Six,
+                Seven,
+                Eight,
+                Nine,
+                Ten,
+                Eleven,
+                Twelve,
+                Thirteen,
+                Fourteen,
+                Fifteen,
+                Sixteen,
+                Seventeen,
+                Eighteen,
+                Nineteen,
+                Twenty,
+                TwentyOne,
+                TwentyTwo,
+                TwentyThree,
+                TwentyFour,
+                TwentyFive,
+                TwentySix,
+                TwentySeven,
+                TwentyEight,
+                TwentyNine,
+                Thirty,
+            };
+        }
     }
 }

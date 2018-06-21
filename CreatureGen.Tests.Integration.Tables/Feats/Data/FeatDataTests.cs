@@ -12,7 +12,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
     {
         protected override string tableName
         {
-            get { return TableNameConstants.Set.Collection.FeatData; }
+            get { return TableNameConstants.Collection.FeatData; }
         }
 
         protected override void PopulateIndices(IEnumerable<string> collection)

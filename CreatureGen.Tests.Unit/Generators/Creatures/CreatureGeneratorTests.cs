@@ -110,8 +110,12 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             creatureData.Size = "size";
             creatureData.CasterLevel = 1029;
+            creatureData.ChallengeRating = "challenge rating";
+            creatureData.LevelAdjustment = 4567;
             creatureData.NaturalArmor = 1336;
             creatureData.NumberOfHands = 96;
+            creatureData.Space = 56.78;
+            creatureData.Reach = 67.89;
 
             types.Add("type");
 
@@ -151,7 +155,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.First());
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<TypeAndAmountSelection>>())).Returns((IEnumerable<TypeAndAmountSelection> c) => c.First());
-            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, types[0],
+            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, types[0],
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack)).Returns(GroupConstants.PoorBaseAttack);
@@ -193,8 +197,8 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             mockAbilitiesGenerator.Setup(g => g.GenerateFor(creature)).Returns(abilities);
             mockHitPointsGenerator.Setup(g => g.GenerateFor(creature, It.IsAny<CreatureType>(), abilities[AbilityConstants.Constitution])).Returns(hitPoints);
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.CreatureTypes, creature)).Returns(types);
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.AerialManeuverability, creature)).Returns(new[] { string.Empty });
+            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature)).Returns(types);
+            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AerialManeuverability, creature)).Returns(new[] { string.Empty });
             mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities[AbilityConstants.Dexterity], creatureData.Size, creature, feats)).Returns(armorClass);
         }
 
@@ -221,6 +225,24 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
+        public void GenerateCreatureSpace()
+        {
+            creatureData.Space = 12.34;
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.Space.Value, Is.EqualTo(12.34));
+        }
+
+        [Test]
+        public void GenerateCreatureReach()
+        {
+            creatureData.Reach = 12.34;
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.Reach.Value, Is.EqualTo(12.34));
+        }
+
+        [Test]
         public void GenerateCreatureCanUseEquipment()
         {
             creatureData.CanUseEquipment = true;
@@ -234,6 +256,42 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             creatureData.CanUseEquipment = false;
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.CanUseEquipment, Is.False);
+        }
+
+        [Test]
+        public void GenerateCreatureChallengeRating()
+        {
+            creatureData.ChallengeRating = "challenge rating";
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.ChallengeRating, Is.EqualTo("challenge rating"));
+        }
+
+        [Test]
+        public void GenerateCreatureLevelAdjustment()
+        {
+            creatureData.LevelAdjustment = 1234;
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.LevelAdjustment, Is.EqualTo(1234));
+        }
+
+        [Test]
+        public void GenerateNoCreatureLevelAdjustment()
+        {
+            creatureData.LevelAdjustment = null;
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.LevelAdjustment, Is.Null);
+        }
+
+        [Test]
+        public void GenerateCreatureLevelAdjustmentOf0()
+        {
+            creatureData.LevelAdjustment = 0;
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.LevelAdjustment, Is.Zero);
         }
 
         [Test]
@@ -303,13 +361,10 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void DoNotGenerateAdvancedCreatureHitPoints()
+        public void DoNotGenerateAdvancedCreature()
         {
             SetUpCreatureAdvancement();
             mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(false);
-
-            var advancements = Enumerable.Empty<TypeAndAmountSelection>();
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.Advancements, "creature")).Returns(advancements);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
@@ -318,14 +373,23 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
             Assert.That(creature.Size, Is.EqualTo("size"));
+            Assert.That(creature.Space.Value, Is.EqualTo(54.32));
+            Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.Zero);
+            Assert.That(creature.ChallengeRating, Is.EqualTo("challenge rating"));
+            Assert.That(creature.CasterLevel, Is.EqualTo(1029));
+
             mockDice.Verify(d => d.Roll(It.IsAny<int>()), Times.Never);
             mockDice.Verify(d => d.Roll(It.IsAny<string>()), Times.Never);
         }
 
         [Test]
-        public void GenerateAdvancedCreatureHitPoints()
+        public void GenerateAdvancedCreature()
         {
             SetUpCreatureAdvancement();
+            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(true);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
@@ -336,6 +400,71 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
             Assert.That(creature.Space.Value, Is.EqualTo(54.32));
             Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(3456));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(783));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(96));
+            Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
+            Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 1336));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureWithExistingRacialAdjustments()
+        {
+            SetUpCreatureAdvancement();
+
+            abilities[AbilityConstants.Strength].RacialAdjustment = 38;
+            abilities[AbilityConstants.Dexterity].RacialAdjustment = 47;
+            abilities[AbilityConstants.Constitution].RacialAdjustment = 56;
+
+            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(true);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 1337));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
+            Assert.That(creature.Size, Is.EqualTo("advanced size"));
+            Assert.That(creature.Space.Value, Is.EqualTo(54.32));
+            Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].RacialAdjustment, Is.EqualTo(38));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].RacialAdjustment, Is.EqualTo(47));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].RacialAdjustment, Is.EqualTo(56));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(3456));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(783));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(96));
+            Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
+            Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 1336));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureWithMissingAbilities()
+        {
+            SetUpCreatureAdvancement();
+
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Constitution].BaseScore = 0;
+
+            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(true);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 1337));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
+            Assert.That(creature.Size, Is.EqualTo("advanced size"));
+            Assert.That(creature.Space.Value, Is.EqualTo(54.32));
+            Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(3456));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(783));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(96));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].HasScore, Is.False);
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].HasScore, Is.False);
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
+            Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
+            Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 1336));
         }
 
         private void SetUpCreatureAdvancement(int advancementAmount = 1337, string creature = "creature")
@@ -347,213 +476,25 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             advancement.Reach = 98.76;
             advancement.Size = "advanced size";
             advancement.Space = 54.32;
+            advancement.AdjustedChallengeRating = "adjusted challenge rating";
+            advancement.CasterLevelAdjustment = 1336;
+            advancement.ConstitutionAdjustment = 96;
+            advancement.DexterityAdjustment = 783;
+            advancement.NaturalArmorAdjustment = 8245;
+            advancement.StrengthAdjustment = 3456;
 
-            mockAdvancementSelector.Setup(s => s.SelectRandomFor(creature)).Returns(advancement);
+            mockAdvancementSelector.Setup(s => s.SelectRandomFor(creature, It.IsAny<CreatureType>())).Returns(advancement);
 
             var newQuantity = hitPoints.RoundedHitDiceQuantity + advancementAmount;
             SetUpRoll(newQuantity, hitPoints.HitDie, 1234);
 
+            //INFO: The 48 comes from the Constitution Modifier after being advanced
             if (newQuantity > 0)
-                SetUpAverageRoll($"{newQuantity}d{hitPoints.HitDie}", 23.45);
+                SetUpAverageRoll($"{newQuantity}d{hitPoints.HitDie}+48", 23.45);
             else
                 SetUpAverageRoll($"0", 0);
 
             mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities[AbilityConstants.Dexterity], advancement.Size, creature, feats)).Returns(armorClass);
-        }
-
-        [Test]
-        public void GenerateAdvancedCreatureWithoutSizeChange()
-        {
-            SetUpCreatureAdvancement();
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.Fail("Strength stay same");
-            Assert.Fail("Dexterity stay same");
-            Assert.Fail("Constitution stay same");
-            Assert.Fail("Natural Armor stay same");
-            Assert.Fail("Armor Class stay same");
-            Assert.Fail("Attack Bonus stay same");
-            Assert.Fail("Natural Attack damage stay same");
-            Assert.Fail("Challenge Rating increase by hit dice proportional to type");
-        }
-
-        [Test]
-        public void GenerateAdvancedCreatureWithSizeChange()
-        {
-            SetUpCreatureAdvancement();
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.Fail("Strength increases");
-            Assert.Fail("Dexterity decreases");
-            Assert.Fail("Constitution increases");
-            Assert.Fail("Natural Armor increases");
-            Assert.Fail("Armor Class decrease");
-            Assert.Fail("Attack Bonus decrease");
-            Assert.Fail("Natural Attack damage increase");
-            Assert.Fail("Challenge Rating increase by hit dice proportional to type");
-            Assert.Fail("Challenge Rating increase by size change");
-        }
-
-        [Test]
-        public void GenerateAdvancedCreatureWithMultipleSizeChanges()
-        {
-            SetUpCreatureAdvancement();
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.Fail("Strength increases");
-            Assert.Fail("Dexterity decreases");
-            Assert.Fail("Constitution increases");
-            Assert.Fail("Natural Armor increases");
-            Assert.Fail("Armor Class decrease");
-            Assert.Fail("Attack Bonus decrease");
-            Assert.Fail("Natural Attack damage increase");
-            Assert.Fail("Challenge Rating increase by hit dice proportional to type");
-            Assert.Fail("Challenge Rating increase by size change");
-        }
-
-        [Test]
-        public void GenerateAdvancedCreatureWithSizeChangeAndMissingAbilities()
-        {
-            SetUpCreatureAdvancement();
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.Fail("Strength increases");
-            Assert.Fail("Dexterity decreases");
-            Assert.Fail("Constitution increases");
-            Assert.Fail("Natural Armor increases");
-            Assert.Fail("Armor Class decrease");
-            Assert.Fail("Attack Bonus decrease");
-            Assert.Fail("Natural Attack damage increase");
-            Assert.Fail("Challenge Rating increase by hit dice proportional to type");
-            Assert.Fail("Challenge Rating increase by size change");
-        }
-
-        [Test]
-        public void GenerateBarghest()
-        {
-            SetUpCreature(CreatureConstants.Barghest, CreatureConstants.Templates.None);
-
-            var creature = creatureGenerator.Generate(CreatureConstants.Barghest, CreatureConstants.Templates.None);
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
-            Assert.That(creature.Size, Is.EqualTo("size"));
-            Assert.That(creature.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1336));
-            //INFO: Barghest caster level is equal to the hit die quantity
-            Assert.That(creature.CasterLevel, Is.EqualTo(9266));
-        }
-
-        [Test]
-        public void GenerateGreaterBarghest()
-        {
-            SetUpCreature(CreatureConstants.Barghest_Greater, CreatureConstants.Templates.None);
-
-            var creature = creatureGenerator.Generate(CreatureConstants.Barghest_Greater, CreatureConstants.Templates.None);
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
-            Assert.That(creature.Size, Is.EqualTo("size"));
-            Assert.That(creature.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1336));
-            //INFO: Barghest caster level is equal to the hit die quantity
-            Assert.That(creature.CasterLevel, Is.EqualTo(9266));
-        }
-
-        [Test]
-        public void GenerateAdvancedBarghestHitPoints()
-        {
-            SetUpCreature(CreatureConstants.Barghest, CreatureConstants.Templates.None);
-            SetUpCreatureAdvancement(creature: CreatureConstants.Barghest);
-
-            var newHitDiceQuantity = 9266 + 1337;
-            var constitutionModifier = 668;
-            var totalConstitutionBonus = constitutionModifier * newHitDiceQuantity;
-            SetUpAverageRoll($"{newHitDiceQuantity}d{hitPoints.HitDie}+{totalConstitutionBonus}", 67.89);
-
-            var creature = creatureGenerator.Generate(CreatureConstants.Barghest, CreatureConstants.Templates.None);
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(newHitDiceQuantity));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(68));
-            //INFO: We only add the constitution modifier once because we mock the rolls to only have 1 roll, instead of the actual hit dice quantity
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234 + constitutionModifier));
-            Assert.That(creature.Size, Is.EqualTo("advanced size"));
-            Assert.That(creature.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(10 + 1337));
-            Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(10 + 1337));
-            Assert.That(creature.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1336 + 1337));
-            //INFO: Barghest caster level is equal to the hit die quantity
-            Assert.That(creature.CasterLevel, Is.EqualTo(newHitDiceQuantity));
-        }
-
-        [Test]
-        public void GenerateAdvancedGreaterBarghestHitPoints()
-        {
-            SetUpCreature(CreatureConstants.Barghest_Greater, CreatureConstants.Templates.None);
-            SetUpCreatureAdvancement(creature: CreatureConstants.Barghest_Greater);
-
-            var newHitDiceQuantity = 9266 + 1337;
-            var constitutionModifier = 668;
-            var totalConstitutionBonus = constitutionModifier * newHitDiceQuantity;
-            SetUpAverageRoll($"{newHitDiceQuantity}d{hitPoints.HitDie}+{totalConstitutionBonus}", 67.89);
-
-            var creature = creatureGenerator.Generate(CreatureConstants.Barghest_Greater, CreatureConstants.Templates.None);
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(newHitDiceQuantity));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(68));
-            //INFO: We only add the constitution modifier once because we mock the rolls to only have 1 roll, instead of the actual hit dice quantity
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234 + constitutionModifier));
-            Assert.That(creature.Size, Is.EqualTo("advanced size"));
-            Assert.That(creature.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(10 + 1337));
-            Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(10 + 1337));
-            Assert.That(creature.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1336 + 1337));
-            //INFO: Barghest caster level is equal to the hit die quantity
-            Assert.That(creature.CasterLevel, Is.EqualTo(newHitDiceQuantity));
-        }
-
-        [Test]
-        public void GenerateAdvancedNonBarghestHitPoints()
-        {
-            SetUpCreatureAdvancement();
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 1337));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
-            Assert.That(creature.Size, Is.EqualTo("advanced size"));
-            Assert.That(creature.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(10));
-            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1336));
-            Assert.That(creature.CasterLevel, Is.EqualTo(creatureData.CasterLevel));
         }
 
         [Test]
@@ -673,7 +614,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateCreatureBaseAttackBonus(int hitDiceQuantity, string bonusQuality, int bonus)
         {
             hitPoints.HitDiceQuantity = hitDiceQuantity;
-            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, types[0],
+            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, types[0],
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack)).Returns(bonusQuality);
@@ -753,7 +694,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement(advancedHitDiceQuantity);
 
-            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Set.Collection.CreatureGroups, types[0],
+            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, types[0],
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack)).Returns(bonusQuality);
@@ -853,7 +794,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateCreatureGrappleBonus()
         {
             abilities[AbilityConstants.Strength].BaseScore = 1234;
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, "size")).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.EqualTo(612 + 4633 + 2345));
@@ -865,7 +806,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreatureAdvancement();
 
             abilities[AbilityConstants.Strength].BaseScore = 1234;
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.GrappleBonuses, "advanced size")).Returns(2345);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, "advanced size")).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.EqualTo(612 + 4633 + 668 + 2345));
@@ -875,7 +816,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateCreatureNegativeGrappleBonus()
         {
             abilities[AbilityConstants.Strength].BaseScore = 1;
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, "size")).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.EqualTo(-5 + 4633 + 2345));
@@ -885,7 +826,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void NoGrappleBonusIfNoStrengthScore()
         {
             abilities[AbilityConstants.Strength].BaseScore = 0;
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Set.Adjustments.GrappleBonuses, "size")).Returns(2345);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, "size")).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.Null);
@@ -1161,7 +1102,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             Assert.That(creature.SpecialAttacks, Is.EquivalentTo(attacks));
             foreach (var attack in creature.SpecialAttacks)
-                Assert.That(attack.TotalAttackBonus, Is.EqualTo(0));
+                Assert.That(attack.TotalAttackBonus, Is.Zero);
         }
 
         [Test]
@@ -1189,7 +1130,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             Assert.That(creature.SpecialAttacks, Is.EquivalentTo(attacks));
             foreach (var attack in creature.SpecialAttacks)
-                Assert.That(attack.TotalAttackBonus, Is.EqualTo(0));
+                Assert.That(attack.TotalAttackBonus, Is.Zero);
         }
 
         [Test]
@@ -1478,7 +1419,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             Assert.That(creature.SpecialAttacks, Is.EquivalentTo(attacks));
             foreach (var attack in creature.SpecialAttacks)
-                Assert.That(attack.TotalAttackBonus, Is.EqualTo(0));
+                Assert.That(attack.TotalAttackBonus, Is.Zero);
         }
 
         [Test]
@@ -1506,7 +1447,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             Assert.That(creature.SpecialAttacks, Is.EquivalentTo(attacks));
             foreach (var attack in creature.SpecialAttacks)
-                Assert.That(attack.TotalAttackBonus, Is.EqualTo(0));
+                Assert.That(attack.TotalAttackBonus, Is.Zero);
         }
 
         [Test]
@@ -1618,7 +1559,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
                 new TypeAndAmountSelection { Type = "in a car", Amount = 2345 },
             };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.Speeds, "creature")).Returns(speeds);
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Collection.Speeds, "creature")).Returns(speeds);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Speeds["on foot"].Unit, Is.EqualTo("feet per round"));
@@ -1639,8 +1580,8 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
                 new TypeAndAmountSelection { Type = SpeedConstants.Fly, Amount = 2345 },
             };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Set.Collection.Speeds, "creature")).Returns(speeds);
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.AerialManeuverability, "creature")).Returns(new[] { "maneuverability" });
+            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Collection.Speeds, "creature")).Returns(speeds);
+            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AerialManeuverability, "creature")).Returns(new[] { "maneuverability" });
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Speeds["on foot"].Unit, Is.EqualTo("feet per round"));
@@ -1679,24 +1620,6 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureSpace()
-        {
-            creatureData.Space = 12.34;
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.Space.Value, Is.EqualTo(12.34));
-        }
-
-        [Test]
-        public void GenerateCreatureReach()
-        {
-            creatureData.Reach = 12.34;
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.Reach.Value, Is.EqualTo(12.34));
-        }
-
-        [Test]
         public void GenerateCreatureSaves()
         {
             var saves = new Saves();
@@ -1721,15 +1644,6 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureChallengeRating()
-        {
-            creatureData.ChallengeRating = "challenge rating";
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.ChallengeRating, Is.EqualTo("challenge rating"));
-        }
-
-        [Test]
         public void GenerateCreatureAlignment()
         {
             var alignment = new Alignment("creature alignment");
@@ -1738,33 +1652,6 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Alignment, Is.EqualTo(alignment));
             Assert.That(creature.Alignment.Full, Is.EqualTo("creature alignment"));
-        }
-
-        [Test]
-        public void GenerateCreatureLevelAdjustment()
-        {
-            creatureData.LevelAdjustment = 1234;
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.LevelAdjustment, Is.EqualTo(1234));
-        }
-
-        [Test]
-        public void GenerateNoCreatureLevelAdjustment()
-        {
-            creatureData.LevelAdjustment = null;
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.LevelAdjustment, Is.Null);
-        }
-
-        [Test]
-        public void GenerateCreatureLevelAdjustmentOf0()
-        {
-            creatureData.LevelAdjustment = 0;
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.LevelAdjustment, Is.EqualTo(0));
         }
 
         [Test]

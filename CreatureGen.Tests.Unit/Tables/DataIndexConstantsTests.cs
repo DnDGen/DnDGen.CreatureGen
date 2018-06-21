@@ -92,5 +92,19 @@ namespace CreatureGen.Tests.Unit.Tables
             Assert.That(data.Count, Is.GreaterThan(index));
             Assert.That(data, Is.All.Empty);
         }
+
+        [TestCase(DataIndexConstants.AdvancementSelectionData.Size, 0)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.Space, 1)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.Reach, 2)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.StrengthAdjustment, 3)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.DexterityAdjustment, 4)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.ConstitutionAdjustment, 5)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment, 6)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.ChallengeRating, 7)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.CasterLevel, 8)]
+        public void AdvancementSelectionDataIndex(int constant, int value)
+        {
+            Assert.That(constant, Is.EqualTo(value));
+        }
     }
 }

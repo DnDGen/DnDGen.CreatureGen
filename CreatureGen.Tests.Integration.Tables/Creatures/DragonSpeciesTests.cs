@@ -10,7 +10,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.Metaraces
     {
         protected override string tableName
         {
-            get { return TableNameConstants.Set.Collection.DragonSpecies; }
+            get { return TableNameConstants.Collection.DragonSpecies; }
         }
 
         [Test]

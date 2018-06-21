@@ -44,7 +44,7 @@ namespace CreatureGen.Generators.Feats
 
         private string SelectRandomAndIncludeSkills(IEnumerable<string> foci, IEnumerable<Skill> skills)
         {
-            var skillFoci = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, GroupConstants.Skills);
+            var skillFoci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, GroupConstants.Skills);
             var applicableSkillFoci = skillFoci.Intersect(foci);
 
             if (applicableSkillFoci.Any())
@@ -61,16 +61,16 @@ namespace CreatureGen.Generators.Feats
 
         private bool FocusTypeIsPreset(string focusType)
         {
-            var isCollection = collectionsSelector.IsCollection(TableNameConstants.Set.Collection.FeatFoci, focusType);
+            var isCollection = collectionsSelector.IsCollection(TableNameConstants.Collection.FeatFoci, focusType);
             return focusType != FeatConstants.Foci.All && !isCollection;
         }
 
         private IEnumerable<string> GetExplodedFoci(string feat, string focusType, IEnumerable<Feat> otherFeats)
         {
             if (focusType != FeatConstants.Foci.All)
-                return collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, focusType);
+                return collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, focusType);
 
-            var featFoci = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, feat);
+            var featFoci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, feat);
 
             if (feat != FeatConstants.WeaponProficiency_Martial && feat != FeatConstants.WeaponProficiency_Exotic)
                 return featFoci;
@@ -130,7 +130,7 @@ namespace CreatureGen.Generators.Feats
         //INFO: Automatic Proficiencies include things such as Unarmed Strike, Grapple, and Ray
         private IEnumerable<string> GetProficiencies(string focusType, IEnumerable<Feat> otherFeats, RequiredFeatSelection weaponProficiencyRequirement)
         {
-            var proficiencyFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.WeaponProficiency);
+            var proficiencyFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
             var proficiencyFeats = otherFeats.Where(f => proficiencyFeatNames.Contains(f.Name));
             var proficiencyFoci = new List<string>();
 
@@ -150,8 +150,8 @@ namespace CreatureGen.Generators.Feats
                 }
             }
 
-            var foci = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, focusType);
-            var weaponFoci = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatFoci, FeatConstants.Foci.Weapon);
+            var foci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, focusType);
+            var weaponFoci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, FeatConstants.Foci.Weapon);
             var automaticFoci = foci.Except(weaponFoci);
 
             proficiencyFoci.AddRange(automaticFoci);
@@ -171,7 +171,7 @@ namespace CreatureGen.Generators.Feats
             foreach (var focus in foci)
             {
                 var combo = $"{featName}/{focus}";
-                var abilityRequirements = typeAndAmountSelector.Select(TableNameConstants.Set.TypeAndAmount.FeatAbilityRequirements, combo);
+                var abilityRequirements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, combo);
 
                 if (!abilityRequirements.Any())
                     continue;

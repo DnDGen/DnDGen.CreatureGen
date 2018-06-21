@@ -28,7 +28,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             skillData[DataIndexConstants.SkillSelectionData.RandomFociQuantity] = "9266";
             skillData[DataIndexConstants.SkillSelectionData.SkillName] = "skill name";
 
-            mockInnerSelector.Setup(s => s.SelectFrom(TableNameConstants.Set.Collection.SkillData, "skill")).Returns(skillData);
+            mockInnerSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillData, "skill")).Returns(skillData);
 
             var selection = skillSelector.SelectFor("skill");
             Assert.That(selection.BaseAbilityName, Is.EqualTo("base stat"));

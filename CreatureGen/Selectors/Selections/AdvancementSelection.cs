@@ -11,6 +11,7 @@
         public int ConstitutionAdjustment { get; set; }
         public int NaturalArmorAdjustment { get; set; }
         public string AdjustedChallengeRating { get; set; }
+        public int CasterLevelAdjustment { get; set; }
 
         public AdvancementSelection()
         {

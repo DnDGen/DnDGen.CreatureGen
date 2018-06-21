@@ -7,6 +7,7 @@ namespace CreatureGen.Abilities
         public string Name { get; private set; }
         public int BaseScore { get; set; }
         public int RacialAdjustment { get; set; }
+        public int AdvancementAdjustment { get; set; }
 
         public bool HasScore
         {
@@ -23,7 +24,7 @@ namespace CreatureGen.Abilities
                 if (!HasScore)
                     return 0;
 
-                return Math.Max(BaseScore + RacialAdjustment, 1);
+                return Math.Max(BaseScore + RacialAdjustment + AdvancementAdjustment, 1);
             }
         }
 

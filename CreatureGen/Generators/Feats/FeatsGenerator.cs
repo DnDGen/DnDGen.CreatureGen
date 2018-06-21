@@ -34,7 +34,7 @@ namespace CreatureGen.Generators.Feats
         public IEnumerable<Feat> GenerateSpecialQualities(string creatureName, HitPoints hitPoints, string size, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills)
         {
             var featSelections = featsSelector.SelectSpecialQualities(creatureName);
-            var featToIncreasePower = collectionsSelector.SelectFrom(TableNameConstants.Set.Collection.FeatGroups, GroupConstants.AddHitDiceToPower);
+            var featToIncreasePower = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower);
 
             foreach (var selection in featSelections)
                 if (featToIncreasePower.Contains(selection.Feat))
