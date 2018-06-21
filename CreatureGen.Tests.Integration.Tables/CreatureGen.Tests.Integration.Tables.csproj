@@ -87,6 +87,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Creatures\AdvancementsTests.cs" />
     <Compile Include="Creatures\AerialManeuverabilityTests.cs" />
     <Compile Include="Creatures\CreatureDataTests.cs" />
     <Compile Include="Defenses\HitDiceTests.cs" />
