@@ -11,5 +11,21 @@
         public const string Tiny = "Tiny";
         public const string Diminutive = "Diminutive";
         public const string Fine = "Fine";
+
+        public static string[] GetOrdered()
+        {
+            return new[]
+            {
+                Fine,
+                Diminutive,
+                Tiny,
+                Small,
+                Medium,
+                Large,
+                Huge,
+                Gargantuan,
+                Colossal
+            };
+        }
     }
 }

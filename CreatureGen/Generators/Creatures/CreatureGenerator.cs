@@ -104,7 +104,7 @@ namespace CreatureGen.Generators.Creatures
 
             if (advancementSelector.IsAdvanced(creatureName))
             {
-                var advancement = advancementSelector.SelectRandomFor(creatureName, creature.Type);
+                var advancement = advancementSelector.SelectRandomFor(creatureName, creature.Type, creature.Size, creature.ChallengeRating);
                 creature.HitPoints.HitDiceQuantity += advancement.AdditionalHitDice;
 
                 creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment += advancement.StrengthAdjustment;

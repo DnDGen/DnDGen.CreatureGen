@@ -479,7 +479,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             advancement.NaturalArmorAdjustment = 8245;
             advancement.StrengthAdjustment = 3456;
 
-            mockAdvancementSelector.Setup(s => s.SelectRandomFor(creature, It.IsAny<CreatureType>())).Returns(advancement);
+            mockAdvancementSelector.Setup(s => s.SelectRandomFor(creature, It.IsAny<CreatureType>(), creatureData.Size, creatureData.ChallengeRating)).Returns(advancement);
 
             var newQuantity = hitPoints.RoundedHitDiceQuantity + advancementAmount;
             SetUpRoll(newQuantity, hitPoints.HitDie, 1234);

@@ -9,8 +9,213 @@
     <entry>Aberration/4</entry>
   </collection>
   <collection>
+    <name>Aboleth</name>
+    <entry>Huge,15,10/1d8</entry>
+    <entry>Gargantuan,20,15/1d8+8</entry>
+  </collection>
+  <collection>
+    <name>Abyssal Greater Basilisk</name>
+  </collection>
+  <collection>
+    <name>Achaierai</name>
+    <entry>Large,10,10/1d6</entry>
+    <entry>Huge,15,15/1d6+6</entry>
+  </collection>
+  <collection>
+    <name>Adult Arrowhawk</name>
+    <entry>Medium,5,5/2d4-1</entry>
+  </collection>
+  <collection>
+    <name>Adult Tojanida</name>
+    <entry>Medium,5,5/2d4-1</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Elder</name>
+    <entry>Huge,15,15/23d2-22</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Greater</name>
+    <entry>Huge,15,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Huge</name>
+    <entry>Huge,15,15/1d4</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Large</name>
+    <entry>Large,10,10/2d4-1</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Medium</name>
+    <entry>Medium,5,5/1d3</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Small</name>
+    <entry>Small,5,5/1</entry>
+  </collection>
+  <collection>
+    <name>Air Mephit</name>
+    <entry>Small,5,5/1d3</entry>
+    <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Allip</name>
+    <entry>Medium,5,5/1d8</entry>
+  </collection>
+  <collection>
+    <name>Androsphinx</name>
+    <entry>Large,10,5/1d6</entry>
+    <entry>Huge,15,10/17d2-10</entry>
+  </collection>
+  <collection>
+    <name>Angel, Astral Deva</name>
+    <entry>Medium,5,5/1d6</entry>
+    <entry>Large,10,10/17d2-10</entry>
+  </collection>
+  <collection>
+    <name>Angel, Planetar</name>
+    <entry>Large,10,10/2d4-1</entry>
+    <entry>Huge,15,15/4d6+4</entry>
+  </collection>
+  <collection>
+    <name>Angel, Solar</name>
+    <entry>Large,10,10/2d6-1</entry>
+    <entry>Huge,15,15/16d3-4</entry>
+  </collection>
+  <collection>
     <name>Animal</name>
     <entry>Animal/3</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tiny</name>
+  </collection>
+  <collection>
+    <name>Ankheg</name>
+    <entry>Large,10,5/1</entry>
+    <entry>Huge,15,10/2d3</entry>
+  </collection>
+  <collection>
+    <name>Annis</name>
+  </collection>
+  <collection>
+    <name>Ape</name>
+    <entry>Large,10,10/1d4</entry>
+  </collection>
+  <collection>
+    <name>Aquatic Elf</name>
+  </collection>
+  <collection>
+    <name>Aranea</name>
+  </collection>
+  <collection>
+    <name>Assassin Vine</name>
+    <entry>Huge,15,15/1d12</entry>
+    <entry>Gargantuan,20,20/3d6+10</entry>
+    <entry>Colossal,30,30/67d2-38</entry>
+  </collection>
+  <collection>
+    <name>Athach</name>
+    <entry>Huge,15,15/13d2-12</entry>
+  </collection>
+  <collection>
+    <name>Average Salamander</name>
+    <entry>Medium,5,5/2d3-1</entry>
+  </collection>
+  <collection>
+    <name>Average Xorn</name>
+    <entry>Medium,5,5/2d4-1</entry>
+  </collection>
+  <collection>
+    <name>Avoral</name>
+    <entry>Medium,5,5/2d4-1</entry>
+    <entry>Large,10,5/2d4+6</entry>
+  </collection>
+  <collection>
+    <name>Azer</name>
+  </collection>
+  <collection>
+    <name>Babau</name>
+    <entry>Large,10,5/2d4-1</entry>
+    <entry>Huge,15,10/2d4+6</entry>
+  </collection>
+  <collection>
+    <name>Baboon</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Badger</name>
+    <entry>Small,5,5/1</entry>
+  </collection>
+  <collection>
+    <name>Baleen Whale</name>
+    <entry>Gargantuan,20,15/1d6</entry>
+    <entry>Colossal,30,20/17d2-10</entry>
+  </collection>
+  <collection>
+    <name>Balor</name>
+    <entry>Large,10,10/1d10</entry>
+    <entry>Huge,15,15/29d2-18</entry>
+  </collection>
+  <collection>
+    <name>Barghest</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Basilisk</name>
+    <entry>Medium,5,5/1d4</entry>
+    <entry>Large,10,5/1d8+4</entry>
+  </collection>
+  <collection>
+    <name>Bat</name>
+  </collection>
+  <collection>
+    <name>Bat Swarm</name>
+  </collection>
+  <collection>
+    <name>Bebilith</name>
+    <entry>Huge,15,10/1d6</entry>
+    <entry>Gargantuan,20,15/17d2-10</entry>
+  </collection>
+  <collection>
+    <name>Behir</name>
+    <entry>Huge,15,10/1d4</entry>
+    <entry>Gargantuan,20,15/13d2-8</entry>
+  </collection>
+  <collection>
+    <name>Beholder</name>
+    <entry>Large,10,5/2d3-1</entry>
+    <entry>Huge,15,10/8d3-2</entry>
+  </collection>
+  <collection>
+    <name>Belker</name>
+    <entry>Large,10,10/1d3</entry>
+    <entry>Huge,15,15/2d6+2</entry>
+  </collection>
+  <collection>
+    <name>Bison</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Black Bear</name>
+    <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Construct</name>
@@ -21,6 +226,40 @@
     <entry>Dragon/2</entry>
   </collection>
   <collection>
+    <name>Dust Mephit</name>
+    <entry>Small,5,5/1d3</entry>
+    <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Elder</name>
+    <entry>Huge,15,15/23d2-22</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Greater</name>
+    <entry>Huge,15,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Huge</name>
+    <entry>Huge,15,15/1d4</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Large</name>
+    <entry>Large,10,10/2d4-1</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Medium</name>
+    <entry>Medium,5,5/1d3</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Small</name>
+    <entry>Small,5,5/1</entry>
+  </collection>
+  <collection>
+    <name>Earth Mephit</name>
+    <entry>Small,5,5/1d3</entry>
+    <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
     <name>Elemental</name>
     <entry>Elemental/4</entry>
   </collection>
@@ -29,12 +268,51 @@
     <entry>Fey/4</entry>
   </collection>
   <collection>
+    <name>Fire Elemental, Elder</name>
+    <entry>Hug,15,15e/23d2-22</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Greater</name>
+    <entry>Huge,15,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Huge</name>
+    <entry>Huge,15,15/1d4</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Large</name>
+    <entry>Large,10,10/2d4-1</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Medium</name>
+    <entry>Medium,5,5/1d3</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Small</name>
+    <entry>Small,5,5/1</entry>
+  </collection>
+  <collection>
+    <name>Fire Mephit</name>
+    <entry>Small,5,5/1d3</entry>
+    <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Gauth (Lesser Beholder)</name>
+    <entry>Medium,5,5/1d6</entry>
+    <entry>Large,10,5/1d6+6</entry>
+  </collection>
+  <collection>
     <name>Giant</name>
     <entry>Giant/4</entry>
   </collection>
   <collection>
     <name>Humanoid</name>
     <entry>Humanoid/4</entry>
+  </collection>
+  <collection>
+    <name>Ice Mephit</name>
+    <entry>Small,5,5/1d3</entry>
+    <entry>Medium,5,5/1d3+3</entry>
   </collection>
   <collection>
     <name>Magical Beast</name>
@@ -49,12 +327,27 @@
     <entry>Ooze/4</entry>
   </collection>
   <collection>
+    <name>Ooze Mephit</name>
+    <entry>Small,5,5/1d3</entry>
+    <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
     <name>Outsider</name>
     <entry>Outsider/2</entry>
   </collection>
   <collection>
     <name>Plant</name>
     <entry>Plant/4</entry>
+  </collection>
+  <collection>
+    <name>Salt Mephit</name>
+    <entry>Small,5,5/1d3</entry>
+    <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Steam Mephit</name>
+    <entry>Small,5,5/1d3</entry>
+    <entry>Medium,5,5/1d3+3</entry>
   </collection>
   <collection>
     <name>Tiefling</name>
@@ -66,5 +359,34 @@
   <collection>
     <name>Vermin</name>
     <entry>Vermin/4</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Elder</name>
+    <entry>Huge,15,15/23d2-22</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Greater</name>
+    <entry>Huge,15,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Huge</name>
+    <entry>Huge,15,15/1d4</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Large</name>
+    <entry>Large,10,10/2d4-1</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Medium</name>
+    <entry>Medium,5,5/1d3</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Small</name>
+    <entry>Small,5,5/1</entry>
+  </collection>
+  <collection>
+    <name>Water Mephit</name>
+    <entry>Small,5,5/1d3</entry>
+    <entry>Medium,5,5/1d3+3</entry>
   </collection>
 </collections>
