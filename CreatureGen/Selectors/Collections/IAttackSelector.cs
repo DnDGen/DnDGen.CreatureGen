@@ -5,6 +5,6 @@ namespace CreatureGen.Selectors.Collections
 {
     internal interface IAttackSelector
     {
-        IEnumerable<Attack> Select(string creatureName);
+        IEnumerable<Attack> Select(string creatureName, string size);
     }
 }

@@ -125,9 +125,7 @@ namespace CreatureGen.Generators.Creatures
 
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities);
             creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(creatureName, creature.HitPoints, creature.Size, creature.Abilities, creature.Skills);
-            //Advanced - need to take size into account when computing the damage of natural attacks
-            creature.Attacks = attackSelector.Select(creatureName);
-            //Take size attack bonus into account
+            creature.Attacks = attackSelector.Select(creatureName, creature.Size);
             creature.BaseAttackBonus = ComputeBaseAttackBonus(creature.Type, creature.HitPoints);
 
             var naturalArmor = creatureData.NaturalArmor + naturalArmorAdvancementAmount;
@@ -150,6 +148,7 @@ namespace CreatureGen.Generators.Creatures
             creature.GrappleBonus = ComputeGrappleBonus(creature.Size, creature.BaseAttackBonus, creature.Abilities[AbilityConstants.Strength]);
 
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
+            //Take size attack bonus into account
             creature.Attacks = ComputeAttackBonuses(creature.Attacks, creature.Abilities, creature.BaseAttackBonus, allFeats);
 
             creature.InitiativeBonus = ComputeInitiative(creature.Abilities, creature.Feats);

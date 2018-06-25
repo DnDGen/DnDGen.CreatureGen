@@ -184,7 +184,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
         private void SetUpCreature(string creature, string template)
         {
-            mockAttackSelector.Setup(s => s.Select(creature)).Returns(attacks);
+            mockAttackSelector.Setup(s => s.Select(creature, creatureData.Size)).Returns(attacks);
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(creature, hitPoints, creatureData.Size, abilities, skills)).Returns(specialQualities);
             mockSkillsGenerator.Setup(g => g.GenerateFor(hitPoints, creature, It.Is<CreatureType>(c => c.Name == types[0]), abilities)).Returns(skills);
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(creature, template)).Returns(true);
@@ -497,6 +497,8 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             else
                 SetUpAverageRoll($"0", 0);
 
+            mockAttackSelector.Setup(s => s.Select(creature, "advanced size")).Returns(attacks);
+
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
                 hitPoints,
                 newQuantity / 2, //INFO: Poor base attack is default in these tests
@@ -563,6 +565,18 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Attacks, Is.EqualTo(attacks));
+        }
+
+        [Test]
+        public void GenerateAdvancedCreatureAttacks()
+        {
+            SetUpCreatureAdvancement();
+
+            var advancedAttacks = new List<Attack>();
+            mockAttackSelector.Setup(s => s.Select("creature", "advanced size")).Returns(advancedAttacks);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.Attacks, Is.EqualTo(advancedAttacks));
         }
 
         [TestCase(0, GroupConstants.GoodBaseAttack, 0)]

@@ -218,8 +218,248 @@
     <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>
+    <name>Black Dragon, Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Ancient</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great Wyrm</name>
+    <entry>Gargantuan,20,15/31d3-30</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Juvenile</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Young</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrm</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrmling</name>
+    <entry>Tiny,2.5,0/1d2</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Ancient</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great Wyrm</name>
+    <entry>Gargantuan,20,15/31d3-30</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Juvenile</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Young</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrm</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrmling</name>
+    <entry>Tiny,2.5,0/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Ancient</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great Wyrm</name>
+    <entry>Gargantuan,20,15/31d3-30</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Juvenile</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Young</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrm</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrmling</name>
+    <entry>Tiny,2.5,0/1d2</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Ancient</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great Wyrm</name>
+    <entry>Gargantuan,20,15/31d3-30</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Juvenile</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Young</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrm</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrmling</name>
+    <entry>Tiny,2.5,0/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
     <name>Construct</name>
     <entry>Construct/4</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Ancient</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great Wyrm</name>
+    <entry>Gargantuan,20,15/31d3-30</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Juvenile</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Young</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrm</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrmling</name>
+    <entry>Tiny,2.5,0/1d2</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young Adult</name>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Dragon</name>
@@ -306,6 +546,102 @@
     <entry>Giant/4</entry>
   </collection>
   <collection>
+    <name>Gold Dragon, Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Ancient</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great Wyrm</name>
+    <entry>Gargantuan,20,15/31d3-30</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Juvenile</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Young</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrm</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrmling</name>
+    <entry>Tiny,2.5,0/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Ancient</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great Wyrm</name>
+    <entry>Gargantuan,20,15/31d3-30</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Juvenile</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Young</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrm</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrmling</name>
+    <entry>Tiny,2.5,0/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
     <name>Humanoid</name>
     <entry>Humanoid/4</entry>
   </collection>
@@ -340,9 +676,101 @@
     <entry>Plant/4</entry>
   </collection>
   <collection>
+    <name>Red Dragon, Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Ancient</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great Wyrm</name>
+    <entry>Gargantuan,20,15/31d3-30</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Juvenile</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Young</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrm</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrmling</name>
+    <entry>Tiny,2.5,0/1d2</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
     <name>Salt Mephit</name>
     <entry>Small,5,5/1d3</entry>
     <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Ancient</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great Wyrm</name>
+    <entry>Gargantuan,20,15/31d3-30</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Juvenile</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Young</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrm</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrmling</name>
+    <entry>Tiny,2.5,0/1d2</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young</name>
+    <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
@@ -388,5 +816,49 @@
     <name>Water Mephit</name>
     <entry>Small,5,5/1d3</entry>
     <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Adult</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Ancient</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Great Wyrm</name>
+    <entry>Gargantuan,20,15/31d3-30</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Juvenile</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very Old</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very Young</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrm</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrmling</name>
+    <entry>Tiny,2.5,0/1d2</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Young</name>
+    <entry>Medium,5,5/1d2</entry>
   </collection>
 </collections>
