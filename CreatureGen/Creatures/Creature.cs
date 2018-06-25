@@ -17,7 +17,7 @@ namespace CreatureGen.Creatures
         public CreatureType Type { get; set; }
         public HitPoints HitPoints { get; set; }
         public int InitiativeBonus { get; set; }
-        public Dictionary<string, Measurement> Speeds { get; private set; }
+        public Dictionary<string, Measurement> Speeds { get; set; }
         public ArmorClass ArmorClass { get; set; }
         public int BaseAttackBonus { get; set; }
         public int? GrappleBonus { get; set; }

@@ -7,6 +7,6 @@ namespace CreatureGen.Generators.Defenses
 {
     internal interface IArmorClassGenerator
     {
-        ArmorClass GenerateWith(Ability dexterity, string size, string creatureName, IEnumerable<Feat> feats);
+        ArmorClass GenerateWith(Ability dexterity, string size, string creatureName, IEnumerable<Feat> feats, int naturalArmor);
     }
 }

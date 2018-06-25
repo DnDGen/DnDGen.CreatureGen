@@ -378,8 +378,8 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             var last = specialQualities.Last();
 
             Assert.That(first.Name, Is.EqualTo("special quality 1"));
-            Assert.That(first.Power, Is.EqualTo(0));
-            Assert.That(first.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(first.Power, Is.Zero);
+            Assert.That(first.Frequency.Quantity, Is.Zero);
             Assert.That(first.Frequency.TimePeriod, Is.Empty);
 
             Assert.That(last.Name, Is.EqualTo("special quality 2"));
@@ -404,8 +404,8 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             var specialQuality = specialQualities.Single();
 
             Assert.That(specialQuality.Name, Is.EqualTo("special quality 1"));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
         }
 

@@ -171,17 +171,17 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
             Assert.That(saves.Fortitude, Is.EqualTo(2));
-            Assert.That(saves.Reflex, Is.EqualTo(0));
-            Assert.That(saves.Will, Is.EqualTo(0));
+            Assert.That(saves.Reflex, Is.Zero);
+            Assert.That(saves.Will, Is.Zero);
         }
 
         [Test]
         public void ApplyWeakFortitudeBonus()
         {
             var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.EqualTo(0));
-            Assert.That(saves.Reflex, Is.EqualTo(0));
-            Assert.That(saves.Will, Is.EqualTo(0));
+            Assert.That(saves.Fortitude, Is.Zero);
+            Assert.That(saves.Reflex, Is.Zero);
+            Assert.That(saves.Will, Is.Zero);
         }
 
         [Test]
@@ -190,18 +190,18 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             strongReflex.Add(creatureType.Name);
 
             var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.EqualTo(0));
+            Assert.That(saves.Fortitude, Is.Zero);
             Assert.That(saves.Reflex, Is.EqualTo(2));
-            Assert.That(saves.Will, Is.EqualTo(0));
+            Assert.That(saves.Will, Is.Zero);
         }
 
         [Test]
         public void ApplyWeakReflexBonus()
         {
             var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.EqualTo(0));
-            Assert.That(saves.Reflex, Is.EqualTo(0));
-            Assert.That(saves.Will, Is.EqualTo(0));
+            Assert.That(saves.Fortitude, Is.Zero);
+            Assert.That(saves.Reflex, Is.Zero);
+            Assert.That(saves.Will, Is.Zero);
         }
 
         [Test]
@@ -210,8 +210,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             strongWill.Add(creatureType.Name);
 
             var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.EqualTo(0));
-            Assert.That(saves.Reflex, Is.EqualTo(0));
+            Assert.That(saves.Fortitude, Is.Zero);
+            Assert.That(saves.Reflex, Is.Zero);
             Assert.That(saves.Will, Is.EqualTo(2));
         }
 
@@ -219,9 +219,9 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         public void ApplyWeakWillBonus()
         {
             var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.EqualTo(0));
-            Assert.That(saves.Reflex, Is.EqualTo(0));
-            Assert.That(saves.Will, Is.EqualTo(0));
+            Assert.That(saves.Fortitude, Is.Zero);
+            Assert.That(saves.Reflex, Is.Zero);
+            Assert.That(saves.Will, Is.Zero);
         }
 
         [Test]

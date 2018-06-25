@@ -19,7 +19,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             Assert.That(measurement.Description, Is.Empty);
             Assert.That(measurement.Unit, Is.EqualTo("my unit"));
-            Assert.That(measurement.Value, Is.EqualTo(0));
+            Assert.That(measurement.Value, Is.Zero);
         }
     }
 }

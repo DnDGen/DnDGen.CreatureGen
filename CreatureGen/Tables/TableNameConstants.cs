@@ -5,6 +5,7 @@
         internal static class Adjustments
         {
             public const string ArmorDeflectionBonuses = "ArmorDeflectionBonuses";
+            public const string AttackBonuses = "AttackBonuses";
             public const string GrappleBonuses = "GrappleBonuses";
             public const string HitDice = "HitDice";
             public const string SizeModifiers = "SizeModifiers";

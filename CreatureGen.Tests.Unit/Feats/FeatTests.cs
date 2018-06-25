@@ -22,7 +22,7 @@ namespace CreatureGen.Tests.Unit.Feats
         {
             Assert.That(feat.Name, Is.Not.Null);
             Assert.That(feat.Foci, Is.Empty);
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.Frequency, Is.Not.Null);
         }
 

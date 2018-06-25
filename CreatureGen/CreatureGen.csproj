@@ -93,8 +93,12 @@
     <Compile Include="Generators\Alignments\AlignmentGenerator.cs" />
     <Compile Include="Generators\Alignments\AlignmentGeneratorEventDecorator.cs" />
     <Compile Include="Generators\Alignments\IAlignmentGenerator.cs" />
+    <Compile Include="Generators\Attacks\AttacksGenerator.cs" />
+    <Compile Include="Generators\Attacks\IAttacksGenerator.cs" />
     <Compile Include="Generators\Creatures\CreatureGenerator.cs" />
     <Compile Include="Generators\Creatures\CreatureGeneratorEventDecorator.cs" />
+    <Compile Include="Generators\Creatures\ISpeedsGenerator.cs" />
+    <Compile Include="Generators\Creatures\SpeedsGenerator.cs" />
     <Compile Include="Generators\Defenses\ArmorClassGenerator.cs" />
     <Compile Include="Generators\Defenses\HitPointsGenerator.cs" />
     <Compile Include="Generators\Defenses\IArmorClassGenerator.cs" />

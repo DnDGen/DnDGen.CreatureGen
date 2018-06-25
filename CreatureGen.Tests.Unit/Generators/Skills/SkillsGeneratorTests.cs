@@ -327,12 +327,12 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Ranks, Is.EqualTo(5));
             Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[0].Bonus, Is.EqualTo(0));
+            Assert.That(skills[0].Bonus, Is.Zero);
 
             Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
             Assert.That(skills[1].Ranks, Is.EqualTo(4));
             Assert.That(skills[1].EffectiveRanks, Is.EqualTo(4));
-            Assert.That(skills[1].Bonus, Is.EqualTo(0));
+            Assert.That(skills[1].Bonus, Is.Zero);
 
             Assert.That(skills[2].Name, Is.EqualTo("synergy 1"));
             Assert.That(skills[2].Ranks, Is.EqualTo(4));
@@ -347,7 +347,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[4].Name, Is.EqualTo("synergy 3"));
             Assert.That(skills[4].Ranks, Is.EqualTo(4));
             Assert.That(skills[4].EffectiveRanks, Is.EqualTo(4));
-            Assert.That(skills[4].Bonus, Is.EqualTo(0));
+            Assert.That(skills[4].Bonus, Is.Zero);
         }
 
         [Test]

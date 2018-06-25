@@ -1,6 +1,6 @@
-﻿using CreatureGen.Creatures;
-using CreatureGen.Generators.Abilities;
+﻿using CreatureGen.Generators.Abilities;
 using CreatureGen.Generators.Alignments;
+using CreatureGen.Generators.Attacks;
 using CreatureGen.Generators.Creatures;
 using CreatureGen.Generators.Defenses;
 using CreatureGen.Generators.Feats;
@@ -108,6 +108,18 @@ namespace CreatureGen.Tests.Integration.IoC.Modules
         public void EXTERNAL_DiceIsInjected()
         {
             AssertNotSingleton<Dice>();
+        }
+
+        [Test]
+        public void AttacksGeneratorIsNotASingleton()
+        {
+            AssertNotSingleton<IAttacksGenerator>();
+        }
+
+        [Test]
+        public void SpeedsGeneratorIsNotASingleton()
+        {
+            AssertNotSingleton<ISpeedsGenerator>();
         }
     }
 }

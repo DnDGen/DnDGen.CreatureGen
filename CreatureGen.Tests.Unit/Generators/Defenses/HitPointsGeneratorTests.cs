@@ -69,7 +69,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         public void GetHitDie()
         {
             var hitPoints = hitPointsGenerator.GenerateFor("creature", creatureType, constitution);
-            Assert.That(hitPoints.Bonus, Is.EqualTo(0));
+            Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9266d90210"));
@@ -87,7 +87,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             SetUpAverageRoll("9266d90210+46330", 13.37);
 
             var hitPoints = hitPointsGenerator.GenerateFor("creature", creatureType, constitution);
-            Assert.That(hitPoints.Bonus, Is.EqualTo(0));
+            Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9266d90210+46330"));
@@ -105,7 +105,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             SetUpAverageRoll("9266d90210-37064", 13.37);
 
             var hitPoints = hitPointsGenerator.GenerateFor("creature", creatureType, constitution);
-            Assert.That(hitPoints.Bonus, Is.EqualTo(0));
+            Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9266d90210-37064"));
@@ -122,7 +122,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             constitution.BaseScore = 0;
 
             var hitPoints = hitPointsGenerator.GenerateFor("creature", creatureType, constitution);
-            Assert.That(hitPoints.Bonus, Is.EqualTo(0));
+            Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.False);
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9266d90210"));
@@ -140,7 +140,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             SetUpAverageRoll("9266d90210-46330", 13.37);
 
             var hitPoints = hitPointsGenerator.GenerateFor("creature", creatureType, constitution);
-            Assert.That(hitPoints.Bonus, Is.EqualTo(0));
+            Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9266d90210-46330"));
@@ -158,7 +158,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             SetUpAverageRoll("9266d90210-18532", 13.37);
 
             var hitPoints = hitPointsGenerator.GenerateFor("creature", creatureType, constitution);
-            Assert.That(hitPoints.Bonus, Is.EqualTo(0));
+            Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9266d90210-18532"));
@@ -199,7 +199,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var hitPoints = hitPointsGenerator.GenerateFor("creature", creatureType, constitution);
             hitPoints = hitPointsGenerator.RegenerateWith(hitPoints, feats);
 
-            Assert.That(hitPoints.Bonus, Is.EqualTo(0));
+            Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9266d90210"));

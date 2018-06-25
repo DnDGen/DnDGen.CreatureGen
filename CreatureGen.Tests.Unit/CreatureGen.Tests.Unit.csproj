@@ -99,6 +99,8 @@
     <Compile Include="Creatures\ChallengeRatingConstantsTests.cs" />
     <Compile Include="Creatures\CreatureConstantsTests.cs" />
     <Compile Include="Creatures\CreatureTypeTests.cs" />
+    <Compile Include="Generators\Attacks\AttacksGeneratorTests.cs" />
+    <Compile Include="Generators\Creatures\SpeedsGeneratorTests.cs" />
     <Compile Include="Generators\Feats\FeatsGeneratorEventDecoratorTests.cs" />
     <Compile Include="Generators\Feats\FeatFocusGeneratorEventDecoratorTests.cs" />
     <Compile Include="Generators\Feats\FeatsGeneratorTests.cs" />

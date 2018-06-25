@@ -17,7 +17,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [Test]
         public void FrequencyInitialized()
         {
-            Assert.That(frequency.Quantity, Is.EqualTo(0));
+            Assert.That(frequency.Quantity, Is.Zero);
             Assert.That(frequency.TimePeriod, Is.Empty);
         }
     }

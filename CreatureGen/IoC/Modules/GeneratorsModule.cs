@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Generators.Abilities;
 using CreatureGen.Generators.Alignments;
+using CreatureGen.Generators.Attacks;
 using CreatureGen.Generators.Creatures;
 using CreatureGen.Generators.Defenses;
 using CreatureGen.Generators.Feats;
@@ -18,6 +19,8 @@ namespace CreatureGen.IoC.Modules
             Bind<IHitPointsGenerator>().To<HitPointsGenerator>();
             Bind<IArmorClassGenerator>().To<ArmorClassGenerator>();
             Bind<ISavesGenerator>().To<SavesGenerator>();
+            Bind<IAttacksGenerator>().To<AttacksGenerator>();
+            Bind<ISpeedsGenerator>().To<SpeedsGenerator>();
 
             BindDecoratedGenerators();
         }

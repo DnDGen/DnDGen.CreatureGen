@@ -27,13 +27,13 @@ namespace CreatureGen.Tests.Unit.Defenses
         [Test]
         public void HitPointsInitialized()
         {
-            Assert.That(hitPoints.Bonus, Is.EqualTo(0));
+            Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.Null);
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo("0"));
-            Assert.That(hitPoints.DefaultTotal, Is.EqualTo(0));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(0));
-            Assert.That(hitPoints.HitDie, Is.EqualTo(0));
-            Assert.That(hitPoints.Total, Is.EqualTo(0));
+            Assert.That(hitPoints.DefaultTotal, Is.Zero);
+            Assert.That(hitPoints.HitDiceQuantity, Is.Zero);
+            Assert.That(hitPoints.HitDie, Is.Zero);
+            Assert.That(hitPoints.Total, Is.Zero);
         }
 
         [TestCase(0, 0, 0, 0, "0")]

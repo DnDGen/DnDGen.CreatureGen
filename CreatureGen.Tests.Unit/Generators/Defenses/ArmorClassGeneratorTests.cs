@@ -41,13 +41,14 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             GenerateAndAssertArmorClass();
         }
 
-        private ArmorClass GenerateAndAssertArmorClass(int full = ArmorClass.BaseArmorClass, int flatFooted = ArmorClass.BaseArmorClass, int touch = ArmorClass.BaseArmorClass, bool circumstantial = false)
+        private ArmorClass GenerateAndAssertArmorClass(int full = ArmorClass.BaseArmorClass, int flatFooted = ArmorClass.BaseArmorClass, int touch = ArmorClass.BaseArmorClass, bool circumstantial = false, int naturalArmor = 0)
         {
-            var armorClass = armorClassGenerator.GenerateWith(dexterity, "size", "creature", feats);
+            var armorClass = armorClassGenerator.GenerateWith(dexterity, "size", "creature", feats, naturalArmor);
             Assert.That(armorClass.TotalBonus, Is.EqualTo(full), "full");
             Assert.That(armorClass.FlatFootedBonus, Is.EqualTo(flatFooted), "flat-footed");
             Assert.That(armorClass.TouchBonus, Is.EqualTo(touch), "touch");
             Assert.That(armorClass.CircumstantialBonus, Is.EqualTo(circumstantial));
+            Assert.That(armorClass.NaturalArmorBonus, Is.EqualTo(naturalArmor));
 
             return armorClass;
         }
@@ -108,7 +109,13 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(-4);
 
             var armorClass = GenerateAndAssertArmorClass(6, 6, 6);
-            Assert.That(armorClass.SizeModifier, Is.EqualTo(-4));
+        }
+
+        [Test]
+        public void NaturalArmorApplied()
+        {
+            var armorClass = GenerateAndAssertArmorClass(9276, 9276, naturalArmor: 9266);
+            Assert.That(armorClass.NaturalArmorBonus, Is.EqualTo(9266));
         }
 
         [Test]
@@ -132,11 +139,11 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(1);
             mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.ArmorDeflectionBonuses, "creature")).Returns(1);
 
-            var armorClass = GenerateAndAssertArmorClass(14, 13, 13);
+            var armorClass = GenerateAndAssertArmorClass(15, 14, 13, naturalArmor: 1);
             Assert.That(armorClass.ArmorBonus, Is.EqualTo(1));
             Assert.That(armorClass.DeflectionBonus, Is.EqualTo(1));
-            Assert.That(armorClass.NaturalArmorBonus, Is.EqualTo(0));
-            Assert.That(armorClass.ShieldBonus, Is.EqualTo(0));
+            Assert.That(armorClass.NaturalArmorBonus, Is.EqualTo(1));
+            Assert.That(armorClass.ShieldBonus, Is.Zero);
             Assert.That(armorClass.SizeModifier, Is.EqualTo(1));
             Assert.That(armorClass.Dexterity.Modifier, Is.EqualTo(1));
         }

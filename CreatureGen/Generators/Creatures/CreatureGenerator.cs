@@ -1,10 +1,9 @@
 ﻿using CreatureGen.Abilities;
-using CreatureGen.Attacks;
 using CreatureGen.Creatures;
-using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Generators.Abilities;
 using CreatureGen.Generators.Alignments;
+using CreatureGen.Generators.Attacks;
 using CreatureGen.Generators.Defenses;
 using CreatureGen.Generators.Feats;
 using CreatureGen.Generators.Skills;
@@ -16,7 +15,6 @@ using CreatureGen.Verifiers.Exceptions;
 using DnDGen.Core.Generators;
 using DnDGen.Core.Selectors.Collections;
 using RollGen;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,7 +23,6 @@ namespace CreatureGen.Generators.Creatures
     internal class CreatureGenerator : ICreatureGenerator
     {
         private readonly IAlignmentGenerator alignmentGenerator;
-        private readonly IAdjustmentsSelector adjustmentsSelector;
         private readonly ICreatureVerifier creatureVerifier;
         private readonly ICollectionSelector collectionsSelector;
         private readonly IAbilitiesGenerator abilitiesGenerator;
@@ -34,15 +31,14 @@ namespace CreatureGen.Generators.Creatures
         private readonly ICreatureDataSelector creatureDataSelector;
         private readonly IHitPointsGenerator hitPointsGenerator;
         private readonly IArmorClassGenerator armorClassGenerator;
-        private readonly IAttackSelector attackSelector;
         private readonly ISavesGenerator savesGenerator;
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly Dice dice;
         private readonly JustInTimeFactory justInTimeFactory;
         private readonly IAdvancementSelector advancementSelector;
+        private readonly IAttacksGenerator attacksGenerator;
+        private readonly ISpeedsGenerator speedsGenerator;
 
         public CreatureGenerator(IAlignmentGenerator alignmentGenerator,
-            IAdjustmentsSelector adjustmentsSelector,
             ICreatureVerifier creatureVerifier,
             ICollectionSelector collectionsSelector,
             IAbilitiesGenerator abilitiesGenerator,
@@ -51,29 +47,28 @@ namespace CreatureGen.Generators.Creatures
             ICreatureDataSelector creatureDataSelector,
             IHitPointsGenerator hitPointsGenerator,
             IArmorClassGenerator armorClassGenerator,
-            IAttackSelector attackSelector,
             ISavesGenerator savesGenerator,
-            ITypeAndAmountSelector typeAndAmountSelector,
             Dice dice,
             JustInTimeFactory justInTimeFactory,
-            IAdvancementSelector advancementSelector)
+            IAdvancementSelector advancementSelector,
+            IAttacksGenerator attacksGenerator,
+            ISpeedsGenerator speedsGenerator)
         {
             this.alignmentGenerator = alignmentGenerator;
             this.abilitiesGenerator = abilitiesGenerator;
             this.skillsGenerator = skillsGenerator;
             this.featsGenerator = featsGenerator;
-            this.adjustmentsSelector = adjustmentsSelector;
             this.creatureVerifier = creatureVerifier;
             this.collectionsSelector = collectionsSelector;
             this.creatureDataSelector = creatureDataSelector;
             this.hitPointsGenerator = hitPointsGenerator;
             this.armorClassGenerator = armorClassGenerator;
-            this.attackSelector = attackSelector;
             this.savesGenerator = savesGenerator;
-            this.typeAndAmountSelector = typeAndAmountSelector;
             this.dice = dice;
             this.justInTimeFactory = justInTimeFactory;
             this.advancementSelector = advancementSelector;
+            this.attacksGenerator = attacksGenerator;
+            this.speedsGenerator = speedsGenerator;
         }
 
         public Creature Generate(string creatureName, string template)
@@ -100,8 +95,6 @@ namespace CreatureGen.Generators.Creatures
 
             creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution]);
 
-            var naturalArmorAdvancementAmount = 0;
-
             if (advancementSelector.IsAdvanced(creatureName))
             {
                 var advancement = advancementSelector.SelectRandomFor(creatureName, creature.Type, creature.Size, creature.ChallengeRating);
@@ -111,8 +104,6 @@ namespace CreatureGen.Generators.Creatures
                 creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment += advancement.DexterityAdjustment;
                 creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment += advancement.ConstitutionAdjustment;
 
-                naturalArmorAdvancementAmount = advancement.NaturalArmorAdjustment;
-
                 creature.HitPoints.RollDefault(dice);
                 creature.HitPoints.Roll(dice);
 
@@ -121,14 +112,14 @@ namespace CreatureGen.Generators.Creatures
                 creature.Reach.Value = advancement.Reach;
                 creature.CasterLevel += advancement.CasterLevelAdjustment;
                 creature.ChallengeRating = advancement.AdjustedChallengeRating;
+                creatureData.NaturalArmor += advancement.NaturalArmorAdjustment;
             }
 
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities);
             creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(creatureName, creature.HitPoints, creature.Size, creature.Abilities, creature.Skills);
-            creature.Attacks = attackSelector.Select(creatureName, creature.Size);
-            creature.BaseAttackBonus = ComputeBaseAttackBonus(creature.Type, creature.HitPoints);
+            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
+            creature.Attacks = attacksGenerator.GenerateAttacks(creatureName, creatureData.Size, creature.Size, creature.BaseAttackBonus, creature.Abilities);
 
-            var naturalArmor = creatureData.NaturalArmor + naturalArmorAdvancementAmount;
             creature.Feats = featsGenerator.GenerateFeats(
                 creature.HitPoints,
                 creature.BaseAttackBonus,
@@ -138,112 +129,29 @@ namespace CreatureGen.Generators.Creatures
                 creature.SpecialQualities,
                 creature.CasterLevel,
                 creature.Speeds,
-                naturalArmor,
+                creatureData.NaturalArmor,
                 creature.NumberOfHands,
                 creature.Size);
 
             creature.Skills = skillsGenerator.ApplyBonusesFromFeats(creature.Skills, creature.Feats);
             creature.HitPoints = hitPointsGenerator.RegenerateWith(creature.HitPoints, creature.Feats);
 
-            creature.GrappleBonus = ComputeGrappleBonus(creature.Size, creature.BaseAttackBonus, creature.Abilities[AbilityConstants.Strength]);
+            creature.GrappleBonus = attacksGenerator.GenerateGrappleBonus(creature.Size, creature.BaseAttackBonus, creature.Abilities[AbilityConstants.Strength]);
 
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
-            //Take size attack bonus into account
-            creature.Attacks = ComputeAttackBonuses(creature.Attacks, creature.Abilities, creature.BaseAttackBonus, allFeats);
+            creature.Attacks = attacksGenerator.ApplyAttackBonuses(creature.Attacks, allFeats);
 
             creature.InitiativeBonus = ComputeInitiative(creature.Abilities, creature.Feats);
+            creature.Speeds = speedsGenerator.Generate(creature.Name);
 
-            var speeds = typeAndAmountSelector.Select(TableNameConstants.Collection.Speeds, creatureName);
-
-            foreach (var speedKvp in speeds)
-            {
-                var measurement = new Measurement("feet per round");
-                measurement.Value = speedKvp.Amount;
-
-                if (speedKvp.Type == SpeedConstants.Fly)
-                    measurement.Description = collectionsSelector.SelectFrom(TableNameConstants.Collection.AerialManeuverability, creatureName).Single();
-
-                creature.Speeds[speedKvp.Type] = measurement;
-            }
-
-            creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities[AbilityConstants.Dexterity], creature.Size, creatureName, allFeats);
-            creature.ArmorClass.NaturalArmorBonus += naturalArmor;
-
+            creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities[AbilityConstants.Dexterity], creature.Size, creatureName, allFeats, creatureData.NaturalArmor);
             creature.Saves = savesGenerator.GenerateWith(creature.Type, creature.HitPoints, allFeats, creature.Abilities);
-
             creature.Alignment = alignmentGenerator.Generate(creatureName);
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = templateApplicator.ApplyTo(creature);
 
             return creature;
-        }
-
-        private IEnumerable<Attack> ComputeAttackBonuses(IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities, int baseAttackBonus, IEnumerable<Feat> feats)
-        {
-            foreach (var attack in attacks)
-            {
-                if (attack.IsSpecial)
-                    continue;
-
-                var ability = GetAbilityForAttack(abilities, attack);
-                attack.TotalAttackBonus = ability.Modifier + baseAttackBonus;
-
-                if (!attack.IsPrimary && attack.IsNatural && feats.Any(f => f.Name == FeatConstants.Monster.Multiattack))
-                    attack.TotalAttackBonus -= 2;
-                else if (!attack.IsPrimary)
-                    attack.TotalAttackBonus -= 5;
-            }
-
-            return attacks;
-        }
-
-        private Ability GetAbilityForAttack(Dictionary<string, Ability> abilities, Attack attack)
-        {
-            if (!attack.IsMelee || !abilities[AbilityConstants.Strength].HasScore)
-                return abilities[AbilityConstants.Dexterity];
-
-            return abilities[AbilityConstants.Strength];
-        }
-
-        private int? ComputeGrappleBonus(string size, int baseAttackBonus, Ability strength)
-        {
-            if (!strength.HasScore)
-                return null;
-
-            var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, size);
-            return baseAttackBonus + strength.Modifier + sizeModifier;
-        }
-
-        private int ComputeBaseAttackBonus(CreatureType creatureType, HitPoints hitPoints)
-        {
-            if (hitPoints.HitDiceQuantity == 0)
-                return 0;
-
-            var baseAttackQuality = collectionsSelector.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, creatureType.Name, GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
-
-            switch (baseAttackQuality)
-            {
-                case GroupConstants.GoodBaseAttack: return GetGoodBaseAttackBonus(hitPoints.RoundedHitDiceQuantity);
-                case GroupConstants.AverageBaseAttack: return GetAverageBaseAttackBonus(hitPoints.RoundedHitDiceQuantity);
-                case GroupConstants.PoorBaseAttack: return GetPoorBaseAttackBonus(hitPoints.RoundedHitDiceQuantity);
-                default: throw new ArgumentException($"{creatureType.Name} has no base attack");
-            }
-        }
-
-        private int GetGoodBaseAttackBonus(int hitDiceQuantity)
-        {
-            return hitDiceQuantity;
-        }
-
-        private int GetAverageBaseAttackBonus(int hitDiceQuantity)
-        {
-            return hitDiceQuantity * 3 / 4;
-        }
-
-        private int GetPoorBaseAttackBonus(int hitDiceQuantity)
-        {
-            return hitDiceQuantity / 2;
         }
 
         private int ComputeInitiative(Dictionary<string, Ability> abilities, IEnumerable<Feat> feats)

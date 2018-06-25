@@ -20,13 +20,14 @@ namespace CreatureGen.Generators.Defenses
             this.adjustmentsSelector = adjustmentsSelector;
         }
 
-        public ArmorClass GenerateWith(Ability dexterity, string size, string creatureName, IEnumerable<Feat> feats)
+        public ArmorClass GenerateWith(Ability dexterity, string size, string creatureName, IEnumerable<Feat> feats, int naturalArmor)
         {
             var armorClass = new ArmorClass();
             armorClass.Dexterity = dexterity;
             armorClass.DeflectionBonus = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.ArmorDeflectionBonuses, creatureName);
             armorClass.SizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, size);
             armorClass.ArmorBonus = GetArmorBonus(feats);
+            armorClass.NaturalArmorBonus = naturalArmor;
 
             return armorClass;
         }
