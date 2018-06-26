@@ -175,6 +175,11 @@
     <entry>Huge,15,15/29d2-18</entry>
   </collection>
   <collection>
+    <name>Barbed Devil (Hamatula)</name>
+    <entry>Medium,5,5/1d12</entry>
+    <entry>Large,10,10/1d12+12</entry>
+  </collection>
+  <collection>
     <name>Barghest</name>
     <entry>Medium,5,5/1d2</entry>
   </collection>
@@ -188,6 +193,11 @@
   </collection>
   <collection>
     <name>Bat Swarm</name>
+  </collection>
+  <collection>
+    <name>Bearded Devil (Barbazu)</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,10/4d3</entry>
   </collection>
   <collection>
     <name>Bebilith</name>
@@ -266,20 +276,29 @@
     <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
-    <name>Blue Dragon, Adult</name>
-    <entry>Large,10,5/1d2</entry>
+    <name>Black Pudding</name>
+    <entry>Huge,15,10/2d3-1</entry>
   </collection>
   <collection>
-    <name>Blue Dragon, Ancient</name>
+    <name>Blink Dog</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,5/2d3+2</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Adult</name>
     <entry>Huge,15,10/1d2</entry>
   </collection>
   <collection>
+    <name>Blue Dragon, Ancient</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
     <name>Blue Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15/31d3-30</entry>
+    <entry>Gargantuan,20,15/12d6-11</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Juvenile</name>
-    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Mature Adult</name>
@@ -295,7 +314,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Very Young</name>
-    <entry>Small,5,5/1d2</entry>
+    <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Wyrm</name>
@@ -303,7 +322,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Wyrmling</name>
-    <entry>Tiny,2.5,0/1d2</entry>
+    <entry>Small,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Young</name>
@@ -312,6 +331,30 @@
   <collection>
     <name>Blue Dragon, Young Adult</name>
     <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Blue Slaad</name>
+    <entry>Large,10,10/1d4</entry>
+    <entry>Huge,15,15/1d12+4</entry>
+  </collection>
+  <collection>
+    <name>Boar</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Bodak</name>
+    <entry>Medium,5,5/1d4</entry>
+    <entry>Large,10,10/13d2-8</entry>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)</name>
+    <entry>Large,10,10/1d10</entry>
+    <entry>Huge,15,15/1d10+10</entry>
+  </collection>
+  <collection>
+    <name>Bralani</name>
+    <entry>Medium,5,5/1d6</entry>
+    <entry>Large,10,10/1d6+6</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Adult</name>
@@ -363,19 +406,19 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Adult</name>
-    <entry>Large,10,5/1d2</entry>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Ancient</name>
     <entry>Huge,15,10/1d2</entry>
   </collection>
   <collection>
+    <name>Bronze Dragon, Ancient</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
     <name>Bronze Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15/31d3-30</entry>
+    <entry>Gargantuan,20,15/12d6-11</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Juvenile</name>
-    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Mature Adult</name>
@@ -391,7 +434,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Very Young</name>
-    <entry>Small,5,5/1d2</entry>
+    <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrm</name>
@@ -399,7 +442,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrmling</name>
-    <entry>Tiny,2.5,0/1d2</entry>
+    <entry>Small,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Young</name>
@@ -410,24 +453,106 @@
     <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
+    <name>Brown Bear</name>
+    <entry>Large,10,5/1d4</entry>
+  </collection>
+  <collection>
+    <name>Bugbear</name>
+  </collection>
+  <collection>
+    <name>Bulette</name>
+    <entry>Huge,15,10/2d4-1</entry>
+    <entry>Gargantuan,20,15/2d6+6</entry>
+  </collection>
+  <collection>
+    <name>Cachalot Whale</name>
+    <entry>Gargantuan,20,15/1d6</entry>
+    <entry>Colossal,30,20/17d2-10</entry>
+  </collection>
+  <collection>
+    <name>Carrion Crawler</name>
+    <entry>Large,10,5/1d3</entry>
+    <entry>Huge,15,10/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Cat</name>
+  </collection>
+  <collection>
+    <name>Centaur</name>
+  </collection>
+  <collection>
+    <name>Centipede Swarm</name>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)</name>
+    <entry>Medium,5,5/1d8</entry>
+  </collection>
+  <collection>
+    <name>Chaos Beast</name>
+    <entry>Medium,5,5/1d4</entry>
+    <entry>Large,10,5/1d12+4</entry>
+  </collection>
+  <collection>
+    <name>Cheetah</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Chimera</name>
+    <entry>Large,10,5/1d4</entry>
+    <entry>Huge,15,10/13d2-8</entry>
+  </collection>
+  <collection>
+    <name>Choker</name>
+    <entry>Small,5,10/1d3</entry>
+    <entry>Medium,5,10/1d6+3</entry>
+  </collection>
+  <collection>
+    <name>Chuul</name>
+    <entry>Large,10,5/2d3-1</entry>
+    <entry>Huge,15,10/8d3-2</entry>
+  </collection>
+  <collection>
+    <name>Clay Golem</name>
+    <entry>Large,10,10/2d4-1</entry>
+    <entry>Huge,15,15/2d8+6</entry>
+  </collection>
+  <collection>
+    <name>Cloaker</name>
+    <entry>Large,10,10/1d3</entry>
+    <entry>Huge,15,15/4d3</entry>
+  </collection>
+  <collection>
+    <name>Cloud Giant</name>
+  </collection>
+  <collection>
+    <name>Cockatrice</name>
+    <entry>Small,5,5/1d3</entry>
+    <entry>Medium,5,5/2d4+2</entry>
+  </collection>
+  <collection>
+    <name>Constrictor Snake</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/2d3+1</entry>
+  </collection>
+  <collection>
     <name>Construct</name>
     <entry>Construct/4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
-    <entry>Large,10,5/1d2</entry>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Ancient</name>
     <entry>Huge,15,10/1d2</entry>
   </collection>
   <collection>
+    <name>Copper Dragon, Ancient</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
     <name>Copper Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15/31d3-30</entry>
+    <entry>Gargantuan,20,15/61d2-60</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
-    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Mature Adult</name>
@@ -443,7 +568,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Very Young</name>
-    <entry>Small,5,5/1d2</entry>
+    <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrm</name>
@@ -451,7 +576,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Wyrmling</name>
-    <entry>Tiny,2.5,0/1d2</entry>
+    <entry>Small,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Young</name>
@@ -462,13 +587,191 @@
     <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
+    <name>Couatl</name>
+    <entry>Large,10,5/1d4</entry>
+    <entry>Huge,15,10/13d2-8</entry>
+  </collection>
+  <collection>
+    <name>Criosphinx</name>
+    <entry>Large,10,5/2d3-1</entry>
+    <entry>Huge,15,10/2d8+4</entry>
+  </collection>
+  <collection>
+    <name>Crocodile</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Dark Naga</name>
+    <entry>Large,10,5/1d4</entry>
+    <entry>Huge,15,10/13d2-8</entry>
+  </collection>
+  <collection>
+    <name>Darkmantle</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Death Slaad</name>
+    <entry>Medium,5,5/2d4-1</entry>
+    <entry>Large,10,10/2d12+6</entry>
+  </collection>
+  <collection>
+    <name>Deep Dwarf</name>
+  </collection>
+  <collection>
+    <name>Deep Halfling</name>
+  </collection>
+  <collection>
+    <name>Deinonychus</name>
+    <entry>Medium,5,5/1d4</entry>
+  </collection>
+  <collection>
+    <name>Delver</name>
+    <entry>Huge,15,10/2d8-1</entry>
+    <entry>Gargantuan,20,15/2d8+14</entry>
+  </collection>
+  <collection>
+    <name>Derro</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)</name>
+  </collection>
+  <collection>
+    <name>Destrachan</name>
+    <entry>Large,10,5/1d8</entry>
+    <entry>Huge,15,10/1d8+8</entry>
+  </collection>
+  <collection>
+    <name>Devourer</name>
+    <entry>Large,10,10/1d12</entry>
+    <entry>Huge,15,15/1d12+12</entry>
+  </collection>
+  <collection>
+    <name>Digester</name>
+    <entry>Medium,5,5/1d4</entry>
+    <entry>Large,10,5/1d12+4</entry>
+  </collection>
+  <collection>
+    <name>Dire Ape</name>
+    <entry>Large,10,10/1d10</entry>
+  </collection>
+  <collection>
+    <name>Dire Badger</name>
+    <entry>Large,10,5/1d6</entry>
+  </collection>
+  <collection>
+    <name>Dire Bat</name>
+    <entry>Large,10,5/1d8</entry>
+  </collection>
+  <collection>
+    <name>Dire Bear</name>
+    <entry>Large,10,5/1d4</entry>
+    <entry>Huge,15,10/1d20+4</entry>
+  </collection>
+  <collection>
+    <name>Dire Boar</name>
+    <entry>Large,10,5/4d3-3</entry>
+    <entry>Huge,15,10/2d3+8</entry>
+  </collection>
+  <collection>
+    <name>Dire Lion</name>
+    <entry>Large,10,5/1d8</entry>
+    <entry>Huge,15,10/1d8+8</entry>
+  </collection>
+  <collection>
+    <name>Dire Rat</name>
+    <entry>Small,5,5/1d2</entry>
+    <entry>Medium,5,5/1d3+2</entry>
+  </collection>
+  <collection>
+    <name>Dire Shark</name>
+    <entry>Huge,15,10/13d2-12</entry>
+    <entry>Gargantuan,20,15/3d8+12</entry>
+  </collection>
+  <collection>
+    <name>Dire Tiger</name>
+    <entry>Large,10,5/3d6-2</entry>
+    <entry>Huge,15,10/3d6+14</entry>
+  </collection>
+  <collection>
+    <name>Dire Weasel</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Dire Wolf</name>
+    <entry>Large,10,5/1d12</entry>
+  </collection>
+  <collection>
+    <name>Dire Wolverine</name>
+    <entry>Large,10,5/1d10</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast</name>
+    <entry>Large,10,5/1d3</entry>
+    <entry>Huge,15,10/4d3</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack Lord</name>
+  </collection>
+  <collection>
+    <name>Djinni</name>
+    <entry>Large,10,10/1d3</entry>
+    <entry>Huge,15,15/2d6+2</entry>
+  </collection>
+  <collection>
+    <name>Dog</name>
+  </collection>
+  <collection>
+    <name>Dog, Riding</name>
+  </collection>
+  <collection>
+    <name>Donkey</name>
+  </collection>
+  <collection>
+    <name>Doppelganger</name>
+  </collection>
+  <collection>
     <name>Dragon</name>
     <entry>Dragon/2</entry>
+  </collection>
+  <collection>
+    <name>Dragon Turtle</name>
+    <entry>Huge,15,10/1d12</entry>
+    <entry>Gargantuan,20,15/1d12+12</entry>
+  </collection>
+  <collection>
+    <name>Dragonne</name>
+    <entry>Large,10,5/1d3</entry>
+    <entry>Huge,15,10/2d8+2</entry>
+  </collection>
+  <collection>
+    <name>Dread Wraith</name>
+    <entry>Large,10,10/3d6-2</entry>
+  </collection>
+  <collection>
+    <name>Dretch</name>
+    <entry>Small,5,5/1d4</entry>
+  </collection>
+  <collection>
+    <name>Drider</name>
+  </collection>
+  <collection>
+    <name>Drow</name>
+  </collection>
+  <collection>
+    <name>Dryad</name>
+  </collection>
+  <collection>
+    <name>Duergar</name>
   </collection>
   <collection>
     <name>Dust Mephit</name>
     <entry>Small,5,5/1d3</entry>
     <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Eagle</name>
+    <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
@@ -500,8 +803,78 @@
     <entry>Medium,5,5/1d3+3</entry>
   </collection>
   <collection>
+    <name>Efreeti</name>
+    <entry>Large,10,10/2d3-1</entry>
+    <entry>Huge,15,15/2d8+4</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Elasmosaurus</name>
+    <entry>Huge,15,10/1d10</entry>
+    <entry>Gargantuan,20,15/1d10+10</entry>
+  </collection>
+  <collection>
+    <name>Elder Arrowhawk</name>
+    <entry>Large,10,5/4d3-3</entry>
+  </collection>
+  <collection>
+    <name>Elder Black Pudding</name>
+  </collection>
+  <collection>
+    <name>Elder Tojanida</name>
+    <entry>Large,10,5/4d3-3</entry>
+  </collection>
+  <collection>
+    <name>Elder Xorn</name>
+    <entry>Large,10,10/1d6</entry>
+    <entry>Huge,15,15/23d2-16</entry>
+  </collection>
+  <collection>
     <name>Elemental</name>
     <entry>Elemental/4</entry>
+  </collection>
+  <collection>
+    <name>Elephant</name>
+    <entry>Huge,15,10/2d6-1</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Erinyes</name>
+    <entry>Medium,5,5/4d3-3</entry>
+  </collection>
+  <collection>
+    <name>Ethereal Filcher</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d8+2</entry>
+  </collection>
+  <collection>
+    <name>Ethereal Marauder</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2+2</entry>
+  </collection>
+  <collection>
+    <name>Ettercap</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,10/1d8+2</entry>
+  </collection>
+  <collection>
+    <name>Ettin</name>
   </collection>
   <collection>
     <name>Fey</name>
@@ -509,7 +882,7 @@
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
-    <entry>Hug,15,15e/23d2-22</entry>
+    <entry>Huge,15,15/23d2-22</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Greater</name>
@@ -532,9 +905,79 @@
     <entry>Small,5,5/1</entry>
   </collection>
   <collection>
+    <name>Fire Giant</name>
+  </collection>
+  <collection>
     <name>Fire Mephit</name>
     <entry>Small,5,5/1d3</entry>
     <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Five-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Five-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Flamebrother Salamander</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Flesh Golem</name>
+    <entry>Large,10,10/4d3-3</entry>
+    <entry>Huge,15,15/4d3+6</entry>
+  </collection>
+  <collection>
+    <name>Forest Gnome</name>
+  </collection>
+  <collection>
+    <name>Formian Myrmarch</name>
+    <entry>Large,10,5/1d6</entry>
+    <entry>Huge,15,10/1d6+6</entry>
+  </collection>
+  <collection>
+    <name>Formian Queen</name>
+    <entry>Huge,15,10/1d10</entry>
+    <entry>Gargantuan,20,15/1d10+10</entry>
+  </collection>
+  <collection>
+    <name>Formian Taskmaster</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Formian Warrior</name>
+    <entry>Medium,5,5/1d4</entry>
+    <entry>Large,10,5/1d4+4</entry>
+  </collection>
+  <collection>
+    <name>Formian Worker</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Four-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Four-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Four-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Frost Giant</name>
+  </collection>
+  <collection>
+    <name>Frost Worm</name>
+    <entry>Huge,15,10/2d4-1</entry>
+    <entry>Gargantuan,20,15/4d6+4</entry>
+  </collection>
+  <collection>
+    <name>Gargoyle</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,10/1d6+2</entry>
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
@@ -542,24 +985,141 @@
     <entry>Large,10,5/1d6+6</entry>
   </collection>
   <collection>
+    <name>Gelatinous Cube</name>
+    <entry>Large,10,5/1d8</entry>
+    <entry>Huge,15,10/1d12+8</entry>
+  </collection>
+  <collection>
+    <name>Ghaele</name>
+    <entry>Medium,5,5/2d3-1</entry>
+    <entry>Large,10,10/2d8+4</entry>
+  </collection>
+  <collection>
+    <name>Ghast</name>
+    <entry>Medium,5,5/1d4</entry>
+  </collection>
+  <collection>
+    <name>Ghoul</name>
+    <entry>Medium,5,5/1</entry>
+  </collection>
+  <collection>
     <name>Giant</name>
     <entry>Giant/4</entry>
   </collection>
   <collection>
-    <name>Gold Dragon, Adult</name>
+    <name>Giant Ant, Queen</name>
     <entry>Large,10,5/1d2</entry>
+    <entry>Huge,15,10/1d2+2</entry>
   </collection>
   <collection>
-    <name>Gold Dragon, Ancient</name>
+    <name>Giant Ant, Soldier</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2+2</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Worker</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2+2</entry>
+  </collection>
+  <collection>
+    <name>Giant Bee</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Giant Bombardier Beetle</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2+2</entry>
+  </collection>
+  <collection>
+    <name>Giant Constrictor Snake</name>
+    <entry>Huge,15,10/2d3-1</entry>
+    <entry>Gargantuan,20,15/8d3-2</entry>
+  </collection>
+  <collection>
+    <name>Giant Crocodile</name>
+    <entry>Huge,15,10/2d4-1</entry>
+  </collection>
+  <collection>
+    <name>Giant Eagle</name>
+    <entry>Large,10,5/1d4</entry>
+    <entry>Huge,15,10/1d4+4</entry>
+  </collection>
+  <collection>
+    <name>Giant Fire Beetle</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Giant Octopus</name>
+    <entry>Large,10,10/1d4</entry>
+    <entry>Huge,15,15/1d12+4</entry>
+  </collection>
+  <collection>
+    <name>Giant Owl</name>
+    <entry>Large,10,5/1d4</entry>
+    <entry>Huge,15,10/1d4+4</entry>
+  </collection>
+  <collection>
+    <name>Giant Praying Mantis</name>
+    <entry>Large,10,5/1d4</entry>
+    <entry>Huge,15,10/1d4+4</entry>
+  </collection>
+  <collection>
+    <name>Giant Squid</name>
+    <entry>Huge,15,15/1d6</entry>
+    <entry>Gargantuan,20,20/17d2-10</entry>
+  </collection>
+  <collection>
+    <name>Giant Stag Beetle</name>
+    <entry>Large,10,5/1d3</entry>
+    <entry>Huge,15,10/2d6+2</entry>
+  </collection>
+  <collection>
+    <name>Giant Wasp</name>
+    <entry>Large,10,5/1d3</entry>
+    <entry>Huge,15,10/2d4+2</entry>
+  </collection>
+  <collection>
+    <name>Gibbering Mouther</name>
+    <entry>Large,10,5/1d8</entry>
+  </collection>
+  <collection>
+    <name>Girallon</name>
+    <entry>Large,10,10/1d3</entry>
+    <entry>Huge,15,15/2d6+2</entry>
+  </collection>
+  <collection>
+    <name>Githyanki</name>
+  </collection>
+  <collection>
+    <name>Githzerai</name>
+  </collection>
+  <collection>
+    <name>Glabrezu</name>
+    <entry>Huge,15,15/1d6</entry>
+    <entry>Gargantuan,20,20/17d2-10</entry>
+  </collection>
+  <collection>
+    <name>Gnoll</name>
+  </collection>
+  <collection>
+    <name>Goblin</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Adult</name>
     <entry>Huge,15,10/1d2</entry>
   </collection>
   <collection>
+    <name>Gold Dragon, Ancient</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
     <name>Gold Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15/31d3-30</entry>
+    <entry>Colossal,30,20/29d3-28</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
-    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Mature Adult</name>
@@ -567,47 +1127,80 @@
   </collection>
   <collection>
     <name>Gold Dragon, Old</name>
-    <entry>Huge,15,10/1d2</entry>
-  </collection>
-  <collection>
-    <name>Gold Dragon, Very Old</name>
-    <entry>Huge,15,10/1d2</entry>
-  </collection>
-  <collection>
-    <name>Gold Dragon, Very Young</name>
-    <entry>Small,5,5/1d2</entry>
-  </collection>
-  <collection>
-    <name>Gold Dragon, Wyrm</name>
     <entry>Gargantuan,20,15/1d2</entry>
   </collection>
   <collection>
+    <name>Gold Dragon, Very Old</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Young</name>
+    <entry>Large,10,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrm</name>
+    <entry>Colossal,30,20/1d2</entry>
+  </collection>
+  <collection>
     <name>Gold Dragon, Wyrmling</name>
-    <entry>Tiny,2.5,0/1d2</entry>
+    <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young</name>
-    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young Adult</name>
-    <entry>Large,10,5/1d2</entry>
-  </collection>
-  <collection>
-    <name>Green Dragon, Adult</name>
-    <entry>Large,10,5/1d2</entry>
-  </collection>
-  <collection>
-    <name>Green Dragon, Ancient</name>
     <entry>Huge,15,10/1d2</entry>
   </collection>
   <collection>
+    <name>Gorgon</name>
+    <entry>Large,10,5/2d4-1</entry>
+    <entry>Huge,15,10/4d3+4</entry>
+  </collection>
+  <collection>
+    <name>Gray Elf</name>
+  </collection>
+  <collection>
+    <name>Gray Ooze</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Gray Render</name>
+    <entry>Large,10,10/2d3-1</entry>
+    <entry>Huge,15,15/2d8+4</entry>
+  </collection>
+  <collection>
+    <name>Gray Slaad</name>
+    <entry>Medium,5,5/2d3-1</entry>
+    <entry>Large,10,10/2d8+4</entry>
+  </collection>
+  <collection>
+    <name>Greater Barghest</name>
+    <entry>Large,10,5/4d3-3</entry>
+  </collection>
+  <collection>
+    <name>Greater Shadow</name>
+  </collection>
+  <collection>
+    <name>Greater Stone Golem</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Ancient</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
     <name>Green Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15/31d3-30</entry>
+    <entry>Gargantuan,20,15/61d2-60</entry>
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
-    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Green Dragon, Mature Adult</name>
@@ -623,7 +1216,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Very Young</name>
-    <entry>Small,5,5/1d2</entry>
+    <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrm</name>
@@ -631,7 +1224,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Wyrmling</name>
-    <entry>Tiny,2.5,0/1d2</entry>
+    <entry>Small,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young</name>
@@ -642,13 +1235,177 @@
     <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
+    <name>Green Hag</name>
+  </collection>
+  <collection>
+    <name>Green Slaad</name>
+    <entry>Large,10,10/1d6</entry>
+    <entry>Huge,15,15/1d12+6</entry>
+  </collection>
+  <collection>
+    <name>Grick</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2+2</entry>
+  </collection>
+  <collection>
+    <name>Griffon</name>
+    <entry>Large,10,5/1d3</entry>
+    <entry>Huge,15,10/2d6+2</entry>
+  </collection>
+  <collection>
+    <name>Grig</name>
+    <entry>Tiny,2.5,0/1d3</entry>
+  </collection>
+  <collection>
+    <name>Grimlock</name>
+  </collection>
+  <collection>
+    <name>Guardian Naga</name>
+    <entry>Large,10,5/2d3-1</entry>
+    <entry>Huge,15,10/8d3-2</entry>
+  </collection>
+  <collection>
+    <name>Gynosphinx</name>
+    <entry>Large,10,5/1d4</entry>
+    <entry>Huge,15,10/1d12+4</entry>
+  </collection>
+  <collection>
+    <name>Half-Elf</name>
+  </collection>
+  <collection>
+    <name>Half-Orc</name>
+  </collection>
+  <collection>
+    <name>Harpy</name>
+  </collection>
+  <collection>
+    <name>Hawk</name>
+  </collection>
+  <collection>
+    <name>Heavy Horse</name>
+  </collection>
+  <collection>
+    <name>Heavy Warhorse</name>
+  </collection>
+  <collection>
+    <name>Hell Hound</name>
+    <entry>Medium,5,5/1d4</entry>
+    <entry>Large,10,5/1d4+4</entry>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)</name>
+    <entry>Large,10,5/1d2</entry>
+    <entry>Huge,15,10/13d2-10</entry>
+  </collection>
+  <collection>
+    <name>Hellwasp Swarm</name>
+  </collection>
+  <collection>
+    <name>Hezrou</name>
+    <entry>Large,10,10/2d3-1</entry>
+    <entry>Huge,15,15/2d8+4</entry>
+  </collection>
+  <collection>
+    <name>Hieracosphinx</name>
+    <entry>Large,10,5/2d3-1</entry>
+    <entry>Huge,15,10/4d4+2</entry>
+  </collection>
+  <collection>
+    <name>High Elf</name>
+  </collection>
+  <collection>
+    <name>Hill Dwarf</name>
+  </collection>
+  <collection>
+    <name>Hill Giant</name>
+  </collection>
+  <collection>
+    <name>Hippogriff</name>
+    <entry>Large,10,5/1d3</entry>
+    <entry>Huge,15,10/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Hobgoblin</name>
+  </collection>
+  <collection>
+    <name>Homunculus</name>
+    <entry>Tiny,2.5,0/1d4</entry>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)</name>
+    <entry>Large,10,10/2d3-1</entry>
+    <entry>Huge,15,15/8d4-2</entry>
+  </collection>
+  <collection>
+    <name>Hound Archon</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,10/4d3</entry>
+  </collection>
+  <collection>
+    <name>Howler</name>
+    <entry>Large,10,5/1d3</entry>
+    <entry>Huge,15,10/4d3</entry>
+  </collection>
+  <collection>
+    <name>Human</name>
+  </collection>
+  <collection>
     <name>Humanoid</name>
     <entry>Humanoid/4</entry>
+  </collection>
+  <collection>
+    <name>Hyena</name>
+    <entry>Medium,5,5/1</entry>
+    <entry>Large,10,5/1d2+1</entry>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)</name>
+    <entry>Large,10,10/13d2-12</entry>
+    <entry>Huge,15,15/13d2+2</entry>
   </collection>
   <collection>
     <name>Ice Mephit</name>
     <entry>Small,5,5/1d3</entry>
     <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Imp</name>
+    <entry>Tiny,2.5,0/1d3</entry>
+  </collection>
+  <collection>
+    <name>Iron Golem</name>
+    <entry>Large,10,10/1d6</entry>
+    <entry>Huge,15,15/29d2-22</entry>
+  </collection>
+  <collection>
+    <name>Janni</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,10/4d3</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Arrowhawk</name>
+    <entry>Small,5,5/1d3</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Tojanida</name>
+    <entry>Small,5,5/1d3</entry>
+  </collection>
+  <collection>
+    <name>Kapoacinth</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,10/1d6+2</entry>
+  </collection>
+  <collection>
+    <name>Lacedon</name>
+    <entry>Medium,5,5/1</entry>
+  </collection>
+  <collection>
+    <name>Lantern Archon</name>
+    <entry>Small,5,5/1d3</entry>
+  </collection>
+  <collection>
+    <name>Lemure</name>
+    <entry>Medium,5,5/1d4</entry>
   </collection>
   <collection>
     <name>Magical Beast</name>
@@ -659,6 +1416,14 @@
     <entry>Monstrous Humanoid/3</entry>
   </collection>
   <collection>
+    <name>Mountain Dwarf</name>
+  </collection>
+  <collection>
+    <name>Noble Djinni</name>
+    <entry>Large,10,10/2d3-1</entry>
+    <entry>Huge,15,15/2d8+4</entry>
+  </collection>
+  <collection>
     <name>Ooze</name>
     <entry>Ooze/4</entry>
   </collection>
@@ -666,6 +1431,9 @@
     <name>Ooze Mephit</name>
     <entry>Small,5,5/1d3</entry>
     <entry>Medium,5,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Orc</name>
   </collection>
   <collection>
     <name>Outsider</name>
@@ -778,6 +1546,15 @@
     <entry>Medium,5,5/1d3+3</entry>
   </collection>
   <collection>
+    <name>Stone Giant</name>
+  </collection>
+  <collection>
+    <name>Stone Giant Elder</name>
+  </collection>
+  <collection>
+    <name>Storm Giant</name>
+  </collection>
+  <collection>
     <name>Tiefling</name>
   </collection>
   <collection>
@@ -860,5 +1637,11 @@
   <collection>
     <name>White Dragon, Young</name>
     <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Wild Elf</name>
+  </collection>
+  <collection>
+    <name>Wood Elf</name>
   </collection>
 </collections>
