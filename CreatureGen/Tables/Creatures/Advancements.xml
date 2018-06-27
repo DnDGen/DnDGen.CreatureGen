@@ -1373,6 +1373,11 @@
     <entry>Tiny,2.5,0/1d3</entry>
   </collection>
   <collection>
+    <name>Invisible Stalker</name>
+    <entry>Large,10,10/1d4</entry>
+    <entry>Huge,15,15/1d12+4</entry>
+  </collection>
+  <collection>
     <name>Iron Golem</name>
     <entry>Large,10,10/1d6</entry>
     <entry>Huge,15,15/29d2-22</entry>
@@ -1396,8 +1401,39 @@
     <entry>Large,10,10/1d6+2</entry>
   </collection>
   <collection>
+    <name>Kobold</name>
+  </collection>
+  <collection>
+    <name>Kolyarut</name>
+    <entry>Medium,5,5/4d3-3</entry>
+    <entry>Large,10,10/8d3+2</entry>
+  </collection>
+  <collection>
+    <name>Kraken</name>
+    <entry>Gargantuan,20,15/1d12</entry>
+    <entry>Colossal,30,20/3d10+10</entry>
+  </collection>
+  <collection>
+    <name>Krenshar</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d4+2</entry>
+  </collection>
+  <collection>
+    <name>Kuo-toa</name>
+  </collection>
+  <collection>
     <name>Lacedon</name>
     <entry>Medium,5,5/1</entry>
+  </collection>
+  <collection>
+    <name>Lamia</name>
+    <entry>Large,10,5/1d4</entry>
+    <entry>Huge,15,10/13d2-8</entry>
+  </collection>
+  <collection>
+    <name>Lammasu</name>
+    <entry>Large,10,5/1d3</entry>
+    <entry>Huge,15,10/2d6+2</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
@@ -1406,6 +1442,15 @@
   <collection>
     <name>Lemure</name>
     <entry>Medium,5,5/1d4</entry>
+  </collection>
+  <collection>
+    <name>Light Horse</name>
+  </collection>
+  <collection>
+    <name>Light Warhorse</name>
+  </collection>
+  <collection>
+    <name>Lightfoot Halfling</name>
   </collection>
   <collection>
     <name>Magical Beast</name>
@@ -1492,6 +1537,9 @@
     <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
+    <name>Rock Gnome</name>
+  </collection>
+  <collection>
     <name>Salt Mephit</name>
     <entry>Small,5,5/1d3</entry>
     <entry>Medium,5,5/1d3+3</entry>
@@ -1553,6 +1601,12 @@
   </collection>
   <collection>
     <name>Storm Giant</name>
+  </collection>
+  <collection>
+    <name>Svirfneblin</name>
+  </collection>
+  <collection>
+    <name>Tallfellow Halfling</name>
   </collection>
   <collection>
     <name>Tiefling</name>

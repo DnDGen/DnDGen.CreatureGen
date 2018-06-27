@@ -129,6 +129,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Bat_Swarm][None] = new string[0];
                     testCases[CreatureConstants.Bear_Black][GetRoll(3, 4, 5)] = GetData(SizeConstants.Medium, 5, 5);
                     testCases[CreatureConstants.Bear_Brown][GetRoll(6, 7, 10)] = GetData(SizeConstants.Large, 10, 5);
+                    testCases[CreatureConstants.Bear_Polar][GetRoll(8, 9, 12)] = GetData(SizeConstants.Large, 10, 5);
                     testCases[CreatureConstants.Bear_Dire][GetRoll(12, 13, 16)] = GetData(SizeConstants.Large, 10, 5);
                     testCases[CreatureConstants.Bear_Dire][GetRoll(12, 17, 36)] = GetData(SizeConstants.Huge, 15, 10);
                     testCases[CreatureConstants.BeardedDevil_Barbazu][GetRoll(6, 7, 9)] = GetData(SizeConstants.Medium, 5, 5);
@@ -535,6 +536,9 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Lammasu][GetRoll(7, 11, 21)] = GetData(SizeConstants.Huge, 15, 10);
                     testCases[CreatureConstants.LanternArchon][GetRoll(1, 2, 4)] = GetData(SizeConstants.Small, 5, 5);
                     testCases[CreatureConstants.Lemure][GetRoll(2, 3, 6)] = GetData(SizeConstants.Medium, 5, 5);
+                    testCases[CreatureConstants.Leonal][GetRoll(12, 13, 18)] = GetData(SizeConstants.Medium, 5, 5);
+                    testCases[CreatureConstants.Leonal][GetRoll(12, 19, 36)] = GetData(SizeConstants.Large, 10, 10);
+                    testCases[CreatureConstants.Leopard][GetRoll(3, 4, 5)] = GetData(SizeConstants.Medium, 5, 5);
                     testCases[CreatureConstants.Lion_Dire][GetRoll(8, 9, 16)] = GetData(SizeConstants.Large, 10, 5);
                     testCases[CreatureConstants.Lion_Dire][GetRoll(8, 17, 24)] = GetData(SizeConstants.Huge, 15, 10);
                     testCases[CreatureConstants.Locust_Swarm][None] = new string[0];
@@ -564,6 +568,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Mephit_Steam][GetRoll(3, 7, 9)] = GetData(SizeConstants.Medium, 5, 5);
                     testCases[CreatureConstants.Mephit_Water][GetRoll(3, 4, 6)] = GetData(SizeConstants.Small, 5, 5);
                     testCases[CreatureConstants.Mephit_Water][GetRoll(3, 7, 9)] = GetData(SizeConstants.Medium, 5, 5);
+                    testCases[CreatureConstants.MindFlayer][None] = new string[0];
                     testCases[CreatureConstants.Naga_Dark][GetRoll(9, 10, 13)] = GetData(SizeConstants.Large, 10, 5);
                     testCases[CreatureConstants.Naga_Dark][GetRoll(9, 14, 27)] = GetData(SizeConstants.Huge, 15, 10);
                     testCases[CreatureConstants.Naga_Guardian][GetRoll(11, 12, 16)] = GetData(SizeConstants.Large, 10, 5);
