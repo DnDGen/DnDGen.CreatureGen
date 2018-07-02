@@ -22,7 +22,10 @@
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
     <copyright>Copyright 2017</copyright>
     <dependencies>
-      <dependency id="DnDGen.TreasureGen" version="8.2.0" />
+      <dependency id="DnDGen.Core" version="3.2.0" />
+      <dependency id="DnDGen.RollGen" version="14.0.2" />
+      <dependency id="DnDGen.TreasureGen" version="9.0.0" />
+      <dependency id="Ninject" version="3.3.4" />
     </dependencies>
     <references></references>
     <tags> creature generator dice dungeons dragons d20 dnd 3.5 gen </tags>

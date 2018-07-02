@@ -50,7 +50,6 @@
   <ItemGroup>
     <Reference Include="DnDGen.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DnDGen.Core.3.2.0\lib\DnDGen.Core.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EventGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EventGen.2.0.1\lib\EventGen.dll</HintPath>
@@ -63,19 +62,13 @@
     <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="RollGen, Version=12.1.6474.27172, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DnDGen.RollGen.13.4.2\lib\RollGen.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="RollGen, Version=14.0.6754.38463, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.RollGen.14.0.2\lib\RollGen.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.XML" />
     <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DnDGen.TreasureGen.8.2.0\lib\TreasureGen.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TreasureGen.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DnDGen.TreasureGen.Domain.8.2.0\lib\TreasureGen.Domain.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\DnDGen.TreasureGen.9.0.0\lib\TreasureGen.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
@@ -93,8 +86,6 @@
     <Compile Include="Defenses\HitDiceTests.cs" />
     <Compile Include="Feats\Requirements\FeatAbilityRequirementsTests.cs" />
     <Compile Include="Feats\Requirements\FeatSkillRankRequirementsTests.cs" />
-    <Compile Include="RollHelper.cs" />
-    <Compile Include="RollHelperTests.cs" />
     <Compile Include="TestData\CreatureTestData.cs" />
     <Compile Include="TypesAndAmountsTests.cs" />
     <Compile Include="CreatureGenAssemblyLoader.cs" />
@@ -126,21 +117,21 @@
     <Compile Include="TraitsTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CreatureGen\CreatureGen.csproj">
-      <Project>{83f2b67c-3eb0-4e46-aad5-bafaa2e35689}</Project>
-      <Name>CharacterGen</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CreatureGen.Tests.Integration\CreatureGen.Tests.Integration.csproj">
-      <Project>{a9371758-2de3-43af-857d-7140b1c0a78c}</Project>
-      <Name>CharacterGen.Tests.Integration</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Attacks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CreatureGen.Tests.Integration\CreatureGen.Tests.Integration.csproj">
+      <Project>{a9371758-2de3-43af-857d-7140b1c0a78c}</Project>
+      <Name>CreatureGen.Tests.Integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreatureGen\CreatureGen.csproj">
+      <Project>{83f2b67c-3eb0-4e46-aad5-bafaa2e35689}</Project>
+      <Name>CreatureGen</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

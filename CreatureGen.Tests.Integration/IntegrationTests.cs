@@ -3,7 +3,7 @@ using DnDGen.Core.IoC;
 using EventGen.IoC;
 using Ninject;
 using NUnit.Framework;
-using RollGen.Domain.IoC;
+using RollGen.IoC;
 
 namespace CreatureGen.Tests.Integration
 {

@@ -75,7 +75,7 @@
   <collection>
     <name>Angel, Planetar</name>
     <entry>Large,10,10/2d4-1</entry>
-    <entry>Huge,15,15/4d6+4</entry>
+    <entry>Huge,15,15/1d20+1d2+6</entry>
   </collection>
   <collection>
     <name>Angel, Solar</name>
@@ -685,7 +685,7 @@
   <collection>
     <name>Dire Shark</name>
     <entry>Huge,15,10/1d12+1d3-1</entry>
-    <entry>Gargantuan,20,15/3d8+12</entry>
+    <entry>Gargantuan,20,15/1d20+1d3+13</entry>
   </collection>
   <collection>
     <name>Dire Tiger</name>
@@ -972,7 +972,7 @@
   <collection>
     <name>Frost Worm</name>
     <entry>Huge,15,10/2d4-1</entry>
-    <entry>Gargantuan,20,15/4d6+4</entry>
+    <entry>Gargantuan,20,15/1d20+1d2+6</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
@@ -1115,7 +1115,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Great Wyrm</name>
-    <entry>Colossal,30,20/2d20+4d6-5</entry>
+    <entry>Colossal,30,20/3d20+1d2-3</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
@@ -1308,7 +1308,7 @@
   <collection>
     <name>Hieracosphinx</name>
     <entry>Large,10,5/2d3-1</entry>
-    <entry>Huge,15,10/4d4+2</entry>
+    <entry>Huge,15,10/1d12+1d2+4</entry>
   </collection>
   <collection>
     <name>High Elf</name>
@@ -1517,7 +1517,7 @@
   </collection>
   <collection>
     <name>Marut</name>
-    <entry>Large,10,10/4d4-3</entry>
+    <entry>Large,10,10/1d12+1d2-1</entry>
     <entry>Huge,15,15/1d12+1d6+12</entry>
   </collection>
   <collection>
@@ -1654,7 +1654,7 @@
   <collection>
     <name>Nalfeshnee</name>
     <entry>Huge,15,15/1d6</entry>
-    <entry>Gargantuan,20,20/3d8+4</entry>
+    <entry>Gargantuan,20,20/1d20+1d3+5</entry>
   </collection>
   <collection>
     <name>Nessian Warhound</name>
@@ -1765,8 +1765,57 @@
     <entry>Huge,15,10/2d4+2</entry>
   </collection>
   <collection>
+    <name>Pegasus</name>
+    <entry>Large,10,5/1d4</entry>
+  </collection>
+  <collection>
+    <name>Phantom Fungus</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2+2</entry>
+  </collection>
+  <collection>
+    <name>Phase Spider</name>
+    <entry>Large,10,5/1d3</entry>
+    <entry>Huge,15,10/2d4+2</entry>
+  </collection>
+  <collection>
+    <name>Phasm</name>
+    <entry>Huge,15,15/1d6</entry>
+    <entry>Gargantuan,20,20/1d20+2d3+4</entry>
+  </collection>
+  <collection>
+    <name>Pit Fiend</name>
+    <entry>Large,10,10/1d12+2d4-2</entry>
+    <entry>Huge,15,15/1d12+2d4+16</entry>
+  </collection>
+  <collection>
+    <name>Pixie</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistable Dance</name>
+    <entry>Small,5,5/1d2</entry>
+  </collection>
+  <collection>
     <name>Plant</name>
     <entry>Plant/4</entry>
+  </collection>
+  <collection>
+    <name>Polar Bear</name>
+    <entry>Large,10,5/1d4</entry>
+  </collection>
+  <collection>
+    <name>Pony</name>
+  </collection>
+  <collection>
+    <name>Quasit</name>
+    <entry>Tiny,2.5,0/1d3</entry>
+  </collection>
+  <collection>
+    <name>Rakshasa</name>
+  </collection>
+  <collection>
+    <name>Rat Swarm</name>
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
@@ -1866,6 +1915,10 @@
   </collection>
   <collection>
     <name>Silver Dragon, Young</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young Adult</name>
     <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>

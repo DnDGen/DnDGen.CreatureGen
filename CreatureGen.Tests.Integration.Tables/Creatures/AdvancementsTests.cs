@@ -633,12 +633,22 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Pegasus][RollHelper.GetRoll(4, 5, 8)] = GetData(SizeConstants.Large, 10, 5);
                     testCases[CreatureConstants.PhantomFungus][RollHelper.GetRoll(2, 3, 4)] = GetData(SizeConstants.Medium, 5, 5);
                     testCases[CreatureConstants.PhantomFungus][RollHelper.GetRoll(2, 5, 6)] = GetData(SizeConstants.Large, 10, 5);
+                    testCases[CreatureConstants.PhaseSpider][RollHelper.GetRoll(5, 6, 8)] = GetData(SizeConstants.Large, 10, 5);
+                    testCases[CreatureConstants.PhaseSpider][RollHelper.GetRoll(5, 9, 15)] = GetData(SizeConstants.Huge, 15, 10);
+                    testCases[CreatureConstants.Phasm][RollHelper.GetRoll(15, 16, 21)] = GetData(SizeConstants.Huge, 15, 15);
+                    testCases[CreatureConstants.Phasm][RollHelper.GetRoll(15, 22, 45)] = GetData(SizeConstants.Gargantuan, 20, 20);
                     testCases[CreatureConstants.PitFiend][RollHelper.GetRoll(18, 19, 36)] = GetData(SizeConstants.Large, 10, 10);
                     testCases[CreatureConstants.PitFiend][RollHelper.GetRoll(18, 37, 54)] = GetData(SizeConstants.Huge, 15, 15);
                     testCases[CreatureConstants.Pixie][RollHelper.GetRoll(1, 2, 3)] = GetData(SizeConstants.Small, 5, 5);
                     testCases[CreatureConstants.Pixie_WithIrresistableDance][RollHelper.GetRoll(1, 2, 3)] = GetData(SizeConstants.Small, 5, 5);
+                    testCases[CreatureConstants.Pony][None] = new string[0];
+                    testCases[CreatureConstants.Porpoise][RollHelper.GetRoll(2, 3, 4)] = GetData(SizeConstants.Medium, 5, 5);
+                    testCases[CreatureConstants.Porpoise][RollHelper.GetRoll(2, 3, 4)] = GetData(SizeConstants.Medium, 5, 5);
                     testCases[CreatureConstants.PrayingMantis_Giant][RollHelper.GetRoll(4, 5, 8)] = GetData(SizeConstants.Large, 10, 5);
                     testCases[CreatureConstants.PrayingMantis_Giant][RollHelper.GetRoll(4, 9, 12)] = GetData(SizeConstants.Huge, 15, 10);
+                    testCases[CreatureConstants.Pseudodragon][RollHelper.GetRoll(2, 3, 4)] = GetData(SizeConstants.Tiny, 2.5, 0);
+                    testCases[CreatureConstants.PurpleWorm][RollHelper.GetRoll(16, 17, 32)] = GetData(SizeConstants.Gargantuan, 20, 15);
+                    testCases[CreatureConstants.PurpleWorm][RollHelper.GetRoll(16, 33, 48)] = GetData(SizeConstants.Colossal, 30, 20);
                     testCases[CreatureConstants.Pyrohydra_10Heads][None] = new string[0];
                     testCases[CreatureConstants.Pyrohydra_11Heads][None] = new string[0];
                     testCases[CreatureConstants.Pyrohydra_12Heads][None] = new string[0];
@@ -648,6 +658,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Pyrohydra_8Heads][None] = new string[0];
                     testCases[CreatureConstants.Pyrohydra_9Heads][None] = new string[0];
                     testCases[CreatureConstants.Quasit][RollHelper.GetRoll(3, 4, 6)] = GetData(SizeConstants.Tiny, 2.5, 0);
+                    testCases[CreatureConstants.Rakshasa][None] = new string[0];
                     testCases[CreatureConstants.Rat_Dire][RollHelper.GetRoll(1, 2, 3)] = GetData(SizeConstants.Small, 5, 5);
                     testCases[CreatureConstants.Rat_Dire][RollHelper.GetRoll(1, 4, 6)] = GetData(SizeConstants.Medium, 5, 5);
                     testCases[CreatureConstants.Rat_Swarm][None] = new string[0];
@@ -762,12 +773,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 }
             }
 
-            private static string[] GetData(
-                string advancedSize,
-                double space,
-                double reach)
+            private static string[] GetData(string advancedSize, double space, double reach)
             {
-
                 var data = new string[3];
                 data[DataIndexConstants.AdvancementSelectionData.Reach] = reach.ToString();
                 data[DataIndexConstants.AdvancementSelectionData.Size] = advancedSize;

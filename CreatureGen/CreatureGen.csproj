@@ -42,6 +42,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Albatross.Expression, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Albatross.Expression.2.0.3\lib\net45\Albatross.Expression.dll</HintPath>
+    </Reference>
     <Reference Include="DnDGen.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DnDGen.Core.3.2.0\lib\DnDGen.Core.dll</HintPath>
       <Private>True</Private>
@@ -54,9 +57,8 @@
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RollGen, Version=12.1.6474.27172, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DnDGen.RollGen.13.4.2\lib\RollGen.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="RollGen, Version=14.0.6754.38463, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.RollGen.14.0.2\lib\RollGen.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -66,12 +68,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DnDGen.TreasureGen.8.2.0\lib\TreasureGen.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TreasureGen.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DnDGen.TreasureGen.Domain.8.2.0\lib\TreasureGen.Domain.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\DnDGen.TreasureGen.9.0.0\lib\TreasureGen.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

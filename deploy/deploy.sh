@@ -14,7 +14,7 @@ do
 done
 
 echo "Packing CreatureGen"
-nuget pack ./CreatureGen/CreatureGen.nuspec -Verbosity detailed
+mono ./nuget.exe pack ./CreatureGen/CreatureGen.nuspec -Verbosity detailed
 
 echo "Pushing CreatureGen"
-nuget push ./CreatureGen.*.nupkg -Verbosity detailed -ApiKey $ApiKey -Source $Source
+mono ./nuget.exe push ./CreatureGen.*.nupkg -Verbosity detailed -ApiKey $ApiKey -Source $Source
