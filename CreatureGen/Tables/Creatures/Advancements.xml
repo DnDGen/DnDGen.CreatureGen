@@ -1808,6 +1808,19 @@
     <name>Pony</name>
   </collection>
   <collection>
+    <name>Porpoise</name>
+    <entry>Medium,5,5/1d2</entry>
+  </collection>
+  <collection>
+    <name>Pseudodragon</name>
+    <entry>Tiny,2.5,0/1d2</entry>
+  </collection>
+  <collection>
+    <name>Purple Worm</name>
+    <entry>Gargantuan,20,15/3d6-2</entry>
+    <entry>Colossal,30,20/3d6+14</entry>
+  </collection>
+  <collection>
     <name>Quasit</name>
     <entry>Tiny,2.5,0/1d3</entry>
   </collection>
@@ -1815,23 +1828,44 @@
     <name>Rakshasa</name>
   </collection>
   <collection>
+    <name>Rast</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d6+2</entry>
+  </collection>
+  <collection>
+    <name>Rat</name>
+  </collection>
+  <collection>
     <name>Rat Swarm</name>
   </collection>
   <collection>
-    <name>Red Dragon, Adult</name>
-    <entry>Large,10,5/1d2</entry>
+    <name>Raven</name>
   </collection>
   <collection>
-    <name>Red Dragon, Ancient</name>
+    <name>Ravid</name>
+    <entry>Medium,5,5/1</entry>
+    <entry>Large,10,5/2d3</entry>
+  </collection>
+  <collection>
+    <name>Razor Boar</name>
+    <entry>Large,10,5/2d8-1</entry>
+    <entry>Huge,15,10/2d8+14</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Adult</name>
     <entry>Huge,15,10/1d2</entry>
   </collection>
   <collection>
+    <name>Red Dragon, Ancient</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
     <name>Red Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15/3d20+1d6-3</entry>
+    <entry>Colossal,30,20/3d20+1d3-3</entry>
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
-    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Red Dragon, Mature Adult</name>
@@ -1839,15 +1873,15 @@
   </collection>
   <collection>
     <name>Red Dragon, Old</name>
-    <entry>Huge,15,10/1d2</entry>
+    <entry>Gargantuan,20,15/1d2</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Old</name>
-    <entry>Huge,15,10/1d2</entry>
+    <entry>Gargantuan,20,15/1d2</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Young</name>
-    <entry>Small,5,5/1d2</entry>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrm</name>
@@ -1855,18 +1889,63 @@
   </collection>
   <collection>
     <name>Red Dragon, Wyrmling</name>
-    <entry>Tiny,2.5,0/1d2</entry>
-  </collection>
-  <collection>
-    <name>Red Dragon, Young</name>
     <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>
-    <name>Red Dragon, Young Adult</name>
+    <name>Red Dragon, Young</name>
     <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
+    <name>Red Dragon, Young Adult</name>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Red Slaad</name>
+    <entry>Large,10,10/1d3</entry>
+    <entry>Huge,15,15/2d6+2</entry>
+  </collection>
+  <collection>
+    <name>Remorhaz</name>
+    <entry>Huge,15,10/2d4-1</entry>
+    <entry>Gargantuan,20,15/2d4+6</entry>
+  </collection>
+  <collection>
+    <name>Retriever</name>
+    <entry>Huge,15,10/2d3-1</entry>
+    <entry>Gargantuan,20,15/2d8+4</entry>
+  </collection>
+  <collection>
+    <name>Rhinoceras</name>
+    <entry>Large,10,5/1d4</entry>
+    <entry>Huge,15,10/1d12+4</entry>
+  </collection>
+  <collection>
+    <name>Roc</name>
+    <entry>Gargantuan,20,15/1d12+1d3-1</entry>
+    <entry>Colossal,30,20/1d20+1d3+13</entry>
+  </collection>
+  <collection>
     <name>Rock Gnome</name>
+  </collection>
+  <collection>
+    <name>Roper</name>
+    <entry>Large,10,10/2d3-1</entry>
+    <entry>Huge,15,15/2d8+4</entry>
+  </collection>
+  <collection>
+    <name>Rust Monster</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,5/2d4+2</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,10/2d3+2</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin Mutant</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,10/2d3+2</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
@@ -1874,20 +1953,60 @@
     <entry>Medium,5,5/1d3+3</entry>
   </collection>
   <collection>
-    <name>Silver Dragon, Adult</name>
-    <entry>Large,10,5/1d2</entry>
+    <name>Satyr</name>
+    <entry>Medium,5,5/2d3-1</entry>
   </collection>
   <collection>
-    <name>Silver Dragon, Ancient</name>
+    <name>Satyr with pipes</name>
+    <entry>Medium,5,5/2d3-1</entry>
+  </collection>
+  <collection>
+    <name>Scorpionfolk</name>
+  </collection>
+  <collection>
+    <name>Scrag</name>
+  </collection>
+  <collection>
+    <name>Sea Hag</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Shadow</name>
+    <entry>Medium,5,5/1d6</entry>
+  </collection>
+  <collection>
+    <name>Shadow Mastiff</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,10/1d6+2</entry>
+  </collection>
+  <collection>
+    <name>Shambling Mound</name>
+    <entry>Large,10,10/1d4</entry>
+    <entry>Huge,15,15/1d12+4</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Adult</name>
     <entry>Huge,15,10/1d2</entry>
   </collection>
   <collection>
+    <name>Silver Dragon, Ancient</name>
+    <entry>Gargantuan,20,15/1d2</entry>
+  </collection>
+  <collection>
     <name>Silver Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15/3d20+1d6-3</entry>
+    <entry>Colossal,30,20/3d20+1d3-3</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
-    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Mature Adult</name>
@@ -1895,15 +2014,15 @@
   </collection>
   <collection>
     <name>Silver Dragon, Old</name>
-    <entry>Huge,15,10/1d2</entry>
+    <entry>Gargantuan,20,15/1d2</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Old</name>
-    <entry>Huge,15,10/1d2</entry>
+    <entry>Gargantuan,20,15/1d2</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Young</name>
-    <entry>Small,5,5/1d2</entry>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrm</name>
@@ -1911,15 +2030,24 @@
   </collection>
   <collection>
     <name>Silver Dragon, Wyrmling</name>
-    <entry>Tiny,2.5,0/1d2</entry>
+    <entry>Medium,5,5/1d2</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young</name>
-    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d2</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young Adult</name>
-    <entry>Medium,5,5/1d2</entry>
+    <entry>Huge,15,10/1d2</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Six-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Six-Headed Pyrohydra</name>
   </collection>
   <collection>
     <name>Steam Mephit</name>
@@ -1942,7 +2070,28 @@
     <name>Tallfellow Halfling</name>
   </collection>
   <collection>
+    <name>Ten-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed Pyrohydra</name>
+  </collection>
+  <collection>
     <name>Tiefling</name>
+  </collection>
+  <collection>
+    <name>Troll</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Pyrohydra</name>
   </collection>
   <collection>
     <name>Undead</name>
