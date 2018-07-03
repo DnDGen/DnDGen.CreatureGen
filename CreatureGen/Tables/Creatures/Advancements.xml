@@ -470,6 +470,12 @@
     <entry>Colossal,30,20/1d12+2d4+4</entry>
   </collection>
   <collection>
+    <name>Camel, Bactrian (Two-Humped)</name>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)</name>
+  </collection>
+  <collection>
     <name>Carrion Crawler</name>
     <entry>Large,10,5/1d3</entry>
     <entry>Huge,15,10/1d3+3</entry>
@@ -956,15 +962,6 @@
   <collection>
     <name>Formian Worker</name>
     <entry>Medium,5,5/1d2</entry>
-  </collection>
-  <collection>
-    <name>Four-Headed Cryohydra</name>
-  </collection>
-  <collection>
-    <name>Four-Headed Hydra</name>
-  </collection>
-  <collection>
-    <name>Four-Headed Pyrohydra</name>
   </collection>
   <collection>
     <name>Frost Giant</name>
@@ -1538,6 +1535,9 @@
     <name>Mimic</name>
     <entry>Large,10,10/1d3</entry>
     <entry>Huge,15,15/2d6+2</entry>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)</name>
   </collection>
   <collection>
     <name>Minor Xorn</name>
@@ -2382,5 +2382,48 @@
   </collection>
   <collection>
     <name>Wood Elf</name>
+  </collection>
+  <collection>
+    <name>Worg</name>
+    <entry>Medium,5,5/1d2</entry>
+    <entry>Large,10,5/1d6+2</entry>
+  </collection>
+  <collection>
+    <name>Wraith</name>
+    <entry>Medium,5,5/2d3-1</entry>
+  </collection>
+  <collection>
+    <name>Wyvern</name>
+    <entry>Huge,15,10/1d3</entry>
+    <entry>Gargantuan,20,15/2d6+2</entry>
+  </collection>
+  <collection>
+    <name>Xill</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,10/2d4+2</entry>
+  </collection>
+  <collection>
+    <name>Yeth Hound</name>
+    <entry>Medium,5,5/1d3</entry>
+    <entry>Large,10,5/1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Yrthak</name>
+    <entry>Huge,15,10/1d4</entry>
+    <entry>Gargantuan,20,15/1d20+4</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Abomination</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Pureblood</name>
+  </collection>
+  <collection>
+    <name>Zelekhut</name>
+    <entry>Large,10,10/1d8</entry>
+    <entry>Huge,15,15/1d8+8</entry>
   </collection>
 </collections>

@@ -821,10 +821,21 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Worg][RollHelper.GetRoll(4, 7, 12)] = GetData(SizeConstants.Large, 10, 5);
                     testCases[CreatureConstants.Wraith][RollHelper.GetRoll(5, 6, 10)] = GetData(SizeConstants.Medium, 5, 5);
                     testCases[CreatureConstants.Wraith_Dread][RollHelper.GetRoll(16, 17, 32)] = GetData(SizeConstants.Large, 10, 10);
+                    testCases[CreatureConstants.Wyvern][RollHelper.GetRoll(7, 8, 10)] = GetData(SizeConstants.Huge, 15, 10);
+                    testCases[CreatureConstants.Wyvern][RollHelper.GetRoll(7, 11, 21)] = GetData(SizeConstants.Gargantuan, 20, 15);
+                    testCases[CreatureConstants.Xill][RollHelper.GetRoll(5, 6, 8)] = GetData(SizeConstants.Medium, 5, 5);
+                    testCases[CreatureConstants.Xill][RollHelper.GetRoll(5, 9, 15)] = GetData(SizeConstants.Large, 10, 10);
                     testCases[CreatureConstants.Xorn_Average][RollHelper.GetRoll(7, 8, 14)] = GetData(SizeConstants.Medium, 5, 5);
                     testCases[CreatureConstants.Xorn_Elder][RollHelper.GetRoll(15, 16, 21)] = GetData(SizeConstants.Large, 10, 10);
                     testCases[CreatureConstants.Xorn_Elder][RollHelper.GetRoll(15, 22, 45)] = GetData(SizeConstants.Huge, 15, 15);
                     testCases[CreatureConstants.Xorn_Minor][RollHelper.GetRoll(3, 4, 6)] = GetData(SizeConstants.Small, 5, 5);
+                    testCases[CreatureConstants.YethHound][RollHelper.GetRoll(3, 4, 6)] = GetData(SizeConstants.Medium, 5, 5);
+                    testCases[CreatureConstants.YethHound][RollHelper.GetRoll(3, 7, 9)] = GetData(SizeConstants.Large, 10, 5);
+                    testCases[CreatureConstants.Yrthak][RollHelper.GetRoll(12, 13, 16)] = GetData(SizeConstants.Huge, 15, 10);
+                    testCases[CreatureConstants.Yrthak][RollHelper.GetRoll(12, 17, 36)] = GetData(SizeConstants.Gargantuan, 20, 15);
+                    testCases[CreatureConstants.YuanTi_Abomination][None] = new string[0];
+                    testCases[CreatureConstants.YuanTi_Halfblood][None] = new string[0];
+                    testCases[CreatureConstants.YuanTi_Pureblood][None] = new string[0];
                     testCases[CreatureConstants.Zelekhut][RollHelper.GetRoll(8, 9, 16)] = GetData(SizeConstants.Large, 10, 10);
                     testCases[CreatureConstants.Zelekhut][RollHelper.GetRoll(8, 17, 24)] = GetData(SizeConstants.Huge, 15, 15);
 
