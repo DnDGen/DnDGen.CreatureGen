@@ -35,9 +35,79 @@
     <entry>Tumble</entry>
   </collection>
   <collection>
+    <name>Adult Arrowhawk</name>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Adult Tojanida</name>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Swim</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
     <name>Agile</name>
     <entry>Balance</entry>
     <entry>Escape Artist</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Elder</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Greater</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Huge</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Large</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Medium</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Small</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Air Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Alertness</name>
@@ -124,6 +194,36 @@
   </collection>
   <collection>
     <name>Animated Object, Tiny</name>
+  </collection>
+  <collection>
+    <name>Ankheg</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Annis</name>
+    <entry>Bluff</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Ape</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Aquatic Elf</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Armor Check Penalty</name>
@@ -1160,6 +1260,99 @@
     <entry>Decipher Script</entry>
   </collection>
   <collection>
+    <name>Dire Ape</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Elder</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Greater</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Huge</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Large</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Medium</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Small</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Elder Arrowhawk</name>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Elder Tojanida</name>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Swim</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Elder</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Greater</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Huge</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Large</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Medium</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Small</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
     <name>Gold Dragon, Adult</name>
     <entry>Listen</entry>
     <entry>Search</entry>
@@ -1547,6 +1740,33 @@
     <name>Investigator</name>
     <entry>Gather Information</entry>
     <entry>Search</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Arrowhawk</name>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Tojanida</name>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Swim</entry>
+    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Knowledge</name>
@@ -2074,6 +2294,42 @@
     <name>Stealthy</name>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Elder</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Greater</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Huge</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Large</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Medium</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Small</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>

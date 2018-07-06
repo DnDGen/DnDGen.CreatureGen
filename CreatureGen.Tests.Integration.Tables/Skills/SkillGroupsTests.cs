@@ -2271,6 +2271,9 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.Swim,
             SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Troglodyte,
+            SkillConstants.Hide,
+            SkillConstants.Listen)]
         public void Creatureskills(string creature, params string[] skills)
         {
             base.DistinctCollection(creature, skills);
