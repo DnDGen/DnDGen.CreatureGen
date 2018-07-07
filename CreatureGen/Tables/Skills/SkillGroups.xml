@@ -226,6 +226,15 @@
     <entry>Swim</entry>
   </collection>
   <collection>
+    <name>Aranea</name>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Escape Artist</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
     <name>Armor Check Penalty</name>
     <entry>Balance</entry>
     <entry>Climb</entry>
@@ -1011,6 +1020,13 @@
     <entry>Swim</entry>
   </collection>
   <collection>
+    <name>Chuul</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
     <name>Copper Dragon, Adult</name>
     <entry>Listen</entry>
     <entry>Search</entry>
@@ -1245,6 +1261,12 @@
     <entry>Woodworking</entry>
   </collection>
   <collection>
+    <name>Criosphinx</name>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
     <name>Deceitful</name>
     <entry>Disguise</entry>
     <entry>Forgery</entry>
@@ -1253,6 +1275,20 @@
     <name>Deft Hands</name>
     <entry>Sleight of Hand</entry>
     <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Derro</name>
+    <entry>Bluff</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Derro (Sane)</name>
+    <entry>Bluff</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
   </collection>
   <collection>
     <name>Diligent</name>
