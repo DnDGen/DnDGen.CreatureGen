@@ -1299,7 +1299,40 @@
     <name>Dire Ape</name>
     <entry>Climb</entry>
     <entry>Listen</entry>
+    <entry>Move Silently</entry>
     <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Dragon Turtle</name>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Drow</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Dust Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
@@ -1332,6 +1365,19 @@
     <entry>Spot</entry>
   </collection>
   <collection>
+    <name>Earth Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
     <name>Elder Arrowhawk</name>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1346,9 +1392,9 @@
   </collection>
   <collection>
     <name>Elder Tojanida</name>
-    <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
     <entry>Hide</entry>
+    <entry>Intimidate</entry>
     <entry>Knowledge/The Planes</entry>
     <entry>Listen</entry>
     <entry>Search</entry>
@@ -1389,6 +1435,35 @@
     <entry>Spot</entry>
   </collection>
   <collection>
+    <name>Fire Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Gargoyle</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Queen</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, Soldier</name>
+    <entry>Climb</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Worker</name>
+    <entry>Climb</entry>
+  </collection>
+  <collection>
     <name>Gold Dragon, Adult</name>
     <entry>Listen</entry>
     <entry>Search</entry>
@@ -1400,8 +1475,8 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1416,8 +1491,8 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1432,8 +1507,8 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1448,8 +1523,8 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1464,8 +1539,8 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1480,8 +1555,8 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1496,8 +1571,8 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1512,8 +1587,8 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1528,8 +1603,8 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1544,8 +1619,8 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1560,8 +1635,8 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1576,9 +1651,16 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
     <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gray Elf</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Green Dragon, Adult</name>
@@ -1594,7 +1676,7 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Ancient</name>
@@ -1610,7 +1692,7 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
@@ -1626,7 +1708,7 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
@@ -1642,7 +1724,7 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Mature Adult</name>
@@ -1658,7 +1740,7 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Old</name>
@@ -1674,7 +1756,7 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Old</name>
@@ -1690,7 +1772,7 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Young</name>
@@ -1706,7 +1788,7 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrm</name>
@@ -1722,7 +1804,7 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrmling</name>
@@ -1738,7 +1820,7 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young</name>
@@ -1754,7 +1836,7 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young Adult</name>
@@ -1770,7 +1852,61 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Hag</name>
+    <entry>Concentration</entry>
+    <entry>Craft</entry>
+    <entry>Knowledge</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
     <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gynosphinx</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Half-Elf</name>
+    <entry>Diplomacy</entry>
+    <entry>Gather Information</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Hieracosphinx</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>High Elf</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Ice Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Investigator</name>
@@ -1805,6 +1941,13 @@
     <entry>Use Rope</entry>
   </collection>
   <collection>
+    <name>Kapoacinth</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
     <name>Knowledge</name>
     <entry>Arcana</entry>
     <entry>Architecture and Engineering</entry>
@@ -1818,9 +1961,51 @@
     <entry>The Planes</entry>
   </collection>
   <collection>
+    <name>Kuo-toa</name>
+    <entry>Craft</entry>
+    <entry>Knowledge</entry>
+    <entry>Escape Artist</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Locathah</name>
+    <entry>Craft</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
     <name>Magical Aptitude</name>
     <entry>Spellcraft</entry>
     <entry>Use Magic Device</entry>
+  </collection>
+  <collection>
+    <name>Magma Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Manta Ray</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Merfolk</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Negotiator</name>
@@ -1831,6 +2016,19 @@
     <name>Nimble Fingers</name>
     <entry>Disable Device</entry>
     <entry>Open Lock</entry>
+  </collection>
+  <collection>
+    <name>Ooze Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Perform</name>
@@ -1949,9 +2147,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Ancient</name>
@@ -1965,9 +2163,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
@@ -1981,9 +2179,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
@@ -1997,9 +2195,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Mature Adult</name>
@@ -2013,9 +2211,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Old</name>
@@ -2029,9 +2227,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Old</name>
@@ -2045,9 +2243,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Young</name>
@@ -2061,9 +2259,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrm</name>
@@ -2077,9 +2275,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrmling</name>
@@ -2093,9 +2291,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young</name>
@@ -2109,9 +2307,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young Adult</name>
@@ -2125,8 +2323,31 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Salt Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
     <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
     <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Sea Hag</name>
+    <entry>Concentration</entry>
+    <entry>Craft</entry>
+    <entry>Knowledge</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -2146,9 +2367,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Ancient</name>
@@ -2162,9 +2383,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Great Wyrm</name>
@@ -2178,9 +2399,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
@@ -2194,9 +2415,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Mature Adult</name>
@@ -2210,9 +2431,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Old</name>
@@ -2226,9 +2447,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Old</name>
@@ -2242,9 +2463,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Young</name>
@@ -2258,9 +2479,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrm</name>
@@ -2274,9 +2495,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrmling</name>
@@ -2290,9 +2511,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young</name>
@@ -2306,9 +2527,9 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young Adult</name>
@@ -2322,14 +2543,27 @@
     <entry>Knowledge</entry>
     <entry>Sense Motive</entry>
     <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Stealthy</name>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Steam Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
@@ -2366,6 +2600,19 @@
     <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Water Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
@@ -2558,5 +2805,19 @@
     <entry>Hide</entry>
     <entry>Move Silently</entry>
     <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Wild Elf</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Wood Elf</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
   </collection>
 </collections>
