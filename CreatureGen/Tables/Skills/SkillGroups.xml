@@ -2334,7 +2334,6 @@
     <entry>Hide</entry>
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
-    <entry>Intimidate</entry>
     <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Spot</entry>
@@ -2342,7 +2341,6 @@
   </collection>
   <collection>
     <name>Sea Hag</name>
-    <entry>Concentration</entry>
     <entry>Craft</entry>
     <entry>Knowledge</entry>
     <entry>Hide</entry>
@@ -2559,11 +2557,31 @@
     <entry>Hide</entry>
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
-    <entry>Intimidate</entry>
     <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Spot</entry>
     <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+    <entry>Bluff</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Sleight of Hand</entry>
+  </collection>
+  <collection>
+    <name>Triton</name>
+    <entry>Craft</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Ride</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
@@ -2612,6 +2630,7 @@
     <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Spot</entry>
+    <entry>Swim</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>

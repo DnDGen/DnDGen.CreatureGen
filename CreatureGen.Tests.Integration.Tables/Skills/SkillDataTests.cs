@@ -24,6 +24,12 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             {
                 SkillConstants.Craft + "2",
                 SkillConstants.Knowledge + "2",
+                SkillConstants.Craft + "3",
+                SkillConstants.Knowledge + "3",
+                SkillConstants.Craft + "4",
+                SkillConstants.Knowledge + "4",
+                SkillConstants.Craft + "5",
+                SkillConstants.Knowledge + "5",
                 SkillConstants.Knowledge + GroupConstants.All,
             };
 
@@ -41,6 +47,9 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(SkillConstants.Concentration, AbilityConstants.Constitution)]
         [TestCase(SkillConstants.Craft, AbilityConstants.Intelligence, SkillConstants.Craft, 1)]
         [TestCase(SkillConstants.Craft + "2", AbilityConstants.Intelligence, SkillConstants.Craft, 2)]
+        [TestCase(SkillConstants.Craft + "3", AbilityConstants.Intelligence, SkillConstants.Craft, 3)]
+        [TestCase(SkillConstants.Craft + "4", AbilityConstants.Intelligence, SkillConstants.Craft, 4)]
+        [TestCase(SkillConstants.Craft + "5", AbilityConstants.Intelligence, SkillConstants.Craft, 5)]
         [TestCase(SkillConstants.DecipherScript, AbilityConstants.Intelligence)]
         [TestCase(SkillConstants.Diplomacy, AbilityConstants.Charisma)]
         [TestCase(SkillConstants.DisableDevice, AbilityConstants.Intelligence)]
@@ -55,6 +64,9 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(SkillConstants.Jump, AbilityConstants.Strength)]
         [TestCase(SkillConstants.Knowledge, AbilityConstants.Intelligence, SkillConstants.Knowledge, 1)]
         [TestCase(SkillConstants.Knowledge + "2", AbilityConstants.Intelligence, SkillConstants.Knowledge, 2)]
+        [TestCase(SkillConstants.Knowledge + "3", AbilityConstants.Intelligence, SkillConstants.Knowledge, 3)]
+        [TestCase(SkillConstants.Knowledge + "4", AbilityConstants.Intelligence, SkillConstants.Knowledge, 4)]
+        [TestCase(SkillConstants.Knowledge + "5", AbilityConstants.Intelligence, SkillConstants.Knowledge, 5)]
         [TestCase(SkillConstants.Knowledge + GroupConstants.All, AbilityConstants.Intelligence, SkillConstants.Knowledge, SkillConstants.Foci.QuantityOfAll)]
         [TestCase(SkillConstants.Listen, AbilityConstants.Wisdom)]
         [TestCase(SkillConstants.MoveSilently, AbilityConstants.Dexterity)]

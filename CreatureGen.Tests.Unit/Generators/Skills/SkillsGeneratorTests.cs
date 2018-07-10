@@ -171,6 +171,30 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
+        public void GetCrossClassSkills()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void CrossClassSkillsBecomeClassSkills()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AssignRankToClassSkill()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AssignRankToCrossClassSkill()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void GetSkillWithSetFocus()
         {
             AddCreatureSkills(1);
@@ -1117,7 +1141,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ProfessionSkillGrantsNoDuplicatecreatureSkills()
+        public void ProfessionSkillGrantsNoDuplicateCreatureSkills()
         {
             AddCreatureSkills(1);
             creatureSkills.Add("professional skill 1");
@@ -1194,9 +1218,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(professionSkillSelection);
 
-            var professionSkills = Enumerable.Empty<string>();
-            //mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.creatureSkills, "software developer")).Returns(professionSkills);
-
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo(SkillConstants.Profession));
@@ -1208,7 +1229,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void NoProfessionSkillGrantsNoAdditionalcreatureSkills()
+        public void NoProfessionSkillGrantsNoAdditionalCreatureSkills()
         {
             AddCreatureSkills(1);
             abilities["stat 1"] = new Ability("stat 1");
