@@ -27,6 +27,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
         private Dictionary<string, Ability> abilities;
         private List<string> creatureSkills;
+        private List<string> untrainedSkills;
         private Mock<ISkillSelector> mockSkillSelector;
         private int creatureTypeSkillPoints;
         private List<string> allSkills;
@@ -47,6 +48,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
             allSkills = new List<string>();
             creatureSkills = new List<string>();
+            untrainedSkills = new List<string>();
             hitPoints = new HitPoints();
             featSkillFoci = new List<string>();
             creatureType = new CreatureType();
@@ -72,6 +74,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectFor(It.IsAny<string>())).Returns((string skill) => new SkillSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Intelligence });
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "creature")).Returns(creatureSkills);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.Untrained)).Returns(untrainedSkills);
         }
 
         [Test]
@@ -171,15 +174,37 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetCrossClassSkills()
+        public void GetUntrainedSkills()
         {
-            Assert.Fail("not yet written");
+            AddUntrainedSkills(2);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
+
+            Assert.That(skills.Single(s => s.Name == "untrained skill 1").ClassSkill, Is.False);
+            Assert.That(skills.Single(s => s.Name == "untrained skill 2").ClassSkill, Is.False);
+        }
+
+        private void AddUntrainedSkills(int quantity)
+        {
+            while (quantity > 0)
+            {
+                untrainedSkills.Add($"untrained skill {quantity--}");
+            }
         }
 
         [Test]
-        public void CrossClassSkillsBecomeClassSkills()
+        public void UntrainedSkillsBecomeClassSkills()
         {
-            Assert.Fail("not yet written");
+            AddUntrainedSkills(2);
+            AddCreatureSkills(2);
+            creatureSkills.Add(untrainedSkills[1]);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities);
+
+            Assert.That(skills.Single(s => s.Name == "untrained skill 1").ClassSkill, Is.False);
+            Assert.That(skills.Single(s => s.Name == "untrained skill 2").ClassSkill, Is.True);
+            Assert.That(skills.Single(s => s.Name == "creature skill 2").ClassSkill, Is.True);
+            Assert.That(skills.Single(s => s.Name == "creature skill 1").ClassSkill, Is.True);
         }
 
         [Test]
@@ -189,7 +214,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void AssignRankToCrossClassSkill()
+        public void AssignRankToUntrainedSkill()
         {
             Assert.Fail("not yet written");
         }

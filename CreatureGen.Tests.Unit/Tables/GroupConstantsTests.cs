@@ -23,6 +23,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(GroupConstants.Skills, "Skills")]
         [TestCase(GroupConstants.SkillBonus, "Skill Bonus")]
         [TestCase(GroupConstants.TakenMultipleTimes, "Taken Multiple Times")]
+        [TestCase(GroupConstants.Untrained, "Untrained")]
         [TestCase(GroupConstants.WeaponProficiency, "Weapon Proficiency")]
         public void GroupConstant(string constant, string value)
         {
