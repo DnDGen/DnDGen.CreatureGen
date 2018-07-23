@@ -170,6 +170,55 @@
     <entry>Survival</entry>
   </collection>
   <collection>
+    <name>Angel, Astral Deva</name>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Concentration</entry>
+    <entry>Craft3</entry>
+    <entry>Knowledge3</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Angel, Planetar</name>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Concentration</entry>
+    <entry>Craft4</entry>
+    <entry>Knowledge4</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Rope</entry>
+    <entry>Search</entry>
+  </collection>
+  <collection>
+    <name>Angel, Solar</name>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Concentration</entry>
+    <entry>Craft5</entry>
+    <entry>Knowledge5</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Rope</entry>
+    <entry>Search</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
     <name>Animal Affinity</name>
     <entry>Handle Animal</entry>
     <entry>Ride</entry>
@@ -247,9 +296,104 @@
     <entry>Tumble</entry>
   </collection>
   <collection>
+    <name>Assassin Vine</name>
+  </collection>
+  <collection>
+    <name>Athach</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
     <name>Athletic</name>
     <entry>Climb</entry>
     <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Avoral</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Handle Animal</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Ride</entry>
+    <entry>Sense Motive</entry>
+  </collection>
+  <collection>
+    <name>Azer</name>
+    <entry>Climb</entry>
+    <entry>Appraise</entry>
+    <entry>Craft2</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Babau</name>
+    <entry>Climb</entry>
+    <entry>Disable Device</entry>
+    <entry>Disguise</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Open Lock</entry>
+    <entry>Search</entry>
+    <entry>Sleight of Hand</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Baboon</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Badger</name>
+    <entry>Balance</entry>
+    <entry>Escape Artist</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Balor</name>
+    <entry>Bluff</entry>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge2</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Survival</entry>
+    <entry>Use Magic Device</entry>
+  </collection>
+  <collection>
+    <name>Bebilith</name>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Black Dragon, Adult</name>
@@ -1267,6 +1411,18 @@
     <entry>Spot</entry>
   </collection>
   <collection>
+    <name>Dark Naga</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
     <name>Deceitful</name>
     <entry>Disguise</entry>
     <entry>Forgery</entry>
@@ -1303,6 +1459,11 @@
     <entry>Spot</entry>
   </collection>
   <collection>
+    <name>Dire Badger</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
     <name>Dragon Turtle</name>
     <entry>Diplomacy</entry>
     <entry>Hide</entry>
@@ -1313,6 +1474,15 @@
     <entry>Spot</entry>
     <entry>Survival</entry>
     <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Dretch</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Drow</name>
@@ -1453,6 +1623,24 @@
     <entry>Spot</entry>
   </collection>
   <collection>
+    <name>Ghast</name>
+    <entry>Climb</entry>
+    <entry>Spot</entry>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Ghoul</name>
+    <entry>Climb</entry>
+    <entry>Spot</entry>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
     <name>Giant Ant, Queen</name>
   </collection>
   <collection>
@@ -1462,6 +1650,31 @@
   <collection>
     <name>Giant Ant, Worker</name>
     <entry>Climb</entry>
+  </collection>
+  <collection>
+    <name>Giant Octopus</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Glabrezu</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge2</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
@@ -1865,6 +2078,18 @@
     <entry>Swim</entry>
   </collection>
   <collection>
+    <name>Guardian Naga</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
     <name>Gynosphinx</name>
     <entry>Bluff</entry>
     <entry>Concentration</entry>
@@ -1883,6 +2108,21 @@
     <entry>Listen</entry>
     <entry>Search</entry>
     <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Hezrou</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Concentration</entry>
+    <entry>Hide</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Spellcraft</entry>
+    <entry>Use Rope</entry>
+    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
@@ -1961,6 +2201,22 @@
     <entry>The Planes</entry>
   </collection>
   <collection>
+    <name>Kraken</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Swim</entry>
+    <entry>Knowledge/Geography</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
     <name>Kuo-toa</name>
     <entry>Craft</entry>
     <entry>Knowledge</entry>
@@ -1969,6 +2225,22 @@
     <entry>Search</entry>
     <entry>Listen</entry>
     <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Lacedon</name>
+    <entry>Climb</entry>
+    <entry>Spot</entry>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Lizardfolk</name>
+    <entry>Balance</entry>
+    <entry>Jump</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -1996,16 +2268,77 @@
     <entry>Use Rope</entry>
   </collection>
   <collection>
+    <name>Malenti</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+    <entry>Handle Animal</entry>
+    <entry>Profession/Hunter</entry>
+    <entry>Ride</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
     <name>Manta Ray</name>
     <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
+    <name>Marilith</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
     <name>Merfolk</name>
     <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Merrow</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Nalfeshnee</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
   </collection>
   <collection>
     <name>Negotiator</name>
@@ -2016,6 +2349,20 @@
     <name>Nimble Fingers</name>
     <entry>Disable Device</entry>
     <entry>Open Lock</entry>
+  </collection>
+  <collection>
+    <name>Octopus</name>
+    <entry>Escape Artist</entry>
+    <entry>Listen</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Ogre</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Ooze Mephit</name>
@@ -2046,6 +2393,12 @@
     <name>Persuasive</name>
     <entry>Bluff</entry>
     <entry>Intimidate</entry>
+  </collection>
+  <collection>
+    <name>Porpoise</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Profession</name>
@@ -2134,6 +2487,13 @@
     <entry>Weaver</entry>
     <entry>Wheelwright</entry>
     <entry>Wilderness Guide</entry>
+  </collection>
+  <collection>
+    <name>Quasit</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
@@ -2326,6 +2686,41 @@
     <entry>Appraise</entry>
     <entry>Bluff</entry>
     <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Retriever</name>
+  </collection>
+  <collection>
+    <name>Sahuagin</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+    <entry>Handle Animal</entry>
+    <entry>Profession/Hunter</entry>
+    <entry>Ride</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin Mutant</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+    <entry>Handle Animal</entry>
+    <entry>Profession/Hunter</entry>
+    <entry>Ride</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
@@ -2546,6 +2941,13 @@
     <entry>Jump</entry>
   </collection>
   <collection>
+    <name>Spirit Naga</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
     <name>Stealthy</name>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
@@ -2561,6 +2963,13 @@
     <entry>Move Silently</entry>
     <entry>Spot</entry>
     <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Succubus</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Tiefling</name>
@@ -2581,6 +2990,18 @@
     <entry>Sense Motive</entry>
     <entry>Spot</entry>
     <entry>Survival</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Troglodyte</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Vrock</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -2626,7 +3047,6 @@
     <entry>Hide</entry>
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
-    <entry>Intimidate</entry>
     <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Spot</entry>

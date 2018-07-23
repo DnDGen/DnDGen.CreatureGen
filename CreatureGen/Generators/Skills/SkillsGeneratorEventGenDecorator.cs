@@ -27,10 +27,10 @@ namespace CreatureGen.Generators.Skills
             return updatedSkills;
         }
 
-        public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, CreatureType creatureType, Dictionary<string, Ability> abilities)
+        public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, CreatureType creatureType, Dictionary<string, Ability> abilities, bool canUseEquipment)
         {
             eventQueue.Enqueue("CreatureGen", $"Generating skills for {creatureName}");
-            var skills = innerGenerator.GenerateFor(hitPoints, creatureName, creatureType, abilities);
+            var skills = innerGenerator.GenerateFor(hitPoints, creatureName, creatureType, abilities, canUseEquipment);
             eventQueue.Enqueue("CreatureGen", $"Generated {skills.Count()} skills");
 
             return skills;

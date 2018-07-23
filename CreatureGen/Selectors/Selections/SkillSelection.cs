@@ -9,6 +9,7 @@ namespace CreatureGen.Selectors.Selections
         public int RandomFociQuantity { get; set; }
         public string SkillName { get; set; }
         public string Focus { get; set; }
+        public bool ClassSkill { get; set; }
 
         public SkillSelection()
         {

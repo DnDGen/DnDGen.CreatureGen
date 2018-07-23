@@ -31,7 +31,7 @@ namespace CreatureGen.Generators.Skills
             this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
-        public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, CreatureType creatureType, Dictionary<string, Ability> abilities)
+        public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, CreatureType creatureType, Dictionary<string, Ability> abilities, bool canUseEquipment)
         {
             if (hitPoints.HitDiceQuantity == 0)
                 return Enumerable.Empty<Skill>();
@@ -39,12 +39,18 @@ namespace CreatureGen.Generators.Skills
             if (!abilities[AbilityConstants.Intelligence].HasScore)
                 return Enumerable.Empty<Skill>();
 
-            var skillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, creatureName);
-            if (!skillNames.Any())
-                return Enumerable.Empty<Skill>();
+            var untrainedSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.Untrained);
+            var creatureSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, creatureName);
 
-            var skillSelections = GetSkillSelections(skillNames);
-            var skills = InitializeSkills(abilities, skillSelections, hitPoints);
+            if (!canUseEquipment)
+            {
+                var unnaturalSkills = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.Unnatural);
+                untrainedSkillNames = untrainedSkillNames.Except(unnaturalSkills);
+            }
+
+            var allSkillNames = untrainedSkillNames.Union(creatureSkillNames);
+            var skillSelections = GetSkillSelections(allSkillNames, creatureSkillNames);
+            var skills = InitializeSkills(abilities, skillSelections, hitPoints, creatureSkillNames);
 
             skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities);
             skills = ApplySkillSynergies(skills);
@@ -72,27 +78,34 @@ namespace CreatureGen.Generators.Skills
                 return MaxOutSkills(skills);
             }
 
-            var skillsWithAvailableRanks = skills.Where(s => !s.RanksMaxedOut).ToList();
+            var skillsWithAvailableRanks = skills.Where(s => !s.RanksMaxedOut);
+            var creatureSkills = skillsWithAvailableRanks.Where(s => s.ClassSkill);
+            var untrainedSkills = skillsWithAvailableRanks.Where(s => !s.ClassSkill);
 
             while (points-- > 0)
             {
-                var skill = collectionsSelector.SelectRandomFrom(skillsWithAvailableRanks);
+                var skill = collectionsSelector.SelectRandomFrom(creatureSkills, untrainedSkills);
                 skill.Ranks++;
-
-                if (skill.RanksMaxedOut)
-                    skillsWithAvailableRanks.Remove(skill);
             }
 
             return skills;
         }
 
-        private IEnumerable<SkillSelection> GetSkillSelections(IEnumerable<string> skillNames)
+        private IEnumerable<SkillSelection> GetSkillSelections(IEnumerable<string> skillNames, IEnumerable<string> creatureSkills)
         {
-            var selections = skillNames.Select(s => skillSelector.SelectFor(s));
-            var explodedSelections = selections.SelectMany(s => ExplodeSelectedSkill(s));
+            var selections = new List<SkillSelection>();
 
-            //INFO: Calling immediate execution, since exploding includes potentially random results, and after this method is complete, we want consistent results.
-            return explodedSelections.ToList();
+            foreach (var skillName in skillNames)
+            {
+                var selection = skillSelector.SelectFor(skillName);
+                selection.ClassSkill = creatureSkills.Contains(skillName) || creatureSkills.Contains(selection.SkillName);
+
+                var explodedSelection = ExplodeSelectedSkill(selection);
+
+                selections.AddRange(explodedSelection);
+            }
+
+            return selections;
         }
 
         private IEnumerable<SkillSelection> ExplodeSelectedSkill(SkillSelection skillSelection)
@@ -104,7 +117,7 @@ namespace CreatureGen.Generators.Skills
 
             if (skillSelection.RandomFociQuantity >= skillFoci.Count)
             {
-                return skillFoci.Select(f => new SkillSelection { BaseAbilityName = skillSelection.BaseAbilityName, SkillName = skillSelection.SkillName, Focus = f });
+                return skillFoci.Select(f => new SkillSelection { BaseAbilityName = skillSelection.BaseAbilityName, SkillName = skillSelection.SkillName, Focus = f, ClassSkill = skillSelection.ClassSkill });
             }
 
             var selections = new List<SkillSelection>();
@@ -117,6 +130,7 @@ namespace CreatureGen.Generators.Skills
                 selection.BaseAbilityName = skillSelection.BaseAbilityName;
                 selection.SkillName = skillSelection.SkillName;
                 selection.Focus = focus;
+                selection.ClassSkill = skillSelection.ClassSkill;
 
                 selections.Add(selection);
                 skillFoci.Remove(focus);
@@ -125,7 +139,7 @@ namespace CreatureGen.Generators.Skills
             return selections;
         }
 
-        private IEnumerable<Skill> InitializeSkills(Dictionary<string, Ability> abilities, IEnumerable<SkillSelection> skillSelections, HitPoints hitPoints)
+        private IEnumerable<Skill> InitializeSkills(Dictionary<string, Ability> abilities, IEnumerable<SkillSelection> skillSelections, HitPoints hitPoints, IEnumerable<string> creatureSkills)
         {
             var skills = new List<Skill>();
             var skillsWithArmorCheckPenalties = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.ArmorCheckPenalty);
@@ -139,7 +153,7 @@ namespace CreatureGen.Generators.Skills
 
                 skill.HasArmorCheckPenalty = skillsWithArmorCheckPenalties.Contains(skill.Name);
                 //INFO: all creature skills are class skills
-                skill.ClassSkill = true;
+                skill.ClassSkill = skillSelection.ClassSkill;
 
                 skills.Add(skill);
             }

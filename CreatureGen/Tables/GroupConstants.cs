@@ -19,6 +19,7 @@
         public const string Skills = "Skills";
         public const string SkillBonus = "Skill Bonus";
         public const string TakenMultipleTimes = "Taken Multiple Times";
+        public const string Unnatural = "Unnatural";
         public const string Untrained = "Untrained";
         public const string WeaponProficiency = "Weapon Proficiency";
     }
