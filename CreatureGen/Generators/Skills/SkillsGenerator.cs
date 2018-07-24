@@ -31,12 +31,9 @@ namespace CreatureGen.Generators.Skills
             this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
-        public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, CreatureType creatureType, Dictionary<string, Ability> abilities, bool canUseEquipment)
+        public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, CreatureType creatureType, Dictionary<string, Ability> abilities, bool canUseEquipment, string size)
         {
             if (hitPoints.HitDiceQuantity == 0)
-                return Enumerable.Empty<Skill>();
-
-            if (!abilities[AbilityConstants.Intelligence].HasScore)
                 return Enumerable.Empty<Skill>();
 
             var untrainedSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.Untrained);
@@ -54,8 +51,37 @@ namespace CreatureGen.Generators.Skills
 
             skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities);
             skills = ApplySkillSynergies(skills);
+            skills = ApplyBonuses(skills, size);
 
             return skills;
+        }
+
+        private IEnumerable<Skill> ApplyBonuses(IEnumerable<Skill> skills, string size)
+        {
+            var hideSkill = skills.FirstOrDefault(s => s.Name == SkillConstants.Hide);
+            if (hideSkill != null)
+            {
+                hideSkill.Bonus += GetBonus(size);
+            }
+
+            return skills;
+        }
+
+        private int GetBonus(string size)
+        {
+            switch (size)
+            {
+                case SizeConstants.Colossal: return -16;
+                case SizeConstants.Gargantuan: return -12;
+                case SizeConstants.Huge: return -8;
+                case SizeConstants.Large: return -4;
+                case SizeConstants.Medium: return 0;
+                case SizeConstants.Small: return 4;
+                case SizeConstants.Tiny: return 8;
+                case SizeConstants.Diminutive: return 12;
+                case SizeConstants.Fine: return 16;
+                default: throw new ArgumentException($"{size} is not a valid size");
+            }
         }
 
         private IEnumerable<Skill> MaxOutSkills(IEnumerable<Skill> skills)
@@ -163,7 +189,7 @@ namespace CreatureGen.Generators.Skills
 
         private int GetTotalSkillPoints(CreatureType creatureType, int hitDieQuantity, Ability intelligence)
         {
-            if (hitDieQuantity == 0)
+            if (hitDieQuantity == 0 || !intelligence.HasScore)
                 return 0;
 
             var points = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SkillPoints, creatureType.Name);

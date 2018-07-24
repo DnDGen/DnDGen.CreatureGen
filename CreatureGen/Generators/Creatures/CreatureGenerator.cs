@@ -115,7 +115,7 @@ namespace CreatureGen.Generators.Creatures
                 creatureData.NaturalArmor += advancement.NaturalArmorAdjustment;
             }
 
-            creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities, creature.CanUseEquipment);
+            creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities, creature.CanUseEquipment, creature.Size);
             creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(creatureName, creature.HitPoints, creature.Size, creature.Abilities, creature.Skills);
             creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
             creature.Attacks = attacksGenerator.GenerateAttacks(creatureName, creatureData.Size, creature.Size, creature.BaseAttackBonus, creature.Abilities);
