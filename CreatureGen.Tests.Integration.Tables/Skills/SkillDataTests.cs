@@ -211,6 +211,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Matchmaker)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Midwife)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Miller)]
+        [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Miner)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Navigator)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Nursemaid)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.OutOfTownCourier)]

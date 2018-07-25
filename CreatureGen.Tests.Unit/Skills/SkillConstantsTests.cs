@@ -156,6 +156,7 @@ namespace CreatureGen.Tests.Unit.Skills
         [TestCase(SkillConstants.Foci.Profession.Matchmaker, "Matchmaker")]
         [TestCase(SkillConstants.Foci.Profession.Midwife, "Midwife")]
         [TestCase(SkillConstants.Foci.Profession.Miller, "Miller")]
+        [TestCase(SkillConstants.Foci.Profession.Miner, "Miner")]
         [TestCase(SkillConstants.Foci.Profession.Navigator, "Navigator")]
         [TestCase(SkillConstants.Foci.Profession.Nursemaid, "Nursemaid")]
         [TestCase(SkillConstants.Foci.Profession.Painter, "Painter")]

@@ -333,6 +333,7 @@
   <collection>
     <name>Knowledge/Dungeoneering</name>
     <entry>Profession/Adviser</entry>
+    <entry>Profession/Miner</entry>
     <entry>Profession/Sage</entry>
     <entry>Profession/Teacher</entry>
     <entry>Survival</entry>
@@ -340,6 +341,7 @@
   <collection>
     <name>Knowledge/Geography</name>
     <entry>Profession/Adviser</entry>
+    <entry>Profession/Miner</entry>
     <entry>Profession/Sage</entry>
     <entry>Profession/Teacher</entry>
     <entry>Survival</entry>
@@ -366,6 +368,7 @@
     <entry>Profession/Adviser</entry>
     <entry>Profession/Apothecary</entry>
     <entry>Profession/Farmer</entry>
+    <entry>Profession/Miner</entry>
     <entry>Profession/Sage</entry>
     <entry>Profession/Teacher</entry>
     <entry>Profession/Wilderness Guide</entry>
@@ -715,6 +718,12 @@
   <collection>
     <name>Profession/Miller</name>
     <entry>Craft/Milling</entry>
+  </collection>
+  <collection>
+    <name>Profession/Miner</name>
+    <entry>Knowledge/Dungeoneering</entry>
+    <entry>Knowledge/Geography</entry>
+    <entry>Knowledge/Nature</entry>
   </collection>
   <collection>
     <name>Profession/Navigator</name>

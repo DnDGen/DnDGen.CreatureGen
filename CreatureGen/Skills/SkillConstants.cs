@@ -171,6 +171,7 @@
                 public const string Matchmaker = "Matchmaker";
                 public const string Midwife = "Midwife";
                 public const string Miller = "Miller";
+                public const string Miner = "Miner";
                 public const string Navigator = "Navigator";
                 public const string Nursemaid = "Nursemaid";
                 public const string Painter = "Painter";

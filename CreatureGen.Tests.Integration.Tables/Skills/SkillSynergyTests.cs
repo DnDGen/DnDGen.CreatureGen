@@ -234,11 +234,13 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Search)]
         [TestCase(SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Dungeoneering,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Adviser,
+            SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Miner,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Sage,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Teacher,
             SkillConstants.Survival)]
         [TestCase(SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Geography,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Adviser,
+            SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Miner,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Sage,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Teacher,
             SkillConstants.Survival)]
@@ -259,6 +261,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Adviser,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Apothecary,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Farmer,
+            SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Miner,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Sage,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Teacher,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.WildernessGuide,
@@ -428,6 +431,10 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Heal)]
         [TestCase(SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Miller,
             SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Milling)]
+        [TestCase(SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Miner,
+            SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Geography,
+            SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Nature,
+            SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Dungeoneering)]
         [TestCase(SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Navigator,
             SkillConstants.Survival)]
         [TestCase(SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Nursemaid)]

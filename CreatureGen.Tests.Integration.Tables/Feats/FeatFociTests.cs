@@ -241,6 +241,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
                 $"{SkillConstants.Profession}/{SkillConstants.Foci.Profession.Matchmaker}",
                 $"{SkillConstants.Profession}/{SkillConstants.Foci.Profession.Midwife}",
                 $"{SkillConstants.Profession}/{SkillConstants.Foci.Profession.Miller}",
+                $"{SkillConstants.Profession}/{SkillConstants.Foci.Profession.Miner}",
                 $"{SkillConstants.Profession}/{SkillConstants.Foci.Profession.Navigator}",
                 $"{SkillConstants.Profession}/{SkillConstants.Foci.Profession.Nursemaid}",
                 $"{SkillConstants.Profession}/{SkillConstants.Foci.Profession.OutOfTownCourier}",
