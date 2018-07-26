@@ -234,28 +234,58 @@ namespace CreatureGen.Feats
 
         public static class SpecialQualities
         {
+            public const string AllAroundVision = "All-Around Vision";
             public const string AttackBonus = "Attack Bonus";
+            public const string ChangeShape = "Change Shape";
+            public const string DamageReduction = "Damage Reduction";
+            public const string DamageResistance = "Damage Resistance";
+            public const string Darkvision = "Darkvision";
             public const string DodgeBonus = "Dodge Bonus";
+            public const string EarthGlide = "Earth Glide";
+            public const string FastHealing = "Fast Healing";
+            public const string Immunity = "Immunity";
             public const string InertialArmor = "Inertial Armor";
+            public const string LowLightVision = "Low-Light Vision";
+            public const string MucusCloud = "Mucus Cloud";
             public const string NaturalWeapon = "Natural Weapon";
+            public const string ProtectiveAura = "Protective Aura";
+            public const string Regeneration = "Regeneration";
             public const string SaveBonus = "Save Bonus";
             public const string SkillBonus = "Skill Bonus";
             public const string SpellLikeAbility = "Spell-Like Ability";
             public const string SpellResistance = "Spell Resistance";
+            public const string TurnResistance = "Turn Resistance";
+            public const string UncannyDodge = "Uncanny Dodge";
+            public const string Vulnerability = "Vulnerability";
             public const string WeaponFamiliarity = "Weapon Familiarity";
 
             public static IEnumerable<string> All()
             {
                 return new[]
                 {
+                    AllAroundVision,
                     AttackBonus,
+                    ChangeShape,
+                    DamageReduction,
+                    DamageResistance,
+                    Darkvision,
                     DodgeBonus,
+                    EarthGlide,
+                    FastHealing,
+                    Immunity,
                     InertialArmor,
+                    LowLightVision,
+                    MucusCloud,
                     NaturalWeapon,
+                    ProtectiveAura,
+                    Regeneration,
                     SaveBonus,
                     SkillBonus,
                     SpellLikeAbility,
                     SpellResistance,
+                    TurnResistance,
+                    UncannyDodge,
+                    Vulnerability,
                     WeaponFamiliarity,
                 };
             }
@@ -341,6 +371,7 @@ namespace CreatureGen.Feats
             public const string Constant = "Constant";
             public const string Day = "Day";
             public const string Hit = "Hit";
+            public const string Hour = "Hour";
             public const string Round = "Round";
             public const string Turn = "Turn";
             public const string Week = "Week";

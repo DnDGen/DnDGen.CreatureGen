@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Generators.Creatures;
+using CreatureGen.Verifiers;
 using DnDGen.Core.Selectors.Collections;
 using Ninject;
 using NUnit.Framework;
@@ -15,6 +16,8 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
         public ICollectionSelector CollectionSelector { get; set; }
         [Inject]
         public ICreatureGenerator CreatureGenerator { get; set; }
+        [Inject]
+        public ICreatureVerifier CreatureVerifier { get; set; }
 
         [Test]
         public void StressCreature()
@@ -42,9 +45,24 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
             var randomCreatureName = CollectionSelector.SelectRandomFrom(allCreatures);
             var randomTemplate = CollectionSelector.SelectRandomFrom(allTemplates);
 
+            while (!CreatureVerifier.VerifyCompatibility(randomCreatureName, randomTemplate))
+                randomCreatureName = CollectionSelector.SelectRandomFrom(allCreatures);
+
             var creature = CreatureGenerator.Generate(randomCreatureName, randomTemplate);
 
             CreatureAsserter.AssertCreature(creature);
+        }
+
+        [Test]
+        public void DoSpellsForThoseWhoCastAsSpellcaster()
+        {
+            Assert.Fail("TODO");
+        }
+
+        [Test]
+        public void DoEquipment()
+        {
+            Assert.Fail("TODO");
         }
     }
 }

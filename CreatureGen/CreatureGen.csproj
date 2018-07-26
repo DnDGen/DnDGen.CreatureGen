@@ -110,6 +110,7 @@
     <Compile Include="Generators\Skills\ISkillsGenerator.cs" />
     <Compile Include="Generators\Skills\SkillsGenerator.cs" />
     <Compile Include="Generators\Skills\SkillsGeneratorEventGenDecorator.cs" />
+    <Compile Include="Magic\SpellConstants.cs" />
     <Compile Include="Selectors\Collections\AdvancementSelector.cs" />
     <Compile Include="Selectors\Collections\AttackSelector.cs" />
     <Compile Include="Selectors\Collections\CreatureDataSelector.cs" />
@@ -250,6 +251,9 @@
     <EmbeddedResource Include="Tables\Creatures\Advancements.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Data\SpecialQualityData.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -203,14 +203,29 @@ namespace CreatureGen.Tests.Unit.Feats
             Assert.That(creatures, Is.EquivalentTo(constants));
         }
 
+        [TestCase(FeatConstants.SpecialQualities.AllAroundVision, "All-Around Vision")]
         [TestCase(FeatConstants.SpecialQualities.AttackBonus, "Attack Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.ChangeShape, "Change Shape")]
+        [TestCase(FeatConstants.SpecialQualities.DamageReduction, "Damage Reduction")]
+        [TestCase(FeatConstants.SpecialQualities.DamageResistance, "Damage Resistance")]
+        [TestCase(FeatConstants.SpecialQualities.Darkvision, "Darkvision")]
         [TestCase(FeatConstants.SpecialQualities.DodgeBonus, "Dodge Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.EarthGlide, "Earth Glide")]
+        [TestCase(FeatConstants.SpecialQualities.FastHealing, "Fast Healing")]
+        [TestCase(FeatConstants.SpecialQualities.Immunity, "Immunity")]
         [TestCase(FeatConstants.SpecialQualities.InertialArmor, "Inertial Armor")]
+        [TestCase(FeatConstants.SpecialQualities.LowLightVision, "Low-Light Vision")]
+        [TestCase(FeatConstants.SpecialQualities.MucusCloud, "Mucus Cloud")]
         [TestCase(FeatConstants.SpecialQualities.NaturalWeapon, "Natural Weapon")]
+        [TestCase(FeatConstants.SpecialQualities.ProtectiveAura, "Protective Aura")]
+        [TestCase(FeatConstants.SpecialQualities.Regeneration, "Regeneration")]
         [TestCase(FeatConstants.SpecialQualities.SaveBonus, "Save Bonus")]
         [TestCase(FeatConstants.SpecialQualities.SkillBonus, "Skill Bonus")]
         [TestCase(FeatConstants.SpecialQualities.SpellLikeAbility, "Spell-Like Ability")]
         [TestCase(FeatConstants.SpecialQualities.SpellResistance, "Spell Resistance")]
+        [TestCase(FeatConstants.SpecialQualities.TurnResistance, "Turn Resistance")]
+        [TestCase(FeatConstants.SpecialQualities.UncannyDodge, "Uncanny Dodge")]
+        [TestCase(FeatConstants.SpecialQualities.Vulnerability, "Vulnerability")]
         [TestCase(FeatConstants.SpecialQualities.WeaponFamiliarity, "Weapon Familiarity")]
         public void SpecialQualityTests(string constant, string value)
         {
@@ -233,6 +248,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.Frequencies.Constant, "Constant")]
         [TestCase(FeatConstants.Frequencies.Day, "Day")]
         [TestCase(FeatConstants.Frequencies.Hit, "Hit")]
+        [TestCase(FeatConstants.Frequencies.Hour, "Hour")]
         [TestCase(FeatConstants.Frequencies.Round, "Round")]
         [TestCase(FeatConstants.Frequencies.Turn, "Turn")]
         [TestCase(FeatConstants.Frequencies.Week, "Week")]

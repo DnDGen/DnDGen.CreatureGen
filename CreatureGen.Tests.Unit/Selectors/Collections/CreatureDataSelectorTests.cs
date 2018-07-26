@@ -3,7 +3,6 @@ using CreatureGen.Tables;
 using DnDGen.Core.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
-using System.Collections.Generic;
 
 namespace CreatureGen.Tests.Unit.Selectors.Collections
 {
@@ -14,7 +13,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
         private ICreatureDataSelector creatureDataSelector;
         private Mock<ICollectionSelector> mockCollectionSelector;
-        private List<string> data;
+        private string[] data;
 
         [SetUp]
         public void Setup()

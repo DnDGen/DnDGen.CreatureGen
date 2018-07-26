@@ -1,16 +1,14 @@
-﻿using System.Collections.Generic;
-
-namespace CreatureGen.Tables
+﻿namespace CreatureGen.Tables
 {
     internal static class DataIndexConstants
     {
-        private static List<string> InitializeData(int maxIndex)
+        private static string[] InitializeData(int maxIndex)
         {
             var capacity = maxIndex + 1;
-            var data = new List<string>(capacity);
+            var data = new string[capacity];
 
-            while (data.Count < data.Capacity)
-                data.Add(string.Empty);
+            for (var i = 0; i < data.Length; i++)
+                data[i] = string.Empty;
 
             return data;
         }
@@ -26,6 +24,11 @@ namespace CreatureGen.Tables
             public const int FrequencyTimePeriodIndex = 6;
             public const int MaximumHitDiceRequirementIndex = 7;
             public const int RandomFociQuantity = 8;
+
+            public static string[] InitializeData()
+            {
+                return DataIndexConstants.InitializeData(RandomFociQuantity);
+            }
         }
 
         internal static class FeatData
@@ -42,7 +45,7 @@ namespace CreatureGen.Tables
             public const int RequiredNaturalWeaponQuantityIndex = 9;
             public const int RequiredHandQuantityIndex = 10;
 
-            public static List<string> InitializeData()
+            public static string[] InitializeData()
             {
                 return DataIndexConstants.InitializeData(RequiredHandQuantityIndex);
             }
@@ -68,7 +71,7 @@ namespace CreatureGen.Tables
             public const int NaturalArmor = 7;
             public const int NumberOfHands = 8;
 
-            public static List<string> InitializeData()
+            public static string[] InitializeData()
             {
                 return DataIndexConstants.InitializeData(NumberOfHands);
             }

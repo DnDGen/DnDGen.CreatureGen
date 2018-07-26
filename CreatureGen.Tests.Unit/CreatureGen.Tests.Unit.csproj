@@ -124,6 +124,7 @@
     <Compile Include="Defenses\SaveConstantsTests.cs" />
     <Compile Include="Generators\Defenses\SavesGeneratorTests.cs" />
     <Compile Include="Creatures\MeasurementTests.cs" />
+    <Compile Include="Magic\SpellConstantsTests.cs" />
     <Compile Include="Selectors\Collections\AdvancementSelectorTests.cs" />
     <Compile Include="Selectors\Collections\CreatureDataSelectorTests.cs" />
     <Compile Include="Selectors\Collections\TypeAndAmountSelectorTests.cs" />

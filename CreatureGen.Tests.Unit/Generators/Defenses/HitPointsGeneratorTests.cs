@@ -229,5 +229,33 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(hitPoints.HitDie, Is.EqualTo(90210));
             Assert.That(hitPoints.Total, Is.EqualTo(48));
         }
+
+        [TestCase(SizeConstants.Fine, 0)]
+        [TestCase(SizeConstants.Diminutive, 0)]
+        [TestCase(SizeConstants.Tiny, 0)]
+        [TestCase(SizeConstants.Small, 10)]
+        [TestCase(SizeConstants.Medium, 20)]
+        [TestCase(SizeConstants.Large, 30)]
+        [TestCase(SizeConstants.Huge, 40)]
+        [TestCase(SizeConstants.Gargantuan, 60)]
+        [TestCase(SizeConstants.Colossal, 80)]
+        public void ConstructsGetBonusHitPointsBasedOnSize(string size, int bonusHitPoints)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(SizeConstants.Fine)]
+        [TestCase(SizeConstants.Diminutive)]
+        [TestCase(SizeConstants.Tiny)]
+        [TestCase(SizeConstants.Small)]
+        [TestCase(SizeConstants.Medium)]
+        [TestCase(SizeConstants.Large)]
+        [TestCase(SizeConstants.Huge)]
+        [TestCase(SizeConstants.Gargantuan)]
+        [TestCase(SizeConstants.Colossal)]
+        public void NonConstructsDoNotGetBonusHitPointsBasedOnSize(string size)
+        {
+            Assert.Fail("not yet written");
+        }
     }
 }

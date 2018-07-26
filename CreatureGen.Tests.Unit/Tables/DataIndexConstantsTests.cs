@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Tables;
 using NUnit.Framework;
+using System.Linq;
 
 namespace CreatureGen.Tests.Unit.Tables
 {
@@ -18,6 +19,22 @@ namespace CreatureGen.Tests.Unit.Tables
         public void SpecialQualityDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
+        }
+
+        [TestCase(DataIndexConstants.SpecialQualityData.FeatNameIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.SizeRequirementIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.MinimumHitDiceRequirementIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.PowerIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.FocusIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.MaximumHitDiceRequirementIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RandomFociQuantity)]
+        public void SpecialQualityDataIndicesInitialized(int index)
+        {
+            var data = DataIndexConstants.SpecialQualityData.InitializeData();
+            Assert.That(data.Count, Is.GreaterThan(index));
+            Assert.That(data, Is.All.Empty);
         }
 
         [TestCase(DataIndexConstants.FeatData.BaseAttackRequirementIndex, 0)]
