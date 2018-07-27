@@ -373,7 +373,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             specialQualitySelections.Add(feat1);
             specialQualitySelections.Add(feat2);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
             var first = specialQualities.First();
             var last = specialQualities.Last();
 
@@ -398,7 +398,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(feat1);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
             Assert.That(specialQualities, Is.Not.Empty);
 
             var specialQuality = specialQualities.Single();
@@ -412,41 +412,41 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void DoNotGetSpecialQualityThatDoNotMeetRequirements()
         {
-            var baseRaceFeat = new SpecialQualitySelection();
-            baseRaceFeat.Feat = "base race feat";
-            baseRaceFeat.MinimumHitDieRequirement = 2;
-            specialQualitySelections.Add(baseRaceFeat);
+            var specialQualitySelection = new SpecialQualitySelection();
+            specialQualitySelection.Feat = "base race feat";
+            specialQualitySelection.MinimumAbilities[AbilityConstants.Intelligence] = 11;
+            specialQualitySelections.Add(specialQualitySelection);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
             Assert.That(specialQualities, Is.Empty);
         }
 
         [Test]
         public void GetSpecialQualityThatMeetRequirements()
         {
-            var baseRaceFeat = new SpecialQualitySelection();
-            baseRaceFeat.Feat = "base race feat";
-            baseRaceFeat.MinimumHitDieRequirement = 2;
-            specialQualitySelections.Add(baseRaceFeat);
+            var specialQualitySelection = new SpecialQualitySelection();
+            specialQualitySelection.Feat = "base race feat";
+            specialQualitySelection.MinimumAbilities[AbilityConstants.Intelligence] = 11;
+            specialQualitySelections.Add(specialQualitySelection);
 
-            hitPoints.HitDiceQuantity = 2;
+            abilities[AbilityConstants.Intelligence].BaseScore = 11;
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
-            Assert.That(feats.Count(), Is.EqualTo(1));
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
         }
 
         [Test]
         public void GetFociForSpecialQualities()
         {
-            var specialQualitySelectionselection = new SpecialQualitySelection();
-            specialQualitySelectionselection.Feat = "racial feat";
-            specialQualitySelectionselection.FocusType = "base focus type";
-            specialQualitySelections.Add(specialQualitySelectionselection);
+            var specialQualitySelection = new SpecialQualitySelection();
+            specialQualitySelection.Feat = "racial feat";
+            specialQualitySelection.FocusType = "base focus type";
+            specialQualitySelections.Add(specialQualitySelection);
 
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "base focus type", skills, abilities)).Returns("base focus");
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
-            var baseFeat = feats.First(f => f.Name == specialQualitySelectionselection.Feat);
+            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
+            var baseFeat = feats.First(f => f.Name == specialQualitySelection.Feat);
 
             Assert.That(baseFeat.Foci.Single(), Is.EqualTo("base focus"));
         }
@@ -461,7 +461,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", string.Empty, skills, abilities)).Returns(string.Empty);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
             var baseFeat = feats.First(f => f.Name == specialQualitySelectionselection.Feat);
 
             Assert.That(baseFeat.Foci, Is.Empty);
@@ -479,7 +479,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { metaraceFeat.Feat });
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
             var onlyFeat = feats.Single();
 
             Assert.That(onlyFeat.Name, Is.EqualTo("metarace feat"));
@@ -498,7 +498,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { "other feat" });
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
             var feat = feats.Single();
 
             Assert.That(feat.Name, Is.EqualTo("different feat"));
@@ -518,7 +518,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(featSelection);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
             var feat = feats.Single();
 
             Assert.That(feat.Name, Is.EqualTo("racial feat"));
@@ -539,7 +539,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(featSelection);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
             var feat = feats.Single();
 
             Assert.That(feat.Name, Is.EqualTo("racial feat"));
@@ -560,7 +560,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(featSelection);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
             var feat = feats.Single();
 
             Assert.That(feat.Name, Is.EqualTo("racial feat"));
@@ -581,7 +581,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(featSelection);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, "size", abilities, skills);
+            var feats = featsGenerator.GenerateSpecialQualities("creature", hitPoints, abilities, skills);
             var feat = feats.Single();
 
             Assert.That(feat.Name, Is.EqualTo("racial feat"));

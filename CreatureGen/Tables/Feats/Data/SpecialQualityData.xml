@@ -2,6 +2,170 @@
 
 <collections>
   <collection>
+    <name>Aasimar</name>
+    <entry>Spell-Like Ability#0#Daylight#1#Day#0</entry>
+    <entry>Skill Bonus#2#Spot#0##0</entry>
+    <entry>Skill Bonus#2#Listen#0##0</entry>
+    <entry>Darkvision#60##0##0</entry>
+    <entry>Energy Resistance#5#Acid#1#Round#0</entry>
+    <entry>Energy Resistance#5#Cold#1#Round#0</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round#0</entry>
+  </collection>
+  <collection>
+    <name>Aboleth</name>
+    <entry>Darkvision#60##0##0#0</entry>
+    <entry>Mucus Cloud#0##0##0#0</entry>
+    <entry>Spell-Like Ability#0#Hypnotic pattern#0#At Will#0</entry>
+    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0</entry>
+    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
+    <entry>Skill Bonus#10#Swim: can always take 10#0##0#0</entry>
+  </collection>
+  <collection>
+    <name>Abyssal Greater Basilisk</name>
+    <entry>Darkvision#60##0##0</entry>
+    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Energy Resistance#5#Cold#1#Round#0</entry>
+    <entry>Spell Resistance#23##0##0</entry>
+  </collection>
+  <collection>
+    <name>Achaierai</name>
+  </collection>
+  <collection>
+    <name>Adult Arrowhawk</name>
+  </collection>
+  <collection>
+    <name>Adult Tojanida</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Elder</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Greater</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Huge</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Large</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Medium</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Small</name>
+  </collection>
+  <collection>
+    <name>Air Mephit</name>
+  </collection>
+  <collection>
+    <name>Androsphinx</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral Deva</name>
+  </collection>
+  <collection>
+    <name>Angel, Planetar</name>
+  </collection>
+  <collection>
+    <name>Angel, Solar</name>
+  </collection>
+  <collection>
+    <name>Dust Mephit</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Elder</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Greater</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Huge</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Large</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Medium</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Small</name>
+  </collection>
+  <collection>
+    <name>Earth Mephit</name>
+  </collection>
+  <collection>
+    <name>Elder Arrowhawk</name>
+  </collection>
+  <collection>
+    <name>Elder Tojanida</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Elder</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Greater</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Huge</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Large</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Medium</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Small</name>
+  </collection>
+  <collection>
+    <name>Fire Mephit</name>
+  </collection>
+  <collection>
     <name>Human</name>
+  </collection>
+  <collection>
+    <name>Ice Mephit</name>
+  </collection>
+  <collection>
+    <name>Juvenile Arrowhawk</name>
+  </collection>
+  <collection>
+    <name>Juvenile Tojanida</name>
+  </collection>
+  <collection>
+    <name>Magma Mephit</name>
+  </collection>
+  <collection>
+    <name>Ooze Mephit</name>
+  </collection>
+  <collection>
+    <name>Salt Mephit</name>
+  </collection>
+  <collection>
+    <name>Steam Mephit</name>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Elder</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Greater</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Huge</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Large</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Medium</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Small</name>
+  </collection>
+  <collection>
+    <name>Water Mephit</name>
   </collection>
 </collections>

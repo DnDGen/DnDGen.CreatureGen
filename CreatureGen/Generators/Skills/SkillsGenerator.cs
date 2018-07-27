@@ -69,19 +69,11 @@ namespace CreatureGen.Generators.Skills
 
         private int GetBonus(string size)
         {
-            switch (size)
-            {
-                case SizeConstants.Colossal: return -16;
-                case SizeConstants.Gargantuan: return -12;
-                case SizeConstants.Huge: return -8;
-                case SizeConstants.Large: return -4;
-                case SizeConstants.Medium: return 0;
-                case SizeConstants.Small: return 4;
-                case SizeConstants.Tiny: return 8;
-                case SizeConstants.Diminutive: return 12;
-                case SizeConstants.Fine: return 16;
-                default: throw new ArgumentException($"{size} is not a valid size");
-            }
+            var sizes = SizeConstants.GetOrdered();
+            var mediumIndex = Array.IndexOf(sizes, SizeConstants.Medium);
+            var sizeIndex = Array.IndexOf(sizes, size);
+
+            return (mediumIndex - sizeIndex) * 4;
         }
 
         private IEnumerable<Skill> MaxOutSkills(IEnumerable<Skill> skills)

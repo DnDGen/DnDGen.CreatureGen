@@ -16,18 +16,15 @@
         internal static class SpecialQualityData
         {
             public const int FeatNameIndex = 0;
-            public const int SizeRequirementIndex = 1;
-            public const int MinimumHitDiceRequirementIndex = 2;
-            public const int PowerIndex = 3;
-            public const int FocusIndex = 4;
-            public const int FrequencyQuantityIndex = 5;
-            public const int FrequencyTimePeriodIndex = 6;
-            public const int MaximumHitDiceRequirementIndex = 7;
-            public const int RandomFociQuantity = 8;
+            public const int PowerIndex = 1;
+            public const int FocusIndex = 2;
+            public const int FrequencyQuantityIndex = 3;
+            public const int FrequencyTimePeriodIndex = 4;
+            public const int RandomFociQuantityIndex = 5;
 
             public static string[] InitializeData()
             {
-                return DataIndexConstants.InitializeData(RandomFociQuantity);
+                return DataIndexConstants.InitializeData(RandomFociQuantityIndex);
             }
         }
 

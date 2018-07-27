@@ -13,7 +13,6 @@ namespace CreatureGen.Generators.Feats
         IEnumerable<Feat> GenerateSpecialQualities(
             string creatureName,
             HitPoints hitPoints,
-            string size,
             Dictionary<string, Ability> abilities,
             IEnumerable<Skill> skills);
         IEnumerable<Feat> GenerateFeats(

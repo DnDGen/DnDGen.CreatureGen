@@ -8,7 +8,7 @@ namespace CreatureGen.Generators.Defenses
 {
     internal interface IHitPointsGenerator
     {
-        HitPoints GenerateFor(string creatureName, CreatureType creatureType, Ability constitution);
+        HitPoints GenerateFor(string creatureName, CreatureType creatureType, Ability constitution, string size);
         HitPoints RegenerateWith(HitPoints hitPoints, IEnumerable<Feat> feats);
     }
 }

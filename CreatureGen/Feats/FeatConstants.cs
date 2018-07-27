@@ -238,10 +238,10 @@ namespace CreatureGen.Feats
             public const string AttackBonus = "Attack Bonus";
             public const string ChangeShape = "Change Shape";
             public const string DamageReduction = "Damage Reduction";
-            public const string DamageResistance = "Damage Resistance";
             public const string Darkvision = "Darkvision";
             public const string DodgeBonus = "Dodge Bonus";
             public const string EarthGlide = "Earth Glide";
+            public const string EnergyResistance = "Energy Resistance";
             public const string FastHealing = "Fast Healing";
             public const string Immunity = "Immunity";
             public const string InertialArmor = "Inertial Armor";
@@ -267,10 +267,10 @@ namespace CreatureGen.Feats
                     AttackBonus,
                     ChangeShape,
                     DamageReduction,
-                    DamageResistance,
                     Darkvision,
                     DodgeBonus,
                     EarthGlide,
+                    EnergyResistance,
                     FastHealing,
                     Immunity,
                     InertialArmor,

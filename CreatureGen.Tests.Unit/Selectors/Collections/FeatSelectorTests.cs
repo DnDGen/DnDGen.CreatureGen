@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Selectors.Collections;
+using CreatureGen.Selectors.Helpers;
 using CreatureGen.Selectors.Selections;
 using CreatureGen.Tables;
 using DnDGen.Core.Selectors.Collections;
@@ -42,7 +43,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQuality()
         {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 0, 0, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality");
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -51,15 +52,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
         }
 
         [Test]
@@ -74,8 +72,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualities()
         {
-            AddSpecialQualityData("special quality 1", string.Empty, 0, string.Empty, 0, 0, 0, string.Empty, string.Empty);
-            AddSpecialQualityData("special quality 2", string.Empty, 0, string.Empty, 0, 0, 0, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality 1");
+            AddSpecialQualityData("special quality 2");
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(2));
@@ -85,54 +83,35 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(first.Feat, Is.EqualTo("special quality 1"));
             Assert.That(first.FocusType, Is.Empty);
-            Assert.That(first.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(first.Frequency.Quantity, Is.Zero);
             Assert.That(first.Frequency.TimePeriod, Is.Empty);
-            Assert.That(first.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(first.MinimumAbilities, Is.Empty);
-            Assert.That(first.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(first.Power, Is.EqualTo(0));
+            Assert.That(first.Power, Is.Zero);
             Assert.That(first.RandomFociQuantity, Is.Empty);
             Assert.That(first.RequiredFeats, Is.Empty);
-            Assert.That(first.SizeRequirement, Is.Empty);
 
             Assert.That(last.Feat, Is.EqualTo("special quality 2"));
             Assert.That(last.FocusType, Is.Empty);
-            Assert.That(last.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(last.Frequency.Quantity, Is.Zero);
             Assert.That(last.Frequency.TimePeriod, Is.Empty);
-            Assert.That(last.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(last.MinimumAbilities, Is.Empty);
-            Assert.That(last.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(last.Power, Is.EqualTo(0));
+            Assert.That(last.Power, Is.Zero);
             Assert.That(last.RandomFociQuantity, Is.Empty);
             Assert.That(last.RequiredFeats, Is.Empty);
-            Assert.That(last.SizeRequirement, Is.Empty);
         }
 
-        private void AddSpecialQualityData(string featName, string focus, int frequencyQuantity, string frequencyTimePeriod, int maxHitDice, int minHitDice, int power, string randomFociQuantity, string size)
+        private void AddSpecialQualityData(string featName, string focus = "", int frequencyQuantity = 0, string frequencyTimePeriod = "", int power = 0, string randomFociQuantity = "")
         {
-            var data = new List<string>(11);
-            while (data.Count < data.Capacity)
-                data.Add(string.Empty);
+            var data = SpecialQualityHelper.BuildData(featName, randomFociQuantity, focus, frequencyQuantity, frequencyTimePeriod, power);
+            var entry = SpecialQualityHelper.BuildData(data);
 
-            data[DataIndexConstants.SpecialQualityData.FeatNameIndex] = featName;
-            data[DataIndexConstants.SpecialQualityData.FocusIndex] = focus;
-            data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex] = frequencyQuantity.ToString();
-            data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex] = frequencyTimePeriod;
-            data[DataIndexConstants.SpecialQualityData.MaximumHitDiceRequirementIndex] = maxHitDice.ToString();
-            data[DataIndexConstants.SpecialQualityData.MinimumHitDiceRequirementIndex] = minHitDice.ToString();
-            data[DataIndexConstants.SpecialQualityData.PowerIndex] = power.ToString();
-            data[DataIndexConstants.SpecialQualityData.RandomFociQuantity] = randomFociQuantity;
-            data[DataIndexConstants.SpecialQualityData.SizeRequirementIndex] = size;
-
-            var totalData = string.Join("/", data);
-
-            specialQualitiesData.Add(totalData);
+            specialQualitiesData.Add(entry);
         }
 
         [Test]
         public void GetSpecialQualityWithFocusType()
         {
-            AddSpecialQualityData("special quality", "focus type", 0, string.Empty, 0, 0, 0, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality", "focus type");
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -141,21 +120,18 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.EqualTo("focus type"));
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
         }
 
         [Test]
         public void GetSpecialQualityWithFrequency()
         {
-            AddSpecialQualityData("special quality", string.Empty, 9266, "fortnight", 0, 0, 0, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality", frequencyQuantity: 9266, frequencyTimePeriod: "fortnight");
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -166,42 +142,16 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.FocusType, Is.Empty);
             Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(9266));
             Assert.That(specialQuality.Frequency.TimePeriod, Is.EqualTo("fortnight"));
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
-        }
-
-        [Test]
-        public void GetSpecialQualityWithMaximumHitDieRequirement()
-        {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 9266, 0, 0, string.Empty, string.Empty);
-
-            var specialQualities = featsSelector.SelectSpecialQualities("creature");
-            Assert.That(specialQualities.Count(), Is.EqualTo(1));
-
-            var specialQuality = specialQualities.Single();
-
-            Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
-            Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(9266));
-            Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
-            Assert.That(specialQuality.RequiredFeats, Is.Empty);
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
         }
 
         [Test]
         public void GetSpecialQualityWithMinimumAbility()
         {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 0, 0, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality");
 
             var abilityRequirements = new[]
             {
@@ -218,24 +168,21 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Not.Empty);
             Assert.That(specialQuality.MinimumAbilities.Count, Is.EqualTo(1));
             Assert.That(specialQuality.MinimumAbilities.Keys, Contains.Item("ability"));
             Assert.That(specialQuality.MinimumAbilities["ability"], Is.EqualTo(9266));
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
         }
 
         [Test]
         public void GetSpecialQualityWithMinimumAbilities()
         {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 0, 0, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality");
 
             var abilityRequirements = new[]
             {
@@ -253,49 +200,23 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Not.Empty);
             Assert.That(specialQuality.MinimumAbilities.Count, Is.EqualTo(2));
             Assert.That(specialQuality.MinimumAbilities.Keys, Contains.Item("ability"));
             Assert.That(specialQuality.MinimumAbilities.Keys, Contains.Item("other ability"));
             Assert.That(specialQuality.MinimumAbilities["ability"], Is.EqualTo(9266));
             Assert.That(specialQuality.MinimumAbilities["other ability"], Is.EqualTo(90210));
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
-        }
-
-        [Test]
-        public void GetSpecialQualityWithMinimumHitDieRequirement()
-        {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 9266, 0, string.Empty, string.Empty);
-
-            var specialQualities = featsSelector.SelectSpecialQualities("creature");
-            Assert.That(specialQualities.Count(), Is.EqualTo(1));
-
-            var specialQuality = specialQualities.Single();
-
-            Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
-            Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(9266));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
-            Assert.That(specialQuality.RequiredFeats, Is.Empty);
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
         }
 
         [Test]
         public void GetSpecialQualityWithPower()
         {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 0, 9266, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality", power: 9266);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -304,21 +225,18 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.Power, Is.EqualTo(9266));
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
         }
 
         [Test]
         public void GetSpecialQualityWithRandomFociQuantity()
         {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 0, 0, "random foci quantity", string.Empty);
+            AddSpecialQualityData("special quality", randomFociQuantity: "random foci quantity");
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature");
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -327,21 +245,18 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantity, Is.EqualTo("random foci quantity"));
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
         }
 
         [Test]
         public void GetSpecialQualityWithRequiredFeat()
         {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 0, 0, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality");
 
             var requiredFeats = new[]
             {
@@ -357,16 +272,13 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(1));
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
 
             var requiredFeat = specialQuality.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -376,7 +288,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeatWithFocus()
         {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 0, 0, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality");
 
             var requiredFeats = new[]
             {
@@ -392,16 +304,13 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(1));
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
 
             var requiredFeat = specialQuality.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -411,7 +320,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeats()
         {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 0, 0, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality");
 
             var requiredFeats = new[]
             {
@@ -428,16 +337,13 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(2));
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -451,7 +357,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeatsWithFoci()
         {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 0, 0, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality");
 
             var requiredFeats = new[]
             {
@@ -468,16 +374,13 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(2));
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -491,7 +394,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeatWithAndWithoutFoci()
         {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 0, 0, string.Empty, string.Empty);
+            AddSpecialQualityData("special quality");
 
             var requiredFeats = new[]
             {
@@ -508,16 +411,13 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
+            Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(2));
-            Assert.That(specialQuality.SizeRequirement, Is.Empty);
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -526,67 +426,6 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             var otherRequiredFeat = specialQuality.RequiredFeats.Last();
             Assert.That(otherRequiredFeat.Feat, Is.EqualTo("other required feat"));
             Assert.That(otherRequiredFeat.Foci, Is.Empty);
-        }
-
-        [Test]
-        public void GetSpecialQualityWithSizeRequirement()
-        {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 0, 0, string.Empty, "ginormous");
-
-            var specialQualities = featsSelector.SelectSpecialQualities("creature");
-            Assert.That(specialQualities.Count(), Is.EqualTo(1));
-
-            var specialQuality = specialQualities.Single();
-
-            Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
-            Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(0));
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
-            Assert.That(specialQuality.MaximumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.MinimumAbilities, Is.Empty);
-            Assert.That(specialQuality.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(specialQuality.Power, Is.EqualTo(0));
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
-            Assert.That(specialQuality.RequiredFeats, Is.Empty);
-            Assert.That(specialQuality.SizeRequirement, Is.EqualTo("ginormous"));
-        }
-
-        //INFO: An example of this would be a special quality with a different power depending on the hit dice of the creature
-        [Test]
-        public void GetDifferentSpecialQualitiesWithSameName()
-        {
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 600, 0, 1, string.Empty, string.Empty);
-            AddSpecialQualityData("special quality", string.Empty, 0, string.Empty, 0, 601, 2, string.Empty, string.Empty);
-
-            var specialQualitySelections = featsSelector.SelectSpecialQualities("creature");
-            Assert.That(specialQualitySelections.Count(), Is.EqualTo(2));
-
-            var first = specialQualitySelections.First();
-            var last = specialQualitySelections.Last();
-
-            Assert.That(first.Feat, Is.EqualTo("special quality"));
-            Assert.That(first.FocusType, Is.Empty);
-            Assert.That(first.Frequency.Quantity, Is.EqualTo(0));
-            Assert.That(first.Frequency.TimePeriod, Is.Empty);
-            Assert.That(first.MaximumHitDieRequirement, Is.EqualTo(600));
-            Assert.That(first.MinimumAbilities, Is.Empty);
-            Assert.That(first.MinimumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(first.Power, Is.EqualTo(1));
-            Assert.That(first.RandomFociQuantity, Is.Empty);
-            Assert.That(first.RequiredFeats, Is.Empty);
-            Assert.That(first.SizeRequirement, Is.Empty);
-
-            Assert.That(last.Feat, Is.EqualTo("special quality"));
-            Assert.That(last.FocusType, Is.Empty);
-            Assert.That(last.Frequency.Quantity, Is.EqualTo(0));
-            Assert.That(last.Frequency.TimePeriod, Is.Empty);
-            Assert.That(last.MaximumHitDieRequirement, Is.EqualTo(0));
-            Assert.That(last.MinimumAbilities, Is.Empty);
-            Assert.That(last.MinimumHitDieRequirement, Is.EqualTo(601));
-            Assert.That(last.Power, Is.EqualTo(2));
-            Assert.That(last.RandomFociQuantity, Is.Empty);
-            Assert.That(last.RequiredFeats, Is.Empty);
-            Assert.That(last.SizeRequirement, Is.Empty);
         }
 
         [Test]
@@ -602,12 +441,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Empty);
             Assert.That(feat.RequiredSkills, Is.Empty);
         }
@@ -634,24 +473,24 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(first.Feat, Is.EqualTo("feat 1"));
             Assert.That(first.CanBeTakenMultipleTimes, Is.False);
             Assert.That(first.FocusType, Is.Empty);
-            Assert.That(first.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(first.Frequency.Quantity, Is.Zero);
             Assert.That(first.Frequency.TimePeriod, Is.Empty);
-            Assert.That(first.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(first.Power, Is.EqualTo(0));
+            Assert.That(first.MinimumCasterLevel, Is.Zero);
+            Assert.That(first.Power, Is.Zero);
             Assert.That(first.RequiredAbilities, Is.Empty);
-            Assert.That(first.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(first.RequiredBaseAttack, Is.Zero);
             Assert.That(first.RequiredFeats, Is.Empty);
             Assert.That(first.RequiredSkills, Is.Empty);
 
             Assert.That(last.Feat, Is.EqualTo("feat 2"));
             Assert.That(last.CanBeTakenMultipleTimes, Is.False);
             Assert.That(last.FocusType, Is.Empty);
-            Assert.That(last.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(last.Frequency.Quantity, Is.Zero);
             Assert.That(last.Frequency.TimePeriod, Is.Empty);
-            Assert.That(last.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(last.Power, Is.EqualTo(0));
+            Assert.That(last.MinimumCasterLevel, Is.Zero);
+            Assert.That(last.Power, Is.Zero);
             Assert.That(last.RequiredAbilities, Is.Empty);
-            Assert.That(last.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(last.RequiredBaseAttack, Is.Zero);
             Assert.That(last.RequiredFeats, Is.Empty);
             Assert.That(last.RequiredSkills, Is.Empty);
         }
@@ -701,12 +540,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.True);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Empty);
             Assert.That(feat.RequiredSkills, Is.Empty);
         }
@@ -724,12 +563,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.EqualTo("focus type"));
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Empty);
             Assert.That(feat.RequiredSkills, Is.Empty);
         }
@@ -749,10 +588,10 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.FocusType, Is.Empty);
             Assert.That(feat.Frequency.Quantity, Is.EqualTo(9266));
             Assert.That(feat.Frequency.TimePeriod, Is.EqualTo("fortnight"));
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Empty);
             Assert.That(feat.RequiredSkills, Is.Empty);
         }
@@ -770,12 +609,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.EqualTo(9266));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Empty);
             Assert.That(feat.RequiredSkills, Is.Empty);
         }
@@ -793,12 +632,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.EqualTo(9266));
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Empty);
             Assert.That(feat.RequiredSkills, Is.Empty);
         }
@@ -824,15 +663,15 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Not.Empty);
             Assert.That(feat.RequiredAbilities.Count, Is.EqualTo(1));
             Assert.That(feat.RequiredAbilities.Keys, Contains.Item("ability"));
             Assert.That(feat.RequiredAbilities["ability"], Is.EqualTo(9266));
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Empty);
             Assert.That(feat.RequiredSkills, Is.Empty);
         }
@@ -859,17 +698,17 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Not.Empty);
             Assert.That(feat.RequiredAbilities.Count, Is.EqualTo(2));
             Assert.That(feat.RequiredAbilities.Keys, Contains.Item("ability"));
             Assert.That(feat.RequiredAbilities.Keys, Contains.Item("other ability"));
             Assert.That(feat.RequiredAbilities["ability"], Is.EqualTo(9266));
             Assert.That(feat.RequiredAbilities["other ability"], Is.EqualTo(90210));
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Empty);
             Assert.That(feat.RequiredSkills, Is.Empty);
         }
@@ -887,10 +726,10 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
             Assert.That(feat.RequiredBaseAttack, Is.EqualTo(9266));
             Assert.That(feat.RequiredFeats, Is.Empty);
@@ -917,12 +756,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
             Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
             Assert.That(feat.RequiredSkills, Is.Empty);
@@ -952,12 +791,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
             Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
             Assert.That(feat.RequiredSkills, Is.Empty);
@@ -988,12 +827,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
             Assert.That(feat.RequiredFeats.Count, Is.EqualTo(2));
             Assert.That(feat.RequiredSkills, Is.Empty);
@@ -1028,12 +867,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
             Assert.That(feat.RequiredFeats.Count, Is.EqualTo(2));
             Assert.That(feat.RequiredSkills, Is.Empty);
@@ -1067,12 +906,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
             Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
             Assert.That(feat.RequiredSkills, Is.Empty);
@@ -1105,12 +944,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
             Assert.That(feat.RequiredFeats.Count, Is.EqualTo(2));
             Assert.That(feat.RequiredSkills, Is.Empty);
@@ -1143,12 +982,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
             Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
             Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
-            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
+            Assert.That(featSelection.Power, Is.Zero);
             Assert.That(featSelection.RequiredAbilities, Is.Empty);
-            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredBaseAttack, Is.Zero);
             Assert.That(featSelection.RequiredFeats, Is.Empty);
             Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
             Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(1));
@@ -1178,12 +1017,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
             Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
             Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
-            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
+            Assert.That(featSelection.Power, Is.Zero);
             Assert.That(featSelection.RequiredAbilities, Is.Empty);
-            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredBaseAttack, Is.Zero);
             Assert.That(featSelection.RequiredFeats, Is.Empty);
             Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
             Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(1));
@@ -1214,12 +1053,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
             Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
             Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
-            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
+            Assert.That(featSelection.Power, Is.Zero);
             Assert.That(featSelection.RequiredAbilities, Is.Empty);
-            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredBaseAttack, Is.Zero);
             Assert.That(featSelection.RequiredFeats, Is.Empty);
             Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
             Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(2));
@@ -1255,12 +1094,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
             Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
             Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
-            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
+            Assert.That(featSelection.Power, Is.Zero);
             Assert.That(featSelection.RequiredAbilities, Is.Empty);
-            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredBaseAttack, Is.Zero);
             Assert.That(featSelection.RequiredFeats, Is.Empty);
             Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
             Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(2));
@@ -1296,12 +1135,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
             Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
             Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
-            Assert.That(featSelection.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(featSelection.Power, Is.EqualTo(0));
+            Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
+            Assert.That(featSelection.Power, Is.Zero);
             Assert.That(featSelection.RequiredAbilities, Is.Empty);
-            Assert.That(featSelection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(featSelection.RequiredBaseAttack, Is.Zero);
             Assert.That(featSelection.RequiredFeats, Is.Empty);
             Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
             Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(2));
@@ -1337,12 +1176,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
             Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
             Assert.That(feat.RequiredSkills, Is.Empty);
@@ -1372,12 +1211,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(0));
+            Assert.That(feat.Frequency.Quantity, Is.Zero);
             Assert.That(feat.Frequency.TimePeriod, Is.Empty);
-            Assert.That(feat.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(feat.Power, Is.EqualTo(0));
+            Assert.That(feat.MinimumCasterLevel, Is.Zero);
+            Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
-            Assert.That(feat.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
             Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
             Assert.That(feat.RequiredSkills, Is.Empty);
@@ -1567,7 +1406,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             var feat = feats.Single();
 
             Assert.That(feat.Feat, Is.EqualTo("feat"));
-            Assert.That(feat.RequiredNaturalWeapons, Is.EqualTo(0));
+            Assert.That(feat.RequiredNaturalWeapons, Is.Zero);
         }
 
         [Test]
@@ -1595,7 +1434,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             var feat = feats.Single();
 
             Assert.That(feat.Feat, Is.EqualTo("feat"));
-            Assert.That(feat.RequiredHands, Is.EqualTo(0));
+            Assert.That(feat.RequiredHands, Is.Zero);
         }
 
         [Test]

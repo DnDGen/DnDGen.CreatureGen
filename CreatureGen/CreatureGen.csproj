@@ -116,6 +116,7 @@
     <Compile Include="Selectors\Collections\CreatureDataSelector.cs" />
     <Compile Include="Selectors\Collections\IAdvancementSelector.cs" />
     <Compile Include="Selectors\Collections\TypeAndAmountSelector.cs" />
+    <Compile Include="Selectors\Helpers\SpecialQualityHelper.cs" />
     <Compile Include="Selectors\Selections\AdvancementSelection.cs" />
     <Compile Include="Verifiers\CreatureVerifier.cs" />
     <Compile Include="IoC\CreatureGenModuleLoader.cs" />
@@ -253,7 +254,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\Data\SpecialQualityData.xml" />
+    <EmbeddedResource Include="Tables\Feats\Data\SpecialQualityData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

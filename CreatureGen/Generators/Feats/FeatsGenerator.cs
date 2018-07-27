@@ -31,7 +31,7 @@ namespace CreatureGen.Generators.Feats
             this.dice = dice;
         }
 
-        public IEnumerable<Feat> GenerateSpecialQualities(string creatureName, HitPoints hitPoints, string size, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills)
+        public IEnumerable<Feat> GenerateSpecialQualities(string creatureName, HitPoints hitPoints, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills)
         {
             var featSelections = featsSelector.SelectSpecialQualities(creatureName);
             var featToIncreasePower = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower);
@@ -44,7 +44,7 @@ namespace CreatureGen.Generators.Feats
 
             foreach (var featSelection in featSelections)
             {
-                if (!featSelection.RequirementsMet(size, hitPoints.RoundedHitDiceQuantity, abilities, feats))
+                if (!featSelection.RequirementsMet(abilities, feats))
                     continue;
 
                 var feat = new Feat();

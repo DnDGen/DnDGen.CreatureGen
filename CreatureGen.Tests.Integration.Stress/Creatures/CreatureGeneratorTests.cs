@@ -52,17 +52,5 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
 
             CreatureAsserter.AssertCreature(creature);
         }
-
-        [Test]
-        public void DoSpellsForThoseWhoCastAsSpellcaster()
-        {
-            Assert.Fail("TODO");
-        }
-
-        [Test]
-        public void DoEquipment()
-        {
-            Assert.Fail("TODO");
-        }
     }
 }

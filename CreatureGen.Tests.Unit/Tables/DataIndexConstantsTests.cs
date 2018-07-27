@@ -8,28 +8,22 @@ namespace CreatureGen.Tests.Unit.Tables
     public class DataIndexConstantsTests
     {
         [TestCase(DataIndexConstants.SpecialQualityData.FeatNameIndex, 0)]
-        [TestCase(DataIndexConstants.SpecialQualityData.SizeRequirementIndex, 1)]
-        [TestCase(DataIndexConstants.SpecialQualityData.MinimumHitDiceRequirementIndex, 2)]
-        [TestCase(DataIndexConstants.SpecialQualityData.PowerIndex, 3)]
-        [TestCase(DataIndexConstants.SpecialQualityData.FocusIndex, 4)]
-        [TestCase(DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex, 5)]
-        [TestCase(DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex, 6)]
-        [TestCase(DataIndexConstants.SpecialQualityData.MaximumHitDiceRequirementIndex, 7)]
-        [TestCase(DataIndexConstants.SpecialQualityData.RandomFociQuantity, 8)]
+        [TestCase(DataIndexConstants.SpecialQualityData.PowerIndex, 1)]
+        [TestCase(DataIndexConstants.SpecialQualityData.FocusIndex, 2)]
+        [TestCase(DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex, 3)]
+        [TestCase(DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex, 4)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex, 5)]
         public void SpecialQualityDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
         }
 
         [TestCase(DataIndexConstants.SpecialQualityData.FeatNameIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.SizeRequirementIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.MinimumHitDiceRequirementIndex)]
         [TestCase(DataIndexConstants.SpecialQualityData.PowerIndex)]
         [TestCase(DataIndexConstants.SpecialQualityData.FocusIndex)]
         [TestCase(DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex)]
         [TestCase(DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.MaximumHitDiceRequirementIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.RandomFociQuantity)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex)]
         public void SpecialQualityDataIndicesInitialized(int index)
         {
             var data = DataIndexConstants.SpecialQualityData.InitializeData();

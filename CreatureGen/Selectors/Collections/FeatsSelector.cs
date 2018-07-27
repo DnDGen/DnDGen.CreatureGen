@@ -1,4 +1,5 @@
-﻿using CreatureGen.Selectors.Selections;
+﻿using CreatureGen.Selectors.Helpers;
+using CreatureGen.Selectors.Selections;
 using CreatureGen.Tables;
 using DnDGen.Core.Selectors.Collections;
 using System;
@@ -125,18 +126,15 @@ namespace CreatureGen.Selectors.Collections
 
             foreach (var specialQuality in specialQualities)
             {
-                var data = specialQuality.Split('/');
+                var data = SpecialQualityHelper.ParseData(specialQuality);
 
                 var specialQualitySelection = new SpecialQualitySelection();
                 specialQualitySelection.Feat = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
-                specialQualitySelection.SizeRequirement = data[DataIndexConstants.SpecialQualityData.SizeRequirementIndex];
                 specialQualitySelection.Power = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]);
-                specialQualitySelection.MinimumHitDieRequirement = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.MinimumHitDiceRequirementIndex]);
                 specialQualitySelection.FocusType = data[DataIndexConstants.SpecialQualityData.FocusIndex];
                 specialQualitySelection.Frequency.Quantity = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]);
                 specialQualitySelection.Frequency.TimePeriod = data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex];
-                specialQualitySelection.MaximumHitDieRequirement = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.MaximumHitDiceRequirementIndex]);
-                specialQualitySelection.RandomFociQuantity = data[DataIndexConstants.SpecialQualityData.RandomFociQuantity];
+                specialQualitySelection.RandomFociQuantity = data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex];
 
                 specialQualitySelection.RequiredFeats = GetRequiredFeats(creature + specialQualitySelection.Feat);
                 specialQualitySelection.MinimumAbilities = GetRequiredAbilities(creature + specialQualitySelection.Feat);

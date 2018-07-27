@@ -8,9 +8,6 @@ namespace CreatureGen.Selectors.Selections
     internal class SpecialQualitySelection
     {
         public string Feat { get; set; }
-        public int MinimumHitDieRequirement { get; set; }
-        public int MaximumHitDieRequirement { get; set; }
-        public string SizeRequirement { get; set; }
         public Frequency Frequency { get; set; }
         public string FocusType { get; set; }
         public int Power { get; set; }
@@ -21,7 +18,6 @@ namespace CreatureGen.Selectors.Selections
         public SpecialQualitySelection()
         {
             Feat = string.Empty;
-            SizeRequirement = string.Empty;
             Frequency = new Frequency();
             FocusType = string.Empty;
             MinimumAbilities = new Dictionary<string, int>();
@@ -29,14 +25,8 @@ namespace CreatureGen.Selectors.Selections
             RequiredFeats = Enumerable.Empty<RequiredFeatSelection>();
         }
 
-        public bool RequirementsMet(string size, int hitDice, Dictionary<string, Ability> abilities, IEnumerable<Feat> feats)
+        public bool RequirementsMet(Dictionary<string, Ability> abilities, IEnumerable<Feat> feats)
         {
-            if (!string.IsNullOrEmpty(SizeRequirement) && SizeRequirement != size)
-                return false;
-
-            if (MaximumHitDieRequirement > 0 && hitDice > MaximumHitDieRequirement)
-                return false;
-
             if (!MinimumAbilityMet(abilities))
                 return false;
 
@@ -51,16 +41,16 @@ namespace CreatureGen.Selectors.Selections
                     return false;
             }
 
-            return hitDice >= MinimumHitDieRequirement;
+            return true;
         }
 
-        private bool MinimumAbilityMet(Dictionary<string, Ability> stats)
+        private bool MinimumAbilityMet(Dictionary<string, Ability> abilities)
         {
             if (!MinimumAbilities.Any())
                 return true;
 
-            foreach (var stat in MinimumAbilities)
-                if (stats[stat.Key].FullScore >= stat.Value)
+            foreach (var minimumAbility in MinimumAbilities)
+                if (abilities[minimumAbility.Key].FullScore >= minimumAbility.Value)
                     return true;
 
             return false;

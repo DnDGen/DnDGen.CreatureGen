@@ -6,7 +6,7 @@ using NUnit.Framework;
 using System;
 using System.Diagnostics;
 
-namespace CreatureGen.Tests.Integration.Generators.Verifiers
+namespace CreatureGen.Tests.Integration.Verifiers
 {
     [TestFixture]
     public class CreatureVerifierTests : IntegrationTests
