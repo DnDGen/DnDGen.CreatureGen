@@ -100,7 +100,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             WeaponConstants.Net)]
         public void FeatFoci(string feat, params string[] foci)
         {
-            base.DistinctCollection(feat, foci);
+            base.AssertDistinctCollection(feat, foci);
         }
 
         [Test]
@@ -285,7 +285,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
                 SkillConstants.UseRope
             };
 
-            base.DistinctCollection(GroupConstants.Skills, foci);
+            base.AssertDistinctCollection(GroupConstants.Skills, foci);
         }
     }
 }

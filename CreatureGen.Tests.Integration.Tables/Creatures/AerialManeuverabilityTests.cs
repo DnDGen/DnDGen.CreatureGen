@@ -625,7 +625,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         public void AerialManeuverability(string creature, params string[] maneuverability)
         {
             Assert.That(maneuverability.Length, Is.Zero.Or.EqualTo(1), creature);
-            DistinctCollection(creature, maneuverability);
+            AssertDistinctCollection(creature, maneuverability);
         }
 
         [Test]

@@ -10,13 +10,13 @@ namespace CreatureGen.Tests.Integration.Tables
         protected void AssertTypesAndAmounts(string name, Dictionary<string, int> typesAndAmounts)
         {
             var entries = typesAndAmounts.Select(kvp => $"{kvp.Key}/{kvp.Value}").ToArray();
-            DistinctCollection(name, entries);
+            AssertDistinctCollection(name, entries);
         }
 
         protected void AssertTypesAndAmounts(string name, Dictionary<string, string> typesAndAmounts)
         {
             var entries = typesAndAmounts.Select(kvp => $"{kvp.Key}/{kvp.Value}").ToArray();
-            DistinctCollection(name, entries);
+            AssertDistinctCollection(name, entries);
         }
     }
 }

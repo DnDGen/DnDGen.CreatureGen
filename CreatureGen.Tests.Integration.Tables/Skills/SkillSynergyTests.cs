@@ -545,7 +545,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.EscapeArtist)]
         public void SynergySkills(string skill, params string[] synergies)
         {
-            base.DistinctCollection(skill, synergies);
+            base.AssertDistinctCollection(skill, synergies);
         }
 
         [Test]
@@ -594,7 +594,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Woodworking,
             };
 
-            DistinctCollection(SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Craftsman, skills);
+            AssertDistinctCollection(SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Craftsman, skills);
         }
     }
 }

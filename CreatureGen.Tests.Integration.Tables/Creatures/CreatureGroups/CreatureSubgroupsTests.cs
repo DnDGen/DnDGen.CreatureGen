@@ -483,7 +483,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Groups.HasSkeleton)]
         public void CreatureSubgroup(string creature, params string[] subgroup)
         {
-            DistinctCollection(creature, subgroup);
+            AssertDistinctCollection(creature, subgroup);
         }
 
         [Test]
@@ -861,7 +861,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Types.MonstrousHumanoid,
             };
 
-            DistinctCollection(CreatureConstants.Groups.HasSkeleton, entries);
+            AssertDistinctCollection(CreatureConstants.Groups.HasSkeleton, entries);
         }
 
         [Test]

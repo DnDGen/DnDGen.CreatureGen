@@ -24,6 +24,7 @@ namespace CreatureGen.Tests.Integration.Generators.Creatures
 
         [TestCase(CreatureConstants.Angel_Planetar)]
         [TestCase(CreatureConstants.Angel_Solar)]
+        [TestCase(CreatureConstants.Aranea)]
         [TestCase(CreatureConstants.Gynosphinx)]
         [TestCase(CreatureConstants.Rakshasa)]
         public void DoSpellsForThoseWhoCastAsSpellcaster(string creature)

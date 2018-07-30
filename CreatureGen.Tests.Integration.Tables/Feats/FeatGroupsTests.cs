@@ -80,7 +80,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.IronWill)]
         public void FeatGroup(string name, params string[] collection)
         {
-            DistinctCollection(name, collection);
+            AssertDistinctCollection(name, collection);
         }
     }
 }

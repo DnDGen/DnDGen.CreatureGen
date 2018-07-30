@@ -235,25 +235,39 @@ namespace CreatureGen.Feats
         public static class SpecialQualities
         {
             public const string AllAroundVision = "All-Around Vision";
+            public const string AlternateForm = "Alternate Form";
+            public const string Amphibious = "Amphibious";
             public const string AttackBonus = "Attack Bonus";
+            public const string Blindsight = "Blindsight";
+            public const string Camouflage = "Camouflage";
             public const string ChangeShape = "Change Shape";
             public const string DamageReduction = "Damage Reduction";
             public const string Darkvision = "Darkvision";
             public const string DodgeBonus = "Dodge Bonus";
             public const string EarthGlide = "Earth Glide";
+            public const string ElvenBlood = "Elven Blood";
             public const string EnergyResistance = "Energy Resistance";
             public const string FastHealing = "Fast Healing";
+            public const string FlamingBody = "Flaming Body";
+            public const string Gills = "Gills";
             public const string Immunity = "Immunity";
             public const string InertialArmor = "Inertial Armor";
+            public const string LayOnHands = "Lay on Hands";
+            public const string LightBlindness = "Light Blindness";
             public const string LowLightVision = "Low-Light Vision";
+            public const string LowLightVision_Superior = "Superior Low-Light Vision";
             public const string MucusCloud = "Mucus Cloud";
             public const string NaturalWeapon = "Natural Weapon";
             public const string ProtectiveAura = "Protective Aura";
+            public const string ProtectiveSlime = "Protective Slime";
             public const string Regeneration = "Regeneration";
             public const string SaveBonus = "Save Bonus";
+            public const string Scent = "Scent";
             public const string SkillBonus = "Skill Bonus";
             public const string SpellLikeAbility = "Spell-Like Ability";
             public const string SpellResistance = "Spell Resistance";
+            public const string Telepathy = "Telepathy";
+            public const string Tremorsense = "Tremorsense";
             public const string TurnResistance = "Turn Resistance";
             public const string UncannyDodge = "Uncanny Dodge";
             public const string Vulnerability = "Vulnerability";
@@ -264,25 +278,39 @@ namespace CreatureGen.Feats
                 return new[]
                 {
                     AllAroundVision,
+                    AlternateForm,
+                    Amphibious,
                     AttackBonus,
+                    Blindsight,
+                    Camouflage,
                     ChangeShape,
                     DamageReduction,
                     Darkvision,
                     DodgeBonus,
                     EarthGlide,
+                    ElvenBlood,
                     EnergyResistance,
                     FastHealing,
+                    FlamingBody,
+                    Gills,
                     Immunity,
                     InertialArmor,
+                    LayOnHands,
+                    LightBlindness,
                     LowLightVision,
+                    LowLightVision_Superior,
                     MucusCloud,
                     NaturalWeapon,
                     ProtectiveAura,
+                    ProtectiveSlime,
                     Regeneration,
                     SaveBonus,
+                    Scent,
                     SkillBonus,
                     SpellLikeAbility,
                     SpellResistance,
+                    Telepathy,
+                    Tremorsense,
                     TurnResistance,
                     UncannyDodge,
                     Vulnerability,
@@ -372,6 +400,7 @@ namespace CreatureGen.Feats
             public const string Day = "Day";
             public const string Hit = "Hit";
             public const string Hour = "Hour";
+            public const string Month = "Month";
             public const string Round = "Round";
             public const string Turn = "Turn";
             public const string Week = "Week";

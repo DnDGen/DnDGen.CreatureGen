@@ -54,7 +54,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCase(FeatConstants.AugmentSummoning, 0, "", 0, "", 4, 1, 0, 0, false, false, false)]
         [TestCase(FeatConstants.BlindFight, 0, "", 0, "", 2, 0, 0, 0, false, false, false)]
         [TestCase(FeatConstants.BullRush_Improved, 0, "", 0, "", 4, 0, 0, 0, false, false, false)]
-        [TestCase(FeatConstants.Cleave, 0, "", 0, "", 2, 0, 0, 0, false, false, false)]
+        [TestCase(FeatConstants.Cleave, 0, "", 0, "", 0, 0, 0, 0, false, false, false)]
         [TestCase(FeatConstants.Cleave_Great, 4, "", 0, "", 0, 0, 0, 0, false, false, false)]
         [TestCase(FeatConstants.CombatCasting, 0, "", 0, "", 4, 1, 0, 0, false, false, false)]
         [TestCase(FeatConstants.CombatExpertise, 0, "", 0, "", 4, 0, 0, 0, false, false, false)]

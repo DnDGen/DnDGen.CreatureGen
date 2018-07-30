@@ -176,7 +176,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(FeatConstants.Monster.Wingover)]
         public void RequiredFeats(string name, params string[] requiredFeats)
         {
-            DistinctCollection(name, requiredFeats);
+            AssertDistinctCollection(name, requiredFeats);
         }
 
         [TestCase(FeatConstants.AugmentSummoning,
@@ -198,7 +198,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         public void RequiredFeat(string name, string requiredFeat, string requiredFocus)
         {
             var collection = new[] { $"{requiredFeat}/{requiredFocus}" };
-            DistinctCollection(name, collection);
+            AssertDistinctCollection(name, collection);
         }
     }
 }

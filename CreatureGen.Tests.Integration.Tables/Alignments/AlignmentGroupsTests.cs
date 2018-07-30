@@ -916,7 +916,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Zelekhut, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral)]
         public void AlignmentGroup(string name, params string[] collection)
         {
-            base.Collection(name, collection);
+            base.AssertCollection(name, collection);
         }
 
         [TestCase(AlignmentConstants.LawfulEvil)]
@@ -931,7 +931,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         public void AlwaysAlignmentIsOnlyAlignment(string alignment)
         {
             var group = AlignmentConstants.Modifiers.Always + alignment;
-            DistinctCollection(group, alignment);
+            AssertDistinctCollection(group, alignment);
         }
 
         [TestCase(AlignmentConstants.LawfulEvil)]

@@ -9,7 +9,7 @@ namespace CreatureGen.Tests.Integration.Tables
     {
         protected void Data(string name, IEnumerable<string> data)
         {
-            OrderedCollection(name, data.ToArray());
+            AssertOrderedCollection(name, data.ToArray());
         }
     }
 }

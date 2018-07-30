@@ -1140,8 +1140,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.YuanTi_Pureblood, CreatureConstants.Types.MonstrousHumanoid)]
         public void CreatureTypes(string creature, params string[] types)
         {
-            OrderedCollection(creature, types);
-            DistinctCollection(creature, types);
+            AssertOrderedCollection(creature, types);
+            AssertDistinctCollection(creature, types);
         }
 
         [Test]

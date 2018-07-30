@@ -57,7 +57,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.Metaraces
             CreatureConstants.Templates.Species.White)]
         public void DragonSpecies(string name, params string[] collection)
         {
-            DistinctCollection(name, collection);
+            AssertDistinctCollection(name, collection);
         }
     }
 }

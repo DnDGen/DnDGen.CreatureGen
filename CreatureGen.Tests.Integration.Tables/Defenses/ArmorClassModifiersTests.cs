@@ -35,7 +35,7 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
             FeatConstants.SpecialQualities.InertialArmor)]
         public void ArmorClassModifier(string name, params string[] collection)
         {
-            base.DistinctCollection(name, collection);
+            base.AssertDistinctCollection(name, collection);
         }
     }
 }

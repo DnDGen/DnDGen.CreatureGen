@@ -385,7 +385,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Groups.Tojanida)]
         public void CreatureTypeGroup(string name, params string[] entries)
         {
-            DistinctCollection(name, entries);
+            AssertDistinctCollection(name, entries);
         }
 
         [Test]
@@ -420,7 +420,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.WillOWisp,
             };
 
-            DistinctCollection(CreatureConstants.Types.Aberration, creatures);
+            AssertDistinctCollection(CreatureConstants.Types.Aberration, creatures);
         }
 
         [Test]
@@ -493,7 +493,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Wolverine_Dire,
             };
 
-            DistinctCollection(CreatureConstants.Types.Animal, creatures);
+            AssertDistinctCollection(CreatureConstants.Types.Animal, creatures);
         }
 
         [Test]
@@ -550,7 +550,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.YethHound,
             };
 
-            DistinctCollection(CreatureConstants.Types.Subtypes.Extraplanar, creatures);
+            AssertDistinctCollection(CreatureConstants.Types.Subtypes.Extraplanar, creatures);
         }
 
         [Test]
@@ -606,7 +606,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Yrthak,
             };
 
-            DistinctCollection(CreatureConstants.Types.MagicalBeast, creatures);
+            AssertDistinctCollection(CreatureConstants.Types.MagicalBeast, creatures);
         }
 
         [Test]
@@ -666,7 +666,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.YethHound,
             };
 
-            base.DistinctCollection(CreatureConstants.Types.Outsider, creatures);
+            base.AssertDistinctCollection(CreatureConstants.Types.Outsider, creatures);
         }
 
         [Test]
