@@ -2206,7 +2206,15 @@
   </collection>
   <collection>
     <name>Water Mephit</name>
-    <entry>Average Maneuverability</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0</entry>
+    <entry>Darkvision#60##0##0</entry>
+    <entry>Fast Healing#2#Exposed to moving air#1#Turn#0</entry>
+    <entry>Skill Bonus#2#Disguise: while acting#0##0</entry>
+    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
+    <entry>Skill Bonus#10#Swim: can always take 10#0##0</entry>
+    <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
+    <entry>Spell-Like Ability#0#Blur#1#Hour#0</entry>
+    <entry>Spell-Like Ability#0#Gust of wind#1#Day#0</entry>
   </collection>
   <collection>
     <name>Water Naga</name>

@@ -1494,8 +1494,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             var immunityNecromancyData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Necromancy");
             var immunityCriticalHitsData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits");
             var immunityNonlethalData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Nonlethal damage");
-            var immunityAbilityDamageData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Abiltiy Damage");
-            var immunityAbilityDrainData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Abiltiy Drain");
+            var immunityAbilityDamageData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Ability Damage");
+            var immunityAbilityDrainData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Ability Drain");
             var immunityEnergyDrainData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Energy Drain");
             var immunityFatigueData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Fatigue");
             var immunityExhaustionData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Exhaustion");
