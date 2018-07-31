@@ -942,5 +942,17 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             foreach (var attack in generatedAttacks)
                 Assert.That(attack.SecondaryAttackModifiers, Is.Zero);
         }
+
+        [Test]
+        public void ApplyDexterityForMeleeInsteadOfStrengthForLightWeaponsIfWeaponFinesse()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyDexterityForMeleeInsteadOfStrengthForNaturalWeaponsIfWeaponFinesse()
+        {
+            Assert.Fail("not yet written");
+        }
     }
 }

@@ -1966,6 +1966,16 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(otherBonuses, Is.All.Zero);
         }
 
+        //INFO: Example is how a centipede swarm uses Dexterity for Climb instead of Strength
+        //Might be related to the Weapon finesse feat, although not explicitly stated
+        //Rat swarm: for climb and swim
+        //Spider swarm: for climb (class skill of climb or swim, and weapon finesse feat?)
+        [Test]
+        public void UseAlternateBaseAbilityForSkill()
+        {
+            Assert.Fail("not yet written");
+        }
+
         [Test]
         public void ApplyFeatThatGrantSkillBonusesToSkills()
         {

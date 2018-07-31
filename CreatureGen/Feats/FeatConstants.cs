@@ -237,10 +237,15 @@ namespace CreatureGen.Feats
             public const string AllAroundVision = "All-Around Vision";
             public const string AlternateForm = "Alternate Form";
             public const string Amphibious = "Amphibious";
+            public const string AntimagicCone = "Antimagic Cone";
             public const string AttackBonus = "Attack Bonus";
+            public const string Blindsense = "Blindsense";
             public const string Blindsight = "Blindsight";
             public const string Camouflage = "Camouflage";
             public const string ChangeShape = "Change Shape";
+            public const string CharmReptiles = "Charm Reptiles";
+            public const string CorruptWater = "Corrupt Water";
+            public const string CreateDestroyWater = "Create/Destroy Water";
             public const string DamageReduction = "Damage Reduction";
             public const string Darkvision = "Darkvision";
             public const string DodgeBonus = "Dodge Bonus";
@@ -249,9 +254,16 @@ namespace CreatureGen.Feats
             public const string EnergyResistance = "Energy Resistance";
             public const string FastHealing = "Fast Healing";
             public const string FlamingBody = "Flaming Body";
+            public const string Flight = "Flight";
+            public const string FreezingFog = "Freezing Fog";
             public const string Gills = "Gills";
+            public const string HalfDamage = "Half Damage";
+            public const string HiveMind = "Hive Mind";
+            public const string HoldBreath = "Hold Breath";
+            public const string Icewalking = "Icewalking";
             public const string Immunity = "Immunity";
             public const string InertialArmor = "Inertial Armor";
+            public const string KeenSenses = "Keen Senses";
             public const string LayOnHands = "Lay on Hands";
             public const string LightBlindness = "Light Blindness";
             public const string LowLightVision = "Low-Light Vision";
@@ -264,6 +276,8 @@ namespace CreatureGen.Feats
             public const string SaveBonus = "Save Bonus";
             public const string Scent = "Scent";
             public const string SkillBonus = "Skill Bonus";
+            public const string SmokeForm = "Smoke Form";
+            public const string SoundImitation = "Sound Imitation";
             public const string SpellLikeAbility = "Spell-Like Ability";
             public const string SpellResistance = "Spell Resistance";
             public const string Telepathy = "Telepathy";
@@ -271,6 +285,7 @@ namespace CreatureGen.Feats
             public const string TurnResistance = "Turn Resistance";
             public const string UncannyDodge = "Uncanny Dodge";
             public const string Vulnerability = "Vulnerability";
+            public const string WaterBreathing = "Water Breathing";
             public const string WeaponFamiliarity = "Weapon Familiarity";
 
             public static IEnumerable<string> All()
@@ -280,10 +295,15 @@ namespace CreatureGen.Feats
                     AllAroundVision,
                     AlternateForm,
                     Amphibious,
+                    AntimagicCone,
                     AttackBonus,
+                    Blindsense,
                     Blindsight,
                     Camouflage,
                     ChangeShape,
+                    CharmReptiles,
+                    CorruptWater,
+                    CreateDestroyWater,
                     DamageReduction,
                     Darkvision,
                     DodgeBonus,
@@ -292,9 +312,16 @@ namespace CreatureGen.Feats
                     EnergyResistance,
                     FastHealing,
                     FlamingBody,
+                    Flight,
+                    FreezingFog,
                     Gills,
+                    HalfDamage,
+                    HiveMind,
+                    HoldBreath,
+                    Icewalking,
                     Immunity,
                     InertialArmor,
+                    KeenSenses,
                     LayOnHands,
                     LightBlindness,
                     LowLightVision,
@@ -307,6 +334,8 @@ namespace CreatureGen.Feats
                     SaveBonus,
                     Scent,
                     SkillBonus,
+                    SmokeForm,
+                    SoundImitation,
                     SpellLikeAbility,
                     SpellResistance,
                     Telepathy,
@@ -314,6 +343,7 @@ namespace CreatureGen.Feats
                     TurnResistance,
                     UncannyDodge,
                     Vulnerability,
+                    WaterBreathing,
                     WeaponFamiliarity,
                 };
             }

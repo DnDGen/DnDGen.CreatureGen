@@ -206,10 +206,15 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.AllAroundVision, "All-Around Vision")]
         [TestCase(FeatConstants.SpecialQualities.AlternateForm, "Alternate Form")]
         [TestCase(FeatConstants.SpecialQualities.Amphibious, "Amphibious")]
+        [TestCase(FeatConstants.SpecialQualities.AntimagicCone, "Antimagic Cone")]
         [TestCase(FeatConstants.SpecialQualities.AttackBonus, "Attack Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.Blindsense, "Blindsense")]
         [TestCase(FeatConstants.SpecialQualities.Blindsight, "Blindsight")]
         [TestCase(FeatConstants.SpecialQualities.Camouflage, "Camouflage")]
         [TestCase(FeatConstants.SpecialQualities.ChangeShape, "Change Shape")]
+        [TestCase(FeatConstants.SpecialQualities.CharmReptiles, "Charm Reptiles")]
+        [TestCase(FeatConstants.SpecialQualities.CorruptWater, "Corrupt Water")]
+        [TestCase(FeatConstants.SpecialQualities.CreateDestroyWater, "Create/Destroy Water")]
         [TestCase(FeatConstants.SpecialQualities.DamageReduction, "Damage Reduction")]
         [TestCase(FeatConstants.SpecialQualities.Darkvision, "Darkvision")]
         [TestCase(FeatConstants.SpecialQualities.DodgeBonus, "Dodge Bonus")]
@@ -218,9 +223,16 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.EnergyResistance, "Energy Resistance")]
         [TestCase(FeatConstants.SpecialQualities.FastHealing, "Fast Healing")]
         [TestCase(FeatConstants.SpecialQualities.FlamingBody, "Flaming Body")]
+        [TestCase(FeatConstants.SpecialQualities.Flight, "Flight")]
+        [TestCase(FeatConstants.SpecialQualities.FreezingFog, "Freezing Fog")]
         [TestCase(FeatConstants.SpecialQualities.Gills, "Gills")]
+        [TestCase(FeatConstants.SpecialQualities.HalfDamage, "Half Damage")]
+        [TestCase(FeatConstants.SpecialQualities.HiveMind, "Hive Mind")]
+        [TestCase(FeatConstants.SpecialQualities.HoldBreath, "Hold Breath")]
+        [TestCase(FeatConstants.SpecialQualities.Icewalking, "Icewalking")]
         [TestCase(FeatConstants.SpecialQualities.Immunity, "Immunity")]
         [TestCase(FeatConstants.SpecialQualities.InertialArmor, "Inertial Armor")]
+        [TestCase(FeatConstants.SpecialQualities.KeenSenses, "Keen Senses")]
         [TestCase(FeatConstants.SpecialQualities.LayOnHands, "Lay on Hands")]
         [TestCase(FeatConstants.SpecialQualities.LightBlindness, "Light Blindness")]
         [TestCase(FeatConstants.SpecialQualities.LowLightVision, "Low-Light Vision")]
@@ -233,6 +245,8 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.SaveBonus, "Save Bonus")]
         [TestCase(FeatConstants.SpecialQualities.Scent, "Scent")]
         [TestCase(FeatConstants.SpecialQualities.SkillBonus, "Skill Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.SmokeForm, "Smoke Form")]
+        [TestCase(FeatConstants.SpecialQualities.SoundImitation, "Sound Imitation")]
         [TestCase(FeatConstants.SpecialQualities.SpellLikeAbility, "Spell-Like Ability")]
         [TestCase(FeatConstants.SpecialQualities.SpellResistance, "Spell Resistance")]
         [TestCase(FeatConstants.SpecialQualities.Telepathy, "Telepathy")]
@@ -240,6 +254,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.TurnResistance, "Turn Resistance")]
         [TestCase(FeatConstants.SpecialQualities.UncannyDodge, "Uncanny Dodge")]
         [TestCase(FeatConstants.SpecialQualities.Vulnerability, "Vulnerability")]
+        [TestCase(FeatConstants.SpecialQualities.WaterBreathing, "Water Breathing")]
         [TestCase(FeatConstants.SpecialQualities.WeaponFamiliarity, "Weapon Familiarity")]
         public void SpecialQualityTests(string constant, string value)
         {
@@ -249,13 +264,13 @@ namespace CreatureGen.Tests.Unit.Feats
         [Test]
         public void AllSpecialQualityConstants()
         {
-            var creatures = FeatConstants.SpecialQualities.All();
-            var creatureConstants = typeof(FeatConstants.SpecialQualities);
-            var fields = creatureConstants.GetFields(BindingFlags.Public | BindingFlags.Static);
+            var specialQualities = FeatConstants.SpecialQualities.All();
+            var specialQualitiesConstants = typeof(FeatConstants.SpecialQualities);
+            var fields = specialQualitiesConstants.GetFields(BindingFlags.Public | BindingFlags.Static);
             var constantFields = fields.Where(f => f.IsLiteral && !f.IsInitOnly);
             var constants = constantFields.Select(f => f.GetValue(null) as string);
 
-            Assert.That(creatures, Is.EquivalentTo(constants));
+            Assert.That(specialQualities, Is.EquivalentTo(constants));
         }
 
         [TestCase(FeatConstants.Frequencies.AtWill, "At Will")]

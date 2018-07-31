@@ -176,10 +176,12 @@
     <entry>Immunity#0#Petrification#0##0</entry>
     <entry>Low-Light Vision#0##0##0</entry>
     <entry>Protective Aura#0##0##0</entry>
+    <entry>Save Bonus#4#Fortitude: against poison#0##0</entry>
     <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
     <entry>Spell Resistance#30##0##0</entry>
     <entry>Spell-Like Ability#0#Plane shift#0#At Will#0</entry>
     <entry>Spell-Like Ability#0#Tongues#0#Constant#0</entry>
+    <entry>Uncanny Dodge#0##0##0</entry>
   </collection>
   <collection>
     <name>Angel, Planetar</name>
@@ -194,6 +196,7 @@
     <entry>Low-Light Vision#0##0##0</entry>
     <entry>Protective Aura#0##0##0</entry>
     <entry>Regeneration#10#Does not regenerate evil damage#1#Round#0</entry>
+    <entry>Save Bonus#4#Fortitude: against poison#0##0</entry>
     <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
     <entry>Spell Resistance#30##0##0</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0</entry>
@@ -213,6 +216,7 @@
     <entry>Low-Light Vision#0##0##0</entry>
     <entry>Protective Aura#0##0##0</entry>
     <entry>Regeneration#15#Does not regenerate evil damage#1#Round#0</entry>
+    <entry>Save Bonus#4#Fortitude: against poison#0##0</entry>
     <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
     <entry>Spell Resistance#32##0##0</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0</entry>
@@ -442,6 +446,8 @@
     <entry>Darkvision#60##0##0</entry>
     <entry>Earth Glide#0##0##0</entry>
     <entry>Energy Resistance#10#Electricity#1#Round#0</entry>
+    <entry>Immunity#0#Cold#0##0</entry>
+    <entry>Immunity#0#Fire#0##0</entry>
     <entry>Skill Bonus#2#Survival: following tracks#0##0</entry>
     <entry>Skill Bonus#2#Survival: underground#0##0</entry>
     <entry>Tremorsense#60##0##0</entry>
@@ -450,10 +456,15 @@
     <name>Avoral</name>
     <entry>Damage Reduction#10#Vulnerable to evil or silver weapons#1#Hit#0</entry>
     <entry>Darkvision#60##0##0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round#0</entry>
     <entry>Immunity#0#Electricity#0##0</entry>
     <entry>Immunity#0#Petrification#0##0</entry>
     <entry>Lay on Hands#0##0##0</entry>
+    <entry>Low-Light Vision#0##0##0</entry>
     <entry>Spell-Like Ability#0#Aid#0#At Will#0</entry>
+    <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0</entry>
+    <entry>Spell-Like Ability#0#Light#0#At Will#0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against alignment#0#At Will#0</entry>
   </collection>
   <collection>
     <name>Azer</name>
@@ -464,19 +475,48 @@
   </collection>
   <collection>
     <name>Babau</name>
+    <entry>Darkvision#60##0##0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0</entry>
+    <entry>Immunity#0#Electricity#0##0</entry>
+    <entry>Immunity#0#Poison#0##0</entry>
+    <entry>Protective Slime#0##0##0</entry>
+    <entry>Spell Resistance#19##0##0</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0</entry>
+    <entry>Telepathy#100##0##0</entry>
   </collection>
   <collection>
     <name>Baboon</name>
+    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Scent#0##0##0</entry>
+    <entry>Skill Bonus#8#Climb#0##0</entry>
+    <entry>Skill Bonus#10#Climb: can always take 10#0##0</entry>
   </collection>
   <collection>
     <name>Badger</name>
+    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Scent#0##0##0</entry>
+    <entry>Skill Bonus#4#Escape Artist#0##0</entry>
+    <entry>Track#0##0##0</entry>
+    <entry>Weapon Finesse#0##0##0</entry>
   </collection>
   <collection>
     <name>Baleen Whale</name>
   </collection>
   <collection>
     <name>Balor</name>
-    <entry>Good Maneuverability</entry>
+    <entry>Darkvision#60##0##0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0</entry>
+    <entry>Immunity#0#Electricity#0##0</entry>
+    <entry>Immunity#0#Fire#0##0</entry>
+    <entry>Immunity#0#Poison#0##0</entry>
+    <entry>Spell Resistance#19##0##0</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0</entry>
+    <entry>Spell-Like Ability#0#Power word stun#0#At Will#0</entry>
+    <entry>Spell-Like Ability#0#True seeing#0#Constant#0</entry>
+    <entry>Telepathy#100##0##0</entry>
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
@@ -486,6 +526,9 @@
   </collection>
   <collection>
     <name>Basilisk</name>
+    <entry>Darkvision#60##0##0</entry>
+    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Skill Bonus#4#Hide: in natural settings#0##0</entry>
   </collection>
   <collection>
     <name>Bat</name>
@@ -500,6 +543,20 @@
   </collection>
   <collection>
     <name>Bebilith</name>
+    <entry>Damage Reduction#10#Vulnerable to evil weapons#1#Hit#0</entry>
+    <entry>Darkvision#60##0##0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0</entry>
+    <entry>Immunity#0#Electricity#0##0</entry>
+    <entry>Immunity#0#Poison#0##0</entry>
+    <entry>Protective Slime#0##0##0</entry>
+    <entry>Scent#60##0##0</entry>
+    <entry>Skill Bonus#8#Hide#0##0</entry>
+    <entry>Skill Bonus#2#Survival: following tracks#0##0</entry>
+    <entry>Spell Resistance#19##0##0</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0</entry>
+    <entry>Telepathy#100##0##0</entry>
   </collection>
   <collection>
     <name>Behir</name>
@@ -780,6 +837,8 @@
   </collection>
   <collection>
     <name>Chuul</name>
+    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
+    <entry>Skill Bonus#10#Swim: can always take 10#0##0</entry>
   </collection>
   <collection>
     <name>Clay Golem</name>
@@ -1892,6 +1951,23 @@
   </collection>
   <collection>
     <name>Retriever</name>
+    <entry>Darkvision#60##0##0</entry>
+    <entry>Immunity#0#Ability Damage#0##0</entry>
+    <entry>Immunity#0#Ability Drain#0##0</entry>
+    <entry>Immunity#0#Critical hits#0##0</entry>
+    <entry>Immunity#0#Death#0##0</entry>
+    <entry>Immunity#0#Disease#0##0</entry>
+    <entry>Immunity#0#Energy Drain#0##0</entry>
+    <entry>Immunity#0#Exhaustion#0##0</entry>
+    <entry>Immunity#0#Fatigue#0##0</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0</entry>
+    <entry>Immunity#0#Necromancy#0##0</entry>
+    <entry>Immunity#0#Nonlethal damage#0##0</entry>
+    <entry>Immunity#0#Paralysis#0##0</entry>
+    <entry>Immunity#0#Poison#0##0</entry>
+    <entry>Immunity#0#Sleep#0##0</entry>
+    <entry>Immunity#0#Stunning#0##0</entry>
+    <entry>Low-Light Vision#0##0##0</entry>
   </collection>
   <collection>
     <name>Rhinoceras</name>

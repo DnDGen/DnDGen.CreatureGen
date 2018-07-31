@@ -508,6 +508,41 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     testCases[CreatureConstants.Balor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Listen, power: 8));
                     testCases[CreatureConstants.Balor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 8));
 
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Goblin or wolf"));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Disguise + ": while acting", power: 2));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Hide + ": in wolf form", power: 4));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Survival + ": following tracks", power: 2));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PassWithoutTrace + ": in wolf form", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Blink, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Levitate, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Misdirection, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Rage, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CharmMonster, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CrushingDespair, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Barghest].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DimensionDoor, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Goblin or wolf"));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Disguise + ": while acting", power: 2));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Hide + ": in wolf form", power: 4));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Survival + ": following tracks", power: 2));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PassWithoutTrace + ": in wolf form", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Blink, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Levitate, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Misdirection, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Rage, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.InvisibilitySphere, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CharmMonster, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CrushingDespair, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DimensionDoor, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.BullsStrength_Mass, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EnlargePerson_Mass, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
                     testCases[CreatureConstants.Basilisk].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                     testCases[CreatureConstants.Basilisk].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
                     testCases[CreatureConstants.Basilisk].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Hide + ": in natural settings", power: 4));
@@ -520,6 +555,23 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
                     testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
 
+                    testCases[CreatureConstants.Bat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 20));
+                    testCases[CreatureConstants.Bat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                    testCases[CreatureConstants.Bat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Listen, power: 4));
+                    testCases[CreatureConstants.Bat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 4));
+
+                    testCases[CreatureConstants.Bat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 20));
+                    testCases[CreatureConstants.Bat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Weapon damage"));
+                    testCases[CreatureConstants.Bat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
+                    testCases[CreatureConstants.Bat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
+                    testCases[CreatureConstants.Bat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                    testCases[CreatureConstants.Bat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Listen, power: 4));
+                    testCases[CreatureConstants.Bat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 4));
+
+                    testCases[CreatureConstants.Bear_Black].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                    testCases[CreatureConstants.Bear_Black].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                    testCases[CreatureConstants.Bear_Black].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim, power: 4));
+
                     testCases[CreatureConstants.Bebilith].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to good weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
                     testCases[CreatureConstants.Bebilith].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                     testCases[CreatureConstants.Bebilith].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
@@ -527,6 +579,51 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     testCases[CreatureConstants.Bebilith].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlaneShift + ": self only", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                     testCases[CreatureConstants.Bebilith].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Hide, power: 8));
                     testCases[CreatureConstants.Bebilith].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Survival + ": following tracks", power: 2));
+
+                    testCases[CreatureConstants.Behir].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                    testCases[CreatureConstants.Behir].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Tripping"));
+                    testCases[CreatureConstants.Behir].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Behir].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                    testCases[CreatureConstants.Behir].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                    testCases[CreatureConstants.Behir].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb, power: 8));
+                    testCases[CreatureConstants.Behir].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb + ": can always take 10", power: 10));
+
+                    testCases[CreatureConstants.Beholder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision));
+                    testCases[CreatureConstants.Beholder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AntimagicCone));
+                    testCases[CreatureConstants.Beholder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                    testCases[CreatureConstants.Beholder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Flight));
+                    testCases[CreatureConstants.Beholder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Survival + ": following tracks", power: 2));
+                    testCases[CreatureConstants.Beholder].Add(SpecialQualityHelper.BuildData(FeatConstants.Alertness));
+
+                    testCases[CreatureConstants.Beholder_Gauth].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision));
+                    testCases[CreatureConstants.Beholder_Gauth].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                    testCases[CreatureConstants.Beholder_Gauth].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Flight));
+                    testCases[CreatureConstants.Beholder_Gauth].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Survival + ": following tracks", power: 2));
+                    testCases[CreatureConstants.Beholder_Gauth].Add(SpecialQualityHelper.BuildData(FeatConstants.Alertness));
+
+                    testCases[CreatureConstants.Belker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                    testCases[CreatureConstants.Belker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SmokeForm));
+                    testCases[CreatureConstants.Belker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
+                    testCases[CreatureConstants.Belker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Belker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Belker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
+                    testCases[CreatureConstants.Belker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
+                    testCases[CreatureConstants.Belker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
+                    testCases[CreatureConstants.Belker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.MoveSilently, power: 4));
+
+                    testCases[CreatureConstants.Bison].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                    testCases[CreatureConstants.Bison].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+                    testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                    testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Weapon damage"));
+                    testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
+                    testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
+                    testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Mind-Affecting Effects"));
+                    testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 30));
+                    testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb, power: 8));
+                    testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb + ": can always take 10", power: 10));
+                    testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 4));
+                    testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
                     testCases[CreatureConstants.Chuul].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Amphibious));
                     testCases[CreatureConstants.Chuul].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
@@ -536,6 +633,687 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                     testCases[CreatureConstants.Criosphinx].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                     testCases[CreatureConstants.Criosphinx].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+
+                    testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+
+                    testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+
+                    testCases[CreatureConstants.Dragon_Black_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+
+                    testCases[CreatureConstants.Dragon_Black_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Black_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 17));
+
+                    testCases[CreatureConstants.Dragon_Black_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Black_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Black_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 18));
+                    testCases[CreatureConstants.Dragon_Black_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
+                    testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 22));
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.InsectPlague, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 26));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.InsectPlague, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.InsectPlague, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CharmReptiles, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+
+                    testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+
+                    testCases[CreatureConstants.Dragon_Blue_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+
+                    testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+                    testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
+
+                    testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+                    testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
+                    testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19));
+
+                    testCases[CreatureConstants.Dragon_Blue_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+                    testCases[CreatureConstants.Dragon_Blue_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
+                    testCases[CreatureConstants.Dragon_Blue_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Blue_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
+                    testCases[CreatureConstants.Dragon_Blue_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+                    testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
+                    testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 22));
+                    testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24));
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Blue_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HallucinatoryTerrain, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HallucinatoryTerrain, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HallucinatoryTerrain, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Blue_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Veil, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HallucinatoryTerrain, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Veil, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HallucinatoryTerrain, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Veil, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.MirageArcana, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+
+                    testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+
+                    testCases[CreatureConstants.Dragon_Green_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+
+                    testCases[CreatureConstants.Dragon_Green_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+
+                    testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19));
+
+                    testCases[CreatureConstants.Dragon_Green_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Green_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Green_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
+                    testCases[CreatureConstants.Dragon_Green_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 22));
+                    testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Green_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Green_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Green_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24));
+                    testCases[CreatureConstants.Dragon_Green_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Green_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Green_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Green_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Green_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
+                    testCases[CreatureConstants.Dragon_Green_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Green_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27));
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Green_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DominatePerson, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28));
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Green_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DominatePerson, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 30));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DominatePerson, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CommandPlants, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+
+                    testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+
+                    testCases[CreatureConstants.Dragon_Red_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+
+                    testCases[CreatureConstants.Dragon_Red_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_Red_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 4, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 5, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19));
+
+                    testCases[CreatureConstants.Dragon_Red_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_Red_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 6, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Red_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
+
+                    testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 7, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
+
+                    testCases[CreatureConstants.Dragon_Red_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_Red_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 8, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Red_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24));
+                    testCases[CreatureConstants.Dragon_Red_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Red_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_Red_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 9, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Red_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 26));
+                    testCases[CreatureConstants.Dragon_Red_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 10, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28));
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FindThePath, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 11, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 30));
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FindThePath, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 12, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 32));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FindThePath, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DiscernLocation, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_White_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+
+                    testCases[CreatureConstants.Dragon_White_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_VeryYoung].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+
+                    testCases[CreatureConstants.Dragon_White_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_Young].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+
+                    testCases[CreatureConstants.Dragon_White_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+                    testCases[CreatureConstants.Dragon_White_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_White_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+                    testCases[CreatureConstants.Dragon_White_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_White_YoungAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 16));
+
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 18));
+                    testCases[CreatureConstants.Dragon_White_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 20));
+                    testCases[CreatureConstants.Dragon_White_MatureAdult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_Old].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FreezingFog, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_VeryOld].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FreezingFog, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FreezingFog, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_Ancient].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WallOfIce, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FreezingFog, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_Wyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WallOfIce, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FreezingFog, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WallOfIce, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                    testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWeather, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
 
                     testCases[CreatureConstants.Dretch].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
                     testCases[CreatureConstants.Dretch].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
@@ -951,6 +1729,15 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     testCases[CreatureConstants.Gynosphinx].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SymbolOfSleep, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Week));
                     testCases[CreatureConstants.Gynosphinx].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SymbolOfStunning, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Week));
 
+                    testCases[CreatureConstants.Hellwasp_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                    testCases[CreatureConstants.Hellwasp_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                    testCases[CreatureConstants.Hellwasp_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.HiveMind));
+                    testCases[CreatureConstants.Hellwasp_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                    testCases[CreatureConstants.Hellwasp_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+                    testCases[CreatureConstants.Hellwasp_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Weapon damage"));
+                    testCases[CreatureConstants.Hellwasp_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
+                    testCases[CreatureConstants.Hellwasp_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
+
                     testCases[CreatureConstants.Hezrou].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
                     testCases[CreatureConstants.Hezrou].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
                     testCases[CreatureConstants.Hezrou].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -993,6 +1780,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     testCases[CreatureConstants.Homunculus].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Exhaustion"));
 
                     testCases[CreatureConstants.Human].Add(SpecialQualityHelper.BuildData(None));
+
+                    testCases[CreatureConstants.Locust_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                    testCases[CreatureConstants.Locust_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Weapon damage"));
+                    testCases[CreatureConstants.Locust_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
+                    testCases[CreatureConstants.Locust_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
+                    testCases[CreatureConstants.Locust_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Mind-Affecting Effects"));
+                    testCases[CreatureConstants.Locust_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Listen, power: 4));
+                    testCases[CreatureConstants.Locust_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 4));
 
                     testCases[CreatureConstants.Marilith].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
                     testCases[CreatureConstants.Marilith].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
@@ -1142,6 +1937,22 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     testCases[CreatureConstants.Quasit].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Commune + ": can ask 6 questions", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Week));
                     testCases[CreatureConstants.Quasit].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Disguise + ": while acting", power: 2));
 
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.HalfDamage, focus: "Slashing weapons"));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.HalfDamage, focus: "Piercing weapons"));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Hide, power: 4));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.MoveSilently, power: 4));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Balance, power: 8));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb, power: 8));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb + ": can always take 10", power: 10));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim, power: 8));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
+                    testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+
                     testCases[CreatureConstants.Retriever].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Turn));
                     testCases[CreatureConstants.Retriever].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                     testCases[CreatureConstants.Retriever].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
@@ -1192,6 +2003,18 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     testCases[CreatureConstants.SeaHag].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 14));
                     testCases[CreatureConstants.SeaHag].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
                     testCases[CreatureConstants.SeaHag].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
+
+                    testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                    testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Weapon damage"));
+                    testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
+                    testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
+                    testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Mind-Affecting Effects"));
+                    testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 30));
+                    testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb, power: 8));
+                    testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb + ": can always take 10", power: 10));
+                    testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Hide, power: 4));
+                    testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 4));
+                    testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
                     testCases[CreatureConstants.Succubus].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
                     testCases[CreatureConstants.Succubus].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
@@ -1264,6 +2087,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     testCases[CreatureConstants.Tojanida_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
                     testCases[CreatureConstants.Tojanida_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
 
+                    testCases[CreatureConstants.Triton].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                    testCases[CreatureConstants.Triton].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Survival + ": following tracks", power: 2));
+                    testCases[CreatureConstants.Triton].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
+                    testCases[CreatureConstants.Triton].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
+                    testCases[CreatureConstants.Triton].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SummonNaturesAllyIV, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+
                     testCases[CreatureConstants.Vrock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
                     testCases[CreatureConstants.Vrock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
                     testCases[CreatureConstants.Vrock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -1280,6 +2109,30 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     testCases[CreatureConstants.Vrock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Listen, power: 8));
                     testCases[CreatureConstants.Vrock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 8));
                     testCases[CreatureConstants.Vrock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Survival + ": following tracks", power: 2));
+
+                    testCases[CreatureConstants.Whale_Baleen].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 120));
+                    testCases[CreatureConstants.Whale_Baleen].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.HoldBreath));
+                    testCases[CreatureConstants.Whale_Baleen].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                    testCases[CreatureConstants.Whale_Baleen].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
+                    testCases[CreatureConstants.Whale_Baleen].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
+                    testCases[CreatureConstants.Whale_Baleen].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Listen, power: 4));
+                    testCases[CreatureConstants.Whale_Baleen].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 4));
+
+                    testCases[CreatureConstants.Whale_Cachalot].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 120));
+                    testCases[CreatureConstants.Whale_Cachalot].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.HoldBreath));
+                    testCases[CreatureConstants.Whale_Cachalot].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                    testCases[CreatureConstants.Whale_Cachalot].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
+                    testCases[CreatureConstants.Whale_Cachalot].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
+                    testCases[CreatureConstants.Whale_Cachalot].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Listen, power: 4));
+                    testCases[CreatureConstants.Whale_Cachalot].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 4));
+
+                    testCases[CreatureConstants.Whale_Orca].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 120));
+                    testCases[CreatureConstants.Whale_Orca].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.HoldBreath));
+                    testCases[CreatureConstants.Whale_Orca].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                    testCases[CreatureConstants.Whale_Orca].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
+                    testCases[CreatureConstants.Whale_Orca].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
+                    testCases[CreatureConstants.Whale_Orca].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Listen, power: 4));
+                    testCases[CreatureConstants.Whale_Orca].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 4));
 
                     testCases[CreatureConstants.Xorn_Minor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision));
                     testCases[CreatureConstants.Xorn_Minor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EarthGlide));
@@ -1598,6 +2451,90 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty);
                     Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Positive);
                     Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]) % 5, Is.Zero);
+                }
+            }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void ImmunityHasCorrectData(string creature)
+        {
+            Assert.That(table.Keys, Contains.Item(creature));
+
+            var collection = table[creature];
+
+            foreach (var entry in collection)
+            {
+                var data = SpecialQualityHelper.ParseData(entry);
+
+                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Immunity)
+                {
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()));
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty);
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty);
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()));
+                }
+            }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void ChangeShapeHasCorrectData(string creature)
+        {
+            Assert.That(table.Keys, Contains.Item(creature));
+
+            var collection = table[creature];
+
+            foreach (var entry in collection)
+            {
+                var data = SpecialQualityHelper.ParseData(entry);
+
+                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.ChangeShape)
+                {
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()));
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty);
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty);
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()));
+                }
+            }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void SpellLikeAbilityHasCorrectData(string creature)
+        {
+            Assert.That(table.Keys, Contains.Item(creature));
+
+            var collection = table[creature];
+
+            foreach (var entry in collection)
+            {
+                var data = SpecialQualityHelper.ParseData(entry);
+
+                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility)
+                {
+                    Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative);
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty);
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty);
+                    Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Zero);
+                }
+            }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void SkillBonusHasCorrectData(string creature)
+        {
+            Assert.That(table.Keys, Contains.Item(creature));
+
+            var collection = table[creature];
+
+            foreach (var entry in collection)
+            {
+                var data = SpecialQualityHelper.ParseData(entry);
+
+                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SkillBonus)
+                {
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()));
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty);
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty);
+                    Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Positive);
                 }
             }
         }
