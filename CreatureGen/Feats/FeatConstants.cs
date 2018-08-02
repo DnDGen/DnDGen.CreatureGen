@@ -244,6 +244,7 @@ namespace CreatureGen.Feats
             public const string Camouflage = "Camouflage";
             public const string ChangeShape = "Change Shape";
             public const string CharmReptiles = "Charm Reptiles";
+            public const string Cloudwalking = "Cloudwalking";
             public const string CorruptWater = "Corrupt Water";
             public const string CreateDestroyWater = "Create/Destroy Water";
             public const string DamageReduction = "Damage Reduction";
@@ -268,6 +269,7 @@ namespace CreatureGen.Feats
             public const string LightBlindness = "Light Blindness";
             public const string LowLightVision = "Low-Light Vision";
             public const string LowLightVision_Superior = "Superior Low-Light Vision";
+            public const string LuckBonus = "Luck Bonus";
             public const string MucusCloud = "Mucus Cloud";
             public const string NaturalWeapon = "Natural Weapon";
             public const string ProtectiveAura = "Protective Aura";
@@ -280,7 +282,9 @@ namespace CreatureGen.Feats
             public const string SoundImitation = "Sound Imitation";
             public const string SpellLikeAbility = "Spell-Like Ability";
             public const string SpellResistance = "Spell Resistance";
+            public const string Split = "Split";
             public const string Telepathy = "Telepathy";
+            public const string Transparent = "Transparent";
             public const string Tremorsense = "Tremorsense";
             public const string TurnResistance = "Turn Resistance";
             public const string UncannyDodge = "Uncanny Dodge";
@@ -302,6 +306,7 @@ namespace CreatureGen.Feats
                     Camouflage,
                     ChangeShape,
                     CharmReptiles,
+                    Cloudwalking,
                     CorruptWater,
                     CreateDestroyWater,
                     DamageReduction,
@@ -326,6 +331,7 @@ namespace CreatureGen.Feats
                     LightBlindness,
                     LowLightVision,
                     LowLightVision_Superior,
+                    LuckBonus,
                     MucusCloud,
                     NaturalWeapon,
                     ProtectiveAura,
@@ -338,7 +344,9 @@ namespace CreatureGen.Feats
                     SoundImitation,
                     SpellLikeAbility,
                     SpellResistance,
+                    Split,
                     Telepathy,
+                    Transparent,
                     Tremorsense,
                     TurnResistance,
                     UncannyDodge,
