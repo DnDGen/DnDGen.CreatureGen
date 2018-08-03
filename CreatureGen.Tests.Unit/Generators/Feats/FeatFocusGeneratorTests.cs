@@ -784,7 +784,6 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.WeaponProficiency_Simple, WeaponConstants.Club)]
         [TestCase(FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longsword)]
         [TestCase(FeatConstants.WeaponProficiency_Exotic, WeaponConstants.GnomeHookedHammer)]
-        [TestCase(FeatConstants.SpecialQualities.NaturalWeapon, "Claw")]
         public void FocusCanBeFromProficiency(string featName, string proficiencyFocus)
         {
             otherFeats.Add(new Feat());
@@ -801,6 +800,12 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             var focus = featFocusGenerator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 1, abilities);
             Assert.That(focus, Is.EqualTo(proficiencyFocus));
+        }
+
+        [Test]
+        public void FocusCanBeFromProficiencyWithNaturalAttack()
+        {
+            Assert.Fail("not yet written");
         }
 
         [Test]
