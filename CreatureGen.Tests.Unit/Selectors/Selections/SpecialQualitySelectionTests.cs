@@ -209,6 +209,30 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
+        public void MetIfEquipmentNotRequiredAndCreatureCanUseEquipment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void MetIfEquipmentRequiredAndCreatureCanUseEquipment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void NotMetIfEquipmentRequiredAndCreatureCannotUseEquipment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void MetIfEquipmentNotRequiredAndCreatureCannotUseEquipment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void AllRequirementsMet()
         {
             selection.MinimumAbilities["ability"] = 42;

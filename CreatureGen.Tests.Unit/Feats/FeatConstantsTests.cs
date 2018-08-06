@@ -220,7 +220,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.Darkvision, "Darkvision")]
         [TestCase(FeatConstants.SpecialQualities.DodgeBonus, "Dodge Bonus")]
         [TestCase(FeatConstants.SpecialQualities.EarthGlide, "Earth Glide")]
-        [TestCase(FeatConstants.SpecialQualities.ElvenBlood, "ElvenBlood")]
+        [TestCase(FeatConstants.SpecialQualities.ElvenBlood, "Elven Blood")]
         [TestCase(FeatConstants.SpecialQualities.EnergyResistance, "Energy Resistance")]
         [TestCase(FeatConstants.SpecialQualities.FastHealing, "Fast Healing")]
         [TestCase(FeatConstants.SpecialQualities.FlamingBody, "Flaming Body")]

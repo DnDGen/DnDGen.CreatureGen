@@ -429,6 +429,24 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         }
 
         [Test]
+        public void GetSpecialQualitiesFromCreatureType()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSpecialQualitiesFromCreatureSubtype()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSpecialQualitiesFromCreatureSubtypes()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void GetFeat()
         {
             featsData["feat"] = BuildFeatData();

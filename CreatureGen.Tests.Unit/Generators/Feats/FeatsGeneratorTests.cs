@@ -587,5 +587,23 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             Assert.That(feat.Name, Is.EqualTo("racial feat"));
             Assert.That(feat.Foci, Is.Empty);
         }
+
+        [Test]
+        public void GetSpecialQualityRequiringCanUseEquipment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void DoNotGetSpecialQualityRequiringCanUseEquipment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSpecialQualityNotRequiringCanUseEquipment()
+        {
+            Assert.Fail("not yet written");
+        }
     }
 }

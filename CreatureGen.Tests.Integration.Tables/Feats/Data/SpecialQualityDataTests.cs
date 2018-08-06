@@ -45,15 +45,20 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         public void CollectionNames()
         {
             var creatures = CreatureConstants.All();
+            var types = CreatureConstants.Types.All();
+            var subtypes = CreatureConstants.Types.Subtypes.All();
 
-            AssertCollectionNames(creatures);
+            var names = creatures.Union(types).Union(subtypes);
+
+            AssertCollectionNames(names);
         }
 
         public class SpecialQualityTestData
         {
             public const string None = "NONE";
 
-            public static IEnumerable TestCases
+
+            public static IEnumerable Creatures
             {
                 get
                 {
@@ -3022,9 +3027,40 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     }
                 }
             }
+
+
+            public static IEnumerable CreatureTypes
+            {
+                get
+                {
+                    var testCases = new Dictionary<string, List<string[]>>();
+                    var types = CreatureConstants.Types.All();
+                    var subtypes = CreatureConstants.Types.Subtypes.All();
+
+                    foreach (var type in types)
+                    {
+                        testCases[type] = new List<string[]>();
+                    }
+
+                    foreach (var subtype in subtypes)
+                    {
+                        testCases[subtype] = new List<string[]>();
+                    }
+
+                    foreach (var testCase in testCases)
+                    {
+                        var featNames = testCase.Value.Select(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex]);
+                        var description = string.Join(", ", featNames);
+
+                        yield return new TestCaseData(testCase.Key, testCase.Value)
+                            .SetName($"SpecialQualityData({testCase.Key}, [{description}])");
+                    }
+                }
+            }
         }
 
-        [TestCaseSource(typeof(SpecialQualityTestData), "TestCases")]
+        [TestCaseSource(typeof(SpecialQualityTestData), "Creatures")]
+        [TestCaseSource(typeof(SpecialQualityTestData), "CreatureTypes")]
         public void SpecialQualityData(string creature, List<string[]> entries)
         {
             if (!entries.Any())
