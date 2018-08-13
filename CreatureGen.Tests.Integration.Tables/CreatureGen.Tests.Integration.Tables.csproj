@@ -87,6 +87,7 @@
     <Compile Include="Creatures\AerialManeuverabilityTests.cs" />
     <Compile Include="Creatures\CreatureDataTests.cs" />
     <Compile Include="Defenses\HitDiceTests.cs" />
+    <Compile Include="Feats\Data\SpecialQualityTestData.cs" />
     <Compile Include="Feats\Data\SpecialQualityDataTests.cs" />
     <Compile Include="Feats\Requirements\RequiredSizesTests.cs" />
     <Compile Include="Feats\Requirements\FeatSpeedRequirementsTests.cs" />
