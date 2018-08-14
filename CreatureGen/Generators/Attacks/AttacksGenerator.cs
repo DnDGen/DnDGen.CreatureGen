@@ -124,17 +124,25 @@ namespace CreatureGen.Generators.Attacks
             return abilities[AbilityConstants.Strength];
         }
 
-        public IEnumerable<Attack> ApplyAttackBonuses(IEnumerable<Attack> attacks, IEnumerable<Feat> feats)
+        public IEnumerable<Attack> ApplyAttackBonuses(IEnumerable<Attack> attacks, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
         {
+            var hasMultiattack = feats.Any(f => f.Name == FeatConstants.Monster.Multiattack);
+            var hasWeaponFinesse = feats.Any(f => f.Name == FeatConstants.WeaponFinesse);
+
             foreach (var attack in attacks)
             {
                 if (attack.IsSpecial)
                     continue;
 
-                if (!attack.IsPrimary && attack.IsNatural && feats.Any(f => f.Name == FeatConstants.Monster.Multiattack))
+                if (!attack.IsPrimary && attack.IsNatural && hasMultiattack)
                     attack.SecondaryAttackModifiers -= 2;
                 else if (!attack.IsPrimary)
                     attack.SecondaryAttackModifiers -= 5;
+
+                if (hasWeaponFinesse && attack.IsMelee)
+                {
+                    attack.BaseAbility = abilities[AbilityConstants.Dexterity];
+                }
             }
 
             return attacks;

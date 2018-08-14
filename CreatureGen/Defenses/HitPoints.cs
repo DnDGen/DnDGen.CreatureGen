@@ -99,7 +99,8 @@ namespace CreatureGen.Defenses
         public void RollDefault(Dice dice)
         {
             var averageTotal = dice.Roll(DefaultRoll).AsPotentialAverage();
-            DefaultTotal = Convert.ToInt32(averageTotal);
+            var floor = Math.Floor(averageTotal);
+            DefaultTotal = Convert.ToInt32(floor);
         }
     }
 }

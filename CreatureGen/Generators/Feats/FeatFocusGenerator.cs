@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Attacks;
 using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Selectors.Selections;
@@ -21,7 +22,15 @@ namespace CreatureGen.Generators.Feats
             this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
-        public string GenerateFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats, int casterLevel, Dictionary<string, Ability> abilities)
+        public string GenerateFrom(
+            string feat,
+            string focusType,
+            IEnumerable<Skill> skills,
+            IEnumerable<RequiredFeatSelection> requiredFeats,
+            IEnumerable<Feat> otherFeats,
+            int casterLevel,
+            Dictionary<string, Ability> abilities,
+            IEnumerable<Attack> attacks)
         {
             if (string.IsNullOrEmpty(focusType))
                 return string.Empty;
@@ -30,7 +39,7 @@ namespace CreatureGen.Generators.Feats
             if (isPreset)
                 return focusType;
 
-            var foci = GetFoci(feat, focusType, otherFeats, requiredFeats, casterLevel, abilities);
+            var foci = GetFoci(feat, focusType, otherFeats, requiredFeats, casterLevel, abilities, attacks);
             var usedFeats = otherFeats.Where(f => f.Name == feat);
             var usedFoci = usedFeats.SelectMany(f => f.Foci);
 
@@ -68,7 +77,10 @@ namespace CreatureGen.Generators.Feats
         private IEnumerable<string> GetExplodedFoci(string feat, string focusType, IEnumerable<Feat> otherFeats)
         {
             if (focusType != FeatConstants.Foci.All)
-                return collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, focusType);
+            {
+                var foci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, focusType);
+                return foci;
+            }
 
             var featFoci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, feat);
 
@@ -84,7 +96,14 @@ namespace CreatureGen.Generators.Feats
             return featFoci.Except(familiarityFoci);
         }
 
-        private IEnumerable<string> GetFoci(string feat, string focusType, IEnumerable<Feat> otherFeats, IEnumerable<RequiredFeatSelection> requiredFeats, int casterLevel, Dictionary<string, Ability> abilities)
+        private IEnumerable<string> GetFoci(
+            string feat,
+            string focusType,
+            IEnumerable<Feat> otherFeats,
+            IEnumerable<RequiredFeatSelection> requiredFeats,
+            int casterLevel,
+            Dictionary<string, Ability> abilities,
+            IEnumerable<Attack> attacks)
         {
             var proficiencyRequired = requiredFeats.Any(f => f.Feat == GroupConstants.WeaponProficiency);
             var applicableFoci = GetExplodedFoci(feat, focusType, otherFeats);
@@ -98,12 +117,15 @@ namespace CreatureGen.Generators.Feats
 
             if (proficiencyRequired)
             {
+                var naturalAttacks = attacks.Where(a => a.IsNatural).Select(a => a.Name);
+                applicableFoci = applicableFoci.Union(naturalAttacks);
+
                 var weaponProficiencyRequirement = requiredFeats.First(f => f.Feat == GroupConstants.WeaponProficiency);
 
                 //INFO: Add in automatic proficiencies as well
                 var automaticProficiency = new Feat();
                 automaticProficiency.Name = GroupConstants.WeaponProficiency;
-                automaticProficiency.Foci = GetProficiencies(focusType, otherFeats, weaponProficiencyRequirement);
+                automaticProficiency.Foci = GetProficiencies(focusType, otherFeats, weaponProficiencyRequirement, attacks);
 
                 requiredFeatsWithFoci = requiredFeatsWithFoci.Union(new[] { automaticProficiency });
             }
@@ -128,7 +150,7 @@ namespace CreatureGen.Generators.Feats
         }
 
         //INFO: Automatic Proficiencies include things such as Unarmed Strike, Grapple, and Ray
-        private IEnumerable<string> GetProficiencies(string focusType, IEnumerable<Feat> otherFeats, RequiredFeatSelection weaponProficiencyRequirement)
+        private IEnumerable<string> GetProficiencies(string focusType, IEnumerable<Feat> otherFeats, RequiredFeatSelection weaponProficiencyRequirement, IEnumerable<Attack> attacks)
         {
             var proficiencyFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
             var proficiencyFeats = otherFeats.Where(f => proficiencyFeatNames.Contains(f.Name));
@@ -155,6 +177,9 @@ namespace CreatureGen.Generators.Feats
             var automaticFoci = foci.Except(weaponFoci);
 
             proficiencyFoci.AddRange(automaticFoci);
+
+            var naturalAttacks = attacks.Where(a => a.IsNatural).Select(a => a.Name);
+            proficiencyFoci.AddRange(naturalAttacks);
 
             if (weaponProficiencyRequirement.Foci.Any())
             {
@@ -197,17 +222,21 @@ namespace CreatureGen.Generators.Feats
             if (isPreset)
                 return focusType;
 
-            var foci = GetFoci(feat, focusType, Enumerable.Empty<Feat>(), Enumerable.Empty<RequiredFeatSelection>(), 0, abilities);
+            var noFeats = Enumerable.Empty<Feat>();
+            var noRequiredFeats = Enumerable.Empty<RequiredFeatSelection>();
+            var noAttacks = Enumerable.Empty<Attack>();
+
+            var foci = GetFoci(feat, focusType, noFeats, noRequiredFeats, 0, abilities, noAttacks);
 
             return SelectRandomAndIncludeSkills(foci, skills);
         }
 
-        public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats, int casterLevel, Dictionary<string, Ability> abilities)
+        public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats, int casterLevel, Dictionary<string, Ability> abilities, IEnumerable<Attack> attacks)
         {
             if (focusType == FeatConstants.Foci.All)
                 return focusType;
 
-            return GenerateFrom(feat, focusType, skills, requiredFeats, otherFeats, casterLevel, abilities);
+            return GenerateFrom(feat, focusType, skills, requiredFeats, otherFeats, casterLevel, abilities, attacks);
         }
 
         public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)

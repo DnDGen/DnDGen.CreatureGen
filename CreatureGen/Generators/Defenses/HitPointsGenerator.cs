@@ -21,7 +21,7 @@ namespace CreatureGen.Generators.Defenses
             this.adjustmentSelector = adjustmentSelector;
         }
 
-        public HitPoints GenerateFor(string creatureName, CreatureType creatureType, Ability constitution, string size)
+        public HitPoints GenerateFor(string creatureName, CreatureType creatureType, Ability constitution, string size, int additionalHitDice = 0)
         {
             var hitPoints = new HitPoints();
 
@@ -29,6 +29,7 @@ namespace CreatureGen.Generators.Defenses
             hitPoints.HitDie = adjustmentSelector.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, creatureType.Name);
             hitPoints.Constitution = constitution;
             hitPoints.Bonus = GetBonus(creatureType, size);
+            hitPoints.HitDiceQuantity += additionalHitDice;
 
             hitPoints.RollDefault(dice);
             hitPoints.Roll(dice);

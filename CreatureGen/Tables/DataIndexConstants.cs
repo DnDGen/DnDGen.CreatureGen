@@ -21,10 +21,11 @@
             public const int FrequencyQuantityIndex = 3;
             public const int FrequencyTimePeriodIndex = 4;
             public const int RandomFociQuantityIndex = 5;
+            public const int RequiresEquipmentIndex = 6;
 
             public static string[] InitializeData()
             {
-                return DataIndexConstants.InitializeData(RandomFociQuantityIndex);
+                return DataIndexConstants.InitializeData(RequiresEquipmentIndex);
             }
         }
 

@@ -170,6 +170,23 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         }
 
         [Test]
+        public void AddAdditionalHitDice()
+        {
+            SetUpRoll(9266 + 1337, 90210, 1336);
+            SetUpAverageRoll($"{9266 + 1337}d90210", 9.6);
+
+            var hitPoints = hitPointsGenerator.GenerateFor("creature", creatureType, constitution, "size", 1337);
+            Assert.That(hitPoints.Bonus, Is.Zero);
+            Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
+            Assert.That(hitPoints.Constitution.HasScore, Is.True);
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo($"{9266 + 1337}d90210"));
+            Assert.That(hitPoints.DefaultTotal, Is.EqualTo(9));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(9266 + 1337));
+            Assert.That(hitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(hitPoints.Total, Is.EqualTo(1336));
+        }
+
+        [Test]
         public void ToughnessIncreassHitPoints()
         {
             feats.Add(new Feat { Name = FeatConstants.Toughness, Power = 3 });
@@ -210,7 +227,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         }
 
         [Test]
-        public void ToughnessIncreassHitPointsMultipleTimes()
+        public void ToughnessIncreasesHitPointsMultipleTimes()
         {
             feats.Add(new Feat { Name = FeatConstants.Toughness, Power = 3 });
             feats.Add(new Feat { Name = FeatConstants.Toughness, Power = 3 });

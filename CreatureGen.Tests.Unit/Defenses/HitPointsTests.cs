@@ -388,15 +388,53 @@ namespace CreatureGen.Tests.Unit.Defenses
         }
 
         [TestCase(0, 0)]
+        [TestCase(0.1, 0)]
+        [TestCase(0.4, 0)]
         [TestCase(0.5, 0)]
+        [TestCase(0.6, 0)]
+        [TestCase(0.9, 0)]
         [TestCase(1, 1)]
+        [TestCase(1.1, 1)]
+        [TestCase(1.4, 1)]
         [TestCase(1.5, 1)]
+        [TestCase(1.6, 1)]
+        [TestCase(1.9, 1)]
         [TestCase(2, 2)]
+        [TestCase(2.1, 2)]
+        [TestCase(2.4, 2)]
         [TestCase(2.5, 2)]
+        [TestCase(2.6, 2)]
+        [TestCase(2.9, 2)]
         [TestCase(3, 3)]
+        [TestCase(3.1, 3)]
+        [TestCase(3.4, 3)]
+        [TestCase(3.5, 3)]
+        [TestCase(3.6, 3)]
+        [TestCase(3.9, 3)]
+        [TestCase(4, 4)]
+        [TestCase(4.1, 4)]
+        [TestCase(4.4, 4)]
+        [TestCase(4.5, 4)]
+        [TestCase(4.6, 4)]
+        [TestCase(4.9, 4)]
+        [TestCase(8, 8)]
+        [TestCase(8.1, 8)]
+        [TestCase(8.4, 8)]
+        [TestCase(8.5, 8)]
+        [TestCase(8.6, 8)]
+        [TestCase(8.9, 8)]
+        [TestCase(9, 9)]
+        [TestCase(9.1, 9)]
+        [TestCase(9.4, 9)]
+        [TestCase(9.5, 9)]
+        [TestCase(9.6, 9)]
+        [TestCase(9.9, 9)]
+        [TestCase(10, 10)]
         public void RollDefault(double average, int defaultTotal)
         {
-            mockDice.Setup(d => d.Roll(hitPoints.DefaultRoll).AsPotentialAverage()).Returns(defaultTotal);
+            var mockPartialRoll = new Mock<PartialRoll>();
+            mockPartialRoll.Setup(r => r.AsPotentialAverage()).Returns(average);
+            mockDice.Setup(d => d.Roll(hitPoints.DefaultRoll)).Returns(mockPartialRoll.Object);
 
             hitPoints.RollDefault(mockDice.Object);
             Assert.That(hitPoints.DefaultTotal, Is.EqualTo(defaultTotal));

@@ -814,7 +814,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var feats = new[] { new Feat { Name = "feat" } };
 
-            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats);
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.SecondaryAttackModifiers, Is.Zero);
@@ -828,7 +828,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var feats = new[] { new Feat { Name = FeatConstants.Monster.Multiattack } };
 
-            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats);
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.SecondaryAttackModifiers, Is.Zero);
@@ -842,7 +842,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var feats = new[] { new Feat { Name = "feat" } };
 
-            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats);
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.SecondaryAttackModifiers, Is.Zero);
@@ -856,7 +856,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var feats = new[] { new Feat { Name = FeatConstants.Monster.Multiattack } };
 
-            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats);
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.SecondaryAttackModifiers, Is.Zero);
@@ -870,7 +870,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var feats = new[] { new Feat { Name = "feat" } };
 
-            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats);
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.SecondaryAttackModifiers, Is.EqualTo(-5));
@@ -884,7 +884,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var feats = new[] { new Feat { Name = FeatConstants.Monster.Multiattack } };
 
-            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats);
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.SecondaryAttackModifiers, Is.EqualTo(-5));
@@ -898,7 +898,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var feats = new[] { new Feat { Name = "feat" } };
 
-            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats);
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.SecondaryAttackModifiers, Is.EqualTo(-5));
@@ -912,7 +912,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var feats = new[] { new Feat { Name = FeatConstants.Monster.Multiattack } };
 
-            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats);
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.SecondaryAttackModifiers, Is.EqualTo(-2));
@@ -937,22 +937,45 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
                 new Feat { Name = FeatConstants.Monster.Multiattack }
             };
 
-            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats);
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
 
             foreach (var attack in generatedAttacks)
                 Assert.That(attack.SecondaryAttackModifiers, Is.Zero);
         }
 
         [Test]
+        [Ignore("Need to have equipment stuff done first")]
         public void ApplyDexterityForMeleeInsteadOfStrengthForLightWeaponsIfWeaponFinesse()
         {
             Assert.Fail("not yet written");
         }
 
         [Test]
-        public void ApplyDexterityForMeleeInsteadOfStrengthForNaturalWeaponsIfWeaponFinesse()
+        public void ApplyDexterityForMeleeInsteadOfStrengthForNaturalAttacksIfWeaponFinesse()
         {
-            Assert.Fail("not yet written");
+            var attacks = new List<Attack>();
+            attacks.Add(new Attack { Name = "attack 1", IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
+
+            var feats = new[] { new Feat { Name = FeatConstants.WeaponFinesse } };
+
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
+            var generatedAttack = generatedAttacks.Single();
+
+            Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+        }
+
+        [Test]
+        public void ApplyStrengthForMeleeForNaturalAttacksIfNotWeaponFinesse()
+        {
+            var attacks = new List<Attack>();
+            attacks.Add(new Attack { Name = "attack 1", IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
+
+            var feats = new[] { new Feat { Name = "not " + FeatConstants.WeaponFinesse } };
+
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
+            var generatedAttack = generatedAttacks.Single();
+
+            Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
         }
     }
 }

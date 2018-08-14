@@ -12,9 +12,11 @@ namespace CreatureGen.Generators.Feats
     {
         IEnumerable<Feat> GenerateSpecialQualities(
             string creatureName,
+            CreatureType creatureType,
             HitPoints hitPoints,
             Dictionary<string, Ability> abilities,
-            IEnumerable<Skill> skills);
+            IEnumerable<Skill> skills,
+            bool canUseEquipment);
         IEnumerable<Feat> GenerateFeats(
             HitPoints hitPoints,
             int baseAttackBonus,

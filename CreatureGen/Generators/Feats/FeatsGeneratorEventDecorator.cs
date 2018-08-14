@@ -53,10 +53,10 @@ namespace CreatureGen.Generators.Feats
             return feats;
         }
 
-        public IEnumerable<Feat> GenerateSpecialQualities(string creatureName, HitPoints hitPoints, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills)
+        public IEnumerable<Feat> GenerateSpecialQualities(string creatureName, CreatureType creatureType, HitPoints hitPoints, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, bool canUseEquipment)
         {
             eventQueue.Enqueue("CreatureGen", $"Generating special qualities for {creatureName}");
-            var specialQualities = innerGenerator.GenerateSpecialQualities(creatureName, hitPoints, abilities, skills);
+            var specialQualities = innerGenerator.GenerateSpecialQualities(creatureName, creatureType, hitPoints, abilities, skills, canUseEquipment);
             eventQueue.Enqueue("CreatureGen", $"Generated {specialQualities.Count()} special qualities");
 
             return specialQualities;

@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Attacks;
 using CreatureGen.Feats;
 using CreatureGen.Selectors.Selections;
 using CreatureGen.Skills;
@@ -40,10 +41,18 @@ namespace CreatureGen.Generators.Feats
                 eventQueue.Enqueue("CreatureGen", $"Generated {feat}: {focus}");
         }
 
-        public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats, int casterLevel, Dictionary<string, Ability> abilities)
+        public string GenerateAllowingFocusOfAllFrom(
+            string feat,
+            string focusType,
+            IEnumerable<Skill> skills,
+            IEnumerable<RequiredFeatSelection> requiredFeats,
+            IEnumerable<Feat> otherFeats,
+            int casterLevel,
+            Dictionary<string, Ability> abilities,
+            IEnumerable<Attack> attacks)
         {
             LogOpeningEvent(feat);
-            var focus = innerGenerator.GenerateAllowingFocusOfAllFrom(feat, focusType, skills, requiredFeats, otherFeats, casterLevel, abilities);
+            var focus = innerGenerator.GenerateAllowingFocusOfAllFrom(feat, focusType, skills, requiredFeats, otherFeats, casterLevel, abilities, attacks);
             LogClosingEvent(feat, focus);
 
             return focus;
@@ -58,10 +67,18 @@ namespace CreatureGen.Generators.Feats
             return focus;
         }
 
-        public string GenerateFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats, int casterLevel, Dictionary<string, Ability> abilities)
+        public string GenerateFrom(
+            string feat,
+            string focusType,
+            IEnumerable<Skill> skills,
+            IEnumerable<RequiredFeatSelection> requiredFeats,
+            IEnumerable<Feat> otherFeats,
+            int casterLevel,
+            Dictionary<string, Ability> abilities,
+            IEnumerable<Attack> attacks)
         {
             LogOpeningEvent(feat);
-            var focus = innerGenerator.GenerateFrom(feat, focusType, skills, requiredFeats, otherFeats, casterLevel, abilities);
+            var focus = innerGenerator.GenerateFrom(feat, focusType, skills, requiredFeats, otherFeats, casterLevel, abilities, attacks);
             LogClosingEvent(feat, focus);
 
             return focus;

@@ -87,7 +87,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DnDGen.TreasureGen.9.0.0\lib\TreasureGen.dll</HintPath>
+      <HintPath>..\packages\DnDGen.TreasureGen.9.1.0\lib\TreasureGen.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

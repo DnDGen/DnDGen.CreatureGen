@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Attacks;
 using CreatureGen.Feats;
 using CreatureGen.Generators.Feats;
 using CreatureGen.Selectors.Selections;
@@ -20,6 +21,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         private List<RequiredFeatSelection> requiredFeats;
         private List<Feat> otherFeats;
         private Dictionary<string, Ability> abilities;
+        private List<Attack> attacks;
 
         [SetUp]
         public void Setup()
@@ -32,23 +34,24 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             requiredFeats = new List<RequiredFeatSelection>();
             otherFeats = new List<Feat>();
             abilities = new Dictionary<string, Ability>();
+            attacks = new List<Attack>();
         }
 
         [Test]
         public void ReturnInnerFocusAllowingAll()
         {
-            mockInnerGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities)).Returns("focus");
+            mockInnerGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks)).Returns("focus");
 
-            var focus = decorator.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities);
+            var focus = decorator.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks);
             Assert.That(focus, Is.EqualTo("focus"));
         }
 
         [Test]
         public void LogEventsForFocusGenerationAllowingAll()
         {
-            mockInnerGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities)).Returns("focus");
+            mockInnerGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks)).Returns("focus");
 
-            var focus = decorator.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities);
+            var focus = decorator.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks);
             Assert.That(focus, Is.EqualTo("focus"));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating focus for feat"), Times.Once);
@@ -58,9 +61,9 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void LogEventsForEmptyFocusGenerationAllowingAll()
         {
-            mockInnerGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities)).Returns(string.Empty);
+            mockInnerGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks)).Returns(string.Empty);
 
-            var focus = decorator.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities);
+            var focus = decorator.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks);
             Assert.That(focus, Is.Empty);
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating focus for feat"), Times.Once);
@@ -70,18 +73,18 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void ReturnInnerFocus()
         {
-            mockInnerGenerator.Setup(g => g.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities)).Returns("focus");
+            mockInnerGenerator.Setup(g => g.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks)).Returns("focus");
 
-            var focus = decorator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities);
+            var focus = decorator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks);
             Assert.That(focus, Is.EqualTo("focus"));
         }
 
         [Test]
         public void LogEventsForFocusGeneration()
         {
-            mockInnerGenerator.Setup(g => g.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities)).Returns("focus");
+            mockInnerGenerator.Setup(g => g.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks)).Returns("focus");
 
-            var focus = decorator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities);
+            var focus = decorator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks);
             Assert.That(focus, Is.EqualTo("focus"));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating focus for feat"), Times.Once);
@@ -91,9 +94,9 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void LogEventsForEmptyFocusGeneration()
         {
-            mockInnerGenerator.Setup(g => g.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities)).Returns(string.Empty);
+            mockInnerGenerator.Setup(g => g.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks)).Returns(string.Empty);
 
-            var focus = decorator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities);
+            var focus = decorator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 9266, abilities, attacks);
             Assert.That(focus, Is.Empty);
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating focus for feat"), Times.Once);

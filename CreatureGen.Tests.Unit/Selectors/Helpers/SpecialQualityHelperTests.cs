@@ -12,13 +12,29 @@ namespace CreatureGen.Tests.Unit.Selectors.Helpers
         [Test]
         public void BuildDataIntoArray()
         {
-            var data = SpecialQualityHelper.BuildData("feat name", "focus", 9266, "time period", 600, 1337);
+            var data = SpecialQualityHelper.BuildData("feat name", "focus", 9266, "time period", 600, 1337, false);
             Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo("feat name"));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.EqualTo("focus"));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(9266.ToString()));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo("time period"));
             Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(600.ToString()));
             Assert.That(data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex], Is.EqualTo(1337.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex], Is.EqualTo(false.ToString()));
+            Assert.That(data.Length, Is.EqualTo(7));
+        }
+
+        [Test]
+        public void BuildDataIntoArrayAndRequiringEquipment()
+        {
+            var data = SpecialQualityHelper.BuildData("feat name", "focus", 9266, "time period", 600, 1337, true);
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo("feat name"));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.EqualTo("focus"));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(9266.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo("time period"));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(600.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex], Is.EqualTo(1337.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data.Length, Is.EqualTo(7));
         }
 
         [Test]
@@ -31,6 +47,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()));
             Assert.That(data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex], Is.EqualTo(false.ToString()));
+            Assert.That(data.Length, Is.EqualTo(7));
         }
 
         [Test]
@@ -68,7 +86,15 @@ namespace CreatureGen.Tests.Unit.Selectors.Helpers
         {
             var data = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ClairaudienceClairvoyance, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day);
             var entry = SpecialQualityHelper.BuildData(data);
-            Assert.That(entry, Is.EqualTo("Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0"));
+            Assert.That(entry, Is.EqualTo("Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0#False"));
+        }
+
+        [Test]
+        public void BuildRealDataRequiringEquipment()
+        {
+            var data = SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: GroupConstants.All, requiresEquipment: true);
+            var entry = SpecialQualityHelper.BuildData(data);
+            Assert.That(entry, Is.EqualTo("Simple Weapon Proficiency#0#All#0##0#True"));
         }
 
         [Test]
@@ -76,31 +102,46 @@ namespace CreatureGen.Tests.Unit.Selectors.Helpers
         {
             var data = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision);
             var entry = SpecialQualityHelper.BuildData(data);
-            Assert.That(entry, Is.EqualTo("All-Around Vision#0##0##0"));
+            Assert.That(entry, Is.EqualTo("All-Around Vision#0##0##0#False"));
         }
 
         [Test]
         public void ParseRealData()
         {
-            var data = SpecialQualityHelper.ParseData("Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0");
+            var data = SpecialQualityHelper.ParseData("Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0#False");
             Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo(FeatConstants.SpecialQualities.SpellLikeAbility));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.EqualTo(SpellConstants.ClairaudienceClairvoyance));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(3.ToString()));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Day));
             Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()));
             Assert.That(data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex], Is.EqualTo(false.ToString()));
+        }
+
+        [Test]
+        public void ParseRealDataRequiringEquipment()
+        {
+            var data = SpecialQualityHelper.ParseData("Simple Weapon Proficiency#0#All#0##0#True");
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo(FeatConstants.WeaponProficiency_Simple));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.EqualTo(GroupConstants.All));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty);
+            Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex], Is.EqualTo(true.ToString()));
         }
 
         [Test]
         public void ParseRealDataWithDefaults()
         {
-            var data = SpecialQualityHelper.ParseData("All-Around Vision#0##0##0");
+            var data = SpecialQualityHelper.ParseData("All-Around Vision#0##0##0#False");
             Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo(FeatConstants.SpecialQualities.AllAroundVision));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()));
             Assert.That(data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex], Is.EqualTo(false.ToString()));
         }
     }
 }

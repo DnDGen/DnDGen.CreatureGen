@@ -14,6 +14,7 @@ namespace CreatureGen.Selectors.Selections
         public Dictionary<string, int> MinimumAbilities { get; set; }
         public string RandomFociQuantity { get; set; }
         public IEnumerable<RequiredFeatSelection> RequiredFeats { get; set; }
+        public bool RequiresEquipment { get; set; }
 
         public SpecialQualitySelection()
         {
@@ -25,7 +26,7 @@ namespace CreatureGen.Selectors.Selections
             RequiredFeats = Enumerable.Empty<RequiredFeatSelection>();
         }
 
-        public bool RequirementsMet(Dictionary<string, Ability> abilities, IEnumerable<Feat> feats)
+        public bool RequirementsMet(Dictionary<string, Ability> abilities, IEnumerable<Feat> feats, bool canUseEquipment)
         {
             if (!MinimumAbilityMet(abilities))
                 return false;
@@ -41,7 +42,7 @@ namespace CreatureGen.Selectors.Selections
                     return false;
             }
 
-            return true;
+            return !RequiresEquipment || canUseEquipment;
         }
 
         private bool MinimumAbilityMet(Dictionary<string, Ability> abilities)
