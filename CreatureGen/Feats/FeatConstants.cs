@@ -283,6 +283,7 @@ namespace CreatureGen.Feats
             public const string SpellLikeAbility = "Spell-Like Ability";
             public const string SpellResistance = "Spell Resistance";
             public const string Split = "Split";
+            public const string SwapSkillBaseAbility = "Swap Skill Base Ability";
             public const string Telepathy = "Telepathy";
             public const string Transparent = "Transparent";
             public const string Tremorsense = "Tremorsense";
@@ -345,6 +346,7 @@ namespace CreatureGen.Feats
                     SpellLikeAbility,
                     SpellResistance,
                     Split,
+                    SwapSkillBaseAbility,
                     Telepathy,
                     Transparent,
                     Tremorsense,

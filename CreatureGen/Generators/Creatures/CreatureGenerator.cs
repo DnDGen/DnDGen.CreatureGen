@@ -129,7 +129,7 @@ namespace CreatureGen.Generators.Creatures
                 creature.NumberOfHands,
                 creature.Size);
 
-            creature.Skills = skillsGenerator.ApplyBonusesFromFeats(creature.Skills, creature.Feats);
+            creature.Skills = skillsGenerator.ApplyBonusesFromFeats(creature.Skills, creature.Feats, creature.Abilities);
             creature.HitPoints = hitPointsGenerator.RegenerateWith(creature.HitPoints, creature.Feats);
 
             creature.GrappleBonus = attacksGenerator.GenerateGrappleBonus(creature.Size, creature.BaseAttackBonus, creature.Abilities[AbilityConstants.Strength]);
@@ -140,7 +140,7 @@ namespace CreatureGen.Generators.Creatures
             creature.InitiativeBonus = ComputeInitiative(creature.Abilities, creature.Feats);
             creature.Speeds = speedsGenerator.Generate(creature.Name);
 
-            creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities[AbilityConstants.Dexterity], creature.Size, creatureName, allFeats, creatureData.NaturalArmor);
+            creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities, creature.Size, creatureName, creature.Type, allFeats, creatureData.NaturalArmor);
             creature.Saves = savesGenerator.GenerateWith(creature.Type, creature.HitPoints, allFeats, creature.Abilities);
             creature.Alignment = alignmentGenerator.Generate(creatureName);
 

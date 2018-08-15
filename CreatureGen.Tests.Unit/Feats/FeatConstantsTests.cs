@@ -252,6 +252,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.SpellLikeAbility, "Spell-Like Ability")]
         [TestCase(FeatConstants.SpecialQualities.SpellResistance, "Spell Resistance")]
         [TestCase(FeatConstants.SpecialQualities.Split, "Split")]
+        [TestCase(FeatConstants.SpecialQualities.SwapSkillBaseAbility, "Swap Skill Base Ability")]
         [TestCase(FeatConstants.SpecialQualities.Telepathy, "Telepathy")]
         [TestCase(FeatConstants.SpecialQualities.Transparent, "Transparent")]
         [TestCase(FeatConstants.SpecialQualities.Tremorsense, "Tremorsense")]

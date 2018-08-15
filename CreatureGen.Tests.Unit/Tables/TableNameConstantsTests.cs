@@ -6,7 +6,6 @@ namespace CreatureGen.Tests.Unit.Tables
     [TestFixture]
     public class TableNameConstantsTests
     {
-        [TestCase(TableNameConstants.Adjustments.ArmorDeflectionBonuses, "ArmorDeflectionBonuses")]
         [TestCase(TableNameConstants.Adjustments.AttackBonuses, "AttackBonuses")]
         [TestCase(TableNameConstants.Adjustments.GrappleBonuses, "GrappleBonuses")]
         [TestCase(TableNameConstants.Adjustments.HitDice, "HitDice")]

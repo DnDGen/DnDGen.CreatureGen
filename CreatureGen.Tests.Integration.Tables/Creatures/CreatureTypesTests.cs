@@ -139,6 +139,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Basilisk, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Basilisk_AbyssalGreater, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Augmented,
+            CreatureConstants.Types.MagicalBeast,
             CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Bat, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Bat_Dire, CreatureConstants.Types.Animal)]

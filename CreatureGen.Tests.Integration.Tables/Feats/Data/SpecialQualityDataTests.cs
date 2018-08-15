@@ -2,7 +2,6 @@
 using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Selectors.Helpers;
-using CreatureGen.Skills;
 using CreatureGen.Tables;
 using CreatureGen.Tests.Integration.Tables.TestData;
 using DnDGen.Core.Selectors.Collections;
@@ -64,204 +63,9 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             AssertDistinctCollection(creature, data);
         }
 
-        [TestCase(CreatureConstants.Types.Subtypes.Aquatic)]
-        [TestCase(CreatureConstants.Types.Subtypes.Water)]
-        public void CreaturesOfSubtypeHaveSwimSkillBonus(string subtype)
-        {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
-
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
-
-            var swimBonusData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8);
-            var swimTake10Data = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10);
-
-            var swimBonus = SpecialQualityHelper.BuildData(swimBonusData);
-            var swimTake10 = SpecialQualityHelper.BuildData(swimTake10Data);
-
-            foreach (var creature in creatures)
-            {
-                var specialQualities = table[creature];
-
-                Assert.That(specialQualities, Is.Not.Empty, creature);
-                Assert.That(specialQualities, Contains.Item(swimBonus), creature);
-                Assert.That(specialQualities, Contains.Item(swimTake10), creature);
-            }
-        }
-
-        [Test]
-        public void ElementalsHaveElementalTraits()
-        {
-            var elementals = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Elemental);
-
-            AssertCollection(elementals.Intersect(table.Keys), elementals);
-
-            var immunityPoisonData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison");
-            var immunitySleepData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep");
-            var immunityParalysisData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis");
-            var immunityStunningData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning");
-            var immunityCriticalHitsData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits");
-            var immunityFlankingData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking");
-
-            var immunityPoison = SpecialQualityHelper.BuildData(immunityPoisonData);
-            var immunitySleep = SpecialQualityHelper.BuildData(immunitySleepData);
-            var immunityParalysis = SpecialQualityHelper.BuildData(immunityParalysisData);
-            var immunityStunning = SpecialQualityHelper.BuildData(immunityStunningData);
-            var immunityCriticalHits = SpecialQualityHelper.BuildData(immunityCriticalHitsData);
-            var immunityFlanking = SpecialQualityHelper.BuildData(immunityFlankingData);
-
-            foreach (var elemental in elementals)
-            {
-                var specialQualities = table[elemental];
-
-                Assert.That(specialQualities, Is.Not.Empty, elemental);
-                Assert.That(specialQualities, Contains.Item(immunityPoison), elemental);
-                Assert.That(specialQualities, Contains.Item(immunitySleep), elemental);
-                Assert.That(specialQualities, Contains.Item(immunityParalysis), elemental);
-                Assert.That(specialQualities, Contains.Item(immunityStunning), elemental);
-                Assert.That(specialQualities, Contains.Item(immunityCriticalHits), elemental);
-                Assert.That(specialQualities, Contains.Item(immunityFlanking), elemental);
-            }
-        }
-
-        [Test]
-        public void UndeadHaveUndeadTraits()
-        {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Undead);
-
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
-
-            var immunityMindData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Mind-Affecting Effects");
-            var immunityPoisonData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison");
-            var immunitySleepData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep");
-            var immunityParalysisData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis");
-            var immunityStunningData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning");
-            var immunityDiseaseData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Disease");
-            var immunityDeathData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Death");
-            var immunityCriticalHitsData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits");
-            var immunityNonlethalData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Nonlethal damage");
-            var immunityAbilityDrainData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Abiltiy Drain");
-            var immunityEnergyDrainData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Energy Drain");
-            var immunityFatigueData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Fatigue");
-            var immunityExhaustionData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Exhaustion");
-
-            var immunityMind = SpecialQualityHelper.BuildData(immunityMindData);
-            var immunityPoison = SpecialQualityHelper.BuildData(immunityPoisonData);
-            var immunitySleep = SpecialQualityHelper.BuildData(immunitySleepData);
-            var immunityParalysis = SpecialQualityHelper.BuildData(immunityParalysisData);
-            var immunityStunning = SpecialQualityHelper.BuildData(immunityStunningData);
-            var immunityDisease = SpecialQualityHelper.BuildData(immunityDiseaseData);
-            var immunityDeath = SpecialQualityHelper.BuildData(immunityDeathData);
-            var immunityCriticalHits = SpecialQualityHelper.BuildData(immunityCriticalHitsData);
-            var immunityNonlethal = SpecialQualityHelper.BuildData(immunityNonlethalData);
-            var immunityAbilityDrain = SpecialQualityHelper.BuildData(immunityAbilityDrainData);
-            var immunityEnergyDrain = SpecialQualityHelper.BuildData(immunityEnergyDrainData);
-            var immunityFatigue = SpecialQualityHelper.BuildData(immunityFatigueData);
-            var immunityExhaustion = SpecialQualityHelper.BuildData(immunityExhaustionData);
-
-            foreach (var creature in creatures)
-            {
-                var specialQualities = table[creature];
-
-                Assert.That(specialQualities, Is.Not.Empty, creature);
-                Assert.That(specialQualities, Contains.Item(immunityMind), creature);
-                Assert.That(specialQualities, Contains.Item(immunityPoison), creature);
-                Assert.That(specialQualities, Contains.Item(immunitySleep), creature);
-                Assert.That(specialQualities, Contains.Item(immunityParalysis), creature);
-                Assert.That(specialQualities, Contains.Item(immunityStunning), creature);
-                Assert.That(specialQualities, Contains.Item(immunityDisease), creature);
-                Assert.That(specialQualities, Contains.Item(immunityDeath), creature);
-                Assert.That(specialQualities, Contains.Item(immunityCriticalHits), creature);
-                Assert.That(specialQualities, Contains.Item(immunityNonlethal), creature);
-                Assert.That(specialQualities, Contains.Item(immunityAbilityDrain), creature);
-                Assert.That(specialQualities, Contains.Item(immunityEnergyDrain), creature);
-                Assert.That(specialQualities, Contains.Item(immunityFatigue), creature);
-                Assert.That(specialQualities, Contains.Item(immunityExhaustion), creature);
-            }
-        }
-
-        [Test]
-        public void IncorporealHaveIncorporealTraits()
-        {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
-
-            var immunityNonmagicalAttacksData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Nonmagical attacks");
-
-            var immunityNonmagicalAttacks = SpecialQualityHelper.BuildData(immunityNonmagicalAttacksData);
-
-            foreach (var creature in creatures)
-            {
-                var specialQualities = table[creature];
-
-                Assert.That(specialQualities, Is.Not.Empty, creature);
-                Assert.That(specialQualities, Contains.Item(immunityNonmagicalAttacks), creature);
-            }
-        }
-
-        [Test]
-        public void ConstructsHaveConstructTraits()
-        {
-            var constructs = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Construct);
-
-            AssertCollection(constructs.Intersect(table.Keys), constructs);
-
-            var immunityMindData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Mind-Affecting Effects");
-            var immunityPoisonData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison");
-            var immunitySleepData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep");
-            var immunityParalysisData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis");
-            var immunityStunningData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning");
-            var immunityDiseaseData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Disease");
-            var immunityDeathData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Death");
-            var immunityNecromancyData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Necromancy");
-            var immunityCriticalHitsData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits");
-            var immunityNonlethalData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Nonlethal damage");
-            var immunityAbilityDamageData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Ability Damage");
-            var immunityAbilityDrainData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Ability Drain");
-            var immunityEnergyDrainData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Energy Drain");
-            var immunityFatigueData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Fatigue");
-            var immunityExhaustionData = SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Exhaustion");
-
-            var immunityMind = SpecialQualityHelper.BuildData(immunityMindData);
-            var immunityPoison = SpecialQualityHelper.BuildData(immunityPoisonData);
-            var immunitySleep = SpecialQualityHelper.BuildData(immunitySleepData);
-            var immunityParalysis = SpecialQualityHelper.BuildData(immunityParalysisData);
-            var immunityStunning = SpecialQualityHelper.BuildData(immunityStunningData);
-            var immunityDisease = SpecialQualityHelper.BuildData(immunityDiseaseData);
-            var immunityDeath = SpecialQualityHelper.BuildData(immunityDeathData);
-            var immunityNecromancy = SpecialQualityHelper.BuildData(immunityNecromancyData);
-            var immunityCriticalHits = SpecialQualityHelper.BuildData(immunityCriticalHitsData);
-            var immunityNonlethal = SpecialQualityHelper.BuildData(immunityNonlethalData);
-            var immunityAbilityDamage = SpecialQualityHelper.BuildData(immunityAbilityDamageData);
-            var immunityAbilityDrain = SpecialQualityHelper.BuildData(immunityAbilityDrainData);
-            var immunityEnergyDrain = SpecialQualityHelper.BuildData(immunityEnergyDrainData);
-            var immunityFatigue = SpecialQualityHelper.BuildData(immunityFatigueData);
-            var immunityExhaustion = SpecialQualityHelper.BuildData(immunityExhaustionData);
-
-            foreach (var construct in constructs)
-            {
-                var specialQualities = table[construct];
-
-                Assert.That(specialQualities, Is.Not.Empty, construct);
-                Assert.That(specialQualities, Contains.Item(immunityMind), construct);
-                Assert.That(specialQualities, Contains.Item(immunityPoison), construct);
-                Assert.That(specialQualities, Contains.Item(immunitySleep), construct);
-                Assert.That(specialQualities, Contains.Item(immunityParalysis), construct);
-                Assert.That(specialQualities, Contains.Item(immunityStunning), construct);
-                Assert.That(specialQualities, Contains.Item(immunityDisease), construct);
-                Assert.That(specialQualities, Contains.Item(immunityDeath), construct);
-                Assert.That(specialQualities, Contains.Item(immunityNecromancy), construct);
-                Assert.That(specialQualities, Contains.Item(immunityCriticalHits), construct);
-                Assert.That(specialQualities, Contains.Item(immunityNonlethal), construct);
-                Assert.That(specialQualities, Contains.Item(immunityAbilityDamage), construct);
-                Assert.That(specialQualities, Contains.Item(immunityAbilityDrain), construct);
-                Assert.That(specialQualities, Contains.Item(immunityEnergyDrain), construct);
-                Assert.That(specialQualities, Contains.Item(immunityFatigue), construct);
-                Assert.That(specialQualities, Contains.Item(immunityExhaustion), construct);
-            }
-        }
-
         [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void BonusFeatsHaveCorrectData(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -284,6 +88,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void FastHealingHasCorrectFrequency(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -303,6 +109,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void DamageReductionHasCorrectData(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -325,6 +133,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void ImmunityHasCorrectData(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -346,6 +156,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void ChangeShapeHasCorrectData(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -367,6 +179,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void SpellLikeAbilityHasCorrectData(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -388,6 +202,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void SkillBonusHasCorrectData(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -409,6 +225,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void EnergyResistanceHasCorrectData(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -436,6 +254,22 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Positive);
                     Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]) % 5, Is.Zero);
                 }
+            }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void NoOverlapBetweenCreatureAndCreatureTypes(string creature)
+        {
+            var types = CollectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
+            var creatureTypes = types[creature];
+
+            AssertCollection(table.Keys.Intersect(creatureTypes), creatureTypes);
+
+            foreach (var creatureType in creatureTypes)
+            {
+                var overlap = table[creatureType].Intersect(table[creature]);
+
+                Assert.That(overlap, Is.Empty, $"{creatureType}: {creature}");
             }
         }
     }

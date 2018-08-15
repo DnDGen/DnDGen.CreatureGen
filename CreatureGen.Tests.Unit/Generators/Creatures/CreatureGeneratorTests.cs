@@ -128,7 +128,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             SetUpCreature("creature", "template");
 
-            mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, It.IsAny<IEnumerable<Feat>>())).Returns(skills);
+            mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, It.IsAny<IEnumerable<Feat>>(), abilities)).Returns(skills);
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, It.IsAny<IEnumerable<Feat>>())).Returns(hitPoints);
 
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.First());
@@ -139,16 +139,16 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
                 GroupConstants.PoorBaseAttack)).Returns(GroupConstants.PoorBaseAttack);
         }
 
-        private void SetUpCreature(string creature, string template)
+        private void SetUpCreature(string creatureName, string templateName)
         {
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), hitPoints)).Returns(753);
-            mockAttacksGenerator.Setup(g => g.GenerateAttacks(creature, creatureData.Size, creatureData.Size, 753, abilities)).Returns(attacks);
+            mockAttacksGenerator.Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, creatureData.Size, 753, abilities)).Returns(attacks);
             mockAttacksGenerator.Setup(g => g.ApplyAttackBonuses(attacks, feats, abilities)).Returns(attacks);
 
-            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(creature, It.Is<CreatureType>(c => c.Name == types[0]), hitPoints, abilities, skills, creatureData.CanUseEquipment)).Returns(specialQualities);
-            mockSkillsGenerator.Setup(g => g.GenerateFor(hitPoints, creature, It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, creatureData.Size)).Returns(skills);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(creature, template)).Returns(true);
-            mockCreatureDataSelector.Setup(s => s.SelectFor(creature)).Returns(creatureData);
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(creatureName, It.Is<CreatureType>(c => c.Name == types[0]), hitPoints, abilities, skills, creatureData.CanUseEquipment)).Returns(specialQualities);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(hitPoints, creatureName, It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, creatureData.Size)).Returns(skills);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(creatureName, templateName)).Returns(true);
+            mockCreatureDataSelector.Setup(s => s.SelectFor(creatureName)).Returns(creatureData);
 
             mockFeatsGenerator.Setup(g =>
                 g.GenerateFeats(
@@ -167,17 +167,17 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             ).Returns(feats);
 
             var defaultTemplateApplicator = new Mock<TemplateApplicator>();
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(defaultTemplateApplicator.Object);
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(templateName)).Returns(defaultTemplateApplicator.Object);
             defaultTemplateApplicator.Setup(a => a.ApplyTo(It.IsAny<Creature>())).Returns((Creature c) => c);
 
-            mockAbilitiesGenerator.Setup(g => g.GenerateFor(creature)).Returns(abilities);
-            mockHitPointsGenerator.Setup(g => g.GenerateFor(creature, It.IsAny<CreatureType>(), abilities[AbilityConstants.Constitution], creatureData.Size, 0)).Returns(hitPoints);
+            mockAbilitiesGenerator.Setup(g => g.GenerateFor(creatureName)).Returns(abilities);
+            mockHitPointsGenerator.Setup(g => g.GenerateFor(creatureName, It.Is<CreatureType>(c => c.Name == types[0]), abilities[AbilityConstants.Constitution], creatureData.Size, 0)).Returns(hitPoints);
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature)).Returns(types);
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AerialManeuverability, creature)).Returns(new[] { string.Empty });
-            mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities[AbilityConstants.Dexterity], creatureData.Size, creature, feats, creatureData.NaturalArmor)).Returns(armorClass);
+            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, creatureName)).Returns(types);
+            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AerialManeuverability, creatureName)).Returns(new[] { string.Empty });
+            mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities, creatureData.Size, creatureName, It.Is<CreatureType>(c => c.Name == types[0]), feats, creatureData.NaturalArmor)).Returns(armorClass);
 
-            mockSpeedsGenerator.Setup(g => g.Generate(creature)).Returns(speeds);
+            mockSpeedsGenerator.Setup(g => g.Generate(creatureName)).Returns(speeds);
         }
 
         [Test]
@@ -359,15 +359,15 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreature()
         {
-            SetUpCreatureAdvancement();
+            var advancedhitPoints = SetUpCreatureAdvancement();
             mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(true);
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 1337));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234 + abilities[AbilityConstants.Constitution].Modifier));
+            Assert.That(creature.HitPoints, Is.EqualTo(advancedhitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
             Assert.That(creature.Space.Value, Is.EqualTo(54.32));
             Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
@@ -385,16 +385,16 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].RacialAdjustment = 47;
             abilities[AbilityConstants.Constitution].RacialAdjustment = 56;
 
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
             mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(true);
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 1337));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234 + abilities[AbilityConstants.Constitution].Modifier));
+            Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
             Assert.That(creature.Space.Value, Is.EqualTo(54.32));
             Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
@@ -415,16 +415,16 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Constitution].BaseScore = 0;
 
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
             mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(true);
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 1337));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(23));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(1234));
+            Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
             Assert.That(creature.Space.Value, Is.EqualTo(54.32));
             Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
@@ -438,7 +438,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
         }
 
-        private void SetUpCreatureAdvancement(int advancementAmount = 1337, string creature = "creature")
+        private HitPoints SetUpCreatureAdvancement(int advancementAmount = 1337, string creature = "creature")
         {
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creature)).Returns(true);
 
@@ -454,7 +454,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             advancement.NaturalArmorAdjustment = 8245;
             advancement.StrengthAdjustment = 3456;
 
-            mockAdvancementSelector.Setup(s => s.SelectRandomFor(creature, It.IsAny<CreatureType>(), creatureData.Size, creatureData.ChallengeRating)).Returns(advancement);
+            mockAdvancementSelector.Setup(s => s.SelectRandomFor(creature, It.Is<CreatureType>(c => c.Name == types[0]), creatureData.Size, creatureData.ChallengeRating)).Returns(advancement);
 
             var advancedHitPoints = new HitPoints();
             advancedHitPoints.Constitution = abilities[AbilityConstants.Constitution];
@@ -463,7 +463,9 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             advancedHitPoints.DefaultTotal = 492;
             advancedHitPoints.Total = 862;
 
-            mockHitPointsGenerator.Setup(g => g.GenerateFor(creature, It.Is<CreatureType>(c => c.Name == types[0]), abilities[AbilityConstants.Constitution], "advanced size", advancementAmount)).Returns(hitPoints);
+            mockHitPointsGenerator.Setup(g => g.GenerateFor(creature, It.Is<CreatureType>(c => c.Name == types[0]), abilities[AbilityConstants.Constitution], "advanced size", advancementAmount)).Returns(advancedHitPoints);
+            mockHitPointsGenerator.Setup(g => g.RegenerateWith(advancedHitPoints, It.IsAny<IEnumerable<Feat>>())).Returns(advancedHitPoints);
+
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(999);
             mockAttacksGenerator.Setup(g => g.GenerateAttacks(creature, creatureData.Size, advancement.Size, 999, abilities)).Returns(attacks);
 
@@ -483,11 +485,14 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
                 advancement.Size)).Returns(feats);
 
             mockArmorClassGenerator.Setup(g => g.GenerateWith(
-                abilities[AbilityConstants.Dexterity],
+                abilities,
                 advancement.Size,
                 creature,
+                It.Is<CreatureType>(c => c.Name == types[0]),
                 feats,
                 newNaturalArmor)).Returns(armorClass);
+
+            return advancedHitPoints;
         }
 
         [Test]
@@ -500,20 +505,20 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreatureSkills()
         {
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities)).Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
-            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
 
             var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
-                It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337),
+                advancedHitPoints,
                 999,
                 abilities,
                 advancedSkills,
@@ -525,7 +530,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
                 96,
                 "advanced size")).Returns(advancedFeats);
 
-            mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(advancedSkills, advancedFeats)).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(advancedSkills, advancedFeats, abilities)).Returns(advancedSkills);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Skills, Is.EqualTo(advancedSkills));
@@ -541,13 +546,13 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreatureSpecialQualities()
         {
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
-            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.SpecialQualities, Is.EqualTo(advancedSpecialQualities));
@@ -563,9 +568,9 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreatureBaseAttackBonus()
         {
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
-            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337))).Returns(951);
+            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(951);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(951));
@@ -581,20 +586,20 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreatureAttacks()
         {
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities)).Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
-            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
 
             var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
-                It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337),
+                advancedHitPoints,
                 999,
                 abilities,
                 advancedSkills,
@@ -623,20 +628,20 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreatureFeats()
         {
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities)).Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
-            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
 
             var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
-                It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337),
+                advancedHitPoints,
                 999,
                 abilities,
                 advancedSkills,
@@ -665,20 +670,20 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreatureHitPointsWithFeats()
         {
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities)).Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
-            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
 
             var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
-                It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337),
+                advancedHitPoints,
                 999,
                 abilities,
                 advancedSkills,
@@ -691,7 +696,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
                 "advanced size")).Returns(advancedFeats);
 
             var advancedUpdatedHitPoints = new HitPoints();
-            mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, advancedFeats)).Returns(advancedUpdatedHitPoints);
+            mockHitPointsGenerator.Setup(g => g.RegenerateWith(advancedHitPoints, advancedFeats)).Returns(advancedUpdatedHitPoints);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(advancedUpdatedHitPoints));
@@ -701,7 +706,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateCreatureSkillsUpdatedByFeats()
         {
             var updatedSkills = new List<Skill>() { new Skill("updated skill", abilities.First().Value, 1000) };
-            mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats)).Returns(updatedSkills);
+            mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats, abilities)).Returns(updatedSkills);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Skills, Is.EqualTo(updatedSkills));
@@ -710,20 +715,20 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreatureSkillsUpdatedByFeats()
         {
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities)).Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
-            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
 
             var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
-                It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337),
+                advancedHitPoints,
                 999,
                 abilities,
                 advancedSkills,
@@ -736,7 +741,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
                 "advanced size")).Returns(advancedFeats);
 
             var updatedSkills = new List<Skill> { new Skill("updated advanced skill", abilities.First().Value, 1000) };
-            mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(advancedSkills, advancedFeats)).Returns(updatedSkills);
+            mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(advancedSkills, advancedFeats, abilities)).Returns(updatedSkills);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Skills, Is.EqualTo(updatedSkills));
@@ -785,20 +790,20 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void ApplyAdvancedAttackBonuses()
         {
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities)).Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
-            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
 
             var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
-                It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337),
+                advancedHitPoints,
                 999,
                 abilities,
                 advancedSkills,
@@ -914,11 +919,11 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size")).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(advancedHitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size")).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
@@ -938,7 +943,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateCreatureArmorClass()
         {
             var armorClass = new ArmorClass();
-            mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities[AbilityConstants.Dexterity], "size", "creature", feats, creatureData.NaturalArmor)).Returns(armorClass);
+            mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities, "size", "creature", It.Is<CreatureType>(c => c.Name == types[0]), feats, creatureData.NaturalArmor)).Returns(armorClass);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.ArmorClass, Is.Not.Null);
@@ -948,20 +953,20 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreatureArmorClass()
         {
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities)).Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
-            mockSkillsGenerator.Setup(g => g.GenerateFor(It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
 
             var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
-            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337), abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities("creature", It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, abilities, advancedSkills, creatureData.CanUseEquipment)).Returns(advancedSpecialQualities);
 
             var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
-                It.Is<HitPoints>(hp => hp.HitDiceQuantity == 9266 + 1337),
+                advancedHitPoints,
                 999,
                 abilities,
                 advancedSkills,
@@ -974,7 +979,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
                 "advanced size")).Returns(advancedFeats);
 
             var advancedArmorClass = new ArmorClass();
-            mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities[AbilityConstants.Dexterity], "advanced size", "creature", It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()), 1336 + 8245)).Returns(advancedArmorClass);
+            mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities, "advanced size", "creature", It.Is<CreatureType>(c => c.Name == types[0]), It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()), 1336 + 8245)).Returns(advancedArmorClass);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.ArmorClass, Is.Not.Null);
@@ -985,7 +990,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateCreatureSaves()
         {
             var saves = new Saves();
-            mockSavesGenerator.Setup(g => g.GenerateWith(It.IsAny<CreatureType>(), hitPoints, feats, abilities)).Returns(saves);
+            mockSavesGenerator.Setup(g => g.GenerateWith(It.Is<CreatureType>(c => c.Name == types[0]), hitPoints, feats, abilities)).Returns(saves);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Saves, Is.EqualTo(saves));
@@ -994,12 +999,12 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateAdvancedCreatureSaves()
         {
-            SetUpCreatureAdvancement();
+            var advancedHitPoints = SetUpCreatureAdvancement();
 
-            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size")).Returns(feats);
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(advancedHitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size")).Returns(feats);
 
             var saves = new Saves();
-            mockSavesGenerator.Setup(g => g.GenerateWith(It.IsAny<CreatureType>(), hitPoints, feats, abilities)).Returns(saves);
+            mockSavesGenerator.Setup(g => g.GenerateWith(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, feats, abilities)).Returns(saves);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Saves, Is.EqualTo(saves));

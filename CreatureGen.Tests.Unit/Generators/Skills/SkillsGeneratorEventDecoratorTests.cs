@@ -90,9 +90,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
                 new Skill("skill 2", abilities["ability"], 90210),
             };
 
-            mockInnerGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats)).Returns(updatedSkills);
+            mockInnerGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats, abilities)).Returns(updatedSkills);
 
-            var generatedSkills = decorator.ApplyBonusesFromFeats(skills, feats);
+            var generatedSkills = decorator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(generatedSkills, Is.EqualTo(updatedSkills));
             Assert.That(generatedSkills, Is.Not.EqualTo(skills));
         }
@@ -118,9 +118,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
                 new Skill("skill 2", abilities["ability"], 90210),
             };
 
-            mockInnerGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats)).Returns(updatedSkills);
+            mockInnerGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats, abilities)).Returns(updatedSkills);
 
-            var generatedSkills = decorator.ApplyBonusesFromFeats(skills, feats);
+            var generatedSkills = decorator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(generatedSkills, Is.EqualTo(updatedSkills));
             Assert.That(generatedSkills, Is.Not.EqualTo(skills));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Never);

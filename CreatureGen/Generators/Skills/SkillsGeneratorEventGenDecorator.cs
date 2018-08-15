@@ -20,9 +20,9 @@ namespace CreatureGen.Generators.Skills
             this.eventQueue = eventQueue;
         }
 
-        public IEnumerable<Skill> ApplyBonusesFromFeats(IEnumerable<Skill> skills, IEnumerable<Feat> feats)
+        public IEnumerable<Skill> ApplyBonusesFromFeats(IEnumerable<Skill> skills, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
         {
-            var updatedSkills = innerGenerator.ApplyBonusesFromFeats(skills, feats);
+            var updatedSkills = innerGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
 
             return updatedSkills;
         }

@@ -1967,13 +1967,56 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         //INFO: Example is how a centipede swarm uses Dexterity for Climb instead of Strength
-        //Might be related to the Weapon finesse feat, although not explicitly stated
-        //Rat swarm: for climb and swim
-        //Spider swarm: for climb (class skill of climb or swim, and weapon finesse feat?)
         [Test]
         public void UseAlternateBaseAbilityForSkill()
         {
-            Assert.Fail("not yet written");
+            abilities["base ability"] = new Ability("base ability");
+            abilities["other base ability"] = new Ability("other base ability");
+
+            var skills = new List<Skill>();
+            skills.Add(new Skill("skill 1", abilities["base ability"], 1));
+            skills.Add(new Skill("skill 2", abilities["base ability"], 1));
+
+            var feats = new List<Feat>();
+            feats.Add(new Feat());
+            feats[0].Name = FeatConstants.SpecialQualities.SwapSkillBaseAbility;
+            feats[0].Foci = new[] { $"{skills[1].Name}:{abilities["other base ability"].Name}" };
+
+            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
+            Assert.That(updatedSkills, Is.EqualTo(skills));
+            Assert.That(updatedSkills, Is.EquivalentTo(skills));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].BaseAbility, Is.EqualTo(abilities["base ability"]), skills[0].BaseAbility.Name);
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].BaseAbility, Is.EqualTo(abilities["other base ability"]), skills[1].BaseAbility.Name);
+        }
+
+        //INFO: Example is how a centipede swarm uses Dexterity for Climb instead of Strength
+        [Test]
+        public void UseAlternateBaseAbilityForSkills()
+        {
+            abilities["base ability"] = new Ability("base ability");
+            abilities["other base ability"] = new Ability("other base ability");
+
+            var skills = new List<Skill>();
+            skills.Add(new Skill("skill 1", abilities["base ability"], 1));
+            skills.Add(new Skill("skill 2", abilities["base ability"], 1));
+            skills.Add(new Skill("skill 3", abilities["base ability"], 1));
+
+            var feats = new List<Feat>();
+            feats.Add(new Feat());
+            feats[0].Name = FeatConstants.SpecialQualities.SwapSkillBaseAbility;
+            feats[0].Foci = new[] { $"{skills[0].Name}:{abilities["other base ability"].Name}", $"{skills[2].Name}:{abilities["other base ability"].Name}" };
+
+            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
+            Assert.That(updatedSkills, Is.EqualTo(skills));
+            Assert.That(updatedSkills, Is.EquivalentTo(skills));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].BaseAbility, Is.EqualTo(abilities["other base ability"]), skills[0].BaseAbility.Name);
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].BaseAbility, Is.EqualTo(abilities["base ability"]), skills[1].BaseAbility.Name);
+            Assert.That(skills[2].Name, Is.EqualTo("skill 3"));
+            Assert.That(skills[2].BaseAbility, Is.EqualTo(abilities["other base ability"]), skills[2].BaseAbility.Name);
         }
 
         [Test]
@@ -2008,13 +2051,13 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "feat1")).Returns(new[] { "skill 1" });
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "feat3")).Returns(new[] { "skill 2", "skill 4" });
 
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
+            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(updatedSkills.First(s => s.IsEqualTo(skills[0])).Bonus, Is.EqualTo(2));
-            Assert.That(updatedSkills.First(s => s.IsEqualTo(skills[1])).Bonus, Is.EqualTo(5));
-            Assert.That(updatedSkills.First(s => s.IsEqualTo(skills[2])).Bonus, Is.EqualTo(3));
-            Assert.That(updatedSkills.First(s => s.IsEqualTo(skills[3])).Bonus, Is.EqualTo(7));
+            Assert.That(skills[0].Bonus, Is.EqualTo(2));
+            Assert.That(skills[1].Bonus, Is.EqualTo(5));
+            Assert.That(skills[2].Bonus, Is.EqualTo(3));
+            Assert.That(skills[3].Bonus, Is.EqualTo(7));
         }
 
         [Test]
@@ -2049,13 +2092,13 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "feat1")).Returns(new[] { "skill 1" });
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "feat3")).Returns(new[] { "skill 2", "skill 3/focus" });
 
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
+            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(updatedSkills.First(s => s.IsEqualTo(skills[0])).Bonus, Is.EqualTo(2));
-            Assert.That(updatedSkills.First(s => s.IsEqualTo(skills[1])).Bonus, Is.EqualTo(5));
-            Assert.That(updatedSkills.First(s => s.IsEqualTo(skills[2])).Bonus, Is.EqualTo(3));
-            Assert.That(updatedSkills.First(s => s.IsEqualTo(skills[3])).Bonus, Is.EqualTo(7));
+            Assert.That(skills[0].Bonus, Is.EqualTo(2));
+            Assert.That(skills[1].Bonus, Is.EqualTo(5));
+            Assert.That(skills[2].Bonus, Is.EqualTo(3));
+            Assert.That(skills[3].Bonus, Is.EqualTo(7));
         }
 
         [Test]
@@ -2088,12 +2131,12 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var featGrantingSkillBonuses = new[] { "feat2", "feat1" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
+            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(updatedSkills.First(s => s.Name == "skill 1").Bonus, Is.EqualTo(1));
-            Assert.That(updatedSkills.First(s => s.Name == "skill 2").Bonus, Is.EqualTo(9));
-            Assert.That(updatedSkills.First(s => s.Name == "skill 3").Bonus, Is.EqualTo(8));
+            Assert.That(skills[0].Bonus, Is.EqualTo(1));
+            Assert.That(skills[1].Bonus, Is.EqualTo(9));
+            Assert.That(skills[2].Bonus, Is.EqualTo(8));
         }
 
         [Test]
@@ -2131,12 +2174,12 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var featGrantingSkillBonuses = new[] { "feat2", "feat1" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
+            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(updatedSkills.First(s => s.IsEqualTo(skills[0])).Bonus, Is.EqualTo(1));
-            Assert.That(updatedSkills.First(s => s.IsEqualTo(skills[1])).Bonus, Is.EqualTo(9));
-            Assert.That(updatedSkills.First(s => s.IsEqualTo(skills[2])).Bonus, Is.EqualTo(8));
+            Assert.That(skills[0].Bonus, Is.EqualTo(1));
+            Assert.That(skills[1].Bonus, Is.EqualTo(9));
+            Assert.That(skills[2].Bonus, Is.EqualTo(8));
         }
 
         [Test]
@@ -2157,7 +2200,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var featGrantingSkillBonuses = new[] { "feat2", "feat1" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
+            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
             Assert.That(updatedSkills.First(s => s.Name == "skill 1").Bonus, Is.EqualTo(1));
@@ -2188,13 +2231,13 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "feat1")).Returns(new[] { "skill 1" });
 
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
+            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(updatedSkills.First(s => s.Name == "skill 1").Bonus, Is.EqualTo(2));
-            Assert.That(updatedSkills.First(s => s.Name == "skill 1").CircumstantialBonus, Is.False);
-            Assert.That(updatedSkills.First(s => s.Name == "skill 2").Bonus, Is.EqualTo(4));
-            Assert.That(updatedSkills.First(s => s.Name == "skill 2").CircumstantialBonus, Is.False);
+            Assert.That(skills[0].Bonus, Is.EqualTo(2));
+            Assert.That(skills[0].CircumstantialBonus, Is.False);
+            Assert.That(skills[1].Bonus, Is.EqualTo(4));
+            Assert.That(skills[1].CircumstantialBonus, Is.False);
         }
 
         [Test]
@@ -2215,10 +2258,10 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
+            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(updatedSkills.First(s => s.Name == "skill 1").CircumstantialBonus, Is.True);
+            Assert.That(skills[0].CircumstantialBonus, Is.True);
         }
 
         [Test]
@@ -2241,11 +2284,11 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
+            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(updatedSkills.First(s => s.Name == "skill 1").CircumstantialBonus, Is.True);
-            Assert.That(updatedSkills.First(s => s.Name == "skill 2").CircumstantialBonus, Is.False);
+            Assert.That(skills[0].CircumstantialBonus, Is.True);
+            Assert.That(skills[1].CircumstantialBonus, Is.False);
         }
 
         [Test]
@@ -2273,11 +2316,11 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus))
                 .Returns(featGrantingSkillBonuses);
 
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats);
+            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(updatedSkills.First(s => s.Name == "skill 1").CircumstantialBonus, Is.True);
-            Assert.That(updatedSkills.First(s => s.Name == "skill 2").CircumstantialBonus, Is.False);
+            Assert.That(skills[0].CircumstantialBonus, Is.True);
+            Assert.That(skills[1].CircumstantialBonus, Is.False);
         }
     }
 }

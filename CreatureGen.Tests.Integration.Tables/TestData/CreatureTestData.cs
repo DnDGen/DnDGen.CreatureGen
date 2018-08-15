@@ -18,5 +18,31 @@ namespace CreatureGen.Tests.Integration.Tables.TestData
                 }
             }
         }
+
+        public static IEnumerable Types
+        {
+            get
+            {
+                var types = CreatureConstants.Types.All();
+
+                foreach (var creatureType in types)
+                {
+                    yield return new TestCaseData(creatureType);
+                }
+            }
+        }
+
+        public static IEnumerable Subtypes
+        {
+            get
+            {
+                var subtypes = CreatureConstants.Types.Subtypes.All();
+
+                foreach (var subtype in subtypes)
+                {
+                    yield return new TestCaseData(subtype);
+                }
+            }
+        }
     }
 }

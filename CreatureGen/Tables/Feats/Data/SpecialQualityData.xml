@@ -3,383 +3,381 @@
 <collections>
   <collection>
     <name>Aasimar</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Energy Resistance#5#Acid#1#Round#0</entry>
-    <entry>Energy Resistance#5#Cold#1#Round#0</entry>
-    <entry>Energy Resistance#5#Electricity#1#Round#0</entry>
-    <entry>Skill Bonus#2#Spot#0##0</entry>
-    <entry>Skill Bonus#2#Listen#0##0</entry>
-    <entry>Spell-Like Ability#0#Daylight#1#Day#0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#5#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round#0#False</entry>
+    <entry>Skill Bonus#2#Spot#0##0#False</entry>
+    <entry>Skill Bonus#2#Listen#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Daylight#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Aboleth</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Mucus Cloud#0##0##0</entry>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0</entry>
-    <entry>Spell-Like Ability#0#Hypnotic pattern#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Illusory wall#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Mirage arcana#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Programmed image#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Project image#0#At Will#0</entry>
+    <entry>Mucus Cloud#0##0##0#False</entry>
+    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
+    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Hypnotic pattern#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Illusory wall#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Mirage arcana#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Programmed image#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Project image#0#At Will#0#False</entry>
+  </collection>
+  <collection>
+    <name>Aberration</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#All#0##0#True</entry>
+    <entry>Shield Proficiency#0##0##0#True</entry>
   </collection>
   <collection>
     <name>Abyssal Greater Basilisk</name>
-    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Skill Bonus#4#Hide: in natural settings#0##0</entry>
-    <entry>Spell Resistance#23##0##0</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Skill Bonus#4#Hide: in natural settings#0##0#False</entry>
+    <entry>Spell Resistance#23##0##0#False</entry>
   </collection>
   <collection>
     <name>Achaierai</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Spell Resistance#19##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Spell Resistance#19##0##0#False</entry>
   </collection>
   <collection>
     <name>Adult Arrowhawk</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Electricity#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0</entry>
-    <entry>Skill Bonus#2#Survival: on Plane of Air#0##0</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
+    <entry>Skill Bonus#2#Survival: on Plane of Air#0##0#False</entry>
+    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
   </collection>
   <collection>
     <name>Adult Tojanida</name>
-    <entry>All-Around Vision#0##0##0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Cold#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0</entry>
-    <entry>Skill Bonus#2#Survival: on other planes#0##0</entry>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
+    <entry>All-Around Vision#0##0##0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
+    <entry>Skill Bonus#2#Survival: on other planes#0##0#False</entry>
+    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
+    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
+    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
+  </collection>
+  <collection>
+    <name>Air</name>
   </collection>
   <collection>
     <name>Air Elemental, Elder</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Flanking#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Greater</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Flanking#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Huge</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Flanking#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Large</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Flanking#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Medium</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Flanking#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Small</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Flanking#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Mephit</name>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Fast Healing#2#Exposed to moving air#1#Turn#0</entry>
-    <entry>Skill Bonus#2#Disguise: while acting#0##0</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
-    <entry>Spell-Like Ability#0#Blur#1#Hour#0</entry>
-    <entry>Spell-Like Ability#0#Gust of wind#1#Day#0</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Fast Healing#2#Exposed to moving air#1#Turn#0#False</entry>
+    <entry>Skill Bonus#2#Disguise: while acting#0##0#False</entry>
+    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Blur#1#Hour#0#False</entry>
+    <entry>Spell-Like Ability#0#Gust of wind#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Allip</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Turn Resistance#2##0##0</entry>
-    <entry>Immunity#0#Ability Drain#0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Death#0##0</entry>
-    <entry>Immunity#0#Disease#0##0</entry>
-    <entry>Immunity#0#Energy Drain#0##0</entry>
-    <entry>Immunity#0#Exhaustion#0##0</entry>
-    <entry>Immunity#0#Fatigue#0##0</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0</entry>
-    <entry>Immunity#0#Nonmagical attacks#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Turn Resistance#2##0##0#False</entry>
+    <entry>Immunity#0#Ability Drain#0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Death#0##0#False</entry>
+    <entry>Immunity#0#Disease#0##0#False</entry>
+    <entry>Immunity#0#Energy Drain#0##0#False</entry>
+    <entry>Immunity#0#Exhaustion#0##0#False</entry>
+    <entry>Immunity#0#Fatigue#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
+    <entry>Immunity#0#Nonmagical attacks#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Androsphinx</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+  </collection>
+  <collection>
+    <name>Angel</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Petrification#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Protective Aura#0##0##0#False</entry>
+    <entry>Save Bonus#4#Fortitude: against poison#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
-    <entry>Change Shape#0#Small or Medium Humanoid#0##0</entry>
-    <entry>Damage Reduction#10#Vulnerable to evil#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Cold#0##0</entry>
-    <entry>Immunity#0#Petrification#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Protective Aura#0##0##0</entry>
-    <entry>Save Bonus#4#Fortitude: against poison#0##0</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
-    <entry>Spell Resistance#30##0##0</entry>
-    <entry>Spell-Like Ability#0#Aid#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Continual flame#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Discern lies#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Invisibility (self only)#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Plane shift#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Tongues#0#Constant#0</entry>
-    <entry>Uncanny Dodge#0##0##0</entry>
+    <entry>Change Shape#0#Small or Medium Humanoid#0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to evil#1#Hit#0#False</entry>
+    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
+    <entry>Spell Resistance#30##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Discern lies#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility (self only)#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Plane shift#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
+    <entry>Uncanny Dodge#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Angel, Planetar</name>
-    <entry>Change Shape#0#Small or Medium Humanoid#0##0</entry>
-    <entry>Damage Reduction#10#Vulnerable to evil#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Cold#0##0</entry>
-    <entry>Immunity#0#Petrification#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Protective Aura#0##0##0</entry>
-    <entry>Regeneration#10#Does not regenerate evil damage#1#Round#0</entry>
-    <entry>Save Bonus#4#Fortitude: against poison#0##0</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
-    <entry>Spell Resistance#30##0##0</entry>
-    <entry>Spell-Like Ability#0#Continual flame#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Holy smite#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Invisibility (self only)#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Lesser restoration#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Raise dead#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Tongues#0#Constant#0</entry>
-    <entry>Spell-Like Ability#0#Waves of fatigue#3#Day#0</entry>
+    <entry>Change Shape#0#Small or Medium Humanoid#0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to evil#1#Hit#0#False</entry>
+    <entry>Regeneration#10#Does not regenerate evil damage#1#Round#0#False</entry>
+    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
+    <entry>Spell Resistance#30##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Holy smite#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility (self only)#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Lesser restoration#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Raise dead#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Waves of fatigue#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Angel, Solar</name>
-    <entry>Change Shape#0#Small or Medium Humanoid#0##0</entry>
-    <entry>Damage Reduction#15#Vulnerable to epic evil#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Cold#0##0</entry>
-    <entry>Immunity#0#Petrification#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Protective Aura#0##0##0</entry>
-    <entry>Regeneration#15#Does not regenerate evil damage#1#Round#0</entry>
-    <entry>Save Bonus#4#Fortitude: against poison#0##0</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
-    <entry>Spell Resistance#32##0##0</entry>
-    <entry>Spell-Like Ability#0#Aid#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Animate objects#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Commune#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Continual flame#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Earthquake#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Heal/Harm#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Invisibility (self only)#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Mass charm monster#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Tongues#0#Constant#0</entry>
-    <entry>Spell-Like Ability#0#True seeing#0#Constant#0</entry>
+    <entry>Change Shape#0#Small or Medium Humanoid#0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to epic evil#1#Hit#0#False</entry>
+    <entry>Regeneration#15#Does not regenerate evil damage#1#Round#0#False</entry>
+    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
+    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
+    <entry>Spell Resistance#32##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Animate objects#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Commune#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Earthquake#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Heal/Harm#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility (self only)#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Mass charm monster#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False</entry>
+  </collection>
+  <collection>
+    <name>Animal</name>
+    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Colossal</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Ability Damage#0##0</entry>
-    <entry>Immunity#0#Ability Drain#0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Death#0##0</entry>
-    <entry>Immunity#0#Disease#0##0</entry>
-    <entry>Immunity#0#Energy Drain#0##0</entry>
-    <entry>Immunity#0#Exhaustion#0##0</entry>
-    <entry>Immunity#0#Fatigue#0##0</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0</entry>
-    <entry>Immunity#0#Necromancy#0##0</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Ability Damage#0##0#False</entry>
+    <entry>Immunity#0#Ability Drain#0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Death#0##0#False</entry>
+    <entry>Immunity#0#Disease#0##0#False</entry>
+    <entry>Immunity#0#Energy Drain#0##0#False</entry>
+    <entry>Immunity#0#Exhaustion#0##0#False</entry>
+    <entry>Immunity#0#Fatigue#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Necromancy#0##0#False</entry>
+    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Gargantuan</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Ability Damage#0##0</entry>
-    <entry>Immunity#0#Ability Drain#0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Death#0##0</entry>
-    <entry>Immunity#0#Disease#0##0</entry>
-    <entry>Immunity#0#Energy Drain#0##0</entry>
-    <entry>Immunity#0#Exhaustion#0##0</entry>
-    <entry>Immunity#0#Fatigue#0##0</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0</entry>
-    <entry>Immunity#0#Necromancy#0##0</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Ability Damage#0##0#False</entry>
+    <entry>Immunity#0#Ability Drain#0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Death#0##0#False</entry>
+    <entry>Immunity#0#Disease#0##0#False</entry>
+    <entry>Immunity#0#Energy Drain#0##0#False</entry>
+    <entry>Immunity#0#Exhaustion#0##0#False</entry>
+    <entry>Immunity#0#Fatigue#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Necromancy#0##0#False</entry>
+    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Huge</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Ability Damage#0##0</entry>
-    <entry>Immunity#0#Ability Drain#0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Death#0##0</entry>
-    <entry>Immunity#0#Disease#0##0</entry>
-    <entry>Immunity#0#Energy Drain#0##0</entry>
-    <entry>Immunity#0#Exhaustion#0##0</entry>
-    <entry>Immunity#0#Fatigue#0##0</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0</entry>
-    <entry>Immunity#0#Necromancy#0##0</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Ability Damage#0##0#False</entry>
+    <entry>Immunity#0#Ability Drain#0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Death#0##0#False</entry>
+    <entry>Immunity#0#Disease#0##0#False</entry>
+    <entry>Immunity#0#Energy Drain#0##0#False</entry>
+    <entry>Immunity#0#Exhaustion#0##0#False</entry>
+    <entry>Immunity#0#Fatigue#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Necromancy#0##0#False</entry>
+    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Large</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Ability Damage#0##0</entry>
-    <entry>Immunity#0#Ability Drain#0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Death#0##0</entry>
-    <entry>Immunity#0#Disease#0##0</entry>
-    <entry>Immunity#0#Energy Drain#0##0</entry>
-    <entry>Immunity#0#Exhaustion#0##0</entry>
-    <entry>Immunity#0#Fatigue#0##0</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0</entry>
-    <entry>Immunity#0#Necromancy#0##0</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Ability Damage#0##0#False</entry>
+    <entry>Immunity#0#Ability Drain#0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Death#0##0#False</entry>
+    <entry>Immunity#0#Disease#0##0#False</entry>
+    <entry>Immunity#0#Energy Drain#0##0#False</entry>
+    <entry>Immunity#0#Exhaustion#0##0#False</entry>
+    <entry>Immunity#0#Fatigue#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Necromancy#0##0#False</entry>
+    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Medium</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Ability Damage#0##0</entry>
-    <entry>Immunity#0#Ability Drain#0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Death#0##0</entry>
-    <entry>Immunity#0#Disease#0##0</entry>
-    <entry>Immunity#0#Energy Drain#0##0</entry>
-    <entry>Immunity#0#Exhaustion#0##0</entry>
-    <entry>Immunity#0#Fatigue#0##0</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0</entry>
-    <entry>Immunity#0#Necromancy#0##0</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Ability Damage#0##0#False</entry>
+    <entry>Immunity#0#Ability Drain#0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Death#0##0#False</entry>
+    <entry>Immunity#0#Disease#0##0#False</entry>
+    <entry>Immunity#0#Energy Drain#0##0#False</entry>
+    <entry>Immunity#0#Exhaustion#0##0#False</entry>
+    <entry>Immunity#0#Fatigue#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Necromancy#0##0#False</entry>
+    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Small</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Ability Damage#0##0</entry>
-    <entry>Immunity#0#Ability Drain#0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Death#0##0</entry>
-    <entry>Immunity#0#Disease#0##0</entry>
-    <entry>Immunity#0#Energy Drain#0##0</entry>
-    <entry>Immunity#0#Exhaustion#0##0</entry>
-    <entry>Immunity#0#Fatigue#0##0</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0</entry>
-    <entry>Immunity#0#Necromancy#0##0</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Ability Damage#0##0#False</entry>
+    <entry>Immunity#0#Ability Drain#0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Death#0##0#False</entry>
+    <entry>Immunity#0#Disease#0##0#False</entry>
+    <entry>Immunity#0#Energy Drain#0##0#False</entry>
+    <entry>Immunity#0#Exhaustion#0##0#False</entry>
+    <entry>Immunity#0#Fatigue#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Necromancy#0##0#False</entry>
+    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Tiny</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Ability Damage#0##0</entry>
-    <entry>Immunity#0#Ability Drain#0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Death#0##0</entry>
-    <entry>Immunity#0#Disease#0##0</entry>
-    <entry>Immunity#0#Energy Drain#0##0</entry>
-    <entry>Immunity#0#Exhaustion#0##0</entry>
-    <entry>Immunity#0#Fatigue#0##0</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0</entry>
-    <entry>Immunity#0#Necromancy#0##0</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Ability Damage#0##0#False</entry>
+    <entry>Immunity#0#Ability Drain#0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Death#0##0#False</entry>
+    <entry>Immunity#0#Disease#0##0#False</entry>
+    <entry>Immunity#0#Energy Drain#0##0#False</entry>
+    <entry>Immunity#0#Exhaustion#0##0#False</entry>
+    <entry>Immunity#0#Fatigue#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Necromancy#0##0#False</entry>
+    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Ankheg</name>
@@ -402,6 +400,11 @@
     <entry>Scent#0##0##0</entry>
     <entry>Skill Bonus#8#Climb#0##0</entry>
     <entry>Skill Bonus#10#Climb: can always take 10#0##0</entry>
+  </collection>
+  <collection>
+    <name>Aquatic</name>
+    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
+    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Aquatic Elf</name>
@@ -1046,6 +1049,26 @@
   </collection>
   <collection>
     <name>Constrictor Snake</name>
+  </collection>
+  <collection>
+    <name>Construct</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Ability Damage#0##0#False</entry>
+    <entry>Immunity#0#Ability Drain#0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Death#0##0#False</entry>
+    <entry>Immunity#0#Disease#0##0#False</entry>
+    <entry>Immunity#0#Energy Drain#0##0#False</entry>
+    <entry>Immunity#0#Exhaustion#0##0#False</entry>
+    <entry>Immunity#0#Fatigue#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Necromancy#0##0#False</entry>
+    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
