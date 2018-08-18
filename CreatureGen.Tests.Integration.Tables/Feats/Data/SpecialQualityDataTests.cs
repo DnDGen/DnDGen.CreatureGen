@@ -23,6 +23,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         public ClientIDManager ClientIdManager { get; set; }
         [Inject]
         internal IFeatsSelector FeatsSelector { get; set; }
+        [Inject]
+        internal ICreatureDataSelector CreatureDataSelector { get; set; }
 
         protected override string tableName
         {
@@ -270,6 +272,35 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 var overlap = table[creatureType].Intersect(table[creature]);
 
                 Assert.That(overlap, Is.Empty, $"{creatureType}: {creature}");
+            }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void CreaturesThatCanChangeShapeIntoHumanoidCanUseEquipment(string creature)
+        {
+            Assert.That(table.Keys, Contains.Item(creature));
+
+            var collection = table[creature];
+            var humanoids = new[]
+            {
+                CreatureConstants.Types.Humanoid,
+                CreatureConstants.Goblin, //For Barghest
+            };
+
+            var creatureData = CreatureDataSelector.SelectFor(creature);
+
+            foreach (var entry in collection)
+            {
+                var data = SpecialQualityHelper.ParseData(entry);
+                var featName = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
+
+                if (featName == FeatConstants.SpecialQualities.ChangeShape || featName == FeatConstants.SpecialQualities.AlternateForm)
+                {
+                    var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
+                    var changesIntoHumanoid = humanoids.Any(h => focus.Contains(h));
+
+                    Assert.That(changesIntoHumanoid, Is.EqualTo(creatureData.CanUseEquipment), focus);
+                }
             }
         }
     }

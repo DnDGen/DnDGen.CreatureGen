@@ -561,6 +561,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Ankheg,
                 CreatureConstants.Aranea,
                 CreatureConstants.Basilisk,
+                CreatureConstants.Basilisk_AbyssalGreater,
                 CreatureConstants.Behir,
                 CreatureConstants.BlinkDog,
                 CreatureConstants.Bulette,

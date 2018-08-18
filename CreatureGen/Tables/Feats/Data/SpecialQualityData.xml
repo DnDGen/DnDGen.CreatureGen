@@ -192,11 +192,23 @@
     <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
     <entry>Spell Resistance#30##0##0#False</entry>
     <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Blade barrier#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Cure/inflict light wounds#7#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Discern lies#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel good/evil/law/chaos#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Heal/Harm#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Holy aura#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Holy smite#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Holy word#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Invisibility (self only)#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Plane shift#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Remove curse#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Remove disease#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Remove fear#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#See invisibility#7#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
     <entry>Uncanny Dodge#0##0##0#False</entry>
   </collection>
@@ -207,13 +219,29 @@
     <entry>Regeneration#10#Does not regenerate evil damage#1#Round#0#False</entry>
     <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
     <entry>Spell Resistance#30##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Blade barrier#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect snares and pits#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Discern lies#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Earthquake#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Flame strike#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater restoration#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Holy smite#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Invisibility (self only)#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Lesser restoration#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Mass charm monster#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Power word stun#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Raise dead#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Remove curse#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Remove disease#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Remove fear#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with dead#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Waves of exhaustion#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Waves of fatigue#3#Day#0#False</entry>
   </collection>
   <collection>
@@ -226,14 +254,40 @@
     <entry>Spell Resistance#32##0##0#False</entry>
     <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Animate objects#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Blade barrier#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Commune#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect snares and pits#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Dimensional anchor#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Discern lies#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Earthquake#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater restoration#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Heal/Harm#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Holy smite#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Imprisonment#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Invisibility (self only)#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Lesser restoration#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Mass charm monster#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Permanency#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Power word blind#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Power word kill#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Power word stun#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Prismatic spray#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Remove curse#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Remove disease#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Remove fear#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Resist energy#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Resurrection#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with dead#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Summon monster VII#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Waves of exhaustion#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Waves of fatigue#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Wish#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Animal</name>
@@ -381,25 +435,25 @@
   </collection>
   <collection>
     <name>Ankheg</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Tremorsense#60##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Annis</name>
-    <entry>Damage Reduction#2#Vulnerable to bludgeoning weapons#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Skill Bonus#2#Disguise: while acting#0##0</entry>
-    <entry>Spell Resistance#19##0##0</entry>
-    <entry>Spell-Like Ability#0#Disguise self#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0</entry>
+    <entry>Damage Reduction#2#Vulnerable to bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Skill Bonus#2#Disguise: while acting#0##0#False</entry>
+    <entry>Spell Resistance#19##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Disguise self#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Ape</name>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Scent#0##0##0</entry>
-    <entry>Skill Bonus#8#Climb#0##0</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Skill Bonus#8#Climb#0##0#False</entry>
+    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Aquatic</name>
@@ -408,255 +462,282 @@
   </collection>
   <collection>
     <name>Aquatic Elf</name>
-    <entry>Gills#0##0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0</entry>
-    <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0</entry>
-    <entry>Martial Weapon Proficiency#0#Longsword#0##0</entry>
-    <entry>Martial Weapon Proficiency#0#Longbow#0##0</entry>
-    <entry>Martial Weapon Proficiency#0#Rapier#0##0</entry>
-    <entry>Martial Weapon Proficiency#0#Shortbow#0##0</entry>
-    <entry>Save Bonus#2#enchantment spells or effects#0##0</entry>
-    <entry>Skill Bonus#2#Listen#0##0</entry>
-    <entry>Skill Bonus#2#Search#0##0</entry>
-    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0</entry>
-    <entry>Skill Bonus#2#Spot#0##0</entry>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0</entry>
-    <entry>Superior Low-Light Vision#0##0##0</entry>
+    <entry>Gills#0##0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
+    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
+    <entry>Skill Bonus#2#Listen#0##0#False</entry>
+    <entry>Skill Bonus#2#Search#0##0#False</entry>
+    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
+    <entry>Skill Bonus#2#Spot#0##0#False</entry>
+    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
+    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
+    <entry>Superior Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Aranea</name>
-    <entry>Change Shape#0#Small or Medium humanoid; or Medium spider-human hybrid (like a Lycanthrope)#0##0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Skill Bonus#8#Climb#0##0</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0</entry>
-    <entry>Skill Bonus#2#Jump#0##0</entry>
-    <entry>Skill Bonus#2#Listen#0##0</entry>
-    <entry>Skill Bonus#2#Spot#0##0</entry>
+    <entry>Change Shape#0#Small or Medium humanoid; or Medium spider-human hybrid (like a Lycanthrope)#0##0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Skill Bonus#8#Climb#0##0#False</entry>
+    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
+    <entry>Skill Bonus#2#Jump#0##0#False</entry>
+    <entry>Skill Bonus#2#Listen#0##0#False</entry>
+    <entry>Skill Bonus#2#Spot#0##0#False</entry>
+  </collection>
+  <collection>
+    <name>Archon</name>
+    <entry>Aura of Menace#0##0##0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Petrification#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Save Bonus#4#Fortitude: against poison#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Magic circle against chaos/law/good/evil#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Assassin Vine</name>
-    <entry>Blindsight#30##0##0</entry>
-    <entry>Camouflage#0##0##0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0</entry>
-    <entry>Immunity#0#Electricity#0##0</entry>
-    <entry>Skill Bonus#8#Climb#0##0</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0</entry>
+    <entry>Blindsight#30##0##0#False</entry>
+    <entry>Camouflage#0##0##0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Skill Bonus#8#Climb#0##0#False</entry>
+    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Athach</name>
-    <entry>Darkvision#60##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+  </collection>
+  <collection>
+    <name>Augmented</name>
   </collection>
   <collection>
     <name>Average Salamander</name>
-    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Fire#0##0</entry>
-    <entry>Multiattack#0##0##0</entry>
-    <entry>Skill Bonus#4#Craft/Blacksmithing#0##0</entry>
-    <entry>Vulnerability#0#Cold#0##0</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Multiattack#0##0##0#False</entry>
+    <entry>Skill Bonus#4#Craft/Blacksmithing#0##0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Average Xorn</name>
-    <entry>All-Around Vision#0##0##0</entry>
-    <entry>Cleave#0##0##0</entry>
-    <entry>Damage Reduction#5#Vulnerable to bludgeoning weapons#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Earth Glide#0##0##0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0</entry>
-    <entry>Immunity#0#Cold#0##0</entry>
-    <entry>Immunity#0#Fire#0##0</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0</entry>
-    <entry>Skill Bonus#2#Survival: underground#0##0</entry>
-    <entry>Tremorsense#60##0##0</entry>
+    <entry>All-Around Vision#0##0##0#False</entry>
+    <entry>Cleave#0##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Earth Glide#0##0##0#False</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
+    <entry>Skill Bonus#2#Survival: underground#0##0#False</entry>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Avoral</name>
-    <entry>Damage Reduction#10#Vulnerable to evil or silver weapons#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0</entry>
-    <entry>Energy Resistance#10#Sonic#1#Round#0</entry>
-    <entry>Immunity#0#Electricity#0##0</entry>
-    <entry>Immunity#0#Petrification#0##0</entry>
-    <entry>Lay on Hands#0##0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Skill Bonus#2#Disguise: while acting#0##0</entry>
-    <entry>Skill Bonus#8#Spot#0##0</entry>
-    <entry>Spell-Like Ability#0#Aid#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Gust of wind#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Hold person#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Light#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Lightning bolt#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Magic circle against chaos/law/good/evil#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Magic missile#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#See invisibility#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Speak with animals#0#Constant#0</entry>
-    <entry>Spell-Like Ability#0#True seeing#0#At Will#0</entry>
+    <entry>Damage Reduction#10#Vulnerable to evil or silver weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Petrification#0##0#False</entry>
+    <entry>Lay on Hands#0##0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Skill Bonus#2#Disguise: while acting#0##0#False</entry>
+    <entry>Skill Bonus#8#Spot#0##0#False</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Blur: self only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Command#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dimension door#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Gust of wind#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Hold person#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Light#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Lightning bolt#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Magic circle against chaos/law/good/evil: self only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Magic missile#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#True seeing#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Azer</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Fire#0##0</entry>
-    <entry>Spell Resistance#13##0##0</entry>
-    <entry>Vulnerability#0#Cold#0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Spell Resistance#13##0##0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Babau</name>
-    <entry>Damage Reduction#10#Vulnerable to good or cold iron weapons#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0</entry>
-    <entry>Immunity#0#Electricity#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Protective Slime#0##0##0</entry>
-    <entry>Skill Bonus#8#Hide#0##0</entry>
-    <entry>Skill Bonus#8#Listen#0##0</entry>
-    <entry>Spell Resistance#14##0##0</entry>
-    <entry>Spell-Like Ability#0#Darkness#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0</entry>
-    <entry>Telepathy#100##0##0</entry>
+    <entry>Damage Reduction#10#Vulnerable to good or cold iron weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Protective Slime#0##0##0#False</entry>
+    <entry>Skill Bonus#8#Hide#0##0#False</entry>
+    <entry>Skill Bonus#8#Listen#0##0#False</entry>
+    <entry>Skill Bonus#8#Move Silently#0##0#False</entry>
+    <entry>Skill Bonus#8#Search#0##0#False</entry>
+    <entry>Spell Resistance#14##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Baboon</name>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Scent#0##0##0</entry>
-    <entry>Skill Bonus#8#Climb#0##0</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Skill Bonus#8#Climb#0##0#False</entry>
+    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Badger</name>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Scent#0##0##0</entry>
-    <entry>Skill Bonus#4#Escape Artist#0##0</entry>
-    <entry>Track#0##0##0</entry>
-    <entry>Weapon Finesse#0##0##0</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Skill Bonus#4#Escape Artist#0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Baleen Whale</name>
-    <entry>Blindsight#120##0##0</entry>
-    <entry>Hold Breath#0##0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Skill Bonus#4#Listen#0##0</entry>
-    <entry>Skill Bonus#4#Spot#0##0</entry>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0</entry>
+    <entry>Blindsight#120##0##0#False</entry>
+    <entry>Hold Breath#0##0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Skill Bonus#4#Listen#0##0#False</entry>
+    <entry>Skill Bonus#4#Spot#0##0#False</entry>
+    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
+    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Balor</name>
-    <entry>Damage Reduction#15#Vulnerable to good and cold iron weapons#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0</entry>
-    <entry>Immunity#0#Electricity#0##0</entry>
-    <entry>Flaming Body#0##0##0</entry>
-    <entry>Immunity#0#Fire#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Skill Bonus#8#Listen#0##0</entry>
-    <entry>Skill Bonus#8#Spot#0##0</entry>
-    <entry>Spell Resistance#28##0##0</entry>
-    <entry>Spell-Like Ability#0#Blasphemy#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Dominate monster#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Power word stun#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Telekinesis#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#True seeing#0#Constant#0</entry>
-    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0</entry>
-    <entry>Telepathy#100##0##0</entry>
+    <entry>Damage Reduction#15#Vulnerable to good and cold iron weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Flaming Body#0##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Skill Bonus#8#Listen#0##0#False</entry>
+    <entry>Skill Bonus#8#Spot#0##0#False</entry>
+    <entry>Spell Resistance#28##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Blasphemy#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dominate monster#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Power word stun#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Telekinesis#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
   </collection>
   <collection>
     <name>Barghest</name>
-    <entry>Change Shape#0#Goblin or wolf#0##0</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Scent#0##0##0</entry>
-    <entry>Skill Bonus#2#Disguise: while acting#0##0</entry>
-    <entry>Skill Bonus#4#Hide: in wolf form#0##0</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0</entry>
-    <entry>Spell-Like Ability#0#Charm monster#1#Day#0</entry>
-    <entry>Spell-Like Ability#0#Misdirection#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Pass without trace: in wolf form#0#At Will#0</entry>
-    <entry>Spell-Like Ability#0#Rage#0#At Will#0</entry>
+    <entry>Change Shape#0#Goblin or wolf#0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Skill Bonus#2#Disguise: while acting#0##0#False</entry>
+    <entry>Skill Bonus#4#Hide: in wolf form#0##0#False</entry>
+    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Blink#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Charm monster#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Crushing despair#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Dimension door#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Levitate#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Misdirection#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Pass without trace: in wolf form#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Rage#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Basilisk</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Skill Bonus#4#Hide: in natural settings#0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Skill Bonus#4#Hide: in natural settings#0##0#False</entry>
   </collection>
   <collection>
     <name>Bat</name>
-    <entry>Blindsense#20##0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Skill Bonus#4#Listen#0##0</entry>
-    <entry>Skill Bonus#4#Spot#0##0</entry>
+    <entry>Blindsense#20##0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Skill Bonus#4#Listen#0##0#False</entry>
+    <entry>Skill Bonus#4#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
-    <entry>Blindsense#20##0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Flanking#0##0</entry>
-    <entry>Immunity#0#Weapon damage#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Skill Bonus#4#Listen#0##0</entry>
-    <entry>Skill Bonus#4#Spot#0##0</entry>
+    <entry>Blindsense#20##0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Weapon damage#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Skill Bonus#4#Listen#0##0#False</entry>
+    <entry>Skill Bonus#4#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
   </collection>
   <collection>
     <name>Bebilith</name>
-    <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Scent#0##0##0</entry>
-    <entry>Skill Bonus#8#Hide#0##0</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0</entry>
-    <entry>Spell-Like Ability#0#Plane shift: self only#0#At Will#0</entry>
-    <entry>Telepathy#100##0##0</entry>
+    <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Skill Bonus#8#Hide#0##0#False</entry>
+    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Plane shift: self only#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Behir</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Electricity#0##0</entry>
-    <entry>Immunity#0#Tripping#0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Scent#0##0##0</entry>
-    <entry>Skill Bonus#8#Climb#0##0</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Tripping#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Skill Bonus#8#Climb#0##0#False</entry>
+    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Beholder</name>
-    <entry>All-Around Vision#0##0##0</entry>
-    <entry>Antimagic Cone#0##0##0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Flight#0##0##0</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0</entry>
-    <entry>Alertness#0##0##0</entry>
+    <entry>All-Around Vision#0##0##0#False</entry>
+    <entry>Antimagic Cone#0##0##0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Flight#0##0##0#False</entry>
+    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
+    <entry>Alertness#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Belker</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Flanking#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
-    <entry>Skill Bonus#4#Move Silently#0##0</entry>
-    <entry>Smoke Form#0##0##0</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Skill Bonus#4#Move Silently#0##0#False</entry>
+    <entry>Smoke Form#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bison</name>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Scent#0##0##0</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Bear</name>

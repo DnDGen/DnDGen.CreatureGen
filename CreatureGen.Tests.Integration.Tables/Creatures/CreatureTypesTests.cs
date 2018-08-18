@@ -1151,6 +1151,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             var creatures = CreatureConstants.All();
             var allTypes = CreatureConstants.Types.All();
             var allSubTypes = CreatureConstants.Types.Subtypes.All();
+            var allTypesAndSubtypes = allTypes.Union(allSubTypes);
 
             foreach (var creature in creatures)
             {
@@ -1161,7 +1162,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(types.Take(1), Is.SubsetOf(allTypes), creature);
 
                 var subtypes = types.Skip(1);
-                Assert.That(subtypes, Is.SubsetOf(allSubTypes), creature);
+                Assert.That(subtypes, Is.SubsetOf(allTypesAndSubtypes), creature);
             }
         }
 
