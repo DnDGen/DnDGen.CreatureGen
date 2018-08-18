@@ -208,6 +208,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.Amphibious, "Amphibious")]
         [TestCase(FeatConstants.SpecialQualities.AntimagicCone, "Antimagic Cone")]
         [TestCase(FeatConstants.SpecialQualities.AttackBonus, "Attack Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.AuraOfMenace, "Aura of Menace")]
         [TestCase(FeatConstants.SpecialQualities.Blindsense, "Blindsense")]
         [TestCase(FeatConstants.SpecialQualities.Blindsight, "Blindsight")]
         [TestCase(FeatConstants.SpecialQualities.Camouflage, "Camouflage")]

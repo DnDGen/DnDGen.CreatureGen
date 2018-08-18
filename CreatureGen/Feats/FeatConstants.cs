@@ -239,6 +239,7 @@ namespace CreatureGen.Feats
             public const string Amphibious = "Amphibious";
             public const string AntimagicCone = "Antimagic Cone";
             public const string AttackBonus = "Attack Bonus";
+            public const string AuraOfMenace = "Aura of Menace";
             public const string Blindsense = "Blindsense";
             public const string Blindsight = "Blindsight";
             public const string Camouflage = "Camouflage";
@@ -302,6 +303,7 @@ namespace CreatureGen.Feats
                     Amphibious,
                     AntimagicCone,
                     AttackBonus,
+                    AuraOfMenace,
                     Blindsense,
                     Blindsight,
                     Camouflage,
