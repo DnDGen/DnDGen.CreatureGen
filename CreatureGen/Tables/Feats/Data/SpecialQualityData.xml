@@ -616,11 +616,13 @@
     <name>Black Dragon, Adult</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Corrupt Water#0##1#Day#0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Immunity#0#Paralysis#0##0#False</entry>
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#18##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
   </collection>
@@ -634,6 +636,7 @@
     <entry>Immunity#0#Paralysis#0##0#False</entry>
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Insect plague#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
@@ -650,6 +653,7 @@
     <entry>Immunity#0#Paralysis#0##0#False</entry>
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#28##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Insect plague#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
@@ -676,6 +680,7 @@
     <entry>Immunity#0#Paralysis#0##0#False</entry>
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
   </collection>
@@ -689,6 +694,7 @@
     <entry>Immunity#0#Paralysis#0##0#False</entry>
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#22##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
@@ -703,6 +709,7 @@
     <entry>Immunity#0#Paralysis#0##0#False</entry>
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#23##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
@@ -727,6 +734,7 @@
     <entry>Immunity#0#Paralysis#0##0#False</entry>
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#26##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Insect plague#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
@@ -751,6 +759,7 @@
     <entry>Immunity#0#Paralysis#0##0#False</entry>
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#17##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
   </collection>
@@ -766,57 +775,187 @@
   </collection>
   <collection>
     <name>Black Pudding</name>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Polymorph#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Skill Bonus#8#Climb#0##0#False</entry>
+    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
+    <entry>Split#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Blink Dog</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Blink#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dimension door#1#Round#0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Sound Imitation#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Ancient</name>
-    <entry>Clumsy Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Sound Imitation#0##0##0#False</entry>
+    <entry>Spell Resistance#27##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Hallucinatory terrain#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Veil#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Great Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Sound Imitation#0##0##0#False</entry>
+    <entry>Spell Resistance#31##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Hallucinatory terrain#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Mirage arcana#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Veil#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Juvenile</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Sound Imitation#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Mature Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Sound Imitation#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Old</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Sound Imitation#0##0##0#False</entry>
+    <entry>Spell Resistance#22##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Very Old</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Sound Imitation#0##0##0#False</entry>
+    <entry>Spell Resistance#23##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Very Young</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Sound Imitation#0##0##0#False</entry>
+    <entry>Spell Resistance#26##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Insect plague#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Wyrmling</name>
-    <entry>Average Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Young Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Sound Imitation#0##0##0#False</entry>
+    <entry>Spell Resistance#17##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Young</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Create/Destroy Water#0##3#Day#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Blue Slaad</name>

@@ -772,7 +772,6 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Types.Giant)]
         [TestCase(CreatureConstants.Types.Humanoid)]
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
-        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
         public void CreaturesOfTypeCanUseEquipment(string creatureType)
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
