@@ -1189,6 +1189,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), "All")]
         public void CreatureSubtypesMatchCreatureGroupSubtypes(string creature)
         {
+            var allTypes = CreatureConstants.Types.All();
             var allSubTypes = CreatureConstants.Types.Subtypes.All();
 
             Assert.That(table.Keys, Contains.Item(creature), "Table keys");
@@ -1196,7 +1197,9 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             var types = table[creature];
             Assert.That(types, Is.Not.Empty, creature);
 
-            var subtypes = types.Skip(1);
+            //INFO: We include types as subtypes, because the Augmented subtype includes the original type
+            //Example is the Abyssal Treater Basilisk is an Outsider with an Augmented Magical Beast subtype
+            var subtypes = types.Skip(1).Except(allTypes);
             Assert.That(subtypes, Is.SubsetOf(allSubTypes), creature);
 
             foreach (var subtype in subtypes)

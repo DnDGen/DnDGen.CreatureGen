@@ -129,7 +129,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Hit));
                     Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty);
                     Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Positive);
-                    Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]) % 5, Is.Zero);
                 }
             }
         }
@@ -218,10 +217,11 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SkillBonus)
                 {
-                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()));
-                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty);
-                    Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty);
-                    Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Positive);
+                    var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
+
+                    Assert.That(focus, Is.Not.Empty);
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()), focus);
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty, focus);
                 }
             }
         }
@@ -297,7 +297,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 if (featName == FeatConstants.SpecialQualities.ChangeShape || featName == FeatConstants.SpecialQualities.AlternateForm)
                 {
                     var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
-                    var changesIntoHumanoid = humanoids.Any(h => focus.Contains(h));
+                    var changesIntoHumanoid = humanoids.Any(h => focus.ToLower().Contains(h.ToLower()));
 
                     Assert.That(changesIntoHumanoid, Is.EqualTo(creatureData.CanUseEquipment), focus);
                 }

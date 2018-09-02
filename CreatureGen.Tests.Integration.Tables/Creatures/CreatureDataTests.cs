@@ -1,5 +1,8 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Tables;
+using DnDGen.Core.Selectors.Collections;
+using EventGen;
+using Ninject;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -10,6 +13,11 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class CreatureDataTests : DataTests
     {
+        [Inject]
+        public ICollectionSelector CollectionSelector { get; set; }
+        [Inject]
+        public ClientIDManager ClientIDManager { get; set; }
+
         protected override string tableName
         {
             get
@@ -29,6 +37,13 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             indices[DataIndexConstants.CreatureData.Reach] = "Reach";
             indices[DataIndexConstants.CreatureData.Size] = "Size";
             indices[DataIndexConstants.CreatureData.Space] = "Space";
+        }
+
+        [SetUp]
+        public void Setup()
+        {
+            var clientId = Guid.NewGuid();
+            ClientIDManager.SetClientID(clientId);
         }
 
         [Test]
@@ -750,6 +765,44 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
 
                 Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.CanUseEquipment), creature);
                 Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString).Or.EqualTo(bool.FalseString), creature);
+            }
+        }
+
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
+        public void CreaturesOfTypeCanUseEquipment(string creatureType)
+        {
+            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+
+            AssertCollection(table.Keys.Intersect(creatures), creatures);
+
+            foreach (var creature in creatures)
+            {
+                var data = table[creature].ToArray();
+
+                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.CanUseEquipment), creature);
+                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString), creature);
+            }
+        }
+
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Ooze)]
+        [TestCase(CreatureConstants.Types.Vermin)]
+        public void CreaturesOfTypeCannotUseEquipment(string creatureType)
+        {
+            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+
+            AssertCollection(table.Keys.Intersect(creatures), creatures);
+
+            foreach (var creature in creatures)
+            {
+                var data = table[creature].ToArray();
+
+                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.CanUseEquipment), creature);
+                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.FalseString), creature);
             }
         }
 

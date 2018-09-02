@@ -14,8 +14,6 @@
   <collection>
     <name>Aboleth</name>
     <entry>Mucus Cloud#0##0##0#False</entry>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
     <entry>Spell-Like Ability#0#Hypnotic pattern#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Illusory wall#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Mirage arcana#0#At Will#0#False</entry>
@@ -209,7 +207,6 @@
     <entry>Spell-Like Ability#0#Remove disease#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Remove fear#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#See invisibility#7#Day#0#False</entry>
-    <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
     <entry>Uncanny Dodge#0##0##0#False</entry>
   </collection>
   <collection>
@@ -239,7 +236,6 @@
     <entry>Spell-Like Ability#0#Remove fear#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#See invisibility#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Speak with dead#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Waves of exhaustion#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Waves of fatigue#3#Day#0#False</entry>
@@ -283,7 +279,6 @@
     <entry>Spell-Like Ability#0#See invisibility#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Speak with dead#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Summon monster VII#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Waves of exhaustion#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Waves of fatigue#0#At Will#0#False</entry>
@@ -295,143 +290,24 @@
   </collection>
   <collection>
     <name>Animated Object, Colossal</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Ability Damage#0##0#False</entry>
-    <entry>Immunity#0#Ability Drain#0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Death#0##0#False</entry>
-    <entry>Immunity#0#Disease#0##0#False</entry>
-    <entry>Immunity#0#Energy Drain#0##0#False</entry>
-    <entry>Immunity#0#Exhaustion#0##0#False</entry>
-    <entry>Immunity#0#Fatigue#0##0#False</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
-    <entry>Immunity#0#Necromancy#0##0#False</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Gargantuan</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Ability Damage#0##0#False</entry>
-    <entry>Immunity#0#Ability Drain#0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Death#0##0#False</entry>
-    <entry>Immunity#0#Disease#0##0#False</entry>
-    <entry>Immunity#0#Energy Drain#0##0#False</entry>
-    <entry>Immunity#0#Exhaustion#0##0#False</entry>
-    <entry>Immunity#0#Fatigue#0##0#False</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
-    <entry>Immunity#0#Necromancy#0##0#False</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Huge</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Ability Damage#0##0#False</entry>
-    <entry>Immunity#0#Ability Drain#0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Death#0##0#False</entry>
-    <entry>Immunity#0#Disease#0##0#False</entry>
-    <entry>Immunity#0#Energy Drain#0##0#False</entry>
-    <entry>Immunity#0#Exhaustion#0##0#False</entry>
-    <entry>Immunity#0#Fatigue#0##0#False</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
-    <entry>Immunity#0#Necromancy#0##0#False</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Large</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Ability Damage#0##0#False</entry>
-    <entry>Immunity#0#Ability Drain#0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Death#0##0#False</entry>
-    <entry>Immunity#0#Disease#0##0#False</entry>
-    <entry>Immunity#0#Energy Drain#0##0#False</entry>
-    <entry>Immunity#0#Exhaustion#0##0#False</entry>
-    <entry>Immunity#0#Fatigue#0##0#False</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
-    <entry>Immunity#0#Necromancy#0##0#False</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Medium</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Ability Damage#0##0#False</entry>
-    <entry>Immunity#0#Ability Drain#0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Death#0##0#False</entry>
-    <entry>Immunity#0#Disease#0##0#False</entry>
-    <entry>Immunity#0#Energy Drain#0##0#False</entry>
-    <entry>Immunity#0#Exhaustion#0##0#False</entry>
-    <entry>Immunity#0#Fatigue#0##0#False</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
-    <entry>Immunity#0#Necromancy#0##0#False</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Small</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Ability Damage#0##0#False</entry>
-    <entry>Immunity#0#Ability Drain#0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Death#0##0#False</entry>
-    <entry>Immunity#0#Disease#0##0#False</entry>
-    <entry>Immunity#0#Energy Drain#0##0#False</entry>
-    <entry>Immunity#0#Exhaustion#0##0#False</entry>
-    <entry>Immunity#0#Fatigue#0##0#False</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
-    <entry>Immunity#0#Necromancy#0##0#False</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Animated Object, Tiny</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Ability Damage#0##0#False</entry>
-    <entry>Immunity#0#Ability Drain#0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Death#0##0#False</entry>
-    <entry>Immunity#0#Disease#0##0#False</entry>
-    <entry>Immunity#0#Energy Drain#0##0#False</entry>
-    <entry>Immunity#0#Exhaustion#0##0#False</entry>
-    <entry>Immunity#0#Fatigue#0##0#False</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
-    <entry>Immunity#0#Necromancy#0##0#False</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Ankheg</name>
@@ -450,7 +326,6 @@
   </collection>
   <collection>
     <name>Ape</name>
-    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
     <entry>Skill Bonus#8#Climb#0##0#False</entry>
     <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
@@ -475,8 +350,6 @@
     <entry>Skill Bonus#2#Search#0##0#False</entry>
     <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
     <entry>Skill Bonus#2#Spot#0##0#False</entry>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
     <entry>Superior Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
@@ -514,7 +387,6 @@
   </collection>
   <collection>
     <name>Athach</name>
-    <entry>Darkvision#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Augmented</name>
@@ -601,14 +473,12 @@
   </collection>
   <collection>
     <name>Baboon</name>
-    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
     <entry>Skill Bonus#8#Climb#0##0#False</entry>
     <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Badger</name>
-    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
     <entry>Skill Bonus#4#Escape Artist#0##0#False</entry>
     <entry>Track#0##0##0#False</entry>
@@ -618,11 +488,8 @@
     <name>Baleen Whale</name>
     <entry>Blindsight#120##0##0#False</entry>
     <entry>Hold Breath#0##0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Skill Bonus#4#Listen#0##0#False</entry>
     <entry>Skill Bonus#4#Spot#0##0#False</entry>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Balor</name>
@@ -630,6 +497,7 @@
     <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Exotic Weapon Proficiency#0#Whip#0##0#True</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
     <entry>Flaming Body#0##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
@@ -639,7 +507,11 @@
     <entry>Spell Resistance#28##0##0#False</entry>
     <entry>Spell-Like Ability#0#Blasphemy#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Dominate monster#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Fire storm#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Implosion#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Insanity#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Power word stun#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Telekinesis#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False</entry>
@@ -676,7 +548,6 @@
   <collection>
     <name>Bat</name>
     <entry>Blindsense#20##0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Skill Bonus#4#Listen#0##0#False</entry>
     <entry>Skill Bonus#4#Spot#0##0#False</entry>
   </collection>
@@ -686,7 +557,6 @@
     <entry>Immunity#0#Critical hits#0##0#False</entry>
     <entry>Immunity#0#Flanking#0##0#False</entry>
     <entry>Immunity#0#Weapon damage#0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Skill Bonus#4#Listen#0##0#False</entry>
     <entry>Skill Bonus#4#Spot#0##0#False</entry>
   </collection>
@@ -717,10 +587,9 @@
     <name>Beholder</name>
     <entry>All-Around Vision#0##0##0#False</entry>
     <entry>Antimagic Cone#0##0##0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Flight#0##0##0#False</entry>
     <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
-    <entry>Alertness#0##0##0#False</entry>
+    <entry>Alertness#2##0##0#False</entry>
   </collection>
   <collection>
     <name>Belker</name>
@@ -736,166 +605,164 @@
   </collection>
   <collection>
     <name>Bison</name>
-    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Bear</name>
-    <entry>Low-Light Vision#0##0##0</entry>
-    <entry>Scent#0##0##0</entry>
-    <entry>Skill Bonus#4#Swim#0##0</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Skill Bonus#4#Swim#0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Adult</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Corrupt Water#0##1#Day#0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Spell-Like Ability#0#Darkness#3#Day#0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Corrupt Water#0##1#Day#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Ancient</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Corrupt Water#0##1#Day#0</entry>
-    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Spell-Like Ability#0#Darkness#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Insect plague#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Plant growth#1#Day#0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Corrupt Water#0##1#Day#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Insect plague#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Great Wyrm</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Charm Reptiles#0##3#Day#0</entry>
-    <entry>Corrupt Water#0##1#Day#0</entry>
-    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Spell-Like Ability#0#Darkness#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Insect plague#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Plant growth#1#Day#0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Charm Reptiles#0##3#Day#0#False</entry>
+    <entry>Corrupt Water#0##1#Day#0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Insect plague#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Juvenile</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Spell-Like Ability#0#Darkness#3#Day#0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Mature Adult</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Corrupt Water#0##1#Day#0</entry>
-    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Spell-Like Ability#0#Darkness#3#Day#0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Corrupt Water#0##1#Day#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Old</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Corrupt Water#0##1#Day#0</entry>
-    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Spell-Like Ability#0#Darkness#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Plant growth#1#Day#0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Corrupt Water#0##1#Day#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Very Old</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Corrupt Water#0##1#Day#0</entry>
-    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Spell-Like Ability#0#Darkness#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Plant growth#1#Day#0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Corrupt Water#0##1#Day#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Very Young</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Wyrm</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Corrupt Water#0##1#Day#0</entry>
-    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Spell-Like Ability#0#Darkness#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Insect plague#3#Day#0</entry>
-    <entry>Spell-Like Ability#0#Plant growth#1#Day#0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Corrupt Water#0##1#Day#0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Insect plague#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Wyrmling</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Young Adult</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Spell-Like Ability#0#Darkness#3#Day#0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Young</name>
-    <entry>Blindsense#60##0##0</entry>
-    <entry>Darkvision#120##0##0</entry>
-    <entry>Immunity#0#Acid#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Keen Senses#0##0##0</entry>
-    <entry>Water Breathing#0##0##0</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Pudding</name>
@@ -1094,10 +961,13 @@
     <name>Centipede Swarm</name>
   </collection>
   <collection>
+    <name>Chain Devil (Kyton)</name>
+  </collection>
+  <collection>
     <name>Chaos Beast</name>
   </collection>
   <collection>
-    <name>Chain Devil (Kyton)</name>
+    <name>Chaotic</name>
   </collection>
   <collection>
     <name>Cheetah</name>
@@ -1127,6 +997,9 @@
   <collection>
     <name>Cockatrice</name>
     <entry>Poor Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Cold</name>
   </collection>
   <collection>
     <name>Constrictor Snake</name>
@@ -1307,6 +1180,9 @@
     <name>Doppelganger</name>
   </collection>
   <collection>
+    <name>Dragon</name>
+  </collection>
+  <collection>
     <name>Dragon Turtle</name>
   </collection>
   <collection>
@@ -1336,8 +1212,14 @@
     <name>Dust Mephit</name>
   </collection>
   <collection>
+    <name>Dwarf</name>
+  </collection>
+  <collection>
     <name>Eagle</name>
     <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Earth</name>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
@@ -1389,6 +1271,9 @@
     <name>Elder Xorn</name>
   </collection>
   <collection>
+    <name>Elemental</name>
+  </collection>
+  <collection>
     <name>Elephant</name>
   </collection>
   <collection>
@@ -1399,6 +1284,9 @@
   </collection>
   <collection>
     <name>Eleven-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Elf</name>
   </collection>
   <collection>
     <name>Erinyes</name>
@@ -1415,6 +1303,18 @@
   </collection>
   <collection>
     <name>Ettin</name>
+  </collection>
+  <collection>
+    <name>Evil</name>
+  </collection>
+  <collection>
+    <name>Extraplanar</name>
+  </collection>
+  <collection>
+    <name>Fey</name>
+  </collection>
+  <collection>
+    <name>Fire</name>
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
@@ -1485,7 +1385,10 @@
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
-    <entry>Good Maneuverability</entry>
+    <entry>All-Around Vision#0##0##0#False</entry>
+    <entry>Flight#0##0##0#False</entry>
+    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
+    <entry>Alertness#2##0##0#False</entry>
   </collection>
   <collection>
     <name>Gelatinous Cube</name>
@@ -1499,6 +1402,9 @@
   </collection>
   <collection>
     <name>Ghoul</name>
+  </collection>
+  <collection>
+    <name>Giant</name>
   </collection>
   <collection>
     <name>Giant Ant, Queen</name>
@@ -1569,7 +1475,13 @@
     <name>Gnoll</name>
   </collection>
   <collection>
+    <name>Gnome</name>
+  </collection>
+  <collection>
     <name>Goblin</name>
+  </collection>
+  <collection>
+    <name>Goblinoid</name>
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
@@ -1618,6 +1530,9 @@
   <collection>
     <name>Gold Dragon, Young</name>
     <entry>Poor Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Good</name>
   </collection>
   <collection>
     <name>Gorgon</name>
@@ -1726,6 +1641,9 @@
     <name>Half-Orc</name>
   </collection>
   <collection>
+    <name>Halfling</name>
+  </collection>
+  <collection>
     <name>Harpy</name>
     <entry>Average Maneuverability</entry>
   </collection>
@@ -1804,6 +1722,9 @@
     <name>Human</name>
   </collection>
   <collection>
+    <name>Humanoid</name>
+  </collection>
+  <collection>
     <name>Hyena</name>
   </collection>
   <collection>
@@ -1811,6 +1732,9 @@
   </collection>
   <collection>
     <name>Ice Mephit</name>
+  </collection>
+  <collection>
+    <name>Incorporeal</name>
   </collection>
   <collection>
     <name>Invisible Stalker</name>
@@ -1866,6 +1790,9 @@
     <entry>Perfect Maneuverability</entry>
   </collection>
   <collection>
+    <name>Lawful</name>
+  </collection>
+  <collection>
     <name>Lemure</name>
   </collection>
   <collection>
@@ -1902,6 +1829,9 @@
   <collection>
     <name>Locust Swarm</name>
     <entry>Poor Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Magical Beast</name>
   </collection>
   <collection>
     <name>Magma Mephit</name>
@@ -1978,6 +1908,9 @@
     <name>Monstrous Centipede, Tiny</name>
   </collection>
   <collection>
+    <name>Monstrous Humanoid</name>
+  </collection>
+  <collection>
     <name>Monstrous Scorpion, Colossal</name>
   </collection>
   <collection>
@@ -2031,6 +1964,9 @@
   <collection>
     <name>Nalfeshnee</name>
     <entry>Poor Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Native</name>
   </collection>
   <collection>
     <name>Nessian Warhound</name>
@@ -2093,6 +2029,9 @@
     <entry>Good Maneuverability</entry>
   </collection>
   <collection>
+    <name>Ooze</name>
+  </collection>
+  <collection>
     <name>Ooze Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0</entry>
     <entry>Darkvision#60##0##0</entry>
@@ -2112,6 +2051,9 @@
   </collection>
   <collection>
     <name>Otyugh</name>
+  </collection>
+  <collection>
+    <name>Outsider</name>
   </collection>
   <collection>
     <name>Owl</name>
@@ -2144,6 +2086,9 @@
   <collection>
     <name>Pixie with Irresistable Dance</name>
     <entry>Good Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Plant</name>
   </collection>
   <collection>
     <name>Polar Bear</name>
@@ -2244,6 +2189,9 @@
     <name>Remorhaz</name>
   </collection>
   <collection>
+    <name>Reptilian</name>
+  </collection>
+  <collection>
     <name>Retriever</name>
     <entry>Darkvision#60##0##0</entry>
     <entry>Immunity#0#Ability Damage#0##0</entry>
@@ -2328,6 +2276,9 @@
   </collection>
   <collection>
     <name>Shambling Mound</name>
+  </collection>
+  <collection>
+    <name>Shapechanger</name>
   </collection>
   <collection>
     <name>Shark, Huge</name>
@@ -2452,6 +2403,9 @@
     <name>Svirfneblin</name>
   </collection>
   <collection>
+    <name>Swarm</name>
+  </collection>
+  <collection>
     <name>Tallfellow Halfling</name>
   </collection>
   <collection>
@@ -2522,6 +2476,9 @@
     <name>Umber Hulk</name>
   </collection>
   <collection>
+    <name>Undead</name>
+  </collection>
+  <collection>
     <name>Unicorn</name>
   </collection>
   <collection>
@@ -2530,6 +2487,9 @@
   <collection>
     <name>Vargouille</name>
     <entry>Good Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Vermin</name>
   </collection>
   <collection>
     <name>Violet Fungus</name>
@@ -2555,6 +2515,9 @@
   </collection>
   <collection>
     <name>Warpony</name>
+  </collection>
+  <collection>
+    <name>Water</name>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
