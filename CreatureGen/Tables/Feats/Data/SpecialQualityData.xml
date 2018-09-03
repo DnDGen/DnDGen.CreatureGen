@@ -864,7 +864,7 @@
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell Resistance#22##0##0#False</entry>
     <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
   </collection>
   <collection>
@@ -878,9 +878,9 @@
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
-    <entry>Spell Resistance#22##0##0#False</entry>
+    <entry>Spell Resistance#24##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Hallucinatory terrain#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
-    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Very Old</name>
@@ -893,9 +893,9 @@
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
-    <entry>Spell Resistance#23##0##0#False</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Hallucinatory terrain#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
-    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Very Young</name>
@@ -918,10 +918,10 @@
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
-    <entry>Spell Resistance#26##0##0#False</entry>
+    <entry>Spell Resistance#29##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Hallucinatory terrain#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Veil#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
-    <entry>Spell-Like Ability#0#Insect plague#3#Day#0#False</entry>
-    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Wyrmling</name>
@@ -945,7 +945,6 @@
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
     <entry>Spell Resistance#17##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Young</name>

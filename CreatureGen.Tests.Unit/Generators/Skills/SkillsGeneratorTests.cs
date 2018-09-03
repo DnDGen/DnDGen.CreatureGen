@@ -1091,6 +1091,12 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
+        public void GetCircumstantialSynergisticBonus()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void IfCannotUseEquipment_DoNotGetUntrainedUnnaturalSkill()
         {
             AddUntrainedSkills(2);
