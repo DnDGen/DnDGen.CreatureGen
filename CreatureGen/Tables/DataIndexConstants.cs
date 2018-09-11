@@ -49,6 +49,33 @@
             }
         }
 
+        internal static class SkillSynergyFeatData
+        {
+            public const int FeatNameIndex = 0;
+            public const int FocusTypeIndex = 1;
+            public const int PowerIndex = 2;
+
+            public static string[] InitializeData()
+            {
+                return DataIndexConstants.InitializeData(PowerIndex);
+            }
+
+            public static string BuildDataKey(string sourceSkill, string sourceFocus, string targetSkill, string targetFocus)
+            {
+                var source = sourceSkill;
+
+                if (!string.IsNullOrEmpty(sourceFocus))
+                    source += "/" + sourceFocus;
+
+                var target = targetSkill;
+
+                if (!string.IsNullOrEmpty(targetFocus))
+                    target += "/" + targetFocus;
+
+                return $"{source}:{target}";
+            }
+        }
+
         internal static class SkillSelectionData
         {
             public const int BaseStatName = 0;

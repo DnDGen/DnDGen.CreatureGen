@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Creatures;
+using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Selectors.Helpers;
 using CreatureGen.Selectors.Selections;
@@ -21,6 +22,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         private Mock<ICollectionSelector> mockCollectionsSelector;
         private Mock<ITypeAndAmountSelector> mockTypesAndAmountsSelector;
         private Dictionary<string, IEnumerable<string>> featsData;
+        private Dictionary<string, IEnumerable<string>> skillSynergiesData;
         private Dictionary<string, List<string>> specialQualitiesData;
         private CreatureType creatureType;
 
@@ -32,6 +34,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             featsSelector = new FeatsSelector(mockCollectionsSelector.Object, mockTypesAndAmountsSelector.Object);
 
             featsData = new Dictionary<string, IEnumerable<string>>();
+            skillSynergiesData = new Dictionary<string, IEnumerable<string>>();
             creatureType = new CreatureType();
             creatureType.Name = "creature type";
             specialQualitiesData = new Dictionary<string, List<string>>();
@@ -43,6 +46,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, It.IsAny<string>()))
                 .Returns(Enumerable.Empty<TypeAndAmountSelection>());
             mockCollectionsSelector.Setup(s => s.SelectAllFrom(TableNameConstants.Collection.FeatData)).Returns(featsData);
+            mockCollectionsSelector.Setup(s => s.SelectAllFrom(TableNameConstants.Collection.SkillSynergyFeatData)).Returns(skillSynergiesData);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SpecialQualityData, It.IsAny<string>())).Returns((string t, string c) => specialQualitiesData[c]);
         }
 
@@ -799,6 +803,20 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             data[DataIndexConstants.FeatData.RequiresNaturalArmor] = requiresNaturalArmor.ToString();
             data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = requiredNaturalWeaponQuantity.ToString();
             data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = requiredHandQuantity.ToString();
+
+            return data;
+        }
+
+        private IEnumerable<string> BuildSkillSynergyFeatData(
+            string featName = FeatConstants.SpecialQualities.SkillBonus,
+            string focus = "",
+            int power = 0)
+        {
+            var data = DataIndexConstants.SkillSynergyFeatData.InitializeData();
+
+            data[DataIndexConstants.SkillSynergyFeatData.FeatNameIndex] = featName;
+            data[DataIndexConstants.SkillSynergyFeatData.FocusTypeIndex] = focus;
+            data[DataIndexConstants.SkillSynergyFeatData.PowerIndex] = power.ToString();
 
             return data;
         }
@@ -1764,6 +1782,312 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.RequiredSizes, Is.Empty);
+        }
+
+        [Test]
+        public void GetSkillSynergy()
+        {
+            skillSynergiesData["key"] = BuildSkillSynergyFeatData();
+
+            var synergies = featsSelector.SelectSkillSynergies();
+            Assert.That(synergies.Count(), Is.EqualTo(1));
+
+            var synergy = synergies.Single();
+
+            Assert.That(synergy.Feat, Is.EqualTo(FeatConstants.SpecialQualities.SkillBonus));
+            Assert.That(synergy.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(synergy.FocusType, Is.Empty);
+            Assert.That(synergy.Frequency.Quantity, Is.Zero);
+            Assert.That(synergy.Frequency.TimePeriod, Is.Empty);
+            Assert.That(synergy.MinimumCasterLevel, Is.Zero);
+            Assert.That(synergy.Power, Is.Zero);
+            Assert.That(synergy.RequiredAbilities, Is.Empty);
+            Assert.That(synergy.RequiredBaseAttack, Is.Zero);
+            Assert.That(synergy.RequiredFeats, Is.Empty);
+            Assert.That(synergy.RequiredSkills, Is.Empty);
+        }
+
+        [Test]
+        public void GetNoSkillSynergies()
+        {
+            var synergies = featsSelector.SelectSkillSynergies();
+            Assert.That(synergies, Is.Empty);
+        }
+
+        [Test]
+        public void GetSkillSynergies()
+        {
+            skillSynergiesData["key 1"] = BuildSkillSynergyFeatData();
+            skillSynergiesData["key 2"] = BuildSkillSynergyFeatData();
+
+            var synergies = featsSelector.SelectSkillSynergies();
+            Assert.That(synergies.Count(), Is.EqualTo(2));
+
+            var first = synergies.First();
+            var last = synergies.Last();
+
+            Assert.That(first.Feat, Is.EqualTo(FeatConstants.SpecialQualities.SkillBonus));
+            Assert.That(first.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(first.FocusType, Is.Empty);
+            Assert.That(first.Frequency.Quantity, Is.Zero);
+            Assert.That(first.Frequency.TimePeriod, Is.Empty);
+            Assert.That(first.MinimumCasterLevel, Is.Zero);
+            Assert.That(first.Power, Is.Zero);
+            Assert.That(first.RequiredAbilities, Is.Empty);
+            Assert.That(first.RequiredBaseAttack, Is.Zero);
+            Assert.That(first.RequiredFeats, Is.Empty);
+            Assert.That(first.RequiredSkills, Is.Empty);
+
+            Assert.That(last.Feat, Is.EqualTo(FeatConstants.SpecialQualities.SkillBonus));
+            Assert.That(last.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(last.FocusType, Is.Empty);
+            Assert.That(last.Frequency.Quantity, Is.Zero);
+            Assert.That(last.Frequency.TimePeriod, Is.Empty);
+            Assert.That(last.MinimumCasterLevel, Is.Zero);
+            Assert.That(last.Power, Is.Zero);
+            Assert.That(last.RequiredAbilities, Is.Empty);
+            Assert.That(last.RequiredBaseAttack, Is.Zero);
+            Assert.That(last.RequiredFeats, Is.Empty);
+            Assert.That(last.RequiredSkills, Is.Empty);
+        }
+
+        [Test]
+        public void GetSkillSynergyWithFocusType()
+        {
+            skillSynergiesData["key"] = BuildSkillSynergyFeatData(focus: "focus");
+
+            var synergies = featsSelector.SelectSkillSynergies();
+            Assert.That(synergies.Count(), Is.EqualTo(1));
+
+            var synergy = synergies.Single();
+
+            Assert.That(synergy.Feat, Is.EqualTo(FeatConstants.SpecialQualities.SkillBonus));
+            Assert.That(synergy.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(synergy.FocusType, Is.EqualTo("focus"));
+            Assert.That(synergy.Frequency.Quantity, Is.Zero);
+            Assert.That(synergy.Frequency.TimePeriod, Is.Empty);
+            Assert.That(synergy.MinimumCasterLevel, Is.Zero);
+            Assert.That(synergy.Power, Is.Zero);
+            Assert.That(synergy.RequiredAbilities, Is.Empty);
+            Assert.That(synergy.RequiredBaseAttack, Is.Zero);
+            Assert.That(synergy.RequiredFeats, Is.Empty);
+            Assert.That(synergy.RequiredSkills, Is.Empty);
+        }
+
+        [Test]
+        public void GetSkillSynergyWithPower()
+        {
+            skillSynergiesData["key"] = BuildSkillSynergyFeatData(power: 9266);
+
+            var synergies = featsSelector.SelectSkillSynergies();
+            Assert.That(synergies.Count(), Is.EqualTo(1));
+
+            var synergy = synergies.Single();
+
+            Assert.That(synergy.Feat, Is.EqualTo(FeatConstants.SpecialQualities.SkillBonus));
+            Assert.That(synergy.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(synergy.FocusType, Is.Empty);
+            Assert.That(synergy.Frequency.Quantity, Is.Zero);
+            Assert.That(synergy.Frequency.TimePeriod, Is.Empty);
+            Assert.That(synergy.MinimumCasterLevel, Is.Zero);
+            Assert.That(synergy.Power, Is.EqualTo(9266));
+            Assert.That(synergy.RequiredAbilities, Is.Empty);
+            Assert.That(synergy.RequiredBaseAttack, Is.Zero);
+            Assert.That(synergy.RequiredFeats, Is.Empty);
+            Assert.That(synergy.RequiredSkills, Is.Empty);
+        }
+
+        [Test]
+        public void GetSkillSynergyWithRequiredSkill()
+        {
+            skillSynergiesData["key"] = BuildSkillSynergyFeatData();
+
+            var skillRankRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "skill", Amount = 9266 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "key")).Returns(skillRankRequirements);
+
+            var synergies = featsSelector.SelectSkillSynergies();
+            Assert.That(synergies.Count, Is.EqualTo(1));
+
+            var featSelection = synergies.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo(FeatConstants.SpecialQualities.SkillBonus));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
+            Assert.That(featSelection.Power, Is.Zero);
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.Zero);
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
+            Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(1));
+
+            var requiredSkill = featSelection.RequiredSkills.Single();
+            Assert.That(requiredSkill.Skill, Is.EqualTo("skill"));
+            Assert.That(requiredSkill.Ranks, Is.EqualTo(9266));
+            Assert.That(requiredSkill.Focus, Is.Empty);
+        }
+
+        [Test]
+        public void GetSkillSynergyWithRequiredSkillWithFocus()
+        {
+            skillSynergiesData["key"] = BuildSkillSynergyFeatData();
+
+            var skillRankRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "skill/focus", Amount = 9266 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "key")).Returns(skillRankRequirements);
+
+            var synergies = featsSelector.SelectSkillSynergies();
+            Assert.That(synergies.Count, Is.EqualTo(1));
+
+            var featSelection = synergies.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo(FeatConstants.SpecialQualities.SkillBonus));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
+            Assert.That(featSelection.Power, Is.Zero);
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.Zero);
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
+            Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(1));
+
+            var requiredSkill = featSelection.RequiredSkills.Single();
+            Assert.That(requiredSkill.Skill, Is.EqualTo("skill"));
+            Assert.That(requiredSkill.Ranks, Is.EqualTo(9266));
+            Assert.That(requiredSkill.Focus, Is.EqualTo("focus"));
+        }
+
+        [Test]
+        public void GetSkillSynergyWithRequiredSkills()
+        {
+            skillSynergiesData["key"] = BuildSkillSynergyFeatData();
+
+            var skillRankRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "skill", Amount = 9266 },
+                new TypeAndAmountSelection { Type = "other skill", Amount = 90210 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "key")).Returns(skillRankRequirements);
+
+            var synergies = featsSelector.SelectSkillSynergies();
+            Assert.That(synergies.Count, Is.EqualTo(1));
+
+            var featSelection = synergies.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo(FeatConstants.SpecialQualities.SkillBonus));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
+            Assert.That(featSelection.Power, Is.Zero);
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.Zero);
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
+            Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(2));
+
+            var requiredSkill = featSelection.RequiredSkills.First();
+            Assert.That(requiredSkill.Skill, Is.EqualTo("skill"));
+            Assert.That(requiredSkill.Ranks, Is.EqualTo(9266));
+            Assert.That(requiredSkill.Focus, Is.Empty);
+
+            var otherRequiredSkill = featSelection.RequiredSkills.Last();
+            Assert.That(otherRequiredSkill.Skill, Is.EqualTo("other skill"));
+            Assert.That(otherRequiredSkill.Ranks, Is.EqualTo(90210));
+            Assert.That(otherRequiredSkill.Focus, Is.Empty);
+        }
+
+        [Test]
+        public void GetSkillSynergyWithRequiredSkillsWithFoci()
+        {
+            skillSynergiesData["key"] = BuildSkillSynergyFeatData();
+
+            var skillRankRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "skill/focus", Amount = 9266 },
+                new TypeAndAmountSelection { Type = "other skill/other focus", Amount = 90210 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "key")).Returns(skillRankRequirements);
+
+            var synergies = featsSelector.SelectSkillSynergies();
+            Assert.That(synergies.Count, Is.EqualTo(1));
+
+            var featSelection = synergies.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo(FeatConstants.SpecialQualities.SkillBonus));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
+            Assert.That(featSelection.Power, Is.Zero);
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.Zero);
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
+            Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(2));
+
+            var requiredSkill = featSelection.RequiredSkills.First();
+            Assert.That(requiredSkill.Skill, Is.EqualTo("skill"));
+            Assert.That(requiredSkill.Ranks, Is.EqualTo(9266));
+            Assert.That(requiredSkill.Focus, Is.EqualTo("focus"));
+
+            var otherRequiredSkill = featSelection.RequiredSkills.Last();
+            Assert.That(otherRequiredSkill.Skill, Is.EqualTo("other skill"));
+            Assert.That(otherRequiredSkill.Ranks, Is.EqualTo(90210));
+            Assert.That(otherRequiredSkill.Focus, Is.EqualTo("other focus"));
+        }
+
+        [Test]
+        public void GetSkillSynergyWithRequiredSkillsWithAndWithoutFoci()
+        {
+            skillSynergiesData["key"] = BuildSkillSynergyFeatData();
+
+            var skillRankRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "skill", Amount = 9266 },
+                new TypeAndAmountSelection { Type = "other skill/other focus", Amount = 90210 },
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "key")).Returns(skillRankRequirements);
+
+            var synergies = featsSelector.SelectSkillSynergies();
+            Assert.That(synergies.Count, Is.EqualTo(1));
+
+            var featSelection = synergies.Single();
+            Assert.That(featSelection.Feat, Is.EqualTo(FeatConstants.SpecialQualities.SkillBonus));
+            Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
+            Assert.That(featSelection.FocusType, Is.Empty);
+            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
+            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
+            Assert.That(featSelection.Power, Is.Zero);
+            Assert.That(featSelection.RequiredAbilities, Is.Empty);
+            Assert.That(featSelection.RequiredBaseAttack, Is.Zero);
+            Assert.That(featSelection.RequiredFeats, Is.Empty);
+            Assert.That(featSelection.RequiredSkills, Is.Not.Empty);
+            Assert.That(featSelection.RequiredSkills.Count(), Is.EqualTo(2));
+
+            var requiredSkill = featSelection.RequiredSkills.First();
+            Assert.That(requiredSkill.Skill, Is.EqualTo("skill"));
+            Assert.That(requiredSkill.Ranks, Is.EqualTo(9266));
+            Assert.That(requiredSkill.Focus, Is.Empty);
+
+            var otherRequiredSkill = featSelection.RequiredSkills.Last();
+            Assert.That(otherRequiredSkill.Skill, Is.EqualTo("other skill"));
+            Assert.That(otherRequiredSkill.Ranks, Is.EqualTo(90210));
+            Assert.That(otherRequiredSkill.Focus, Is.EqualTo("other focus"));
         }
     }
 }

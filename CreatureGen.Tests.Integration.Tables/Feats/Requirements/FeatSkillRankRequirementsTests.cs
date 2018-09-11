@@ -36,19 +36,22 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
             var names = feats.Union(metamagic).Union(monster).Union(craft);
 
-            return names;
+            var skillSynergyData = CollectionMapper.Map(TableNameConstants.Collection.SkillSynergyFeatData);
+
+            return names.Union(skillSynergyData.Keys);
         }
 
-        [TestCaseSource(typeof(AbilityRequirementsTestData), "Feats")]
-        [TestCaseSource(typeof(AbilityRequirementsTestData), "Metamagic")]
-        [TestCaseSource(typeof(AbilityRequirementsTestData), "Monster")]
-        [TestCaseSource(typeof(AbilityRequirementsTestData), "Craft")]
-        public void AbilityRequirements(string name, Dictionary<string, int> typesAndAmounts)
+        [TestCaseSource(typeof(SkillRankRequirementsTestData), "Feats")]
+        [TestCaseSource(typeof(SkillRankRequirementsTestData), "Metamagic")]
+        [TestCaseSource(typeof(SkillRankRequirementsTestData), "Monster")]
+        [TestCaseSource(typeof(SkillRankRequirementsTestData), "Craft")]
+        [TestCaseSource(typeof(SkillRankRequirementsTestData), "SkillSynergy")]
+        public void SkillRankRequirements(string name, Dictionary<string, int> typesAndAmounts)
         {
             AssertTypesAndAmounts(name, typesAndAmounts);
         }
 
-        public class AbilityRequirementsTestData
+        public class SkillRankRequirementsTestData
         {
             public static IEnumerable Feats
             {
@@ -72,7 +75,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     {
                         var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
                         yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                            .SetName($"SkillRankRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
                     }
                 }
             }
@@ -93,7 +96,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     {
                         var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
                         yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                            .SetName($"SkillRankRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
                     }
                 }
             }
@@ -114,7 +117,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     {
                         var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
                         yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                            .SetName($"SkillRankRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
                     }
                 }
             }
@@ -135,7 +138,63 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     {
                         var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
                         yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                            .SetName($"SkillRankRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                    }
+                }
+            }
+
+            public static IEnumerable SkillSynergy
+            {
+                get
+                {
+                    var testCases = new Dictionary<string, Dictionary<string, int>>();
+
+                    var keys = new[]
+                    {
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Bluff, null, SkillConstants.Diplomacy, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Bluff, null, SkillConstants.Disguise, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Bluff, null, SkillConstants.Intimidate, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Bluff, null, SkillConstants.SleightOfHand, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Craft, null, SkillConstants.Appraise, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.DecipherScript, null, SkillConstants.UseMagicDevice, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.EscapeArtist, null, SkillConstants.UseRope, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.HandleAnimal, null, SkillConstants.Diplomacy, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.HandleAnimal, null, SkillConstants.Ride, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Jump, null, SkillConstants.Tumble, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Arcana, SkillConstants.Spellcraft, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering, SkillConstants.Search, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Dungeoneering, SkillConstants.Survival, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Geography, SkillConstants.Survival, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.History, SkillConstants.Knowledge, "bardic"),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local, SkillConstants.GatherInformation, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature, SkillConstants.Survival, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty, SkillConstants.Diplomacy, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ThePlanes, SkillConstants.Survival, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Search, null, SkillConstants.Survival, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.SenseMotive, null, SkillConstants.Diplomacy, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Spellcraft, null, SkillConstants.UseMagicDevice, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Survival, null, SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Tumble, null, SkillConstants.Balance, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.Tumble, null, SkillConstants.Jump, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.UseMagicDevice, null, SkillConstants.Spellcraft, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.UseRope, null, SkillConstants.Climb, null),
+                        DataIndexConstants.SkillSynergyFeatData.BuildDataKey(SkillConstants.UseRope, null, SkillConstants.EscapeArtist, null),
+                    };
+
+                    foreach (var key in keys)
+                    {
+                        testCases[key] = new Dictionary<string, int>();
+
+                        var sections = key.Split(':');
+                        testCases[key][sections[0]] = 5;
+                        testCases[key][sections[1]] = 0;
+                    }
+
+                    foreach (var testCase in testCases)
+                    {
+                        var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
+                        yield return new TestCaseData(testCase.Key, testCase.Value)
+                            .SetName($"SkillRankRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
                     }
                 }
             }

@@ -29,6 +29,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         private Dictionary<string, Measurement> speeds;
         private List<Skill> skills;
         private List<FeatSelection> featSelections;
+        private List<FeatSelection> skillSynergyFeatSelections;
         private List<SpecialQualitySelection> specialQualitySelections;
         private Mock<Dice> mockDice;
         private HitPoints hitPoints;
@@ -55,6 +56,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             specialQualities = new List<Feat>();
             speeds = new Dictionary<string, Measurement>();
             creatureType = new CreatureType();
+            skillSynergyFeatSelections = new List<FeatSelection>();
 
             hitPoints.HitDiceQuantity = 1;
             creatureType.Name = "creature type";
@@ -62,6 +64,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
 
             mockFeatsSelector.Setup(s => s.SelectFeats()).Returns(featSelections);
+            mockFeatsSelector.Setup(s => s.SelectSkillSynergies()).Returns(skillSynergyFeatSelections);
             mockFeatsSelector.Setup(s => s.SelectSpecialQualities("creature", creatureType)).Returns(specialQualitySelections);
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatSelection>>())).Returns((IEnumerable<FeatSelection> fs) => fs.First());
         }
@@ -359,6 +362,36 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             Assert.That(feat.Frequency.TimePeriod, Is.EqualTo("frequency time period"));
             Assert.That(feat.Name, Is.EqualTo("additional feat"));
             Assert.That(feat.Power, Is.EqualTo(12345));
+        }
+
+        [Test]
+        public void GetNoSkillSynergyBonusWithFeats()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSkillSynergyBonusWithFeats()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSkillSynergyBonusesWithFeats()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetCircumstantialSkillSynergyBonusWithFeats()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetCircumstantialSkillSynergyBonusesWithFeats()
+        {
+            Assert.Fail("not yet written");
         }
 
         [Test]

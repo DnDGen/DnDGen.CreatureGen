@@ -8,5 +8,6 @@ namespace CreatureGen.Selectors.Collections
     {
         IEnumerable<SpecialQualitySelection> SelectSpecialQualities(string creature, CreatureType creatureType);
         IEnumerable<FeatSelection> SelectFeats();
+        IEnumerable<FeatSelection> SelectSkillSynergies();
     }
 }

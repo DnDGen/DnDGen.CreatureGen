@@ -182,5 +182,27 @@ namespace CreatureGen.Selectors.Collections
 
             return requiredFeat;
         }
+
+        public IEnumerable<FeatSelection> SelectSkillSynergies()
+        {
+            var skillSynergyFeatData = collectionsSelector.SelectAllFrom(TableNameConstants.Collection.SkillSynergyFeatData);
+            var featSelections = new List<FeatSelection>();
+
+            foreach (var dataKVP in skillSynergyFeatData)
+            {
+                var featSelection = new FeatSelection();
+
+                var data = dataKVP.Value.ToArray();
+                featSelection.Feat = data[DataIndexConstants.SkillSynergyFeatData.FeatNameIndex];
+                featSelection.FocusType = data[DataIndexConstants.SkillSynergyFeatData.FocusTypeIndex];
+                featSelection.Power = Convert.ToInt32(data[DataIndexConstants.SkillSynergyFeatData.PowerIndex]);
+
+                featSelection.RequiredSkills = GetRequiredSkills(dataKVP.Key);
+
+                featSelections.Add(featSelection);
+            }
+
+            return featSelections;
+        }
     }
 }
