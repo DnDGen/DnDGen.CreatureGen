@@ -68,10 +68,12 @@ namespace CreatureGen.Generators.Feats
             return collectionsSelector.SelectRandomFrom(foci);
         }
 
-        private bool FocusTypeIsPreset(string focusType)
+        public bool FocusTypeIsPreset(string focusType)
         {
             var isCollection = collectionsSelector.IsCollection(TableNameConstants.Collection.FeatFoci, focusType);
-            return focusType != FeatConstants.Foci.All && !isCollection;
+            return !string.IsNullOrEmpty(focusType)
+                && focusType != FeatConstants.Foci.All
+                && !isCollection;
         }
 
         private IEnumerable<string> GetExplodedFoci(string feat, string focusType, IEnumerable<Feat> otherFeats)

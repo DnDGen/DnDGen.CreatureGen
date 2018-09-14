@@ -291,24 +291,58 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.True);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
-        public void AnyRequiredSkillWithSufficientRanksMeetRequirement(int requiredRanks, int ranks)
+        [TestCase(0, 0, 0, true, 0, true, true)]
+        [TestCase(0, 0, 0, true, 0, false, true)]
+        [TestCase(0, 0, 0, false, 0, true, true)]
+        [TestCase(0, 0, 0, false, 0, false, true)]
+        [TestCase(9266, 90210, 42, true, 600, true, false)]
+        [TestCase(9266, 90210, 42, true, 600, false, false)]
+        [TestCase(9266, 90210, 42, false, 600, true, false)]
+        [TestCase(9266, 90210, 42, false, 600, false, false)]
+        [TestCase(42, 600, 1337, true, 1336, true, true)]
+        [TestCase(42, 600, 1337, true, 1336, false, true)]
+        [TestCase(42, 600, 1337, false, 1336, true, true)]
+        [TestCase(42, 600, 1337, false, 1336, false, true)]
+        [TestCase(1337, 1336, 96, true, 783, true, false)]
+        [TestCase(1337, 1336, 96, true, 783, false, false)]
+        [TestCase(1337, 1336, 96, false, 783, true, false)]
+        [TestCase(1337, 1336, 96, false, 783, false, false)]
+        [TestCase(96, 783, 8245, true, 1234, true, true)]
+        [TestCase(96, 783, 8245, true, 1234, false, false)]
+        [TestCase(96, 783, 8245, false, 1234, true, true)]
+        [TestCase(96, 783, 8245, false, 1234, false, false)]
+        [TestCase(600, 1336, 783, true, 1337, true, true)]
+        [TestCase(600, 1336, 783, true, 1337, false, false)]
+        [TestCase(600, 1336, 783, false, 1337, true, false)]
+        [TestCase(600, 1336, 783, false, 1337, false, false)]
+        [TestCase(8245, 42, 9266, true, 1337, true, true)]
+        [TestCase(8245, 42, 9266, true, 1337, false, true)]
+        [TestCase(8245, 42, 9266, false, 1337, true, false)]
+        [TestCase(8245, 42, 9266, false, 1337, false, false)]
+        public void AllRequiredSkillWithSufficientRanksMeetRequirement(
+            int requiredRanks1,
+            int requiredRanks2,
+            int ranks1,
+            bool classSkill1,
+            int ranks2,
+            bool classSkill2,
+            bool isMet)
         {
             selection.RequiredSkills = new[]
             {
-                new RequiredSkillSelection { Skill = "skill", Ranks = requiredRanks },
-                new RequiredSkillSelection { Skill = "other skill", Ranks = int.MaxValue }
+                new RequiredSkillSelection { Skill = "skill", Ranks = requiredRanks1 },
+                new RequiredSkillSelection { Skill = "other skill", Ranks = requiredRanks2 }
             };
 
             skills.Add(new Skill("skill", abilities["ability"], int.MaxValue));
             skills.Add(new Skill("other skill", abilities["ability"], int.MaxValue));
-            skills[0].Ranks = ranks;
-            skills[0].ClassSkill = true;
-            skills[1].Ranks = int.MinValue;
-            skills[1].ClassSkill = true;
+            skills[0].Ranks = ranks1;
+            skills[0].ClassSkill = classSkill1;
+            skills[1].Ranks = ranks2;
+            skills[1].ClassSkill = classSkill2;
 
             var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
-            Assert.That(met, Is.True);
+            Assert.That(met, Is.EqualTo(isMet));
         }
 
         [Test]

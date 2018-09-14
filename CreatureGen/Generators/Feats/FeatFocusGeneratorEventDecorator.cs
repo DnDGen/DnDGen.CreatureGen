@@ -83,5 +83,10 @@ namespace CreatureGen.Generators.Feats
 
             return focus;
         }
+
+        public bool FocusTypeIsPreset(string focusType)
+        {
+            return innerGenerator.FocusTypeIsPreset(focusType);
+        }
     }
 }

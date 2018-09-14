@@ -357,4 +357,143 @@
   <collection>
     <name>Wingover</name>
   </collection>
+  <collection>
+    <name>Bluff:Diplomacy</name>
+    <entry>Bluff/5</entry>
+    <entry>Diplomacy/0</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Disguise</name>
+    <entry>Bluff/5</entry>
+    <entry>Disguise/0</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Intimidate</name>
+    <entry>Bluff/5</entry>
+    <entry>Intimidate/0</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Sleight of Hand</name>
+    <entry>Bluff/5</entry>
+    <entry>Sleight of Hand/0</entry>
+  </collection>
+  <collection>
+    <name>Craft:Appraise</name>
+    <entry>Craft/5</entry>
+    <entry>Appraise/0</entry>
+  </collection>
+  <collection>
+    <name>Decipher Script:Use Magic Device</name>
+    <entry>Decipher Script/5</entry>
+    <entry>Use Magic Device/0</entry>
+  </collection>
+  <collection>
+    <name>Escape Artist:Use Rope</name>
+    <entry>Escape Artist/5</entry>
+    <entry>Use Rope/0</entry>
+  </collection>
+  <collection>
+    <name>Handle Animal:Diplomacy</name>
+    <entry>Handle Animal/5</entry>
+    <entry>Diplomacy/0</entry>
+  </collection>
+  <collection>
+    <name>Handle Animal:Ride</name>
+    <entry>Handle Animal/5</entry>
+    <entry>Ride/0</entry>
+  </collection>
+  <collection>
+    <name>Jump:Tumble</name>
+    <entry>Jump/5</entry>
+    <entry>Tumble/0</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Arcana:Spellcraft</name>
+    <entry>Knowledge/Arcana/5</entry>
+    <entry>Spellcraft/0</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Architecture and Engineering:Search</name>
+    <entry>Knowledge/Architecture and Engineering/5</entry>
+    <entry>Search/0</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Dungeoneering:Survival</name>
+    <entry>Knowledge/Dungeoneering/5</entry>
+    <entry>Survival/0</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Geography:Survival</name>
+    <entry>Knowledge/Geography/5</entry>
+    <entry>Survival/0</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/History:Knowledge/bardic</name>
+    <entry>Knowledge/History/5</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Local:Gather Information</name>
+    <entry>Knowledge/Local/5</entry>
+    <entry>Gather Information/0</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nature:Survival</name>
+    <entry>Knowledge/Nature/5</entry>
+    <entry>Survival/0</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nobility and Royalty:Diplomacy</name>
+    <entry>Knowledge/Nobility and Royalty/5</entry>
+    <entry>Diplomacy/0</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/The Planes:Survival</name>
+    <entry>Knowledge/The Planes/5</entry>
+    <entry>Survival/0</entry>
+  </collection>
+  <collection>
+    <name>Search:Survival</name>
+    <entry>Search/5</entry>
+    <entry>Survival/0</entry>
+  </collection>
+  <collection>
+    <name>Sense Motive:Diplomacy</name>
+    <entry>Sense Motive/5</entry>
+    <entry>Diplomacy/0</entry>
+  </collection>
+  <collection>
+    <name>Spellcraft:Use Magic Device</name>
+    <entry>Spellcraft/5</entry>
+    <entry>Use Magic Device/0</entry>
+  </collection>
+  <collection>
+    <name>Survival:Knowledge/Nature</name>
+    <entry>Survival/5</entry>
+    <entry>Knowledge/Nature/0</entry>
+  </collection>
+  <collection>
+    <name>Tumble:Balance</name>
+    <entry>Tumble/5</entry>
+    <entry>Balance/0</entry>
+  </collection>
+  <collection>
+    <name>Tumble:Jump</name>
+    <entry>Tumble/5</entry>
+    <entry>Jump/0</entry>
+  </collection>
+  <collection>
+    <name>Use Magic Device:Spellcraft</name>
+    <entry>Use Magic Device/5</entry>
+    <entry>Spellcraft/0</entry>
+  </collection>
+  <collection>
+    <name>Use Rope:Climb</name>
+    <entry>Use Rope/5</entry>
+    <entry>Climb/0</entry>
+  </collection>
+  <collection>
+    <name>Use Rope:Escape Artist</name>
+    <entry>Use Rope/5</entry>
+    <entry>Escape Artist/0</entry>
+  </collection>
 </collections>

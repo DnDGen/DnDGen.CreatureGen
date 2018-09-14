@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Selectors.Collections;
+using CreatureGen.Selectors.Helpers;
 using DnDGen.Core.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
@@ -39,8 +40,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var entries = new[]
             {
-                "type/9266",
-                "other type/90210"
+                TypeAndAmountHelper.BuildData("type", "9266"),
+                TypeAndAmountHelper.BuildData("other type", "90210"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -53,12 +54,30 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         }
 
         [Test]
+        public void SelectASingleTypeWithSlashAndAmount()
+        {
+            var entries = new[]
+            {
+                TypeAndAmountHelper.BuildData("my/type", "9266"),
+                TypeAndAmountHelper.BuildData("other type", "90210"),
+            };
+
+            mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
+
+            SetUpRoll("9266", 42);
+
+            var typeAndAmount = selector.SelectOne("table name", "name");
+            Assert.That(typeAndAmount.Type, Is.EqualTo("my/type"));
+            Assert.That(typeAndAmount.Amount, Is.EqualTo(42));
+        }
+
+        [Test]
         public void SelectASingleTypeAndRandomAmount()
         {
             var entries = new[]
             {
-                "type/amount",
-                "other type/other amount"
+                TypeAndAmountHelper.BuildData("type", "amount"),
+                TypeAndAmountHelper.BuildData("other type", "other amount"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -75,8 +94,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var entries = new[]
             {
-                "type/amount",
-                "other type/other amount"
+                TypeAndAmountHelper.BuildData("type", "amount"),
+                TypeAndAmountHelper.BuildData("other type", "other amount"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -96,8 +115,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var entries = new[]
             {
-                "type/9266",
-                "other type/90210"
+                TypeAndAmountHelper.BuildData("type", "9266"),
+                TypeAndAmountHelper.BuildData("other type", "90210"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -122,8 +141,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var entries = new[]
             {
-                "type/amount",
-                "other type/other amount"
+                TypeAndAmountHelper.BuildData("type", "amount"),
+                TypeAndAmountHelper.BuildData("other type", "other amount"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -148,8 +167,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var entries = new[]
             {
-                "type/amount",
-                "other type/other amount"
+                TypeAndAmountHelper.BuildData("type", "amount"),
+                TypeAndAmountHelper.BuildData("other type", "other amount"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -177,8 +196,17 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             var table = new Dictionary<string, IEnumerable<string>>();
             mockCollectionSelector.Setup(s => s.SelectAllFrom("table name")).Returns(table);
 
-            table["name"] = new[] { "type/9266", "other type/90210" };
-            table["other name"] = new[] { "other type/42", "other other type/600" };
+            table["name"] = new[]
+            {
+                TypeAndAmountHelper.BuildData("type", "9266"),
+                TypeAndAmountHelper.BuildData("other type", "90210"),
+            };
+
+            table["other name"] = new[]
+            {
+                TypeAndAmountHelper.BuildData("other type", "42"),
+                TypeAndAmountHelper.BuildData("another type", "600"),
+            };
 
             SetUpRoll("9266", 1337);
             SetUpRoll("90210", 1234);
@@ -194,7 +222,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(typesAndAmounts["name"].Last().Amount, Is.EqualTo(1234));
             Assert.That(typesAndAmounts["other name"].First().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["other name"].First().Amount, Is.EqualTo(2345));
-            Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("other other type"));
+            Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("another type"));
             Assert.That(typesAndAmounts["other name"].Last().Amount, Is.EqualTo(3456));
         }
 
@@ -204,12 +232,21 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             var table = new Dictionary<string, IEnumerable<string>>();
             mockCollectionSelector.Setup(s => s.SelectAllFrom("table name")).Returns(table);
 
-            table["name"] = new[] { "type/amount", "other type/other amount" };
-            table["other name"] = new[] { "other type/other amount", "other other type/other other amount" };
+            table["name"] = new[]
+            {
+                TypeAndAmountHelper.BuildData("type", "amount"),
+                TypeAndAmountHelper.BuildData("other type", "other amount"),
+            };
+
+            table["other name"] = new[]
+            {
+                TypeAndAmountHelper.BuildData("other type", "other amount"),
+                TypeAndAmountHelper.BuildData("another type", "another amount"),
+            };
 
             SetUpRoll("amount", 1337);
             SetUpRoll("other amount", 1234, 2345);
-            SetUpRoll("other other amount", 3456);
+            SetUpRoll("another amount", 3456);
 
             var typesAndAmounts = selector.SelectAll("table name");
             Assert.That(typesAndAmounts.Count, Is.EqualTo(2));
@@ -222,7 +259,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(typesAndAmounts["other name"].Count, Is.EqualTo(2));
             Assert.That(typesAndAmounts["other name"].First().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["other name"].First().Amount, Is.EqualTo(2345));
-            Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("other other type"));
+            Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("another type"));
             Assert.That(typesAndAmounts["other name"].Last().Amount, Is.EqualTo(3456));
         }
 
@@ -232,12 +269,21 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             var table = new Dictionary<string, IEnumerable<string>>();
             mockCollectionSelector.Setup(s => s.SelectAllFrom("table name")).Returns(table);
 
-            table["name"] = new[] { "type/amount", "other type/other amount" };
-            table["other name"] = new[] { "other type/other amount", "other other type/other other amount" };
+            table["name"] = new[]
+            {
+                TypeAndAmountHelper.BuildData("type", "amount"),
+                TypeAndAmountHelper.BuildData("other type", "other amount"),
+            };
+
+            table["other name"] = new[]
+            {
+                TypeAndAmountHelper.BuildData("other type", "other amount"),
+                TypeAndAmountHelper.BuildData("another type", "another amount"),
+            };
 
             SetUpRoll("amount", 1337);
             SetUpRoll("other amount", 1234, 2345);
-            SetUpRoll("other other amount", 3456);
+            SetUpRoll("another amount", 3456);
 
             var typesAndAmounts = selector.SelectAll("table name");
             Assert.That(typesAndAmounts.Count, Is.EqualTo(2));

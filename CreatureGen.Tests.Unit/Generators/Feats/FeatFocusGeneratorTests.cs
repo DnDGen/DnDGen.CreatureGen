@@ -1331,5 +1331,37 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             var focus = featFocusGenerator.GenerateAllowingFocusOfAllFrom("feat", "focus type", skills, requiredFeats, otherFeats, 1, abilities, attacks);
             Assert.That(focus, Is.EqualTo("focus"));
         }
+
+        [Test]
+        public void FocusIsNotPresetIfEmpty()
+        {
+            var preset = featFocusGenerator.FocusTypeIsPreset(string.Empty);
+            Assert.That(preset, Is.False);
+        }
+
+        [Test]
+        public void FocusIsNotPresetIfAll()
+        {
+            var preset = featFocusGenerator.FocusTypeIsPreset(FeatConstants.Foci.All);
+            Assert.That(preset, Is.False);
+        }
+
+        [Test]
+        public void FocusIsNotPresetIfACollection()
+        {
+            focusTypes["my focus type"] = new[] { "focus", "other focus" };
+
+            var preset = featFocusGenerator.FocusTypeIsPreset("my focus type");
+            Assert.That(preset, Is.False);
+        }
+
+        [Test]
+        public void FocusIsPresetIfNotACollection()
+        {
+            focusTypes["wrong focus type"] = new[] { "focus", "other focus" };
+
+            var preset = featFocusGenerator.FocusTypeIsPreset("my focus type");
+            Assert.That(preset, Is.True);
+        }
     }
 }

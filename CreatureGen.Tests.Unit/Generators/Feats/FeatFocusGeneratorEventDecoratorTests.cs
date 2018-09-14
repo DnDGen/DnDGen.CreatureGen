@@ -168,5 +168,26 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating focus for feat"), Times.Once);
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generated no focus for feat"), Times.Once);
         }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void ReturnIfFocusIsPreset(bool preset)
+        {
+            mockInnerGenerator.Setup(g => g.FocusTypeIsPreset("focus type")).Returns(preset);
+
+            var isPreset = decorator.FocusTypeIsPreset("focus type");
+            Assert.That(isPreset, Is.EqualTo(preset));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void DoNotLogEventsForIfFocusIsPreset(bool preset)
+        {
+            mockInnerGenerator.Setup(g => g.FocusTypeIsPreset("focus type")).Returns(preset);
+
+            var focus = decorator.FocusTypeIsPreset("focus type");
+            Assert.That(focus, Is.EqualTo(preset));
+            mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+        }
     }
 }

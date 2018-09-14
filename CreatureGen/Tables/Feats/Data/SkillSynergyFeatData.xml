@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Bluff:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Disguise</name>
+    <entry>Skill Bonus</entry>
+    <entry>Disguise: acting</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Intimidate</name>
+    <entry>Skill Bonus</entry>
+    <entry>Intimidate</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Sleight of Hand</name>
+    <entry>Skill Bonus</entry>
+    <entry>Sleight of Hand</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft:Appraise</name>
+    <entry>Skill Bonus</entry>
+    <entry>Appraise: related to items made with your Craft skill</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Decipher Script:Use Magic Device</name>
+    <entry>Skill Bonus</entry>
+    <entry>Use Magic Device: with scrolls</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Escape Artist:Use Rope</name>
+    <entry>Skill Bonus</entry>
+    <entry>Use Rope: binding someone</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Handle Animal:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy: wild empathy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Handle Animal:Ride</name>
+    <entry>Skill Bonus</entry>
+    <entry>Ride</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Jump:Tumble</name>
+    <entry>Skill Bonus</entry>
+    <entry>Tumble</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Arcana:Spellcraft</name>
+    <entry>Skill Bonus</entry>
+    <entry>Spellcraft</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Architecture and Engineering:Search</name>
+    <entry>Skill Bonus</entry>
+    <entry>Search: find secret doors or compartments</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Dungeoneering:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival: underground</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Geography:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival: keep from getting lost or avoid natural hazards</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/History:Knowledge/bardic</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/bardic</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Local:Gather Information</name>
+    <entry>Skill Bonus</entry>
+    <entry>Gather Information</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nature:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival: in aboveground natural environments</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nobility and Royalty:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/The Planes:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival: on other planes</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Search:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival: following tracks</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Sense Motive:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Spellcraft:Use Magic Device</name>
+    <entry>Skill Bonus</entry>
+    <entry>Use Magic Device: with scrolls</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Survival:Knowledge/Nature</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Tumble:Balance</name>
+    <entry>Skill Bonus</entry>
+    <entry>Balance</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Tumble:Jump</name>
+    <entry>Skill Bonus</entry>
+    <entry>Jump</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Use Magic Device:Spellcraft</name>
+    <entry>Skill Bonus</entry>
+    <entry>Spellcraft: decipher scrolls</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Use Rope:Climb</name>
+    <entry>Skill Bonus</entry>
+    <entry>Climb: with rope</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Use Rope:Escape Artist</name>
+    <entry>Skill Bonus</entry>
+    <entry>Escape Artist: escaping rope bonds</entry>
+    <entry>2</entry>
+  </collection>
+</collections>

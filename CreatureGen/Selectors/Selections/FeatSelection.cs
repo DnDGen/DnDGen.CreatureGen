@@ -64,7 +64,7 @@ namespace CreatureGen.Selectors.Selections
             if (hands < RequiredHands)
                 return false;
 
-            if (RequiredSkills.Any() && !RequiredSkills.Any(s => s.RequirementMet(skills)))
+            if (RequiredSkills.Any() && !RequiredSkills.All(s => s.RequirementMet(skills)))
                 return false;
 
             if (RequiresSpecialAttack && !attacks.Any(a => a.IsSpecial))

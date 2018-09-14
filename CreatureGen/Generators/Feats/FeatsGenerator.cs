@@ -249,7 +249,10 @@ namespace CreatureGen.Generators.Feats
 
         private bool FeatSelectionCanBeSelectedAgain(FeatSelection featSelection)
         {
-            return !string.IsNullOrEmpty(featSelection.FocusType) || featSelection.CanBeTakenMultipleTimes;
+            var isEmpty = string.IsNullOrEmpty(featSelection.FocusType);
+
+            return (!isEmpty && !featFocusGenerator.FocusTypeIsPreset(featSelection.FocusType))
+                || featSelection.CanBeTakenMultipleTimes;
         }
 
         private bool FeatsWithFociMatch(Feat feat, FeatSelection featSelection)

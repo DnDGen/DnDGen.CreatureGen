@@ -29,5 +29,6 @@ namespace CreatureGen.Generators.Feats
             Dictionary<string, Ability> abilities,
             IEnumerable<Attack> attacks);
         string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities);
+        bool FocusTypeIsPreset(string focusType);
     }
 }

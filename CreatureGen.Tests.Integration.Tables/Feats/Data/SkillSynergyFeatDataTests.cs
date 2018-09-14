@@ -87,7 +87,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCase(SkillConstants.UseMagicDevice, null, SkillConstants.Spellcraft, null, "decipher scrolls")]
         [TestCase(SkillConstants.UseRope, null, SkillConstants.Climb, null, "with rope")]
         [TestCase(SkillConstants.UseRope, null, SkillConstants.EscapeArtist, null, "escaping rope bonds")]
-        public void FeatData(string sourceSkill, string sourceFocus, string targetSkillName, string targetSkillFocus, string condition)
+        public void SkillSynergyFeatData(string sourceSkill, string sourceFocus, string targetSkillName, string targetSkillFocus, string condition)
         {
             var focus = targetSkillName;
 

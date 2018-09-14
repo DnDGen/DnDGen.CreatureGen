@@ -215,5 +215,19 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             var met = requiredSkillSelection.RequirementMet(otherSkills);
             Assert.That(met, Is.False);
         }
+
+        [Test]
+        public void RequirementMetIf0RanksRequired()
+        {
+            otherSkills.Add(CreateClassSkill("skill 1"));
+            otherSkills.Add(CreateClassSkill("skill 2"));
+            otherSkills[1].Ranks = 0;
+
+            requiredSkillSelection.Skill = "skill 2";
+            requiredSkillSelection.Ranks = 0;
+
+            var met = requiredSkillSelection.RequirementMet(otherSkills);
+            Assert.That(met, Is.True);
+        }
     }
 }
