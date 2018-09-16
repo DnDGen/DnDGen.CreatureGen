@@ -50,7 +50,6 @@ namespace CreatureGen.Generators.Skills
             var skills = InitializeSkills(abilities, skillSelections, hitPoints, creatureSkillNames);
 
             skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities);
-            skills = ApplySkillSynergies(skills);
             skills = ApplyBonuses(skills, size);
 
             return skills;
@@ -190,27 +189,6 @@ namespace CreatureGen.Generators.Skills
             var total = perHitDie * multiplier;
 
             return total;
-        }
-
-        private IEnumerable<Skill> ApplySkillSynergies(IEnumerable<Skill> skills)
-        {
-            var skillsWarrantingSynergy = skills.Where(s => s.QualifiesForSkillSynergy);
-
-            foreach (var skill in skillsWarrantingSynergy)
-            {
-                var name = skill.Focus.Any() ? $"{skill.Name}/{skill.Focus}" : skill.Name;
-                var synergySkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillSynergy, name);
-
-                foreach (var synergySkillName in synergySkillNames)
-                {
-                    var synergySkill = skills.FirstOrDefault(s => s.IsEqualTo(synergySkillName));
-
-                    if (synergySkill != null)
-                        synergySkill.Bonus += 2;
-                }
-            }
-
-            return skills;
         }
 
         public IEnumerable<Skill> ApplyBonusesFromFeats(IEnumerable<Skill> skills, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)

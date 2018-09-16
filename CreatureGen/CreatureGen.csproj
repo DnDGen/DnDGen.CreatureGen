@@ -222,9 +222,6 @@
     <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\Skills\SkillSynergy.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Tables\Traits.xml" />
   </ItemGroup>
   <ItemGroup>

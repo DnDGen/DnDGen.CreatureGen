@@ -389,8 +389,11 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             Assert.That(feats, Is.Empty);
         }
 
-        [Test]
-        public void GetSkillSynergyBonusWithFeats()
+        [TestCase("", "")]
+        [TestCase("source focus", "")]
+        [TestCase("", "target focus")]
+        [TestCase("source focus", "target focus")]
+        public void GetSkillSynergyBonusWithFeats(string requiredSourceFocus, string requiredTargetFocus)
         {
             var selection = new FeatSelection();
             selection.Feat = "synergy feat";
@@ -398,18 +401,20 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             selection.Power = 12345;
             selection.RequiredSkills = new[]
             {
-                new RequiredSkillSelection { Skill = "source skill", Ranks = 5 },
-                new RequiredSkillSelection { Skill = "target skill", Ranks = 0 }
+                new RequiredSkillSelection { Skill = "source skill", Ranks = 5, Focus = requiredSourceFocus },
+                new RequiredSkillSelection { Skill = "target skill", Ranks = 0, Focus = requiredTargetFocus }
             };
 
             skillSynergyFeatSelections.Add(selection);
 
             mockFeatFocusGenerator.Setup(g => g.FocusTypeIsPreset("focus type")).Returns(true);
 
-            skills.Add(new Skill("source skill", abilities[AbilityConstants.Intelligence], 10));
+            skills.Add(new Skill("source skill", abilities[AbilityConstants.Intelligence], 10, requiredSourceFocus));
             skills[0].Ranks = 5;
             skills[0].ClassSkill = true;
-            skills.Add(new Skill("target skill", abilities[AbilityConstants.Intelligence], 10));
+            skills.Add(new Skill("source skill", abilities[AbilityConstants.Intelligence], 10, "wrong focus"));
+            skills.Add(new Skill("target skill", abilities[AbilityConstants.Intelligence], 10, requiredTargetFocus));
+            skills.Add(new Skill("target skill", abilities[AbilityConstants.Intelligence], 10, "wrong focus"));
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
             var featNames = feats.Select(f => f.Name);
@@ -516,6 +521,30 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         }
 
         [Test]
+        public void DoNotGetSkillSynergyBonusWithoutSourceSkillWithFocusWithFeats()
+        {
+            var selection = new FeatSelection();
+            selection.Feat = "synergy feat";
+            selection.FocusType = "focus type";
+            selection.Power = 12345;
+            selection.RequiredSkills = new[]
+            {
+                new RequiredSkillSelection { Skill = "source skill", Focus = "focus", Ranks = 5 },
+                new RequiredSkillSelection { Skill = "target skill", Ranks = 0 }
+            };
+
+            skillSynergyFeatSelections.Add(selection);
+
+            mockFeatFocusGenerator.Setup(g => g.FocusTypeIsPreset("focus type")).Returns(true);
+
+            skills.Add(new Skill("source skill", abilities[AbilityConstants.Intelligence], 10, "wrong focus"));
+            skills.Add(new Skill("target skill", abilities[AbilityConstants.Intelligence], 10));
+
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            Assert.That(feats, Is.Empty);
+        }
+
+        [Test]
         public void DoNotGetSkillSynergyBonusWithoutTargetSkillWithFeats()
         {
             var selection = new FeatSelection();
@@ -535,6 +564,32 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             skills.Add(new Skill("source skill", abilities[AbilityConstants.Intelligence], 10));
             skills[0].Ranks = 5;
             skills[0].ClassSkill = true;
+
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            Assert.That(feats, Is.Empty);
+        }
+
+        [Test]
+        public void DoNotGetSkillSynergyBonusWithoutTargetSkillWithFocusWithFeats()
+        {
+            var selection = new FeatSelection();
+            selection.Feat = "synergy feat";
+            selection.FocusType = "focus type";
+            selection.Power = 12345;
+            selection.RequiredSkills = new[]
+            {
+                new RequiredSkillSelection { Skill = "source skill", Ranks = 5 },
+                new RequiredSkillSelection { Skill = "target skill", Focus = "focus", Ranks = 0 }
+            };
+
+            skillSynergyFeatSelections.Add(selection);
+
+            mockFeatFocusGenerator.Setup(g => g.FocusTypeIsPreset("focus type")).Returns(true);
+
+            skills.Add(new Skill("source skill", abilities[AbilityConstants.Intelligence], 10));
+            skills[0].Ranks = 5;
+            skills[0].ClassSkill = true;
+            skills.Add(new Skill("target skill", abilities[AbilityConstants.Intelligence], 10, "wrong focus"));
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
             Assert.That(feats, Is.Empty);
