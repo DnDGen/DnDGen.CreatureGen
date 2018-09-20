@@ -26,7 +26,6 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Collection.SaveBonuses, "SaveBonuses")]
         [TestCase(TableNameConstants.Collection.SkillData, "SkillData")]
         [TestCase(TableNameConstants.Collection.SkillGroups, "SkillGroups")]
-        [TestCase(TableNameConstants.Collection.SkillSynergy, "SkillSynergy")]
         [TestCase(TableNameConstants.Collection.SkillSynergyFeatData, "SkillSynergyFeatData")]
         [TestCase(TableNameConstants.Collection.SpecialQualityData, "SpecialQualityData")]
         [TestCase(TableNameConstants.Collection.Speeds, "Speeds")]

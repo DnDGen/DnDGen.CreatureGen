@@ -1,4 +1,6 @@
-﻿namespace CreatureGen.Skills
+﻿using System;
+
+namespace CreatureGen.Skills
 {
     public static class SkillConstants
     {
@@ -37,6 +39,14 @@
         public const string Tumble = "Tumble";
         public const string UseMagicDevice = "Use Magic Device";
         public const string UseRope = "Use Rope";
+
+        public static string Build(string skill, string focus)
+        {
+            if (!string.IsNullOrEmpty(focus))
+                return $"{skill}/{focus}";
+
+            return Convert.ToString(skill);
+        }
 
         public static class Foci
         {

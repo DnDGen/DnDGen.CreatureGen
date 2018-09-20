@@ -70,7 +70,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             requiredSkillSelection.Skill = "skill 2";
 
             var met = requiredSkillSelection.RequirementMet(otherSkills);
-            Assert.That(met, Is.False);
+            Assert.That(met, Is.True);
         }
 
         [Test]

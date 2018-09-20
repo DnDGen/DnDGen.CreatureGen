@@ -18,9 +18,12 @@ namespace CreatureGen.Selectors.Selections
 
         public bool RequirementMet(IEnumerable<Skill> otherSkills)
         {
-            var requiredSkill = otherSkills.FirstOrDefault(s => s.Name == Skill && s.Focus == Focus);
+            var requiredSkill = otherSkills.FirstOrDefault(s => s.Name == Skill);
 
             if (requiredSkill == null)
+                return false;
+
+            if (!string.IsNullOrEmpty(Focus) && requiredSkill.Focus != Focus)
                 return false;
 
             return requiredSkill.EffectiveRanks >= Ranks;

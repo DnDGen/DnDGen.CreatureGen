@@ -296,7 +296,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(typesAndAmounts["other name"].Count, Is.EqualTo(2));
             Assert.That(typesAndAmounts["other name"].First().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["other name"].First().Amount, Is.EqualTo(2345));
-            Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("other other type"));
+            Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("another type"));
             Assert.That(typesAndAmounts["other name"].Last().Amount, Is.EqualTo(3456));
 
             Assert.That(typesAndAmounts["name"].Count, Is.EqualTo(2));
@@ -307,7 +307,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(typesAndAmounts["other name"].Count, Is.EqualTo(2));
             Assert.That(typesAndAmounts["other name"].First().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["other name"].First().Amount, Is.EqualTo(2345));
-            Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("other other type"));
+            Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("another type"));
             Assert.That(typesAndAmounts["other name"].Last().Amount, Is.EqualTo(3456));
         }
     }
