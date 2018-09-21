@@ -48,6 +48,12 @@ namespace CreatureGen.Skills
             return Convert.ToString(skill);
         }
 
+        public static string[] Parse(string skillString)
+        {
+            var sections = skillString.Split('/');
+            return sections;
+        }
+
         public static class Foci
         {
             public const int QuantityOfAll = int.MaxValue;

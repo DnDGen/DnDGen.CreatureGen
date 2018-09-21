@@ -32,7 +32,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         private int creatureTypeSkillPoints;
         private List<string> allSkills;
         private HitPoints hitPoints;
-        private List<string> featSkillFoci;
         private CreatureType creatureType;
         private List<string> unnaturalSkills;
         private string size;
@@ -54,20 +53,18 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             untrainedSkills = new List<string>();
             unnaturalSkills = new List<string>();
             hitPoints = new HitPoints();
-            featSkillFoci = new List<string>();
             creatureType = new CreatureType();
+
+            allSkills.Add("skill 1");
+            allSkills.Add("skill 2");
+            allSkills.Add("skill 3");
+            allSkills.Add("skill 4");
+            allSkills.Add("skill 5");
 
             hitPoints.HitDiceQuantity = 1;
             creatureType.Name = "creature type";
             size = SizeConstants.Medium;
 
-            featSkillFoci.Add("skill 1");
-            featSkillFoci.Add("skill 2");
-            featSkillFoci.Add("skill 3");
-            featSkillFoci.Add("skill 4");
-            featSkillFoci.Add("skill 5");
-
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatFoci, GroupConstants.Skills)).Returns(featSkillFoci);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.All)).Returns(allSkills);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "creature")).Returns(creatureSkills);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.Unnatural)).Returns(unnaturalSkills);
@@ -1552,11 +1549,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[2].Foci = new[] { "skill 2", "non-skill focus" };
             feats[2].Power = 3;
 
-            featSkillFoci.Add("skill 1/focus 1");
-            featSkillFoci.Add("skill 1/focus 2");
-            featSkillFoci.Add("skill 1/focus 3");
-            featSkillFoci.Remove("skill 1"); //INFO: Doing this because a skill either has focus all the time or never
-
             var featGrantingSkillBonuses = new[] { "feat2", "feat1" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
@@ -1718,25 +1710,35 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             skills.Add(new Skill("skill 1", baseAbility, 1, "focus 1"));
             skills.Add(new Skill("skill 1", baseAbility, 1, "focus 2"));
             skills.Add(new Skill("skill 2", baseAbility, 1));
+            skills.Add(new Skill("skill 3", baseAbility, 1, "focus 1"));
+            skills.Add(new Skill("skill 3", baseAbility, 1, "focus 2"));
             skills[0].Bonus = 1;
             skills[1].Bonus = 2;
             skills[2].Bonus = 3;
+            skills[3].Bonus = 4;
+            skills[4].Bonus = 5;
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
+            feats.Add(new Feat());
             feats[0].Name = "feat1";
             feats[0].Foci = new[] { "skill 1", "non-skill focus" };
-            feats[0].Power = 4;
+            feats[0].Power = 6;
+            feats[1].Name = "feat2";
+            feats[1].Foci = new[] { "skill 3/focus 2", "non-skill focus" };
+            feats[1].Power = 7;
 
-            var featGrantingSkillBonuses = new[] { "feat1" };
+            var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(skills[0].Bonus, Is.EqualTo(5));
-            Assert.That(skills[1].Bonus, Is.EqualTo(6));
+            Assert.That(skills[0].Bonus, Is.EqualTo(7));
+            Assert.That(skills[1].Bonus, Is.EqualTo(8));
             Assert.That(skills[2].Bonus, Is.EqualTo(3));
+            Assert.That(skills[3].Bonus, Is.EqualTo(4));
+            Assert.That(skills[4].Bonus, Is.EqualTo(12));
         }
     }
 }

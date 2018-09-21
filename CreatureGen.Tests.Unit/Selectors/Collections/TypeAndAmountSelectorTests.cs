@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Selectors.Collections;
 using CreatureGen.Selectors.Helpers;
+using CreatureGen.Skills;
 using DnDGen.Core.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
@@ -40,8 +41,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var entries = new[]
             {
-                TypeAndAmountHelper.BuildData("type", "9266"),
-                TypeAndAmountHelper.BuildData("other type", "90210"),
+                TypeAndAmountHelper.Build("type", "9266"),
+                TypeAndAmountHelper.Build("other type", "90210"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -53,13 +54,16 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(typeAndAmount.Amount, Is.EqualTo(42));
         }
 
-        [Test]
-        public void SelectASingleTypeWithSlashAndAmount()
+        [TestCase("skill", null)]
+        [TestCase("skill", "")]
+        [TestCase("skill", "focus")]
+        public void SelectASingleSkillTypeAndAmount(string skill, string focus)
         {
+            var skillString = SkillConstants.Build(skill, focus);
+
             var entries = new[]
             {
-                TypeAndAmountHelper.BuildData("my/type", "9266"),
-                TypeAndAmountHelper.BuildData("other type", "90210"),
+                TypeAndAmountHelper.Build(skillString, "9266"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -67,7 +71,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             SetUpRoll("9266", 42);
 
             var typeAndAmount = selector.SelectOne("table name", "name");
-            Assert.That(typeAndAmount.Type, Is.EqualTo("my/type"));
+            Assert.That(typeAndAmount.Type, Is.EqualTo(skillString));
             Assert.That(typeAndAmount.Amount, Is.EqualTo(42));
         }
 
@@ -76,8 +80,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var entries = new[]
             {
-                TypeAndAmountHelper.BuildData("type", "amount"),
-                TypeAndAmountHelper.BuildData("other type", "other amount"),
+                TypeAndAmountHelper.Build("type", "amount"),
+                TypeAndAmountHelper.Build("other type", "other amount"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -94,8 +98,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var entries = new[]
             {
-                TypeAndAmountHelper.BuildData("type", "amount"),
-                TypeAndAmountHelper.BuildData("other type", "other amount"),
+                TypeAndAmountHelper.Build("type", "amount"),
+                TypeAndAmountHelper.Build("other type", "other amount"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -115,8 +119,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var entries = new[]
             {
-                TypeAndAmountHelper.BuildData("type", "9266"),
-                TypeAndAmountHelper.BuildData("other type", "90210"),
+                TypeAndAmountHelper.Build("type", "9266"),
+                TypeAndAmountHelper.Build("other type", "90210"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -141,8 +145,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var entries = new[]
             {
-                TypeAndAmountHelper.BuildData("type", "amount"),
-                TypeAndAmountHelper.BuildData("other type", "other amount"),
+                TypeAndAmountHelper.Build("type", "amount"),
+                TypeAndAmountHelper.Build("other type", "other amount"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -167,8 +171,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var entries = new[]
             {
-                TypeAndAmountHelper.BuildData("type", "amount"),
-                TypeAndAmountHelper.BuildData("other type", "other amount"),
+                TypeAndAmountHelper.Build("type", "amount"),
+                TypeAndAmountHelper.Build("other type", "other amount"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
@@ -198,14 +202,14 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             table["name"] = new[]
             {
-                TypeAndAmountHelper.BuildData("type", "9266"),
-                TypeAndAmountHelper.BuildData("other type", "90210"),
+                TypeAndAmountHelper.Build("type", "9266"),
+                TypeAndAmountHelper.Build("other type", "90210"),
             };
 
             table["other name"] = new[]
             {
-                TypeAndAmountHelper.BuildData("other type", "42"),
-                TypeAndAmountHelper.BuildData("another type", "600"),
+                TypeAndAmountHelper.Build("other type", "42"),
+                TypeAndAmountHelper.Build("another type", "600"),
             };
 
             SetUpRoll("9266", 1337);
@@ -234,14 +238,14 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             table["name"] = new[]
             {
-                TypeAndAmountHelper.BuildData("type", "amount"),
-                TypeAndAmountHelper.BuildData("other type", "other amount"),
+                TypeAndAmountHelper.Build("type", "amount"),
+                TypeAndAmountHelper.Build("other type", "other amount"),
             };
 
             table["other name"] = new[]
             {
-                TypeAndAmountHelper.BuildData("other type", "other amount"),
-                TypeAndAmountHelper.BuildData("another type", "another amount"),
+                TypeAndAmountHelper.Build("other type", "other amount"),
+                TypeAndAmountHelper.Build("another type", "another amount"),
             };
 
             SetUpRoll("amount", 1337);
@@ -271,14 +275,14 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             table["name"] = new[]
             {
-                TypeAndAmountHelper.BuildData("type", "amount"),
-                TypeAndAmountHelper.BuildData("other type", "other amount"),
+                TypeAndAmountHelper.Build("type", "amount"),
+                TypeAndAmountHelper.Build("other type", "other amount"),
             };
 
             table["other name"] = new[]
             {
-                TypeAndAmountHelper.BuildData("other type", "other amount"),
-                TypeAndAmountHelper.BuildData("another type", "another amount"),
+                TypeAndAmountHelper.Build("other type", "other amount"),
+                TypeAndAmountHelper.Build("another type", "another amount"),
             };
 
             SetUpRoll("amount", 1337);

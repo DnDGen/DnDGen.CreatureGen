@@ -16,7 +16,7 @@ namespace CreatureGen.Tests.Integration.Tables
 
         protected void AssertTypesAndAmounts(string name, Dictionary<string, string> typesAndAmounts)
         {
-            var entries = typesAndAmounts.Select(kvp => TypeAndAmountHelper.BuildData(kvp.Key, kvp.Value)).ToArray();
+            var entries = typesAndAmounts.Select(kvp => TypeAndAmountHelper.Build(kvp.Key, kvp.Value)).ToArray();
             AssertDistinctCollection(name, entries);
         }
     }

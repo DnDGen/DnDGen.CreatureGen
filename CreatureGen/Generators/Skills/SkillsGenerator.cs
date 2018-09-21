@@ -209,28 +209,26 @@ namespace CreatureGen.Generators.Skills
 
             var allFeatGrantingSkillBonuses = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, FeatConstants.SpecialQualities.SkillBonus);
             var featGrantingSkillBonuses = feats.Where(f => allFeatGrantingSkillBonuses.Contains(f.Name));
-            var allSkillFocusNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, GroupConstants.Skills);
+
+            var allSkills = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.All);
 
             foreach (var feat in featGrantingSkillBonuses)
             {
                 if (feat.Foci.Any())
                 {
-                    foreach (var focus in feat.Foci)
+                    var matchingFoci = feat.Foci.Where(f => allSkills.Any(s => f.StartsWith(s)));
+
+                    foreach (var focus in matchingFoci)
                     {
-                        if (!allSkillFocusNames.Any(s => focus.StartsWith(s)))
-                            continue;
+                        var matchingSkills = skills.Where(s => s.IsEqualTo(focus) || focus.StartsWith(s.Name));
 
-                        var skillName = allSkillFocusNames.First(s => focus.StartsWith(s));
-                        var skill = skills.FirstOrDefault(s => s.IsEqualTo(skillName));
-
-                        if (skill == null)
-                            continue;
-
-                        var circumstantial = !allSkillFocusNames.Contains(focus);
-                        skill.CircumstantialBonus |= circumstantial;
-
-                        if (!circumstantial)
-                            skill.Bonus += feat.Power;
+                        foreach (var skill in matchingSkills)
+                        {
+                            if (skill.IsEqualTo(focus))
+                                skill.Bonus += feat.Power;
+                            else
+                                skill.CircumstantialBonus = true;
+                        }
                     }
                 }
                 else

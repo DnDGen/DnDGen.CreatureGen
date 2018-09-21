@@ -1,4 +1,5 @@
-﻿using CreatureGen.Selectors.Selections;
+﻿using CreatureGen.Selectors.Helpers;
+using CreatureGen.Selectors.Selections;
 using DnDGen.Core.Selectors.Collections;
 using RollGen;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace CreatureGen.Selectors.Collections
 
         private TypeAndAmountSelection Parse(string entry)
         {
-            var sections = entry.Split('/');
+            var sections = TypeAndAmountHelper.Parse(entry);
             var selection = new TypeAndAmountSelection();
 
             selection.Type = sections[0];

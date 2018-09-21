@@ -80,14 +80,27 @@ namespace CreatureGen.Skills
 
         public bool IsEqualTo(Skill skill)
         {
-            return skill.Name == Name && skill.Focus == Focus;
+            return IsEqualTo(skill.Name, skill.Focus);
+        }
+
+        private bool IsEqualTo(string skill, string focus)
+        {
+            var match = skill == Name;
+
+            if (!match)
+                return false;
+
+            return string.IsNullOrEmpty(Focus) || string.IsNullOrEmpty(focus) || focus == Focus;
         }
 
         public bool IsEqualTo(string skill)
         {
-            var skillString = SkillConstants.Build(Name, Focus);
+            var skillData = SkillConstants.Parse(skill);
 
-            return skillString == skill;
+            if (skillData.Length > 1)
+                return IsEqualTo(skillData[0], skillData[1]);
+
+            return IsEqualTo(skillData[0], string.Empty);
         }
     }
 }

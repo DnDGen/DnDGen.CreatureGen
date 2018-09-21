@@ -196,10 +196,6 @@ namespace CreatureGen.Tests.Unit.Skills
             Assert.That(constant, Is.EqualTo(value));
         }
 
-        [TestCase(null, null, "")]
-        [TestCase("", null, "")]
-        [TestCase(null, "", "")]
-        [TestCase("", "", "")]
         [TestCase("skill", null, "skill")]
         [TestCase("skill", "", "skill")]
         [TestCase("skill", "focus", "skill/focus")]
@@ -208,6 +204,14 @@ namespace CreatureGen.Tests.Unit.Skills
             var skillString = SkillConstants.Build(skill, focus);
             Assert.That(skillString, Is.Not.Null);
             Assert.That(skillString, Is.EqualTo(expected));
+        }
+
+        [TestCase("skill", "skill")]
+        [TestCase("skill/focus", "skill", "focus")]
+        public void ParseSkillString(string skillString, params string[] expected)
+        {
+            var sections = SkillConstants.Parse(skillString);
+            Assert.That(sections, Is.EqualTo(expected));
         }
     }
 }

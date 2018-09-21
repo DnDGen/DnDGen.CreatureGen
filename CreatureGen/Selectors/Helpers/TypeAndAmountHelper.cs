@@ -2,14 +2,14 @@
 {
     public static class TypeAndAmountHelper
     {
-        private const char SEPERATOR = '/';
+        private const char SEPERATOR = '@';
 
-        public static string BuildData(string type, string amount)
+        public static string Build(string type, string amount)
         {
             return type + SEPERATOR + amount;
         }
 
-        public static string[] ParseData(string input)
+        public static string[] Parse(string input)
         {
             return input.Split(SEPERATOR);
         }

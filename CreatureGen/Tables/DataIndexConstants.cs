@@ -1,4 +1,6 @@
-﻿namespace CreatureGen.Tables
+﻿using CreatureGen.Skills;
+
+namespace CreatureGen.Tables
 {
     internal static class DataIndexConstants
     {
@@ -62,15 +64,8 @@
 
             public static string BuildDataKey(string sourceSkill, string sourceFocus, string targetSkill, string targetFocus)
             {
-                var source = sourceSkill;
-
-                if (!string.IsNullOrEmpty(sourceFocus))
-                    source += "/" + sourceFocus;
-
-                var target = targetSkill;
-
-                if (!string.IsNullOrEmpty(targetFocus))
-                    target += "/" + targetFocus;
+                var source = SkillConstants.Build(sourceSkill, sourceFocus);
+                var target = SkillConstants.Build(targetSkill, targetFocus);
 
                 return $"{source}:{target}";
             }

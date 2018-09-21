@@ -58,7 +58,7 @@ namespace CreatureGen.Generators.Feats
 
             if (applicableSkillFoci.Any())
             {
-                var potentialSkillFoci = skills.Select(s => s.Focus.Any() ? $"{s.Name}/{s.Focus}" : s.Name);
+                var potentialSkillFoci = skills.Select(s => SkillConstants.Build(s.Name, s.Focus));
                 foci = applicableSkillFoci.Intersect(potentialSkillFoci);
             }
 

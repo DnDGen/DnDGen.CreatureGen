@@ -176,8 +176,8 @@ namespace CreatureGen.Tests.Unit.Skills
 
         [TestCase("skill", "", "skill", "", true)]
         [TestCase("skill", "focus", "skill", "focus", true)]
-        [TestCase("skill", "", "skill", "focus", false)]
-        [TestCase("skill", "focus", "skill", "", false)]
+        [TestCase("skill", "", "skill", "focus", true)]
+        [TestCase("skill", "focus", "skill", "", true)]
         [TestCase("skill", "", "other skill", "", false)]
         [TestCase("skill", "focus", "other skill", "focus", false)]
         [TestCase("skill", "focus", "skill", "other focus", false)]
@@ -192,8 +192,8 @@ namespace CreatureGen.Tests.Unit.Skills
 
         [TestCase("skill", "", "skill", "", true)]
         [TestCase("skill", "focus", "skill", "focus", true)]
-        [TestCase("skill", "", "skill", "focus", false)]
-        [TestCase("skill", "focus", "skill", "", false)]
+        [TestCase("skill", "", "skill", "focus", true)]
+        [TestCase("skill", "focus", "skill", "", true)]
         [TestCase("skill", "", "other skill", "", false)]
         [TestCase("skill", "focus", "other skill", "focus", false)]
         [TestCase("skill", "focus", "skill", "other focus", false)]

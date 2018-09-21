@@ -1,6 +1,7 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Selectors.Helpers;
 using CreatureGen.Selectors.Selections;
+using CreatureGen.Skills;
 using CreatureGen.Tables;
 using DnDGen.Core.Selectors.Collections;
 using System;
@@ -106,7 +107,7 @@ namespace CreatureGen.Selectors.Collections
 
         private RequiredSkillSelection ParseRequiredSkillData(TypeAndAmountSelection selection)
         {
-            var splitData = selection.Type.Split('/');
+            var splitData = SkillConstants.Parse(selection.Type);
             var requiredSkill = new RequiredSkillSelection();
             requiredSkill.Skill = splitData[0];
             requiredSkill.Ranks = selection.Amount;

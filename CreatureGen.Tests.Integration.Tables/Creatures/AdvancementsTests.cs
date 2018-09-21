@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Selectors.Collections;
+using CreatureGen.Selectors.Helpers;
 using CreatureGen.Tables;
 using CreatureGen.Tests.Integration.Tables.TestData;
 using Ninject;
@@ -901,7 +902,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             if (!table[creature].Any())
                 Assert.Pass($"No advancements to test for {creature}");
 
-            var rolls = table[creature].Select(a => a.Split('/')[1]);
+            var rolls = table[creature].Select(a => TypeAndAmountHelper.Parse(a)[1]);
 
             foreach (var roll in rolls)
             {
@@ -930,7 +931,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             if (!table[creature].Any())
                 Assert.Pass($"No advancements to test for {creature}");
 
-            var sizes = table[creature].Select(a => a.Split('/')[0].Split(',')[0]);
+            var sizes = table[creature].Select(a => TypeAndAmountHelper.Parse(a)[0].Split(',')[0]);
             var data = CreatureDataSelector.SelectFor(creature);
 
             var orderedSizes = SizeConstants.GetOrdered();
@@ -951,7 +952,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             if (!table[creature].Any())
                 Assert.Pass($"No advancements to test for {creature}");
 
-            var sizes = table[creature].Select(a => a.Split('/')[0].Split(',')[0]);
+            var sizes = table[creature].Select(a => TypeAndAmountHelper.Parse(a)[0].Split(',')[0]);
             Assert.That(sizes, Is.Unique);
         }
 
@@ -967,18 +968,18 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var advancement in table[creature])
             {
-                var size = advancement.Split('/')[0].Split(',')[0];
+                var size = TypeAndAmountHelper.Parse(advancement)[0].Split(',')[0];
                 var sizeIndex = Array.IndexOf(orderedSizes, size);
 
-                var roll = advancement.Split('/')[1];
+                var roll = TypeAndAmountHelper.Parse(advancement)[1];
                 var minimum = Dice.Roll(roll).AsPotentialMinimum();
 
                 foreach (var otherAdvancement in table[creature].Except(new[] { advancement }))
                 {
-                    var otherSize = otherAdvancement.Split('/')[0].Split(',')[0];
+                    var otherSize = TypeAndAmountHelper.Parse(otherAdvancement)[0].Split(',')[0];
                     var otherSizeIndex = Array.IndexOf(orderedSizes, otherSize);
 
-                    var otherRoll = otherAdvancement.Split('/')[1];
+                    var otherRoll = TypeAndAmountHelper.Parse(otherAdvancement)[1];
                     var otherMinimum = Dice.Roll(otherRoll).AsPotentialMinimum();
 
                     if (minimum < otherMinimum)
