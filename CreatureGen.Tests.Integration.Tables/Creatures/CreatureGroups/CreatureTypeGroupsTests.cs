@@ -561,7 +561,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Ankheg,
                 CreatureConstants.Aranea,
                 CreatureConstants.Basilisk,
-                CreatureConstants.Basilisk_AbyssalGreater,
+                //CreatureConstants.Basilisk_AbyssalGreater, //INFO: This is not included in this group, even thoguh it does contain it as a subtype, since the group signifies main type of Magical Beast
                 CreatureConstants.Behir,
                 CreatureConstants.BlinkDog,
                 CreatureConstants.Bulette,

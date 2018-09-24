@@ -211,6 +211,7 @@ namespace CreatureGen.Skills
                 public const string Teacher = "Teacher";
                 public const string Teamster = "Teamster";
                 public const string Trader = "Trader";
+                public const string Trapper = "Trapper";
                 public const string Valet = "Valet";
                 public const string Vintner = "Vintner";
                 public const string Weaponsmith = "Weaponsmith";

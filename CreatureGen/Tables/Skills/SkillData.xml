@@ -1178,6 +1178,13 @@
     <entry>Tanner</entry>
   </collection>
   <collection>
+    <name>Profession/Trapper</name>
+    <entry>Wisdom</entry>
+    <entry>Profession</entry>
+    <entry>0</entry>
+    <entry>Trapper</entry>
+  </collection>
+  <collection>
     <name>Profession/Teacher</name>
     <entry>Wisdom</entry>
     <entry>Profession</entry>

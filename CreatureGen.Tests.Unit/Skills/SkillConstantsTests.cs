@@ -180,6 +180,7 @@ namespace CreatureGen.Tests.Unit.Skills
         [TestCase(SkillConstants.Foci.Profession.Teacher, "Teacher")]
         [TestCase(SkillConstants.Foci.Profession.Teamster, "Teamster")]
         [TestCase(SkillConstants.Foci.Profession.Trader, "Trader")]
+        [TestCase(SkillConstants.Foci.Profession.Trapper, "Trapper")]
         [TestCase(SkillConstants.Foci.Profession.Valet, "Valet")]
         [TestCase(SkillConstants.Foci.Profession.Vintner, "Vintner")]
         [TestCase(SkillConstants.Foci.Profession.Weaponsmith, "Weaponsmith")]

@@ -95,7 +95,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             collection[DataIndexConstants.SkillSelectionData.SkillName] = skillName;
             collection[DataIndexConstants.SkillSelectionData.Focus] = string.Empty;
 
-            base.AssertOrderedCollection(name, collection);
+            AssertOrderedCollection(name, collection);
         }
 
         [TestCase(SkillConstants.Craft, AbilityConstants.Intelligence, SkillConstants.Foci.Craft.Alchemy)]
@@ -236,6 +236,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Teacher)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Teamster)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Trader)]
+        [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Trapper)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Valet)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Vintner)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Weaponsmith)]
@@ -252,7 +253,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             collection[DataIndexConstants.SkillSelectionData.SkillName] = skillName;
             collection[DataIndexConstants.SkillSelectionData.Focus] = focus;
 
-            base.AssertOrderedCollection(name, collection);
+            AssertOrderedCollection(name, collection);
         }
     }
 }

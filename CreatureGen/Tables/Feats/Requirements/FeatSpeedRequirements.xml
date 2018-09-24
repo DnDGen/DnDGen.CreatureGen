@@ -114,7 +114,7 @@
   </collection>
   <collection>
     <name>Flyby Attack</name>
-    <entry>Fly/1</entry>
+    <entry>Fly@1</entry>
   </collection>
   <collection>
     <name>Forge Ring</name>
@@ -142,7 +142,7 @@
   </collection>
   <collection>
     <name>Hover</name>
-    <entry>Fly/1</entry>
+    <entry>Fly@1</entry>
   </collection>
   <collection>
     <name>Improved Bull Rush</name>
@@ -161,7 +161,7 @@
   </collection>
   <collection>
     <name>Improved Flyby Attack</name>
-    <entry>Fly/1</entry>
+    <entry>Fly@1</entry>
   </collection>
   <collection>
     <name>Improved Grapple</name>
@@ -354,6 +354,6 @@
   </collection>
   <collection>
     <name>Wingover</name>
-    <entry>Fly/1</entry>
+    <entry>Fly@1</entry>
   </collection>
 </collections>

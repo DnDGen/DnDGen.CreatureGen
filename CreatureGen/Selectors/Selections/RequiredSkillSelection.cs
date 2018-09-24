@@ -18,15 +18,18 @@ namespace CreatureGen.Selectors.Selections
 
         public bool RequirementMet(IEnumerable<Skill> otherSkills)
         {
-            var requiredSkill = otherSkills.FirstOrDefault(s => s.Name == Skill);
+            var thisSkill = SkillConstants.Build(Skill, Focus);
+            var requiredSkills = otherSkills.Where(s => s.IsEqualTo(thisSkill));
 
-            if (requiredSkill == null)
+            if (!requiredSkills.Any())
                 return false;
 
-            if (!string.IsNullOrEmpty(Focus) && requiredSkill.Focus != Focus)
+            if (!string.IsNullOrEmpty(Focus) && !requiredSkills.Any(s => s.Focus == Focus))
                 return false;
 
-            return requiredSkill.EffectiveRanks >= Ranks;
+            var anyHaveSufficientRanks = requiredSkills.Any(s => s.EffectiveRanks >= Ranks);
+
+            return anyHaveSufficientRanks;
         }
     }
 }

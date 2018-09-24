@@ -33,7 +33,7 @@
   </collection>
   <collection>
     <name>Awesome Blow</name>
-    <entry>Strength/25</entry>
+    <entry>Strength@25</entry>
   </collection>
   <collection>
     <name>Blind-Fight</name>
@@ -43,14 +43,14 @@
   </collection>
   <collection>
     <name>Cleave</name>
-    <entry>Strength/13</entry>
+    <entry>Strength@13</entry>
   </collection>
   <collection>
     <name>Combat Casting</name>
   </collection>
   <collection>
     <name>Combat Expertise</name>
-    <entry>Intelligence/13</entry>
+    <entry>Intelligence@13</entry>
   </collection>
   <collection>
     <name>Combat Reflexes</name>
@@ -78,7 +78,7 @@
   </collection>
   <collection>
     <name>Deflect Arrows</name>
-    <entry>Dexterity/13</entry>
+    <entry>Dexterity@13</entry>
   </collection>
   <collection>
     <name>Deft Hands</name>
@@ -91,7 +91,7 @@
   </collection>
   <collection>
     <name>Dodge</name>
-    <entry>Dexterity/13</entry>
+    <entry>Dexterity@13</entry>
   </collection>
   <collection>
     <name>Empower Spell</name>
@@ -125,14 +125,14 @@
   </collection>
   <collection>
     <name>Great Cleave</name>
-    <entry>Strength/13</entry>
+    <entry>Strength@13</entry>
   </collection>
   <collection>
     <name>Great Fortitude</name>
   </collection>
   <collection>
     <name>Greater Multiweapon Fighting</name>
-    <entry>Dexterity/19</entry>
+    <entry>Dexterity@19</entry>
   </collection>
   <collection>
     <name>Greater Spell Focus</name>
@@ -142,7 +142,7 @@
   </collection>
   <collection>
     <name>Greater Two-Weapon Fighting</name>
-    <entry>Dexterity/19</entry>
+    <entry>Dexterity@19</entry>
   </collection>
   <collection>
     <name>Heighten Spell</name>
@@ -152,7 +152,7 @@
   </collection>
   <collection>
     <name>Improved Bull Rush</name>
-    <entry>Strength/13</entry>
+    <entry>Strength@13</entry>
   </collection>
   <collection>
     <name>Improved Counterspell</name>
@@ -162,18 +162,18 @@
   </collection>
   <collection>
     <name>Improved Disarm</name>
-    <entry>Intelligence/13</entry>
+    <entry>Intelligence@13</entry>
   </collection>
   <collection>
     <name>Improved Feint</name>
-    <entry>Intelligence/13</entry>
+    <entry>Intelligence@13</entry>
   </collection>
   <collection>
     <name>Improved Flyby Attack</name>
   </collection>
   <collection>
     <name>Improved Grapple</name>
-    <entry>Dexterity/13</entry>
+    <entry>Dexterity@13</entry>
   </collection>
   <collection>
     <name>Improved Initiative</name>
@@ -183,37 +183,37 @@
   </collection>
   <collection>
     <name>Improved Multiweapon Fighting</name>
-    <entry>Dexterity/15</entry>
+    <entry>Dexterity@15</entry>
   </collection>
   <collection>
     <name>Improved Natural Armor</name>
-    <entry>Constitution/13</entry>
+    <entry>Constitution@13</entry>
   </collection>
   <collection>
     <name>Improved Natural Attack</name>
   </collection>
   <collection>
     <name>Improved Overrun</name>
-    <entry>Strength/13</entry>
+    <entry>Strength@13</entry>
   </collection>
   <collection>
     <name>Improved Precise Shot</name>
-    <entry>Dexterity/19</entry>
+    <entry>Dexterity@19</entry>
   </collection>
   <collection>
     <name>Improved Shield Bash</name>
   </collection>
   <collection>
     <name>Improved Sunder</name>
-    <entry>Strength/13</entry>
+    <entry>Strength@13</entry>
   </collection>
   <collection>
     <name>Improved Trip</name>
-    <entry>Intelligence/13</entry>
+    <entry>Intelligence@13</entry>
   </collection>
   <collection>
     <name>Improved Two-Weapon Fighting</name>
-    <entry>Dexterity/17</entry>
+    <entry>Dexterity@17</entry>
   </collection>
   <collection>
     <name>Improved Unarmed Strike</name>
@@ -232,7 +232,7 @@
   </collection>
   <collection>
     <name>Manyshot</name>
-    <entry>Dexterity/17</entry>
+    <entry>Dexterity@17</entry>
   </collection>
   <collection>
     <name>Martial Weapon Proficiency</name>
@@ -242,7 +242,7 @@
   </collection>
   <collection>
     <name>Mobility</name>
-    <entry>Dexterity/13</entry>
+    <entry>Dexterity@13</entry>
   </collection>
   <collection>
     <name>Mounted Archery</name>
@@ -255,7 +255,7 @@
   </collection>
   <collection>
     <name>Multiweapon Fighting</name>
-    <entry>Dexterity/13</entry>
+    <entry>Dexterity@13</entry>
   </collection>
   <collection>
     <name>Negotiator</name>
@@ -271,7 +271,7 @@
   </collection>
   <collection>
     <name>Power Attack</name>
-    <entry>Strength/13</entry>
+    <entry>Strength@13</entry>
   </collection>
   <collection>
     <name>Precise Shot</name>
@@ -290,7 +290,7 @@
   </collection>
   <collection>
     <name>Rapid Shot</name>
-    <entry>Dexterity/13</entry>
+    <entry>Dexterity@13</entry>
   </collection>
   <collection>
     <name>Ride-By Attack</name>
@@ -309,7 +309,7 @@
   </collection>
   <collection>
     <name>Shot On The Run</name>
-    <entry>Dexterity/13</entry>
+    <entry>Dexterity@13</entry>
   </collection>
   <collection>
     <name>Silent Spell</name>
@@ -322,7 +322,7 @@
   </collection>
   <collection>
     <name>Snatch Arrows</name>
-    <entry>Dexterity/15</entry>
+    <entry>Dexterity@15</entry>
   </collection>
   <collection>
     <name>Snatch</name>
@@ -338,7 +338,7 @@
   </collection>
   <collection>
     <name>Spring Attack</name>
-    <entry>Dexterity/13</entry>
+    <entry>Dexterity@13</entry>
   </collection>
   <collection>
     <name>Stealthy</name>
@@ -348,8 +348,8 @@
   </collection>
   <collection>
     <name>Stunning Fist</name>
-    <entry>Dexterity/13</entry>
-    <entry>Wisdom/13</entry>
+    <entry>Dexterity@13</entry>
+    <entry>Wisdom@13</entry>
   </collection>
   <collection>
     <name>Toughness</name>
@@ -365,19 +365,19 @@
   </collection>
   <collection>
     <name>Two-Weapon Defense</name>
-    <entry>Dexterity/15</entry>
+    <entry>Dexterity@15</entry>
   </collection>
   <collection>
     <name>Two-Weapon Fighting</name>
-    <entry>Dexterity/15</entry>
+    <entry>Dexterity@15</entry>
   </collection>
   <collection>
     <name>Weapon Finesse</name>
   </collection>
   <collection>
     <name>Whirlwind Attack</name>
-    <entry>Dexterity/13</entry>
-    <entry>Intelligence/13</entry>
+    <entry>Dexterity@13</entry>
+    <entry>Intelligence@13</entry>
   </collection>
   <collection>
     <name>Widen Spell</name>

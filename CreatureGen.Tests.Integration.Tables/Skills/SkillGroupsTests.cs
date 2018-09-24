@@ -4819,6 +4819,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Foci.Profession.Teacher,
                 SkillConstants.Foci.Profession.Teamster,
                 SkillConstants.Foci.Profession.Trader,
+                SkillConstants.Foci.Profession.Trapper,
                 SkillConstants.Foci.Profession.Valet,
                 SkillConstants.Foci.Profession.Vintner,
                 SkillConstants.Foci.Profession.Weaponsmith,

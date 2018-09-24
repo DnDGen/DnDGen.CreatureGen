@@ -29,18 +29,6 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(requiredSkillSelection.Ranks, Is.EqualTo(0));
         }
 
-        [Test]
-        public void RequirementMetIfOtherSkillsContainSkillName()
-        {
-            otherSkills.Add(CreateClassSkill("skill 1"));
-            otherSkills.Add(CreateClassSkill("skill 2"));
-
-            requiredSkillSelection.Skill = "skill 2";
-
-            var met = requiredSkillSelection.RequirementMet(otherSkills);
-            Assert.That(met, Is.True);
-        }
-
         private Skill CreateClassSkill(string skillName, string focus = "")
         {
             var skill = new Skill(skillName, baseStat, int.MaxValue, focus);
@@ -49,80 +37,109 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             return skill;
         }
 
-        [Test]
-        public void RequirementNotMetIfOtherSkillDoNotContainSkillName()
+        [TestCase("skill 1", null, "skill 2", null, "skill 1", null, true)]
+        [TestCase("skill 1", null, "skill 2", null, "skill 1", "focus 1", false)]
+        [TestCase("skill 1", null, "skill 2", null, "skill 1", "focus 2", false)]
+        [TestCase("skill 1", null, "skill 2", "focus 1", "skill 1", null, true)]
+        [TestCase("skill 1", null, "skill 2", "focus 1", "skill 1", "focus 1", false)]
+        [TestCase("skill 1", null, "skill 2", "focus 1", "skill 1", "focus 2", false)]
+        [TestCase("skill 1", null, "skill 2", "focus 2", "skill 1", null, true)]
+        [TestCase("skill 1", null, "skill 2", "focus 2", "skill 1", "focus 1", false)]
+        [TestCase("skill 1", null, "skill 2", "focus 2", "skill 1", "focus 2", false)]
+        [TestCase("skill 1", null, "skill 2", null, "skill 2", null, true)]
+        [TestCase("skill 1", null, "skill 2", null, "skill 2", "focus 1", false)]
+        [TestCase("skill 1", null, "skill 2", null, "skill 2", "focus 2", false)]
+        [TestCase("skill 1", null, "skill 2", "focus 1", "skill 2", null, true)]
+        [TestCase("skill 1", null, "skill 2", "focus 1", "skill 2", "focus 1", true)]
+        [TestCase("skill 1", null, "skill 2", "focus 1", "skill 2", "focus 2", false)]
+        [TestCase("skill 1", null, "skill 2", "focus 2", "skill 2", null, true)]
+        [TestCase("skill 1", null, "skill 2", "focus 2", "skill 2", "focus 1", false)]
+        [TestCase("skill 1", null, "skill 2", "focus 2", "skill 2", "focus 2", true)]
+        [TestCase("skill 1", null, "skill 2", null, "skill 3", null, false)]
+        [TestCase("skill 1", null, "skill 2", null, "skill 3", "focus 1", false)]
+        [TestCase("skill 1", null, "skill 2", null, "skill 3", "focus 2", false)]
+        [TestCase("skill 1", null, "skill 2", "focus 1", "skill 3", null, false)]
+        [TestCase("skill 1", null, "skill 2", "focus 1", "skill 3", "focus 1", false)]
+        [TestCase("skill 1", null, "skill 2", "focus 1", "skill 3", "focus 2", false)]
+        [TestCase("skill 1", null, "skill 2", "focus 2", "skill 3", null, false)]
+        [TestCase("skill 1", null, "skill 2", "focus 2", "skill 3", "focus 1", false)]
+        [TestCase("skill 1", null, "skill 2", "focus 2", "skill 3", "focus 2", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", null, "skill 1", null, true)]
+        [TestCase("skill 1", "focus 1", "skill 2", null, "skill 1", "focus 1", true)]
+        [TestCase("skill 1", "focus 1", "skill 2", null, "skill 1", "focus 2", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 1", "skill 1", null, true)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 1", "skill 1", "focus 1", true)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 1", "skill 1", "focus 2", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 2", "skill 1", null, true)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 2", "skill 1", "focus 1", true)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 2", "skill 1", "focus 2", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", null, "skill 2", null, true)]
+        [TestCase("skill 1", "focus 1", "skill 2", null, "skill 2", "focus 1", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", null, "skill 2", "focus 2", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 1", "skill 2", null, true)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 1", "skill 2", "focus 1", true)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 1", "skill 2", "focus 2", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 2", "skill 2", null, true)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 2", "skill 2", "focus 1", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 2", "skill 2", "focus 2", true)]
+        [TestCase("skill 1", "focus 1", "skill 2", null, "skill 3", null, false)]
+        [TestCase("skill 1", "focus 1", "skill 2", null, "skill 3", "focus 1", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", null, "skill 3", "focus 2", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 1", "skill 3", null, false)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 1", "skill 3", "focus 1", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 1", "skill 3", "focus 2", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 2", "skill 3", null, false)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 2", "skill 3", "focus 1", false)]
+        [TestCase("skill 1", "focus 1", "skill 2", "focus 2", "skill 3", "focus 2", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", null, "skill 1", null, true)]
+        [TestCase("skill 1", "focus 2", "skill 2", null, "skill 1", "focus 1", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", null, "skill 1", "focus 2", true)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 1", "skill 1", null, true)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 1", "skill 1", "focus 1", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 1", "skill 1", "focus 2", true)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 2", "skill 1", null, true)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 2", "skill 1", "focus 1", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 2", "skill 1", "focus 2", true)]
+        [TestCase("skill 1", "focus 2", "skill 2", null, "skill 2", null, true)]
+        [TestCase("skill 1", "focus 2", "skill 2", null, "skill 2", "focus 1", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", null, "skill 2", "focus 2", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 1", "skill 2", null, true)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 1", "skill 2", "focus 1", true)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 1", "skill 2", "focus 2", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 2", "skill 2", null, true)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 2", "skill 2", "focus 1", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 2", "skill 2", "focus 2", true)]
+        [TestCase("skill 1", "focus 2", "skill 2", null, "skill 3", null, false)]
+        [TestCase("skill 1", "focus 2", "skill 2", null, "skill 3", "focus 1", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", null, "skill 3", "focus 2", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 1", "skill 3", null, false)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 1", "skill 3", "focus 1", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 1", "skill 3", "focus 2", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 2", "skill 3", null, false)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 2", "skill 3", "focus 1", false)]
+        [TestCase("skill 1", "focus 2", "skill 2", "focus 2", "skill 3", "focus 2", false)]
+        [TestCase("skill 1", "focus 1", "skill 1", "focus 2", "skill 1", null, true)]
+        [TestCase("skill 1", "focus 2", "skill 1", "focus 1", "skill 1", null, true)]
+        [TestCase("skill 1", "focus 1", "skill 1", "focus 2", "skill 1", "focus 1", true)]
+        [TestCase("skill 1", "focus 1", "skill 1", "focus 2", "skill 1", "focus 2", true)]
+        [TestCase("skill 1", "focus 2", "skill 1", "focus 1", "skill 1", "focus 1", true)]
+        [TestCase("skill 1", "focus 2", "skill 1", "focus 1", "skill 1", "focus 2", true)]
+        [TestCase("skill 1", "focus 1", "skill 1", "focus 2", "skill 2", null, false)]
+        [TestCase("skill 1", "focus 1", "skill 1", "focus 2", "skill 2", "focus 1", false)]
+        [TestCase("skill 1", "focus 1", "skill 1", "focus 2", "skill 2", "focus 2", false)]
+        [TestCase("skill 1", "focus 2", "skill 1", "focus 1", "skill 2", null, false)]
+        [TestCase("skill 1", "focus 2", "skill 1", "focus 1", "skill 2", "focus 1", false)]
+        [TestCase("skill 1", "focus 2", "skill 1", "focus 1", "skill 2", "focus 2", false)]
+        public void RequirementMetIfOtherSkillMatches(string skill, string focus, string otherSkill, string otherFocus, string requiredSkill, string requiredFocus, bool isMet)
         {
-            otherSkills.Add(CreateClassSkill("skill 1"));
-            otherSkills.Add(CreateClassSkill("skill 2"));
+            otherSkills.Add(CreateClassSkill(skill, focus));
+            otherSkills.Add(CreateClassSkill(otherSkill, otherFocus));
 
-            requiredSkillSelection.Skill = "skill 3";
+            requiredSkillSelection.Skill = requiredSkill;
+            requiredSkillSelection.Focus = requiredFocus;
 
             var met = requiredSkillSelection.RequirementMet(otherSkills);
-            Assert.That(met, Is.False);
-        }
-
-        [Test]
-        public void RequirementNotMetIfOtherSkillsContainSkillNameAndNoRequiredFocus()
-        {
-            otherSkills.Add(CreateClassSkill("skill 1"));
-            otherSkills.Add(CreateClassSkill("skill 2", "focus"));
-
-            requiredSkillSelection.Skill = "skill 2";
-
-            var met = requiredSkillSelection.RequirementMet(otherSkills);
-            Assert.That(met, Is.True);
-        }
-
-        [Test]
-        public void RequirementMetIfOtherSkillsContainSkillNameAndRequiredFocusIsOnSkill()
-        {
-            otherSkills.Add(CreateClassSkill("skill 1"));
-            otherSkills.Add(CreateClassSkill("skill 2", "focus"));
-
-            requiredSkillSelection.Skill = "skill 2";
-            requiredSkillSelection.Focus = "focus";
-
-            var met = requiredSkillSelection.RequirementMet(otherSkills);
-            Assert.That(met, Is.True);
-        }
-
-        [Test]
-        public void RequirementNotMetIfOtherSkillsContainSkillNameButNotRequiredFocus()
-        {
-            otherSkills.Add(CreateClassSkill("skill 1"));
-            otherSkills.Add(CreateClassSkill("skill 2"));
-
-            requiredSkillSelection.Skill = "skill 2";
-            requiredSkillSelection.Focus = "focus";
-
-            var met = requiredSkillSelection.RequirementMet(otherSkills);
-            Assert.That(met, Is.False);
-        }
-
-        [Test]
-        public void RequirementNotMetIfOtherSkillsContainSkillNameAndRequiredFocusIsNotOnMatchingSkill()
-        {
-            otherSkills.Add(CreateClassSkill("skill 1", "focus"));
-            otherSkills.Add(CreateClassSkill("skill 2"));
-
-            requiredSkillSelection.Skill = "skill 2";
-            requiredSkillSelection.Focus = "focus";
-
-            var met = requiredSkillSelection.RequirementMet(otherSkills);
-            Assert.That(met, Is.False);
-        }
-
-        [Test]
-        public void RequirementNotMetIfOtherSkillsContainSkillNameAndRequiredFocusDoesNotMatch()
-        {
-            otherSkills.Add(CreateClassSkill("skill 1"));
-            otherSkills.Add(CreateClassSkill("skill 2", "other focus"));
-
-            requiredSkillSelection.Skill = "skill 2";
-            requiredSkillSelection.Focus = "focus";
-
-            var met = requiredSkillSelection.RequirementMet(otherSkills);
-            Assert.That(met, Is.False);
+            Assert.That(met, Is.EqualTo(isMet));
         }
 
         [Test]
@@ -133,6 +150,20 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             otherSkills[1].Ranks = 1;
 
             requiredSkillSelection.Skill = "skill 2";
+            requiredSkillSelection.Ranks = 1;
+
+            var met = requiredSkillSelection.RequirementMet(otherSkills);
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void RequirementMetIfAnyHaveSufficientRanks()
+        {
+            otherSkills.Add(CreateClassSkill("skill 1", "focus 1"));
+            otherSkills.Add(CreateClassSkill("skill 1", "focus 2"));
+            otherSkills[1].Ranks = 1;
+
+            requiredSkillSelection.Skill = "skill 1";
             requiredSkillSelection.Ranks = 1;
 
             var met = requiredSkillSelection.RequirementMet(otherSkills);

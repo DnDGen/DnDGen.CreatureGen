@@ -457,6 +457,43 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             Assert.That(featNames.Single(), Is.EqualTo("synergy feat"));
         }
 
+        [TestCase(5, true)]
+        [TestCase(6, true)]
+        [TestCase(42, true)]
+        [TestCase(10, false)]
+        [TestCase(11, false)]
+        [TestCase(42, false)]
+        public void GetSkillSynergyBonusWithAnySufficientRanksWithFeats(int ranks, bool classSkill)
+        {
+            var selection = new FeatSelection();
+            selection.Feat = "synergy feat";
+            selection.FocusType = "focus type";
+            selection.Power = 12345;
+            selection.RequiredSkills = new[]
+            {
+                new RequiredSkillSelection { Skill = "source skill", Ranks = 5 },
+                new RequiredSkillSelection { Skill = "target skill", Ranks = 0 }
+            };
+
+            skills.Add(new Skill("source skill", abilities[AbilityConstants.Intelligence], 96, "focus"));
+            skills[0].Ranks = 1;
+            skills[0].ClassSkill = classSkill;
+            skills.Add(new Skill("source skill", abilities[AbilityConstants.Intelligence], 96, "other focus"));
+            skills[1].Ranks = ranks;
+            skills[1].ClassSkill = classSkill;
+            skills.Add(new Skill("target skill", abilities[AbilityConstants.Intelligence], 96));
+
+            skillSynergyFeatSelections.Add(selection);
+
+            mockFeatFocusGenerator.Setup(g => g.FocusTypeIsPreset("focus type")).Returns(true);
+
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var featNames = feats.Select(f => f.Name);
+
+            Assert.That(featNames.Count(), Is.EqualTo(1));
+            Assert.That(featNames.Single(), Is.EqualTo("synergy feat"));
+        }
+
         [TestCase(0, true)]
         [TestCase(1, true)]
         [TestCase(2, true)]
