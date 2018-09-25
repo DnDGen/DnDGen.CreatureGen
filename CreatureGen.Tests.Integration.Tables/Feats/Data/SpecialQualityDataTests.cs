@@ -51,7 +51,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         }
 
         [TestCaseSource(typeof(SpecialQualityTestData), "Creatures")]
-        [TestCaseSource(typeof(SpecialQualityTestData), "CreatureTypes")]
+        [TestCaseSource(typeof(SpecialQualityTestData), "Types")]
+        [TestCaseSource(typeof(SpecialQualityTestData), "Subtypes")]
         public void SpecialQualityData(string creature, List<string[]> entries)
         {
             if (!entries.Any())

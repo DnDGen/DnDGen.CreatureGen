@@ -19,7 +19,7 @@ namespace CreatureGen.Selectors.Helpers
             data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex] = Convert.ToString(frequencyQuantity);
             data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex] = frequencyTimePeriod;
             data[DataIndexConstants.SpecialQualityData.PowerIndex] = Convert.ToString(power);
-            data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex] = Convert.ToString(randomFociQuantity);
+            data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex] = randomFociQuantity;
             data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex] = Convert.ToString(requiresEquipment);
 
             return data;

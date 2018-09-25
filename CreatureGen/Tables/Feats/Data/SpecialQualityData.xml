@@ -3,6 +3,8 @@
 <collections>
   <collection>
     <name>Aasimar</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
     <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#5#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
@@ -1525,7 +1527,6 @@
     <name>Gauth (Lesser Beholder)</name>
     <entry>All-Around Vision#0##0##0#False</entry>
     <entry>Flight#0##0##0#False</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
     <entry>Alertness#2##0##0#False</entry>
   </collection>
   <collection>
@@ -2566,6 +2567,14 @@
   </collection>
   <collection>
     <name>Tiefling</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Fire#1#Round#0#False</entry>
+    <entry>Skill Bonus#2#Bluff#0##0#False</entry>
+    <entry>Skill Bonus#2#Hide#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Tiger</name>

@@ -1,4 +1,5 @@
-﻿using CreatureGen.Feats;
+﻿using CreatureGen.Creatures;
+using CreatureGen.Feats;
 using CreatureGen.Skills;
 using CreatureGen.Tables;
 using NUnit.Framework;
@@ -24,6 +25,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
                 FeatConstants.WeaponProficiency_Martial,
                 FeatConstants.WeaponProficiency_Simple,
                 GroupConstants.Skills,
+                "Imp Alternate Form"
             };
 
             AssertCollectionNames(names);
@@ -99,6 +101,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             WeaponConstants.LightRepeatingCrossbow,
             WeaponConstants.Shuriken,
             WeaponConstants.Net)]
+        [TestCase("Imp Alternate Form",
+            CreatureConstants.Spider_Monstrous_Small,
+            CreatureConstants.Spider_Monstrous_Medium,
+            CreatureConstants.Raven,
+            CreatureConstants.Rat,
+            CreatureConstants.Boar)]
         public void FeatFoci(string feat, params string[] foci)
         {
             base.AssertDistinctCollection(feat, foci);
