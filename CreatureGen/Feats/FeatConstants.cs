@@ -240,6 +240,7 @@ namespace CreatureGen.Feats
             public const string AntimagicCone = "Antimagic Cone";
             public const string AttackBonus = "Attack Bonus";
             public const string AuraOfMenace = "Aura of Menace";
+            public const string BarbedDefense = "Barbed Defense";
             public const string Blindsense = "Blindsense";
             public const string Blindsight = "Blindsight";
             public const string Camouflage = "Camouflage";
@@ -265,12 +266,14 @@ namespace CreatureGen.Feats
             public const string Icewalking = "Icewalking";
             public const string Immunity = "Immunity";
             public const string InertialArmor = "Inertial Armor";
+            public const string InvisibleInLight = "Invisible in Light";
             public const string KeenSenses = "Keen Senses";
             public const string LayOnHands = "Lay on Hands";
             public const string LightBlindness = "Light Blindness";
             public const string LowLightVision = "Low-Light Vision";
             public const string LowLightVision_Superior = "Superior Low-Light Vision";
             public const string LuckBonus = "Luck Bonus";
+            public const string Madness = "Madness";
             public const string MucusCloud = "Mucus Cloud";
             public const string NaturalWeapon = "Natural Weapon";
             public const string ProtectiveAura = "Protective Aura";
@@ -278,6 +281,7 @@ namespace CreatureGen.Feats
             public const string Regeneration = "Regeneration";
             public const string SaveBonus = "Save Bonus";
             public const string Scent = "Scent";
+            public const string SeeInDarkness = "See in Darkness";
             public const string SkillBonus = "Skill Bonus";
             public const string SmokeForm = "Smoke Form";
             public const string SoundImitation = "Sound Imitation";
@@ -304,6 +308,7 @@ namespace CreatureGen.Feats
                     AntimagicCone,
                     AttackBonus,
                     AuraOfMenace,
+                    BarbedDefense,
                     Blindsense,
                     Blindsight,
                     Camouflage,
@@ -329,12 +334,14 @@ namespace CreatureGen.Feats
                     Icewalking,
                     Immunity,
                     InertialArmor,
+                    InvisibleInLight,
                     KeenSenses,
                     LayOnHands,
                     LightBlindness,
                     LowLightVision,
                     LowLightVision_Superior,
                     LuckBonus,
+                    Madness,
                     MucusCloud,
                     NaturalWeapon,
                     ProtectiveAura,
@@ -342,6 +349,7 @@ namespace CreatureGen.Feats
                     Regeneration,
                     SaveBonus,
                     Scent,
+                    SeeInDarkness,
                     SkillBonus,
                     SmokeForm,
                     SoundImitation,
@@ -437,15 +445,16 @@ namespace CreatureGen.Feats
 
         public static class Frequencies
         {
-            public const string AtWill = "At Will";
             public const string Constant = "Constant";
-            public const string Day = "Day";
+            public const string AtWill = "At Will";
             public const string Hit = "Hit";
-            public const string Hour = "Hour";
-            public const string Month = "Month";
             public const string Round = "Round";
             public const string Turn = "Turn";
+            public const string Hour = "Hour";
+            public const string Day = "Day";
             public const string Week = "Week";
+            public const string Month = "Month";
+            public const string Year = "Year";
         }
 
         public static class Foci

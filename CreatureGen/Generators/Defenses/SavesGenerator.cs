@@ -22,9 +22,13 @@ namespace CreatureGen.Generators.Defenses
         {
             var saves = new Saves();
 
-            saves.Constitution = abilities[AbilityConstants.Constitution];
-            saves.Dexterity = abilities[AbilityConstants.Dexterity];
-            saves.Wisdom = abilities[AbilityConstants.Wisdom];
+            saves.FortitudeAbility = abilities[AbilityConstants.Constitution];
+            saves.ReflexAbility = abilities[AbilityConstants.Dexterity];
+
+            if (feats.Any(f => f.Name == FeatConstants.SpecialQualities.Madness))
+                saves.WillAbility = abilities[AbilityConstants.Charisma];
+            else
+                saves.WillAbility = abilities[AbilityConstants.Wisdom];
 
             saves.FeatFortitudeBonus = GetFeatSavingThrowBonus(feats, SaveConstants.Fortitude);
             saves.FeatReflexBonus = GetFeatSavingThrowBonus(feats, SaveConstants.Reflex);

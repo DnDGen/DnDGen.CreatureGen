@@ -120,39 +120,47 @@ namespace CreatureGen.Selectors.Collections
 
         public IEnumerable<SpecialQualitySelection> SelectSpecialQualities(string creature, CreatureType creatureType)
         {
-            var specialQualities = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpecialQualityData, creature);
-            var creatureTypeQualities = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpecialQualityData, creatureType.Name);
+            var specialQualitiesWithSource = new Dictionary<string, IEnumerable<string>>();
 
-            specialQualities = specialQualities.Union(creatureTypeQualities);
+            specialQualitiesWithSource[creature] = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpecialQualityData, creature);
+            specialQualitiesWithSource[creatureType.Name] = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpecialQualityData, creatureType.Name);
 
             foreach (var subtype in creatureType.SubTypes)
             {
-                var subtypeQualities = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpecialQualityData, subtype);
-                specialQualities = specialQualities.Union(subtypeQualities);
+                specialQualitiesWithSource[subtype] = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpecialQualityData, subtype);
             }
 
-            if (!specialQualities.Any())
+            if (!specialQualitiesWithSource.SelectMany(kvp => kvp.Value).Any())
                 return Enumerable.Empty<SpecialQualitySelection>();
 
             var specialQualitySelections = new List<SpecialQualitySelection>();
+            var usedSpecialQualities = new List<string>();
 
-            foreach (var specialQuality in specialQualities)
+            foreach (var specialQualityKvp in specialQualitiesWithSource)
             {
-                var data = SpecialQualityHelper.ParseData(specialQuality);
+                var source = specialQualityKvp.Key;
+                var specialQualities = specialQualityKvp.Value;
+                var newSpecialQualities = specialQualityKvp.Value.Except(usedSpecialQualities).ToArray();
 
-                var specialQualitySelection = new SpecialQualitySelection();
-                specialQualitySelection.Feat = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
-                specialQualitySelection.Power = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]);
-                specialQualitySelection.FocusType = data[DataIndexConstants.SpecialQualityData.FocusIndex];
-                specialQualitySelection.Frequency.Quantity = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]);
-                specialQualitySelection.Frequency.TimePeriod = data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex];
-                specialQualitySelection.RandomFociQuantity = data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex];
-                specialQualitySelection.RequiresEquipment = Convert.ToBoolean(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex]);
+                foreach (var specialQuality in newSpecialQualities)
+                {
+                    var data = SpecialQualityHelper.ParseData(specialQuality);
 
-                specialQualitySelection.RequiredFeats = GetRequiredFeats(creature + specialQualitySelection.Feat);
-                specialQualitySelection.MinimumAbilities = GetRequiredAbilities(creature + specialQualitySelection.Feat);
+                    var specialQualitySelection = new SpecialQualitySelection();
+                    specialQualitySelection.Feat = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
+                    specialQualitySelection.Power = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]);
+                    specialQualitySelection.FocusType = data[DataIndexConstants.SpecialQualityData.FocusIndex];
+                    specialQualitySelection.Frequency.Quantity = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]);
+                    specialQualitySelection.Frequency.TimePeriod = data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex];
+                    specialQualitySelection.RandomFociQuantity = data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex];
+                    specialQualitySelection.RequiresEquipment = Convert.ToBoolean(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex]);
 
-                specialQualitySelections.Add(specialQualitySelection);
+                    specialQualitySelection.RequiredFeats = GetRequiredFeats(source + specialQualitySelection.Feat);
+                    specialQualitySelection.MinimumAbilities = GetRequiredAbilities(source + specialQualitySelection.Feat);
+
+                    specialQualitySelections.Add(specialQualitySelection);
+                    usedSpecialQualities.Add(specialQuality);
+                }
             }
 
             return specialQualitySelections;

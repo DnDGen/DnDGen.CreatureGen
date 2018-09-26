@@ -47,9 +47,11 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             hitPoints.HitDiceQuantity = 1;
             creatureType.Name = "creature type";
+            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
             abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
             abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+
             allSaveFeats.Add("other feat");
             reflexSaveFeats.Add("other feat");
             fortitudeSaveFeats.Add("other feat");
@@ -79,9 +81,9 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             abilities[AbilityConstants.Wisdom].BaseScore = 1;
 
             var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Constitution, Is.EqualTo(abilities[AbilityConstants.Constitution]));
-            Assert.That(saves.Dexterity, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
-            Assert.That(saves.Wisdom, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
+            Assert.That(saves.FortitudeAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
+            Assert.That(saves.ReflexAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+            Assert.That(saves.WillAbility, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
             Assert.That(saves.Fortitude, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
             Assert.That(saves.Reflex, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
             Assert.That(saves.Will, Is.EqualTo(abilities[AbilityConstants.Wisdom].Modifier));
@@ -95,9 +97,9 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             abilities[AbilityConstants.Wisdom].BaseScore = 0;
 
             var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Constitution, Is.EqualTo(abilities[AbilityConstants.Constitution]));
-            Assert.That(saves.Dexterity, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
-            Assert.That(saves.Wisdom, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
+            Assert.That(saves.FortitudeAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
+            Assert.That(saves.ReflexAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+            Assert.That(saves.WillAbility, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
             Assert.That(saves.Fortitude, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
             Assert.That(saves.Reflex, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
             Assert.That(saves.Will, Is.EqualTo(abilities[AbilityConstants.Wisdom].Modifier));
@@ -326,6 +328,56 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(saves.Fortitude, Is.EqualTo(10));
             Assert.That(saves.Reflex, Is.EqualTo(10));
             Assert.That(saves.Will, Is.EqualTo(14));
+        }
+
+        [Test]
+        public void IfMadness_ThenUseCharismaForWill()
+        {
+            abilities[AbilityConstants.Charisma].BaseScore = 0;
+            abilities[AbilityConstants.Constitution].BaseScore = 0;
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Wisdom].BaseScore = 0;
+
+            var feat = new Feat();
+            feat.Name = FeatConstants.SpecialQualities.Madness;
+
+            feats.Add(feat);
+
+            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.FortitudeAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
+            Assert.That(saves.ReflexAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+            Assert.That(saves.WillAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
+            Assert.That(saves.Fortitude, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
+            Assert.That(saves.Reflex, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(saves.Will, Is.EqualTo(abilities[AbilityConstants.Charisma].Modifier));
+            Assert.That(saves.Fortitude, Is.Zero);
+            Assert.That(saves.Reflex, Is.Zero);
+            Assert.That(saves.Will, Is.Zero);
+        }
+
+        [Test]
+        public void IfNotMadness_ThenUseWisdomForWill()
+        {
+            abilities[AbilityConstants.Charisma].BaseScore = 0;
+            abilities[AbilityConstants.Constitution].BaseScore = 0;
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Wisdom].BaseScore = 0;
+
+            var feat = new Feat();
+            feat.Name = "not " + FeatConstants.SpecialQualities.Madness;
+
+            feats.Add(feat);
+
+            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.FortitudeAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
+            Assert.That(saves.ReflexAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+            Assert.That(saves.WillAbility, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
+            Assert.That(saves.Fortitude, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
+            Assert.That(saves.Reflex, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(saves.Will, Is.EqualTo(abilities[AbilityConstants.Wisdom].Modifier));
+            Assert.That(saves.Fortitude, Is.Zero);
+            Assert.That(saves.Reflex, Is.Zero);
+            Assert.That(saves.Will, Is.Zero);
         }
     }
 }

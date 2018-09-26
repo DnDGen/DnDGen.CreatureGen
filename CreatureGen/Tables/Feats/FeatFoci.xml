@@ -24,6 +24,14 @@
     <entry>Light repeating crossbow</entry>
   </collection>
   <collection>
+    <name>Imp Alternate Form</name>
+    <entry>Boar</entry>
+    <entry>Monstrous Spider, Medium</entry>
+    <entry>Monstrous Spider, Small</entry>
+    <entry>Rat</entry>
+    <entry>Raven</entry>
+  </collection>
+  <collection>
     <name>Martial Weapon Proficiency</name>
     <entry>Composite longbow</entry>
     <entry>Composite shortbow</entry>

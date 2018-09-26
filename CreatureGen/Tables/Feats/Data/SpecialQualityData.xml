@@ -52,9 +52,6 @@
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
     <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
-    <entry>Skill Bonus#2#Survival: on Plane of Air#0##0#False</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
   </collection>
   <collection>
     <name>Adult Tojanida</name>
@@ -65,11 +62,8 @@
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Immunity#0#Cold#0##0#False</entry>
     <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
-    <entry>Skill Bonus#2#Survival: on other planes#0##0#False</entry>
     <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
     <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
   </collection>
   <collection>
     <name>Air</name>
@@ -143,8 +137,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#60##0##0#False</entry>
     <entry>Fast Healing#2#Exposed to moving air#1#Turn#0#False</entry>
-    <entry>Skill Bonus#2#Disguise: while acting#0##0#False</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0#False</entry>
     <entry>Spell-Like Ability#0#Gust of wind#1#Day#0#False</entry>
   </collection>
@@ -189,7 +181,6 @@
     <name>Angel, Astral Deva</name>
     <entry>Change Shape#0#Small or Medium Humanoid#0##0#False</entry>
     <entry>Damage Reduction#10#Vulnerable to evil#1#Hit#0#False</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
     <entry>Spell Resistance#30##0##0#False</entry>
     <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Blade barrier#1#Day#0#False</entry>
@@ -216,7 +207,6 @@
     <entry>Change Shape#0#Small or Medium Humanoid#0##0#False</entry>
     <entry>Damage Reduction#10#Vulnerable to evil#1#Hit#0#False</entry>
     <entry>Regeneration#10#Does not regenerate evil damage#1#Round#0#False</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
     <entry>Spell Resistance#30##0##0#False</entry>
     <entry>Spell-Like Ability#0#Blade barrier#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False</entry>
@@ -247,8 +237,6 @@
     <entry>Change Shape#0#Small or Medium Humanoid#0##0#False</entry>
     <entry>Damage Reduction#15#Vulnerable to epic evil#1#Hit#0#False</entry>
     <entry>Regeneration#15#Does not regenerate evil damage#1#Round#0#False</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0#False</entry>
     <entry>Spell Resistance#32##0##0#False</entry>
     <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Animate objects#0#At Will#0#False</entry>
@@ -321,7 +309,6 @@
     <name>Annis</name>
     <entry>Damage Reduction#2#Vulnerable to bludgeoning weapons#1#Hit#0#False</entry>
     <entry>Darkvision#60##0##0#False</entry>
-    <entry>Skill Bonus#2#Disguise: while acting#0##0#False</entry>
     <entry>Spell Resistance#19##0##0#False</entry>
     <entry>Spell-Like Ability#0#Disguise self#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
@@ -339,15 +326,15 @@
   </collection>
   <collection>
     <name>Aquatic Elf</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Exotic Weapon Proficiency#0#Net#0##0#True</entry>
     <entry>Gills#0##0##0#False</entry>
     <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
-    <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0#True</entry>
-    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
-    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
-    <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
-    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Trident#0##0#True</entry>
     <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Longspear#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Shortspear#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Spear#0##0#True</entry>
     <entry>Skill Bonus#2#Listen#0##0#False</entry>
     <entry>Skill Bonus#2#Search#0##0#False</entry>
     <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
@@ -412,7 +399,6 @@
     <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
     <entry>Immunity#0#Cold#0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
     <entry>Skill Bonus#2#Survival: underground#0##0#False</entry>
     <entry>Tremorsense#60##0##0#False</entry>
   </collection>
@@ -426,7 +412,6 @@
     <entry>Immunity#0#Petrification#0##0#False</entry>
     <entry>Lay on Hands#0##0##0#False</entry>
     <entry>Low-Light Vision#0##0##0#False</entry>
-    <entry>Skill Bonus#2#Disguise: while acting#0##0#False</entry>
     <entry>Skill Bonus#8#Spot#0##0#False</entry>
     <entry>Spell Resistance#25##0##0#False</entry>
     <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
@@ -522,6 +507,22 @@
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
+    <entry>Barbed Defense#0##0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False</entry>
+    <entry>Spell Resistance#23##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Hold person#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Major image#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Order's wrath#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Scorching ray: 2 rays only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#1#Day#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Barghest</name>
@@ -529,9 +530,7 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#60##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
-    <entry>Skill Bonus#2#Disguise: while acting#0##0#False</entry>
     <entry>Skill Bonus#4#Hide: in wolf form#0##0#False</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
     <entry>Spell-Like Ability#0#Blink#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Charm monster#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Crushing despair#1#Day#0#False</entry>
@@ -564,6 +563,17 @@
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
+    <entry>Damage Reduction#5#Vulnerable to good or silver weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Glaive#0##0#True</entry>
+    <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False</entry>
+    <entry>Spell Resistance#17##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Bebilith</name>
@@ -571,7 +581,6 @@
     <entry>Darkvision#60##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
     <entry>Skill Bonus#8#Hide#0##0#False</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
     <entry>Spell-Like Ability#0#Plane shift: self only#0#At Will#0#False</entry>
     <entry>Telepathy#100##0##0#False</entry>
   </collection>
@@ -590,7 +599,6 @@
     <entry>All-Around Vision#0##0##0#False</entry>
     <entry>Antimagic Cone#0##0##0#False</entry>
     <entry>Flight#0##0##0#False</entry>
-    <entry>Skill Bonus#2#Survival: following tracks#0##0#False</entry>
     <entry>Alertness#2##0##0#False</entry>
   </collection>
   <collection>
@@ -946,7 +954,7 @@
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
-    <entry>Spell Resistance#17##0##0#False</entry>
+    <entry>Spell Resistance#19##0##0#False</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Young</name>
@@ -960,115 +968,418 @@
   </collection>
   <collection>
     <name>Blue Slaad</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#5#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Fire#1#Round#0#False</entry>
+    <entry>Fast Healing#5##1#Turn#0#False</entry>
+    <entry>Immunity#0#Sonic#0##0#False</entry>
   </collection>
   <collection>
     <name>Boar</name>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bodak</name>
+    <entry>Damage Reduction#10#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Vulnerability#0#Sunlight#0##0#False</entry>
   </collection>
   <collection>
     <name>Bone Devil (Osyluth)</name>
+    <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Dimensional anchor#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Fly#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility: self only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Major image#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Wall of ice#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Bralani</name>
-    <entry>Perfect Maneuverability</entry>
+    <entry>Alternate Form#0#Humanoid or whirlwind form#0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to cold iron or evil weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Petrification#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Spell Resistance#17##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Blur#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Charm person#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Gust of wind#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Mirror image#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Wind wall#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Lightning bolt#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Cure/inflict serious wounds#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#20##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Endure elements: radius 60 ft.#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Ancient</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#27##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Control weather#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Endure elements: radius 100 ft.#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Great Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#30##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Control weather#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Endure elements: radius 120 ft.#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Summon monster VII: one Djinni#1#Day#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Juvenile</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Endure elements: radius 40 ft.#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Mature Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#22##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Endure elements: radius 70 ft.#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Old</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#24##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Endure elements: radius 80 ft.#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Very Old</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Endure elements: radius 90 ft.#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Very Young</name>
-    <entry>Average Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#28##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Control weather#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Endure elements: radius 110 ft.#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Wyrmling</name>
-    <entry>Average Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Young Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#18##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Endure elements: radius 50 ft.#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Young</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#22##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Ancient</name>
-    <entry>Clumsy Maneuverability</entry>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#28##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control water#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Great Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#31##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control water#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Juvenile</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Mature Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#23##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Old</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Very Old</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#26##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Very Young</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#29##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control water#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrmling</name>
-    <entry>Average Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Young Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#20##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Young</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Brown Bear</name>
@@ -1102,6 +1413,13 @@
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
+    <entry>Damage Reduction#5#Vulnerable to good or silver weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Exotic Weapon Proficiency#0#Spiked chain#0##0#True</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Regeneration#2#Does not regenerate damage from silver weapons or good-aligned damage#1#Round#0#False</entry>
+    <entry>Spell Resistance#18##0##0#False</entry>
+    <entry>Skill Bonus#8#Craft: involving metalwork#0##0#False</entry>
   </collection>
   <collection>
     <name>Chaos Beast</name>
@@ -1341,6 +1659,20 @@
   </collection>
   <collection>
     <name>Drow</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Exotic Weapon Proficiency#0#Hand crossbow#0##0#True</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Light Blindness#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
+    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
+    <entry>Save Bonus#2#Will: spells and spell-like abilities#0##0#False</entry>
+    <entry>Skill Bonus#2#Listen#0##0#False</entry>
+    <entry>Skill Bonus#2#Search#0##0#False</entry>
+    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
+    <entry>Skill Bonus#2#Spot#0##0#False</entry>
+    <entry>Spell Resistance#11##0##0#False</entry>
   </collection>
   <collection>
     <name>Dryad</name>
@@ -1521,7 +1853,6 @@
   </collection>
   <collection>
     <name>Gargoyle</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
@@ -1534,7 +1865,6 @@
   </collection>
   <collection>
     <name>Ghaele</name>
-    <entry>Perfect Maneuverability</entry>
   </collection>
   <collection>
     <name>Ghast</name>
@@ -1556,7 +1886,6 @@
   </collection>
   <collection>
     <name>Giant Bee</name>
-    <entry>Good Maneuverability</entry>
   </collection>
   <collection>
     <name>Giant Bombardier Beetle</name>
@@ -1569,7 +1898,6 @@
   </collection>
   <collection>
     <name>Giant Eagle</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Giant Fire Beetle</name>
@@ -1579,11 +1907,9 @@
   </collection>
   <collection>
     <name>Giant Owl</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Giant Praying Mantis</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Giant Squid</name>
@@ -1593,7 +1919,6 @@
   </collection>
   <collection>
     <name>Giant Wasp</name>
-    <entry>Good Maneuverability</entry>
   </collection>
   <collection>
     <name>Gibbering Mouther</name>
@@ -1624,51 +1949,39 @@
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Ancient</name>
-    <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Great Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Mature Adult</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Old</name>
-    <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Old</name>
-    <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Young</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Wyrmling</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young Adult</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Good</name>
@@ -1678,6 +1991,20 @@
   </collection>
   <collection>
     <name>Gray Elf</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
+    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
+    <entry>Skill Bonus#2#Listen#0##0#False</entry>
+    <entry>Skill Bonus#2#Search#0##0#False</entry>
+    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
+    <entry>Skill Bonus#2#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Gray Ooze</name>
@@ -1693,58 +2020,45 @@
   </collection>
   <collection>
     <name>Greater Shadow</name>
-    <entry>Good Maneuverability</entry>
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
   </collection>
   <collection>
     <name>Green Dragon, Adult</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Dragon, Ancient</name>
-    <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Dragon, Mature Adult</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Dragon, Old</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Old</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Young</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrmling</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young Adult</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Green Hag</name>
@@ -1757,11 +2071,9 @@
   </collection>
   <collection>
     <name>Griffon</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Grig</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Grimlock</name>
@@ -1771,10 +2083,20 @@
   </collection>
   <collection>
     <name>Gynosphinx</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Half-Elf</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Elven Blood#0##0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
+    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
+    <entry>Skill Bonus#2#Diplomacy#0##0#False</entry>
+    <entry>Skill Bonus#2#Gather Information#0##0#False</entry>
+    <entry>Skill Bonus#1#Listen#0##0#False</entry>
+    <entry>Skill Bonus#1#Search#0##0#False</entry>
+    <entry>Skill Bonus#1#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Half-Orc</name>
@@ -1784,11 +2106,9 @@
   </collection>
   <collection>
     <name>Harpy</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Hawk</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Heavy Horse</name>
@@ -1801,20 +2121,41 @@
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
+    <entry>Damage Reduction#5#Vulnerable to good weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Invisible in Light#0##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Skill Bonus#4#Listen#0##0#False</entry>
+    <entry>Skill Bonus#4#Move Silently#0##0#False</entry>
+    <entry>Spell Resistance#19##0##0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Hellwasp Swarm</name>
-    <entry>Good Maneuverability</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>High Elf</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
+    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
+    <entry>Skill Bonus#2#Listen#0##0#False</entry>
+    <entry>Skill Bonus#2#Search#0##0#False</entry>
+    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
+    <entry>Skill Bonus#2#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Hill Dwarf</name>
@@ -1824,7 +2165,6 @@
   </collection>
   <collection>
     <name>Hippogriff</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Hobgoblin</name>
@@ -1849,7 +2189,23 @@
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
-    <entry>Average Maneuverability</entry>
+    <entry>Damage Reduction#10#Vulnerable to good, silver weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Regeneration#5#Does not regenerate damage from good-aligned, silvered weapons#1#Round#0#False</entry>
+    <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False</entry>
+    <entry>Exotic Weapon Proficiency#0#Spiked chain#0##0#True</entry>
+    <entry>Spell Resistance#28##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel good/evil/law/chaos#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Magic circle against chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Fireball#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Lightning bolt#3#Day#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Hound Archon</name>
@@ -1868,6 +2224,26 @@
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
+    <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Regeneration#5#Does not regenerate good damage#1#Round#0#False</entry>
+    <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Longspear#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Spear#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Shortspear#0##0#True</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Cone of cold#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Fly#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Ice storm#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Wall of ice#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Ice Mephit</name>
@@ -1877,18 +2253,15 @@
   </collection>
   <collection>
     <name>Invisible Stalker</name>
-    <entry>Perfect Maneuverability</entry>
   </collection>
   <collection>
     <name>Imp</name>
-    <entry>Perfect Maneuverability</entry>
   </collection>
   <collection>
     <name>Iron Golem</name>
   </collection>
   <collection>
     <name>Janni</name>
-    <entry>Perfect Maneuverability</entry>
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
@@ -1922,11 +2295,9 @@
   </collection>
   <collection>
     <name>Lammasu</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
-    <entry>Perfect Maneuverability</entry>
   </collection>
   <collection>
     <name>Lawful</name>
@@ -1951,7 +2322,6 @@
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Lion</name>
@@ -1967,14 +2337,12 @@
   </collection>
   <collection>
     <name>Locust Swarm</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Magical Beast</name>
   </collection>
   <collection>
     <name>Magma Mephit</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Magmin</name>
@@ -1984,7 +2352,6 @@
   </collection>
   <collection>
     <name>Manticore</name>
-    <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
     <name>Marilith</name>
@@ -2009,6 +2376,13 @@
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Levitate#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Plane shift#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Minor Xorn</name>
@@ -2175,7 +2549,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0</entry>
     <entry>Darkvision#60##0##0</entry>
     <entry>Fast Healing#2#Exposed to moving air#1#Turn#0</entry>
-    <entry>Skill Bonus#2#Disguise: while acting#0##0</entry>
     <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
     <entry>Skill Bonus#10#Swim: can always take 10#0##0</entry>
     <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
@@ -2689,7 +3062,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0</entry>
     <entry>Darkvision#60##0##0</entry>
     <entry>Fast Healing#2#Exposed to moving air#1#Turn#0</entry>
-    <entry>Skill Bonus#2#Disguise: while acting#0##0</entry>
     <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
     <entry>Skill Bonus#10#Swim: can always take 10#0##0</entry>
     <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
@@ -2755,6 +3127,20 @@
   </collection>
   <collection>
     <name>Wild Elf</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
+    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
+    <entry>Skill Bonus#2#Listen#0##0#False</entry>
+    <entry>Skill Bonus#2#Search#0##0#False</entry>
+    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
+    <entry>Skill Bonus#2#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
@@ -2774,6 +3160,20 @@
   </collection>
   <collection>
     <name>Wood Elf</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
+    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
+    <entry>Skill Bonus#2#Listen#0##0#False</entry>
+    <entry>Skill Bonus#2#Search#0##0#False</entry>
+    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
+    <entry>Skill Bonus#2#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Wraith</name>

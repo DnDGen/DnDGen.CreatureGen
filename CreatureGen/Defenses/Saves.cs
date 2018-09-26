@@ -4,9 +4,9 @@ namespace CreatureGen.Defenses
 {
     public class Saves
     {
-        public Ability Constitution { get; set; }
-        public Ability Dexterity { get; set; }
-        public Ability Wisdom { get; set; }
+        public Ability FortitudeAbility { get; set; }
+        public Ability ReflexAbility { get; set; }
+        public Ability WillAbility { get; set; }
         public int RacialFortitudeBonus { get; set; }
         public int RacialReflexBonus { get; set; }
         public int RacialWillBonus { get; set; }
@@ -19,7 +19,7 @@ namespace CreatureGen.Defenses
         {
             get
             {
-                return ComputeTotal(Constitution, RacialFortitudeBonus, FeatFortitudeBonus);
+                return ComputeTotal(FortitudeAbility, RacialFortitudeBonus, FeatFortitudeBonus);
             }
         }
 
@@ -27,7 +27,7 @@ namespace CreatureGen.Defenses
         {
             get
             {
-                return ComputeTotal(Dexterity, RacialReflexBonus, FeatReflexBonus);
+                return ComputeTotal(ReflexAbility, RacialReflexBonus, FeatReflexBonus);
             }
         }
 
@@ -47,7 +47,7 @@ namespace CreatureGen.Defenses
         {
             get
             {
-                return ComputeTotal(Wisdom, RacialWillBonus, FeatWillBonus);
+                return ComputeTotal(WillAbility, RacialWillBonus, FeatWillBonus);
             }
         }
     }

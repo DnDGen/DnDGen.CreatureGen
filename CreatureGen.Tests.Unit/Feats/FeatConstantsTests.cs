@@ -209,6 +209,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.AntimagicCone, "Antimagic Cone")]
         [TestCase(FeatConstants.SpecialQualities.AttackBonus, "Attack Bonus")]
         [TestCase(FeatConstants.SpecialQualities.AuraOfMenace, "Aura of Menace")]
+        [TestCase(FeatConstants.SpecialQualities.BarbedDefense, "Barbed Defense")]
         [TestCase(FeatConstants.SpecialQualities.Blindsense, "Blindsense")]
         [TestCase(FeatConstants.SpecialQualities.Blindsight, "Blindsight")]
         [TestCase(FeatConstants.SpecialQualities.Camouflage, "Camouflage")]
@@ -234,12 +235,14 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.Icewalking, "Icewalking")]
         [TestCase(FeatConstants.SpecialQualities.Immunity, "Immunity")]
         [TestCase(FeatConstants.SpecialQualities.InertialArmor, "Inertial Armor")]
+        [TestCase(FeatConstants.SpecialQualities.InvisibleInLight, "Invisible in Light")]
         [TestCase(FeatConstants.SpecialQualities.KeenSenses, "Keen Senses")]
         [TestCase(FeatConstants.SpecialQualities.LayOnHands, "Lay on Hands")]
         [TestCase(FeatConstants.SpecialQualities.LightBlindness, "Light Blindness")]
         [TestCase(FeatConstants.SpecialQualities.LowLightVision, "Low-Light Vision")]
         [TestCase(FeatConstants.SpecialQualities.LowLightVision_Superior, "Superior Low-Light Vision")]
         [TestCase(FeatConstants.SpecialQualities.LuckBonus, "Luck Bonus")]
+        [TestCase(FeatConstants.SpecialQualities.Madness, "Madness")]
         [TestCase(FeatConstants.SpecialQualities.MucusCloud, "Mucus Cloud")]
         [TestCase(FeatConstants.SpecialQualities.NaturalWeapon, "Natural Weapon")]
         [TestCase(FeatConstants.SpecialQualities.ProtectiveAura, "Protective Aura")]
@@ -247,6 +250,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.Regeneration, "Regeneration")]
         [TestCase(FeatConstants.SpecialQualities.SaveBonus, "Save Bonus")]
         [TestCase(FeatConstants.SpecialQualities.Scent, "Scent")]
+        [TestCase(FeatConstants.SpecialQualities.SeeInDarkness, "See in Darkness")]
         [TestCase(FeatConstants.SpecialQualities.SkillBonus, "Skill Bonus")]
         [TestCase(FeatConstants.SpecialQualities.SmokeForm, "Smoke Form")]
         [TestCase(FeatConstants.SpecialQualities.SoundImitation, "Sound Imitation")]
@@ -262,7 +266,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.Vulnerability, "Vulnerability")]
         [TestCase(FeatConstants.SpecialQualities.WaterBreathing, "Water Breathing")]
         [TestCase(FeatConstants.SpecialQualities.WeaponFamiliarity, "Weapon Familiarity")]
-        public void SpecialQualityTests(string constant, string value)
+        public void SpecialQualityConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));
         }
@@ -279,15 +283,16 @@ namespace CreatureGen.Tests.Unit.Feats
             Assert.That(specialQualities, Is.EquivalentTo(constants));
         }
 
-        [TestCase(FeatConstants.Frequencies.AtWill, "At Will")]
         [TestCase(FeatConstants.Frequencies.Constant, "Constant")]
-        [TestCase(FeatConstants.Frequencies.Day, "Day")]
+        [TestCase(FeatConstants.Frequencies.AtWill, "At Will")]
         [TestCase(FeatConstants.Frequencies.Hit, "Hit")]
-        [TestCase(FeatConstants.Frequencies.Hour, "Hour")]
-        [TestCase(FeatConstants.Frequencies.Month, "Month")]
         [TestCase(FeatConstants.Frequencies.Round, "Round")]
         [TestCase(FeatConstants.Frequencies.Turn, "Turn")]
+        [TestCase(FeatConstants.Frequencies.Hour, "Hour")]
+        [TestCase(FeatConstants.Frequencies.Day, "Day")]
         [TestCase(FeatConstants.Frequencies.Week, "Week")]
+        [TestCase(FeatConstants.Frequencies.Month, "Month")]
+        [TestCase(FeatConstants.Frequencies.Year, "Year")]
         public void FeatFrequencyConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));

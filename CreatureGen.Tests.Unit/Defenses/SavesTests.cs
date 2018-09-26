@@ -21,9 +21,9 @@ namespace CreatureGen.Tests.Unit.Defenses
             Assert.That(saves.Fortitude, Is.Zero);
             Assert.That(saves.Reflex, Is.Zero);
             Assert.That(saves.Will, Is.Zero);
-            Assert.That(saves.Constitution, Is.Null);
-            Assert.That(saves.Dexterity, Is.Null);
-            Assert.That(saves.Wisdom, Is.Null);
+            Assert.That(saves.FortitudeAbility, Is.Null);
+            Assert.That(saves.ReflexAbility, Is.Null);
+            Assert.That(saves.WillAbility, Is.Null);
             Assert.That(saves.FeatFortitudeBonus, Is.Zero);
             Assert.That(saves.FeatReflexBonus, Is.Zero);
             Assert.That(saves.FeatWillBonus, Is.Zero);
@@ -36,8 +36,8 @@ namespace CreatureGen.Tests.Unit.Defenses
         [Test]
         public void FortitudeTotal()
         {
-            saves.Constitution = new Ability(AbilityConstants.Constitution);
-            saves.Constitution.BaseScore = 9266;
+            saves.FortitudeAbility = new Ability(AbilityConstants.Constitution);
+            saves.FortitudeAbility.BaseScore = 9266;
             saves.FeatFortitudeBonus = 90210;
             saves.RacialFortitudeBonus = 42;
 
@@ -47,8 +47,8 @@ namespace CreatureGen.Tests.Unit.Defenses
         [Test]
         public void FortitudeTotalWithoutAbility()
         {
-            saves.Constitution = new Ability(AbilityConstants.Constitution);
-            saves.Constitution.BaseScore = 0;
+            saves.FortitudeAbility = new Ability(AbilityConstants.Constitution);
+            saves.FortitudeAbility.BaseScore = 0;
             saves.FeatFortitudeBonus = 90210;
             saves.RacialFortitudeBonus = 42;
 
@@ -58,8 +58,8 @@ namespace CreatureGen.Tests.Unit.Defenses
         [Test]
         public void ReflexTotal()
         {
-            saves.Dexterity = new Ability(AbilityConstants.Dexterity);
-            saves.Dexterity.BaseScore = 9266;
+            saves.ReflexAbility = new Ability(AbilityConstants.Dexterity);
+            saves.ReflexAbility.BaseScore = 9266;
             saves.FeatReflexBonus = 90210;
             saves.RacialReflexBonus = 42;
 
@@ -69,8 +69,8 @@ namespace CreatureGen.Tests.Unit.Defenses
         [Test]
         public void ReflexTotalWithoutAbility()
         {
-            saves.Dexterity = new Ability(AbilityConstants.Dexterity);
-            saves.Dexterity.BaseScore = 0;
+            saves.ReflexAbility = new Ability(AbilityConstants.Dexterity);
+            saves.ReflexAbility.BaseScore = 0;
             saves.FeatReflexBonus = 90210;
             saves.RacialReflexBonus = 42;
 
@@ -80,8 +80,8 @@ namespace CreatureGen.Tests.Unit.Defenses
         [Test]
         public void WillTotal()
         {
-            saves.Wisdom = new Ability(AbilityConstants.Wisdom);
-            saves.Wisdom.BaseScore = 9266;
+            saves.WillAbility = new Ability(AbilityConstants.Wisdom);
+            saves.WillAbility.BaseScore = 9266;
             saves.FeatWillBonus = 90210;
             saves.RacialWillBonus = 42;
 
@@ -91,8 +91,8 @@ namespace CreatureGen.Tests.Unit.Defenses
         [Test]
         public void WillTotalWithoutAbility()
         {
-            saves.Wisdom = new Ability(AbilityConstants.Wisdom);
-            saves.Wisdom.BaseScore = 0;
+            saves.WillAbility = new Ability(AbilityConstants.Wisdom);
+            saves.WillAbility.BaseScore = 0;
             saves.FeatWillBonus = 90210;
             saves.RacialWillBonus = 42;
 
