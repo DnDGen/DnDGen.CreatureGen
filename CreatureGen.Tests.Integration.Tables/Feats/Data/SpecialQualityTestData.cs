@@ -34,7 +34,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Aasimar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Daylight, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
                 testCases[CreatureConstants.Aasimar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 2));
                 testCases[CreatureConstants.Aasimar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Listen, power: 2));
-                testCases[CreatureConstants.Aasimar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Aasimar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Aasimar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Aasimar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Electricity, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -49,28 +48,16 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Aboleth].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ProgrammedImage, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Aboleth].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ProjectImage, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
 
-                testCases[CreatureConstants.Achaierai].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Achaierai].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19));
 
-                testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.TurnResistance, power: 2));
                 testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Nonmagical attacks"));
-                testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Mind-Affecting Effects"));
                 testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
                 testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
                 testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
                 testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Disease"));
-                testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Death"));
-                testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Nonlethal damage"));
-                testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Ability Drain"));
-                testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Energy Drain"));
-                testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Fatigue"));
-                testCases[CreatureConstants.Allip].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Exhaustion"));
 
-                testCases[CreatureConstants.Androsphinx].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Androsphinx].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                testCases[CreatureConstants.Androsphinx].Add(SpecialQualityHelper.BuildData(None));
 
                 testCases[CreatureConstants.Angel_AstralDeva].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Small or Medium Humanoid"));
                 testCases[CreatureConstants.Angel_AstralDeva].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to evil", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
@@ -177,11 +164,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.AnimatedObject_Colossal].Add(SpecialQualityHelper.BuildData(None));
 
-                testCases[CreatureConstants.Ankheg].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Ankheg].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
                 testCases[CreatureConstants.Ankheg].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
 
-                testCases[CreatureConstants.Annis].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Annis].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19));
                 testCases[CreatureConstants.Annis].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to bludgeoning weapons", power: 2, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
                 testCases[CreatureConstants.Annis].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DisguiseSelf, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
@@ -192,29 +176,24 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Ape].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb + ": can always take 10", power: 10));
 
                 testCases[CreatureConstants.Aranea].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Small or Medium humanoid; or Medium spider-human hybrid (like a Lycanthrope)"));
-                testCases[CreatureConstants.Aranea].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Aranea].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
                 testCases[CreatureConstants.Aranea].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Jump, power: 2));
                 testCases[CreatureConstants.Aranea].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Listen, power: 2));
                 testCases[CreatureConstants.Aranea].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 2));
                 testCases[CreatureConstants.Aranea].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb, power: 8));
                 testCases[CreatureConstants.Aranea].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb + ": can always take 10", power: 10));
 
-                testCases[CreatureConstants.Arrowhawk_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Arrowhawk_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
                 testCases[CreatureConstants.Arrowhawk_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
                 testCases[CreatureConstants.Arrowhawk_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
                 testCases[CreatureConstants.Arrowhawk_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Arrowhawk_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
 
-                testCases[CreatureConstants.Arrowhawk_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Arrowhawk_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
                 testCases[CreatureConstants.Arrowhawk_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
                 testCases[CreatureConstants.Arrowhawk_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
                 testCases[CreatureConstants.Arrowhawk_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Arrowhawk_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
 
-                testCases[CreatureConstants.Arrowhawk_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Arrowhawk_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
                 testCases[CreatureConstants.Arrowhawk_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
                 testCases[CreatureConstants.Arrowhawk_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
@@ -363,7 +342,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.BullsStrength_Mass, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
                 testCases[CreatureConstants.Barghest_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EnlargePerson_Mass, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
 
-                testCases[CreatureConstants.Basilisk].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Basilisk].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
                 testCases[CreatureConstants.Basilisk].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Hide + ": in natural settings", power: 4));
 
@@ -467,7 +445,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.BlinkDog].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
                 testCases[CreatureConstants.BlinkDog].Add(SpecialQualityHelper.BuildData(FeatConstants.Track));
 
-                testCases[CreatureConstants.Boar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
                 testCases[CreatureConstants.Boar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
                 testCases[CreatureConstants.Bodak].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
@@ -510,12 +487,43 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Bralani].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WindWall, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Bralani].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LightningBolt, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
                 testCases[CreatureConstants.Bralani].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CureInflictSeriousWounds, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Bralani].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Scimitar, requiresEquipment: true));
+                testCases[CreatureConstants.Bralani].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.CompositeLongbow, requiresEquipment: true));
 
-                testCases[CreatureConstants.Camel_Bactrian].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                testCases[CreatureConstants.Bugbear].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                testCases[CreatureConstants.Bugbear].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Bugbear].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Morningstar, requiresEquipment: true));
+                testCases[CreatureConstants.Bugbear].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Javelin, requiresEquipment: true));
+                testCases[CreatureConstants.Bugbear].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
+                testCases[CreatureConstants.Bugbear].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.MoveSilently, power: 4));
+
+                testCases[CreatureConstants.Bulette].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                testCases[CreatureConstants.Bulette].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                testCases[CreatureConstants.Bulette].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Bulette].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+
                 testCases[CreatureConstants.Camel_Bactrian].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
-                testCases[CreatureConstants.Camel_Dromedary].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
                 testCases[CreatureConstants.Camel_Dromedary].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+                testCases[CreatureConstants.CarrionCrawler].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                testCases[CreatureConstants.CarrionCrawler].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.CarrionCrawler].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb, power: 8));
+                testCases[CreatureConstants.CarrionCrawler].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb + ": can always take 10", power: 10));
+
+                testCases[CreatureConstants.Cat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Cat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb, power: 4));
+                testCases[CreatureConstants.Cat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Hide, power: 4));
+                testCases[CreatureConstants.Cat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.MoveSilently, power: 4));
+                testCases[CreatureConstants.Cat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Jump, power: 8));
+                testCases[CreatureConstants.Cat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Balance, power: 8));
+                testCases[CreatureConstants.Cat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Hide + ": in areas of tall grass or heavy undergrowth", power: 4));
+                testCases[CreatureConstants.Cat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SwapSkillBaseAbility, focus: $"{SkillConstants.Climb}:{AbilityConstants.Dexterity}"));
+                testCases[CreatureConstants.Cat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SwapSkillBaseAbility, focus: $"{SkillConstants.Jump}:{AbilityConstants.Dexterity}"));
+
+                testCases[CreatureConstants.Centaur].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longsword, requiresEquipment: true));
+                testCases[CreatureConstants.Centaur].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.CompositeLongbow, requiresEquipment: true));
+                testCases[CreatureConstants.Centaur].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
 
                 testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Centipede_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Weapon damage"));
@@ -537,6 +545,27 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.ChainDevil_Kyton].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Craft + ": involving metalwork", power: 8));
                 testCases[CreatureConstants.ChainDevil_Kyton].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Exotic, focus: WeaponConstants.SpikedChain, requiresEquipment: true));
 
+                testCases[CreatureConstants.ChaosBeast].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                testCases[CreatureConstants.ChaosBeast].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
+                testCases[CreatureConstants.ChaosBeast].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Transformation"));
+                testCases[CreatureConstants.ChaosBeast].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 15));
+
+                testCases[CreatureConstants.Cheetah].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Cheetah].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Sprint, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hour));
+
+                testCases[CreatureConstants.Chimera].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                testCases[CreatureConstants.Chimera].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                testCases[CreatureConstants.Chimera].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Chimera].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Spot, power: 2));
+                testCases[CreatureConstants.Chimera].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Listen, power: 2));
+                testCases[CreatureConstants.Chimera].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Hide + ": in areas of scrubland or brush", power: 4));
+
+                testCases[CreatureConstants.Choker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                testCases[CreatureConstants.Choker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Quickness));
+                testCases[CreatureConstants.Choker].Add(SpecialQualityHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
+                testCases[CreatureConstants.Choker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb, power: 8));
+                testCases[CreatureConstants.Choker].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Climb + ": can always take 10", power: 10));
+
                 testCases[CreatureConstants.Chuul].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Amphibious));
                 testCases[CreatureConstants.Chuul].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Chuul].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
@@ -554,6 +583,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Derro].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GhostSound, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Derro].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Daze, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
                 testCases[CreatureConstants.Derro].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SoundBurst, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Derro].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.ShortSword, requiresEquipment: true));
+                testCases[CreatureConstants.Derro].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
                 testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 15));
@@ -562,6 +593,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GhostSound, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Daze, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
                 testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SoundBurst, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.ShortSword, requiresEquipment: true));
+                testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
                 testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
                 testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
@@ -2028,253 +2061,87 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Dretch].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Scare, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
                 testCases[CreatureConstants.Dretch].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.StinkingCloud, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
 
-                testCases[CreatureConstants.Elemental_Air_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Elemental_Air_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Air_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Air_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Air_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Air_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Air_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
+                testCases[CreatureConstants.Elemental_Air_Small].Add(SpecialQualityHelper.BuildData(None));
 
-                testCases[CreatureConstants.Elemental_Air_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Elemental_Air_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Air_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Air_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Air_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Air_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Air_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
+                testCases[CreatureConstants.Elemental_Air_Medium].Add(SpecialQualityHelper.BuildData(None));
 
-                testCases[CreatureConstants.Elemental_Air_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Air_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Air_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Air_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Air_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Air_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Air_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Air_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
 
-                testCases[CreatureConstants.Elemental_Air_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Air_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Air_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Air_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Air_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Air_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Air_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Air_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
 
-                testCases[CreatureConstants.Elemental_Air_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Air_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Air_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Air_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Air_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Air_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Air_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Air_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
 
-                testCases[CreatureConstants.Elemental_Air_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Air_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Air_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Air_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Air_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Air_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Air_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Air_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
 
-                testCases[CreatureConstants.Elemental_Earth_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Earth_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EarthGlide));
-                testCases[CreatureConstants.Elemental_Earth_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Earth_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Earth_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Earth_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Earth_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Earth_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
 
-                testCases[CreatureConstants.Elemental_Earth_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Earth_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EarthGlide));
-                testCases[CreatureConstants.Elemental_Earth_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Earth_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Earth_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Earth_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Earth_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Earth_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
 
-                testCases[CreatureConstants.Elemental_Earth_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Earth_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EarthGlide));
                 testCases[CreatureConstants.Elemental_Earth_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Earth_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Earth_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Earth_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Earth_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Earth_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Earth_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
 
-                testCases[CreatureConstants.Elemental_Earth_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Earth_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EarthGlide));
                 testCases[CreatureConstants.Elemental_Earth_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Earth_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Earth_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Earth_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Earth_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Earth_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Earth_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
 
-                testCases[CreatureConstants.Elemental_Earth_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Earth_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EarthGlide));
                 testCases[CreatureConstants.Elemental_Earth_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Earth_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Earth_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Earth_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Earth_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Earth_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Earth_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
 
-                testCases[CreatureConstants.Elemental_Earth_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Earth_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EarthGlide));
                 testCases[CreatureConstants.Elemental_Earth_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Earth_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Earth_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Earth_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Earth_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Earth_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Earth_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
 
-                testCases[CreatureConstants.Elemental_Fire_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Elemental_Fire_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Fire_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Fire_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Fire_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Fire_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Fire_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Fire_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Elemental_Fire_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Elemental_Fire_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
                 testCases[CreatureConstants.Elemental_Fire_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Elemental_Fire_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Elemental_Fire_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Fire_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Fire_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Fire_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Fire_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Fire_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Fire_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Elemental_Fire_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Elemental_Fire_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
                 testCases[CreatureConstants.Elemental_Fire_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
                 testCases[CreatureConstants.Elemental_Fire_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
                 testCases[CreatureConstants.Elemental_Fire_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
                 testCases[CreatureConstants.Elemental_Fire_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
                 testCases[CreatureConstants.Elemental_Fire_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Elemental_Water_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Elemental_Water_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Water_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Water_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Water_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Water_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Water_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Water_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
                 testCases[CreatureConstants.Elemental_Water_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
 
-                testCases[CreatureConstants.Elemental_Water_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Elemental_Water_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Water_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Water_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Water_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Water_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Water_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Water_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
                 testCases[CreatureConstants.Elemental_Water_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
 
-                testCases[CreatureConstants.Elemental_Water_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Water_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Water_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Water_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Water_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Water_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Water_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Water_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Water_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
                 testCases[CreatureConstants.Elemental_Water_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
 
-                testCases[CreatureConstants.Elemental_Water_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Water_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Water_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Water_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Water_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Water_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Water_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Water_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Water_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
                 testCases[CreatureConstants.Elemental_Water_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
 
-                testCases[CreatureConstants.Elemental_Water_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Water_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Water_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Water_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Water_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Water_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Water_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Water_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Water_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
                 testCases[CreatureConstants.Elemental_Water_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
 
-                testCases[CreatureConstants.Elemental_Water_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Elemental_Water_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Elemental_Water_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
-                testCases[CreatureConstants.Elemental_Water_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                testCases[CreatureConstants.Elemental_Water_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-                testCases[CreatureConstants.Elemental_Water_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Stunning"));
-                testCases[CreatureConstants.Elemental_Water_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
-                testCases[CreatureConstants.Elemental_Water_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
                 testCases[CreatureConstants.Elemental_Water_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
                 testCases[CreatureConstants.Elemental_Water_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
 
@@ -2395,9 +2262,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Erinyes].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.MinorImage, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Erinyes].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.UnholyBlight, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Erinyes].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longsword, requiresEquipment: true));
-                testCases[CreatureConstants.Erinyes].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Shortbow, requiresEquipment: true));
-                testCases[CreatureConstants.Erinyes].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.CompositeShortbow, requiresEquipment: true));
-                testCases[CreatureConstants.Erinyes].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longbow, requiresEquipment: true));
                 testCases[CreatureConstants.Erinyes].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.CompositeLongbow, requiresEquipment: true));
 
                 testCases[CreatureConstants.GelatinousCube].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 60));
@@ -2808,20 +2672,17 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Retriever].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Fatigue"));
                 testCases[CreatureConstants.Retriever].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Exhaustion"));
 
-                testCases[CreatureConstants.Salamander_Flamebrother].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Salamander_Flamebrother].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Salamander_Flamebrother].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Salamander_Flamebrother].Add(SpecialQualityHelper.BuildData(FeatConstants.Monster.Multiattack));
                 testCases[CreatureConstants.Salamander_Flamebrother].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing), power: 4));
 
-                testCases[CreatureConstants.Salamander_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Salamander_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Salamander_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Salamander_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.Monster.Multiattack));
                 testCases[CreatureConstants.Salamander_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing), power: 4));
                 testCases[CreatureConstants.Salamander_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
 
-                testCases[CreatureConstants.Salamander_Noble].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Salamander_Noble].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Salamander_Noble].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Salamander_Noble].Add(SpecialQualityHelper.BuildData(FeatConstants.Monster.Multiattack));
@@ -2841,7 +2702,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.SeaHag].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
 
                 testCases[CreatureConstants.Slaad_Red].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Slaad_Red].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5));
+                testCases[CreatureConstants.Slaad_Red].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Turn));
                 testCases[CreatureConstants.Slaad_Red].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Sonic));
                 testCases[CreatureConstants.Slaad_Red].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Slaad_Red].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -2849,7 +2710,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Slaad_Red].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
 
                 testCases[CreatureConstants.Slaad_Blue].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Slaad_Blue].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5));
+                testCases[CreatureConstants.Slaad_Blue].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Turn));
                 testCases[CreatureConstants.Slaad_Blue].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Sonic));
                 testCases[CreatureConstants.Slaad_Blue].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Slaad_Blue].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -2858,7 +2719,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Slaad_Green].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Medium or Large humanoid form"));
                 testCases[CreatureConstants.Slaad_Green].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Slaad_Green].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5));
+                testCases[CreatureConstants.Slaad_Green].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Turn));
                 testCases[CreatureConstants.Slaad_Green].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Sonic));
                 testCases[CreatureConstants.Slaad_Green].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Slaad_Green].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -2868,7 +2729,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Slaad_Gray].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Any humanoid form"));
                 testCases[CreatureConstants.Slaad_Gray].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, power: 10, focus: "Vulnerable to lawful weapons", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
                 testCases[CreatureConstants.Slaad_Gray].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Slaad_Gray].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5));
+                testCases[CreatureConstants.Slaad_Gray].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Turn));
                 testCases[CreatureConstants.Slaad_Gray].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Sonic));
                 testCases[CreatureConstants.Slaad_Gray].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Slaad_Gray].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -2878,13 +2739,27 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Slaad_Death].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Any humanoid form"));
                 testCases[CreatureConstants.Slaad_Death].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, power: 10, focus: "Vulnerable to lawful weapons", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
                 testCases[CreatureConstants.Slaad_Death].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Slaad_Death].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5));
+                testCases[CreatureConstants.Slaad_Death].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Turn));
                 testCases[CreatureConstants.Slaad_Death].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Sonic));
                 testCases[CreatureConstants.Slaad_Death].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Slaad_Death].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Slaad_Death].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Electricity, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Slaad_Death].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Slaad_Death].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Telepathy, power: 100));
+
+                testCases[CreatureConstants.Snake_Constrictor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+                testCases[CreatureConstants.Snake_Constrictor_Giant].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+                testCases[CreatureConstants.Snake_Viper_Tiny].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+                testCases[CreatureConstants.Snake_Viper_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+                testCases[CreatureConstants.Snake_Viper_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+                testCases[CreatureConstants.Snake_Viper_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+                testCases[CreatureConstants.Snake_Viper_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
                 testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Weapon damage"));
@@ -2930,7 +2805,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Tiefling].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
                 testCases[CreatureConstants.Tojanida_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision));
-                testCases[CreatureConstants.Tojanida_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Tojanida_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
                 testCases[CreatureConstants.Tojanida_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Tojanida_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
@@ -2940,7 +2814,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Tojanida_Juvenile].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
 
                 testCases[CreatureConstants.Tojanida_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision));
-                testCases[CreatureConstants.Tojanida_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Tojanida_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
                 testCases[CreatureConstants.Tojanida_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Tojanida_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
@@ -2950,7 +2823,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Tojanida_Adult].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
 
                 testCases[CreatureConstants.Tojanida_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision));
-                testCases[CreatureConstants.Tojanida_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Tojanida_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
                 testCases[CreatureConstants.Tojanida_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Tojanida_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
@@ -2998,7 +2870,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Xorn_Minor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision));
                 testCases[CreatureConstants.Xorn_Minor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EarthGlide));
                 testCases[CreatureConstants.Xorn_Minor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to bludgeoning weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Xorn_Minor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Xorn_Minor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Xorn_Minor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Xorn_Minor].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Electricity, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -3008,7 +2879,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Xorn_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision));
                 testCases[CreatureConstants.Xorn_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EarthGlide));
                 testCases[CreatureConstants.Xorn_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to bludgeoning weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Xorn_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Xorn_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Xorn_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Xorn_Average].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Electricity, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -3019,7 +2889,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Xorn_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision));
                 testCases[CreatureConstants.Xorn_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EarthGlide));
                 testCases[CreatureConstants.Xorn_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to bludgeoning weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Xorn_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Xorn_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Xorn_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.Xorn_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Electricity, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -3027,13 +2896,24 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Xorn_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Survival + ": underground", power: 2));
                 testCases[CreatureConstants.Xorn_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.Cleave));
 
+                return TestDataHelper.EnumerateTestCases(testCases);
+            }
+        }
+
+        private static class TestDataHelper
+        {
+            public static IEnumerable EnumerateTestCases(Dictionary<string, List<string[]>> testCases)
+            {
                 foreach (var testCase in testCases)
                 {
-                    var featNames = testCase.Value.Select(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex]);
-                    var description = string.Join(", ", featNames);
+                    var total = testCase.Value.Count();
+                    var description = total.ToString();
+
+                    if (testCase.Value.FirstOrDefault()?.FirstOrDefault() == None)
+                        description = None;
 
                     yield return new TestCaseData(testCase.Key, testCase.Value)
-                        .SetName($"SpecialQualityData({testCase.Key}, [{description}])");
+                        .SetName($"SpecialQualityData({testCase.Key}, {description})");
                 }
             }
         }
@@ -3161,14 +3041,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Types.Vermin].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Types.Vermin].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Mind-Affecting Effects"));
 
-                foreach (var testCase in testCases)
-                {
-                    var featNames = testCase.Value.Select(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex]);
-                    var description = string.Join(", ", featNames);
-
-                    yield return new TestCaseData(testCase.Key, testCase.Value)
-                        .SetName($"SpecialQualityData({testCase.Key}, [{description}])");
-                }
+                return TestDataHelper.EnumerateTestCases(testCases);
             }
         }
 
@@ -3214,9 +3087,19 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Types.Subtypes.Chaotic].Add(SpecialQualityHelper.BuildData(None));
 
+                testCases[CreatureConstants.Types.Subtypes.Cold].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+                testCases[CreatureConstants.Types.Subtypes.Cold].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Fire));
+
+                testCases[CreatureConstants.Types.Subtypes.Earth].Add(SpecialQualityHelper.BuildData(None));
+
                 testCases[CreatureConstants.Types.Subtypes.Evil].Add(SpecialQualityHelper.BuildData(None));
 
                 testCases[CreatureConstants.Types.Subtypes.Extraplanar].Add(SpecialQualityHelper.BuildData(None));
+
+                testCases[CreatureConstants.Types.Subtypes.Fire].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+                testCases[CreatureConstants.Types.Subtypes.Fire].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: FeatConstants.Foci.Elements.Cold));
+
+                testCases[CreatureConstants.Types.Subtypes.Goblinoid].Add(SpecialQualityHelper.BuildData(None));
 
                 testCases[CreatureConstants.Types.Subtypes.Good].Add(SpecialQualityHelper.BuildData(None));
 
@@ -3235,17 +3118,29 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Types.Subtypes.Native].Add(SpecialQualityHelper.BuildData(None));
 
+                testCases[CreatureConstants.Types.Subtypes.Reptilian].Add(SpecialQualityHelper.BuildData(None));
+
+                testCases[CreatureConstants.Types.Subtypes.Shapechanger].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: GroupConstants.All, requiresEquipment: true));
+                testCases[CreatureConstants.Types.Subtypes.Shapechanger].Add(SpecialQualityHelper.BuildData(FeatConstants.ShieldProficiency, requiresEquipment: true));
+
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Half damage from slashing and piercing weapons", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit)); //INFO: Tiny creatures
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Weapon damage")); //INFO: Only fine or diminutive
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Critical hits"));
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Flanking"));
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Staggering"));
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Dying state"));
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Trip"));
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Grapple"));
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Bull Rush"));
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Any spell that targets a specific number of creatures, including single-target spells"));
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: "Area-of-effect spells"));
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: "Splash damage"));
+                testCases[CreatureConstants.Types.Subtypes.Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: "High winds")); //INFO: Only fine or diminutive
+
                 testCases[CreatureConstants.Types.Subtypes.Water].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": special action or avoid a hazard", power: 8));
                 testCases[CreatureConstants.Types.Subtypes.Water].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SkillBonus, focus: SkillConstants.Swim + ": can always take 10", power: 10));
 
-                foreach (var testCase in testCases)
-                {
-                    var featNames = testCase.Value.Select(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex]);
-                    var description = string.Join(", ", featNames);
-
-                    yield return new TestCaseData(testCase.Key, testCase.Value)
-                        .SetName($"SpecialQualityData({testCase.Key}, [{description}])");
-                }
+                return TestDataHelper.EnumerateTestCases(testCases);
             }
         }
     }

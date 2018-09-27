@@ -1,5 +1,7 @@
 ﻿using CreatureGen.Abilities;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CreatureGen.Skills
 {
@@ -8,12 +10,24 @@ namespace CreatureGen.Skills
         public string Name { get; private set; }
         public Ability BaseAbility { get; set; }
         public string Focus { get; private set; }
-        public int Bonus { get; set; }
         public bool ClassSkill { get; set; }
         public int ArmorCheckPenalty { get; set; }
-        public bool CircumstantialBonus { get; set; }
         public int RankCap { get; set; }
         public bool HasArmorCheckPenalty { get; set; }
+        public IEnumerable<SkillBonus> Bonuses { get; private set; }
+
+        public bool CircumstantialBonus => Bonuses.Any(b => b.IsConditional);
+
+        public int Bonus
+        {
+            get
+            {
+                return Bonuses
+                    .Where(b => !b.IsConditional)
+                    .Select(b => b.Value)
+                    .Sum();
+            }
+        }
 
         public double EffectiveRanks
         {
@@ -26,13 +40,7 @@ namespace CreatureGen.Skills
             }
         }
 
-        public bool RanksMaxedOut
-        {
-            get
-            {
-                return Ranks == RankCap;
-            }
-        }
+        public bool RanksMaxedOut => Ranks == RankCap;
 
         private int ranks;
 
@@ -51,13 +59,7 @@ namespace CreatureGen.Skills
             }
         }
 
-        public bool QualifiesForSkillSynergy
-        {
-            get
-            {
-                return EffectiveRanks >= 5;
-            }
-        }
+        public bool QualifiesForSkillSynergy => EffectiveRanks >= 5;
 
         public int TotalBonus
         {
@@ -101,6 +103,12 @@ namespace CreatureGen.Skills
                 return IsEqualTo(skillData[0], skillData[1]);
 
             return IsEqualTo(skillData[0], string.Empty);
+        }
+
+        public void AddSkillBonus(int value, string condition = "")
+        {
+            var bonus = new SkillBonus { Value = value, Condition = condition };
+            Bonuses = Bonuses.Union(new[] { bonus });
         }
     }
 }

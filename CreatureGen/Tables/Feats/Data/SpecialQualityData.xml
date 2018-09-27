@@ -978,7 +978,6 @@
   </collection>
   <collection>
     <name>Boar</name>
-    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
@@ -1010,7 +1009,7 @@
   </collection>
   <collection>
     <name>Bralani</name>
-    <entry>Alternate Form#0#Humanoid or whirlwind form#0##0#False</entry>
+    <entry>Alternate Form#0#Humanoid or whirlwind form#0#At Will#0#False</entry>
     <entry>Damage Reduction#10#Vulnerable to cold iron or evil weapons#1#Hit#0#False</entry>
     <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
@@ -1247,6 +1246,7 @@
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#31##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control water#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Control weather#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
@@ -1392,12 +1392,18 @@
   </collection>
   <collection>
     <name>Cachalot Whale</name>
+    <entry>Blindsight#120##0##0#False</entry>
+    <entry>Hold Breath#0##0##0#False</entry>
+    <entry>Skill Bonus#4#Listen#0##0#False</entry>
+    <entry>Skill Bonus#4#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Camel, Dromedary (One-Humped)</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Carrion Crawler</name>
@@ -1410,6 +1416,17 @@
   </collection>
   <collection>
     <name>Centipede Swarm</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Weapon damage#0##0#False</entry>
+    <entry>Tremorsense#30##0##0#False</entry>
+    <entry>Skill Bonus#8#Climb#0##0#False</entry>
+    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
+    <entry>Skill Bonus#4#Spot#0##0#False</entry>
+    <entry>Swap Skill Base Ability#0#Climb:Dexterity#0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
@@ -1439,8 +1456,11 @@
   </collection>
   <collection>
     <name>Chuul</name>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0</entry>
+    <entry>Amphibious#0##0##0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
+    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Clay Golem</name>
@@ -1467,9 +1487,12 @@
     <entry>Darkvision#60##0##0#False</entry>
     <entry>Immunity#0#Ability Damage#0##0#False</entry>
     <entry>Immunity#0#Ability Drain#0##0#False</entry>
+    <entry>Immunity#0#Being raised or resurrected#0##0#False</entry>
     <entry>Immunity#0#Critical hits#0##0#False</entry>
     <entry>Immunity#0#Death#0##0#False</entry>
+    <entry>Immunity#0#Death from massive damage#0##0#False</entry>
     <entry>Immunity#0#Disease#0##0#False</entry>
+    <entry>Immunity#0#Effect that requires a Fortitude save#0##0#False</entry>
     <entry>Immunity#0#Energy Drain#0##0#False</entry>
     <entry>Immunity#0#Exhaustion#0##0#False</entry>
     <entry>Immunity#0#Fatigue#0##0#False</entry>
@@ -1484,55 +1507,162 @@
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Ancient</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Mature Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Old</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Old</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Young</name>
-    <entry>Average Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrmling</name>
-    <entry>Average Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Young Adult</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Young</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Couatl</name>
-    <entry>Good Maneuverability</entry>
   </collection>
   <collection>
     <name>Criosphinx</name>
@@ -1565,9 +1695,28 @@
   </collection>
   <collection>
     <name>Derro</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Madness#0##0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
+    <entry>Spell Resistance#15##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Daze#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Ghost sound#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Sound burst#1#Day#0#False</entry>
+    <entry>Vulnerability#0#Sunlight#0##0#False</entry>
   </collection>
   <collection>
     <name>Derro (Sane)</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
+    <entry>Spell Resistance#15##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Daze#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Ghost sound#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Sound burst#1#Day#0#False</entry>
+    <entry>Vulnerability#0#Sunlight#0##0#False</entry>
   </collection>
   <collection>
     <name>Destrachan</name>
@@ -1639,17 +1788,20 @@
   </collection>
   <collection>
     <name>Dragon</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#All#0##0#True</entry>
   </collection>
   <collection>
     <name>Dragon Turtle</name>
   </collection>
   <collection>
     <name>Dragonne</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Dread Wraith</name>
-    <entry>Good Maneuverability</entry>
   </collection>
   <collection>
     <name>Dretch</name>
@@ -1688,7 +1840,6 @@
   </collection>
   <collection>
     <name>Eagle</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Earth</name>
@@ -1716,7 +1867,6 @@
   </collection>
   <collection>
     <name>Efreeti</name>
-    <entry>Perfect Maneuverability</entry>
   </collection>
   <collection>
     <name>Eight-Headed Cryohydra</name>
@@ -1744,6 +1894,15 @@
   </collection>
   <collection>
     <name>Elemental</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Shield Proficiency#0##0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#All#0##0#True</entry>
   </collection>
   <collection>
     <name>Elephant</name>
@@ -1762,7 +1921,6 @@
   </collection>
   <collection>
     <name>Erinyes</name>
-    <entry>Good Maneuverability</entry>
   </collection>
   <collection>
     <name>Ethereal Filcher</name>
@@ -1784,6 +1942,9 @@
   </collection>
   <collection>
     <name>Fey</name>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Shield Proficiency#0##0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#All#0##0#True</entry>
   </collection>
   <collection>
     <name>Fire</name>
@@ -1874,6 +2035,10 @@
   </collection>
   <collection>
     <name>Giant</name>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#All#0##0#True</entry>
+    <entry>Shield Proficiency#0##0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#All#0##0#True</entry>
   </collection>
   <collection>
     <name>Giant Ant, Queen</name>
@@ -2218,6 +2383,8 @@
   </collection>
   <collection>
     <name>Humanoid</name>
+    <entry>Shield Proficiency#0##0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#All#0##0#True</entry>
   </collection>
   <collection>
     <name>Hyena</name>
@@ -2340,6 +2507,8 @@
   </collection>
   <collection>
     <name>Magical Beast</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Magma Mephit</name>
@@ -2422,6 +2591,9 @@
   </collection>
   <collection>
     <name>Monstrous Humanoid</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Shield Proficiency#0##0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#All#0##0#True</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
@@ -2543,6 +2715,16 @@
   </collection>
   <collection>
     <name>Ooze</name>
+    <entry>Blindsight#60##0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Gaze attacks, visual effects, illusions, and other attack forms that rely on sight#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Polymorph#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Ooze Mephit</name>
@@ -2566,17 +2748,19 @@
   </collection>
   <collection>
     <name>Outsider</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#All#0##0#True</entry>
+    <entry>Shield Proficiency#0##0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#All#0##0#True</entry>
   </collection>
   <collection>
     <name>Owl</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Owlbear</name>
   </collection>
   <collection>
     <name>Pegasus</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Phantom Fungus</name>
@@ -2589,18 +2773,23 @@
   </collection>
   <collection>
     <name>Pit Fiend</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Pixie</name>
-    <entry>Good Maneuverability</entry>
   </collection>
   <collection>
     <name>Pixie with Irresistable Dance</name>
-    <entry>Good Maneuverability</entry>
   </collection>
   <collection>
     <name>Plant</name>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Polymorph#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Polar Bear</name>
@@ -2997,6 +3186,28 @@
   </collection>
   <collection>
     <name>Undead</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Ability Damage to Strength, Dexterity, or Constitution#0##0#False</entry>
+    <entry>Immunity#0#Ability Drain#0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Death#0##0#False</entry>
+    <entry>Immunity#0#Death from massive damage#0##0#False</entry>
+    <entry>Immunity#0#Disease#0##0#False</entry>
+    <entry>Immunity#0#Effect that requires a Fortitude save#0##0#False</entry>
+    <entry>Immunity#0#Energy Drain#0##0#False</entry>
+    <entry>Immunity#0#Exhaustion#0##0#False</entry>
+    <entry>Immunity#0#Fatigue#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Immunity#0#Polymorph#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Stunning#0##0#False</entry>
+    <entry>Shield Proficiency#0##0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#All#0##0#True</entry>
+    <entry>Swap Skill Base Ability#0#Concentration:Charisma#0##0#False</entry>
   </collection>
   <collection>
     <name>Unicorn</name>
@@ -3010,6 +3221,8 @@
   </collection>
   <collection>
     <name>Vermin</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
   </collection>
   <collection>
     <name>Violet Fungus</name>
@@ -3038,6 +3251,8 @@
   </collection>
   <collection>
     <name>Water</name>
+    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
+    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>

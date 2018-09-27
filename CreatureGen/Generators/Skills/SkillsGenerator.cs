@@ -60,7 +60,8 @@ namespace CreatureGen.Generators.Skills
             var hideSkill = skills.FirstOrDefault(s => s.Name == SkillConstants.Hide);
             if (hideSkill != null)
             {
-                hideSkill.Bonus += GetBonus(size);
+                var bonus = GetBonus(size);
+                hideSkill.AddSkillBonus(bonus);
             }
 
             return skills;
@@ -225,9 +226,14 @@ namespace CreatureGen.Generators.Skills
                         foreach (var skill in matchingSkills)
                         {
                             if (skill.IsEqualTo(focus))
-                                skill.Bonus += feat.Power;
+                            {
+                                skill.AddSkillBonus(feat.Power);
+                            }
                             else
-                                skill.CircumstantialBonus = true;
+                            {
+                                var condition = focus.Replace(skill + ": ", string.Empty);
+                                skill.AddSkillBonus(feat.Power, condition);
+                            }
                         }
                     }
                 }
@@ -240,7 +246,7 @@ namespace CreatureGen.Generators.Skills
                         var skill = skills.FirstOrDefault(s => s.IsEqualTo(skillName));
 
                         if (skill != null)
-                            skill.Bonus += feat.Power;
+                            skill.AddSkillBonus(feat.Power);
                     }
                 }
             }

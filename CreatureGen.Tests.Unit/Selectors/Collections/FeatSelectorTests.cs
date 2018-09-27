@@ -199,6 +199,38 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         }
 
         [Test]
+        public void GetSpecialQualityFromTypeWithMinimumAbility()
+        {
+            AddSpecialQualityData(creatureType.Name, "special quality");
+
+            var abilityRequirements = new[]
+            {
+                new TypeAndAmountSelection { Type = "ability", Amount = 9266 }
+            };
+
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creature typespecial quality"))
+                .Returns(abilityRequirements);
+
+            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+
+            Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
+            Assert.That(specialQuality.FocusType, Is.Empty);
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
+            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.MinimumAbilities, Is.Not.Empty);
+            Assert.That(specialQuality.MinimumAbilities.Count, Is.EqualTo(1));
+            Assert.That(specialQuality.MinimumAbilities.Keys, Contains.Item("ability"));
+            Assert.That(specialQuality.MinimumAbilities["ability"], Is.EqualTo(9266));
+            Assert.That(specialQuality.Power, Is.Zero);
+            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RequiredFeats, Is.Empty);
+            Assert.That(specialQuality.RequiresEquipment, Is.False);
+        }
+
+        [Test]
         public void GetSpecialQualityWithMinimumAbilities()
         {
             AddSpecialQualityData("creature", "special quality");
@@ -286,6 +318,39 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             };
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
+
+            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+
+            Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
+            Assert.That(specialQuality.FocusType, Is.Empty);
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
+            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.MinimumAbilities, Is.Empty);
+            Assert.That(specialQuality.Power, Is.Zero);
+            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
+            Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(1));
+            Assert.That(specialQuality.RequiresEquipment, Is.False);
+
+            var requiredFeat = specialQuality.RequiredFeats.Single();
+            Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
+            Assert.That(requiredFeat.Foci, Is.Empty);
+        }
+
+        [Test]
+        public void GetSpecialQualityWithRequiredFeatFromCreatureType()
+        {
+            AddSpecialQualityData(creatureType.Name, "special quality");
+
+            var requiredFeats = new[]
+            {
+                "required feat"
+            };
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creature typespecial quality")).Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -708,6 +773,21 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[3].RandomFociQuantity, Is.Empty);
             Assert.That(specialQualities[3].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[3].RequiresEquipment, Is.True);
+        }
+
+        //INFO: Type or Subtype special qualities might have size requirements
+        //Example is Swarm subtype having defenses dependent on size
+        [Test]
+        public void GetSizeRequirementForSpecialQuality()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        //INFO: Type or Subtype special qualities might have size requirements
+        [Test]
+        public void GetSizeRequirementsForSpecialQuality()
+        {
+            Assert.Fail("not yet written");
         }
 
         [Test]

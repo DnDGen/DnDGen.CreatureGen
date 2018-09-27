@@ -1349,6 +1349,36 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(otherBonuses, Is.All.Zero);
         }
 
+        [Test]
+        public void ApplyNoSkillBonus()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplySkillBonus()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplySkillBonuses()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplySkillBonusWithCondition()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplySkillBonusesWithCondition()
+        {
+            Assert.Fail("not yet written");
+        }
+
         //INFO: Example is how a centipede swarm uses Dexterity for Climb instead of Strength
         [Test]
         public void UseAlternateBaseAbilityForSkill()
@@ -1412,10 +1442,10 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             skills.Add(new Skill("skill 2", baseAbility, 1));
             skills.Add(new Skill("skill 3", baseAbility, 1));
             skills.Add(new Skill("skill 4", baseAbility, 1));
-            skills[0].Bonus = 1;
-            skills[1].Bonus = 2;
-            skills[2].Bonus = 3;
-            skills[3].Bonus = 4;
+            skills[0].AddSkillBonus(1);
+            skills[1].AddSkillBonus(2);
+            skills[2].AddSkillBonus(3);
+            skills[3].AddSkillBonus(4);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -1453,10 +1483,10 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             skills.Add(new Skill("skill 2", baseAbility, 1));
             skills.Add(new Skill("skill 3", baseAbility, 1, "other focus"));
             skills.Add(new Skill("skill 3", baseAbility, 1, "focus"));
-            skills[0].Bonus = 1;
-            skills[1].Bonus = 2;
-            skills[2].Bonus = 3;
-            skills[3].Bonus = 4;
+            skills[0].AddSkillBonus(1);
+            skills[1].AddSkillBonus(2);
+            skills[2].AddSkillBonus(3);
+            skills[3].AddSkillBonus(4);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -1493,9 +1523,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             skills.Add(new Skill("skill 1", baseAbility, 1));
             skills.Add(new Skill("skill 2", baseAbility, 1));
             skills.Add(new Skill("skill 3", baseAbility, 1));
-            skills[0].Bonus = 1;
-            skills[1].Bonus = 2;
-            skills[2].Bonus = 3;
+            skills[0].AddSkillBonus(1);
+            skills[1].AddSkillBonus(2);
+            skills[2].AddSkillBonus(3);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -1531,9 +1561,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             skills.Add(new Skill("skill 1", baseAbility, 1, "focus 1"));
             skills.Add(new Skill("skill 2", baseAbility, 1));
             skills.Add(new Skill("skill 1", baseAbility, 1, "focus 2"));
-            skills[0].Bonus = 1;
-            skills[1].Bonus = 2;
-            skills[2].Bonus = 3;
+            skills[0].AddSkillBonus(1);
+            skills[1].AddSkillBonus(2);
+            skills[2].AddSkillBonus(3);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -1567,13 +1597,13 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = new List<Skill>();
             skills.Add(new Skill("skill 1", baseAbility, 1));
-            skills[0].Bonus = 1;
+            skills[0].AddSkillBonus(1);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
             feats[0].Name = "feat1";
-            feats[0].Foci = new[] { "skill 1 (with qualifiers)", "non-skill focus" };
-            feats[0].Power = 1;
+            feats[0].Foci = new[] { "skill 1: with qualifiers", "non-skill focus" };
+            feats[0].Power = 666;
 
             var featGrantingSkillBonuses = new[] { "feat2", "feat1" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
@@ -1581,7 +1611,14 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(updatedSkills.First(s => s.Name == "skill 1").Bonus, Is.EqualTo(1));
+
+            var skill = updatedSkills.First(s => s.Name == "skill 1");
+            Assert.That(skill.Bonus, Is.EqualTo(1));
+            Assert.That(skill.Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skill.Bonuses.Single();
+            Assert.That(bonus.Value, Is.EqualTo(666));
+            Assert.That(bonus.Condition, Is.EqualTo("with qualifiers"));
         }
 
         [Test]
@@ -1592,17 +1629,17 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var skills = new List<Skill>();
             skills.Add(new Skill("skill 1", baseAbility, 1));
             skills.Add(new Skill("skill 2", baseAbility, 1));
-            skills[0].Bonus = 1;
-            skills[1].Bonus = 2;
+            skills[0].AddSkillBonus(1);
+            skills[1].AddSkillBonus(2);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
             feats.Add(new Feat());
             feats[0].Name = "feat1";
-            feats[0].Power = 1;
+            feats[0].Power = 3;
             feats[1].Name = "feat2";
             feats[1].Foci = new[] { "skill 2", "non-skill focus" };
-            feats[1].Power = 2;
+            feats[1].Power = 4;
 
             var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
@@ -1612,10 +1649,20 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(skills[0].Bonus, Is.EqualTo(2));
+            Assert.That(skills[0].Bonus, Is.EqualTo(4));
             Assert.That(skills[0].CircumstantialBonus, Is.False);
-            Assert.That(skills[1].Bonus, Is.EqualTo(4));
+            Assert.That(skills[0].Bonuses.Count, Is.EqualTo(2));
+            Assert.That(skills[1].Bonus, Is.EqualTo(6));
             Assert.That(skills[1].CircumstantialBonus, Is.False);
+            Assert.That(skills[1].Bonuses.Count, Is.EqualTo(2));
+
+            var bonus = skills[0].Bonuses.Last();
+            Assert.That(bonus.Value, Is.EqualTo(3));
+            Assert.That(bonus.Condition, Is.Empty);
+
+            bonus = skills[1].Bonuses.Last();
+            Assert.That(bonus.Value, Is.EqualTo(4));
+            Assert.That(bonus.Condition, Is.Empty);
         }
 
         [Test]
@@ -1625,13 +1672,13 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = new List<Skill>();
             skills.Add(new Skill("skill 1", baseAbility, 1));
-            skills[0].Bonus = 1;
+            skills[0].AddSkillBonus(1);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
             feats[0].Name = "feat1";
-            feats[0].Foci = new[] { "skill 1 (with qualifiers)", "non-skill focus" };
-            feats[0].Power = 1;
+            feats[0].Foci = new[] { "skill 1: with qualifiers", "non-skill focus" };
+            feats[0].Power = 666;
 
             var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
@@ -1640,6 +1687,12 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
             Assert.That(skills[0].CircumstantialBonus, Is.True);
+            Assert.That(skills[0].Bonus, Is.EqualTo(1));
+            Assert.That(skills[0].Bonuses.Count, Is.EqualTo(2));
+
+            var bonus = skills[0].Bonuses.Last();
+            Assert.That(bonus.Value, Is.EqualTo(666));
+            Assert.That(bonus.Condition, Is.EqualTo("with qualifiers"));
         }
 
         [Test]
@@ -1650,14 +1703,14 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var skills = new List<Skill>();
             skills.Add(new Skill("skill 1", baseAbility, 1));
             skills.Add(new Skill("skill 2", baseAbility, 1));
-            skills[0].Bonus = 1;
-            skills[1].Bonus = 2;
+            skills[0].AddSkillBonus(1);
+            skills[1].AddSkillBonus(2);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
             feats[0].Name = "feat1";
-            feats[0].Foci = new[] { "skill 1 (with qualifiers)", "skill 2" };
-            feats[0].Power = 1;
+            feats[0].Foci = new[] { "skill 1: with qualifiers", "skill 2" };
+            feats[0].Power = 3;
 
             var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
@@ -1666,7 +1719,20 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
             Assert.That(skills[0].CircumstantialBonus, Is.True);
+            Assert.That(skills[0].Bonus, Is.EqualTo(1));
+            Assert.That(skills[0].Bonuses.Count, Is.EqualTo(2));
+
+            var bonus = skills[0].Bonuses.Last();
+            Assert.That(bonus.Value, Is.EqualTo(3));
+            Assert.That(bonus.Condition, Is.EqualTo("with qualifiers"));
+
             Assert.That(skills[1].CircumstantialBonus, Is.False);
+            Assert.That(skills[1].Bonus, Is.EqualTo(5));
+            Assert.That(skills[1].Bonuses.Count, Is.EqualTo(2));
+
+            bonus = skills[1].Bonuses.Last();
+            Assert.That(bonus.Value, Is.EqualTo(3));
+            Assert.That(bonus.Condition, Is.Empty);
         }
 
         [Test]
@@ -1677,14 +1743,14 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var skills = new List<Skill>();
             skills.Add(new Skill("skill 1", baseAbility, 1));
             skills.Add(new Skill("skill 2", baseAbility, 1));
-            skills[0].Bonus = 1;
-            skills[1].Bonus = 2;
+            skills[0].AddSkillBonus(1);
+            skills[1].AddSkillBonus(2);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
             feats.Add(new Feat());
             feats[0].Name = "feat1";
-            feats[0].Foci = new[] { "skill 1 (with qualifiers)", "skill 2" };
+            feats[0].Foci = new[] { "skill 1: with qualifiers", "skill 2" };
             feats[0].Power = 1;
             feats[1].Name = "feat2";
             feats[1].Foci = new[] { "skill 1" };
@@ -1712,11 +1778,11 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             skills.Add(new Skill("skill 2", baseAbility, 1));
             skills.Add(new Skill("skill 3", baseAbility, 1, "focus 1"));
             skills.Add(new Skill("skill 3", baseAbility, 1, "focus 2"));
-            skills[0].Bonus = 1;
-            skills[1].Bonus = 2;
-            skills[2].Bonus = 3;
-            skills[3].Bonus = 4;
-            skills[4].Bonus = 5;
+            skills[0].AddSkillBonus(1);
+            skills[1].AddSkillBonus(2);
+            skills[2].AddSkillBonus(3);
+            skills[3].AddSkillBonus(4);
+            skills[4].AddSkillBonus(5);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
