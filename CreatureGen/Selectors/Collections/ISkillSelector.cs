@@ -1,9 +1,11 @@
 ﻿using CreatureGen.Selectors.Selections;
+using System.Collections.Generic;
 
 namespace CreatureGen.Selectors.Collections
 {
     internal interface ISkillSelector
     {
         SkillSelection SelectFor(string skill);
+        IEnumerable<SkillBonusSelection> SelectBonusesFor(string source);
     }
 }

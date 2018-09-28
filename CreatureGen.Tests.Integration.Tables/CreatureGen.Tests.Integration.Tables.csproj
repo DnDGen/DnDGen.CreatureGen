@@ -94,6 +94,7 @@
     <Compile Include="Feats\Requirements\FeatSpeedRequirementsTests.cs" />
     <Compile Include="Feats\Requirements\FeatAbilityRequirementsTests.cs" />
     <Compile Include="Feats\Requirements\FeatSkillRankRequirementsTests.cs" />
+    <Compile Include="Skills\SkillBonusesTests.cs" />
     <Compile Include="TestData\CreatureTestData.cs" />
     <Compile Include="TypesAndAmountsTests.cs" />
     <Compile Include="CreatureGenAssemblyLoader.cs" />

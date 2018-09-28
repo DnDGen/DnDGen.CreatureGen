@@ -78,6 +78,7 @@ namespace CreatureGen.Skills
             BaseAbility = baseStat;
             RankCap = rankCap;
             Focus = focus;
+            Bonuses = Enumerable.Empty<SkillBonus>();
         }
 
         public bool IsEqualTo(Skill skill)

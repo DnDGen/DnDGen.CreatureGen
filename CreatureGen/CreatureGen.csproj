@@ -119,6 +119,7 @@
     <Compile Include="Selectors\Helpers\SpecialQualityHelper.cs" />
     <Compile Include="Selectors\Helpers\TypeAndAmountHelper.cs" />
     <Compile Include="Selectors\Selections\AdvancementSelection.cs" />
+    <Compile Include="Selectors\Selections\SkillBonusSelection.cs" />
     <Compile Include="Skills\SkillBonus.cs" />
     <Compile Include="Verifiers\CreatureVerifier.cs" />
     <Compile Include="IoC\CreatureGenModuleLoader.cs" />

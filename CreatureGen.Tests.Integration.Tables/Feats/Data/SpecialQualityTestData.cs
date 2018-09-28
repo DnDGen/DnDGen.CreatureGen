@@ -81,6 +81,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Angel_AstralDeva].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SeeInvisibility, frequencyQuantity: 7, frequencyTimePeriod: FeatConstants.Frequencies.Day));
                 testCases[CreatureConstants.Angel_AstralDeva].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.BladeBarrier, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
                 testCases[CreatureConstants.Angel_AstralDeva].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HealHarm, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Angel_AstralDeva].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.HeavyMace, requiresEquipment: true));
 
                 testCases[CreatureConstants.Angel_Planetar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Small or Medium Humanoid"));
                 testCases[CreatureConstants.Angel_Planetar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to evil", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
@@ -109,6 +110,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Angel_Planetar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DiscernLies, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
                 testCases[CreatureConstants.Angel_Planetar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SeeInvisibility, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
                 testCases[CreatureConstants.Angel_Planetar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TrueSeeing, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
+                testCases[CreatureConstants.Angel_Planetar].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Greatsword, requiresEquipment: true));
 
                 testCases[CreatureConstants.Angel_Solar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Small or Medium Humanoid"));
                 testCases[CreatureConstants.Angel_Solar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to epic evil", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
@@ -149,6 +151,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Angel_Solar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DiscernLies, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
                 testCases[CreatureConstants.Angel_Solar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SeeInvisibility, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
                 testCases[CreatureConstants.Angel_Solar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TrueSeeing, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
+                testCases[CreatureConstants.Angel_Solar].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Greatsword, requiresEquipment: true));
+                testCases[CreatureConstants.Angel_Solar].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.CompositeLongbow, requiresEquipment: true));
 
                 testCases[CreatureConstants.AnimatedObject_Tiny].Add(SpecialQualityHelper.BuildData(None));
 

@@ -43,6 +43,7 @@
             public const string FeatAbilityRequirements = "FeatAbilityRequirements";
             public const string FeatSkillRankRequirements = "FeatSkillRankRequirements";
             public const string FeatSpeedRequirements = "FeatSpeedRequirements";
+            public const string SkillBonuses = "SkillBonuses";
         }
 
         internal static class Percentile

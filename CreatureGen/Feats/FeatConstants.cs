@@ -278,16 +278,17 @@ namespace CreatureGen.Feats
             public const string NaturalWeapon = "Natural Weapon";
             public const string ProtectiveAura = "Protective Aura";
             public const string ProtectiveSlime = "Protective Slime";
+            public const string Quickness = "Quickness";
             public const string Regeneration = "Regeneration";
             public const string SaveBonus = "Save Bonus";
             public const string Scent = "Scent";
             public const string SeeInDarkness = "See in Darkness";
-            public const string SkillBonus = "Skill Bonus";
             public const string SmokeForm = "Smoke Form";
             public const string SoundImitation = "Sound Imitation";
             public const string SpellLikeAbility = "Spell-Like Ability";
             public const string SpellResistance = "Spell Resistance";
             public const string Split = "Split";
+            public const string Sprint = "Sprint";
             public const string SwapSkillBaseAbility = "Swap Skill Base Ability";
             public const string Telepathy = "Telepathy";
             public const string Transparent = "Transparent";
@@ -346,6 +347,7 @@ namespace CreatureGen.Feats
                     NaturalWeapon,
                     ProtectiveAura,
                     ProtectiveSlime,
+                    Quickness,
                     Regeneration,
                     SaveBonus,
                     Scent,
@@ -356,6 +358,7 @@ namespace CreatureGen.Feats
                     SpellLikeAbility,
                     SpellResistance,
                     Split,
+                    Sprint,
                     SwapSkillBaseAbility,
                     Telepathy,
                     Transparent,

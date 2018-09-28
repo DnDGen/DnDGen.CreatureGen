@@ -50,24 +50,43 @@ namespace CreatureGen.Generators.Skills
             var skills = InitializeSkills(abilities, skillSelections, hitPoints, creatureSkillNames);
 
             skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities);
-            skills = ApplyBonuses(skills, size);
+            skills = ApplyBonuses(creatureName, skills, size);
 
             return skills;
         }
 
-        private IEnumerable<Skill> ApplyBonuses(IEnumerable<Skill> skills, string size)
+        private IEnumerable<Skill> ApplyBonuses(string creature, IEnumerable<Skill> skills, string size)
+        {
+            var bonuses = skillSelector.SelectBonusesFor(creature);
+
+            foreach (var bonus in bonuses)
+            {
+                var matchingSkills = skills.Where(s => s.IsEqualTo(bonus.Skill));
+
+                foreach (var skill in matchingSkills)
+                {
+                    skill.AddSkillBonus(bonus.Bonus, bonus.Condition);
+                }
+            }
+
+            skills = ApplyHideSkillSizeModifier(skills, size);
+
+            return skills;
+        }
+
+        private IEnumerable<Skill> ApplyHideSkillSizeModifier(IEnumerable<Skill> skills, string size)
         {
             var hideSkill = skills.FirstOrDefault(s => s.Name == SkillConstants.Hide);
             if (hideSkill != null)
             {
-                var bonus = GetBonus(size);
+                var bonus = GetHideSkillSizeModifier(size);
                 hideSkill.AddSkillBonus(bonus);
             }
 
             return skills;
         }
 
-        private int GetBonus(string size)
+        private int GetHideSkillSizeModifier(string size)
         {
             var sizes = SizeConstants.GetOrdered();
             var mediumIndex = Array.IndexOf(sizes, SizeConstants.Medium);
@@ -231,7 +250,7 @@ namespace CreatureGen.Generators.Skills
                             }
                             else
                             {
-                                var condition = focus.Replace(skill + ": ", string.Empty);
+                                var condition = focus.Replace(skill.Name + ": ", string.Empty);
                                 skill.AddSkillBonus(feat.Power, condition);
                             }
                         }
