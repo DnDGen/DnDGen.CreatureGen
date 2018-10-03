@@ -79,7 +79,7 @@
     <Compile Include="Defenses\ArmorClass.cs" />
     <Compile Include="Defenses\HitPoints.cs" />
     <Compile Include="Defenses\SaveConstants.cs" />
-    <Compile Include="Defenses\Saves.cs" />
+    <Compile Include="Defenses\Save.cs" />
     <Compile Include="Feats\Feat.cs" />
     <Compile Include="Feats\FeatConstants.cs" />
     <Compile Include="Feats\Frequency.cs" />
@@ -113,14 +113,16 @@
     <Compile Include="Magic\SpellConstants.cs" />
     <Compile Include="Selectors\Collections\AdvancementSelector.cs" />
     <Compile Include="Selectors\Collections\AttackSelector.cs" />
+    <Compile Include="Selectors\Collections\BonusSelector.cs" />
     <Compile Include="Selectors\Collections\CreatureDataSelector.cs" />
     <Compile Include="Selectors\Collections\IAdvancementSelector.cs" />
+    <Compile Include="Selectors\Collections\IBonusSelector.cs" />
     <Compile Include="Selectors\Collections\TypeAndAmountSelector.cs" />
     <Compile Include="Selectors\Helpers\SpecialQualityHelper.cs" />
     <Compile Include="Selectors\Helpers\TypeAndAmountHelper.cs" />
     <Compile Include="Selectors\Selections\AdvancementSelection.cs" />
-    <Compile Include="Selectors\Selections\SkillBonusSelection.cs" />
-    <Compile Include="Skills\SkillBonus.cs" />
+    <Compile Include="Selectors\Selections\BonusSelection.cs" />
+    <Compile Include="Bonus.cs" />
     <Compile Include="Verifiers\CreatureVerifier.cs" />
     <Compile Include="IoC\CreatureGenModuleLoader.cs" />
     <Compile Include="IoC\Modules\GeneratorsModule.cs" />

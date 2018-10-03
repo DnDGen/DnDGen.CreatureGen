@@ -6,6 +6,6 @@ namespace CreatureGen.Selectors.Collections
     internal interface ISkillSelector
     {
         SkillSelection SelectFor(string skill);
-        IEnumerable<SkillBonusSelection> SelectBonusesFor(string source);
+        IEnumerable<BonusSelection> SelectBonusesFor(string source);
     }
 }

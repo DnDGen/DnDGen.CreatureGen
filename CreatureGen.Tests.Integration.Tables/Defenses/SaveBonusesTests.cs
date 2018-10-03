@@ -4,12 +4,12 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CreatureGen.Tests.Integration.Tables.Skills
+namespace CreatureGen.Tests.Integration.Tables.Defenses
 {
     [TestFixture]
-    public class SkillBonusesTests : TypesAndAmountsTests
+    public class SaveBonusesTests : TypesAndAmountsTests
     {
-        protected override string tableName => TableNameConstants.TypeAndAmount.SkillBonuses;
+        protected override string tableName => TableNameConstants.TypeAndAmount.SaveBonuses;
 
         [Test]
         public void CollectionNames()
@@ -26,16 +26,16 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(typeof(SkillBonusesTestData), "Creatures")]
-        [TestCaseSource(typeof(SkillBonusesTestData), "Types")]
-        [TestCaseSource(typeof(SkillBonusesTestData), "Subtypes")]
-        [TestCaseSource(typeof(SkillBonusesTestData), "SkillSynergies")]
+        [TestCaseSource(typeof(SaveBonusesTestData), "Creatures")]
+        [TestCaseSource(typeof(SaveBonusesTestData), "Types")]
+        [TestCaseSource(typeof(SaveBonusesTestData), "Subtypes")]
+        [TestCaseSource(typeof(SaveBonusesTestData), "SkillSynergies")]
         public void SkillBonuses(string source, Dictionary<string, int> skillAndBonus)
         {
             if (!skillAndBonus.Any())
                 Assert.Fail("Test case did not specify special qualities or NONE");
 
-            if (skillAndBonus.ContainsKey(SkillBonusesTestData.None))
+            if (skillAndBonus.ContainsKey(SaveBonusesTestData.None))
                 skillAndBonus.Clear();
 
             AssertTypesAndAmounts(source, skillAndBonus);

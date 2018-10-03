@@ -9,18 +9,18 @@ namespace CreatureGen.Selectors.Collections
 {
     internal class SkillSelector : ISkillSelector
     {
-        private readonly ICollectionSelector innerSelector;
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly ICollectionSelector collectionSelector;
+        private readonly IBonusSelector bonusSelector;
 
-        public SkillSelector(ICollectionSelector innerSelector, ITypeAndAmountSelector typeAndAmountSelector)
+        public SkillSelector(ICollectionSelector collectionSelector, IBonusSelector bonusSelector)
         {
-            this.innerSelector = innerSelector;
-            this.typeAndAmountSelector = typeAndAmountSelector;
+            this.collectionSelector = collectionSelector;
+            this.bonusSelector = bonusSelector;
         }
 
         public SkillSelection SelectFor(string skill)
         {
-            var data = innerSelector.SelectFrom(TableNameConstants.Collection.SkillData, skill).ToArray();
+            var data = collectionSelector.SelectFrom(TableNameConstants.Collection.SkillData, skill).ToArray();
 
             var selection = new SkillSelection();
             selection.BaseAbilityName = data[DataIndexConstants.SkillSelectionData.BaseStatName];
@@ -31,27 +31,11 @@ namespace CreatureGen.Selectors.Collections
             return selection;
         }
 
-        public IEnumerable<SkillBonusSelection> SelectBonusesFor(string source)
+        public IEnumerable<BonusSelection> SelectBonusesFor(string source)
         {
-            var typeAndAmountSelections = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.SkillBonuses, source);
-            var bonusSelections = typeAndAmountSelections.Select(s => Parse(s));
+            var bonusSelections = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.SkillBonuses, source);
 
             return bonusSelections;
-        }
-
-        private SkillBonusSelection Parse(TypeAndAmountSelection input)
-        {
-            var selection = new SkillBonusSelection();
-
-            selection.Bonus = input.Amount;
-
-            var sections = input.Type.Split(',');
-            selection.Skill = sections[0];
-
-            if (sections.Length > 1)
-                selection.Condition = sections[1];
-
-            return selection;
         }
     }
 }

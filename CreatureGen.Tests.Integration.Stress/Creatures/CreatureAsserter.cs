@@ -2,6 +2,7 @@
 using CreatureGen.Alignments;
 using CreatureGen.Attacks;
 using CreatureGen.Creatures;
+using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Skills;
 using NUnit.Framework;
@@ -222,9 +223,9 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
 
             Assert.That(creature.InitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
 
-            Assert.That(creature.Saves.Reflex, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
-            Assert.That(creature.Saves.Will, Is.AtLeast(creature.Abilities[AbilityConstants.Wisdom].Modifier), creature.Summary);
-            Assert.That(creature.Saves.Fortitude, Is.AtLeast(creature.Abilities[AbilityConstants.Constitution].Modifier), creature.Summary);
+            Assert.That(creature.Saves[SaveConstants.Reflex].TotalBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
+            Assert.That(creature.Saves[SaveConstants.Will].TotalBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Wisdom].Modifier), creature.Summary);
+            Assert.That(creature.Saves[SaveConstants.Fortitude].TotalBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Constitution].Modifier), creature.Summary);
         }
 
         private void AssertAttack(Attack attack, Creature creature)

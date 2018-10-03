@@ -41,6 +41,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "FeatAbilityRequirements")]
         [TestCase(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "FeatSkillRankRequirements")]
         [TestCase(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "FeatSpeedRequirements")]
+        [TestCase(TableNameConstants.TypeAndAmount.SaveBonuses, "SaveBonuses")]
         [TestCase(TableNameConstants.TypeAndAmount.SkillBonuses, "SkillBonuses")]
         public void TableNameConstant(string constant, string value)
         {

@@ -206,30 +206,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
-        public void SkillBonusHasCorrectData(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var collection = table[creature];
-
-            foreach (var entry in collection)
-            {
-                var data = SpecialQualityHelper.ParseData(entry);
-
-                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SkillBonus)
-                {
-                    var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
-
-                    Assert.That(focus, Is.Not.Empty);
-                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()), focus);
-                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty, focus);
-                }
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), "All")]
-        [TestCaseSource(typeof(CreatureTestData), "Types")]
-        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void EnergyResistanceHasCorrectData(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));

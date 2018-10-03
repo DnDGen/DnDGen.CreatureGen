@@ -280,7 +280,6 @@ namespace CreatureGen.Feats
             public const string ProtectiveSlime = "Protective Slime";
             public const string Quickness = "Quickness";
             public const string Regeneration = "Regeneration";
-            public const string SaveBonus = "Save Bonus";
             public const string Scent = "Scent";
             public const string SeeInDarkness = "See in Darkness";
             public const string SmokeForm = "Smoke Form";
@@ -289,7 +288,6 @@ namespace CreatureGen.Feats
             public const string SpellResistance = "Spell Resistance";
             public const string Split = "Split";
             public const string Sprint = "Sprint";
-            public const string SwapSkillBaseAbility = "Swap Skill Base Ability";
             public const string Telepathy = "Telepathy";
             public const string Transparent = "Transparent";
             public const string Tremorsense = "Tremorsense";
@@ -349,17 +347,14 @@ namespace CreatureGen.Feats
                     ProtectiveSlime,
                     Quickness,
                     Regeneration,
-                    SaveBonus,
                     Scent,
                     SeeInDarkness,
-                    SkillBonus,
                     SmokeForm,
                     SoundImitation,
                     SpellLikeAbility,
                     SpellResistance,
                     Split,
                     Sprint,
-                    SwapSkillBaseAbility,
                     Telepathy,
                     Transparent,
                     Tremorsense,

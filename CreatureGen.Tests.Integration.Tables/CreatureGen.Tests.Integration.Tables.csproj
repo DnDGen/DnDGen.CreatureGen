@@ -87,13 +87,15 @@
     <Compile Include="Creatures\AerialManeuverabilityTests.cs" />
     <Compile Include="Creatures\CreatureDataTests.cs" />
     <Compile Include="Defenses\HitDiceTests.cs" />
-    <Compile Include="Feats\Data\SkillSynergyFeatDataTests.cs" />
+    <Compile Include="Defenses\SaveBonusesTestData.cs" />
+    <Compile Include="Defenses\SaveBonusesTests.cs" />
     <Compile Include="Feats\Data\SpecialQualityTestData.cs" />
     <Compile Include="Feats\Data\SpecialQualityDataTests.cs" />
     <Compile Include="Feats\Requirements\RequiredSizesTests.cs" />
     <Compile Include="Feats\Requirements\FeatSpeedRequirementsTests.cs" />
     <Compile Include="Feats\Requirements\FeatAbilityRequirementsTests.cs" />
     <Compile Include="Feats\Requirements\FeatSkillRankRequirementsTests.cs" />
+    <Compile Include="Skills\SkillBonusesTestData.cs" />
     <Compile Include="Skills\SkillBonusesTests.cs" />
     <Compile Include="TestData\CreatureTestData.cs" />
     <Compile Include="TypesAndAmountsTests.cs" />

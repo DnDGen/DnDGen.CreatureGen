@@ -1,6 +1,4 @@
-﻿using CreatureGen.Skills;
-
-namespace CreatureGen.Tables
+﻿namespace CreatureGen.Tables
 {
     internal static class DataIndexConstants
     {
@@ -48,26 +46,6 @@ namespace CreatureGen.Tables
             public static string[] InitializeData()
             {
                 return DataIndexConstants.InitializeData(RequiredHandQuantityIndex);
-            }
-        }
-
-        internal static class SkillSynergyFeatData
-        {
-            public const int FeatNameIndex = 0;
-            public const int FocusTypeIndex = 1;
-            public const int PowerIndex = 2;
-
-            public static string[] InitializeData()
-            {
-                return DataIndexConstants.InitializeData(PowerIndex);
-            }
-
-            public static string BuildDataKey(string sourceSkill, string sourceFocus, string targetSkill, string targetFocus)
-            {
-                var source = SkillConstants.Build(sourceSkill, sourceFocus);
-                var target = SkillConstants.Build(targetSkill, targetFocus);
-
-                return $"{source}:{target}";
             }
         }
 

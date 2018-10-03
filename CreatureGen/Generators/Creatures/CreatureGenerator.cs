@@ -141,7 +141,7 @@ namespace CreatureGen.Generators.Creatures
             creature.Speeds = speedsGenerator.Generate(creature.Name);
 
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities, creature.Size, creatureName, creature.Type, allFeats, creatureData.NaturalArmor);
-            creature.Saves = savesGenerator.GenerateWith(creature.Type, creature.HitPoints, allFeats, creature.Abilities);
+            creature.Saves = savesGenerator.GenerateWith(creature.Name, creature.Type, creature.HitPoints, allFeats, creature.Abilities);
             creature.Alignment = alignmentGenerator.Generate(creatureName);
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);

@@ -47,5 +47,11 @@ namespace CreatureGen.Tests.Integration.IoC.Modules
         {
             AssertNotSingleton<IAdvancementSelector>();
         }
+
+        [Test]
+        public void BonusSelectorIsInjected()
+        {
+            AssertNotSingleton<IBonusSelector>();
+        }
     }
 }

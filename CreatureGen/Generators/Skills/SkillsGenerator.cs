@@ -51,6 +51,7 @@ namespace CreatureGen.Generators.Skills
 
             skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities);
             skills = ApplyBonuses(creatureName, skills, size);
+            skills = ApplySkillSynergy(creatureName, skills, size);
 
             return skills;
         }
@@ -61,15 +62,37 @@ namespace CreatureGen.Generators.Skills
 
             foreach (var bonus in bonuses)
             {
-                var matchingSkills = skills.Where(s => s.IsEqualTo(bonus.Skill));
+                var matchingSkills = skills.Where(s => s.IsEqualTo(bonus.Source));
 
                 foreach (var skill in matchingSkills)
                 {
-                    skill.AddSkillBonus(bonus.Bonus, bonus.Condition);
+                    skill.AddBonus(bonus.Bonus, bonus.Condition);
                 }
             }
 
             skills = ApplyHideSkillSizeModifier(skills, size);
+
+            return skills;
+        }
+
+        private IEnumerable<Skill> ApplySkillSynergy(string creature, IEnumerable<Skill> skills, string size)
+        {
+            var synergyOpportunities = skills.Where(s => s.EffectiveRanks >= 5);
+
+            foreach (var sourceSkill in synergyOpportunities)
+            {
+                var bonuses = skillSelector.SelectBonusesFor(sourceSkill.Key);
+
+                foreach (var bonus in bonuses)
+                {
+                    var matchingSkills = skills.Where(s => s.IsEqualTo(bonus.Source));
+
+                    foreach (var skill in matchingSkills)
+                    {
+                        skill.AddBonus(bonus.Bonus, bonus.Condition);
+                    }
+                }
+            }
 
             return skills;
         }
@@ -80,7 +103,7 @@ namespace CreatureGen.Generators.Skills
             if (hideSkill != null)
             {
                 var bonus = GetHideSkillSizeModifier(size);
-                hideSkill.AddSkillBonus(bonus);
+                hideSkill.AddBonus(bonus);
             }
 
             return skills;
@@ -227,12 +250,9 @@ namespace CreatureGen.Generators.Skills
                 }
             }
 
-            var allFeatGrantingSkillBonuses = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, FeatConstants.SpecialQualities.SkillBonus);
-            var featGrantingSkillBonuses = feats.Where(f => allFeatGrantingSkillBonuses.Contains(f.Name));
-
             var allSkills = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.All);
 
-            foreach (var feat in featGrantingSkillBonuses)
+            foreach (var feat in feats)
             {
                 if (feat.Foci.Any())
                 {
@@ -246,12 +266,12 @@ namespace CreatureGen.Generators.Skills
                         {
                             if (skill.IsEqualTo(focus))
                             {
-                                skill.AddSkillBonus(feat.Power);
+                                skill.AddBonus(feat.Power);
                             }
                             else
                             {
                                 var condition = focus.Replace(skill.Name + ": ", string.Empty);
-                                skill.AddSkillBonus(feat.Power, condition);
+                                skill.AddBonus(feat.Power, condition);
                             }
                         }
                     }
@@ -265,7 +285,7 @@ namespace CreatureGen.Generators.Skills
                         var skill = skills.FirstOrDefault(s => s.IsEqualTo(skillName));
 
                         if (skill != null)
-                            skill.AddSkillBonus(feat.Power);
+                            skill.AddBonus(feat.Power);
                     }
                 }
             }

@@ -111,52 +111,7 @@ namespace CreatureGen.Generators.Feats
                 hands,
                 size);
 
-            var synergies = GetSkillSynergies(
-                baseAttackBonus,
-                abilities,
-                skills,
-                attacks,
-                specialQualities,
-                casterLevel,
-                speeds,
-                naturalArmor,
-                hands,
-                size);
-
-            feats = feats.Union(synergies);
-
             return feats;
-        }
-
-        private IEnumerable<Feat> GetSkillSynergies(
-            int baseAttackBonus,
-            Dictionary<string, Ability> abilities,
-            IEnumerable<Skill> skills,
-            IEnumerable<Attack> attacks,
-            IEnumerable<Feat> specialQualities,
-            int casterLevel,
-            Dictionary<string, Measurement> speeds,
-            int naturalArmor,
-            int hands,
-            string size)
-        {
-            var synergySelections = featsSelector.SelectSkillSynergies();
-
-            //INFO: Calling immediate execution, so this doesn't reevaluate every time the collection is called
-            var availableSynergies = synergySelections
-                .Where(f => f.ImmutableRequirementsMet(
-                    baseAttackBonus,
-                    abilities,
-                    skills,
-                    attacks,
-                    casterLevel,
-                    speeds,
-                    naturalArmor,
-                    hands,
-                    size))
-                .ToArray();
-
-            return PopulateFeatsRandomlyFrom(abilities, skills, baseAttackBonus, specialQualities, availableSynergies, int.MaxValue, casterLevel, attacks);
         }
 
         private int GetFeatQuantity(HitPoints hitPoints)

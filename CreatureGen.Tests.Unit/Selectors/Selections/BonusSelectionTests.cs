@@ -4,22 +4,22 @@ using NUnit.Framework;
 namespace CreatureGen.Tests.Unit.Selectors.Selections
 {
     [TestFixture]
-    public class SkillBonusSelectionTests
+    public class BonusSelectionTests
     {
-        private SkillBonusSelection selection;
+        private BonusSelection selection;
 
         [SetUp]
         public void Setup()
         {
-            selection = new SkillBonusSelection();
+            selection = new BonusSelection();
         }
 
         [Test]
-        public void SkillBonusSelectionInitialized()
+        public void BonusSelectionInitialized()
         {
             Assert.That(selection.Bonus, Is.Zero);
             Assert.That(selection.Condition, Is.Empty);
-            Assert.That(selection.Skill, Is.Empty);
+            Assert.That(selection.Source, Is.Empty);
         }
     }
 }

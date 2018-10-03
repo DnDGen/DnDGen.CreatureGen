@@ -133,9 +133,9 @@
     <Compile Include="Selectors\Selections\AdvancementSelectionTests.cs" />
     <Compile Include="Selectors\Selections\AttackSelectionTests.cs" />
     <Compile Include="Selectors\Selections\CreatureDataSelectionTests.cs" />
-    <Compile Include="Selectors\Selections\SkillBonusSelectionTests.cs" />
+    <Compile Include="Selectors\Selections\BonusSelectionTests.cs" />
     <Compile Include="Selectors\Selections\TypeAndAmountSelectionTests.cs" />
-    <Compile Include="Skills\SkillBonusTests.cs" />
+    <Compile Include="BonusTests.cs" />
     <Compile Include="TestCaseSources\NumericTestData.cs" />
     <Compile Include="Verifiers\CreatureVerifierTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

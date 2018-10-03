@@ -916,6 +916,27 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
         }
 
+        [TestCase("skill 1Intelligence")]
+        [TestCase("skill 1All")]
+        [TestCase("skill 19266")]
+        public void CreatureSkillWithDifferentNameIsClassSkill(string creatureSkill)
+        {
+            creatureTypeSkillPoints = 2;
+            creatureSkills.Add(creatureSkill);
+
+            var selection = new SkillSelection { BaseAbilityName = AbilityConstants.Intelligence, SkillName = "skill 1" };
+            mockSkillSelector.Setup(s => s.SelectFor("creature skill")).Returns(selection);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
+            Assert.That(skills.Count, Is.EqualTo(1));
+
+            var skill = skills.Single();
+            Assert.That(skill.Name, Is.EqualTo("skill 1"));
+            Assert.That(skill.Focus, Is.Empty);
+            Assert.That(skill.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Intelligence]));
+            Assert.That(skill.ClassSkill, Is.True);
+        }
+
         [Test]
         public void SelectPresetFocusForSkill()
         {
@@ -934,10 +955,12 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
             Assert.That(skills[0].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Intelligence]));
+            Assert.That(skills[0].ClassSkill, Is.True);
 
             Assert.That(skills[1].Name, Is.EqualTo("skill with focus"));
             Assert.That(skills[1].Focus, Is.EqualTo("focus"));
             Assert.That(skills[1].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
+            Assert.That(skills[1].ClassSkill, Is.True);
 
             Assert.That(skills.Count, Is.EqualTo(2));
         }
@@ -960,9 +983,13 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
             Assert.That(skills[0].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Intelligence]));
+            Assert.That(skills[0].ClassSkill, Is.True);
+
             Assert.That(skills[1].Name, Is.EqualTo("skill with random foci"));
             Assert.That(skills[1].Focus, Is.EqualTo("random"));
             Assert.That(skills[1].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
+            Assert.That(skills[1].ClassSkill, Is.True);
+
             Assert.That(skills.Count, Is.EqualTo(2));
         }
 
@@ -990,12 +1017,18 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
             Assert.That(skills[0].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Intelligence]));
+            Assert.That(skills[0].ClassSkill, Is.True);
+
             Assert.That(skills[1].Name, Is.EqualTo("skill with random foci"));
             Assert.That(skills[1].Focus, Is.EqualTo("random"));
             Assert.That(skills[1].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
+            Assert.That(skills[1].ClassSkill, Is.True);
+
             Assert.That(skills[2].Name, Is.EqualTo("skill with random foci"));
             Assert.That(skills[2].Focus, Is.EqualTo("other random"));
             Assert.That(skills[2].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
+            Assert.That(skills[2].ClassSkill, Is.True);
+
             Assert.That(skills.Count, Is.EqualTo(3));
         }
 
@@ -1023,12 +1056,18 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
             Assert.That(skills[0].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Intelligence]));
+            Assert.That(skills[0].ClassSkill, Is.True);
+
             Assert.That(skills[1].Name, Is.EqualTo("skill with random foci"));
             Assert.That(skills[1].Focus, Is.EqualTo("random"));
             Assert.That(skills[1].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
+            Assert.That(skills[1].ClassSkill, Is.True);
+
             Assert.That(skills[2].Name, Is.EqualTo("skill with random foci"));
             Assert.That(skills[2].Focus, Is.EqualTo("other random"));
             Assert.That(skills[2].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
+            Assert.That(skills[2].ClassSkill, Is.True);
+
             Assert.That(skills.Count, Is.EqualTo(3));
         }
 
@@ -1053,12 +1092,18 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].Focus, Is.Empty);
             Assert.That(skills[0].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Intelligence]));
+            Assert.That(skills[0].ClassSkill, Is.True);
+
             Assert.That(skills[1].Name, Is.EqualTo("skill with random foci"));
             Assert.That(skills[1].Focus, Is.EqualTo("random"));
             Assert.That(skills[1].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
+            Assert.That(skills[1].ClassSkill, Is.True);
+
             Assert.That(skills[2].Name, Is.EqualTo("skill with random foci"));
             Assert.That(skills[2].Focus, Is.EqualTo("other random"));
             Assert.That(skills[2].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
+            Assert.That(skills[2].ClassSkill, Is.True);
+
             Assert.That(skills.Count, Is.EqualTo(3));
         }
 
@@ -1369,7 +1414,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new SkillBonusSelection { Skill = creatureSkills[0], Bonus = 9266 }
+                new BonusSelection { Source = creatureSkills[0], Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1397,8 +1442,8 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new SkillBonusSelection { Skill = creatureSkills[0], Bonus = 9266 },
-                new SkillBonusSelection { Skill = creatureSkills[1], Bonus = 90210 },
+                new BonusSelection { Source = creatureSkills[0], Bonus = 9266 },
+                new BonusSelection { Source = creatureSkills[1], Bonus = 90210 },
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1431,8 +1476,8 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new SkillBonusSelection { Skill = creatureSkills[0], Bonus = 9266 },
-                new SkillBonusSelection { Skill = creatureSkills[0], Bonus = 90210 }
+                new BonusSelection { Source = creatureSkills[0], Bonus = 9266 },
+                new BonusSelection { Source = creatureSkills[0], Bonus = 90210 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1466,7 +1511,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new SkillBonusSelection { Skill = creatureSkills[0], Bonus = 9266, Condition = "condition" }
+                new BonusSelection { Source = creatureSkills[0], Bonus = 9266, Condition = "condition" }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1494,8 +1539,8 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new SkillBonusSelection { Skill = creatureSkills[0], Bonus = 9266, Condition = "condition" },
-                new SkillBonusSelection { Skill = creatureSkills[0], Bonus = 90210, Condition = "other condition" }
+                new BonusSelection { Source = creatureSkills[0], Bonus = 9266, Condition = "condition" },
+                new BonusSelection { Source = creatureSkills[0], Bonus = 90210, Condition = "other condition" }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1529,8 +1574,8 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new SkillBonusSelection { Skill = creatureSkills[0], Bonus = 9266, Condition = "condition" },
-                new SkillBonusSelection { Skill = creatureSkills[0], Bonus = 90210 }
+                new BonusSelection { Source = creatureSkills[0], Bonus = 9266, Condition = "condition" },
+                new BonusSelection { Source = creatureSkills[0], Bonus = 90210 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1577,7 +1622,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new SkillBonusSelection { Skill = SkillConstants.Build("skill", "focus"), Bonus = 9266 }
+                new BonusSelection { Source = SkillConstants.Build("skill", "focus"), Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1618,7 +1663,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new SkillBonusSelection { Skill = SkillConstants.Build("skill", "focus"), Bonus = 9266, Condition = "condition" }
+                new BonusSelection { Source = SkillConstants.Build("skill", "focus"), Bonus = 9266, Condition = "condition" }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1664,7 +1709,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new SkillBonusSelection { Skill = "skill", Bonus = 9266 }
+                new BonusSelection { Source = "skill", Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1716,7 +1761,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new SkillBonusSelection { Skill = "skill", Bonus = 9266, Condition = "condition" }
+                new BonusSelection { Source = "skill", Bonus = 9266, Condition = "condition" }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1750,8 +1795,8 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new SkillBonusSelection { Skill = creatureSkills[0], Bonus = 9266 },
-                new SkillBonusSelection { Skill = creatureSkills[0], Bonus = 9266 }
+                new BonusSelection { Source = creatureSkills[0], Bonus = 9266 },
+                new BonusSelection { Source = creatureSkills[0], Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1841,10 +1886,10 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             skills.Add(new Skill("skill 2", baseAbility, 1));
             skills.Add(new Skill("skill 3", baseAbility, 1));
             skills.Add(new Skill("skill 4", baseAbility, 1));
-            skills[0].AddSkillBonus(1);
-            skills[1].AddSkillBonus(2);
-            skills[2].AddSkillBonus(3);
-            skills[3].AddSkillBonus(4);
+            skills[0].AddBonus(1);
+            skills[1].AddBonus(2);
+            skills[2].AddBonus(3);
+            skills[3].AddBonus(4);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -1882,10 +1927,10 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             skills.Add(new Skill("skill 2", baseAbility, 1));
             skills.Add(new Skill("skill 3", baseAbility, 1, "other focus"));
             skills.Add(new Skill("skill 3", baseAbility, 1, "focus"));
-            skills[0].AddSkillBonus(1);
-            skills[1].AddSkillBonus(2);
-            skills[2].AddSkillBonus(3);
-            skills[3].AddSkillBonus(4);
+            skills[0].AddBonus(1);
+            skills[1].AddBonus(2);
+            skills[2].AddBonus(3);
+            skills[3].AddBonus(4);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -1922,9 +1967,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             skills.Add(new Skill("skill 1", baseAbility, 1));
             skills.Add(new Skill("skill 2", baseAbility, 1));
             skills.Add(new Skill("skill 3", baseAbility, 1));
-            skills[0].AddSkillBonus(1);
-            skills[1].AddSkillBonus(2);
-            skills[2].AddSkillBonus(3);
+            skills[0].AddBonus(1);
+            skills[1].AddBonus(2);
+            skills[2].AddBonus(3);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -1960,9 +2005,9 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             skills.Add(new Skill("skill 1", baseAbility, 1, "focus 1"));
             skills.Add(new Skill("skill 2", baseAbility, 1));
             skills.Add(new Skill("skill 1", baseAbility, 1, "focus 2"));
-            skills[0].AddSkillBonus(1);
-            skills[1].AddSkillBonus(2);
-            skills[2].AddSkillBonus(3);
+            skills[0].AddBonus(1);
+            skills[1].AddBonus(2);
+            skills[2].AddBonus(3);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -1996,7 +2041,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = new List<Skill>();
             skills.Add(new Skill("skill 1", baseAbility, 1));
-            skills[0].AddSkillBonus(1);
+            skills[0].AddBonus(1);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -2028,8 +2073,8 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var skills = new List<Skill>();
             skills.Add(new Skill("skill 1", baseAbility, 1));
             skills.Add(new Skill("skill 2", baseAbility, 1));
-            skills[0].AddSkillBonus(1);
-            skills[1].AddSkillBonus(2);
+            skills[0].AddBonus(1);
+            skills[1].AddBonus(2);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -2071,7 +2116,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = new List<Skill>();
             skills.Add(new Skill("skill 1", baseAbility, 1));
-            skills[0].AddSkillBonus(1);
+            skills[0].AddBonus(1);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -2102,8 +2147,8 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var skills = new List<Skill>();
             skills.Add(new Skill("skill 1", baseAbility, 1));
             skills.Add(new Skill("skill 2", baseAbility, 1));
-            skills[0].AddSkillBonus(1);
-            skills[1].AddSkillBonus(2);
+            skills[0].AddBonus(1);
+            skills[1].AddBonus(2);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -2142,8 +2187,8 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var skills = new List<Skill>();
             skills.Add(new Skill("skill 1", baseAbility, 1));
             skills.Add(new Skill("skill 2", baseAbility, 1));
-            skills[0].AddSkillBonus(1);
-            skills[1].AddSkillBonus(2);
+            skills[0].AddBonus(1);
+            skills[1].AddBonus(2);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());
@@ -2179,6 +2224,42 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
+        public void SwapBaseSkillAbilityByCreature()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SwapBaseSkillAbilityByCreatureType()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SwapBaseSkillAbilityByCreatureSubtype()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSkillBonusFromCreature()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSkillBonusFromCreatureType()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSkillBonusFromCreatureSubtype()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void ApplySkillSynergyBonusToMultipleSkills()
         {
             var baseAbility = new Ability("base ability");
@@ -2189,11 +2270,11 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             skills.Add(new Skill("skill 2", baseAbility, 1));
             skills.Add(new Skill("skill 3", baseAbility, 1, "focus 1"));
             skills.Add(new Skill("skill 3", baseAbility, 1, "focus 2"));
-            skills[0].AddSkillBonus(1);
-            skills[1].AddSkillBonus(2);
-            skills[2].AddSkillBonus(3);
-            skills[3].AddSkillBonus(4);
-            skills[4].AddSkillBonus(5);
+            skills[0].AddBonus(1);
+            skills[1].AddBonus(2);
+            skills[2].AddBonus(3);
+            skills[3].AddBonus(4);
+            skills[4].AddBonus(5);
 
             var feats = new List<Feat>();
             feats.Add(new Feat());

@@ -1,14 +1,14 @@
 ﻿namespace CreatureGen.Selectors.Selections
 {
-    internal class SkillBonusSelection
+    internal class BonusSelection
     {
-        public string Skill { get; set; }
+        public string Source { get; set; }
         public int Bonus { get; set; }
         public string Condition { get; set; }
 
-        public SkillBonusSelection()
+        public BonusSelection()
         {
-            Skill = string.Empty;
+            Source = string.Empty;
             Condition = string.Empty;
         }
     }

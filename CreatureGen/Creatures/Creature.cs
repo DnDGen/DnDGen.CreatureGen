@@ -24,7 +24,7 @@ namespace CreatureGen.Creatures
         public Measurement Space { get; set; }
         public Measurement Reach { get; set; }
         public IEnumerable<Feat> SpecialQualities { get; set; }
-        public Saves Saves { get; set; }
+        public Dictionary<string, Save> Saves { get; set; }
         public Dictionary<string, Ability> Abilities { get; set; }
         public IEnumerable<Skill> Skills { get; set; }
         public IEnumerable<Feat> Feats { get; set; }
@@ -99,7 +99,7 @@ namespace CreatureGen.Creatures
             HitPoints = new HitPoints();
             Name = string.Empty;
             Reach = new Measurement("feet");
-            Saves = new Saves();
+            Saves = new Dictionary<string, Save>();
             Size = string.Empty;
             Skills = Enumerable.Empty<Skill>();
             Space = new Measurement("feet");

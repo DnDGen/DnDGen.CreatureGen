@@ -29,7 +29,6 @@
             public const string SaveBonuses = "SaveBonuses";
             public const string SkillData = "SkillData";
             public const string SkillGroups = "SkillGroups";
-            public const string SkillSynergyFeatData = "SkillSynergyFeatData";
             public const string Speeds = "Speeds";
             public const string SpellGroups = "SpellGroups";
             public const string TemplateGroups = "TemplateGroups";
@@ -43,6 +42,7 @@
             public const string FeatAbilityRequirements = "FeatAbilityRequirements";
             public const string FeatSkillRankRequirements = "FeatSkillRankRequirements";
             public const string FeatSpeedRequirements = "FeatSpeedRequirements";
+            public const string SaveBonuses = "SaveBonuses";
             public const string SkillBonuses = "SkillBonuses";
         }
 

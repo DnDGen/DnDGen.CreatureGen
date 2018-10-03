@@ -143,7 +143,7 @@ namespace CreatureGen.Tests.Unit.Skills
         [Test]
         public void AddSkillBonus()
         {
-            skill.AddSkillBonus(42);
+            skill.AddBonus(42);
 
             Assert.That(skill.Bonuses, Is.Not.Empty);
             Assert.That(skill.Bonuses.Count, Is.EqualTo(1));
@@ -158,8 +158,8 @@ namespace CreatureGen.Tests.Unit.Skills
         [Test]
         public void AddSkillBonuses()
         {
-            skill.AddSkillBonus(42);
-            skill.AddSkillBonus(600);
+            skill.AddBonus(42);
+            skill.AddBonus(600);
 
             Assert.That(skill.Bonuses, Is.Not.Empty);
             Assert.That(skill.Bonuses.Count, Is.EqualTo(2));
@@ -179,7 +179,7 @@ namespace CreatureGen.Tests.Unit.Skills
         [Test]
         public void AddSkillBonusWithCondition()
         {
-            skill.AddSkillBonus(42, "condition");
+            skill.AddBonus(42, "condition");
 
             Assert.That(skill.Bonuses, Is.Not.Empty);
             Assert.That(skill.Bonuses.Count, Is.EqualTo(1));
@@ -194,8 +194,8 @@ namespace CreatureGen.Tests.Unit.Skills
         [Test]
         public void AddSkillBonusesWithCondition()
         {
-            skill.AddSkillBonus(42, "condition");
-            skill.AddSkillBonus(600, "other condition");
+            skill.AddBonus(42, "condition");
+            skill.AddBonus(600, "other condition");
 
             Assert.That(skill.Bonuses, Is.Not.Empty);
             Assert.That(skill.Bonuses.Count, Is.EqualTo(2));
@@ -215,8 +215,8 @@ namespace CreatureGen.Tests.Unit.Skills
         [Test]
         public void AddSkillBonusWithAndWithoutCondition()
         {
-            skill.AddSkillBonus(42, "condition");
-            skill.AddSkillBonus(600);
+            skill.AddBonus(42, "condition");
+            skill.AddBonus(600);
 
             Assert.That(skill.Bonuses, Is.Not.Empty);
             Assert.That(skill.Bonuses.Count, Is.EqualTo(2));
@@ -240,7 +240,7 @@ namespace CreatureGen.Tests.Unit.Skills
             skill.ClassSkill = true;
             skill.ArmorCheckPenalty = -600;
 
-            skill.AddSkillBonus(42);
+            skill.AddBonus(42);
 
             Assert.That(skill.TotalBonus, Is.EqualTo(8708));
         }
@@ -253,7 +253,7 @@ namespace CreatureGen.Tests.Unit.Skills
             skill.ArmorCheckPenalty = -600;
             baseAbility.BaseScore = 7;
 
-            skill.AddSkillBonus(42);
+            skill.AddBonus(42);
 
             Assert.That(skill.TotalBonus, Is.EqualTo(4073));
         }
@@ -266,7 +266,7 @@ namespace CreatureGen.Tests.Unit.Skills
             skill.ArmorCheckPenalty = -600;
             baseAbility.BaseScore = 7;
 
-            skill.AddSkillBonus(42);
+            skill.AddBonus(42);
 
             Assert.That(skill.TotalBonus, Is.EqualTo(4072));
         }
@@ -274,7 +274,7 @@ namespace CreatureGen.Tests.Unit.Skills
         [Test]
         public void BonusIncludesBonus()
         {
-            skill.AddSkillBonus(42);
+            skill.AddBonus(42);
 
             Assert.That(skill.Bonus, Is.EqualTo(42));
         }
@@ -282,8 +282,8 @@ namespace CreatureGen.Tests.Unit.Skills
         [Test]
         public void BonusIncludesBonuses()
         {
-            skill.AddSkillBonus(42);
-            skill.AddSkillBonus(600);
+            skill.AddBonus(42);
+            skill.AddBonus(600);
 
             Assert.That(skill.Bonus, Is.EqualTo(642));
         }
@@ -291,8 +291,8 @@ namespace CreatureGen.Tests.Unit.Skills
         [Test]
         public void BonusIncludesDuplicateBonuses()
         {
-            skill.AddSkillBonus(42);
-            skill.AddSkillBonus(42);
+            skill.AddBonus(42);
+            skill.AddBonus(42);
 
             Assert.That(skill.Bonus, Is.EqualTo(84));
         }
@@ -300,8 +300,8 @@ namespace CreatureGen.Tests.Unit.Skills
         [Test]
         public void BonusDoesNotIncludeConditionalBonus()
         {
-            skill.AddSkillBonus(42, "condition");
-            skill.AddSkillBonus(600);
+            skill.AddBonus(42, "condition");
+            skill.AddBonus(600);
 
             Assert.That(skill.Bonus, Is.EqualTo(600));
         }
@@ -309,9 +309,9 @@ namespace CreatureGen.Tests.Unit.Skills
         [Test]
         public void BonusDoesNotIncludeConditionalBonuses()
         {
-            skill.AddSkillBonus(42, "condition");
-            skill.AddSkillBonus(600, "other condition");
-            skill.AddSkillBonus(1337);
+            skill.AddBonus(42, "condition");
+            skill.AddBonus(600, "other condition");
+            skill.AddBonus(1337);
 
             Assert.That(skill.Bonus, Is.EqualTo(1337));
         }
@@ -319,8 +319,8 @@ namespace CreatureGen.Tests.Unit.Skills
         [Test]
         public void AllBonusesAreConditional()
         {
-            skill.AddSkillBonus(42, "condition");
-            skill.AddSkillBonus(600, "other condition");
+            skill.AddBonus(42, "condition");
+            skill.AddBonus(600, "other condition");
 
             Assert.That(skill.Bonus, Is.Zero);
         }

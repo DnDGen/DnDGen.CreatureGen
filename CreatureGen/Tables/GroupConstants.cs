@@ -15,9 +15,8 @@
         public const string ManualCrossbows = "Manual Crossbows";
         public const string NaturalArmor = "Natural Armor";
         public const string PoorBaseAttack = "Poor Base Attack";
-        public const string SavingThrows = "Saving Throws";
         public const string Skills = "Skills";
-        public const string SkillBonus = "Skill Bonus";
+        public const string SkillSynergy = "Skill Synergy";
         public const string TakenMultipleTimes = "Taken Multiple Times";
         public const string Unnatural = "Unnatural";
         public const string Untrained = "Untrained";

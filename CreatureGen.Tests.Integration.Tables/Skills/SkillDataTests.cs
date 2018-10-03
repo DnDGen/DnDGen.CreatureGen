@@ -31,6 +31,9 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Craft + "5",
                 SkillConstants.Knowledge + "5",
                 SkillConstants.Knowledge + GroupConstants.All,
+                SkillConstants.Climb + AbilityConstants.Dexterity,
+                SkillConstants.Jump + AbilityConstants.Dexterity,
+                SkillConstants.Swim + AbilityConstants.Dexterity,
             };
 
             var names = skillGroups[GroupConstants.All]
@@ -44,6 +47,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(SkillConstants.Balance, AbilityConstants.Dexterity)]
         [TestCase(SkillConstants.Bluff, AbilityConstants.Charisma)]
         [TestCase(SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(SkillConstants.Climb + AbilityConstants.Dexterity, AbilityConstants.Dexterity)]
         [TestCase(SkillConstants.Concentration, AbilityConstants.Constitution)]
         [TestCase(SkillConstants.Craft, AbilityConstants.Intelligence, SkillConstants.Craft, 1)]
         [TestCase(SkillConstants.Craft + "2", AbilityConstants.Intelligence, SkillConstants.Craft, 2)]
@@ -62,6 +66,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(SkillConstants.Hide, AbilityConstants.Dexterity)]
         [TestCase(SkillConstants.Intimidate, AbilityConstants.Charisma)]
         [TestCase(SkillConstants.Jump, AbilityConstants.Strength)]
+        [TestCase(SkillConstants.Jump + AbilityConstants.Dexterity, AbilityConstants.Dexterity)]
         [TestCase(SkillConstants.Knowledge, AbilityConstants.Intelligence, SkillConstants.Knowledge, 1)]
         [TestCase(SkillConstants.Knowledge + "2", AbilityConstants.Intelligence, SkillConstants.Knowledge, 2)]
         [TestCase(SkillConstants.Knowledge + "3", AbilityConstants.Intelligence, SkillConstants.Knowledge, 3)]
@@ -81,6 +86,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(SkillConstants.Spot, AbilityConstants.Wisdom)]
         [TestCase(SkillConstants.Survival, AbilityConstants.Wisdom)]
         [TestCase(SkillConstants.Swim, AbilityConstants.Strength)]
+        [TestCase(SkillConstants.Swim + AbilityConstants.Dexterity, AbilityConstants.Dexterity)]
         [TestCase(SkillConstants.Tumble, AbilityConstants.Dexterity)]
         [TestCase(SkillConstants.UseMagicDevice, AbilityConstants.Charisma)]
         [TestCase(SkillConstants.UseRope, AbilityConstants.Dexterity)]

@@ -1,6 +1,6 @@
-﻿namespace CreatureGen.Skills
+﻿namespace CreatureGen
 {
-    public class SkillBonus
+    public class Bonus
     {
         public int Value { get; set; }
         public string Condition { get; set; }
@@ -10,7 +10,7 @@
             get { return !string.IsNullOrEmpty(Condition); }
         }
 
-        public SkillBonus()
+        public Bonus()
         {
             Condition = string.Empty;
         }

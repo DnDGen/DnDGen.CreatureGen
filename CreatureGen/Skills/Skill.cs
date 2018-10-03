@@ -14,9 +14,11 @@ namespace CreatureGen.Skills
         public int ArmorCheckPenalty { get; set; }
         public int RankCap { get; set; }
         public bool HasArmorCheckPenalty { get; set; }
-        public IEnumerable<SkillBonus> Bonuses { get; private set; }
+        public IEnumerable<Bonus> Bonuses { get; private set; }
 
         public bool CircumstantialBonus => Bonuses.Any(b => b.IsConditional);
+
+        public string Key => SkillConstants.Build(Name, Focus);
 
         public int Bonus
         {
@@ -78,7 +80,7 @@ namespace CreatureGen.Skills
             BaseAbility = baseStat;
             RankCap = rankCap;
             Focus = focus;
-            Bonuses = Enumerable.Empty<SkillBonus>();
+            Bonuses = Enumerable.Empty<Bonus>();
         }
 
         public bool IsEqualTo(Skill skill)
@@ -106,9 +108,9 @@ namespace CreatureGen.Skills
             return IsEqualTo(skillData[0], string.Empty);
         }
 
-        public void AddSkillBonus(int value, string condition = "")
+        public void AddBonus(int value, string condition = "")
         {
-            var bonus = new SkillBonus { Value = value, Condition = condition };
+            var bonus = new Bonus { Value = value, Condition = condition };
             Bonuses = Bonuses.Union(new[] { bonus });
         }
     }
