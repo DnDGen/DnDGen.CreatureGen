@@ -1,6 +1,5 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Generators.Creatures;
-using CreatureGen.Verifiers;
 using DnDGen.Core.Selectors.Collections;
 using Ninject;
 using NUnit.Framework;
@@ -16,8 +15,6 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
         public ICollectionSelector CollectionSelector { get; set; }
         [Inject]
         public ICreatureGenerator CreatureGenerator { get; set; }
-        [Inject]
-        public ICreatureVerifier CreatureVerifier { get; set; }
 
         [Test]
         public void StressCreature()

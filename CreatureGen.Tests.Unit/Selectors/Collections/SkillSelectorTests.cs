@@ -15,19 +15,19 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
     {
         private ISkillSelector skillSelector;
         private Mock<ICollectionSelector> mockInnerSelector;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
-        private List<TypeAndAmountSelection> typesAndAmounts;
+        private Mock<IBonusSelector> mockBonusSelector;
+        private List<BonusSelection> bonusSelections;
 
         [SetUp]
         public void Setup()
         {
             mockInnerSelector = new Mock<ICollectionSelector>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
-            skillSelector = new SkillSelector(mockInnerSelector.Object, mockTypeAndAmountSelector.Object);
+            mockBonusSelector = new Mock<IBonusSelector>();
+            skillSelector = new SkillSelector(mockInnerSelector.Object, mockBonusSelector.Object);
 
-            typesAndAmounts = new List<TypeAndAmountSelection>();
+            bonusSelections = new List<BonusSelection>();
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.SkillBonuses, "creature")).Returns(typesAndAmounts);
+            mockBonusSelector.Setup(s => s.SelectFor(TableNameConstants.TypeAndAmount.SkillBonuses, "creature")).Returns(bonusSelections);
         }
 
         [Test]
@@ -84,14 +84,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             string condition = "",
             int bonus = 1)
         {
-            var typeAndAmountSelection = new TypeAndAmountSelection();
-            typeAndAmountSelection.Amount = bonus;
-            typeAndAmountSelection.Type = SkillConstants.Build(skill, focus);
+            var bonusSelection = new BonusSelection();
+            bonusSelection.Bonus = bonus;
+            bonusSelection.Source = SkillConstants.Build(skill, focus);
+            bonusSelection.Condition = condition;
 
-            if (!string.IsNullOrEmpty(condition))
-                typeAndAmountSelection.Type += "," + condition;
-
-            typesAndAmounts.Add(typeAndAmountSelection);
+            bonusSelections.Add(bonusSelection);
         }
 
         [TestCase("skill", "", "", 1337, "skill", "", "", 9266)]

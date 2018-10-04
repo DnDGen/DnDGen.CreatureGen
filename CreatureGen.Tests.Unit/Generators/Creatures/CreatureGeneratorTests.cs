@@ -989,8 +989,10 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureSaves()
         {
-            var saves = new Saves();
-            mockSavesGenerator.Setup(g => g.GenerateWith(It.Is<CreatureType>(c => c.Name == types[0]), hitPoints, feats, abilities)).Returns(saves);
+            var saves = new Dictionary<string, Save>();
+            saves["save name"] = new Save();
+
+            mockSavesGenerator.Setup(g => g.GenerateWith("creature", It.Is<CreatureType>(c => c.Name == types[0]), hitPoints, feats, abilities)).Returns(saves);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Saves, Is.EqualTo(saves));
@@ -1003,8 +1005,10 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
 
             mockFeatsGenerator.Setup(g => g.GenerateFeats(advancedHitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size")).Returns(feats);
 
-            var saves = new Saves();
-            mockSavesGenerator.Setup(g => g.GenerateWith(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, feats, abilities)).Returns(saves);
+            var saves = new Dictionary<string, Save>();
+            saves["save name"] = new Save();
+
+            mockSavesGenerator.Setup(g => g.GenerateWith("creature", It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, feats, abilities)).Returns(saves);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Saves, Is.EqualTo(saves));

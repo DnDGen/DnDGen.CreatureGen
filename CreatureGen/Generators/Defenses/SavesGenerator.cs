@@ -39,7 +39,7 @@ namespace CreatureGen.Generators.Defenses
             save.BaseAbility = abilities[AbilityConstants.Constitution];
             save.BaseValue = GetSaveBaseValue(creatureType, hitPoints, SaveConstants.Fortitude);
 
-            save = GetRacialSavingThrowBonuses(save, creatureName, SaveConstants.Fortitude);
+            save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Fortitude);
             save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Fortitude);
 
             return save;
@@ -52,7 +52,7 @@ namespace CreatureGen.Generators.Defenses
             save.BaseAbility = abilities[AbilityConstants.Dexterity];
             save.BaseValue = GetSaveBaseValue(creatureType, hitPoints, SaveConstants.Reflex);
 
-            save = GetRacialSavingThrowBonuses(save, creatureName, SaveConstants.Reflex);
+            save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Reflex);
             save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Reflex);
 
             return save;
@@ -68,7 +68,7 @@ namespace CreatureGen.Generators.Defenses
             else
                 save.BaseAbility = abilities[AbilityConstants.Wisdom];
 
-            save = GetRacialSavingThrowBonuses(save, creatureName, SaveConstants.Will);
+            save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Will);
             save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Will);
 
             return save;
@@ -87,9 +87,18 @@ namespace CreatureGen.Generators.Defenses
             return hitPoints.RoundedHitDiceQuantity / 3;
         }
 
-        private Save GetRacialSavingThrowBonuses(Save save, string creatureName, string saveName)
+        private Save GetRacialSavingThrowBonuses(Save save, string creatureName, CreatureType creatureType, string saveName)
         {
-            var bonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, creatureName);
+            var creatureBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, creatureName);
+            var creatureTypeBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, creatureType.Name);
+
+            var bonuses = creatureBonuses.Union(creatureTypeBonuses);
+
+            foreach (var subtype in creatureType.SubTypes)
+            {
+                var subtypeBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, subtype);
+                bonuses = bonuses.Union(subtypeBonuses);
+            }
 
             foreach (var bonus in bonuses)
             {

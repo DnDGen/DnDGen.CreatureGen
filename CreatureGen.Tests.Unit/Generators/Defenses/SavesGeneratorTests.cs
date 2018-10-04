@@ -3,11 +3,17 @@ using CreatureGen.Creatures;
 using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Generators.Defenses;
+using CreatureGen.Selectors.Collections;
+using CreatureGen.Selectors.Selections;
 using CreatureGen.Tables;
+using CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.Core.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CreatureGen.Tests.Unit.Generators.Defenses
 {
@@ -15,10 +21,10 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
     public class SavesGeneratorTests
     {
         private Mock<ICollectionSelector> mockCollectionsSelector;
+        private Mock<IBonusSelector> mockBonusSelector;
         private ISavesGenerator savesGenerator;
         private List<Feat> feats;
         private Dictionary<string, Ability> abilities;
-        private List<string> allSaveFeats;
         private List<string> reflexSaveFeats;
         private List<string> fortitudeSaveFeats;
         private List<string> willSaveFeats;
@@ -27,15 +33,16 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         private List<string> strongWill;
         private HitPoints hitPoints;
         private CreatureType creatureType;
+        private Dictionary<string, List<BonusSelection>> racialBonuses;
 
         [SetUp]
         public void Setup()
         {
             mockCollectionsSelector = new Mock<ICollectionSelector>();
-            savesGenerator = new SavesGenerator(mockCollectionsSelector.Object);
+            mockBonusSelector = new Mock<IBonusSelector>();
+            savesGenerator = new SavesGenerator(mockCollectionsSelector.Object, mockBonusSelector.Object);
             feats = new List<Feat>();
             abilities = new Dictionary<string, Ability>();
-            allSaveFeats = new List<string>();
             reflexSaveFeats = new List<string>();
             fortitudeSaveFeats = new List<string>();
             willSaveFeats = new List<string>();
@@ -44,6 +51,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             strongWill = new List<string>();
             hitPoints = new HitPoints();
             creatureType = new CreatureType();
+            racialBonuses = new Dictionary<string, List<BonusSelection>>();
 
             hitPoints.HitDiceQuantity = 1;
             creatureType.Name = "creature type";
@@ -51,14 +59,13 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
             abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
             abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+            racialBonuses["creature"] = new List<BonusSelection>();
+            racialBonuses[creatureType.Name] = new List<BonusSelection>();
 
-            allSaveFeats.Add("other feat");
             reflexSaveFeats.Add("other feat");
             fortitudeSaveFeats.Add("other feat");
             willSaveFeats.Add("other feat");
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SavingThrows))
-                .Returns(allSaveFeats);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Fortitude))
                 .Returns(fortitudeSaveFeats);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Reflex))
@@ -71,6 +78,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
                 .Returns(strongReflex);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, SaveConstants.Will))
                 .Returns(strongWill);
+
+            mockBonusSelector.Setup(s => s.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, It.IsAny<string>())).Returns((string t, string s) => racialBonuses[s]);
         }
 
         [Test]
@@ -80,13 +89,20 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             abilities[AbilityConstants.Dexterity].BaseScore = 90210;
             abilities[AbilityConstants.Wisdom].BaseScore = 1;
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.FortitudeAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
-            Assert.That(saves.ReflexAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
-            Assert.That(saves.WillAbility, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
-            Assert.That(saves.Fortitude, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
-            Assert.That(saves.Reflex, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
-            Assert.That(saves.Will, Is.EqualTo(abilities[AbilityConstants.Wisdom].Modifier));
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+            Assert.That(saves[SaveConstants.Fortitude].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
+            Assert.That(saves[SaveConstants.Fortitude].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
+            Assert.That(saves[SaveConstants.Fortitude].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Reflex].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+            Assert.That(saves[SaveConstants.Reflex].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(saves[SaveConstants.Reflex].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Will].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
+            Assert.That(saves[SaveConstants.Will].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Wisdom].Modifier));
+            Assert.That(saves[SaveConstants.Will].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.Zero);
         }
 
         [Test]
@@ -96,134 +112,148 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Wisdom].BaseScore = 0;
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.FortitudeAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
-            Assert.That(saves.ReflexAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
-            Assert.That(saves.WillAbility, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
-            Assert.That(saves.Fortitude, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
-            Assert.That(saves.Reflex, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
-            Assert.That(saves.Will, Is.EqualTo(abilities[AbilityConstants.Wisdom].Modifier));
-            Assert.That(saves.Fortitude, Is.Zero);
-            Assert.That(saves.Reflex, Is.Zero);
-            Assert.That(saves.Will, Is.Zero);
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+            Assert.That(saves[SaveConstants.Fortitude].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
+            Assert.That(saves[SaveConstants.Fortitude].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
+            Assert.That(saves[SaveConstants.Fortitude].TotalBonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Reflex].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+            Assert.That(saves[SaveConstants.Reflex].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(saves[SaveConstants.Reflex].TotalBonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Will].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
+            Assert.That(saves[SaveConstants.Will].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Wisdom].Modifier));
+            Assert.That(saves[SaveConstants.Will].TotalBonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.Zero);
         }
 
-        [TestCase(0, 0)]
-        [TestCase(1, 2)]
-        [TestCase(2, 3)]
-        [TestCase(3, 3)]
-        [TestCase(4, 4)]
-        [TestCase(5, 4)]
-        [TestCase(6, 5)]
-        [TestCase(7, 5)]
-        [TestCase(8, 6)]
-        [TestCase(9, 6)]
-        [TestCase(10, 7)]
-        [TestCase(11, 7)]
-        [TestCase(12, 8)]
-        [TestCase(13, 8)]
-        [TestCase(14, 9)]
-        [TestCase(15, 9)]
-        [TestCase(16, 10)]
-        [TestCase(17, 10)]
-        [TestCase(18, 11)]
-        [TestCase(19, 11)]
-        [TestCase(20, 12)]
-        public void StrongSaveBonuses(int quantity, int saveBonus)
+        [TestCaseSource(typeof(SavesGeneratorTestData), "BaseValues")]
+        [TestCaseSource(typeof(SavesGeneratorTestData), "FractionalHitDiceForBaseValues")]
+        public void SaveBaseValuesBasedOnHitDice(double hitDiceQuantity, bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
         {
-            hitPoints.HitDiceQuantity = quantity;
-            strongFortitude.Add(creatureType.Name);
+            var strongSaveBonus = hitDiceQuantity > 0 ? hitDiceQuantity / 2 + 2 : 0;
+            var weakSaveBonus = hitDiceQuantity / 3;
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.RacialFortitudeBonus, Is.EqualTo(saveBonus));
+            hitPoints.HitDiceQuantity = hitDiceQuantity;
+            var expectedFortitude = weakSaveBonus;
+            var expectedReflex = weakSaveBonus;
+            var expectedWill = weakSaveBonus;
+
+            if (isStrongFortitude)
+            {
+                strongFortitude.Add(creatureType.Name);
+                expectedFortitude = strongSaveBonus;
+            }
+
+            if (isStrongReflex)
+            {
+                strongReflex.Add(creatureType.Name);
+                expectedReflex = strongSaveBonus;
+            }
+
+            if (isStrongWill)
+            {
+                strongWill.Add(creatureType.Name);
+                expectedWill = strongSaveBonus;
+            }
+
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+            Assert.That(saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(expectedFortitude));
+            Assert.That(saves[SaveConstants.Reflex].BaseValue, Is.EqualTo(expectedReflex));
+            Assert.That(saves[SaveConstants.Will].BaseValue, Is.EqualTo(expectedWill));
         }
 
-        [TestCase(0, 0)]
-        [TestCase(1, 0)]
-        [TestCase(2, 0)]
-        [TestCase(3, 1)]
-        [TestCase(4, 1)]
-        [TestCase(5, 1)]
-        [TestCase(6, 2)]
-        [TestCase(7, 2)]
-        [TestCase(8, 2)]
-        [TestCase(9, 3)]
-        [TestCase(10, 3)]
-        [TestCase(11, 3)]
-        [TestCase(12, 4)]
-        [TestCase(13, 4)]
-        [TestCase(14, 4)]
-        [TestCase(15, 5)]
-        [TestCase(16, 5)]
-        [TestCase(17, 5)]
-        [TestCase(18, 6)]
-        [TestCase(19, 6)]
-        [TestCase(20, 6)]
-        public void WeakSaveBonuses(int quantity, int saveBonus)
+        public class SavesGeneratorTestData
         {
-            hitPoints.HitDiceQuantity = quantity;
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.RacialFortitudeBonus, Is.EqualTo(saveBonus));
-        }
+            public static IEnumerable BaseValues
+            {
+                get
+                {
+                    var isStrong = new[] { true, false };
+                    var hitDiceQuantities = Enumerable.Range(0, 20);
+                    hitDiceQuantities = hitDiceQuantities.Union(NumericTestData.NonNegativeValues);
 
-        [Test]
-        public void ApplyStrongFortitudeBonus()
-        {
-            strongFortitude.Add(creatureType.Name);
+                    foreach (var hitDiceQuantity in hitDiceQuantities)
+                    {
+                        foreach (var fortitude in isStrong)
+                        {
+                            foreach (var reflex in isStrong)
+                            {
+                                foreach (var will in isStrong)
+                                {
+                                    yield return new TestCaseData(hitDiceQuantity, fortitude, reflex, will);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.EqualTo(2));
-            Assert.That(saves.Reflex, Is.Zero);
-            Assert.That(saves.Will, Is.Zero);
-        }
+            public static IEnumerable FractionalHitDiceForBaseValues
+            {
+                get
+                {
+                    var isStrong = new[] { true, false };
+                    var hitDiceQuantities = Enumerable.Range(2, 10).Select(q => Math.Round(1d / q, 2));
 
-        [Test]
-        public void ApplyWeakFortitudeBonus()
-        {
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.Zero);
-            Assert.That(saves.Reflex, Is.Zero);
-            Assert.That(saves.Will, Is.Zero);
-        }
+                    foreach (var hitDiceQuantity in hitDiceQuantities)
+                    {
+                        foreach (var fortitude in isStrong)
+                        {
+                            foreach (var reflex in isStrong)
+                            {
+                                foreach (var will in isStrong)
+                                {
+                                    yield return new TestCaseData(hitDiceQuantity, fortitude, reflex, will);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
-        [Test]
-        public void ApplyStrongReflexBonus()
-        {
-            strongReflex.Add(creatureType.Name);
+            public static IEnumerable CreatureBonus
+            {
+                get
+                {
+                    foreach (var creatureSource in Sources)
+                    {
+                        foreach (var creatureTypeSource in Sources)
+                        {
+                            yield return new TestCaseData(creatureSource, creatureTypeSource);
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.Zero);
-            Assert.That(saves.Reflex, Is.EqualTo(2));
-            Assert.That(saves.Will, Is.Zero);
-        }
+                            foreach (var subtypeSource1 in Sources)
+                            {
+                                yield return new TestCaseData(creatureSource, creatureTypeSource, subtypeSource1);
 
-        [Test]
-        public void ApplyWeakReflexBonus()
-        {
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.Zero);
-            Assert.That(saves.Reflex, Is.Zero);
-            Assert.That(saves.Will, Is.Zero);
-        }
+                                foreach (var subtypeSource2 in Sources)
+                                {
+                                    yield return new TestCaseData(creatureSource, creatureTypeSource, subtypeSource1, subtypeSource2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
-        [Test]
-        public void ApplyStrongWillBonus()
-        {
-            strongWill.Add(creatureType.Name);
+            public static IEnumerable CreatureBonuses
+            {
+                get
+                {
+                    foreach (var source1 in NonNullSources)
+                    {
+                        foreach (var source2 in NonNullSources)
+                        {
+                            yield return new[] { source1, source2 };
+                        }
+                    }
+                }
+            }
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.Zero);
-            Assert.That(saves.Reflex, Is.Zero);
-            Assert.That(saves.Will, Is.EqualTo(2));
-        }
-
-        [Test]
-        public void ApplyWeakWillBonus()
-        {
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.Zero);
-            Assert.That(saves.Reflex, Is.Zero);
-            Assert.That(saves.Will, Is.Zero);
+            private static IEnumerable<string> Sources = new[] { null, FeatConstants.Foci.All, SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will };
+            private static readonly IEnumerable<string> NonNullSources = Sources.Where(s => s != null);
         }
 
         [Test]
@@ -231,103 +261,289 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         {
             SetUpFeats();
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.EqualTo(8));
-            Assert.That(saves.Reflex, Is.EqualTo(10));
-            Assert.That(saves.Will, Is.EqualTo(12));
-            Assert.That(saves.CircumstantialBonus, Is.False);
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.EqualTo(1));
+            Assert.That(saves[SaveConstants.Fortitude].TotalBonus, Is.EqualTo(1));
+            Assert.That(saves[SaveConstants.Fortitude].IsConditional, Is.False);
+            Assert.That(saves[SaveConstants.Fortitude].Bonuses, Is.Not.Empty);
+            Assert.That(saves[SaveConstants.Fortitude].Bonuses.Count, Is.EqualTo(1));
+
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.EqualTo(2));
+            Assert.That(saves[SaveConstants.Reflex].TotalBonus, Is.EqualTo(2));
+            Assert.That(saves[SaveConstants.Reflex].IsConditional, Is.False);
+            Assert.That(saves[SaveConstants.Reflex].Bonuses, Is.Not.Empty);
+            Assert.That(saves[SaveConstants.Reflex].Bonuses.Count, Is.EqualTo(1));
+
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.EqualTo(3));
+            Assert.That(saves[SaveConstants.Will].TotalBonus, Is.EqualTo(3));
+            Assert.That(saves[SaveConstants.Will].IsConditional, Is.False);
+            Assert.That(saves[SaveConstants.Will].Bonuses, Is.Not.Empty);
+            Assert.That(saves[SaveConstants.Will].Bonuses.Count, Is.EqualTo(1));
         }
 
         private void SetUpFeats()
         {
-            for (var i = 0; i < 8; i++)
+            for (var i = 1; i <= 4; i++)
             {
                 var feat = new Feat();
-                feat.Name = string.Format("Feat{0}", i);
-                feat.Power = i + 1;
+                feat.Name = $"Feat {i}";
+                feat.Power = i;
 
                 feats.Add(feat);
             }
 
-            feats[0].Foci = new[] { FeatConstants.Foci.All };
-            feats[1].Foci = new[] { SaveConstants.Fortitude };
-            feats[2].Foci = new[] { SaveConstants.Reflex };
-            feats[3].Foci = new[] { SaveConstants.Will };
-
-            allSaveFeats.Add(feats[0].Name);
-            allSaveFeats.Add(feats[1].Name);
-            allSaveFeats.Add(feats[2].Name);
-            allSaveFeats.Add(feats[3].Name);
-            fortitudeSaveFeats.Add(feats[4].Name);
-            reflexSaveFeats.Add(feats[5].Name);
-            willSaveFeats.Add(feats[6].Name);
+            fortitudeSaveFeats.Add(feats[0].Name);
+            reflexSaveFeats.Add(feats[1].Name);
+            willSaveFeats.Add(feats[2].Name);
         }
 
-        [Test]
-        public void CircumstantialBonusIfFeatHaveQualifications()
+        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonus")]
+        public void GetSaveBonusForCreature(string creatureSource, string creatureTypeSource, params string[] subtypeSources)
         {
-            SetUpFeats();
+            var counter = 1;
 
-            feats[0].Foci = new[] { FeatConstants.Foci.All + " against thing" };
-            feats[1].Foci = new[] { SaveConstants.Fortitude + " against thing" };
-            feats[2].Foci = new[] { SaveConstants.Reflex + " against thing" };
-            feats[3].Foci = new[] { SaveConstants.Will + " against thing" };
+            if (!string.IsNullOrEmpty(creatureSource))
+                racialBonuses["creature"].Add(new BonusSelection { Source = creatureSource, Bonus = counter++ });
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.EqualTo(5));
-            Assert.That(saves.Reflex, Is.EqualTo(6));
-            Assert.That(saves.Will, Is.EqualTo(7));
-            Assert.That(saves.CircumstantialBonus, Is.True);
+            if (!string.IsNullOrEmpty(creatureTypeSource))
+                racialBonuses[creatureType.Name].Add(new BonusSelection { Source = creatureTypeSource, Bonus = counter++ });
+
+            var subtypes = Enumerable.Range(1, subtypeSources.Length).Select(i => $"subtype {i}");
+            creatureType.SubTypes = subtypes;
+
+            for (var i = 0; i < subtypeSources.Length; i++)
+            {
+                var subtype = creatureType.SubTypes.ElementAt(i);
+
+                if (!string.IsNullOrEmpty(subtypeSources[i]))
+                    racialBonuses[subtype].Add(new BonusSelection { Source = subtypeSources[i], Bonus = counter++ });
+            }
+
+            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Sum(b => b.Bonus);
+            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Count();
+            var expectedFortitude = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Sum(b => b.Bonus);
+            var expectedFortitudeCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Count();
+            var expectedReflex = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Sum(b => b.Bonus);
+            var expectedReflexCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Count();
+            var expectedWill = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Sum(b => b.Bonus);
+            var expectedWillCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Count();
+
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.EqualTo(expectedAll + expectedFortitude));
+            Assert.That(saves[SaveConstants.Fortitude].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedFortitudeCount));
+            Assert.That(saves[SaveConstants.Fortitude].IsConditional, Is.False);
+
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.EqualTo(expectedAll + expectedReflex));
+            Assert.That(saves[SaveConstants.Reflex].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedReflexCount));
+            Assert.That(saves[SaveConstants.Reflex].IsConditional, Is.False);
+
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.EqualTo(expectedAll + expectedWill));
+            Assert.That(saves[SaveConstants.Will].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedWillCount));
+            Assert.That(saves[SaveConstants.Will].IsConditional, Is.False);
         }
 
-        [Test]
-        public void DoNotOverwriteCircumstantialBonus()
+        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonus")]
+        public void GetConditionalSaveBonusForCreature(string creatureSource, string creatureTypeSource, params string[] subtypeSources)
         {
-            SetUpFeats();
+            var counter = 1;
 
-            feats[0].Foci = new[] { FeatConstants.Foci.All + " against thing" };
+            if (!string.IsNullOrEmpty(creatureSource))
+                racialBonuses["creature"].Add(new BonusSelection { Source = creatureSource, Bonus = counter++ });
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.EqualTo(7));
-            Assert.That(saves.Reflex, Is.EqualTo(9));
-            Assert.That(saves.Will, Is.EqualTo(11));
-            Assert.That(saves.CircumstantialBonus, Is.True);
+            if (!string.IsNullOrEmpty(creatureTypeSource))
+                racialBonuses[creatureType.Name].Add(new BonusSelection { Source = creatureTypeSource, Bonus = counter++ });
+
+            var subtypes = Enumerable.Range(1, subtypeSources.Length).Select(i => $"subtype {i}");
+            creatureType.SubTypes = subtypes;
+
+            for (var i = 0; i < subtypeSources.Length; i++)
+            {
+                var subtype = creatureType.SubTypes.ElementAt(i);
+
+                if (!string.IsNullOrEmpty(subtypeSources[i]))
+                    racialBonuses[subtype].Add(new BonusSelection { Source = subtypeSources[i], Bonus = counter++ });
+            }
+
+            foreach (var bonuses in racialBonuses.Values.Where(v => v.Any()))
+            {
+                bonuses.First().Condition = "condition";
+            }
+
+            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Sum(b => b.Bonus);
+            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Count();
+            var expectedFortitude = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Sum(b => b.Bonus);
+            var expectedFortitudeCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Count();
+            var expectedReflex = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Sum(b => b.Bonus);
+            var expectedReflexCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Count();
+            var expectedWill = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Sum(b => b.Bonus);
+            var expectedWillCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Count();
+
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.EqualTo(expectedAll + expectedFortitude));
+            Assert.That(saves[SaveConstants.Fortitude].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedFortitudeCount));
+            Assert.That(saves[SaveConstants.Fortitude].IsConditional, Is.False);
+
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.EqualTo(expectedAll + expectedReflex));
+            Assert.That(saves[SaveConstants.Reflex].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedReflexCount));
+            Assert.That(saves[SaveConstants.Reflex].IsConditional, Is.False);
+
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.EqualTo(expectedAll + expectedWill));
+            Assert.That(saves[SaveConstants.Will].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedWillCount));
+            Assert.That(saves[SaveConstants.Will].IsConditional, Is.False);
         }
 
-        [Test]
-        public void ApplyAllBonuses()
+        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonus")]
+        public void GetAllConditionalSaveBonusForCreature(string creatureSource, string creatureTypeSource, params string[] subtypeSources)
         {
-            abilities[AbilityConstants.Constitution].BaseScore = 9266;
-            abilities[AbilityConstants.Dexterity].BaseScore = 90210;
-            abilities[AbilityConstants.Wisdom].BaseScore = 1;
+            var counter = 1;
 
-            strongWill.Add(creatureType.Name);
-            strongFortitude.Add(creatureType.Name);
+            if (!string.IsNullOrEmpty(creatureSource))
+                racialBonuses["creature"].Add(new BonusSelection { Source = creatureSource, Bonus = counter++, Condition = $"condition {counter}" });
 
-            SetUpFeats();
+            if (!string.IsNullOrEmpty(creatureTypeSource))
+                racialBonuses[creatureType.Name].Add(new BonusSelection { Source = creatureTypeSource, Bonus = counter++, Condition = $"condition {counter}" });
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.EqualTo(4638));
-            Assert.That(saves.Reflex, Is.EqualTo(45110));
-            Assert.That(saves.Will, Is.EqualTo(9));
+            var subtypes = Enumerable.Range(1, subtypeSources.Length).Select(i => $"subtype {i}");
+            creatureType.SubTypes = subtypes;
+
+            for (var i = 0; i < subtypeSources.Length; i++)
+            {
+                var subtype = creatureType.SubTypes.ElementAt(i);
+
+                if (!string.IsNullOrEmpty(subtypeSources[i]))
+                    racialBonuses[subtype].Add(new BonusSelection { Source = subtypeSources[i], Bonus = counter++, Condition = $"condition {counter}" });
+            }
+
+            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Sum(b => b.Bonus);
+            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Count();
+            var expectedFortitude = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Sum(b => b.Bonus);
+            var expectedFortitudeCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Count();
+            var expectedReflex = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Sum(b => b.Bonus);
+            var expectedReflexCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Count();
+            var expectedWill = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Sum(b => b.Bonus);
+            var expectedWillCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Count();
+
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Fortitude].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedFortitudeCount));
+            Assert.That(saves[SaveConstants.Fortitude].IsConditional, Is.EqualTo(saves[SaveConstants.Fortitude].Bonuses.Any()));
+
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Reflex].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedReflexCount));
+            Assert.That(saves[SaveConstants.Reflex].IsConditional, Is.EqualTo(saves[SaveConstants.Reflex].Bonuses.Any()));
+
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Will].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedWillCount));
+            Assert.That(saves[SaveConstants.Will].IsConditional, Is.EqualTo(saves[SaveConstants.Will].Bonuses.Any()));
         }
 
-        [Test]
-        public void ApplyAllBonusesWhenAbilitiesHaveNoScore()
+        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonuses")]
+        public void GetSaveBonusesFromCreature(string source1, string source2)
         {
-            abilities[AbilityConstants.Constitution].BaseScore = 0;
-            abilities[AbilityConstants.Dexterity].BaseScore = 0;
-            abilities[AbilityConstants.Wisdom].BaseScore = 0;
+            var counter = 1;
 
-            strongWill.Add(creatureType.Name);
-            strongFortitude.Add(creatureType.Name);
+            racialBonuses["creature"].Add(new BonusSelection { Source = source1, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusSelection { Source = source2, Bonus = counter++ });
 
-            SetUpFeats();
+            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Sum(b => b.Bonus);
+            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Count();
+            var expectedFortitude = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Sum(b => b.Bonus);
+            var expectedFortitudeCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Count();
+            var expectedReflex = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Sum(b => b.Bonus);
+            var expectedReflexCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Count();
+            var expectedWill = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Sum(b => b.Bonus);
+            var expectedWillCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Count();
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Fortitude, Is.EqualTo(10));
-            Assert.That(saves.Reflex, Is.EqualTo(10));
-            Assert.That(saves.Will, Is.EqualTo(14));
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.EqualTo(expectedAll + expectedFortitude));
+            Assert.That(saves[SaveConstants.Fortitude].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedFortitudeCount));
+            Assert.That(saves[SaveConstants.Fortitude].IsConditional, Is.False);
+
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.EqualTo(expectedAll + expectedReflex));
+            Assert.That(saves[SaveConstants.Reflex].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedReflexCount));
+            Assert.That(saves[SaveConstants.Reflex].IsConditional, Is.False);
+
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.EqualTo(expectedAll + expectedWill));
+            Assert.That(saves[SaveConstants.Will].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedWillCount));
+            Assert.That(saves[SaveConstants.Will].IsConditional, Is.False);
+        }
+
+        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonuses")]
+        public void GetSaveBonusesFromCreatureType(string source1, string source2)
+        {
+            var counter = 1;
+
+            racialBonuses[creatureType.Name].Add(new BonusSelection { Source = source1, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusSelection { Source = source2, Bonus = counter++ });
+
+            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Sum(b => b.Bonus);
+            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Count();
+            var expectedFortitude = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Sum(b => b.Bonus);
+            var expectedFortitudeCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Count();
+            var expectedReflex = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Sum(b => b.Bonus);
+            var expectedReflexCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Count();
+            var expectedWill = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Sum(b => b.Bonus);
+            var expectedWillCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Count();
+
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.EqualTo(expectedAll + expectedFortitude));
+            Assert.That(saves[SaveConstants.Fortitude].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedFortitudeCount));
+            Assert.That(saves[SaveConstants.Fortitude].IsConditional, Is.False);
+
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.EqualTo(expectedAll + expectedReflex));
+            Assert.That(saves[SaveConstants.Reflex].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedReflexCount));
+            Assert.That(saves[SaveConstants.Reflex].IsConditional, Is.False);
+
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.EqualTo(expectedAll + expectedWill));
+            Assert.That(saves[SaveConstants.Will].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedWillCount));
+            Assert.That(saves[SaveConstants.Will].IsConditional, Is.False);
+        }
+
+        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonuses")]
+        public void GetSaveBonusesFromCreatureSubtype(string source1, string source2)
+        {
+            var counter = 1;
+
+            creatureType.SubTypes = new[] { "subtype" };
+
+            racialBonuses["subtype"].Add(new BonusSelection { Source = source1, Bonus = counter++ });
+            racialBonuses["subtype"].Add(new BonusSelection { Source = source2, Bonus = counter++ });
+
+            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Sum(b => b.Bonus);
+            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == FeatConstants.Foci.All).Count();
+            var expectedFortitude = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Sum(b => b.Bonus);
+            var expectedFortitudeCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Fortitude).Count();
+            var expectedReflex = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Sum(b => b.Bonus);
+            var expectedReflexCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Reflex).Count();
+            var expectedWill = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Sum(b => b.Bonus);
+            var expectedWillCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Source == SaveConstants.Will).Count();
+
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.EqualTo(expectedAll + expectedFortitude));
+            Assert.That(saves[SaveConstants.Fortitude].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedFortitudeCount));
+            Assert.That(saves[SaveConstants.Fortitude].IsConditional, Is.False);
+
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.EqualTo(expectedAll + expectedReflex));
+            Assert.That(saves[SaveConstants.Reflex].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedReflexCount));
+            Assert.That(saves[SaveConstants.Reflex].IsConditional, Is.False);
+
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.EqualTo(expectedAll + expectedWill));
+            Assert.That(saves[SaveConstants.Will].Bonuses.Count, Is.EqualTo(expectedAllCount + expectedWillCount));
+            Assert.That(saves[SaveConstants.Will].IsConditional, Is.False);
         }
 
         [Test]
@@ -343,16 +559,20 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             feats.Add(feat);
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.FortitudeAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
-            Assert.That(saves.ReflexAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
-            Assert.That(saves.WillAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
-            Assert.That(saves.Fortitude, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
-            Assert.That(saves.Reflex, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
-            Assert.That(saves.Will, Is.EqualTo(abilities[AbilityConstants.Charisma].Modifier));
-            Assert.That(saves.Fortitude, Is.Zero);
-            Assert.That(saves.Reflex, Is.Zero);
-            Assert.That(saves.Will, Is.Zero);
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+            Assert.That(saves[SaveConstants.Fortitude].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
+            Assert.That(saves[SaveConstants.Fortitude].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
+            Assert.That(saves[SaveConstants.Fortitude].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Reflex].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+            Assert.That(saves[SaveConstants.Reflex].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(saves[SaveConstants.Reflex].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Will].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
+            Assert.That(saves[SaveConstants.Will].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Charisma].Modifier));
+            Assert.That(saves[SaveConstants.Will].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.Zero);
         }
 
         [Test]
@@ -368,16 +588,20 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             feats.Add(feat);
 
-            var saves = savesGenerator.GenerateWith(creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.FortitudeAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
-            Assert.That(saves.ReflexAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
-            Assert.That(saves.WillAbility, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
-            Assert.That(saves.Fortitude, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
-            Assert.That(saves.Reflex, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
-            Assert.That(saves.Will, Is.EqualTo(abilities[AbilityConstants.Wisdom].Modifier));
-            Assert.That(saves.Fortitude, Is.Zero);
-            Assert.That(saves.Reflex, Is.Zero);
-            Assert.That(saves.Will, Is.Zero);
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+            Assert.That(saves[SaveConstants.Fortitude].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
+            Assert.That(saves[SaveConstants.Fortitude].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier));
+            Assert.That(saves[SaveConstants.Fortitude].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Reflex].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+            Assert.That(saves[SaveConstants.Reflex].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(saves[SaveConstants.Reflex].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.Zero);
+            Assert.That(saves[SaveConstants.Will].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
+            Assert.That(saves[SaveConstants.Will].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Wisdom].Modifier));
+            Assert.That(saves[SaveConstants.Will].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.Zero);
         }
     }
 }

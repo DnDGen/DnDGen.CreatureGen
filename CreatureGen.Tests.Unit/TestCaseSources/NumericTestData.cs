@@ -8,22 +8,11 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
 {
     public class NumericTestData
     {
-        public static IEnumerable<int> TestValues = new[]
+        public static IEnumerable<int> AllTestValues => NegativeValues.Union(NonNegativeValues);
+        public static IEnumerable<int> AllBaseTestValues => BaseTestNumbers.Union(NegativeBaseValues);
+
+        public static IEnumerable<int> CustomTestNumbers = new[]
         {
-            -90210,
-            -9266,
-            -8245,
-            -1337,
-            -1336,
-            -783,
-            -600,
-            -96,
-            -42,
-            -2,
-            -1,
-            0,
-            1,
-            2,
             42,
             96,
             600,
@@ -35,13 +24,26 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
             90210
         };
 
-        public static IEnumerable<int> PositiveValues => TestValues.Where(v => v > 0);
+        public static IEnumerable<int> BaseTestNumbers = new[]
+        {
+            0, 1, 2
+        };
+
+        public static IEnumerable<int> BaseAbilityTestNumbers = new[]
+        {
+            8, 9, 10, 11, 12
+        };
+
+        public static IEnumerable<int> NegativeValues => CustomTestNumbers.Union(BaseTestNumbers).Select(n => n * -1);
+        public static IEnumerable<int> NegativeBaseValues => BaseTestNumbers.Select(n => n * -1);
+        public static IEnumerable<int> NonNegativeValues => CustomTestNumbers.Union(BaseTestNumbers);
+        public static IEnumerable<int> PositiveValues => NonNegativeValues.Where(v => v > 0);
 
         public static IEnumerable AllValues
         {
             get
             {
-                foreach (var value in TestValues)
+                foreach (var value in AllTestValues)
                 {
                     yield return new TestCaseData(value);
                 }
@@ -76,7 +78,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
             {
                 foreach (var requirement in PositiveValues)
                 {
-                    var values = TestValues.Where(v => v < requirement);
+                    var values = AllTestValues.Where(v => v < requirement);
 
                     foreach (var value in values)
                     {
@@ -92,7 +94,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
             {
                 foreach (var requirement in PositiveValues)
                 {
-                    var values = TestValues.Where(v => v >= requirement);
+                    var values = AllTestValues.Where(v => v >= requirement);
 
                     foreach (var value in values)
                     {
@@ -110,7 +112,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
                 {
                     foreach (var value1 in PositiveValues)
                     {
-                        foreach (var value2 in TestValues)
+                        foreach (var value2 in AllTestValues)
                         {
                             if (value1 + value2 < requirement)
                                 yield return new TestCaseData(requirement, value1, value2);
@@ -128,7 +130,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
                 {
                     foreach (var value1 in PositiveValues)
                     {
-                        foreach (var value2 in TestValues)
+                        foreach (var value2 in AllTestValues)
                         {
                             var sum = Math.Max(value1 + value2, 1);
 
@@ -148,7 +150,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
                 {
                     foreach (var value1 in PositiveValues)
                     {
-                        foreach (var value2 in TestValues)
+                        foreach (var value2 in AllTestValues)
                         {
                             if (value1 + value2 >= requirement)
                                 yield return new TestCaseData(requirement, value1, value2);
@@ -164,7 +166,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
             {
                 foreach (var requirement in PositiveValues)
                 {
-                    foreach (var value in TestValues)
+                    foreach (var value in AllTestValues)
                     {
                         yield return new TestCaseData(requirement, value);
                     }

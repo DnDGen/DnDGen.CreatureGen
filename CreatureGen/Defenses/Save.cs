@@ -10,7 +10,7 @@ namespace CreatureGen.Defenses
         public int BaseValue { get; set; }
         public IEnumerable<Bonus> Bonuses { get; private set; }
 
-        public bool CircumstantialBonus => Bonuses.Any(b => b.IsConditional);
+        public bool IsConditional => Bonuses.Any(b => b.IsConditional);
         public bool HasSave => BaseAbility != null && BaseAbility.HasScore;
 
         public int Bonus

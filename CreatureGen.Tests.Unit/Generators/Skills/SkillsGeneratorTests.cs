@@ -65,6 +65,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             creatureType.Name = "creature type";
             size = SizeConstants.Medium;
 
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, It.IsAny<string>())).Returns(Enumerable.Empty<string>());
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.All)).Returns(allSkills);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "creature")).Returns(creatureSkills);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.Unnatural)).Returns(unnaturalSkills);
@@ -1827,53 +1828,23 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void UseAlternateBaseAbilityForSkill()
         {
-            abilities["base ability"] = new Ability("base ability");
-            abilities["other base ability"] = new Ability("other base ability");
+            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
 
-            var skills = new List<Skill>();
-            skills.Add(new Skill("skill 1", abilities["base ability"], 1));
-            skills.Add(new Skill("skill 2", abilities["base ability"], 1));
+            AddCreatureSkills(1);
 
-            var feats = new List<Feat>();
-            feats.Add(new Feat());
-            feats[0].Name = FeatConstants.SpecialQualities.SwapSkillBaseAbility;
-            feats[0].Foci = new[] { $"{skills[1].Name}:{abilities["other base ability"].Name}" };
+            var skillSelection = new SkillSelection();
+            skillSelection.BaseAbilityName = AbilityConstants.Dexterity;
+            skillSelection.SkillName = SkillConstants.Climb;
 
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
-            Assert.That(updatedSkills, Is.EqualTo(skills));
-            Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
-            Assert.That(skills[0].BaseAbility, Is.EqualTo(abilities["base ability"]), skills[0].BaseAbility.Name);
-            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
-            Assert.That(skills[1].BaseAbility, Is.EqualTo(abilities["other base ability"]), skills[1].BaseAbility.Name);
-        }
+            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, skillSelection.SkillName)).Returns(new[] { "random", "other random" });
 
-        //INFO: Example is how a centipede swarm uses Dexterity for Climb instead of Strength
-        [Test]
-        public void UseAlternateBaseAbilityForSkills()
-        {
-            abilities["base ability"] = new Ability("base ability");
-            abilities["other base ability"] = new Ability("other base ability");
-
-            var skills = new List<Skill>();
-            skills.Add(new Skill("skill 1", abilities["base ability"], 1));
-            skills.Add(new Skill("skill 2", abilities["base ability"], 1));
-            skills.Add(new Skill("skill 3", abilities["base ability"], 1));
-
-            var feats = new List<Feat>();
-            feats.Add(new Feat());
-            feats[0].Name = FeatConstants.SpecialQualities.SwapSkillBaseAbility;
-            feats[0].Foci = new[] { $"{skills[0].Name}:{abilities["other base ability"].Name}", $"{skills[2].Name}:{abilities["other base ability"].Name}" };
-
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
-            Assert.That(updatedSkills, Is.EqualTo(skills));
-            Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
-            Assert.That(skills[0].BaseAbility, Is.EqualTo(abilities["other base ability"]), skills[0].BaseAbility.Name);
-            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
-            Assert.That(skills[1].BaseAbility, Is.EqualTo(abilities["base ability"]), skills[1].BaseAbility.Name);
-            Assert.That(skills[2].Name, Is.EqualTo("skill 3"));
-            Assert.That(skills[2].BaseAbility, Is.EqualTo(abilities["other base ability"]), skills[2].BaseAbility.Name);
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
+            var skill = skills.Single();
+            Assert.That(skill.Name, Is.EqualTo(SkillConstants.Climb));
+            Assert.That(skill.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+            Assert.That(skill.Focus, Is.Empty);
+            Assert.That(skill.ClassSkill, Is.True);
         }
 
         [Test]
@@ -1901,9 +1872,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[1].Power = 2;
             feats[2].Name = "feat3";
             feats[2].Power = 3;
-
-            var featGrantingSkillBonuses = new[] { "feat3", "feat1" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "feat1")).Returns(new[] { "skill 1" });
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "feat3")).Returns(new[] { "skill 2", "skill 4" });
@@ -1942,9 +1910,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[1].Power = 2;
             feats[2].Name = "feat3";
             feats[2].Power = 3;
-
-            var featGrantingSkillBonuses = new[] { "feat3", "feat1" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "feat1")).Returns(new[] { "skill 1" });
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "feat3")).Returns(new[] { "skill 2", "skill 3/focus" });
@@ -1985,9 +1950,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[2].Foci = new[] { "skill 2", "non-skill focus" };
             feats[2].Power = 3;
 
-            var featGrantingSkillBonuses = new[] { "feat2", "feat1" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
-
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
@@ -2023,9 +1985,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[2].Foci = new[] { "skill 2", "non-skill focus" };
             feats[2].Power = 3;
 
-            var featGrantingSkillBonuses = new[] { "feat2", "feat1" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
-
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
@@ -2048,9 +2007,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[0].Name = "feat1";
             feats[0].Foci = new[] { "skill 1: with qualifiers", "non-skill focus" };
             feats[0].Power = 666;
-
-            var featGrantingSkillBonuses = new[] { "feat2", "feat1" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
@@ -2084,9 +2040,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[1].Name = "feat2";
             feats[1].Foci = new[] { "skill 2", "non-skill focus" };
             feats[1].Power = 4;
-
-            var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "feat1")).Returns(new[] { "skill 1" });
 
@@ -2124,9 +2077,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[0].Foci = new[] { "skill 1: with qualifiers", "non-skill focus" };
             feats[0].Power = 666;
 
-            var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
-
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
             Assert.That(updatedSkills, Is.EquivalentTo(skills));
@@ -2155,9 +2105,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[0].Name = "feat1";
             feats[0].Foci = new[] { "skill 1: with qualifiers", "skill 2" };
             feats[0].Power = 3;
-
-            var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
 
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
@@ -2199,10 +2146,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             feats[1].Name = "feat2";
             feats[1].Foci = new[] { "skill 1" };
             feats[1].Power = 1;
-
-            var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus))
-                .Returns(featGrantingSkillBonuses);
 
             var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
             Assert.That(updatedSkills, Is.EqualTo(skills));
@@ -2260,43 +2203,486 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplySkillSynergyBonusToMultipleSkills()
+        public void GetNoSkillSynergiesBecfauseSkillHasNoSynergies()
         {
-            var baseAbility = new Ability("base ability");
+            creatureTypeSkillPoints = 3;
+            AddCreatureSkills(2);
 
-            var skills = new List<Skill>();
-            skills.Add(new Skill("skill 1", baseAbility, 1, "focus 1"));
-            skills.Add(new Skill("skill 1", baseAbility, 1, "focus 2"));
-            skills.Add(new Skill("skill 2", baseAbility, 1));
-            skills.Add(new Skill("skill 3", baseAbility, 1, "focus 1"));
-            skills.Add(new Skill("skill 3", baseAbility, 1, "focus 2"));
-            skills[0].AddBonus(1);
-            skills[1].AddBonus(2);
-            skills[2].AddBonus(3);
-            skills[3].AddBonus(4);
-            skills[4].AddBonus(5);
+            hitPoints.HitDiceQuantity = 2;
 
-            var feats = new List<Feat>();
-            feats.Add(new Feat());
-            feats.Add(new Feat());
-            feats[0].Name = "feat1";
-            feats[0].Foci = new[] { "skill 1", "non-skill focus" };
-            feats[0].Power = 6;
-            feats[1].Name = "feat2";
-            feats[1].Foci = new[] { "skill 3/focus 2", "non-skill focus" };
-            feats[1].Power = 7;
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(1));
 
-            var featGrantingSkillBonuses = new[] { "feat1", "feat2" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.SkillBonus)).Returns(featGrantingSkillBonuses);
+            var skill = skills.Single();
+            Assert.That(skill.EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skill.Bonuses, Is.Empty);
+        }
 
-            var updatedSkills = skillsGenerator.ApplyBonusesFromFeats(skills, feats, abilities);
-            Assert.That(updatedSkills, Is.EqualTo(skills));
-            Assert.That(updatedSkills, Is.EquivalentTo(skills));
-            Assert.That(skills[0].Bonus, Is.EqualTo(7));
-            Assert.That(skills[1].Bonus, Is.EqualTo(8));
-            Assert.That(skills[2].Bonus, Is.EqualTo(3));
-            Assert.That(skills[3].Bonus, Is.EqualTo(4));
-            Assert.That(skills[4].Bonus, Is.EqualTo(12));
+        [Test]
+        public void GetNoSkillSynergiesBecauseSkillHasInsufficientRanks()
+        {
+            creatureTypeSkillPoints = 3;
+            AddCreatureSkills(2);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(1));
+
+            var skill = skills.Single();
+            Assert.That(skill.EffectiveRanks, Is.LessThan(5));
+            Assert.That(skill.EffectiveRanks, Is.EqualTo(4));
+            Assert.That(skill.Bonuses, Is.Empty);
+        }
+
+        [Test]
+        public void GetNoSkillSynergiesBecauseMissingSourceSkill()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetNoSkillSynergiesBecauseMissingSourceSkillAndFocus()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetNoSkillSynergiesBecauseMissingTargetSkill()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetNoSkillSynergiesBecauseMissingTargetSkillAndFocus()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSkillSynergy()
+        {
+            creatureTypeSkillPoints = 3;
+            AddCreatureSkills(1);
+            AddUntrainedSkills(1);
+
+            hitPoints.HitDiceQuantity = 2;
+
+            var bonuses = new[] { new BonusSelection { Bonus = 9266, Source = untrainedSkills[0] } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(2));
+
+            var skill = skills.First();
+            Assert.That(skill.Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skill.EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skill.EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skill.Bonuses, Is.Empty);
+
+            skill = skills.Last();
+            Assert.That(skill.Name, Is.EqualTo(untrainedSkills[0]));
+            Assert.That(skill.EffectiveRanks, Is.LessThan(5));
+            Assert.That(skill.EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skill.Bonuses, Is.Not.Empty);
+            Assert.That(skill.Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skill.Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(9266));
+        }
+
+        [Test]
+        public void GetSkillSynergyWithCondition()
+        {
+            creatureTypeSkillPoints = 3;
+            AddCreatureSkills(1);
+            AddUntrainedSkills(1);
+
+            hitPoints.HitDiceQuantity = 2;
+
+            var bonuses = new[] { new BonusSelection { Bonus = 9266, Source = untrainedSkills[0], Condition = "condition" } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(2));
+
+            var skill = skills.First();
+            Assert.That(skill.Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skill.EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skill.EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skill.Bonuses, Is.Empty);
+
+            skill = skills.Last();
+            Assert.That(skill.Name, Is.EqualTo(untrainedSkills[0]));
+            Assert.That(skill.EffectiveRanks, Is.LessThan(5));
+            Assert.That(skill.EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skill.Bonuses, Is.Not.Empty);
+            Assert.That(skill.Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skill.Bonuses.Single();
+            Assert.That(bonus.Condition, Is.EqualTo("condition"));
+            Assert.That(bonus.IsConditional, Is.True);
+            Assert.That(bonus.Value, Is.EqualTo(9266));
+        }
+
+        [Test]
+        public void GetSkillSynergies()
+        {
+            creatureTypeSkillPoints = 3;
+            AddCreatureSkills(2);
+            AddUntrainedSkills(2);
+
+            hitPoints.HitDiceQuantity = 2;
+
+            var bonuses1 = new[] { new BonusSelection { Bonus = 9266, Source = untrainedSkills[0] } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
+
+            var bonuses2 = new[] { new BonusSelection { Bonus = 90210, Source = untrainedSkills[1] } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[1])).Returns(bonuses2);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(4));
+
+            Assert.That(skills[0].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skills[0].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[0].Bonuses, Is.Empty);
+
+            Assert.That(skills[1].Name, Is.EqualTo(creatureSkills[1]));
+            Assert.That(skills[1].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[1].Bonuses, Is.Empty);
+
+            Assert.That(skills[2].Name, Is.EqualTo(untrainedSkills[0]));
+            Assert.That(skills[2].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[2].Bonuses, Is.Not.Empty);
+            Assert.That(skills[2].Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skills[2].Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(9266));
+
+            Assert.That(skills[3].Name, Is.EqualTo(untrainedSkills[1]));
+            Assert.That(skills[3].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[3].Bonuses, Is.Not.Empty);
+            Assert.That(skills[3].Bonuses.Count, Is.EqualTo(1));
+
+            bonus = skills[3].Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(90210));
+        }
+
+        [Test]
+        public void GetSkillSynergiesFromSameSkill()
+        {
+            creatureTypeSkillPoints = 3;
+            AddCreatureSkills(2);
+            AddUntrainedSkills(2);
+
+            hitPoints.HitDiceQuantity = 2;
+
+            var bonuses1 = new[]
+            {
+                new BonusSelection { Bonus = 9266, Source = untrainedSkills[0] },
+                new BonusSelection { Bonus = 90210, Source = untrainedSkills[1] }
+            };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(4));
+
+            Assert.That(skills[0].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skills[0].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[0].Bonuses, Is.Empty);
+
+            Assert.That(skills[1].Name, Is.EqualTo(creatureSkills[1]));
+            Assert.That(skills[1].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[1].Bonuses, Is.Empty);
+
+            Assert.That(skills[2].Name, Is.EqualTo(untrainedSkills[0]));
+            Assert.That(skills[2].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[2].Bonuses, Is.Not.Empty);
+            Assert.That(skills[2].Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skills[2].Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(9266));
+
+            Assert.That(skills[3].Name, Is.EqualTo(untrainedSkills[1]));
+            Assert.That(skills[3].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[3].Bonuses, Is.Not.Empty);
+            Assert.That(skills[3].Bonuses.Count, Is.EqualTo(1));
+
+            bonus = skills[3].Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(90210));
+        }
+
+        [Test]
+        public void GetSkillSynergiesForSameSkill()
+        {
+            creatureTypeSkillPoints = 3;
+            AddCreatureSkills(2);
+            AddUntrainedSkills(2);
+
+            hitPoints.HitDiceQuantity = 2;
+
+            var bonuses1 = new[] { new BonusSelection { Bonus = 9266, Source = untrainedSkills[1] } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
+
+            var bonuses2 = new[] { new BonusSelection { Bonus = 90210, Source = untrainedSkills[1] } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[1])).Returns(bonuses2);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(4));
+
+            Assert.That(skills[0].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skills[0].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[0].Bonuses, Is.Empty);
+
+            Assert.That(skills[1].Name, Is.EqualTo(creatureSkills[1]));
+            Assert.That(skills[1].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[1].Bonuses, Is.Empty);
+
+            Assert.That(skills[2].Name, Is.EqualTo(untrainedSkills[0]));
+            Assert.That(skills[2].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[2].Bonuses, Is.Empty);
+
+            Assert.That(skills[3].Name, Is.EqualTo(untrainedSkills[1]));
+            Assert.That(skills[3].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[3].Bonuses, Is.Not.Empty);
+            Assert.That(skills[3].Bonuses.Count, Is.EqualTo(2));
+
+            var bonus = skills[3].Bonuses.First();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(9266));
+
+            bonus = skills[3].Bonuses.Last();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(90210));
+        }
+
+        [Test]
+        public void GetSkillSynergyFromSkillWithFocus()
+        {
+            creatureTypeSkillPoints = 3;
+            AddCreatureSkills(2);
+            AddUntrainedSkills(1);
+
+            hitPoints.HitDiceQuantity = 2;
+
+            var skillSelection = new SkillSelection();
+            skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
+            skillSelection.SkillName = "skill name";
+            skillSelection.Focus = "focus";
+
+            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+
+            var wrongSkillSelection = new SkillSelection();
+            wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
+            wrongSkillSelection.SkillName = "skill name";
+            wrongSkillSelection.Focus = "other focus";
+
+            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[1])).Returns(wrongSkillSelection);
+
+            var bonuses = new[] { new BonusSelection { Bonus = 9266, Source = untrainedSkills[0] } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("skill name", "focus"))).Returns(bonuses);
+
+            var wrongBonuses = new[] { new BonusSelection { Bonus = 666, Source = untrainedSkills[0] } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("skill name", "other focus"))).Returns(wrongBonuses);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(3));
+
+            Assert.That(skills[0].Name, Is.EqualTo("skill name"));
+            Assert.That(skills[0].Focus, Is.EqualTo("focus"));
+            Assert.That(skills[0].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[0].Bonuses, Is.Empty);
+
+            Assert.That(skills[1].Name, Is.EqualTo("skill name"));
+            Assert.That(skills[1].Focus, Is.EqualTo("other focus"));
+            Assert.That(skills[1].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[1].Bonuses, Is.Empty);
+
+            Assert.That(skills[2].Name, Is.EqualTo(untrainedSkills[0]));
+            Assert.That(skills[2].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[2].Bonuses, Is.Not.Empty);
+            Assert.That(skills[2].Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skills[2].Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(9266));
+        }
+
+        [Test]
+        public void GetSkillSynergyForSkillWithFocus()
+        {
+            creatureTypeSkillPoints = 3;
+            AddCreatureSkills(2);
+            AddUntrainedSkills(2);
+
+            hitPoints.HitDiceQuantity = 2;
+
+            var skillSelection = new SkillSelection();
+            skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
+            skillSelection.SkillName = "skill name";
+            skillSelection.Focus = "focus";
+
+            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(skillSelection);
+
+            var wrongSkillSelection = new SkillSelection();
+            wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
+            wrongSkillSelection.SkillName = "skill name";
+            wrongSkillSelection.Focus = "other focus";
+
+            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[1])).Returns(wrongSkillSelection);
+
+            var bonuses = new[] { new BonusSelection { Bonus = 9266, Source = SkillConstants.Build("skill name", "focus") } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
+
+            var wrongBonuses = new[] { new BonusSelection { Bonus = 90210, Source = SkillConstants.Build("skill name", "other focus") } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[1])).Returns(wrongBonuses);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(4));
+
+            Assert.That(skills[0].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skills[0].Focus, Is.Empty);
+            Assert.That(skills[0].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[0].Bonuses, Is.Empty);
+
+            Assert.That(skills[1].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skills[1].Focus, Is.Empty);
+            Assert.That(skills[1].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[1].Bonuses, Is.Empty);
+
+            Assert.That(skills[2].Name, Is.EqualTo("skill name"));
+            Assert.That(skills[2].Focus, Is.EqualTo("focus"));
+            Assert.That(skills[2].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[2].Bonuses, Is.Not.Empty);
+            Assert.That(skills[2].Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skills[2].Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(9266));
+
+            Assert.That(skills[3].Name, Is.EqualTo("skill name"));
+            Assert.That(skills[3].Focus, Is.EqualTo("other focus"));
+            Assert.That(skills[3].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[3].Bonuses, Is.Not.Empty);
+            Assert.That(skills[3].Bonuses.Count, Is.EqualTo(1));
+
+            bonus = skills[3].Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(90210));
+        }
+
+        [Test]
+        public void GetSkillSynergyFromSkillWithFocusForSkillWithFocus()
+        {
+            creatureTypeSkillPoints = 3;
+            AddCreatureSkills(1);
+            AddUntrainedSkills(1);
+
+            hitPoints.HitDiceQuantity = 2;
+
+            var skillSelection = new SkillSelection();
+            skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
+            skillSelection.SkillName = "skill name";
+            skillSelection.Focus = "focus";
+
+            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+
+            var wrongSkillSelection = new SkillSelection();
+            wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
+            wrongSkillSelection.SkillName = "other skill name";
+            wrongSkillSelection.Focus = "other focus";
+
+            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(wrongSkillSelection);
+
+            var bonuses = new[] { new BonusSelection { Bonus = 9266, Source = SkillConstants.Build("other skill name", "other focus") } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("skill name", "focus"))).Returns(bonuses);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(2));
+
+            Assert.That(skills[0].Name, Is.EqualTo("skill name"));
+            Assert.That(skills[0].Focus, Is.EqualTo("other focus"));
+            Assert.That(skills[0].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[0].Bonuses, Is.Empty);
+
+            Assert.That(skills[1].Name, Is.EqualTo("other skill name"));
+            Assert.That(skills[1].Focus, Is.EqualTo("other focus"));
+            Assert.That(skills[1].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[1].Bonuses, Is.Not.Empty);
+            Assert.That(skills[1].Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skills[1].Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(9266));
+        }
+
+        [Test]
+        public void GetSkillSynergyFromUntrainedSkill()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSkillSynergyForCreatureSkill()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSkillSynergyForCreatureSkillWith5OrMoreRanks()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetSkillSynergyForUntrainedSkillWith5OrMoreRanks()
+        {
+            Assert.Fail("not yet written");
         }
     }
 }

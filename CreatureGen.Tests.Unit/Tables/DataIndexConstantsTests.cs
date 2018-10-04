@@ -67,34 +67,6 @@ namespace CreatureGen.Tests.Unit.Tables
             Assert.That(data, Is.All.Empty);
         }
 
-        [TestCase(DataIndexConstants.SkillSynergyFeatData.FeatNameIndex, 0)]
-        [TestCase(DataIndexConstants.SkillSynergyFeatData.FocusTypeIndex, 1)]
-        [TestCase(DataIndexConstants.SkillSynergyFeatData.PowerIndex, 2)]
-        public void SkillSynergyFeatDataIndex(int constant, int value)
-        {
-            Assert.That(constant, Is.EqualTo(value));
-        }
-
-        [TestCase(DataIndexConstants.SkillSynergyFeatData.FeatNameIndex)]
-        [TestCase(DataIndexConstants.SkillSynergyFeatData.FocusTypeIndex)]
-        [TestCase(DataIndexConstants.SkillSynergyFeatData.PowerIndex)]
-        public void SkillSynergyFeatDataIndicesInitialized(int index)
-        {
-            var data = DataIndexConstants.SkillSynergyFeatData.InitializeData();
-            Assert.That(data.Count, Is.GreaterThan(index));
-            Assert.That(data, Is.All.Empty);
-        }
-
-        [TestCase("source skill", null, "target skill", null, "source skill:target skill")]
-        [TestCase("source skill", "source focus", "target skill", null, "source skill/source focus:target skill")]
-        [TestCase("source skill", null, "target skill", "target focus", "source skill:target skill/target focus")]
-        [TestCase("source skill", "source focus", "target skill", "target focus", "source skill/source focus:target skill/target focus")]
-        public void SkillSynergyKey(string sourceSkill, string sourceFocus, string targetSkill, string targetFocus, string expectedKey)
-        {
-            var key = DataIndexConstants.SkillSynergyFeatData.BuildDataKey(sourceSkill, sourceFocus, targetSkill, targetFocus);
-            Assert.That(key, Is.EqualTo(expectedKey));
-        }
-
         [TestCase(DataIndexConstants.SkillSelectionData.BaseStatName, 0)]
         [TestCase(DataIndexConstants.SkillSelectionData.SkillName, 1)]
         [TestCase(DataIndexConstants.SkillSelectionData.RandomFociQuantity, 2)]

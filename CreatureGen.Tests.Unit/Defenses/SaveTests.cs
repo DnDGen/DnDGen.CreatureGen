@@ -25,7 +25,7 @@ namespace CreatureGen.Tests.Unit.Defenses
             Assert.That(save.BaseValue, Is.Zero);
             Assert.That(save.Bonus, Is.Zero);
             Assert.That(save.Bonuses, Is.Empty);
-            Assert.That(save.CircumstantialBonus, Is.False);
+            Assert.That(save.IsConditional, Is.False);
             Assert.That(save.HasSave, Is.False);
             Assert.That(save.TotalBonus, Is.Zero);
         }
@@ -58,46 +58,135 @@ namespace CreatureGen.Tests.Unit.Defenses
         [Test]
         public void NoBonuses()
         {
-            //TODO: Should assert added to Bonuses
-            //TODO: Should assert counted in Bonus
-            //TODO: Should check IsCircumstantial to be false
-            Assert.Fail("not yet written");
+            Assert.That(save.Bonuses, Is.Empty);
+            Assert.That(save.Bonus, Is.Zero);
+            Assert.That(save.IsConditional, Is.False);
         }
 
         [TestCaseSource(typeof(NumericTestData), "AllValues")]
         public void OneBonus(int value)
         {
-            //TODO: Should assert added to Bonuses
-            //TODO: Should assert counted in Bonus
-            //TODO: Should check IsCircumstantial to be false
-            Assert.Fail("not yet written");
+            save.AddBonus(value);
+
+            Assert.That(save.Bonuses, Is.Not.Empty);
+            Assert.That(save.Bonuses.Count(), Is.EqualTo(1));
+
+            var bonus = save.Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(value));
+
+            Assert.That(save.Bonus, Is.EqualTo(value));
+            Assert.That(save.IsConditional, Is.False);
         }
 
         [TestCaseSource(typeof(SaveTestData), "Bonuses")]
         public void TwoBonuses(int value1, int value2)
         {
-            //TODO: Should assert added to Bonuses
-            //TODO: Should assert counted in Bonus
-            //TODO: Should check IsCircumstantial to be false
-            Assert.Fail("not yet written");
+            save.AddBonus(value1);
+            save.AddBonus(value2);
+
+            Assert.That(save.Bonuses, Is.Not.Empty);
+            Assert.That(save.Bonuses.Count(), Is.EqualTo(2));
+
+            var bonus = save.Bonuses.First();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(value1));
+
+            bonus = save.Bonuses.Last();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(value2));
+
+            Assert.That(save.Bonus, Is.EqualTo(value1 + value2));
+            Assert.That(save.IsConditional, Is.False);
         }
 
-        [Test]
-        public void CircumstantialBonus()
+        [TestCaseSource(typeof(NumericTestData), "AllValues")]
+        public void ConditionalBonus(int value)
         {
-            //TODO: Should assert added to Bonuses
-            //TODO: Should assert not counted in Bonus
-            //TODO: Should check IsCircumstantial to be true
-            Assert.Fail("not yet written");
+            save.AddBonus(value, "condition");
+
+            Assert.That(save.Bonuses, Is.Not.Empty);
+            Assert.That(save.Bonuses.Count(), Is.EqualTo(1));
+
+            var bonus = save.Bonuses.Single();
+            Assert.That(bonus.Condition, Is.EqualTo("condition"));
+            Assert.That(bonus.IsConditional, Is.True);
+            Assert.That(bonus.Value, Is.EqualTo(value));
+
+            Assert.That(save.Bonus, Is.Zero);
+            Assert.That(save.IsConditional, Is.True);
         }
 
-        [Test]
-        public void BonusAndCircumstantialBonus()
+        [TestCaseSource(typeof(SaveTestData), "Bonuses")]
+        public void ConditionalBonuses(int value1, int value2)
         {
-            //TODO: Should assert added to Bonuses
-            //TODO: Should assert not counted in Bonus
-            //TODO: Should check IsCircumstantial to be true
-            Assert.Fail("not yet written");
+            save.AddBonus(value1, "condition 1");
+            save.AddBonus(value2, "condition 2");
+
+            Assert.That(save.Bonuses, Is.Not.Empty);
+            Assert.That(save.Bonuses.Count(), Is.EqualTo(2));
+
+            var bonus = save.Bonuses.First();
+            Assert.That(bonus.Condition, Is.EqualTo("condition 1"));
+            Assert.That(bonus.IsConditional, Is.True);
+            Assert.That(bonus.Value, Is.EqualTo(value1));
+
+            bonus = save.Bonuses.Last();
+            Assert.That(bonus.Condition, Is.EqualTo("condition 2"));
+            Assert.That(bonus.IsConditional, Is.True);
+            Assert.That(bonus.Value, Is.EqualTo(value2));
+
+            Assert.That(save.Bonus, Is.Zero);
+            Assert.That(save.IsConditional, Is.True);
+        }
+
+        [TestCaseSource(typeof(SaveTestData), "Bonuses")]
+        public void BonusAndConditionalBonus(int value1, int value2)
+        {
+            save.AddBonus(value1);
+            save.AddBonus(value2, "condition 2");
+
+            Assert.That(save.Bonuses, Is.Not.Empty);
+            Assert.That(save.Bonuses.Count(), Is.EqualTo(2));
+
+            var bonus = save.Bonuses.First();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(value1));
+
+            bonus = save.Bonuses.Last();
+            Assert.That(bonus.Condition, Is.EqualTo("condition 2"));
+            Assert.That(bonus.IsConditional, Is.True);
+            Assert.That(bonus.Value, Is.EqualTo(value2));
+
+            Assert.That(save.Bonus, Is.EqualTo(value1));
+            Assert.That(save.IsConditional, Is.True);
+        }
+
+        [TestCaseSource(typeof(SaveTestData), "Bonuses")]
+        public void ConditionalBonusAndBonus(int value1, int value2)
+        {
+            save.AddBonus(value1, "condition 1");
+            save.AddBonus(value2);
+
+            Assert.That(save.Bonuses, Is.Not.Empty);
+            Assert.That(save.Bonuses.Count(), Is.EqualTo(2));
+
+            var bonus = save.Bonuses.First();
+            Assert.That(bonus.Condition, Is.EqualTo("condition 1"));
+            Assert.That(bonus.IsConditional, Is.True);
+            Assert.That(bonus.Value, Is.EqualTo(value1));
+
+            bonus = save.Bonuses.Last();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(value2));
+
+            Assert.That(save.Bonus, Is.EqualTo(value1));
+            Assert.That(save.IsConditional, Is.True);
         }
 
         [TestCaseSource(typeof(SaveTestData), "TotalBonus")]
@@ -120,17 +209,17 @@ namespace CreatureGen.Tests.Unit.Defenses
             {
                 get
                 {
-                    foreach (var abilityScore in NumericTestData.PositiveValues)
+                    foreach (var abilityScore in NumericTestData.BaseAbilityTestNumbers)
                     {
-                        foreach (var baseValue in NumericTestData.PositiveValues)
+                        foreach (var baseValue in NumericTestData.BaseTestNumbers)
                         {
                             yield return new TestCaseData(abilityScore, baseValue);
 
-                            foreach (var bonus1 in NumericTestData.TestValues)
+                            foreach (var bonus1 in NumericTestData.AllBaseTestValues)
                             {
                                 yield return new TestCaseData(abilityScore, baseValue, bonus1);
 
-                                foreach (var bonus2 in NumericTestData.TestValues)
+                                foreach (var bonus2 in NumericTestData.AllBaseTestValues)
                                 {
                                     yield return new TestCaseData(abilityScore, baseValue, bonus1, bonus2);
                                 }
@@ -144,9 +233,9 @@ namespace CreatureGen.Tests.Unit.Defenses
             {
                 get
                 {
-                    foreach (var value1 in NumericTestData.TestValues)
+                    foreach (var value1 in NumericTestData.AllTestValues)
                     {
-                        foreach (var value2 in NumericTestData.TestValues)
+                        foreach (var value2 in NumericTestData.AllTestValues)
                         {
                             yield return new TestCaseData(value1, value2);
                         }
@@ -156,15 +245,34 @@ namespace CreatureGen.Tests.Unit.Defenses
         }
 
         [TestCaseSource(typeof(SaveTestData), "TotalBonus")]
-        public void TotalBonusWithOneCircumstantial(int abilityScore, int baseValue, params int[] bonuses)
+        public void TotalBonusWithOneConditional(int abilityScore, int baseValue, params int[] bonuses)
         {
-            Assert.Fail("not yet written");
+            save.BaseAbility = new Ability(AbilityConstants.Charisma);
+            save.BaseAbility.BaseScore = abilityScore;
+            save.BaseValue = baseValue;
+
+            foreach (var bonus in bonuses)
+                save.AddBonus(bonus);
+
+            if (save.Bonuses.Any())
+                save.Bonuses.First().Condition = "condition";
+
+            var expectedTotal = save.BaseAbility.Modifier + baseValue + bonuses.Skip(1).Sum();
+            Assert.That(save.TotalBonus, Is.EqualTo(expectedTotal));
         }
 
         [TestCaseSource(typeof(SaveTestData), "TotalBonus")]
-        public void TotalBonusWithAllCircumstantial(int abilityScore, int baseValue, params int[] bonuses)
+        public void TotalBonusWithAllConditional(int abilityScore, int baseValue, params int[] bonuses)
         {
-            Assert.Fail("not yet written");
+            save.BaseAbility = new Ability(AbilityConstants.Charisma);
+            save.BaseAbility.BaseScore = abilityScore;
+            save.BaseValue = baseValue;
+
+            foreach (var bonus in bonuses)
+                save.AddBonus(bonus, "condition");
+
+            var expectedTotal = save.BaseAbility.Modifier + baseValue;
+            Assert.That(save.TotalBonus, Is.EqualTo(expectedTotal));
         }
     }
 }

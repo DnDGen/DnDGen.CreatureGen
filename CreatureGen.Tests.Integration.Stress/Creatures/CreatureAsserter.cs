@@ -169,9 +169,6 @@ namespace CreatureGen.Tests.Integration.Stress.Creatures
                     .Or.EqualTo(FeatConstants.Frequencies.Week)
                     .Or.Empty, $"{creature.Summary} {feat.Name}");
 
-                if (feat.Name == FeatConstants.SpecialQualities.SaveBonus)
-                    Assert.That(feat.Foci, Is.Not.Empty, creature.Summary);
-
                 if (!creature.CanUseEquipment)
                 {
                     var weaponFoci = feat.Foci.Intersect(weapons);
