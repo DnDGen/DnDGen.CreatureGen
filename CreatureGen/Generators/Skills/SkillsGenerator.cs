@@ -236,20 +236,6 @@ namespace CreatureGen.Generators.Skills
 
         public IEnumerable<Skill> ApplyBonusesFromFeats(IEnumerable<Skill> skills, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
         {
-            if (feats.Any(f => f.Name == FeatConstants.SpecialQualities.SwapSkillBaseAbility))
-            {
-                var swap = feats.First(f => f.Name == FeatConstants.SpecialQualities.SwapSkillBaseAbility);
-                foreach (var focus in swap.Foci)
-                {
-                    var sections = focus.Split(':');
-                    var skillName = sections[0];
-                    var abilityName = sections[1];
-
-                    var skill = skills.First(s => s.Name == skillName);
-                    skill.BaseAbility = abilities[abilityName];
-                }
-            }
-
             var allSkills = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.All);
 
             foreach (var feat in feats)

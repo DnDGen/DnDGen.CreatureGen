@@ -8,7 +8,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
 {
     public class NumericTestData
     {
-        private static IEnumerable<int> testValues = new[]
+        public static IEnumerable<int> TestValues = new[]
         {
             -90210,
             -9266,
@@ -35,11 +35,13 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
             90210
         };
 
+        public static IEnumerable<int> PositiveValues => TestValues.Where(v => v > 0);
+
         public static IEnumerable AllValues
         {
             get
             {
-                foreach (var value in testValues)
+                foreach (var value in TestValues)
                 {
                     yield return new TestCaseData(value);
                 }
@@ -50,9 +52,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
         {
             get
             {
-                var positive = testValues.Where(v => v > 0);
-
-                foreach (var value in positive)
+                foreach (var value in PositiveValues)
                 {
                     yield return new TestCaseData(value);
                 }
@@ -63,9 +63,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
         {
             get
             {
-                var positive = testValues.Where(v => v <= 0);
-
-                foreach (var value in positive)
+                foreach (var value in PositiveValues)
                 {
                     yield return new TestCaseData(value);
                 }
@@ -76,11 +74,9 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
         {
             get
             {
-                var positive = testValues.Where(v => v > 0);
-
-                foreach (var requirement in positive)
+                foreach (var requirement in PositiveValues)
                 {
-                    var values = testValues.Where(v => v < requirement);
+                    var values = TestValues.Where(v => v < requirement);
 
                     foreach (var value in values)
                     {
@@ -94,11 +90,9 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
         {
             get
             {
-                var positive = testValues.Where(v => v > 0);
-
-                foreach (var requirement in testValues)
+                foreach (var requirement in PositiveValues)
                 {
-                    var values = testValues.Where(v => v >= requirement);
+                    var values = TestValues.Where(v => v >= requirement);
 
                     foreach (var value in values)
                     {
@@ -112,13 +106,11 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
         {
             get
             {
-                var positive = testValues.Where(v => v > 0);
-
-                foreach (var requirement in positive)
+                foreach (var requirement in PositiveValues)
                 {
-                    foreach (var value1 in positive)
+                    foreach (var value1 in PositiveValues)
                     {
-                        foreach (var value2 in testValues)
+                        foreach (var value2 in TestValues)
                         {
                             if (value1 + value2 < requirement)
                                 yield return new TestCaseData(requirement, value1, value2);
@@ -132,13 +124,11 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
         {
             get
             {
-                var positive = testValues.Where(v => v > 0);
-
-                foreach (var requirement in positive)
+                foreach (var requirement in PositiveValues)
                 {
-                    foreach (var value1 in positive)
+                    foreach (var value1 in PositiveValues)
                     {
-                        foreach (var value2 in testValues)
+                        foreach (var value2 in TestValues)
                         {
                             var sum = Math.Max(value1 + value2, 1);
 
@@ -154,13 +144,11 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
         {
             get
             {
-                var positive = testValues.Where(v => v > 0);
-
-                foreach (var requirement in positive)
+                foreach (var requirement in PositiveValues)
                 {
-                    foreach (var value1 in positive)
+                    foreach (var value1 in PositiveValues)
                     {
-                        foreach (var value2 in testValues)
+                        foreach (var value2 in TestValues)
                         {
                             if (value1 + value2 >= requirement)
                                 yield return new TestCaseData(requirement, value1, value2);
@@ -174,11 +162,9 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
         {
             get
             {
-                var positive = testValues.Where(v => v > 0);
-
-                foreach (var requirement in positive)
+                foreach (var requirement in PositiveValues)
                 {
-                    foreach (var value in testValues)
+                    foreach (var value in TestValues)
                     {
                         yield return new TestCaseData(requirement, value);
                     }

@@ -139,7 +139,7 @@
     <Compile Include="TestCaseSources\NumericTestData.cs" />
     <Compile Include="Verifiers\CreatureVerifierTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Defenses\SavesTests.cs" />
+    <Compile Include="Defenses\SaveTests.cs" />
     <Compile Include="Skills\SkillConstantsTests.cs" />
     <Compile Include="Skills\SkillTests.cs" />
     <Compile Include="Abilities\AbilityConstantsTests.cs" />

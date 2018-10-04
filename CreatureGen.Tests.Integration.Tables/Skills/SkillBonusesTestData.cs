@@ -1,6 +1,4 @@
 ﻿using CreatureGen.Creatures;
-using CreatureGen.Feats;
-using CreatureGen.Selectors.Helpers;
 using CreatureGen.Skills;
 using NUnit.Framework;
 using System.Collections;
@@ -594,7 +592,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Rat_Swarm][GetData(SkillConstants.Swim)] = 8;
                 testCases[CreatureConstants.Rat_Swarm][GetData(SkillConstants.Swim, condition: "special action or avoid a hazard")] = 8;
                 testCases[CreatureConstants.Rat_Swarm][GetData(SkillConstants.Swim, condition: "can always take 10")] = 10;
-                
+
                 testCases[CreatureConstants.Retriever][None] = 0;
 
                 testCases[CreatureConstants.Salamander_Flamebrother][GetData(SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing))] = 4;
@@ -633,7 +631,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Spider_Swarm][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
                 testCases[CreatureConstants.Spider_Swarm][GetData(SkillConstants.Hide)] = 4;
                 testCases[CreatureConstants.Spider_Swarm][GetData(SkillConstants.Spot)] = 4;
-                testCases[CreatureConstants.Spider_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SwapSkillBaseAbility, focus: $"{SkillConstants.Climb}:{AbilityConstants.Dexterity}";
 
                 testCases[CreatureConstants.Succubus][GetData(SkillConstants.Listen)] = 8;
                 testCases[CreatureConstants.Succubus][GetData(SkillConstants.Spot)] = 8;

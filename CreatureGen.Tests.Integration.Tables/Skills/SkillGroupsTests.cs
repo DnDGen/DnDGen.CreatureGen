@@ -4285,7 +4285,10 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.Jump,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Spider_Swarm)]
+        [TestCase(CreatureConstants.Spider_Swarm,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
         [TestCase(CreatureConstants.SpiderEater,
             SkillConstants.Listen,
             SkillConstants.Spot)]
