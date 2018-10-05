@@ -37,6 +37,11 @@ namespace CreatureGen.Defenses
             }
         }
 
+        public Save()
+        {
+            Bonuses = Enumerable.Empty<Bonus>();
+        }
+
         public void AddBonus(int value, string condition = "")
         {
             var bonus = new Bonus { Value = value, Condition = condition };

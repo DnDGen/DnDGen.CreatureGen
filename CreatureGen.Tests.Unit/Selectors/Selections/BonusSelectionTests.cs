@@ -19,7 +19,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             Assert.That(selection.Bonus, Is.Zero);
             Assert.That(selection.Condition, Is.Empty);
-            Assert.That(selection.Source, Is.Empty);
+            Assert.That(selection.Target, Is.Empty);
         }
     }
 }

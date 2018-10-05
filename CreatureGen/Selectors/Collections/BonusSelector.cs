@@ -28,7 +28,7 @@ namespace CreatureGen.Selectors.Collections
             selection.Bonus = input.Amount;
 
             var sections = input.Type.Split(',');
-            selection.Source = sections[0];
+            selection.Target = sections[0];
 
             if (sections.Length > 1)
                 selection.Condition = sections[1];

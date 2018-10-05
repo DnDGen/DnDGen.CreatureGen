@@ -75,7 +75,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(selection.Condition, Is.EqualTo(condition));
 
             var expected = SkillConstants.Build(skillName, skillFocus);
-            Assert.That(selection.Source, Is.EqualTo(expected));
+            Assert.That(selection.Target, Is.EqualTo(expected));
         }
 
         private void SetUpSkillBonus(
@@ -86,7 +86,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var bonusSelection = new BonusSelection();
             bonusSelection.Bonus = bonus;
-            bonusSelection.Source = SkillConstants.Build(skill, focus);
+            bonusSelection.Target = SkillConstants.Build(skill, focus);
             bonusSelection.Condition = condition;
 
             bonusSelections.Add(bonusSelection);
@@ -157,14 +157,14 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(selection.Condition, Is.EqualTo(condition1));
 
             var expected = SkillConstants.Build(skillName1, skillFocus1);
-            Assert.That(selection.Source, Is.EqualTo(expected));
+            Assert.That(selection.Target, Is.EqualTo(expected));
 
             selection = bonusSelections.Last();
             Assert.That(selection.Bonus, Is.EqualTo(bonus2));
             Assert.That(selection.Condition, Is.EqualTo(condition2));
 
             expected = SkillConstants.Build(skillName2, skillFocus2);
-            Assert.That(selection.Source, Is.EqualTo(expected));
+            Assert.That(selection.Target, Is.EqualTo(expected));
         }
     }
 }

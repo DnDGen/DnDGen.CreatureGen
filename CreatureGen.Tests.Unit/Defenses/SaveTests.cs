@@ -3,6 +3,7 @@ using CreatureGen.Defenses;
 using CreatureGen.Tests.Unit.TestCaseSources;
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CreatureGen.Tests.Unit.Defenses
@@ -151,6 +152,8 @@ namespace CreatureGen.Tests.Unit.Defenses
 
             Assert.That(save.Bonuses, Is.Not.Empty);
             Assert.That(save.Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(save.Bonus, Is.EqualTo(value1));
+            Assert.That(save.IsConditional, Is.True);
 
             var bonus = save.Bonuses.First();
             Assert.That(bonus.Condition, Is.Empty);
@@ -161,9 +164,6 @@ namespace CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Condition, Is.EqualTo("condition 2"));
             Assert.That(bonus.IsConditional, Is.True);
             Assert.That(bonus.Value, Is.EqualTo(value2));
-
-            Assert.That(save.Bonus, Is.EqualTo(value1));
-            Assert.That(save.IsConditional, Is.True);
         }
 
         [TestCaseSource(typeof(SaveTestData), "Bonuses")]
@@ -174,6 +174,8 @@ namespace CreatureGen.Tests.Unit.Defenses
 
             Assert.That(save.Bonuses, Is.Not.Empty);
             Assert.That(save.Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(save.Bonus, Is.EqualTo(value2));
+            Assert.That(save.IsConditional, Is.True);
 
             var bonus = save.Bonuses.First();
             Assert.That(bonus.Condition, Is.EqualTo("condition 1"));
@@ -184,13 +186,10 @@ namespace CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Condition, Is.Empty);
             Assert.That(bonus.IsConditional, Is.False);
             Assert.That(bonus.Value, Is.EqualTo(value2));
-
-            Assert.That(save.Bonus, Is.EqualTo(value1));
-            Assert.That(save.IsConditional, Is.True);
         }
 
         [TestCaseSource(typeof(SaveTestData), "TotalBonus")]
-        public void TotalBonus(int abilityScore, int baseValue, params int[] bonuses)
+        public void TotalBonus(int abilityScore, int baseValue, IEnumerable<int> bonuses)
         {
             save.BaseAbility = new Ability(AbilityConstants.Charisma);
             save.BaseAbility.BaseScore = abilityScore;
@@ -213,15 +212,15 @@ namespace CreatureGen.Tests.Unit.Defenses
                     {
                         foreach (var baseValue in NumericTestData.BaseTestNumbers)
                         {
-                            yield return new TestCaseData(abilityScore, baseValue);
+                            yield return new TestCaseData(abilityScore, baseValue, Enumerable.Empty<int>());
 
                             foreach (var bonus1 in NumericTestData.AllBaseTestValues)
                             {
-                                yield return new TestCaseData(abilityScore, baseValue, bonus1);
+                                yield return new TestCaseData(abilityScore, baseValue, new[] { bonus1 });
 
                                 foreach (var bonus2 in NumericTestData.AllBaseTestValues)
                                 {
-                                    yield return new TestCaseData(abilityScore, baseValue, bonus1, bonus2);
+                                    yield return new TestCaseData(abilityScore, baseValue, new[] { bonus1, bonus2 });
                                 }
                             }
                         }
@@ -245,7 +244,7 @@ namespace CreatureGen.Tests.Unit.Defenses
         }
 
         [TestCaseSource(typeof(SaveTestData), "TotalBonus")]
-        public void TotalBonusWithOneConditional(int abilityScore, int baseValue, params int[] bonuses)
+        public void TotalBonusWithOneConditional(int abilityScore, int baseValue, IEnumerable<int> bonuses)
         {
             save.BaseAbility = new Ability(AbilityConstants.Charisma);
             save.BaseAbility.BaseScore = abilityScore;
@@ -262,7 +261,7 @@ namespace CreatureGen.Tests.Unit.Defenses
         }
 
         [TestCaseSource(typeof(SaveTestData), "TotalBonus")]
-        public void TotalBonusWithAllConditional(int abilityScore, int baseValue, params int[] bonuses)
+        public void TotalBonusWithAllConditional(int abilityScore, int baseValue, IEnumerable<int> bonuses)
         {
             save.BaseAbility = new Ability(AbilityConstants.Charisma);
             save.BaseAbility.BaseScore = abilityScore;

@@ -36,8 +36,24 @@ namespace CreatureGen.Generators.Skills
             if (hitPoints.HitDiceQuantity == 0)
                 return Enumerable.Empty<Skill>();
 
+            var creatureSkillNames = GetCreatureSkillNames(creatureName, creatureType);
+            var untrainedSkillNames = GetUntrainedSkillsNames(canUseEquipment);
+
+            //INFO: Must do union in this direction, so that when we build selections, the creature skills overwrite noncreature skills
+            var allSkillNames = untrainedSkillNames.Union(creatureSkillNames);
+            var skillSelections = GetSkillSelections(allSkillNames, creatureSkillNames);
+            var skills = InitializeSkills(abilities, skillSelections, hitPoints, creatureSkillNames);
+
+            skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities);
+            skills = ApplyBonuses(creatureName, creatureType, skills, size);
+            skills = ApplySkillSynergy(creatureName, skills, size);
+
+            return skills;
+        }
+
+        private IEnumerable<string> GetUntrainedSkillsNames(bool canUseEquipment)
+        {
             var untrainedSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.Untrained);
-            var creatureSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, creatureName);
 
             if (!canUseEquipment)
             {
@@ -45,24 +61,41 @@ namespace CreatureGen.Generators.Skills
                 untrainedSkillNames = untrainedSkillNames.Except(unnaturalSkills);
             }
 
-            var allSkillNames = untrainedSkillNames.Union(creatureSkillNames);
-            var skillSelections = GetSkillSelections(allSkillNames, creatureSkillNames);
-            var skills = InitializeSkills(abilities, skillSelections, hitPoints, creatureSkillNames);
-
-            skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities);
-            skills = ApplyBonuses(creatureName, skills, size);
-            skills = ApplySkillSynergy(creatureName, skills, size);
-
-            return skills;
+            return untrainedSkillNames;
         }
 
-        private IEnumerable<Skill> ApplyBonuses(string creature, IEnumerable<Skill> skills, string size)
+        private IEnumerable<string> GetCreatureSkillNames(string creatureName, CreatureType creatureType)
         {
-            var bonuses = skillSelector.SelectBonusesFor(creature);
+            var creatureSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, creatureName);
+            var creatureTypeSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, creatureType.Name);
+
+            creatureSkillNames = creatureSkillNames.Union(creatureTypeSkillNames);
+
+            foreach (var subtype in creatureType.SubTypes)
+            {
+                var subtypeSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, subtype);
+                creatureSkillNames = creatureSkillNames.Union(subtypeSkillNames);
+            }
+
+            return creatureSkillNames;
+        }
+
+        private IEnumerable<Skill> ApplyBonuses(string creature, CreatureType creatureType, IEnumerable<Skill> skills, string size)
+        {
+            var creatureBonuses = skillSelector.SelectBonusesFor(creature);
+            var typeBonuses = skillSelector.SelectBonusesFor(creatureType.Name);
+
+            var bonuses = creatureBonuses.Union(typeBonuses);
+
+            foreach (var subtype in creatureType.SubTypes)
+            {
+                var subtypeBonuses = skillSelector.SelectBonusesFor(subtype);
+                bonuses = bonuses.Union(subtypeBonuses);
+            }
 
             foreach (var bonus in bonuses)
             {
-                var matchingSkills = skills.Where(s => s.IsEqualTo(bonus.Source));
+                var matchingSkills = skills.Where(s => s.IsEqualTo(bonus.Target));
 
                 foreach (var skill in matchingSkills)
                 {
@@ -85,7 +118,7 @@ namespace CreatureGen.Generators.Skills
 
                 foreach (var bonus in bonuses)
                 {
-                    var matchingSkills = skills.Where(s => s.IsEqualTo(bonus.Source));
+                    var matchingSkills = skills.Where(s => s.IsEqualTo(bonus.Target));
 
                     foreach (var skill in matchingSkills)
                     {
@@ -160,9 +193,19 @@ namespace CreatureGen.Generators.Skills
                 var selection = skillSelector.SelectFor(skillName);
                 selection.ClassSkill = creatureSkills.Contains(skillName) || creatureSkills.Contains(selection.SkillName);
 
-                var explodedSelection = ExplodeSelectedSkill(selection);
+                var explodedSelections = ExplodeSelectedSkill(selection);
 
-                selections.AddRange(explodedSelection);
+                if (selections.Any(s => explodedSelections.Any(es => s.IsEqualTo(es))))
+                {
+                    var duplicates = selections.Where(s => explodedSelections.Any(es => s.IsEqualTo(es))).ToArray();
+
+                    foreach (var duplicate in duplicates)
+                    {
+                        selections.Remove(duplicate);
+                    }
+                }
+
+                selections.AddRange(explodedSelections);
             }
 
             return selections;

@@ -31,7 +31,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
 
         public static IEnumerable<int> BaseAbilityTestNumbers = new[]
         {
-            8, 9, 10, 11, 12
+            5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
         };
 
         public static IEnumerable<int> NegativeValues => CustomTestNumbers.Union(BaseTestNumbers).Select(n => n * -1);

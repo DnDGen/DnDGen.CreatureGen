@@ -2,13 +2,13 @@
 {
     internal class BonusSelection
     {
-        public string Source { get; set; }
+        public string Target { get; set; }
         public int Bonus { get; set; }
         public string Condition { get; set; }
 
         public BonusSelection()
         {
-            Source = string.Empty;
+            Target = string.Empty;
             Condition = string.Empty;
         }
     }
