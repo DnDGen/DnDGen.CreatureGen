@@ -16,7 +16,8 @@ namespace CreatureGen.Generators.Feats
             HitPoints hitPoints,
             Dictionary<string, Ability> abilities,
             IEnumerable<Skill> skills,
-            bool canUseEquipment);
+            bool canUseEquipment,
+            string size);
         IEnumerable<Feat> GenerateFeats(
             HitPoints hitPoints,
             int baseAttackBonus,

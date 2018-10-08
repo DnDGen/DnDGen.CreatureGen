@@ -2604,16 +2604,16 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills, Is.Not.Empty);
             Assert.That(skills.Count, Is.EqualTo(2));
 
-            var skill = skills.First();
+            var skill = skills.Last();
             Assert.That(skill.Name, Is.EqualTo(creatureSkills[0]));
             Assert.That(skill.EffectiveRanks, Is.AtLeast(5));
             Assert.That(skill.EffectiveRanks, Is.EqualTo(5));
             Assert.That(skill.Bonuses, Is.Empty);
 
-            skill = skills.Last();
+            skill = skills.First();
             Assert.That(skill.Name, Is.EqualTo(untrainedSkills[0]));
             Assert.That(skill.EffectiveRanks, Is.LessThan(5));
-            Assert.That(skill.EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skill.EffectiveRanks, Is.EqualTo(2.5));
             Assert.That(skill.Bonuses, Is.Not.Empty);
             Assert.That(skill.Bonuses.Count, Is.EqualTo(1));
 
@@ -2639,16 +2639,16 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills, Is.Not.Empty);
             Assert.That(skills.Count, Is.EqualTo(2));
 
-            var skill = skills.First();
+            var skill = skills.Last();
             Assert.That(skill.Name, Is.EqualTo(creatureSkills[0]));
             Assert.That(skill.EffectiveRanks, Is.AtLeast(5));
             Assert.That(skill.EffectiveRanks, Is.EqualTo(5));
             Assert.That(skill.Bonuses, Is.Empty);
 
-            skill = skills.Last();
+            skill = skills.First();
             Assert.That(skill.Name, Is.EqualTo(untrainedSkills[0]));
             Assert.That(skill.EffectiveRanks, Is.LessThan(5));
-            Assert.That(skill.EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skill.EffectiveRanks, Is.EqualTo(2.5));
             Assert.That(skill.Bonuses, Is.Not.Empty);
             Assert.That(skill.Bonuses.Count, Is.EqualTo(1));
 
@@ -2665,7 +2665,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             AddUntrainedSkills(2);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDiceQuantity = 3;
 
             var bonuses1 = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
@@ -2677,9 +2677,19 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills, Is.Not.Empty);
             Assert.That(skills.Count, Is.EqualTo(4));
 
+            Assert.That(skills[2].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skills[2].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[2].Bonuses, Is.Empty);
+
+            Assert.That(skills[3].Name, Is.EqualTo(creatureSkills[1]));
+            Assert.That(skills[3].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[3].Bonuses, Is.Empty);
+
             Assert.That(skills[0].Name, Is.EqualTo(untrainedSkills[0]));
             Assert.That(skills[0].EffectiveRanks, Is.LessThan(5));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(2));
             Assert.That(skills[0].Bonuses, Is.Not.Empty);
             Assert.That(skills[0].Bonuses.Count, Is.EqualTo(1));
 
@@ -2690,7 +2700,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             Assert.That(skills[1].Name, Is.EqualTo(untrainedSkills[1]));
             Assert.That(skills[1].EffectiveRanks, Is.LessThan(5));
-            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(2));
             Assert.That(skills[1].Bonuses, Is.Not.Empty);
             Assert.That(skills[1].Bonuses.Count, Is.EqualTo(1));
 
@@ -2698,16 +2708,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(bonus.Condition, Is.Empty);
             Assert.That(bonus.IsConditional, Is.False);
             Assert.That(bonus.Value, Is.EqualTo(90210));
-
-            Assert.That(skills[2].Name, Is.EqualTo(creatureSkills[0]));
-            Assert.That(skills[2].EffectiveRanks, Is.AtLeast(5));
-            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[2].Bonuses, Is.Empty);
-
-            Assert.That(skills[3].Name, Is.EqualTo(creatureSkills[1]));
-            Assert.That(skills[3].EffectiveRanks, Is.AtLeast(5));
-            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[3].Bonuses, Is.Empty);
         }
 
         [Test]
@@ -2717,7 +2717,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             AddUntrainedSkills(2);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDiceQuantity = 3;
 
             var bonuses1 = new[]
             {
@@ -2730,9 +2730,19 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills, Is.Not.Empty);
             Assert.That(skills.Count, Is.EqualTo(4));
 
+            Assert.That(skills[2].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skills[2].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[2].Bonuses, Is.Empty);
+
+            Assert.That(skills[3].Name, Is.EqualTo(creatureSkills[1]));
+            Assert.That(skills[3].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[3].Bonuses, Is.Empty);
+
             Assert.That(skills[0].Name, Is.EqualTo(untrainedSkills[0]));
             Assert.That(skills[0].EffectiveRanks, Is.LessThan(5));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(2));
             Assert.That(skills[0].Bonuses, Is.Not.Empty);
             Assert.That(skills[0].Bonuses.Count, Is.EqualTo(1));
 
@@ -2743,7 +2753,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
 
             Assert.That(skills[1].Name, Is.EqualTo(untrainedSkills[1]));
             Assert.That(skills[1].EffectiveRanks, Is.LessThan(5));
-            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(2));
             Assert.That(skills[1].Bonuses, Is.Not.Empty);
             Assert.That(skills[1].Bonuses.Count, Is.EqualTo(1));
 
@@ -2751,16 +2761,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(bonus.Condition, Is.Empty);
             Assert.That(bonus.IsConditional, Is.False);
             Assert.That(bonus.Value, Is.EqualTo(90210));
-
-            Assert.That(skills[2].Name, Is.EqualTo(creatureSkills[0]));
-            Assert.That(skills[2].EffectiveRanks, Is.AtLeast(5));
-            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[2].Bonuses, Is.Empty);
-
-            Assert.That(skills[3].Name, Is.EqualTo(creatureSkills[1]));
-            Assert.That(skills[3].EffectiveRanks, Is.AtLeast(5));
-            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[3].Bonuses, Is.Empty);
         }
 
         [Test]
@@ -2770,7 +2770,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             AddUntrainedSkills(2);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDiceQuantity = 3;
 
             var bonuses1 = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[1] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
@@ -2782,14 +2782,24 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills, Is.Not.Empty);
             Assert.That(skills.Count, Is.EqualTo(4));
 
+            Assert.That(skills[2].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skills[2].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[2].Bonuses, Is.Empty);
+
+            Assert.That(skills[3].Name, Is.EqualTo(creatureSkills[1]));
+            Assert.That(skills[3].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[3].Bonuses, Is.Empty);
+
             Assert.That(skills[0].Name, Is.EqualTo(untrainedSkills[0]));
             Assert.That(skills[0].EffectiveRanks, Is.LessThan(5));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(2));
             Assert.That(skills[0].Bonuses, Is.Empty);
 
             Assert.That(skills[1].Name, Is.EqualTo(untrainedSkills[1]));
             Assert.That(skills[1].EffectiveRanks, Is.LessThan(5));
-            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(2));
             Assert.That(skills[1].Bonuses, Is.Not.Empty);
             Assert.That(skills[1].Bonuses.Count, Is.EqualTo(2));
 
@@ -2802,16 +2812,6 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(bonus.Condition, Is.Empty);
             Assert.That(bonus.IsConditional, Is.False);
             Assert.That(bonus.Value, Is.EqualTo(90210));
-
-            Assert.That(skills[2].Name, Is.EqualTo(creatureSkills[0]));
-            Assert.That(skills[2].EffectiveRanks, Is.AtLeast(5));
-            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[2].Bonuses, Is.Empty);
-
-            Assert.That(skills[3].Name, Is.EqualTo(creatureSkills[1]));
-            Assert.That(skills[3].EffectiveRanks, Is.AtLeast(5));
-            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[3].Bonuses, Is.Empty);
         }
 
         [Test]
@@ -2833,7 +2833,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             var wrongSkillSelection = new SkillSelection();
             wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             wrongSkillSelection.SkillName = "skill name";
-            wrongSkillSelection.Focus = "other focus";
+            wrongSkillSelection.Focus = "wrong focus";
 
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[1])).Returns(wrongSkillSelection);
 
@@ -2847,25 +2847,26 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills, Is.Not.Empty);
             Assert.That(skills.Count, Is.EqualTo(3));
 
-            Assert.That(skills[0].Name, Is.EqualTo("skill name"));
-            Assert.That(skills[0].Focus, Is.EqualTo("focus"));
-            Assert.That(skills[0].EffectiveRanks, Is.AtLeast(5));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[0].Bonuses, Is.Empty);
-
             Assert.That(skills[1].Name, Is.EqualTo("skill name"));
-            Assert.That(skills[1].Focus, Is.EqualTo("other focus"));
+            Assert.That(skills[1].Focus, Is.EqualTo("focus"));
             Assert.That(skills[1].EffectiveRanks, Is.AtLeast(5));
             Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
             Assert.That(skills[1].Bonuses, Is.Empty);
 
-            Assert.That(skills[2].Name, Is.EqualTo(untrainedSkills[0]));
-            Assert.That(skills[2].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[2].Name, Is.EqualTo("skill name"));
+            Assert.That(skills[2].Focus, Is.EqualTo("wrong focus"));
+            Assert.That(skills[2].EffectiveRanks, Is.AtLeast(5));
             Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[2].Bonuses, Is.Not.Empty);
-            Assert.That(skills[2].Bonuses.Count, Is.EqualTo(1));
+            Assert.That(skills[2].Bonuses, Is.Empty);
 
-            var bonus = skills[2].Bonuses.Single();
+            Assert.That(skills[0].Name, Is.EqualTo(untrainedSkills[0]));
+            Assert.That(skills[0].Focus, Is.Empty);
+            Assert.That(skills[0].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(2.5));
+            Assert.That(skills[0].Bonuses, Is.Not.Empty);
+            Assert.That(skills[0].Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skills[0].Bonuses.Single();
             Assert.That(bonus.Condition, Is.Empty);
             Assert.That(bonus.IsConditional, Is.False);
             Assert.That(bonus.Value, Is.EqualTo(9266));
@@ -2878,7 +2879,7 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             AddUntrainedSkills(2);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDiceQuantity = 3;
 
             var skillSelection = new SkillSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
@@ -2904,38 +2905,38 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills, Is.Not.Empty);
             Assert.That(skills.Count, Is.EqualTo(4));
 
-            Assert.That(skills[0].Name, Is.EqualTo(creatureSkills[0]));
-            Assert.That(skills[0].Focus, Is.Empty);
-            Assert.That(skills[0].EffectiveRanks, Is.AtLeast(5));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[0].Bonuses, Is.Empty);
-
-            Assert.That(skills[1].Name, Is.EqualTo(creatureSkills[0]));
-            Assert.That(skills[1].Focus, Is.Empty);
-            Assert.That(skills[1].EffectiveRanks, Is.AtLeast(5));
-            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[1].Bonuses, Is.Empty);
-
-            Assert.That(skills[2].Name, Is.EqualTo("skill name"));
-            Assert.That(skills[2].Focus, Is.EqualTo("focus"));
-            Assert.That(skills[2].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[2].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skills[2].Focus, Is.Empty);
+            Assert.That(skills[2].EffectiveRanks, Is.AtLeast(5));
             Assert.That(skills[2].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[2].Bonuses, Is.Not.Empty);
-            Assert.That(skills[2].Bonuses.Count, Is.EqualTo(1));
+            Assert.That(skills[2].Bonuses, Is.Empty);
 
-            var bonus = skills[2].Bonuses.Single();
+            Assert.That(skills[3].Name, Is.EqualTo(creatureSkills[1]));
+            Assert.That(skills[3].Focus, Is.Empty);
+            Assert.That(skills[3].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[3].Bonuses, Is.Empty);
+
+            Assert.That(skills[0].Name, Is.EqualTo("skill name"));
+            Assert.That(skills[0].Focus, Is.EqualTo("focus"));
+            Assert.That(skills[0].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[0].Bonuses, Is.Not.Empty);
+            Assert.That(skills[0].Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skills[0].Bonuses.Single();
             Assert.That(bonus.Condition, Is.Empty);
             Assert.That(bonus.IsConditional, Is.False);
             Assert.That(bonus.Value, Is.EqualTo(9266));
 
-            Assert.That(skills[3].Name, Is.EqualTo("skill name"));
-            Assert.That(skills[3].Focus, Is.EqualTo("other focus"));
-            Assert.That(skills[3].EffectiveRanks, Is.LessThan(5));
-            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(5));
-            Assert.That(skills[3].Bonuses, Is.Not.Empty);
-            Assert.That(skills[3].Bonuses.Count, Is.EqualTo(1));
+            Assert.That(skills[1].Name, Is.EqualTo("skill name"));
+            Assert.That(skills[1].Focus, Is.EqualTo("other focus"));
+            Assert.That(skills[1].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[1].Bonuses, Is.Not.Empty);
+            Assert.That(skills[1].Bonuses.Count, Is.EqualTo(1));
 
-            bonus = skills[3].Bonuses.Single();
+            bonus = skills[1].Bonuses.Single();
             Assert.That(bonus.Condition, Is.Empty);
             Assert.That(bonus.IsConditional, Is.False);
             Assert.That(bonus.Value, Is.EqualTo(90210));
@@ -2971,15 +2972,48 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills, Is.Not.Empty);
             Assert.That(skills.Count, Is.EqualTo(2));
 
-            Assert.That(skills[0].Name, Is.EqualTo("skill name"));
+            Assert.That(skills[1].Name, Is.EqualTo("skill name"));
+            Assert.That(skills[1].Focus, Is.EqualTo("focus"));
+            Assert.That(skills[1].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[1].Bonuses, Is.Empty);
+
+            Assert.That(skills[0].Name, Is.EqualTo("other skill name"));
             Assert.That(skills[0].Focus, Is.EqualTo("other focus"));
+            Assert.That(skills[0].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(2.5));
+            Assert.That(skills[0].Bonuses, Is.Not.Empty);
+            Assert.That(skills[0].Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skills[0].Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(9266));
+        }
+
+        [Test]
+        public void GetSkillSynergyFromUntrainedSkill()
+        {
+            creatureTypeSkillPoints = 3;
+            AddUntrainedSkills(2);
+
+            hitPoints.HitDiceQuantity = 7;
+
+            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[1] } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(untrainedSkills[0])).Returns(bonuses);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(2));
+
+            Assert.That(skills[0].Name, Is.EqualTo(untrainedSkills[0]));
+            Assert.That(skills[0].Focus, Is.Empty);
             Assert.That(skills[0].EffectiveRanks, Is.AtLeast(5));
             Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
             Assert.That(skills[0].Bonuses, Is.Empty);
 
-            Assert.That(skills[1].Name, Is.EqualTo("other skill name"));
-            Assert.That(skills[1].Focus, Is.EqualTo("other focus"));
-            Assert.That(skills[1].EffectiveRanks, Is.LessThan(5));
+            Assert.That(skills[1].Name, Is.EqualTo(untrainedSkills[1]));
+            Assert.That(skills[1].Focus, Is.Empty);
             Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
             Assert.That(skills[1].Bonuses, Is.Not.Empty);
             Assert.That(skills[1].Bonuses.Count, Is.EqualTo(1));
@@ -2991,27 +3025,36 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergyFromUntrainedSkill()
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
         public void GetSkillSynergyForCreatureSkill()
         {
-            Assert.Fail("not yet written");
-        }
+            creatureTypeSkillPoints = 3;
+            AddCreatureSkills(2);
 
-        [Test]
-        public void GetSkillSynergyForCreatureSkillWith5OrMoreRanks()
-        {
-            Assert.Fail("not yet written");
-        }
+            hitPoints.HitDiceQuantity = 2;
 
-        [Test]
-        public void GetSkillSynergyForUntrainedSkillWith5OrMoreRanks()
-        {
-            Assert.Fail("not yet written");
+            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = creatureSkills[1] } };
+            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(2));
+
+            Assert.That(skills[0].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skills[0].Focus, Is.Empty);
+            Assert.That(skills[0].EffectiveRanks, Is.AtLeast(5));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[0].Bonuses, Is.Empty);
+
+            Assert.That(skills[1].Name, Is.EqualTo(creatureSkills[1]));
+            Assert.That(skills[1].Focus, Is.Empty);
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(5));
+            Assert.That(skills[1].Bonuses, Is.Not.Empty);
+            Assert.That(skills[1].Bonuses.Count, Is.EqualTo(1));
+
+            var bonus = skills[1].Bonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.IsConditional, Is.False);
+            Assert.That(bonus.Value, Is.EqualTo(9266));
         }
     }
 }

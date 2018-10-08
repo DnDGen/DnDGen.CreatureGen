@@ -112,7 +112,7 @@ namespace CreatureGen.Generators.Creatures
             }
 
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities, creature.CanUseEquipment, creature.Size);
-            creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(creatureName, creature.Type, creature.HitPoints, creature.Abilities, creature.Skills, creature.CanUseEquipment);
+            creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(creatureName, creature.Type, creature.HitPoints, creature.Abilities, creature.Skills, creature.CanUseEquipment, creature.Size);
             creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
             creature.Attacks = attacksGenerator.GenerateAttacks(creatureName, creatureData.Size, creature.Size, creature.BaseAttackBonus, creature.Abilities);
 

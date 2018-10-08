@@ -3,6 +3,7 @@ using CreatureGen.Feats;
 using CreatureGen.Selectors.Selections;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CreatureGen.Tests.Unit.Selectors.Selections
 {
@@ -34,13 +35,14 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.MinimumAbilities, Is.Empty);
             Assert.That(selection.RandomFociQuantity, Is.Empty);
             Assert.That(selection.RequiredFeats, Is.Empty);
+            Assert.That(selection.RequiredSizes, Is.Empty);
             Assert.That(selection.RequiresEquipment, Is.False);
         }
 
         [Test]
         public void RequirementsMetIfNoRequirements()
         {
-            var met = selection.RequirementsMet(abilities, feats, false);
+            var met = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(met, Is.True);
         }
 
@@ -49,7 +51,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.MinimumAbilities["ability"] = 9266;
 
-            var met = selection.RequirementsMet(abilities, feats, false);
+            var met = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(met, Is.False);
         }
 
@@ -61,7 +63,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["ability"] = new Ability("ability");
             abilities["ability"].BaseScore = 9267;
 
-            var met = selection.RequirementsMet(abilities, feats, false);
+            var met = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(met, Is.True);
         }
 
@@ -74,7 +76,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["ability"].BaseScore = 10;
             abilities["ability"].RacialAdjustment = 9256;
 
-            var met = selection.RequirementsMet(abilities, feats, false);
+            var met = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(met, Is.True);
         }
 
@@ -87,7 +89,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["ability"].BaseScore = 10;
             abilities["ability"].RacialAdjustment = 9255;
 
-            var met = selection.RequirementsMet(abilities, feats, false);
+            var met = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(met, Is.False);
         }
 
@@ -100,14 +102,14 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["ability 2"] = new Ability("ability 2");
             abilities["ability 2"].BaseScore = 600;
 
-            var met = selection.RequirementsMet(abilities, feats, false);
+            var met = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(met, Is.True);
         }
 
         [Test]
         public void MetIfNoRequiredFeats()
         {
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -118,7 +120,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             feats.Add(new Feat { Name = "feat 1" });
             feats.Add(new Feat { Name = "feat 2" });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -128,7 +130,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             selection.RequiredFeats = new[] { new RequiredFeatSelection { Feat = "feat 1" }, new RequiredFeatSelection { Feat = "feat 2" } };
             feats.Add(new Feat { Name = "feat 1" });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(requirementsMet, Is.False);
         }
 
@@ -137,7 +139,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredFeats = new[] { new RequiredFeatSelection { Feat = "feat 1" }, new RequiredFeatSelection { Feat = "feat 2" } };
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(requirementsMet, Is.False);
         }
 
@@ -153,7 +155,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             feats.Add(new Feat { Name = "feat 1", Foci = new[] { "focus 1", "focus 3" } });
             feats.Add(new Feat { Name = "feat 2", Foci = new[] { "focus 4", "focus 2" } });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -171,7 +173,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             feats.Add(new Feat { Name = "feat 3" });
             feats.Add(new Feat { Name = "feat 4", Foci = new[] { "focus 4" } });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -188,7 +190,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             feats.Add(new Feat { Name = "feat 2", Foci = new[] { "focus 2", "focus 1" } });
             feats.Add(new Feat { Name = "feat 3", Foci = new[] { "focus 1" } });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(requirementsMet, Is.False);
         }
 
@@ -205,7 +207,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             feats.Add(new Feat { Name = "feat 2", Foci = new[] { "focus 1" } });
             feats.Add(new Feat { Name = "feat 3", Foci = new[] { "focus 1", "focus 2" } });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(requirementsMet, Is.False);
         }
 
@@ -214,7 +216,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiresEquipment = false;
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, true);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, true, "size");
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -223,7 +225,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiresEquipment = true;
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, true);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, true, "size");
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -232,7 +234,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiresEquipment = true;
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(requirementsMet, Is.False);
         }
 
@@ -241,27 +243,53 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiresEquipment = false;
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
             Assert.That(requirementsMet, Is.True);
         }
 
         [Test]
-        public void AllRequirementsMet()
+        public void MetIfNoRequiredCreatureSize()
         {
-            selection.MinimumAbilities["ability"] = 42;
-            selection.RequiresEquipment = true;
+            selection.RequiredSizes = Enumerable.Empty<string>();
 
-            selection.RequiredFeats = new[]
-            {
-                new RequiredFeatSelection { Feat = "feat 1" },
-                new RequiredFeatSelection { Feat = "feat 2", Foci = new[] { "focus 2" } }
-            };
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "wrong size");
+            Assert.That(requirementsMet, Is.True);
+        }
 
-            feats.Add(new Feat { Name = "feat 1" });
-            feats.Add(new Feat { Name = "feat 2", Foci = new[] { "focus 2" } });
+        [Test]
+        public void MetIfSizeIsRequiredCreatureSize()
+        {
+            selection.RequiredSizes = new[] { "size" };
 
-            var met = selection.RequirementsMet(abilities, feats, true);
-            Assert.That(met, Is.True);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
+            Assert.That(requirementsMet, Is.True);
+        }
+
+        [Test]
+        public void MetIfSizeIsAnyRequiredCreatureSize()
+        {
+            selection.RequiredSizes = new[] { "other size", "size" };
+
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size");
+            Assert.That(requirementsMet, Is.True);
+        }
+
+        [Test]
+        public void NoitMetIfSizeIsNotRequiredCreatureSize()
+        {
+            selection.RequiredSizes = new[] { "size" };
+
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "wrong size");
+            Assert.That(requirementsMet, Is.False);
+        }
+
+        [Test]
+        public void NoitMetIfSizeIsNotAnyRequiredCreatureSize()
+        {
+            selection.RequiredSizes = new[] { "other size", "size" };
+
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "wrong size");
+            Assert.That(requirementsMet, Is.False);
         }
     }
 }

@@ -296,8 +296,7 @@ namespace CreatureGen.Tests.Unit.Feats
         {
             Assert.That(constant, Is.EqualTo(value));
         }
-
-        [TestCase(FeatConstants.Foci.All, "All")]
+        
         [TestCase(FeatConstants.Foci.Element, "Element")]
         [TestCase(FeatConstants.Foci.NoValidFociAvailable, "No Valid Foci Available")]
         [TestCase(FeatConstants.Foci.School, "School")]

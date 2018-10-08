@@ -774,16 +774,52 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         //INFO: Type or Subtype special qualities might have size requirements
         //Example is Swarm subtype having defenses dependent on size
         [Test]
-        public void GetSizeRequirementForSpecialQuality()
+        public void GetNoSizeRequirementForSpecialQuality()
         {
-            Assert.Fail("not yet written");
+            AddSpecialQualityData("creature", "special quality");
+
+            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+            Assert.That(specialQuality.RequiredSizes, Is.Empty);
         }
 
         //INFO: Type or Subtype special qualities might have size requirements
+        //Example is Swarm subtype having defenses dependent on size
+        [Test]
+        public void GetSizeRequirementForSpecialQuality()
+        {
+            AddSpecialQualityData("creature", "special quality");
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality"))
+                .Returns(new[] { "size" });
+
+            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+            Assert.That(specialQuality.RequiredSizes, Contains.Item("size"));
+            Assert.That(specialQuality.RequiredSizes.Count, Is.EqualTo(1));
+        }
+
+        //INFO: Type or Subtype special qualities might have size requirements
+        //Example is Swarm subtype having defenses dependent on size
         [Test]
         public void GetSizeRequirementsForSpecialQuality()
         {
-            Assert.Fail("not yet written");
+            AddSpecialQualityData("creature", "special quality");
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality"))
+                .Returns(new[] { "size", "other size" });
+
+            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+            Assert.That(specialQuality.RequiredSizes, Contains.Item("size"));
+            Assert.That(specialQuality.RequiredSizes, Contains.Item("other size"));
+            Assert.That(specialQuality.RequiredSizes.Count, Is.EqualTo(2));
         }
 
         [Test]

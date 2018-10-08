@@ -198,7 +198,7 @@ namespace CreatureGen.Tests.Unit.Defenses
             foreach (var bonus in bonuses)
                 save.AddBonus(bonus);
 
-            var expectedTotal = abilityScore + baseValue + bonuses.Sum();
+            var expectedTotal = save.BaseAbility.Modifier + baseValue + bonuses.Sum();
             Assert.That(save.TotalBonus, Is.EqualTo(expectedTotal));
         }
 

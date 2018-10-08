@@ -8,9 +8,6 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
 {
     public class NumericTestData
     {
-        public static IEnumerable<int> AllTestValues => NegativeValues.Union(NonNegativeValues);
-        public static IEnumerable<int> AllBaseTestValues => BaseTestNumbers.Union(NegativeBaseValues);
-
         public static IEnumerable<int> CustomTestNumbers = new[]
         {
             42,
@@ -34,10 +31,13 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
             5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
         };
 
-        public static IEnumerable<int> NegativeValues => CustomTestNumbers.Union(BaseTestNumbers).Select(n => n * -1);
+        public static IEnumerable<int> AllTestValues => NegativeValues.Union(NonNegativeValues);
+        public static IEnumerable<int> AllBaseTestValues => BaseTestNumbers.Union(NegativeBaseValues);
+        public static IEnumerable<int> NegativeValues => NonPositiveValues.Where(v => v < 0);
         public static IEnumerable<int> NegativeBaseValues => BaseTestNumbers.Select(n => n * -1);
         public static IEnumerable<int> NonNegativeValues => CustomTestNumbers.Union(BaseTestNumbers);
         public static IEnumerable<int> PositiveValues => NonNegativeValues.Where(v => v > 0);
+        public static IEnumerable<int> NonPositiveValues => CustomTestNumbers.Union(BaseTestNumbers).Select(n => n * -1);
 
         public static IEnumerable AllValues
         {
@@ -65,7 +65,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
         {
             get
             {
-                foreach (var value in PositiveValues)
+                foreach (var value in NonPositiveValues)
                 {
                     yield return new TestCaseData(value);
                 }

@@ -57,7 +57,7 @@ namespace CreatureGen.Selectors.Collections
             featSelection.RequiredSkills = GetRequiredSkills(featSelection.Feat);
             featSelection.RequiredAbilities = GetRequiredAbilities(featSelection.Feat);
             featSelection.RequiredSpeeds = GetRequiredSpeeds(featSelection.Feat);
-            featSelection.RequiredSizes = collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredSizes, featSelection.Feat);
+            featSelection.RequiredSizes = GetRequiredSizes(featSelection.Feat);
 
             var featsTakenMultipleTimes = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.TakenMultipleTimes);
             featSelection.CanBeTakenMultipleTimes = featsTakenMultipleTimes.Contains(featSelection.Feat);
@@ -157,6 +157,7 @@ namespace CreatureGen.Selectors.Collections
 
                     specialQualitySelection.RequiredFeats = GetRequiredFeats(source + specialQualitySelection.Feat);
                     specialQualitySelection.MinimumAbilities = GetRequiredAbilities(source + specialQualitySelection.Feat);
+                    specialQualitySelection.RequiredSizes = GetRequiredSizes(source + specialQualitySelection.Feat);
 
                     specialQualitySelections.Add(specialQualitySelection);
                     usedSpecialQualities.Add(specialQuality);
@@ -164,6 +165,11 @@ namespace CreatureGen.Selectors.Collections
             }
 
             return specialQualitySelections;
+        }
+
+        private IEnumerable<string> GetRequiredSizes(string source)
+        {
+            return collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredSizes, source);
         }
 
         private IEnumerable<RequiredFeatSelection> GetRequiredFeats(string feat)

@@ -189,7 +189,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             requiredFeats.Add(new RequiredFeatSelection { Feat = "feat1" });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "feat1";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
 
             focusTypes["focus type"] = new[] { "school 2", "school 3" };
             focusTypes["feat1"] = new[] { "school 1", "school 2" };
@@ -206,7 +206,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
 
             otherFeats[0].Name = FeatConstants.WeaponProficiency_Martial;
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = FeatConstants.SpecialQualities.WeaponFamiliarity;
             otherFeats[1].Foci = new[] { "weird weapon" };
 
@@ -247,7 +247,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "proficiency2";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
 
             focusTypes["focus type"] = new[] { "school 1", "school 2" };
             focusTypes["proficiency2"] = new[] { "school 2", "school 3" };
@@ -302,7 +302,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "specific weapon" } });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "proficiency2";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
 
             focusTypes["focus type"] = new[] { "wrong weapon", "other weapon", "specific weapon" };
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "specific weapon", "other weapon", "wrong weapon" };
@@ -344,7 +344,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.ElementAt(2));
 
-            var focus = featFocusGenerator.GenerateFrom(FeatConstants.WeaponProficiency_Martial, FeatConstants.Foci.All, skills, requiredFeats, otherFeats, 1, abilities, attacks);
+            var focus = featFocusGenerator.GenerateFrom(FeatConstants.WeaponProficiency_Martial, GroupConstants.All, skills, requiredFeats, otherFeats, 1, abilities, attacks);
             Assert.That(focus, Is.EqualTo("weird weapon"));
         }
 
@@ -381,7 +381,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
 
             otherFeats[0].Name = "proficiency2";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = "proficiency1";
             otherFeats[1].Foci = new[] { "school 4" };
             otherFeats[2].Name = "feat";
@@ -486,7 +486,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             focusTypes[FeatConstants.WeaponProficiency_Exotic] = new[] { "weird weapon", "school 2" };
 
-            var focus = featFocusGenerator.GenerateFrom(FeatConstants.WeaponProficiency_Exotic, FeatConstants.Foci.All, skills, requiredFeats, otherFeats, 1, abilities, attacks);
+            var focus = featFocusGenerator.GenerateFrom(FeatConstants.WeaponProficiency_Exotic, GroupConstants.All, skills, requiredFeats, otherFeats, 1, abilities, attacks);
             Assert.That(focus, Is.EqualTo("school 2"));
         }
 
@@ -499,7 +499,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             focusTypes[FeatConstants.WeaponProficiency_Martial] = new[] { "school 2" };
 
-            var focus = featFocusGenerator.GenerateFrom(FeatConstants.WeaponProficiency_Martial, FeatConstants.Foci.All, skills, requiredFeats, otherFeats, 1, abilities, attacks);
+            var focus = featFocusGenerator.GenerateFrom(FeatConstants.WeaponProficiency_Martial, GroupConstants.All, skills, requiredFeats, otherFeats, 1, abilities, attacks);
             Assert.That(focus, Is.EqualTo("school 2"));
         }
 
@@ -512,7 +512,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             focusTypes[FeatConstants.WeaponProficiency_Exotic] = new[] { "weird weapon", "school 2" };
 
-            var focus = featFocusGenerator.GenerateFrom(FeatConstants.WeaponProficiency_Exotic, FeatConstants.Foci.All, skills, requiredFeats, otherFeats, 1, abilities, attacks);
+            var focus = featFocusGenerator.GenerateFrom(FeatConstants.WeaponProficiency_Exotic, GroupConstants.All, skills, requiredFeats, otherFeats, 1, abilities, attacks);
             Assert.That(focus, Is.EqualTo("weird weapon"));
         }
 
@@ -520,15 +520,15 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         public void CanBeProficientInAllFromSkills()
         {
             focusTypes["feat"] = new[] { "focus" };
-            var focus = featFocusGenerator.GenerateAllowingFocusOfAllFrom("feat", FeatConstants.Foci.All, skills, abilities);
-            Assert.That(focus, Is.EqualTo(FeatConstants.Foci.All));
+            var focus = featFocusGenerator.GenerateAllowingFocusOfAllFrom("feat", GroupConstants.All, skills, abilities);
+            Assert.That(focus, Is.EqualTo(GroupConstants.All));
         }
 
         [Test]
         public void CannotBeProficientInAllFromSkills()
         {
             focusTypes["feat"] = new[] { "focus" };
-            var focus = featFocusGenerator.GenerateFrom("feat", FeatConstants.Foci.All, skills, abilities);
+            var focus = featFocusGenerator.GenerateFrom("feat", GroupConstants.All, skills, abilities);
             Assert.That(focus, Is.EqualTo("focus"));
         }
 
@@ -536,7 +536,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         public void CannotBeProficientInAll()
         {
             focusTypes["feat"] = new[] { "focus" };
-            var focus = featFocusGenerator.GenerateFrom("feat", FeatConstants.Foci.All, skills, requiredFeats, otherFeats, 1, abilities, attacks);
+            var focus = featFocusGenerator.GenerateFrom("feat", GroupConstants.All, skills, requiredFeats, otherFeats, 1, abilities, attacks);
             Assert.That(focus, Is.EqualTo("focus"));
         }
 
@@ -694,7 +694,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         {
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "feat";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
 
             focusTypes["focus type"] = new[] { "school 1" };
 
@@ -759,7 +759,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats[0].Name = "feat1";
             otherFeats[0].Foci = new[] { "weapon" };
             otherFeats[1].Name = "all proficiency";
-            otherFeats[1].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[1].Foci = new[] { GroupConstants.All };
             otherFeats[2].Name = "specific proficiency";
             otherFeats[2].Foci = new[] { "specific weapon" };
 
@@ -813,7 +813,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "all proficiency";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = "specific proficiency";
             otherFeats[1].Foci = new[] { "specific weapon" };
 
@@ -841,7 +841,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "all proficiency";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = "specific proficiency";
             otherFeats[1].Foci = new[] { "specific weapon" };
 
@@ -870,7 +870,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "all proficiency";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = "specific proficiency";
             otherFeats[1].Foci = new[] { "specific weapon" };
             otherFeats[2].Name = "feat";
@@ -902,7 +902,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "all proficiency";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = "specific proficiency";
             otherFeats[1].Foci = new[] { "specific weapon" };
             otherFeats[2].Name = "feat";
@@ -931,7 +931,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "all proficiency";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = "specific proficiency";
             otherFeats[1].Foci = new[] { "specific weapon" };
 
@@ -1193,7 +1193,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "all proficiency";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = "specific proficiency";
             otherFeats[1].Foci = new[] { "specific weapon" };
 
@@ -1221,7 +1221,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "all proficiency";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = "specific proficiency";
             otherFeats[1].Foci = new[] { "specific weapon" };
 
@@ -1250,7 +1250,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "all proficiency";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = "specific proficiency";
             otherFeats[1].Foci = new[] { "specific weapon" };
             otherFeats[2].Name = "feat";
@@ -1282,7 +1282,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "all proficiency";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = "specific proficiency";
             otherFeats[1].Foci = new[] { "specific weapon" };
             otherFeats[2].Name = "feat";
@@ -1311,7 +1311,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "all proficiency";
-            otherFeats[0].Foci = new[] { FeatConstants.Foci.All };
+            otherFeats[0].Foci = new[] { GroupConstants.All };
             otherFeats[1].Name = "specific proficiency";
             otherFeats[1].Foci = new[] { "specific weapon" };
 
@@ -1342,7 +1342,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusIsNotPresetIfAll()
         {
-            var preset = featFocusGenerator.FocusTypeIsPreset(FeatConstants.Foci.All);
+            var preset = featFocusGenerator.FocusTypeIsPreset(GroupConstants.All);
             Assert.That(preset, Is.False);
         }
 

@@ -43,7 +43,7 @@ namespace CreatureGen.Generators.Feats
             var usedFeats = otherFeats.Where(f => f.Name == feat);
             var usedFoci = usedFeats.SelectMany(f => f.Foci);
 
-            if (usedFoci.Contains(FeatConstants.Foci.All))
+            if (usedFoci.Contains(GroupConstants.All))
                 return FeatConstants.Foci.NoValidFociAvailable;
 
             foci = foci.Except(usedFoci);
@@ -72,13 +72,13 @@ namespace CreatureGen.Generators.Feats
         {
             var isCollection = collectionsSelector.IsCollection(TableNameConstants.Collection.FeatFoci, focusType);
             return !string.IsNullOrEmpty(focusType)
-                && focusType != FeatConstants.Foci.All
+                && focusType != GroupConstants.All
                 && !isCollection;
         }
 
         private IEnumerable<string> GetExplodedFoci(string feat, string focusType, IEnumerable<Feat> otherFeats)
         {
-            if (focusType != FeatConstants.Foci.All)
+            if (focusType != GroupConstants.All)
             {
                 var foci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, focusType);
                 return foci;
@@ -139,8 +139,8 @@ namespace CreatureGen.Generators.Feats
                 var featName = kvp.Key;
                 var foci = kvp.Value;
 
-                if (foci.Contains(FeatConstants.Foci.All))
-                    foci = GetExplodedFoci(featName, FeatConstants.Foci.All, otherFeats);
+                if (foci.Contains(GroupConstants.All))
+                    foci = GetExplodedFoci(featName, GroupConstants.All, otherFeats);
 
                 applicableFoci = applicableFoci.Intersect(foci);
             }
@@ -162,13 +162,13 @@ namespace CreatureGen.Generators.Feats
             {
                 foreach (var focus in proficiencyFeat.Foci)
                 {
-                    if (focus != FeatConstants.Foci.All)
+                    if (focus != GroupConstants.All)
                     {
                         proficiencyFoci.Add(focus);
                     }
                     else
                     {
-                        var explodedFoci = GetExplodedFoci(proficiencyFeat.Name, FeatConstants.Foci.All, otherFeats);
+                        var explodedFoci = GetExplodedFoci(proficiencyFeat.Name, GroupConstants.All, otherFeats);
                         proficiencyFoci.AddRange(explodedFoci);
                     }
                 }
@@ -235,7 +235,7 @@ namespace CreatureGen.Generators.Feats
 
         public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, IEnumerable<RequiredFeatSelection> requiredFeats, IEnumerable<Feat> otherFeats, int casterLevel, Dictionary<string, Ability> abilities, IEnumerable<Attack> attacks)
         {
-            if (focusType == FeatConstants.Foci.All)
+            if (focusType == GroupConstants.All)
                 return focusType;
 
             return GenerateFrom(feat, focusType, skills, requiredFeats, otherFeats, casterLevel, abilities, attacks);
@@ -243,7 +243,7 @@ namespace CreatureGen.Generators.Feats
 
         public string GenerateAllowingFocusOfAllFrom(string feat, string focusType, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
         {
-            if (focusType == FeatConstants.Foci.All)
+            if (focusType == GroupConstants.All)
                 return focusType;
 
             return GenerateFrom(feat, focusType, skills, abilities);

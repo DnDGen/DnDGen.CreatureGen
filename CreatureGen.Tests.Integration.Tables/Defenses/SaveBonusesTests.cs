@@ -29,7 +29,6 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
         [TestCaseSource(typeof(SaveBonusesTestData), "Creatures")]
         [TestCaseSource(typeof(SaveBonusesTestData), "Types")]
         [TestCaseSource(typeof(SaveBonusesTestData), "Subtypes")]
-        [TestCaseSource(typeof(SaveBonusesTestData), "SkillSynergies")]
         public void SkillBonuses(string source, Dictionary<string, int> skillAndBonus)
         {
             if (!skillAndBonus.Any())

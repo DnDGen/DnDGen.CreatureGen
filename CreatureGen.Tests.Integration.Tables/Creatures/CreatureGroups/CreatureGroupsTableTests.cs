@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Creatures;
+using CreatureGen.Defenses;
 using CreatureGen.Tables;
 using NUnit.Framework;
 using System.Linq;
@@ -80,6 +81,9 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Groups.Whale,
                 CreatureConstants.Groups.Xorn,
                 CreatureConstants.Groups.YuanTi,
+                SaveConstants.Fortitude,
+                SaveConstants.Reflex,
+                SaveConstants.Will,
             };
 
             var names = entries.Union(templates).Union(types).Union(subtypes);

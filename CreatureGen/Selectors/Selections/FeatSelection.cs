@@ -3,6 +3,7 @@ using CreatureGen.Attacks;
 using CreatureGen.Creatures;
 using CreatureGen.Feats;
 using CreatureGen.Skills;
+using CreatureGen.Tables;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -112,7 +113,7 @@ namespace CreatureGen.Selectors.Selections
 
         private bool FocusSelected(Feat feat)
         {
-            return string.IsNullOrEmpty(FocusType) || feat.Foci.Contains(FeatConstants.Foci.All);
+            return string.IsNullOrEmpty(FocusType) || feat.Foci.Contains(GroupConstants.All);
         }
     }
 }

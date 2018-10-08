@@ -133,9 +133,9 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         //INFO: Being a Fighter is a requirement for these feats
         //[TestCase(FeatConstants.WeaponFocus, 0, FeatConstants.Foci.Weapon, 0, "", 0, 0, 0, 0, false, false, false)]
         //[TestCase(FeatConstants.WeaponFocus_Greater, 0, FeatConstants.Foci.Weapon, 0, "", 0, 0, 0, 0, false, false, false)]
-        [TestCase(FeatConstants.WeaponProficiency_Exotic, 1, FeatConstants.Foci.All, 0, "", 0, 0, 1, 0, false, false, false)]
-        [TestCase(FeatConstants.WeaponProficiency_Martial, 0, FeatConstants.Foci.All, 0, "", 0, 0, 1, 0, false, false, false)]
-        [TestCase(FeatConstants.WeaponProficiency_Simple, 0, FeatConstants.Foci.All, 0, "", 0, 0, 1, 0, false, false, false)]
+        [TestCase(FeatConstants.WeaponProficiency_Exotic, 1, GroupConstants.All, 0, "", 0, 0, 1, 0, false, false, false)]
+        [TestCase(FeatConstants.WeaponProficiency_Martial, 0, GroupConstants.All, 0, "", 0, 0, 1, 0, false, false, false)]
+        [TestCase(FeatConstants.WeaponProficiency_Simple, 0, GroupConstants.All, 0, "", 0, 0, 1, 0, false, false, false)]
         //INFO: Being a Fighter is a requirement for these feats
         //[TestCase(FeatConstants.WeaponSpecialization, 0, FeatConstants.Foci.Weapon, 0, "", 0, 0, 0, 0, false, false, false)]
         //[TestCase(FeatConstants.WeaponSpecialization_Greater, 0, FeatConstants.Foci.Weapon, 0, "", 0, 0, 0, 0, false, false, false)]

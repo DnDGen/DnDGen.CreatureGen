@@ -128,6 +128,108 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         }
 
         [TestCaseSource(typeof(SavesGeneratorTestData), "BaseValues")]
+        public void SaveBaseValueComesFromCreatureType(bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
+        {
+            var strongSaveBonus = 2;
+            var weakSaveBonus = 0;
+
+            var expectedFortitude = weakSaveBonus;
+            var expectedReflex = weakSaveBonus;
+            var expectedWill = weakSaveBonus;
+
+            if (isStrongFortitude)
+            {
+                strongFortitude.Add(creatureType.Name);
+                expectedFortitude = strongSaveBonus;
+            }
+
+            if (isStrongReflex)
+            {
+                strongReflex.Add(creatureType.Name);
+                expectedReflex = strongSaveBonus;
+            }
+
+            if (isStrongWill)
+            {
+                strongWill.Add(creatureType.Name);
+                expectedWill = strongSaveBonus;
+            }
+
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+            Assert.That(saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(expectedFortitude));
+            Assert.That(saves[SaveConstants.Reflex].BaseValue, Is.EqualTo(expectedReflex));
+            Assert.That(saves[SaveConstants.Will].BaseValue, Is.EqualTo(expectedWill));
+        }
+
+        [TestCaseSource(typeof(SavesGeneratorTestData), "BaseValues")]
+        public void SaveBaseValueComesFromCreature(bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
+        {
+            var strongSaveBonus = 2;
+            var weakSaveBonus = 0;
+
+            var expectedFortitude = weakSaveBonus;
+            var expectedReflex = weakSaveBonus;
+            var expectedWill = weakSaveBonus;
+
+            if (isStrongFortitude)
+            {
+                strongFortitude.Add("creature");
+                expectedFortitude = strongSaveBonus;
+            }
+
+            if (isStrongReflex)
+            {
+                strongReflex.Add("creature");
+                expectedReflex = strongSaveBonus;
+            }
+
+            if (isStrongWill)
+            {
+                strongWill.Add("creature");
+                expectedWill = strongSaveBonus;
+            }
+
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+            Assert.That(saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(expectedFortitude));
+            Assert.That(saves[SaveConstants.Reflex].BaseValue, Is.EqualTo(expectedReflex));
+            Assert.That(saves[SaveConstants.Will].BaseValue, Is.EqualTo(expectedWill));
+        }
+
+        [TestCaseSource(typeof(SavesGeneratorTestData), "BaseValues")]
+        public void SaveBaseValueComesFromCreatureAndOverridesCreatureType(bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
+        {
+            strongFortitude.Add(creatureType.Name);
+            strongReflex.Add(creatureType.Name);
+            strongWill.Add(creatureType.Name);
+
+            if (isStrongFortitude)
+            {
+                strongFortitude.Add("creature");
+                strongFortitude.Remove(creatureType.Name);
+            }
+
+            if (isStrongReflex)
+            {
+                strongReflex.Add("creature");
+                strongReflex.Remove(creatureType.Name);
+            }
+
+            if (isStrongWill)
+            {
+                strongWill.Add("creature");
+                strongWill.Remove(creatureType.Name);
+            }
+
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+            Assert.That(saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(2));
+            Assert.That(saves[SaveConstants.Reflex].BaseValue, Is.EqualTo(2));
+            Assert.That(saves[SaveConstants.Will].BaseValue, Is.EqualTo(2));
+        }
+
+        [TestCaseSource(typeof(SavesGeneratorTestData), "BaseValuesFromHitDice")]
         [TestCaseSource(typeof(SavesGeneratorTestData), "FractionalHitDiceForBaseValues")]
         public void SaveBaseValuesBasedOnHitDice(double hitDiceQuantity, bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
         {
@@ -174,6 +276,25 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         public class SavesGeneratorTestData
         {
             public static IEnumerable BaseValues
+            {
+                get
+                {
+                    var isStrong = new[] { true, false };
+
+                    foreach (var fortitude in isStrong)
+                    {
+                        foreach (var reflex in isStrong)
+                        {
+                            foreach (var will in isStrong)
+                            {
+                                yield return new TestCaseData(fortitude, reflex, will);
+                            }
+                        }
+                    }
+                }
+            }
+
+            public static IEnumerable BaseValuesFromHitDice
             {
                 get
                 {
@@ -258,7 +379,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
                 }
             }
 
-            private static IEnumerable<string> Sources = new[] { null, FeatConstants.Foci.All, SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will };
+            private static IEnumerable<string> Sources = new[] { null, GroupConstants.All, SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will };
             private static readonly IEnumerable<string> NonNullSources = Sources.Where(s => s != null);
         }
 
@@ -333,8 +454,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
 
-            var expectedAll = nonConditionalBonuses.Where(b => b.Target == FeatConstants.Foci.All).Sum(b => b.Bonus);
-            var expectedAllCount = allBonuses.Where(b => b.Target == FeatConstants.Foci.All).Count();
+            var expectedAll = nonConditionalBonuses.Where(b => b.Target == GroupConstants.All).Sum(b => b.Bonus);
+            var expectedAllCount = allBonuses.Where(b => b.Target == GroupConstants.All).Count();
 
             var expectedFortitude = nonConditionalBonuses.Where(b => b.Target == SaveConstants.Fortitude).Sum(b => b.Bonus);
             var expectedFortitudeCount = allBonuses.Where(b => b.Target == SaveConstants.Fortitude).Count();
@@ -394,8 +515,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
 
-            var expectedAll = nonConditionalBonuses.Where(b => b.Target == FeatConstants.Foci.All).Sum(b => b.Bonus);
-            var expectedAllCount = allBonuses.Where(b => b.Target == FeatConstants.Foci.All).Count();
+            var expectedAll = nonConditionalBonuses.Where(b => b.Target == GroupConstants.All).Sum(b => b.Bonus);
+            var expectedAllCount = allBonuses.Where(b => b.Target == GroupConstants.All).Count();
 
             var expectedFortitude = nonConditionalBonuses.Where(b => b.Target == SaveConstants.Fortitude).Sum(b => b.Bonus);
             var expectedFortitudeCount = allBonuses.Where(b => b.Target == SaveConstants.Fortitude).Count();
@@ -448,7 +569,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             }
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
-            var expectedAllCount = allBonuses.Where(b => b.Target == FeatConstants.Foci.All).Count();
+            var expectedAllCount = allBonuses.Where(b => b.Target == GroupConstants.All).Count();
             var expectedFortitudeCount = allBonuses.Where(b => b.Target == SaveConstants.Fortitude).Count();
             var expectedReflexCount = allBonuses.Where(b => b.Target == SaveConstants.Reflex).Count();
             var expectedWillCount = allBonuses.Where(b => b.Target == SaveConstants.Will).Count();
@@ -477,8 +598,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             racialBonuses["creature"].Add(new BonusSelection { Target = source1, Bonus = counter++ });
             racialBonuses["creature"].Add(new BonusSelection { Target = source2, Bonus = counter++ });
 
-            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == FeatConstants.Foci.All).Sum(b => b.Bonus);
-            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == FeatConstants.Foci.All).Count();
+            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == GroupConstants.All).Sum(b => b.Bonus);
+            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == GroupConstants.All).Count();
             var expectedFortitude = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == SaveConstants.Fortitude).Sum(b => b.Bonus);
             var expectedFortitudeCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == SaveConstants.Fortitude).Count();
             var expectedReflex = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == SaveConstants.Reflex).Sum(b => b.Bonus);
@@ -510,8 +631,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             racialBonuses[creatureType.Name].Add(new BonusSelection { Target = source1, Bonus = counter++ });
             racialBonuses[creatureType.Name].Add(new BonusSelection { Target = source2, Bonus = counter++ });
 
-            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == FeatConstants.Foci.All).Sum(b => b.Bonus);
-            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == FeatConstants.Foci.All).Count();
+            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == GroupConstants.All).Sum(b => b.Bonus);
+            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == GroupConstants.All).Count();
             var expectedFortitude = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == SaveConstants.Fortitude).Sum(b => b.Bonus);
             var expectedFortitudeCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == SaveConstants.Fortitude).Count();
             var expectedReflex = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == SaveConstants.Reflex).Sum(b => b.Bonus);
@@ -546,8 +667,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             racialBonuses["subtype"].Add(new BonusSelection { Target = source1, Bonus = counter++ });
             racialBonuses["subtype"].Add(new BonusSelection { Target = source2, Bonus = counter++ });
 
-            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == FeatConstants.Foci.All).Sum(b => b.Bonus);
-            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == FeatConstants.Foci.All).Count();
+            var expectedAll = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == GroupConstants.All).Sum(b => b.Bonus);
+            var expectedAllCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == GroupConstants.All).Count();
             var expectedFortitude = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == SaveConstants.Fortitude).Sum(b => b.Bonus);
             var expectedFortitudeCount = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == SaveConstants.Fortitude).Count();
             var expectedReflex = racialBonuses.Values.SelectMany(v => v).Where(b => b.Target == SaveConstants.Reflex).Sum(b => b.Bonus);

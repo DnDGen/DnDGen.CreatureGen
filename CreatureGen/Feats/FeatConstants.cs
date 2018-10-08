@@ -457,7 +457,6 @@ namespace CreatureGen.Feats
 
         public static class Foci
         {
-            public const string All = "All";
             public const string NoValidFociAvailable = "No Valid Foci Available";
             public const string Weapon = "Weapon";
             public const string WeaponWithUnarmed = "Weapon with Unarmed";

@@ -102,7 +102,7 @@ namespace CreatureGen.Generators.Defenses
 
             foreach (var bonus in bonuses)
             {
-                if (bonus.Target == FeatConstants.Foci.All || bonus.Target == saveName)
+                if (bonus.Target == GroupConstants.All || bonus.Target == saveName)
                     save.AddBonus(bonus.Bonus, bonus.Condition);
             }
 

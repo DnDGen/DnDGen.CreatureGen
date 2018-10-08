@@ -43,7 +43,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         [TestCaseSource(typeof(SkillRankRequirementsTestData), "Metamagic")]
         [TestCaseSource(typeof(SkillRankRequirementsTestData), "Monster")]
         [TestCaseSource(typeof(SkillRankRequirementsTestData), "Craft")]
-        [TestCaseSource(typeof(SkillRankRequirementsTestData), "SkillSynergy")]
         public void SkillRankRequirements(string name, Dictionary<string, int> typesAndAmounts)
         {
             AssertTypesAndAmounts(name, typesAndAmounts);

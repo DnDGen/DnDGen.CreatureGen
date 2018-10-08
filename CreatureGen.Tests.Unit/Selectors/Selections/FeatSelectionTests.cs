@@ -4,6 +4,7 @@ using CreatureGen.Creatures;
 using CreatureGen.Feats;
 using CreatureGen.Selectors.Selections;
 using CreatureGen.Skills;
+using CreatureGen.Tables;
 using CreatureGen.Tests.Unit.TestCaseSources;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -101,7 +102,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             feats.Add(new Feat());
             feats[0].Name = "feat";
-            feats[0].Foci = new[] { FeatConstants.Foci.All };
+            feats[0].Foci = new[] { GroupConstants.All };
             selection.Feat = "feat";
             selection.FocusType = "focus type";
 
