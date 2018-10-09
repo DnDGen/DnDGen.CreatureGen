@@ -177,6 +177,22 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Crocodile][None] = 0;
 
+                testCases[CreatureConstants.Cryohydra_5Heads][None] = 0;
+
+                testCases[CreatureConstants.Cryohydra_6Heads][None] = 0;
+
+                testCases[CreatureConstants.Cryohydra_7Heads][None] = 0;
+
+                testCases[CreatureConstants.Cryohydra_8Heads][None] = 0;
+
+                testCases[CreatureConstants.Cryohydra_9Heads][None] = 0;
+
+                testCases[CreatureConstants.Cryohydra_10Heads][None] = 0;
+
+                testCases[CreatureConstants.Cryohydra_11Heads][None] = 0;
+
+                testCases[CreatureConstants.Cryohydra_12Heads][None] = 0;
+
                 testCases[CreatureConstants.Darkmantle][None] = 0;
 
                 testCases[CreatureConstants.Deinonychus][None] = 0;
@@ -470,6 +486,8 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.Dwarf_Mountain][GetData(SaveConstants.Fortitude, "against poison")] = 2;
                 testCases[CreatureConstants.Dwarf_Mountain][GetData(GroupConstants.All, "against spells and spell-like abilities")] = 2;
 
+                testCases[CreatureConstants.Eagle][None] = 0;
+
                 testCases[CreatureConstants.Efreeti][None] = 0;
 
                 testCases[CreatureConstants.Elasmosaurus][None] = 0;
@@ -522,20 +540,21 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Elemental_Water_Elder][None] = 0;
 
-                testCases[CreatureConstants.Elf_Aquatic][GetData(GroupConstants.All, "enchantment spells or effects")] = 2;
+                testCases[CreatureConstants.Elephant][None] = 0;
+
+                testCases[CreatureConstants.Elf_Aquatic][None] = 0;
 
                 testCases[CreatureConstants.Elf_Drow][GetData(SaveConstants.Will, "spells and spell-like abilities")] = 2;
-                testCases[CreatureConstants.Elf_Drow][GetData(GroupConstants.All, "enchantment spells or effects")] = 2;
 
-                testCases[CreatureConstants.Elf_Gray][GetData(GroupConstants.All, "enchantment spells or effects")] = 2;
+                testCases[CreatureConstants.Elf_Gray][None] = 0;
 
-                testCases[CreatureConstants.Elf_Half][GetData(GroupConstants.All, "enchantment spells or effects")] = 2;
+                testCases[CreatureConstants.Elf_Half][None] = 0;
 
-                testCases[CreatureConstants.Elf_High][GetData(GroupConstants.All, "enchantment spells or effects")] = 2;
+                testCases[CreatureConstants.Elf_High][None] = 0;
 
-                testCases[CreatureConstants.Elf_Wild][GetData(GroupConstants.All, "enchantment spells or effects")] = 2;
+                testCases[CreatureConstants.Elf_Wild][None] = 0;
 
-                testCases[CreatureConstants.Elf_Wood][GetData(GroupConstants.All, "enchantment spells or effects")] = 2;
+                testCases[CreatureConstants.Elf_Wood][None] = 0;
 
                 testCases[CreatureConstants.Erinyes][None] = 0;
 
@@ -596,6 +615,22 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Human][None] = 0;
 
+                testCases[CreatureConstants.Hydra_5Heads][None] = 0;
+
+                testCases[CreatureConstants.Hydra_6Heads][None] = 0;
+
+                testCases[CreatureConstants.Hydra_7Heads][None] = 0;
+
+                testCases[CreatureConstants.Hydra_8Heads][None] = 0;
+
+                testCases[CreatureConstants.Hydra_9Heads][None] = 0;
+
+                testCases[CreatureConstants.Hydra_10Heads][None] = 0;
+
+                testCases[CreatureConstants.Hydra_11Heads][None] = 0;
+
+                testCases[CreatureConstants.Hydra_12Heads][None] = 0;
+
                 testCases[CreatureConstants.IceDevil_Gelugon][None] = 0;
 
                 testCases[CreatureConstants.Imp][None] = 0;
@@ -647,6 +682,22 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.OchreJelly][None] = 0;
 
                 testCases[CreatureConstants.PitFiend][None] = 0;
+
+                testCases[CreatureConstants.Pyrohydra_5Heads][None] = 0;
+
+                testCases[CreatureConstants.Pyrohydra_6Heads][None] = 0;
+
+                testCases[CreatureConstants.Pyrohydra_7Heads][None] = 0;
+
+                testCases[CreatureConstants.Pyrohydra_8Heads][None] = 0;
+
+                testCases[CreatureConstants.Pyrohydra_9Heads][None] = 0;
+
+                testCases[CreatureConstants.Pyrohydra_10Heads][None] = 0;
+
+                testCases[CreatureConstants.Pyrohydra_11Heads][None] = 0;
+
+                testCases[CreatureConstants.Pyrohydra_12Heads][None] = 0;
 
                 testCases[CreatureConstants.Quasit][None] = 0;
 
@@ -841,6 +892,8 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.Types.Subtypes.Dwarf][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Earth][None] = 0;
+
+                testCases[CreatureConstants.Types.Subtypes.Elf][GetData(GroupConstants.All, "enchantment spells or effects")] = 2;
 
                 testCases[CreatureConstants.Types.Subtypes.Evil][None] = 0;
 

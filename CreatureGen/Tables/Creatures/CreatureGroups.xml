@@ -774,6 +774,33 @@
     <entry>Formian Worker</entry>
   </collection>
   <collection>
+    <name>Fortitude</name>
+    <entry>Animal</entry>
+    <entry>Dragon</entry>
+    <entry>Dwarf</entry>
+    <entry>Earth Elemental</entry>
+    <entry>Elf</entry>
+    <entry>Giant</entry>
+    <entry>Githyanki</entry>
+    <entry>Githzerai</entry>
+    <entry>Gnoll</entry>
+    <entry>Gnome</entry>
+    <entry>Goblin</entry>
+    <entry>Halfling</entry>
+    <entry>Hobgoblin</entry>
+    <entry>Kobold</entry>
+    <entry>Locathah</entry>
+    <entry>Magical Beast</entry>
+    <entry>Merfolk</entry>
+    <entry>Orc</entry>
+    <entry>Outsider</entry>
+    <entry>Plant</entry>
+    <entry>Thoqqua</entry>
+    <entry>Troglodyte</entry>
+    <entry>Vermin</entry>
+    <entry>Water Elemental</entry>
+  </collection>
+  <collection>
     <name>Fungus</name>
     <entry>Shrieker</entry>
     <entry>Violet Fungus</entry>
@@ -1578,6 +1605,23 @@
     <entry>Red Dragon, Great Wyrm</entry>
   </collection>
   <collection>
+    <name>Reflex</name>
+    <entry>Air Elemental</entry>
+    <entry>Animal</entry>
+    <entry>Belker</entry>
+    <entry>Bugbear</entry>
+    <entry>Dragon</entry>
+    <entry>Fey</entry>
+    <entry>Fire Elemental</entry>
+    <entry>Human</entry>
+    <entry>Invisible Stalker</entry>
+    <entry>Lizardfolk</entry>
+    <entry>Magical Beast</entry>
+    <entry>Magmin</entry>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Outsider</entry>
+  </collection>
+  <collection>
     <name>Reptilian</name>
     <entry>Kobold</entry>
     <entry>Lizardfolk</entry>
@@ -1764,6 +1808,27 @@
     <entry>White Dragon, Ancient</entry>
     <entry>White Dragon, Wyrm</entry>
     <entry>White Dragon, Great Wyrm</entry>
+  </collection>
+  <collection>
+    <name>Will</name>
+    <entry>Aberration</entry>
+    <entry>Dire Ape</entry>
+    <entry>Dire Badger</entry>
+    <entry>Dire Bat</entry>
+    <entry>Dire Bear</entry>
+    <entry>Dire Boar</entry>
+    <entry>Dire Lion</entry>
+    <entry>Dire Rat</entry>
+    <entry>Dire Shark</entry>
+    <entry>Dire Tiger</entry>
+    <entry>Dire Weasel</entry>
+    <entry>Dire Wolf</entry>
+    <entry>Dire Wolverine</entry>
+    <entry>Dragon</entry>
+    <entry>Fey</entry>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Outsider</entry>
+    <entry>Undead</entry>
   </collection>
   <collection>
     <name>Xorn</name>

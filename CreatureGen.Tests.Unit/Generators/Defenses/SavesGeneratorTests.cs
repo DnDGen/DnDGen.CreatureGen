@@ -71,11 +71,11 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
                 .Returns(reflexSaveFeats);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Will))
                 .Returns(willSaveFeats);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, SaveConstants.Fortitude))
+            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Fortitude))
                 .Returns(strongFortitude);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, SaveConstants.Reflex))
+            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Reflex))
                 .Returns(strongReflex);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, SaveConstants.Will))
+            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Will))
                 .Returns(strongWill);
 
             mockBonusSelector.Setup(s => s.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, It.IsAny<string>())).Returns((string t, string s) => racialBonuses[s]);
@@ -128,41 +128,6 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         }
 
         [TestCaseSource(typeof(SavesGeneratorTestData), "BaseValues")]
-        public void SaveBaseValueComesFromCreatureType(bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
-        {
-            var strongSaveBonus = 2;
-            var weakSaveBonus = 0;
-
-            var expectedFortitude = weakSaveBonus;
-            var expectedReflex = weakSaveBonus;
-            var expectedWill = weakSaveBonus;
-
-            if (isStrongFortitude)
-            {
-                strongFortitude.Add(creatureType.Name);
-                expectedFortitude = strongSaveBonus;
-            }
-
-            if (isStrongReflex)
-            {
-                strongReflex.Add(creatureType.Name);
-                expectedReflex = strongSaveBonus;
-            }
-
-            if (isStrongWill)
-            {
-                strongWill.Add(creatureType.Name);
-                expectedWill = strongSaveBonus;
-            }
-
-            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Count, Is.EqualTo(3));
-            Assert.That(saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(expectedFortitude));
-            Assert.That(saves[SaveConstants.Reflex].BaseValue, Is.EqualTo(expectedReflex));
-            Assert.That(saves[SaveConstants.Will].BaseValue, Is.EqualTo(expectedWill));
-        }
-
-        [TestCaseSource(typeof(SavesGeneratorTestData), "BaseValues")]
         public void SaveBaseValueComesFromCreature(bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
         {
             var strongSaveBonus = 2;
@@ -197,38 +162,6 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(saves[SaveConstants.Will].BaseValue, Is.EqualTo(expectedWill));
         }
 
-        [TestCaseSource(typeof(SavesGeneratorTestData), "BaseValues")]
-        public void SaveBaseValueComesFromCreatureAndOverridesCreatureType(bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
-        {
-            strongFortitude.Add(creatureType.Name);
-            strongReflex.Add(creatureType.Name);
-            strongWill.Add(creatureType.Name);
-
-            if (isStrongFortitude)
-            {
-                strongFortitude.Add("creature");
-                strongFortitude.Remove(creatureType.Name);
-            }
-
-            if (isStrongReflex)
-            {
-                strongReflex.Add("creature");
-                strongReflex.Remove(creatureType.Name);
-            }
-
-            if (isStrongWill)
-            {
-                strongWill.Add("creature");
-                strongWill.Remove(creatureType.Name);
-            }
-
-            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
-            Assert.That(saves.Count, Is.EqualTo(3));
-            Assert.That(saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(2));
-            Assert.That(saves[SaveConstants.Reflex].BaseValue, Is.EqualTo(2));
-            Assert.That(saves[SaveConstants.Will].BaseValue, Is.EqualTo(2));
-        }
-
         [TestCaseSource(typeof(SavesGeneratorTestData), "BaseValuesFromHitDice")]
         [TestCaseSource(typeof(SavesGeneratorTestData), "FractionalHitDiceForBaseValues")]
         public void SaveBaseValuesBasedOnHitDice(double hitDiceQuantity, bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
@@ -250,19 +183,19 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             if (isStrongFortitude)
             {
-                strongFortitude.Add(creatureType.Name);
+                strongFortitude.Add("creature");
                 expectedFortitude = strongSaveBonus;
             }
 
             if (isStrongReflex)
             {
-                strongReflex.Add(creatureType.Name);
+                strongReflex.Add("creature");
                 expectedReflex = strongSaveBonus;
             }
 
             if (isStrongWill)
             {
-                strongWill.Add(creatureType.Name);
+                strongWill.Add("creature");
                 expectedWill = strongSaveBonus;
             }
 

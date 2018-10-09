@@ -552,93 +552,36 @@
   </collection>
   <collection>
     <name>Djinni</name>
-    <entry>Appraise</entry>
-    <entry>Concentration</entry>
-    <entry>Craft</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Knowledge</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spellcraft</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Dog</name>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Dog, Riding</name>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Donkey</name>
-    <entry>Balance</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Doppelganger</name>
-    <entry>Bluff</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Dragon</name>
   </collection>
   <collection>
     <name>Dragon Turtle</name>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Dragonne</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Dread Wraith</name>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge/Religion</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Dretch</name>
   </collection>
   <collection>
     <name>Drider</name>
-    <entry>Climb</entry>
-    <entry>Concentration</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Drow</name>
@@ -647,16 +590,6 @@
   </collection>
   <collection>
     <name>Dryad</name>
-    <entry>Escape Artist</entry>
-    <entry>Handle Animal</entry>
-    <entry>Hide</entry>
-    <entry>Knowledge/Nature</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Ride</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Duergar</name>
@@ -666,66 +599,37 @@
     <name>Dust Mephit</name>
   </collection>
   <collection>
+    <name>Dwarf</name>
+  </collection>
+  <collection>
     <name>Eagle</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth</name>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Greater</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Huge</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Large</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Medium</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Small</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Mephit</name>
-    <entry>Bluff</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Efreeti</name>
-    <entry>Bluff</entry>
-    <entry>Concentration</entry>
-    <entry>Craft</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Intimidate</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spellcraft</entry>
-    <entry>Move Silently</entry>
   </collection>
   <collection>
     <name>Eight-Headed Cryohydra</name>
@@ -747,51 +651,21 @@
   </collection>
   <collection>
     <name>Elasmosaurus</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Elder Black Pudding</name>
   </collection>
   <collection>
     <name>Elder Tojanida</name>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Swim</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Elder Xorn</name>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge/Dungeoneering</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Search</entry>
-    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Elemental</name>
   </collection>
   <collection>
     <name>Elephant</name>
@@ -818,18 +692,6 @@
   </collection>
   <collection>
     <name>Erinyes</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Escape Artist</entry>
-    <entry>Knowledge2</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Survival</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Ethereal Filcher</name>
