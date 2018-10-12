@@ -37,7 +37,7 @@ namespace CreatureGen.Generators.Defenses
             var save = new Save();
 
             save.BaseAbility = abilities[AbilityConstants.Constitution];
-            save.BaseValue = GetSaveBaseValue(creatureType, hitPoints, SaveConstants.Fortitude);
+            save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Fortitude);
 
             save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Fortitude);
             save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Fortitude);
@@ -50,7 +50,7 @@ namespace CreatureGen.Generators.Defenses
             var save = new Save();
 
             save.BaseAbility = abilities[AbilityConstants.Dexterity];
-            save.BaseValue = GetSaveBaseValue(creatureType, hitPoints, SaveConstants.Reflex);
+            save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Reflex);
 
             save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Reflex);
             save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Reflex);
@@ -61,7 +61,7 @@ namespace CreatureGen.Generators.Defenses
         private Save GetWillSave(string creatureName, CreatureType creatureType, HitPoints hitPoints, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
         {
             var save = new Save();
-            save.BaseValue = GetSaveBaseValue(creatureType, hitPoints, SaveConstants.Will);
+            save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Will);
 
             if (feats.Any(f => f.Name == FeatConstants.SpecialQualities.Madness))
                 save.BaseAbility = abilities[AbilityConstants.Charisma];
@@ -74,14 +74,14 @@ namespace CreatureGen.Generators.Defenses
             return save;
         }
 
-        private int GetSaveBaseValue(CreatureType creatureType, HitPoints hitPoints, string saveName)
+        private int GetSaveBaseValue(string creatureName, HitPoints hitPoints, string saveName)
         {
             if (hitPoints.HitDiceQuantity == 0)
                 return 0;
 
-            var strongSaves = collectionsSelector.SelectFrom(TableNameConstants.Collection.CreatureGroups, saveName);
+            var strongSaves = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, saveName);
 
-            if (strongSaves.Contains(creatureType.Name))
+            if (strongSaves.Contains(creatureName))
                 return hitPoints.RoundedHitDiceQuantity / 2 + 2;
 
             return hitPoints.RoundedHitDiceQuantity / 3;

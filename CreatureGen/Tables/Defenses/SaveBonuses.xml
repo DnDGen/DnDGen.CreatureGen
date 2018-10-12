@@ -103,7 +103,6 @@
   </collection>
   <collection>
     <name>Aquatic Elf</name>
-    <entry>All,enchantment spells or effects@2</entry>
   </collection>
   <collection>
     <name>Aranea</name>
@@ -552,111 +551,43 @@
   </collection>
   <collection>
     <name>Djinni</name>
-    <entry>Appraise</entry>
-    <entry>Concentration</entry>
-    <entry>Craft</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Knowledge</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spellcraft</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Dog</name>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Dog, Riding</name>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Donkey</name>
-    <entry>Balance</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Doppelganger</name>
-    <entry>Bluff</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Dragon</name>
   </collection>
   <collection>
     <name>Dragon Turtle</name>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Dragonne</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Dread Wraith</name>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge/Religion</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Dretch</name>
   </collection>
   <collection>
     <name>Drider</name>
-    <entry>Climb</entry>
-    <entry>Concentration</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Drow</name>
     <entry>Will,spells and spell-like abilities@2</entry>
-    <entry>All,enchantment spells or effects@2</entry>
   </collection>
   <collection>
     <name>Dryad</name>
-    <entry>Escape Artist</entry>
-    <entry>Handle Animal</entry>
-    <entry>Hide</entry>
-    <entry>Knowledge/Nature</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Ride</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Duergar</name>
@@ -666,272 +597,143 @@
     <name>Dust Mephit</name>
   </collection>
   <collection>
+    <name>Dwarf</name>
+  </collection>
+  <collection>
     <name>Eagle</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth</name>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Greater</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Huge</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Large</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Medium</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Small</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth Mephit</name>
-    <entry>Bluff</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Efreeti</name>
-    <entry>Bluff</entry>
-    <entry>Concentration</entry>
-    <entry>Craft</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Intimidate</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spellcraft</entry>
-    <entry>Move Silently</entry>
   </collection>
   <collection>
     <name>Eight-Headed Cryohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Eight-Headed Hydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Elasmosaurus</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Elder Black Pudding</name>
   </collection>
   <collection>
     <name>Elder Tojanida</name>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Swim</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Elder Xorn</name>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge/Dungeoneering</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Search</entry>
-    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Elemental</name>
   </collection>
   <collection>
     <name>Elephant</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Cryohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Hydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Pyrohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Elf</name>
+    <entry>All,enchantment spells or effects@2</entry>
   </collection>
   <collection>
     <name>Erinyes</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Escape Artist</entry>
-    <entry>Knowledge2</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Survival</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Ethereal Filcher</name>
-    <entry>Listen</entry>
-    <entry>Sleight of Hand</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Ethereal Marauder</name>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Ettercap</name>
-    <entry>Climb</entry>
-    <entry>Craft/Trapmaking</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Ettin</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Evil</name>
+  </collection>
+  <collection>
+    <name>Extraplanar</name>
+  </collection>
+  <collection>
+    <name>Fey</name>
+  </collection>
+  <collection>
+    <name>Fire</name>
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Greater</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Huge</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Large</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Medium</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Small</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Fire Giant</name>
-    <entry>Climb</entry>
-    <entry>Craft</entry>
-    <entry>Intimidate</entry>
-    <entry>Jump</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Fire Mephit</name>
-    <entry>Bluff</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Five-Headed Hydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Five-Headed Pyrohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
-    <entry>Craft/Blacksmithing</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Flesh Golem</name>
@@ -1005,11 +807,6 @@
   </collection>
   <collection>
     <name>Frost Giant</name>
-    <entry>Climb</entry>
-    <entry>Craft</entry>
-    <entry>Intimidate</entry>
-    <entry>Jump</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Frost Worm</name>
@@ -1805,10 +1602,6 @@
   </collection>
   <collection>
     <name>Hill Giant</name>
-    <entry>Climb</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>
@@ -1869,15 +1662,6 @@
   </collection>
   <collection>
     <name>Ice Mephit</name>
-    <entry>Bluff</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Imp</name>
@@ -2137,15 +1921,6 @@
   </collection>
   <collection>
     <name>Magma Mephit</name>
-    <entry>Bluff</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Magmin</name>
@@ -2484,21 +2259,12 @@
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Nine-Headed Hydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Nine-Headed Pyrohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Nixie</name>
@@ -2531,14 +2297,6 @@
   </collection>
   <collection>
     <name>Noble Salamander</name>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Bluff</entry>
-    <entry>Craft/Blacksmithing</entry>
-    <entry>Intimidate</entry>
   </collection>
   <collection>
     <name>Nymph</name>
@@ -2582,16 +2340,6 @@
   </collection>
   <collection>
     <name>Ooze Mephit</name>
-    <entry>Bluff</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Orc</name>
@@ -3071,15 +2819,6 @@
   </collection>
   <collection>
     <name>Salt Mephit</name>
-    <entry>Bluff</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Satyr</name>
@@ -3140,21 +2879,12 @@
   </collection>
   <collection>
     <name>Seven-Headed Cryohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Seven-Headed Hydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Seven-Headed Pyrohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Shadow</name>
@@ -3404,21 +3134,12 @@
   </collection>
   <collection>
     <name>Six-Headed Cryohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Six-Headed Hydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Six-Headed Pyrohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Skum</name>
@@ -3461,15 +3182,6 @@
   </collection>
   <collection>
     <name>Steam Mephit</name>
-    <entry>Bluff</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Stirge</name>
@@ -3479,34 +3191,15 @@
   </collection>
   <collection>
     <name>Stone Giant</name>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
   </collection>
   <collection>
     <name>Storm Giant</name>
-    <entry>Climb</entry>
-    <entry>Concentration</entry>
-    <entry>Craft</entry>
-    <entry>Diplomacy</entry>
-    <entry>Intimidate</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Perform/Sing</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Succubus</name>
@@ -3548,21 +3241,12 @@
   </collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Ten-Headed Hydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Ten-Headed Pyrohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Tendriculos</name>
@@ -3685,21 +3369,12 @@
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Hydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Pyrohydra</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
@@ -3814,52 +3489,24 @@
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Elemental, Greater</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Elemental, Huge</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Elemental, Large</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Elemental, Medium</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Elemental, Small</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
-    <entry>Bluff</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Water Naga</name>
