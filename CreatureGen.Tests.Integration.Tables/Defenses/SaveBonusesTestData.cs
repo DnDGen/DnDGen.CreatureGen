@@ -558,6 +558,24 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Erinyes][None] = 0;
 
+                testCases[CreatureConstants.EtherealFilcher][None] = 0;
+
+                testCases[CreatureConstants.EtherealMarauder][None] = 0;
+
+                testCases[CreatureConstants.Ettercap][None] = 0;
+
+                testCases[CreatureConstants.Ettin][None] = 0;
+
+                testCases[CreatureConstants.FormianMyrmarch][None] = 0;
+
+                testCases[CreatureConstants.FormianQueen][None] = 0;
+
+                testCases[CreatureConstants.FormianTaskmaster][None] = 0;
+
+                testCases[CreatureConstants.FormianWarrior][None] = 0;
+
+                testCases[CreatureConstants.FormianWorker][None] = 0;
+
                 testCases[CreatureConstants.GelatinousCube][None] = 0;
 
                 testCases[CreatureConstants.Giant_Cloud][None] = 0;
@@ -575,6 +593,12 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.Giant_Storm][None] = 0;
 
                 testCases[CreatureConstants.Glabrezu][None] = 0;
+
+                testCases[CreatureConstants.Gnome_Forest][GetData(GroupConstants.All, "against illusions")] = 2;
+
+                testCases[CreatureConstants.Gnome_Rock][GetData(GroupConstants.All, "against illusions")] = 2;
+
+                testCases[CreatureConstants.Gnome_Svirfneblin][GetData(GroupConstants.All)] = 2;
 
                 testCases[CreatureConstants.Golem_Clay][None] = 0;
 
