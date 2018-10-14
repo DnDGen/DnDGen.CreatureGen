@@ -740,85 +740,31 @@
   </collection>
   <collection>
     <name>Forest Gnome</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Hide</entry>
+    <entry>All,against illusions@2</entry>
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
-    <entry>Climb</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Knowledge</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Formian Queen</name>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge3</entry>
-    <entry>Listen</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spellcraft</entry>
-    <entry>Spot</entry>
-    <entry>Use Magic Device</entry>
   </collection>
   <collection>
     <name>Formian Taskmaster</name>
-    <entry>Climb</entry>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Formian Warrior</name>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Survival</entry>
-    <entry>Tumble</entry>
   </collection>
   <collection>
     <name>Formian Worker</name>
-    <entry>Climb</entry>
-    <entry>Craft</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Frost Giant</name>
   </collection>
   <collection>
     <name>Frost Worm</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
@@ -828,47 +774,24 @@
   </collection>
   <collection>
     <name>Ghaele</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Handle Animal</entry>
-    <entry>Hide</entry>
-    <entry>Knowledge2</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Ride</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Ghast</name>
-    <entry>Balance</entry>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Ghoul</name>
-    <entry>Balance</entry>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Giant</name>
   </collection>
   <collection>
     <name>Giant Ant, Queen</name>
   </collection>
   <collection>
     <name>Giant Ant, Soldier</name>
-    <entry>Climb</entry>
   </collection>
   <collection>
     <name>Giant Ant, Worker</name>
-    <entry>Climb</entry>
   </collection>
   <collection>
     <name>Giant Bee</name>
@@ -878,54 +801,27 @@
   </collection>
   <collection>
     <name>Giant Constrictor Snake</name>
-    <entry>Balance</entry>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Giant Crocodile</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Giant Eagle</name>
-    <entry>Knowledge/Nature</entry>
-    <entry>Listen</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Giant Fire Beetle</name>
   </collection>
   <collection>
     <name>Giant Octopus</name>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Giant Owl</name>
-    <entry>Knowledge/Nature</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Giant Praying Mantis</name>
   </collection>
   <collection>
     <name>Giant Squid</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Giant Stag Beetle</name>
@@ -935,249 +831,66 @@
   </collection>
   <collection>
     <name>Gibbering Mouther</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Girallon</name>
-    <entry>Climb</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Githyanki</name>
-    <entry>Climb</entry>
-    <entry>Craft/Armorsmithing</entry>
-    <entry>Craft/Weaponsmithing</entry>
-    <entry>Intimidate</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Githzerai</name>
-    <entry>Concentration</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Glabrezu</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Bluff</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge2</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spellcraft</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Gnoll</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Gnome</name>
   </collection>
   <collection>
     <name>Goblin</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Ride</entry>
-    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Goblinoid</name>
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Ancient</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Mature Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Old</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Old</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Young</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Wyrm</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Wyrmling</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Heal</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Gorgon</name>
@@ -2779,9 +2492,7 @@
   </collection>
   <collection>
     <name>Rock Gnome</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Hide</entry>
+    <entry>All,against illusions@2</entry>
   </collection>
   <collection>
     <name>Roper</name>
@@ -3220,9 +2931,7 @@
   </collection>
   <collection>
     <name>Svirfneblin</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Hide</entry>
+    <entry>All@2</entry>
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
