@@ -1431,6 +1431,11 @@
     <entry>Fly@40</entry>
   </collection>
   <collection>
+    <name>Grig with fiddle</name>
+    <entry>Land@20</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
     <name>Grimlock</name>
     <entry>Land@30</entry>
   </collection>

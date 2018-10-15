@@ -893,16 +893,15 @@
     <name>Gold Dragon, Young Adult</name>
   </collection>
   <collection>
+    <name>Good</name>
+  </collection>
+  <collection>
     <name>Gorgon</name>
     <entry>Listen</entry>
     <entry>Spot</entry>
   </collection>
   <collection>
     <name>Gray Elf</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Gray Ooze</name>
@@ -915,34 +914,9 @@
   </collection>
   <collection>
     <name>Gray Slaad</name>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Knowledge/Arcana</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Spellcraft</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Greater Barghest</name>
-    <entry>Bluff</entry>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Move Silently</entry>
-    <entry>Climb</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Sense Motive</entry>
-    <entry>Survival</entry>
-    <entry>Concentration</entry>
-    <entry>Disguise</entry>
-    <entry>Intimidate</entry>
-    <entry>Tumble</entry>
   </collection>
   <collection>
     <name>Greater Shadow</name>
@@ -956,217 +930,45 @@
   </collection>
   <collection>
     <name>Green Dragon, Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Ancient</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Mature Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Old</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Old</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Young</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrm</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrmling</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Bluff</entry>
   </collection>
   <collection>
     <name>Green Hag</name>
-    <entry>Concentration</entry>
-    <entry>Craft</entry>
-    <entry>Knowledge</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Green Slaad</name>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Grick</name>
@@ -1202,35 +1004,12 @@
   </collection>
   <collection>
     <name>Guardian Naga</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Bluff</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Intimidate</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spellcraft</entry>
   </collection>
   <collection>
     <name>Gynosphinx</name>
-    <entry>Bluff</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Half-Elf</name>
-    <entry>Diplomacy</entry>
-    <entry>Gather Information</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Half-Orc</name>
@@ -2272,195 +2051,39 @@
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Ancient</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Mature Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Old</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Old</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Young</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrm</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrmling</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Appraise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Red Slaad</name>
@@ -2653,195 +2276,39 @@
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Ancient</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Mature Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Old</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Old</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Young</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrm</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrmling</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Disguise</entry>
-    <entry>Bluff</entry>
-    <entry>Jump</entry>
   </collection>
   <collection>
     <name>Six-Headed Cryohydra</name>
@@ -3236,195 +2703,39 @@
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Ancient</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Juvenile</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Mature Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Old</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Old</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Young</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrm</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrmling</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Young</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>White Dragon, Young Adult</name>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Wight</name>

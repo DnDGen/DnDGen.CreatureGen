@@ -370,6 +370,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Grick)]
         [TestCase(CreatureConstants.Griffon, "Average Maneuverability")]
         [TestCase(CreatureConstants.Grig, "Poor Maneuverability")]
+        [TestCase(CreatureConstants.Grig_WithFiddle, "Poor Maneuverability")]
         [TestCase(CreatureConstants.Grimlock)]
         [TestCase(CreatureConstants.Gynosphinx, "Poor Maneuverability")]
         [TestCase(CreatureConstants.Halfling_Deep)]

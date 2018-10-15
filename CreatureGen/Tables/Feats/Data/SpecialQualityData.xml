@@ -5,7 +5,6 @@
     <name>Aasimar</name>
     <entry>Armor Proficiency (Light)#0##0##0#True</entry>
     <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#5#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#5#Electricity#1#Round#0#False</entry>
@@ -32,7 +31,6 @@
   <collection>
     <name>Abyssal Greater Basilisk</name>
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Low-Light Vision#0##0##0#False</entry>
@@ -41,12 +39,10 @@
   </collection>
   <collection>
     <name>Achaierai</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Spell Resistance#19##0##0#False</entry>
   </collection>
   <collection>
     <name>Adult Arrowhawk</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
@@ -56,7 +52,6 @@
   <collection>
     <name>Adult Tojanida</name>
     <entry>All-Around Vision#0##0##0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
@@ -70,99 +65,39 @@
   </collection>
   <collection>
     <name>Air Elemental, Elder</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Greater</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Huge</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Large</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Medium</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Small</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Fast Healing#2#Exposed to moving air#1#Turn#0#False</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0#False</entry>
     <entry>Spell-Like Ability#0#Gust of wind#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Allip</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Turn Resistance#2##0##0#False</entry>
-    <entry>Immunity#0#Ability Drain#0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Death#0##0#False</entry>
-    <entry>Immunity#0#Disease#0##0#False</entry>
-    <entry>Immunity#0#Energy Drain#0##0#False</entry>
-    <entry>Immunity#0#Exhaustion#0##0#False</entry>
-    <entry>Immunity#0#Fatigue#0##0#False</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
-    <entry>Immunity#0#Nonmagical attacks#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Androsphinx</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Angel</name>
@@ -2241,6 +2176,9 @@
     <name>Grig</name>
   </collection>
   <collection>
+    <name>Grig with fiddle</name>
+  </collection>
+  <collection>
     <name>Grimlock</name>
   </collection>
   <collection>
@@ -2291,8 +2229,6 @@
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Invisible in Light#0##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
-    <entry>Skill Bonus#4#Listen#0##0#False</entry>
-    <entry>Skill Bonus#4#Move Silently#0##0#False</entry>
     <entry>Spell Resistance#19##0##0#False</entry>
     <entry>Telepathy#100##0##0#False</entry>
   </collection>

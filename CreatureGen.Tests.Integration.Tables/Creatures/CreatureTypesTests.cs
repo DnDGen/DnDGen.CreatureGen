@@ -691,6 +691,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Grick, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Griffon, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Grig, CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Grig_WithFiddle, CreatureConstants.Types.Fey)]
         [TestCase(CreatureConstants.Nixie, CreatureConstants.Types.Fey,
             CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Pixie, CreatureConstants.Types.Fey)]
@@ -1145,45 +1146,37 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             AssertDistinctCollection(creature, types);
         }
 
-        [Test]
-        public void AllCreaturesHaveAtLeastACreatureType()
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void CreaturesHasACreatureType(string creature)
         {
-            var creatures = CreatureConstants.All();
             var allTypes = CreatureConstants.Types.All();
             var allSubTypes = CreatureConstants.Types.Subtypes.All();
             var allTypesAndSubtypes = allTypes.Union(allSubTypes);
 
-            foreach (var creature in creatures)
-            {
-                Assert.That(table.Keys, Contains.Item(creature), "Table keys");
+            Assert.That(table.Keys, Contains.Item(creature), "Table keys");
 
-                var types = table[creature];
-                Assert.That(types, Is.Not.Empty, creature);
-                Assert.That(types.Take(1), Is.SubsetOf(allTypes), creature);
+            var types = table[creature];
+            Assert.That(types, Is.Not.Empty, creature);
+            Assert.That(types.Take(1), Is.SubsetOf(allTypes), creature);
 
-                var subtypes = types.Skip(1);
-                Assert.That(subtypes, Is.SubsetOf(allTypesAndSubtypes), creature);
-            }
+            var subtypes = types.Skip(1);
+            Assert.That(subtypes, Is.SubsetOf(allTypesAndSubtypes), creature);
         }
 
-        [Test]
-        public void CreatureTypeMatchesCreatureGroupType()
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void CreatureTypeMatchesCreatureGroupType(string creature)
         {
-            var creatures = CreatureConstants.All();
             var allTypes = CreatureConstants.Types.All();
 
-            foreach (var creature in creatures)
-            {
-                Assert.That(table.Keys, Contains.Item(creature), "Table keys");
+            Assert.That(table.Keys, Contains.Item(creature), "Table keys");
 
-                var types = table[creature];
-                Assert.That(types, Is.Not.Empty, creature);
-                Assert.That(types.Take(1), Is.SubsetOf(allTypes), creature);
+            var types = table[creature];
+            Assert.That(types, Is.Not.Empty, creature);
+            Assert.That(types.Take(1), Is.SubsetOf(allTypes), creature);
 
-                var type = types.First();
-                var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
-                Assert.That(creaturesOfType, Contains.Item(creature), type);
-            }
+            var type = types.First();
+            var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+            Assert.That(creaturesOfType, Contains.Item(creature), type);
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]

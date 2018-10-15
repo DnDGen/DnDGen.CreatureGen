@@ -659,6 +659,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Grick, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Griffon, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Grig, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood)]
+        [TestCase(CreatureConstants.Grig_WithFiddle, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood)]
         [TestCase(CreatureConstants.Grimlock, AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil)]
         [TestCase(CreatureConstants.Gynosphinx, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Halfling_Deep, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
@@ -916,7 +917,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Zelekhut, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral)]
         public void AlignmentGroup(string name, params string[] collection)
         {
-            base.AssertCollection(name, collection);
+            AssertCollection(name, collection);
         }
 
         [TestCase(AlignmentConstants.LawfulEvil)]

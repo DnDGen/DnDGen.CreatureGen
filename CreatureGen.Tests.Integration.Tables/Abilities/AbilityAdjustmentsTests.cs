@@ -1969,36 +1969,49 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.GrayRender][AbilityConstants.Intelligence] = -8;
                     testCases[CreatureConstants.GrayRender][AbilityConstants.Strength] = 12;
                     testCases[CreatureConstants.GrayRender][AbilityConstants.Wisdom] = 2;
+
                     testCases[CreatureConstants.GreenHag][AbilityConstants.Charisma] = 4;
                     testCases[CreatureConstants.GreenHag][AbilityConstants.Constitution] = 2;
                     testCases[CreatureConstants.GreenHag][AbilityConstants.Dexterity] = 2;
                     testCases[CreatureConstants.GreenHag][AbilityConstants.Intelligence] = 2;
                     testCases[CreatureConstants.GreenHag][AbilityConstants.Strength] = 8;
                     testCases[CreatureConstants.GreenHag][AbilityConstants.Wisdom] = 2;
+
                     testCases[CreatureConstants.Grick][AbilityConstants.Charisma] = -6;
                     testCases[CreatureConstants.Grick][AbilityConstants.Constitution] = 0;
                     testCases[CreatureConstants.Grick][AbilityConstants.Dexterity] = 4;
                     testCases[CreatureConstants.Grick][AbilityConstants.Intelligence] = -8;
                     testCases[CreatureConstants.Grick][AbilityConstants.Strength] = 4;
                     testCases[CreatureConstants.Grick][AbilityConstants.Wisdom] = 4;
+
                     testCases[CreatureConstants.Griffon][AbilityConstants.Charisma] = -2;
                     testCases[CreatureConstants.Griffon][AbilityConstants.Constitution] = 6;
                     testCases[CreatureConstants.Griffon][AbilityConstants.Dexterity] = 4;
                     testCases[CreatureConstants.Griffon][AbilityConstants.Intelligence] = -6;
                     testCases[CreatureConstants.Griffon][AbilityConstants.Strength] = 8;
                     testCases[CreatureConstants.Griffon][AbilityConstants.Wisdom] = 2;
+
                     testCases[CreatureConstants.Grig][AbilityConstants.Charisma] = 4;
                     testCases[CreatureConstants.Grig][AbilityConstants.Constitution] = 2;
                     testCases[CreatureConstants.Grig][AbilityConstants.Dexterity] = 8;
                     testCases[CreatureConstants.Grig][AbilityConstants.Intelligence] = 0;
                     testCases[CreatureConstants.Grig][AbilityConstants.Strength] = -6;
                     testCases[CreatureConstants.Grig][AbilityConstants.Wisdom] = 2;
+
+                    testCases[CreatureConstants.Grig_WithFiddle][AbilityConstants.Charisma] = 4;
+                    testCases[CreatureConstants.Grig_WithFiddle][AbilityConstants.Constitution] = 2;
+                    testCases[CreatureConstants.Grig_WithFiddle][AbilityConstants.Dexterity] = 8;
+                    testCases[CreatureConstants.Grig_WithFiddle][AbilityConstants.Intelligence] = 0;
+                    testCases[CreatureConstants.Grig_WithFiddle][AbilityConstants.Strength] = -6;
+                    testCases[CreatureConstants.Grig_WithFiddle][AbilityConstants.Wisdom] = 2;
+
                     testCases[CreatureConstants.Grimlock][AbilityConstants.Charisma] = -4;
                     testCases[CreatureConstants.Grimlock][AbilityConstants.Constitution] = 2;
                     testCases[CreatureConstants.Grimlock][AbilityConstants.Dexterity] = 2;
                     testCases[CreatureConstants.Grimlock][AbilityConstants.Intelligence] = 0;
                     testCases[CreatureConstants.Grimlock][AbilityConstants.Strength] = 4;
                     testCases[CreatureConstants.Grimlock][AbilityConstants.Wisdom] = -2;
+
                     testCases[CreatureConstants.Gynosphinx][AbilityConstants.Charisma] = 8;
                     testCases[CreatureConstants.Gynosphinx][AbilityConstants.Constitution] = 2;
                     testCases[CreatureConstants.Gynosphinx][AbilityConstants.Dexterity] = 2;

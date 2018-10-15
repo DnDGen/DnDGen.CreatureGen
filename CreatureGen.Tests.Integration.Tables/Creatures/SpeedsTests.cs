@@ -669,45 +669,80 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Giant_Storm][SpeedConstants.Swim] = 40;
                     testCases[CreatureConstants.GibberingMouther][SpeedConstants.Land] = 10;
                     testCases[CreatureConstants.GibberingMouther][SpeedConstants.Swim] = 20;
+
                     testCases[CreatureConstants.Girallon][SpeedConstants.Land] = 40;
                     testCases[CreatureConstants.Girallon][SpeedConstants.Climb] = 40;
+
                     testCases[CreatureConstants.Githyanki][SpeedConstants.Land] = 30;
+
                     testCases[CreatureConstants.Githzerai][SpeedConstants.Land] = 30;
+
                     testCases[CreatureConstants.Glabrezu][SpeedConstants.Land] = 40;
+
                     testCases[CreatureConstants.Gnoll][SpeedConstants.Land] = 30;
+
                     testCases[CreatureConstants.Gnome_Forest][SpeedConstants.Land] = 20;
+
                     testCases[CreatureConstants.Gnome_Rock][SpeedConstants.Land] = 20;
+
                     testCases[CreatureConstants.Gnome_Svirfneblin][SpeedConstants.Land] = 20;
+
                     testCases[CreatureConstants.Goblin][SpeedConstants.Land] = 30;
+
                     testCases[CreatureConstants.Golem_Clay][SpeedConstants.Land] = 20;
+
                     testCases[CreatureConstants.Golem_Flesh][SpeedConstants.Land] = 30;
+
                     testCases[CreatureConstants.Golem_Iron][SpeedConstants.Land] = 20;
+
                     testCases[CreatureConstants.Golem_Stone][SpeedConstants.Land] = 20;
+
                     testCases[CreatureConstants.Golem_Stone_Greater][SpeedConstants.Land] = 20;
+
                     testCases[CreatureConstants.Gorgon][SpeedConstants.Land] = 30;
+
                     testCases[CreatureConstants.GrayOoze][SpeedConstants.Land] = 10;
+
                     testCases[CreatureConstants.GrayRender][SpeedConstants.Land] = 30;
+
                     testCases[CreatureConstants.GreenHag][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.GreenHag][SpeedConstants.Swim] = 30;
+
                     testCases[CreatureConstants.Grick][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Grick][SpeedConstants.Climb] = 20;
+
                     testCases[CreatureConstants.Griffon][SpeedConstants.Land] = 30;
                     testCases[CreatureConstants.Griffon][SpeedConstants.Fly] = 80;
+
                     testCases[CreatureConstants.Grig][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Grig][SpeedConstants.Fly] = 40;
+
+                    testCases[CreatureConstants.Grig_WithFiddle][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.Grig_WithFiddle][SpeedConstants.Fly] = 40;
+
                     testCases[CreatureConstants.Grimlock][SpeedConstants.Land] = 30;
+
                     testCases[CreatureConstants.Gynosphinx][SpeedConstants.Land] = 40;
                     testCases[CreatureConstants.Gynosphinx][SpeedConstants.Fly] = 60;
+
                     testCases[CreatureConstants.Halfling_Deep][SpeedConstants.Land] = 20;
+
                     testCases[CreatureConstants.Halfling_Lightfoot][SpeedConstants.Land] = 20;
+
                     testCases[CreatureConstants.Halfling_Tallfellow][SpeedConstants.Land] = 20;
+
                     testCases[CreatureConstants.Harpy][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Harpy][SpeedConstants.Fly] = 80;
+
                     testCases[CreatureConstants.Hawk][SpeedConstants.Land] = 10;
                     testCases[CreatureConstants.Hawk][SpeedConstants.Fly] = 60;
+
                     testCases[CreatureConstants.HellHound][SpeedConstants.Land] = 40;
+
                     testCases[CreatureConstants.HellHound_NessianWarhound][SpeedConstants.Land] = 40;
+
                     testCases[CreatureConstants.Hellcat_Bezekira][SpeedConstants.Land] = 40;
+
                     testCases[CreatureConstants.Hellwasp_Swarm][SpeedConstants.Land] = 5;
                     testCases[CreatureConstants.Hellwasp_Swarm][SpeedConstants.Fly] = 40;
                     testCases[CreatureConstants.Hezrou][SpeedConstants.Land] = 30;

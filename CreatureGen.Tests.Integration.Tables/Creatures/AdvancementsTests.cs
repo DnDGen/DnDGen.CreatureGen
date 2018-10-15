@@ -472,6 +472,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Griffon][RollHelper.GetRoll(7, 8, 10)] = GetData(SizeConstants.Large, 10, 5);
                     testCases[CreatureConstants.Griffon][RollHelper.GetRoll(7, 11, 21)] = GetData(SizeConstants.Huge, 15, 10);
                     testCases[CreatureConstants.Grig][RollHelper.GetRoll(0, 1, 3)] = GetData(SizeConstants.Tiny, 2.5, 0);
+                    testCases[CreatureConstants.Grig_WithFiddle][RollHelper.GetRoll(0, 1, 3)] = GetData(SizeConstants.Tiny, 2.5, 0);
                     testCases[CreatureConstants.Grimlock][None] = new string[0];
                     testCases[CreatureConstants.Gynosphinx][RollHelper.GetRoll(8, 9, 12)] = GetData(SizeConstants.Large, 10, 5);
                     testCases[CreatureConstants.Gynosphinx][RollHelper.GetRoll(8, 13, 24)] = GetData(SizeConstants.Huge, 15, 10);

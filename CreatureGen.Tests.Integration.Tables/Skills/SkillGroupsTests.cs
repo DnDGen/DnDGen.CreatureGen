@@ -3008,6 +3008,16 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Search,
             SkillConstants.Spot,
             SkillConstants.Perform + "/" + SkillConstants.Foci.Perform.StringInstruments)]
+        [TestCase(CreatureConstants.Grig_WithFiddle,
+            SkillConstants.Craft,
+            SkillConstants.EscapeArtist,
+            SkillConstants.Hide,
+            SkillConstants.Jump,
+            SkillConstants.Listen,
+            SkillConstants.MoveSilently,
+            SkillConstants.Search,
+            SkillConstants.Spot,
+            SkillConstants.Perform + "/" + SkillConstants.Foci.Perform.StringInstruments)]
         [TestCase(CreatureConstants.Grimlock,
             SkillConstants.Climb,
             SkillConstants.Hide,

@@ -380,6 +380,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.GreenHag, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Five, 0, true, 9, 11, 2)]
         [TestCase(CreatureConstants.Grick, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Three, null, false, 0, 4, 0)]
         [TestCase(CreatureConstants.Grig, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.One, 3, true, 9, 2, 2)]
+        [TestCase(CreatureConstants.Grig_WithFiddle, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.One, 3, true, 9, 2, 2)]
         [TestCase(CreatureConstants.Griffon, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Four, 3, false, 0, 6, 0)]
         [TestCase(CreatureConstants.Grimlock, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, 2, true, 0, 4, 2)]
         [TestCase(CreatureConstants.Gynosphinx, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Eight, 4, false, 14, 11, 0)]

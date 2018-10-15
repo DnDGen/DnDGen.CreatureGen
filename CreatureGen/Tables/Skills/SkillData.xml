@@ -30,6 +30,13 @@
     <entry></entry>
   </collection>
   <collection>
+    <name>ClimbDexterity</name>
+    <entry>Dexterity</entry>
+    <entry>Climb</entry>
+    <entry>0</entry>
+    <entry></entry>
+  </collection>
+  <collection>
     <name>Concentration</name>
     <entry>Constitution</entry>
     <entry>Concentration</entry>
@@ -424,6 +431,13 @@
   <collection>
     <name>Jump</name>
     <entry>Strength</entry>
+    <entry>Jump</entry>
+    <entry>0</entry>
+    <entry></entry>
+  </collection>
+  <collection>
+    <name>JumpDexterity</name>
+    <entry>Dexterity</entry>
     <entry>Jump</entry>
     <entry>0</entry>
     <entry></entry>
@@ -1299,6 +1313,13 @@
   <collection>
     <name>Swim</name>
     <entry>Strength</entry>
+    <entry>Swim</entry>
+    <entry>0</entry>
+    <entry></entry>
+  </collection>
+  <collection>
+    <name>SwimDexterity</name>
+    <entry>Dexterity</entry>
     <entry>Swim</entry>
     <entry>0</entry>
     <entry></entry>

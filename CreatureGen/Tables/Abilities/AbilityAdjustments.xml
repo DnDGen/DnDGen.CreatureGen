@@ -2628,6 +2628,15 @@
     <entry>Wisdom@2</entry>
   </collection>
   <collection>
+    <name>Grig with fiddle</name>
+    <entry>Charisma@4</entry>
+    <entry>Constitution@2</entry>
+    <entry>Dexterity@8</entry>
+    <entry>Intelligence@0</entry>
+    <entry>Strength@-6</entry>
+    <entry>Wisdom@2</entry>
+  </collection>
+  <collection>
     <name>Grimlock</name>
     <entry>Charisma@-4</entry>
     <entry>Constitution@2</entry>
