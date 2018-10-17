@@ -23,6 +23,13 @@
     <entry></entry>
   </collection>
   <collection>
+    <name>Chain Devil (Kyton)</name>
+    <entry>Wisdom</entry>
+    <entry>Heal</entry>
+    <entry>0</entry>
+    <entry></entry>
+  </collection>
+  <collection>
     <name>Climb</name>
     <entry>Strength</entry>
     <entry>Climb</entry>
@@ -397,6 +404,13 @@
     <name>Handle Animal</name>
     <entry>Charisma</entry>
     <entry>Handle Animal</entry>
+    <entry>0</entry>
+    <entry></entry>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)</name>
+    <entry>Wisdom</entry>
+    <entry>Heal</entry>
     <entry>0</entry>
     <entry></entry>
   </collection>

@@ -481,8 +481,6 @@
   </collection>
   <collection>
     <name>Deep Halfling</name>
-    <entry>All@1</entry>
-    <entry>All,morale against fear@2</entry>
   </collection>
   <collection>
     <name>Deinonychus</name>
@@ -897,8 +895,6 @@
   </collection>
   <collection>
     <name>Gorgon</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Gray Elf</name>
@@ -908,9 +904,6 @@
   </collection>
   <collection>
     <name>Gray Render</name>
-    <entry>Hide</entry>
-    <entry>Survival</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Gray Slaad</name>
@@ -920,10 +913,6 @@
   </collection>
   <collection>
     <name>Greater Shadow</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
@@ -972,35 +961,18 @@
   </collection>
   <collection>
     <name>Grick</name>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Griffon</name>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Grig</name>
-    <entry>Craft</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Perform/String instruments</entry>
+  </collection>
+  <collection>
+    <name>Grig with fiddle</name>
   </collection>
   <collection>
     <name>Grimlock</name>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Guardian Naga</name>
@@ -1013,141 +985,76 @@
   </collection>
   <collection>
     <name>Half-Orc</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Halfling</name>
+    <entry>All@1</entry>
+    <entry>All,morale against fear@2</entry>
   </collection>
   <collection>
     <name>Harpy</name>
-    <entry>Bluff</entry>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Perform/Oratory</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Hawk</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Heavy Horse</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Heavy Warhorse</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Hell Hound</name>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
   </collection>
   <collection>
     <name>Hellwasp Swarm</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Hide</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
-    <entry>Climb</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Hide</entry>
-    <entry>Escape Artist</entry>
-    <entry>Intimidate</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Spellcraft</entry>
-    <entry>Use Rope</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>High Elf</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Hill Dwarf</name>
-    <entry>Appraise</entry>
-    <entry>Craft/Blacksmithing</entry>
-    <entry>Craft/Stonemasonry</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
+    <entry>All,against spells and spell-like abilities@2</entry>
+    <entry>Fortitude,against poison@2</entry>
   </collection>
   <collection>
     <name>Hill Giant</name>
   </collection>
   <collection>
     <name>Hippogriff</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Hobgoblin</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
   </collection>
   <collection>
     <name>Hound Archon</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Howler</name>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Human</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Humanoid</name>
   </collection>
   <collection>
     <name>Hyena</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
@@ -1157,118 +1064,39 @@
   </collection>
   <collection>
     <name>Imp</name>
-    <entry>Hide</entry>
-    <entry>Diplomacy</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Knowledge</entry>
-    <entry>Search</entry>
-    <entry>Spellcraft</entry>
-    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Incorporeal</name>
   </collection>
   <collection>
     <name>Invisible Stalker</name>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Iron Golem</name>
   </collection>
   <collection>
     <name>Janni</name>
-    <entry>Appraise</entry>
-    <entry>Concentration</entry>
-    <entry>Craft2</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Ride</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Juvenile Tojanida</name>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Swim</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Kapoacinth</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Kobold</name>
-    <entry>Craft/Trapmaking</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Profession/Miner</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Kolyarut</name>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Gather Information</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Kraken</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Swim</entry>
-    <entry>Knowledge/Geography</entry>
-    <entry>Knowledge/Nature</entry>
-    <entry>Search</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Magic Device</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Krenshar</name>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
   </collection>
   <collection>
     <name>Kuo-toa</name>
@@ -1283,123 +1111,48 @@
   </collection>
   <collection>
     <name>Lacedon</name>
-    <entry>Climb</entry>
-    <entry>Spot</entry>
-    <entry>Balance</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Lamia</name>
-    <entry>Bluff</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Disguise</entry>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Knowledge/Arcana</entry>
-    <entry>Listen</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Lawful</name>
   </collection>
   <collection>
     <name>Lemure</name>
   </collection>
   <collection>
     <name>Leonal</name>
-    <entry>Balance</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Leopard</name>
-    <entry>Balance</entry>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Light Horse</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Light Warhorse</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>Appraise</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Knowledge/Arcana</entry>
-    <entry>Listen</entry>
-    <entry>Perform</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spellcraft</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Lion</name>
-    <entry>Balance</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Lizard</name>
-    <entry>Balance</entry>
-    <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
-    <entry>Balance</entry>
-    <entry>Jump</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Locathah</name>
@@ -1410,6 +1163,9 @@
   </collection>
   <collection>
     <name>Locust Swarm</name>
+  </collection>
+  <collection>
+    <name>Magical Beast</name>
   </collection>
   <collection>
     <name>Magma Mephit</name>
@@ -1481,11 +1237,6 @@
   </collection>
   <collection>
     <name>Megaraptor</name>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Merfolk</name>
@@ -1512,14 +1263,6 @@
   </collection>
   <collection>
     <name>Minor Xorn</name>
-    <entry>Hide</entry>
-    <entry>Intimidate</entry>
-    <entry>Knowledge/Dungeoneering</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Search</entry>
-    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Minotaur</name>
@@ -1620,11 +1363,8 @@
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
-    <entry>Appraise</entry>
-    <entry>Craft/Blacksmithing</entry>
-    <entry>Craft/Stonemasonry</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
+    <entry>All,against spells and spell-like abilities@2</entry>
+    <entry>Fortitude,against poison@2</entry>
   </collection>
   <collection>
     <name>Mule</name>
@@ -1658,13 +1398,6 @@
   </collection>
   <collection>
     <name>Nessian Warhound</name>
-    <entry>Hide</entry>
-    <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Survival</entry>
-    <entry>Tumble</entry>
   </collection>
   <collection>
     <name>Night Hag</name>
@@ -2530,18 +2263,6 @@
   </collection>
   <collection>
     <name>Trumpet Archon</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Handle Animal</entry>
-    <entry>Knowledge</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Perform/Wind instruments</entry>
-    <entry>Ride</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>

@@ -3142,6 +3142,18 @@
     <entry>Perform/String instruments</entry>
   </collection>
   <collection>
+    <name>Grig with fiddle</name>
+    <entry>Craft</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Perform/String instruments</entry>
+  </collection>
+  <collection>
     <name>Grimlock</name>
     <entry>Climb</entry>
     <entry>Hide</entry>
