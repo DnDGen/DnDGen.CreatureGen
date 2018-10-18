@@ -39,7 +39,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         }
 
         [Test]
-        public void CollectionNames()
+        public void SpecialQualityDataNames()
         {
             var creatures = CreatureConstants.All();
             var types = CreatureConstants.Types.All();

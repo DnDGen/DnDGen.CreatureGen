@@ -36,7 +36,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         }
 
         [Test]
-        public void CollectionNames()
+        public void SkillGroupsNames()
         {
             var creatures = CreatureConstants.All();
 
