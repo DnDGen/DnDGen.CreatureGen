@@ -12,7 +12,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         protected override string tableName => TableNameConstants.TypeAndAmount.SkillBonuses;
 
         [Test]
-        public void CollectionNames()
+        public void SkillBonusesNames()
         {
             var creatures = CreatureConstants.All();
             var types = CreatureConstants.Types.All();
@@ -33,7 +33,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         public void SkillBonuses(string source, Dictionary<string, int> skillAndBonus)
         {
             if (!skillAndBonus.Any())
-                Assert.Fail("Test case did not specify special qualities or NONE");
+                Assert.Fail("Test case did not specify skill bonuses or NONE");
 
             if (skillAndBonus.ContainsKey(SkillBonusesTestData.None))
                 skillAndBonus.Clear();

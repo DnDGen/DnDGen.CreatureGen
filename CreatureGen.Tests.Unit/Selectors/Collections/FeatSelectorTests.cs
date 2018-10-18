@@ -822,6 +822,56 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RequiredSizes.Count, Is.EqualTo(2));
         }
 
+        //INFO: Titans have different special qualities depending on alignment
+        [Test]
+        public void GetNoAlignmentRequirementForSpecialQuality()
+        {
+            AddSpecialQualityData("creature", "special quality");
+
+            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+            Assert.That(specialQuality.RequiredAlignments, Is.Empty);
+        }
+
+        //INFO: Titans have different special qualities depending on alignment
+        [Test]
+        public void GetAlignmentRequirementForSpecialQuality()
+        {
+            AddSpecialQualityData("creature", "special quality");
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality"))
+                .Returns(new[] { "lawfulness goodness" });
+
+            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+            Assert.That(specialQuality.RequiredAlignments, Contains.Item("lawfulness goodness"));
+            Assert.That(specialQuality.RequiredAlignments.Count, Is.EqualTo(1));
+        }
+
+        //INFO: Titans have different special qualities depending on alignment
+        [Test]
+        public void GetAlignmentRequirementsForSpecialQuality()
+        {
+            AddSpecialQualityData("creature", "special quality");
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality"))
+                .Returns(new[] { "lawfulness goodness", "other lawfulness goodness", "lawfulness other goodness", "other lawfulness other goodness" });
+
+            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+            Assert.That(specialQuality.RequiredAlignments, Contains.Item("lawfulness goodness"));
+            Assert.That(specialQuality.RequiredAlignments, Contains.Item("other lawfulness goodness"));
+            Assert.That(specialQuality.RequiredAlignments, Contains.Item("lawfulness other goodness"));
+            Assert.That(specialQuality.RequiredAlignments, Contains.Item("other lawfulness other goodness"));
+            Assert.That(specialQuality.RequiredAlignments.Count, Is.EqualTo(4));
+        }
+
         [Test]
         public void GetFeat()
         {

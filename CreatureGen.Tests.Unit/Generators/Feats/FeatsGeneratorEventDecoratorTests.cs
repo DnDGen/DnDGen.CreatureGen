@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Alignments;
 using CreatureGen.Attacks;
 using CreatureGen.Creatures;
 using CreatureGen.Defenses;
@@ -26,6 +27,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         private List<Feat> specialQualities;
         private List<Attack> attacks;
         private CreatureType creatureType;
+        private Alignment alignment;
 
         [SetUp]
         public void Setup()
@@ -42,6 +44,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             specialQualities = new List<Feat>();
             attacks = new List<Attack>();
             creatureType = new CreatureType();
+            alignment = new Alignment("creature alignment");
         }
 
         [Test]
@@ -86,9 +89,9 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 new Feat { Name = "other feat" },
             };
 
-            mockInnerGenerator.Setup(g => g.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size")).Returns(specialQualities);
+            mockInnerGenerator.Setup(g => g.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment)).Returns(specialQualities);
 
-            var generatedSpecialQualities = decorator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var generatedSpecialQualities = decorator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             Assert.That(generatedSpecialQualities, Is.EqualTo(specialQualities));
         }
 
@@ -101,9 +104,9 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 new Feat { Name = "other feat" },
             };
 
-            mockInnerGenerator.Setup(g => g.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, true, "size")).Returns(specialQualities);
+            mockInnerGenerator.Setup(g => g.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, true, "size", alignment)).Returns(specialQualities);
 
-            var generatedSpecialQualities = decorator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, true, "size");
+            var generatedSpecialQualities = decorator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, true, "size", alignment);
             Assert.That(generatedSpecialQualities, Is.EqualTo(specialQualities));
         }
 
@@ -116,9 +119,9 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 new Feat { Name = "other feat" },
             };
 
-            mockInnerGenerator.Setup(g => g.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size")).Returns(specialQualities);
+            mockInnerGenerator.Setup(g => g.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment)).Returns(specialQualities);
 
-            var generatedSpecialQualities = decorator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var generatedSpecialQualities = decorator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             Assert.That(generatedSpecialQualities, Is.EqualTo(specialQualities));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating special qualities for creature"), Times.Once);

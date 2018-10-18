@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Alignments;
 using CreatureGen.Feats;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace CreatureGen.Selectors.Selections
         public string RandomFociQuantity { get; set; }
         public IEnumerable<RequiredFeatSelection> RequiredFeats { get; set; }
         public IEnumerable<string> RequiredSizes { get; set; }
+        public IEnumerable<string> RequiredAlignments { get; set; }
         public bool RequiresEquipment { get; set; }
 
         public SpecialQualitySelection()
@@ -26,9 +28,10 @@ namespace CreatureGen.Selectors.Selections
             RandomFociQuantity = string.Empty;
             RequiredFeats = Enumerable.Empty<RequiredFeatSelection>();
             RequiredSizes = Enumerable.Empty<string>();
+            RequiredAlignments = Enumerable.Empty<string>();
         }
 
-        public bool RequirementsMet(Dictionary<string, Ability> abilities, IEnumerable<Feat> feats, bool canUseEquipment, string size)
+        public bool RequirementsMet(Dictionary<string, Ability> abilities, IEnumerable<Feat> feats, bool canUseEquipment, string size, Alignment alignment)
         {
             if (!MinimumAbilityMet(abilities))
                 return false;
@@ -37,7 +40,7 @@ namespace CreatureGen.Selectors.Selections
             {
                 var requirementFeats = feats.Where(f => f.Name == requirement.Feat);
 
-                if (requirementFeats.Any() == false)
+                if (!requirementFeats.Any())
                     return false;
 
                 if (requirement.Foci.Any() && !requirementFeats.Any(f => f.Foci.Intersect(requirement.Foci).Any()))
@@ -45,6 +48,9 @@ namespace CreatureGen.Selectors.Selections
             }
 
             if (RequiredSizes.Any() && !RequiredSizes.Contains(size))
+                return false;
+
+            if (RequiredAlignments.Any() && !RequiredAlignments.Contains(alignment.Full))
                 return false;
 
             return !RequiresEquipment || canUseEquipment;

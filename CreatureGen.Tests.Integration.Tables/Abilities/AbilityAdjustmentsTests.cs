@@ -2421,48 +2421,56 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[CreatureConstants.Mephit_Ooze][AbilityConstants.Intelligence] = -4;
                     testCases[CreatureConstants.Mephit_Ooze][AbilityConstants.Strength] = 4;
                     testCases[CreatureConstants.Mephit_Ooze][AbilityConstants.Wisdom] = 0;
+
                     testCases[CreatureConstants.Mephit_Salt][AbilityConstants.Charisma] = 4;
                     testCases[CreatureConstants.Mephit_Salt][AbilityConstants.Constitution] = 2;
                     testCases[CreatureConstants.Mephit_Salt][AbilityConstants.Dexterity] = -2;
                     testCases[CreatureConstants.Mephit_Salt][AbilityConstants.Intelligence] = -4;
                     testCases[CreatureConstants.Mephit_Salt][AbilityConstants.Strength] = 6;
                     testCases[CreatureConstants.Mephit_Salt][AbilityConstants.Wisdom] = 0;
+
                     testCases[CreatureConstants.Mephit_Steam][AbilityConstants.Charisma] = 4;
                     testCases[CreatureConstants.Mephit_Steam][AbilityConstants.Constitution] = 0;
                     testCases[CreatureConstants.Mephit_Steam][AbilityConstants.Dexterity] = 2;
                     testCases[CreatureConstants.Mephit_Steam][AbilityConstants.Intelligence] = -4;
                     testCases[CreatureConstants.Mephit_Steam][AbilityConstants.Strength] = 0;
                     testCases[CreatureConstants.Mephit_Steam][AbilityConstants.Wisdom] = 0;
+
                     testCases[CreatureConstants.Mephit_Water][AbilityConstants.Charisma] = 4;
                     testCases[CreatureConstants.Mephit_Water][AbilityConstants.Constitution] = 2;
                     testCases[CreatureConstants.Mephit_Water][AbilityConstants.Dexterity] = 0;
                     testCases[CreatureConstants.Mephit_Water][AbilityConstants.Intelligence] = -4;
                     testCases[CreatureConstants.Mephit_Water][AbilityConstants.Strength] = 4;
                     testCases[CreatureConstants.Mephit_Water][AbilityConstants.Wisdom] = 0;
-                    testCases[CreatureConstants.Merfolk][AbilityConstants.Charisma] = 0;
-                    testCases[CreatureConstants.Merfolk][AbilityConstants.Constitution] = 4;
+
+                    testCases[CreatureConstants.Merfolk][AbilityConstants.Charisma] = 2;
+                    testCases[CreatureConstants.Merfolk][AbilityConstants.Constitution] = 2;
                     testCases[CreatureConstants.Merfolk][AbilityConstants.Dexterity] = 2;
                     testCases[CreatureConstants.Merfolk][AbilityConstants.Intelligence] = 0;
-                    testCases[CreatureConstants.Merfolk][AbilityConstants.Strength] = 2;
-                    testCases[CreatureConstants.Merfolk][AbilityConstants.Wisdom] = -2;
+                    testCases[CreatureConstants.Merfolk][AbilityConstants.Strength] = 0;
+                    testCases[CreatureConstants.Merfolk][AbilityConstants.Wisdom] = 0;
+
                     testCases[CreatureConstants.Mimic][AbilityConstants.Charisma] = 0;
                     testCases[CreatureConstants.Mimic][AbilityConstants.Constitution] = 6;
                     testCases[CreatureConstants.Mimic][AbilityConstants.Dexterity] = 2;
                     testCases[CreatureConstants.Mimic][AbilityConstants.Intelligence] = 0;
                     testCases[CreatureConstants.Mimic][AbilityConstants.Strength] = 8;
                     testCases[CreatureConstants.Mimic][AbilityConstants.Wisdom] = 2;
+
                     testCases[CreatureConstants.MindFlayer][AbilityConstants.Charisma] = 6;
                     testCases[CreatureConstants.MindFlayer][AbilityConstants.Constitution] = 2;
                     testCases[CreatureConstants.MindFlayer][AbilityConstants.Dexterity] = 4;
                     testCases[CreatureConstants.MindFlayer][AbilityConstants.Intelligence] = 8;
                     testCases[CreatureConstants.MindFlayer][AbilityConstants.Strength] = 2;
                     testCases[CreatureConstants.MindFlayer][AbilityConstants.Wisdom] = 6;
+
                     testCases[CreatureConstants.Minotaur][AbilityConstants.Charisma] = -2;
                     testCases[CreatureConstants.Minotaur][AbilityConstants.Constitution] = 4;
                     testCases[CreatureConstants.Minotaur][AbilityConstants.Dexterity] = 0;
                     testCases[CreatureConstants.Minotaur][AbilityConstants.Intelligence] = -4;
                     testCases[CreatureConstants.Minotaur][AbilityConstants.Strength] = 8;
                     testCases[CreatureConstants.Minotaur][AbilityConstants.Wisdom] = 0;
+
                     testCases[CreatureConstants.Mohrg][AbilityConstants.Charisma] = 0;
                     testCases[CreatureConstants.Mohrg][AbilityConstants.Dexterity] = 8;
                     testCases[CreatureConstants.Mohrg][AbilityConstants.Intelligence] = 0;
