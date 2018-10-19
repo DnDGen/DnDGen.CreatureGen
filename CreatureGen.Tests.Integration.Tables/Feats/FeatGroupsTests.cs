@@ -14,7 +14,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         }
 
         [Test]
-        public void CollectionNames()
+        public void FeatGroupsNames()
         {
             var names = new[]
             {

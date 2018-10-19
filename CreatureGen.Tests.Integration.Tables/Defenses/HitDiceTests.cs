@@ -15,7 +15,7 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
         }
 
         [Test]
-        public void CollectionNames()
+        public void HitDiceNames()
         {
             var creatures = CreatureConstants.All();
             var types = CreatureConstants.Types.All();

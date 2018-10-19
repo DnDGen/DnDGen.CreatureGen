@@ -24,10 +24,7 @@
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
-    <entry>Wisdom</entry>
-    <entry>Heal</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Craft,involving metalwork@8</entry>
   </collection>
   <collection>
     <name>Climb</name>
@@ -409,10 +406,8 @@
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
-    <entry>Wisdom</entry>
-    <entry>Heal</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Listen@4</entry>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Heal</name>

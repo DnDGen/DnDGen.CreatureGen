@@ -12,7 +12,7 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
         protected override string tableName => TableNameConstants.TypeAndAmount.SaveBonuses;
 
         [Test]
-        public void CollectionNames()
+        public void SaveBonusesNames()
         {
             var creatures = CreatureConstants.All();
             var types = CreatureConstants.Types.All();

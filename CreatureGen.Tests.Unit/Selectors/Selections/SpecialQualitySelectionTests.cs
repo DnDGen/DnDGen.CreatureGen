@@ -320,7 +320,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [TestCase("lawfulness", "goodness")]
         [TestCase("other lawfulness", "goodness")]
         [TestCase("lawfulness", "other goodness")]
-        [TestCase("wrong lawfulness", "other goodness")]
+        [TestCase("other lawfulness", "other goodness")]
         public void MetIfSizeIsAnyRequiredAlignment(string lawfulness, string goodness)
         {
             selection.RequiredAlignments = new[] { "other lawfulness goodness", "lawfulness other goodness", "lawfulness goodness", "other lawfulness other goodness" };

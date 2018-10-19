@@ -36,7 +36,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [Test]
-        public void CollectionNames()
+        public void AerialManeuverabilityNames()
         {
             var creatures = CreatureConstants.All();
             AssertCollectionNames(creatures);

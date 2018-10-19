@@ -40,7 +40,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         }
 
         [Test]
-        public void CollectionNames()
+        public void AbilityAdjustmentsNames()
         {
             var creatures = CreatureConstants.All();
             var names = creatures.Union(new[] { GroupConstants.All });

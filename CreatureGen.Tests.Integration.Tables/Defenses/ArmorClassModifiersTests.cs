@@ -13,7 +13,7 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
         }
 
         [Test]
-        public void CollectionNames()
+        public void ArmorClassModifiersNames()
         {
             var names = new[]
             {

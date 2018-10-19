@@ -14,7 +14,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.Metaraces
         }
 
         [Test]
-        public void CollectionNames()
+        public void DragonSpeciesNames()
         {
             var names = new[]
             {

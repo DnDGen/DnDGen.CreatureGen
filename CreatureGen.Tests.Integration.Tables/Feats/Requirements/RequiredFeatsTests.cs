@@ -3,7 +3,7 @@ using CreatureGen.Tables;
 using NUnit.Framework;
 using System.Linq;
 
-namespace CreatureGen.Tests.Integration.Tables.Feats
+namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 {
     [TestFixture]
     public class RequiredFeatsTests : CollectionTests
@@ -14,7 +14,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
         }
 
         [Test]
-        public void CollectionNames()
+        public void RequiredFeatsNames()
         {
             var feats = FeatConstants.All();
             var metamagic = FeatConstants.Metamagic.All();

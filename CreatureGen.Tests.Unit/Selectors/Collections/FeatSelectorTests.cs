@@ -841,7 +841,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             AddSpecialQualityData("creature", "special quality");
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality"))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredAlignments, "creaturespecial quality"))
                 .Returns(new[] { "lawfulness goodness" });
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
@@ -858,7 +858,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             AddSpecialQualityData("creature", "special quality");
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality"))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredAlignments, "creaturespecial quality"))
                 .Returns(new[] { "lawfulness goodness", "other lawfulness goodness", "lawfulness other goodness", "other lawfulness other goodness" });
 
             var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);

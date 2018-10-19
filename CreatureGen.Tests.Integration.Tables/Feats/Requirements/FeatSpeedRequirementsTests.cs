@@ -14,7 +14,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         protected override string tableName => TableNameConstants.TypeAndAmount.FeatSpeedRequirements;
 
         [Test]
-        public void CollectionNames()
+        public void FeatSpeedRequirementsNames()
         {
             var names = GetNames();
 

@@ -24,7 +24,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         protected override string tableName => TableNameConstants.TypeAndAmount.Advancements;
 
         [Test]
-        public void CollectionNames()
+        public void AdvancementsNames()
         {
             var creatures = CreatureConstants.All();
             var creatureTypes = CreatureConstants.Types.All();

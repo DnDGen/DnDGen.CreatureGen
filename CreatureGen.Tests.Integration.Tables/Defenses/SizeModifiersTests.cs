@@ -16,7 +16,7 @@ namespace CreatureGen.Tests.Integration.Tables.Combats
         }
 
         [Test]
-        public void CollectionNames()
+        public void SizeModifersNames()
         {
             var names = new[]
             {

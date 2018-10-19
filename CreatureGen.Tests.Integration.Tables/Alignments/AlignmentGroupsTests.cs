@@ -35,7 +35,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         }
 
         [Test]
-        public void CollectionNames()
+        public void AlignmentGroupsNames()
         {
             var creatures = CreatureConstants.All();
 

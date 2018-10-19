@@ -34,7 +34,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [Test]
-        public void CollectionNames()
+        public void CreatureTypesNames()
         {
             var creatures = CreatureConstants.All();
             AssertCollectionNames(creatures);

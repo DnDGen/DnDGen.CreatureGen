@@ -26,7 +26,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         }
 
         [Test]
-        public void NamesAreComplete()
+        public void CreatureGroupNames()
         {
             AssertCreatureGroupNamesAreComplete();
         }
