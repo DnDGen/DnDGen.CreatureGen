@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Alignments;
 using CreatureGen.Attacks;
 using CreatureGen.Creatures;
 using CreatureGen.Defenses;
@@ -17,7 +18,8 @@ namespace CreatureGen.Generators.Feats
             Dictionary<string, Ability> abilities,
             IEnumerable<Skill> skills,
             bool canUseEquipment,
-            string size);
+            string size,
+            Alignment alignment);
         IEnumerable<Feat> GenerateFeats(
             HitPoints hitPoints,
             int baseAttackBonus,

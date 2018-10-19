@@ -36,7 +36,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         }
 
         [Test]
-        public void CollectionNames()
+        public void SkillGroupsNames()
         {
             var creatures = CreatureConstants.All();
 
@@ -2999,6 +2999,16 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Listen,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Grig,
+            SkillConstants.Craft,
+            SkillConstants.EscapeArtist,
+            SkillConstants.Hide,
+            SkillConstants.Jump,
+            SkillConstants.Listen,
+            SkillConstants.MoveSilently,
+            SkillConstants.Search,
+            SkillConstants.Spot,
+            SkillConstants.Perform + "/" + SkillConstants.Foci.Perform.StringInstruments)]
+        [TestCase(CreatureConstants.Grig_WithFiddle,
             SkillConstants.Craft,
             SkillConstants.EscapeArtist,
             SkillConstants.Hide,

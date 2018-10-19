@@ -111,8 +111,19 @@ namespace CreatureGen.Generators.Creatures
                 creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution], creature.Size);
             }
 
+            creature.Alignment = alignmentGenerator.Generate(creatureName);
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities, creature.CanUseEquipment, creature.Size);
-            creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(creatureName, creature.Type, creature.HitPoints, creature.Abilities, creature.Skills, creature.CanUseEquipment, creature.Size);
+
+            creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(
+                creatureName,
+                creature.Type,
+                creature.HitPoints,
+                creature.Abilities,
+                creature.Skills,
+                creature.CanUseEquipment,
+                creature.Size,
+                creature.Alignment);
+
             creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
             creature.Attacks = attacksGenerator.GenerateAttacks(creatureName, creatureData.Size, creature.Size, creature.BaseAttackBonus, creature.Abilities);
 
@@ -142,7 +153,6 @@ namespace CreatureGen.Generators.Creatures
 
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities, creature.Size, creatureName, creature.Type, allFeats, creatureData.NaturalArmor);
             creature.Saves = savesGenerator.GenerateWith(creature.Name, creature.Type, creature.HitPoints, allFeats, creature.Abilities);
-            creature.Alignment = alignmentGenerator.Generate(creatureName);
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = templateApplicator.ApplyTo(creature);

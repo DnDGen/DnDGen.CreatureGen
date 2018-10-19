@@ -15,7 +15,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         }
 
         [Test]
-        public void CollectionNames()
+        public void SkillDataNames()
         {
             var skillGroups = CollectionMapper.Map(TableNameConstants.Collection.SkillGroups);
             //INFO: Getting the feat foci of skills includes foci for skills such as profession or craft

@@ -15,7 +15,7 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
         }
 
         [Test]
-        public void CollectionNames()
+        public void HitDiceNames()
         {
             var creatures = CreatureConstants.All();
             var types = CreatureConstants.Types.All();
@@ -353,6 +353,7 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Grick, 2)]
         [TestCase(CreatureConstants.Griffon, 7)]
         [TestCase(CreatureConstants.Grig, .5)]
+        [TestCase(CreatureConstants.Grig_WithFiddle, .5)]
         [TestCase(CreatureConstants.Grimlock, 2)]
         [TestCase(CreatureConstants.Gynosphinx, 8)]
         [TestCase(CreatureConstants.Halfling_Deep, 1)]

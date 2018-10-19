@@ -194,7 +194,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\Feats\RequiredFeats.xml">
+    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredFeats.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -278,6 +278,9 @@
     <EmbeddedResource Include="Tables\Defenses\SaveBonuses.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredAlignments.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

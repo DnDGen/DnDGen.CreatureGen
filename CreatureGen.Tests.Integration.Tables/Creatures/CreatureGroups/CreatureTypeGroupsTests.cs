@@ -1,11 +1,11 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Tables;
+using CreatureGen.Tests.Integration.Tables.TestData;
 using DnDGen.Core.Selectors.Collections;
 using EventGen;
 using Ninject;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
@@ -26,7 +26,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         }
 
         [Test]
-        public void NamesAreComplete()
+        public void CreatureGroupNames()
         {
             AssertCreatureGroupNamesAreComplete();
         }
@@ -670,54 +670,38 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             base.AssertDistinctCollection(CreatureConstants.Types.Outsider, creatures);
         }
 
-        [Test]
-        public void AllCreaturesHaveType()
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void CreatureTypeMatchesCreatureGroupType(string creature)
         {
-            var allCreatures = CreatureConstants.All();
-            var allTypes = CreatureConstants.Types.All();
+            var types = CollectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
+            Assert.That(types.Keys, Contains.Item(creature));
+            Assert.That(types[creature], Is.Not.Empty);
 
-            var allCreaturesOfType = new List<string>();
+            var type = types[creature].First();
 
-            foreach (var type in allTypes)
-            {
-                var creaturesOfType = CollectionSelector.Explode(tableName, type);
-                allCreaturesOfType.AddRange(creaturesOfType);
-            }
+            Assert.That(table.Keys, Contains.Item(type), "Table keys");
+            var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
 
-            AssertCollection(allCreaturesOfType.Distinct(), allCreatures);
+            Assert.That(creaturesOfType, Contains.Item(creature));
         }
 
-        [Test]
-        public void CreatureTypeMatchesCreatureGroupType()
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void CreatureSubtypesMatchCreatureGroupSubtypes(string creature)
         {
+            var types = CollectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
+            Assert.That(types.Keys, Contains.Item(creature));
+            Assert.That(types[creature], Is.Not.Empty);
+
+            //INFO: Have to remove types, as augmented creatures have original creature type as a subtype
             var allTypes = CreatureConstants.Types.All();
+            var subtypes = types[creature].Skip(1).Except(allTypes);
 
-            foreach (var type in allTypes)
-            {
-                Assert.That(table.Keys, Contains.Item(type), "Table keys");
-                var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
-
-                var allCreatureTypes = CollectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-                var creatures = allCreatureTypes.Where(t => t.Value.First() == type).Select(t => t.Key);
-
-                AssertCollection(creaturesOfType, creatures, type);
-            }
-        }
-
-        [Test]
-        public void CreatureSubtypesMatchCreatureGroupSubtypes()
-        {
-            var allSubTypes = CreatureConstants.Types.Subtypes.All();
-
-            foreach (var subtype in allSubTypes)
+            foreach (var subtype in subtypes)
             {
                 Assert.That(table.Keys, Contains.Item(subtype), "Table keys");
                 var creaturesOfSubtype = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
 
-                var allCreatureTypes = CollectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-                var creatures = allCreatureTypes.Where(t => t.Value.Skip(1).Contains(subtype)).Select(t => t.Key);
-
-                AssertCollection(creaturesOfSubtype, creatures, subtype);
+                Assert.That(creaturesOfSubtype, Contains.Item(creature), subtype);
             }
         }
     }

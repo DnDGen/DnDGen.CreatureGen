@@ -8,7 +8,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
     public class CreatureSubgroupsTests : CreatureGroupsTableTests
     {
         [Test]
-        public void NamesAreComplete()
+        public void CreatureGroupNames()
         {
             AssertCreatureGroupNamesAreComplete();
         }
@@ -398,6 +398,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Spider_Monstrous_Tiny)]
         [TestCase(CreatureConstants.Groups.Sprite,
             CreatureConstants.Grig,
+            CreatureConstants.Grig_WithFiddle,
             CreatureConstants.Pixie,
             CreatureConstants.Pixie_WithIrresistableDance,
             CreatureConstants.Nixie)]

@@ -31,7 +31,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         }
 
         [Test]
-        public void CollectionNames()
+        public void FeatDataNames()
         {
             var feats = FeatConstants.All();
             var monsterFeats = FeatConstants.Monster.All();

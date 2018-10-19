@@ -158,6 +158,7 @@ namespace CreatureGen.Selectors.Collections
                     specialQualitySelection.RequiredFeats = GetRequiredFeats(source + specialQualitySelection.Feat);
                     specialQualitySelection.MinimumAbilities = GetRequiredAbilities(source + specialQualitySelection.Feat);
                     specialQualitySelection.RequiredSizes = GetRequiredSizes(source + specialQualitySelection.Feat);
+                    specialQualitySelection.RequiredAlignments = GetRequiredAlignments(source + specialQualitySelection.Feat);
 
                     specialQualitySelections.Add(specialQualitySelection);
                     usedSpecialQualities.Add(specialQuality);
@@ -170,6 +171,11 @@ namespace CreatureGen.Selectors.Collections
         private IEnumerable<string> GetRequiredSizes(string source)
         {
             return collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredSizes, source);
+        }
+
+        private IEnumerable<string> GetRequiredAlignments(string source)
+        {
+            return collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredAlignments, source);
         }
 
         private IEnumerable<RequiredFeatSelection> GetRequiredFeats(string feat)

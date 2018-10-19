@@ -12,16 +12,13 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
         protected override string tableName => TableNameConstants.TypeAndAmount.SaveBonuses;
 
         [Test]
-        public void CollectionNames()
+        public void SaveBonusesNames()
         {
             var creatures = CreatureConstants.All();
             var types = CreatureConstants.Types.All();
             var subtypes = CreatureConstants.Types.Subtypes.All();
 
-            var foci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
-            var skills = foci[GroupConstants.Skills];
-
-            var names = creatures.Union(types).Union(subtypes).Union(skills);
+            var names = creatures.Union(types).Union(subtypes);
 
             AssertCollectionNames(names);
         }
@@ -29,15 +26,15 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
         [TestCaseSource(typeof(SaveBonusesTestData), "Creatures")]
         [TestCaseSource(typeof(SaveBonusesTestData), "Types")]
         [TestCaseSource(typeof(SaveBonusesTestData), "Subtypes")]
-        public void SkillBonuses(string source, Dictionary<string, int> skillAndBonus)
+        public void SaveBonuses(string source, Dictionary<string, int> saveAndBonus)
         {
-            if (!skillAndBonus.Any())
-                Assert.Fail("Test case did not specify special qualities or NONE");
+            if (!saveAndBonus.Any())
+                Assert.Fail("Test case did not specify saves bonuses or NONE");
 
-            if (skillAndBonus.ContainsKey(SaveBonusesTestData.None))
-                skillAndBonus.Clear();
+            if (saveAndBonus.ContainsKey(SaveBonusesTestData.None))
+                saveAndBonus.Clear();
 
-            AssertTypesAndAmounts(source, skillAndBonus);
+            AssertTypesAndAmounts(source, saveAndBonus);
         }
     }
 }

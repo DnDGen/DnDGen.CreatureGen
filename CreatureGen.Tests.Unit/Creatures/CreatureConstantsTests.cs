@@ -135,6 +135,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Grick, "Grick")]
         [TestCase(CreatureConstants.Griffon, "Griffon")]
         [TestCase(CreatureConstants.Grig, "Grig")]
+        [TestCase(CreatureConstants.Grig_WithFiddle, "Grig with fiddle")]
         [TestCase(CreatureConstants.Grimlock, "Grimlock")]
         [TestCase(CreatureConstants.Gynosphinx, "Gynosphinx")]
         [TestCase(CreatureConstants.Halfling_Deep, "Deep Halfling")]

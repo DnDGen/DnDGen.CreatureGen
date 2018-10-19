@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Alignments;
 using CreatureGen.Attacks;
 using CreatureGen.Creatures;
 using CreatureGen.Defenses;
@@ -53,10 +54,18 @@ namespace CreatureGen.Generators.Feats
             return feats;
         }
 
-        public IEnumerable<Feat> GenerateSpecialQualities(string creatureName, CreatureType creatureType, HitPoints hitPoints, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, bool canUseEquipment, string size)
+        public IEnumerable<Feat> GenerateSpecialQualities(
+            string creatureName,
+            CreatureType creatureType,
+            HitPoints hitPoints,
+            Dictionary<string, Ability> abilities,
+            IEnumerable<Skill> skills,
+            bool canUseEquipment,
+            string size,
+            Alignment alignment)
         {
             eventQueue.Enqueue("CreatureGen", $"Generating special qualities for {creatureName}");
-            var specialQualities = innerGenerator.GenerateSpecialQualities(creatureName, creatureType, hitPoints, abilities, skills, canUseEquipment, size);
+            var specialQualities = innerGenerator.GenerateSpecialQualities(creatureName, creatureType, hitPoints, abilities, skills, canUseEquipment, size, alignment);
             eventQueue.Enqueue("CreatureGen", $"Generated {specialQualities.Count()} special qualities");
 
             return specialQualities;

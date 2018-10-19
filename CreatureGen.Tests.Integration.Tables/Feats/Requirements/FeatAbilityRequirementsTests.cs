@@ -20,7 +20,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         }
 
         [Test]
-        public void CollectionNames()
+        public void FeatAbilityRequirementsNames()
         {
             var names = GetNames();
 

@@ -1,5 +1,4 @@
-﻿using CreatureGen.Creatures;
-using CreatureGen.Feats;
+﻿using CreatureGen.Feats;
 using CreatureGen.Selectors.Helpers;
 using CreatureGen.Tables;
 using NUnit.Framework;
@@ -10,12 +9,12 @@ using System.Linq;
 namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 {
     [TestFixture]
-    public class RequiredSizesTests : CollectionTests
+    public class RequiredAlignmentsTests : CollectionTests
     {
-        protected override string tableName => TableNameConstants.Collection.RequiredSizes;
+        protected override string tableName => TableNameConstants.Collection.RequiredAlignments;
 
         [Test]
-        public void RequiredSizesNames()
+        public void RequiredAlignmentsNames()
         {
             var names = GetNames();
 
@@ -40,17 +39,17 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
             return names;
         }
 
-        [TestCaseSource(typeof(RequiredSizesTestData), "Feats")]
-        [TestCaseSource(typeof(RequiredSizesTestData), "Metamagic")]
-        [TestCaseSource(typeof(RequiredSizesTestData), "Monster")]
-        [TestCaseSource(typeof(RequiredSizesTestData), "Craft")]
-        [TestCaseSource(typeof(RequiredSizesTestData), "SpecialQualities")]
-        public void RequiredSizes(string name, params string[] sizes)
+        [TestCaseSource(typeof(RequiredAlignmentsTestData), "Feats")]
+        [TestCaseSource(typeof(RequiredAlignmentsTestData), "Metamagic")]
+        [TestCaseSource(typeof(RequiredAlignmentsTestData), "Monster")]
+        [TestCaseSource(typeof(RequiredAlignmentsTestData), "Craft")]
+        [TestCaseSource(typeof(RequiredAlignmentsTestData), "SpecialQualities")]
+        public void RequiredAlignments(string name, params string[] alignments)
         {
-            AssertCollection(name, sizes);
+            AssertCollection(name, alignments);
         }
 
-        public class RequiredSizesTestData
+        public class RequiredAlignmentsTestData
         {
             public static IEnumerable Feats
             {
@@ -101,9 +100,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     {
                         testCases[feat] = new string[0];
                     }
-
-                    testCases[FeatConstants.Monster.AwesomeBlow] = new[] { SizeConstants.Large, SizeConstants.Huge, SizeConstants.Gargantuan, SizeConstants.Colossal };
-                    testCases[FeatConstants.Monster.Snatch] = new[] { SizeConstants.Huge, SizeConstants.Gargantuan, SizeConstants.Colossal };
 
                     foreach (var testCase in testCases)
                     {

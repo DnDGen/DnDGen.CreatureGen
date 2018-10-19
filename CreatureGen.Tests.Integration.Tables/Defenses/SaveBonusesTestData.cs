@@ -57,6 +57,12 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Annis][None] = 0;
 
+                testCases[CreatureConstants.Ant_Giant_Queen][None] = 0;
+
+                testCases[CreatureConstants.Ant_Giant_Soldier][None] = 0;
+
+                testCases[CreatureConstants.Ant_Giant_Worker][None] = 0;
+
                 testCases[CreatureConstants.Ape][None] = 0;
 
                 testCases[CreatureConstants.Ape_Dire][None] = 0;
@@ -109,9 +115,13 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Bear_Dire][None] = 0;
 
+                testCases[CreatureConstants.Bear_Polar][None] = 0;
+
                 testCases[CreatureConstants.BeardedDevil_Barbazu][None] = 0;
 
                 testCases[CreatureConstants.Bebilith][None] = 0;
+
+                testCases[CreatureConstants.Bee_Giant][None] = 0;
 
                 testCases[CreatureConstants.Behir][None] = 0;
 
@@ -135,6 +145,8 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Bodak][None] = 0;
 
+                testCases[CreatureConstants.BombardierBeetle_Giant][None] = 0;
+
                 testCases[CreatureConstants.BoneDevil_Osyluth][None] = 0;
 
                 testCases[CreatureConstants.Bralani][None] = 0;
@@ -152,6 +164,20 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.Cat][None] = 0;
 
                 testCases[CreatureConstants.Centaur][None] = 0;
+
+                testCases[CreatureConstants.Centipede_Monstrous_Colossal][None] = 0;
+
+                testCases[CreatureConstants.Centipede_Monstrous_Gargantuan][None] = 0;
+
+                testCases[CreatureConstants.Centipede_Monstrous_Huge][None] = 0;
+
+                testCases[CreatureConstants.Centipede_Monstrous_Large][None] = 0;
+
+                testCases[CreatureConstants.Centipede_Monstrous_Medium][None] = 0;
+
+                testCases[CreatureConstants.Centipede_Monstrous_Small][None] = 0;
+
+                testCases[CreatureConstants.Centipede_Monstrous_Tiny][None] = 0;
 
                 testCases[CreatureConstants.Centipede_Swarm][None] = 0;
 
@@ -176,6 +202,8 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.Criosphinx][None] = 0;
 
                 testCases[CreatureConstants.Crocodile][None] = 0;
+
+                testCases[CreatureConstants.Crocodile_Giant][None] = 0;
 
                 testCases[CreatureConstants.Cryohydra_5Heads][None] = 0;
 
@@ -488,6 +516,8 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Eagle][None] = 0;
 
+                testCases[CreatureConstants.Eagle_Giant][None] = 0;
+
                 testCases[CreatureConstants.Efreeti][None] = 0;
 
                 testCases[CreatureConstants.Elasmosaurus][None] = 0;
@@ -566,6 +596,8 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Ettin][None] = 0;
 
+                testCases[CreatureConstants.FireBeetle_Giant][None] = 0;
+
                 testCases[CreatureConstants.FormianMyrmarch][None] = 0;
 
                 testCases[CreatureConstants.FormianQueen][None] = 0;
@@ -576,7 +608,21 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.FormianWorker][None] = 0;
 
+                testCases[CreatureConstants.FrostWorm][None] = 0;
+
+                testCases[CreatureConstants.Gargoyle][None] = 0;
+
+                testCases[CreatureConstants.Gargoyle_Kapoacinth][None] = 0;
+
                 testCases[CreatureConstants.GelatinousCube][None] = 0;
+
+                testCases[CreatureConstants.Ghaele][None] = 0;
+
+                testCases[CreatureConstants.Ghoul][None] = 0;
+
+                testCases[CreatureConstants.Ghoul_Ghast][None] = 0;
+
+                testCases[CreatureConstants.Ghoul_Lacedon][None] = 0;
 
                 testCases[CreatureConstants.Giant_Cloud][None] = 0;
 
@@ -592,13 +638,25 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Giant_Storm][None] = 0;
 
+                testCases[CreatureConstants.GibberingMouther][None] = 0;
+
+                testCases[CreatureConstants.Girallon][None] = 0;
+
+                testCases[CreatureConstants.Githyanki][None] = 0;
+
+                testCases[CreatureConstants.Githzerai][None] = 0;
+
                 testCases[CreatureConstants.Glabrezu][None] = 0;
+
+                testCases[CreatureConstants.Gnoll][None] = 0;
 
                 testCases[CreatureConstants.Gnome_Forest][GetData(GroupConstants.All, "against illusions")] = 2;
 
                 testCases[CreatureConstants.Gnome_Rock][GetData(GroupConstants.All, "against illusions")] = 2;
 
                 testCases[CreatureConstants.Gnome_Svirfneblin][GetData(GroupConstants.All)] = 2;
+
+                testCases[CreatureConstants.Goblin][None] = 0;
 
                 testCases[CreatureConstants.Golem_Clay][None] = 0;
 
@@ -610,20 +668,39 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Golem_Stone_Greater][None] = 0;
 
+                testCases[CreatureConstants.Gorgon][None] = 0;
+
                 testCases[CreatureConstants.GrayOoze][None] = 0;
+
+                testCases[CreatureConstants.GrayRender][None] = 0;
 
                 testCases[CreatureConstants.GreenHag][None] = 0;
 
+                testCases[CreatureConstants.Grick][None] = 0;
+
+                testCases[CreatureConstants.Griffon][None] = 0;
+
+                testCases[CreatureConstants.Grig][None] = 0;
+
+                testCases[CreatureConstants.Grig_WithFiddle][None] = 0;
+
+                testCases[CreatureConstants.Grimlock][None] = 0;
+
                 testCases[CreatureConstants.Gynosphinx][None] = 0;
 
-                testCases[CreatureConstants.Halfling_Deep][GetData(GroupConstants.All)] = 1;
-                testCases[CreatureConstants.Halfling_Deep][GetData(GroupConstants.All, "morale against fear")] = 2;
+                testCases[CreatureConstants.Halfling_Deep][None] = 0;
 
-                testCases[CreatureConstants.Halfling_Lightfoot][GetData(GroupConstants.All)] = 1;
-                testCases[CreatureConstants.Halfling_Lightfoot][GetData(GroupConstants.All, "morale against fear")] = 2;
+                testCases[CreatureConstants.Halfling_Lightfoot][None] = 0;
 
-                testCases[CreatureConstants.Halfling_Tallfellow][GetData(GroupConstants.All)] = 1;
-                testCases[CreatureConstants.Halfling_Tallfellow][GetData(GroupConstants.All, "morale against fear")] = 2;
+                testCases[CreatureConstants.Halfling_Tallfellow][None] = 0;
+
+                testCases[CreatureConstants.Harpy][None] = 0;
+
+                testCases[CreatureConstants.Hawk][None] = 0;
+
+                testCases[CreatureConstants.HellHound][None] = 0;
+
+                testCases[CreatureConstants.HellHound_NessianWarhound][None] = 0;
 
                 testCases[CreatureConstants.Hellcat_Bezekira][None] = 0;
 
@@ -633,9 +710,25 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Hieracosphinx][None] = 0;
 
+                testCases[CreatureConstants.Hippogriff][None] = 0;
+
+                testCases[CreatureConstants.Hobgoblin][None] = 0;
+
                 testCases[CreatureConstants.Homunculus][None] = 0;
 
                 testCases[CreatureConstants.HornedDevil_Cornugon][None] = 0;
+
+                testCases[CreatureConstants.Horse_Heavy][None] = 0;
+
+                testCases[CreatureConstants.Horse_Heavy_War][None] = 0;
+
+                testCases[CreatureConstants.Horse_Light][None] = 0;
+
+                testCases[CreatureConstants.Horse_Light_War][None] = 0;
+
+                testCases[CreatureConstants.HoundArchon][None] = 0;
+
+                testCases[CreatureConstants.Howler][None] = 0;
 
                 testCases[CreatureConstants.Human][None] = 0;
 
@@ -655,19 +748,65 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Hydra_12Heads][None] = 0;
 
+                testCases[CreatureConstants.Hyena][None] = 0;
+
                 testCases[CreatureConstants.IceDevil_Gelugon][None] = 0;
 
                 testCases[CreatureConstants.Imp][None] = 0;
 
+                testCases[CreatureConstants.InvisibleStalker][None] = 0;
+
                 testCases[CreatureConstants.Janni][None] = 0;
+
+                testCases[CreatureConstants.Kobold][None] = 0;
+
+                testCases[CreatureConstants.Kolyarut][None] = 0;
+
+                testCases[CreatureConstants.Kraken][None] = 0;
+
+                testCases[CreatureConstants.Krenshar][None] = 0;
+
+                testCases[CreatureConstants.KuoToa][None] = 0;
+
+                testCases[CreatureConstants.Lamia][None] = 0;
+
+                testCases[CreatureConstants.Lammasu][None] = 0;
+
+                testCases[CreatureConstants.LanternArchon][None] = 0;
 
                 testCases[CreatureConstants.Lemure][None] = 0;
 
+                testCases[CreatureConstants.Leonal][None] = 0;
+
+                testCases[CreatureConstants.Leopard][None] = 0;
+
+                testCases[CreatureConstants.Lillend][None] = 0;
+
+                testCases[CreatureConstants.Lion][None] = 0;
+
                 testCases[CreatureConstants.Lion_Dire][None] = 0;
+
+                testCases[CreatureConstants.Lizard][None] = 0;
+
+                testCases[CreatureConstants.Lizard_Monitor][None] = 0;
+
+                testCases[CreatureConstants.Lizardfolk][None] = 0;
+
+                testCases[CreatureConstants.Locathah][None] = 0;
 
                 testCases[CreatureConstants.Locust_Swarm][None] = 0;
 
+                testCases[CreatureConstants.Magmin][None] = 0;
+
+                testCases[CreatureConstants.MantaRay][None] = 0;
+
+                testCases[CreatureConstants.Manticore][None] = 0;
+
                 testCases[CreatureConstants.Marilith][None] = 0;
+
+                testCases[CreatureConstants.Marut][None] = 0;
+
+                testCases[CreatureConstants.Medusa][None] = 0;
 
                 testCases[CreatureConstants.Megaraptor][None] = 0;
 
@@ -691,7 +830,21 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Mephit_Water][None] = 0;
 
+                testCases[CreatureConstants.Merfolk][None] = 0;
+
+                testCases[CreatureConstants.Mimic][None] = 0;
+
                 testCases[CreatureConstants.MindFlayer][None] = 0;
+
+                testCases[CreatureConstants.Minotaur][None] = 0;
+
+                testCases[CreatureConstants.Mohrg][None] = 0;
+
+                testCases[CreatureConstants.Monkey][None] = 0;
+
+                testCases[CreatureConstants.Mule][None] = 0;
+
+                testCases[CreatureConstants.Mummy][None] = 0;
 
                 testCases[CreatureConstants.Naga_Dark][None] = 0;
 
@@ -703,9 +856,71 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Nalfeshnee][None] = 0;
 
+                testCases[CreatureConstants.NightHag][GetData(GroupConstants.All)] = 2;
+
+                testCases[CreatureConstants.Nightcrawler][None] = 0;
+
+                testCases[CreatureConstants.Nightmare][None] = 0;
+
+                testCases[CreatureConstants.Nightmare_Cauchemar][None] = 0;
+
+                testCases[CreatureConstants.Nightwalker][None] = 0;
+
+                testCases[CreatureConstants.Nightwing][None] = 0;
+
+                testCases[CreatureConstants.Nixie][None] = 0;
+
+                testCases[CreatureConstants.Nymph][None] = 0;
+
                 testCases[CreatureConstants.OchreJelly][None] = 0;
 
+                testCases[CreatureConstants.Octopus][None] = 0;
+
+                testCases[CreatureConstants.Octopus_Giant][None] = 0;
+
+                testCases[CreatureConstants.Ogre][None] = 0;
+
+                testCases[CreatureConstants.Ogre_Merrow][None] = 0;
+
+                testCases[CreatureConstants.OgreMage][None] = 0;
+
+                testCases[CreatureConstants.Orc][None] = 0;
+
+                testCases[CreatureConstants.Orc_Half][None] = 0;
+
+                testCases[CreatureConstants.Otyugh][None] = 0;
+
+                testCases[CreatureConstants.Owl][None] = 0;
+
+                testCases[CreatureConstants.Owl_Giant][None] = 0;
+
+                testCases[CreatureConstants.Owlbear][None] = 0;
+
+                testCases[CreatureConstants.Pegasus][None] = 0;
+
+                testCases[CreatureConstants.PhantomFungus][None] = 0;
+
+                testCases[CreatureConstants.PhaseSpider][None] = 0;
+
+                testCases[CreatureConstants.Phasm][None] = 0;
+
                 testCases[CreatureConstants.PitFiend][None] = 0;
+
+                testCases[CreatureConstants.Pixie][None] = 0;
+
+                testCases[CreatureConstants.Pixie_WithIrresistableDance][None] = 0;
+
+                testCases[CreatureConstants.Pony][None] = 0;
+
+                testCases[CreatureConstants.Pony_War][None] = 0;
+
+                testCases[CreatureConstants.Porpoise][None] = 0;
+
+                testCases[CreatureConstants.PrayingMantis_Giant][None] = 0;
+
+                testCases[CreatureConstants.Pseudodragon][None] = 0;
+
+                testCases[CreatureConstants.PurpleWorm][None] = 0;
 
                 testCases[CreatureConstants.Pyrohydra_5Heads][None] = 0;
 
@@ -725,11 +940,39 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Quasit][None] = 0;
 
+                testCases[CreatureConstants.Rakshasa][None] = 0;
+
+                testCases[CreatureConstants.Rast][None] = 0;
+
+                testCases[CreatureConstants.Rat][None] = 0;
+
                 testCases[CreatureConstants.Rat_Dire][None] = 0;
 
                 testCases[CreatureConstants.Rat_Swarm][None] = 0;
 
+                testCases[CreatureConstants.Raven][None] = 0;
+
+                testCases[CreatureConstants.Ravid][None] = 0;
+
+                testCases[CreatureConstants.RazorBoar][None] = 0;
+
+                testCases[CreatureConstants.Remorhaz][None] = 0;
+
                 testCases[CreatureConstants.Retriever][None] = 0;
+
+                testCases[CreatureConstants.Rhinoceras][None] = 0;
+
+                testCases[CreatureConstants.Roc][None] = 0;
+
+                testCases[CreatureConstants.Roper][None] = 0;
+
+                testCases[CreatureConstants.RustMonster][None] = 0;
+
+                testCases[CreatureConstants.Sahuagin][None] = 0;
+
+                testCases[CreatureConstants.Sahuagin_Malenti][None] = 0;
+
+                testCases[CreatureConstants.Sahuagin_Mutant][None] = 0;
 
                 testCases[CreatureConstants.Salamander_Flamebrother][None] = 0;
 
@@ -737,9 +980,53 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Salamander_Noble][None] = 0;
 
+                testCases[CreatureConstants.Satyr][None] = 0;
+
+                testCases[CreatureConstants.Satyr_WithPipes][None] = 0;
+
+                testCases[CreatureConstants.Scorpion_Monstrous_Colossal][None] = 0;
+
+                testCases[CreatureConstants.Scorpion_Monstrous_Gargantuan][None] = 0;
+
+                testCases[CreatureConstants.Scorpion_Monstrous_Huge][None] = 0;
+
+                testCases[CreatureConstants.Scorpion_Monstrous_Large][None] = 0;
+
+                testCases[CreatureConstants.Scorpion_Monstrous_Medium][None] = 0;
+
+                testCases[CreatureConstants.Scorpion_Monstrous_Small][None] = 0;
+
+                testCases[CreatureConstants.Scorpion_Monstrous_Tiny][None] = 0;
+
+                testCases[CreatureConstants.Scorpionfolk][None] = 0;
+
+                testCases[CreatureConstants.SeaCat][None] = 0;
+
                 testCases[CreatureConstants.SeaHag][None] = 0;
 
+                testCases[CreatureConstants.Shadow][None] = 0;
+
+                testCases[CreatureConstants.Shadow_Greater][None] = 0;
+
+                testCases[CreatureConstants.ShadowMastiff][None] = 0;
+
+                testCases[CreatureConstants.ShamblingMound][None] = 0;
+
                 testCases[CreatureConstants.Shark_Dire][None] = 0;
+
+                testCases[CreatureConstants.Shark_Huge][None] = 0;
+
+                testCases[CreatureConstants.Shark_Large][None] = 0;
+
+                testCases[CreatureConstants.Shark_Medium][None] = 0;
+
+                testCases[CreatureConstants.ShieldGuardian][None] = 0;
+
+                testCases[CreatureConstants.ShockerLizard][None] = 0;
+
+                testCases[CreatureConstants.Shrieker][None] = 0;
+
+                testCases[CreatureConstants.Skum][None] = 0;
 
                 testCases[CreatureConstants.Slaad_Red][None] = 0;
 
@@ -765,13 +1052,51 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Snake_Viper_Huge][None] = 0;
 
+                testCases[CreatureConstants.Spectre][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_Colossal][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_Gargantuan][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_Huge][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_Large][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_Medium][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_Small][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_Tiny][None] = 0;
+
+                testCases[CreatureConstants.SpiderEater][None] = 0;
+
                 testCases[CreatureConstants.Spider_Swarm][None] = 0;
+
+                testCases[CreatureConstants.Squid][None] = 0;
+
+                testCases[CreatureConstants.Squid_Giant][None] = 0;
+
+                testCases[CreatureConstants.StagBeetle_Giant][None] = 0;
+
+                testCases[CreatureConstants.Stirge][None] = 0;
 
                 testCases[CreatureConstants.Succubus][None] = 0;
 
+                testCases[CreatureConstants.Tarrasque][None] = 0;
+
+                testCases[CreatureConstants.Tendriculos][None] = 0;
+
+                testCases[CreatureConstants.Thoqqua][None] = 0;
+
                 testCases[CreatureConstants.Tiefling][None] = 0;
 
+                testCases[CreatureConstants.Tiger][None] = 0;
+
                 testCases[CreatureConstants.Tiger_Dire][None] = 0;
+
+                testCases[CreatureConstants.Titan][None] = 0;
+
+                testCases[CreatureConstants.Toad][None] = 0;
 
                 testCases[CreatureConstants.Tojanida_Juvenile][None] = 0;
 
@@ -779,13 +1104,39 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Tojanida_Elder][None] = 0;
 
+                testCases[CreatureConstants.Treant][None] = 0;
+
                 testCases[CreatureConstants.Triceratops][None] = 0;
 
                 testCases[CreatureConstants.Triton][None] = 0;
 
+                testCases[CreatureConstants.Troglodyte][None] = 0;
+
+                testCases[CreatureConstants.Troll][None] = 0;
+
+                testCases[CreatureConstants.Troll_Scrag][None] = 0;
+
+                testCases[CreatureConstants.TrumpetArchon][None] = 0;
+
                 testCases[CreatureConstants.Tyrannosaurus][None] = 0;
 
+                testCases[CreatureConstants.UmberHulk][None] = 0;
+
+                testCases[CreatureConstants.UmberHulk_TrulyHorrid][None] = 0;
+
+                testCases[CreatureConstants.Unicorn][None] = 0;
+
+                testCases[CreatureConstants.VampireSpawn][None] = 0;
+
+                testCases[CreatureConstants.Vargouille][None] = 0;
+
+                testCases[CreatureConstants.VioletFungus][None] = 0;
+
                 testCases[CreatureConstants.Vrock][None] = 0;
+
+                testCases[CreatureConstants.Wasp_Giant][None] = 0;
+
+                testCases[CreatureConstants.Weasel][None] = 0;
 
                 testCases[CreatureConstants.Weasel_Dire][None] = 0;
 
@@ -795,19 +1146,47 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Whale_Orca][None] = 0;
 
+                testCases[CreatureConstants.Wight][None] = 0;
+
+                testCases[CreatureConstants.WillOWisp][None] = 0;
+
+                testCases[CreatureConstants.WinterWolf][None] = 0;
+
+                testCases[CreatureConstants.Wolf][None] = 0;
+
                 testCases[CreatureConstants.Wolf_Dire][None] = 0;
 
+                testCases[CreatureConstants.Wolverine][None] = 0;
+
                 testCases[CreatureConstants.Wolverine_Dire][None] = 0;
+
+                testCases[CreatureConstants.Worg][None] = 0;
 
                 testCases[CreatureConstants.Wraith][None] = 0;
 
                 testCases[CreatureConstants.Wraith_Dread][None] = 0;
+
+                testCases[CreatureConstants.Wyvern][None] = 0;
+
+                testCases[CreatureConstants.Xill][None] = 0;
 
                 testCases[CreatureConstants.Xorn_Minor][None] = 0;
 
                 testCases[CreatureConstants.Xorn_Average][None] = 0;
 
                 testCases[CreatureConstants.Xorn_Elder][None] = 0;
+
+                testCases[CreatureConstants.YethHound][None] = 0;
+
+                testCases[CreatureConstants.Yrthak][None] = 0;
+
+                testCases[CreatureConstants.YuanTi_Abomination][None] = 0;
+
+                testCases[CreatureConstants.YuanTi_Halfblood][None] = 0;
+
+                testCases[CreatureConstants.YuanTi_Pureblood][None] = 0;
+
+                testCases[CreatureConstants.Zelekhut][None] = 0;
 
                 return TestDataHelper.EnumerateTestCases(testCases);
             }
@@ -925,15 +1304,26 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Types.Subtypes.Fire][None] = 0;
 
+                testCases[CreatureConstants.Types.Subtypes.Gnoll][None] = 0;
+
+                testCases[CreatureConstants.Types.Subtypes.Gnome][None] = 0;
+
                 testCases[CreatureConstants.Types.Subtypes.Goblinoid][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Good][None] = 0;
+
+                testCases[CreatureConstants.Types.Subtypes.Halfling][GetData(GroupConstants.All)] = 1;
+                testCases[CreatureConstants.Types.Subtypes.Halfling][GetData(GroupConstants.All, "morale against fear")] = 2;
+
+                testCases[CreatureConstants.Types.Subtypes.Human][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Incorporeal][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Lawful][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Native][None] = 0;
+
+                testCases[CreatureConstants.Types.Subtypes.Orc][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Reptilian][None] = 0;
 

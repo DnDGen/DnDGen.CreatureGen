@@ -4,7 +4,6 @@ using CreatureGen.Selectors.Collections;
 using CreatureGen.Selectors.Helpers;
 using CreatureGen.Tables;
 using CreatureGen.Tests.Integration.Tables.TestData;
-using DnDGen.Core.Selectors.Collections;
 using EventGen;
 using Ninject;
 using NUnit.Framework;
@@ -17,8 +16,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
     [TestFixture]
     public class SpecialQualityDataTests : CollectionTests
     {
-        [Inject]
-        public ICollectionSelector CollectionSelector { get; set; }
+        //INFO: Need this for the feats selector
         [Inject]
         public ClientIDManager ClientIdManager { get; set; }
         [Inject]
@@ -26,20 +24,17 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [Inject]
         internal ICreatureDataSelector CreatureDataSelector { get; set; }
 
-        protected override string tableName
-        {
-            get { return TableNameConstants.Collection.SpecialQualityData; }
-        }
+        protected override string tableName => TableNameConstants.Collection.SpecialQualityData;
 
         [SetUp]
         public void Setup()
         {
-            var clientId = Guid.NewGuid();
-            ClientIdManager.SetClientID(clientId);
+            var clientID = Guid.NewGuid();
+            ClientIdManager.SetClientID(clientID);
         }
 
         [Test]
-        public void CollectionNames()
+        public void SpecialQualityDataNames()
         {
             var creatures = CreatureConstants.All();
             var types = CreatureConstants.Types.All();
@@ -195,10 +190,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility)
                 {
-                    Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative);
-                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty);
-                    Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty);
-                    Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Zero);
+                    var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
+
+                    Assert.That(focus, Is.Not.Empty);
+                    Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, focus);
+                    Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, focus);
+                    Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Zero, focus);
                 }
             }
         }
@@ -244,11 +241,19 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
             AssertCollection(table.Keys.Intersect(creatureTypes), creatureTypes);
 
+            var testCases = SpecialQualityTestData.Creatures.Cast<TestCaseData>();
+            var creatureTestCase = testCases.First(c => c.Arguments[0].ToString() == creature);
+
+            var testCaseSpecialQualityDatas = creatureTestCase.Arguments[1] as List<string[]>;
+            var testCaseSpecialQualities = testCaseSpecialQualityDatas.Select(d => SpecialQualityHelper.BuildData(d));
+
             foreach (var creatureType in creatureTypes)
             {
-                var overlap = table[creatureType].Intersect(table[creature]);
+                var overlap = table[creatureType].Intersect(testCaseSpecialQualities);
+                Assert.That(overlap, Is.Empty, $"TEST CASE: {creature} - {creatureType}");
 
-                Assert.That(overlap, Is.Empty, $"{creatureType}: {creature}");
+                overlap = table[creatureType].Intersect(table[creature]);
+                Assert.That(overlap, Is.Empty, $"XML: {creature} - {creatureType}");
             }
         }
 

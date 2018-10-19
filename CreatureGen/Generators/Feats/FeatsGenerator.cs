@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Alignments;
 using CreatureGen.Attacks;
 using CreatureGen.Creatures;
 using CreatureGen.Defenses;
@@ -31,33 +32,41 @@ namespace CreatureGen.Generators.Feats
             this.dice = dice;
         }
 
-        public IEnumerable<Feat> GenerateSpecialQualities(string creatureName, CreatureType creatureType, HitPoints hitPoints, Dictionary<string, Ability> abilities, IEnumerable<Skill> skills, bool canUseEquipment, string size)
+        public IEnumerable<Feat> GenerateSpecialQualities(
+            string creatureName,
+            CreatureType creatureType,
+            HitPoints hitPoints,
+            Dictionary<string, Ability> abilities,
+            IEnumerable<Skill> skills,
+            bool canUseEquipment,
+            string size,
+            Alignment alignment)
         {
-            var featSelections = featsSelector.SelectSpecialQualities(creatureName, creatureType);
+            var specialQualitySelections = featsSelector.SelectSpecialQualities(creatureName, creatureType);
             var featToIncreasePower = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower);
 
-            foreach (var selection in featSelections)
+            foreach (var selection in specialQualitySelections)
                 if (featToIncreasePower.Contains(selection.Feat))
                     selection.Power += hitPoints.RoundedHitDiceQuantity;
 
-            var feats = new List<Feat>();
+            var specialQualities = new List<Feat>();
 
-            foreach (var featSelection in featSelections)
+            foreach (var specialQualitySelection in specialQualitySelections)
             {
-                if (!featSelection.RequirementsMet(abilities, feats, canUseEquipment, size))
+                if (!specialQualitySelection.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment))
                     continue;
 
-                var feat = new Feat();
-                feat.Name = featSelection.Feat;
-                feat.Foci = GetFoci(featSelection, skills, abilities);
+                var specialQuality = new Feat();
+                specialQuality.Name = specialQualitySelection.Feat;
+                specialQuality.Foci = GetFoci(specialQualitySelection, skills, abilities);
 
-                feat.Frequency = featSelection.Frequency;
-                feat.Power = featSelection.Power;
+                specialQuality.Frequency = specialQualitySelection.Frequency;
+                specialQuality.Power = specialQualitySelection.Power;
 
-                feats.Add(feat);
+                specialQualities.Add(specialQuality);
             }
 
-            return feats;
+            return specialQualities;
         }
 
         private IEnumerable<string> GetFoci(SpecialQualitySelection specialQualitySelection, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)

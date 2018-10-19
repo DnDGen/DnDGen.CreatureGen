@@ -13,7 +13,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         }
 
         [Test]
-        public void CollectionNames()
+        public void SkillPointsNames()
         {
             var types = CreatureConstants.Types.All();
             AssertCollectionNames(types);

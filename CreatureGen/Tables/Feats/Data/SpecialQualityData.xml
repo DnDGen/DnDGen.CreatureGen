@@ -5,12 +5,9 @@
     <name>Aasimar</name>
     <entry>Armor Proficiency (Light)#0##0##0#True</entry>
     <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#5#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#5#Electricity#1#Round#0#False</entry>
-    <entry>Skill Bonus#2#Spot#0##0#False</entry>
-    <entry>Skill Bonus#2#Listen#0##0#False</entry>
     <entry>Spell-Like Ability#0#Daylight#1#Day#0#False</entry>
   </collection>
   <collection>
@@ -32,21 +29,16 @@
   <collection>
     <name>Abyssal Greater Basilisk</name>
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
-    <entry>Skill Bonus#4#Hide: in natural settings#0##0#False</entry>
     <entry>Spell Resistance#23##0##0#False</entry>
   </collection>
   <collection>
     <name>Achaierai</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Spell Resistance#19##0##0#False</entry>
   </collection>
   <collection>
     <name>Adult Arrowhawk</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
@@ -56,113 +48,50 @@
   <collection>
     <name>Adult Tojanida</name>
     <entry>All-Around Vision#0##0##0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Immunity#0#Cold#0##0#False</entry>
     <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Air</name>
   </collection>
   <collection>
     <name>Air Elemental, Elder</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Greater</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Huge</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Large</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Medium</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Elemental, Small</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Air Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Fast Healing#2#Exposed to moving air#1#Turn#0#False</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0#False</entry>
     <entry>Spell-Like Ability#0#Gust of wind#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Allip</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Turn Resistance#2##0##0#False</entry>
-    <entry>Immunity#0#Ability Drain#0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Death#0##0#False</entry>
-    <entry>Immunity#0#Disease#0##0#False</entry>
-    <entry>Immunity#0#Energy Drain#0##0#False</entry>
-    <entry>Immunity#0#Exhaustion#0##0#False</entry>
-    <entry>Immunity#0#Fatigue#0##0#False</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
-    <entry>Immunity#0#Nonmagical attacks#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
   </collection>
   <collection>
     <name>Androsphinx</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Angel</name>
@@ -174,7 +103,6 @@
     <entry>Immunity#0#Petrification#0##0#False</entry>
     <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Protective Aura#0##0##0#False</entry>
-    <entry>Save Bonus#4#Fortitude: against poison#0##0#False</entry>
     <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
   </collection>
   <collection>
@@ -301,14 +229,11 @@
   </collection>
   <collection>
     <name>Ankheg</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Annis</name>
     <entry>Damage Reduction#2#Vulnerable to bludgeoning weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Spell Resistance#19##0##0#False</entry>
     <entry>Spell-Like Ability#0#Disguise self#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
@@ -316,13 +241,9 @@
   <collection>
     <name>Ape</name>
     <entry>Scent#0##0##0#False</entry>
-    <entry>Skill Bonus#8#Climb#0##0#False</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Aquatic</name>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Aquatic Elf</name>
@@ -331,26 +252,14 @@
     <entry>Gills#0##0##0#False</entry>
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Trident#0##0#True</entry>
-    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
     <entry>Simple Weapon Proficiency#0#Longspear#0##0#True</entry>
     <entry>Simple Weapon Proficiency#0#Shortspear#0##0#True</entry>
     <entry>Simple Weapon Proficiency#0#Spear#0##0#True</entry>
-    <entry>Skill Bonus#2#Listen#0##0#False</entry>
-    <entry>Skill Bonus#2#Search#0##0#False</entry>
-    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
-    <entry>Skill Bonus#2#Spot#0##0#False</entry>
     <entry>Superior Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Aranea</name>
     <entry>Change Shape#0#Small or Medium humanoid; or Medium spider-human hybrid (like a Lycanthrope)#0##0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
-    <entry>Skill Bonus#8#Climb#0##0#False</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
-    <entry>Skill Bonus#2#Jump#0##0#False</entry>
-    <entry>Skill Bonus#2#Listen#0##0#False</entry>
-    <entry>Skill Bonus#2#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Archon</name>
@@ -359,7 +268,6 @@
     <entry>Immunity#0#Electricity#0##0#False</entry>
     <entry>Immunity#0#Petrification#0##0#False</entry>
     <entry>Low-Light Vision#0##0##0#False</entry>
-    <entry>Save Bonus#4#Fortitude: against poison#0##0#False</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Magic circle against chaos/law/good/evil#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
@@ -371,8 +279,6 @@
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Skill Bonus#8#Climb#0##0#False</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Athach</name>
@@ -383,10 +289,8 @@
   <collection>
     <name>Average Salamander</name>
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Multiattack#0##0##0#False</entry>
-    <entry>Skill Bonus#4#Craft/Blacksmithing#0##0#False</entry>
     <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
@@ -394,25 +298,21 @@
     <entry>All-Around Vision#0##0##0#False</entry>
     <entry>Cleave#0##0##0#False</entry>
     <entry>Damage Reduction#5#Vulnerable to bludgeoning weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Earth Glide#0##0##0#False</entry>
     <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
     <entry>Immunity#0#Cold#0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Skill Bonus#2#Survival: underground#0##0#False</entry>
     <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Avoral</name>
     <entry>Damage Reduction#10#Vulnerable to evil or silver weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Sonic#1#Round#0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
     <entry>Immunity#0#Petrification#0##0#False</entry>
     <entry>Lay on Hands#0##0##0#False</entry>
     <entry>Low-Light Vision#0##0##0#False</entry>
-    <entry>Skill Bonus#8#Spot#0##0#False</entry>
     <entry>Spell Resistance#25##0##0#False</entry>
     <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Blur: self only#0#At Will#0#False</entry>
@@ -432,7 +332,6 @@
   </collection>
   <collection>
     <name>Azer</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Spell Resistance#13##0##0#False</entry>
     <entry>Vulnerability#0#Cold#0##0#False</entry>
@@ -440,17 +339,12 @@
   <collection>
     <name>Babau</name>
     <entry>Damage Reduction#10#Vulnerable to good or cold iron weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
     <entry>Immunity#0#Poison#0##0#False</entry>
     <entry>Protective Slime#0##0##0#False</entry>
-    <entry>Skill Bonus#8#Hide#0##0#False</entry>
-    <entry>Skill Bonus#8#Listen#0##0#False</entry>
-    <entry>Skill Bonus#8#Move Silently#0##0#False</entry>
-    <entry>Skill Bonus#8#Search#0##0#False</entry>
     <entry>Spell Resistance#14##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False</entry>
@@ -461,13 +355,10 @@
   <collection>
     <name>Baboon</name>
     <entry>Scent#0##0##0#False</entry>
-    <entry>Skill Bonus#8#Climb#0##0#False</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Badger</name>
     <entry>Scent#0##0##0#False</entry>
-    <entry>Skill Bonus#4#Escape Artist#0##0#False</entry>
     <entry>Track#0##0##0#False</entry>
     <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
@@ -475,13 +366,10 @@
     <name>Baleen Whale</name>
     <entry>Blindsight#120##0##0#False</entry>
     <entry>Hold Breath#0##0##0#False</entry>
-    <entry>Skill Bonus#4#Listen#0##0#False</entry>
-    <entry>Skill Bonus#4#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Balor</name>
     <entry>Damage Reduction#15#Vulnerable to good and cold iron weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Exotic Weapon Proficiency#0#Whip#0##0#True</entry>
@@ -489,8 +377,6 @@
     <entry>Flaming Body#0##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Skill Bonus#8#Listen#0##0#False</entry>
-    <entry>Skill Bonus#8#Spot#0##0#False</entry>
     <entry>Spell Resistance#28##0##0#False</entry>
     <entry>Spell-Like Ability#0#Blasphemy#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Dominate monster#0#At Will#0#False</entry>
@@ -509,7 +395,6 @@
     <name>Barbed Devil (Hamatula)</name>
     <entry>Barbed Defense#0##0##0#False</entry>
     <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
@@ -528,9 +413,7 @@
     <name>Barghest</name>
     <entry>Change Shape#0#Goblin or wolf#0##0#False</entry>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
-    <entry>Skill Bonus#4#Hide: in wolf form#0##0#False</entry>
     <entry>Spell-Like Ability#0#Blink#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Charm monster#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Crushing despair#1#Day#0#False</entry>
@@ -542,15 +425,10 @@
   </collection>
   <collection>
     <name>Basilisk</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
-    <entry>Skill Bonus#4#Hide: in natural settings#0##0#False</entry>
   </collection>
   <collection>
     <name>Bat</name>
     <entry>Blindsense#20##0##0#False</entry>
-    <entry>Skill Bonus#4#Listen#0##0#False</entry>
-    <entry>Skill Bonus#4#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
@@ -558,13 +436,10 @@
     <entry>Immunity#0#Critical hits#0##0#False</entry>
     <entry>Immunity#0#Flanking#0##0#False</entry>
     <entry>Immunity#0#Weapon damage#0##0#False</entry>
-    <entry>Skill Bonus#4#Listen#0##0#False</entry>
-    <entry>Skill Bonus#4#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
     <entry>Damage Reduction#5#Vulnerable to good or silver weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
@@ -578,21 +453,15 @@
   <collection>
     <name>Bebilith</name>
     <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
-    <entry>Skill Bonus#8#Hide#0##0#False</entry>
     <entry>Spell-Like Ability#0#Plane shift: self only#0#At Will#0#False</entry>
     <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Behir</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
     <entry>Immunity#0#Tripping#0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
-    <entry>Skill Bonus#8#Climb#0##0#False</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Beholder</name>
@@ -603,14 +472,6 @@
   </collection>
   <collection>
     <name>Belker</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
-    <entry>Skill Bonus#4#Move Silently#0##0#False</entry>
     <entry>Smoke Form#0##0##0#False</entry>
   </collection>
   <collection>
@@ -620,7 +481,6 @@
   <collection>
     <name>Black Bear</name>
     <entry>Scent#0##0##0#False</entry>
-    <entry>Skill Bonus#4#Swim#0##0#False</entry>
   </collection>
   <collection>
     <name>Black Dragon, Adult</name>
@@ -629,8 +489,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#18##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
@@ -643,8 +501,6 @@
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#25##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
@@ -660,8 +516,6 @@
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#28##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
@@ -674,8 +528,6 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
@@ -687,8 +539,6 @@
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
@@ -701,8 +551,6 @@
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#22##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
@@ -716,8 +564,6 @@
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#23##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
@@ -729,8 +575,6 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
   </collection>
@@ -741,8 +585,6 @@
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#26##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
@@ -755,8 +597,6 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
   </collection>
@@ -766,8 +606,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#17##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
@@ -778,28 +616,15 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Black Pudding</name>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Polymorph#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
-    <entry>Skill Bonus#8#Climb#0##0#False</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
     <entry>Split#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Blink Dog</name>
-    <entry>Darkvision#60##0##0#False</entry>
-    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Blink#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Dimension door#1#Round#0#False</entry>
@@ -812,8 +637,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
@@ -826,8 +649,6 @@
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
     <entry>Spell Resistance#27##0##0#False</entry>
@@ -842,8 +663,6 @@
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
     <entry>Spell Resistance#31##0##0#False</entry>
@@ -858,8 +677,6 @@
     <entry>Create/Destroy Water#0##3#Day#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
   </collection>
@@ -870,8 +687,6 @@
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
     <entry>Spell Resistance#22##0##0#False</entry>
@@ -884,8 +699,6 @@
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
     <entry>Spell Resistance#24##0##0#False</entry>
@@ -899,8 +712,6 @@
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
     <entry>Spell Resistance#25##0##0#False</entry>
@@ -913,8 +724,6 @@
     <entry>Create/Destroy Water#0##3#Day#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
   </collection>
   <collection>
@@ -924,8 +733,6 @@
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
     <entry>Spell Resistance#29##0##0#False</entry>
@@ -939,8 +746,6 @@
     <entry>Create/Destroy Water#0##3#Day#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
   </collection>
   <collection>
@@ -950,8 +755,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Sound Imitation#0##0##0#False</entry>
     <entry>Spell Resistance#19##0##0#False</entry>
@@ -962,13 +765,10 @@
     <entry>Create/Destroy Water#0##3#Day#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Blue Slaad</name>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#5#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#5#Electricity#1#Round#0#False</entry>
@@ -983,7 +783,6 @@
   <collection>
     <name>Bodak</name>
     <entry>Damage Reduction#10#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
@@ -992,7 +791,6 @@
   <collection>
     <name>Bone Devil (Osyluth)</name>
     <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
@@ -1011,7 +809,6 @@
     <name>Bralani</name>
     <entry>Alternate Form#0#Humanoid or whirlwind form#0#At Will#0#False</entry>
     <entry>Damage Reduction#10#Vulnerable to cold iron or evil weapons#1#Hit#0#False</entry>
-    <entry>Darkvision#60##0##0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
@@ -1033,8 +830,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#20##0##0#False</entry>
     <entry>Spell-Like Ability#0#Endure elements: radius 60 ft.#3#Day#0#False</entry>
@@ -1048,8 +843,6 @@
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#27##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
@@ -1065,8 +858,6 @@
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#30##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
@@ -1082,8 +873,6 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Endure elements: radius 40 ft.#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
@@ -1095,8 +884,6 @@
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#22##0##0#False</entry>
     <entry>Spell-Like Ability#0#Endure elements: radius 70 ft.#3#Day#0#False</entry>
@@ -1110,8 +897,6 @@
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#24##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
@@ -1126,8 +911,6 @@
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#25##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
@@ -1141,8 +924,6 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Vulnerability#0#Cold#0##0#False</entry>
@@ -1153,8 +934,6 @@
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#28##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
@@ -1169,8 +948,6 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Vulnerability#0#Cold#0##0#False</entry>
@@ -1181,8 +958,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#18##0##0#False</entry>
     <entry>Spell-Like Ability#0#Endure elements: radius 50 ft.#3#Day#0#False</entry>
@@ -1194,8 +969,6 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Vulnerability#0#Cold#0##0#False</entry>
@@ -1207,8 +980,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#22##0##0#False</entry>
     <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
@@ -1223,8 +994,6 @@
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#28##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control water#3#Day#0#False</entry>
@@ -1241,8 +1010,6 @@
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#31##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control water#3#Day#0#False</entry>
@@ -1259,8 +1026,6 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
@@ -1272,8 +1037,6 @@
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#23##0##0#False</entry>
     <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
@@ -1288,8 +1051,6 @@
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#25##0##0#False</entry>
     <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
@@ -1305,8 +1066,6 @@
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#26##0##0#False</entry>
     <entry>Spell-Like Ability#0#Create food and water#3#Day#0#False</entry>
@@ -1320,8 +1079,6 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
@@ -1333,8 +1090,6 @@
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#29##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control water#3#Day#0#False</entry>
@@ -1349,8 +1104,6 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
@@ -1362,8 +1115,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#20##0##0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
@@ -1375,8 +1126,6 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Water Breathing#0##0##0#False</entry>
@@ -1394,8 +1143,6 @@
     <name>Cachalot Whale</name>
     <entry>Blindsight#120##0##0#False</entry>
     <entry>Hold Breath#0##0##0#False</entry>
-    <entry>Skill Bonus#4#Listen#0##0#False</entry>
-    <entry>Skill Bonus#4#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
@@ -1422,9 +1169,6 @@
     <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
     <entry>Immunity#0#Weapon damage#0##0#False</entry>
     <entry>Tremorsense#30##0##0#False</entry>
-    <entry>Skill Bonus#8#Climb#0##0#False</entry>
-    <entry>Skill Bonus#10#Climb: can always take 10#0##0#False</entry>
-    <entry>Skill Bonus#4#Spot#0##0#False</entry>
     <entry>Swap Skill Base Ability#0#Climb:Dexterity#0##0#False</entry>
     <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
@@ -1436,7 +1180,6 @@
     <entry>Immunity#0#Cold#0##0#False</entry>
     <entry>Regeneration#2#Does not regenerate damage from silver weapons or good-aligned damage#1#Round#0#False</entry>
     <entry>Spell Resistance#18##0##0#False</entry>
-    <entry>Skill Bonus#8#Craft: involving metalwork#0##0#False</entry>
   </collection>
   <collection>
     <name>Chaos Beast</name>
@@ -1459,8 +1202,6 @@
     <entry>Amphibious#0##0##0#False</entry>
     <entry>Darkvision#60##0##0#False</entry>
     <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Clay Golem</name>
@@ -1511,8 +1252,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1524,8 +1263,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1537,8 +1274,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1550,8 +1285,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1563,8 +1296,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1576,8 +1307,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1589,8 +1318,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1602,8 +1329,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1615,8 +1340,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1628,8 +1351,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1641,8 +1362,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1654,8 +1373,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
@@ -1818,12 +1535,6 @@
     <entry>Light Blindness#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
-    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
-    <entry>Save Bonus#2#Will: spells and spell-like abilities#0##0#False</entry>
-    <entry>Skill Bonus#2#Listen#0##0#False</entry>
-    <entry>Skill Bonus#2#Search#0##0#False</entry>
-    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
-    <entry>Skill Bonus#2#Spot#0##0#False</entry>
     <entry>Spell Resistance#11##0##0#False</entry>
   </collection>
   <collection>
@@ -1885,12 +1596,27 @@
   </collection>
   <collection>
     <name>Elder Black Pudding</name>
+    <entry>Split#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Elder Tojanida</name>
+    <entry>All-Around Vision#0##0##0#False</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
   </collection>
   <collection>
     <name>Elder Xorn</name>
+    <entry>All-Around Vision#0##0##0#False</entry>
+    <entry>Cleave#0##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Earth Glide#0##0##0#False</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Elemental</name>
@@ -1984,6 +1710,10 @@
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Multiattack#0##0##0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Flesh Golem</name>
@@ -2165,11 +1895,6 @@
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
-    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
-    <entry>Skill Bonus#2#Listen#0##0#False</entry>
-    <entry>Skill Bonus#2#Search#0##0#False</entry>
-    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
-    <entry>Skill Bonus#2#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Gray Ooze</name>
@@ -2241,6 +1966,9 @@
     <name>Grig</name>
   </collection>
   <collection>
+    <name>Grig with fiddle</name>
+  </collection>
+  <collection>
     <name>Grimlock</name>
   </collection>
   <collection>
@@ -2256,12 +1984,6 @@
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
-    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
-    <entry>Skill Bonus#2#Diplomacy#0##0#False</entry>
-    <entry>Skill Bonus#2#Gather Information#0##0#False</entry>
-    <entry>Skill Bonus#1#Listen#0##0#False</entry>
-    <entry>Skill Bonus#1#Search#0##0#False</entry>
-    <entry>Skill Bonus#1#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Half-Orc</name>
@@ -2291,8 +2013,6 @@
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Invisible in Light#0##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
-    <entry>Skill Bonus#4#Listen#0##0#False</entry>
-    <entry>Skill Bonus#4#Move Silently#0##0#False</entry>
     <entry>Spell Resistance#19##0##0#False</entry>
     <entry>Telepathy#100##0##0#False</entry>
   </collection>
@@ -2316,11 +2036,6 @@
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
-    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
-    <entry>Skill Bonus#2#Listen#0##0#False</entry>
-    <entry>Skill Bonus#2#Search#0##0#False</entry>
-    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
-    <entry>Skill Bonus#2#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Hill Dwarf</name>
@@ -2435,6 +2150,12 @@
   </collection>
   <collection>
     <name>Juvenile Tojanida</name>
+    <entry>All-Around Vision#0##0##0#False</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
   </collection>
   <collection>
     <name>Kapoacinth</name>
@@ -2555,6 +2276,14 @@
   </collection>
   <collection>
     <name>Minor Xorn</name>
+    <entry>All-Around Vision#0##0##0#False</entry>
+    <entry>Cleave#0##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Earth Glide#0##0##0#False</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Minotaur</name>
@@ -2696,6 +2425,10 @@
   </collection>
   <collection>
     <name>Noble Salamander</name>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Multiattack#0##0##0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Nymph</name>
@@ -2731,9 +2464,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0</entry>
     <entry>Darkvision#60##0##0</entry>
     <entry>Fast Healing#2#Exposed to moving air#1#Turn#0</entry>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0</entry>
     <entry>Spell-Like Ability#0#Gust of wind#1#Day#0</entry>
   </collection>
@@ -3134,8 +2864,6 @@
     <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#5#Electricity#1#Round#0#False</entry>
     <entry>Energy Resistance#5#Fire#1#Round#0#False</entry>
-    <entry>Skill Bonus#2#Bluff#0##0#False</entry>
-    <entry>Skill Bonus#2#Hide#0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#1#Day#0#False</entry>
   </collection>
   <collection>
@@ -3251,8 +2979,6 @@
   </collection>
   <collection>
     <name>Water</name>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0#False</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0#False</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
@@ -3277,9 +3003,6 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0</entry>
     <entry>Darkvision#60##0##0</entry>
     <entry>Fast Healing#2#Exposed to moving air#1#Turn#0</entry>
-    <entry>Skill Bonus#8#Swim: special action or avoid a hazard#0##0</entry>
-    <entry>Skill Bonus#10#Swim: can always take 10#0##0</entry>
-    <entry>Skill Bonus#2#Use Rope: with bindings#0##0</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0</entry>
     <entry>Spell-Like Ability#0#Gust of wind#1#Day#0</entry>
   </collection>
@@ -3351,11 +3074,6 @@
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
-    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
-    <entry>Skill Bonus#2#Listen#0##0#False</entry>
-    <entry>Skill Bonus#2#Search#0##0#False</entry>
-    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
-    <entry>Skill Bonus#2#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
@@ -3384,11 +3102,6 @@
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
-    <entry>Save Bonus#2#enchantment spells or effects#0##0#False</entry>
-    <entry>Skill Bonus#2#Listen#0##0#False</entry>
-    <entry>Skill Bonus#2#Search#0##0#False</entry>
-    <entry>Skill Bonus#0#Search: passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for#0##0#False</entry>
-    <entry>Skill Bonus#2#Spot#0##0#False</entry>
   </collection>
   <collection>
     <name>Wraith</name>

@@ -557,6 +557,7 @@ namespace CreatureGen.Creatures
         public const string Grick = "Grick";
         public const string Griffon = "Griffon";
         public const string Grig = "Grig";
+        public const string Grig_WithFiddle = "Grig with fiddle";
         public const string Grimlock = "Grimlock";
         public const string Gynosphinx = "Gynosphinx";
         public const string Halfling_Deep = "Deep Halfling";
@@ -1142,6 +1143,7 @@ namespace CreatureGen.Creatures
                 Grick,
                 Griffon,
                 Grig,
+                Grig_WithFiddle,
                 Grimlock,
                 Gynosphinx,
                 Halfling_Deep,

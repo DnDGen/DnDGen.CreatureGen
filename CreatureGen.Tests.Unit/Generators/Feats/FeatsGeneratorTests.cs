@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Alignments;
 using CreatureGen.Attacks;
 using CreatureGen.Creatures;
 using CreatureGen.Defenses;
@@ -35,6 +36,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         private List<Attack> attacks;
         private List<Feat> specialQualities;
         private CreatureType creatureType;
+        private Alignment alignment;
 
         [SetUp]
         public void Setup()
@@ -55,6 +57,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             specialQualities = new List<Feat>();
             speeds = new Dictionary<string, Measurement>();
             creatureType = new CreatureType();
+            alignment = new Alignment("creature alignment");
 
             hitPoints.HitDiceQuantity = 1;
             creatureType.Name = "creature type";
@@ -376,7 +379,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             specialQualitySelections.Add(feat1);
             specialQualitySelections.Add(feat2);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var first = specialQualities.First();
             var last = specialQualities.Last();
 
@@ -401,7 +404,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(feat1);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             Assert.That(specialQualities, Is.Not.Empty);
 
             var specialQuality = specialQualities.Single();
@@ -420,7 +423,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             specialQualitySelection.MinimumAbilities[AbilityConstants.Intelligence] = 11;
             specialQualitySelections.Add(specialQualitySelection);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             Assert.That(specialQualities, Is.Empty);
         }
 
@@ -434,7 +437,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             abilities[AbilityConstants.Intelligence].BaseScore = 11;
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
         }
 
@@ -448,7 +451,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "base focus type", skills, abilities)).Returns("base focus");
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var baseFeat = feats.First(f => f.Name == specialQualitySelection.Feat);
 
             Assert.That(baseFeat.Foci.Single(), Is.EqualTo("base focus"));
@@ -464,7 +467,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", string.Empty, skills, abilities)).Returns(string.Empty);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var baseFeat = feats.First(f => f.Name == specialQualitySelectionselection.Feat);
 
             Assert.That(baseFeat.Foci, Is.Empty);
@@ -482,7 +485,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { metaraceFeat.Feat });
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var onlyFeat = feats.Single();
 
             Assert.That(onlyFeat.Name, Is.EqualTo("metarace feat"));
@@ -501,7 +504,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { "other feat" });
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var feat = feats.Single();
 
             Assert.That(feat.Name, Is.EqualTo("different feat"));
@@ -521,7 +524,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(featSelection);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var feat = feats.Single();
 
             Assert.That(feat.Name, Is.EqualTo("racial feat"));
@@ -542,7 +545,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(featSelection);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var feat = feats.Single();
 
             Assert.That(feat.Name, Is.EqualTo("racial feat"));
@@ -563,7 +566,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(featSelection);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var feat = feats.Single();
 
             Assert.That(feat.Name, Is.EqualTo("racial feat"));
@@ -584,7 +587,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(featSelection);
 
-            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var feat = feats.Single();
 
             Assert.That(feat.Name, Is.EqualTo("racial feat"));
@@ -600,7 +603,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(specialQualitySelection);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, true, "size");
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, true, "size", alignment);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
         }
 
@@ -613,7 +616,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(specialQualitySelection);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             Assert.That(specialQualities, Is.Empty);
         }
 
@@ -626,7 +629,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(specialQualitySelection);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
         }
 
@@ -639,7 +642,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(specialQualitySelection);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
         }
 
@@ -652,7 +655,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(specialQualitySelection);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size");
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
         }
 
@@ -665,7 +668,41 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             specialQualitySelections.Add(specialQualitySelection);
 
-            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "wrong size");
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "wrong size", alignment);
+            Assert.That(specialQualities, Is.Empty);
+        }
+
+        //INFO: Example is Titans of different alignments have different spell-like abilities
+        [Test]
+        public void GetSpecialQualityRequiringAlignment()
+        {
+            var specialQualitySelection = new SpecialQualitySelection();
+            specialQualitySelection.Feat = "special quality";
+            specialQualitySelection.RequiredAlignments = new[] { "lawfulness goodness" };
+
+            specialQualitySelections.Add(specialQualitySelection);
+
+            alignment.Goodness = "goodness";
+            alignment.Lawfulness = "lawfulness";
+
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+        }
+
+        //INFO: Example is Titans of different alignments have different spell-like abilities
+        [Test]
+        public void DoNotGetSpecialQualityRequiringAlignment()
+        {
+            var specialQualitySelection = new SpecialQualitySelection();
+            specialQualitySelection.Feat = "special quality";
+            specialQualitySelection.RequiredAlignments = new[] { "lawfulness goodness" };
+
+            specialQualitySelections.Add(specialQualitySelection);
+
+            alignment.Goodness = "wrong goodness";
+            alignment.Lawfulness = "wrong lawfulness";
+
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "wrong size", alignment);
             Assert.That(specialQualities, Is.Empty);
         }
     }
