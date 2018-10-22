@@ -245,12 +245,15 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.Madness, "Madness")]
         [TestCase(FeatConstants.SpecialQualities.MucusCloud, "Mucus Cloud")]
         [TestCase(FeatConstants.SpecialQualities.NaturalWeapon, "Natural Weapon")]
+        [TestCase(FeatConstants.SpecialQualities.OversizedWeapon, "Oversized Weapon")]
         [TestCase(FeatConstants.SpecialQualities.ProtectiveAura, "Protective Aura")]
         [TestCase(FeatConstants.SpecialQualities.ProtectiveSlime, "Protective Slime")]
         [TestCase(FeatConstants.SpecialQualities.Quickness, "Quickness")]
         [TestCase(FeatConstants.SpecialQualities.Regeneration, "Regeneration")]
+        [TestCase(FeatConstants.SpecialQualities.RockCatching, "Rock Catching")]
         [TestCase(FeatConstants.SpecialQualities.Scent, "Scent")]
         [TestCase(FeatConstants.SpecialQualities.SeeInDarkness, "See in Darkness")]
+        [TestCase(FeatConstants.SpecialQualities.ShadowShift, "Shadow Shift")]
         [TestCase(FeatConstants.SpecialQualities.SmokeForm, "Smoke Form")]
         [TestCase(FeatConstants.SpecialQualities.SoundImitation, "Sound Imitation")]
         [TestCase(FeatConstants.SpecialQualities.SpellLikeAbility, "Spell-Like Ability")]
@@ -296,7 +299,7 @@ namespace CreatureGen.Tests.Unit.Feats
         {
             Assert.That(constant, Is.EqualTo(value));
         }
-        
+
         [TestCase(FeatConstants.Foci.Element, "Element")]
         [TestCase(FeatConstants.Foci.NoValidFociAvailable, "No Valid Foci Available")]
         [TestCase(FeatConstants.Foci.School, "School")]

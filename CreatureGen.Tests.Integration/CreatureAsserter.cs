@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TreasureGen.Items;
 
-namespace CreatureGen.Tests.Integration.Stress.Creatures
+namespace CreatureGen.Tests.Integration
 {
     public class CreatureAsserter
     {

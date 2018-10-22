@@ -1,6 +1,6 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Tables;
-using CreatureGen.Tests.Integration.Tables.TestData;
+using CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
 using System.Linq;
 

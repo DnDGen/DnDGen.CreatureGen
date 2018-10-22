@@ -276,12 +276,15 @@ namespace CreatureGen.Feats
             public const string Madness = "Madness";
             public const string MucusCloud = "Mucus Cloud";
             public const string NaturalWeapon = "Natural Weapon";
+            public const string OversizedWeapon = "Oversized Weapon";
             public const string ProtectiveAura = "Protective Aura";
             public const string ProtectiveSlime = "Protective Slime";
             public const string Quickness = "Quickness";
             public const string Regeneration = "Regeneration";
+            public const string RockCatching = "Rock Catching";
             public const string Scent = "Scent";
             public const string SeeInDarkness = "See in Darkness";
+            public const string ShadowShift = "Shadow Shift";
             public const string SmokeForm = "Smoke Form";
             public const string SoundImitation = "Sound Imitation";
             public const string SpellLikeAbility = "Spell-Like Ability";
@@ -349,6 +352,7 @@ namespace CreatureGen.Feats
                     Regeneration,
                     Scent,
                     SeeInDarkness,
+                    ShadowShift,
                     SmokeForm,
                     SoundImitation,
                     SpellLikeAbility,

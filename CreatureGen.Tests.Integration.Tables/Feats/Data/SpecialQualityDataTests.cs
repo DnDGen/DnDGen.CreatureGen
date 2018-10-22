@@ -3,7 +3,7 @@ using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Selectors.Helpers;
 using CreatureGen.Tables;
-using CreatureGen.Tests.Integration.Tables.TestData;
+using CreatureGen.Tests.Integration.TestData;
 using EventGen;
 using Ninject;
 using NUnit.Framework;
@@ -82,6 +82,42 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                     Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(matchingFeat.Frequency.TimePeriod), data[DataIndexConstants.SpecialQualityData.FeatNameIndex]);
                     Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(matchingFeat.Power.ToString()), data[DataIndexConstants.SpecialQualityData.FeatNameIndex]);
                 }
+            }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        public void ProficiencyFeatsHaveCorrectFoci(string creature)
+        {
+            Assert.That(table.Keys, Contains.Item(creature));
+
+            var collection = table[creature];
+
+            var proficiencyFeats = new[]
+            {
+                FeatConstants.WeaponProficiency_Exotic,
+                FeatConstants.WeaponProficiency_Martial,
+                FeatConstants.WeaponProficiency_Simple,
+            };
+
+            foreach (var entry in collection)
+            {
+                var data = SpecialQualityHelper.ParseData(entry);
+                var featName = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
+
+                if (!proficiencyFeats.Contains(featName))
+                    continue;
+
+                var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
+
+                if (focus == GroupConstants.All)
+                    continue;
+
+                var featFoci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
+                var proficiencyFoci = featFoci[featName];
+
+                Assert.That(proficiencyFoci, Contains.Item(focus), featName);
             }
         }
 

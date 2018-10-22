@@ -92,7 +92,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Creatures\CreatureGeneratorTests.cs" />
-    <Compile Include="Creatures\CreatureAsserter.cs" />
     <Compile Include="StressAttribute.cs" />
     <Compile Include="StressTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
