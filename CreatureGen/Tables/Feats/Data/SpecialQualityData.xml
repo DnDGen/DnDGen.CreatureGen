@@ -1138,6 +1138,7 @@
   </collection>
   <collection>
     <name>Brown Bear</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Bugbear</name>
@@ -1221,17 +1222,28 @@
   </collection>
   <collection>
     <name>Clay Golem</name>
+    <entry>Damage Reduction#10#Vulnerable to adamantine, bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Immunity#0#Magic (see creature description)#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Haste: after at least 1 round of combat, lasts 3 rounds#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Cloaker</name>
-    <entry>Average Maneuverability</entry>
+    <entry>Shadow Shift#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Cloud Giant</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Oversized Weapon#0#Gargantuan#0##0#True</entry>
+    <entry>Rock Catching#0##1#Round#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Morningstar#0##0#True</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Levitate: self plus 2,000 pounds#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Obscuring mist#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Cockatrice</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Cold</name>
@@ -1240,6 +1252,7 @@
   </collection>
   <collection>
     <name>Constrictor Snake</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Construct</name>
@@ -1272,136 +1285,136 @@
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Ancient</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell Resistance#28##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Wall of stone#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell Resistance#31##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Move earth#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Wall of stone#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
-    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Mature Adult</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell Resistance#23##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Old</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Old</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell Resistance#26##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Young</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
-    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrm</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
+    <entry>Spell Resistance#29##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Wall of stone#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrmling</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
-    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Young Adult</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
-    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
+    <entry>Spell Resistance#19##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Young</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Spider climb#0Constant#0#False</entry>
-    <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Couatl</name>
   </collection>
   <collection>
     <name>Criosphinx</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Crocodile</name>
@@ -1431,7 +1444,7 @@
   <collection>
     <name>Derro</name>
     <entry>Armor Proficiency (Light)#0##0##0#True</entry>
-    <entry>Madness#0##0##0#True</entry>
+    <entry>Madness#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
     <entry>Spell Resistance#15##0##0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#0#At Will#0#False</entry>
@@ -1726,13 +1739,14 @@
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
-    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Multiattack#0##0##0#False</entry>
     <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Flesh Golem</name>
+    <entry>Damage Reduction#10#Vulnerable to adamantine, bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Immunity#0#Magic (see creature description)#0##0#False</entry>
   </collection>
   <collection>
     <name>Forest Gnome</name>
@@ -1929,6 +1943,8 @@
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
+    <entry>Damage Reduction#10#Vulnerable to adamantine, bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Immunity#0#Magic (see creature description)#0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Adult</name>
@@ -2066,21 +2082,6 @@
   </collection>
   <collection>
     <name>Homunculus</name>
-    <entry>Immunity#0#Ability Damage#0##0</entry>
-    <entry>Immunity#0#Ability Drain#0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Death#0##0</entry>
-    <entry>Immunity#0#Disease#0##0</entry>
-    <entry>Immunity#0#Energy Drain#0##0</entry>
-    <entry>Immunity#0#Exhaustion#0##0</entry>
-    <entry>Immunity#0#Fatigue#0##0</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0</entry>
-    <entry>Immunity#0#Necromancy#0##0</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
@@ -2154,6 +2155,8 @@
   </collection>
   <collection>
     <name>Iron Golem</name>
+    <entry>Damage Reduction#10#Vulnerable to adamantine, bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Immunity#0#Magic (see creature description)#0##0#False</entry>
   </collection>
   <collection>
     <name>Janni</name>
@@ -2290,7 +2293,6 @@
   <collection>
     <name>Minor Xorn</name>
     <entry>All-Around Vision#0##0##0#False</entry>
-    <entry>Cleave#0##0##0#False</entry>
     <entry>Damage Reduction#5#Vulnerable to bludgeoning weapons#1#Hit#0#False</entry>
     <entry>Earth Glide#0##0##0#False</entry>
     <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
@@ -2638,21 +2640,6 @@
   <collection>
     <name>Retriever</name>
     <entry>Darkvision#60##0##0</entry>
-    <entry>Immunity#0#Ability Damage#0##0</entry>
-    <entry>Immunity#0#Ability Drain#0##0</entry>
-    <entry>Immunity#0#Critical hits#0##0</entry>
-    <entry>Immunity#0#Death#0##0</entry>
-    <entry>Immunity#0#Disease#0##0</entry>
-    <entry>Immunity#0#Energy Drain#0##0</entry>
-    <entry>Immunity#0#Exhaustion#0##0</entry>
-    <entry>Immunity#0#Fatigue#0##0</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0</entry>
-    <entry>Immunity#0#Necromancy#0##0</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0</entry>
-    <entry>Immunity#0#Paralysis#0##0</entry>
-    <entry>Immunity#0#Poison#0##0</entry>
-    <entry>Immunity#0#Sleep#0##0</entry>
-    <entry>Immunity#0#Stunning#0##0</entry>
     <entry>Low-Light Vision#0##0##0</entry>
   </collection>
   <collection>
@@ -2835,6 +2822,8 @@
   </collection>
   <collection>
     <name>Stone Golem</name>
+    <entry>Damage Reduction#10#Vulnerable to adamantine, bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Immunity#0#Magic (see creature description)#0##0#False</entry>
   </collection>
   <collection>
     <name>Storm Giant</name>
@@ -2927,24 +2916,6 @@
   <collection>
     <name>Undead</name>
     <entry>Darkvision#60##0##0#False</entry>
-    <entry>Immunity#0#Ability Damage to Strength, Dexterity, or Constitution#0##0#False</entry>
-    <entry>Immunity#0#Ability Drain#0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Death#0##0#False</entry>
-    <entry>Immunity#0#Death from massive damage#0##0#False</entry>
-    <entry>Immunity#0#Disease#0##0#False</entry>
-    <entry>Immunity#0#Effect that requires a Fortitude save#0##0#False</entry>
-    <entry>Immunity#0#Energy Drain#0##0#False</entry>
-    <entry>Immunity#0#Exhaustion#0##0#False</entry>
-    <entry>Immunity#0#Fatigue#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
-    <entry>Immunity#0#Nonlethal damage#0##0#False</entry>
-    <entry>Immunity#0#Paralysis#0##0#False</entry>
-    <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Immunity#0#Polymorph#0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
-    <entry>Immunity#0#Stunning#0##0#False</entry>
     <entry>Shield Proficiency#0##0##0#True</entry>
     <entry>Simple Weapon Proficiency#0#All#0##0#True</entry>
     <entry>Swap Skill Base Ability#0#Concentration:Charisma#0##0#False</entry>

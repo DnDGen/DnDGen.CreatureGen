@@ -40,6 +40,7 @@
         {
             public const string AbilityAdjustments = "AbilityAdjustments";
             public const string Advancements = "Advancements";
+            public const string ArmorClassBonuses = "ArmorClassBonuses";
             public const string FeatAbilityRequirements = "FeatAbilityRequirements";
             public const string FeatSkillRankRequirements = "FeatSkillRankRequirements";
             public const string FeatSpeedRequirements = "FeatSpeedRequirements";

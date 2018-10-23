@@ -28,23 +28,22 @@ namespace CreatureGen.Generators.Defenses
             armorClass.Dexterity = abilities[AbilityConstants.Dexterity];
 
             if (creatureType.SubTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
-                armorClass.DeflectionBonus = Math.Max(1, abilities[AbilityConstants.Charisma].Modifier);
+            {
+                var deflectionBonus = Math.Max(1, abilities[AbilityConstants.Charisma].Modifier);
+                armorClass.AddBonus(ArmorClassConstants.Deflection, deflectionBonus);
+            }
 
             armorClass.SizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, size);
-            armorClass.ArmorBonus = GetArmorBonus(feats);
-            armorClass.NaturalArmorBonus = naturalArmor;
+
+            var inertialArmorFeat = feats.FirstOrDefault(f => f.Name == FeatConstants.SpecialQualities.InertialArmor);
+            if (inertialArmorFeat != null)
+            {
+                armorClass.AddBonus(ArmorClassConstants.Armor, inertialArmorFeat.Power);
+            }
+
+            armorClass.AddBonus(ArmorClassConstants.Natural, naturalArmor);
 
             return armorClass;
-        }
-
-        private int GetArmorBonus(IEnumerable<Feat> feats)
-        {
-            var thingsThatGrantArmorBonuses = collectionsSelector.SelectFrom(TableNameConstants.Collection.ArmorClassModifiers, GroupConstants.ArmorBonus);
-            var featsWithArmorBonuses = feats.Where(f => thingsThatGrantArmorBonuses.Contains(f.Name) && !f.Foci.Any());
-            var featArmorBonuses = featsWithArmorBonuses.Select(f => f.Power);
-            var featArmorBonus = featArmorBonuses.Sum();
-
-            return featArmorBonus;
         }
     }
 }

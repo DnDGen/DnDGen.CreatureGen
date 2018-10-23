@@ -1,5 +1,7 @@
 ﻿using CreatureGen.Abilities;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CreatureGen.Defenses
 {
@@ -8,12 +10,36 @@ namespace CreatureGen.Defenses
         public const int BaseArmorClass = 10;
 
         public Ability Dexterity { get; set; }
-        public int ArmorBonus { get; set; }
-        public int ShieldBonus { get; set; }
-        public int DeflectionBonus { get; set; }
-        public int NaturalArmorBonus { get; set; }
         public int SizeModifier { get; set; }
-        public bool CircumstantialBonus { get; set; }
+        public int MaxDexterityBonus { get; set; }
+
+        public int DexterityBonus
+        {
+            get
+            {
+                if (Dexterity == null)
+                    return 0;
+
+                return Math.Min(MaxDexterityBonus, Dexterity.Modifier);
+            }
+        }
+
+        private readonly Dictionary<string, IEnumerable<Bonus>> sourcesAndBonuses;
+
+        public IEnumerable<Bonus> ArmorBonuses => sourcesAndBonuses[ArmorClassConstants.Armor];
+        public IEnumerable<Bonus> ShieldBonuses => sourcesAndBonuses[ArmorClassConstants.Shield];
+        public IEnumerable<Bonus> DeflectionBonuses => sourcesAndBonuses[ArmorClassConstants.Deflection];
+        public IEnumerable<Bonus> NaturalArmorBonuses => sourcesAndBonuses[ArmorClassConstants.Natural];
+        public IEnumerable<Bonus> DodgeBonuses => sourcesAndBonuses[ArmorClassConstants.Dodge];
+
+        public int ArmorBonus => ArmorBonuses.Where(b => !b.IsConditional).Max(b => b.Value);
+        public int ShieldBonus => ShieldBonuses.Where(b => !b.IsConditional).Max(b => b.Value);
+        public int DeflectionBonus => DeflectionBonuses.Where(b => !b.IsConditional).Max(b => b.Value);
+        public int NaturalArmorBonus => NaturalArmorBonuses.Where(b => !b.IsConditional).Max(b => b.Value);
+        public int DodgeBonus => DodgeBonuses.Where(b => !b.IsConditional).Sum(b => b.Value);
+
+        public IEnumerable<Bonus> Bonuses => sourcesAndBonuses.SelectMany(kvp => kvp.Value);
+        public bool IsConditional => Bonuses.Any(b => b.IsConditional);
 
         public int TotalBonus
         {
@@ -33,10 +59,9 @@ namespace CreatureGen.Defenses
                 total += ShieldBonus;
                 total += DeflectionBonus;
                 total += NaturalArmorBonus;
+                total += DodgeBonus;
                 total += SizeModifier;
-
-                if (Dexterity != null)
-                    total += Dexterity.Modifier;
+                total += DexterityBonus;
 
                 return total;
             }
@@ -47,9 +72,8 @@ namespace CreatureGen.Defenses
             get
             {
                 var total = UnroundedTotal;
-
-                if (Dexterity != null)
-                    total -= Dexterity.Modifier;
+                total -= DodgeBonus;
+                total -= DexterityBonus;
 
                 return Math.Max(total, 1);
             }
@@ -66,6 +90,24 @@ namespace CreatureGen.Defenses
 
                 return Math.Max(total, 1);
             }
+        }
+
+        public ArmorClass()
+        {
+            MaxDexterityBonus = int.MaxValue;
+
+            sourcesAndBonuses = new Dictionary<string, IEnumerable<Bonus>>();
+            sourcesAndBonuses[ArmorClassConstants.Armor] = Enumerable.Empty<Bonus>();
+            sourcesAndBonuses[ArmorClassConstants.Shield] = Enumerable.Empty<Bonus>();
+            sourcesAndBonuses[ArmorClassConstants.Dodge] = Enumerable.Empty<Bonus>();
+            sourcesAndBonuses[ArmorClassConstants.Deflection] = Enumerable.Empty<Bonus>();
+            sourcesAndBonuses[ArmorClassConstants.Natural] = Enumerable.Empty<Bonus>();
+        }
+
+        public void AddBonus(string source, int value, string condition = "")
+        {
+            var bonus = new Bonus { Value = value, Condition = condition };
+            sourcesAndBonuses[source] = sourcesAndBonuses[source].Union(new[] { bonus });
         }
     }
 }

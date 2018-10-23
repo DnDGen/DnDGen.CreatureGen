@@ -846,7 +846,7 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Mummy][None] = 0;
 
-                testCases[CreatureConstants.Naga_Dark][None] = 0;
+                testCases[CreatureConstants.Naga_Dark][GetData(GroupConstants.All, "against charm effects")] = 2;
 
                 testCases[CreatureConstants.Naga_Guardian][None] = 0;
 

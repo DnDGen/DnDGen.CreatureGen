@@ -37,7 +37,7 @@ namespace CreatureGen.Tests.Unit.TestCaseSources
         public static IEnumerable<int> NegativeBaseValues => BaseTestNumbers.Select(n => n * -1);
         public static IEnumerable<int> NonNegativeValues => CustomTestNumbers.Union(BaseTestNumbers);
         public static IEnumerable<int> PositiveValues => NonNegativeValues.Where(v => v > 0);
-        public static IEnumerable<int> NonPositiveValues => CustomTestNumbers.Union(BaseTestNumbers).Select(n => n * -1);
+        public static IEnumerable<int> NonPositiveValues => NonNegativeValues.Select(n => n * -1);
 
         public static IEnumerable AllValues
         {

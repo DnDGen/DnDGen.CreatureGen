@@ -38,6 +38,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.TrueOrFalse.Male, "Male")]
         [TestCase(TableNameConstants.TypeAndAmount.AbilityAdjustments, "AbilityAdjustments")]
         [TestCase(TableNameConstants.TypeAndAmount.Advancements, "Advancements")]
+        [TestCase(TableNameConstants.TypeAndAmount.ArmorClassBonuses, "ArmorClassBonuses")]
         [TestCase(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "FeatAbilityRequirements")]
         [TestCase(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "FeatSkillRankRequirements")]
         [TestCase(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "FeatSpeedRequirements")]

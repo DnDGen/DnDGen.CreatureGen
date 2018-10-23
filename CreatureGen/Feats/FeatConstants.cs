@@ -270,6 +270,7 @@ namespace CreatureGen.Feats
             public const string KeenSenses = "Keen Senses";
             public const string LayOnHands = "Lay on Hands";
             public const string LightBlindness = "Light Blindness";
+            public const string LightSensitivity = "Light Sensitivity";
             public const string LowLightVision = "Low-Light Vision";
             public const string LowLightVision_Superior = "Superior Low-Light Vision";
             public const string LuckBonus = "Luck Bonus";
@@ -291,6 +292,8 @@ namespace CreatureGen.Feats
             public const string SpellResistance = "Spell Resistance";
             public const string Split = "Split";
             public const string Sprint = "Sprint";
+            public const string Stability = "Stability";
+            public const string Stonecunning = "Stonecunning";
             public const string Telepathy = "Telepathy";
             public const string Transparent = "Transparent";
             public const string Tremorsense = "Tremorsense";
@@ -340,16 +343,19 @@ namespace CreatureGen.Feats
                     KeenSenses,
                     LayOnHands,
                     LightBlindness,
+                    LightSensitivity,
                     LowLightVision,
                     LowLightVision_Superior,
                     LuckBonus,
                     Madness,
                     MucusCloud,
                     NaturalWeapon,
+                    OversizedWeapon,
                     ProtectiveAura,
                     ProtectiveSlime,
                     Quickness,
                     Regeneration,
+                    RockCatching,
                     Scent,
                     SeeInDarkness,
                     ShadowShift,
@@ -359,6 +365,8 @@ namespace CreatureGen.Feats
                     SpellResistance,
                     Split,
                     Sprint,
+                    Stability,
+                    Stonecunning,
                     Telepathy,
                     Transparent,
                     Tremorsense,
