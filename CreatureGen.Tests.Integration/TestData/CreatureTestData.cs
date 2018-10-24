@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using System.Collections;
 
-namespace CreatureGen.Tests.Integration.Tables.TestData
+namespace CreatureGen.Tests.Integration.TestData
 {
     public class CreatureTestData
     {
@@ -15,6 +15,19 @@ namespace CreatureGen.Tests.Integration.Tables.TestData
                 foreach (var creature in creatures)
                 {
                     yield return new TestCaseData(creature);
+                }
+            }
+        }
+
+        public static IEnumerable Templates
+        {
+            get
+            {
+                var templates = CreatureConstants.Templates.All();
+
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template);
                 }
             }
         }

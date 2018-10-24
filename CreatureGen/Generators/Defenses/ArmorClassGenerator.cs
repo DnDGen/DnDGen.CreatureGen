@@ -4,7 +4,6 @@ using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Tables;
-using DnDGen.Core.Selectors.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +12,12 @@ namespace CreatureGen.Generators.Defenses
 {
     internal class ArmorClassGenerator : IArmorClassGenerator
     {
-        private readonly ICollectionSelector collectionsSelector;
+        private readonly IBonusSelector bonusSelector;
         private readonly IAdjustmentsSelector adjustmentsSelector;
 
-        public ArmorClassGenerator(ICollectionSelector collectionsSelector, IAdjustmentsSelector adjustmentsSelector)
+        public ArmorClassGenerator(IBonusSelector bonusSelector, IAdjustmentsSelector adjustmentsSelector)
         {
-            this.collectionsSelector = collectionsSelector;
+            this.bonusSelector = bonusSelector;
             this.adjustmentsSelector = adjustmentsSelector;
         }
 
@@ -28,23 +27,46 @@ namespace CreatureGen.Generators.Defenses
             armorClass.Dexterity = abilities[AbilityConstants.Dexterity];
 
             if (creatureType.SubTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
-                armorClass.DeflectionBonus = Math.Max(1, abilities[AbilityConstants.Charisma].Modifier);
+            {
+                var deflectionBonus = Math.Max(1, abilities[AbilityConstants.Charisma].Modifier);
+                armorClass.AddBonus(ArmorClassConstants.Deflection, deflectionBonus);
+            }
 
             armorClass.SizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, size);
-            armorClass.ArmorBonus = GetArmorBonus(feats);
-            armorClass.NaturalArmorBonus = naturalArmor;
+
+            var inertialArmorFeat = feats.FirstOrDefault(f => f.Name == FeatConstants.SpecialQualities.InertialArmor);
+            if (inertialArmorFeat != null)
+            {
+                armorClass.AddBonus(ArmorClassConstants.Armor, inertialArmorFeat.Power);
+            }
+
+            if (naturalArmor > 0)
+                armorClass.AddBonus(ArmorClassConstants.Natural, naturalArmor);
+
+            armorClass = GetRacialArmorClassBonuses(armorClass, creatureName, creatureType);
 
             return armorClass;
         }
 
-        private int GetArmorBonus(IEnumerable<Feat> feats)
+        private ArmorClass GetRacialArmorClassBonuses(ArmorClass armorClass, string creatureName, CreatureType creatureType)
         {
-            var thingsThatGrantArmorBonuses = collectionsSelector.SelectFrom(TableNameConstants.Collection.ArmorClassModifiers, GroupConstants.ArmorBonus);
-            var featsWithArmorBonuses = feats.Where(f => thingsThatGrantArmorBonuses.Contains(f.Name) && !f.Foci.Any());
-            var featArmorBonuses = featsWithArmorBonuses.Select(f => f.Power);
-            var featArmorBonus = featArmorBonuses.Sum();
+            var creatureBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.ArmorClassBonuses, creatureName);
+            var creatureTypeBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.ArmorClassBonuses, creatureType.Name);
 
-            return featArmorBonus;
+            var bonuses = creatureBonuses.Union(creatureTypeBonuses);
+
+            foreach (var subtype in creatureType.SubTypes)
+            {
+                var subtypeBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.ArmorClassBonuses, subtype);
+                bonuses = bonuses.Union(subtypeBonuses);
+            }
+
+            foreach (var bonus in bonuses)
+            {
+                armorClass.AddBonus(bonus.Target, bonus.Bonus, bonus.Condition);
+            }
+
+            return armorClass;
         }
     }
 }

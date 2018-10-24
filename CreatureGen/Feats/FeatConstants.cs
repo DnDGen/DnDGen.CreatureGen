@@ -270,24 +270,30 @@ namespace CreatureGen.Feats
             public const string KeenSenses = "Keen Senses";
             public const string LayOnHands = "Lay on Hands";
             public const string LightBlindness = "Light Blindness";
+            public const string LightSensitivity = "Light Sensitivity";
             public const string LowLightVision = "Low-Light Vision";
             public const string LowLightVision_Superior = "Superior Low-Light Vision";
             public const string LuckBonus = "Luck Bonus";
             public const string Madness = "Madness";
             public const string MucusCloud = "Mucus Cloud";
             public const string NaturalWeapon = "Natural Weapon";
+            public const string OversizedWeapon = "Oversized Weapon";
             public const string ProtectiveAura = "Protective Aura";
             public const string ProtectiveSlime = "Protective Slime";
             public const string Quickness = "Quickness";
             public const string Regeneration = "Regeneration";
+            public const string RockCatching = "Rock Catching";
             public const string Scent = "Scent";
             public const string SeeInDarkness = "See in Darkness";
+            public const string ShadowShift = "Shadow Shift";
             public const string SmokeForm = "Smoke Form";
             public const string SoundImitation = "Sound Imitation";
             public const string SpellLikeAbility = "Spell-Like Ability";
             public const string SpellResistance = "Spell Resistance";
             public const string Split = "Split";
             public const string Sprint = "Sprint";
+            public const string Stability = "Stability";
+            public const string Stonecunning = "Stonecunning";
             public const string Telepathy = "Telepathy";
             public const string Transparent = "Transparent";
             public const string Tremorsense = "Tremorsense";
@@ -337,24 +343,30 @@ namespace CreatureGen.Feats
                     KeenSenses,
                     LayOnHands,
                     LightBlindness,
+                    LightSensitivity,
                     LowLightVision,
                     LowLightVision_Superior,
                     LuckBonus,
                     Madness,
                     MucusCloud,
                     NaturalWeapon,
+                    OversizedWeapon,
                     ProtectiveAura,
                     ProtectiveSlime,
                     Quickness,
                     Regeneration,
+                    RockCatching,
                     Scent,
                     SeeInDarkness,
+                    ShadowShift,
                     SmokeForm,
                     SoundImitation,
                     SpellLikeAbility,
                     SpellResistance,
                     Split,
                     Sprint,
+                    Stability,
+                    Stonecunning,
                     Telepathy,
                     Transparent,
                     Tremorsense,

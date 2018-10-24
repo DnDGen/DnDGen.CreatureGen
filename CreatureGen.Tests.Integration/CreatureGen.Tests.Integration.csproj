@@ -68,9 +68,14 @@
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnDGen.TreasureGen.9.1.0\lib\TreasureGen.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreatureAsserter.cs" />
     <Compile Include="Generators\Creatures\CreatureGeneratorTests.cs" />
+    <Compile Include="TestData\CreatureTestData.cs" />
     <Compile Include="Verifiers\CreatureVerifierTests.cs" />
     <Compile Include="IntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

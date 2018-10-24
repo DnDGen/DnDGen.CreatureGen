@@ -2,7 +2,7 @@
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Selectors.Helpers;
 using CreatureGen.Tables;
-using CreatureGen.Tests.Integration.Tables.TestData;
+using CreatureGen.Tests.Integration.TestData;
 using Ninject;
 using NUnit.Framework;
 using RollGen;

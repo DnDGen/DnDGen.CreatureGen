@@ -2,7 +2,7 @@
 using CreatureGen.Creatures;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Tables;
-using CreatureGen.Tests.Integration.Tables.TestData;
+using CreatureGen.Tests.Integration.TestData;
 using DnDGen.Core.Selectors.Collections;
 using EventGen;
 using Ninject;

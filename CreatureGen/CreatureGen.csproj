@@ -77,6 +77,7 @@
     <Compile Include="Creatures\CreatureType.cs" />
     <Compile Include="Creatures\SpeedConstants.cs" />
     <Compile Include="Defenses\ArmorClass.cs" />
+    <Compile Include="Defenses\ArmorClassConstants.cs" />
     <Compile Include="Defenses\HitPoints.cs" />
     <Compile Include="Defenses\SaveConstants.cs" />
     <Compile Include="Defenses\Save.cs" />
