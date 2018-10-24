@@ -32,10 +32,10 @@ namespace CreatureGen.Defenses
         public IEnumerable<Bonus> NaturalArmorBonuses => sourcesAndBonuses[ArmorClassConstants.Natural];
         public IEnumerable<Bonus> DodgeBonuses => sourcesAndBonuses[ArmorClassConstants.Dodge];
 
-        public int ArmorBonus => ArmorBonuses.Where(b => !b.IsConditional).Max(b => b.Value);
-        public int ShieldBonus => ShieldBonuses.Where(b => !b.IsConditional).Max(b => b.Value);
-        public int DeflectionBonus => DeflectionBonuses.Where(b => !b.IsConditional).Max(b => b.Value);
-        public int NaturalArmorBonus => NaturalArmorBonuses.Where(b => !b.IsConditional).Max(b => b.Value);
+        public int ArmorBonus => ArmorBonuses.Where(b => !b.IsConditional).Select(b => b.Value).DefaultIfEmpty().Max();
+        public int ShieldBonus => ShieldBonuses.Where(b => !b.IsConditional).Select(b => b.Value).DefaultIfEmpty().Max();
+        public int DeflectionBonus => DeflectionBonuses.Where(b => !b.IsConditional).Select(b => b.Value).DefaultIfEmpty().Max();
+        public int NaturalArmorBonus => NaturalArmorBonuses.Where(b => !b.IsConditional).Select(b => b.Value).DefaultIfEmpty().Max();
         public int DodgeBonus => DodgeBonuses.Where(b => !b.IsConditional).Sum(b => b.Value);
 
         public IEnumerable<Bonus> Bonuses => sourcesAndBonuses.SelectMany(kvp => kvp.Value);

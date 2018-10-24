@@ -27,17 +27,18 @@ namespace CreatureGen.Tests.Unit.Defenses
             Assert.That(armorClass.TouchBonus, Is.EqualTo(ArmorClass.BaseArmorClass));
             Assert.That(armorClass.IsConditional, Is.False);
             Assert.That(armorClass.Dexterity, Is.Null);
+            Assert.That(armorClass.DexterityBonus, Is.Zero);
             Assert.That(armorClass.ArmorBonus, Is.Zero);
             Assert.That(armorClass.ArmorBonuses, Is.Empty);
             Assert.That(armorClass.DeflectionBonus, Is.Zero);
-            Assert.That(armorClass.DeflectionBonuses, Is.Zero);
+            Assert.That(armorClass.DeflectionBonuses, Is.Empty);
             Assert.That(armorClass.DodgeBonus, Is.Zero);
-            Assert.That(armorClass.DodgeBonuses, Is.Zero);
+            Assert.That(armorClass.DodgeBonuses, Is.Empty);
             Assert.That(armorClass.MaxDexterityBonus, Is.EqualTo(int.MaxValue));
             Assert.That(armorClass.NaturalArmorBonus, Is.Zero);
-            Assert.That(armorClass.NaturalArmorBonuses, Is.Zero);
+            Assert.That(armorClass.NaturalArmorBonuses, Is.Empty);
             Assert.That(armorClass.ShieldBonus, Is.Zero);
-            Assert.That(armorClass.ShieldBonuses, Is.Zero);
+            Assert.That(armorClass.ShieldBonuses, Is.Empty);
             Assert.That(armorClass.SizeModifier, Is.Zero);
         }
 
@@ -72,7 +73,7 @@ namespace CreatureGen.Tests.Unit.Defenses
             Assert.That(armorClass.DexterityBonus, Is.EqualTo(armorClass.Dexterity.Modifier));
         }
 
-        [TestCaseSource(typeof(NumericTestData), "TestCases")]
+        [TestCaseSource(typeof(DexterityBonusTestData), "TestCases")]
         public void DexterityBonusIsLimitedByMaxDexterityBonus(int value, int max)
         {
             armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
@@ -616,6 +617,7 @@ namespace CreatureGen.Tests.Unit.Defenses
             total += armorClass.DexterityBonus;
             total += armorClass.DeflectionBonus;
             total += armorClass.SizeModifier;
+            total += armorClass.DodgeBonus;
 
             Assert.That(armorClass.TouchBonus, Is.EqualTo(total));
         }

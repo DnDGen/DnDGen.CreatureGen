@@ -1395,6 +1395,7 @@
   <collection>
     <name>Copper Dragon, Young Adult</name>
     <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
@@ -1407,33 +1408,52 @@
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
     <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Couatl</name>
+    <entry>Change Shape#0#Any Small or Medium humanoid#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Ethereal jaunt#0#At Will#0#False</entry>
+    <entry>Telepathy#90##0##0#False</entry>
   </collection>
   <collection>
     <name>Criosphinx</name>
   </collection>
   <collection>
     <name>Crocodile</name>
+    <entry>Hold Breath#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dark Naga</name>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#Constant#0#False</entry>
+    <entry>Immunity#0#Any form of mind reading#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
   </collection>
   <collection>
     <name>Darkmantle</name>
-    <entry>Poor Maneuverability</entry>
+    <entry>Blindsight#90##0##0#False</entry>
   </collection>
   <collection>
     <name>Death Slaad</name>
-  </collection>
-  <collection>
-    <name>Deep Halfling</name>
+    <entry>Change Shape#0#Any humanoid form#0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to lawful weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#5#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Fire#1#Round#0#False</entry>
+    <entry>Fast Healing#5##1#Turn#0#False</entry>
+    <entry>Immunity#0#Sonic#0##0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Deep Dwarf</name>
+    <entry>Darkvision#90##0##0#False</entry>
+    <entry>Light Sensitivity#0##0##0#False</entry>
+    <entry>Weapon Familiarity#0#Dwarven urgrosh#0##0#True</entry>
+    <entry>Weapon Familiarity#0#Dwarven waraxe#0##0#True</entry>
+  </collection>
+  <collection>
+    <name>Deep Halfling</name>
   </collection>
   <collection>
     <name>Deinonychus</name>

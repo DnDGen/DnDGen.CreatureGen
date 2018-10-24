@@ -154,6 +154,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 FeatConstants.WeaponProficiency_Exotic,
                 FeatConstants.WeaponProficiency_Martial,
                 FeatConstants.WeaponProficiency_Simple,
+                FeatConstants.SpecialQualities.WeaponFamiliarity,
+                FeatConstants.SpecialQualities.OversizedWeapon,
             };
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);

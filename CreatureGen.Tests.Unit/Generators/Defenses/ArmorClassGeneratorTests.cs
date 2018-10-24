@@ -7,9 +7,9 @@ using CreatureGen.Selectors.Collections;
 using CreatureGen.Selectors.Selections;
 using CreatureGen.Tables;
 using CreatureGen.Tests.Unit.TestCaseSources;
-using DnDGen.Core.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,6 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
     {
         private IArmorClassGenerator armorClassGenerator;
         private List<Feat> feats;
-        private Mock<ICollectionSelector> mockCollectionsSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentsSelector;
         private Mock<IBonusSelector> mockBonusSelector;
         private CreatureType creatureType;
@@ -32,9 +31,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         public void Setup()
         {
             mockAdjustmentsSelector = new Mock<IAdjustmentsSelector>();
-            mockCollectionsSelector = new Mock<ICollectionSelector>();
             mockBonusSelector = new Mock<IBonusSelector>();
-            armorClassGenerator = new ArmorClassGenerator(mockCollectionsSelector.Object, mockAdjustmentsSelector.Object);
+            armorClassGenerator = new ArmorClassGenerator(mockBonusSelector.Object, mockAdjustmentsSelector.Object);
 
             feats = new List<Feat>();
             creatureType = new CreatureType();
@@ -48,7 +46,6 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             racialBonuses[creatureType.Name] = new List<BonusSelection>();
 
             mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(0);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.ArmorClassModifiers, GroupConstants.NaturalArmor)).Returns(Enumerable.Empty<string>());
 
             mockBonusSelector.Setup(s => s.SelectFor(TableNameConstants.TypeAndAmount.ArmorClassBonuses, It.IsAny<string>())).Returns((string t, string s) => racialBonuses[s]);
         }
@@ -67,41 +64,47 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.FlatFootedBonus, Is.EqualTo(flatFooted), "flat-footed");
             Assert.That(armorClass.TouchBonus, Is.EqualTo(touch), "touch");
             Assert.That(armorClass.IsConditional, Is.EqualTo(isConditional));
-            Assert.That(armorClass.NaturalArmorBonus, Is.EqualTo(naturalArmor));
 
             return armorClass;
         }
 
         //INFO: Example here is Githzerai's Inertial Armor
         [Test]
-        public void AddArmorBonusFromFeats()
+        public void InertialArmorGrantsArmorBonus()
         {
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.ArmorClassModifiers, GroupConstants.ArmorBonus))
-                .Returns(new[] { "bracers", "other item", "feat", "wrong feat" });
-
             feats.Add(new Feat());
             feats.Add(new Feat());
-            feats[0].Name = "feat";
-            feats[0].Power = 1;
+            feats[0].Name = FeatConstants.SpecialQualities.InertialArmor;
+            feats[0].Power = 42;
             feats[1].Name = "other feat";
             feats[1].Power = -1;
 
-            var armorClass = GenerateAndAssertArmorClass(11, 11);
-            Assert.That(armorClass.ArmorBonus, Is.EqualTo(1));
+            var armorClass = GenerateAndAssertArmorClass(52, 52);
+            Assert.That(armorClass.ArmorBonus, Is.EqualTo(42));
         }
 
+        //INFO: Example here is Githzerai's Inertial Armor
         [Test]
-        public void DexterityBonusApplied()
+        public void FeatDoesNotGrantArmorBonus()
         {
-            abilities[AbilityConstants.Dexterity].BaseScore = 12;
-            var armorClass = GenerateAndAssertArmorClass(11, touch: 11);
+            feats.Add(new Feat());
+            feats.Add(new Feat());
+            feats[0].Name = "feat";
+            feats[0].Power = 42;
+            feats[1].Name = "other feat";
+            feats[1].Power = -1;
+
+            var armorClass = GenerateAndAssertArmorClass();
+            Assert.That(armorClass.ArmorBonus, Is.Zero);
         }
 
-        [Test]
-        public void NegativeDexterityBonusApplied()
+        [TestCaseSource(typeof(NumericTestData), "BaseAbilityTestNumbers")]
+        public void DexterityBonusApplied(int abilityValue)
         {
-            abilities[AbilityConstants.Dexterity].BaseScore = 9;
-            var armorClass = GenerateAndAssertArmorClass(9, touch: 9);
+            abilities[AbilityConstants.Dexterity].BaseScore = abilityValue;
+
+            var expected = ArmorClass.BaseArmorClass + abilities[AbilityConstants.Dexterity].Modifier;
+            var armorClass = GenerateAndAssertArmorClass(expected, touch: expected);
         }
 
         [TestCase(0, 1)]
@@ -131,6 +134,9 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "other subtype", CreatureConstants.Types.Subtypes.Incorporeal };
 
+            racialBonuses["other subtype"] = new List<BonusSelection>();
+            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = new List<BonusSelection>();
+
             var armorClass = GenerateAndAssertArmorClass(10 + bonus, 10 + bonus, 10 + bonus);
             Assert.That(armorClass.DeflectionBonus, Is.EqualTo(bonus));
         }
@@ -141,6 +147,9 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             abilities[AbilityConstants.Charisma].BaseScore = 9266;
 
             creatureType.SubTypes = new[] { "other subtype", CreatureConstants.Types.Subtypes.Incorporeal };
+
+            racialBonuses["other subtype"] = new List<BonusSelection>();
+            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = new List<BonusSelection>();
 
             var bonus = abilities[AbilityConstants.Charisma].Modifier;
 
@@ -155,6 +164,9 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "other subtype", "subtype" };
 
+            racialBonuses["other subtype"] = new List<BonusSelection>();
+            racialBonuses["subtype"] = new List<BonusSelection>();
+
             var armorClass = GenerateAndAssertArmorClass(10, 10, 10);
             Assert.That(armorClass.DeflectionBonus, Is.Zero);
         }
@@ -164,7 +176,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         {
             mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(modifier);
 
-            var armorClass = GenerateAndAssertArmorClass(ArmorClass.BaseArmorClass + modifier, ArmorClass.BaseArmorClass + modifier, ArmorClass.BaseArmorClass + modifier);
+            var expected = Math.Max(1, ArmorClass.BaseArmorClass + modifier);
+            var armorClass = GenerateAndAssertArmorClass(expected, expected, expected);
             Assert.That(armorClass.SizeModifier, Is.EqualTo(modifier));
         }
 
@@ -173,6 +186,20 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         {
             var armorClass = GenerateAndAssertArmorClass(9276, 9276, naturalArmor: 9266);
             Assert.That(armorClass.NaturalArmorBonus, Is.EqualTo(9266));
+            Assert.That(armorClass.NaturalArmorBonuses, Is.Not.Empty);
+            Assert.That(armorClass.NaturalArmorBonuses.Count, Is.EqualTo(1));
+
+            var bonus = armorClass.NaturalArmorBonuses.Single();
+            Assert.That(bonus.Condition, Is.Empty);
+            Assert.That(bonus.Value, Is.EqualTo(9266));
+        }
+
+        [Test]
+        public void NaturalArmorNotApplied()
+        {
+            var armorClass = GenerateAndAssertArmorClass();
+            Assert.That(armorClass.NaturalArmorBonus, Is.Zero);
+            Assert.That(armorClass.NaturalArmorBonuses, Is.Empty);
         }
 
         [Test]
@@ -181,7 +208,7 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             abilities[AbilityConstants.Dexterity].BaseScore = 12;
 
             var feat = new Feat();
-            feat.Name = "feat 1";
+            feat.Name = FeatConstants.SpecialQualities.InertialArmor;
             feat.Power = 1;
             feats.Add(feat);
 
@@ -190,12 +217,12 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             otherFeat.Power = 1;
             feats.Add(otherFeat);
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.ArmorClassModifiers, GroupConstants.ArmorBonus))
-                .Returns(new[] { "feat 1" });
-
             mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(1);
 
             creatureType.SubTypes = new[] { "other subtype", CreatureConstants.Types.Subtypes.Incorporeal };
+
+            racialBonuses["other subtype"] = new List<BonusSelection>();
+            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = new List<BonusSelection>();
 
             var armorClass = GenerateAndAssertArmorClass(15, 14, 13, naturalArmor: 1);
             Assert.That(armorClass.ArmorBonus, Is.EqualTo(1));
@@ -288,19 +315,19 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
 
-            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Max(b => b.Bonus);
+            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedArmorCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Count();
 
-            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Max(b => b.Bonus);
+            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedDeflectionCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Count();
 
             var expectedDodge = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Sum(b => b.Bonus);
             var expectedDodgeCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Count();
 
-            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Max(b => b.Bonus);
+            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedNaturalCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Count();
 
-            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Max(b => b.Bonus);
+            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedShieldCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Count();
 
             var expectedTotal = ArmorClass.BaseArmorClass + expectedArmor + expectedDeflection + expectedDodge + expectedNatural + expectedShield;
@@ -308,8 +335,6 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var expectedTouch = expectedTotal - expectedArmor - expectedShield - expectedNatural;
 
             var armorClass = GenerateAndAssertArmorClass(expectedTotal, expectedFlatFooted, expectedTouch);
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
-            Assert.That(armorClass.IsConditional, Is.False);
 
             Assert.That(armorClass.ArmorBonus, Is.EqualTo(expectedArmor));
             Assert.That(armorClass.ArmorBonuses.Count, Is.EqualTo(expectedArmorCount));
@@ -325,6 +350,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
+
+            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [TestCaseSource(typeof(ArmorClassGeneratorTestData), "CreatureBonus")]
@@ -360,28 +387,26 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
 
-            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Max(b => b.Bonus);
+            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedArmorCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Count();
 
-            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Max(b => b.Bonus);
+            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedDeflectionCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Count();
 
             var expectedDodge = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Sum(b => b.Bonus);
             var expectedDodgeCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Count();
 
-            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Max(b => b.Bonus);
+            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedNaturalCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Count();
 
-            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Max(b => b.Bonus);
+            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedShieldCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Count();
 
             var expectedTotal = ArmorClass.BaseArmorClass + expectedArmor + expectedDeflection + expectedDodge + expectedNatural + expectedShield;
             var expectedFlatFooted = expectedTotal - expectedDodge;
             var expectedTouch = expectedTotal - expectedArmor - expectedShield - expectedNatural;
 
-            var armorClass = GenerateAndAssertArmorClass(expectedTotal, expectedFlatFooted, expectedTouch);
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
-            Assert.That(armorClass.IsConditional, Is.EqualTo(armorClass.Bonuses.Any()));
+            var armorClass = GenerateAndAssertArmorClass(expectedTotal, expectedFlatFooted, expectedTouch, allBonuses.Any());
 
             Assert.That(armorClass.ArmorBonus, Is.EqualTo(expectedArmor));
             Assert.That(armorClass.ArmorBonuses.Count, Is.EqualTo(expectedArmorCount));
@@ -397,6 +422,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
+
+            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [TestCaseSource(typeof(ArmorClassGeneratorTestData), "CreatureBonus")]
@@ -427,28 +454,26 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
 
-            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Max(b => b.Bonus);
+            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedArmorCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Count();
 
-            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Max(b => b.Bonus);
+            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedDeflectionCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Count();
 
             var expectedDodge = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Sum(b => b.Bonus);
             var expectedDodgeCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Count();
 
-            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Max(b => b.Bonus);
+            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedNaturalCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Count();
 
-            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Max(b => b.Bonus);
+            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedShieldCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Count();
 
             var expectedTotal = ArmorClass.BaseArmorClass + expectedArmor + expectedDeflection + expectedDodge + expectedNatural + expectedShield;
             var expectedFlatFooted = expectedTotal - expectedDodge;
             var expectedTouch = expectedTotal - expectedArmor - expectedShield - expectedNatural;
 
-            var armorClass = GenerateAndAssertArmorClass(expectedTotal, expectedFlatFooted, expectedTouch);
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
-            Assert.That(armorClass.IsConditional, Is.EqualTo(armorClass.Bonuses.Any()));
+            var armorClass = GenerateAndAssertArmorClass(expectedTotal, expectedFlatFooted, expectedTouch, allBonuses.Any());
 
             Assert.That(armorClass.ArmorBonus, Is.EqualTo(expectedArmor));
             Assert.That(armorClass.ArmorBonuses.Count, Is.EqualTo(expectedArmorCount));
@@ -464,6 +489,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
+
+            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [TestCaseSource(typeof(ArmorClassGeneratorTestData), "CreatureBonuses")]
@@ -477,19 +504,19 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
 
-            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Max(b => b.Bonus);
+            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedArmorCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Count();
 
-            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Max(b => b.Bonus);
+            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedDeflectionCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Count();
 
             var expectedDodge = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Sum(b => b.Bonus);
             var expectedDodgeCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Count();
 
-            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Max(b => b.Bonus);
+            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedNaturalCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Count();
 
-            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Max(b => b.Bonus);
+            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedShieldCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Count();
 
             var expectedTotal = ArmorClass.BaseArmorClass + expectedArmor + expectedDeflection + expectedDodge + expectedNatural + expectedShield;
@@ -497,8 +524,6 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var expectedTouch = expectedTotal - expectedArmor - expectedShield - expectedNatural;
 
             var armorClass = GenerateAndAssertArmorClass(expectedTotal, expectedFlatFooted, expectedTouch);
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
-            Assert.That(armorClass.IsConditional, Is.False);
 
             Assert.That(armorClass.ArmorBonus, Is.EqualTo(expectedArmor));
             Assert.That(armorClass.ArmorBonuses.Count, Is.EqualTo(expectedArmorCount));
@@ -514,6 +539,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
+
+            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [TestCaseSource(typeof(ArmorClassGeneratorTestData), "CreatureBonuses")]
@@ -527,19 +554,19 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
 
-            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Max(b => b.Bonus);
+            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedArmorCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Count();
 
-            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Max(b => b.Bonus);
+            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedDeflectionCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Count();
 
             var expectedDodge = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Sum(b => b.Bonus);
             var expectedDodgeCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Count();
 
-            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Max(b => b.Bonus);
+            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedNaturalCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Count();
 
-            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Max(b => b.Bonus);
+            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedShieldCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Count();
 
             var expectedTotal = ArmorClass.BaseArmorClass + expectedArmor + expectedDeflection + expectedDodge + expectedNatural + expectedShield;
@@ -547,8 +574,6 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var expectedTouch = expectedTotal - expectedArmor - expectedShield - expectedNatural;
 
             var armorClass = GenerateAndAssertArmorClass(expectedTotal, expectedFlatFooted, expectedTouch);
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
-            Assert.That(armorClass.IsConditional, Is.False);
 
             Assert.That(armorClass.ArmorBonus, Is.EqualTo(expectedArmor));
             Assert.That(armorClass.ArmorBonuses.Count, Is.EqualTo(expectedArmorCount));
@@ -564,6 +589,8 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
+
+            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [TestCaseSource(typeof(ArmorClassGeneratorTestData), "CreatureBonuses")]
@@ -580,19 +607,19 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
 
-            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Max(b => b.Bonus);
+            var expectedArmor = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedArmorCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Armor).Count();
 
-            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Max(b => b.Bonus);
+            var expectedDeflection = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedDeflectionCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Deflection).Count();
 
             var expectedDodge = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Sum(b => b.Bonus);
             var expectedDodgeCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Dodge).Count();
 
-            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Max(b => b.Bonus);
+            var expectedNatural = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedNaturalCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Natural).Count();
 
-            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Max(b => b.Bonus);
+            var expectedShield = nonConditionalBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Select(b => b.Bonus).DefaultIfEmpty().Max();
             var expectedShieldCount = allBonuses.Where(b => b.Target == ArmorClassConstants.Shield).Count();
 
             var expectedTotal = ArmorClass.BaseArmorClass + expectedArmor + expectedDeflection + expectedDodge + expectedNatural + expectedShield;
@@ -600,8 +627,6 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             var expectedTouch = expectedTotal - expectedArmor - expectedShield - expectedNatural;
 
             var armorClass = GenerateAndAssertArmorClass(expectedTotal, expectedFlatFooted, expectedTouch);
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
-            Assert.That(armorClass.IsConditional, Is.False);
 
             Assert.That(armorClass.ArmorBonus, Is.EqualTo(expectedArmor));
             Assert.That(armorClass.ArmorBonuses.Count, Is.EqualTo(expectedArmorCount));
@@ -617,10 +642,36 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
 
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
+
+            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [Test, Ignore("Have to have equipment first")]
         public void SetMaxDexterityBonusBasedOnArmor()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test, Ignore("Have to have equipment first")]
+        public void ApplyArmorBonusFromArmor()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test, Ignore("Have to have equipment first")]
+        public void ApplyArmorBonusFromMagicalArmor()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test, Ignore("Have to have equipment first")]
+        public void ApplyShieldBonusFromShield()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test, Ignore("Have to have equipment first")]
+        public void ApplyShieldBonusFromMagicalShield()
         {
             Assert.Fail("not yet written");
         }
