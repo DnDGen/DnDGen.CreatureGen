@@ -1454,12 +1454,18 @@
   </collection>
   <collection>
     <name>Deep Halfling</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Stonecunning#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Deinonychus</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Delver</name>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Stone shape#6#Hour#0#False</entry>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Derro</name>
@@ -1486,49 +1492,74 @@
   </collection>
   <collection>
     <name>Destrachan</name>
+    <entry>Blindsight#100##0##0#False</entry>
+    <entry>Immunity#0#Gaze attacks#0##0#False</entry>
+    <entry>Immunity#0#Visual effects#0##0#False</entry>
+    <entry>Immunity#0#Illusions#0##0#False</entry>
+    <entry>Immunity#0#Attacks that rely on sight#0##0#False</entry>
   </collection>
   <collection>
     <name>Devourer</name>
+    <entry>Spell Deflection#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
   </collection>
   <collection>
     <name>Digester</name>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Ape</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Badger</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Bat</name>
-    <entry>Good Maneuverability</entry>
+    <entry>Blindsense#40##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Bear</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Boar</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Lion</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Rat</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Shark</name>
+    <entry>Keen Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Tiger</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Weasel</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Wolf</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Dire Wolverine</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Displacer Beast</name>
@@ -1571,6 +1602,15 @@
   </collection>
   <collection>
     <name>Dretch</name>
+    <entry>Damage Reduction#5#Vulnerable to good or cold iron weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Scare#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Drider</name>

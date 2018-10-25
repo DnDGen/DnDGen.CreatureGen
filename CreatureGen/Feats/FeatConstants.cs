@@ -251,8 +251,11 @@ namespace CreatureGen.Feats
             public const string CreateDestroyWater = "Create/Destroy Water";
             public const string DamageReduction = "Damage Reduction";
             public const string Darkvision = "Darkvision";
+            public const string DaylightPowerlessness = "Daylight Powerlessness";
+            public const string Displacement = "Displacement";
             public const string DodgeBonus = "Dodge Bonus";
             public const string EarthGlide = "Earth Glide";
+            public const string ElementalEndurance = "Elemental Endurance";
             public const string ElvenBlood = "Elven Blood";
             public const string EnergyResistance = "Energy Resistance";
             public const string FastHealing = "Fast Healing";
@@ -267,8 +270,10 @@ namespace CreatureGen.Feats
             public const string Immunity = "Immunity";
             public const string InertialArmor = "Inertial Armor";
             public const string InvisibleInLight = "Invisible in Light";
+            public const string KeenScent = "Keen Scent";
             public const string KeenSenses = "Keen Senses";
             public const string LayOnHands = "Lay on Hands";
+            public const string Lifesense = "Lifesense";
             public const string LightBlindness = "Light Blindness";
             public const string LightSensitivity = "Light Sensitivity";
             public const string LowLightVision = "Low-Light Vision";
@@ -288,6 +293,7 @@ namespace CreatureGen.Feats
             public const string ShadowShift = "Shadow Shift";
             public const string SmokeForm = "Smoke Form";
             public const string SoundImitation = "Sound Imitation";
+            public const string SpellDeflection = "Spell Deflection";
             public const string SpellLikeAbility = "Spell-Like Ability";
             public const string SpellResistance = "Spell Resistance";
             public const string Split = "Split";
@@ -296,12 +302,15 @@ namespace CreatureGen.Feats
             public const string Stonecunning = "Stonecunning";
             public const string Telepathy = "Telepathy";
             public const string Transparent = "Transparent";
+            public const string TreeDependent = "Tree Dependent";
             public const string Tremorsense = "Tremorsense";
             public const string TurnResistance = "Turn Resistance";
             public const string UncannyDodge = "Uncanny Dodge";
+            public const string UnnaturalAura = "Unnatural Aura";
             public const string Vulnerability = "Vulnerability";
             public const string WaterBreathing = "Water Breathing";
             public const string WeaponFamiliarity = "Weapon Familiarity";
+            public const string WildEmpathy = "Wild Empathy";
 
             public static IEnumerable<string> All()
             {
@@ -324,8 +333,11 @@ namespace CreatureGen.Feats
                     CreateDestroyWater,
                     DamageReduction,
                     Darkvision,
+                    DaylightPowerlessness,
+                    Displacement,
                     DodgeBonus,
                     EarthGlide,
+                    ElementalEndurance,
                     ElvenBlood,
                     EnergyResistance,
                     FastHealing,
@@ -340,8 +352,10 @@ namespace CreatureGen.Feats
                     Immunity,
                     InertialArmor,
                     InvisibleInLight,
+                    KeenScent,
                     KeenSenses,
                     LayOnHands,
+                    Lifesense,
                     LightBlindness,
                     LightSensitivity,
                     LowLightVision,
@@ -361,6 +375,7 @@ namespace CreatureGen.Feats
                     ShadowShift,
                     SmokeForm,
                     SoundImitation,
+                    SpellDeflection,
                     SpellLikeAbility,
                     SpellResistance,
                     Split,
@@ -369,12 +384,15 @@ namespace CreatureGen.Feats
                     Stonecunning,
                     Telepathy,
                     Transparent,
+                    TreeDependent,
                     Tremorsense,
                     TurnResistance,
                     UncannyDodge,
+                    UnnaturalAura,
                     Vulnerability,
                     WaterBreathing,
                     WeaponFamiliarity,
+                    WildEmpathy,
                 };
             }
         }

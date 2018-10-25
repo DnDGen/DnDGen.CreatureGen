@@ -140,7 +140,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Chuul, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Seven, null, false, 0, 10, 0)]
         [TestCase(CreatureConstants.Cloaker, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Five, null, false, 0, 7, 0)]
         [TestCase(CreatureConstants.Cockatrice, SizeConstants.Small, 5, 5, ChallengeRatingConstants.Three, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.Couatl, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Ten, 7, false, 9, 9, 0)]
+        [TestCase(CreatureConstants.Couatl, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Ten, 7, true, 9, 9, 0)]
         [TestCase(CreatureConstants.Criosphinx, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Seven, 3, false, 0, 11, 0)]
         [TestCase(CreatureConstants.Crocodile, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Two, null, false, 0, 4, 0)]
         [TestCase(CreatureConstants.Crocodile_Giant, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Four, null, false, 0, 7, 0)]

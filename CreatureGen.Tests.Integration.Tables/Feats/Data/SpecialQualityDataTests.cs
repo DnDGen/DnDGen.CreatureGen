@@ -438,8 +438,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
             var humanoids = new[]
             {
-                CreatureConstants.Types.Humanoid,
                 CreatureConstants.Goblin, //For Barghest
+                CreatureConstants.Types.Giant,
+                CreatureConstants.Types.Humanoid,
+                CreatureConstants.Types.MonstrousHumanoid,
             };
 
             var changeShapeFeats = new[]

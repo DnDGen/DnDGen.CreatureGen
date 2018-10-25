@@ -1,10 +1,12 @@
 ﻿using CreatureGen.Creatures;
+using CreatureGen.Feats;
 using CreatureGen.Generators.Creatures;
 using CreatureGen.Tests.Integration.TestData;
 using EventGen;
 using Ninject;
 using NUnit.Framework;
 using System;
+using System.Linq;
 
 namespace CreatureGen.Tests.Integration.Generators.Creatures
 {
@@ -51,6 +53,22 @@ namespace CreatureGen.Tests.Integration.Generators.Creatures
         {
             var creature = CreatureGenerator.Generate(CreatureConstants.Human, template);
             creatureAsserter.AssertCreature(creature);
+        }
+
+        [Test]
+        public void BUG_DestrachanDoesNotHaveSight()
+        {
+            var destrachan = CreatureGenerator.Generate(CreatureConstants.Destrachan, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreature(destrachan);
+
+            Assert.That(destrachan.SpecialQualities, Is.Not.Empty);
+
+            var specialQualityNames = destrachan.SpecialQualities.Select(q => q.Name);
+            Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.Blindsight));
+            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.AllAroundVision));
+            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.Darkvision));
+            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.LowLightVision));
+            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.LowLightVision_Superior));
         }
     }
 }
