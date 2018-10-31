@@ -76,8 +76,6 @@ namespace CreatureGen.Tests.Unit.Magic
         [TestCase(SpellConstants.Unhallow, "Unhallow")]
         [TestCase(SpellConstants.UnholyAura, "Unholy aura")]
         [TestCase(SpellConstants.UnholyBlight, "Unholy blight")]
-        [TestCase(SpellConstants.Sources.Arcane, "Arcane")]
-        [TestCase(SpellConstants.Sources.Divine, "Divine")]
         [TestCase(SpellConstants.AcidSplash, "Acid splash")]
         [TestCase(SpellConstants.Resistance, "Resistance")]
         [TestCase(SpellConstants.DetectPoison, "Detect poison")]

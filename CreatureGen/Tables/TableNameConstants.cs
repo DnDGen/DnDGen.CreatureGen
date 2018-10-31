@@ -27,7 +27,6 @@
             public const string RequiredAlignments = "RequiredAlignments";
             public const string RequiredFeats = "RequiredFeats";
             public const string RequiredSizes = "RequiredSizes";
-            public const string SaveBonuses = "SaveBonuses";
             public const string SkillData = "SkillData";
             public const string SkillGroups = "SkillGroups";
             public const string Speeds = "Speeds";

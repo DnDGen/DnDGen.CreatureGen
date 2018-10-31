@@ -70,5 +70,23 @@ namespace CreatureGen.Tests.Integration.Generators.Creatures
             Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.LowLightVision));
             Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.LowLightVision_Superior));
         }
+
+        [TestCase(CreatureConstants.Elf_Aquatic)]
+        [TestCase(CreatureConstants.Elf_Drow)]
+        [TestCase(CreatureConstants.Elf_Gray)]
+        [TestCase(CreatureConstants.Elf_Half)]
+        [TestCase(CreatureConstants.Elf_High)]
+        [TestCase(CreatureConstants.Elf_Wild)]
+        [TestCase(CreatureConstants.Elf_Wood)]
+        public void BUG_ElfCanUseShield(string elfName)
+        {
+            var elf = CreatureGenerator.Generate(elfName, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreature(elf);
+
+            Assert.That(elf.SpecialQualities, Is.Not.Empty);
+
+            var specialQualityNames = elf.SpecialQualities.Select(q => q.Name);
+            Assert.That(specialQualityNames, Contains.Item(FeatConstants.ShieldProficiency));
+        }
     }
 }

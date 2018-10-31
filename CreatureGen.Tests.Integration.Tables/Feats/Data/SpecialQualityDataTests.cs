@@ -69,17 +69,15 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             Assert.That(table.Keys, Contains.Item(creature));
 
             var feats = FeatsSelector.SelectFeats();
-            var collection = table[creature];
+            var datas = table[creature]
+                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Where(d => feats.Any(f => f.Feat == d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
 
-            foreach (var entry in collection)
+            foreach (var data in datas)
             {
-                var data = SpecialQualityHelper.ParseData(entry);
-                var matchingFeat = feats.FirstOrDefault(f => f.Feat == data[DataIndexConstants.SpecialQualityData.FeatNameIndex]);
-
-                if (matchingFeat == null)
-                    continue;
+                var matchingFeat = feats.First(f => f.Feat == data[DataIndexConstants.SpecialQualityData.FeatNameIndex]);
 
                 Assert.That(testCaseSpecialQualityDatas.Any(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == matchingFeat.Feat), Is.True, $"TEST CASE: {matchingFeat.Feat}");
                 var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == matchingFeat.Feat);
@@ -101,8 +99,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         {
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var collection = table[creature];
-
             var proficiencyFeats = new[]
             {
                 FeatConstants.WeaponProficiency_Exotic,
@@ -110,28 +106,34 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 FeatConstants.WeaponProficiency_Simple,
             };
 
+            var datas = table[creature]
+                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Where(d => proficiencyFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]))
+                .Where(d => d[DataIndexConstants.SpecialQualityData.FocusIndex] != GroupConstants.All);
+
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
 
-            foreach (var entry in collection)
+            var weaponFamiliarityData = testCaseSpecialQualityDatas.Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.WeaponFamiliarity);
+            var weaponFamiliarityFoci = weaponFamiliarityData.Select(d => d[DataIndexConstants.SpecialQualityData.FocusIndex]);
+
+            foreach (var data in datas)
             {
-                var data = SpecialQualityHelper.ParseData(entry);
                 var featName = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
-
-                if (!proficiencyFeats.Contains(featName))
-                    continue;
-
                 var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
-
-                if (focus == GroupConstants.All)
-                    continue;
 
                 var featFoci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
                 var proficiencyFoci = featFoci[featName];
 
                 var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == featName);
 
-                Assert.That(proficiencyFoci, Contains.Item(testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex]), featName, $"TEST CASE: {featName}");
-                Assert.That(proficiencyFoci, Contains.Item(focus), featName, $"XML: {featName}");
+                if (weaponFamiliarityFoci.Contains(focus) && featName == FeatConstants.WeaponProficiency_Martial)
+                {
+                    Assert.That(featFoci[FeatConstants.WeaponProficiency_Exotic], Contains.Item(focus), $"WEAPON FAMILIARITY: {focus}");
+                    proficiencyFoci = proficiencyFoci.Union(new[] { focus });
+                }
+
+                Assert.That(proficiencyFoci, Contains.Item(testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex]), $"TEST CASE: {featName}");
+                Assert.That(proficiencyFoci, Contains.Item(focus), $"XML: {featName}");
             }
         }
 
@@ -141,8 +143,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         public void ProficiencyFeatsRequireEquipment(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
-
-            var collection = table[creature];
 
             var proficiencyFeats = new[]
             {
@@ -158,15 +158,15 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 FeatConstants.SpecialQualities.OversizedWeapon,
             };
 
+            var datas = table[creature]
+                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Where(d => proficiencyFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
+
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
 
-            foreach (var entry in collection)
+            foreach (var data in datas)
             {
-                var data = SpecialQualityHelper.ParseData(entry);
                 var featName = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
-
-                if (!proficiencyFeats.Contains(featName))
-                    continue;
 
                 var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == featName);
 
@@ -225,16 +225,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         {
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var collection = table[creature];
+            var datas = table[creature]
+                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.DamageReduction);
+
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
 
-            foreach (var entry in collection)
+            foreach (var data in datas)
             {
-                var data = SpecialQualityHelper.ParseData(entry);
-
-                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] != FeatConstants.SpecialQualities.DamageReduction)
-                    continue;
-
                 Assert.That(testCaseSpecialQualityDatas.Any(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.DamageReduction), Is.True, $"TEST CASE: No Damage Reduction in test case");
                 var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.DamageReduction);
 
@@ -257,16 +255,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         {
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var collection = table[creature];
+            var datas = table[creature]
+                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Immunity);
+
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
 
-            foreach (var entry in collection)
+            foreach (var data in datas)
             {
-                var data = SpecialQualityHelper.ParseData(entry);
-
-                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] != FeatConstants.SpecialQualities.Immunity)
-                    continue;
-
                 Assert.That(testCaseSpecialQualityDatas.Any(d =>
                     d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Immunity
                     && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]
@@ -295,25 +291,23 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         {
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var collection = table[creature];
+            var datas = table[creature]
+                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.ChangeShape);
+
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
 
-            foreach (var entry in collection)
+            foreach (var data in datas)
             {
-                var data = SpecialQualityHelper.ParseData(entry);
-
-                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] != FeatConstants.SpecialQualities.ChangeShape)
-                    continue;
-
                 var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.ChangeShape);
 
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()), "TEST CASE: Frequency Quantity");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty, "TEST CASE: Frequency Time Period");
+                Assert.That(Convert.ToInt32(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, "TEST CASE: Frequency Quantity");
+                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, "TEST CASE: Frequency Time Period");
                 Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty, "TEST CASE: Focus");
                 Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()), "TEST CASE: Power");
 
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()), "XML: Frequency Quantity");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty, "XML: Frequency Time Period");
+                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, "XML: Frequency Quantity");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, "XML: Frequency Time Period");
                 Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty, "XML: Focus");
                 Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()), "XML: Power");
             }
@@ -326,16 +320,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         {
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var collection = table[creature];
+            var datas = table[creature]
+                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility);
+
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
 
-            foreach (var entry in collection)
+            foreach (var data in datas)
             {
-                var data = SpecialQualityHelper.ParseData(entry);
-
-                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] != FeatConstants.SpecialQualities.SpellLikeAbility)
-                    continue;
-
                 var testCaseData = testCaseSpecialQualityDatas.First(d =>
                     d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility
                     && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]);
@@ -363,9 +355,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         {
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var collection = table[creature];
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
             var energies = new[]
             {
                 FeatConstants.Foci.Elements.Acid,
@@ -375,13 +364,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 FeatConstants.Foci.Elements.Sonic,
             };
 
-            foreach (var entry in collection)
+            var datas = table[creature]
+                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.EnergyResistance);
+
+            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
+
+            foreach (var data in datas)
             {
-                var data = SpecialQualityHelper.ParseData(entry);
-
-                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] != FeatConstants.SpecialQualities.EnergyResistance)
-                    continue;
-
                 var testCaseData = testCaseSpecialQualityDatas.First(d =>
                     d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.EnergyResistance
                     && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]);
@@ -433,7 +423,16 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         {
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var collection = table[creature];
+            var changeShapeFeats = new[]
+            {
+                FeatConstants.SpecialQualities.ChangeShape,
+                FeatConstants.SpecialQualities.AlternateForm,
+            };
+
+            var datas = table[creature]
+                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Where(d => changeShapeFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
+
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
 
             var humanoids = new[]
@@ -444,21 +443,11 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 CreatureConstants.Types.MonstrousHumanoid,
             };
 
-            var changeShapeFeats = new[]
-            {
-                FeatConstants.SpecialQualities.ChangeShape,
-                FeatConstants.SpecialQualities.AlternateForm,
-            };
-
             var creatureData = CreatureDataSelector.SelectFor(creature);
 
-            foreach (var entry in collection)
+            foreach (var data in datas)
             {
-                var data = SpecialQualityHelper.ParseData(entry);
                 var featName = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
-
-                if (!changeShapeFeats.Contains(featName))
-                    continue;
 
                 var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == featName);
 
