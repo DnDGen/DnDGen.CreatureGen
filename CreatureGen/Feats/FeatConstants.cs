@@ -305,6 +305,7 @@ namespace CreatureGen.Feats
             public const string TreeDependent = "Tree Dependent";
             public const string Tremorsense = "Tremorsense";
             public const string TurnResistance = "Turn Resistance";
+            public const string TwoWeaponFighting_Superior = "Superior Two-Weapon Fighting";
             public const string UncannyDodge = "Uncanny Dodge";
             public const string UnnaturalAura = "Unnatural Aura";
             public const string Vulnerability = "Vulnerability";
@@ -387,6 +388,7 @@ namespace CreatureGen.Feats
                     TreeDependent,
                     Tremorsense,
                     TurnResistance,
+                    TwoWeaponFighting_Superior,
                     UncannyDodge,
                     UnnaturalAura,
                     Vulnerability,

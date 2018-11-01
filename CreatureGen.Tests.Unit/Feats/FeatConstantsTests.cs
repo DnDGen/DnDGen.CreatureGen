@@ -274,6 +274,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.TreeDependent, "Tree Dependent")]
         [TestCase(FeatConstants.SpecialQualities.Tremorsense, "Tremorsense")]
         [TestCase(FeatConstants.SpecialQualities.TurnResistance, "Turn Resistance")]
+        [TestCase(FeatConstants.SpecialQualities.TwoWeaponFighting_Superior, "Superior Two-Weapon Fighting")]
         [TestCase(FeatConstants.SpecialQualities.UncannyDodge, "Uncanny Dodge")]
         [TestCase(FeatConstants.SpecialQualities.UnnaturalAura, "Unnatural Aura")]
         [TestCase(FeatConstants.SpecialQualities.Vulnerability, "Vulnerability")]

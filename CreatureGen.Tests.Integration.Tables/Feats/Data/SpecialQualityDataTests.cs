@@ -124,7 +124,9 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 var featFoci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
                 var proficiencyFoci = featFoci[featName];
 
-                var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == featName);
+                var testCaseData = testCaseSpecialQualityDatas.First(d =>
+                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == featName
+                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == focus);
 
                 if (weaponFamiliarityFoci.Contains(focus) && featName == FeatConstants.WeaponProficiency_Martial)
                 {
@@ -328,6 +330,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
             foreach (var data in datas)
             {
+                Assert.That(testCaseSpecialQualityDatas.Any(d =>
+                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility
+                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]), Is.True, $"TEST CASE: Spell-Like Ability/{data[DataIndexConstants.SpecialQualityData.FocusIndex]}");
+
                 var testCaseData = testCaseSpecialQualityDatas.First(d =>
                     d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility
                     && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]);
@@ -402,19 +408,25 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
             AssertCollection(table.Keys.Intersect(creatureTypes), creatureTypes);
 
-            var testCases = SpecialQualityTestData.Creatures.Cast<TestCaseData>();
-            var creatureTestCase = testCases.First(c => c.Arguments[0].ToString() == creature);
-
-            var testCaseSpecialQualityDatas = creatureTestCase.Arguments[1] as List<string[]>;
-            var testCaseSpecialQualities = testCaseSpecialQualityDatas.Select(d => SpecialQualityHelper.BuildData(d));
+            var creatureTestCaseSpecialQualityDatas = GetTestCaseData(creature);
+            var creatureTestCaseSpecialQualities = creatureTestCaseSpecialQualityDatas.Select(d => SpecialQualityHelper.BuildData(d));
 
             foreach (var creatureType in creatureTypes)
             {
-                var overlap = table[creatureType].Intersect(testCaseSpecialQualities);
-                Assert.That(overlap, Is.Empty, $"TEST CASE: {creature} - {creatureType}");
+                var creatureTypeTestCaseSpecialQualityDatas = GetTestCaseData(creatureType);
+                var creatureTypeTestCaseSpecialQualities = creatureTypeTestCaseSpecialQualityDatas.Select(d => SpecialQualityHelper.BuildData(d));
+
+                var overlap = creatureTypeTestCaseSpecialQualities.Intersect(creatureTestCaseSpecialQualities);
+                Assert.That(overlap, Is.Empty, $"TEST CASE v TEST CASE: {creature} - {creatureType}");
+
+                overlap = table[creatureType].Intersect(creatureTestCaseSpecialQualities);
+                Assert.That(overlap, Is.Empty, $"TEST CASE v XML: {creature} - {creatureType}");
+
+                overlap = creatureTypeTestCaseSpecialQualities.Intersect(table[creature]);
+                Assert.That(overlap, Is.Empty, $"XML v TEST CASE: {creature} - {creatureType}");
 
                 overlap = table[creatureType].Intersect(table[creature]);
-                Assert.That(overlap, Is.Empty, $"XML: {creature} - {creatureType}");
+                Assert.That(overlap, Is.Empty, $"XML v XML: {creature} - {creatureType}");
             }
         }
 

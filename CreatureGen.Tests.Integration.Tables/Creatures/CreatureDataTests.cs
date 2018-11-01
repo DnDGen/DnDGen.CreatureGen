@@ -299,7 +299,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Dwarf_Mountain, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, 0, true, 0, 0, 2)]
         [TestCase(CreatureConstants.Eagle, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneHalf, null, false, 0, 1, 0)]
         [TestCase(CreatureConstants.Eagle_Giant, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Three, 2, false, 0, 3, 0)]
-        [TestCase(CreatureConstants.Efreeti, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eight, null, false, 12, 6, 2)]
+        [TestCase(CreatureConstants.Efreeti, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eight, null, true, 12, 6, 2)]
         [TestCase(CreatureConstants.Elasmosaurus, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Seven, null, false, 0, 3, 0)]
         [TestCase(CreatureConstants.Elemental_Air_Elder, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Eleven, null, false, 0, 8, 0)]
         [TestCase(CreatureConstants.Elemental_Air_Greater, SizeConstants.Huge, 15, 15, ChallengeRatingConstants.Nine, null, false, 0, 8, 0)]

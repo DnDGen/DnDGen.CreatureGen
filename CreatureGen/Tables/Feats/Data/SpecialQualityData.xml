@@ -107,7 +107,7 @@
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
-    <entry>Change Shape#0#Small or Medium Humanoid#0##0#False</entry>
+    <entry>Change Shape#0#Small or Medium Humanoid#0#At Will#0#False</entry>
     <entry>Damage Reduction#10#Vulnerable to evil#1#Hit#0#False</entry>
     <entry>Simple Weapon Proficiency#0#Heavy mace#0##0#True</entry>
     <entry>Spell Resistance#30##0##0#False</entry>
@@ -133,7 +133,7 @@
   </collection>
   <collection>
     <name>Angel, Planetar</name>
-    <entry>Change Shape#0#Small or Medium Humanoid#0##0#False</entry>
+    <entry>Change Shape#0#Small or Medium Humanoid#0#At Will#0#False</entry>
     <entry>Damage Reduction#10#Vulnerable to evil#1#Hit#0#False</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True</entry>
     <entry>Regeneration#10#Does not regenerate evil damage#1#Round#0#False</entry>
@@ -164,7 +164,7 @@
   </collection>
   <collection>
     <name>Angel, Solar</name>
-    <entry>Change Shape#0#Small or Medium Humanoid#0##0#False</entry>
+    <entry>Change Shape#0#Small or Medium Humanoid#0#At Will#0#False</entry>
     <entry>Damage Reduction#15#Vulnerable to epic evil#1#Hit#0#False</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
@@ -251,10 +251,8 @@
   </collection>
   <collection>
     <name>Aquatic Elf</name>
-    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
     <entry>Exotic Weapon Proficiency#0#Net#0##0#True</entry>
     <entry>Gills#0##0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Trident#0##0#True</entry>
     <entry>Simple Weapon Proficiency#0#Longspear#0##0#True</entry>
     <entry>Simple Weapon Proficiency#0#Shortspear#0##0#True</entry>
@@ -263,7 +261,7 @@
   </collection>
   <collection>
     <name>Aranea</name>
-    <entry>Change Shape#0#Small or Medium humanoid; or Medium spider-human hybrid (like a Lycanthrope)#0##0#False</entry>
+    <entry>Change Shape#0#Small or Medium humanoid; or Medium spider-human hybrid (like a Lycanthrope)#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Archon</name>
@@ -415,7 +413,7 @@
   </collection>
   <collection>
     <name>Barghest</name>
-    <entry>Change Shape#0#Goblin or wolf#0##0#False</entry>
+    <entry>Change Shape#0#Goblin or wolf#0#At Will#0#False</entry>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Scent#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Blink#0#At Will#0#False</entry>
@@ -1412,7 +1410,7 @@
   </collection>
   <collection>
     <name>Couatl</name>
-    <entry>Change Shape#0#Any Small or Medium humanoid#0##0#False</entry>
+    <entry>Change Shape#0#Any Small or Medium humanoid#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Ethereal jaunt#0#At Will#0#False</entry>
     <entry>Telepathy#90##0##0#False</entry>
   </collection>
@@ -1435,7 +1433,7 @@
   </collection>
   <collection>
     <name>Death Slaad</name>
-    <entry>Change Shape#0#Any humanoid form#0##0#False</entry>
+    <entry>Change Shape#0#Any humanoid form#0#At Will#0#False</entry>
     <entry>Damage Reduction#10#Vulnerable to lawful weapons#1#Hit#0#False</entry>
     <entry>Energy Resistance#5#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
@@ -1601,7 +1599,7 @@
   </collection>
   <collection>
     <name>Doppelganger</name>
-    <entry>Change Shape#0#Any Small or Medium Humanoid#0##0#False</entry>
+    <entry>Change Shape#0#Any Small or Medium Humanoid#0#At Will#0#False</entry>
     <entry>Immunity#0#Charm effects#0##0#False</entry>
     <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False</entry>
@@ -1661,10 +1659,8 @@
   </collection>
   <collection>
     <name>Drow</name>
-    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Exotic Weapon Proficiency#0#Hand crossbow#0##0#True</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Light Blindness#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
@@ -1763,7 +1759,7 @@
     <entry>Spell-Like Ability#0#Gaseous form#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Invisibility#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Permanent image#1#Day#0#False</entry>
-    <entry>Spell-Like Ability#0#Plane shift: Genie and up to 8 other creatures, provided they all link hands with the genie0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Plane shift: Genie and up to 8 other creatures, provided they all link hands with the genie#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Produce flame#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Pyrotechnics#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Scorching ray: 1 ray only#0#At Will#0#False</entry>
@@ -1773,12 +1769,21 @@
   </collection>
   <collection>
     <name>Eight-Headed Cryohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#18##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Eight-Headed Hydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#18##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#18##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Elasmosaurus</name>
@@ -1830,15 +1835,25 @@
   </collection>
   <collection>
     <name>Elephant</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Cryohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#21##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Hydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#21##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Pyrohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#21##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Elf</name>
@@ -1854,7 +1869,7 @@
     <entry>Immunity#0#Poison#0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
-    <entry>See in Darkness#0#Can see perfectly in darknesss of any kind, even that created by a Deeper Darkness spell#0##0#False</entry>
+    <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False</entry>
     <entry>Spell Resistance#20##0##0#False</entry>
     <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
@@ -1891,39 +1906,75 @@
   </collection>
   <collection>
     <name>Fire</name>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
+    <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0#False</entry>
+    <entry>Improved Initiative#4##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Greater</name>
+    <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0#False</entry>
+    <entry>Improved Initiative#4##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Huge</name>
+    <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False</entry>
+    <entry>Improved Initiative#4##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Large</name>
+    <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False</entry>
+    <entry>Improved Initiative#4##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Medium</name>
+    <entry>Improved Initiative#4##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Small</name>
+    <entry>Improved Initiative#4##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Fire Giant</name>
+    <entry>Armor Proficiency (Heavy)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True</entry>
+    <entry>Rock Catching#0##1#Round#0#False</entry>
   </collection>
   <collection>
     <name>Fire Mephit</name>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Fast Healing#2#Touching a flame at least as large as a torch#1#Turn#0#False</entry>
+    <entry>Spell-Like Ability#0#Heat metal#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Scorching ray#1#Hour#0#False</entry>
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#15##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Five-Headed Hydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#15##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Five-Headed Pyrohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#15##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
@@ -2104,8 +2155,6 @@
   </collection>
   <collection>
     <name>Gray Elf</name>
-    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0#True</entry>
@@ -2199,9 +2248,7 @@
   </collection>
   <collection>
     <name>Half-Elf</name>
-    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
     <entry>Elven Blood#0##0##0#False</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
   </collection>
@@ -2246,8 +2293,6 @@
   </collection>
   <collection>
     <name>High Elf</name>
-    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0#True</entry>
@@ -2607,12 +2652,21 @@
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#19##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Nine-Headed Hydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#19##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Nine-Headed Pyrohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#19##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Nixie</name>
@@ -2864,12 +2918,21 @@
   </collection>
   <collection>
     <name>Seven-Headed Cryohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#17##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Seven-Headed Hydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#17##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Seven-Headed Pyrohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#17##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Shadow</name>
@@ -2939,12 +3002,21 @@
   </collection>
   <collection>
     <name>Six-Headed Cryohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#16##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Six-Headed Hydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#16##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Six-Headed Pyrohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#16##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Skum</name>
@@ -3001,12 +3073,21 @@
   </collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#20##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Ten-Headed Hydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#20##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Ten-Headed Pyrohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#20##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Tendriculos</name>
@@ -3054,12 +3135,21 @@
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#22##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Hydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#22##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Pyrohydra</name>
+    <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False</entry>
+    <entry>Fast Healing#22##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
@@ -3188,8 +3278,6 @@
   </collection>
   <collection>
     <name>Wild Elf</name>
-    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0#True</entry>
@@ -3215,8 +3303,6 @@
   </collection>
   <collection>
     <name>Wood Elf</name>
-    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
-    <entry>Immunity#0#Sleep#0##0#False</entry>
     <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0#True</entry>
