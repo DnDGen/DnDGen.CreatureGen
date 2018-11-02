@@ -190,7 +190,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
             var testCaseSpecialQualityDatas = creatureTestCase.Arguments[1] as List<string[]>;
 
-            return testCaseSpecialQualityDatas;
+            return testCaseSpecialQualityDatas.Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] != SpecialQualityTestData.None);
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]

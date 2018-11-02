@@ -291,9 +291,7 @@
   <collection>
     <name>Average Salamander</name>
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Multiattack#0##0##0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Average Xorn</name>
@@ -334,9 +332,7 @@
   </collection>
   <collection>
     <name>Azer</name>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Spell Resistance#13##0##0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Babau</name>
@@ -435,9 +431,6 @@
   <collection>
     <name>Bat Swarm</name>
     <entry>Blindsense#20##0##0#False</entry>
-    <entry>Immunity#0#Critical hits#0##0#False</entry>
-    <entry>Immunity#0#Flanking#0##0#False</entry>
-    <entry>Immunity#0#Weapon damage#0##0#False</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
@@ -833,20 +826,17 @@
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#20##0##0#False</entry>
     <entry>Spell-Like Ability#0#Endure elements: radius 60 ft.#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Ancient</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#27##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
@@ -854,14 +844,12 @@
     <entry>Spell-Like Ability#0#Endure elements: radius 100 ft.#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Great Wyrm</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#30##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
@@ -870,74 +858,62 @@
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Summon monster VII: one Djinni#1#Day#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Juvenile</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Endure elements: radius 40 ft.#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Mature Adult</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#22##0##0#False</entry>
     <entry>Spell-Like Ability#0#Endure elements: radius 70 ft.#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Old</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#24##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Endure elements: radius 80 ft.#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Very Old</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#25##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Endure elements: radius 90 ft.#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Very Young</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Wyrm</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#28##0##0#False</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
@@ -945,37 +921,30 @@
     <entry>Spell-Like Ability#0#Endure elements: radius 110 ft.#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Wyrmling</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Young Adult</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell Resistance#18##0##0#False</entry>
     <entry>Spell-Like Ability#0#Endure elements: radius 50 ft.#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Young</name>
     <entry>Blindsense#60##0##0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#At Will#0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Adult</name>
@@ -1885,9 +1854,11 @@
   </collection>
   <collection>
     <name>Ethereal Marauder</name>
+    <entry>Spell-Like Ability#0#Ethereal jaunt#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Ettercap</name>
+    <entry>Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Ettin</name>
@@ -1978,13 +1949,11 @@
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Multiattack#0##0##0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Flesh Golem</name>
-    <entry>Damage Reduction#10#Vulnerable to adamantine, bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to adamantine weapons#1#Hit#0#False</entry>
     <entry>Immunity#0#Magic (see creature description)#0##0#False</entry>
   </collection>
   <collection>
@@ -1992,21 +1961,92 @@
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round#0#False</entry>
+    <entry>Fast Healing#2##1#Turn#0#False</entry>
+    <entry>Hive Mind#0##0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Petrification#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Javelin#0##0#True</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Clairaudience/Clairvoyance#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dictum#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Magic circle against chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Order's wrath#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Formian Queen</name>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round#0#False</entry>
+    <entry>Eschew Materials#0##0##0#False</entry>
+    <entry>Fast Healing#2##1#Turn#0#False</entry>
+    <entry>Hive Mind#0##0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Petrification#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Spell Resistance#30##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Calm emotions#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Clairaudience/Clairvoyance#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dictum#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Divination#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Hold monster#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Magic circle against chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Order's wrath#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Shield of law#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#True seeing#0#At Will#0#False</entry>
+    <entry>Telepathy#0#Any intelligent creature within 50 miles whose presence she is aware of#0##0#False</entry>
   </collection>
   <collection>
     <name>Formian Taskmaster</name>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round#0#False</entry>
+    <entry>Hive Mind#0##0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Petrification#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Dominate monster#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Formian Warrior</name>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round#0#False</entry>
+    <entry>Hive Mind#0##0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Petrification#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Spell Resistance#18##0##0#False</entry>
   </collection>
   <collection>
     <name>Formian Worker</name>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round#0#False</entry>
+    <entry>Hive Mind#0##0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Petrification#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Cure/inflict serious wounds: 8 workers work together to cast the spell#1#Round#0#False</entry>
+    <entry>Spell-Like Ability#0#Make whole: 3 workers work together to cast the spell#1#Round#0#False</entry>
   </collection>
   <collection>
     <name>Frost Giant</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Greataxe#0##0#True</entry>
+    <entry>Rock Catching#0##1#Round#0#False</entry>
   </collection>
   <collection>
     <name>Frost Worm</name>
@@ -2022,6 +2062,8 @@
   </collection>
   <collection>
     <name>Gelatinous Cube</name>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Transparent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Ghaele</name>
@@ -2041,12 +2083,18 @@
   </collection>
   <collection>
     <name>Giant Ant, Queen</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Giant Ant, Soldier</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Giant Ant, Worker</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Giant Bee</name>
@@ -2056,9 +2104,11 @@
   </collection>
   <collection>
     <name>Giant Constrictor Snake</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Giant Crocodile</name>
+    <entry>Hold Breath#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Giant Eagle</name>
@@ -2071,6 +2121,7 @@
   </collection>
   <collection>
     <name>Giant Owl</name>
+    <entry>Superior Low-Light Vision#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Giant Praying Mantis</name>
@@ -2098,12 +2149,36 @@
   </collection>
   <collection>
     <name>Glabrezu</name>
+    <entry>Damage Resistance#10#Vulnerable to good weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Confusion#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Mirror image#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Power word stun#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Reverse gravity#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Wish: for a mortal humanoid. The demon can use this ability to offer a mortal whatever he or she desires - but unless the wish is used to create pain and suffering in the world, the glabrezu demands either terrible evil acts or great sacrifice as compensation#1#Month#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Gnoll</name>
   </collection>
   <collection>
     <name>Gnome</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Low-Light Vision#0#Poison#0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Light crossbow#0##0#True</entry>
+    <entry>Attack Bonus#1#Kobold#0##0#False</entry>
+    <entry>Attack Bonus#1#Goblinoid#0##0#False</entry>
+    <entry>Weapon Familiarity#0#Gnome hooked hammer#0##0#True</entry>
   </collection>
   <collection>
     <name>Goblin</name>
@@ -2165,22 +2240,47 @@
   </collection>
   <collection>
     <name>Gray Ooze</name>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Transparent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gray Render</name>
   </collection>
   <collection>
     <name>Gray Slaad</name>
+    <entry>Change Shape#0#Any humanoid form#0#At Will#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to lawful weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#5#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Fire#1#Round#0#False</entry>
+    <entry>Fast Healing#5##1#Turn#0#False</entry>
+    <entry>Immunity#0#Sonic#0##0#False</entry>
   </collection>
   <collection>
     <name>Greater Barghest</name>
+    <entry>Change Shape#0#Goblin or wolf#0#At Will#0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Blink#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Charm monster#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Crushing despair#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Dimension door#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility sphere#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Levitate#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Mass bull's strength#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Mass enlarge person#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Misdirection#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Pass without trace: in wolf form#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Rage#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Greater Shadow</name>
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
-    <entry>Damage Reduction#10#Vulnerable to adamantine, bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to adamantine weapons#1#Hit#0#False</entry>
     <entry>Immunity#0#Magic (see creature description)#0##0#False</entry>
   </collection>
   <collection>
@@ -2688,9 +2788,7 @@
   <collection>
     <name>Noble Salamander</name>
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
-    <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Multiattack#0##0##0#False</entry>
-    <entry>Vulnerability#0#Cold#0##0#False</entry>
   </collection>
   <collection>
     <name>Nymph</name>

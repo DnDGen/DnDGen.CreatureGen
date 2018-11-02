@@ -88,5 +88,18 @@ namespace CreatureGen.Tests.Integration.Generators.Creatures
             var specialQualityNames = elf.SpecialQualities.Select(q => q.Name);
             Assert.That(specialQualityNames, Contains.Item(FeatConstants.ShieldProficiency));
         }
+
+        [Test]
+        public void BUG_GiantOwlDOesNotDoubleUpOnLowLightVision()
+        {
+            var owl = CreatureGenerator.Generate(CreatureConstants.Owl_Giant, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreature(owl);
+
+            Assert.That(owl.SpecialQualities, Is.Not.Empty);
+
+            var specialQualityNames = owl.SpecialQualities.Select(q => q.Name);
+            Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.LowLightVision_Superior));
+            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.LowLightVision));
+        }
     }
 }

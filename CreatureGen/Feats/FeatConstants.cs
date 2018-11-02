@@ -236,6 +236,7 @@ namespace CreatureGen.Feats
         {
             public const string AllAroundVision = "All-Around Vision";
             public const string AlternateForm = "Alternate Form";
+            public const string Amorphous = "Amorphous";
             public const string Amphibious = "Amphibious";
             public const string AntimagicCone = "Antimagic Cone";
             public const string AttackBonus = "Attack Bonus";
@@ -252,15 +253,18 @@ namespace CreatureGen.Feats
             public const string DamageReduction = "Damage Reduction";
             public const string Darkvision = "Darkvision";
             public const string DaylightPowerlessness = "Daylight Powerlessness";
+            public const string DeathThroes = "Death Throes";
             public const string Displacement = "Displacement";
             public const string DodgeBonus = "Dodge Bonus";
             public const string EarthGlide = "Earth Glide";
             public const string ElementalEndurance = "Elemental Endurance";
             public const string ElvenBlood = "Elven Blood";
             public const string EnergyResistance = "Energy Resistance";
+            public const string Evasion = "Evasion";
             public const string FastHealing = "Fast Healing";
             public const string FlamingBody = "Flaming Body";
             public const string Flight = "Flight";
+            public const string Freeze = "Freeze";
             public const string FreezingFog = "Freezing Fog";
             public const string Gills = "Gills";
             public const string HalfDamage = "Half Damage";
@@ -269,7 +273,9 @@ namespace CreatureGen.Feats
             public const string Icewalking = "Icewalking";
             public const string Immunity = "Immunity";
             public const string InertialArmor = "Inertial Armor";
+            public const string InkCloud = "Ink Cloud";
             public const string InvisibleInLight = "Invisible in Light";
+            public const string Jet = "Jet";
             public const string KeenScent = "Keen Scent";
             public const string KeenSenses = "Keen Senses";
             public const string LayOnHands = "Lay on Hands";
@@ -319,6 +325,7 @@ namespace CreatureGen.Feats
                 {
                     AllAroundVision,
                     AlternateForm,
+                    Amorphous,
                     Amphibious,
                     AntimagicCone,
                     AttackBonus,
@@ -335,15 +342,18 @@ namespace CreatureGen.Feats
                     DamageReduction,
                     Darkvision,
                     DaylightPowerlessness,
+                    DeathThroes,
                     Displacement,
                     DodgeBonus,
                     EarthGlide,
                     ElementalEndurance,
                     ElvenBlood,
                     EnergyResistance,
+                    Evasion,
                     FastHealing,
                     FlamingBody,
                     Flight,
+                    Freeze,
                     FreezingFog,
                     Gills,
                     HalfDamage,
@@ -352,7 +362,9 @@ namespace CreatureGen.Feats
                     Icewalking,
                     Immunity,
                     InertialArmor,
+                    InkCloud,
                     InvisibleInLight,
+                    Jet,
                     KeenScent,
                     KeenSenses,
                     LayOnHands,
