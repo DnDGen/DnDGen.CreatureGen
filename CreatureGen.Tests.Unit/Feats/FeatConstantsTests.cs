@@ -244,7 +244,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.InertialArmor, "Inertial Armor")]
         [TestCase(FeatConstants.SpecialQualities.InkCloud, "Ink Cloud")]
         [TestCase(FeatConstants.SpecialQualities.InvisibleInLight, "Invisible in Light")]
-        [TestCase(FeatConstants.SpecialQualities.Jet, "Get")]
+        [TestCase(FeatConstants.SpecialQualities.Jet, "Jet")]
         [TestCase(FeatConstants.SpecialQualities.KeenScent, "Keen Scent")]
         [TestCase(FeatConstants.SpecialQualities.KeenSenses, "Keen Senses")]
         [TestCase(FeatConstants.SpecialQualities.LayOnHands, "Lay on Hands")]
