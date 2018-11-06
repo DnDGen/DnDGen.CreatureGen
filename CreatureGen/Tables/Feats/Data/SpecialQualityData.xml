@@ -1862,6 +1862,11 @@
   </collection>
   <collection>
     <name>Ettin</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Javelin#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Morningstar#0##0#True</entry>
+    <entry>Superior Two-Weapon Fighting#0##0##0#True</entry>
   </collection>
   <collection>
     <name>Evil</name>
@@ -1958,6 +1963,14 @@
   </collection>
   <collection>
     <name>Forest Gnome</name>
+    <entry>Attack Bonus#1#Orc#0##0#False</entry>
+    <entry>Attack Bonus#1#Reptilian#0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
+    <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Ghost sound#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Pass without trace: self only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Prestidigitation#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals: on a very basic level with forest animals#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
@@ -2001,7 +2014,7 @@
     <entry>Spell-Like Ability#0#Divination#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Hold monster#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Magic circle against chaos/law/good/evil#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Order's wrath#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Order's wrath#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Shield of law#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#True seeing#0#At Will#0#False</entry>
     <entry>Telepathy#0#Any intelligent creature within 50 miles whose presence she is aware of#0##0#False</entry>
@@ -2050,9 +2063,12 @@
   </collection>
   <collection>
     <name>Frost Worm</name>
+    <entry>Death Throes#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Freeze#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
@@ -2067,12 +2083,44 @@
   </collection>
   <collection>
     <name>Ghaele</name>
+    <entry>Alternate Form#0#Humanoid and globe forms#0#At Will#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to evil, cold iron weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Petrification#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True</entry>
+    <entry>Protective Aura#0##0##0#False</entry>
+    <entry>Spell Resistance#28##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Chain lightning#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Color spray#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Comprehend languages#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Cure/inflict light wounds#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dancing lights#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater invisibility: self only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Hold monster#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Major image#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Prismatic spray#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Wall of force#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Ghast</name>
+    <entry>Turn Resistance#2##0##0#False</entry>
   </collection>
   <collection>
     <name>Ghoul</name>
+    <entry>Turn Resistance#2##0##0#False</entry>
   </collection>
   <collection>
     <name>Giant</name>
@@ -2112,12 +2160,15 @@
   </collection>
   <collection>
     <name>Giant Eagle</name>
+    <entry>Evasion#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Giant Fire Beetle</name>
   </collection>
   <collection>
     <name>Giant Octopus</name>
+    <entry>Ink Cloud#0##0##0#False</entry>
+    <entry>Jet#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Giant Owl</name>
@@ -2128,6 +2179,8 @@
   </collection>
   <collection>
     <name>Giant Squid</name>
+    <entry>Ink Cloud#0##0##0#False</entry>
+    <entry>Jet#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Giant Stag Beetle</name>
@@ -2137,19 +2190,38 @@
   </collection>
   <collection>
     <name>Gibbering Mouther</name>
+    <entry>Amorphous#0##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to bludgeoning weapons#1#Hit#0#False</entry>
   </collection>
   <collection>
     <name>Girallon</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Githyanki</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True</entry>
+    <entry>Spell Resistance#6##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Daze#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Mage hand#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Githzerai</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Inertial Armor#4##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
+    <entry>Spell Resistance#6##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Daze#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Feather fall#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Shatter#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Glabrezu</name>
-    <entry>Damage Resistance#10#Vulnerable to good weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False</entry>
     <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
@@ -2165,16 +2237,20 @@
     <entry>Spell-Like Ability#0#Reverse gravity#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False</entry>
     <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Wish: for a mortal humanoid. The demon can use this ability to offer a mortal whatever he or she desires - but unless the wish is used to create pain and suffering in the world, the glabrezu demands either terrible evil acts or great sacrifice as compensation#1#Month#0#False</entry>
+    <entry>Spell-Like Ability#0#Wish: for a mortal humanoid. The demon can use this ability to offer a mortal whatever he or she desires - but unless the wish is used to create pain and suffering in the world, the glabrezu demands either terrible evil acts or great sacrifice as compensation.#1#Month#0#False</entry>
     <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Gnoll</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Battleaxe#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
   </collection>
   <collection>
     <name>Gnome</name>
     <entry>Armor Proficiency (Light)#0##0##0#True</entry>
-    <entry>Low-Light Vision#0#Poison#0##0#False</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
     <entry>Simple Weapon Proficiency#0#Light crossbow#0##0#True</entry>
     <entry>Attack Bonus#1#Kobold#0##0#False</entry>
     <entry>Attack Bonus#1#Goblinoid#0##0#False</entry>
@@ -2182,51 +2258,157 @@
   </collection>
   <collection>
     <name>Goblin</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Javelin#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Morningstar#0##0#True</entry>
   </collection>
   <collection>
     <name>Goblinoid</name>
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Luck Bonus#0##1#Day#0#False</entry>
+    <entry>Spell Resistance#23##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Bless#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Ancient</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Luck Bonus#0##1#Day#0#False</entry>
+    <entry>Spell Resistance#30##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Bless#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Geas/Quest#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Sunburst#1#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Great Wyrm</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Luck Bonus#0##1#Day#0#False</entry>
+    <entry>Spell Resistance#33##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Bless#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Foresight#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Geas/Quest#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Sunburst#1#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Bless#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Mature Adult</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Luck Bonus#0##1#Day#0#False</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Bless#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Old</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Luck Bonus#0##1#Day#0#False</entry>
+    <entry>Spell Resistance#27##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Bless#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Geas/Quest#1#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Old</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Luck Bonus#0##1#Day#0#False</entry>
+    <entry>Spell Resistance#28##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Bless#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Geas/Quest#1#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Young</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Wyrm</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Luck Bonus#0##1#Day#0#False</entry>
+    <entry>Spell Resistance#31##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Bless#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Geas/Quest#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Sunburst#1#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Wyrmling</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young Adult</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Bless#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Good</name>
   </collection>
   <collection>
     <name>Gorgon</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gray Elf</name>
@@ -2246,6 +2428,7 @@
   </collection>
   <collection>
     <name>Gray Render</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gray Slaad</name>
@@ -2277,6 +2460,7 @@
   </collection>
   <collection>
     <name>Greater Shadow</name>
+    <entry>Turn Resistance#2##0##0#False</entry>
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
@@ -2285,45 +2469,153 @@
   </collection>
   <collection>
     <name>Green Dragon, Adult</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Ancient</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Spell Resistance#27##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Dominate person#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Spell Resistance#30##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Command plants#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Dominate person#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Mature Adult</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Spell Resistance#22##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Old</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Spell Resistance#24##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Old</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Young</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrm</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Spell Resistance#28##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Dominate person#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrmling</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young Adult</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Spell Resistance#19##0##0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Green Hag</name>
+    <entry>Darkvision#90##0##0#False</entry>
+    <entry>Spell Resistance#18##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Dancing lights#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Ghost sound#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Pass without trace#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Tongues#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Water breathing#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Green Slaad</name>
+    <entry>Change Shape#0#Medium or Large humanoid form#0#At Will#0#False</entry>
+    <entry>Energy Resistance#5#Acid#0##0#False</entry>
+    <entry>Energy Resistance#5#Cold#0##0#False</entry>
+    <entry>Energy Resistance#5#Electricity#0##0#False</entry>
+    <entry>Energy Resistance#5#Fire#0##0#False</entry>
+    <entry>Fast Healing#5##1#Turn#0#False</entry>
+    <entry>Immunity#0#Sonic#0##0#False</entry>
   </collection>
   <collection>
     <name>Grick</name>
@@ -2798,6 +3090,8 @@
   </collection>
   <collection>
     <name>Octopus</name>
+    <entry>Ink Cloud#0##0##0#False</entry>
+    <entry>Jet#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Ogre</name>
@@ -3133,6 +3427,8 @@
   </collection>
   <collection>
     <name>Squid</name>
+    <entry>Ink Cloud#0##0##0#False</entry>
+    <entry>Jet#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>

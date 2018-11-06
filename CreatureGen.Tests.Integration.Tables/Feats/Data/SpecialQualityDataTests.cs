@@ -151,13 +151,19 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 FeatConstants.ArmorProficiency_Heavy,
                 FeatConstants.ArmorProficiency_Light,
                 FeatConstants.ArmorProficiency_Medium,
+                FeatConstants.ShieldBash_Improved,
                 FeatConstants.ShieldProficiency,
                 FeatConstants.ShieldProficiency_Tower,
+                FeatConstants.TwoWeaponDefense,
+                FeatConstants.TwoWeaponFighting,
+                FeatConstants.TwoWeaponFighting_Greater,
+                FeatConstants.TwoWeaponFighting_Improved,
                 FeatConstants.WeaponProficiency_Exotic,
                 FeatConstants.WeaponProficiency_Martial,
                 FeatConstants.WeaponProficiency_Simple,
-                FeatConstants.SpecialQualities.WeaponFamiliarity,
                 FeatConstants.SpecialQualities.OversizedWeapon,
+                FeatConstants.SpecialQualities.TwoWeaponFighting_Superior,
+                FeatConstants.SpecialQualities.WeaponFamiliarity,
             };
 
             var datas = table[creature]
@@ -404,7 +410,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         public void NoOverlapBetweenCreatureAndCreatureTypes(string creature)
         {
             var types = CollectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
-            var creatureTypes = types[creature];
+            var creatureTypes = types[creature].Except(new[] { creature }); //INFO: In case creature name duplicates as type, such as Gnoll
 
             AssertCollection(table.Keys.Intersect(creatureTypes), creatureTypes);
 

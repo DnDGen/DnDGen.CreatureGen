@@ -1922,11 +1922,11 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Ettercap].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
 
-                testCases[CreatureConstants.Ettin].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.TwoWeaponFighting_Superior));
-                testCases[CreatureConstants.Ettin].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Morningstar));
-                testCases[CreatureConstants.Ettin].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Javelin));
-                testCases[CreatureConstants.Ettin].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Medium));
-                testCases[CreatureConstants.Ettin].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Light));
+                testCases[CreatureConstants.Ettin].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.TwoWeaponFighting_Superior, requiresEquipment: true));
+                testCases[CreatureConstants.Ettin].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Morningstar, requiresEquipment: true));
+                testCases[CreatureConstants.Ettin].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Javelin, requiresEquipment: true));
+                testCases[CreatureConstants.Ettin].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Medium, requiresEquipment: true));
+                testCases[CreatureConstants.Ettin].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
                 testCases[CreatureConstants.FireBeetle_Giant].Add(SpecialQualityHelper.BuildData(None));
 
@@ -2106,10 +2106,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.GibberingMouther].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Amorphous));
                 testCases[CreatureConstants.GibberingMouther].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to bludgeoning weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.GibberingMouther].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
 
-                testCases[CreatureConstants.Girallon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Girallon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
                 testCases[CreatureConstants.Girallon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
                 testCases[CreatureConstants.Githyanki].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
@@ -2200,16 +2197,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Golem_Stone_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to adamantine weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
                 testCases[CreatureConstants.Golem_Stone_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Magic (see creature description)"));
 
-                testCases[CreatureConstants.Gorgon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.Gorgon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
                 testCases[CreatureConstants.Gorgon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
                 testCases[CreatureConstants.GrayOoze].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.GrayOoze].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.GrayOoze].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Transparent));
 
-                testCases[CreatureConstants.GrayRender].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-                testCases[CreatureConstants.GrayRender].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
                 testCases[CreatureConstants.GrayRender].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
                 testCases[CreatureConstants.GreenHag].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 90));
@@ -2221,6 +2214,49 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.GreenHag].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PassWithoutTrace, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.GreenHag].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Tongues, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.GreenHag].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WaterBreathing, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+
+                testCases[CreatureConstants.Grick].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                testCases[CreatureConstants.Grick].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                testCases[CreatureConstants.Grick].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Grick].Add(SpecialQualityHelper.BuildData(FeatConstants.Track));
+
+                testCases[CreatureConstants.Griffon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                testCases[CreatureConstants.Griffon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Griffon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to cold iron weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 17));
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.Dodge));
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DisguiseSelf, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Entangle, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Invisibility, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Pyrotechnics, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.ShortSword, requiresEquipment: true));
+                testCases[CreatureConstants.Grig].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longbow, requiresEquipment: true));
+
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to cold iron weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 17));
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.Dodge));
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DisguiseSelf, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Entangle, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Invisibility, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Pyrotechnics, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.ShortSword, requiresEquipment: true));
+                testCases[CreatureConstants.Grig_WithFiddle].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longbow, requiresEquipment: true));
+
+                testCases[CreatureConstants.Grimlock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 40));
+                testCases[CreatureConstants.Grimlock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Gaze attacks"));
+                testCases[CreatureConstants.Grimlock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Visual effects"));
+                testCases[CreatureConstants.Grimlock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Illusions"));
+                testCases[CreatureConstants.Grimlock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Attack forms that rely on sight"));
+                testCases[CreatureConstants.Grimlock].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Grimlock].Add(SpecialQualityHelper.BuildData(FeatConstants.Track));
 
                 testCases[CreatureConstants.Gynosphinx].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ClairaudienceClairvoyance, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
                 testCases[CreatureConstants.Gynosphinx].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectMagic, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
@@ -2488,6 +2524,18 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Nalfeshnee].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Teleport_Greater + ": self plus 50 pounds of objects only", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Nalfeshnee].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.UnholyAura, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
 
+                testCases[CreatureConstants.Nixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Amphibious));
+                testCases[CreatureConstants.Nixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to cold iron weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                testCases[CreatureConstants.Nixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                testCases[CreatureConstants.Nixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 16));
+                testCases[CreatureConstants.Nixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.WildEmpathy));
+                testCases[CreatureConstants.Nixie].Add(SpecialQualityHelper.BuildData(FeatConstants.Dodge));
+                testCases[CreatureConstants.Nixie].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+                testCases[CreatureConstants.Nixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CharmPerson, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Nixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WaterBreathing, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Nixie].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.ShortSword, requiresEquipment: true));
+                testCases[CreatureConstants.Nixie].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.LightCrossbow, requiresEquipment: true));
+
                 testCases[CreatureConstants.OchreJelly].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Split));
 
                 testCases[CreatureConstants.Octopus].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.InkCloud));
@@ -2522,6 +2570,39 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.PitFiend].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.UnholyAura, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.PitFiend].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.MeteorSwarm, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
                 testCases[CreatureConstants.PitFiend].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Wish, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Year));
+
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to cold iron weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 15));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.Dodge));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Invisibility_Greater, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Confusion_Lesser, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DancingLights, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectAlignment, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectThoughts, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DispelMagic, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Entangle, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PermanentImage + ": visual and auditory elements only", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.ShortSword, requiresEquipment: true));
+                testCases[CreatureConstants.Pixie].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longbow, requiresEquipment: true));
+
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to cold iron weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 15));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.Dodge));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Invisibility_Greater, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Confusion_Lesser, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DancingLights, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectAlignment, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectThoughts, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DispelMagic, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Entangle, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PermanentImage + ": visual and auditory elements only", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.IrresistibleDance, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.ShortSword, requiresEquipment: true));
+                testCases[CreatureConstants.Pixie_WithIrresistableDance].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longbow, requiresEquipment: true));
 
                 testCases[CreatureConstants.PrayingMantis_Giant].Add(SpecialQualityHelper.BuildData(None));
 
@@ -2597,10 +2678,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.SeaHag].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Amphibious));
                 testCases[CreatureConstants.SeaHag].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 14));
 
-                testCases[CreatureConstants.Shadow].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Shadow].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.TurnResistance, power: 2));
 
-                testCases[CreatureConstants.Shadow_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Shadow_Greater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.TurnResistance, power: 2));
 
                 testCases[CreatureConstants.Shark_Dire].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.KeenScent));
