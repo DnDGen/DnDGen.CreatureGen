@@ -288,6 +288,7 @@ namespace CreatureGen.Feats
             public const string Madness = "Madness";
             public const string MucusCloud = "Mucus Cloud";
             public const string NaturalWeapon = "Natural Weapon";
+            public const string OrcBlood = "Orc Blood";
             public const string OversizedWeapon = "Oversized Weapon";
             public const string ProtectiveAura = "Protective Aura";
             public const string ProtectiveSlime = "Protective Slime";
@@ -377,6 +378,7 @@ namespace CreatureGen.Feats
                     Madness,
                     MucusCloud,
                     NaturalWeapon,
+                    OrcBlood,
                     OversizedWeapon,
                     ProtectiveAura,
                     ProtectiveSlime,

@@ -257,6 +257,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.Madness, "Madness")]
         [TestCase(FeatConstants.SpecialQualities.MucusCloud, "Mucus Cloud")]
         [TestCase(FeatConstants.SpecialQualities.NaturalWeapon, "Natural Weapon")]
+        [TestCase(FeatConstants.SpecialQualities.OrcBlood, "Orc Blood")]
         [TestCase(FeatConstants.SpecialQualities.OversizedWeapon, "Oversized Weapon")]
         [TestCase(FeatConstants.SpecialQualities.ProtectiveAura, "Protective Aura")]
         [TestCase(FeatConstants.SpecialQualities.ProtectiveSlime, "Protective Slime")]

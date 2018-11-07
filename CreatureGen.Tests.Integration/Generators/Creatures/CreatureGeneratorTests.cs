@@ -55,15 +55,16 @@ namespace CreatureGen.Tests.Integration.Generators.Creatures
             creatureAsserter.AssertCreature(creature);
         }
 
-        [Test]
-        public void BUG_DestrachanDoesNotHaveSight()
+        [TestCase(CreatureConstants.Destrachan)]
+        [TestCase(CreatureConstants.Grimlock)]
+        public void BUG_DoesNotHaveSight(string creatureName)
         {
-            var destrachan = CreatureGenerator.Generate(CreatureConstants.Destrachan, CreatureConstants.Templates.None);
-            creatureAsserter.AssertCreature(destrachan);
+            var creature = CreatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreature(creature);
 
-            Assert.That(destrachan.SpecialQualities, Is.Not.Empty);
+            Assert.That(creature.SpecialQualities, Is.Not.Empty);
 
-            var specialQualityNames = destrachan.SpecialQualities.Select(q => q.Name);
+            var specialQualityNames = creature.SpecialQualities.Select(q => q.Name);
             Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.Blindsight));
             Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.AllAroundVision));
             Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.Darkvision));

@@ -2610,33 +2610,83 @@
   <collection>
     <name>Green Slaad</name>
     <entry>Change Shape#0#Medium or Large humanoid form#0#At Will#0#False</entry>
-    <entry>Energy Resistance#5#Acid#0##0#False</entry>
-    <entry>Energy Resistance#5#Cold#0##0#False</entry>
-    <entry>Energy Resistance#5#Electricity#0##0#False</entry>
-    <entry>Energy Resistance#5#Fire#0##0#False</entry>
+    <entry>Energy Resistance#5#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Fire#1#Round#0#False</entry>
     <entry>Fast Healing#5##1#Turn#0#False</entry>
     <entry>Immunity#0#Sonic#0##0#False</entry>
   </collection>
   <collection>
     <name>Grick</name>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Griffon</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Grig</name>
+    <entry>Damage Reduction#5#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
+    <entry>Dodge#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
+    <entry>Spell Resistance#17##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Entangle#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Pyrotechnics#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#0#At Will#0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Grig with fiddle</name>
+    <entry>Damage Reduction#5#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
+    <entry>Dodge#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
+    <entry>Spell Resistance#17##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Entangle#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Pyrotechnics#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#0#At Will#0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Grimlock</name>
+    <entry>Blindsight#40##0##0#False</entry>
+    <entry>Immunity#0#Attack forms that rely on sight#0##0#False</entry>
+    <entry>Immunity#0#Gaze attacks#0##0#False</entry>
+    <entry>Immunity#0#Illusions#0##0#False</entry>
+    <entry>Immunity#0#Visual effects#0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Guardian Naga</name>
+    <entry>Eschew Materials#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Gynosphinx</name>
+    <entry>Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Comprehend languages#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect magic#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Legend lore#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Read magic#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Remove curse#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#See invisibility#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Symbol of death#1#Week#0#False</entry>
+    <entry>Spell-Like Ability#0#Symbol of fear#1#Week#0#False</entry>
+    <entry>Spell-Like Ability#0#Symbol of insanity#1#Week#0#False</entry>
+    <entry>Spell-Like Ability#0#Symbol of pain#1#Week#0#False</entry>
+    <entry>Spell-Like Ability#0#Symbol of persuasion#1#Week#0#False</entry>
+    <entry>Spell-Like Ability#0#Symbol of sleep#1#Week#0#False</entry>
+    <entry>Spell-Like Ability#0#Symbol of stunning#1#Week#0#False</entry>
   </collection>
   <collection>
     <name>Half-Elf</name>
@@ -2646,6 +2696,7 @@
   </collection>
   <collection>
     <name>Half-Orc</name>
+    <entry>Attack Bonus#1#thrown weapons and slings#0##0#False</entry>
   </collection>
   <collection>
     <name>Halfling</name>
@@ -2676,6 +2727,9 @@
   </collection>
   <collection>
     <name>Hellwasp Swarm</name>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Hive Mind#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
