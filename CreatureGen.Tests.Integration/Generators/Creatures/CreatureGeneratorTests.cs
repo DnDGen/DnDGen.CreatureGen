@@ -102,5 +102,17 @@ namespace CreatureGen.Tests.Integration.Generators.Creatures
             Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.LowLightVision_Superior));
             Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.LowLightVision));
         }
+
+        [Test]
+        public void BUG_HalfOrcIsNotSensitiveToLight()
+        {
+            var halfOrc = CreatureGenerator.Generate(CreatureConstants.Orc_Half, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreature(halfOrc);
+
+            Assert.That(halfOrc.SpecialQualities, Is.Not.Empty);
+
+            var specialQualityNames = halfOrc.SpecialQualities.Select(q => q.Name);
+            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.LightSensitivity));
+        }
     }
 }

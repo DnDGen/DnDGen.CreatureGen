@@ -472,12 +472,18 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 var focus = testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex];
                 var changesIntoHumanoid = humanoids.Any(h => focus.ToLower().Contains(h.ToLower()));
 
-                Assert.That(changesIntoHumanoid, Is.EqualTo(creatureData.CanUseEquipment), $"TEST CASE: {focus}");
+                if (changesIntoHumanoid)
+                {
+                    Assert.That(creatureData.CanUseEquipment, Is.True, $"TEST CASE: {focus}");
+                }
 
                 focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
                 changesIntoHumanoid = humanoids.Any(h => focus.ToLower().Contains(h.ToLower()));
 
-                Assert.That(changesIntoHumanoid, Is.EqualTo(creatureData.CanUseEquipment), $"XML: {focus}");
+                if (changesIntoHumanoid)
+                {
+                    Assert.That(creatureData.CanUseEquipment, Is.True, $"XML: {focus}");
+                }
             }
         }
     }

@@ -234,6 +234,7 @@ namespace CreatureGen.Feats
 
         public static class SpecialQualities
         {
+            public const string Adhesive = "Adhesive";
             public const string AllAroundVision = "All-Around Vision";
             public const string AlternateForm = "Alternate Form";
             public const string Amorphous = "Amorphous";
@@ -266,6 +267,7 @@ namespace CreatureGen.Feats
             public const string Flight = "Flight";
             public const string Freeze = "Freeze";
             public const string FreezingFog = "Freezing Fog";
+            public const string FreshwaterSensitivity = "Freshwater Sensitivity";
             public const string Gills = "Gills";
             public const string HalfDamage = "Half Damage";
             public const string HiveMind = "Hive Mind";
@@ -278,6 +280,7 @@ namespace CreatureGen.Feats
             public const string Jet = "Jet";
             public const string KeenScent = "Keen Scent";
             public const string KeenSenses = "Keen Senses";
+            public const string KeenSight = "Keen Sight";
             public const string LayOnHands = "Lay on Hands";
             public const string Lifesense = "Lifesense";
             public const string LightBlindness = "Light Blindness";
@@ -286,8 +289,9 @@ namespace CreatureGen.Feats
             public const string LowLightVision_Superior = "Superior Low-Light Vision";
             public const string LuckBonus = "Luck Bonus";
             public const string Madness = "Madness";
+            public const string MeltWeapons = "Melt Weapons";
             public const string MucusCloud = "Mucus Cloud";
-            public const string NaturalWeapon = "Natural Weapon";
+            public const string NaturalInvisibility = "Natural Invisibility";
             public const string OrcBlood = "Orc Blood";
             public const string OversizedWeapon = "Oversized Weapon";
             public const string ProtectiveAura = "Protective Aura";
@@ -298,8 +302,10 @@ namespace CreatureGen.Feats
             public const string Scent = "Scent";
             public const string SeeInDarkness = "See in Darkness";
             public const string ShadowShift = "Shadow Shift";
+            public const string Slippery = "Slippery";
             public const string SmokeForm = "Smoke Form";
             public const string SoundImitation = "Sound Imitation";
+            public const string SpeakWithSharks = "Speak With Sharks";
             public const string SpellDeflection = "Spell Deflection";
             public const string SpellLikeAbility = "Spell-Like Ability";
             public const string SpellResistance = "Spell Resistance";
@@ -308,6 +314,7 @@ namespace CreatureGen.Feats
             public const string Stability = "Stability";
             public const string Stonecunning = "Stonecunning";
             public const string Telepathy = "Telepathy";
+            public const string Tracking_Improved = "Improved Tracking";
             public const string Transparent = "Transparent";
             public const string TreeDependent = "Tree Dependent";
             public const string Tremorsense = "Tremorsense";
@@ -317,6 +324,7 @@ namespace CreatureGen.Feats
             public const string UnnaturalAura = "Unnatural Aura";
             public const string Vulnerability = "Vulnerability";
             public const string WaterBreathing = "Water Breathing";
+            public const string WaterDependent = "Water Dependent";
             public const string WeaponFamiliarity = "Weapon Familiarity";
             public const string WildEmpathy = "Wild Empathy";
 
@@ -324,6 +332,7 @@ namespace CreatureGen.Feats
             {
                 return new[]
                 {
+                    Adhesive,
                     AllAroundVision,
                     AlternateForm,
                     Amorphous,
@@ -356,6 +365,7 @@ namespace CreatureGen.Feats
                     Flight,
                     Freeze,
                     FreezingFog,
+                    FreshwaterSensitivity,
                     Gills,
                     HalfDamage,
                     HiveMind,
@@ -368,6 +378,7 @@ namespace CreatureGen.Feats
                     Jet,
                     KeenScent,
                     KeenSenses,
+                    KeenSight,
                     LayOnHands,
                     Lifesense,
                     LightBlindness,
@@ -376,8 +387,9 @@ namespace CreatureGen.Feats
                     LowLightVision_Superior,
                     LuckBonus,
                     Madness,
+                    MeltWeapons,
                     MucusCloud,
-                    NaturalWeapon,
+                    NaturalInvisibility,
                     OrcBlood,
                     OversizedWeapon,
                     ProtectiveAura,
@@ -388,8 +400,10 @@ namespace CreatureGen.Feats
                     Scent,
                     SeeInDarkness,
                     ShadowShift,
+                    Slippery,
                     SmokeForm,
                     SoundImitation,
+                    SpeakWithSharks,
                     SpellDeflection,
                     SpellLikeAbility,
                     SpellResistance,
@@ -398,6 +412,7 @@ namespace CreatureGen.Feats
                     Stability,
                     Stonecunning,
                     Telepathy,
+                    Tracking_Improved,
                     Transparent,
                     TreeDependent,
                     Tremorsense,
@@ -407,6 +422,7 @@ namespace CreatureGen.Feats
                     UnnaturalAura,
                     Vulnerability,
                     WaterBreathing,
+                    WaterDependent,
                     WeaponFamiliarity,
                     WildEmpathy,
                 };

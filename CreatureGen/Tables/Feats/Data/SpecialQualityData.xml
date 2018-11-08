@@ -367,7 +367,7 @@
   </collection>
   <collection>
     <name>Balor</name>
-    <entry>Damage Reduction#15#Vulnerable to good and cold iron weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to good, cold iron weapons#1#Hit#0#False</entry>
     <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Exotic Weapon Proficiency#0#Whip#0##0#True</entry>
@@ -1145,6 +1145,7 @@
     <name>Centaur</name>
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
+    <entry>Mounted Combat#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Centipede Swarm</name>
@@ -2630,29 +2631,29 @@
   <collection>
     <name>Grig</name>
     <entry>Damage Reduction#5#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
-    <entry>Dodge#0##0##0#False</entry>
+    <entry>Dodge#1##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
     <entry>Spell Resistance#17##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Entangle#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Pyrotechnics#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Ventriloquism#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Disguise self#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Entangle#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Pyrotechnics#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
     <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Grig with fiddle</name>
     <entry>Damage Reduction#5#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
-    <entry>Dodge#0##0##0#False</entry>
+    <entry>Dodge#1##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
     <entry>Spell Resistance#17##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Entangle#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Pyrotechnics#0#At Will#0#False</entry>
-    <entry>Spell-Like Ability#0#Ventriloquism#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Disguise self#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Entangle#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Pyrotechnics#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False</entry>
     <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
@@ -2696,25 +2697,32 @@
   </collection>
   <collection>
     <name>Half-Orc</name>
-    <entry>Attack Bonus#1#thrown weapons and slings#0##0#False</entry>
+    <entry>Orc Blood#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Halfling</name>
+    <entry>Attack Bonus#1#thrown weapons and slings#0##0#False</entry>
   </collection>
   <collection>
     <name>Harpy</name>
+    <entry>Simple Weapon Proficiency#0#Club#0##0#True</entry>
   </collection>
   <collection>
     <name>Hawk</name>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Heavy Horse</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Heavy Warhorse</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Hell Hound</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
@@ -2733,6 +2741,19 @@
   </collection>
   <collection>
     <name>Hezrou</name>
+    <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Spell Resistance#19##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Blasphemy#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Gaseous form#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
@@ -2749,15 +2770,29 @@
   </collection>
   <collection>
     <name>Hill Dwarf</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Dwarven waraxe#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
+    <entry>Weapon Familiarity#0#Dwarven urgrosh#0##0#True</entry>
+    <entry>Weapon Familiarity#0#Dwarven waraxe#0##0#True</entry>
   </collection>
   <collection>
     <name>Hill Giant</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Greatclub#0##0#True</entry>
+    <entry>Rock Catching#0##1#Round#0#False</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Hobgoblin</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Javelin#0##0#True</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
@@ -2783,6 +2818,15 @@
   </collection>
   <collection>
     <name>Hound Archon</name>
+    <entry>Change Shape#0#Any canine form of Small to Large size#0#At Will#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to evil weapons#1#Hit#0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Spell Resistance#16##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Message#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Howler</name>
@@ -2797,6 +2841,7 @@
   </collection>
   <collection>
     <name>Hyena</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
@@ -2822,26 +2867,68 @@
   </collection>
   <collection>
     <name>Ice Mephit</name>
-  </collection>
-  <collection>
-    <name>Incorporeal</name>
-  </collection>
-  <collection>
-    <name>Invisible Stalker</name>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Fast Healing#2#Touching a piece of ice at least Tiny in size, or ambient temperature is freezing or lower#1#Turn#0#False</entry>
+    <entry>Spell-Like Ability#0#Chill metal#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Magic missile#1#Hour#0#False</entry>
   </collection>
   <collection>
     <name>Imp</name>
+    <entry>Alternate Form#0#Imp Alternate Form#0#At Will#1d2#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to good or silver weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#5#Fire#1#Round#0#False</entry>
+    <entry>Fast Healing#2##1#Turn#0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Commune: ask 6 questions#1#Week#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility: self only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False</entry>
+  </collection>
+  <collection>
+    <name>Incorporeal</name>
+    <entry>Immunity#0#50% chance to ignore any damage from a corporeal source (except for positive energy, negative energy, force effects such as magic missiles, or attacks made with ghost touch weapons)#0##0#False</entry>
+    <entry>Immunity#0#Blindsense#0##0#False</entry>
+    <entry>Immunity#0#Blindsight#0##0#False</entry>
+    <entry>Immunity#0#Falling or falling damage#0##0#False</entry>
+    <entry>Immunity#0#Grapple#0##0#False</entry>
+    <entry>Immunity#0#Nonmagical attacks#0##0#False</entry>
+    <entry>Immunity#0#Scent#0##0#False</entry>
+    <entry>Immunity#0#Tremorsense#0##0#False</entry>
+    <entry>Immunity#0#Trip#0##0#False</entry>
+  </collection>
+  <collection>
+    <name>Invisible Stalker</name>
+    <entry>Improved Tracking#0##0##0#False</entry>
+    <entry>Natural Invisibility#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Iron Golem</name>
-    <entry>Damage Reduction#10#Vulnerable to adamantine, bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to adamantine weapons#1#Hit#0#False</entry>
     <entry>Immunity#0#Magic (see creature description)#0##0#False</entry>
   </collection>
   <collection>
     <name>Janni</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Elemental Endurance#0##0##0#False</entry>
+    <entry>Improved Initiative#4##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Scimitar#0##0#True</entry>
+    <entry>Spell-Like Ability#0#Create food and water#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Ethereal jaunt#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility: self only#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plane shift: Genie and up to 8 other creatures, provided they all link hands with the genie#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#3#Day#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
   </collection>
   <collection>
     <name>Juvenile Tojanida</name>
@@ -2854,60 +2941,155 @@
   </collection>
   <collection>
     <name>Kapoacinth</name>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Freeze#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Kobold</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Light Sensitivity#0##0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Sling#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Spear#0##0#True</entry>
   </collection>
   <collection>
     <name>Kolyarut</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Heavy)#0##0##0#True</entry>
+    <entry>Damage Reduction#10#Vulnerable to chaotic weapons#1#Hit#0#False</entry>
+    <entry>Fast Healing#5##1#Turn#0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
+    <entry>Spell Resistance#22##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Discern lies#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Geas/Quest#1#Week#0#False</entry>
+    <entry>Spell-Like Ability#0#Hold monster#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Hold person#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Locate creature#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Mark of justice#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Kraken</name>
+    <entry>Ink Cloud#0##0##0#False</entry>
+    <entry>Jet#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control weather#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Control winds#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Dominate animal#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Resist energy#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Krenshar</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Kuo-toa</name>
+    <entry>Adhesive#0##0##0#False</entry>
+    <entry>Alertness#2##0##0#False</entry>
+    <entry>Amphibious#0##0##0#False</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round#0#False</entry>
+    <entry>Immunity#0#Paralysis#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Keen Sight#0##0##0#False</entry>
+    <entry>Light Blindness#0##0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Shortspear#0##0#True</entry>
+    <entry>Slippery#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Lacedon</name>
+    <entry>Turn Resistance#2##0##0#False</entry>
   </collection>
   <collection>
     <name>Lamia</name>
+    <entry>Simple Weapon Proficiency#0#Dagger#0##0#True</entry>
+    <entry>Spell-Like Ability#0#Charm monster#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Major image#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Mirror image#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Deep slumber#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
+    <entry>Spell-Like Ability#0#Dimension door#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater invisibility: self only#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Magic circle against chaos/law/good/evil#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
+    <entry>Damage Reduction#10#Vulnerable to magic, evil weapons#1#Hit#0#False</entry>
+    <entry>Spell-Like Ability#0#Aid#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Lawful</name>
   </collection>
   <collection>
     <name>Lemure</name>
+    <entry>Damage Reduction#5#Vulnerable to good or silver weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Mind-Affecting Effects#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False</entry>
   </collection>
   <collection>
     <name>Leonal</name>
+    <entry>Damage Reduction#10#Vulnerable to evil, silver weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Cold#0##0#False</entry>
+    <entry>Energy Resistance#10#Sonic#0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Petrification#0##0#False</entry>
+    <entry>Law on Hands#0##0##0#False</entry>
+    <entry>Protective Aura#0##0##0#False</entry>
+    <entry>Spell Resistance#28##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Cure/inflict critical wounds#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Fireball#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Heal/Harm#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Hold monster#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Neutralize poison#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Remove disease#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals: does not require sound#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Wall of force#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Leopard</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Light Horse</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Light Warhorse</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
   </collection>
   <collection>
     <name>Lillend</name>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Bardic music ability as a 6th-level Bard#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Charm persoin#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Hallucinatory terrain#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Knock#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Light#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with plants#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Lion</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Lizard</name>
@@ -2928,6 +3110,10 @@
   </collection>
   <collection>
     <name>Magma Mephit</name>
+    <entry>Change Shape#0#A pool of lava 3 feet in diameter and 6 inches deep#1#Hour#0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Fast Healing#2#Touching magma, lava, or a flame at least as large as a torch#1#Turn#0#False</entry>
+    <entry>Spell-Like Ability#0#Pyrotechnics#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Magmin</name>
@@ -2940,15 +3126,54 @@
   </collection>
   <collection>
     <name>Marilith</name>
+    <entry>Damage Reduction#10#Vulnerable to good, cold iron weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Multi-Weapon Fighting#0##0##0#False</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Align weapon#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Blade barrier#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Magic weapon#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Project image#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Telekinesis#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Marut</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Heavy)#0##0##0#True</entry>
+    <entry>Damage Reduction#15#Vulnerable to chaotic weapons#1#Hit#0#False</entry>
+    <entry>Fast Healing#10##1#Turn#0#False</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Air walk#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Chain lightning#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Circle of death#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Dimension door#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater command#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Locate creature#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Mark of justice#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Mass cure/inflict light wounds#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#True seeing#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Wall of force#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Earthquake#1#Week#0#False</entry>
+    <entry>Spell-Like Ability#0#Geas/Quest#1#Week#0#False</entry>
+    <entry>Spell-Like Ability#0#Plane shift#1#Week#0#False</entry>
   </collection>
   <collection>
     <name>Medusa</name>
   </collection>
   <collection>
     <name>Megaraptor</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Merfolk</name>
