@@ -142,11 +142,11 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
-        public void ProficiencyFeatsRequireEquipment(string creature)
+        public void FeatsFocusingOnWeaponsOrArmorRequireEquipment(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var proficiencyFeats = new[]
+            var weaponAndArmorFeats = new[]
             {
                 FeatConstants.ArmorProficiency_Heavy,
                 FeatConstants.ArmorProficiency_Light,
@@ -161,6 +161,9 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 FeatConstants.WeaponProficiency_Exotic,
                 FeatConstants.WeaponProficiency_Martial,
                 FeatConstants.WeaponProficiency_Simple,
+                FeatConstants.Monster.MultiweaponFighting,
+                FeatConstants.Monster.MultiweaponFighting_Greater,
+                FeatConstants.Monster.MultiweaponFighting_Improved,
                 FeatConstants.SpecialQualities.OversizedWeapon,
                 FeatConstants.SpecialQualities.TwoWeaponFighting_Superior,
                 FeatConstants.SpecialQualities.WeaponFamiliarity,
@@ -168,7 +171,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
             var datas = table[creature]
                 .Select(e => SpecialQualityHelper.ParseData(e))
-                .Where(d => proficiencyFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
+                .Where(d => weaponAndArmorFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
 
@@ -223,6 +226,33 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "XML: Frequency Quantity");
                 Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Turn), "XML: Frequency Time Period");
+            }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        public void RegenerationHasCorrectFrequency(string creature)
+        {
+            Assert.That(table.Keys, Contains.Item(creature));
+
+            var collection = table[creature];
+            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
+
+            foreach (var entry in collection)
+            {
+                var data = SpecialQualityHelper.ParseData(entry);
+
+                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] != FeatConstants.SpecialQualities.Regeneration)
+                    continue;
+
+                var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Regeneration);
+
+                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "TEST CASE: Frequency Quantity");
+                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round), "TEST CASE: Frequency Time Period");
+
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "XML: Frequency Quantity");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round), "XML: Frequency Time Period");
             }
         }
 

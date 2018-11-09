@@ -685,5 +685,34 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(saves[SaveConstants.Will].TotalBonus, Is.Not.Zero);
             Assert.That(saves[SaveConstants.Will].Bonus, Is.Zero);
         }
+
+        [Test]
+        public void UnearthlyGraceAddsCharismaBonusToAllSavingThrows()
+        {
+            abilities[AbilityConstants.Charisma].BaseScore = 9266;
+            abilities[AbilityConstants.Constitution].BaseScore = 90210;
+            abilities[AbilityConstants.Dexterity].BaseScore = 42;
+            abilities[AbilityConstants.Wisdom].BaseScore = 600;
+
+            var feat = new Feat();
+            feat.Name = FeatConstants.SpecialQualities.UnearthlyGrace;
+
+            feats.Add(feat);
+
+            var saves = savesGenerator.GenerateWith("creature", creatureType, hitPoints, feats, abilities);
+            Assert.That(saves.Count, Is.EqualTo(3));
+            Assert.That(saves[SaveConstants.Fortitude].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
+            Assert.That(saves[SaveConstants.Fortitude].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Constitution].Modifier + abilities[AbilityConstants.Charisma].Modifier));
+            Assert.That(saves[SaveConstants.Fortitude].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Fortitude].Bonus, Is.EqualTo(abilities[AbilityConstants.Charisma].Modifier));
+            Assert.That(saves[SaveConstants.Reflex].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+            Assert.That(saves[SaveConstants.Reflex].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier + abilities[AbilityConstants.Charisma].Modifier));
+            Assert.That(saves[SaveConstants.Reflex].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Reflex].Bonus, Is.EqualTo(abilities[AbilityConstants.Charisma].Modifier));
+            Assert.That(saves[SaveConstants.Will].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Wisdom]));
+            Assert.That(saves[SaveConstants.Will].TotalBonus, Is.EqualTo(abilities[AbilityConstants.Wisdom].Modifier + abilities[AbilityConstants.Charisma].Modifier));
+            Assert.That(saves[SaveConstants.Will].TotalBonus, Is.Not.Zero);
+            Assert.That(saves[SaveConstants.Will].Bonus, Is.EqualTo(abilities[AbilityConstants.Charisma].Modifier));
+        }
     }
 }

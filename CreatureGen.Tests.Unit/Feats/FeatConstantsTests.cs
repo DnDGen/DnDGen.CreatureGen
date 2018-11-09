@@ -211,6 +211,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.AntimagicCone, "Antimagic Cone")]
         [TestCase(FeatConstants.SpecialQualities.AttackBonus, "Attack Bonus")]
         [TestCase(FeatConstants.SpecialQualities.AuraOfMenace, "Aura of Menace")]
+        [TestCase(FeatConstants.SpecialQualities.AversionToDaylight, "Aversion to Daylight")]
         [TestCase(FeatConstants.SpecialQualities.BarbedDefense, "Barbed Defense")]
         [TestCase(FeatConstants.SpecialQualities.Blindsense, "Blindsense")]
         [TestCase(FeatConstants.SpecialQualities.Blindsight, "Blindsight")]
@@ -224,6 +225,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.Darkvision, "Darkvision")]
         [TestCase(FeatConstants.SpecialQualities.DaylightPowerlessness, "Daylight Powerlessness")]
         [TestCase(FeatConstants.SpecialQualities.DeathThroes, "Death Throes")]
+        [TestCase(FeatConstants.SpecialQualities.DesecratingAura, "Desecrating Aura")]
         [TestCase(FeatConstants.SpecialQualities.Displacement, "Displacement")]
         [TestCase(FeatConstants.SpecialQualities.DodgeBonus, "Dodge Bonus")]
         [TestCase(FeatConstants.SpecialQualities.EarthGlide, "Earth Glide")]
@@ -259,8 +261,10 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.LuckBonus, "Luck Bonus")]
         [TestCase(FeatConstants.SpecialQualities.Madness, "Madness")]
         [TestCase(FeatConstants.SpecialQualities.MeltWeapons, "Melt Weapons")]
+        [TestCase(FeatConstants.SpecialQualities.MimicShape, "Mimic Shape")]
         [TestCase(FeatConstants.SpecialQualities.MucusCloud, "Mucus Cloud")]
-        [TestCase(FeatConstants.SpecialQualities.NaturalInvisibility, "Natural Weapon")]
+        [TestCase(FeatConstants.SpecialQualities.NaturalCunning, "Natural Cunning")]
+        [TestCase(FeatConstants.SpecialQualities.NaturalInvisibility, "Natural Invisibility")]
         [TestCase(FeatConstants.SpecialQualities.OrcBlood, "Orc Blood")]
         [TestCase(FeatConstants.SpecialQualities.OversizedWeapon, "Oversized Weapon")]
         [TestCase(FeatConstants.SpecialQualities.ProtectiveAura, "Protective Aura")]
@@ -290,6 +294,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.TurnResistance, "Turn Resistance")]
         [TestCase(FeatConstants.SpecialQualities.TwoWeaponFighting_Superior, "Superior Two-Weapon Fighting")]
         [TestCase(FeatConstants.SpecialQualities.UncannyDodge, "Uncanny Dodge")]
+        [TestCase(FeatConstants.SpecialQualities.UnearthlyGrace, "Unearthly Grace")]
         [TestCase(FeatConstants.SpecialQualities.UnnaturalAura, "Unnatural Aura")]
         [TestCase(FeatConstants.SpecialQualities.Vulnerability, "Vulnerability")]
         [TestCase(FeatConstants.SpecialQualities.WaterBreathing, "Water Breathing")]
@@ -299,18 +304,6 @@ namespace CreatureGen.Tests.Unit.Feats
         public void SpecialQualityConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));
-        }
-
-        [Test]
-        public void AllSpecialQualityConstants()
-        {
-            var specialQualities = FeatConstants.SpecialQualities.All();
-            var specialQualitiesConstants = typeof(FeatConstants.SpecialQualities);
-            var fields = specialQualitiesConstants.GetFields(BindingFlags.Public | BindingFlags.Static);
-            var constantFields = fields.Where(f => f.IsLiteral && !f.IsInitOnly);
-            var constants = constantFields.Select(f => f.GetValue(null) as string);
-
-            Assert.That(specialQualities, Is.EquivalentTo(constants));
         }
 
         [TestCase(FeatConstants.Frequencies.Constant, "Constant")]

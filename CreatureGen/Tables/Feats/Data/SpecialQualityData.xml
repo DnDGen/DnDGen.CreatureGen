@@ -371,10 +371,11 @@
     <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
     <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
     <entry>Exotic Weapon Proficiency#0#Whip#0##0#True</entry>
-    <entry>Immunity#0#Electricity#0##0#False</entry>
     <entry>Flaming Body#0##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
     <entry>Immunity#0#Fire#0##0#False</entry>
     <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
     <entry>Spell Resistance#28##0##0#False</entry>
     <entry>Spell-Like Ability#0#Blasphemy#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Dominate monster#0#At Will#0#False</entry>
@@ -3042,11 +3043,11 @@
   <collection>
     <name>Leonal</name>
     <entry>Damage Reduction#10#Vulnerable to evil, silver weapons#1#Hit#0#False</entry>
-    <entry>Energy Resistance#10#Cold#0##0#False</entry>
-    <entry>Energy Resistance#10#Sonic#0##0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round#0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
     <entry>Immunity#0#Petrification#0##0#False</entry>
-    <entry>Law on Hands#0##0##0#False</entry>
+    <entry>Lay on Hands#0##0##0#False</entry>
     <entry>Protective Aura#0##0##0#False</entry>
     <entry>Spell Resistance#28##0##0#False</entry>
     <entry>Spell-Like Ability#0#Cure/inflict critical wounds#3#Day#0#False</entry>
@@ -3079,7 +3080,7 @@
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Immunity#0#Poison#0##0#False</entry>
     <entry>Spell-Like Ability#0#Bardic music ability as a 6th-level Bard#1#Day#0#False</entry>
-    <entry>Spell-Like Ability#0#Charm persoin#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Charm person#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Hallucinatory terrain#3#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Knock#3#Day#0#False</entry>
@@ -3093,12 +3094,17 @@
   </collection>
   <collection>
     <name>Lizard</name>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Hold Breath#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Locathah</name>
+    <entry>Simple Weapon Proficiency#0#Longspear#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Light crossbow#0##0#True</entry>
   </collection>
   <collection>
     <name>Locust Swarm</name>
@@ -3117,12 +3123,27 @@
   </collection>
   <collection>
     <name>Magmin</name>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Melt Weapons#0##0##0#False</entry>
+  </collection>
+  <collection>
+    <name>Malenti</name>
+    <entry>Blindsense#30##0##0#False</entry>
+    <entry>Freshwater Sensitivity#0##0##0#False</entry>
+    <entry>Light Sensitivity#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Trident#0##0#True</entry>
+    <entry>Multiattack#0##0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Heavy crossbow#0##0#True</entry>
+    <entry>Speak With Sharks#0##0##0#False</entry>
+    <entry>Water Dependent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Manta Ray</name>
   </collection>
   <collection>
     <name>Manticore</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Marilith</name>
@@ -3132,7 +3153,8 @@
     <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
     <entry>Immunity#0#Poison#0##0#False</entry>
-    <entry>Multi-Weapon Fighting#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
+    <entry>Multiweapon Fighting#0##0##0#True</entry>
     <entry>Spell Resistance#25##0##0#False</entry>
     <entry>Spell-Like Ability#0#Align weapon#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Blade barrier#0#At Will#0#False</entry>
@@ -3170,6 +3192,8 @@
   </collection>
   <collection>
     <name>Medusa</name>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Dagger#0##0#True</entry>
   </collection>
   <collection>
     <name>Megaraptor</name>
@@ -3177,12 +3201,24 @@
   </collection>
   <collection>
     <name>Merfolk</name>
+    <entry>Amphibious#0##0##0#False</entry>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Low-Light Vision#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Trident#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Heavy crossbow#0##0#True</entry>
   </collection>
   <collection>
     <name>Merrow</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Javelin#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Longspear#0##0#True</entry>
   </collection>
   <collection>
     <name>Mimic</name>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Mimic Shape#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
@@ -3206,6 +3242,9 @@
   </collection>
   <collection>
     <name>Minotaur</name>
+    <entry>Martial Weapon Proficiency#0#Greataxe#0##0#True</entry>
+    <entry>Natural Cunning#0##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Mohrg</name>
@@ -3215,6 +3254,7 @@
   </collection>
   <collection>
     <name>Monkey</name>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
@@ -3227,15 +3267,19 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Humanoid</name>
@@ -3245,81 +3289,196 @@
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Medium</name>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Small</name>
+    <entry>Tremorsense#60##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
+    <entry>Tremorsense#60##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Colossal</name>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Gargantuan</name>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Huge</name>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Large</name>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Medium</name>
+    <entry>Tremorsense#60##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Small</name>
+    <entry>Tremorsense#60##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Tiny</name>
+    <entry>Tremorsense#60##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Dwarven waraxe#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
+    <entry>Weapon Familiarity#0#Dwarven urgrosh#0##0#True</entry>
+    <entry>Weapon Familiarity#0#Dwarven waraxe#0##0#True</entry>
   </collection>
   <collection>
     <name>Mule</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Mummy</name>
+    <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False</entry>
+    <entry>Vulnerability#0#Fire#0##0#False</entry>
   </collection>
   <collection>
     <name>Nalfeshnee</name>
+    <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
+    <entry>Spell Resistance#22##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Call lightning#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Feeblemind#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Slow#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Native</name>
   </collection>
   <collection>
     <name>Nessian Warhound</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Night Hag</name>
+    <entry>Change Shape#0#Any Small or Medium Humanoid#0#At Will#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to cold iron, magic weapons#1#Hit#0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Immunity#0#Charm#0##0#False</entry>
+    <entry>Immunity#0#Sleep#0##0#False</entry>
+    <entry>Immunity#0#Fear#0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Spell Resistance#25##0##0#False</entry>
   </collection>
   <collection>
     <name>Nightcrawler</name>
+    <entry>Aversion to Daylight#0##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to silver, magic weapons#1#Hit#0#False</entry>
+    <entry>Desecrating Aura#0##0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Spell Resistance#31##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Cone of cold#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Confusion#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Contagion#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Finger of death#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Haste#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Hold monster#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Mass hold monster#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plane shift#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Nightmare</name>
+    <entry>Spell-Like Ability#0#Astral projection#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Etherealness#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Nightmare, Cauchemar</name>
+    <entry>Spell-Like Ability#0#Astral projection#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Etherealness#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Nightwalker</name>
+    <entry>Aversion to Daylight#0##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to silver, magic weapons#1#Hit#0#False</entry>
+    <entry>Desecrating Aura#0##0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Spell Resistance#29##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Cone of cold#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Confusion#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Contagion#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Finger of death#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Haste#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Hold monster#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plane shift#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Nightwing</name>
+    <entry>Aversion to Daylight#0##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to silver, magic weapons#1#Hit#0#False</entry>
+    <entry>Desecrating Aura#0##0##0#False</entry>
+    <entry>Immunity#0#Cold#0##0#False</entry>
+    <entry>Spell Resistance#27##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Cone of cold#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Confusion#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Contagion#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Finger of death#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater dispel magic#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Haste#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Hold monster#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Plane shift#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
@@ -3341,6 +3500,16 @@
   </collection>
   <collection>
     <name>Nixie</name>
+    <entry>Amphibious#0##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
+    <entry>Dodge#1##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Light crossbow#0##0#True</entry>
+    <entry>Spell Resistance#16##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Charm person#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Water breathing#1#Day#0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
+    <entry>Wild Empathy#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Noble Djinni</name>
@@ -3354,18 +3523,31 @@
     <entry>Spell-Like Ability#0#Persistent image#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Plane shift: Genie and up to 8 other creatures, provided they all link hands with the genie#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Wind walk#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Wish: 3 wishes to any non-genie who captures it#0#At Will#0#False</entry>
     <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Noble Salamander</name>
-    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Multiattack#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Burning hands#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fireball#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Flaming sphere#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Summon monster VII: Huge fire elemental#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Wall of fire#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Nymph</name>
+    <entry>Damage Reduction#10#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Dagger#0##0#True</entry>
+    <entry>Spell-Like Ability#0#Dimension door#1#Day#0#False</entry>
+    <entry>Unearthly Grace#0##0##0#False</entry>
+    <entry>Wild Empathy#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Ochre Jelly</name>
+    <entry>Split#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Octopus</name>
@@ -3374,9 +3556,28 @@
   </collection>
   <collection>
     <name>Ogre</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Greatclub#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Javelin#0##0#True</entry>
   </collection>
   <collection>
     <name>Ogre Mage</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Change Shape#0#Any Small, Medium, or Large Humanoid or Giant#0##0#False</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Flight#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
+    <entry>Regeneration#5#Fire and acid deal normal damage#1#Round#0#False</entry>
+    <entry>Spell Resistance#19##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Charm person#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Cone of cold#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Gaseous form#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Sleep#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Ooze</name>
@@ -3393,20 +3594,27 @@
   </collection>
   <collection>
     <name>Ooze Mephit</name>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0</entry>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Fast Healing#2#Exposed to moving air#1#Turn#0</entry>
-    <entry>Spell-Like Ability#0#Blur#1#Hour#0</entry>
-    <entry>Spell-Like Ability#0#Gust of wind#1#Day#0</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Fast Healing#2#In a wet or muddy environment#1#Turn#0#False</entry>
+    <entry>Spell-Like Ability#0#Acid arrow#1#Hour#0#False</entry>
+    <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Orc</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Light Sensitivity#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Falchion#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Greataxe#0##0#True</entry>
   </collection>
   <collection>
     <name>Orca Whale</name>
+    <entry>Blindsight#120##0##0#False</entry>
+    <entry>Hold Breath#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Otyugh</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Outsider</name>
@@ -3417,30 +3625,92 @@
   </collection>
   <collection>
     <name>Owl</name>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Owlbear</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Pegasus</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil: within 60-foot radius#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Phantom Fungus</name>
+    <entry>Spell-Like Ability#0#Greater invisibility#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Phase Spider</name>
+    <entry>Spell-Like Ability#0#Ethereal jaunt#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Phasm</name>
+    <entry>Alternate Form#0#Any form LArge size or smaller, including Humanoid#0#At Will#0#False</entry>
+    <entry>Amorphous#0##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
+    <entry>Damage Reduction#15#Vulnerable to good, silver weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Regeneration#5#Does not regenerate damage from good spells or effects, or from good-aligned silvered weapons#1#Round#0#False</entry>
+    <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False</entry>
+    <entry>Spell Resistance#32##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Blasphemy#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Create undead#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Fireball#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Magic circle against chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Mass hold monster#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Meteor swarm#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Power word stun#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Wish#1#Year#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Pixie</name>
+    <entry>Damage Reduction#15#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
+    <entry>Dodge#1##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Short sword#0##0#False</entry>
+    <entry>Spell Resistance#15##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Greater invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Entangle#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Lesser confusion#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Permanent image: visual and auditory elements only#1#Day#0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Pixie with Irresistable Dance</name>
+    <entry>Damage Reduction#15#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
+    <entry>Dodge#1##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Short sword#0##0#False</entry>
+    <entry>Spell Resistance#15##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Greater invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Entangle#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Lesser confusion#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Permanent image: visual and auditory elements only#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Irresistable dance#1#Day#0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Plant</name>
@@ -3470,6 +3740,15 @@
   </collection>
   <collection>
     <name>Quasit</name>
+    <entry>Alternate Form#0#Bat, Small or Medium monstrous centipede, toad, and wolf#0#At Will#0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to good or cold iron weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Cause fear: 30-foot radius area from the quasit#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Commune: can ask 6 questions#1#Week#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Invisibility: self only#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Rakshasa</name>
@@ -3479,9 +3758,15 @@
   </collection>
   <collection>
     <name>Rat</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Rat Swarm</name>
+    <entry>Half Damage#0#Piercing weapons#0##0#False</entry>
+    <entry>Half Damage#0#Slashing weapons#0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Raven</name>
@@ -3494,39 +3779,111 @@
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Ancient</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Mature Adult</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Old</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Old</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Young</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrm</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrmling</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young Adult</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Slaad</name>
@@ -3559,12 +3916,25 @@
   </collection>
   <collection>
     <name>Sahuagin</name>
+    <entry>Blindsense#30##0##0#False</entry>
+    <entry>Freshwater Sensitivity#0##0##0#False</entry>
+    <entry>Light Sensitivity#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Trident#0##0#True</entry>
+    <entry>Multiattack#0##0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Heavy crossbow#0##0#True</entry>
+    <entry>Speak With Sharks#0##0##0#False</entry>
+    <entry>Water Dependent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Sahuagin Mutant</name>
-  </collection>
-  <collection>
-    <name>Malenti</name>
+    <entry>Blindsense#30##0##0#False</entry>
+    <entry>Freshwater Sensitivity#0##0##0#False</entry>
+    <entry>Light Sensitivity#0##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Trident#0##0#True</entry>
+    <entry>Multiattack#0##0##0#False</entry>
+    <entry>Simple Weapon Proficiency#0#Heavy crossbow#0##0#True</entry>
+    <entry>Speak With Sharks#0##0##0#False</entry>
+    <entry>Water Dependent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>

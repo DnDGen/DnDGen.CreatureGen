@@ -675,5 +675,31 @@ namespace CreatureGen.Tests.Unit.Generators.Defenses
         {
             Assert.Fail("not yet written");
         }
+
+        [TestCaseSource(typeof(NumericTestData), "BaseAbilityTestNumbers")]
+        public void UnearthlyGraceAddsCharismaBonusAsDeflectionBonus(int abilityScore)
+        {
+            abilities[AbilityConstants.Charisma].BaseScore = abilityScore;
+
+            var feat = new Feat();
+            feat.Name = FeatConstants.SpecialQualities.UnearthlyGrace;
+            feats.Add(feat);
+
+            var otherFeat = new Feat();
+            otherFeat.Name = "feat 2";
+            otherFeat.Power = 1;
+            feats.Add(otherFeat);
+
+            racialBonuses["other subtype"] = new List<BonusSelection>();
+            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = new List<BonusSelection>();
+
+            var armorClass = GenerateAndAssertArmorClass(ArmorClass.BaseArmorClass + abilities[AbilityConstants.Charisma].Modifier, ArmorClass.BaseArmorClass + abilities[AbilityConstants.Charisma].Modifier, ArmorClass.BaseArmorClass + abilities[AbilityConstants.Charisma].Modifier);
+            Assert.That(armorClass.ArmorBonus, Is.Zero);
+            Assert.That(armorClass.DeflectionBonus, Is.EqualTo(abilities[AbilityConstants.Charisma].Modifier));
+            Assert.That(armorClass.NaturalArmorBonus, Is.Zero);
+            Assert.That(armorClass.ShieldBonus, Is.Zero);
+            Assert.That(armorClass.SizeModifier, Is.Zero);
+            Assert.That(armorClass.Dexterity.Modifier, Is.Zero);
+        }
     }
 }

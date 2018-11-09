@@ -242,6 +242,7 @@ namespace CreatureGen.Feats
             public const string AntimagicCone = "Antimagic Cone";
             public const string AttackBonus = "Attack Bonus";
             public const string AuraOfMenace = "Aura of Menace";
+            public const string AversionToDaylight = "Aversion to Daylight";
             public const string BarbedDefense = "Barbed Defense";
             public const string Blindsense = "Blindsense";
             public const string Blindsight = "Blindsight";
@@ -255,6 +256,7 @@ namespace CreatureGen.Feats
             public const string Darkvision = "Darkvision";
             public const string DaylightPowerlessness = "Daylight Powerlessness";
             public const string DeathThroes = "Death Throes";
+            public const string DesecratingAura = "Desecrating Aura";
             public const string Displacement = "Displacement";
             public const string DodgeBonus = "Dodge Bonus";
             public const string EarthGlide = "Earth Glide";
@@ -290,7 +292,9 @@ namespace CreatureGen.Feats
             public const string LuckBonus = "Luck Bonus";
             public const string Madness = "Madness";
             public const string MeltWeapons = "Melt Weapons";
+            public const string MimicShape = "Mimic Shape";
             public const string MucusCloud = "Mucus Cloud";
+            public const string NaturalCunning = "Natural Cunning";
             public const string NaturalInvisibility = "Natural Invisibility";
             public const string OrcBlood = "Orc Blood";
             public const string OversizedWeapon = "Oversized Weapon";
@@ -321,112 +325,13 @@ namespace CreatureGen.Feats
             public const string TurnResistance = "Turn Resistance";
             public const string TwoWeaponFighting_Superior = "Superior Two-Weapon Fighting";
             public const string UncannyDodge = "Uncanny Dodge";
+            public const string UnearthlyGrace = "Unearthly Grace";
             public const string UnnaturalAura = "Unnatural Aura";
             public const string Vulnerability = "Vulnerability";
             public const string WaterBreathing = "Water Breathing";
             public const string WaterDependent = "Water Dependent";
             public const string WeaponFamiliarity = "Weapon Familiarity";
             public const string WildEmpathy = "Wild Empathy";
-
-            public static IEnumerable<string> All()
-            {
-                return new[]
-                {
-                    Adhesive,
-                    AllAroundVision,
-                    AlternateForm,
-                    Amorphous,
-                    Amphibious,
-                    AntimagicCone,
-                    AttackBonus,
-                    AuraOfMenace,
-                    BarbedDefense,
-                    Blindsense,
-                    Blindsight,
-                    Camouflage,
-                    ChangeShape,
-                    CharmReptiles,
-                    Cloudwalking,
-                    CorruptWater,
-                    CreateDestroyWater,
-                    DamageReduction,
-                    Darkvision,
-                    DaylightPowerlessness,
-                    DeathThroes,
-                    Displacement,
-                    DodgeBonus,
-                    EarthGlide,
-                    ElementalEndurance,
-                    ElvenBlood,
-                    EnergyResistance,
-                    Evasion,
-                    FastHealing,
-                    FlamingBody,
-                    Flight,
-                    Freeze,
-                    FreezingFog,
-                    FreshwaterSensitivity,
-                    Gills,
-                    HalfDamage,
-                    HiveMind,
-                    HoldBreath,
-                    Icewalking,
-                    Immunity,
-                    InertialArmor,
-                    InkCloud,
-                    InvisibleInLight,
-                    Jet,
-                    KeenScent,
-                    KeenSenses,
-                    KeenSight,
-                    LayOnHands,
-                    Lifesense,
-                    LightBlindness,
-                    LightSensitivity,
-                    LowLightVision,
-                    LowLightVision_Superior,
-                    LuckBonus,
-                    Madness,
-                    MeltWeapons,
-                    MucusCloud,
-                    NaturalInvisibility,
-                    OrcBlood,
-                    OversizedWeapon,
-                    ProtectiveAura,
-                    ProtectiveSlime,
-                    Quickness,
-                    Regeneration,
-                    RockCatching,
-                    Scent,
-                    SeeInDarkness,
-                    ShadowShift,
-                    Slippery,
-                    SmokeForm,
-                    SoundImitation,
-                    SpeakWithSharks,
-                    SpellDeflection,
-                    SpellLikeAbility,
-                    SpellResistance,
-                    Split,
-                    Sprint,
-                    Stability,
-                    Stonecunning,
-                    Telepathy,
-                    Tracking_Improved,
-                    Transparent,
-                    TreeDependent,
-                    Tremorsense,
-                    TurnResistance,
-                    TwoWeaponFighting_Superior,
-                    UncannyDodge,
-                    UnnaturalAura,
-                    Vulnerability,
-                    WaterBreathing,
-                    WaterDependent,
-                    WeaponFamiliarity,
-                    WildEmpathy,
-                };
-            }
         }
 
         public static class Metamagic
