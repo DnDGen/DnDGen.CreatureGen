@@ -272,6 +272,7 @@ namespace CreatureGen.Feats
             public const string FreshwaterSensitivity = "Freshwater Sensitivity";
             public const string Gills = "Gills";
             public const string HalfDamage = "Half Damage";
+            public const string Heat = "Heat";
             public const string HiveMind = "Hive Mind";
             public const string HoldBreath = "Hold Breath";
             public const string Icewalking = "Icewalking";

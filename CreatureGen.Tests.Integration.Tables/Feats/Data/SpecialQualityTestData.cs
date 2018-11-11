@@ -2852,7 +2852,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Ogre_Merrow].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
                 testCases[CreatureConstants.Ogre_Merrow].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Medium, requiresEquipment: true));
 
-                testCases[CreatureConstants.OgreMage].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Any Small, Medium, or Large Humanoid or Giant"));
+                testCases[CreatureConstants.OgreMage].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Any Small, Medium, or Large Humanoid or Giant", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.OgreMage].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.OgreMage].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Regeneration, focus: "Fire and acid deal normal damage", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.OgreMage].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Greatsword, requiresEquipment: true));
@@ -2960,10 +2960,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.PrayingMantis_Giant].Add(SpecialQualityHelper.BuildData(None));
 
                 testCases[CreatureConstants.Pseudodragon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                testCases[CreatureConstants.Pseudodragon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Pseudodragon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19));
                 testCases[CreatureConstants.Pseudodragon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Telepathy, power: 60));
-                testCases[CreatureConstants.Pseudodragon].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
                 testCases[CreatureConstants.Pseudodragon].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
                 testCases[CreatureConstants.PurpleWorm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
@@ -3012,11 +3010,9 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Rakshasa].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Any Humanoid form", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Rakshasa].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to good, piercing weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                testCases[CreatureConstants.Rakshasa].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Rakshasa].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27));
                 testCases[CreatureConstants.Rakshasa].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectThoughts, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
 
-                testCases[CreatureConstants.Rast].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Rast].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Flight));
 
                 testCases[CreatureConstants.Rat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
@@ -3032,17 +3028,19 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Raven].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Ravid].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Ravid].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.Ravid].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Flight));
                 testCases[CreatureConstants.Ravid].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.AnimateObjects, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
 
-                testCases[CreatureConstants.RazorBoar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.RazorBoar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "No physical vulnerabilities", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
                 testCases[CreatureConstants.RazorBoar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Turn));
-                testCases[CreatureConstants.RazorBoar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
                 testCases[CreatureConstants.RazorBoar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
                 testCases[CreatureConstants.RazorBoar].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
+
+                testCases[CreatureConstants.Remorhaz].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                testCases[CreatureConstants.Remorhaz].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Heat));
+                testCases[CreatureConstants.Remorhaz].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+                testCases[CreatureConstants.Remorhaz].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
 
                 testCases[CreatureConstants.Retriever].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Turn));
 

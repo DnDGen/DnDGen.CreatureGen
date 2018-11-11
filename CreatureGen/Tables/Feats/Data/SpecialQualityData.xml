@@ -3565,7 +3565,7 @@
   <collection>
     <name>Ogre Mage</name>
     <entry>Armor Proficiency (Light)#0##0##0#True</entry>
-    <entry>Change Shape#0#Any Small, Medium, or Large Humanoid or Giant#0##0#False</entry>
+    <entry>Change Shape#0#Any Small, Medium, or Large Humanoid or Giant#0#At Will#0#False</entry>
     <entry>Darkvision#60##0##0#False</entry>
     <entry>Flight#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True</entry>
@@ -3646,7 +3646,7 @@
   </collection>
   <collection>
     <name>Phasm</name>
-    <entry>Alternate Form#0#Any form LArge size or smaller, including Humanoid#0#At Will#0#False</entry>
+    <entry>Alternate Form#0#Any form Large size or smaller, including Humanoid#0#At Will#0#False</entry>
     <entry>Amorphous#0##0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
     <entry>Telepathy#100##0##0#False</entry>
@@ -3679,37 +3679,37 @@
   </collection>
   <collection>
     <name>Pixie</name>
-    <entry>Damage Reduction#15#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
     <entry>Dodge#1##0##0#False</entry>
-    <entry>Martial Weapon Proficiency#0#Longbow#0##0#False</entry>
-    <entry>Martial Weapon Proficiency#0#Short sword#0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
     <entry>Spell Resistance#15##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Greater invisibility#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Entangle#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater invisibility#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Lesser confusion#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Permanent image: visual and auditory elements only#1#Day#0#False</entry>
     <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Pixie with Irresistable Dance</name>
-    <entry>Damage Reduction#15#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
     <entry>Dodge#1##0##0#False</entry>
-    <entry>Martial Weapon Proficiency#0#Longbow#0##0#False</entry>
-    <entry>Martial Weapon Proficiency#0#Short sword#0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
     <entry>Spell Resistance#15##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Greater invisibility#0#At Will#0#False</entry>
     <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Entangle#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater invisibility#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Irresistible dance#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Lesser confusion#1#Day#0#False</entry>
     <entry>Spell-Like Ability#0#Permanent image: visual and auditory elements only#1#Day#0#False</entry>
-    <entry>Spell-Like Ability#0#Irresistable dance#1#Day#0#False</entry>
     <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
@@ -3725,18 +3725,27 @@
   </collection>
   <collection>
     <name>Polar Bear</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Pony</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Porpoise</name>
+    <entry>Blindsight#120##0##0#False</entry>
+    <entry>Hold Breath#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Pseudodragon</name>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Spell Resistance#19##0##0#False</entry>
+    <entry>Telepathy#60##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Purple Worm</name>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Quasit</name>
@@ -3770,6 +3779,7 @@
   </collection>
   <collection>
     <name>Raven</name>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Ravid</name>
@@ -3789,83 +3799,84 @@
   <collection>
     <name>Red Dragon, Ancient</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
+    <entry>Spell Resistance#28##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Find the path#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#10#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
+    <entry>Spell Resistance#32##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Discern location#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Find the path#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#12#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#4#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Mature Adult</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
+    <entry>Spell Resistance#23##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#7#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Old</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
+    <entry>Spell Resistance#24##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#8#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Old</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
+    <entry>Spell Resistance#26##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#9#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Young</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrm</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
+    <entry>Spell Resistance#30##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Find the path#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#11#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrmling</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young Adult</name>
@@ -3873,20 +3884,23 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
+    <entry>Spell Resistance#19##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Locate object#5#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young</name>
     <entry>Blindsense#60##0##0#False</entry>
-    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
     <entry>Darkvision#120##0##0#False</entry>
     <entry>Keen Senses#0##0##0#False</entry>
-    <entry>Spell Resistance#21##0##0#False</entry>
-    <entry>Spell-Like Ability#0#Locate object#6#Day#0#False</entry>
   </collection>
   <collection>
     <name>Red Slaad</name>
+    <entry>Fast Healing#5##1#Turn#0#False</entry>
+    <entry>Immunity#0#Sonic#0##0#False</entry>
+    <entry>Energy Resistance#5#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round#0#False</entry>
+    <entry>Energy Resistance#5#Fire#1#Round#0#False</entry>
   </collection>
   <collection>
     <name>Remorhaz</name>
@@ -3896,8 +3910,7 @@
   </collection>
   <collection>
     <name>Retriever</name>
-    <entry>Darkvision#60##0##0</entry>
-    <entry>Low-Light Vision#0##0##0</entry>
+    <entry>Fast Healing#5##1#Turn#0#False</entry>
   </collection>
   <collection>
     <name>Rhinoceras</name>

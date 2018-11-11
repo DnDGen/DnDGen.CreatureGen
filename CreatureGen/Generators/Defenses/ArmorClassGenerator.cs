@@ -40,6 +40,11 @@ namespace CreatureGen.Generators.Defenses
                 armorClass.AddBonus(ArmorClassConstants.Armor, inertialArmorFeat.Power);
             }
 
+            if (feats.Any(f => f.Name == FeatConstants.SpecialQualities.UnearthlyGrace))
+            {
+                armorClass.AddBonus(ArmorClassConstants.Deflection, abilities[AbilityConstants.Charisma].Modifier);
+            }
+
             if (naturalArmor > 0)
                 armorClass.AddBonus(ArmorClassConstants.Natural, naturalArmor);
 

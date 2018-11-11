@@ -40,7 +40,7 @@ namespace CreatureGen.Generators.Defenses
             save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Fortitude);
 
             save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Fortitude);
-            save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Fortitude);
+            save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Fortitude, abilities);
 
             return save;
         }
@@ -53,7 +53,7 @@ namespace CreatureGen.Generators.Defenses
             save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Reflex);
 
             save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Reflex);
-            save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Reflex);
+            save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Reflex, abilities);
 
             return save;
         }
@@ -69,7 +69,7 @@ namespace CreatureGen.Generators.Defenses
                 save.BaseAbility = abilities[AbilityConstants.Wisdom];
 
             save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Will);
-            save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Will);
+            save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Will, abilities);
 
             return save;
         }
@@ -109,7 +109,7 @@ namespace CreatureGen.Generators.Defenses
             return save;
         }
 
-        private Save GetFeatSavingThrowBonuses(Save save, IEnumerable<Feat> feats, string saveName)
+        private Save GetFeatSavingThrowBonuses(Save save, IEnumerable<Feat> feats, string saveName, Dictionary<string, Ability> abilities)
         {
             var saveFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, saveName);
             var saveFeats = feats.Where(f => saveFeatNames.Contains(f.Name));
@@ -117,6 +117,11 @@ namespace CreatureGen.Generators.Defenses
             foreach (var feat in saveFeats)
             {
                 save.AddBonus(feat.Power);
+            }
+
+            if (feats.Any(f => f.Name == FeatConstants.SpecialQualities.UnearthlyGrace))
+            {
+                save.AddBonus(abilities[AbilityConstants.Charisma].Modifier);
             }
 
             return save;

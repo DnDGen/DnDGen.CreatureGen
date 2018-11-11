@@ -241,6 +241,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.FreshwaterSensitivity, "Freshwater Sensitivity")]
         [TestCase(FeatConstants.SpecialQualities.Gills, "Gills")]
         [TestCase(FeatConstants.SpecialQualities.HalfDamage, "Half Damage")]
+        [TestCase(FeatConstants.SpecialQualities.Heat, "Heat")]
         [TestCase(FeatConstants.SpecialQualities.HiveMind, "Hive Mind")]
         [TestCase(FeatConstants.SpecialQualities.HoldBreath, "Hold Breath")]
         [TestCase(FeatConstants.SpecialQualities.Icewalking, "Icewalking")]
