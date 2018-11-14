@@ -3761,9 +3761,14 @@
   </collection>
   <collection>
     <name>Rakshasa</name>
+    <entry>Change Shape#0#Any Humanoid form#0#At Will#0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to good, piercing weapons#1#Hit#0#False</entry>
+    <entry>Spell Resistance#27##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#Constant#0#False</entry>
   </collection>
   <collection>
     <name>Rast</name>
+    <entry>Flight#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Rat</name>
@@ -3783,9 +3788,16 @@
   </collection>
   <collection>
     <name>Ravid</name>
+    <entry>Flight#0##0##0#False</entry>
+    <entry>Immunity#0#Fire#0##0#False</entry>
+    <entry>Spell-Like Ability#0#Animate objects#1#Round#0#False</entry>
   </collection>
   <collection>
     <name>Razor Boar</name>
+    <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False</entry>
+    <entry>Fast Healing#10##1#Turn#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Spell Resistance#21##0##0#False</entry>
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
@@ -3904,6 +3916,8 @@
   </collection>
   <collection>
     <name>Remorhaz</name>
+    <entry>Heat#0##0##0#False</entry>
+    <entry>Tremorsense#60##0##0#False</entry>
   </collection>
   <collection>
     <name>Reptilian</name>
@@ -3920,18 +3934,28 @@
   </collection>
   <collection>
     <name>Rock Gnome</name>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True</entry>
+    <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Ghost sound#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Prestidigitation#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Speak with animals: burrowing mammals only, duration 1 minute#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Roper</name>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Spell Resistance#30##0##0#False</entry>
+    <entry>Vulnerability#0#Fire#0##0#False</entry>
   </collection>
   <collection>
     <name>Rust Monster</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Sahuagin</name>
     <entry>Blindsense#30##0##0#False</entry>
     <entry>Freshwater Sensitivity#0##0##0#False</entry>
-    <entry>Light Sensitivity#0##0##0#False</entry>
+    <entry>Light Blindness#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Trident#0##0#True</entry>
     <entry>Multiattack#0##0##0#False</entry>
     <entry>Simple Weapon Proficiency#0#Heavy crossbow#0##0#True</entry>
@@ -3942,7 +3966,7 @@
     <name>Sahuagin Mutant</name>
     <entry>Blindsense#30##0##0#False</entry>
     <entry>Freshwater Sensitivity#0##0##0#False</entry>
-    <entry>Light Sensitivity#0##0##0#False</entry>
+    <entry>Light Blindness#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Trident#0##0#True</entry>
     <entry>Multiattack#0##0##0#False</entry>
     <entry>Simple Weapon Proficiency#0#Heavy crossbow#0##0#True</entry>
@@ -3951,24 +3975,48 @@
   </collection>
   <collection>
     <name>Salt Mephit</name>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Fast Healing#2#In an arid environment#1#Turn#0#False</entry>
+    <entry>Spell-Like Ability#0#Draw moisture from the air#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Glitterdust#1#Hour#0#False</entry>
   </collection>
   <collection>
     <name>Satyr</name>
+    <entry>Alterness#2##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Dagger#0##0#True</entry>
   </collection>
   <collection>
     <name>Satyr with pipes</name>
+    <entry>Alterness#2##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to cold iron weapons#1#Hit#0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Dagger#0##0#True</entry>
   </collection>
   <collection>
     <name>Scorpionfolk</name>
+    <entry>Energy Resistance#5#Fire#1#Round#0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Lance#0##0#True</entry>
+    <entry>Spell Resistance#18##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Major image#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Mirror image#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Scrag</name>
+    <entry>Darkvision#90##0##0#False</entry>
+    <entry>Regeneration#5#Fire and acid deal normal damage; only regenerates when immersed in water#1#Round#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Sea Cat</name>
+    <entry>Hold Breath#0##0##0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Sea Hag</name>
+    <entry>Amphibious#0##0##0#False</entry>
+    <entry>Spell Resistance#14##0##0#False</entry>
   </collection>
   <collection>
     <name>Seven-Headed Cryohydra</name>
@@ -3990,69 +4038,204 @@
   </collection>
   <collection>
     <name>Shadow</name>
+    <entry>Turn Resistance#2##0##0#False</entry>
   </collection>
   <collection>
     <name>Shadow Mastiff</name>
+    <entry>Scent#0##0##0#False</entry>
+    <entry>Shadow Blend#0##0##0#False</entry>
+    <entry>Track#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Shambling Mound</name>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
   </collection>
   <collection>
     <name>Shapechanger</name>
+    <entry>Shield Proficiency#0##0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#All#0##0#True</entry>
   </collection>
   <collection>
     <name>Shark, Huge</name>
+    <entry>Blindsense#0##0##0#False</entry>
+    <entry>Keen Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Shark, Large</name>
+    <entry>Blindsense#0##0##0#False</entry>
+    <entry>Keen Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Shark, Medium</name>
+    <entry>Blindsense#0##0##0#False</entry>
+    <entry>Keen Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Shield Guardian</name>
+    <entry>Fast Healing#5##1#Turn#0#False</entry>
+    <entry>Find Master#0##0##0#False</entry>
+    <entry>Guard#0##0##0#False</entry>
+    <entry>Spell Storing#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Shield other: within 100 feet of the amulet.  Does not provide spell's AC or save bonuses#0#At Will#0#False</entry>
   </collection>
   <collection>
     <name>Shocker Lizard</name>
+    <entry>Electricity Sense#0##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
   </collection>
   <collection>
     <name>Shrieker</name>
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#22##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Ancient</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#29##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control weather#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Great Wyrm</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#32##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control weather#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Reverse gravity#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Mature Adult</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#24##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Old</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#26##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Old</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#27##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Young</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrm</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#30##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Control weather#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrmling</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young Adult</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
+    <entry>Spell Resistance#20##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young</name>
+    <entry>Alternate Form#0#Animal or Humanoid form of Medium size or smaller#3#Day#0#False</entry>
+    <entry>Blindsense#60##0##0#False</entry>
+    <entry>Cloudwalking#0##0##0#False</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Immunity#0#Acid#0##0#False</entry>
+    <entry>Keen Senses#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Six-Headed Cryohydra</name>
@@ -4083,9 +4266,12 @@
   </collection>
   <collection>
     <name>Spider Swarm</name>
+    <entry>Tremorsense#30##0##0#False</entry>
+    <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Spirit Naga</name>
+    <entry>Eschew Materials#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Squid</name>
@@ -4094,32 +4280,102 @@
   </collection>
   <collection>
     <name>Steam Mephit</name>
+    <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False</entry>
+    <entry>Fast Healing#2#Touching boiling water or in a hot, humid area#1#Turn#0#False</entry>
+    <entry>Spell-Like Ability#0#Blur#1#Hour#0#False</entry>
+    <entry>Spell-Like Ability#0#Rainstorm of boiling water#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Stirge</name>
   </collection>
   <collection>
     <name>Stone Giant</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Rock Catching#0##1#Round#0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Greatclub#0##0#True</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Rock Catching#0##1#Round#0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Greatclub#0##0#True</entry>
+    <entry>Spell-Like Ability#0#Stone shape#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Stone tell#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
-    <entry>Damage Reduction#10#Vulnerable to adamantine, bludgeoning weapons#1#Hit#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to adamantine weapons#1#Hit#0#False</entry>
     <entry>Immunity#0#Magic (see creature description)#0##0#False</entry>
   </collection>
   <collection>
     <name>Storm Giant</name>
+    <entry>Armor Proficiency (Light)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Darkvision#60##0##0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Rock Catching#0##1#Round#0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True</entry>
+    <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True</entry>
+    <entry>Spell-Like Ability#0#Call lightning#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Chain lightning#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Control weather#2#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Freedom of movement#0#Constant#0#False</entry>
+    <entry>Spell-Like Ability#0#Levitate#2#Day#0#False</entry>
+    <entry>Water Breathing#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Succubus</name>
+    <entry>Change Shape#0#any Small or Medium humanoid#0#At Will#0#False</entry>
+    <entry>Damage Reduction#10#Vulnerable to good or cold iron weapons#1#Hit#0#False</entry>
+    <entry>Energy Resistance#10#Acid#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Cold#1#Round#0#False</entry>
+    <entry>Energy Resistance#10#Fire#1#Round#0#False</entry>
+    <entry>Immunity#0#Electricity#0##0#False</entry>
+    <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Spell Resistance#18##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/law/good/evil#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Ethereal jaunt: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#0#At Will#0#False</entry>
+    <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False</entry>
+    <entry>Telepathy#100##0##0#False</entry>
   </collection>
   <collection>
     <name>Svirfneblin</name>
+    <entry>Armor Proficiency (Heavy)#0##0##0#True</entry>
+    <entry>Armor Proficiency (Medium)#0##0##0#True</entry>
+    <entry>Darkvision#120##0##0#False</entry>
+    <entry>Martial Weapon Proficiency#0#Heavy pick#0##0#True</entry>
+    <entry>Stonecunning#0##0##0#False</entry>
+    <entry>Spell Resistance#11##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Blindness/deafness#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Blur#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Disguise self#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Swarm</name>
+    <entry>Half Damage#0#Piercing#1#Hit#0#False</entry>
+    <entry>Half Damage#0#Slashing#1#Hit#0#False</entry>
+    <entry>Immunity#0#Any spell that targets a specific number of creatures, including single-target spells#0##0#False</entry>
+    <entry>Immunity#0#Bull Rush#0##0#False</entry>
+    <entry>Immunity#0#Critical hits#0##0#False</entry>
+    <entry>Immunity#0#Dying state#0##0#False</entry>
+    <entry>Immunity#0#Flanking#0##0#False</entry>
+    <entry>Immunity#0#Grapple#0##0#False</entry>
+    <entry>Immunity#0#Staggering#0##0#False</entry>
+    <entry>Immunity#0#Trip#0##0#False</entry>
+    <entry>Immunity#0#Weapon damage#0##0#False</entry>
+    <entry>Vulnerability#0#Area-of-effect spells#0##0#False</entry>
+    <entry>Vulnerability#0#High winds#0##0#False</entry>
+    <entry>Vulnerability#0#Splash damage#0##0#False</entry>
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
@@ -4182,6 +4438,9 @@
   </collection>
   <collection>
     <name>Troll</name>
+    <entry>Darkvision#90##0##0#False</entry>
+    <entry>Regeneration#5#Fire and acid deal normal damage#1#Round#0#False</entry>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Truly Horrid Umber Hulk</name>
@@ -4239,24 +4498,30 @@
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Viper Snake, Large</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Viper Snake, Medium</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Viper Snake, Small</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Viper Snake, Tiny</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Vrock</name>
   </collection>
   <collection>
     <name>Warpony</name>
+    <entry>Scent#0##0##0#False</entry>
   </collection>
   <collection>
     <name>Water</name>
