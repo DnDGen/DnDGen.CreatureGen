@@ -57,6 +57,7 @@ namespace CreatureGen.Tests.Integration.Generators.Creatures
 
         [TestCase(CreatureConstants.Destrachan)]
         [TestCase(CreatureConstants.Grimlock)]
+        [TestCase(CreatureConstants.Yrthak)]
         public void BUG_DoesNotHaveSight(string creatureName)
         {
             var creature = CreatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);

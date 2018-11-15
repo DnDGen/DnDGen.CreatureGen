@@ -248,6 +248,7 @@ namespace CreatureGen.Feats
             public const string Blindsight = "Blindsight";
             public const string Camouflage = "Camouflage";
             public const string Carapace = "Carapace";
+            public const string ChameleonPower = "Chameleon Power";
             public const string ChangeShape = "Change Shape";
             public const string CharmReptiles = "Charm Reptiles";
             public const string Cloudwalking = "Cloudwalking";
@@ -303,6 +304,7 @@ namespace CreatureGen.Feats
             public const string NaturalInvisibility = "Natural Invisibility";
             public const string OrcBlood = "Orc Blood";
             public const string OversizedWeapon = "Oversized Weapon";
+            public const string Planewalk = "Planewalk";
             public const string ProtectiveAura = "Protective Aura";
             public const string ProtectiveSlime = "Protective Slime";
             public const string Quickness = "Quickness";

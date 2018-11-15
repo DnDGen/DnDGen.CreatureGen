@@ -33,10 +33,6 @@
   </collection>
   <collection>
     <name>Awesome Blow</name>
-    <entry>Large</entry>
-    <entry>Huge</entry>
-    <entry>Gargantuan</entry>
-    <entry>Colossal</entry>
   </collection>
   <collection>
     <name>Blind-Fight</name>
@@ -304,9 +300,6 @@
   </collection>
   <collection>
     <name>Snatch</name>
-    <entry>Huge</entry>
-    <entry>Gargantuan</entry>
-    <entry>Colossal</entry>
   </collection>
   <collection>
     <name>Spell Focus</name>
