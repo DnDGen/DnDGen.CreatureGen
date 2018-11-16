@@ -599,7 +599,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Elf_Gray, CreatureConstants.Types.Humanoid,
             CreatureConstants.Types.Subtypes.Elf)]
         [TestCase(CreatureConstants.Elf_Half, CreatureConstants.Types.Humanoid,
-            CreatureConstants.Types.Subtypes.Elf)]
+            CreatureConstants.Types.Subtypes.Elf,
+            CreatureConstants.Types.Subtypes.Human)]
         [TestCase(CreatureConstants.Elf_High, CreatureConstants.Types.Humanoid,
             CreatureConstants.Types.Subtypes.Elf)]
         [TestCase(CreatureConstants.Elf_Wild, CreatureConstants.Types.Humanoid,
@@ -899,6 +900,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Orc, CreatureConstants.Types.Humanoid,
             CreatureConstants.Types.Subtypes.Orc)]
         [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Human,
             CreatureConstants.Types.Subtypes.Orc)]
         [TestCase(CreatureConstants.Otyugh, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Owl, CreatureConstants.Types.Animal)]

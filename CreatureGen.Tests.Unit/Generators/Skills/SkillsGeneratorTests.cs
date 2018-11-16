@@ -3056,5 +3056,11 @@ namespace CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(bonus.IsConditional, Is.False);
             Assert.That(bonus.Value, Is.EqualTo(9266));
         }
+
+        [Test, Ignore("Can't do this until equipment is done, since weight depends on worn armor")]
+        public void StormGiantsIgnoreWeightPenaltyForSwimSkill()
+        {
+            Assert.Fail("not yet written");
+        }
     }
 }

@@ -95,7 +95,7 @@ namespace CreatureGen.Feats
         public const string UnarmedStrike_Improved = "Improved Unarmed Strike";
         public const string WeaponFinesse = "Weapon Finesse";
         //INFO: Being a Fighter is a requirement for these feats
-        //public const string WeaponFocus = "Weapon Focus";
+        public const string WeaponFocus = "Weapon Focus";
         //public const string WeaponFocus_Greater = "Greater Weapon Focus";
         public const string WeaponProficiency_Exotic = "Exotic Weapon Proficiency";
         public const string WeaponProficiency_Martial = "Martial Weapon Proficiency";
@@ -194,7 +194,7 @@ namespace CreatureGen.Feats
                 TwoWeaponFighting_Improved,
                 UnarmedStrike_Improved,
                 WeaponFinesse,
-                //WeaponFocus,
+                WeaponFocus,
                 //WeaponFocus_Greater,
                 WeaponProficiency_Exotic,
                 WeaponProficiency_Martial,

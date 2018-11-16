@@ -197,6 +197,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Arrowhawk_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
                 testCases[CreatureConstants.Arrowhawk_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Arrowhawk_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+                testCases[CreatureConstants.Arrowhawk_Elder].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFocus, focus: "Bite"));
 
                 testCases[CreatureConstants.AssassinVine].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 30));
                 testCases[CreatureConstants.AssassinVine].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Camouflage));
@@ -572,6 +573,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Devourer].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellDeflection));
                 testCases[CreatureConstants.Devourer].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
+                testCases[CreatureConstants.Devourer].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Confusion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+                testCases[CreatureConstants.Devourer].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlUndead, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+                testCases[CreatureConstants.Devourer].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GhoulTouch, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+                testCases[CreatureConstants.Devourer].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlanarAlly_Lesser, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+                testCases[CreatureConstants.Devourer].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.RayOfEnfeeblement, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+                testCases[CreatureConstants.Devourer].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpectralHand, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+                testCases[CreatureConstants.Devourer].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+                testCases[CreatureConstants.Devourer].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TrueSeeing, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
 
                 testCases[CreatureConstants.Digester].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
                 testCases[CreatureConstants.Digester].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));

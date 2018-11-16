@@ -29,8 +29,19 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCaseSource(typeof(SkillBonusesTestData), "Creatures")]
         [TestCaseSource(typeof(SkillBonusesTestData), "Types")]
         [TestCaseSource(typeof(SkillBonusesTestData), "Subtypes")]
-        [TestCaseSource(typeof(SkillBonusesTestData), "SkillSynergies")]
         public void SkillBonuses(string source, Dictionary<string, int> skillAndBonus)
+        {
+            if (!skillAndBonus.Any())
+                Assert.Fail("Test case did not specify skill bonuses or NONE");
+
+            if (skillAndBonus.ContainsKey(SkillBonusesTestData.None))
+                skillAndBonus.Clear();
+
+            AssertTypesAndAmounts(source, skillAndBonus);
+        }
+
+        [TestCaseSource(typeof(SkillBonusesTestData), "SkillSynergies")]
+        public void SkillSynergies(string source, Dictionary<string, int> skillAndBonus)
         {
             if (!skillAndBonus.Any())
                 Assert.Fail("Test case did not specify skill bonuses or NONE");

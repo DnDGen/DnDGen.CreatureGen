@@ -3,12 +3,18 @@
 <collections>
   <collection>
     <name>Aasimar</name>
+    <entry>Listen@2</entry>
+    <entry>Spot@2</entry>
+  </collection>
+  <collection>
+    <name>Aberration</name>
   </collection>
   <collection>
     <name>Aboleth</name>
   </collection>
   <collection>
     <name>Abyssal Greater Basilisk</name>
+    <entry>Hide,in natural settings@4</entry>
   </collection>
   <collection>
     <name>Achaierai</name>
@@ -18,6 +24,9 @@
   </collection>
   <collection>
     <name>Adult Tojanida</name>
+  </collection>
+  <collection>
+    <name>Air</name>
   </collection>
   <collection>
     <name>Air Elemental, Elder</name>
@@ -47,6 +56,9 @@
     <name>Androsphinx</name>
   </collection>
   <collection>
+    <name>Angel</name>
+  </collection>
+  <collection>
     <name>Angel, Astral Deva</name>
   </collection>
   <collection>
@@ -54,6 +66,9 @@
   </collection>
   <collection>
     <name>Angel, Solar</name>
+  </collection>
+  <collection>
+    <name>Animal</name>
   </collection>
   <collection>
     <name>Animated Object, Colossal</name>
@@ -84,81 +99,129 @@
   </collection>
   <collection>
     <name>Ape</name>
+    <entry>Climb@8</entry>
+    <entry>Climb,can always take 10@10</entry>
+  </collection>
+  <collection>
+    <name>Aquatic</name>
+    <entry>Swim,special action or avoid a hazard@8</entry>
+    <entry>Swim,can always take 10@10</entry>
   </collection>
   <collection>
     <name>Aquatic Elf</name>
+    <entry>Listen@2</entry>
+    <entry>Search@2</entry>
+    <entry>Search,passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
+    <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Aranea</name>
+    <entry>Climb@8</entry>
+    <entry>Climb,can always take 10@10</entry>
+    <entry>Jump@2</entry>
+    <entry>Listen@2</entry>
+    <entry>Spot@2</entry>
+  </collection>
+  <collection>
+    <name>Archon</name>
   </collection>
   <collection>
     <name>Assassin Vine</name>
+    <entry>Climb@8</entry>
+    <entry>Climb,can always take 10@10</entry>
   </collection>
   <collection>
     <name>Athach</name>
   </collection>
   <collection>
+    <name>Augmented</name>
+  </collection>
+  <collection>
     <name>Average Salamander</name>
+    <entry>Craft/Blacksmithing@4</entry>
   </collection>
   <collection>
     <name>Average Xorn</name>
   </collection>
   <collection>
     <name>Avoral</name>
+    <entry>Spot@8</entry>
   </collection>
   <collection>
     <name>Azer</name>
   </collection>
   <collection>
     <name>Babau</name>
+    <entry>Hide@8</entry>
+    <entry>Listen@8</entry>
+    <entry>Move Silently@8</entry>
+    <entry>Search@8</entry>
   </collection>
   <collection>
     <name>Baboon</name>
+    <entry>Climb@8</entry>
+    <entry>Climb,can always take 10@10</entry>
   </collection>
   <collection>
     <name>Badger</name>
+    <entry>Escape Artist@4</entry>
   </collection>
   <collection>
     <name>Baleen Whale</name>
+    <entry>Listen@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Balor</name>
+    <entry>Listen@8</entry>
+    <entry>Spot@8</entry>
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
   </collection>
   <collection>
     <name>Barghest</name>
+    <entry>Hide,in wolf form@4</entry>
   </collection>
   <collection>
     <name>Basilisk</name>
+    <entry>Hide,in natural settings@4</entry>
   </collection>
   <collection>
     <name>Bat</name>
+    <entry>Listen@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
+    <entry>Listen@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
   </collection>
   <collection>
     <name>Bebilith</name>
+    <entry>Hide@8</entry>
   </collection>
   <collection>
     <name>Behir</name>
+    <entry>Climb@8</entry>
+    <entry>Climb,can always take 10@10</entry>
   </collection>
   <collection>
     <name>Beholder</name>
   </collection>
   <collection>
     <name>Belker</name>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Bison</name>
   </collection>
   <collection>
     <name>Black Bear</name>
+    <entry>Swim@4</entry>
   </collection>
   <collection>
     <name>Black Dragon, Adult</name>
@@ -198,6 +261,8 @@
   </collection>
   <collection>
     <name>Black Pudding</name>
+    <entry>Climb@8</entry>
+    <entry>Climb,can always take 10@10</entry>
   </collection>
   <collection>
     <name>Blink Dog</name>
@@ -327,15 +392,19 @@
   </collection>
   <collection>
     <name>Brown Bear</name>
+    <entry>Swim@4</entry>
   </collection>
   <collection>
     <name>Bugbear</name>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Bulette</name>
   </collection>
   <collection>
     <name>Cachalot Whale</name>
+    <entry>Listen@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
@@ -345,30 +414,49 @@
   </collection>
   <collection>
     <name>Carrion Crawler</name>
+    <entry>Climb@8</entry>
+    <entry>Climb,can always take 10@10</entry>
   </collection>
   <collection>
     <name>Cat</name>
+    <entry>Balance@8</entry>
+    <entry>Climb@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Hide,in areas of tall grass or heavy undergrowth@4</entry>
+    <entry>Jump@8</entry>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Centaur</name>
   </collection>
   <collection>
     <name>Centipede Swarm</name>
+    <entry>Climb@8</entry>
+    <entry>Climb,can always take 10@10</entry>
+    <entry>Spot@4</entry>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)</name>
   </collection>
   <collection>
     <name>Chaos Beast</name>
   </collection>
   <collection>
-    <name>Chain Devil (Kyton)</name>
+    <name>Chaotic</name>
   </collection>
   <collection>
     <name>Cheetah</name>
   </collection>
   <collection>
     <name>Chimera</name>
+    <entry>Hide,in areas of scrubland or brush@4</entry>
+    <entry>Listen@2</entry>
+    <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Choker</name>
+    <entry>Climb@8</entry>
+    <entry>Climb,can always take 10@10</entry>
   </collection>
   <collection>
     <name>Chuul</name>
@@ -386,7 +474,13 @@
     <name>Cockatrice</name>
   </collection>
   <collection>
+    <name>Cold</name>
+  </collection>
+  <collection>
     <name>Constrictor Snake</name>
+  </collection>
+  <collection>
+    <name>Construct</name>
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
@@ -527,6 +621,9 @@
     <name>Doppelganger</name>
   </collection>
   <collection>
+    <name>Dragon</name>
+  </collection>
+  <collection>
     <name>Dragon Turtle</name>
   </collection>
   <collection>
@@ -543,6 +640,10 @@
   </collection>
   <collection>
     <name>Drow</name>
+    <entry>Listen@2</entry>
+    <entry>Search@2</entry>
+    <entry>Search,passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
+    <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Dryad</name>
@@ -555,6 +656,9 @@
   </collection>
   <collection>
     <name>Eagle</name>
+  </collection>
+  <collection>
+    <name>Earth</name>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
@@ -1245,6 +1349,8 @@
   </collection>
   <collection>
     <name>Orca Whale</name>
+    <entry>Listen@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Otyugh</name>
@@ -1713,7 +1819,6 @@
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
-    <entry>Perfect Maneuverability</entry>
   </collection>
   <collection>
     <name>Winter Wolf</name>
@@ -1732,22 +1837,18 @@
   </collection>
   <collection>
     <name>Wraith</name>
-    <entry>Good Maneuverability</entry>
   </collection>
   <collection>
     <name>Wyvern</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Xill</name>
   </collection>
   <collection>
     <name>Yeth Hound</name>
-    <entry>Good Maneuverability</entry>
   </collection>
   <collection>
     <name>Yrthak</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Yuan-ti Abomination</name>
@@ -1760,189 +1861,87 @@
   </collection>
   <collection>
     <name>Zelekhut</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>Appraise</name>
-    <entry>Intelligence</entry>
-    <entry>Appraise</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Profession/Appraiser@2</entry>
+    <entry>Profession/Trader@2</entry>
   </collection>
   <collection>
     <name>Balance</name>
-    <entry>Dexterity</entry>
-    <entry>Balance</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Bluff</name>
-    <entry>Charisma</entry>
-    <entry>Bluff</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Diplomacy@2</entry>
+    <entry>Disguise,acting@2</entry>
+    <entry>Intimidate@2</entry>
+    <entry>Profession/Dowser@2</entry>
+    <entry>Profession/Soothsayer@2</entry>
+    <entry>Sleight of Hand@2</entry>
   </collection>
   <collection>
     <name>Climb</name>
-    <entry>Strength</entry>
-    <entry>Climb</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Concentration</name>
-    <entry>Constitution</entry>
-    <entry>Concentration</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Craft</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>1</entry>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Craft2</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>2</entry>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Craft3</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>3</entry>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Craft4</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>4</entry>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Craft5</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>5</entry>
-    <entry></entry>
+    <entry>Appraise,related to items made with your Craft skill@2</entry>
+    <entry>Profession/Craftsman@2</entry>
   </collection>
   <collection>
     <name>Craft/Alchemy</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Alchemy</entry>
+    <entry>Profession/Alchemist@2</entry>
+    <entry>Profession/Embalmer@2</entry>
   </collection>
   <collection>
     <name>Craft/Armorsmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Armorsmithing</entry>
+    <entry>Profession/Armorer@2</entry>
   </collection>
   <collection>
     <name>Craft/Blacksmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Blacksmithing</entry>
+    <entry>Profession/Blacksmith@2</entry>
   </collection>
   <collection>
     <name>Craft/Bookbinding</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Bookbinding</entry>
+    <entry>Profession/Bookbinder@2</entry>
   </collection>
   <collection>
     <name>Craft/Bowmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Bowmaking</entry>
   </collection>
   <collection>
     <name>Craft/Brassmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Brassmaking</entry>
   </collection>
   <collection>
     <name>Craft/Brewing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Brewing</entry>
   </collection>
   <collection>
     <name>Craft/Candlemaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Candlemaking</entry>
   </collection>
   <collection>
     <name>Craft/Cloth</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Cloth</entry>
   </collection>
   <collection>
     <name>Craft/Coppersmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Coppersmithing</entry>
   </collection>
   <collection>
     <name>Craft/Dyemaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Dyemaking</entry>
   </collection>
   <collection>
     <name>Craft/Gemcutting</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Gemcutting</entry>
   </collection>
   <collection>
     <name>Craft/Glass</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Glass</entry>
   </collection>
   <collection>
     <name>Craft/Goldsmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Goldsmithing</entry>
   </collection>
   <collection>
     <name>Craft/Hatmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Hatmaking</entry>
   </collection>
   <collection>
     <name>Craft/Hornworking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Hornworking</entry>
   </collection>
   <collection>
     <name>Craft/Jewelmaking</name>
@@ -2982,107 +2981,52 @@
   </collection>
   <collection>
     <name>Profession/Weaponsmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Weaponsmith</entry>
   </collection>
   <collection>
     <name>Profession/Weaver</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Weaver</entry>
   </collection>
   <collection>
     <name>Profession/Wheelwright</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Wheelwright</entry>
   </collection>
   <collection>
     <name>Profession/Wilderness Guide</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Wilderness Guide</entry>
   </collection>
   <collection>
     <name>Ride</name>
-    <entry>Dexterity</entry>
-    <entry>Ride</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Search</name>
-    <entry>Intelligence</entry>
-    <entry>Search</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Sense Motive</name>
-    <entry>Wisdom</entry>
-    <entry>Sense Motive</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Sleight of Hand</name>
-    <entry>Dexterity</entry>
-    <entry>Sleight of Hand</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Spellcraft</name>
-    <entry>Intelligence</entry>
-    <entry>Spellcraft</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Spot</name>
-    <entry>Wisdom</entry>
-    <entry>Spot</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Survival</name>
-    <entry>Wisdom</entry>
-    <entry>Survival</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Swim</name>
-    <entry>Strength</entry>
-    <entry>Swim</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Tumble</name>
-    <entry>Dexterity</entry>
-    <entry>Tumble</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Use Magic Device</name>
-    <entry>Charisma</entry>
-    <entry>Use Magic Device</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Use Rope</name>
-    <entry>Dexterity</entry>
-    <entry>Use Rope</entry>
-    <entry>0</entry>
-    <entry></entry>
+  </collection>
+  <collection>
+    <name>Water</name>
+    <entry>Swim,special action or avoid a hazard@8</entry>
+    <entry>Swim,can always take 10@10</entry>
   </collection>
 </collections>

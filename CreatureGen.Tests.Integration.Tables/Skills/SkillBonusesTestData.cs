@@ -3,7 +3,6 @@ using CreatureGen.Skills;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CreatureGen.Tests.Integration.Tables.Skills
 {
@@ -73,16 +72,29 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Ape][GetData(SkillConstants.Climb)] = 8;
                 testCases[CreatureConstants.Ape][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
 
+                testCases[CreatureConstants.Ape_Dire][GetData(SkillConstants.Climb)] = 8;
+                testCases[CreatureConstants.Ape_Dire][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
+
                 testCases[CreatureConstants.Aranea][GetData(SkillConstants.Jump)] = 2;
                 testCases[CreatureConstants.Aranea][GetData(SkillConstants.Listen)] = 2;
                 testCases[CreatureConstants.Aranea][GetData(SkillConstants.Spot)] = 2;
                 testCases[CreatureConstants.Aranea][GetData(SkillConstants.Climb)] = 8;
                 testCases[CreatureConstants.Aranea][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
 
+                testCases[CreatureConstants.Arrowhawk_Adult][None] = 0;
+
+                testCases[CreatureConstants.Arrowhawk_Elder][None] = 0;
+
+                testCases[CreatureConstants.Arrowhawk_Juvenile][None] = 0;
+
                 testCases[CreatureConstants.AssassinVine][GetData(SkillConstants.Climb)] = 8;
                 testCases[CreatureConstants.AssassinVine][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
 
+                testCases[CreatureConstants.Athach][None] = 0;
+
                 testCases[CreatureConstants.Avoral][GetData(SkillConstants.Spot)] = 8;
+
+                testCases[CreatureConstants.Azer][None] = 0;
 
                 testCases[CreatureConstants.Babau][GetData(SkillConstants.Hide)] = 8;
                 testCases[CreatureConstants.Babau][GetData(SkillConstants.Listen)] = 8;
@@ -93,6 +105,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Baboon][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
 
                 testCases[CreatureConstants.Badger][GetData(SkillConstants.EscapeArtist)] = 4;
+
+                testCases[CreatureConstants.Badger_Dire][None] = 0;
 
                 testCases[CreatureConstants.Balor][GetData(SkillConstants.Listen)] = 8;
                 testCases[CreatureConstants.Balor][GetData(SkillConstants.Spot)] = 8;
@@ -105,18 +119,33 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Basilisk_AbyssalGreater][GetData(SkillConstants.Hide, condition: "in natural settings")] = 4;
 
-                testCases[CreatureConstants.Bat][GetData(SkillConstants.Listen)] = 4;
-                testCases[CreatureConstants.Bat][GetData(SkillConstants.Spot)] = 4;
+                testCases[CreatureConstants.Bat][GetData(SkillConstants.Listen, condition: "while able to use blindsense")] = 4;
+                testCases[CreatureConstants.Bat][GetData(SkillConstants.Spot, condition: "while able to use blindsense")] = 4;
 
-                testCases[CreatureConstants.Bat_Swarm][GetData(SkillConstants.Listen)] = 4;
-                testCases[CreatureConstants.Bat_Swarm][GetData(SkillConstants.Spot)] = 4;
+                testCases[CreatureConstants.Bat_Dire][GetData(SkillConstants.Listen, condition: "while able to use blindsense")] = 4;
+                testCases[CreatureConstants.Bat_Dire][GetData(SkillConstants.Spot, condition: "while able to use blindsense")] = 4;
+
+                testCases[CreatureConstants.Bat_Swarm][GetData(SkillConstants.Listen, condition: "while able to use blindsense")] = 4;
+                testCases[CreatureConstants.Bat_Swarm][GetData(SkillConstants.Spot, condition: "while able to use blindsense")] = 4;
 
                 testCases[CreatureConstants.Bear_Black][GetData(SkillConstants.Swim)] = 4;
+
+                testCases[CreatureConstants.Bear_Brown][GetData(SkillConstants.Swim)] = 4;
+
+                testCases[CreatureConstants.Bear_Dire][None] = 0;
+
+                testCases[CreatureConstants.Bear_Polar][GetData(SkillConstants.Swim, condition: "special action or avoid a hazard")] = 8;
+                testCases[CreatureConstants.Bear_Polar][GetData(SkillConstants.Swim, condition: "can always take 10")] = 10;
+                testCases[CreatureConstants.Bear_Polar][GetData(SkillConstants.Hide, condition: "in snowy settings")] = 12;
 
                 testCases[CreatureConstants.Bebilith][GetData(SkillConstants.Hide)] = 8;
 
                 testCases[CreatureConstants.Behir][GetData(SkillConstants.Climb)] = 8;
                 testCases[CreatureConstants.Behir][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
+
+                testCases[CreatureConstants.Beholder][None] = 0;
+
+                testCases[CreatureConstants.Beholder_Gauth][None] = 0;
 
                 testCases[CreatureConstants.Belker][GetData(SkillConstants.MoveSilently)] = 4;
 
@@ -131,6 +160,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.BlinkDog][None] = 0;
 
                 testCases[CreatureConstants.Boar][None] = 0;
+
+                testCases[CreatureConstants.Boar_Dire][None] = 0;
 
                 testCases[CreatureConstants.Bodak][None] = 0;
 
@@ -177,11 +208,68 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Chuul][None] = 0;
 
+                testCases[CreatureConstants.Cloaker][None] = 0;
+
+                testCases[CreatureConstants.Cockatrice][None] = 0;
+
+                testCases[CreatureConstants.Couatl][None] = 0;
+
                 testCases[CreatureConstants.Criosphinx][None] = 0;
+
+                testCases[CreatureConstants.Crocodile][GetData(SkillConstants.Swim, condition: "special action or avoid a hazard")] = 8;
+                testCases[CreatureConstants.Crocodile][GetData(SkillConstants.Swim, condition: "can always take 10")] = 10;
+                testCases[CreatureConstants.Crocodile][GetData(SkillConstants.Hide, condition: "in water")] = 4;
+                testCases[CreatureConstants.Crocodile][GetData(SkillConstants.Hide, condition: "laying in water with only its eyes and nostrils showing")] = 10;
+
+                testCases[CreatureConstants.Crocodile_Giant][GetData(SkillConstants.Swim, condition: "special action or avoid a hazard")] = 8;
+                testCases[CreatureConstants.Crocodile_Giant][GetData(SkillConstants.Swim, condition: "can always take 10")] = 10;
+                testCases[CreatureConstants.Crocodile_Giant][GetData(SkillConstants.Hide, condition: "in water")] = 4;
+                testCases[CreatureConstants.Crocodile_Giant][GetData(SkillConstants.Hide, condition: "laying in water with only its eyes and nostrils showing")] = 10;
+
+                testCases[CreatureConstants.Darkmantle][GetData(SkillConstants.Spot, condition: "while able to use blindsight")] = 4;
+                testCases[CreatureConstants.Darkmantle][GetData(SkillConstants.Listen, condition: "while able to use blindsight")] = 4;
+                testCases[CreatureConstants.Darkmantle][GetData(SkillConstants.Hide)] = 4;
+
+                testCases[CreatureConstants.Deinonychus][GetData(SkillConstants.Hide)] = 8;
+                testCases[CreatureConstants.Deinonychus][GetData(SkillConstants.Jump)] = 8;
+                testCases[CreatureConstants.Deinonychus][GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Deinonychus][GetData(SkillConstants.Spot)] = 8;
+                testCases[CreatureConstants.Deinonychus][GetData(SkillConstants.Survival)] = 8;
+
+                testCases[CreatureConstants.Delver][None] = 0;
 
                 testCases[CreatureConstants.Derro][None] = 0;
 
                 testCases[CreatureConstants.Derro_Sane][None] = 0;
+
+                testCases[CreatureConstants.Destrachan][GetData(SkillConstants.Listen)] = 10;
+
+                testCases[CreatureConstants.Devourer][None] = 0;
+
+                testCases[CreatureConstants.Digester][GetData(SkillConstants.Hide)] = 4;
+                testCases[CreatureConstants.Digester][GetData(SkillConstants.Jump)] = 4;
+
+                testCases[CreatureConstants.DisplacerBeast][GetData(SkillConstants.Hide)] = 8;
+
+                testCases[CreatureConstants.DisplacerBeast_PackLord][GetData(SkillConstants.Hide)] = 8;
+
+                testCases[CreatureConstants.Djinni][None] = 0;
+
+                testCases[CreatureConstants.Djinni_Noble][None] = 0;
+
+                testCases[CreatureConstants.Dog][GetData(SkillConstants.Jump)] = 4;
+                testCases[CreatureConstants.Dog][GetData(SkillConstants.Survival, condition: "tracking by scent")] = 4;
+
+                testCases[CreatureConstants.Dog_Riding][GetData(SkillConstants.Jump)] = 4;
+                testCases[CreatureConstants.Dog_Riding][GetData(SkillConstants.Survival, condition: "tracking by scent")] = 4;
+
+                testCases[CreatureConstants.Donkey][GetData(SkillConstants.Balance)] = 2;
+
+                testCases[CreatureConstants.Doppelganger][GetData(SkillConstants.Bluff)] = 4;
+                testCases[CreatureConstants.Doppelganger][GetData(SkillConstants.Disguise)] = 4;
+                testCases[CreatureConstants.Doppelganger][GetData(SkillConstants.Bluff, condition: "when reading an opponent's mind")] = 4;
+                testCases[CreatureConstants.Doppelganger][GetData(SkillConstants.Disguise, condition: "when reading an opponent's mind")] = 4;
+                testCases[CreatureConstants.Doppelganger][GetData(SkillConstants.Disguise, condition: "when using Change Shape")] = 10;
 
                 testCases[CreatureConstants.Dragon_Black_Wyrmling][None] = 0;
 
@@ -423,7 +511,37 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Dragon_Silver_GreatWyrm][None] = 0;
 
+                testCases[CreatureConstants.DragonTurtle][GetData(SkillConstants.Hide, condition: "when submerged")] = 8;
+
+                testCases[CreatureConstants.Dragonne][GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Dragonne][GetData(SkillConstants.Spot)] = 4;
+
                 testCases[CreatureConstants.Dretch][None] = 0;
+
+                testCases[CreatureConstants.Drider][GetData(SkillConstants.Hide)] = 4;
+                testCases[CreatureConstants.Drider][GetData(SkillConstants.MoveSilently)] = 4;
+                testCases[CreatureConstants.Drider][GetData(SkillConstants.Climb)] = 8;
+                testCases[CreatureConstants.Drider][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
+
+                testCases[CreatureConstants.Dryad][GetData(SkillConstants.Diplomacy, condition: "when using Wild Empathy")] = 6;
+
+                testCases[CreatureConstants.Dwarf_Deep][None] = 0;
+
+                testCases[CreatureConstants.Dwarf_Duergar][GetData(SkillConstants.MoveSilently)] = 4;
+                testCases[CreatureConstants.Dwarf_Duergar][GetData(SkillConstants.Listen)] = 1;
+                testCases[CreatureConstants.Dwarf_Duergar][GetData(SkillConstants.Spot)] = 1;
+
+                testCases[CreatureConstants.Dwarf_Hill][None] = 0;
+
+                testCases[CreatureConstants.Dwarf_Mountain][None] = 0;
+
+                testCases[CreatureConstants.Eagle][GetData(SkillConstants.Spot)] = 8;
+
+                testCases[CreatureConstants.Eagle_Giant][GetData(SkillConstants.Spot)] = 4;
+
+                testCases[CreatureConstants.Efreeti][None] = 0;
+
+                testCases[CreatureConstants.Elasmosaurus][GetData(SkillConstants.Hide, condition: "in water")] = 8;
 
                 testCases[CreatureConstants.Elemental_Air_Small][None] = 0;
 
@@ -514,8 +632,33 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.GelatinousCube][GetData(SkillConstants.Climb)] = 8;
                 testCases[CreatureConstants.GelatinousCube][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
 
+                testCases[CreatureConstants.Giant_Cloud][None] = 0;
+
+                testCases[CreatureConstants.Giant_Fire][None] = 0;
+
+                testCases[CreatureConstants.Giant_Frost][None] = 0;
+
+                testCases[CreatureConstants.Giant_Hill][None] = 0;
+
+                testCases[CreatureConstants.Giant_Stone][GetData(SkillConstants.Hide, condition: "in rocky terrain")] = 8;
+
+                testCases[CreatureConstants.Giant_Stone_Elder][GetData(SkillConstants.Hide, condition: "in rocky terrain")] = 8;
+
+                testCases[CreatureConstants.Giant_Storm][GetData(SkillConstants.Swim, condition: "special action or avoid a hazard")] = 8;
+                testCases[CreatureConstants.Giant_Storm][GetData(SkillConstants.Swim, condition: "can always take 10")] = 10;
+
                 testCases[CreatureConstants.Glabrezu][GetData(SkillConstants.Listen)] = 8;
                 testCases[CreatureConstants.Glabrezu][GetData(SkillConstants.Spot)] = 8;
+
+                testCases[CreatureConstants.Golem_Clay][None] = 0;
+
+                testCases[CreatureConstants.Golem_Flesh][None] = 0;
+
+                testCases[CreatureConstants.Golem_Iron][None] = 0;
+
+                testCases[CreatureConstants.Golem_Stone][None] = 0;
+
+                testCases[CreatureConstants.Golem_Stone_Greater][None] = 0;
 
                 testCases[CreatureConstants.GrayOoze][GetData(SkillConstants.Climb)] = 8;
                 testCases[CreatureConstants.GrayOoze][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
@@ -523,6 +666,14 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.GreenHag][None] = 0;
 
                 testCases[CreatureConstants.Gynosphinx][None] = 0;
+
+                testCases[CreatureConstants.Halfling_Deep][None] = 0;
+
+                testCases[CreatureConstants.Halfling_Lightfoot][GetData(SkillConstants.Climb)] = 2;
+                testCases[CreatureConstants.Halfling_Lightfoot][GetData(SkillConstants.Jump)] = 2;
+                testCases[CreatureConstants.Halfling_Lightfoot][GetData(SkillConstants.MoveSilently)] = 2;
+
+                testCases[CreatureConstants.Halfling_Tallfellow][None] = 0;
 
                 testCases[CreatureConstants.Hellcat_Bezekira][GetData(SkillConstants.Listen)] = 4;
                 testCases[CreatureConstants.Hellcat_Bezekira][GetData(SkillConstants.MoveSilently)] = 4;
@@ -544,13 +695,30 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Imp][None] = 0;
 
+                testCases[CreatureConstants.Janni][None] = 0;
+
                 testCases[CreatureConstants.Lemure][None] = 0;
+
+                testCases[CreatureConstants.Lion][GetData(SkillConstants.Balance)] = 4;
+                testCases[CreatureConstants.Lion][GetData(SkillConstants.Hide)] = 4;
+                testCases[CreatureConstants.Lion][GetData(SkillConstants.MoveSilently)] = 4;
+                testCases[CreatureConstants.Lion][GetData(SkillConstants.Hide, condition: "in tall grass or heavy undergrowth")] = 8;
+
+                testCases[CreatureConstants.Lion_Dire][GetData(SkillConstants.Hide)] = 4;
+                testCases[CreatureConstants.Lion_Dire][GetData(SkillConstants.MoveSilently)] = 4;
+                testCases[CreatureConstants.Lion_Dire][GetData(SkillConstants.Hide, condition: "in tall grass or heavy undergrowth")] = 4;
 
                 testCases[CreatureConstants.Locust_Swarm][GetData(SkillConstants.Listen)] = 4;
                 testCases[CreatureConstants.Locust_Swarm][GetData(SkillConstants.Spot)] = 4;
 
                 testCases[CreatureConstants.Marilith][GetData(SkillConstants.Listen)] = 8;
                 testCases[CreatureConstants.Marilith][GetData(SkillConstants.Spot)] = 8;
+
+                testCases[CreatureConstants.Megaraptor][GetData(SkillConstants.Hide)] = 8;
+                testCases[CreatureConstants.Megaraptor][GetData(SkillConstants.Jump)] = 8;
+                testCases[CreatureConstants.Megaraptor][GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Megaraptor][GetData(SkillConstants.Spot)] = 8;
+                testCases[CreatureConstants.Megaraptor][GetData(SkillConstants.Survival)] = 8;
 
                 testCases[CreatureConstants.Mephit_Air][None] = 0;
 
@@ -574,6 +742,14 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.MindFlayer][None] = 0;
 
+                testCases[CreatureConstants.Naga_Dark][None] = 0;
+
+                testCases[CreatureConstants.Naga_Guardian][None] = 0;
+
+                testCases[CreatureConstants.Naga_Spirit][None] = 0;
+
+                testCases[CreatureConstants.Naga_Water][None] = 0;
+
                 testCases[CreatureConstants.Nalfeshnee][GetData(SkillConstants.Listen)] = 8;
                 testCases[CreatureConstants.Nalfeshnee][GetData(SkillConstants.Spot)] = 8;
 
@@ -583,6 +759,20 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.PitFiend][None] = 0;
 
                 testCases[CreatureConstants.Quasit][None] = 0;
+
+                testCases[CreatureConstants.Rat][GetData(SkillConstants.Hide)] = 4;
+                testCases[CreatureConstants.Rat][GetData(SkillConstants.MoveSilently)] = 4;
+                testCases[CreatureConstants.Rat][GetData(SkillConstants.Balance)] = 8;
+                testCases[CreatureConstants.Rat][GetData(SkillConstants.Climb)] = 8;
+                testCases[CreatureConstants.Rat][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
+                testCases[CreatureConstants.Rat][GetData(SkillConstants.Swim)] = 8;
+                testCases[CreatureConstants.Rat][GetData(SkillConstants.Swim, condition: "special action or avoid a hazard")] = 8;
+                testCases[CreatureConstants.Rat][GetData(SkillConstants.Swim, condition: "can always take 10")] = 10;
+
+                testCases[CreatureConstants.Rat_Dire][GetData(SkillConstants.Climb)] = 8;
+                testCases[CreatureConstants.Rat_Dire][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
+                testCases[CreatureConstants.Rat_Dire][GetData(SkillConstants.Swim)] = 8;
+                testCases[CreatureConstants.Rat_Dire][GetData(SkillConstants.Swim, condition: "can always take 10")] = 10;
 
                 testCases[CreatureConstants.Rat_Swarm][GetData(SkillConstants.Hide)] = 4;
                 testCases[CreatureConstants.Rat_Swarm][GetData(SkillConstants.MoveSilently)] = 4;
@@ -602,6 +792,14 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Salamander_Noble][GetData(SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing))] = 4;
 
                 testCases[CreatureConstants.SeaHag][None] = 0;
+
+                testCases[CreatureConstants.Shark_Dire][None] = 0;
+
+                testCases[CreatureConstants.Shark_Huge][None] = 0;
+
+                testCases[CreatureConstants.Shark_Large][None] = 0;
+
+                testCases[CreatureConstants.Shark_Medium][None] = 0;
 
                 testCases[CreatureConstants.Slaad_Red][None] = 0;
 
@@ -639,16 +837,37 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Tiefling][GetData(SkillConstants.Bluff)] = 2;
                 testCases[CreatureConstants.Tiefling][GetData(SkillConstants.Hide)] = 2;
 
+                testCases[CreatureConstants.Tiger][GetData(SkillConstants.Balance)] = 4;
+                testCases[CreatureConstants.Tiger][GetData(SkillConstants.Hide)] = 4;
+                testCases[CreatureConstants.Tiger][GetData(SkillConstants.MoveSilently)] = 4;
+                testCases[CreatureConstants.Tiger][GetData(SkillConstants.Hide, condition: "in tall grass or heavy undergrowth")] = 4;
+
+                testCases[CreatureConstants.Tiger_Dire][GetData(SkillConstants.Hide)] = 4;
+                testCases[CreatureConstants.Tiger_Dire][GetData(SkillConstants.MoveSilently)] = 4;
+                testCases[CreatureConstants.Tiger_Dire][GetData(SkillConstants.Hide, condition: "in tall grass or heavy undergrowth")] = 4;
+
                 testCases[CreatureConstants.Tojanida_Juvenile][None] = 0;
 
                 testCases[CreatureConstants.Tojanida_Adult][None] = 0;
 
                 testCases[CreatureConstants.Tojanida_Elder][None] = 0;
 
+                testCases[CreatureConstants.Triceratops][None] = 0;
+
                 testCases[CreatureConstants.Triton][None] = 0;
+
+                testCases[CreatureConstants.Tyrannosaurus][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Tyrannosaurus][GetData(SkillConstants.Spot)] = 2;
 
                 testCases[CreatureConstants.Vrock][GetData(SkillConstants.Listen)] = 8;
                 testCases[CreatureConstants.Vrock][GetData(SkillConstants.Spot)] = 8;
+
+                testCases[CreatureConstants.Weasel][GetData(SkillConstants.MoveSilently)] = 4;
+                testCases[CreatureConstants.Weasel][GetData(SkillConstants.Balance)] = 8;
+                testCases[CreatureConstants.Weasel][GetData(SkillConstants.Climb)] = 8;
+                testCases[CreatureConstants.Weasel][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
+
+                testCases[CreatureConstants.Weasel_Dire][None] = 0;
 
                 testCases[CreatureConstants.Whale_Baleen][GetData(SkillConstants.Listen)] = 4;
                 testCases[CreatureConstants.Whale_Baleen][GetData(SkillConstants.Spot)] = 4;
@@ -659,13 +878,31 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Whale_Orca][GetData(SkillConstants.Listen)] = 4;
                 testCases[CreatureConstants.Whale_Orca][GetData(SkillConstants.Spot)] = 4;
 
-                testCases[CreatureConstants.Xorn_Minor][GetData(SkillConstants.Survival, condition: "underground")] = 2;
+                testCases[CreatureConstants.Wolf][GetData(SkillConstants.Survival, condition: "tracking by scent")] = 4;
 
-                testCases[CreatureConstants.Xorn_Average][GetData(SkillConstants.Survival, condition: "underground")] = 2;
+                testCases[CreatureConstants.Wolf_Dire][GetData(SkillConstants.Hide)] = 2;
+                testCases[CreatureConstants.Wolf_Dire][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Wolf_Dire][GetData(SkillConstants.MoveSilently)] = 2;
+                testCases[CreatureConstants.Wolf_Dire][GetData(SkillConstants.Spot)] = 2;
+                testCases[CreatureConstants.Wolf_Dire][GetData(SkillConstants.Survival, condition: "tracking by scent")] = 4;
 
-                testCases[CreatureConstants.Xorn_Elder][GetData(SkillConstants.Survival, condition: "underground")] = 2;
+                testCases[CreatureConstants.Wolverine][GetData(SkillConstants.Climb)] = 8;
+                testCases[CreatureConstants.Wolverine][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
 
-                return TestDataHelper.EnumerateTestCases(testCases);
+                testCases[CreatureConstants.Wolverine_Dire][GetData(SkillConstants.Climb)] = 8;
+                testCases[CreatureConstants.Wolverine_Dire][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
+
+                testCases[CreatureConstants.Wraith][None] = 0;
+
+                testCases[CreatureConstants.Wraith_Dread][None] = 0;
+
+                testCases[CreatureConstants.Xorn_Minor][None] = 0;
+
+                testCases[CreatureConstants.Xorn_Average][None] = 0;
+
+                testCases[CreatureConstants.Xorn_Elder][None] = 0;
+
+                return TestDataHelper.EnumerateTestCases("SkillBonuses", testCases);
             }
         }
 
@@ -711,23 +948,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Types.Vermin][None] = 0;
 
-                foreach (var testCase in testCases)
-                {
-                    var description = None;
-
-                    if (testCase.Value.Any() && testCase.Value.First().Key == None)
-                    {
-                        testCase.Value.Clear();
-                    }
-                    else
-                    {
-                        var bonuses = testCase.Value.Select(kvp => $"{string.Join(",", kvp.Value)}:{kvp.Key}");
-                        description = string.Join("], [", bonuses);
-                    }
-
-                    yield return new TestCaseData(testCase.Key, testCase.Value)
-                        .SetName($"SkillBonuses({testCase.Key}, [{description}])");
-                }
+                return TestDataHelper.EnumerateTestCases("SkillBonuses", testCases);
             }
         }
 
@@ -758,6 +979,9 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Types.Subtypes.Cold][None] = 0;
 
+                testCases[CreatureConstants.Types.Subtypes.Dwarf][GetData(SkillConstants.Appraise, condition: "for items related to stone or metal")] = 2;
+                testCases[CreatureConstants.Types.Subtypes.Dwarf][GetData(SkillConstants.Craft, condition: "for items related to stone or metal")] = 2;
+
                 testCases[CreatureConstants.Types.Subtypes.Earth][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Evil][None] = 0;
@@ -769,6 +993,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Types.Subtypes.Goblinoid][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Good][None] = 0;
+
+                testCases[CreatureConstants.Types.Subtypes.Halfling][GetData(SkillConstants.Listen)] = 2;
 
                 testCases[CreatureConstants.Types.Subtypes.Incorporeal][GetData(SkillConstants.MoveSilently, condition: "always succeeds, and cannot be heard by Listen checks unless it wants to be")] = 9000;
 
@@ -785,7 +1011,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Types.Subtypes.Water][GetData(SkillConstants.Swim, condition: "special action or avoid a hazard")] = 8;
                 testCases[CreatureConstants.Types.Subtypes.Water][GetData(SkillConstants.Swim, condition: "can always take 10")] = 10;
 
-                return TestDataHelper.EnumerateTestCases(testCases);
+                return TestDataHelper.EnumerateTestCases("SkillBonuses", testCases);
             }
         }
 
@@ -985,38 +1211,68 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[SkillConstants.Appraise][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Appraiser)] = 2;
                 testCases[SkillConstants.Appraise][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Trader)] = 2;
+
+                testCases[SkillConstants.Balance][None] = 0;
+
                 testCases[SkillConstants.Bluff][GetData(SkillConstants.Diplomacy)] = 2;
                 testCases[SkillConstants.Bluff][GetData(SkillConstants.Disguise, condition: "acting")] = 2;
                 testCases[SkillConstants.Bluff][GetData(SkillConstants.Intimidate)] = 2;
                 testCases[SkillConstants.Bluff][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)] = 2;
                 testCases[SkillConstants.Bluff][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Soothsayer)] = 2;
                 testCases[SkillConstants.Bluff][GetData(SkillConstants.SleightOfHand)] = 2;
+
+                testCases[SkillConstants.Climb][None] = 0;
+
+                testCases[SkillConstants.Concentration][None] = 0;
+
                 testCases[SkillConstants.Craft][GetData(SkillConstants.Appraise, condition: "related to items made with your Craft skill")] = 2;
                 testCases[SkillConstants.Craft][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Craftsman)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Alchemy)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Alchemist, null)] = 2;
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Alchemy)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Embalmer, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Armorsmithing)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Armorer, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Blacksmith, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Bookbinding)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Bookbinder, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Bowmaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Bowyer, null)] = 2;
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Bowmaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Fletcher, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Brassmaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Brazier, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Brewing)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Brewer, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Candlemaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Chandler, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Coppersmithing)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Coppersmith, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Dyemaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dyer, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Gemcutting)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Gemcutter, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Goldsmithing)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Goldsmith, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Hatmaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Haberdasher, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Hornworking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Horner, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Jewelmaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Jeweler, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Locksmithing)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Locksmith, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Mapmaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Cartographer, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Milling)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Miller, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Painting)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Limner, null)] = 2;
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Painting)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Painter, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Parchmentmaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Parchmentmaker, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Pewtermaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Pewterer, null)] = 2;
+
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Potterymaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Potter, null)] = 2;
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Sculpting)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Sculptor, null)] = 2;
                 testCases[GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Shipmaking)][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Shipwright, null)] = 2;
@@ -1201,13 +1457,13 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[SkillConstants.UseRope][GetData(SkillConstants.Climb, null, "with rope")] = 2;
                 testCases[SkillConstants.UseRope][GetData(SkillConstants.EscapeArtist, null, "escaping rope bonds")] = 2;
 
-                return TestDataHelper.EnumerateTestCases(testCases);
+                return TestDataHelper.EnumerateTestCases("SkillSynergies", testCases);
             }
         }
 
         private static class TestDataHelper
         {
-            public static IEnumerable EnumerateTestCases(Dictionary<string, Dictionary<string, int>> testCases)
+            public static IEnumerable EnumerateTestCases(string testName, Dictionary<string, Dictionary<string, int>> testCases)
             {
                 foreach (var testCase in testCases)
                 {
@@ -1218,7 +1474,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                         description = None;
 
                     yield return new TestCaseData(testCase.Key, testCase.Value)
-                        .SetName($"SkillBonuses({testCase.Key}, {description})");
+                        .SetName($"{testName}({testCase.Key}, {description})");
                 }
             }
         }
