@@ -171,7 +171,7 @@
   </collection>
   <collection>
     <name>Improved Critical</name>
-    <entry>WeaponProficiency</entry>
+    <entry>Weapon Proficiency</entry>
   </collection>
   <collection>
     <name>Improved Disarm</name>
@@ -306,7 +306,7 @@
   </collection>
   <collection>
     <name>Rapid Reload</name>
-    <entry>WeaponProficiency</entry>
+    <entry>Weapon Proficiency</entry>
   </collection>
   <collection>
     <name>Rapid Shot</name>
@@ -400,6 +400,10 @@
   </collection>
   <collection>
     <name>Weapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Weapon Focus</name>
+    <entry>Weapon Proficiency</entry>
   </collection>
   <collection>
     <name>Whirlwind Attack</name>

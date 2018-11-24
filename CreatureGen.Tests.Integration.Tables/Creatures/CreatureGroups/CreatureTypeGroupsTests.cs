@@ -330,6 +330,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Halfling_Lightfoot,
             CreatureConstants.Halfling_Tallfellow)]
         [TestCase(CreatureConstants.Types.Subtypes.Human,
+            CreatureConstants.Elf_Half,
+            CreatureConstants.Orc_Half,
             CreatureConstants.Human)]
         [TestCase(CreatureConstants.Types.Subtypes.Incorporeal,
             CreatureConstants.Allip,

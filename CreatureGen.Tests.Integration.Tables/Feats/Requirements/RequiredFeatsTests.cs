@@ -42,6 +42,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         [TestCase(FeatConstants.CombatExpertise)]
         [TestCase(FeatConstants.CombatReflexes)]
         [TestCase(FeatConstants.Counterspell_Improved)]
+        [TestCase(FeatConstants.Critical_Improved, GroupConstants.WeaponProficiency)]
         [TestCase(FeatConstants.Deceitful)]
         [TestCase(FeatConstants.DeflectArrows, FeatConstants.UnarmedStrike_Improved)]
         [TestCase(FeatConstants.DeftHands)]
@@ -75,6 +76,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         [TestCase(FeatConstants.PreciseShot, FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.PreciseShot_Improved, FeatConstants.PointBlankShot, FeatConstants.PreciseShot)]
         [TestCase(FeatConstants.QuickDraw)]
+        [TestCase(FeatConstants.RapidReload, GroupConstants.WeaponProficiency)]
         [TestCase(FeatConstants.RapidShot, FeatConstants.PointBlankShot)]
         [TestCase(FeatConstants.RideByAttack, FeatConstants.MountedCombat)]
         [TestCase(FeatConstants.Run)]
@@ -117,7 +119,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         [TestCase(FeatConstants.UnarmedStrike_Improved)]
         [TestCase(FeatConstants.WeaponFinesse)]
         //INFO: Being a Fighter is a requirement for these feats
-        //[TestCase(FeatConstants.WeaponFocus)]
+        [TestCase(FeatConstants.WeaponFocus, GroupConstants.WeaponProficiency)]
         //[TestCase(FeatConstants.WeaponFocus_Greater, FeatConstants.WeaponFocus)]
         [TestCase(FeatConstants.WeaponProficiency_Exotic)]
         [TestCase(FeatConstants.WeaponProficiency_Martial)]
@@ -181,20 +183,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
         [TestCase(FeatConstants.AugmentSummoning,
             FeatConstants.SpellFocus, FeatConstants.Foci.Schools.Conjuration)]
-        //[TestCase(FeatConstants.CorruptingGaze,
-        //    FeatConstants.GhostSpecialAttack, FeatConstants.CorruptingGaze)]
-        //[TestCase(FeatConstants.CorruptingTouch,
-        //    FeatConstants.GhostSpecialAttack, FeatConstants.CorruptingTouch)]
-        //[TestCase(FeatConstants.DrainingTouch,
-        //    FeatConstants.GhostSpecialAttack, FeatConstants.DrainingTouch)]
-        //[TestCase(FeatConstants.FrightfulMoan,
-        //    FeatConstants.GhostSpecialAttack, FeatConstants.FrightfulMoan)]
-        //[TestCase(FeatConstants.HorrificAppearance,
-        //    FeatConstants.GhostSpecialAttack, FeatConstants.HorrificAppearance)]
-        //[TestCase(FeatConstants.Malevolence,
-        //    FeatConstants.GhostSpecialAttack, FeatConstants.Malevolence)]
-        //[TestCase(FeatConstants.Telekinesis,
-        //    FeatConstants.GhostSpecialAttack, FeatConstants.Telekinesis)]
         public void RequiredFeat(string name, string requiredFeat, string requiredFocus)
         {
             var collection = new[] { $"{requiredFeat}/{requiredFocus}" };

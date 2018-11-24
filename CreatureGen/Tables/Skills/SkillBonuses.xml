@@ -189,13 +189,13 @@
   </collection>
   <collection>
     <name>Bat</name>
-    <entry>Listen@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen,while able to use blindsense@4</entry>
+    <entry>Spot,while able to use blindsense@4</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
-    <entry>Listen@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen,while able to use blindsense@4</entry>
+    <entry>Spot,while able to use blindsense@4</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
@@ -526,12 +526,19 @@
   </collection>
   <collection>
     <name>Crocodile</name>
+    <entry>Hide,in water@4</entry>
+    <entry>Hide,laying in water with only its eyes and nostrils showing@10</entry>
+    <entry>Swim,special action or avoid a hazard@8</entry>
+    <entry>Swim,can always take 10@10</entry>
   </collection>
   <collection>
     <name>Dark Naga</name>
   </collection>
   <collection>
     <name>Darkmantle</name>
+    <entry>Hide@4</entry>
+    <entry>Listen,while able to use blindsight@4</entry>
+    <entry>Spot,while able to use blindsight@4</entry>
   </collection>
   <collection>
     <name>Death Slaad</name>
@@ -544,6 +551,11 @@
   </collection>
   <collection>
     <name>Deinonychus</name>
+    <entry>Hide@8</entry>
+    <entry>Jump@8</entry>
+    <entry>Listen@8</entry>
+    <entry>Spot@8</entry>
+    <entry>Survival@8</entry>
   </collection>
   <collection>
     <name>Delver</name>
@@ -556,21 +568,28 @@
   </collection>
   <collection>
     <name>Destrachan</name>
+    <entry>Listen@10</entry>
   </collection>
   <collection>
     <name>Devourer</name>
   </collection>
   <collection>
     <name>Digester</name>
+    <entry>Hide@4</entry>
+    <entry>Jump@4</entry>
   </collection>
   <collection>
     <name>Dire Ape</name>
+    <entry>Climb@8</entry>
+    <entry>Climb,can always take 10@10</entry>
   </collection>
   <collection>
     <name>Dire Badger</name>
   </collection>
   <collection>
     <name>Dire Bat</name>
+    <entry>Listen,while able to use blindsense@4</entry>
+    <entry>Spot,while able to use blindsense@4</entry>
   </collection>
   <collection>
     <name>Dire Bear</name>
@@ -580,21 +599,36 @@
   </collection>
   <collection>
     <name>Dire Lion</name>
+    <entry>Hide@4</entry>
+    <entry>Hide,in tall grass or heavy undergrowth@4</entry>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Dire Rat</name>
+    <entry>Climb@8</entry>
+    <entry>Climb,can always take 10@10</entry>
+    <entry>Swim@8</entry>
+    <entry>Swim,can always take 10@10</entry>
   </collection>
   <collection>
     <name>Dire Shark</name>
   </collection>
   <collection>
     <name>Dire Tiger</name>
+    <entry>Hide@4</entry>
+    <entry>Hide,in tall grass or heavy undergrowth@4</entry>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Dire Weasel</name>
   </collection>
   <collection>
     <name>Dire Wolf</name>
+    <entry>Hide@2</entry>
+    <entry>Listen@2</entry>
+    <entry>Move Silently@2</entry>
+    <entry>Spot@2</entry>
+    <entry>Survival,tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Dire Wolverine</name>
@@ -836,6 +870,8 @@
   </collection>
   <collection>
     <name>Giant Crocodile</name>
+    <entry>Swim,special action or avoid a hazard@8</entry>
+    <entry>Swim,can always take 10@10</entry>
   </collection>
   <collection>
     <name>Giant Eagle</name>
@@ -1184,6 +1220,11 @@
   </collection>
   <collection>
     <name>Megaraptor</name>
+    <entry>Hide@8</entry>
+    <entry>Jump@8</entry>
+    <entry>Listen@8</entry>
+    <entry>Spot@8</entry>
+    <entry>Survival@8</entry>
   </collection>
   <collection>
     <name>Merfolk</name>

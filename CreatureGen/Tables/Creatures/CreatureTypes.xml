@@ -1305,6 +1305,7 @@
     <name>Half-Elf</name>
     <entry>Humanoid</entry>
     <entry>Elf</entry>
+    <entry>Human</entry>
   </collection>
   <collection>
     <name>High Elf</name>
@@ -1634,6 +1635,7 @@
   <collection>
     <name>Half-Orc</name>
     <entry>Humanoid</entry>
+    <entry>Human</entry>
     <entry>Orc</entry>
   </collection>
   <collection>

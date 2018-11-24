@@ -1473,6 +1473,14 @@
     <name>Devourer</name>
     <entry>Spell Deflection#0##0##0#False</entry>
     <entry>Spell Resistance#21##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Confusion#1#Round#0#False</entry>
+    <entry>Spell-Like Ability#0#Control undead#1#Round#0#False</entry>
+    <entry>Spell-Like Ability#0#Ghoul touch#1#Round#0#False</entry>
+    <entry>Spell-Like Ability#0#Lesser planar ally#1#Round#0#False</entry>
+    <entry>Spell-Like Ability#0#Ray of enfeeblement#1#Round#0#False</entry>
+    <entry>Spell-Like Ability#0#Spectral hand#1#Round#0#False</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Round#0#False</entry>
+    <entry>Spell-Like Ability#0#True seeing#1#Round#0#False</entry>
   </collection>
   <collection>
     <name>Digester</name>
@@ -1767,6 +1775,7 @@
     <entry>Immunity#0#Acid#0##0#False</entry>
     <entry>Immunity#0#Electricity#0##0#False</entry>
     <entry>Immunity#0#Poison#0##0#False</entry>
+    <entry>Weapon Focus#0#Bite#0##0#False</entry>
   </collection>
   <collection>
     <name>Elder Black Pudding</name>
