@@ -1,10 +1,10 @@
-﻿using CreatureGen.Attacks;
+﻿using CreatureGen.Selectors.Selections;
 using System.Collections.Generic;
 
 namespace CreatureGen.Selectors.Collections
 {
     internal interface IAttackSelector
     {
-        IEnumerable<Attack> Select(string creatureName, string size);
+        IEnumerable<AttackSelection> Select(string creatureName, string originalSize, string advancedSize);
     }
 }

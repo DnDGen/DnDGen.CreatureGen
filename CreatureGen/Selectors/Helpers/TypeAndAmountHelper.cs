@@ -1,17 +1,17 @@
-﻿namespace CreatureGen.Selectors.Helpers
+﻿using CreatureGen.Selectors.Selections;
+
+namespace CreatureGen.Selectors.Helpers
 {
     public static class TypeAndAmountHelper
     {
-        private const char SEPERATOR = '@';
-
         public static string Build(string type, string amount)
         {
-            return type + SEPERATOR + amount;
+            return type + TypeAndAmountSelection.Divider + amount;
         }
 
         public static string[] Parse(string input)
         {
-            return input.Split(SEPERATOR);
+            return input.Split(TypeAndAmountSelection.Divider);
         }
     }
 }

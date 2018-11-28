@@ -21,5 +21,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.Condition, Is.Empty);
             Assert.That(selection.Target, Is.Empty);
         }
+
+        [Test]
+        public void BonusDivider()
+        {
+            Assert.That(BonusSelection.Divider, Is.EqualTo('$'));
+        }
     }
 }

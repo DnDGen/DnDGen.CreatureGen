@@ -13,6 +13,21 @@
             return data;
         }
 
+        internal static class AttackData
+        {
+            public const int Name = 0;
+            public const int Damage = 1;
+            public const int IsNatural = 2;
+            public const int IsMelee = 3;
+            public const int IsPrimary = 4;
+            public const int IsSpecial = 5;
+
+            public static string[] InitializeData()
+            {
+                return DataIndexConstants.InitializeData(IsSpecial);
+            }
+        }
+
         internal static class SpecialQualityData
         {
             public const int FeatNameIndex = 0;

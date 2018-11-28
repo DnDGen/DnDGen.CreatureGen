@@ -14,7 +14,7 @@
   </collection>
   <collection>
     <name>Abyssal Greater Basilisk</name>
-    <entry>Hide,in natural settings@4</entry>
+    <entry>Hide$in natural settings@4</entry>
   </collection>
   <collection>
     <name>Achaierai</name>
@@ -100,24 +100,24 @@
   <collection>
     <name>Ape</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Aquatic</name>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Aquatic Elf</name>
     <entry>Listen@2</entry>
     <entry>Search@2</entry>
-    <entry>Search,passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
+    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
     <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Aranea</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
     <entry>Jump@2</entry>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
@@ -128,7 +128,7 @@
   <collection>
     <name>Assassin Vine</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Athach</name>
@@ -160,7 +160,7 @@
   <collection>
     <name>Baboon</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Badger</name>
@@ -181,21 +181,21 @@
   </collection>
   <collection>
     <name>Barghest</name>
-    <entry>Hide,in wolf form@4</entry>
+    <entry>Hide$in wolf form@4</entry>
   </collection>
   <collection>
     <name>Basilisk</name>
-    <entry>Hide,in natural settings@4</entry>
+    <entry>Hide$in natural settings@4</entry>
   </collection>
   <collection>
     <name>Bat</name>
-    <entry>Listen,while able to use blindsense@4</entry>
-    <entry>Spot,while able to use blindsense@4</entry>
+    <entry>Listen$while able to use blindsense@4</entry>
+    <entry>Spot$while able to use blindsense@4</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
-    <entry>Listen,while able to use blindsense@4</entry>
-    <entry>Spot,while able to use blindsense@4</entry>
+    <entry>Listen$while able to use blindsense@4</entry>
+    <entry>Spot$while able to use blindsense@4</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
@@ -207,7 +207,7 @@
   <collection>
     <name>Behir</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Beholder</name>
@@ -262,7 +262,7 @@
   <collection>
     <name>Black Pudding</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Blink Dog</name>
@@ -415,14 +415,14 @@
   <collection>
     <name>Carrion Crawler</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Cat</name>
     <entry>Balance@8</entry>
     <entry>Climb@4</entry>
     <entry>Hide@4</entry>
-    <entry>Hide,in areas of tall grass or heavy undergrowth@4</entry>
+    <entry>Hide$in areas of tall grass or heavy undergrowth@4</entry>
     <entry>Jump@8</entry>
     <entry>Move Silently@4</entry>
   </collection>
@@ -432,12 +432,12 @@
   <collection>
     <name>Centipede Swarm</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
     <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
-    <entry>Craft,involving metalwork@8</entry>
+    <entry>Craft$involving metalwork@8</entry>
   </collection>
   <collection>
     <name>Chaos Beast</name>
@@ -450,14 +450,14 @@
   </collection>
   <collection>
     <name>Chimera</name>
-    <entry>Hide,in areas of scrubland or brush@4</entry>
+    <entry>Hide$in areas of scrubland or brush@4</entry>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Choker</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Chuul</name>
@@ -527,10 +527,10 @@
   </collection>
   <collection>
     <name>Crocodile</name>
-    <entry>Hide,in water@4</entry>
-    <entry>Hide,laying in water with only its eyes and nostrils showing@10</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Hide$in water@4</entry>
+    <entry>Hide$laying in water with only its eyes and nostrils showing@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Dark Naga</name>
@@ -538,8 +538,8 @@
   <collection>
     <name>Darkmantle</name>
     <entry>Hide@4</entry>
-    <entry>Listen,while able to use blindsight@4</entry>
-    <entry>Spot,while able to use blindsight@4</entry>
+    <entry>Listen$while able to use blindsight@4</entry>
+    <entry>Spot$while able to use blindsight@4</entry>
   </collection>
   <collection>
     <name>Death Slaad</name>
@@ -582,15 +582,15 @@
   <collection>
     <name>Dire Ape</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Dire Badger</name>
   </collection>
   <collection>
     <name>Dire Bat</name>
-    <entry>Listen,while able to use blindsense@4</entry>
-    <entry>Spot,while able to use blindsense@4</entry>
+    <entry>Listen$while able to use blindsense@4</entry>
+    <entry>Spot$while able to use blindsense@4</entry>
   </collection>
   <collection>
     <name>Dire Bear</name>
@@ -601,15 +601,15 @@
   <collection>
     <name>Dire Lion</name>
     <entry>Hide@4</entry>
-    <entry>Hide,in tall grass or heavy undergrowth@4</entry>
+    <entry>Hide$in tall grass or heavy undergrowth@4</entry>
     <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Dire Rat</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
     <entry>Swim@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Dire Shark</name>
@@ -617,7 +617,7 @@
   <collection>
     <name>Dire Tiger</name>
     <entry>Hide@4</entry>
-    <entry>Hide,in tall grass or heavy undergrowth@4</entry>
+    <entry>Hide$in tall grass or heavy undergrowth@4</entry>
     <entry>Move Silently@4</entry>
   </collection>
   <collection>
@@ -629,12 +629,12 @@
     <entry>Listen@2</entry>
     <entry>Move Silently@2</entry>
     <entry>Spot@2</entry>
-    <entry>Survival,tracking by scent@4</entry>
+    <entry>Survival$tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Dire Wolverine</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Displacer Beast</name>
@@ -650,12 +650,12 @@
   <collection>
     <name>Dog</name>
     <entry>Jump@4</entry>
-    <entry>Survival,tracking by scent@4</entry>
+    <entry>Survival$tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Dog, Riding</name>
     <entry>Jump@4</entry>
-    <entry>Survival,tracking by scent@4</entry>
+    <entry>Survival$tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Donkey</name>
@@ -664,17 +664,17 @@
   <collection>
     <name>Doppelganger</name>
     <entry>Bluff@4</entry>
-    <entry>Bluff,when reading an opponent's mind@4</entry>
+    <entry>Bluff$when reading an opponent's mind@4</entry>
     <entry>Disguise@4</entry>
-    <entry>Disguise,when reading an opponent's mind@4</entry>
-    <entry>Disguise,when using Change Shape@10</entry>
+    <entry>Disguise$when reading an opponent's mind@4</entry>
+    <entry>Disguise$when using Change Shape@10</entry>
   </collection>
   <collection>
     <name>Dragon</name>
   </collection>
   <collection>
     <name>Dragon Turtle</name>
-    <entry>Hide,when submerged@8</entry>
+    <entry>Hide$when submerged@8</entry>
   </collection>
   <collection>
     <name>Dragonne</name>
@@ -690,7 +690,7 @@
   <collection>
     <name>Drider</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
     <entry>Hide@4</entry>
     <entry>Move Silently@4</entry>
   </collection>
@@ -698,12 +698,12 @@
     <name>Drow</name>
     <entry>Listen@2</entry>
     <entry>Search@2</entry>
-    <entry>Search,passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
+    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
     <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Dryad</name>
-    <entry>Diplomacy,when using Wild Empathy@6</entry>
+    <entry>Diplomacy$when using Wild Empathy@6</entry>
   </collection>
   <collection>
     <name>Duergar</name>
@@ -716,8 +716,8 @@
   </collection>
   <collection>
     <name>Dwarf</name>
-    <entry>Appraise,for items related to stone or metal@2</entry>
-    <entry>Craft,for items related to stone or metal@2</entry>
+    <entry>Appraise$for items related to stone or metal@2</entry>
+    <entry>Craft$for items related to stone or metal@2</entry>
   </collection>
   <collection>
     <name>Eagle</name>
@@ -754,26 +754,26 @@
     <name>Eight-Headed Cryohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Eight-Headed Hydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Elasmosaurus</name>
-    <entry>Hide,in water@8</entry>
+    <entry>Hide$in water@8</entry>
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
@@ -781,7 +781,7 @@
   <collection>
     <name>Elder Black Pudding</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Elder Tojanida</name>
@@ -799,22 +799,22 @@
     <name>Eleven-Headed Cryohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Hydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Pyrohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Elf</name>
@@ -837,7 +837,7 @@
   <collection>
     <name>Ettercap</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
     <entry>Craft/Trapmaking@4</entry>
     <entry>Hide@4</entry>
     <entry>Spot@4</entry>
@@ -888,22 +888,22 @@
     <name>Five-Headed Cryohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Five-Headed Hydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Five-Headed Pyrohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
@@ -914,6 +914,8 @@
   </collection>
   <collection>
     <name>Forest Gnome</name>
+    <entry>Hide@4</entry>
+    <entry>Hide$in a wooded area@8</entry>
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
@@ -935,9 +937,14 @@
   </collection>
   <collection>
     <name>Frost Worm</name>
+    <entry>Hide$on Cold Plains@10</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
+    <entry>Hide@2</entry>
+    <entry>Hide$concealed against a background of stone@8</entry>
+    <entry>Listen@2</entry>
+    <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
@@ -945,7 +952,7 @@
   <collection>
     <name>Gelatinous Cube</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Ghaele</name>
@@ -962,23 +969,25 @@
   <collection>
     <name>Giant Ant, Queen</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
-    <entry>Survival,tracking by scent@4</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Survival$tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Giant Ant, Soldier</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
-    <entry>Survival,tracking by scent@4</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Survival$tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Giant Ant, Worker</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
-    <entry>Survival,tracking by scent@4</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Survival$tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Giant Bee</name>
+    <entry>Spot@4</entry>
+    <entry>Survival$To orient itself@4</entry>
   </collection>
   <collection>
     <name>Giant Bombardier Beetle</name>
@@ -988,8 +997,10 @@
   </collection>
   <collection>
     <name>Giant Crocodile</name>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Hide$in water@4</entry>
+    <entry>Hide$laying in water with only its eyes and nostrils showing@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Giant Eagle</name>
@@ -1000,12 +1011,20 @@
   </collection>
   <collection>
     <name>Giant Octopus</name>
+    <entry>Hide@4</entry>
+    <entry>Escape Artist@10</entry>
   </collection>
   <collection>
     <name>Giant Owl</name>
+    <entry>Listen@8</entry>
+    <entry>Move Silently$in flight@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Giant Praying Mantis</name>
+    <entry>Hide@4</entry>
+    <entry>Hide$surrounded by foliage@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Giant Squid</name>
@@ -1015,12 +1034,19 @@
   </collection>
   <collection>
     <name>Giant Wasp</name>
+    <entry>Spot@8</entry>
+    <entry>Survival$to orient itself@4</entry>
   </collection>
   <collection>
     <name>Gibbering Mouther</name>
+    <entry>Spot@4</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Girallon</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Githyanki</name>
@@ -1037,7 +1063,14 @@
     <name>Gnoll</name>
   </collection>
   <collection>
+    <name>Gnome</name>
+    <entry>Craft/Alchemy@2</entry>
+    <entry>Listen@2</entry>
+  </collection>
+  <collection>
     <name>Goblin</name>
+    <entry>Move Silently@4</entry>
+    <entry>Ride@4</entry>
   </collection>
   <collection>
     <name>Goblinoid</name>
@@ -1088,26 +1121,32 @@
     <name>Gray Elf</name>
     <entry>Listen@2</entry>
     <entry>Search@2</entry>
-    <entry>Search,passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
+    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
     <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Gray Ooze</name>
     <entry>Climb@8</entry>
-    <entry>Climb,can always take 10@10</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Gray Render</name>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Gray Slaad</name>
   </collection>
   <collection>
     <name>Greater Barghest</name>
-    <entry>Hide,in wolf form@4</entry>
+    <entry>Hide$in wolf form@4</entry>
   </collection>
   <collection>
     <name>Greater Shadow</name>
+    <entry>Hide$in areas of shadowy illumination@4</entry>
+    <entry>Hide$in brightly lit areas@-4</entry>
+    <entry>Listen@2</entry>
+    <entry>Search@4</entry>
+    <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
@@ -1156,18 +1195,28 @@
   </collection>
   <collection>
     <name>Grick</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide$in natural, rocky areas@8</entry>
   </collection>
   <collection>
     <name>Griffon</name>
+    <entry>Jump@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Grig</name>
+    <entry>Jump@8</entry>
+    <entry>Move Silently$in a forest setting@5</entry>
   </collection>
   <collection>
     <name>Grig with fiddle</name>
+    <entry>Jump@8</entry>
+    <entry>Move Silently$in a forest setting@5</entry>
   </collection>
   <collection>
     <name>Grimlock</name>
+    <entry>Hide$in mountains or underground@10</entry>
   </collection>
   <collection>
     <name>Guardian Naga</name>
@@ -1177,19 +1226,27 @@
   </collection>
   <collection>
     <name>Half-Elf</name>
-    <entry>Listen@2</entry>
-    <entry>Search@2</entry>
-    <entry>Search,passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
-    <entry>Spot@2</entry>
+    <entry>Diplomacy@2</entry>
+    <entry>Gather Information@2</entry>
+    <entry>Listen@1</entry>
+    <entry>Search@1</entry>
+    <entry>Spot@1</entry>
   </collection>
   <collection>
     <name>Half-Orc</name>
   </collection>
   <collection>
+    <name>Halfling</name>
+    <entry>Listen@2</entry>
+  </collection>
+  <collection>
     <name>Harpy</name>
+    <entry>Bluff@4</entry>
+    <entry>Listen@4</entry>
   </collection>
   <collection>
     <name>Hawk</name>
+    <entry>Spot@8</entry>
   </collection>
   <collection>
     <name>Heavy Horse</name>
@@ -1199,6 +1256,8 @@
   </collection>
   <collection>
     <name>Hell Hound</name>
+    <entry>Hide@5</entry>
+    <entry>Move Silently@5</entry>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
@@ -1210,15 +1269,18 @@
   </collection>
   <collection>
     <name>Hezrou</name>
+    <entry>Listen@8</entry>
+    <entry>Spot@8</entry>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>High Elf</name>
     <entry>Listen@2</entry>
     <entry>Search@2</entry>
-    <entry>Search,passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
+    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
     <entry>Spot@2</entry>
   </collection>
   <collection>
@@ -1229,9 +1291,11 @@
   </collection>
   <collection>
     <name>Hippogriff</name>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Hobgoblin</name>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
@@ -1241,6 +1305,8 @@
   </collection>
   <collection>
     <name>Hound Archon</name>
+    <entry>Hide$in canine form@4</entry>
+    <entry>Survival$in canine form@4</entry>
   </collection>
   <collection>
     <name>Howler</name>
@@ -1249,7 +1315,11 @@
     <name>Human</name>
   </collection>
   <collection>
+    <name>Humanoid</name>
+  </collection>
+  <collection>
     <name>Hyena</name>
+    <entry>Hide$in tall grass or heavy undergrowth@4</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
@@ -1262,6 +1332,10 @@
   </collection>
   <collection>
     <name>Imp</name>
+  </collection>
+  <collection>
+    <name>Incorporeal</name>
+    <entry>Move Silently$always succeeds, and cannot be heard by Listen checks unless it wants to be@9000</entry>
   </collection>
   <collection>
     <name>Iron Golem</name>
@@ -1277,6 +1351,10 @@
   </collection>
   <collection>
     <name>Kapoacinth</name>
+    <entry>Hide@2</entry>
+    <entry>Hide$concealed against a background of stone@8</entry>
+    <entry>Listen@2</entry>
+    <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Kobold</name>
@@ -1474,6 +1552,8 @@
   </collection>
   <collection>
     <name>Nessian Warhound</name>
+    <entry>Hide@5</entry>
+    <entry>Move Silently@5</entry>
   </collection>
   <collection>
     <name>Night Hag</name>
@@ -1497,22 +1577,22 @@
     <name>Nine-Headed Cryohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Nine-Headed Hydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Nine-Headed Pyrohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Nixie</name>
@@ -1531,6 +1611,8 @@
   </collection>
   <collection>
     <name>Octopus</name>
+    <entry>Hide@4</entry>
+    <entry>Escape Artist@10</entry>
   </collection>
   <collection>
     <name>Ogre</name>
@@ -1554,6 +1636,9 @@
   </collection>
   <collection>
     <name>Owl</name>
+    <entry>Listen@8</entry>
+    <entry>Move Silently$in flight@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Owlbear</name>
@@ -1712,25 +1797,30 @@
     <name>Seven-Headed Cryohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Seven-Headed Hydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Seven-Headed Pyrohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Shadow</name>
+    <entry>Hide$in areas of shadowy illumination@4</entry>
+    <entry>Hide$in brightly lit areas@-4</entry>
+    <entry>Listen@2</entry>
+    <entry>Search@4</entry>
+    <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Shadow Mastiff</name>
@@ -1796,22 +1886,22 @@
     <name>Six-Headed Cryohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Six-Headed Hydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Six-Headed Pyrohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Skum</name>
@@ -1865,22 +1955,22 @@
     <name>Ten-Headed Cryohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Ten-Headed Hydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Ten-Headed Pyrohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Tendriculos</name>
@@ -1925,22 +2015,22 @@
     <name>Twelve-Headed Cryohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Hydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Pyrohydra</name>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
@@ -2063,7 +2153,7 @@
     <name>Wild Elf</name>
     <entry>Listen@2</entry>
     <entry>Search@2</entry>
-    <entry>Search,passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
+    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
     <entry>Spot@2</entry>
   </collection>
   <collection>
@@ -2085,7 +2175,7 @@
     <name>Wood Elf</name>
     <entry>Listen@2</entry>
     <entry>Search@2</entry>
-    <entry>Search,passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
+    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
     <entry>Spot@2</entry>
   </collection>
   <collection>
@@ -2126,7 +2216,7 @@
   <collection>
     <name>Bluff</name>
     <entry>Diplomacy@2</entry>
-    <entry>Disguise,acting@2</entry>
+    <entry>Disguise$acting@2</entry>
     <entry>Intimidate@2</entry>
     <entry>Profession/Dowser@2</entry>
     <entry>Profession/Soothsayer@2</entry>
@@ -2140,7 +2230,7 @@
   </collection>
   <collection>
     <name>Craft</name>
-    <entry>Appraise,related to items made with your Craft skill@2</entry>
+    <entry>Appraise$related to items made with your Craft skill@2</entry>
     <entry>Profession/Craftsman@2</entry>
   </collection>
   <collection>
@@ -3279,7 +3369,7 @@
   </collection>
   <collection>
     <name>Water</name>
-    <entry>Swim,special action or avoid a hazard@8</entry>
-    <entry>Swim,can always take 10@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
 </collections>

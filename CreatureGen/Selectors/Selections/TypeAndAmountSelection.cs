@@ -2,6 +2,8 @@
 {
     internal class TypeAndAmountSelection
     {
+        public const char Divider = '@';
+
         public string Type { get; set; }
         public int Amount { get; set; }
 

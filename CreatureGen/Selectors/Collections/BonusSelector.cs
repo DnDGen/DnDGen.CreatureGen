@@ -27,7 +27,7 @@ namespace CreatureGen.Selectors.Collections
 
             selection.Bonus = input.Amount;
 
-            var sections = input.Type.Split(',');
+            var sections = input.Type.Split('$');
             selection.Target = sections[0];
 
             if (sections.Length > 1)

@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Creatures;
+using CreatureGen.Selectors.Selections;
 using CreatureGen.Skills;
 using NUnit.Framework;
 using System.Collections;
@@ -791,6 +792,21 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.GreenHag][None] = 0;
 
+                testCases[CreatureConstants.Grick][GetData(SkillConstants.Climb)] = 8;
+                testCases[CreatureConstants.Grick][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
+                testCases[CreatureConstants.Grick][GetData(SkillConstants.Hide, condition: "in natural, rocky areas")] = 8;
+
+                testCases[CreatureConstants.Griffon][GetData(SkillConstants.Jump)] = 4;
+                testCases[CreatureConstants.Griffon][GetData(SkillConstants.Spot)] = 4;
+
+                testCases[CreatureConstants.Grig][GetData(SkillConstants.Jump)] = 8;
+                testCases[CreatureConstants.Grig][GetData(SkillConstants.MoveSilently, condition: "in a forest setting")] = 5;
+
+                testCases[CreatureConstants.Grig_WithFiddle][GetData(SkillConstants.Jump)] = 8;
+                testCases[CreatureConstants.Grig_WithFiddle][GetData(SkillConstants.MoveSilently, condition: "in a forest setting")] = 5;
+
+                testCases[CreatureConstants.Grimlock][GetData(SkillConstants.Hide, condition: "in mountains or underground")] = 10;
+
                 testCases[CreatureConstants.Gynosphinx][None] = 0;
 
                 testCases[CreatureConstants.Halfling_Deep][None] = 0;
@@ -801,15 +817,40 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Halfling_Tallfellow][None] = 0;
 
+                testCases[CreatureConstants.Harpy][GetData(SkillConstants.Bluff)] = 4;
+                testCases[CreatureConstants.Harpy][GetData(SkillConstants.Listen)] = 4;
+
+                testCases[CreatureConstants.Hawk][GetData(SkillConstants.Spot)] = 8;
+
                 testCases[CreatureConstants.Hellcat_Bezekira][GetData(SkillConstants.Listen)] = 4;
                 testCases[CreatureConstants.Hellcat_Bezekira][GetData(SkillConstants.MoveSilently)] = 4;
 
                 testCases[CreatureConstants.Hellwasp_Swarm][None] = 0;
 
+                testCases[CreatureConstants.HellHound][GetData(SkillConstants.Hide)] = 5;
+                testCases[CreatureConstants.HellHound][GetData(SkillConstants.MoveSilently)] = 5;
+
+                testCases[CreatureConstants.HellHound_NessianWarhound][GetData(SkillConstants.Hide)] = 5;
+                testCases[CreatureConstants.HellHound_NessianWarhound][GetData(SkillConstants.MoveSilently)] = 5;
+
                 testCases[CreatureConstants.Hezrou][GetData(SkillConstants.Listen)] = 8;
                 testCases[CreatureConstants.Hezrou][GetData(SkillConstants.Spot)] = 8;
 
                 testCases[CreatureConstants.Hieracosphinx][GetData(SkillConstants.Spot)] = 4;
+
+                testCases[CreatureConstants.Hippogriff][GetData(SkillConstants.Spot)] = 4;
+
+                testCases[CreatureConstants.Hobgoblin][GetData(SkillConstants.MoveSilently)] = 4;
+
+                testCases[CreatureConstants.Horse_Heavy][None] = 0;
+
+                testCases[CreatureConstants.Horse_Heavy_War][None] = 0;
+
+                testCases[CreatureConstants.Horse_Light][None] = 0;
+
+                testCases[CreatureConstants.Horse_Light_War][None] = 0;
+
+                testCases[CreatureConstants.Howler][None] = 0;
 
                 testCases[CreatureConstants.Hydra_5Heads][GetData(SkillConstants.Listen)] = 2;
                 testCases[CreatureConstants.Hydra_5Heads][GetData(SkillConstants.Spot)] = 2;
@@ -855,13 +896,22 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.HornedDevil_Cornugon][None] = 0;
 
+                testCases[CreatureConstants.HoundArchon][GetData(SkillConstants.Hide, condition: "in canine form")] = 4;
+                testCases[CreatureConstants.HoundArchon][GetData(SkillConstants.Survival, condition: "in canine form")] = 4;
+
                 testCases[CreatureConstants.Human][None] = 0;
+
+                testCases[CreatureConstants.Hyena][GetData(SkillConstants.Hide, condition: "in tall grass or heavy undergrowth")] = 4;
 
                 testCases[CreatureConstants.IceDevil_Gelugon][None] = 0;
 
                 testCases[CreatureConstants.Imp][None] = 0;
 
+                testCases[CreatureConstants.InvisibleStalker][None] = 0;
+
                 testCases[CreatureConstants.Janni][None] = 0;
+
+                testCases[CreatureConstants.LanternArchon][None] = 0;
 
                 testCases[CreatureConstants.Lemure][None] = 0;
 
@@ -919,6 +969,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Nalfeshnee][GetData(SkillConstants.Listen)] = 8;
                 testCases[CreatureConstants.Nalfeshnee][GetData(SkillConstants.Spot)] = 8;
 
+                testCases[CreatureConstants.Nixie][GetData(SkillConstants.Hide, condition: "in water")] = 5;
+
                 testCases[CreatureConstants.OchreJelly][GetData(SkillConstants.Climb)] = 8;
                 testCases[CreatureConstants.OchreJelly][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
 
@@ -927,6 +979,10 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Octopus_Giant][GetData(SkillConstants.Hide)] = 4;
                 testCases[CreatureConstants.Octopus_Giant][GetData(SkillConstants.EscapeArtist)] = 10;
+
+                testCases[CreatureConstants.Orc][None] = 0;
+
+                testCases[CreatureConstants.Orc_Half][None] = 0;
 
                 testCases[CreatureConstants.Owl][GetData(SkillConstants.Listen)] = 8;
                 testCases[CreatureConstants.Owl][GetData(SkillConstants.MoveSilently)] = 14;
@@ -937,6 +993,18 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Owl_Giant][GetData(SkillConstants.Spot)] = 4;
 
                 testCases[CreatureConstants.PitFiend][None] = 0;
+
+                testCases[CreatureConstants.Pixie][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Pixie][GetData(SkillConstants.Search)] = 2;
+                testCases[CreatureConstants.Pixie][GetData(SkillConstants.Spot)] = 2;
+
+                testCases[CreatureConstants.Pixie_WithIrresistableDance][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Pixie_WithIrresistableDance][GetData(SkillConstants.Search)] = 2;
+                testCases[CreatureConstants.Pixie_WithIrresistableDance][GetData(SkillConstants.Spot)] = 2;
+
+                testCases[CreatureConstants.Pony][None] = 0;
+
+                testCases[CreatureConstants.Pony_War][None] = 0;
 
                 testCases[CreatureConstants.PrayingMantis_Giant][GetData(SkillConstants.Hide)] = 4;
                 testCases[CreatureConstants.PrayingMantis_Giant][GetData(SkillConstants.Hide, condition: "surrounded by foliage")] = 8;
@@ -1017,6 +1085,18 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.SeaHag][None] = 0;
 
+                testCases[CreatureConstants.Shadow][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Shadow][GetData(SkillConstants.Spot)] = 2;
+                testCases[CreatureConstants.Shadow][GetData(SkillConstants.Search)] = 4;
+                testCases[CreatureConstants.Shadow][GetData(SkillConstants.Hide, condition: "in areas of shadowy illumination")] = 4;
+                testCases[CreatureConstants.Shadow][GetData(SkillConstants.Hide, condition: "in brightly lit areas")] = -4;
+
+                testCases[CreatureConstants.Shadow_Greater][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Shadow_Greater][GetData(SkillConstants.Spot)] = 2;
+                testCases[CreatureConstants.Shadow_Greater][GetData(SkillConstants.Search)] = 4;
+                testCases[CreatureConstants.Shadow_Greater][GetData(SkillConstants.Hide, condition: "in areas of shadowy illumination")] = 4;
+                testCases[CreatureConstants.Shadow_Greater][GetData(SkillConstants.Hide, condition: "in brightly lit areas")] = -4;
+
                 testCases[CreatureConstants.Shark_Dire][None] = 0;
 
                 testCases[CreatureConstants.Shark_Huge][None] = 0;
@@ -1087,6 +1167,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Triceratops][None] = 0;
 
                 testCases[CreatureConstants.Triton][None] = 0;
+
+                testCases[CreatureConstants.TrumpetArchon][None] = 0;
 
                 testCases[CreatureConstants.Tyrannosaurus][GetData(SkillConstants.Listen)] = 2;
                 testCases[CreatureConstants.Tyrannosaurus][GetData(SkillConstants.Spot)] = 2;
@@ -1732,7 +1814,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             var data = SkillConstants.Build(skillName, focus);
 
             if (!string.IsNullOrEmpty(condition))
-                data += "," + condition;
+                data += BonusSelection.Divider + condition;
 
             return data;
         }

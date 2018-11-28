@@ -54,7 +54,7 @@
   </collection>
   <collection>
     <name>Angel</name>
-    <entry>Fortitude,against poison@4</entry>
+    <entry>Fortitude$against poison@4</entry>
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
@@ -109,7 +109,7 @@
   </collection>
   <collection>
     <name>Archon</name>
-    <entry>Fortitude,against poison@4</entry>
+    <entry>Fortitude$against poison@4</entry>
   </collection>
   <collection>
     <name>Assassin Vine</name>
@@ -467,7 +467,7 @@
   </collection>
   <collection>
     <name>Dark Naga</name>
-    <entry>All,against charm effects@2</entry>
+    <entry>All$against charm effects@2</entry>
   </collection>
   <collection>
     <name>Darkmantle</name>
@@ -477,8 +477,8 @@
   </collection>
   <collection>
     <name>Deep Dwarf</name>
-    <entry>All,against spells and spell-like abilities@3</entry>
-    <entry>Fortitude,against poison@3</entry>
+    <entry>All$against spells and spell-like abilities@3</entry>
+    <entry>Fortitude$against poison@3</entry>
   </collection>
   <collection>
     <name>Deep Halfling</name>
@@ -542,11 +542,11 @@
   </collection>
   <collection>
     <name>Displacer Beast</name>
-    <entry>All,ranged magical attacks that specifically target the displacer beast, except for ranged touch attacks@2</entry>
+    <entry>All$ranged magical attacks that specifically target the displacer beast, except for ranged touch attacks@2</entry>
   </collection>
   <collection>
     <name>Displacer Beast Pack Lord</name>
-    <entry>All,ranged magical attacks that specifically target the displacer beast, except for ranged touch attacks@2</entry>
+    <entry>All$ranged magical attacks that specifically target the displacer beast, except for ranged touch attacks@2</entry>
   </collection>
   <collection>
     <name>Djinni</name>
@@ -583,14 +583,14 @@
   </collection>
   <collection>
     <name>Drow</name>
-    <entry>Will,spells and spell-like abilities@2</entry>
+    <entry>Will$spells and spell-like abilities@2</entry>
   </collection>
   <collection>
     <name>Dryad</name>
   </collection>
   <collection>
     <name>Duergar</name>
-    <entry>All,against spells and spell-like abilities@2</entry>
+    <entry>All$against spells and spell-like abilities@2</entry>
   </collection>
   <collection>
     <name>Dust Mephit</name>
@@ -669,7 +669,7 @@
   </collection>
   <collection>
     <name>Elf</name>
-    <entry>All,enchantment spells or effects@2</entry>
+    <entry>All$enchantment spells or effects@2</entry>
   </collection>
   <collection>
     <name>Erinyes</name>
@@ -739,7 +739,7 @@
   </collection>
   <collection>
     <name>Forest Gnome</name>
-    <entry>All,against illusions@2</entry>
+    <entry>All$against illusions@2</entry>
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
@@ -990,7 +990,7 @@
   <collection>
     <name>Halfling</name>
     <entry>All@1</entry>
-    <entry>All,morale against fear@2</entry>
+    <entry>All$morale against fear@2</entry>
   </collection>
   <collection>
     <name>Harpy</name>
@@ -1024,8 +1024,8 @@
   </collection>
   <collection>
     <name>Hill Dwarf</name>
-    <entry>All,against spells and spell-like abilities@2</entry>
-    <entry>Fortitude,against poison@2</entry>
+    <entry>All$against spells and spell-like abilities@2</entry>
+    <entry>Fortitude$against poison@2</entry>
   </collection>
   <collection>
     <name>Hill Giant</name>
@@ -1278,8 +1278,8 @@
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
-    <entry>All,against spells and spell-like abilities@2</entry>
-    <entry>Fortitude,against poison@2</entry>
+    <entry>All$against spells and spell-like abilities@2</entry>
+    <entry>Fortitude$against poison@2</entry>
   </collection>
   <collection>
     <name>Mule</name>
@@ -1491,7 +1491,7 @@
   </collection>
   <collection>
     <name>Rock Gnome</name>
-    <entry>All,against illusions@2</entry>
+    <entry>All$against illusions@2</entry>
   </collection>
   <collection>
     <name>Roper</name>

@@ -19,8 +19,16 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             Assert.That(selection.Damage, Is.Empty);
             Assert.That(selection.IsMelee, Is.False);
+            Assert.That(selection.IsNatural, Is.False);
             Assert.That(selection.IsPrimary, Is.False);
+            Assert.That(selection.IsSpecial, Is.False);
             Assert.That(selection.Name, Is.Empty);
+        }
+
+        [Test]
+        public void AttackSelectionDivider()
+        {
+            Assert.That(AttackSelection.Divider, Is.EqualTo('@'));
         }
     }
 }

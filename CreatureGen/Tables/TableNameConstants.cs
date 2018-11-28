@@ -16,6 +16,7 @@
             public const string AerialManeuverability = "AerialManeuverability";
             public const string AlignmentGroups = "AlignmentGroups";
             public const string ArmorClassModifiers = "ArmorClassModifiers";
+            public const string AttackData = "AttackData";
             public const string CreatureData = "CreatureData";
             public const string CreatureGroups = "CreatureGroups";
             public const string CreatureTypes = "CreatureTypes";

@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Defenses;
+using CreatureGen.Selectors.Selections;
 using CreatureGen.Tables;
 using NUnit.Framework;
 using System.Collections;
@@ -1261,7 +1262,7 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
             var data = saveName;
 
             if (!string.IsNullOrEmpty(condition))
-                data += "," + condition;
+                data += BonusSelection.Divider + condition;
 
             return data;
         }

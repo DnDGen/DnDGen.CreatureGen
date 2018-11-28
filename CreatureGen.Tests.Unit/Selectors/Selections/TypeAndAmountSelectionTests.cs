@@ -20,5 +20,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.Amount, Is.EqualTo(0));
             Assert.That(selection.Type, Is.Empty);
         }
+
+        [Test]
+        public void TypeAndAmountDivider()
+        {
+            Assert.That(TypeAndAmountSelection.Divider, Is.EqualTo('@'));
+        }
     }
 }

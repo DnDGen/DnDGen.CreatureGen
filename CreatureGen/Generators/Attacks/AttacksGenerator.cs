@@ -4,6 +4,7 @@ using CreatureGen.Creatures;
 using CreatureGen.Defenses;
 using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
+using CreatureGen.Selectors.Selections;
 using CreatureGen.Tables;
 using DnDGen.Core.Selectors.Collections;
 using System;
@@ -67,58 +68,36 @@ namespace CreatureGen.Generators.Attacks
 
         public IEnumerable<Attack> GenerateAttacks(string creatureName, string originalSize, string size, int baseAttackBonus, Dictionary<string, Ability> abilities)
         {
-            var attacks = attackSelector.Select(creatureName, size);
+            var attackSelections = attackSelector.Select(creatureName, originalSize, size);
             var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.AttackBonuses, size);
+            var attacks = new List<Attack>();
 
-            foreach (var attack in attacks)
+            foreach (var attackSelection in attackSelections)
             {
+                var attack = new Attack();
+                attacks.Add(attack);
+
+                attack.Damage = attackSelection.Damage;
+                attack.Name = attackSelection.Name;
+                attack.IsMelee = attackSelection.IsMelee;
+                attack.IsNatural = attackSelection.IsNatural;
+                attack.IsPrimary = attackSelection.IsPrimary;
+                attack.IsSpecial = attackSelection.IsSpecial;
+
                 if (attack.IsSpecial)
                     continue;
 
                 attack.BaseAttackBonus = baseAttackBonus;
-                attack.BaseAbility = GetAbilityForAttack(abilities, attack);
+                attack.BaseAbility = GetAbilityForAttack(abilities, attackSelection);
                 attack.SizeModifierForAttackBonus = sizeModifier;
-
-                if (attack.IsNatural)
-                    attack.Damage = AdjustNaturalAttackDamage(originalSize, size, attack.Damage);
             }
 
             return attacks;
         }
 
-        private string AdjustNaturalAttackDamage(string originalSize, string advancedSize, string originalDamage)
+        private Ability GetAbilityForAttack(Dictionary<string, Ability> abilities, AttackSelection attackSelection)
         {
-            if (originalSize == advancedSize)
-                return originalDamage;
-
-            var sizes = SizeConstants.GetOrdered();
-            var originalIndex = Array.IndexOf(sizes, originalSize);
-            var advancedIndex = Array.IndexOf(sizes, advancedSize);
-            var indexDifference = advancedIndex - originalIndex;
-            var adjustedDamage = originalDamage;
-
-            while (indexDifference-- > 0)
-            {
-                switch (adjustedDamage)
-                {
-                    case "1d2": adjustedDamage = "1d3"; break;
-                    case "1d3": adjustedDamage = "1d4"; break;
-                    case "1d4": adjustedDamage = "1d6"; break;
-                    case "1d6": adjustedDamage = "1d8"; break;
-                    case "1d8": adjustedDamage = "2d6"; break;
-                    case "1d10": adjustedDamage = "2d8"; break;
-                    case "2d6": adjustedDamage = "3d6"; break;
-                    case "2d8": adjustedDamage = "3d8"; break;
-                    default: throw new ArgumentException($"Damage of {originalDamage} cannot be advanced to size {advancedSize} from {originalSize}");
-                }
-            }
-
-            return adjustedDamage;
-        }
-
-        private Ability GetAbilityForAttack(Dictionary<string, Ability> abilities, Attack attack)
-        {
-            if (!attack.IsMelee || !abilities[AbilityConstants.Strength].HasScore)
+            if (!attackSelection.IsMelee || !abilities[AbilityConstants.Strength].HasScore)
                 return abilities[AbilityConstants.Dexterity];
 
             return abilities[AbilityConstants.Strength];

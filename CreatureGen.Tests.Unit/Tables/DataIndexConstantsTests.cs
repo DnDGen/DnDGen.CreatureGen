@@ -33,6 +33,30 @@ namespace CreatureGen.Tests.Unit.Tables
             Assert.That(data, Is.All.Empty);
         }
 
+        [TestCase(DataIndexConstants.AttackData.Name, 0)]
+        [TestCase(DataIndexConstants.AttackData.Damage, 1)]
+        [TestCase(DataIndexConstants.AttackData.IsNatural, 2)]
+        [TestCase(DataIndexConstants.AttackData.IsMelee, 3)]
+        [TestCase(DataIndexConstants.AttackData.IsPrimary, 4)]
+        [TestCase(DataIndexConstants.AttackData.IsSpecial, 5)]
+        public void AttackDataIndex(int constant, int value)
+        {
+            Assert.That(constant, Is.EqualTo(value));
+        }
+
+        [TestCase(DataIndexConstants.AttackData.Name)]
+        [TestCase(DataIndexConstants.AttackData.Damage)]
+        [TestCase(DataIndexConstants.AttackData.IsNatural)]
+        [TestCase(DataIndexConstants.AttackData.IsMelee)]
+        [TestCase(DataIndexConstants.AttackData.IsPrimary)]
+        [TestCase(DataIndexConstants.AttackData.IsSpecial)]
+        public void AttackDataIndicesInitialized(int index)
+        {
+            var data = DataIndexConstants.AttackData.InitializeData();
+            Assert.That(data.Count, Is.GreaterThan(index));
+            Assert.That(data, Is.All.Empty);
+        }
+
         [TestCase(DataIndexConstants.FeatData.BaseAttackRequirementIndex, 0)]
         [TestCase(DataIndexConstants.FeatData.FocusTypeIndex, 1)]
         [TestCase(DataIndexConstants.FeatData.PowerIndex, 2)]
