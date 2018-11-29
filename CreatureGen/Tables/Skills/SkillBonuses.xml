@@ -1358,39 +1358,66 @@
   </collection>
   <collection>
     <name>Kobold</name>
+    <entry>Craft/Trapmaking@2</entry>
+    <entry>Profession/Miner@2</entry>
+    <entry>Search@2</entry>
   </collection>
   <collection>
     <name>Kolyarut</name>
+    <entry>Disguise@4</entry>
+    <entry>Gather Information@4</entry>
+    <entry>Sense Motive@4</entry>
   </collection>
   <collection>
     <name>Kraken</name>
   </collection>
   <collection>
     <name>Krenshar</name>
+    <entry>Jump@4</entry>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Kuo-toa</name>
+    <entry>Escape Artist@8</entry>
+    <entry>Search@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Lacedon</name>
   </collection>
   <collection>
     <name>Lamia</name>
+    <entry>Bluff@4</entry>
+    <entry>Hide@4</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
+    <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
+  </collection>
+  <collection>
+    <name>Lawful</name>
   </collection>
   <collection>
     <name>Lemure</name>
   </collection>
   <collection>
     <name>Leonal</name>
+    <entry>Balance@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Leopard</name>
+    <entry>Balance@8</entry>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Hide$in areas of tall grass or heavy undergrowth@4</entry>
+    <entry>Jump@8</entry>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Light Horse</name>
@@ -1400,24 +1427,43 @@
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
+    <entry>Climb@2</entry>
+    <entry>Jump@2</entry>
+    <entry>Move Silently@2</entry>
   </collection>
   <collection>
     <name>Lillend</name>
+    <entry>Survival@4</entry>
   </collection>
   <collection>
     <name>Lion</name>
+    <entry>Balance@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Hide$in tall grass or heavy undergrowth@8</entry>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Lizard</name>
+    <entry>Balance@8</entry>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
+    <entry>Balance@4</entry>
+    <entry>Jump@4</entry>
+    <entry>Swim@4</entry>
   </collection>
   <collection>
     <name>Locathah</name>
   </collection>
   <collection>
     <name>Locust Swarm</name>
+    <entry>Listen@4</entry>
+    <entry>Spot@4</entry>
+  </collection>
+  <collection>
+    <name>Magical Beast</name>
   </collection>
   <collection>
     <name>Magma Mephit</name>
@@ -1426,16 +1472,31 @@
     <name>Magmin</name>
   </collection>
   <collection>
+    <name>Malenti</name>
+    <entry>Handle Animal$when working with sharks@4</entry>
+    <entry>Hide$underwater@4</entry>
+    <entry>Listen$underwater@4</entry>
+    <entry>Profession/Hunter$within 50 miles of its home@4</entry>
+    <entry>Spot$underwater@4</entry>
+    <entry>Survival$within 50 miles of its home@4</entry>
+  </collection>
+  <collection>
     <name>Manta Ray</name>
   </collection>
   <collection>
     <name>Manticore</name>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Marilith</name>
+    <entry>Listen@8</entry>
+    <entry>Spot@8</entry>
   </collection>
   <collection>
     <name>Marut</name>
+    <entry>Concentration@4</entry>
+    <entry>Listen@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Medusa</name>
@@ -1456,6 +1517,7 @@
   </collection>
   <collection>
     <name>Mimic</name>
+    <entry>Disguise@8</entry>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
@@ -1465,90 +1527,257 @@
   </collection>
   <collection>
     <name>Minotaur</name>
+    <entry>Listen@4</entry>
+    <entry>Search@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Mohrg</name>
   </collection>
   <collection>
     <name>Monitor Lizard</name>
+    <entry>Hide@4</entry>
+    <entry>Hide$in forested or overgrown areas@4</entry>
+    <entry>Move Silently@4</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Monkey</name>
+    <entry>Balance@8</entry>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@8</entry>
+    <entry>Spot@4</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Humanoid</name>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
+    <entry>Climb@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
+    <entry>Climb@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
+    <entry>Climb@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
+    <entry>Climb@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Medium</name>
+    <entry>Climb@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Small</name>
+    <entry>Climb@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
+    <entry>Climb@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Colossal</name>
+    <name>Monstrous Spider, Hunter, Colossal</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Jump@10</entry>
+    <entry>Spot@8</entry>
+  </collection>             
+  <collection>              
+    <name>Monstrous Spider, Hunter, Gargantuan</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Jump@10</entry>
+    <entry>Spot@8</entry>
+  </collection>             
+  <collection>              
+    <name>Monstrous Spider, Hunter, Huge</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Jump@10</entry>
+    <entry>Spot@8</entry>
+  </collection>             
+  <collection>              
+    <name>Monstrous Spider, Hunter, Large</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Jump@10</entry>
+    <entry>Spot@8</entry>
+  </collection>             
+  <collection>              
+    <name>Monstrous Spider, Hunter, Medium</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Jump@10</entry>
+    <entry>Spot@8</entry>
+  </collection>             
+  <collection>              
+    <name>Monstrous Spider, Hunter, Small</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Jump@10</entry>
+    <entry>Spot@8</entry>
+  </collection>             
+  <collection>              
+    <name>Monstrous Spider, Hunter, Tiny</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Jump@10</entry>
+    <entry>Spot@8</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Gargantuan</name>
+    <name>Monstrous Spider, Web-Spinner, Colossal</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Hide$when using their webs@8</entry>
+    <entry>Move Silently$when using their webs@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Huge</name>
+    <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Hide$when using their webs@8</entry>
+    <entry>Move Silently$when using their webs@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Large</name>
+    <name>Monstrous Spider, Web-Spinner, Huge</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Hide$when using their webs@8</entry>
+    <entry>Move Silently$when using their webs@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Medium</name>
+    <name>Monstrous Spider, Web-Spinner, Large</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Hide$when using their webs@8</entry>
+    <entry>Move Silently$when using their webs@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Small</name>
+    <name>Monstrous Spider, Web-Spinner, Medium</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Hide$when using their webs@8</entry>
+    <entry>Move Silently$when using their webs@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Tiny</name>
+    <name>Monstrous Spider, Web-Spinner, Small</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Hide$when using their webs@8</entry>
+    <entry>Move Silently$when using their webs@8</entry>
+    <entry>Spot@4</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Tiny</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Hide$when using their webs@8</entry>
+    <entry>Move Silently$when using their webs@8</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
   </collection>
   <collection>
     <name>Mule</name>
+    <entry>Balance$To avoid slipping or falling@2</entry>
   </collection>
   <collection>
     <name>Mummy</name>
   </collection>
   <collection>
     <name>Nalfeshnee</name>
+    <entry>Listen@8</entry>
+    <entry>Spot@8</entry>
+  </collection>
+  <collection>
+    <name>Native</name>
   </collection>
   <collection>
     <name>Nessian Warhound</name>
@@ -1569,9 +1798,11 @@
   </collection>
   <collection>
     <name>Nightwalker</name>
+    <entry>Hide$in a dark area@8</entry>
   </collection>
   <collection>
     <name>Nightwing</name>
+    <entry>Hide$in a dark area or flying in a dark sky@8</entry>
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
@@ -1596,18 +1827,24 @@
   </collection>
   <collection>
     <name>Nixie</name>
+    <entry>Hide$in water@5</entry>
   </collection>
   <collection>
     <name>Noble Djinni</name>
   </collection>
   <collection>
     <name>Noble Salamander</name>
+    <entry>Craft/Blacksmithing@4</entry>
   </collection>
   <collection>
     <name>Nymph</name>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Ochre Jelly</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Octopus</name>
@@ -1619,6 +1856,9 @@
   </collection>
   <collection>
     <name>Ogre Mage</name>
+  </collection>
+  <collection>
+    <name>Ooze</name>
   </collection>
   <collection>
     <name>Ooze Mephit</name>
@@ -1633,66 +1873,115 @@
   </collection>
   <collection>
     <name>Otyugh</name>
+    <entry>Hide$in its lair@8</entry>
+  </collection>
+  <collection>
+    <name>Outsider</name>
   </collection>
   <collection>
     <name>Owl</name>
     <entry>Listen@8</entry>
-    <entry>Move Silently$in flight@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Move Silently@14</entry>
+    <entry>Spot$in areas of shadowy illumination@8</entry>
   </collection>
   <collection>
     <name>Owlbear</name>
   </collection>
   <collection>
     <name>Pegasus</name>
+    <entry>Listen@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Phantom Fungus</name>
+    <entry>Move Silently@5</entry>
   </collection>
   <collection>
     <name>Phase Spider</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Phasm</name>
+    <entry>Disguise$when using Shapechange@10</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
   </collection>
   <collection>
     <name>Pixie</name>
+    <entry>Listen@2</entry>
+    <entry>Search@2</entry>
+    <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Pixie with Irresistable Dance</name>
+    <entry>Listen@2</entry>
+    <entry>Search@2</entry>
+    <entry>Spot@2</entry>
+  </collection>
+  <collection>
+    <name>Plant</name>
   </collection>
   <collection>
     <name>Polar Bear</name>
+    <entry>Hide$in snowy settings@12</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Pony</name>
   </collection>
   <collection>
     <name>Porpoise</name>
+    <entry>Listen$while able to use blindsight@4</entry>
+    <entry>Spot$while able to use blindsight@4</entry>
   </collection>
   <collection>
     <name>Pseudodragon</name>
+    <entry>Hide@4</entry>
+    <entry>Hide$in forest or overgrown areas@4</entry>
   </collection>
   <collection>
     <name>Purple Worm</name>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Quasit</name>
   </collection>
   <collection>
     <name>Rakshasa</name>
+    <entry>Bluff@4</entry>
+    <entry>Bluff$when using Change Shape@10</entry>
+    <entry>Bluff$when reading an opponent's mind@4</entry>
+    <entry>Disguise@4</entry>
+    <entry>Disguise$when reading an opponent's mind@4</entry>
   </collection>
   <collection>
     <name>Rast</name>
   </collection>
   <collection>
     <name>Rat</name>
+    <entry>Balance@8</entry>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Move Silently@4</entry>
+    <entry>Swim@8</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Rat Swarm</name>
+    <entry>Balance@8</entry>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Move Silently@4</entry>
+    <entry>Swim@8</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Raven</name>
@@ -1746,6 +2035,9 @@
     <name>Remorhaz</name>
   </collection>
   <collection>
+    <name>Reptilian</name>
+  </collection>
+  <collection>
     <name>Retriever</name>
   </collection>
   <collection>
@@ -1765,12 +2057,21 @@
   </collection>
   <collection>
     <name>Sahuagin</name>
+    <entry>Handle Animal$when working with sharks@4</entry>
+    <entry>Hide$underwater@4</entry>
+    <entry>Listen$underwater@4</entry>
+    <entry>Profession/Hunter$within 50 miles of its home@4</entry>
+    <entry>Spot$underwater@4</entry>
+    <entry>Survival$within 50 miles of its home@4</entry>
   </collection>
   <collection>
     <name>Sahuagin Mutant</name>
-  </collection>
-  <collection>
-    <name>Malenti</name>
+    <entry>Handle Animal$when working with sharks@4</entry>
+    <entry>Hide$underwater@4</entry>
+    <entry>Listen$underwater@4</entry>
+    <entry>Profession/Hunter$within 50 miles of its home@4</entry>
+    <entry>Spot$underwater@4</entry>
+    <entry>Survival$within 50 miles of its home@4</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
@@ -1827,6 +2128,9 @@
   </collection>
   <collection>
     <name>Shambling Mound</name>
+  </collection>
+  <collection>
+    <name>Shapechanger</name>
   </collection>
   <collection>
     <name>Shark, Huge</name>

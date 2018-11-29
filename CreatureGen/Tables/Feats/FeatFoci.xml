@@ -26,8 +26,10 @@
   <collection>
     <name>Imp Alternate Form</name>
     <entry>Boar</entry>
-    <entry>Monstrous Spider, Medium</entry>
-    <entry>Monstrous Spider, Small</entry>
+    <entry>Monstrous Spider, Hunter, Medium</entry>
+    <entry>Monstrous Spider, Hunter, Small</entry>
+    <entry>Monstrous Spider, Web-Spinner, Medium</entry>
+    <entry>Monstrous Spider, Web-Spinner, Small</entry>
     <entry>Rat</entry>
     <entry>Raven</entry>
   </collection>

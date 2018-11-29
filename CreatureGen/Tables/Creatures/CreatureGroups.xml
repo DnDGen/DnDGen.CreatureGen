@@ -1479,13 +1479,20 @@
   </collection>
   <collection>
     <name>Monstrous Spider</name>
-    <entry>Monstrous Spider, Tiny</entry>
-    <entry>Monstrous Spider, Small</entry>
-    <entry>Monstrous Spider, Medium</entry>
-    <entry>Monstrous Spider, Large</entry>
-    <entry>Monstrous Spider, Huge</entry>
-    <entry>Monstrous Spider, Gargantuan</entry>
-    <entry>Monstrous Spider, Colossal</entry>
+    <entry>Monstrous Spider, Hunter, Tiny</entry>
+    <entry>Monstrous Spider, Hunter, Small</entry>
+    <entry>Monstrous Spider, Hunter, Medium</entry>
+    <entry>Monstrous Spider, Hunter, Large</entry>
+    <entry>Monstrous Spider, Hunter, Huge</entry>
+    <entry>Monstrous Spider, Hunter, Gargantuan</entry>
+    <entry>Monstrous Spider, Hunter, Colossal</entry>
+    <entry>Monstrous Spider, Web-Spinner, Tiny</entry>
+    <entry>Monstrous Spider, Web-Spinner, Small</entry>
+    <entry>Monstrous Spider, Web-Spinner, Medium</entry>
+    <entry>Monstrous Spider, Web-Spinner, Large</entry>
+    <entry>Monstrous Spider, Web-Spinner, Huge</entry>
+    <entry>Monstrous Spider, Web-Spinner, Gargantuan</entry>
+    <entry>Monstrous Spider, Web-Spinner, Colossal</entry>
   </collection>
   <collection>
     <name>Naga</name>

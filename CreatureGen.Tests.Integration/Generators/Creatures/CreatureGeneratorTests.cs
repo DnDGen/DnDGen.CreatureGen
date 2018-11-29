@@ -1,6 +1,7 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Feats;
 using CreatureGen.Generators.Creatures;
+using CreatureGen.Skills;
 using CreatureGen.Tests.Integration.TestData;
 using EventGen;
 using Ninject;
@@ -114,6 +115,18 @@ namespace CreatureGen.Tests.Integration.Generators.Creatures
 
             var specialQualityNames = halfOrc.SpecialQualities.Select(q => q.Name);
             Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.LightSensitivity));
+        }
+
+        [Test]
+        public void BUG_NightcrawlerHasConcentration()
+        {
+            var nightcrawler = CreatureGenerator.Generate(CreatureConstants.Nightcrawler, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreature(nightcrawler);
+
+            Assert.That(nightcrawler.Skills, Is.Not.Empty);
+
+            var skillNames = nightcrawler.Skills.Select(q => q.Name);
+            Assert.That(skillNames, Contains.Item(SkillConstants.Concentration));
         }
     }
 }

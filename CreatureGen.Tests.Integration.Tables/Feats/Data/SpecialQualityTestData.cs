@@ -3236,22 +3236,39 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Spectre].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SunlightPowerlessness));
                 testCases[CreatureConstants.Spectre].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.UnnaturalAura));
 
-                testCases[CreatureConstants.Spider_Monstrous_Tiny].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
-                testCases[CreatureConstants.Spider_Monstrous_Tiny].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Tiny].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Tiny].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Spider_Monstrous_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
-                testCases[CreatureConstants.Spider_Monstrous_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Spider_Monstrous_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
-                testCases[CreatureConstants.Spider_Monstrous_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Spider_Monstrous_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
 
-                testCases[CreatureConstants.Spider_Monstrous_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
 
-                testCases[CreatureConstants.Spider_Monstrous_Gargantuan].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
 
-                testCases[CreatureConstants.Spider_Monstrous_Colossal].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Colossal].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Small].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Medium].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Large].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Huge].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
 
                 testCases[CreatureConstants.SpiderEater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FreedomOfMovement, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
                 testCases[CreatureConstants.SpiderEater].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));

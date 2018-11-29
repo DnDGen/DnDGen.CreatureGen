@@ -3355,7 +3355,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Lizard,
             SkillConstants.Balance,
-            SkillConstants.Climb,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
             SkillConstants.Hide,
             SkillConstants.Listen,
             SkillConstants.MoveSilently,
@@ -3567,7 +3567,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Monkey,
             SkillConstants.Balance,
-            SkillConstants.Climb,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
             SkillConstants.EscapeArtist,
             SkillConstants.Hide,
             SkillConstants.Listen,
@@ -4140,9 +4140,9 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.ShieldGuardian)]
         [TestCase(CreatureConstants.ShockerLizard,
-            SkillConstants.Climb,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
             SkillConstants.Hide,
-            SkillConstants.Jump,
+            SkillConstants.Jump + AbilityConstants.Dexterity,
             SkillConstants.Listen,
             SkillConstants.Swim,
             SkillConstants.Spot)]
@@ -4260,38 +4260,73 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Search,
             SkillConstants.Survival,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Colossal,
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Colossal,
             SkillConstants.Climb,
             SkillConstants.Hide,
             SkillConstants.Jump,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Gargantuan,
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan,
             SkillConstants.Climb,
             SkillConstants.Hide,
             SkillConstants.Jump,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Huge,
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Huge,
             SkillConstants.Climb,
             SkillConstants.Hide,
             SkillConstants.Jump,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Large,
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Large,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
+            SkillConstants.Hide,
+            SkillConstants.Jump,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Medium,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
+            SkillConstants.Hide,
+            SkillConstants.Jump,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Small,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
+            SkillConstants.Hide,
+            SkillConstants.Jump,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Tiny,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
+            SkillConstants.Hide,
+            SkillConstants.Jump,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal,
             SkillConstants.Climb,
             SkillConstants.Hide,
             SkillConstants.Jump,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Medium,
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan,
             SkillConstants.Climb,
             SkillConstants.Hide,
             SkillConstants.Jump,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Small,
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Huge,
             SkillConstants.Climb,
             SkillConstants.Hide,
             SkillConstants.Jump,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Tiny,
-            SkillConstants.Climb,
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Large,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
+            SkillConstants.Hide,
+            SkillConstants.Jump,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Medium,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
+            SkillConstants.Hide,
+            SkillConstants.Jump,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Small,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
+            SkillConstants.Hide,
+            SkillConstants.Jump,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny,
+            SkillConstants.Climb + AbilityConstants.Dexterity,
             SkillConstants.Hide,
             SkillConstants.Jump,
             SkillConstants.Spot)]

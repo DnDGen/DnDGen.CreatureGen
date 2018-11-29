@@ -1619,30 +1619,56 @@
     <name>Monstrous Scorpion, Tiny</name>
   </collection>
   <collection>
-    <name>Monstrous Spider, Colossal</name>
+    <name>Monstrous Spider, Hunter, Colossal</name>
     <entry>Colossal,40,30@3d10-2</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Gargantuan</name>
+    <name>Monstrous Spider, Hunter, Gargantuan</name>
     <entry>Gargantuan,20,15@2d8-1</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Huge</name>
+    <name>Monstrous Spider, Hunter, Huge</name>
     <entry>Huge,15,10@2d4-1</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Large</name>
+    <name>Monstrous Spider, Hunter, Large</name>
     <entry>Large,10,5@1d3</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Medium</name>
+    <name>Monstrous Spider, Hunter, Medium</name>
     <entry>Medium,5,5@1</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Small</name>
+    <name>Monstrous Spider, Hunter, Small</name>
   </collection>
   <collection>
-    <name>Monstrous Spider, Tiny</name>
+    <name>Monstrous Spider, Hunter, Tiny</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Colossal</name>
+    <entry>Colossal,40,30@3d10-2</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+    <entry>Gargantuan,20,15@2d8-1</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Huge</name>
+    <entry>Huge,15,10@2d4-1</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Large</name>
+    <entry>Large,10,5@1d3</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Medium</name>
+    <entry>Medium,5,5@1</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Small</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Tiny</name>
   </collection>
   <collection>
     <name>Mountain Dwarf</name>

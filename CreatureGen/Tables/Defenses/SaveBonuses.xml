@@ -1256,25 +1256,46 @@
     <name>Monstrous Scorpion, Tiny</name>
   </collection>
   <collection>
-    <name>Monstrous Spider, Colossal</name>
+    <name>Monstrous Spider, Hunter, Colossal</name>
   </collection>
   <collection>
-    <name>Monstrous Spider, Gargantuan</name>
+    <name>Monstrous Spider, Hunter, Gargantuan</name>
   </collection>
   <collection>
-    <name>Monstrous Spider, Huge</name>
+    <name>Monstrous Spider, Hunter, Huge</name>
   </collection>
   <collection>
-    <name>Monstrous Spider, Large</name>
+    <name>Monstrous Spider, Hunter, Large</name>
   </collection>
   <collection>
-    <name>Monstrous Spider, Medium</name>
+    <name>Monstrous Spider, Hunter, Medium</name>
   </collection>
   <collection>
-    <name>Monstrous Spider, Small</name>
+    <name>Monstrous Spider, Hunter, Small</name>
   </collection>
   <collection>
-    <name>Monstrous Spider, Tiny</name>
+    <name>Monstrous Spider, Hunter, Tiny</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Colossal</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Huge</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Large</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Medium</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Small</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Tiny</name>
   </collection>
   <collection>
     <name>Mountain Dwarf</name>

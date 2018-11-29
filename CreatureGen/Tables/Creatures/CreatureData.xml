@@ -5282,7 +5282,7 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Colossal</name>
+    <name>Monstrous Spider, Hunter, Colossal</name>
     <entry>11</entry>
     <entry></entry>
     <entry>30</entry>
@@ -5294,7 +5294,7 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Gargantuan</name>
+    <name>Monstrous Spider, Hunter, Gargantuan</name>
     <entry>8</entry>
     <entry></entry>
     <entry>15</entry>
@@ -5306,7 +5306,7 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Huge</name>
+    <name>Monstrous Spider, Hunter, Huge</name>
     <entry>5</entry>
     <entry></entry>
     <entry>10</entry>
@@ -5318,7 +5318,7 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Large</name>
+    <name>Monstrous Spider, Hunter, Large</name>
     <entry>2</entry>
     <entry></entry>
     <entry>5</entry>
@@ -5330,7 +5330,7 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Medium</name>
+    <name>Monstrous Spider, Hunter, Medium</name>
     <entry>1</entry>
     <entry></entry>
     <entry>5</entry>
@@ -5342,7 +5342,7 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Small</name>
+    <name>Monstrous Spider, Hunter, Small</name>
     <entry>1/2</entry>
     <entry></entry>
     <entry>5</entry>
@@ -5354,7 +5354,91 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Tiny</name>
+    <name>Monstrous Spider, Hunter, Tiny</name>
+    <entry>1/4</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Colossal</name>
+    <entry>11</entry>
+    <entry></entry>
+    <entry>30</entry>
+    <entry>Colossal</entry>
+    <entry>40</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>18</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+    <entry>8</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>10</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Large</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Medium</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>1</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Small</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Tiny</name>
     <entry>1/4</entry>
     <entry></entry>
     <entry>0</entry>

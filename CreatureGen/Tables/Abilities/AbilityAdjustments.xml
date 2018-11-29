@@ -3388,7 +3388,7 @@
     <entry>Wisdom@0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Colossal</name>
+    <name>Monstrous Spider, Hunter, Colossal</name>
     <entry>Charisma@-8</entry>
     <entry>Constitution@4</entry>
     <entry>Dexterity@4</entry>
@@ -3396,7 +3396,7 @@
     <entry>Wisdom@0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Gargantuan</name>
+    <name>Monstrous Spider, Hunter, Gargantuan</name>
     <entry>Charisma@-8</entry>
     <entry>Constitution@4</entry>
     <entry>Dexterity@6</entry>
@@ -3404,7 +3404,7 @@
     <entry>Wisdom@0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Huge</name>
+    <name>Monstrous Spider, Hunter, Huge</name>
     <entry>Charisma@-8</entry>
     <entry>Constitution@4</entry>
     <entry>Dexterity@6</entry>
@@ -3412,7 +3412,7 @@
     <entry>Wisdom@0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Large</name>
+    <name>Monstrous Spider, Hunter, Large</name>
     <entry>Charisma@-8</entry>
     <entry>Constitution@2</entry>
     <entry>Dexterity@6</entry>
@@ -3420,7 +3420,7 @@
     <entry>Wisdom@0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Medium</name>
+    <name>Monstrous Spider, Hunter, Medium</name>
     <entry>Charisma@-8</entry>
     <entry>Constitution@2</entry>
     <entry>Dexterity@6</entry>
@@ -3428,7 +3428,7 @@
     <entry>Wisdom@0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Small</name>
+    <name>Monstrous Spider, Hunter, Small</name>
     <entry>Charisma@-8</entry>
     <entry>Constitution@0</entry>
     <entry>Dexterity@6</entry>
@@ -3436,7 +3436,63 @@
     <entry>Wisdom@0</entry>
   </collection>
   <collection>
-    <name>Monstrous Spider, Tiny</name>
+    <name>Monstrous Spider, Hunter, Tiny</name>
+    <entry>Charisma@-8</entry>
+    <entry>Constitution@0</entry>
+    <entry>Dexterity@6</entry>
+    <entry>Strength@-8</entry>
+    <entry>Wisdom@0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Colossal</name>
+    <entry>Charisma@-8</entry>
+    <entry>Constitution@4</entry>
+    <entry>Dexterity@4</entry>
+    <entry>Strength@20</entry>
+    <entry>Wisdom@0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+    <entry>Charisma@-8</entry>
+    <entry>Constitution@4</entry>
+    <entry>Dexterity@6</entry>
+    <entry>Strength@14</entry>
+    <entry>Wisdom@0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Huge</name>
+    <entry>Charisma@-8</entry>
+    <entry>Constitution@4</entry>
+    <entry>Dexterity@6</entry>
+    <entry>Strength@8</entry>
+    <entry>Wisdom@0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Large</name>
+    <entry>Charisma@-8</entry>
+    <entry>Constitution@2</entry>
+    <entry>Dexterity@6</entry>
+    <entry>Strength@4</entry>
+    <entry>Wisdom@0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Medium</name>
+    <entry>Charisma@-8</entry>
+    <entry>Constitution@2</entry>
+    <entry>Dexterity@6</entry>
+    <entry>Strength@0</entry>
+    <entry>Wisdom@0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Small</name>
+    <entry>Charisma@-8</entry>
+    <entry>Constitution@0</entry>
+    <entry>Dexterity@6</entry>
+    <entry>Strength@-4</entry>
+    <entry>Wisdom@0</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Tiny</name>
     <entry>Charisma@-8</entry>
     <entry>Constitution@0</entry>
     <entry>Dexterity@6</entry>

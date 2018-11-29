@@ -1055,19 +1055,33 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Spectre][None] = 0;
 
-                testCases[CreatureConstants.Spider_Monstrous_Colossal][None] = 0;
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Colossal][None] = 0;
 
-                testCases[CreatureConstants.Spider_Monstrous_Gargantuan][None] = 0;
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan][None] = 0;
 
-                testCases[CreatureConstants.Spider_Monstrous_Huge][None] = 0;
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Huge][None] = 0;
 
-                testCases[CreatureConstants.Spider_Monstrous_Large][None] = 0;
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Large][None] = 0;
 
-                testCases[CreatureConstants.Spider_Monstrous_Medium][None] = 0;
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Medium][None] = 0;
 
-                testCases[CreatureConstants.Spider_Monstrous_Small][None] = 0;
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Small][None] = 0;
 
-                testCases[CreatureConstants.Spider_Monstrous_Tiny][None] = 0;
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Tiny][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Huge][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Large][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Medium][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Small][None] = 0;
+
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny][None] = 0;
 
                 testCases[CreatureConstants.SpiderEater][None] = 0;
 

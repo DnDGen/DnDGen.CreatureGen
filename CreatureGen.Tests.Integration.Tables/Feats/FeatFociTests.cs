@@ -102,8 +102,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             WeaponConstants.Shuriken,
             WeaponConstants.Net)]
         [TestCase("Imp Alternate Form",
-            CreatureConstants.Spider_Monstrous_Small,
-            CreatureConstants.Spider_Monstrous_Medium,
+            CreatureConstants.Spider_Monstrous_Hunter_Small,
+            CreatureConstants.Spider_Monstrous_Hunter_Medium,
+            CreatureConstants.Spider_Monstrous_WebSpinner_Small,
+            CreatureConstants.Spider_Monstrous_WebSpinner_Medium,
             CreatureConstants.Raven,
             CreatureConstants.Rat,
             CreatureConstants.Boar)]

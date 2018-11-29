@@ -743,13 +743,20 @@ namespace CreatureGen.Creatures
         public const string Snake_Viper_Tiny = "Viper Snake, Tiny";
         public const string Angel_Solar = "Angel, Solar";
         public const string Spectre = "Spectre";
-        public const string Spider_Monstrous_Colossal = "Monstrous Spider, Colossal";
-        public const string Spider_Monstrous_Gargantuan = "Monstrous Spider, Gargantuan";
-        public const string Spider_Monstrous_Huge = "Monstrous Spider, Huge";
-        public const string Spider_Monstrous_Large = "Monstrous Spider, Large";
-        public const string Spider_Monstrous_Medium = "Monstrous Spider, Medium";
-        public const string Spider_Monstrous_Small = "Monstrous Spider, Small";
-        public const string Spider_Monstrous_Tiny = "Monstrous Spider, Tiny";
+        public const string Spider_Monstrous_Hunter_Colossal = "Monstrous Spider, Hunter, Colossal";
+        public const string Spider_Monstrous_Hunter_Gargantuan = "Monstrous Spider, Hunter, Gargantuan";
+        public const string Spider_Monstrous_Hunter_Huge = "Monstrous Spider, Hunter, Huge";
+        public const string Spider_Monstrous_Hunter_Large = "Monstrous Spider, Hunter, Large";
+        public const string Spider_Monstrous_Hunter_Medium = "Monstrous Spider, Hunter, Medium";
+        public const string Spider_Monstrous_Hunter_Small = "Monstrous Spider, Hunter, Small";
+        public const string Spider_Monstrous_Hunter_Tiny = "Monstrous Spider, Hunter, Tiny";
+        public const string Spider_Monstrous_WebSpinner_Colossal = "Monstrous Spider, Web-Spinner, Colossal";
+        public const string Spider_Monstrous_WebSpinner_Gargantuan = "Monstrous Spider, Web-Spinner, Gargantuan";
+        public const string Spider_Monstrous_WebSpinner_Huge = "Monstrous Spider, Web-Spinner, Huge";
+        public const string Spider_Monstrous_WebSpinner_Large = "Monstrous Spider, Web-Spinner, Large";
+        public const string Spider_Monstrous_WebSpinner_Medium = "Monstrous Spider, Web-Spinner, Medium";
+        public const string Spider_Monstrous_WebSpinner_Small = "Monstrous Spider, Web-Spinner, Small";
+        public const string Spider_Monstrous_WebSpinner_Tiny = "Monstrous Spider, Web-Spinner, Tiny";
         public const string Spider_Swarm = "Spider Swarm";
         public const string SpiderEater = "Spider Eater";
         public const string Squid = "Squid";
@@ -1329,13 +1336,20 @@ namespace CreatureGen.Creatures
                 Snake_Viper_Tiny,
                 Angel_Solar,
                 Spectre,
-                Spider_Monstrous_Colossal,
-                Spider_Monstrous_Gargantuan,
-                Spider_Monstrous_Huge,
-                Spider_Monstrous_Large,
-                Spider_Monstrous_Medium,
-                Spider_Monstrous_Small,
-                Spider_Monstrous_Tiny,
+                Spider_Monstrous_Hunter_Colossal,
+                Spider_Monstrous_Hunter_Gargantuan,
+                Spider_Monstrous_Hunter_Huge,
+                Spider_Monstrous_Hunter_Large,
+                Spider_Monstrous_Hunter_Medium,
+                Spider_Monstrous_Hunter_Small,
+                Spider_Monstrous_Hunter_Tiny,
+                Spider_Monstrous_WebSpinner_Colossal,
+                Spider_Monstrous_WebSpinner_Gargantuan,
+                Spider_Monstrous_WebSpinner_Huge,
+                Spider_Monstrous_WebSpinner_Large,
+                Spider_Monstrous_WebSpinner_Medium,
+                Spider_Monstrous_WebSpinner_Small,
+                Spider_Monstrous_WebSpinner_Tiny,
                 Spider_Swarm,
                 SpiderEater,
                 Squid,
