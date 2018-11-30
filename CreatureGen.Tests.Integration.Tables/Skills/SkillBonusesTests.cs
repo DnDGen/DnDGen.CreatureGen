@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Creatures;
+using CreatureGen.Skills;
 using CreatureGen.Tables;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -21,7 +22,15 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             var foci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
             var skills = foci[GroupConstants.Skills];
 
-            var names = creatures.Union(types).Union(subtypes).Union(skills);
+            var nonFociSkills = new[]
+            {
+                SkillConstants.Craft,
+                SkillConstants.Knowledge,
+                SkillConstants.Perform,
+                SkillConstants.Profession,
+            };
+
+            var names = creatures.Union(types).Union(subtypes).Union(skills).Union(nonFociSkills);
 
             AssertCollectionNames(names);
         }

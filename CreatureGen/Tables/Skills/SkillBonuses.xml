@@ -1940,7 +1940,7 @@
   <collection>
     <name>Pseudodragon</name>
     <entry>Hide@4</entry>
-    <entry>Hide$in forest or overgrown areas@4</entry>
+    <entry>Hide$in forests or overgrown areas@4</entry>
   </collection>
   <collection>
     <name>Purple Worm</name>
@@ -2033,6 +2033,7 @@
   </collection>
   <collection>
     <name>Remorhaz</name>
+    <entry>Listen@4</entry>
   </collection>
   <collection>
     <name>Reptilian</name>
@@ -2045,12 +2046,14 @@
   </collection>
   <collection>
     <name>Roc</name>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Rock Gnome</name>
   </collection>
   <collection>
     <name>Roper</name>
+    <entry>Hide$in stony or icy areas@8</entry>
   </collection>
   <collection>
     <name>Rust Monster</name>
@@ -2078,9 +2081,19 @@
   </collection>
   <collection>
     <name>Satyr</name>
+    <entry>Hide@4</entry>
+    <entry>Listen@4</entry>
+    <entry>Move Silently@4</entry>
+    <entry>Perform@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Satyr with pipes</name>
+    <entry>Hide@4</entry>
+    <entry>Listen@4</entry>
+    <entry>Move Silently@4</entry>
+    <entry>Perform@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Scorpionfolk</name>
@@ -2125,9 +2138,14 @@
   </collection>
   <collection>
     <name>Shadow Mastiff</name>
+    <entry>Survival$when tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Shambling Mound</name>
+    <entry>Hide@4</entry>
+    <entry>Hide$in a swampy or forested area@8</entry>
+    <entry>Listen@4</entry>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Shapechanger</name>
@@ -2146,6 +2164,13 @@
   </collection>
   <collection>
     <name>Shocker Lizard</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Listen@2</entry>
+    <entry>Spot@2</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Shrieker</name>
@@ -2209,15 +2234,24 @@
   </collection>
   <collection>
     <name>Skum</name>
+    <entry>Hide$underwater@4</entry>
+    <entry>Listen$underwater@4</entry>
+    <entry>Spot$underwater@4</entry>
   </collection>
   <collection>
     <name>Spectre</name>
   </collection>
   <collection>
     <name>Spider Eater</name>
+    <entry>Listen@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Spider Swarm</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Spirit Naga</name>
@@ -2233,27 +2267,41 @@
   </collection>
   <collection>
     <name>Stone Giant</name>
+    <entry>Hide$in rocky terrain@8</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
+    <entry>Hide$in rocky terrain@8</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
   </collection>
   <collection>
     <name>Storm Giant</name>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Succubus</name>
+    <entry>Disguise$when using Change Shape@10</entry>
+    <entry>Listen@8</entry>
+    <entry>Spot@8</entry>
   </collection>
   <collection>
     <name>Svirfneblin</name>
+    <entry>Hide@2</entry>
+    <entry>Hide$underground@2</entry>
+  </collection>
+  <collection>
+    <name>Swarm</name>
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
   </collection>
   <collection>
     <name>Tarrasque</name>
+    <entry>Listen@8</entry>
+    <entry>Spot@8</entry>
   </collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
@@ -2284,15 +2332,22 @@
   </collection>
   <collection>
     <name>Tiefling</name>
+    <entry>Bluff@2</entry>
+    <entry>Hide@2</entry>
   </collection>
   <collection>
     <name>Tiger</name>
+    <entry>Balance@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Hide$in tall grass or heavy undergrowth@4</entry>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Titan</name>
   </collection>
   <collection>
     <name>Toad</name>
+    <entry>Hide@4</entry>
   </collection>
   <collection>
     <name>Treant</name>
@@ -2305,6 +2360,8 @@
   </collection>
   <collection>
     <name>Troglodyte</name>
+    <entry>Hide@4</entry>
+    <entry>Hide$in rocky or underground settings@4</entry>
   </collection>
   <collection>
     <name>Troll</name>
@@ -2338,18 +2395,35 @@
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
+    <entry>Listen@2</entry>
+    <entry>Spot@2</entry>
   </collection>
   <collection>
     <name>Umber Hulk</name>
   </collection>
   <collection>
+    <name>Undead</name>
+  </collection>
+  <collection>
     <name>Unicorn</name>
+    <entry>Move Silently@4</entry>
+    <entry>Survival$within the boundaries of their forest@3</entry>
   </collection>
   <collection>
     <name>Vampire Spawn</name>
+    <entry>Bluff@4</entry>
+    <entry>Hide@4</entry>
+    <entry>Listen@4</entry>
+    <entry>Move Silently@4</entry>
+    <entry>Search@4</entry>
+    <entry>Sense Motive@4</entry>
+    <entry>Spot@4</entry>
   </collection>
   <collection>
     <name>Vargouille</name>
+  </collection>
+  <collection>
+    <name>Vermin</name>
   </collection>
   <collection>
     <name>Violet Fungus</name>
@@ -2371,6 +2445,8 @@
   </collection>
   <collection>
     <name>Vrock</name>
+    <entry>Listen@8</entry>
+    <entry>Spot@8</entry>
   </collection>
   <collection>
     <name>Warpony</name>
@@ -2401,57 +2477,50 @@
   </collection>
   <collection>
     <name>Weasel</name>
+    <entry>Balance@8</entry>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>White Dragon, Ancient</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
     <name>White Dragon, Juvenile</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>White Dragon, Mature Adult</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>White Dragon, Old</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Old</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Young</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrm</name>
-    <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrmling</name>
-    <entry>Average Maneuverability</entry>
   </collection>
   <collection>
     <name>White Dragon, Young Adult</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>White Dragon, Young</name>
-    <entry>Poor Maneuverability</entry>
   </collection>
   <collection>
     <name>Wight</name>
+    <entry>Move Silently@4</entry>
   </collection>
   <collection>
     <name>Wild Elf</name>
@@ -2465,15 +2534,29 @@
   </collection>
   <collection>
     <name>Winter Wolf</name>
+    <entry>Listen@1</entry>
+    <entry>Move Silently@1</entry>
+    <entry>Spot@1</entry>
+    <entry>Hide@2</entry>
+    <entry>Hide$in areas of snow and ice@5</entry>
+    <entry>Survival$tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Wolf</name>
+    <entry>Survival$tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Wolverine</name>
+    <entry>Climb@8</entry>
+    <entry>Climb$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Worg</name>
+    <entry>Listen@1</entry>
+    <entry>Move Silently@1</entry>
+    <entry>Spot@1</entry>
+    <entry>Hide@2</entry>
+    <entry>Survival$tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Wood Elf</name>
@@ -2487,27 +2570,38 @@
   </collection>
   <collection>
     <name>Wyvern</name>
+    <entry>Spot@3</entry>
   </collection>
   <collection>
     <name>Xill</name>
   </collection>
   <collection>
     <name>Yeth Hound</name>
+    <entry>Survival$tracking by scent@4</entry>
   </collection>
   <collection>
     <name>Yrthak</name>
+    <entry>Listen@4</entry>
   </collection>
   <collection>
     <name>Yuan-ti Abomination</name>
+    <entry>Climb$can always take 10@10</entry>
+    <entry>Hide$when using Chameleon Power@10</entry>
+    <entry>Swim$special action or avoid a hazard@8</entry>
+    <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood</name>
+    <entry>Hide$when using Chameleon Power@10</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
+    <entry>Disguise$when impersonating a human@5</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>
+    <entry>Search@4</entry>
+    <entry>Sense Motive@4</entry>
   </collection>
   <collection>
     <name>Appraise</name>
@@ -2556,494 +2650,231 @@
   </collection>
   <collection>
     <name>Craft/Bowmaking</name>
+    <entry>Profession/Bowyer@2</entry>
+    <entry>Profession/Fletcher@2</entry>
   </collection>
   <collection>
     <name>Craft/Brassmaking</name>
+    <entry>Profession/Brazier@2</entry>
   </collection>
   <collection>
     <name>Craft/Brewing</name>
+    <entry>Profession/Brewer@2</entry>
   </collection>
   <collection>
     <name>Craft/Candlemaking</name>
+    <entry>Profession/Chandler@2</entry>
   </collection>
   <collection>
     <name>Craft/Cloth</name>
   </collection>
   <collection>
     <name>Craft/Coppersmithing</name>
+    <entry>Profession/Coppersmith@2</entry>
   </collection>
   <collection>
     <name>Craft/Dyemaking</name>
+    <entry>Profession/Dyer@2</entry>
   </collection>
   <collection>
     <name>Craft/Gemcutting</name>
+    <entry>Profession/Gemcutter@2</entry>
   </collection>
   <collection>
     <name>Craft/Glass</name>
   </collection>
   <collection>
     <name>Craft/Goldsmithing</name>
+    <entry>Profession/Goldsmith@2</entry>
   </collection>
   <collection>
     <name>Craft/Hatmaking</name>
+    <entry>Profession/Haberdasher@2</entry>
   </collection>
   <collection>
     <name>Craft/Hornworking</name>
+    <entry>Profession/Horner@2</entry>
   </collection>
   <collection>
     <name>Craft/Jewelmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Jewelmaking</entry>
+    <entry>Profession/Jeweler@2</entry>
   </collection>
   <collection>
     <name>Craft/Leather</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Leather</entry>
   </collection>
   <collection>
     <name>Craft/Locksmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Locksmithing</entry>
   </collection>
   <collection>
     <name>Craft/Mapmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Mapmaking</entry>
   </collection>
   <collection>
     <name>Craft/Milling</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Milling</entry>
   </collection>
   <collection>
     <name>Craft/Painting</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Painting</entry>
   </collection>
   <collection>
     <name>Craft/Parchmentmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Parchmentmaking</entry>
   </collection>
   <collection>
     <name>Craft/Pewtermaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Pewtermaking</entry>
   </collection>
   <collection>
     <name>Craft/Potterymaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Potterymaking</entry>
   </collection>
   <collection>
     <name>Craft/Sculpting</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Sculpting</entry>
   </collection>
   <collection>
     <name>Craft/Shipmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Shipmaking</entry>
   </collection>
   <collection>
     <name>Craft/Shoemaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Shoemaking</entry>
   </collection>
   <collection>
     <name>Craft/Silversmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Silversmithing</entry>
   </collection>
   <collection>
     <name>Craft/Skinning</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Skinning</entry>
   </collection>
   <collection>
     <name>Craft/Soapmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Soapmaking</entry>
   </collection>
   <collection>
     <name>Craft/Stonemasonry</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Stonemasonry</entry>
   </collection>
   <collection>
     <name>Craft/Tanning</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Tanning</entry>
   </collection>
   <collection>
     <name>Craft/Trapmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Trapmaking</entry>
   </collection>
   <collection>
     <name>Craft/Weaponsmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Weaponsmithing</entry>
   </collection>
   <collection>
     <name>Craft/Weaving</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Weaving</entry>
   </collection>
   <collection>
     <name>Craft/Wheelmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Wheelmaking</entry>
   </collection>
   <collection>
     <name>Craft/Winemaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Winemaking</entry>
   </collection>
   <collection>
     <name>Craft/Woodworking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Woodworking</entry>
   </collection>
   <collection>
     <name>Decipher Script</name>
-    <entry>Intelligence</entry>
-    <entry>Decipher Script</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Diplomacy</name>
-    <entry>Charisma</entry>
-    <entry>Diplomacy</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Disable Device</name>
-    <entry>Intelligence</entry>
-    <entry>Disable Device</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Disguise</name>
-    <entry>Charisma</entry>
-    <entry>Disguise</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Escape Artist</name>
-    <entry>Dexterity</entry>
-    <entry>Escape Artist</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Forgery</name>
-    <entry>Intelligence</entry>
-    <entry>Forgery</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Gather Information</name>
-    <entry>Charisma</entry>
-    <entry>Gather Information</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Handle Animal</name>
-    <entry>Charisma</entry>
-    <entry>Handle Animal</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Heal</name>
-    <entry>Wisdom</entry>
-    <entry>Heal</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Hide</name>
-    <entry>Dexterity</entry>
-    <entry>Hide</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Intimidate</name>
-    <entry>Charisma</entry>
-    <entry>Intimidate</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Jump</name>
-    <entry>Strength</entry>
-    <entry>Jump</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Knowledge</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>1</entry>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Knowledge2</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>2</entry>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Knowledge3</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>3</entry>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Knowledge4</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>4</entry>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>Knowledge5</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>5</entry>
-    <entry></entry>
-  </collection>
-  <collection>
-    <name>KnowledgeAll</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>2147483647</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Knowledge/Arcana</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Arcana</entry>
   </collection>
   <collection>
     <name>Knowledge/Architecture and Engineering</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Architecture and Engineering</entry>
   </collection>
   <collection>
     <name>Knowledge/Dungeoneering</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Dungeoneering</entry>
   </collection>
   <collection>
     <name>Knowledge/Geography</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Geography</entry>
   </collection>
   <collection>
     <name>Knowledge/History</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>History</entry>
   </collection>
   <collection>
     <name>Knowledge/Local</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Local</entry>
   </collection>
   <collection>
     <name>Knowledge/Nature</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Nature</entry>
   </collection>
   <collection>
     <name>Knowledge/Nobility and Royalty</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Nobility and Royalty</entry>
   </collection>
   <collection>
     <name>Knowledge/Religion</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Religion</entry>
   </collection>
   <collection>
     <name>Knowledge/The Planes</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>The Planes</entry>
   </collection>
   <collection>
     <name>Listen</name>
-    <entry>Wisdom</entry>
-    <entry>Listen</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Move Silently</name>
-    <entry>Dexterity</entry>
-    <entry>Move Silently</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Open Lock</name>
-    <entry>Dexterity</entry>
-    <entry>Open Lock</entry>
-    <entry>0</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Perform</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>1</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Perform/Act</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Act</entry>
   </collection>
   <collection>
     <name>Perform/Comedy</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Comedy</entry>
   </collection>
   <collection>
     <name>Perform/Dance</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Dance</entry>
   </collection>
   <collection>
     <name>Perform/Keyboard instruments</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Keyboard instruments</entry>
   </collection>
   <collection>
     <name>Perform/Oratory</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Oratory</entry>
   </collection>
   <collection>
     <name>Perform/Percussion instruments</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Percussion instruments</entry>
   </collection>
   <collection>
     <name>Perform/Sing</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Sing</entry>
   </collection>
   <collection>
     <name>Perform/String instruments</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>String instruments</entry>
   </collection>
   <collection>
     <name>Perform/Wind instruments</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Wind instruments</entry>
   </collection>
   <collection>
     <name>Profession</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>1</entry>
-    <entry></entry>
   </collection>
   <collection>
     <name>Profession/Adviser</name>
