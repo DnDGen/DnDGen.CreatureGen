@@ -114,7 +114,10 @@ namespace CreatureGen.Generators.Skills
 
             foreach (var sourceSkill in synergyOpportunities)
             {
-                var bonuses = skillSelector.SelectBonusesFor(sourceSkill.Key);
+                var baseBonuses = skillSelector.SelectBonusesFor(sourceSkill.Name);
+                var specificBonuses = skillSelector.SelectBonusesFor(sourceSkill.Key);
+
+                var bonuses = baseBonuses.Union(specificBonuses);
 
                 foreach (var bonus in bonuses)
                 {

@@ -2520,7 +2520,7 @@
   </collection>
   <collection>
     <name>Wight</name>
-    <entry>Move Silently@4</entry>
+    <entry>Move Silently@8</entry>
   </collection>
   <collection>
     <name>Wild Elf</name>
@@ -2704,81 +2704,116 @@
   </collection>
   <collection>
     <name>Craft/Locksmithing</name>
+    <entry>Profession/Locksmith@2</entry>
   </collection>
   <collection>
     <name>Craft/Mapmaking</name>
+    <entry>Profession/Cartographer@2</entry>
   </collection>
   <collection>
     <name>Craft/Milling</name>
+    <entry>Profession/Miller@2</entry>
   </collection>
   <collection>
     <name>Craft/Painting</name>
+    <entry>Profession/Limner@2</entry>
+    <entry>Profession/Painter@2</entry>
   </collection>
   <collection>
     <name>Craft/Parchmentmaking</name>
+    <entry>Profession/Parchmentmaker@2</entry>
   </collection>
   <collection>
     <name>Craft/Pewtermaking</name>
+    <entry>Profession/Pewterer@2</entry>
   </collection>
   <collection>
     <name>Craft/Potterymaking</name>
+    <entry>Profession/Potter@2</entry>
   </collection>
   <collection>
     <name>Craft/Sculpting</name>
+    <entry>Profession/Sculptor@2</entry>
   </collection>
   <collection>
     <name>Craft/Shipmaking</name>
+    <entry>Profession/Shipwright@2</entry>
   </collection>
   <collection>
     <name>Craft/Shoemaking</name>
+    <entry>Profession/Cobbler@2</entry>
   </collection>
   <collection>
     <name>Craft/Silversmithing</name>
+    <entry>Profession/Silversmith@2</entry>
   </collection>
   <collection>
     <name>Craft/Skinning</name>
+    <entry>Profession/Skinner@2</entry>
   </collection>
   <collection>
     <name>Craft/Soapmaking</name>
+    <entry>Profession/Soapmaker@2</entry>
   </collection>
   <collection>
     <name>Craft/Stonemasonry</name>
   </collection>
   <collection>
     <name>Craft/Tanning</name>
+    <entry>Profession/Tanner@2</entry>
   </collection>
   <collection>
     <name>Craft/Trapmaking</name>
+    <entry>Profession/Hunter@2</entry>
+    <entry>Profession/Trapper@2</entry>
+    <entry>Search$finding traps@2</entry>
   </collection>
   <collection>
     <name>Craft/Weaponsmithing</name>
+    <entry>Profession/Weaponsmith@2</entry>
   </collection>
   <collection>
     <name>Craft/Weaving</name>
+    <entry>Profession/Weaver@2</entry>
   </collection>
   <collection>
     <name>Craft/Wheelmaking</name>
+    <entry>Profession/Wheelwright@2</entry>
   </collection>
   <collection>
     <name>Craft/Winemaking</name>
+    <entry>Profession/Vintner@2</entry>
   </collection>
   <collection>
     <name>Craft/Woodworking</name>
+    <entry>Profession/Carpenter@2</entry>
+    <entry>Profession/Cartwright@2</entry>
+    <entry>Profession/Coffinmaker@2</entry>
   </collection>
   <collection>
     <name>Decipher Script</name>
+    <entry>Use Magic Device$with scrolls@2</entry>
   </collection>
   <collection>
     <name>Diplomacy</name>
+    <entry>Profession/Barrister@2</entry>
+    <entry>Profession/Butler@2</entry>
+    <entry>Profession/City Guide@2</entry>
+    <entry>Profession/Footman@2</entry>
+    <entry>Profession/Governess@2</entry>
+    <entry>Profession/Matchmaker@2</entry>
+    <entry>Profession/Valet@2</entry>
   </collection>
   <collection>
     <name>Disable Device</name>
   </collection>
   <collection>
     <name>Disguise</name>
+    <entry>Perform/Act$in costume@2</entry>
   </collection>
   <collection>
     <name>Escape Artist</name>
+    <entry>Use Rope$binding someone@2</entry>
   </collection>
   <collection>
     <name>Forgery</name>
@@ -2788,51 +2823,93 @@
   </collection>
   <collection>
     <name>Handle Animal</name>
+    <entry>Diplomacy$wild empathy@2</entry>
+    <entry>Profession/Animal Groomer@2</entry>
+    <entry>Profession/Animal Trainer@2</entry>
+    <entry>Profession/Exotic Animal Trainer@2</entry>
+    <entry>Profession/Shepherd@2</entry>
+    <entry>Profession/Teamster@2</entry>
+    <entry>Ride@2</entry>
   </collection>
   <collection>
     <name>Heal</name>
+    <entry>Profession/Healer@2</entry>
+    <entry>Profession/Masseuse@2</entry>
+    <entry>Profession/Midwife@2</entry>
   </collection>
   <collection>
     <name>Hide</name>
   </collection>
   <collection>
     <name>Intimidate</name>
+    <entry>Profession/Sailor Mate@2</entry>
   </collection>
   <collection>
     <name>Jump</name>
+    <entry>Tumble@2</entry>
   </collection>
   <collection>
     <name>Knowledge</name>
+    <entry>Profession/Adviser@2</entry>
+    <entry>Profession/Sage@2</entry>
+    <entry>Profession/Teacher@2</entry>
   </collection>
   <collection>
     <name>Knowledge/Arcana</name>
+    <entry>Spellcraft@2</entry>
   </collection>
   <collection>
     <name>Knowledge/Architecture and Engineering</name>
+    <entry>Profession/Architect@2</entry>
+    <entry>Profession/Engineer@2</entry>
+    <entry>Search$find secret doors or compartments@2</entry>
   </collection>
   <collection>
     <name>Knowledge/Dungeoneering</name>
+    <entry>Profession/Miner@2</entry>
+    <entry>Survival$underground@2</entry>
   </collection>
   <collection>
     <name>Knowledge/Geography</name>
+    <entry>Profession/Miner@2</entry>
+    <entry>Survival$keep from getting lost or avoid natural hazards@2</entry>
   </collection>
   <collection>
     <name>Knowledge/History</name>
+    <entry>Knowledge/bardic@2</entry>
   </collection>
   <collection>
     <name>Knowledge/Local</name>
+    <entry>Gather Information@2</entry>
+    <entry>Profession/City Guide@2</entry>
+    <entry>Profession/Local Courier@2</entry>
+    <entry>Profession/Out-of-Town Courier@2</entry>
+    <entry>Profession/Wilderness Guide@2</entry>
   </collection>
   <collection>
     <name>Knowledge/Nature</name>
+    <entry>Profession/Apothecary@2</entry>
+    <entry>Profession/Farmer@2</entry>
+    <entry>Profession/Hunter@2</entry>
+    <entry>Profession/Miner@2</entry>
+    <entry>Profession/Trapper@2</entry>
+    <entry>Profession/Wilderness Guide@2</entry>
+    <entry>Survival$in aboveground natural environments@2</entry>
   </collection>
   <collection>
     <name>Knowledge/Nobility and Royalty</name>
+    <entry>Diplomacy@2</entry>
+    <entry>Profession/Butler@2</entry>
+    <entry>Profession/Footman@2</entry>
+    <entry>Profession/Governess@2</entry>
+    <entry>Profession/Maid@2</entry>
   </collection>
   <collection>
     <name>Knowledge/Religion</name>
   </collection>
   <collection>
     <name>Knowledge/The Planes</name>
+    <entry>Survival$on other planes@2</entry>
   </collection>
   <collection>
     <name>Listen</name>
@@ -2845,9 +2922,11 @@
   </collection>
   <collection>
     <name>Perform</name>
+    <entry>Profession/Entertainer@2</entry>
   </collection>
   <collection>
     <name>Perform/Act</name>
+    <entry>Disguise$impersonating someone else@2</entry>
   </collection>
   <collection>
     <name>Perform/Comedy</name>
@@ -2878,311 +2957,171 @@
   </collection>
   <collection>
     <name>Profession/Adviser</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Adviser</entry>
+    <entry>Diplomacy@2</entry>
+    <entry>Knowledge@2</entry>
   </collection>
   <collection>
     <name>Profession/Alchemist</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Alchemist</entry>
+    <entry>Craft/Alchemy@2</entry>
   </collection>
   <collection>
     <name>Profession/Animal Groomer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Animal Groomer</entry>
+    <entry>Handle Animal@2</entry>
   </collection>
   <collection>
     <name>Profession/Animal Trainer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Animal Trainer</entry>
+    <entry>Handle Animal@2</entry>
   </collection>
   <collection>
     <name>Profession/Apothecary</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Apothecary</entry>
+    <entry>Knowledge/Nature@2</entry>
   </collection>
   <collection>
     <name>Profession/Appraiser</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Appraiser</entry>
+    <entry>Appraise@2</entry>
   </collection>
   <collection>
     <name>Profession/Architect</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Architect</entry>
+    <entry>Knowledge/Architecture and Engineering@2</entry>
   </collection>
   <collection>
     <name>Profession/Armorer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Armorer</entry>
+    <entry>Craft/Armorsmithing@2</entry>
   </collection>
   <collection>
     <name>Profession/Barrister</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Barrister</entry>
+    <entry>Diplomacy@2</entry>
   </collection>
   <collection>
     <name>Profession/Blacksmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Blacksmith</entry>
+    <entry>Craft/Blacksmithing@2</entry>
   </collection>
   <collection>
     <name>Profession/Bookbinder</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Bookbinder</entry>
+    <entry>Craft/Bookbinding@2</entry>
   </collection>
   <collection>
     <name>Profession/Bowyer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Bowyer</entry>
+    <entry>Craft/Bowmaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Brazier</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Brazier</entry>
+    <entry>Craft/Brassmaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Brewer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Brewer</entry>
+    <entry>Craft/Brewing@2</entry>
   </collection>
   <collection>
     <name>Profession/Butler</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Butler</entry>
+    <entry>Diplomacy@2</entry>
+    <entry>Knowledge/Nobility and Royalty@2</entry>
   </collection>
   <collection>
     <name>Profession/Carpenter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Carpenter</entry>
+    <entry>Craft/Woodworking@2</entry>
   </collection>
   <collection>
     <name>Profession/Cartographer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Cartographer</entry>
+    <entry>Craft/Mapmaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Cartwright</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Cartwright</entry>
+    <entry>Craft/Woodworking@2</entry>
   </collection>
   <collection>
     <name>Profession/Chandler</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Chandler</entry>
+    <entry>Craft/Candlemaking@2</entry>
   </collection>
   <collection>
     <name>Profession/City Guide</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>City Guide</entry>
+    <entry>Diplomacy@2</entry>
+    <entry>Knowledge/Local@2</entry>
   </collection>
   <collection>
     <name>Profession/Clerk</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Clerk</entry>
   </collection>
   <collection>
     <name>Profession/Cobbler</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Cobbler</entry>
+    <entry>Craft/Shoemaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Coffinmaker</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Coffinmaker</entry>
+    <entry>Craft/Woodworking@2</entry>
   </collection>
   <collection>
     <name>Profession/Coiffeur</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Coiffeur</entry>
   </collection>
   <collection>
     <name>Profession/Cook</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Cook</entry>
   </collection>
   <collection>
     <name>Profession/Coppersmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Coppersmith</entry>
+    <entry>Craft/Coppersmithing@2</entry>
   </collection>
   <collection>
     <name>Profession/Craftsman</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Craftsman</entry>
+    <entry>Craft@2</entry>
   </collection>
   <collection>
     <name>Profession/Dowser</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Dowser</entry>
+    <entry>Bluff@2</entry>
+    <entry>Survival@2</entry>
   </collection>
   <collection>
     <name>Profession/Dyer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Dyer</entry>
-  </collection>
-  <collection>
-    <name>Profession/Engineer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Engineer</entry>
+    <entry>Craft/Dyemaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Embalmer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Embalmer</entry>
+    <entry>Craft/Alchemy@2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Engineer</name>
+    <entry>Knowledge/Architecture and Engineering@2</entry>
   </collection>
   <collection>
     <name>Profession/Entertainer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Entertainer</entry>
+    <entry>Perform@2</entry>
   </collection>
   <collection>
     <name>Profession/Exotic Animal Trainer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Exotic Animal Trainer</entry>
+    <entry>Handle Animal@2</entry>
   </collection>
   <collection>
     <name>Profession/Farmer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Farmer</entry>
+    <entry>Knowledge/Nature@2</entry>
   </collection>
   <collection>
     <name>Profession/Fletcher</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Fletcher</entry>
+    <entry>Craft/Bowmaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Footman</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Footman</entry>
   </collection>
   <collection>
     <name>Profession/Gemcutter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Gemcutter</entry>
   </collection>
   <collection>
     <name>Profession/Goldsmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Goldsmith</entry>
   </collection>
   <collection>
     <name>Profession/Governess</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Governess</entry>
   </collection>
   <collection>
     <name>Profession/Haberdasher</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Haberdasher</entry>
   </collection>
   <collection>
     <name>Profession/Healer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Healer</entry>
   </collection>
   <collection>
     <name>Profession/Horner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Horner</entry>
   </collection>
   <collection>
     <name>Profession/Hunter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Hunter</entry>
   </collection>
   <collection>
     <name>Profession/Interpreter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Interpreter</entry>
   </collection>
   <collection>
     <name>Profession/Jeweler</name>
