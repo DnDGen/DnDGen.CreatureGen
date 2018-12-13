@@ -3098,303 +3098,185 @@
   </collection>
   <collection>
     <name>Profession/Footman</name>
+    <entry>Diplomacy@2</entry>
+    <entry>Knowledge/Nobility and Royalty@2</entry>
   </collection>
   <collection>
     <name>Profession/Gemcutter</name>
+    <entry>Craft/Gemcutting@2</entry>
   </collection>
   <collection>
     <name>Profession/Goldsmith</name>
+    <entry>Craft/Goldsmithing@2</entry>
   </collection>
   <collection>
     <name>Profession/Governess</name>
+    <entry>Diplomacy@2</entry>
+    <entry>Knowledge/Nobility and Royalty@2</entry>
   </collection>
   <collection>
     <name>Profession/Haberdasher</name>
+    <entry>Craft/Hatmaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Healer</name>
+    <entry>Heal@2</entry>
   </collection>
   <collection>
     <name>Profession/Horner</name>
+    <entry>Craft/Hornworking@2</entry>
   </collection>
   <collection>
     <name>Profession/Hunter</name>
+    <entry>Craft/Trapmaking@2</entry>
+    <entry>Survival@2</entry>
   </collection>
   <collection>
     <name>Profession/Interpreter</name>
   </collection>
   <collection>
     <name>Profession/Jeweler</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Jeweler</entry>
+    <entry>Craft/Jewelmaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Laborer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Laborer</entry>
   </collection>
   <collection>
     <name>Profession/Launderer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Launderer</entry>
   </collection>
   <collection>
     <name>Profession/Limner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Limner</entry>
+    <entry>Craft/Painting@2</entry>
   </collection>
   <collection>
     <name>Profession/Local Courier</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Local Courier</entry>
+    <entry>Knowledge/Local@2</entry>
   </collection>
   <collection>
     <name>Profession/Locksmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Locksmith</entry>
+    <entry>Craft/Locksmithing@2</entry>
   </collection>
   <collection>
     <name>Profession/Maid</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Maid</entry>
+    <entry>Knowledge/Nobility and Royalty@2</entry>
   </collection>
   <collection>
     <name>Profession/Masseuse</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Masseuse</entry>
+    <entry>Heal@2</entry>
   </collection>
   <collection>
     <name>Profession/Matchmaker</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Matchmaker</entry>
+    <entry>Diplomacy@2</entry>
+    <entry>Sense Motive@2</entry>
   </collection>
   <collection>
     <name>Profession/Midwife</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Midwife</entry>
+    <entry>Heal@2</entry>
   </collection>
   <collection>
     <name>Profession/Miller</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Miller</entry>
+    <entry>Craft/Milling@2</entry>
   </collection>
   <collection>
     <name>Profession/Miner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Miner</entry>
+    <entry>Knowledge/Geography@2</entry>
+    <entry>Knowledge/Nature@2</entry>
+    <entry>Knowledge/Dungeoneering@2</entry>
   </collection>
   <collection>
     <name>Profession/Navigator</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Navigator</entry>
+    <entry>Survival@2</entry>
   </collection>
   <collection>
     <name>Profession/Nursemaid</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Nursemaid</entry>
   </collection>
   <collection>
     <name>Profession/Out-of-Town Courier</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Out-of-Town Courier</entry>
+    <entry>Knowledge/Local@2</entry>
+    <entry>Ride@2</entry>
   </collection>
   <collection>
     <name>Profession/Painter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Painter</entry>
+    <entry>Craft/Painting@2</entry>
   </collection>
   <collection>
     <name>Profession/Parchmentmaker</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Parchmentmaker</entry>
+    <entry>Craft/Parchmentmaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Pewterer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Pewterer</entry>
+    <entry>Craft/Pewtermaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Polisher</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Polisher</entry>
   </collection>
   <collection>
     <name>Profession/Porter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Porter</entry>
   </collection>
   <collection>
     <name>Profession/Potter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Potter</entry>
+    <entry>Craft/Potterymaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Sage</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Sage</entry>
+    <entry>Knowledge@2</entry>
   </collection>
   <collection>
     <name>Profession/Sailor Crewmember</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Sailor Crewmember</entry>
+    <entry>Swim@2</entry>
   </collection>
   <collection>
     <name>Profession/Sailor Mate</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Sailor Mate</entry>
+    <entry>Intimidate@2</entry>
+    <entry>Swim@2</entry>
   </collection>
   <collection>
     <name>Profession/Scribe</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Scribe</entry>
   </collection>
   <collection>
     <name>Profession/Sculptor</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Sculptor</entry>
+    <entry>Craft/Sculpting@2</entry>
   </collection>
   <collection>
     <name>Profession/Shepherd</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Shepherd</entry>
+    <entry>Handle Animal@2</entry>
   </collection>
   <collection>
     <name>Profession/Shipwright</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Shipwright</entry>
+    <entry>Craft/Shipmaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Silversmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Silversmith</entry>
   </collection>
   <collection>
     <name>Profession/Skinner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Skinner</entry>
   </collection>
   <collection>
     <name>Profession/Soapmaker</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Soapmaker</entry>
   </collection>
   <collection>
     <name>Profession/Soothsayer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Soothsayer</entry>
   </collection>
   <collection>
     <name>Profession/Tanner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Tanner</entry>
   </collection>
   <collection>
     <name>Profession/Trapper</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Trapper</entry>
   </collection>
   <collection>
     <name>Profession/Teacher</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Teacher</entry>
   </collection>
   <collection>
     <name>Profession/Teamster</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Teamster</entry>
   </collection>
   <collection>
     <name>Profession/Trader</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Trader</entry>
   </collection>
   <collection>
     <name>Profession/Valet</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Valet</entry>
   </collection>
   <collection>
     <name>Profession/Vintner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Vintner</entry>
   </collection>
   <collection>
     <name>Profession/Weaponsmith</name>

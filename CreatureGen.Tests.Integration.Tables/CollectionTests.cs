@@ -49,11 +49,7 @@ namespace CreatureGen.Tests.Integration.Tables
 
         public void AssertCollection(string name, params string[] collection)
         {
-            Assert.That(table.Keys, Contains.Item(name), tableName);
-
-            if (table[name].Count() == 1 && collection.Count() == 1)
-                Assert.That(table[name].Single(), Is.EqualTo(collection.Single()));
-
+            Assert.That(table.Keys, Contains.Item(name));
             AssertCollection(table[name], collection);
         }
 
@@ -66,6 +62,7 @@ namespace CreatureGen.Tests.Integration.Tables
 
         public void AssertOrderedCollection(string name, params string[] collection)
         {
+            Assert.That(table.Keys, Contains.Item(name));
             AssertOrderedCollection(table[name], collection);
         }
 

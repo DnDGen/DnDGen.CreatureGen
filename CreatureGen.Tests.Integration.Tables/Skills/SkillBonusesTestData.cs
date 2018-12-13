@@ -2211,76 +2211,154 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Alchemist)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Alchemy)] = 2;
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.AnimalGroomer)][GetData(SkillConstants.HandleAnimal)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.AnimalTrainer)][GetData(SkillConstants.HandleAnimal)] = 2;
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Apothecary)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Appraiser)][GetData(SkillConstants.Appraise)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Architect)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Armorer)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Armorsmithing)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Barrister)][GetData(SkillConstants.Diplomacy)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Blacksmith)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Bookbinder)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Bookbinding)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Bowyer)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Bowmaking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Brazier)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Brassmaking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Brewer)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Brewing)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler)][GetData(SkillConstants.Diplomacy)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Carpenter)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Cartographer)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Mapmaking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Cartwright)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Chandler)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Candlemaking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide)][GetData(SkillConstants.Diplomacy)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = 2;
+
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Clerk)][None] = 0;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Cobbler)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Shoemaking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Coffinmaker)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking)] = 2;
+
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Coiffeur)][None] = 0;
+
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Cook)][None] = 0;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Coppersmith)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Coppersmithing)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Craftsman)][GetData(SkillConstants.Craft)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)][GetData(SkillConstants.Bluff)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)][GetData(SkillConstants.Survival)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dyer)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Dyemaking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Embalmer)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Alchemy)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Engineer)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Entertainer)][GetData(SkillConstants.Perform)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.ExoticAnimalTrainer)][GetData(SkillConstants.HandleAnimal)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Farmer)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Fletcher)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Bowmaking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman)][GetData(SkillConstants.Diplomacy)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Gemcutter)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Gemcutting)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Goldsmith)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Goldsmithing)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess)][GetData(SkillConstants.Diplomacy)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Haberdasher)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Hatmaking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Healer)][GetData(SkillConstants.Heal)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Horner)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Hornworking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Trapmaking)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter)][GetData(SkillConstants.Survival)] = 2;
+
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Interpreter)][None] = 0;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Jeweler)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Jewelmaking)] = 2;
+
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Laborer)][None] = 0;
+
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Launderer)][None] = 0;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Limner)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Painting)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.LocalCourier)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Locksmith)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Locksmithing)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Maid)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Masseuse)][GetData(SkillConstants.Heal)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)][GetData(SkillConstants.Diplomacy)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)][GetData(SkillConstants.SenseMotive)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Midwife)][GetData(SkillConstants.Heal)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Miller)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Milling)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Geography)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Dungeoneering)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Navigator)][GetData(SkillConstants.Survival)] = 2;
+
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Nursemaid)][None] = 0;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.OutOfTownCourier)][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.OutOfTownCourier)][GetData(SkillConstants.Ride)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Painter)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Painting)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Parchmentmaker)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Parchmentmaking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Pewterer)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Pewtermaking)] = 2;
+
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Polisher)][None] = 0;
+
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Porter)][None] = 0;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Potter)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Potterymaking)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Sage)][GetData(SkillConstants.Knowledge)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorCrewmember)][GetData(SkillConstants.Swim)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorMate)][GetData(SkillConstants.Intimidate)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorMate)][GetData(SkillConstants.Swim)] = 2;
+
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Scribe)][None] = 0;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Sculptor)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Sculpting)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Shepherd)][GetData(SkillConstants.HandleAnimal)] = 2;
+
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Shipwright)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Shipmaking)] = 2;
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Silversmith)][GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Silversmithing)] = 2;

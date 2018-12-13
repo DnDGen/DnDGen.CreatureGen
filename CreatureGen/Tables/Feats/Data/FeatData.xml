@@ -1598,6 +1598,20 @@
     <entry>0</entry>
   </collection>
   <collection>
+    <name>Weapon Focus</name>
+    <entry>0</entry>
+    <entry>Weapon</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>False</entry>
+    <entry>False</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
     <name>Whirlwind Attack</name>
     <entry>4</entry>
     <entry></entry>
