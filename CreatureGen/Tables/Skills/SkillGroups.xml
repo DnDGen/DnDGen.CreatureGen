@@ -718,6 +718,7 @@
   </collection>
   <collection>
     <name>Black Pudding</name>
+    <entry>Climb</entry>
   </collection>
   <collection>
     <name>Blink Dog</name>
@@ -1400,12 +1401,12 @@
   <collection>
     <name>Cat</name>
     <entry>Balance</entry>
-    <entry>Climb</entry>
+    <entry>ClimbDexterity</entry>
     <entry>Hide</entry>
-    <entry>Jump</entry>
+    <entry>JumpDexterity</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Move Silently</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Centaur</name>
@@ -1416,6 +1417,8 @@
   </collection>
   <collection>
     <name>Centipede Swarm</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
@@ -2219,6 +2222,7 @@
   </collection>
   <collection>
     <name>Elder Black Pudding</name>
+    <entry>Climb</entry>
   </collection>
   <collection>
     <name>Elder Tojanida</name>
@@ -2533,6 +2537,8 @@
   </collection>
   <collection>
     <name>Giant Bee</name>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Giant Bombardier Beetle</name>
@@ -2581,6 +2587,8 @@
   </collection>
   <collection>
     <name>Giant Praying Mantis</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Giant Squid</name>
@@ -2593,6 +2601,8 @@
   </collection>
   <collection>
     <name>Giant Wasp</name>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
   </collection>
   <collection>
     <name>Gibbering Mouther</name>
@@ -3637,7 +3647,7 @@
   <collection>
     <name>Lizard</name>
     <entry>Balance</entry>
-    <entry>Climb</entry>
+    <entry>ClimbDexterity</entry>
     <entry>Hide</entry>
     <entry>Listen</entry>
     <entry>Move Silently</entry>
@@ -3658,6 +3668,8 @@
   </collection>
   <collection>
     <name>Locust Swarm</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Magical Aptitude</name>
@@ -3822,7 +3834,7 @@
   <collection>
     <name>Monkey</name>
     <entry>Balance</entry>
-    <entry>Climb</entry>
+    <entry>ClimbDexterity</entry>
     <entry>Escape Artist</entry>
     <entry>Hide</entry>
     <entry>Listen</entry>
@@ -3830,87 +3842,185 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Medium</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Small</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Colossal</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Gargantuan</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Huge</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Large</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Medium</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Small</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Tiny</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Colossal</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Huge</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Large</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Medium</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Small</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Tiny</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
@@ -4129,6 +4239,7 @@
   </collection>
   <collection>
     <name>Ochre Jelly</name>
+    <entry>Climb</entry>
   </collection>
   <collection>
     <name>Octopus</name>
@@ -4463,7 +4574,7 @@
     <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Spot</entry>
-    <entry>Swim</entry>
+    <entry>SwimDexterity</entry>
   </collection>
   <collection>
     <name>Raven</name>
@@ -4882,9 +4993,9 @@
   </collection>
   <collection>
     <name>Shocker Lizard</name>
-    <entry>Climb</entry>
+    <entry>ClimbDexterity</entry>
     <entry>Hide</entry>
-    <entry>Jump</entry>
+    <entry>JumpDexterity</entry>
     <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Swim</entry>
@@ -5127,6 +5238,9 @@
   </collection>
   <collection>
     <name>Spider Swarm</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Spirit Naga</name>
@@ -5947,5 +6061,125 @@
     <entry>Sense Motive</entry>
     <entry>Spot</entry>
     <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Aberration</name>
+  </collection>
+  <collection>
+    <name>Air</name>
+  </collection>
+  <collection>
+    <name>Angel</name>
+  </collection>
+  <collection>
+    <name>Animal</name>
+  </collection>
+  <collection>
+    <name>Aquatic</name>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Archon</name>
+  </collection>
+  <collection>
+    <name>Augmented</name>
+  </collection>
+  <collection>
+    <name>Chaotic</name>
+  </collection>
+  <collection>
+    <name>Cold</name>
+  </collection>
+  <collection>
+    <name>Construct</name>
+  </collection>
+  <collection>
+    <name>Dragon</name>
+  </collection>
+  <collection>
+    <name>Dwarf</name>
+  </collection>
+  <collection>
+    <name>Earth</name>
+  </collection>
+  <collection>
+    <name>Elemental</name>
+  </collection>
+  <collection>
+    <name>Elf</name>
+  </collection>
+  <collection>
+    <name>Evil</name>
+  </collection>
+  <collection>
+    <name>Extraplanar</name>
+  </collection>
+  <collection>
+    <name>Fey</name>
+  </collection>
+  <collection>
+    <name>Fire</name>
+  </collection>
+  <collection>
+    <name>Giant</name>
+  </collection>
+  <collection>
+    <name>Gnome</name>
+  </collection>
+  <collection>
+    <name>Goblinoid</name>
+  </collection>
+  <collection>
+    <name>Good</name>
+  </collection>
+  <collection>
+    <name>Halfling</name>
+  </collection>
+  <collection>
+    <name>Humanoid</name>
+  </collection>
+  <collection>
+    <name>Incorporeal</name>
+  </collection>
+  <collection>
+    <name>Lawful</name>
+  </collection>
+  <collection>
+    <name>Magical Beast</name>
+  </collection>
+  <collection>
+    <name>Monstrous Humanoid</name>
+  </collection>
+  <collection>
+    <name>Native</name>
+  </collection>
+  <collection>
+    <name>Ooze</name>
+  </collection>
+  <collection>
+    <name>Outsider</name>
+  </collection>
+  <collection>
+    <name>Plant</name>
+  </collection>
+  <collection>
+    <name>Reptilian</name>
+  </collection>
+  <collection>
+    <name>Shapechanger</name>
+  </collection>
+  <collection>
+    <name>Swarm</name>
+  </collection>
+  <collection>
+    <name>Undead</name>
+    <entry>ConcentrationCharisma</entry>
+  </collection>
+  <collection>
+    <name>Vermin</name>
+  </collection>
+  <collection>
+    <name>Water</name>
+    <entry>Swim</entry>
   </collection>
 </collections>

@@ -3247,81 +3247,120 @@
   </collection>
   <collection>
     <name>Profession/Silversmith</name>
+    <entry>Craft/Silversmithing@2</entry>
   </collection>
   <collection>
     <name>Profession/Skinner</name>
+    <entry>Craft/Skinning@2</entry>
   </collection>
   <collection>
     <name>Profession/Soapmaker</name>
+    <entry>Craft/Soapmaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Soothsayer</name>
+    <entry>Bluff@2</entry>
   </collection>
   <collection>
     <name>Profession/Tanner</name>
-  </collection>
-  <collection>
-    <name>Profession/Trapper</name>
+    <entry>Craft/Tanning@2</entry>
   </collection>
   <collection>
     <name>Profession/Teacher</name>
+    <entry>Knowledge@2</entry>
   </collection>
   <collection>
     <name>Profession/Teamster</name>
+    <entry>Handle Animal@2</entry>
+    <entry>Ride@2</entry>
   </collection>
   <collection>
     <name>Profession/Trader</name>
+    <entry>Appraise@2</entry>
+    <entry>Sense Motive@2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Trapper</name>
+    <entry>Craft/Trapmaking@2</entry>
+    <entry>Knowledge/Nature@2</entry>
+    <entry>Survival@2</entry>
   </collection>
   <collection>
     <name>Profession/Valet</name>
+    <entry>Diplomacy@2</entry>
   </collection>
   <collection>
     <name>Profession/Vintner</name>
+    <entry>Craft/Winemaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Weaponsmith</name>
+    <entry>Craft/Weaponsmithing@2</entry>
   </collection>
   <collection>
     <name>Profession/Weaver</name>
+    <entry>Craft/Weaving@2</entry>
   </collection>
   <collection>
     <name>Profession/Wheelwright</name>
+    <entry>Craft/Wheelmaking@2</entry>
   </collection>
   <collection>
     <name>Profession/Wilderness Guide</name>
+    <entry>Knowledge/Local@2</entry>
+    <entry>Knowledge/Nature@2</entry>
   </collection>
   <collection>
     <name>Ride</name>
+    <entry>Profession/Out-of-Town Courier@2</entry>
+    <entry>Profession/Teamster@2</entry>
   </collection>
   <collection>
     <name>Search</name>
+    <entry>Survival$following tracks@2</entry>
   </collection>
   <collection>
     <name>Sense Motive</name>
+    <entry>Diplomacy@2</entry>
+    <entry>Profession/Matchmaker@2</entry>
+    <entry>Profession/Trader@2</entry>
   </collection>
   <collection>
     <name>Sleight of Hand</name>
   </collection>
   <collection>
     <name>Spellcraft</name>
+    <entry>Use Magic Device$with scrolls@2</entry>
   </collection>
   <collection>
     <name>Spot</name>
   </collection>
   <collection>
     <name>Survival</name>
+    <entry>Knowledge/Nature@2</entry>
+    <entry>Profession/Dowser@2</entry>
+    <entry>Profession/Hunter@2</entry>
+    <entry>Profession/Navigator@2</entry>
+    <entry>Profession/Trapper@2</entry>
   </collection>
   <collection>
     <name>Swim</name>
+    <entry>Profession/Sailor Crewmember@2</entry>
+    <entry>Profession/Sailor Mate@2</entry>
   </collection>
   <collection>
     <name>Tumble</name>
+    <entry>Balance@2</entry>
+    <entry>Jump@2</entry>
   </collection>
   <collection>
     <name>Use Magic Device</name>
+    <entry>Spellcraft$decipher scrolls@2</entry>
   </collection>
   <collection>
     <name>Use Rope</name>
+    <entry>Climb$with rope@2</entry>
+    <entry>Escape Artist$escaping rope bonds@2</entry>
   </collection>
   <collection>
     <name>Water</name>

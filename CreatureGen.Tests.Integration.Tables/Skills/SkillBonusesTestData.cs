@@ -2405,7 +2405,11 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[SkillConstants.SenseMotive][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)] = 2;
                 testCases[SkillConstants.SenseMotive][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Trader)] = 2;
 
+                testCases[SkillConstants.SleightOfHand][None] = 0;
+
                 testCases[SkillConstants.Spellcraft][GetData(SkillConstants.UseMagicDevice, condition: "with scrolls")] = 2;
+
+                testCases[SkillConstants.Spot][None] = 0;
 
                 testCases[SkillConstants.Survival][GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
                 testCases[SkillConstants.Survival][GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)] = 2;

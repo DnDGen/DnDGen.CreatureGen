@@ -4,6 +4,7 @@ using CreatureGen.Feats;
 using CreatureGen.Selectors.Collections;
 using CreatureGen.Skills;
 using CreatureGen.Tables;
+using CreatureGen.Tests.Integration.TestData;
 using DnDGen.Core.Selectors.Collections;
 using EventGen;
 using Ninject;
@@ -39,11 +40,20 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         public void SkillGroupsNames()
         {
             var creatures = CreatureConstants.All();
+            var creatureTypes = CreatureConstants.Types.All();
+            var creatureSubtypes = CreatureConstants.Types.Subtypes.All();
 
+            //INFO: Skills are here for groups of foci - therefore skills with explicit foci are not needed as names
             var featFoci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
-            var skillKeys = featFoci[GroupConstants.Skills];
+            var skillKeys = featFoci[GroupConstants.Skills].Where(s => !s.Contains("/")).Union(new[]
+            {
+                SkillConstants.Craft,
+                SkillConstants.Knowledge,
+                SkillConstants.Perform,
+                SkillConstants.Profession,
+            });
 
-            var misc = new[]
+            var feats = new[]
             {
                 FeatConstants.Acrobatic,
                 FeatConstants.Agile,
@@ -60,17 +70,22 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 FeatConstants.Persuasive,
                 FeatConstants.SelfSufficient,
                 FeatConstants.Stealthy,
+            };
+
+            var misc = new[]
+            {
                 GroupConstants.All,
                 GroupConstants.ArmorCheckPenalty,
                 GroupConstants.Unnatural,
                 GroupConstants.Untrained,
-                SkillConstants.Craft,
-                SkillConstants.Knowledge,
-                SkillConstants.Perform,
-                SkillConstants.Profession,
             };
 
-            var names = misc.Union(creatures).Union(skillKeys);
+            var names = misc
+                .Union(creatures)
+                .Union(creatureTypes)
+                .Union(creatureSubtypes)
+                .Union(feats)
+                .Union(skillKeys);
 
             AssertCollectionNames(names);
         }
@@ -4730,6 +4745,70 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Survival,
             SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Construct)]
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Elemental)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Ooze)]
+        [TestCase(CreatureConstants.Types.Outsider)]
+        [TestCase(CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Undead, SkillConstants.Concentration + AbilityConstants.Charisma)]
+        [TestCase(CreatureConstants.Types.Vermin)]
+        [TestCase(CreatureConstants.Types.Subtypes.Air,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Types.Subtypes.Angel,
+            SkillConstants.Concentration,
+            SkillConstants.Diplomacy,
+            SkillConstants.EscapeArtist,
+            SkillConstants.Hide,
+            SkillConstants.Intimidate,
+            SkillConstants.Listen,
+            SkillConstants.MoveSilently,
+            SkillConstants.SenseMotive,
+            SkillConstants.Spot,
+            SkillConstants.UseRope)]
+        [TestCase(CreatureConstants.Types.Subtypes.Aquatic,
+            SkillConstants.Spot,
+            SkillConstants.Swim)]
+        [TestCase(CreatureConstants.Types.Subtypes.Archon,
+            SkillConstants.Concentration,
+            SkillConstants.Diplomacy,
+            SkillConstants.Listen,
+            SkillConstants.SenseMotive,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
+        [TestCase(CreatureConstants.Types.Subtypes.Chaotic)]
+        [TestCase(CreatureConstants.Types.Subtypes.Cold)]
+        [TestCase(CreatureConstants.Types.Subtypes.Dwarf)]
+        [TestCase(CreatureConstants.Types.Subtypes.Earth)]
+        [TestCase(CreatureConstants.Types.Subtypes.Elf)]
+        [TestCase(CreatureConstants.Types.Subtypes.Evil)]
+        [TestCase(CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Types.Subtypes.Fire)]
+        //INFO: This is duplicating the Gnoll creature skill checks
+        //[TestCase(CreatureConstants.Types.Subtypes.Gnoll)]
+        [TestCase(CreatureConstants.Types.Subtypes.Gnome)]
+        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid)]
+        [TestCase(CreatureConstants.Types.Subtypes.Good)]
+        [TestCase(CreatureConstants.Types.Subtypes.Halfling)]
+        //INFO: This is duplicating the Human creature skill checks
+        //[TestCase(CreatureConstants.Types.Subtypes.Human)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal)]
+        [TestCase(CreatureConstants.Types.Subtypes.Lawful)]
+        [TestCase(CreatureConstants.Types.Subtypes.Native)]
+        //INFO: This is duplicating the Orc creature skill checks
+        //[TestCase(CreatureConstants.Types.Subtypes.Orc)]
+        [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
+        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
+        [TestCase(CreatureConstants.Types.Subtypes.Water, SkillConstants.Swim)]
         public void CreatureSkills(string creature, params string[] skills)
         {
             base.AssertDistinctCollection(creature, skills);
@@ -4778,6 +4857,42 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             };
 
             base.AssertDistinctCollection(GroupConstants.All, skills);
+        }
+
+        [TestCase(SkillConstants.Appraise)]
+        [TestCase(SkillConstants.Balance)]
+        [TestCase(SkillConstants.Bluff)]
+        [TestCase(SkillConstants.Climb)]
+        [TestCase(SkillConstants.Concentration)]
+        [TestCase(SkillConstants.DecipherScript)]
+        [TestCase(SkillConstants.Diplomacy)]
+        [TestCase(SkillConstants.DisableDevice)]
+        [TestCase(SkillConstants.Disguise)]
+        [TestCase(SkillConstants.EscapeArtist)]
+        [TestCase(SkillConstants.Forgery)]
+        [TestCase(SkillConstants.GatherInformation)]
+        [TestCase(SkillConstants.HandleAnimal)]
+        [TestCase(SkillConstants.Heal)]
+        [TestCase(SkillConstants.Hide)]
+        [TestCase(SkillConstants.Intimidate)]
+        [TestCase(SkillConstants.Jump)]
+        [TestCase(SkillConstants.Listen)]
+        [TestCase(SkillConstants.MoveSilently)]
+        [TestCase(SkillConstants.OpenLock)]
+        [TestCase(SkillConstants.Ride)]
+        [TestCase(SkillConstants.Search)]
+        [TestCase(SkillConstants.SenseMotive)]
+        [TestCase(SkillConstants.SleightOfHand)]
+        [TestCase(SkillConstants.Spellcraft)]
+        [TestCase(SkillConstants.Spot)]
+        [TestCase(SkillConstants.Survival)]
+        [TestCase(SkillConstants.Swim)]
+        [TestCase(SkillConstants.Tumble)]
+        [TestCase(SkillConstants.UseMagicDevice)]
+        [TestCase(SkillConstants.UseRope)]
+        public void SkillHasNoFoci(string skillName)
+        {
+            AssertCollection(skillName);
         }
 
         [Test]
@@ -4964,21 +5079,45 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             base.AssertDistinctCollection(SkillConstants.Profession, foci);
         }
 
-        [TestCase(CreatureConstants.Types.Subtypes.Aquatic)]
-        [TestCase(CreatureConstants.Types.Subtypes.Water)]
-        public void AllCreaturesOfSubtypeHaveSwimSkill(string subtype)
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
+            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
+            Assert.That(table.Keys, Contains.Item(creatureType));
             AssertCollection(creatures.Intersect(table.Keys), creatures);
 
             foreach (var creature in creatures)
             {
-                var skills = table[creature];
+                var creatureSkills = table[creature];
+                var creatureTypeSkills = table[creatureType];
 
-                Assert.That(skills, Is.Not.Empty, creature);
-                Assert.That(skills, Contains.Item(SkillConstants.Swim), creature);
+                Assert.That(creatureSkills.Intersect(creatureTypeSkills), Is.Empty, creature);
             }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        public void CreatureTypeSkillsContainSkillsCommonToAllCreatures(string creatureType)
+        {
+            if (creatureType == CreatureConstants.Types.Subtypes.Augmented)
+                Assert.Pass("Augmented only applies to 1 creature, so 'common' is 'all'");
+
+            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+
+            Assert.That(table.Keys, Contains.Item(creatureType));
+            AssertCollection(creatures.Intersect(table.Keys), creatures);
+
+            var creatureSkillGroups = table.Where(kvp => creatures.Contains(kvp.Key)).Select(kvp => kvp.Value);
+            var commonSkills = creatureSkillGroups.First();
+
+            foreach (var skillGroup in creatureSkillGroups)
+            {
+                commonSkills = commonSkills.Intersect(skillGroup);
+            }
+
+            Assert.That(commonSkills, Is.SubsetOf(table[creatureType]));
         }
 
         [Test, Ignore("Mindless creatures can still have skills, just no ranks for skills")]
