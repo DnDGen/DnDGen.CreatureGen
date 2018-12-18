@@ -203,9 +203,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Aboleth,
             SkillConstants.Concentration,
             SkillConstants.Knowledge,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Achaierai,
             SkillConstants.Balance,
             SkillConstants.Climb,
@@ -217,11 +215,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Allip,
-            SkillConstants.Hide,
             SkillConstants.Intimidate,
-            SkillConstants.Listen,
-            SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Survival)]
         [TestCase(CreatureConstants.Androsphinx,
             SkillConstants.Intimidate,
@@ -230,48 +224,18 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot,
             SkillConstants.Survival)]
         [TestCase(CreatureConstants.Angel_AstralDeva,
-            SkillConstants.Concentration,
             SkillConstants.Craft + "3",
-            SkillConstants.Knowledge + "3",
-            SkillConstants.Diplomacy,
-            SkillConstants.EscapeArtist,
-            SkillConstants.Hide,
-            SkillConstants.Intimidate,
-            SkillConstants.Listen,
-            SkillConstants.MoveSilently,
-            SkillConstants.SenseMotive,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
+            SkillConstants.Knowledge + "3")]
         [TestCase(CreatureConstants.Angel_Planetar,
-            SkillConstants.Concentration,
             SkillConstants.Craft + "4",
             SkillConstants.Knowledge + "4",
-            SkillConstants.Diplomacy,
-            SkillConstants.EscapeArtist,
-            SkillConstants.Hide,
-            SkillConstants.Intimidate,
-            SkillConstants.Listen,
-            SkillConstants.MoveSilently,
-            SkillConstants.Search,
-            SkillConstants.SenseMotive,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
+            SkillConstants.Search)]
         [TestCase(CreatureConstants.Angel_Solar,
-            SkillConstants.Concentration,
             SkillConstants.Craft + "5",
             SkillConstants.Knowledge + "5",
-            SkillConstants.Diplomacy,
-            SkillConstants.EscapeArtist,
-            SkillConstants.Hide,
-            SkillConstants.Intimidate,
-            SkillConstants.Listen,
-            SkillConstants.MoveSilently,
-            SkillConstants.SenseMotive,
             SkillConstants.Search,
             SkillConstants.Spellcraft,
-            SkillConstants.Survival,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan)]
         [TestCase(CreatureConstants.AnimatedObject_Huge)]
@@ -307,42 +271,34 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Climb,
             SkillConstants.Concentration,
             SkillConstants.EscapeArtist,
-            SkillConstants.Jump,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+            SkillConstants.Jump)]
         [TestCase(CreatureConstants.Arrowhawk_Adult,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.ThePlanes,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
             SkillConstants.SenseMotive,
             SkillConstants.Survival,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
+            SkillConstants.UseRope)]
         [TestCase(CreatureConstants.Arrowhawk_Elder,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.ThePlanes,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
             SkillConstants.SenseMotive,
             SkillConstants.Survival,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
+            SkillConstants.UseRope)]
         [TestCase(CreatureConstants.Arrowhawk_Juvenile,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.ThePlanes,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
             SkillConstants.SenseMotive,
             SkillConstants.Survival,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
+            SkillConstants.UseRope)]
         [TestCase(CreatureConstants.AssassinVine)]
         [TestCase(CreatureConstants.Athach,
             SkillConstants.Climb,
@@ -351,19 +307,14 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Avoral,
             SkillConstants.Bluff,
-            SkillConstants.Concentration,
-            SkillConstants.Diplomacy,
             SkillConstants.Disguise,
             SkillConstants.HandleAnimal,
             SkillConstants.Hide,
             SkillConstants.Intimidate,
             SkillConstants.Knowledge,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Ride,
-            SkillConstants.SenseMotive,
-            SkillConstants.Spellcraft,
-            SkillConstants.Spot)]
+            SkillConstants.Spellcraft)]
         [TestCase(CreatureConstants.Azer,
             SkillConstants.Appraise,
             SkillConstants.Climb,
@@ -379,7 +330,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Disguise,
             SkillConstants.EscapeArtist,
             SkillConstants.Hide,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.OpenLock,
             SkillConstants.Search,
@@ -406,7 +356,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.Intimidate,
             SkillConstants.Knowledge + "2",
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.SenseMotive,
             SkillConstants.Spellcraft,
@@ -432,12 +381,10 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.Intimidate,
             SkillConstants.Jump,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
             SkillConstants.SenseMotive,
-            SkillConstants.Survival,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.Barghest_Greater,
             SkillConstants.Bluff,
             SkillConstants.Climb,
@@ -472,8 +419,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Bat_Swarm,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Bear_Black,
             SkillConstants.Climb,
             SkillConstants.Listen,
@@ -505,7 +451,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Diplomacy,
             SkillConstants.Hide,
             SkillConstants.Jump,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
             SkillConstants.SenseMotive,
@@ -517,9 +462,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Behir,
             SkillConstants.Climb,
             SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Survival,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.Beholder,
             SkillConstants.Hide,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Arcana,
@@ -650,8 +593,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Centipede_Swarm,
-            SkillConstants.Climb + AbilityConstants.Dexterity,
-            SkillConstants.Spot)]
+            SkillConstants.Climb + AbilityConstants.Dexterity)]
         [TestCase(CreatureConstants.ChainDevil_Kyton,
             SkillConstants.Climb,
             SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Blacksmithing,
@@ -864,9 +806,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Dragon_Black_Adult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -878,9 +818,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Ancient,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -892,9 +830,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_GreatWyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -906,9 +842,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Juvenile,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -920,9 +854,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_MatureAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -934,9 +866,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Old,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -948,9 +878,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_VeryOld,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -962,9 +890,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_VeryYoung,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -976,9 +902,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Wyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -990,9 +914,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Wyrmling,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1004,9 +926,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Young,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1018,9 +938,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_YoungAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1032,9 +950,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_Adult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1046,9 +962,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_Ancient,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1060,9 +974,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_GreatWyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1074,9 +986,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_Juvenile,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1088,9 +998,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_MatureAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1102,9 +1010,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_Old,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1116,9 +1022,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_VeryOld,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1130,9 +1034,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_VeryYoung,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1144,9 +1046,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_Wyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1158,9 +1058,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_Wyrmling,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1172,9 +1070,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_Young,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1186,9 +1082,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_YoungAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1200,9 +1094,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_Adult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1214,9 +1106,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_Ancient,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1228,9 +1118,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_GreatWyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1242,9 +1130,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_Juvenile,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1256,9 +1142,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_MatureAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1270,9 +1154,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_Old,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1284,9 +1166,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_VeryOld,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1298,9 +1178,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_VeryYoung,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1312,9 +1190,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_Wyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1326,9 +1202,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_Wyrmling,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1340,9 +1214,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_Young,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1354,9 +1226,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Green_YoungAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1368,9 +1238,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_Adult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1382,9 +1250,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_Ancient,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1396,9 +1262,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_GreatWyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1410,9 +1274,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_Juvenile,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1424,9 +1286,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_MatureAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1438,9 +1298,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_Old,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1452,9 +1310,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_VeryOld,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1466,9 +1322,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_VeryYoung,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1480,9 +1334,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_Wyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1494,9 +1346,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_Wyrmling,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1508,9 +1358,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_Young,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1522,9 +1370,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Red_YoungAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1536,9 +1382,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_Adult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1550,9 +1394,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_Ancient,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1564,9 +1406,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_GreatWyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1578,9 +1418,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_Juvenile,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1592,9 +1430,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_MatureAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1606,9 +1442,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_Old,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1620,9 +1454,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_VeryOld,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1634,9 +1466,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_VeryYoung,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1648,9 +1478,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_Wyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1662,9 +1490,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_Wyrmling,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1676,9 +1502,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_Young,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1690,9 +1514,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_White_YoungAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1704,9 +1526,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_Adult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1718,9 +1538,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_Ancient,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1732,9 +1550,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_GreatWyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1746,9 +1562,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_Juvenile,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1760,9 +1574,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_MatureAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1774,9 +1586,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_Old,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1788,9 +1598,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_VeryOld,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1802,9 +1610,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_VeryYoung,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1816,9 +1622,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_Wyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1830,9 +1634,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_Wyrmling,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1844,9 +1646,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_Young,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1858,9 +1658,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Brass_YoungAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1872,9 +1670,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Adult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1886,9 +1682,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Ancient,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1900,9 +1694,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1914,9 +1706,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Juvenile,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1928,9 +1718,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_MatureAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1942,9 +1730,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Old,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1956,9 +1742,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_VeryOld,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1970,9 +1754,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_VeryYoung,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1984,9 +1766,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Wyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -1998,9 +1778,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Wyrmling,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2012,9 +1790,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Young,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2026,9 +1802,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_YoungAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2040,9 +1814,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_Adult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2054,9 +1826,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_Ancient,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2068,9 +1838,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_GreatWyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2082,9 +1850,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_Juvenile,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2096,9 +1862,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_MatureAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2110,9 +1874,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_Old,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2124,9 +1886,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_VeryOld,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2138,9 +1898,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_VeryYoung,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2152,9 +1910,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_Wyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2166,9 +1922,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_Wyrmling,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2180,9 +1934,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_Young,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2194,9 +1946,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_YoungAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2208,9 +1958,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_Adult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2222,9 +1970,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_Ancient,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2236,9 +1982,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_GreatWyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2250,9 +1994,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_Juvenile,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2264,9 +2006,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_MatureAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2278,9 +2018,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_Old,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2292,9 +2030,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_VeryOld,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2306,9 +2042,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_VeryYoung,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2320,9 +2054,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_Wyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2334,9 +2066,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_Wyrmling,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2348,9 +2078,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_Young,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2362,9 +2090,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Gold_YoungAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2376,9 +2102,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_Adult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2390,9 +2114,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_Ancient,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2404,9 +2126,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_GreatWyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2418,9 +2138,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_Juvenile,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2432,9 +2150,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_MatureAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2446,9 +2162,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_Old,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2460,9 +2174,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_VeryOld,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2474,9 +2186,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_VeryYoung,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2488,9 +2198,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_Wyrm,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2502,9 +2210,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_Wyrmling,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2516,9 +2222,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_Young,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2530,9 +2234,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Jump,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Silver_YoungAdult,
-            SkillConstants.Listen,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
@@ -2632,24 +2334,12 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Listen,
             SkillConstants.Swim,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elemental_Air_Elder,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elemental_Air_Greater,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elemental_Air_Huge,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elemental_Air_Large,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elemental_Air_Medium,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elemental_Air_Small,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Elemental_Air_Elder)]
+        [TestCase(CreatureConstants.Elemental_Air_Greater)]
+        [TestCase(CreatureConstants.Elemental_Air_Huge)]
+        [TestCase(CreatureConstants.Elemental_Air_Large)]
+        [TestCase(CreatureConstants.Elemental_Air_Medium)]
+        [TestCase(CreatureConstants.Elemental_Air_Small)]
         [TestCase(CreatureConstants.Elemental_Earth_Elder,
             SkillConstants.Listen,
             SkillConstants.Spot)]
@@ -2713,44 +2403,15 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Elephant,
             SkillConstants.Listen,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elf_Aquatic,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Search,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elf_Drow,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Search,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elf_Gray,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Search,
-            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Elf_Aquatic)]
+        [TestCase(CreatureConstants.Elf_Drow)]
+        [TestCase(CreatureConstants.Elf_Gray)]
         [TestCase(CreatureConstants.Elf_Half,
             SkillConstants.Diplomacy,
-            SkillConstants.GatherInformation,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Search,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elf_High,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Search,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elf_Wild,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Search,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Elf_Wood,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Search,
-            SkillConstants.Spot)]
+            SkillConstants.GatherInformation)]
+        [TestCase(CreatureConstants.Elf_High)]
+        [TestCase(CreatureConstants.Elf_Wild)]
+        [TestCase(CreatureConstants.Elf_Wood)]
         [TestCase(CreatureConstants.Erinyes,
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
@@ -3100,8 +2761,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim)]
         [TestCase(CreatureConstants.Hellwasp_Swarm,
             SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Hezrou,
             SkillConstants.Climb,
             SkillConstants.Concentration,
@@ -3392,8 +3052,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Locust_Swarm,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Magmin,
             SkillConstants.Climb,
             SkillConstants.Spot)]
@@ -3449,10 +3108,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Diplomacy,
             SkillConstants.Disguise,
             SkillConstants.Intimidate,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
+            SkillConstants.UseRope)]
         [TestCase(CreatureConstants.Mephit_Dust,
             SkillConstants.Bluff,
             SkillConstants.EscapeArtist,
@@ -3959,7 +3616,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.Listen,
             SkillConstants.MoveSilently,
-            SkillConstants.Spot,
             SkillConstants.Swim + AbilityConstants.Dexterity)]
         [TestCase(CreatureConstants.Raven,
             SkillConstants.Listen,
@@ -4347,8 +4003,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Spider_Swarm,
             SkillConstants.Climb + AbilityConstants.Dexterity,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.SpiderEater,
             SkillConstants.Listen,
             SkillConstants.Spot)]
@@ -4442,36 +4097,27 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.EscapeArtist,
             SkillConstants.Hide,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.ThePlanes,
-            SkillConstants.Listen,
             SkillConstants.Search,
             SkillConstants.SenseMotive,
-            SkillConstants.Spot,
             SkillConstants.Survival,
-            SkillConstants.Swim,
             SkillConstants.UseRope)]
         [TestCase(CreatureConstants.Tojanida_Elder,
             SkillConstants.EscapeArtist,
             SkillConstants.Hide,
             SkillConstants.Intimidate,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.ThePlanes,
-            SkillConstants.Listen,
             SkillConstants.Search,
             SkillConstants.SenseMotive,
-            SkillConstants.Spot,
             SkillConstants.Survival,
-            SkillConstants.Swim,
             SkillConstants.UseRope)]
         [TestCase(CreatureConstants.Tojanida_Juvenile,
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
             SkillConstants.Hide,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.ThePlanes,
-            SkillConstants.Listen,
             SkillConstants.Search,
             SkillConstants.SenseMotive,
-            SkillConstants.Spot,
             SkillConstants.Survival,
-            SkillConstants.Swim,
             SkillConstants.UseRope)]
         [TestCase(CreatureConstants.Treant,
             SkillConstants.Diplomacy,
@@ -4588,17 +4234,11 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Whale_Baleen,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Whale_Cachalot,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Whale_Orca,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Wight,
             SkillConstants.Hide,
             SkillConstants.Listen,
@@ -4748,10 +4388,15 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Types.Construct)]
-        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Dragon,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
         [TestCase(CreatureConstants.Types.Elemental)]
-        [TestCase(CreatureConstants.Types.Fey)]
-        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Fey,
+            SkillConstants.Hide,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Types.Giant, SkillConstants.Spot)]
         [TestCase(CreatureConstants.Types.Humanoid)]
         [TestCase(CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
@@ -4784,31 +4429,64 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Types.Subtypes.Chaotic)]
-        [TestCase(CreatureConstants.Types.Subtypes.Cold)]
-        [TestCase(CreatureConstants.Types.Subtypes.Dwarf)]
+        [TestCase(CreatureConstants.Types.Subtypes.Chaotic, SkillConstants.Listen)]
+        [TestCase(CreatureConstants.Types.Subtypes.Cold, SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Types.Subtypes.Dwarf,
+            SkillConstants.Appraise,
+            SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Blacksmithing,
+            SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Stonemasonry,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
         [TestCase(CreatureConstants.Types.Subtypes.Earth)]
-        [TestCase(CreatureConstants.Types.Subtypes.Elf)]
+        [TestCase(CreatureConstants.Types.Subtypes.Elf,
+            SkillConstants.Hide,
+            SkillConstants.Listen,
+            SkillConstants.Search,
+            SkillConstants.Spot)]
         [TestCase(CreatureConstants.Types.Subtypes.Evil)]
         [TestCase(CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Types.Subtypes.Fire)]
         //INFO: This is duplicating the Gnoll creature skill checks
         //[TestCase(CreatureConstants.Types.Subtypes.Gnoll)]
-        [TestCase(CreatureConstants.Types.Subtypes.Gnome)]
-        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid)]
-        [TestCase(CreatureConstants.Types.Subtypes.Good)]
-        [TestCase(CreatureConstants.Types.Subtypes.Halfling)]
+        [TestCase(CreatureConstants.Types.Subtypes.Gnome,
+            SkillConstants.Hide,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid,
+            SkillConstants.Hide,
+            SkillConstants.Listen,
+            SkillConstants.MoveSilently,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Types.Subtypes.Good,
+            SkillConstants.Concentration,
+            SkillConstants.Diplomacy,
+            SkillConstants.Listen,
+            SkillConstants.SenseMotive,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Types.Subtypes.Halfling,
+            SkillConstants.Hide,
+            SkillConstants.Listen,
+            SkillConstants.MoveSilently)]
         //INFO: This is duplicating the Human creature skill checks
         //[TestCase(CreatureConstants.Types.Subtypes.Human)]
-        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal,
+            SkillConstants.Hide,
+            SkillConstants.Listen,
+            SkillConstants.Search,
+            SkillConstants.Spot)]
         [TestCase(CreatureConstants.Types.Subtypes.Lawful)]
         [TestCase(CreatureConstants.Types.Subtypes.Native)]
         //INFO: This is duplicating the Orc creature skill checks
         //[TestCase(CreatureConstants.Types.Subtypes.Orc)]
         [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
-        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
-        [TestCase(CreatureConstants.Types.Subtypes.Water, SkillConstants.Swim)]
+        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Types.Subtypes.Swarm, SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Types.Subtypes.Water,
+            SkillConstants.Listen,
+            SkillConstants.Spot,
+            SkillConstants.Swim)]
         public void CreatureSkills(string creature, params string[] skills)
         {
             base.AssertDistinctCollection(creature, skills);
@@ -5079,21 +4757,20 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             base.AssertDistinctCollection(SkillConstants.Profession, foci);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "Types")]
-        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
-        public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creatureType)
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatureTypes = CollectionSelector.Explode(TableNameConstants.Collection.CreatureTypes, creature);
 
-            Assert.That(table.Keys, Contains.Item(creatureType));
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
+            Assert.That(table.Keys, Contains.Item(creature));
+            AssertCollection(creatureTypes.Intersect(table.Keys), creatureTypes);
 
-            foreach (var creature in creatures)
+            foreach (var creatureType in creatureTypes)
             {
                 var creatureSkills = table[creature];
                 var creatureTypeSkills = table[creatureType];
 
-                Assert.That(creatureSkills.Intersect(creatureTypeSkills), Is.Empty, creature);
+                Assert.That(creatureSkills.Intersect(creatureTypeSkills), Is.Empty, creatureType);
             }
         }
 

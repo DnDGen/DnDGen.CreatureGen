@@ -22,18 +22,18 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             var featFoci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
             var otherSkills = new[]
             {
-                SkillConstants.Craft + "2",
-                SkillConstants.Knowledge + "2",
-                SkillConstants.Craft + "3",
-                SkillConstants.Knowledge + "3",
-                SkillConstants.Craft + "4",
-                SkillConstants.Knowledge + "4",
-                SkillConstants.Craft + "5",
-                SkillConstants.Knowledge + "5",
-                SkillConstants.Knowledge + GroupConstants.All,
                 SkillConstants.Climb + AbilityConstants.Dexterity,
                 SkillConstants.Concentration + AbilityConstants.Charisma,
+                SkillConstants.Craft + "2",
+                SkillConstants.Craft + "3",
+                SkillConstants.Craft + "4",
+                SkillConstants.Craft + "5",
                 SkillConstants.Jump + AbilityConstants.Dexterity,
+                SkillConstants.Knowledge + "2",
+                SkillConstants.Knowledge + "3",
+                SkillConstants.Knowledge + "4",
+                SkillConstants.Knowledge + "5",
+                SkillConstants.Knowledge + GroupConstants.All,
                 SkillConstants.Swim + AbilityConstants.Dexterity,
             };
 

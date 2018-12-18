@@ -44,6 +44,13 @@
     <entry></entry>
   </collection>
   <collection>
+    <name>ConcentrationCharisma</name>
+    <entry>Charisma</entry>
+    <entry>Concentration</entry>
+    <entry>0</entry>
+    <entry></entry>
+  </collection>
+  <collection>
     <name>Craft</name>
     <entry>Intelligence</entry>
     <entry>Craft</entry>

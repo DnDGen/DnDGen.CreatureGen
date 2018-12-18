@@ -14,8 +14,6 @@
     <entry>Concentration</entry>
     <entry>Knowledge</entry>
     <entry>Listen</entry>
-    <entry>Swim</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Abyssal Greater Basilisk</name>
@@ -45,11 +43,9 @@
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
     <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
     <entry>Use Rope</entry>
   </collection>
@@ -59,12 +55,9 @@
     <entry>Escape Artist</entry>
     <entry>Hide</entry>
     <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
@@ -74,33 +67,21 @@
   </collection>
   <collection>
     <name>Air Elemental, Elder</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Air Elemental, Greater</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Air Elemental, Huge</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Air Elemental, Large</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Air Elemental, Medium</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Air Elemental, Small</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Air Mephit</name>
@@ -110,9 +91,7 @@
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
     <entry>Intimidate</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Spot</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
@@ -160,11 +139,7 @@
   </collection>
   <collection>
     <name>Allip</name>
-    <entry>Hide</entry>
     <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
@@ -177,50 +152,20 @@
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
     <entry>Craft3</entry>
     <entry>Knowledge3</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Angel, Planetar</name>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Concentration</entry>
     <entry>Craft4</entry>
     <entry>Knowledge4</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Rope</entry>
     <entry>Search</entry>
   </collection>
   <collection>
     <name>Angel, Solar</name>
-    <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
-    <entry>Concentration</entry>
     <entry>Craft5</entry>
     <entry>Knowledge5</entry>
-    <entry>Diplomacy</entry>
-    <entry>Escape Artist</entry>
-    <entry>Hide</entry>
-    <entry>Move Silently</entry>
-    <entry>Sense Motive</entry>
-    <entry>Use Rope</entry>
     <entry>Search</entry>
     <entry>Spellcraft</entry>
   </collection>
@@ -274,11 +219,6 @@
   </collection>
   <collection>
     <name>Aquatic Elf</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Aranea</name>
@@ -286,8 +226,6 @@
     <entry>Concentration</entry>
     <entry>Escape Artist</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Armor Check Penalty</name>
@@ -343,19 +281,14 @@
   <collection>
     <name>Avoral</name>
     <entry>Bluff</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
     <entry>Disguise</entry>
     <entry>Handle Animal</entry>
     <entry>Hide</entry>
     <entry>Intimidate</entry>
     <entry>Knowledge</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Ride</entry>
-    <entry>Sense Motive</entry>
     <entry>Spellcraft</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Azer</name>
@@ -375,7 +308,6 @@
     <entry>Disguise</entry>
     <entry>Escape Artist</entry>
     <entry>Hide</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Open Lock</entry>
     <entry>Search</entry>
@@ -398,9 +330,7 @@
   </collection>
   <collection>
     <name>Baleen Whale</name>
-    <entry>Swim</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Balor</name>
@@ -526,9 +456,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -542,9 +470,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Ancient</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -558,9 +484,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -574,9 +498,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Juvenile</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -590,9 +512,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Mature Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -606,9 +526,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -622,9 +540,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Very Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -638,9 +554,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Very Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -654,9 +568,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -670,9 +582,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Wyrmling</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -686,9 +596,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -702,9 +610,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Young Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -730,9 +636,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -746,9 +650,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Ancient</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -762,9 +664,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -778,9 +678,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Juvenile</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -794,9 +692,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Mature Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -810,9 +706,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -826,9 +720,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Very Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -842,9 +734,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Very Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -858,9 +748,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -874,9 +762,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Wyrmling</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -890,9 +776,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -906,9 +790,7 @@
   </collection>
   <collection>
     <name>Blue Dragon, Young Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -974,9 +856,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -990,9 +870,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Ancient</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1006,9 +884,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1022,9 +898,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Juvenile</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1038,9 +912,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Mature Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1054,9 +926,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1070,9 +940,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Very Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1086,9 +954,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Very Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1102,9 +968,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1118,9 +982,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Wyrmling</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1134,9 +996,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1150,9 +1010,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Young Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1166,9 +1024,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1182,9 +1038,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Ancient</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1198,9 +1052,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1214,9 +1066,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Juvenile</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1230,9 +1080,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Mature Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1246,9 +1094,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1262,9 +1108,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Very Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1278,9 +1122,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Very Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1294,9 +1136,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1310,9 +1150,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrmling</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1326,9 +1164,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1342,9 +1178,7 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Young Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1378,9 +1212,7 @@
   </collection>
   <collection>
     <name>Cachalot Whale</name>
-    <entry>Swim</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
@@ -1506,9 +1338,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1522,9 +1352,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Ancient</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1538,9 +1366,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1554,9 +1380,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1570,9 +1394,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Mature Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1586,9 +1408,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1602,9 +1422,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Very Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1618,9 +1436,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Very Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1634,9 +1450,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1650,9 +1464,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Wyrmling</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1666,9 +1478,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -1682,9 +1492,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Young Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2080,10 +1888,6 @@
   </collection>
   <collection>
     <name>Drow</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Dryad</name>
@@ -2212,11 +2016,9 @@
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
     <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
     <entry>Use Rope</entry>
   </collection>
@@ -2230,12 +2032,9 @@
     <entry>Hide</entry>
     <entry>Intimidate</entry>
     <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
@@ -2660,9 +2459,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2676,9 +2473,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Ancient</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2692,9 +2487,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2708,9 +2501,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2724,9 +2515,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Mature Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2740,9 +2529,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2756,9 +2543,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Very Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2772,9 +2557,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Very Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2788,9 +2571,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2804,9 +2585,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Wyrmling</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2820,9 +2599,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2836,9 +2613,7 @@
   </collection>
   <collection>
     <name>Gold Dragon, Young Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2857,10 +2632,6 @@
   </collection>
   <collection>
     <name>Gray Elf</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Gray Ooze</name>
@@ -2914,9 +2685,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2930,9 +2699,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Ancient</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2946,9 +2713,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2962,9 +2727,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2978,9 +2741,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Mature Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -2994,9 +2755,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -3010,9 +2769,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Very Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -3026,9 +2783,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Very Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -3042,9 +2797,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -3058,9 +2811,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Wyrmling</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -3074,9 +2825,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -3090,9 +2839,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Young Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -3197,10 +2944,6 @@
     <name>Half-Elf</name>
     <entry>Diplomacy</entry>
     <entry>Gather Information</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Half-Orc</name>
@@ -3278,10 +3021,6 @@
   </collection>
   <collection>
     <name>High Elf</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Hill Dwarf</name>
@@ -3442,11 +3181,9 @@
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
     <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
     <entry>Use Rope</entry>
   </collection>
@@ -3456,12 +3193,9 @@
     <entry>Escape Artist</entry>
     <entry>Hide</entry>
     <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
@@ -4282,9 +4016,7 @@
   </collection>
   <collection>
     <name>Orca Whale</name>
-    <entry>Swim</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Otyugh</name>
@@ -4599,9 +4331,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -4615,9 +4345,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Ancient</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -4631,9 +4359,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -4647,9 +4373,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -4663,9 +4387,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Mature Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -4679,9 +4401,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -4695,9 +4415,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Very Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -4711,9 +4429,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Very Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -4727,9 +4443,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -4743,9 +4457,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Wyrmling</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -4759,9 +4471,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -4775,9 +4485,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Young Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5005,9 +4713,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5021,9 +4727,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Ancient</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5037,9 +4741,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5053,9 +4755,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5069,9 +4769,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Mature Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5085,9 +4783,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5101,9 +4797,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Very Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5117,9 +4811,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Very Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5133,9 +4825,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5149,9 +4839,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Wyrmling</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5165,9 +4853,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5181,9 +4867,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Young Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5729,9 +5413,7 @@
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5745,9 +5427,7 @@
   </collection>
   <collection>
     <name>White Dragon, Ancient</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5761,9 +5441,7 @@
   </collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5777,9 +5455,7 @@
   </collection>
   <collection>
     <name>White Dragon, Juvenile</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5793,9 +5469,7 @@
   </collection>
   <collection>
     <name>White Dragon, Mature Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5809,9 +5483,7 @@
   </collection>
   <collection>
     <name>White Dragon, Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5825,9 +5497,7 @@
   </collection>
   <collection>
     <name>White Dragon, Very Old</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5841,9 +5511,7 @@
   </collection>
   <collection>
     <name>White Dragon, Very Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5857,9 +5525,7 @@
   </collection>
   <collection>
     <name>White Dragon, Wyrm</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5873,9 +5539,7 @@
   </collection>
   <collection>
     <name>White Dragon, Wyrmling</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5889,9 +5553,7 @@
   </collection>
   <collection>
     <name>White Dragon, Young</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5905,9 +5567,7 @@
   </collection>
   <collection>
     <name>White Dragon, Young Adult</name>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
@@ -5928,10 +5588,6 @@
   </collection>
   <collection>
     <name>Wild Elf</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
@@ -5968,10 +5624,6 @@
   </collection>
   <collection>
     <name>Wood Elf</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Worg</name>
@@ -6067,37 +5719,64 @@
   </collection>
   <collection>
     <name>Air</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Angel</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Animal</name>
   </collection>
   <collection>
     <name>Aquatic</name>
+    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
     <name>Archon</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Augmented</name>
   </collection>
   <collection>
     <name>Chaotic</name>
+    <entry>Listen</entry>
   </collection>
   <collection>
     <name>Cold</name>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Construct</name>
   </collection>
   <collection>
     <name>Dragon</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Dwarf</name>
+    <entry>Appraise</entry>
+    <entry>Craft/Blacksmithing</entry>
+    <entry>Craft/Stonemasonry</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Earth</name>
@@ -6107,6 +5786,10 @@
   </collection>
   <collection>
     <name>Elf</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Evil</name>
@@ -6116,30 +5799,53 @@
   </collection>
   <collection>
     <name>Fey</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Fire</name>
   </collection>
   <collection>
     <name>Giant</name>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Gnome</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Goblinoid</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Good</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Halfling</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
   </collection>
   <collection>
     <name>Humanoid</name>
   </collection>
   <collection>
     <name>Incorporeal</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Lawful</name>
@@ -6167,9 +5873,12 @@
   </collection>
   <collection>
     <name>Shapechanger</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Swarm</name>
+    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Undead</name>
@@ -6180,6 +5889,101 @@
   </collection>
   <collection>
     <name>Water</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
     <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Appraise</name>
+  </collection>
+  <collection>
+    <name>Balance</name>
+  </collection>
+  <collection>
+    <name>Bluff</name>
+  </collection>
+  <collection>
+    <name>Climb</name>
+  </collection>
+  <collection>
+    <name>Concentration</name>
+  </collection>
+  <collection>
+    <name>Decipher Script</name>
+  </collection>
+  <collection>
+    <name>Diplomacy</name>
+  </collection>
+  <collection>
+    <name>Disable Device</name>
+  </collection>
+  <collection>
+    <name>Disguise</name>
+  </collection>
+  <collection>
+    <name>Escape Artist</name>
+  </collection>
+  <collection>
+    <name>Forgery</name>
+  </collection>
+  <collection>
+    <name>Gather Information</name>
+  </collection>
+  <collection>
+    <name>Handle Animal</name>
+  </collection>
+  <collection>
+    <name>Heal</name>
+  </collection>
+  <collection>
+    <name>Hide</name>
+  </collection>
+  <collection>
+    <name>Intimidate</name>
+  </collection>
+  <collection>
+    <name>Jump</name>
+  </collection>
+  <collection>
+    <name>Listen</name>
+  </collection>
+  <collection>
+    <name>Move Silently</name>
+  </collection>
+  <collection>
+    <name>Open Lock</name>
+  </collection>
+  <collection>
+    <name>Ride</name>
+  </collection>
+  <collection>
+    <name>Search</name>
+  </collection>
+  <collection>
+    <name>Sense Motive</name>
+  </collection>
+  <collection>
+    <name>Sleight of Hand</name>
+  </collection>
+  <collection>
+    <name>Spellcraft</name>
+  </collection>
+  <collection>
+    <name>Spot</name>
+  </collection>
+  <collection>
+    <name>Survival</name>
+  </collection>
+  <collection>
+    <name>Swim</name>
+  </collection>
+  <collection>
+    <name>Tumble</name>
+  </collection>
+  <collection>
+    <name>Use Magic Device</name>
+  </collection>
+  <collection>
+    <name>Use Rope</name>
   </collection>
 </collections>
