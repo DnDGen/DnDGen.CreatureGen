@@ -338,7 +338,6 @@
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Hide</entry>
     <entry>Intimidate</entry>
@@ -371,8 +370,6 @@
     <entry>Jump</entry>
     <entry>Move Silently</entry>
     <entry>Search</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Sense Motive</entry>
     <entry>Survival</entry>
     <entry>Disguise</entry>
@@ -394,7 +391,6 @@
   <collection>
     <name>Bat Swarm</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
@@ -414,7 +410,6 @@
     <entry>Move Silently</entry>
     <entry>Search</entry>
     <entry>Climb</entry>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Sense Motive</entry>
     <entry>Survival</entry>
@@ -438,9 +433,7 @@
   </collection>
   <collection>
     <name>Belker</name>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Bison</name>
