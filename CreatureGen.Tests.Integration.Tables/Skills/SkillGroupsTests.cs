@@ -394,11 +394,9 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.Intimidate,
             SkillConstants.Jump,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.SenseMotive,
             SkillConstants.Survival,
-            SkillConstants.Spot,
             SkillConstants.Tumble)]
         [TestCase(CreatureConstants.Basilisk,
             SkillConstants.Hide,
@@ -478,9 +476,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot,
             SkillConstants.Survival)]
         [TestCase(CreatureConstants.Belker,
-            SkillConstants.Listen,
-            SkillConstants.MoveSilently,
-            SkillConstants.Spot)]
+            SkillConstants.MoveSilently)]
         [TestCase(CreatureConstants.Bison,
             SkillConstants.Listen,
             SkillConstants.Spot)]
@@ -518,25 +514,16 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot,
             SkillConstants.Survival)]
         [TestCase(CreatureConstants.Bralani,
-            SkillConstants.Concentration,
-            SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
             SkillConstants.HandleAnimal,
             SkillConstants.Hide,
             SkillConstants.Jump,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Ride,
-            SkillConstants.SenseMotive,
-            SkillConstants.Spot,
             SkillConstants.Tumble,
             SkillConstants.UseRope)]
         [TestCase(CreatureConstants.Bugbear,
-            SkillConstants.Climb,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.MoveSilently,
-            SkillConstants.Spot)]
+            SkillConstants.Climb)]
         [TestCase(CreatureConstants.Bulette,
             SkillConstants.Jump,
             SkillConstants.Listen,
@@ -607,7 +594,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.EscapeArtist,
             SkillConstants.Hide,
             SkillConstants.Jump,
-            SkillConstants.Listen,
             SkillConstants.Search,
             SkillConstants.Survival,
             SkillConstants.Tumble,
@@ -628,9 +614,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently)]
         [TestCase(CreatureConstants.Chuul,
             SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Cloaker,
             SkillConstants.Hide,
             SkillConstants.Listen,
@@ -668,35 +652,27 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Cryohydra_10Heads,
             SkillConstants.Listen,
-            SkillConstants.Spot,
             SkillConstants.Swim)]
         [TestCase(CreatureConstants.Cryohydra_11Heads,
             SkillConstants.Listen,
-            SkillConstants.Spot,
             SkillConstants.Swim)]
         [TestCase(CreatureConstants.Cryohydra_12Heads,
             SkillConstants.Listen,
-            SkillConstants.Spot,
             SkillConstants.Swim)]
         [TestCase(CreatureConstants.Cryohydra_5Heads,
             SkillConstants.Listen,
-            SkillConstants.Spot,
             SkillConstants.Swim)]
         [TestCase(CreatureConstants.Cryohydra_6Heads,
             SkillConstants.Listen,
-            SkillConstants.Spot,
             SkillConstants.Swim)]
         [TestCase(CreatureConstants.Cryohydra_7Heads,
             SkillConstants.Listen,
-            SkillConstants.Spot,
             SkillConstants.Swim)]
         [TestCase(CreatureConstants.Cryohydra_8Heads,
             SkillConstants.Listen,
-            SkillConstants.Spot,
             SkillConstants.Swim)]
         [TestCase(CreatureConstants.Cryohydra_9Heads,
             SkillConstants.Listen,
-            SkillConstants.Spot,
             SkillConstants.Swim)]
         [TestCase(CreatureConstants.Darkmantle,
             SkillConstants.Hide,
@@ -763,10 +739,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
             SkillConstants.Knowledge,
-            SkillConstants.Listen,
             SkillConstants.SenseMotive,
             SkillConstants.Spellcraft,
-            SkillConstants.Spot,
             SkillConstants.UseRope,
             SkillConstants.MoveSilently)]
         [TestCase(CreatureConstants.Djinni_Noble,
@@ -776,10 +750,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
             SkillConstants.Knowledge,
-            SkillConstants.Listen,
             SkillConstants.SenseMotive,
             SkillConstants.Spellcraft,
-            SkillConstants.Spot,
             SkillConstants.UseRope,
             SkillConstants.MoveSilently)]
         [TestCase(CreatureConstants.Dog,
@@ -802,9 +774,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Diplomacy,
             SkillConstants.Disguise,
             SkillConstants.Intimidate,
-            SkillConstants.Listen,
-            SkillConstants.SenseMotive,
-            SkillConstants.Spot)]
+            SkillConstants.SenseMotive)]
         [TestCase(CreatureConstants.Dragon_Black_Adult,
             SkillConstants.Search,
             SkillConstants.Concentration,
@@ -815,7 +785,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Ancient,
             SkillConstants.Search,
@@ -827,7 +796,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_GreatWyrm,
             SkillConstants.Search,
@@ -839,7 +807,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Juvenile,
             SkillConstants.Search,
@@ -851,7 +818,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_MatureAdult,
             SkillConstants.Search,
@@ -863,7 +829,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Old,
             SkillConstants.Search,
@@ -875,7 +840,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_VeryOld,
             SkillConstants.Search,
@@ -887,7 +851,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_VeryYoung,
             SkillConstants.Search,
@@ -899,7 +862,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Wyrm,
             SkillConstants.Search,
@@ -911,7 +873,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Wyrmling,
             SkillConstants.Search,
@@ -923,7 +884,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_Young,
             SkillConstants.Search,
@@ -935,7 +895,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Black_YoungAdult,
             SkillConstants.Search,
@@ -947,7 +906,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Hide,
             SkillConstants.MoveSilently,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Blue_Adult,
             SkillConstants.Search,
@@ -1678,7 +1636,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Ancient,
@@ -1690,7 +1647,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm,
@@ -1702,7 +1658,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Juvenile,
@@ -1714,7 +1669,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_MatureAdult,
@@ -1726,7 +1680,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Old,
@@ -1738,7 +1691,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_VeryOld,
@@ -1750,7 +1702,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_VeryYoung,
@@ -1762,7 +1713,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Wyrm,
@@ -1774,7 +1724,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Wyrmling,
@@ -1786,7 +1735,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_Young,
@@ -1798,7 +1746,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Bronze_YoungAdult,
@@ -1810,7 +1757,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge,
             SkillConstants.SenseMotive,
             SkillConstants.Disguise,
-            SkillConstants.Swim,
             SkillConstants.Survival,
             SkillConstants.UseMagicDevice)]
         [TestCase(CreatureConstants.Dragon_Copper_Adult,
@@ -2249,18 +2195,14 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Diplomacy,
             SkillConstants.Hide,
             SkillConstants.Intimidate,
-            SkillConstants.Listen,
             SkillConstants.Search,
             SkillConstants.SenseMotive,
-            SkillConstants.Survival,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.Dragonne,
             SkillConstants.Listen,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Dretch,
             SkillConstants.Hide,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Spot,
             SkillConstants.Search,
@@ -2275,39 +2217,15 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Dryad,
             SkillConstants.EscapeArtist,
             SkillConstants.HandleAnimal,
-            SkillConstants.Hide,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Nature,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Ride,
             SkillConstants.Survival,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Dwarf_Deep,
-            SkillConstants.Appraise,
-            SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Blacksmithing,
-            SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Stonemasonry,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Dwarf_Duergar,
-            SkillConstants.Appraise,
-            SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Blacksmithing,
-            SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Stonemasonry,
-            SkillConstants.Listen,
-            SkillConstants.MoveSilently,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Dwarf_Hill,
-            SkillConstants.Appraise,
-            SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Blacksmithing,
-            SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Stonemasonry,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Dwarf_Mountain,
-            SkillConstants.Appraise,
-            SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Blacksmithing,
-            SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Stonemasonry,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+            SkillConstants.UseRope)]
+        [TestCase(CreatureConstants.Dwarf_Deep)]
+        [TestCase(CreatureConstants.Dwarf_Duergar, SkillConstants.MoveSilently)]
+        [TestCase(CreatureConstants.Dwarf_Hill)]
+        [TestCase(CreatureConstants.Dwarf_Mountain)]
         [TestCase(CreatureConstants.Eagle,
             SkillConstants.Listen,
             SkillConstants.Spot)]
@@ -2441,8 +2359,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Ettin,
             SkillConstants.Listen,
-            SkillConstants.Search,
-            SkillConstants.Spot)]
+            SkillConstants.Search)]
         [TestCase(CreatureConstants.FireBeetle_Giant)]
         [TestCase(CreatureConstants.FormianMyrmarch,
             SkillConstants.Climb,
@@ -2497,31 +2414,23 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.FrostWorm,
             SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Gargoyle,
             SkillConstants.Hide,
             SkillConstants.Listen,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Gargoyle_Kapoacinth,
             SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.GelatinousCube)]
         [TestCase(CreatureConstants.Ghaele,
-            SkillConstants.Concentration,
-            SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
             SkillConstants.HandleAnimal,
             SkillConstants.Hide,
             SkillConstants.Knowledge + "2",
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Ride,
-            SkillConstants.SenseMotive,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
+            SkillConstants.UseRope)]
         [TestCase(CreatureConstants.Ghoul,
             SkillConstants.Balance,
             SkillConstants.Climb,
@@ -2541,45 +2450,36 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Climb,
             SkillConstants.Hide,
             SkillConstants.Jump,
-            SkillConstants.MoveSilently,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.MoveSilently)]
         [TestCase(CreatureConstants.Giant_Cloud,
             SkillConstants.Climb,
             SkillConstants.Craft,
             SkillConstants.Diplomacy,
             SkillConstants.Intimidate,
-            SkillConstants.Listen,
             SkillConstants.Perform + "/" + SkillConstants.Foci.Perform.StringInstruments,
-            SkillConstants.SenseMotive,
-            SkillConstants.Spot)]
+            SkillConstants.SenseMotive)]
         [TestCase(CreatureConstants.Giant_Fire,
             SkillConstants.Climb,
             SkillConstants.Craft,
             SkillConstants.Intimidate,
-            SkillConstants.Jump,
-            SkillConstants.Spot)]
+            SkillConstants.Jump)]
         [TestCase(CreatureConstants.Giant_Frost,
             SkillConstants.Climb,
             SkillConstants.Craft,
             SkillConstants.Intimidate,
-            SkillConstants.Jump,
-            SkillConstants.Spot)]
+            SkillConstants.Jump)]
         [TestCase(CreatureConstants.Giant_Hill,
             SkillConstants.Climb,
             SkillConstants.Jump,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Giant_Stone,
             SkillConstants.Climb,
             SkillConstants.Hide,
-            SkillConstants.Jump,
-            SkillConstants.Spot)]
+            SkillConstants.Jump)]
         [TestCase(CreatureConstants.Giant_Stone_Elder,
             SkillConstants.Climb,
             SkillConstants.Hide,
-            SkillConstants.Jump,
-            SkillConstants.Spot)]
+            SkillConstants.Jump)]
         [TestCase(CreatureConstants.Giant_Storm,
             SkillConstants.Climb,
             SkillConstants.Concentration,
@@ -2590,8 +2490,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Listen,
             SkillConstants.Perform + "/" + SkillConstants.Foci.Perform.Sing,
             SkillConstants.SenseMotive,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Swim)]
         [TestCase(CreatureConstants.GibberingMouther,
             SkillConstants.Swim,
             SkillConstants.Listen,
@@ -2616,7 +2515,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Disguise,
             SkillConstants.Intimidate,
             SkillConstants.Knowledge + "2",
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Spot,
             SkillConstants.Search,
@@ -2626,24 +2524,10 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Gnoll,
             SkillConstants.Listen,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Gnome_Forest,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Gnome_Rock,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Gnome_Svirfneblin,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Goblin,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.MoveSilently,
-            SkillConstants.Ride,
-            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Gnome_Forest)]
+        [TestCase(CreatureConstants.Gnome_Rock)]
+        [TestCase(CreatureConstants.Gnome_Svirfneblin)]
+        [TestCase(CreatureConstants.Goblin, SkillConstants.Ride)]
         [TestCase(CreatureConstants.Golem_Clay)]
         [TestCase(CreatureConstants.Golem_Flesh)]
         [TestCase(CreatureConstants.Golem_Iron)]
@@ -2677,22 +2561,16 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Grig,
             SkillConstants.Craft,
             SkillConstants.EscapeArtist,
-            SkillConstants.Hide,
             SkillConstants.Jump,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Perform + "/" + SkillConstants.Foci.Perform.StringInstruments)]
         [TestCase(CreatureConstants.Grig_WithFiddle,
             SkillConstants.Craft,
             SkillConstants.EscapeArtist,
-            SkillConstants.Hide,
             SkillConstants.Jump,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
-            SkillConstants.Spot,
             SkillConstants.Perform + "/" + SkillConstants.Foci.Perform.StringInstruments)]
         [TestCase(CreatureConstants.Grimlock,
             SkillConstants.Climb,
@@ -2710,22 +2588,13 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive)]
         [TestCase(CreatureConstants.Halfling_Deep,
             SkillConstants.Appraise,
-            SkillConstants.Hide,
-            SkillConstants.Craft,
-            SkillConstants.Listen,
-            SkillConstants.MoveSilently)]
+            SkillConstants.Craft)]
         [TestCase(CreatureConstants.Halfling_Lightfoot,
             SkillConstants.Climb,
-            SkillConstants.Hide,
-            SkillConstants.Jump,
-            SkillConstants.Listen,
-            SkillConstants.MoveSilently)]
+            SkillConstants.Jump)]
         [TestCase(CreatureConstants.Halfling_Tallfellow,
             SkillConstants.Search,
-            SkillConstants.Hide,
-            SkillConstants.Spot,
-            SkillConstants.Listen,
-            SkillConstants.MoveSilently)]
+            SkillConstants.Spot)]
         [TestCase(CreatureConstants.Harpy,
             SkillConstants.Bluff,
             SkillConstants.Intimidate,
@@ -2768,7 +2637,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.EscapeArtist,
             SkillConstants.Intimidate,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Spot,
             SkillConstants.Search,
@@ -2781,11 +2649,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Hippogriff,
             SkillConstants.Listen,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Hobgoblin,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.MoveSilently,
-            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Hobgoblin)]
         [TestCase(CreatureConstants.Homunculus,
             SkillConstants.Hide,
             SkillConstants.Listen,
@@ -2817,19 +2681,13 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Listen,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.HoundArchon,
-            SkillConstants.Concentration,
-            SkillConstants.Diplomacy,
             SkillConstants.Hide,
             SkillConstants.Jump,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
-            SkillConstants.SenseMotive,
-            SkillConstants.Survival,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.Howler,
             SkillConstants.Climb,
             SkillConstants.Hide,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
             SkillConstants.Survival,
@@ -2900,11 +2758,9 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot,
             SkillConstants.Survival)]
         [TestCase(CreatureConstants.InvisibleStalker,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
-            SkillConstants.Survival,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.Janni,
             SkillConstants.Appraise,
             SkillConstants.Concentration,
@@ -2942,10 +2798,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Geography,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Nature,
             SkillConstants.Listen,
-            SkillConstants.Spot,
             SkillConstants.Search,
             SkillConstants.SenseMotive,
-            SkillConstants.Swim,
             SkillConstants.UseMagicDevice,
             SkillConstants.Survival)]
         [TestCase(CreatureConstants.Krenshar,
@@ -2959,9 +2813,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.EscapeArtist,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
-            SkillConstants.Swim,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Lamia,
             SkillConstants.Bluff,
             SkillConstants.Concentration,
@@ -2978,26 +2830,16 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.LanternArchon,
-            SkillConstants.Concentration,
-            SkillConstants.Diplomacy,
-            SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.ThePlanes,
-            SkillConstants.Listen,
-            SkillConstants.SenseMotive,
-            SkillConstants.Spot)]
+            SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.ThePlanes)]
         [TestCase(CreatureConstants.Lemure)]
         [TestCase(CreatureConstants.Leonal,
             SkillConstants.Balance,
-            SkillConstants.Concentration,
-            SkillConstants.Diplomacy,
             SkillConstants.Hide,
             SkillConstants.Intimidate,
             SkillConstants.Jump,
             SkillConstants.Knowledge,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
-            SkillConstants.SenseMotive,
-            SkillConstants.Survival,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.Leopard,
             SkillConstants.Balance,
             SkillConstants.Climb,
@@ -3011,7 +2853,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Concentration,
             SkillConstants.Diplomacy,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Arcana,
-            SkillConstants.Listen,
             SkillConstants.Perform,
             SkillConstants.SenseMotive,
             SkillConstants.Spellcraft,
@@ -3048,18 +2889,14 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim)]
         [TestCase(CreatureConstants.Locathah,
             SkillConstants.Craft,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Locust_Swarm,
             SkillConstants.Listen)]
         [TestCase(CreatureConstants.Magmin,
             SkillConstants.Climb,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.MantaRay,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Manticore,
             SkillConstants.Listen,
             SkillConstants.Survival,
@@ -3071,7 +2908,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Disguise,
             SkillConstants.Hide,
             SkillConstants.Intimidate,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Spot,
             SkillConstants.Search,
@@ -3117,10 +2953,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Diplomacy,
             SkillConstants.Disguise,
             SkillConstants.Intimidate,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
+            SkillConstants.UseRope)]
         [TestCase(CreatureConstants.Mephit_Earth,
             SkillConstants.Bluff,
             SkillConstants.EscapeArtist,
@@ -3148,10 +2982,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.Diplomacy,
             SkillConstants.Disguise,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
+            SkillConstants.UseRope)]
         [TestCase(CreatureConstants.Mephit_Magma,
             SkillConstants.Bluff,
             SkillConstants.EscapeArtist,
@@ -3204,15 +3036,10 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.UseRope,
             SkillConstants.Swim,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Merfolk,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Merfolk, SkillConstants.Listen)]
         [TestCase(CreatureConstants.Mimic,
             SkillConstants.Climb,
-            SkillConstants.Disguise,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+            SkillConstants.Disguise)]
         [TestCase(CreatureConstants.MindFlayer,
             SkillConstants.Bluff,
             SkillConstants.Concentration,
@@ -3291,7 +3118,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.Intimidate,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Arcana,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Spot,
             SkillConstants.Search,
@@ -3376,11 +3202,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.EscapeArtist,
             SkillConstants.HandleAnimal,
             SkillConstants.Hide,
-            SkillConstants.Listen,
             SkillConstants.Search,
             SkillConstants.SenseMotive,
-            SkillConstants.Spot,
-            SkillConstants.Swim,
             SkillConstants.Perform + "/" + SkillConstants.Foci.Perform.Sing)]
         [TestCase(CreatureConstants.Nymph,
             SkillConstants.Concentration,
@@ -3388,47 +3211,34 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.EscapeArtist,
             SkillConstants.HandleAnimal,
             SkillConstants.Heal,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Ride,
             SkillConstants.SenseMotive,
-            SkillConstants.Spot,
             SkillConstants.Swim,
             SkillConstants.UseRope)]
         [TestCase(CreatureConstants.OchreJelly, SkillConstants.Climb)]
         [TestCase(CreatureConstants.Octopus,
             SkillConstants.EscapeArtist,
             SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Octopus_Giant,
             SkillConstants.EscapeArtist,
             SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.Ogre,
             SkillConstants.Listen,
-            SkillConstants.Climb,
-            SkillConstants.Spot)]
+            SkillConstants.Climb)]
         [TestCase(CreatureConstants.Ogre_Merrow,
             SkillConstants.Climb,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Listen)]
         [TestCase(CreatureConstants.OgreMage,
             SkillConstants.Concentration,
             SkillConstants.Listen,
-            SkillConstants.Spellcraft,
-            SkillConstants.Spot)]
+            SkillConstants.Spellcraft)]
         [TestCase(CreatureConstants.Orc,
             SkillConstants.Listen,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Orc_Half,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Orc_Half)]
         [TestCase(CreatureConstants.Otyugh,
             SkillConstants.Hide,
             SkillConstants.Listen,
@@ -3657,27 +3467,21 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Listen,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Hunter,
             SkillConstants.Ride,
-            SkillConstants.Survival,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.Sahuagin_Malenti,
             SkillConstants.HandleAnimal,
             SkillConstants.Hide,
             SkillConstants.Listen,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Hunter,
             SkillConstants.Ride,
-            SkillConstants.Survival,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.Sahuagin_Mutant,
             SkillConstants.HandleAnimal,
             SkillConstants.Hide,
             SkillConstants.Listen,
             SkillConstants.Profession + "/" + SkillConstants.Foci.Profession.Hunter,
             SkillConstants.Ride,
-            SkillConstants.Survival,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.Salamander_Flamebrother,
             SkillConstants.Craft + "/" + SkillConstants.Foci.Craft.Blacksmithing,
             SkillConstants.Hide,
@@ -3773,16 +3577,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Listen,
             SkillConstants.Swim,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Shadow,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Search,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Shadow_Greater,
-            SkillConstants.Hide,
-            SkillConstants.Listen,
-            SkillConstants.Search,
-            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Shadow)]
+        [TestCase(CreatureConstants.Shadow_Greater)]
         [TestCase(CreatureConstants.ShadowMastiff,
             SkillConstants.Hide,
             SkillConstants.Listen,
@@ -3793,22 +3589,10 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.Listen,
             SkillConstants.MoveSilently)]
-        [TestCase(CreatureConstants.Shark_Dire,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Shark_Huge,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Shark_Large,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Shark_Medium,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Shark_Dire, SkillConstants.Listen)]
+        [TestCase(CreatureConstants.Shark_Huge, SkillConstants.Listen)]
+        [TestCase(CreatureConstants.Shark_Large, SkillConstants.Listen)]
+        [TestCase(CreatureConstants.Shark_Medium, SkillConstants.Listen)]
         [TestCase(CreatureConstants.ShieldGuardian)]
         [TestCase(CreatureConstants.ShockerLizard,
             SkillConstants.Climb + AbilityConstants.Dexterity,
@@ -3828,7 +3612,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Climb,
             SkillConstants.Hide,
             SkillConstants.Jump,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Slaad_Death,
@@ -3839,7 +3622,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Intimidate,
             SkillConstants.Jump,
             SkillConstants.Knowledge + "2",
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
             SkillConstants.UseRope,
@@ -3851,7 +3633,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.Jump,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Arcana,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
             SkillConstants.Spellcraft,
@@ -3862,7 +3643,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Concentration,
             SkillConstants.Hide,
             SkillConstants.Jump,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Search,
             SkillConstants.Survival,
@@ -3871,7 +3651,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Climb,
             SkillConstants.Hide,
             SkillConstants.Jump,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Snake_Constrictor,
@@ -4007,14 +3786,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.SpiderEater,
             SkillConstants.Listen,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Squid,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Squid_Giant,
-            SkillConstants.Listen,
-            SkillConstants.Swim,
-            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Squid, SkillConstants.Listen)]
+        [TestCase(CreatureConstants.Squid_Giant, SkillConstants.Listen)]
         [TestCase(CreatureConstants.StagBeetle_Giant)]
         [TestCase(CreatureConstants.Stirge,
             SkillConstants.Hide,
@@ -4154,18 +3927,13 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.TrumpetArchon,
-            SkillConstants.Concentration,
-            SkillConstants.Diplomacy,
             SkillConstants.EscapeArtist,
             SkillConstants.HandleAnimal,
             SkillConstants.Knowledge,
-            SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Perform + "/" + SkillConstants.Foci.Perform.WindInstruments,
             SkillConstants.Ride,
-            SkillConstants.SenseMotive,
-            SkillConstants.UseRope,
-            SkillConstants.Spot)]
+            SkillConstants.UseRope)]
         [TestCase(CreatureConstants.Tyrannosaurus,
             SkillConstants.Hide,
             SkillConstants.Listen,
@@ -4287,23 +4055,15 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Wraith,
             SkillConstants.Diplomacy,
-            SkillConstants.Hide,
             SkillConstants.Intimidate,
-            SkillConstants.Listen,
-            SkillConstants.Search,
             SkillConstants.SenseMotive,
-            SkillConstants.Survival,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.Wraith_Dread,
             SkillConstants.Diplomacy,
-            SkillConstants.Hide,
             SkillConstants.Intimidate,
             SkillConstants.Knowledge + "/" + SkillConstants.Foci.Knowledge.Religion,
-            SkillConstants.Listen,
-            SkillConstants.Search,
             SkillConstants.SenseMotive,
-            SkillConstants.Survival,
-            SkillConstants.Spot)]
+            SkillConstants.Survival)]
         [TestCase(CreatureConstants.Wyvern,
             SkillConstants.Hide,
             SkillConstants.Listen,
@@ -4761,6 +4521,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature)
         {
             var creatureTypes = CollectionSelector.Explode(TableNameConstants.Collection.CreatureTypes, creature);
+            creatureTypes = creatureTypes.Except(new[] { creature });
 
             Assert.That(table.Keys, Contains.Item(creature));
             AssertCollection(creatureTypes.Intersect(table.Keys), creatureTypes);
@@ -4795,36 +4556,6 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             }
 
             Assert.That(commonSkills, Is.SubsetOf(table[creatureType]));
-        }
-
-        [Test, Ignore("Mindless creatures can still have skills, just no ranks for skills")]
-        public void MindlessCreaturesHaveNoSkills()
-        {
-            var allAbilities = TypesAndAmountsSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
-            var mindless = allAbilities.Where(kvp => !kvp.Value.Any(a => a.Type == AbilityConstants.Intelligence)).Select(kvp => kvp.Key);
-
-            AssertCollection(mindless.Intersect(table.Keys), mindless);
-
-            foreach (var creature in mindless)
-            {
-                var skills = table[creature];
-                Assert.That(skills, Is.Empty, creature);
-            }
-        }
-
-        [Test]
-        public void MindfulCreaturesHaveSkills()
-        {
-            var allAbilities = TypesAndAmountsSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
-            var mindful = allAbilities.Where(kvp => kvp.Value.Any(a => a.Type == AbilityConstants.Intelligence)).Select(kvp => kvp.Key);
-
-            AssertCollection(mindful.Intersect(table.Keys), mindful);
-
-            foreach (var creature in mindful)
-            {
-                var skills = table[creature];
-                Assert.That(skills, Is.Not.Empty, creature);
-            }
         }
     }
 }

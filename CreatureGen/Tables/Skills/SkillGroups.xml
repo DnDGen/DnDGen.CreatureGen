@@ -418,9 +418,7 @@
     <name>Behir</name>
     <entry>Climb</entry>
     <entry>Hide</entry>
-    <entry>Listen</entry>
     <entry>Survival</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Beholder</name>
@@ -459,7 +457,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Dragon, Ancient</name>
@@ -473,7 +470,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Dragon, Great Wyrm</name>
@@ -487,7 +483,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Dragon, Juvenile</name>
@@ -501,7 +496,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Dragon, Mature Adult</name>
@@ -515,7 +509,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Dragon, Old</name>
@@ -529,7 +522,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Dragon, Very Old</name>
@@ -543,7 +535,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Dragon, Very Young</name>
@@ -557,7 +548,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Dragon, Wyrm</name>
@@ -571,7 +561,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Dragon, Wyrmling</name>
@@ -585,7 +574,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Dragon, Young</name>
@@ -599,7 +587,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Dragon, Young Adult</name>
@@ -613,7 +600,6 @@
     <entry>Use Magic Device</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Black Pudding</name>
@@ -800,7 +786,6 @@
     <entry>Climb</entry>
     <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Move Silently</entry>
   </collection>
@@ -833,17 +818,12 @@
   </collection>
   <collection>
     <name>Bralani</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Escape Artist</entry>
     <entry>Handle Animal</entry>
     <entry>Hide</entry>
     <entry>Jump</entry>
     <entry>Move Silently</entry>
     <entry>Ride</entry>
-    <entry>Sense Motive</entry>
     <entry>Tumble</entry>
     <entry>Use Rope</entry>
   </collection>
@@ -1027,7 +1007,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Ancient</name>
@@ -1041,7 +1020,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Great Wyrm</name>
@@ -1055,7 +1033,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Juvenile</name>
@@ -1069,7 +1046,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Mature Adult</name>
@@ -1083,7 +1059,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Old</name>
@@ -1097,7 +1072,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Very Old</name>
@@ -1111,7 +1085,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Very Young</name>
@@ -1125,7 +1098,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrm</name>
@@ -1139,7 +1111,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrmling</name>
@@ -1153,7 +1124,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Young</name>
@@ -1167,7 +1137,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Young Adult</name>
@@ -1181,7 +1150,6 @@
     <entry>Use Magic Device</entry>
     <entry>Disguise</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Brown Bear</name>
@@ -1192,10 +1160,6 @@
   <collection>
     <name>Bugbear</name>
     <entry>Climb</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Bulette</name>
@@ -1243,7 +1207,6 @@
   <collection>
     <name>Centipede Swarm</name>
     <entry>ClimbDexterity</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
@@ -1260,7 +1223,6 @@
     <entry>Climb</entry>
     <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Escape Artist</entry>
     <entry>Search</entry>
@@ -1291,8 +1253,6 @@
     <name>Chuul</name>
     <entry>Hide</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Clay Golem</name>
@@ -1310,10 +1270,8 @@
     <entry>Craft</entry>
     <entry>Diplomacy</entry>
     <entry>Intimidate</entry>
-    <entry>Listen</entry>
     <entry>Perform/String instruments</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Cockatrice</name>
@@ -1590,7 +1548,6 @@
     <entry>Climb</entry>
     <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Escape Artist</entry>
@@ -1608,19 +1565,11 @@
   </collection>
   <collection>
     <name>Deep Dwarf</name>
-    <entry>Appraise</entry>
-    <entry>Craft/Blacksmithing</entry>
-    <entry>Craft/Stonemasonry</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Deep Halfling</name>
     <entry>Appraise</entry>
     <entry>Craft</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
   </collection>
   <collection>
     <name>Deft Hands</name>
@@ -1739,8 +1688,6 @@
   <collection>
     <name>Dire Shark</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Dire Tiger</name>
@@ -1794,11 +1741,9 @@
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
     <entry>Knowledge</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Sense Motive</entry>
     <entry>Spellcraft</entry>
-    <entry>Spot</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
@@ -1828,21 +1773,16 @@
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
     <entry>Intimidate</entry>
-    <entry>Listen</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Dragon Turtle</name>
     <entry>Diplomacy</entry>
     <entry>Hide</entry>
     <entry>Intimidate</entry>
-    <entry>Listen</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Dragonne</name>
@@ -1852,18 +1792,13 @@
   <collection>
     <name>Dread Wraith</name>
     <entry>Diplomacy</entry>
-    <entry>Hide</entry>
     <entry>Intimidate</entry>
     <entry>Knowledge/Religion</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
     <name>Dretch</name>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
@@ -1886,22 +1821,14 @@
     <name>Dryad</name>
     <entry>Escape Artist</entry>
     <entry>Handle Animal</entry>
-    <entry>Hide</entry>
     <entry>Knowledge/Nature</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Ride</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Duergar</name>
-    <entry>Appraise</entry>
-    <entry>Craft/Blacksmithing</entry>
-    <entry>Craft/Stonemasonry</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Move Silently</entry>
   </collection>
   <collection>
@@ -1912,9 +1839,7 @@
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
     <entry>Intimidate</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Spot</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
@@ -1982,7 +1907,6 @@
   <collection>
     <name>Eight-Headed Cryohydra</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -2049,7 +1973,6 @@
   <collection>
     <name>Eleven-Headed Cryohydra</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -2103,7 +2026,6 @@
     <name>Ettin</name>
     <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
@@ -2141,7 +2063,6 @@
     <entry>Craft</entry>
     <entry>Intimidate</entry>
     <entry>Jump</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Fire Mephit</name>
@@ -2158,7 +2079,6 @@
   <collection>
     <name>Five-Headed Cryohydra</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -2186,9 +2106,6 @@
   </collection>
   <collection>
     <name>Forest Gnome</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Hide</entry>
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
@@ -2257,13 +2174,11 @@
     <entry>Craft</entry>
     <entry>Intimidate</entry>
     <entry>Jump</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Frost Worm</name>
     <entry>Hide</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
@@ -2285,17 +2200,12 @@
   </collection>
   <collection>
     <name>Ghaele</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
     <entry>Handle Animal</entry>
     <entry>Hide</entry>
     <entry>Knowledge2</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Ride</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
@@ -2367,8 +2277,6 @@
     <entry>Escape Artist</entry>
     <entry>Hide</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Giant Owl</name>
@@ -2385,8 +2293,6 @@
   <collection>
     <name>Giant Squid</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Giant Stag Beetle</name>
@@ -2423,7 +2329,6 @@
   </collection>
   <collection>
     <name>Glabrezu</name>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Bluff</entry>
     <entry>Concentration</entry>
@@ -2444,11 +2349,7 @@
   </collection>
   <collection>
     <name>Goblin</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
     <entry>Ride</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
@@ -2640,7 +2541,6 @@
     <entry>Climb</entry>
     <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Knowledge/Arcana</entry>
@@ -2657,8 +2557,6 @@
     <entry>Jump</entry>
     <entry>Move Silently</entry>
     <entry>Climb</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Sense Motive</entry>
     <entry>Survival</entry>
     <entry>Concentration</entry>
@@ -2668,10 +2566,6 @@
   </collection>
   <collection>
     <name>Greater Shadow</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
@@ -2859,7 +2753,6 @@
     <entry>Climb</entry>
     <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Move Silently</entry>
@@ -2883,10 +2776,7 @@
     <name>Grig</name>
     <entry>Craft</entry>
     <entry>Escape Artist</entry>
-    <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Move Silently</entry>
     <entry>Search</entry>
     <entry>Perform/String instruments</entry>
@@ -2895,10 +2785,7 @@
     <name>Grig with fiddle</name>
     <entry>Craft</entry>
     <entry>Escape Artist</entry>
-    <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Move Silently</entry>
     <entry>Search</entry>
     <entry>Perform/String instruments</entry>
@@ -2940,8 +2827,6 @@
   </collection>
   <collection>
     <name>Half-Orc</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Harpy</name>
@@ -2989,13 +2874,11 @@
   <collection>
     <name>Hellwasp Swarm</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Hide</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
     <entry>Climb</entry>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Hide</entry>
@@ -3017,18 +2900,12 @@
   </collection>
   <collection>
     <name>Hill Dwarf</name>
-    <entry>Appraise</entry>
-    <entry>Craft/Blacksmithing</entry>
-    <entry>Craft/Stonemasonry</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Hill Giant</name>
     <entry>Climb</entry>
     <entry>Jump</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>
@@ -3037,10 +2914,6 @@
   </collection>
   <collection>
     <name>Hobgoblin</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
@@ -3066,21 +2939,15 @@
   </collection>
   <collection>
     <name>Hound Archon</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
     <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
     <name>Howler</name>
     <entry>Climb</entry>
     <entry>Hide</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Search</entry>
     <entry>Spot</entry>
@@ -3122,9 +2989,7 @@
     <entry>Hide</entry>
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Spot</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
@@ -3146,10 +3011,8 @@
   </collection>
   <collection>
     <name>Invisible Stalker</name>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
@@ -3195,8 +3058,6 @@
     <name>Kapoacinth</name>
     <entry>Hide</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Knowledge</name>
@@ -3235,12 +3096,10 @@
   <collection>
     <name>Kraken</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Hide</entry>
     <entry>Intimidate</entry>
-    <entry>Swim</entry>
     <entry>Knowledge/Geography</entry>
     <entry>Knowledge/Nature</entry>
     <entry>Search</entry>
@@ -3263,18 +3122,14 @@
     <entry>Move Silently</entry>
     <entry>Search</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Lacedon</name>
     <entry>Climb</entry>
-    <entry>Spot</entry>
     <entry>Balance</entry>
     <entry>Hide</entry>
     <entry>Jump</entry>
     <entry>Move Silently</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Lamia</name>
@@ -3297,12 +3152,7 @@
   </collection>
   <collection>
     <name>Lantern Archon</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
     <entry>Knowledge/The Planes</entry>
-    <entry>Listen</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Lemure</name>
@@ -3310,16 +3160,11 @@
   <collection>
     <name>Leonal</name>
     <entry>Balance</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
     <entry>Hide</entry>
     <entry>Intimidate</entry>
     <entry>Knowledge</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
@@ -3345,10 +3190,7 @@
   <collection>
     <name>Lightfoot Halfling</name>
     <entry>Climb</entry>
-    <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
   </collection>
   <collection>
     <name>Lillend</name>
@@ -3356,7 +3198,6 @@
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
     <entry>Knowledge/Arcana</entry>
-    <entry>Listen</entry>
     <entry>Perform</entry>
     <entry>Sense Motive</entry>
     <entry>Spellcraft</entry>
@@ -3390,13 +3231,10 @@
     <name>Locathah</name>
     <entry>Craft</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Locust Swarm</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Magical Aptitude</name>
@@ -3423,9 +3261,7 @@
   <collection>
     <name>Malenti</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Hide</entry>
-    <entry>Swim</entry>
     <entry>Handle Animal</entry>
     <entry>Profession/Hunter</entry>
     <entry>Ride</entry>
@@ -3434,8 +3270,6 @@
   <collection>
     <name>Manta Ray</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Manticore</name>
@@ -3445,7 +3279,6 @@
   </collection>
   <collection>
     <name>Marilith</name>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Hide</entry>
     <entry>Move Silently</entry>
@@ -3491,22 +3324,16 @@
   <collection>
     <name>Merfolk</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Merrow</name>
     <entry>Climb</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Mimic</name>
     <entry>Climb</entry>
     <entry>Disguise</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
@@ -3751,11 +3578,6 @@
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
-    <entry>Appraise</entry>
-    <entry>Craft/Blacksmithing</entry>
-    <entry>Craft/Stonemasonry</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Mule</name>
@@ -3778,7 +3600,6 @@
     <entry>Hide</entry>
     <entry>Intimidate</entry>
     <entry>Knowledge/Arcana</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
@@ -3893,7 +3714,6 @@
   <collection>
     <name>Nine-Headed Cryohydra</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -3910,8 +3730,6 @@
   </collection>
   <collection>
     <name>Nixie</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Hide</entry>
     <entry>Bluff</entry>
     <entry>Search</entry>
@@ -3919,7 +3737,6 @@
     <entry>Craft</entry>
     <entry>Escape Artist</entry>
     <entry>Handle Animal</entry>
-    <entry>Swim</entry>
     <entry>Perform/Sing</entry>
   </collection>
   <collection>
@@ -3930,11 +3747,9 @@
     <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
     <entry>Knowledge</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Sense Motive</entry>
     <entry>Spellcraft</entry>
-    <entry>Spot</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
@@ -3955,12 +3770,9 @@
     <entry>Escape Artist</entry>
     <entry>Handle Animal</entry>
     <entry>Heal</entry>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Ride</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Swim</entry>
     <entry>Use Rope</entry>
   </collection>
@@ -3973,21 +3785,17 @@
     <entry>Escape Artist</entry>
     <entry>Listen</entry>
     <entry>Hide</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Ogre</name>
     <entry>Climb</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Ogre Mage</name>
     <entry>Concentration</entry>
     <entry>Listen</entry>
     <entry>Spellcraft</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Ooze Mephit</name>
@@ -4298,7 +4106,6 @@
     <entry>Hide</entry>
     <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Spot</entry>
     <entry>SwimDexterity</entry>
   </collection>
   <collection>
@@ -4495,7 +4302,6 @@
     <entry>Climb</entry>
     <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Move Silently</entry>
   </collection>
@@ -4520,9 +4326,6 @@
   </collection>
   <collection>
     <name>Rock Gnome</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Hide</entry>
   </collection>
   <collection>
     <name>Roper</name>
@@ -4539,9 +4342,7 @@
   <collection>
     <name>Sahuagin</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Hide</entry>
-    <entry>Swim</entry>
     <entry>Handle Animal</entry>
     <entry>Profession/Hunter</entry>
     <entry>Ride</entry>
@@ -4550,9 +4351,7 @@
   <collection>
     <name>Sahuagin Mutant</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Hide</entry>
-    <entry>Swim</entry>
     <entry>Handle Animal</entry>
     <entry>Profession/Hunter</entry>
     <entry>Ride</entry>
@@ -4635,7 +4434,6 @@
   <collection>
     <name>Seven-Headed Cryohydra</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -4652,10 +4450,6 @@
   </collection>
   <collection>
     <name>Shadow</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Shadow Mastiff</name>
@@ -4674,20 +4468,14 @@
   <collection>
     <name>Shark, Huge</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Shark, Large</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Shark, Medium</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Shield Guardian</name>
@@ -4875,7 +4663,6 @@
   <collection>
     <name>Six-Headed Cryohydra</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -4917,7 +4704,6 @@
     <name>Spider Swarm</name>
     <entry>ClimbDexterity</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Spirit Naga</name>
@@ -4929,8 +4715,6 @@
   <collection>
     <name>Squid</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Stealthy</name>
@@ -4960,14 +4744,12 @@
     <entry>Climb</entry>
     <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
     <entry>Climb</entry>
     <entry>Hide</entry>
     <entry>Jump</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
@@ -4983,7 +4765,6 @@
     <entry>Listen</entry>
     <entry>Perform/Sing</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -5005,15 +4786,9 @@
   </collection>
   <collection>
     <name>Svirfneblin</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Hide</entry>
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
-    <entry>Hide</entry>
-    <entry>Listen</entry>
-    <entry>Move Silently</entry>
     <entry>Search</entry>
     <entry>Spot</entry>
   </collection>
@@ -5027,7 +4802,6 @@
   <collection>
     <name>Ten-Headed Cryohydra</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -5148,23 +4922,17 @@
   </collection>
   <collection>
     <name>Trumpet Archon</name>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
     <entry>Escape Artist</entry>
     <entry>Handle Animal</entry>
     <entry>Knowledge</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Perform/Wind instruments</entry>
     <entry>Ride</entry>
-    <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Swim</entry>
   </collection>
   <collection>
@@ -5629,12 +5397,8 @@
   <collection>
     <name>Wraith</name>
     <entry>Diplomacy</entry>
-    <entry>Hide</entry>
     <entry>Intimidate</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
