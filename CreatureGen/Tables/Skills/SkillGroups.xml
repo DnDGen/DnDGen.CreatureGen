@@ -3195,13 +3195,9 @@
   <collection>
     <name>Lillend</name>
     <entry>Appraise</entry>
-    <entry>Concentration</entry>
-    <entry>Diplomacy</entry>
     <entry>Knowledge/Arcana</entry>
     <entry>Perform</entry>
-    <entry>Sense Motive</entry>
     <entry>Spellcraft</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
@@ -3730,7 +3726,6 @@
   </collection>
   <collection>
     <name>Nixie</name>
-    <entry>Hide</entry>
     <entry>Bluff</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
