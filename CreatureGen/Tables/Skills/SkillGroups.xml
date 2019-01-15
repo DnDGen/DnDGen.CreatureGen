@@ -3799,10 +3799,7 @@
     <entry>Hide</entry>
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
@@ -3876,8 +3873,6 @@
     <entry>Disguise</entry>
     <entry>Intimidate</entry>
     <entry>Knowledge</entry>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
@@ -3905,9 +3900,6 @@
   </collection>
   <collection>
     <name>Pixie</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Hide</entry>
     <entry>Move Silently</entry>
     <entry>Bluff</entry>
     <entry>Concentration</entry>
@@ -3918,9 +3910,6 @@
   </collection>
   <collection>
     <name>Pixie with Irresistable Dance</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Hide</entry>
     <entry>Move Silently</entry>
     <entry>Bluff</entry>
     <entry>Concentration</entry>
@@ -3944,8 +3933,6 @@
   <collection>
     <name>Porpoise</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Profession</name>
@@ -4040,10 +4027,8 @@
     <name>Pseudodragon</name>
     <entry>Diplomacy</entry>
     <entry>Hide</entry>
-    <entry>Listen</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
@@ -4053,7 +4038,6 @@
   </collection>
   <collection>
     <name>Quasit</name>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Bluff</entry>
     <entry>Intimidate</entry>
@@ -4369,13 +4353,10 @@
     <entry>Bluff</entry>
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
-    <entry>Hide</entry>
     <entry>Intimidate</entry>
     <entry>Knowledge/Nature</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Perform/Wind instruments</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
@@ -4383,13 +4364,10 @@
     <entry>Bluff</entry>
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
-    <entry>Hide</entry>
     <entry>Intimidate</entry>
     <entry>Knowledge/Nature</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Perform/Wind instruments</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
@@ -4403,8 +4381,6 @@
   <collection>
     <name>Scrag</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Sea Cat</name>
@@ -4418,8 +4394,6 @@
     <entry>Knowledge</entry>
     <entry>Hide</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Self-Sufficient</name>
@@ -4677,17 +4651,11 @@
     <entry>Hide</entry>
     <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Spectre</name>
-    <entry>Hide</entry>
     <entry>Intimidate</entry>
     <entry>Knowledge/Religion</entry>
-    <entry>Listen</entry>
-    <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
@@ -4764,7 +4732,6 @@
   </collection>
   <collection>
     <name>Succubus</name>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Bluff</entry>
     <entry>Concentration</entry>
@@ -4853,7 +4820,6 @@
     <entry>Intimidate</entry>
     <entry>Jump</entry>
     <entry>Knowledge</entry>
-    <entry>Listen</entry>
     <entry>Perform/Oratory</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
@@ -4889,14 +4855,11 @@
     <entry>Craft</entry>
     <entry>Diplomacy</entry>
     <entry>Hide</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
     <entry>Ride</entry>
     <entry>Search</entry>
     <entry>Sense Motive</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
@@ -4906,7 +4869,6 @@
   <collection>
     <name>Troll</name>
     <entry>Listen</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Truly Horrid Umber Hulk</name>
@@ -5083,7 +5045,6 @@
   </collection>
   <collection>
     <name>Vrock</name>
-    <entry>Listen</entry>
     <entry>Spot</entry>
     <entry>Concentration</entry>
     <entry>Diplomacy</entry>
@@ -5103,39 +5064,21 @@
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Elemental, Greater</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Elemental, Huge</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Elemental, Large</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Elemental, Medium</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Elemental, Small</name>
-    <entry>Listen</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
@@ -5144,19 +5087,14 @@
     <entry>Hide</entry>
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Spot</entry>
-    <entry>Swim</entry>
     <entry>Use Rope</entry>
   </collection>
   <collection>
     <name>Water Naga</name>
     <entry>Concentration</entry>
     <entry>Listen</entry>
-    <entry>Spot</entry>
     <entry>Spellcraft</entry>
-    <entry>Swim</entry>
   </collection>
   <collection>
     <name>Weasel</name>
@@ -5351,9 +5289,7 @@
     <entry>Diplomacy</entry>
     <entry>Disguise</entry>
     <entry>Intimidate</entry>
-    <entry>Listen</entry>
     <entry>Search</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
@@ -5361,7 +5297,6 @@
     <entry>Hide</entry>
     <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Spot</entry>
     <entry>Survival</entry>
   </collection>
   <collection>
@@ -5399,9 +5334,7 @@
   <collection>
     <name>Wyvern</name>
     <entry>Hide</entry>
-    <entry>Listen</entry>
     <entry>Move Silently</entry>
-    <entry>Spot</entry>
   </collection>
   <collection>
     <name>Xill</name>
