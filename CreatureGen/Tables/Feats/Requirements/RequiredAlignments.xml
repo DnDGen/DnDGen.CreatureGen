@@ -355,4 +355,64 @@
   <collection>
     <name>Wingover</name>
   </collection>
+  <collection>
+    <name>AasimarArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>AasimarArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>AasimarEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>AasimarEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>AasimarEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>AasimarSpell-Like AbilityDaylight</name>
+  </collection>
+  <collection>
+    <name>AbolethMucus Cloud</name>
+  </collection>
+  <collection>
+    <name>AbolethSpell-Like AbilityHypnotic pattern</name>
+  </collection>
+  <collection>
+    <name>AbolethSpell-Like AbilityIllusory wall</name>
+  </collection>
+  <collection>
+    <name>AbolethSpell-Like AbilityMirage arcana</name>
+  </collection>
+  <collection>
+    <name>AbolethSpell-Like AbilityPersistent image</name>
+  </collection>
+  <collection>
+    <name>AbolethSpell-Like AbilityProgrammed image</name>
+  </collection>
+  <collection>
+    <name>AbolethSpell-Like AbilityProject image</name>
+  </collection>
+  <collection>
+    <name>AberrationDarkvision</name>
+  </collection>
+  <collection>
+    <name>AberrationSimple Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>AberrationShield Proficiency</name>
+  </collection>
+  <collection>
+    <name>Abyssal Greater BasiliskDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Abyssal Greater BasiliskEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Abyssal Greater BasiliskEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Abyssal Greater BasiliskSpell Resistance</name>
+  </collection>
 </collections>

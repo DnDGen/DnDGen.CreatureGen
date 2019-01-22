@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Feats;
+using CreatureGen.Magic;
 using CreatureGen.Selectors.Helpers;
 using CreatureGen.Tables;
 using NUnit.Framework;
@@ -31,9 +32,9 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
             var specialQualityData = CollectionMapper.Map(TableNameConstants.Collection.SpecialQualityData);
             var specialQualities = specialQualityData
-                .SelectMany(kvp => kvp.Value.Select(v => kvp.Key + v))
-                .Select(q => SpecialQualityHelper.ParseData(q))
-                .Select(q => q[DataIndexConstants.SpecialQualityData.FeatNameIndex] + q[DataIndexConstants.SpecialQualityData.FocusIndex]);
+                .Where(kvp => kvp.Value.Any())
+                .SelectMany(kvp => kvp.Value.Select(k => SpecialQualityHelper.ParseData(k).Union(new[] { kvp.Key }).ToArray()))
+                .Select(d => d.Last() + d[DataIndexConstants.SpecialQualityData.FeatNameIndex] + d[DataIndexConstants.SpecialQualityData.FocusIndex]);
 
             var names = feats.Union(metamagic).Union(monster).Union(craft).Union(specialQualities);
 
@@ -134,18 +135,33 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 {
                     var testCases = new Dictionary<string, string[]>();
 
+                    //Creatures
                     testCases[CreatureConstants.Aasimar + FeatConstants.ArmorProficiency_Light] = new string[0];
                     testCases[CreatureConstants.Aasimar + FeatConstants.ArmorProficiency_Medium] = new string[0];
-                    testCases[CreatureConstants.Aasimar + FeatConstants.SpecialQualities.EnergyResistance] = new string[0];
-                    testCases[CreatureConstants.Aasimar + FeatConstants.SpecialQualities.SpellLikeAbility] = new string[0];
+                    testCases[CreatureConstants.Aasimar + FeatConstants.SpecialQualities.EnergyResistance + FeatConstants.Foci.Elements.Acid] = new string[0];
+                    testCases[CreatureConstants.Aasimar + FeatConstants.SpecialQualities.EnergyResistance + FeatConstants.Foci.Elements.Cold] = new string[0];
+                    testCases[CreatureConstants.Aasimar + FeatConstants.SpecialQualities.EnergyResistance + FeatConstants.Foci.Elements.Electricity] = new string[0];
+                    testCases[CreatureConstants.Aasimar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.Daylight] = new string[0];
 
                     testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.MucusCloud] = new string[0];
-                    testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.SpellLikeAbility] = new string[0];
+                    testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.HypnoticPattern] = new string[0];
+                    testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.IllusoryWall] = new string[0];
+                    testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.MirageArcana] = new string[0];
+                    testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.PersistentImage] = new string[0];
+                    testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.ProgrammedImage] = new string[0];
+                    testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.ProjectImage] = new string[0];
 
-                    testCases[CreatureConstants.Basilisk_AbyssalGreater + FeatConstants.SpecialQualities.DamageReduction] = new string[0];
+                    testCases[CreatureConstants.Basilisk_AbyssalGreater + FeatConstants.SpecialQualities.DamageReduction + "Vulnerable to magic weapons"] = new string[0];
+                    testCases[CreatureConstants.Basilisk_AbyssalGreater + FeatConstants.SpecialQualities.EnergyResistance + FeatConstants.Foci.Elements.Cold] = new string[0];
+                    testCases[CreatureConstants.Basilisk_AbyssalGreater + FeatConstants.SpecialQualities.EnergyResistance + FeatConstants.Foci.Elements.Fire] = new string[0];
+                    testCases[CreatureConstants.Basilisk_AbyssalGreater + FeatConstants.SpecialQualities.SpellResistance] = new string[0];
 
-                    testCases[CreatureConstants.Types.Aberration + FeatConstants.WeaponProficiency_Simple] = new string[0];
+                    //Creature Types
+                    testCases[CreatureConstants.Types.Aberration + FeatConstants.SpecialQualities.Darkvision] = new string[0];
+                    testCases[CreatureConstants.Types.Aberration + FeatConstants.WeaponProficiency_Simple + GroupConstants.All] = new string[0];
                     testCases[CreatureConstants.Types.Aberration + FeatConstants.ShieldProficiency] = new string[0];
+
+                    //Creature Subtypes
 
                     foreach (var testCase in testCases)
                     {

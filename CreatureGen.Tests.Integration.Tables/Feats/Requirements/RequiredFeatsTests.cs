@@ -27,9 +27,9 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
             var specialQualityData = CollectionMapper.Map(TableNameConstants.Collection.SpecialQualityData);
             var specialQualities = specialQualityData
-                .SelectMany(kvp => kvp.Value.Select(v => kvp.Key + v))
-                .Select(q => SpecialQualityHelper.ParseData(q))
-                .Select(q => q[DataIndexConstants.SpecialQualityData.FeatNameIndex] + q[DataIndexConstants.SpecialQualityData.FocusIndex]);
+                .Where(kvp => kvp.Value.Any())
+                .SelectMany(kvp => kvp.Value.Select(k => SpecialQualityHelper.ParseData(k).Union(new[] { kvp.Key }).ToArray()))
+                .Select(d => d.Last() + d[DataIndexConstants.SpecialQualityData.FeatNameIndex] + d[DataIndexConstants.SpecialQualityData.FocusIndex]);
 
             var names = feats.Union(metamagic).Union(monster).Union(craft).Union(specialQualities);
 
