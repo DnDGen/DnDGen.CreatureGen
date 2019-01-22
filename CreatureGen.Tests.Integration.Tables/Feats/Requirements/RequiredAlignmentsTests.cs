@@ -1,4 +1,5 @@
-﻿using CreatureGen.Feats;
+﻿using CreatureGen.Creatures;
+using CreatureGen.Feats;
 using CreatureGen.Selectors.Helpers;
 using CreatureGen.Tables;
 using NUnit.Framework;
@@ -32,7 +33,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
             var specialQualities = specialQualityData
                 .SelectMany(kvp => kvp.Value.Select(v => kvp.Key + v))
                 .Select(q => SpecialQualityHelper.ParseData(q))
-                .Select(q => q[DataIndexConstants.SpecialQualityData.FeatNameIndex]);
+                .Select(q => q[DataIndexConstants.SpecialQualityData.FeatNameIndex] + q[DataIndexConstants.SpecialQualityData.FocusIndex]);
 
             var names = feats.Union(metamagic).Union(monster).Union(craft).Union(specialQualities);
 
@@ -132,6 +133,19 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, string[]>();
+
+                    testCases[CreatureConstants.Aasimar + FeatConstants.ArmorProficiency_Light] = new string[0];
+                    testCases[CreatureConstants.Aasimar + FeatConstants.ArmorProficiency_Medium] = new string[0];
+                    testCases[CreatureConstants.Aasimar + FeatConstants.SpecialQualities.EnergyResistance] = new string[0];
+                    testCases[CreatureConstants.Aasimar + FeatConstants.SpecialQualities.SpellLikeAbility] = new string[0];
+
+                    testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.MucusCloud] = new string[0];
+                    testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.SpellLikeAbility] = new string[0];
+
+                    testCases[CreatureConstants.Basilisk_AbyssalGreater + FeatConstants.SpecialQualities.DamageReduction] = new string[0];
+
+                    testCases[CreatureConstants.Types.Aberration + FeatConstants.WeaponProficiency_Simple] = new string[0];
+                    testCases[CreatureConstants.Types.Aberration + FeatConstants.ShieldProficiency] = new string[0];
 
                     foreach (var testCase in testCases)
                     {

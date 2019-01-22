@@ -1,5 +1,6 @@
 ﻿using CreatureGen.Abilities;
 using CreatureGen.Feats;
+using CreatureGen.Selectors.Helpers;
 using CreatureGen.Tables;
 using NUnit.Framework;
 using System.Collections;
@@ -34,7 +35,13 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
             var monster = FeatConstants.Monster.All();
             var craft = FeatConstants.MagicItemCreation.All();
 
-            var names = feats.Union(metamagic).Union(monster).Union(craft);
+            var specialQualityData = CollectionMapper.Map(TableNameConstants.Collection.SpecialQualityData);
+            var specialQualities = specialQualityData
+                .SelectMany(kvp => kvp.Value.Select(v => kvp.Key + v))
+                .Select(q => SpecialQualityHelper.ParseData(q))
+                .Select(q => q[DataIndexConstants.SpecialQualityData.FeatNameIndex] + q[DataIndexConstants.SpecialQualityData.FocusIndex]);
+
+            var names = feats.Union(metamagic).Union(monster).Union(craft).Union(specialQualities);
 
             return names;
         }
@@ -43,6 +50,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         [TestCaseSource(typeof(AbilityRequirementsTestData), "Metamagic")]
         [TestCaseSource(typeof(AbilityRequirementsTestData), "Monster")]
         [TestCaseSource(typeof(AbilityRequirementsTestData), "Craft")]
+        [TestCaseSource(typeof(AbilityRequirementsTestData), "SpecialQualities")]
         public void AbilityRequirements(string name, Dictionary<string, int> typesAndAmounts)
         {
             AssertTypesAndAmounts(name, typesAndAmounts);
@@ -167,6 +175,19 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                         var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
                         yield return new TestCaseData(testCase.Key, testCase.Value)
                             .SetName($"AbilityRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                    }
+                }
+            }
+
+            public static IEnumerable SpecialQualities
+            {
+                get
+                {
+                    var testCases = new Dictionary<string, Dictionary<string, int>>();
+
+                    foreach (var testCase in testCases)
+                    {
+                        yield return new TestCaseData(testCase.Key, testCase.Value);
                     }
                 }
             }

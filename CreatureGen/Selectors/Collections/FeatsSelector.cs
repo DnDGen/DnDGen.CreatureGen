@@ -155,10 +155,11 @@ namespace CreatureGen.Selectors.Collections
                     specialQualitySelection.RandomFociQuantity = data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex];
                     specialQualitySelection.RequiresEquipment = Convert.ToBoolean(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex]);
 
-                    specialQualitySelection.RequiredFeats = GetRequiredFeats(source + specialQualitySelection.Feat);
-                    specialQualitySelection.MinimumAbilities = GetRequiredAbilities(source + specialQualitySelection.Feat);
-                    specialQualitySelection.RequiredSizes = GetRequiredSizes(source + specialQualitySelection.Feat);
-                    specialQualitySelection.RequiredAlignments = GetRequiredAlignments(source + specialQualitySelection.Feat);
+                    var requirementKey = GetSpecialQualityRequirementKey(source, specialQualitySelection);
+                    specialQualitySelection.RequiredFeats = GetRequiredFeats(requirementKey);
+                    specialQualitySelection.MinimumAbilities = GetRequiredAbilities(requirementKey);
+                    specialQualitySelection.RequiredSizes = GetRequiredSizes(requirementKey);
+                    specialQualitySelection.RequiredAlignments = GetRequiredAlignments(requirementKey);
 
                     specialQualitySelections.Add(specialQualitySelection);
                     usedSpecialQualities.Add(specialQuality);
@@ -166,6 +167,11 @@ namespace CreatureGen.Selectors.Collections
             }
 
             return specialQualitySelections;
+        }
+
+        private string GetSpecialQualityRequirementKey(string source, SpecialQualitySelection selection)
+        {
+            return source + selection.Feat + selection.FocusType;
         }
 
         private IEnumerable<string> GetRequiredSizes(string source)
