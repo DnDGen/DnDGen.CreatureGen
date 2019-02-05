@@ -415,4 +415,403 @@
   <collection>
     <name>Abyssal Greater BasiliskSpell Resistance</name>
   </collection>
+  <collection>
+    <name>AchaieraiSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Adult ArrowhawkEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Adult ArrowhawkEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Adult ArrowhawkImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Adult ArrowhawkImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Adult ArrowhawkImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Adult TojanidaAll-Around Vision</name>
+  </collection>
+  <collection>
+    <name>Adult TojanidaEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Adult TojanidaEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Adult TojanidaImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Adult TojanidaImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Adult TojanidaImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, GreaterDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, HugeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Air MephitDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Air MephitFast HealingExposed to moving air</name>
+  </collection>
+  <collection>
+    <name>Air MephitSpell-Like AbilityBlur</name>
+  </collection>
+  <collection>
+    <name>Air MephitSpell-Like AbilityGust of wind</name>
+  </collection>
+  <collection>
+    <name>AllipTurn Resistance</name>
+  </collection>
+  <collection>
+    <name>AngelDarkvision</name>
+  </collection>
+  <collection>
+    <name>AngelEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>AngelEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>AngelImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>AngelImmunityCold</name>
+  </collection>
+  <collection>
+    <name>AngelImmunityPetrification</name>
+  </collection>
+  <collection>
+    <name>AngelLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>AngelProtective Aura</name>
+  </collection>
+  <collection>
+    <name>AngelSpell-Like AbilityTongues</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaChange ShapeSmall or Medium Humanoid</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaDamage ReductionVulnerable to evil</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSimple Weapon ProficiencyHeavy mace</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityAid</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityBlade barrier</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityContinual flame</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityCure/inflict light wounds</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityDiscern lies</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityDispel good/evil/law/chaos</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityHeal/Harm</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityHoly aura</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityHoly smite</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityHoly word</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityInvisibility (self only)</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityPlane shift</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityRemove curse</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityRemove disease</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilityRemove fear</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaUncanny Dodge</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarChange ShapeSmall or Medium Humanoid</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarDamage ReductionVulnerable to evil</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarMartial Weapon ProficiencyGreatsword</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarRegenerationDoes not regenerate evil damage</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityBlade barrier</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityContinual flame</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityDetect snares and pits</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityDiscern lies</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityEarthquake</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityFlame strike</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityGreater restoration</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityHoly smite</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityInvisibility (self only)</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityLesser restoration</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityMass charm monster</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityPower word stun</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityRaise dead</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityRemove curse</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityRemove disease</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityRemove fear</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilitySpeak with dead</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityTrue seeing</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarChange ShapeSmall or Medium Humanoid</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarDamage ReductionVulnerable to evil</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarMartial Weapon ProficiencyGreatsword</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityBlade barrier</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityContinual flame</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityDiscern lies</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityHeal/Harm</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityHoly aura</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityHoly smite</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityHoly word</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityInvisibility (self only)</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityPlane shift</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityRemove curse</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityRemove disease</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityRemove fear</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarUncanny Dodge</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, GreaterDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, HugeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Elder ArrowhawkEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Elder ArrowhawkEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Elder ArrowhawkImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Elder ArrowhawkImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Elder ArrowhawkImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Elder TojanidaAll-Around Vision</name>
+  </collection>
+  <collection>
+    <name>Elder TojanidaEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Elder TojanidaEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Elder TojanidaImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Elder TojanidaImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Elder TojanidaImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, GreaterDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, HugeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Juvenile ArrowhawkEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Juvenile ArrowhawkEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Juvenile ArrowhawkImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Juvenile ArrowhawkImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Juvenile ArrowhawkImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Juvenile TojanidaAll-Around Vision</name>
+  </collection>
+  <collection>
+    <name>Juvenile TojanidaEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Juvenile TojanidaEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Juvenile TojanidaImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Juvenile TojanidaImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Juvenile TojanidaImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, GreaterDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, HugeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
 </collections>
