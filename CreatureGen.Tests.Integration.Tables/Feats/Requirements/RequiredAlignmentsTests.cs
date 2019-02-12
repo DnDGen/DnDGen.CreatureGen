@@ -181,20 +181,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.BladeBarrier] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.CharmMonster_Mass] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.ContinualFlame] = new string[0];
-                    testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.CureInflictLightWounds] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.DetectAlignment] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.DetectSnaresAndPits] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.DiscernLies] = new string[0];
-                    testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.DispelAlignment] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.DispelMagic] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.Earthquake] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.FlameStrike] = new string[0];
-                    testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.HealHarm] = new string[0];
-                    testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.HolyAura] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.HolySmite] = new string[0];
-                    testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.HolyWord] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.Invisibility + " (self only)"] = new string[0];
-                    testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.PlaneShift] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.PowerWordStun] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.RaiseDead] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.RemoveCurse] = new string[0];
@@ -205,7 +199,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.SeeInvisibility] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.SpeakWithDead] = new string[0];
                     testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.TrueSeeing] = new string[0];
-                    testCases[CreatureConstants.Angel_Planetar + FeatConstants.SpecialQualities.UncannyDodge] = new string[0];
 
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.ChangeShape + "Small or Medium Humanoid"] = new string[0];
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.WeaponProficiency_Martial + WeaponConstants.Greatsword] = new string[0];
@@ -216,18 +209,13 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.ContinualFlame] = new string[0];
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.DetectAlignment] = new string[0];
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.DiscernLies] = new string[0];
-                    testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.DispelMagic] = new string[0];
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.HealHarm] = new string[0];
-                    testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.HolyAura] = new string[0];
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.HolySmite] = new string[0];
-                    testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.HolyWord] = new string[0];
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.Invisibility + " (self only)"] = new string[0];
-                    testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.PlaneShift] = new string[0];
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.RemoveCurse] = new string[0];
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.RemoveDisease] = new string[0];
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.RemoveFear] = new string[0];
                     testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.SpellLikeAbility + SpellConstants.SeeInvisibility] = new string[0];
-                    testCases[CreatureConstants.Angel_Solar + FeatConstants.SpecialQualities.UncannyDodge] = new string[0];
 
                     testCases[CreatureConstants.Arrowhawk_Adult + FeatConstants.SpecialQualities.EnergyResistance + FeatConstants.Foci.Elements.Cold] = new string[0];
                     testCases[CreatureConstants.Arrowhawk_Adult + FeatConstants.SpecialQualities.EnergyResistance + FeatConstants.Foci.Elements.Fire] = new string[0];

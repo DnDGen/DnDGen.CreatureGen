@@ -596,6 +596,9 @@
     <name>Angel, PlanetarSpell-Like AbilityContinual flame</name>
   </collection>
   <collection>
+    <name>Angel, PlanetarSpell-Like AbilityContinual flame</name>
+  </collection>
+  <collection>
     <name>Angel, PlanetarSpell-Like AbilityDetect chaos/law/good/evil</name>
   </collection>
   <collection>
@@ -654,9 +657,6 @@
   </collection>
   <collection>
     <name>Angel, SolarChange ShapeSmall or Medium Humanoid</name>
-  </collection>
-  <collection>
-    <name>Angel, SolarDamage ReductionVulnerable to evil</name>
   </collection>
   <collection>
     <name>Angel, SolarMartial Weapon ProficiencyGreatsword</name>
