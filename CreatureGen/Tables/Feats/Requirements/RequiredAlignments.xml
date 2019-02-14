@@ -596,9 +596,6 @@
     <name>Angel, PlanetarSpell-Like AbilityContinual flame</name>
   </collection>
   <collection>
-    <name>Angel, PlanetarSpell-Like AbilityContinual flame</name>
-  </collection>
-  <collection>
     <name>Angel, PlanetarSpell-Like AbilityDetect chaos/law/good/evil</name>
   </collection>
   <collection>
@@ -656,16 +653,40 @@
     <name>Angel, PlanetarSpell-Like AbilityTrue seeing</name>
   </collection>
   <collection>
+    <name>Angel, PlanetarSpell-Like AbilityWaves of exhaustion</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarSpell-Like AbilityWaves of fatigue</name>
+  </collection>
+  <collection>
     <name>Angel, SolarChange ShapeSmall or Medium Humanoid</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarDamage ReductionVulnerable to epic evil</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarMartial Weapon ProficiencyComposite longbow</name>
   </collection>
   <collection>
     <name>Angel, SolarMartial Weapon ProficiencyGreatsword</name>
   </collection>
   <collection>
+    <name>Angel, SolarRegenerationDoes not regenerate evil damage</name>
+  </collection>
+  <collection>
     <name>Angel, SolarSpell Resistance</name>
   </collection>
   <collection>
+    <name>Angel, SolarSpell-Like AbilityAid</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityAnimate objects</name>
+  </collection>
+  <collection>
     <name>Angel, SolarSpell-Like AbilityBlade barrier</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityCommune</name>
   </collection>
   <collection>
     <name>Angel, SolarSpell-Like AbilityContinual flame</name>
@@ -674,28 +695,55 @@
     <name>Angel, SolarSpell-Like AbilityDetect chaos/law/good/evil</name>
   </collection>
   <collection>
+    <name>Angel, SolarSpell-Like AbilityDetect snares and pits</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityDimensional anchor</name>
+  </collection>
+  <collection>
     <name>Angel, SolarSpell-Like AbilityDiscern lies</name>
   </collection>
   <collection>
-    <name>Angel, SolarSpell-Like AbilityDispel magic</name>
+    <name>Angel, SolarSpell-Like AbilityEarthquake</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityGreater dispel magic</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityGreater restoration</name>
   </collection>
   <collection>
     <name>Angel, SolarSpell-Like AbilityHeal/Harm</name>
   </collection>
   <collection>
-    <name>Angel, SolarSpell-Like AbilityHoly aura</name>
-  </collection>
-  <collection>
     <name>Angel, SolarSpell-Like AbilityHoly smite</name>
   </collection>
   <collection>
-    <name>Angel, SolarSpell-Like AbilityHoly word</name>
+    <name>Angel, SolarSpell-Like AbilityImprisonment</name>
   </collection>
   <collection>
     <name>Angel, SolarSpell-Like AbilityInvisibility (self only)</name>
   </collection>
   <collection>
-    <name>Angel, SolarSpell-Like AbilityPlane shift</name>
+    <name>Angel, SolarSpell-Like AbilityLesser restoration</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityMass charm monster</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityPermanency</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityPower word blind</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityPower word stun</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityPower word kill</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityPrismatic spray</name>
   </collection>
   <collection>
     <name>Angel, SolarSpell-Like AbilityRemove curse</name>
@@ -707,10 +755,331 @@
     <name>Angel, SolarSpell-Like AbilityRemove fear</name>
   </collection>
   <collection>
+    <name>Angel, SolarSpell-Like AbilityResist energy</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityResurrection</name>
+  </collection>
+  <collection>
     <name>Angel, SolarSpell-Like AbilitySee invisibility</name>
   </collection>
   <collection>
-    <name>Angel, SolarUncanny Dodge</name>
+    <name>Angel, SolarSpell-Like AbilitySpeak with dead</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilitySummon monster VII</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityTrue seeing</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityWaves of exhaustion</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityWaves of fatigue</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarSpell-Like AbilityWish</name>
+  </collection>
+  <collection>
+    <name>AnimalLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>AnkhegTremorsense</name>
+  </collection>
+  <collection>
+    <name>AnnisDamage ReductionVulnerable to bludgeoning weapons</name>
+  </collection>
+  <collection>
+    <name>AnnisSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>AnnisSpell-Like AbilityDisguise self</name>
+  </collection>
+  <collection>
+    <name>AnnisSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>ApeScent</name>
+  </collection>
+  <collection>
+    <name>Aquatic ElfExotic Weapon ProficiencyNet</name>
+  </collection>
+  <collection>
+    <name>Aquatic ElfGills</name>
+  </collection>
+  <collection>
+    <name>Aquatic ElfMartial Weapon ProficiencyTrident</name>
+  </collection>
+  <collection>
+    <name>Aquatic ElfSimple Weapon ProficiencyLongspear</name>
+  </collection>
+  <collection>
+    <name>Aquatic ElfSimple Weapon ProficiencyShortspear</name>
+  </collection>
+  <collection>
+    <name>Aquatic ElfSimple Weapon ProficiencySpear</name>
+  </collection>
+  <collection>
+    <name>Aquatic ElfSuperior Low-Light Vision</name>
+  </collection>
+  <collection>
+    <name>AraneaChange ShapeSmall or Medium humanoid; or Medium spider-human hybrid (like a Lycanthrope)</name>
+  </collection>
+  <collection>
+    <name>ArchonAura of Menace</name>
+  </collection>
+  <collection>
+    <name>ArchonDarkvision</name>
+  </collection>
+  <collection>
+    <name>ArchonImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>ArchonImmunityPetrification</name>
+  </collection>
+  <collection>
+    <name>ArchonLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>ArchonSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>ArchonSpell-Like AbilityMagic circle against chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>ArchonSpell-Like AbilityTongues</name>
+  </collection>
+  <collection>
+    <name>Assassin VineBlindsight</name>
+  </collection>
+  <collection>
+    <name>Assassin VineCamouflage</name>
+  </collection>
+  <collection>
+    <name>Assassin VineEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Assassin VineEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Assassin VineImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Average SalamanderDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Average SalamanderMultiattack</name>
+  </collection>
+  <collection>
+    <name>Average XornAll-Around Vision</name>
+  </collection>
+  <collection>
+    <name>Average XornCleave</name>
+  </collection>
+  <collection>
+    <name>Average XornDamage ReductionVulnerable to bludgeoning weapons</name>
+  </collection>
+  <collection>
+    <name>Average XornEarth Glide</name>
+  </collection>
+  <collection>
+    <name>Average XornEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Average XornImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Average XornImmunityFire</name>
+  </collection>
+  <collection>
+    <name>Average XornTremorsense</name>
+  </collection>
+  <collection>
+    <name>AvoralDamage ReductionVulnerable to evil or silver weapons</name>
+  </collection>
+  <collection>
+    <name>AvoralEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>AvoralEnergy ResistanceSonic</name>
+  </collection>
+  <collection>
+    <name>AvoralImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>AvoralImmunityPetrification</name>
+  </collection>
+  <collection>
+    <name>AvoralLay on Hands</name>
+  </collection>
+  <collection>
+    <name>AvoralLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityAid</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityBlur: self only</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityCommand</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityDimension door</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityGust of wind</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityHold person</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityLight</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityLightning bolt</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityMagic circle against chaos/law/good/evil: self only</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityMagic missile</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
+    <name>AvoralSpell-Like AbilityTrue seeing</name>
+  </collection>
+  <collection>
+    <name>AzerSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>BabauDamage ReductionVulnerable to good or cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>BabauEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>BabauEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>BabauEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>BabauImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>BabauImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>BabauProtective Slime</name>
+  </collection>
+  <collection>
+    <name>BabauSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>BabauSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>BabauSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>BabauSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>BabauSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>BabauTelepathy</name>
+  </collection>
+  <collection>
+    <name>BaboonScent</name>
+  </collection>
+  <collection>
+    <name>BadgerScent</name>
+  </collection>
+  <collection>
+    <name>BadgerTrack</name>
+  </collection>
+  <collection>
+    <name>BadgerWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Baleen WhaleBlindsight</name>
+  </collection>
+  <collection>
+    <name>Baleen WhaleHold Breath</name>
+  </collection>
+  <collection>
+    <name>BalorDamage ReductionVulnerable to good or cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>BalorEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>BalorEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>BalorExotic Weapon ProficiencyWhip</name>
+  </collection>
+  <collection>
+    <name>BalorFlaming Body</name>
+  </collection>
+  <collection>
+    <name>BalorImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>BalorImmunityFire</name>
+  </collection>
+  <collection>
+    <name>BalorImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>BalorSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>BalorSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>BalorSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>BalorSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>BalorSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>BalorTelepathy</name>
+  </collection>
+  <collection>
+    <name>Cachalot WhaleBlindsight</name>
+  </collection>
+  <collection>
+    <name>Cachalot WhaleHold Breath</name>
+  </collection>
+  <collection>
+    <name>Dire ApeScent</name>
+  </collection>
+  <collection>
+    <name>Dire BadgerScent</name>
+  </collection>
+  <collection>
+    <name>Dire BadgerTrack</name>
   </collection>
   <collection>
     <name>Earth Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
@@ -758,6 +1127,30 @@
     <name>Elder TojanidaImmunityPoison</name>
   </collection>
   <collection>
+    <name>Elder XornAll-Around Vision</name>
+  </collection>
+  <collection>
+    <name>Elder XornCleave</name>
+  </collection>
+  <collection>
+    <name>Elder XornDamage ReductionVulnerable to bludgeoning weapons</name>
+  </collection>
+  <collection>
+    <name>Elder XornEarth Glide</name>
+  </collection>
+  <collection>
+    <name>Elder XornEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Elder XornImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Elder XornImmunityFire</name>
+  </collection>
+  <collection>
+    <name>Elder XornTremorsense</name>
+  </collection>
+  <collection>
     <name>Fire Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
@@ -768,6 +1161,9 @@
   </collection>
   <collection>
     <name>Fire Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Flamebrother SalamanderMultiattack</name>
   </collection>
   <collection>
     <name>Juvenile ArrowhawkEnergy ResistanceCold</name>
@@ -801,6 +1197,39 @@
   </collection>
   <collection>
     <name>Juvenile TojanidaImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Minor XornAll-Around Vision</name>
+  </collection>
+  <collection>
+    <name>Minor XornDamage ReductionVulnerable to bludgeoning weapons</name>
+  </collection>
+  <collection>
+    <name>Minor XornEarth Glide</name>
+  </collection>
+  <collection>
+    <name>Minor XornEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Minor XornImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Minor XornImmunityFire</name>
+  </collection>
+  <collection>
+    <name>Minor XornTremorsense</name>
+  </collection>
+  <collection>
+    <name>Noble SalamanderDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Noble SalamanderMultiattack</name>
+  </collection>
+  <collection>
+    <name>Orca WhaleBlindsight</name>
+  </collection>
+  <collection>
+    <name>Orca WhaleHold Breath</name>
   </collection>
   <collection>
     <name>Water Elemental, ElderDamage ReductionNo physical vulnerabilities</name>

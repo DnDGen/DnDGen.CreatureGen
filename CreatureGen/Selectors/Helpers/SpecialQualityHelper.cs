@@ -25,6 +25,22 @@ namespace CreatureGen.Selectors.Helpers
             return data;
         }
 
+        public static string BuildRequirementKey(string creature, string[] data)
+        {
+            return BuildRequirementKey(creature, data[DataIndexConstants.SpecialQualityData.FeatNameIndex], data[DataIndexConstants.SpecialQualityData.FocusIndex]);
+        }
+
+        public static string BuildRequirementKey(string creature, string featName, string focus)
+        {
+            return $"{creature}{featName}{focus}";
+        }
+
+        public static string BuildRequirementKey(string creature, string input)
+        {
+            var data = ParseData(input);
+            return BuildRequirementKey(creature, data);
+        }
+
         public static string BuildData(string[] data)
         {
             return string.Join("#", data);

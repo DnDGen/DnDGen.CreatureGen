@@ -143,5 +143,49 @@ namespace CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex], Is.EqualTo(0.ToString()));
             Assert.That(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex], Is.EqualTo(false.ToString()));
         }
+
+        [Test]
+        public void BuildRequirementKey_FromData_WithFocus()
+        {
+            var data = SpecialQualityHelper.ParseData("Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0#False");
+            var key = SpecialQualityHelper.BuildRequirementKey("creature", data);
+            Assert.That(key, Is.EqualTo("creatureSpell-Like AbilityClairaudience/Clairvoyance"));
+        }
+
+        [Test]
+        public void BuildRequirementKey_FromData_WithoutFocus()
+        {
+            var data = SpecialQualityHelper.ParseData("All-Around Vision#0##0##0#False");
+            var key = SpecialQualityHelper.BuildRequirementKey("creature", data);
+            Assert.That(key, Is.EqualTo("creatureAll-Around Vision"));
+        }
+
+        [Test]
+        public void BuildRequirementKey_FromString_WithFocus()
+        {
+            var key = SpecialQualityHelper.BuildRequirementKey("creature", "Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0#False");
+            Assert.That(key, Is.EqualTo("creatureSpell-Like AbilityClairaudience/Clairvoyance"));
+        }
+
+        [Test]
+        public void BuildRequirementKey_FromString_WithoutFocus()
+        {
+            var key = SpecialQualityHelper.BuildRequirementKey("creature", "All-Around Vision#0##0##0#False");
+            Assert.That(key, Is.EqualTo("creatureAll-Around Vision"));
+        }
+
+        [Test]
+        public void BuildRequirementKey_FromNameAndFocus_WithFocus()
+        {
+            var key = SpecialQualityHelper.BuildRequirementKey("creature", "Spell-Like Ability", "Clairaudience/Clairvoyance");
+            Assert.That(key, Is.EqualTo("creatureSpell-Like AbilityClairaudience/Clairvoyance"));
+        }
+
+        [Test]
+        public void BuildRequirementKey_FromNameAndFocus_WithoutFocus()
+        {
+            var key = SpecialQualityHelper.BuildRequirementKey("creature", "All-Around Vision", string.Empty);
+            Assert.That(key, Is.EqualTo("creatureAll-Around Vision"));
+        }
     }
 }
