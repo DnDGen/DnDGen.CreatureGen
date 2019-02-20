@@ -1268,6 +1268,15 @@
     <name>Black Dragon, AdultKeen Senses</name>
   </collection>
   <collection>
+    <name>Black Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, AdultWater Breathing</name>
+  </collection>
+  <collection>
     <name>Black Dragon, AncientBlindsense</name>
   </collection>
   <collection>
@@ -1286,7 +1295,25 @@
     <name>Black Dragon, AncientKeen Senses</name>
   </collection>
   <collection>
+    <name>Black Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, AncientSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, AncientSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, AncientSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, AncientWater Breathing</name>
+  </collection>
+  <collection>
     <name>Black Dragon, Great WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great WyrmCharm reptiles</name>
   </collection>
   <collection>
     <name>Black Dragon, Great WyrmCorrupt Water</name>
