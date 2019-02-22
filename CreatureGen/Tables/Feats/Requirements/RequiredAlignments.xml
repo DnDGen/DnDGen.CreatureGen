@@ -1313,7 +1313,7 @@
     <name>Black Dragon, Great WyrmBlindsense</name>
   </collection>
   <collection>
-    <name>Black Dragon, Great WyrmCharm reptiles</name>
+    <name>Black Dragon, Great WyrmCharm Reptiles</name>
   </collection>
   <collection>
     <name>Black Dragon, Great WyrmCorrupt Water</name>
@@ -1331,13 +1331,22 @@
     <name>Black Dragon, Great WyrmKeen Senses</name>
   </collection>
   <collection>
+    <name>Black Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
     <name>Black Dragon, JuvenileBlindsense</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, JuvenileCorrupt Water</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, JuvenileDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>Black Dragon, JuvenileDarkvision</name>
@@ -1367,6 +1376,21 @@
     <name>Black Dragon, Mature AdultKeen Senses</name>
   </collection>
   <collection>
+    <name>Black Dragon, Mature AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature AdultSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature AdultSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature AdultWater Breathing</name>
+  </collection>
+  <collection>
     <name>Black Dragon, OldBlindsense</name>
   </collection>
   <collection>
@@ -1383,6 +1407,21 @@
   </collection>
   <collection>
     <name>Black Dragon, OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, OldSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, OldWater Breathing</name>
   </collection>
   <collection>
     <name>Black Dragon, Very OldBlindsense</name>
@@ -1403,13 +1442,22 @@
     <name>Black Dragon, Very OldKeen Senses</name>
   </collection>
   <collection>
+    <name>Black Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very OldSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very OldWater Breathing</name>
+  </collection>
+  <collection>
     <name>Black Dragon, Very YoungBlindsense</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, Very YoungCorrupt Water</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, Very YoungDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>Black Dragon, Very YoungDarkvision</name>
@@ -1439,13 +1487,22 @@
     <name>Black Dragon, WyrmKeen Senses</name>
   </collection>
   <collection>
+    <name>Black Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, WyrmWater Breathing</name>
+  </collection>
+  <collection>
     <name>Black Dragon, WyrmlingBlindsense</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, WyrmlingCorrupt Water</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, WyrmlingDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>Black Dragon, WyrmlingDarkvision</name>
@@ -1460,12 +1517,6 @@
     <name>Black Dragon, YoungBlindsense</name>
   </collection>
   <collection>
-    <name>Black Dragon, YoungCorrupt Water</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, YoungDamage ReductionVulnerable to magic weapons</name>
-  </collection>
-  <collection>
     <name>Black Dragon, YoungDarkvision</name>
   </collection>
   <collection>
@@ -1476,12 +1527,6 @@
   </collection>
   <collection>
     <name>Black Dragon, Young AdultBlindsense</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, Young AdultCorrupt Water</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>Black Dragon, Young AdultDarkvision</name>

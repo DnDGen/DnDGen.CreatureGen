@@ -93,7 +93,7 @@ namespace CreatureGen.Tests.Integration.Generators.Creatures
         }
 
         [Test]
-        public void BUG_GiantOwlDOesNotDoubleUpOnLowLightVision()
+        public void BUG_GiantOwlDoesNotDoubleUpOnLowLightVision()
         {
             var owl = CreatureGenerator.Generate(CreatureConstants.Owl_Giant, CreatureConstants.Templates.None);
             creatureAsserter.AssertCreature(owl);
