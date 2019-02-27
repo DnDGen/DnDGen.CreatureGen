@@ -1358,6 +1358,12 @@
     <name>Black Dragon, JuvenileKeen Senses</name>
   </collection>
   <collection>
+    <name>Black Dragon, JuvenileSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, JuvenileWater Breathing</name>
+  </collection>
+  <collection>
     <name>Black Dragon, Mature AdultBlindsense</name>
   </collection>
   <collection>
@@ -1380,12 +1386,6 @@
   </collection>
   <collection>
     <name>Black Dragon, Mature AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, Mature AdultSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, Mature AdultSpell-Like AbilityPlant growth</name>
   </collection>
   <collection>
     <name>Black Dragon, Mature AdultWater Breathing</name>
@@ -1413,9 +1413,6 @@
   </collection>
   <collection>
     <name>Black Dragon, OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Black Dragon, OldSpell-Like AbilityInsect plague</name>
   </collection>
   <collection>
     <name>Black Dragon, OldSpell-Like AbilityPlant growth</name>
@@ -1448,9 +1445,6 @@
     <name>Black Dragon, Very OldSpell-Like AbilityDarkness</name>
   </collection>
   <collection>
-    <name>Black Dragon, Very OldSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
     <name>Black Dragon, Very OldSpell-Like AbilityPlant growth</name>
   </collection>
   <collection>
@@ -1467,6 +1461,9 @@
   </collection>
   <collection>
     <name>Black Dragon, Very YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very YoungWater Breathing</name>
   </collection>
   <collection>
     <name>Black Dragon, WyrmBlindsense</name>
@@ -1514,6 +1511,9 @@
     <name>Black Dragon, WyrmlingKeen Senses</name>
   </collection>
   <collection>
+    <name>Black Dragon, WyrmlingWater Breathing</name>
+  </collection>
+  <collection>
     <name>Black Dragon, YoungBlindsense</name>
   </collection>
   <collection>
@@ -1526,7 +1526,13 @@
     <name>Black Dragon, YoungKeen Senses</name>
   </collection>
   <collection>
+    <name>Black Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
     <name>Black Dragon, Young AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>Black Dragon, Young AdultDarkvision</name>
@@ -1536,6 +1542,18 @@
   </collection>
   <collection>
     <name>Black Dragon, Young AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Black PuddingSplit</name>
   </collection>
   <collection>
     <name>Cachalot WhaleBlindsight</name>
@@ -1581,6 +1599,9 @@
   </collection>
   <collection>
     <name>Elder ArrowhawkImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Elder Black PuddingSplit</name>
   </collection>
   <collection>
     <name>Elder TojanidaAll-Around Vision</name>
