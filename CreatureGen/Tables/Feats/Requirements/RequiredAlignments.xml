@@ -1556,10 +1556,1210 @@
     <name>Black PuddingSplit</name>
   </collection>
   <collection>
+    <name>Blink DogScent</name>
+  </collection>
+  <collection>
+    <name>Blink DogSpell-Like AbilityBlink</name>
+  </collection>
+  <collection>
+    <name>Blink DogSpell-Like AbilityDimension door</name>
+  </collection>
+  <collection>
+    <name>Blink DogTrack</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AdultCreate/Destroy Water</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AdultImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AdultSound Imitation</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientCreate/Destroy Water</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientSound Imitation</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientSpell-Like AbilityHallucinatory terrain</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientSpell-Like AbilityVeil</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientSpell-Like AbilityVentriloquism</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmCharm Reptiles</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmCreate/Destroy Water</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmSound Imitation</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmSpell-Like AbilityHallucinatory terrain</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmSpell-Like AbilityVeil</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmSpell-Like AbilityVentriloquism</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, JuvenileBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, JuvenileDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, JuvenileImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature AdultCreate/Destroy Water</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature AdultImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature AdultSound Imitation</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldCreate/Destroy Water</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldSound Imitation</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldCreate/Destroy Water</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldSound Imitation</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very YoungImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmCreate/Destroy Water</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmSound Imitation</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmSpell-Like AbilityHallucinatory terrain</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmSpell-Like AbilityVeil</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmSpell-Like AbilityVentriloquism</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmlingBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmlingDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmlingImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmlingKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmlingWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, YoungImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young AdultImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmCharm Reptiles</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, JuvenileBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, JuvenileDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, JuvenileImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, JuvenileSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, JuvenileWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmlingBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmlingDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmlingImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmlingKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmlingWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmCharm Reptiles</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, JuvenileBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, JuvenileDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, JuvenileImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, JuvenileSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, JuvenileWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmlingBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmlingDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmlingImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmlingKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmlingWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultWater Breathing</name>
+  </collection>
+  <collection>
     <name>Cachalot WhaleBlindsight</name>
   </collection>
   <collection>
     <name>Cachalot WhaleHold Breath</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmCharm Reptiles</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, JuvenileBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, JuvenileDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, JuvenileImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, JuvenileSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, JuvenileWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmlingBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmlingDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmlingImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmlingKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmlingWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young AdultWater Breathing</name>
   </collection>
   <collection>
     <name>Dire ApeScent</name>
@@ -1670,6 +2870,309 @@
     <name>Gauth (Lesser Beholder)Flight</name>
   </collection>
   <collection>
+    <name>Gold Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmCharm Reptiles</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, JuvenileBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, JuvenileDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, JuvenileImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, JuvenileSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, JuvenileWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmlingBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmlingDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmlingImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmlingKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmlingWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultWater Breathing</name>
+  </collection>
+  <collection>
     <name>Greater BarghestChange ShapeGoblin or wolf</name>
   </collection>
   <collection>
@@ -1701,6 +3204,309 @@
   </collection>
   <collection>
     <name>Greater BarghestSpell-Like AbilityRage</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmCharm Reptiles</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, JuvenileBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, JuvenileDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, JuvenileImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, JuvenileSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, JuvenileWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmlingBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmlingDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmlingImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmlingKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmlingWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young AdultWater Breathing</name>
   </collection>
   <collection>
     <name>Juvenile ArrowhawkEnergy ResistanceCold</name>
@@ -1772,6 +3578,612 @@
     <name>Polar BearScent</name>
   </collection>
   <collection>
+    <name>Red Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmCharm Reptiles</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, JuvenileBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, JuvenileDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, JuvenileImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, JuvenileSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, JuvenileWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmlingBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmlingDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmlingImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmlingKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmlingWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmCharm Reptiles</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, JuvenileBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, JuvenileDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, JuvenileImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, JuvenileSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, JuvenileWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmlingBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmlingDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmlingImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmlingKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmlingWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultWater Breathing</name>
+  </collection>
+  <collection>
     <name>Water Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
@@ -1782,5 +4194,308 @@
   </collection>
   <collection>
     <name>Water Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientWater Breathing</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmCharm Reptiles</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>White Dragon, JuvenileBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, JuvenileDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, JuvenileImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, JuvenileSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>White Dragon, JuvenileWater Breathing</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmCorrupt Water</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmSpell-Like AbilityInsect plague</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmlingBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmlingDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmlingImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmlingKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmlingWater Breathing</name>
+  </collection>
+  <collection>
+    <name>White Dragon, YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, YoungImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultWater Breathing</name>
   </collection>
 </collections>
