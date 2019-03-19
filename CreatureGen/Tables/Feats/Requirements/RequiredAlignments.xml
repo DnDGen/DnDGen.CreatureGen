@@ -1592,6 +1592,9 @@
     <name>Blue Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Blue Dragon, AdultSpell-Like AbilityVentriloquism</name>
+  </collection>
+  <collection>
     <name>Blue Dragon, AncientBlindsense</name>
   </collection>
   <collection>
@@ -1628,9 +1631,6 @@
     <name>Blue Dragon, Great WyrmBlindsense</name>
   </collection>
   <collection>
-    <name>Blue Dragon, Great WyrmCharm Reptiles</name>
-  </collection>
-  <collection>
     <name>Blue Dragon, Great WyrmCreate/Destroy Water</name>
   </collection>
   <collection>
@@ -1655,16 +1655,19 @@
     <name>Blue Dragon, Great WyrmSpell-Like AbilityHallucinatory terrain</name>
   </collection>
   <collection>
+    <name>Blue Dragon, Great WyrmSpell-Like AbilityMirage arcana</name>
+  </collection>
+  <collection>
     <name>Blue Dragon, Great WyrmSpell-Like AbilityVeil</name>
   </collection>
   <collection>
     <name>Blue Dragon, Great WyrmSpell-Like AbilityVentriloquism</name>
   </collection>
   <collection>
-    <name>Blue Dragon, Great WyrmWater Breathing</name>
+    <name>Blue Dragon, JuvenileBlindsense</name>
   </collection>
   <collection>
-    <name>Blue Dragon, JuvenileBlindsense</name>
+    <name>Blue Dragon, JuvenileCreate/Destroy Water</name>
   </collection>
   <collection>
     <name>Blue Dragon, JuvenileDarkvision</name>
@@ -1674,6 +1677,9 @@
   </collection>
   <collection>
     <name>Blue Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, JuvenileSound Imitation</name>
   </collection>
   <collection>
     <name>Blue Dragon, Mature AdultBlindsense</name>
@@ -1700,6 +1706,9 @@
     <name>Blue Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Blue Dragon, Mature AdultSpell-Like AbilityVentriloquism</name>
+  </collection>
+  <collection>
     <name>Blue Dragon, OldBlindsense</name>
   </collection>
   <collection>
@@ -1722,6 +1731,12 @@
   </collection>
   <collection>
     <name>Blue Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldSpell-Like AbilityHallucinatory terrain</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldSpell-Like AbilityVentriloquism</name>
   </collection>
   <collection>
     <name>Blue Dragon, Very OldBlindsense</name>
@@ -1748,7 +1763,16 @@
     <name>Blue Dragon, Very OldSpell Resistance</name>
   </collection>
   <collection>
+    <name>Blue Dragon, Very OldSpell-Like AbilityHallucinatory terrain</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldSpell-Like AbilityVentriloquism</name>
+  </collection>
+  <collection>
     <name>Blue Dragon, Very YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very YoungCreate/Destroy Water</name>
   </collection>
   <collection>
     <name>Blue Dragon, Very YoungDarkvision</name>
@@ -1796,6 +1820,9 @@
     <name>Blue Dragon, WyrmlingBlindsense</name>
   </collection>
   <collection>
+    <name>Blue Dragon, WyrmlingCreate/Destroy Water</name>
+  </collection>
+  <collection>
     <name>Blue Dragon, WyrmlingDarkvision</name>
   </collection>
   <collection>
@@ -1805,10 +1832,10 @@
     <name>Blue Dragon, WyrmlingKeen Senses</name>
   </collection>
   <collection>
-    <name>Blue Dragon, WyrmlingWater Breathing</name>
+    <name>Blue Dragon, YoungBlindsense</name>
   </collection>
   <collection>
-    <name>Blue Dragon, YoungBlindsense</name>
+    <name>Blue Dragon, YoungCreate/Destroy Water</name>
   </collection>
   <collection>
     <name>Blue Dragon, YoungDarkvision</name>
@@ -1820,10 +1847,10 @@
     <name>Blue Dragon, YoungKeen Senses</name>
   </collection>
   <collection>
-    <name>Blue Dragon, YoungWater Breathing</name>
+    <name>Blue Dragon, Young AdultBlindsense</name>
   </collection>
   <collection>
-    <name>Blue Dragon, Young AdultBlindsense</name>
+    <name>Blue Dragon, Young AdultCreate/Destroy Water</name>
   </collection>
   <collection>
     <name>Blue Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
@@ -1838,19 +1865,145 @@
     <name>Blue Dragon, Young AdultKeen Senses</name>
   </collection>
   <collection>
+    <name>Blue Dragon, Young AdultSound Imitation</name>
+  </collection>
+  <collection>
     <name>Blue Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Blue Dragon, Young AdultSpell-Like AbilityDarkness</name>
+    <name>Blue SlaadEnergy ResistanceAcid</name>
   </collection>
   <collection>
-    <name>Blue Dragon, Young AdultWater Breathing</name>
+    <name>Blue SlaadEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Blue SlaadEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Blue SlaadEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Blue SlaadFast Healing</name>
+  </collection>
+  <collection>
+    <name>Blue SlaadImmunitySonic</name>
+  </collection>
+  <collection>
+    <name>BoarScent</name>
+  </collection>
+  <collection>
+    <name>BodakDamage ReductionVulnerable to cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>BodakEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>BodakEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>BodakImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>BodakVulnerabilitySunlight</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Damage ReductionVulnerable to good weapons</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Energy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Energy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)ImmunityFire</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)ImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)See in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Spell Resistance</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Spell-Like AbilityDimensional anchor</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Spell-Like AbilityFly</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Spell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Spell-Like AbilityInvisibility: self only</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Spell-Like AbilityMajor image</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Spell-Like AbilityWall of ice</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Telepathy</name>
+  </collection>
+  <collection>
+    <name>BralaniAlternate FormHumanoid or whirlwind form</name>
+  </collection>
+  <collection>
+    <name>BralaniDamage ReductionVulnerable to cold iron or evil weapons</name>
+  </collection>
+  <collection>
+    <name>BralaniEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>BralaniEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>BralaniImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>BralaniImmunityPetrification</name>
+  </collection>
+  <collection>
+    <name>BralaniLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>BralaniMartial Weapon ProficiencyScimitar</name>
+  </collection>
+  <collection>
+    <name>BralaniMartial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>BralaniSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>BralaniSpell-Like AbilityBlur</name>
+  </collection>
+  <collection>
+    <name>BralaniSpell-Like AbilityCharm person</name>
+  </collection>
+  <collection>
+    <name>BralaniSpell-Like AbilityCure/inflict serious wounds</name>
+  </collection>
+  <collection>
+    <name>BralaniSpell-Like AbilityGust of wind</name>
+  </collection>
+  <collection>
+    <name>BralaniSpell-Like AbilityLightning bolt</name>
+  </collection>
+  <collection>
+    <name>BralaniSpell-Like AbilityMirror image</name>
+  </collection>
+  <collection>
+    <name>BralaniSpell-Like AbilityTongues</name>
+  </collection>
+  <collection>
+    <name>BralaniSpell-Like AbilityWind wall</name>
   </collection>
   <collection>
     <name>Brass Dragon, AdultBlindsense</name>
-  </collection>
-  <collection>
-    <name>Brass Dragon, AdultCorrupt Water</name>
   </collection>
   <collection>
     <name>Brass Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
@@ -1859,25 +2012,22 @@
     <name>Brass Dragon, AdultDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, AdultImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, AdultKeen Senses</name>
   </collection>
   <collection>
     <name>Brass Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Brass Dragon, AdultSpell-Like AbilityDarkness</name>
+    <name>Brass Dragon, AdultSpell-Like AbilityEndure elements: radius 60 ft.</name>
   </collection>
   <collection>
-    <name>Brass Dragon, AdultWater Breathing</name>
+    <name>Brass Dragon, AdultSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Brass Dragon, AncientBlindsense</name>
-  </collection>
-  <collection>
-    <name>Brass Dragon, AncientCorrupt Water</name>
   </collection>
   <collection>
     <name>Brass Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
@@ -1886,34 +2036,28 @@
     <name>Brass Dragon, AncientDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, AncientImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, AncientKeen Senses</name>
   </collection>
   <collection>
     <name>Brass Dragon, AncientSpell Resistance</name>
   </collection>
   <collection>
-    <name>Brass Dragon, AncientSpell-Like AbilityDarkness</name>
+    <name>Brass Dragon, AncientSpell-Like AbilityControl weather</name>
   </collection>
   <collection>
-    <name>Brass Dragon, AncientSpell-Like AbilityInsect plague</name>
+    <name>Brass Dragon, AncientSpell-Like AbilityControl winds</name>
   </collection>
   <collection>
-    <name>Brass Dragon, AncientSpell-Like AbilityPlant growth</name>
+    <name>Brass Dragon, AncientSpell-Like AbilityEndure elements: radius 100 ft.</name>
   </collection>
   <collection>
-    <name>Brass Dragon, AncientWater Breathing</name>
+    <name>Brass Dragon, AncientSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Brass Dragon, Great WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>Brass Dragon, Great WyrmCharm Reptiles</name>
-  </collection>
-  <collection>
-    <name>Brass Dragon, Great WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>Brass Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -1922,25 +2066,28 @@
     <name>Brass Dragon, Great WyrmDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Great WyrmImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, Great WyrmKeen Senses</name>
   </collection>
   <collection>
     <name>Brass Dragon, Great WyrmSpell Resistance</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Great WyrmSpell-Like AbilityDarkness</name>
+    <name>Brass Dragon, Great WyrmSpell-Like AbilityControl weather</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
+    <name>Brass Dragon, Great WyrmSpell-Like AbilityControl winds</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+    <name>Brass Dragon, Great WyrmSpell-Like AbilityEndure elements: radius 120 ft.</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Great WyrmWater Breathing</name>
+    <name>Brass Dragon, Great WyrmSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmSpell-Like AbilitySummon monster VII: one Djinni</name>
   </collection>
   <collection>
     <name>Brass Dragon, JuvenileBlindsense</name>
@@ -1949,22 +2096,16 @@
     <name>Brass Dragon, JuvenileDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, JuvenileImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, JuvenileKeen Senses</name>
   </collection>
   <collection>
-    <name>Brass Dragon, JuvenileSpell-Like AbilityDarkness</name>
+    <name>Brass Dragon, JuvenileSpell-Like AbilityEndure elements: radius 40 ft.</name>
   </collection>
   <collection>
-    <name>Brass Dragon, JuvenileWater Breathing</name>
+    <name>Brass Dragon, JuvenileSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Brass Dragon, Mature AdultBlindsense</name>
-  </collection>
-  <collection>
-    <name>Brass Dragon, Mature AdultCorrupt Water</name>
   </collection>
   <collection>
     <name>Brass Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
@@ -1973,25 +2114,22 @@
     <name>Brass Dragon, Mature AdultDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Mature AdultImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, Mature AdultKeen Senses</name>
   </collection>
   <collection>
     <name>Brass Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Mature AdultSpell-Like AbilityDarkness</name>
+    <name>Brass Dragon, Mature AdultSpell-Like AbilityEndure elements: radius 70 ft.</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Mature AdultWater Breathing</name>
+    <name>Brass Dragon, Mature AdultSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Brass Dragon, OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>Brass Dragon, OldCorrupt Water</name>
   </collection>
   <collection>
     <name>Brass Dragon, OldDamage ReductionVulnerable to magic weapons</name>
@@ -2000,28 +2138,25 @@
     <name>Brass Dragon, OldDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, OldImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, OldKeen Senses</name>
   </collection>
   <collection>
     <name>Brass Dragon, OldSpell Resistance</name>
   </collection>
   <collection>
-    <name>Brass Dragon, OldSpell-Like AbilityDarkness</name>
+    <name>Brass Dragon, OldSpell-Like AbilityControl winds</name>
   </collection>
   <collection>
-    <name>Brass Dragon, OldSpell-Like AbilityPlant growth</name>
+    <name>Brass Dragon, OldSpell-Like AbilityEndure elements: radius 80 ft.</name>
   </collection>
   <collection>
-    <name>Brass Dragon, OldWater Breathing</name>
+    <name>Brass Dragon, OldSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Brass Dragon, Very OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>Brass Dragon, Very OldCorrupt Water</name>
   </collection>
   <collection>
     <name>Brass Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
@@ -2030,22 +2165,22 @@
     <name>Brass Dragon, Very OldDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Very OldImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, Very OldKeen Senses</name>
   </collection>
   <collection>
     <name>Brass Dragon, Very OldSpell Resistance</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Very OldSpell-Like AbilityDarkness</name>
+    <name>Brass Dragon, Very OldSpell-Like AbilityControl winds</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Very OldSpell-Like AbilityPlant growth</name>
+    <name>Brass Dragon, Very OldSpell-Like AbilityEndure elements: radius 90 ft.</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Very OldWater Breathing</name>
+    <name>Brass Dragon, Very OldSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Brass Dragon, Very YoungBlindsense</name>
@@ -2054,19 +2189,13 @@
     <name>Brass Dragon, Very YoungDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Very YoungImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, Very YoungKeen Senses</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Very YoungWater Breathing</name>
+    <name>Brass Dragon, Very YoungSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Brass Dragon, WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>Brass Dragon, WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>Brass Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -2075,25 +2204,25 @@
     <name>Brass Dragon, WyrmDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, WyrmImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, WyrmKeen Senses</name>
   </collection>
   <collection>
     <name>Brass Dragon, WyrmSpell Resistance</name>
   </collection>
   <collection>
-    <name>Brass Dragon, WyrmSpell-Like AbilityDarkness</name>
+    <name>Brass Dragon, WyrmSpell-Like AbilityControl weather</name>
   </collection>
   <collection>
-    <name>Brass Dragon, WyrmSpell-Like AbilityInsect plague</name>
+    <name>Brass Dragon, WyrmSpell-Like AbilityControl winds</name>
   </collection>
   <collection>
-    <name>Brass Dragon, WyrmSpell-Like AbilityPlant growth</name>
+    <name>Brass Dragon, WyrmSpell-Like AbilityEndure elements: radius 110 ft.</name>
   </collection>
   <collection>
-    <name>Brass Dragon, WyrmWater Breathing</name>
+    <name>Brass Dragon, WyrmSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Brass Dragon, WyrmlingBlindsense</name>
@@ -2102,13 +2231,10 @@
     <name>Brass Dragon, WyrmlingDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, WyrmlingImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, WyrmlingKeen Senses</name>
   </collection>
   <collection>
-    <name>Brass Dragon, WyrmlingWater Breathing</name>
+    <name>Brass Dragon, WyrmlingSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Brass Dragon, YoungBlindsense</name>
@@ -2117,13 +2243,10 @@
     <name>Brass Dragon, YoungDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, YoungImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, YoungKeen Senses</name>
   </collection>
   <collection>
-    <name>Brass Dragon, YoungWater Breathing</name>
+    <name>Brass Dragon, YoungSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Brass Dragon, Young AdultBlindsense</name>
@@ -2135,25 +2258,22 @@
     <name>Brass Dragon, Young AdultDarkvision</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Young AdultImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Brass Dragon, Young AdultKeen Senses</name>
   </collection>
   <collection>
     <name>Brass Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Young AdultSpell-Like AbilityDarkness</name>
+    <name>Brass Dragon, Young AdultSpell-Like AbilityEndure elements: radius 50 ft.</name>
   </collection>
   <collection>
-    <name>Brass Dragon, Young AdultWater Breathing</name>
+    <name>Brass Dragon, Young AdultSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Bronze Dragon, AdultBlindsense</name>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, AdultCorrupt Water</name>
   </collection>
   <collection>
     <name>Bronze Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
@@ -2162,7 +2282,7 @@
     <name>Bronze Dragon, AdultDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, AdultImmunityAcid</name>
+    <name>Bronze Dragon, AdultImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, AdultKeen Senses</name>
@@ -2171,16 +2291,22 @@
     <name>Bronze Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, AdultSpell-Like AbilityDarkness</name>
+    <name>Bronze Dragon, AdultSpell-Like AbilityCreate food and water</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Bronze Dragon, AdultWater Breathing</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, AncientBlindsense</name>
+    <name>Bronze Dragon, AncientAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, AncientCorrupt Water</name>
+    <name>Bronze Dragon, AncientBlindsense</name>
   </collection>
   <collection>
     <name>Bronze Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
@@ -2189,7 +2315,7 @@
     <name>Bronze Dragon, AncientDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, AncientImmunityAcid</name>
+    <name>Bronze Dragon, AncientImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, AncientKeen Senses</name>
@@ -2198,25 +2324,28 @@
     <name>Bronze Dragon, AncientSpell Resistance</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, AncientSpell-Like AbilityDarkness</name>
+    <name>Bronze Dragon, AncientSpell-Like AbilityControl water</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, AncientSpell-Like AbilityInsect plague</name>
+    <name>Bronze Dragon, AncientSpell-Like AbilityCreate food and water</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, AncientSpell-Like AbilityPlant growth</name>
+    <name>Bronze Dragon, AncientSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Bronze Dragon, AncientWater Breathing</name>
   </collection>
   <collection>
+    <name>Bronze Dragon, Great WyrmAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Bronze Dragon, Great WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Great WyrmCharm Reptiles</name>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Great WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -2225,7 +2354,7 @@
     <name>Bronze Dragon, Great WyrmDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Great WyrmImmunityAcid</name>
+    <name>Bronze Dragon, Great WyrmImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Great WyrmKeen Senses</name>
@@ -2234,16 +2363,28 @@
     <name>Bronze Dragon, Great WyrmSpell Resistance</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Great WyrmSpell-Like AbilityDarkness</name>
+    <name>Bronze Dragon, Great WyrmSpell-Like AbilityControl water</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
+    <name>Bronze Dragon, Great WyrmSpell-Like AbilityControl weather</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+    <name>Bronze Dragon, Great WyrmSpell-Like AbilityCreate food and water</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, JuvenileAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Bronze Dragon, JuvenileBlindsense</name>
@@ -2252,22 +2393,22 @@
     <name>Bronze Dragon, JuvenileDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, JuvenileImmunityAcid</name>
+    <name>Bronze Dragon, JuvenileImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, JuvenileKeen Senses</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, JuvenileSpell-Like AbilityDarkness</name>
+    <name>Bronze Dragon, JuvenileSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Bronze Dragon, JuvenileWater Breathing</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Mature AdultBlindsense</name>
+    <name>Bronze Dragon, Mature AdultAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Mature AdultCorrupt Water</name>
+    <name>Bronze Dragon, Mature AdultBlindsense</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
@@ -2276,7 +2417,7 @@
     <name>Bronze Dragon, Mature AdultDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Mature AdultImmunityAcid</name>
+    <name>Bronze Dragon, Mature AdultImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Mature AdultKeen Senses</name>
@@ -2285,16 +2426,22 @@
     <name>Bronze Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Mature AdultSpell-Like AbilityDarkness</name>
+    <name>Bronze Dragon, Mature AdultSpell-Like AbilityCreate food and water</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Mature AdultWater Breathing</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, OldBlindsense</name>
+    <name>Bronze Dragon, OldAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, OldCorrupt Water</name>
+    <name>Bronze Dragon, OldBlindsense</name>
   </collection>
   <collection>
     <name>Bronze Dragon, OldDamage ReductionVulnerable to magic weapons</name>
@@ -2303,7 +2450,7 @@
     <name>Bronze Dragon, OldDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, OldImmunityAcid</name>
+    <name>Bronze Dragon, OldImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, OldKeen Senses</name>
@@ -2312,19 +2459,25 @@
     <name>Bronze Dragon, OldSpell Resistance</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, OldSpell-Like AbilityDarkness</name>
+    <name>Bronze Dragon, OldSpell-Like AbilityCreate food and water</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, OldSpell-Like AbilityPlant growth</name>
+    <name>Bronze Dragon, OldSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Bronze Dragon, OldWater Breathing</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Very OldBlindsense</name>
+    <name>Bronze Dragon, Very OldAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Very OldCorrupt Water</name>
+    <name>Bronze Dragon, Very OldBlindsense</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
@@ -2333,7 +2486,7 @@
     <name>Bronze Dragon, Very OldDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Very OldImmunityAcid</name>
+    <name>Bronze Dragon, Very OldImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Very OldKeen Senses</name>
@@ -2342,10 +2495,16 @@
     <name>Bronze Dragon, Very OldSpell Resistance</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Very OldSpell-Like AbilityDarkness</name>
+    <name>Bronze Dragon, Very OldSpell-Like AbilityCreate food and water</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Very OldSpell-Like AbilityPlant growth</name>
+    <name>Bronze Dragon, Very OldSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Very OldWater Breathing</name>
@@ -2357,19 +2516,22 @@
     <name>Bronze Dragon, Very YoungDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Very YoungImmunityAcid</name>
+    <name>Bronze Dragon, Very YoungImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Very YoungKeen Senses</name>
   </collection>
   <collection>
+    <name>Bronze Dragon, Very YoungSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
     <name>Bronze Dragon, Very YoungWater Breathing</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, WyrmBlindsense</name>
+    <name>Bronze Dragon, WyrmAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, WyrmCorrupt Water</name>
+    <name>Bronze Dragon, WyrmBlindsense</name>
   </collection>
   <collection>
     <name>Bronze Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -2378,7 +2540,7 @@
     <name>Bronze Dragon, WyrmDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, WyrmImmunityAcid</name>
+    <name>Bronze Dragon, WyrmImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, WyrmKeen Senses</name>
@@ -2387,13 +2549,19 @@
     <name>Bronze Dragon, WyrmSpell Resistance</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, WyrmSpell-Like AbilityDarkness</name>
+    <name>Bronze Dragon, WyrmSpell-Like AbilityControl water</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, WyrmSpell-Like AbilityInsect plague</name>
+    <name>Bronze Dragon, WyrmSpell-Like AbilityCreate food and water</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, WyrmSpell-Like AbilityPlant growth</name>
+    <name>Bronze Dragon, WyrmSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Bronze Dragon, WyrmWater Breathing</name>
@@ -2405,13 +2573,19 @@
     <name>Bronze Dragon, WyrmlingDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, WyrmlingImmunityAcid</name>
+    <name>Bronze Dragon, WyrmlingImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, WyrmlingKeen Senses</name>
   </collection>
   <collection>
+    <name>Bronze Dragon, WyrmlingSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
     <name>Bronze Dragon, WyrmlingWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, YoungAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Bronze Dragon, YoungBlindsense</name>
@@ -2420,13 +2594,19 @@
     <name>Bronze Dragon, YoungDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, YoungImmunityAcid</name>
+    <name>Bronze Dragon, YoungImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, YoungKeen Senses</name>
   </collection>
   <collection>
+    <name>Bronze Dragon, YoungSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
     <name>Bronze Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Young AdultBlindsense</name>
@@ -2438,7 +2618,7 @@
     <name>Bronze Dragon, Young AdultDarkvision</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Young AdultImmunityAcid</name>
+    <name>Bronze Dragon, Young AdultImmunityElectricity</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Young AdultKeen Senses</name>
@@ -2447,10 +2627,19 @@
     <name>Bronze Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Bronze Dragon, Young AdultSpell-Like AbilityDarkness</name>
+    <name>Bronze Dragon, Young AdultSpell-Like AbilitySpeak with animals</name>
   </collection>
   <collection>
     <name>Bronze Dragon, Young AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>BugbearArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>BugbearDarkvision</name>
+  </collection>
+  <collection>
+    <name>BugbearSimple Weapon ProficiencyJavelin</name>
   </collection>
   <collection>
     <name>Cachalot WhaleBlindsight</name>
@@ -2460,9 +2649,6 @@
   </collection>
   <collection>
     <name>Copper Dragon, AdultBlindsense</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, AdultCorrupt Water</name>
   </collection>
   <collection>
     <name>Copper Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
@@ -2480,16 +2666,7 @@
     <name>Copper Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Copper Dragon, AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, AdultWater Breathing</name>
-  </collection>
-  <collection>
     <name>Copper Dragon, AncientBlindsense</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, AncientCorrupt Water</name>
   </collection>
   <collection>
     <name>Copper Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
@@ -2507,25 +2684,7 @@
     <name>Copper Dragon, AncientSpell Resistance</name>
   </collection>
   <collection>
-    <name>Copper Dragon, AncientSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, AncientSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, AncientSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, AncientWater Breathing</name>
-  </collection>
-  <collection>
     <name>Copper Dragon, Great WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Great WyrmCharm Reptiles</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Great WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>Copper Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -2543,18 +2702,6 @@
     <name>Copper Dragon, Great WyrmSpell Resistance</name>
   </collection>
   <collection>
-    <name>Copper Dragon, Great WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Great WyrmWater Breathing</name>
-  </collection>
-  <collection>
     <name>Copper Dragon, JuvenileBlindsense</name>
   </collection>
   <collection>
@@ -2567,16 +2714,7 @@
     <name>Copper Dragon, JuvenileKeen Senses</name>
   </collection>
   <collection>
-    <name>Copper Dragon, JuvenileSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, JuvenileWater Breathing</name>
-  </collection>
-  <collection>
     <name>Copper Dragon, Mature AdultBlindsense</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Mature AdultCorrupt Water</name>
   </collection>
   <collection>
     <name>Copper Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
@@ -2594,16 +2732,7 @@
     <name>Copper Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Copper Dragon, Mature AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Mature AdultWater Breathing</name>
-  </collection>
-  <collection>
     <name>Copper Dragon, OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, OldCorrupt Water</name>
   </collection>
   <collection>
     <name>Copper Dragon, OldDamage ReductionVulnerable to magic weapons</name>
@@ -2621,19 +2750,7 @@
     <name>Copper Dragon, OldSpell Resistance</name>
   </collection>
   <collection>
-    <name>Copper Dragon, OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, OldSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, OldWater Breathing</name>
-  </collection>
-  <collection>
     <name>Copper Dragon, Very OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Very OldCorrupt Water</name>
   </collection>
   <collection>
     <name>Copper Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
@@ -2651,15 +2768,6 @@
     <name>Copper Dragon, Very OldSpell Resistance</name>
   </collection>
   <collection>
-    <name>Copper Dragon, Very OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Very OldSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Very OldWater Breathing</name>
-  </collection>
-  <collection>
     <name>Copper Dragon, Very YoungBlindsense</name>
   </collection>
   <collection>
@@ -2672,13 +2780,7 @@
     <name>Copper Dragon, Very YoungKeen Senses</name>
   </collection>
   <collection>
-    <name>Copper Dragon, Very YoungWater Breathing</name>
-  </collection>
-  <collection>
     <name>Copper Dragon, WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>Copper Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -2696,18 +2798,6 @@
     <name>Copper Dragon, WyrmSpell Resistance</name>
   </collection>
   <collection>
-    <name>Copper Dragon, WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, WyrmSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, WyrmSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, WyrmWater Breathing</name>
-  </collection>
-  <collection>
     <name>Copper Dragon, WyrmlingBlindsense</name>
   </collection>
   <collection>
@@ -2720,9 +2810,6 @@
     <name>Copper Dragon, WyrmlingKeen Senses</name>
   </collection>
   <collection>
-    <name>Copper Dragon, WyrmlingWater Breathing</name>
-  </collection>
-  <collection>
     <name>Copper Dragon, YoungBlindsense</name>
   </collection>
   <collection>
@@ -2733,9 +2820,6 @@
   </collection>
   <collection>
     <name>Copper Dragon, YoungKeen Senses</name>
-  </collection>
-  <collection>
-    <name>Copper Dragon, YoungWater Breathing</name>
   </collection>
   <collection>
     <name>Copper Dragon, Young AdultBlindsense</name>
@@ -2756,10 +2840,22 @@
     <name>Copper Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Copper Dragon, Young AdultSpell-Like AbilityDarkness</name>
+    <name>Death SlaadEnergy ResistanceAcid</name>
   </collection>
   <collection>
-    <name>Copper Dragon, Young AdultWater Breathing</name>
+    <name>Death SlaadEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Death SlaadEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Death SlaadEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Death SlaadFast Healing</name>
+  </collection>
+  <collection>
+    <name>Death SlaadImmunitySonic</name>
   </collection>
   <collection>
     <name>Dire ApeScent</name>
@@ -2772,6 +2868,9 @@
   </collection>
   <collection>
     <name>Dire BearScent</name>
+  </collection>
+  <collection>
+    <name>Dire BoarScent</name>
   </collection>
   <collection>
     <name>Earth Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
@@ -2873,16 +2972,10 @@
     <name>Gold Dragon, AdultBlindsense</name>
   </collection>
   <collection>
-    <name>Gold Dragon, AdultCorrupt Water</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>Gold Dragon, AdultDarkvision</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, AdultImmunityAcid</name>
   </collection>
   <collection>
     <name>Gold Dragon, AdultKeen Senses</name>
@@ -2891,16 +2984,10 @@
     <name>Gold Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Gold Dragon, AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, AdultWater Breathing</name>
   </collection>
   <collection>
     <name>Gold Dragon, AncientBlindsense</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, AncientCorrupt Water</name>
   </collection>
   <collection>
     <name>Gold Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
@@ -2909,22 +2996,10 @@
     <name>Gold Dragon, AncientDarkvision</name>
   </collection>
   <collection>
-    <name>Gold Dragon, AncientImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, AncientKeen Senses</name>
   </collection>
   <collection>
     <name>Gold Dragon, AncientSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, AncientSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, AncientSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, AncientSpell-Like AbilityPlant growth</name>
   </collection>
   <collection>
     <name>Gold Dragon, AncientWater Breathing</name>
@@ -2933,34 +3008,16 @@
     <name>Gold Dragon, Great WyrmBlindsense</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Great WyrmCharm Reptiles</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, Great WyrmCorrupt Water</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>Gold Dragon, Great WyrmDarkvision</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Great WyrmImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, Great WyrmKeen Senses</name>
   </collection>
   <collection>
     <name>Gold Dragon, Great WyrmSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, Great WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
   </collection>
   <collection>
     <name>Gold Dragon, Great WyrmWater Breathing</name>
@@ -2972,13 +3029,7 @@
     <name>Gold Dragon, JuvenileDarkvision</name>
   </collection>
   <collection>
-    <name>Gold Dragon, JuvenileImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, JuvenileKeen Senses</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, JuvenileSpell-Like AbilityDarkness</name>
   </collection>
   <collection>
     <name>Gold Dragon, JuvenileWater Breathing</name>
@@ -2987,16 +3038,10 @@
     <name>Gold Dragon, Mature AdultBlindsense</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Mature AdultCorrupt Water</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>Gold Dragon, Mature AdultDarkvision</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, Mature AdultImmunityAcid</name>
   </collection>
   <collection>
     <name>Gold Dragon, Mature AdultKeen Senses</name>
@@ -3005,16 +3050,10 @@
     <name>Gold Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Mature AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, Mature AdultWater Breathing</name>
   </collection>
   <collection>
     <name>Gold Dragon, OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, OldCorrupt Water</name>
   </collection>
   <collection>
     <name>Gold Dragon, OldDamage ReductionVulnerable to magic weapons</name>
@@ -3023,19 +3062,10 @@
     <name>Gold Dragon, OldDarkvision</name>
   </collection>
   <collection>
-    <name>Gold Dragon, OldImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, OldKeen Senses</name>
   </collection>
   <collection>
     <name>Gold Dragon, OldSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, OldSpell-Like AbilityPlant growth</name>
   </collection>
   <collection>
     <name>Gold Dragon, OldWater Breathing</name>
@@ -3044,28 +3074,16 @@
     <name>Gold Dragon, Very OldBlindsense</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Very OldCorrupt Water</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>Gold Dragon, Very OldDarkvision</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Very OldImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, Very OldKeen Senses</name>
   </collection>
   <collection>
     <name>Gold Dragon, Very OldSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, Very OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, Very OldSpell-Like AbilityPlant growth</name>
   </collection>
   <collection>
     <name>Gold Dragon, Very OldWater Breathing</name>
@@ -3077,9 +3095,6 @@
     <name>Gold Dragon, Very YoungDarkvision</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Very YoungImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, Very YoungKeen Senses</name>
   </collection>
   <collection>
@@ -3089,31 +3104,16 @@
     <name>Gold Dragon, WyrmBlindsense</name>
   </collection>
   <collection>
-    <name>Gold Dragon, WyrmCorrupt Water</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>Gold Dragon, WyrmDarkvision</name>
   </collection>
   <collection>
-    <name>Gold Dragon, WyrmImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, WyrmKeen Senses</name>
   </collection>
   <collection>
     <name>Gold Dragon, WyrmSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, WyrmSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, WyrmSpell-Like AbilityPlant growth</name>
   </collection>
   <collection>
     <name>Gold Dragon, WyrmWater Breathing</name>
@@ -3123,9 +3123,6 @@
   </collection>
   <collection>
     <name>Gold Dragon, WyrmlingDarkvision</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, WyrmlingImmunityAcid</name>
   </collection>
   <collection>
     <name>Gold Dragon, WyrmlingKeen Senses</name>
@@ -3138,9 +3135,6 @@
   </collection>
   <collection>
     <name>Gold Dragon, YoungDarkvision</name>
-  </collection>
-  <collection>
-    <name>Gold Dragon, YoungImmunityAcid</name>
   </collection>
   <collection>
     <name>Gold Dragon, YoungKeen Senses</name>
@@ -3158,19 +3152,31 @@
     <name>Gold Dragon, Young AdultDarkvision</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Young AdultImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Gold Dragon, Young AdultKeen Senses</name>
   </collection>
   <collection>
     <name>Gold Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Young AdultSpell-Like AbilityDarkness</name>
+    <name>Gold Dragon, Young AdultWater Breathing</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Young AdultWater Breathing</name>
+    <name>Gray SlaadEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadFast Healing</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadImmunitySonic</name>
   </collection>
   <collection>
     <name>Greater BarghestChange ShapeGoblin or wolf</name>
@@ -3209,9 +3215,6 @@
     <name>Green Dragon, AdultBlindsense</name>
   </collection>
   <collection>
-    <name>Green Dragon, AdultCorrupt Water</name>
-  </collection>
-  <collection>
     <name>Green Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
@@ -3227,16 +3230,10 @@
     <name>Green Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Green Dragon, AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
     <name>Green Dragon, AdultWater Breathing</name>
   </collection>
   <collection>
     <name>Green Dragon, AncientBlindsense</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, AncientCorrupt Water</name>
   </collection>
   <collection>
     <name>Green Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
@@ -3254,12 +3251,6 @@
     <name>Green Dragon, AncientSpell Resistance</name>
   </collection>
   <collection>
-    <name>Green Dragon, AncientSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, AncientSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
     <name>Green Dragon, AncientSpell-Like AbilityPlant growth</name>
   </collection>
   <collection>
@@ -3267,12 +3258,6 @@
   </collection>
   <collection>
     <name>Green Dragon, Great WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, Great WyrmCharm Reptiles</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, Great WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>Green Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -3288,12 +3273,6 @@
   </collection>
   <collection>
     <name>Green Dragon, Great WyrmSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, Great WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
   </collection>
   <collection>
     <name>Green Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
@@ -3314,16 +3293,10 @@
     <name>Green Dragon, JuvenileKeen Senses</name>
   </collection>
   <collection>
-    <name>Green Dragon, JuvenileSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
     <name>Green Dragon, JuvenileWater Breathing</name>
   </collection>
   <collection>
     <name>Green Dragon, Mature AdultBlindsense</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, Mature AdultCorrupt Water</name>
   </collection>
   <collection>
     <name>Green Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
@@ -3341,16 +3314,10 @@
     <name>Green Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Green Dragon, Mature AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
     <name>Green Dragon, Mature AdultWater Breathing</name>
   </collection>
   <collection>
     <name>Green Dragon, OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, OldCorrupt Water</name>
   </collection>
   <collection>
     <name>Green Dragon, OldDamage ReductionVulnerable to magic weapons</name>
@@ -3368,9 +3335,6 @@
     <name>Green Dragon, OldSpell Resistance</name>
   </collection>
   <collection>
-    <name>Green Dragon, OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
     <name>Green Dragon, OldSpell-Like AbilityPlant growth</name>
   </collection>
   <collection>
@@ -3378,9 +3342,6 @@
   </collection>
   <collection>
     <name>Green Dragon, Very OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, Very OldCorrupt Water</name>
   </collection>
   <collection>
     <name>Green Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
@@ -3396,9 +3357,6 @@
   </collection>
   <collection>
     <name>Green Dragon, Very OldSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, Very OldSpell-Like AbilityDarkness</name>
   </collection>
   <collection>
     <name>Green Dragon, Very OldSpell-Like AbilityPlant growth</name>
@@ -3425,9 +3383,6 @@
     <name>Green Dragon, WyrmBlindsense</name>
   </collection>
   <collection>
-    <name>Green Dragon, WyrmCorrupt Water</name>
-  </collection>
-  <collection>
     <name>Green Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
@@ -3441,12 +3396,6 @@
   </collection>
   <collection>
     <name>Green Dragon, WyrmSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Green Dragon, WyrmSpell-Like AbilityInsect plague</name>
   </collection>
   <collection>
     <name>Green Dragon, WyrmSpell-Like AbilityPlant growth</name>
@@ -3503,10 +3452,25 @@
     <name>Green Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Green Dragon, Young AdultSpell-Like AbilityDarkness</name>
+    <name>Green Dragon, Young AdultWater Breathing</name>
   </collection>
   <collection>
-    <name>Green Dragon, Young AdultWater Breathing</name>
+    <name>Green SlaadEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>Green SlaadEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Green SlaadEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Green SlaadEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Green SlaadFast Healing</name>
+  </collection>
+  <collection>
+    <name>Green SlaadImmunitySonic</name>
   </collection>
   <collection>
     <name>Juvenile ArrowhawkEnergy ResistanceCold</name>
@@ -3581,16 +3545,10 @@
     <name>Red Dragon, AdultBlindsense</name>
   </collection>
   <collection>
-    <name>Red Dragon, AdultCorrupt Water</name>
-  </collection>
-  <collection>
     <name>Red Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>Red Dragon, AdultDarkvision</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, AdultImmunityAcid</name>
   </collection>
   <collection>
     <name>Red Dragon, AdultKeen Senses</name>
@@ -3599,16 +3557,7 @@
     <name>Red Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Red Dragon, AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, AdultWater Breathing</name>
-  </collection>
-  <collection>
     <name>Red Dragon, AncientBlindsense</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, AncientCorrupt Water</name>
   </collection>
   <collection>
     <name>Red Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
@@ -3617,34 +3566,13 @@
     <name>Red Dragon, AncientDarkvision</name>
   </collection>
   <collection>
-    <name>Red Dragon, AncientImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Red Dragon, AncientKeen Senses</name>
   </collection>
   <collection>
     <name>Red Dragon, AncientSpell Resistance</name>
   </collection>
   <collection>
-    <name>Red Dragon, AncientSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, AncientSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, AncientSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, AncientWater Breathing</name>
-  </collection>
-  <collection>
     <name>Red Dragon, Great WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Great WyrmCharm Reptiles</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Great WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>Red Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -3653,25 +3581,10 @@
     <name>Red Dragon, Great WyrmDarkvision</name>
   </collection>
   <collection>
-    <name>Red Dragon, Great WyrmImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Red Dragon, Great WyrmKeen Senses</name>
   </collection>
   <collection>
     <name>Red Dragon, Great WyrmSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Great WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Great WyrmWater Breathing</name>
   </collection>
   <collection>
     <name>Red Dragon, JuvenileBlindsense</name>
@@ -3680,22 +3593,10 @@
     <name>Red Dragon, JuvenileDarkvision</name>
   </collection>
   <collection>
-    <name>Red Dragon, JuvenileImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Red Dragon, JuvenileKeen Senses</name>
   </collection>
   <collection>
-    <name>Red Dragon, JuvenileSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, JuvenileWater Breathing</name>
-  </collection>
-  <collection>
     <name>Red Dragon, Mature AdultBlindsense</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Mature AdultCorrupt Water</name>
   </collection>
   <collection>
     <name>Red Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
@@ -3704,25 +3605,13 @@
     <name>Red Dragon, Mature AdultDarkvision</name>
   </collection>
   <collection>
-    <name>Red Dragon, Mature AdultImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Red Dragon, Mature AdultKeen Senses</name>
   </collection>
   <collection>
     <name>Red Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Red Dragon, Mature AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Mature AdultWater Breathing</name>
-  </collection>
-  <collection>
     <name>Red Dragon, OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, OldCorrupt Water</name>
   </collection>
   <collection>
     <name>Red Dragon, OldDamage ReductionVulnerable to magic weapons</name>
@@ -3731,28 +3620,13 @@
     <name>Red Dragon, OldDarkvision</name>
   </collection>
   <collection>
-    <name>Red Dragon, OldImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Red Dragon, OldKeen Senses</name>
   </collection>
   <collection>
     <name>Red Dragon, OldSpell Resistance</name>
   </collection>
   <collection>
-    <name>Red Dragon, OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, OldSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, OldWater Breathing</name>
-  </collection>
-  <collection>
     <name>Red Dragon, Very OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Very OldCorrupt Water</name>
   </collection>
   <collection>
     <name>Red Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
@@ -3761,22 +3635,10 @@
     <name>Red Dragon, Very OldDarkvision</name>
   </collection>
   <collection>
-    <name>Red Dragon, Very OldImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Red Dragon, Very OldKeen Senses</name>
   </collection>
   <collection>
     <name>Red Dragon, Very OldSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Very OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Very OldSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, Very OldWater Breathing</name>
   </collection>
   <collection>
     <name>Red Dragon, Very YoungBlindsense</name>
@@ -3785,19 +3647,10 @@
     <name>Red Dragon, Very YoungDarkvision</name>
   </collection>
   <collection>
-    <name>Red Dragon, Very YoungImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Red Dragon, Very YoungKeen Senses</name>
   </collection>
   <collection>
-    <name>Red Dragon, Very YoungWater Breathing</name>
-  </collection>
-  <collection>
     <name>Red Dragon, WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>Red Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -3806,25 +3659,10 @@
     <name>Red Dragon, WyrmDarkvision</name>
   </collection>
   <collection>
-    <name>Red Dragon, WyrmImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Red Dragon, WyrmKeen Senses</name>
   </collection>
   <collection>
     <name>Red Dragon, WyrmSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, WyrmSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, WyrmSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, WyrmWater Breathing</name>
   </collection>
   <collection>
     <name>Red Dragon, WyrmlingBlindsense</name>
@@ -3833,13 +3671,7 @@
     <name>Red Dragon, WyrmlingDarkvision</name>
   </collection>
   <collection>
-    <name>Red Dragon, WyrmlingImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Red Dragon, WyrmlingKeen Senses</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, WyrmlingWater Breathing</name>
   </collection>
   <collection>
     <name>Red Dragon, YoungBlindsense</name>
@@ -3848,13 +3680,7 @@
     <name>Red Dragon, YoungDarkvision</name>
   </collection>
   <collection>
-    <name>Red Dragon, YoungImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Red Dragon, YoungKeen Senses</name>
-  </collection>
-  <collection>
-    <name>Red Dragon, YoungWater Breathing</name>
   </collection>
   <collection>
     <name>Red Dragon, Young AdultBlindsense</name>
@@ -3866,25 +3692,31 @@
     <name>Red Dragon, Young AdultDarkvision</name>
   </collection>
   <collection>
-    <name>Red Dragon, Young AdultImmunityAcid</name>
-  </collection>
-  <collection>
     <name>Red Dragon, Young AdultKeen Senses</name>
   </collection>
   <collection>
     <name>Red Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Red Dragon, Young AdultSpell-Like AbilityDarkness</name>
+    <name>Red SlaadEnergy ResistanceAcid</name>
   </collection>
   <collection>
-    <name>Red Dragon, Young AdultWater Breathing</name>
+    <name>Red SlaadEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Red SlaadEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Red SlaadEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Red SlaadFast Healing</name>
+  </collection>
+  <collection>
+    <name>Red SlaadImmunitySonic</name>
   </collection>
   <collection>
     <name>Silver Dragon, AdultBlindsense</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, AdultCorrupt Water</name>
   </collection>
   <collection>
     <name>Silver Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
@@ -3902,16 +3734,7 @@
     <name>Silver Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Silver Dragon, AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, AdultWater Breathing</name>
-  </collection>
-  <collection>
     <name>Silver Dragon, AncientBlindsense</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, AncientCorrupt Water</name>
   </collection>
   <collection>
     <name>Silver Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
@@ -3929,25 +3752,7 @@
     <name>Silver Dragon, AncientSpell Resistance</name>
   </collection>
   <collection>
-    <name>Silver Dragon, AncientSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, AncientSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, AncientSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, AncientWater Breathing</name>
-  </collection>
-  <collection>
     <name>Silver Dragon, Great WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, Great WyrmCharm Reptiles</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, Great WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>Silver Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -3965,18 +3770,6 @@
     <name>Silver Dragon, Great WyrmSpell Resistance</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Great WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, Great WyrmWater Breathing</name>
-  </collection>
-  <collection>
     <name>Silver Dragon, JuvenileBlindsense</name>
   </collection>
   <collection>
@@ -3989,16 +3782,7 @@
     <name>Silver Dragon, JuvenileKeen Senses</name>
   </collection>
   <collection>
-    <name>Silver Dragon, JuvenileSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, JuvenileWater Breathing</name>
-  </collection>
-  <collection>
     <name>Silver Dragon, Mature AdultBlindsense</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, Mature AdultCorrupt Water</name>
   </collection>
   <collection>
     <name>Silver Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
@@ -4016,16 +3800,7 @@
     <name>Silver Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Mature AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, Mature AdultWater Breathing</name>
-  </collection>
-  <collection>
     <name>Silver Dragon, OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, OldCorrupt Water</name>
   </collection>
   <collection>
     <name>Silver Dragon, OldDamage ReductionVulnerable to magic weapons</name>
@@ -4043,19 +3818,7 @@
     <name>Silver Dragon, OldSpell Resistance</name>
   </collection>
   <collection>
-    <name>Silver Dragon, OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, OldSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, OldWater Breathing</name>
-  </collection>
-  <collection>
     <name>Silver Dragon, Very OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, Very OldCorrupt Water</name>
   </collection>
   <collection>
     <name>Silver Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
@@ -4073,15 +3836,6 @@
     <name>Silver Dragon, Very OldSpell Resistance</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Very OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, Very OldSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, Very OldWater Breathing</name>
-  </collection>
-  <collection>
     <name>Silver Dragon, Very YoungBlindsense</name>
   </collection>
   <collection>
@@ -4094,13 +3848,7 @@
     <name>Silver Dragon, Very YoungKeen Senses</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Very YoungWater Breathing</name>
-  </collection>
-  <collection>
     <name>Silver Dragon, WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>Silver Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -4118,18 +3866,6 @@
     <name>Silver Dragon, WyrmSpell Resistance</name>
   </collection>
   <collection>
-    <name>Silver Dragon, WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, WyrmSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, WyrmSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, WyrmWater Breathing</name>
-  </collection>
-  <collection>
     <name>Silver Dragon, WyrmlingBlindsense</name>
   </collection>
   <collection>
@@ -4142,9 +3878,6 @@
     <name>Silver Dragon, WyrmlingKeen Senses</name>
   </collection>
   <collection>
-    <name>Silver Dragon, WyrmlingWater Breathing</name>
-  </collection>
-  <collection>
     <name>Silver Dragon, YoungBlindsense</name>
   </collection>
   <collection>
@@ -4155,9 +3888,6 @@
   </collection>
   <collection>
     <name>Silver Dragon, YoungKeen Senses</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, YoungWater Breathing</name>
   </collection>
   <collection>
     <name>Silver Dragon, Young AdultBlindsense</name>
@@ -4178,12 +3908,6 @@
     <name>Silver Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Young AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>Silver Dragon, Young AdultWater Breathing</name>
-  </collection>
-  <collection>
     <name>Water Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
@@ -4199,16 +3923,10 @@
     <name>White Dragon, AdultBlindsense</name>
   </collection>
   <collection>
-    <name>White Dragon, AdultCorrupt Water</name>
-  </collection>
-  <collection>
     <name>White Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
     <name>White Dragon, AdultDarkvision</name>
-  </collection>
-  <collection>
-    <name>White Dragon, AdultImmunityAcid</name>
   </collection>
   <collection>
     <name>White Dragon, AdultKeen Senses</name>
@@ -4217,16 +3935,7 @@
     <name>White Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>White Dragon, AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>White Dragon, AdultWater Breathing</name>
-  </collection>
-  <collection>
     <name>White Dragon, AncientBlindsense</name>
-  </collection>
-  <collection>
-    <name>White Dragon, AncientCorrupt Water</name>
   </collection>
   <collection>
     <name>White Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
@@ -4235,34 +3944,13 @@
     <name>White Dragon, AncientDarkvision</name>
   </collection>
   <collection>
-    <name>White Dragon, AncientImmunityAcid</name>
-  </collection>
-  <collection>
     <name>White Dragon, AncientKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, AncientSpell Resistance</name>
   </collection>
   <collection>
-    <name>White Dragon, AncientSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>White Dragon, AncientSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>White Dragon, AncientSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>White Dragon, AncientWater Breathing</name>
-  </collection>
-  <collection>
     <name>White Dragon, Great WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Great WyrmCharm Reptiles</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Great WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>White Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -4271,25 +3959,10 @@
     <name>White Dragon, Great WyrmDarkvision</name>
   </collection>
   <collection>
-    <name>White Dragon, Great WyrmImmunityAcid</name>
-  </collection>
-  <collection>
     <name>White Dragon, Great WyrmKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, Great WyrmSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Great WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Great WyrmSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Great WyrmWater Breathing</name>
   </collection>
   <collection>
     <name>White Dragon, JuvenileBlindsense</name>
@@ -4298,22 +3971,10 @@
     <name>White Dragon, JuvenileDarkvision</name>
   </collection>
   <collection>
-    <name>White Dragon, JuvenileImmunityAcid</name>
-  </collection>
-  <collection>
     <name>White Dragon, JuvenileKeen Senses</name>
   </collection>
   <collection>
-    <name>White Dragon, JuvenileSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>White Dragon, JuvenileWater Breathing</name>
-  </collection>
-  <collection>
     <name>White Dragon, Mature AdultBlindsense</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Mature AdultCorrupt Water</name>
   </collection>
   <collection>
     <name>White Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
@@ -4322,25 +3983,13 @@
     <name>White Dragon, Mature AdultDarkvision</name>
   </collection>
   <collection>
-    <name>White Dragon, Mature AdultImmunityAcid</name>
-  </collection>
-  <collection>
     <name>White Dragon, Mature AdultKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
-    <name>White Dragon, Mature AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Mature AdultWater Breathing</name>
-  </collection>
-  <collection>
     <name>White Dragon, OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>White Dragon, OldCorrupt Water</name>
   </collection>
   <collection>
     <name>White Dragon, OldDamage ReductionVulnerable to magic weapons</name>
@@ -4349,28 +3998,13 @@
     <name>White Dragon, OldDarkvision</name>
   </collection>
   <collection>
-    <name>White Dragon, OldImmunityAcid</name>
-  </collection>
-  <collection>
     <name>White Dragon, OldKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, OldSpell Resistance</name>
   </collection>
   <collection>
-    <name>White Dragon, OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>White Dragon, OldSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>White Dragon, OldWater Breathing</name>
-  </collection>
-  <collection>
     <name>White Dragon, Very OldBlindsense</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Very OldCorrupt Water</name>
   </collection>
   <collection>
     <name>White Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
@@ -4379,22 +4013,10 @@
     <name>White Dragon, Very OldDarkvision</name>
   </collection>
   <collection>
-    <name>White Dragon, Very OldImmunityAcid</name>
-  </collection>
-  <collection>
     <name>White Dragon, Very OldKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, Very OldSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Very OldSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Very OldSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Very OldWater Breathing</name>
   </collection>
   <collection>
     <name>White Dragon, Very YoungBlindsense</name>
@@ -4403,19 +4025,10 @@
     <name>White Dragon, Very YoungDarkvision</name>
   </collection>
   <collection>
-    <name>White Dragon, Very YoungImmunityAcid</name>
-  </collection>
-  <collection>
     <name>White Dragon, Very YoungKeen Senses</name>
   </collection>
   <collection>
-    <name>White Dragon, Very YoungWater Breathing</name>
-  </collection>
-  <collection>
     <name>White Dragon, WyrmBlindsense</name>
-  </collection>
-  <collection>
-    <name>White Dragon, WyrmCorrupt Water</name>
   </collection>
   <collection>
     <name>White Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -4424,25 +4037,10 @@
     <name>White Dragon, WyrmDarkvision</name>
   </collection>
   <collection>
-    <name>White Dragon, WyrmImmunityAcid</name>
-  </collection>
-  <collection>
     <name>White Dragon, WyrmKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, WyrmSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>White Dragon, WyrmSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>White Dragon, WyrmSpell-Like AbilityInsect plague</name>
-  </collection>
-  <collection>
-    <name>White Dragon, WyrmSpell-Like AbilityPlant growth</name>
-  </collection>
-  <collection>
-    <name>White Dragon, WyrmWater Breathing</name>
   </collection>
   <collection>
     <name>White Dragon, WyrmlingBlindsense</name>
@@ -4451,13 +4049,7 @@
     <name>White Dragon, WyrmlingDarkvision</name>
   </collection>
   <collection>
-    <name>White Dragon, WyrmlingImmunityAcid</name>
-  </collection>
-  <collection>
     <name>White Dragon, WyrmlingKeen Senses</name>
-  </collection>
-  <collection>
-    <name>White Dragon, WyrmlingWater Breathing</name>
   </collection>
   <collection>
     <name>White Dragon, YoungBlindsense</name>
@@ -4466,13 +4058,7 @@
     <name>White Dragon, YoungDarkvision</name>
   </collection>
   <collection>
-    <name>White Dragon, YoungImmunityAcid</name>
-  </collection>
-  <collection>
     <name>White Dragon, YoungKeen Senses</name>
-  </collection>
-  <collection>
-    <name>White Dragon, YoungWater Breathing</name>
   </collection>
   <collection>
     <name>White Dragon, Young AdultBlindsense</name>
@@ -4484,18 +4070,9 @@
     <name>White Dragon, Young AdultDarkvision</name>
   </collection>
   <collection>
-    <name>White Dragon, Young AdultImmunityAcid</name>
-  </collection>
-  <collection>
     <name>White Dragon, Young AdultKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, Young AdultSpell Resistance</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Young AdultSpell-Like AbilityDarkness</name>
-  </collection>
-  <collection>
-    <name>White Dragon, Young AdultWater Breathing</name>
   </collection>
 </collections>
