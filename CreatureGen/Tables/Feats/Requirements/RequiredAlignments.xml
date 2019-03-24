@@ -2639,7 +2639,19 @@
     <name>BugbearDarkvision</name>
   </collection>
   <collection>
+    <name>BugbearScent</name>
+  </collection>
+  <collection>
     <name>BugbearSimple Weapon ProficiencyJavelin</name>
+  </collection>
+  <collection>
+    <name>BugbearSimple Weapon ProficiencyMorningstar</name>
+  </collection>
+  <collection>
+    <name>BuletteScent</name>
+  </collection>
+  <collection>
+    <name>BuletteTremorsense</name>
   </collection>
   <collection>
     <name>Cachalot WhaleBlindsight</name>
@@ -2649,6 +2661,186 @@
   </collection>
   <collection>
     <name>Copper Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Camel, Bactrian (Two-Humped)Scent</name>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)Scent</name>
+  </collection>
+  <collection>
+    <name>Carrion CrawlerScent</name>
+  </collection>
+  <collection>
+    <name>CatScent</name>
+  </collection>
+  <collection>
+    <name>CentaurMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>CentaurMartial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>CentaurMounted Combat</name>
+  </collection>
+  <collection>
+    <name>Centipede SwarmTremorsense</name>
+  </collection>
+  <collection>
+    <name>Centipede SwarmWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)Damage ReductionVulnerable to good or silver weapons</name>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)Exotic Weapon ProficiencySpiked chain</name>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)ImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)RegenerationDoes not regenerate damage from silver weapons or good-aligned damage</name>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)Spell Resistance</name>
+  </collection>
+  <collection>
+    <name>Chaos BeastImmunityCritical hits</name>
+  </collection>
+  <collection>
+    <name>Chaos BeastImmunityTransformation</name>
+  </collection>
+  <collection>
+    <name>Chaos BeastSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>CheetahScent</name>
+  </collection>
+  <collection>
+    <name>CheetahSprint</name>
+  </collection>
+  <collection>
+    <name>ChimeraScent</name>
+  </collection>
+  <collection>
+    <name>ChokerQuickness</name>
+  </collection>
+  <collection>
+    <name>ChokerImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>ChuulAmphibious</name>
+  </collection>
+  <collection>
+    <name>ChuulImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Clay GolemDamage ReductionVulnerable to adamantine, bludgeoning weapons</name>
+  </collection>
+  <collection>
+    <name>Clay GolemImmunityMagic (see creature description)</name>
+  </collection>
+  <collection>
+    <name>Clay GolemSpell-Like AbilityHaste: after at least 1 round of combat, lasts 3 rounds</name>
+  </collection>
+  <collection>
+    <name>CloakerShadow Shift</name>
+  </collection>
+  <collection>
+    <name>Cloud GiantArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Cloud GiantOversized WeaponGargantuan</name>
+  </collection>
+  <collection>
+    <name>Cloud GiantRock Catching</name>
+  </collection>
+  <collection>
+    <name>Cloud GiantScent</name>
+  </collection>
+  <collection>
+    <name>Cloud GiantSimple Weapon ProficiencyMorningstar</name>
+  </collection>
+  <collection>
+    <name>Cloud GiantSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Cloud GiantSpell-Like AbilityLevitate: self plus 2,000 pounds</name>
+  </collection>
+  <collection>
+    <name>Cloud GiantSpell-Like AbilityObscuring mist</name>
+  </collection>
+  <collection>
+    <name>CockatriceWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>ColdImmunityCold</name>
+  </collection>
+  <collection>
+    <name>ColdVulnerabilityFire</name>
+  </collection>
+  <collection>
+    <name>Constrictor SnakeScent</name>
+  </collection>
+  <collection>
+    <name>ConstructDarkvision</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityAbility Damage</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityAbility Drain</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityBeing raised or resurrected</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityCritical hits</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityDeath</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityDeath from massive damage</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityDisease</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityEffect that requires a Fortitude save</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityEnergy Drain</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityExhaustion</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityFatigue</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityMind-Affecting Effects</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityNecromancy</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityNonlethal damage</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityParalysis</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunitySleep</name>
+  </collection>
+  <collection>
+    <name>ConstructImmunityStunning</name>
+  </collection>
+  <collection>
+    <name>ConstructLow-Light Vision</name>
   </collection>
   <collection>
     <name>Copper Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
@@ -2664,6 +2856,12 @@
   </collection>
   <collection>
     <name>Copper Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultSpell-Like AbilitySpider climb</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultSpell-Like AbilityStone shape</name>
   </collection>
   <collection>
     <name>Copper Dragon, AncientBlindsense</name>
@@ -2684,6 +2882,18 @@
     <name>Copper Dragon, AncientSpell Resistance</name>
   </collection>
   <collection>
+    <name>Copper Dragon, AncientSpell-Like AbilitySpider climb</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientSpell-Like AbilityStone shape</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientSpell-Like AbilityTransmute mud to rock</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientSpell-Like AbilityTransmute rock to mud</name>
+  </collection>
+  <collection>
     <name>Copper Dragon, Great WyrmBlindsense</name>
   </collection>
   <collection>
@@ -2700,6 +2910,18 @@
   </collection>
   <collection>
     <name>Copper Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmSpell-Like AbilitySpider climb</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmSpell-Like AbilityStone shape</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmSpell-Like AbilityTransmute mud to rock</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmSpell-Like AbilityTransmute rock to mud</name>
   </collection>
   <collection>
     <name>Copper Dragon, JuvenileBlindsense</name>
@@ -2732,6 +2954,12 @@
     <name>Copper Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Copper Dragon, Mature AdultSpell-Like AbilitySpider climb</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultSpell-Like AbilityStone shape</name>
+  </collection>
+  <collection>
     <name>Copper Dragon, OldBlindsense</name>
   </collection>
   <collection>
@@ -2750,6 +2978,12 @@
     <name>Copper Dragon, OldSpell Resistance</name>
   </collection>
   <collection>
+    <name>Copper Dragon, OldSpell-Like AbilitySpider climb</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldSpell-Like AbilityStone shape</name>
+  </collection>
+  <collection>
     <name>Copper Dragon, Very OldBlindsense</name>
   </collection>
   <collection>
@@ -2766,6 +3000,12 @@
   </collection>
   <collection>
     <name>Copper Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldSpell-Like AbilitySpider climb</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldSpell-Like AbilityStone shape</name>
   </collection>
   <collection>
     <name>Copper Dragon, Very YoungBlindsense</name>
@@ -2796,6 +3036,18 @@
   </collection>
   <collection>
     <name>Copper Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmSpell-Like AbilitySpider climb</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmSpell-Like AbilityStone shape</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmSpell-Like AbilityTransmute mud to rock</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmSpell-Like AbilityTransmute rock to mud</name>
   </collection>
   <collection>
     <name>Copper Dragon, WyrmlingBlindsense</name>
@@ -2957,7 +3209,16 @@
     <name>Fire Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
+    <name>Fire GiantRock Catching</name>
+  </collection>
+  <collection>
     <name>Flamebrother SalamanderMultiattack</name>
+  </collection>
+  <collection>
+    <name>Flesh GolemImmunityMagic (see creature description)</name>
+  </collection>
+  <collection>
+    <name>Frost GiantRock Catching</name>
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)Alertness</name>
@@ -3210,6 +3471,9 @@
   </collection>
   <collection>
     <name>Greater BarghestSpell-Like AbilityRage</name>
+  </collection>
+  <collection>
+    <name>Greater Stone GolemImmunityMagic (see creature description)</name>
   </collection>
   <collection>
     <name>Green Dragon, AdultBlindsense</name>
@@ -3471,6 +3735,12 @@
   </collection>
   <collection>
     <name>Green SlaadImmunitySonic</name>
+  </collection>
+  <collection>
+    <name>Hill GiantRock Catching</name>
+  </collection>
+  <collection>
+    <name>Iron GolemImmunityMagic (see creature description)</name>
   </collection>
   <collection>
     <name>Juvenile ArrowhawkEnergy ResistanceCold</name>
@@ -3906,6 +4176,18 @@
   </collection>
   <collection>
     <name>Silver Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Stone GiantRock Catching</name>
+  </collection>
+  <collection>
+    <name>Stone Giant ElderRock Catching</name>
+  </collection>
+  <collection>
+    <name>Stone GolemImmunityMagic (see creature description)</name>
+  </collection>
+  <collection>
+    <name>Storm GiantRock Catching</name>
   </collection>
   <collection>
     <name>Water Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
