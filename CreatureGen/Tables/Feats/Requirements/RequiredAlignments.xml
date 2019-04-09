@@ -3557,6 +3557,42 @@
     <name>DrowMartial Weapon ProficiencyShort sword</name>
   </collection>
   <collection>
+    <name>DrowSpell-Like AbilityDancing lights</name>
+  </collection>
+  <collection>
+    <name>DrowSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>DrowSpell-Like AbilityFaerie fire</name>
+  </collection>
+  <collection>
+    <name>DryadDamage ReductionVulnerable to cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>DryadMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>DryadSimple Weapon ProficiencyDagger</name>
+  </collection>
+  <collection>
+    <name>DryadSpell-Like AbilityCharm person</name>
+  </collection>
+  <collection>
+    <name>DryadSpell-Like AbilityDeep slumber</name>
+  </collection>
+  <collection>
+    <name>DryadSpell-Like AbilityEntangle</name>
+  </collection>
+  <collection>
+    <name>DryadSpell-Like AbilitySpeak with plants</name>
+  </collection>
+  <collection>
+    <name>DryadSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>DryadSpell-Like AbilityTree shape</name>
+  </collection>
+  <collection>
     <name>DuergarDarkvision</name>
   </collection>
   <collection>
