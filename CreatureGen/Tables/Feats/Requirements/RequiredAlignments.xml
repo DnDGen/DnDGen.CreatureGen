@@ -2660,9 +2660,6 @@
     <name>Cachalot WhaleHold Breath</name>
   </collection>
   <collection>
-    <name>Copper Dragon, AdultBlindsense</name>
-  </collection>
-  <collection>
     <name>Camel, Bactrian (Two-Humped)Scent</name>
   </collection>
   <collection>
@@ -2843,6 +2840,9 @@
     <name>ConstructLow-Light Vision</name>
   </collection>
   <collection>
+    <name>Copper Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
     <name>Copper Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
@@ -2894,6 +2894,9 @@
     <name>Copper Dragon, AncientSpell-Like AbilityTransmute rock to mud</name>
   </collection>
   <collection>
+    <name>Copper Dragon, AncientSpell-Like AbilityWall of stone</name>
+  </collection>
+  <collection>
     <name>Copper Dragon, Great WyrmBlindsense</name>
   </collection>
   <collection>
@@ -2912,6 +2915,9 @@
     <name>Copper Dragon, Great WyrmSpell Resistance</name>
   </collection>
   <collection>
+    <name>Copper Dragon, Great WyrmSpell-Like AbilityMove earth</name>
+  </collection>
+  <collection>
     <name>Copper Dragon, Great WyrmSpell-Like AbilitySpider climb</name>
   </collection>
   <collection>
@@ -2924,6 +2930,9 @@
     <name>Copper Dragon, Great WyrmSpell-Like AbilityTransmute rock to mud</name>
   </collection>
   <collection>
+    <name>Copper Dragon, Great WyrmSpell-Like AbilityWall of stone</name>
+  </collection>
+  <collection>
     <name>Copper Dragon, JuvenileBlindsense</name>
   </collection>
   <collection>
@@ -2934,6 +2943,9 @@
   </collection>
   <collection>
     <name>Copper Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, JuvenileSpell-Like AbilitySpider climb</name>
   </collection>
   <collection>
     <name>Copper Dragon, Mature AdultBlindsense</name>
@@ -2984,6 +2996,12 @@
     <name>Copper Dragon, OldSpell-Like AbilityStone shape</name>
   </collection>
   <collection>
+    <name>Copper Dragon, OldSpell-Like AbilityTransmute mud to rock</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldSpell-Like AbilityTransmute rock to mud</name>
+  </collection>
+  <collection>
     <name>Copper Dragon, Very OldBlindsense</name>
   </collection>
   <collection>
@@ -3008,6 +3026,12 @@
     <name>Copper Dragon, Very OldSpell-Like AbilityStone shape</name>
   </collection>
   <collection>
+    <name>Copper Dragon, Very OldSpell-Like AbilityTransmute mud to rock</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldSpell-Like AbilityTransmute rock to mud</name>
+  </collection>
+  <collection>
     <name>Copper Dragon, Very YoungBlindsense</name>
   </collection>
   <collection>
@@ -3018,6 +3042,9 @@
   </collection>
   <collection>
     <name>Copper Dragon, Very YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very YoungSpell-Like AbilitySpider climb</name>
   </collection>
   <collection>
     <name>Copper Dragon, WyrmBlindsense</name>
@@ -3050,6 +3077,9 @@
     <name>Copper Dragon, WyrmSpell-Like AbilityTransmute rock to mud</name>
   </collection>
   <collection>
+    <name>Copper Dragon, WyrmSpell-Like AbilityWall of stone</name>
+  </collection>
+  <collection>
     <name>Copper Dragon, WyrmlingBlindsense</name>
   </collection>
   <collection>
@@ -3062,6 +3092,9 @@
     <name>Copper Dragon, WyrmlingKeen Senses</name>
   </collection>
   <collection>
+    <name>Copper Dragon, WyrmlingSpell-Like AbilitySpider climb</name>
+  </collection>
+  <collection>
     <name>Copper Dragon, YoungBlindsense</name>
   </collection>
   <collection>
@@ -3072,6 +3105,9 @@
   </collection>
   <collection>
     <name>Copper Dragon, YoungKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, YoungSpell-Like AbilitySpider climb</name>
   </collection>
   <collection>
     <name>Copper Dragon, Young AdultBlindsense</name>
@@ -3092,6 +3128,39 @@
     <name>Copper Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Copper Dragon, Young AdultSpell-Like AbilitySpider climb</name>
+  </collection>
+  <collection>
+    <name>CouatlChange ShapeAny Small or Medium humanoid</name>
+  </collection>
+  <collection>
+    <name>CouatlSpell-Like AbilityEthereal jaunt</name>
+  </collection>
+  <collection>
+    <name>CouatlTelepathy</name>
+  </collection>
+  <collection>
+    <name>CrocodileHold Breath</name>
+  </collection>
+  <collection>
+    <name>Dark NagaSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>Dark NagaImmunityAny form of mind reading</name>
+  </collection>
+  <collection>
+    <name>Dark NagaImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>DarkmantleBlindsight</name>
+  </collection>
+  <collection>
+    <name>Death SlaadChange ShapeAny humanoid form</name>
+  </collection>
+  <collection>
+    <name>Death SlaadDamage ReductionVulnerable to lawful weapons</name>
+  </collection>
+  <collection>
     <name>Death SlaadEnergy ResistanceAcid</name>
   </collection>
   <collection>
@@ -3110,6 +3179,147 @@
     <name>Death SlaadImmunitySonic</name>
   </collection>
   <collection>
+    <name>Death SlaadTelepathy</name>
+  </collection>
+  <collection>
+    <name>Deep DwarfDarkvision</name>
+  </collection>
+  <collection>
+    <name>Deep DwarfLight Sensitivity</name>
+  </collection>
+  <collection>
+    <name>Deep DwarfWeapon FamiliarityDwarven urgrosh</name>
+  </collection>
+  <collection>
+    <name>Deep DwarfWeapon FamiliarityDwarven waraxe</name>
+  </collection>
+  <collection>
+    <name>Deep DwarfMartial Weapon ProficiencyDwarven waraxe</name>
+  </collection>
+  <collection>
+    <name>Deep DwarfMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>Deep HalflingDarkvision</name>
+  </collection>
+  <collection>
+    <name>Deep HalflingStonecunning</name>
+  </collection>
+  <collection>
+    <name>DeinonychusScent</name>
+  </collection>
+  <collection>
+    <name>DelverImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>DelverSpell-Like AbilityStone shape</name>
+  </collection>
+  <collection>
+    <name>DelverTremorsense</name>
+  </collection>
+  <collection>
+    <name>DerroArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>DerroMadness</name>
+  </collection>
+  <collection>
+    <name>DerroMartial Weapon ProficiencyShort sword</name>
+  </collection>
+  <collection>
+    <name>DerroSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>DerroSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>DerroSpell-Like AbilityDaze</name>
+  </collection>
+  <collection>
+    <name>DerroSpell-Like AbilityGhost sound</name>
+  </collection>
+  <collection>
+    <name>DerroSpell-Like AbilitySound burst</name>
+  </collection>
+  <collection>
+    <name>DerroVulnerabilitySunlight</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)Armor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)Martial Weapon ProficiencyShort sword</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)Spell Resistance</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)Spell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)Spell-Like AbilityDaze</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)Spell-Like AbilityGhost sound</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)Spell-Like AbilitySound burst</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)VulnerabilitySunlight</name>
+  </collection>
+  <collection>
+    <name>DestrachanBlindsight</name>
+  </collection>
+  <collection>
+    <name>DestrachanImmunityGaze attacks</name>
+  </collection>
+  <collection>
+    <name>DestrachanImmunityVisual effects</name>
+  </collection>
+  <collection>
+    <name>DestrachanImmunityIllusions</name>
+  </collection>
+  <collection>
+    <name>DestrachanImmunityAttacks that rely on sight</name>
+  </collection>
+  <collection>
+    <name>DevourerSpell Deflection</name>
+  </collection>
+  <collection>
+    <name>DevourerSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>DevourerSpell-Like AbilityConfusion</name>
+  </collection>
+  <collection>
+    <name>DevourerSpell-Like AbilityControl undead</name>
+  </collection>
+  <collection>
+    <name>DevourerSpell-Like AbilityGhoul touch</name>
+  </collection>
+  <collection>
+    <name>DevourerSpell-Like AbilityLesser planar ally</name>
+  </collection>
+  <collection>
+    <name>DevourerSpell-Like AbilityRay of enfeeblement</name>
+  </collection>
+  <collection>
+    <name>DevourerSpell-Like AbilitySpectral hand</name>
+  </collection>
+  <collection>
+    <name>DevourerSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>DevourerSpell-Like AbilityTrue seeing</name>
+  </collection>
+  <collection>
+    <name>DigesterImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>DigesterScent</name>
+  </collection>
+  <collection>
     <name>Dire ApeScent</name>
   </collection>
   <collection>
@@ -3119,10 +3329,22 @@
     <name>Dire BadgerTrack</name>
   </collection>
   <collection>
+    <name>Dire BatBlindsense</name>
+  </collection>
+  <collection>
     <name>Dire BearScent</name>
   </collection>
   <collection>
     <name>Dire BoarScent</name>
+  </collection>
+  <collection>
+    <name>Dire LionScent</name>
+  </collection>
+  <collection>
+    <name>Dire RatScent</name>
+  </collection>
+  <collection>
+    <name>DuergarDarkvision</name>
   </collection>
   <collection>
     <name>Earth Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
@@ -3228,6 +3450,9 @@
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)Flight</name>
+  </collection>
+  <collection>
+    <name>Giant CrocodileHold Breath</name>
   </collection>
   <collection>
     <name>Gold Dragon, AdultBlindsense</name>
@@ -3737,6 +3962,21 @@
     <name>Green SlaadImmunitySonic</name>
   </collection>
   <collection>
+    <name>Hill DwarfDarkvision</name>
+  </collection>
+  <collection>
+    <name>Hill DwarfWeapon FamiliarityDwarven urgrosh</name>
+  </collection>
+  <collection>
+    <name>Hill DwarfWeapon FamiliarityDwarven waraxe</name>
+  </collection>
+  <collection>
+    <name>Hill DwarfMartial Weapon ProficiencyDwarven waraxe</name>
+  </collection>
+  <collection>
+    <name>Hill DwarfMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
     <name>Hill GiantRock Catching</name>
   </collection>
   <collection>
@@ -3776,6 +4016,12 @@
     <name>Juvenile TojanidaImmunityPoison</name>
   </collection>
   <collection>
+    <name>LionScent</name>
+  </collection>
+  <collection>
+    <name>MegaraptorScent</name>
+  </collection>
+  <collection>
     <name>Minor XornAll-Around Vision</name>
   </collection>
   <collection>
@@ -3797,6 +4043,21 @@
     <name>Minor XornTremorsense</name>
   </collection>
   <collection>
+    <name>Mountain DwarfDarkvision</name>
+  </collection>
+  <collection>
+    <name>Mountain DwarfWeapon FamiliarityDwarven urgrosh</name>
+  </collection>
+  <collection>
+    <name>Mountain DwarfWeapon FamiliarityDwarven waraxe</name>
+  </collection>
+  <collection>
+    <name>Mountain DwarfMartial Weapon ProficiencyDwarven waraxe</name>
+  </collection>
+  <collection>
+    <name>Mountain DwarfMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
     <name>Noble SalamanderDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
@@ -3810,6 +4071,12 @@
   </collection>
   <collection>
     <name>Polar BearScent</name>
+  </collection>
+  <collection>
+    <name>RatScent</name>
+  </collection>
+  <collection>
+    <name>Rat SwarmScent</name>
   </collection>
   <collection>
     <name>Red Dragon, AdultBlindsense</name>
@@ -4188,6 +4455,12 @@
   </collection>
   <collection>
     <name>Storm GiantRock Catching</name>
+  </collection>
+  <collection>
+    <name>TriceratopsScent</name>
+  </collection>
+  <collection>
+    <name>TyrannosaurusScent</name>
   </collection>
   <collection>
     <name>Water Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
