@@ -3344,6 +3344,69 @@
     <name>Dire RatScent</name>
   </collection>
   <collection>
+    <name>Dire RatWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Dire SharkKeen Scent</name>
+  </collection>
+  <collection>
+    <name>Dire TigerScent</name>
+  </collection>
+  <collection>
+    <name>Dire WeaselScent</name>
+  </collection>
+  <collection>
+    <name>Dire WeaselWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Dire WolfScent</name>
+  </collection>
+  <collection>
+    <name>Dire WolfTrack</name>
+  </collection>
+  <collection>
+    <name>Dire WolverineScent</name>
+  </collection>
+  <collection>
+    <name>Dire WolverineTrack</name>
+  </collection>
+  <collection>
+    <name>Displacer BeastDisplacement</name>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack LordDisplacement</name>
+  </collection>
+  <collection>
+    <name>DjinniImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>DjinniImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>DjinniSpell-Like AbilityCreate food and water</name>
+  </collection>
+  <collection>
+    <name>DjinniSpell-Like AbilityCreate water: creates wine instead of water</name>
+  </collection>
+  <collection>
+    <name>DjinniSpell-Like AbilityGaseous form</name>
+  </collection>
+  <collection>
+    <name>DjinniSpell-Like AbilityInvisibility: self only</name>
+  </collection>
+  <collection>
+    <name>DjinniSpell-Like AbilityMajor creation: created vegetable matter is permanent</name>
+  </collection>
+  <collection>
+    <name>DjinniSpell-Like AbilityPersistent image</name>
+  </collection>
+  <collection>
+    <name>DjinniSpell-Like AbilityPlane shift: Genie and up to 8 other creatures, provided they all link hands with the genie</name>
+  </collection>
+  <collection>
+    <name>DjinniSpell-Like AbilityWind walk</name>
+  </collection>
+  <collection>
     <name>DuergarDarkvision</name>
   </collection>
   <collection>
@@ -4058,6 +4121,36 @@
     <name>Mountain DwarfMartial Weapon ProficiencyShortbow</name>
   </collection>
   <collection>
+    <name>Noble DjinniImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>Noble DjinniImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>Noble DjinniSpell-Like AbilityCreate food and water</name>
+  </collection>
+  <collection>
+    <name>Noble DjinniSpell-Like AbilityCreate water: creates wine instead of water</name>
+  </collection>
+  <collection>
+    <name>Noble DjinniSpell-Like AbilityGaseous form</name>
+  </collection>
+  <collection>
+    <name>Noble DjinniSpell-Like AbilityInvisibility: self only</name>
+  </collection>
+  <collection>
+    <name>Noble DjinniSpell-Like AbilityMajor creation: created vegetable matter is permanent</name>
+  </collection>
+  <collection>
+    <name>Noble DjinniSpell-Like AbilityPersistent image</name>
+  </collection>
+  <collection>
+    <name>Noble DjinniSpell-Like AbilityPlane shift: Genie and up to 8 other creatures, provided they all link hands with the genie</name>
+  </collection>
+  <collection>
+    <name>Noble DjinniSpell-Like AbilityWind walk</name>
+  </collection>
+  <collection>
     <name>Noble SalamanderDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
@@ -4076,7 +4169,13 @@
     <name>RatScent</name>
   </collection>
   <collection>
+    <name>RatWeapon Finesse</name>
+  </collection>
+  <collection>
     <name>Rat SwarmScent</name>
+  </collection>
+  <collection>
+    <name>Rat SwarmWeapon Finesse</name>
   </collection>
   <collection>
     <name>Red Dragon, AdultBlindsense</name>
@@ -4251,6 +4350,15 @@
   </collection>
   <collection>
     <name>Red SlaadImmunitySonic</name>
+  </collection>
+  <collection>
+    <name>Shark, HugeKeen Scent</name>
+  </collection>
+  <collection>
+    <name>Shark, LargeKeen Scent</name>
+  </collection>
+  <collection>
+    <name>Shark, MediumKeen Scent</name>
   </collection>
   <collection>
     <name>Silver Dragon, AdultBlindsense</name>
@@ -4457,6 +4565,9 @@
     <name>Storm GiantRock Catching</name>
   </collection>
   <collection>
+    <name>TigerScent</name>
+  </collection>
+  <collection>
     <name>TriceratopsScent</name>
   </collection>
   <collection>
@@ -4473,6 +4584,12 @@
   </collection>
   <collection>
     <name>Water Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>WeaselScent</name>
+  </collection>
+  <collection>
+    <name>WeaselWeapon Finesse</name>
   </collection>
   <collection>
     <name>White Dragon, AdultBlindsense</name>
@@ -4629,5 +4746,17 @@
   </collection>
   <collection>
     <name>White Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>WolfScent</name>
+  </collection>
+  <collection>
+    <name>WolfTrack</name>
+  </collection>
+  <collection>
+    <name>WolverineScent</name>
+  </collection>
+  <collection>
+    <name>WolverineTrack</name>
   </collection>
 </collections>
