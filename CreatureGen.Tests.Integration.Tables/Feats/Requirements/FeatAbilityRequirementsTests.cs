@@ -21,6 +21,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         }
 
         [Test]
+        [Ignore("Not working on this yet")]
         public void FeatAbilityRequirementsNames()
         {
             var names = GetNames();
@@ -50,6 +51,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         [TestCaseSource(typeof(AbilityRequirementsTestData), "Monster")]
         [TestCaseSource(typeof(AbilityRequirementsTestData), "Craft")]
         [TestCaseSource(typeof(AbilityRequirementsTestData), "SpecialQualities")]
+        [Ignore("Not working on this yet")]
         public void AbilityRequirements(string name, Dictionary<string, int> typesAndAmounts)
         {
             AssertTypesAndAmounts(name, typesAndAmounts);

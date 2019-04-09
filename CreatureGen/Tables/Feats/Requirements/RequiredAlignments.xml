@@ -3407,6 +3407,156 @@
     <name>DjinniSpell-Like AbilityWind walk</name>
   </collection>
   <collection>
+    <name>DjinniTelepathy</name>
+  </collection>
+  <collection>
+    <name>DogScent</name>
+  </collection>
+  <collection>
+    <name>DogTrack</name>
+  </collection>
+  <collection>
+    <name>Dog, RidingScent</name>
+  </collection>
+  <collection>
+    <name>Dog, RidingTrack</name>
+  </collection>
+  <collection>
+    <name>DonkeyScent</name>
+  </collection>
+  <collection>
+    <name>DoppelgangerChange ShapeAny Small or Medium Humanoid</name>
+  </collection>
+  <collection>
+    <name>DoppelgangerImmunityCharm effects</name>
+  </collection>
+  <collection>
+    <name>DoppelgangerImmunitySleep</name>
+  </collection>
+  <collection>
+    <name>DoppelgangerSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>DragonDarkvision</name>
+  </collection>
+  <collection>
+    <name>DragonImmunityParalysis</name>
+  </collection>
+  <collection>
+    <name>DragonImmunitySleep</name>
+  </collection>
+  <collection>
+    <name>DragonLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>DragonSimple Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>Dragon TurtleImmunityFire</name>
+  </collection>
+  <collection>
+    <name>Dragon TurtleScent</name>
+  </collection>
+  <collection>
+    <name>DragonneScent</name>
+  </collection>
+  <collection>
+    <name>Dread WraithAlertness</name>
+  </collection>
+  <collection>
+    <name>Dread WraithDaylight Powerlessness</name>
+  </collection>
+  <collection>
+    <name>Dread WraithLifesense</name>
+  </collection>
+  <collection>
+    <name>Dread WraithImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>Dread WraithTurn Resistance</name>
+  </collection>
+  <collection>
+    <name>Dread WraithUnnatural Aura</name>
+  </collection>
+  <collection>
+    <name>DretchDamage ReductionVulnerable to good or cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>DretchEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>DretchEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>DretchEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>DretchImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>DretchImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>DretchSpell-Like AbilityScare</name>
+  </collection>
+  <collection>
+    <name>DretchSpell-Like AbilityStinking cloud</name>
+  </collection>
+  <collection>
+    <name>DretchTelepathy</name>
+  </collection>
+  <collection>
+    <name>DriderMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>DriderSimple Weapon ProficiencyDagger</name>
+  </collection>
+  <collection>
+    <name>DriderSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>DriderSpell-Like AbilityClairaudience/Clairvoyance</name>
+  </collection>
+  <collection>
+    <name>DriderSpell-Like AbilityDancing lights</name>
+  </collection>
+  <collection>
+    <name>DriderSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>DriderSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>DriderSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>DriderSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>DriderSpell-Like AbilityFaerie fire</name>
+  </collection>
+  <collection>
+    <name>DriderSpell-Like AbilityLevitate</name>
+  </collection>
+  <collection>
+    <name>DriderSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>DrowDarkvision</name>
+  </collection>
+  <collection>
+    <name>DrowExotic Weapon ProficiencyHand crossbow</name>
+  </collection>
+  <collection>
+    <name>DrowLight Blindness</name>
+  </collection>
+  <collection>
+    <name>DrowMartial Weapon ProficiencyRapier</name>
+  </collection>
+  <collection>
+    <name>DrowMartial Weapon ProficiencyShort sword</name>
+  </collection>
+  <collection>
     <name>DuergarDarkvision</name>
   </collection>
   <collection>
@@ -4151,6 +4301,9 @@
     <name>Noble DjinniSpell-Like AbilityWind walk</name>
   </collection>
   <collection>
+    <name>Noble DjinniTelepathy</name>
+  </collection>
+  <collection>
     <name>Noble SalamanderDamage ReductionVulnerable to magic weapons</name>
   </collection>
   <collection>
@@ -4758,5 +4911,20 @@
   </collection>
   <collection>
     <name>WolverineTrack</name>
+  </collection>
+  <collection>
+    <name>WraithAlertness</name>
+  </collection>
+  <collection>
+    <name>WraithDaylight Powerlessness</name>
+  </collection>
+  <collection>
+    <name>WraithImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>WraithTurn Resistance</name>
+  </collection>
+  <collection>
+    <name>WraithUnnatural Aura</name>
   </collection>
 </collections>

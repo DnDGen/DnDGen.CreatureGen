@@ -1644,6 +1644,9 @@
     <entry>Martial Weapon Proficiency#0#Rapier#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True</entry>
     <entry>Spell Resistance#11##0##0#False</entry>
+    <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Darkness#1#Day#0#False</entry>
+    <entry>Spell-Like Ability#0#Faerie fire#1#Day#0#False</entry>
   </collection>
   <collection>
     <name>Dryad</name>

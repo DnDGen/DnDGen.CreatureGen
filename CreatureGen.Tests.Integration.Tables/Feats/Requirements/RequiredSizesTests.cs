@@ -15,6 +15,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         protected override string tableName => TableNameConstants.Collection.RequiredSizes;
 
         [Test]
+        [Ignore("Not working on this yet")]
         public void RequiredSizesNames()
         {
             var names = GetNames();
@@ -44,6 +45,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         [TestCaseSource(typeof(RequiredSizesTestData), "Monster")]
         [TestCaseSource(typeof(RequiredSizesTestData), "Craft")]
         [TestCaseSource(typeof(RequiredSizesTestData), "SpecialQualities")]
+        [Ignore("Not working on this yet")]
         public void RequiredSizes(string name, params string[] sizes)
         {
             AssertCollection(name, sizes);

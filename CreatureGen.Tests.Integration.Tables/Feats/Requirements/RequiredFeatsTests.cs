@@ -18,6 +18,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         }
 
         [Test]
+        [Ignore("Not working on this yet")]
         public void RequiredFeatsNames()
         {
             var feats = FeatConstants.All();
@@ -40,6 +41,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
         [TestCaseSource(typeof(RequiredFeatsTestData), "Monster")]
         [TestCaseSource(typeof(RequiredFeatsTestData), "Craft")]
         [TestCaseSource(typeof(RequiredFeatsTestData), "SpecialQualities")]
+        [Ignore("Not working on this yet")]
         public void RequiredFeats(string name, params string[] requiredFeats)
         {
             AssertDistinctCollection(name, requiredFeats);
