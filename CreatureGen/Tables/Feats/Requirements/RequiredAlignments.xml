@@ -3557,6 +3557,9 @@
     <name>DrowMartial Weapon ProficiencyShort sword</name>
   </collection>
   <collection>
+    <name>DrowSpell Resistance</name>
+  </collection>
+  <collection>
     <name>DrowSpell-Like AbilityDancing lights</name>
   </collection>
   <collection>
@@ -3593,19 +3596,184 @@
     <name>DryadSpell-Like AbilityTree shape</name>
   </collection>
   <collection>
+    <name>DryadSpell-Like AbilityTree stride</name>
+  </collection>
+  <collection>
+    <name>DryadTree Dependent</name>
+  </collection>
+  <collection>
+    <name>DryadWild Empathy</name>
+  </collection>
+  <collection>
     <name>DuergarDarkvision</name>
+  </collection>
+  <collection>
+    <name>DuergarLight Sensitivity</name>
+  </collection>
+  <collection>
+    <name>DuergarImmunityParalysis</name>
+  </collection>
+  <collection>
+    <name>DuergarImmunityPhantasms</name>
+  </collection>
+  <collection>
+    <name>DuergarImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>DuergarMartial Weapon ProficiencyWarhammer</name>
+  </collection>
+  <collection>
+    <name>DuergarSimple Weapon ProficiencyLight crossbow</name>
+  </collection>
+  <collection>
+    <name>DuergarSpell-Like AbilityEnlarge person: only self + carried items</name>
+  </collection>
+  <collection>
+    <name>DuergarSpell-Like AbilityInvisibility: only self + carried items</name>
+  </collection>
+  <collection>
+    <name>Dust MephitDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Dust MephitFast HealingIn arid, dusty environment</name>
+  </collection>
+  <collection>
+    <name>Dust MephitSpell-Like AbilityBlur</name>
+  </collection>
+  <collection>
+    <name>Dust MephitSpell-Like AbilityWind wall</name>
+  </collection>
+  <collection>
+    <name>DwarfArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>DwarfArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>DwarfAttack BonusGoblinoid</name>
+  </collection>
+  <collection>
+    <name>DwarfAttack BonusOrc</name>
+  </collection>
+  <collection>
+    <name>DwarfStability</name>
+  </collection>
+  <collection>
+    <name>DwarfStonecunning</name>
+  </collection>
+  <collection>
+    <name>EagleWeapon Finesse</name>
   </collection>
   <collection>
     <name>Earth Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
+    <name>Earth Elemental, ElderEarth Glide</name>
+  </collection>
+  <collection>
     <name>Earth Elemental, GreaterDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, GreaterEarth Glide</name>
   </collection>
   <collection>
     <name>Earth Elemental, HugeDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
+    <name>Earth Elemental, HugeEarth Glide</name>
+  </collection>
+  <collection>
     <name>Earth Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, LargeEarth Glide</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, MediumEarth Glide</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, SmallEarth Glide</name>
+  </collection>
+  <collection>
+    <name>Earth MephitDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Earth MephitFast HealingUnderground or buried up to its waist in earth</name>
+  </collection>
+  <collection>
+    <name>Earth MephitSpell-Like AbilityEnlarge person: self only</name>
+  </collection>
+  <collection>
+    <name>Earth MephitSpell-Like AbilitySoften earth and stone</name>
+  </collection>
+  <collection>
+    <name>EfreetiChange ShapeAny Small, Medium, or Large Humanoid or Giant</name>
+  </collection>
+  <collection>
+    <name>EfreetiImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>EfreetiSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>EfreetiSpell-Like AbilityGaseous form</name>
+  </collection>
+  <collection>
+    <name>EfreetiSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>EfreetiSpell-Like AbilityPermanent image</name>
+  </collection>
+  <collection>
+    <name>EfreetiSpell-Like AbilityPlane shift: Genie and up to 8 other creatures, provided they all link hands with the genie</name>
+  </collection>
+  <collection>
+    <name>EfreetiSpell-Like AbilityProduce flame</name>
+  </collection>
+  <collection>
+    <name>EfreetiSpell-Like AbilityPyrotechnics</name>
+  </collection>
+  <collection>
+    <name>EfreetiSpell-Like AbilityScorching ray: 1 ray only</name>
+  </collection>
+  <collection>
+    <name>EfreetiSpell-Like AbilityWall of fire</name>
+  </collection>
+  <collection>
+    <name>EfreetiSpell-Like AbilityWish: Grant up to 3 wishes to nongenies</name>
+  </collection>
+  <collection>
+    <name>EfreetiTelepathy</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed CryohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed CryohydraScent</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed HydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed HydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed HydraScent</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed PyrohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed PyrohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed PyrohydraScent</name>
+  </collection>
+  <collection>
+    <name>ElasmosaurusScent</name>
   </collection>
   <collection>
     <name>Elder ArrowhawkEnergy ResistanceCold</name>
@@ -3621,6 +3789,9 @@
   </collection>
   <collection>
     <name>Elder ArrowhawkImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Elder ArrowhawkWeapon FocusBite</name>
   </collection>
   <collection>
     <name>Elder Black PuddingSplit</name>
@@ -3668,6 +3839,57 @@
     <name>Elder XornTremorsense</name>
   </collection>
   <collection>
+    <name>ElementalDarkvision</name>
+  </collection>
+  <collection>
+    <name>ElementalImmunityCritical hits</name>
+  </collection>
+  <collection>
+    <name>ElementalImmunityFlanking</name>
+  </collection>
+  <collection>
+    <name>ElementalImmunityParalysis</name>
+  </collection>
+  <collection>
+    <name>ElementalImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>ElementalImmunitySleep</name>
+  </collection>
+  <collection>
+    <name>ElementalImmunityStunning</name>
+  </collection>
+  <collection>
+    <name>ElementalShield Proficiency</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed CryohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed CryohydraScent</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed HydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed HydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed HydraScent</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed PyrohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed PyrohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed PyrohydraScent</name>
+  </collection>
+  <collection>
     <name>Fire Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
@@ -3681,6 +3903,33 @@
   </collection>
   <collection>
     <name>Fire GiantRock Catching</name>
+  </collection>
+  <collection>
+    <name>Five-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Five-Headed CryohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Five-Headed CryohydraScent</name>
+  </collection>
+  <collection>
+    <name>Five-Headed HydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Five-Headed HydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Five-Headed HydraScent</name>
+  </collection>
+  <collection>
+    <name>Five-Headed PyrohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Five-Headed PyrohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Five-Headed PyrohydraScent</name>
   </collection>
   <collection>
     <name>Flamebrother SalamanderMultiattack</name>
@@ -4307,6 +4556,33 @@
     <name>Mountain DwarfMartial Weapon ProficiencyShortbow</name>
   </collection>
   <collection>
+    <name>Nine-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed CryohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed CryohydraScent</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed HydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed HydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed HydraScent</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed PyrohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed PyrohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed PyrohydraScent</name>
+  </collection>
+  <collection>
     <name>Noble DjinniImmunityAcid</name>
   </collection>
   <collection>
@@ -4541,6 +4817,33 @@
     <name>Red SlaadImmunitySonic</name>
   </collection>
   <collection>
+    <name>Seven-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed CryohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed CryohydraScent</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed HydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed HydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed HydraScent</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed PyrohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed PyrohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed PyrohydraScent</name>
+  </collection>
+  <collection>
     <name>Shark, HugeKeen Scent</name>
   </collection>
   <collection>
@@ -4742,6 +5045,33 @@
     <name>Silver Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Six-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Six-Headed CryohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Six-Headed CryohydraScent</name>
+  </collection>
+  <collection>
+    <name>Six-Headed HydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Six-Headed HydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Six-Headed HydraScent</name>
+  </collection>
+  <collection>
+    <name>Six-Headed PyrohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Six-Headed PyrohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Six-Headed PyrohydraScent</name>
+  </collection>
+  <collection>
     <name>Stone GiantRock Catching</name>
   </collection>
   <collection>
@@ -4754,10 +5084,64 @@
     <name>Storm GiantRock Catching</name>
   </collection>
   <collection>
+    <name>Ten-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed CryohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed CryohydraScent</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed HydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed HydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed HydraScent</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed PyrohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed PyrohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed PyrohydraScent</name>
+  </collection>
+  <collection>
     <name>TigerScent</name>
   </collection>
   <collection>
     <name>TriceratopsScent</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed CryohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed CryohydraScent</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed HydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed HydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed HydraScent</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed PyrohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed PyrohydraFast Healing</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed PyrohydraScent</name>
   </collection>
   <collection>
     <name>TyrannosaurusScent</name>
