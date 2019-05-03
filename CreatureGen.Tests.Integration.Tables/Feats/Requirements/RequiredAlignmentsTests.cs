@@ -1823,8 +1823,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Electricity)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Sonic)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.FastHealing)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.HiveMind)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.FastHealing, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.HiveMind, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Cold)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.Immunity, "Petrification")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.Immunity, "Poison")] = new string[0];
@@ -1838,12 +1838,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MagicCircleAgainstAlignment)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianMyrmarch, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.OrdersWrath)] = new string[0];
 
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.EschewMaterials)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.EschewMaterials, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Electricity)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Sonic)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.SpecialQualities.FastHealing)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.SpecialQualities.HiveMind)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.SpecialQualities.FastHealing, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.SpecialQualities.HiveMind, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Cold)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.SpecialQualities.Immunity, "Petrification")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianQueen, FeatConstants.SpecialQualities.Immunity, "Poison")] = new string[0];
@@ -1865,7 +1865,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianTaskmaster, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Electricity)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianTaskmaster, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianTaskmaster, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Sonic)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianTaskmaster, FeatConstants.SpecialQualities.HiveMind)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianTaskmaster, FeatConstants.SpecialQualities.HiveMind, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianTaskmaster, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Cold)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianTaskmaster, FeatConstants.SpecialQualities.Immunity, "Petrification")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianTaskmaster, FeatConstants.SpecialQualities.Immunity, "Poison")] = new string[0];
@@ -1876,7 +1876,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWarrior, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Electricity)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWarrior, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWarrior, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Sonic)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWarrior, FeatConstants.SpecialQualities.HiveMind)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWarrior, FeatConstants.SpecialQualities.HiveMind, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWarrior, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Cold)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWarrior, FeatConstants.SpecialQualities.Immunity, "Petrification")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWarrior, FeatConstants.SpecialQualities.Immunity, "Poison")] = new string[0];
@@ -1885,7 +1885,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Electricity)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Sonic)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.HiveMind)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.HiveMind, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Cold)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.Immunity, "Petrification")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.Immunity, "Poison")] = new string[0];
