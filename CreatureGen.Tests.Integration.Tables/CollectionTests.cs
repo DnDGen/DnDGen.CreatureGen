@@ -55,25 +55,9 @@ namespace CreatureGen.Tests.Integration.Tables
 
         protected void AssertCollection(IEnumerable<string> actual, IEnumerable<string> expected, string message = "")
         {
-            var actualCount = actual.Count();
-            var expectedCount = expected.Count();
-
-            //INFO: Is.Equivalent is not performant when more than 1K items in the collection
-            if (actualCount < 1000 && expectedCount < 1000)
-            {
-                Assert.That(actual, Is.EquivalentTo(expected), message);
-                Assert.That(expected, Is.EquivalentTo(actual), message);
-            }
-            else
-            {
-                var missing = expected.Except(actual);
-                var extra = actual.Except(expected);
-
-                Assert.That(missing, Is.Empty, $"Missing: {message}");
-                Assert.That(extra, Is.Empty, $"Extra: {message}");
-            }
-
-            Assert.That(actualCount, Is.EqualTo(expectedCount), message);
+            Assert.That(actual, Is.EquivalentTo(expected), message);
+            Assert.That(expected, Is.EquivalentTo(actual), message);
+            Assert.That(actual.Count(), Is.EqualTo(expected.Count()), message);
         }
 
         public void AssertOrderedCollection(string name, params string[] collection)

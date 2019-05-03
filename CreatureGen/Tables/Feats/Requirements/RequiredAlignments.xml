@@ -3863,6 +3863,12 @@
     <name>ElementalShield Proficiency</name>
   </collection>
   <collection>
+    <name>ElementalSimple Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>ElephantScent</name>
+  </collection>
+  <collection>
     <name>Eleven-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
   </collection>
   <collection>
@@ -3890,19 +3896,172 @@
     <name>Eleven-Headed PyrohydraScent</name>
   </collection>
   <collection>
+    <name>ElfArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>ElfImmunitySleep</name>
+  </collection>
+  <collection>
+    <name>ErinyesDamage ReductionVulnerable to good weapons</name>
+  </collection>
+  <collection>
+    <name>ErinyesEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>ErinyesEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>ErinyesImmunityFire</name>
+  </collection>
+  <collection>
+    <name>ErinyesImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>ErinyesMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>ErinyesMartial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>ErinyesSee in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell</name>
+  </collection>
+  <collection>
+    <name>ErinyesSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>ErinyesSpell-Like AbilityCharm monster</name>
+  </collection>
+  <collection>
+    <name>ErinyesSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>ErinyesSpell-Like AbilityMinor image</name>
+  </collection>
+  <collection>
+    <name>ErinyesSpell-Like AbilityTrue seeing</name>
+  </collection>
+  <collection>
+    <name>ErinyesSpell-Like AbilityUnholy blight</name>
+  </collection>
+  <collection>
+    <name>ErinyesTelepathy</name>
+  </collection>
+  <collection>
+    <name>Ethereal FilcherSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>Ethereal FilcherSpell-Like AbilityEthereal jaunt</name>
+  </collection>
+  <collection>
+    <name>Ethereal MarauderSpell-Like AbilityEthereal jaunt</name>
+  </collection>
+  <collection>
+    <name>EttercapLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>EttinArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>EttinArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>EttinSimple Weapon ProficiencyJavelin</name>
+  </collection>
+  <collection>
+    <name>EttinSimple Weapon ProficiencyMorningstar</name>
+  </collection>
+  <collection>
+    <name>EttinSuperior Two-Weapon Fighting</name>
+  </collection>
+  <collection>
+    <name>FeyLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>FeyShield Proficiency</name>
+  </collection>
+  <collection>
+    <name>FeySimple Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>FireImmunityFire</name>
+  </collection>
+  <collection>
+    <name>FireVulnerabilityCold</name>
+  </collection>
+  <collection>
     <name>Fire Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, ElderImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, ElderWeapon Finesse</name>
   </collection>
   <collection>
     <name>Fire Elemental, GreaterDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
+    <name>Fire Elemental, GreaterImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, GreaterWeapon Finesse</name>
+  </collection>
+  <collection>
     <name>Fire Elemental, HugeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, HugeImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, HugeWeapon Finesse</name>
   </collection>
   <collection>
     <name>Fire Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
+    <name>Fire Elemental, LargeImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, LargeWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, MediumImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, MediumWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, SmallImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, SmallWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Fire GiantArmor Proficiency (Heavy)</name>
+  </collection>
+  <collection>
+    <name>Fire GiantArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Fire GiantArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>Fire GiantMartial Weapon ProficiencyGreatsword</name>
+  </collection>
+  <collection>
     <name>Fire GiantRock Catching</name>
+  </collection>
+  <collection>
+    <name>Fire MephitDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Fire MephitFast HealingTouching a flame at least as large as a torch</name>
+  </collection>
+  <collection>
+    <name>Fire MephitSpell-Like AbilityHeat metal</name>
+  </collection>
+  <collection>
+    <name>Fire MephitSpell-Like AbilityScorching ray</name>
   </collection>
   <collection>
     <name>Five-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
@@ -3935,10 +4094,256 @@
     <name>Flamebrother SalamanderMultiattack</name>
   </collection>
   <collection>
+    <name>Flesh GolemDamage ReductionVulnerable to adamantine weapons</name>
+  </collection>
+  <collection>
     <name>Flesh GolemImmunityMagic (see creature description)</name>
   </collection>
   <collection>
+    <name>Forest GnomeAttack BonusOrc</name>
+  </collection>
+  <collection>
+    <name>Forest GnomeAttack BonusReptilian</name>
+  </collection>
+  <collection>
+    <name>Forest GnomeMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>Forest GnomeSpell-Like AbilityDancing lights</name>
+  </collection>
+  <collection>
+    <name>Forest GnomeSpell-Like AbilityGhost sound</name>
+  </collection>
+  <collection>
+    <name>Forest GnomeSpell-Like AbilityPass without trace: self only</name>
+  </collection>
+  <collection>
+    <name>Forest GnomeSpell-Like AbilityPrestidigitation</name>
+  </collection>
+  <collection>
+    <name>Forest GnomeSpell-Like AbilitySpeak with animals: on a very basic level with forest animals</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchEnergy ResistanceSonic</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchFast Healing</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchHive Mind</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchImmunityPetrification</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchSimple Weapon ProficiencyJavelin</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchSpell-Like AbilityCharm monster</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchSpell-Like AbilityClairaudience/Clairvoyance</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchSpell-Like AbilityDictum</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchSpell-Like AbilityGreater teleport</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchSpell-Like AbilityMagic circle against chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchSpell-Like AbilityOrder's wrath</name>
+  </collection>
+  <collection>
+    <name>Formian QueenEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Formian QueenEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Formian QueenEnergy ResistanceSonic</name>
+  </collection>
+  <collection>
+    <name>Formian QueenEschew Materials</name>
+  </collection>
+  <collection>
+    <name>Formian QueenFast Healing</name>
+  </collection>
+  <collection>
+    <name>Formian QueenHive Mind</name>
+  </collection>
+  <collection>
+    <name>Formian QueenImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Formian QueenImmunityPetrification</name>
+  </collection>
+  <collection>
+    <name>Formian QueenImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityCalm emotions</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityCharm monster</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityClairaudience/Clairvoyance</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityDictum</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityDivination</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityHold monster</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityMagic circle against chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityOrder's wrath</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityShield of law</name>
+  </collection>
+  <collection>
+    <name>Formian QueenSpell-Like AbilityTrue seeing</name>
+  </collection>
+  <collection>
+    <name>Formian QueenTelepathyAny intelligent creature within 50 miles whose presence she is aware of</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterEnergy ResistanceSonic</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterHive Mind</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterImmunityPetrification</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterSpell-Like AbilityDominate monster</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterTelepathy</name>
+  </collection>
+  <collection>
+    <name>Formian WarriorEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Formian WarriorEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Formian WarriorEnergy ResistanceSonic</name>
+  </collection>
+  <collection>
+    <name>Formian WarriorHive Mind</name>
+  </collection>
+  <collection>
+    <name>Formian WarriorImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Formian WarriorImmunityPetrification</name>
+  </collection>
+  <collection>
+    <name>Formian WarriorImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Formian WarriorSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Formian WorkerEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Formian WorkerEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Formian WorkerEnergy ResistanceSonic</name>
+  </collection>
+  <collection>
+    <name>Formian WorkerHive Mind</name>
+  </collection>
+  <collection>
+    <name>Formian WorkerImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Formian WorkerImmunityPetrification</name>
+  </collection>
+  <collection>
+    <name>Formian WorkerImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Formian WorkerSpell-Like AbilityCure/inflict serious wounds: 8 workers work together to cast the spell</name>
+  </collection>
+  <collection>
+    <name>Formian WorkerSpell-Like AbilityMake whole: 3 workers work together to cast the spell</name>
+  </collection>
+  <collection>
+    <name>Frost GiantArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Frost GiantMartial Weapon ProficiencyGreataxe</name>
+  </collection>
+  <collection>
     <name>Frost GiantRock Catching</name>
+  </collection>
+  <collection>
+    <name>Frost WormDeath Throes</name>
+  </collection>
+  <collection>
+    <name>GargoyleDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>GargoyleFreeze</name>
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)Alertness</name>
@@ -3950,7 +4355,169 @@
     <name>Gauth (Lesser Beholder)Flight</name>
   </collection>
   <collection>
+    <name>Gelatinous CubeImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Gelatinous CubeTransparent</name>
+  </collection>
+  <collection>
+    <name>GhaeleAlternate FormHumanoid and globe forms</name>
+  </collection>
+  <collection>
+    <name>GhaeleDamage ReductionVulnerable to evil, cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>GhaeleEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>GhaeleEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>GhaeleImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>GhaeleImmunityPetrification</name>
+  </collection>
+  <collection>
+    <name>GhaeleLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>GhaeleMartial Weapon ProficiencyGreatsword</name>
+  </collection>
+  <collection>
+    <name>GhaeleProtective Aura</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityAid</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityChain lightning</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityCharm monster</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityColor spray</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityComprehend languages</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityContinual flame</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityCure/inflict light wounds</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityDancing lights</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityDisguise self</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityGreater invisibility: self only</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityHold monster</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityMajor image</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityPrismatic spray</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityTongues</name>
+  </collection>
+  <collection>
+    <name>GhaeleSpell-Like AbilityWall of force</name>
+  </collection>
+  <collection>
+    <name>GhastTurn Resistance</name>
+  </collection>
+  <collection>
+    <name>GhoulTurn Resistance</name>
+  </collection>
+  <collection>
+    <name>GiantLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>GiantMartial Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>GiantShield Proficiency</name>
+  </collection>
+  <collection>
+    <name>GiantSimple Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, QueenScent</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, QueenTrack</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, SoldierScent</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, SoldierTrack</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, WorkerScent</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, WorkerTrack</name>
+  </collection>
+  <collection>
+    <name>Giant Constrictor SnakeScent</name>
+  </collection>
+  <collection>
     <name>Giant CrocodileHold Breath</name>
+  </collection>
+  <collection>
+    <name>Giant EagleEvasion</name>
+  </collection>
+  <collection>
+    <name>Giant OctopusInk Cloud</name>
+  </collection>
+  <collection>
+    <name>Giant OctopusJet</name>
+  </collection>
+  <collection>
+    <name>Giant OwlSuperior Low-Light Vision</name>
+  </collection>
+  <collection>
+    <name>Giant SquidInk Cloud</name>
+  </collection>
+  <collection>
+    <name>Giant SquidJet</name>
+  </collection>
+  <collection>
+    <name>Gibbering MoutherAmorphous</name>
+  </collection>
+  <collection>
+    <name>Gibbering MoutherDamage ReductionVulnerable to bludgeoning weapons</name>
+  </collection>
+  <collection>
+    <name>GirallonScent</name>
   </collection>
   <collection>
     <name>Gold Dragon, AdultBlindsense</name>
@@ -4514,6 +5081,15 @@
     <name>Juvenile TojanidaImmunityPoison</name>
   </collection>
   <collection>
+    <name>KapoacinthDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>KapoacinthFreeze</name>
+  </collection>
+  <collection>
+    <name>LacedonTurn Resistance</name>
+  </collection>
+  <collection>
     <name>LionScent</name>
   </collection>
   <collection>
@@ -4620,6 +5196,12 @@
   </collection>
   <collection>
     <name>Noble SalamanderMultiattack</name>
+  </collection>
+  <collection>
+    <name>OctopusInk Cloud</name>
+  </collection>
+  <collection>
+    <name>OctopusJet</name>
   </collection>
   <collection>
     <name>Orca WhaleBlindsight</name>
@@ -5072,6 +5654,12 @@
     <name>Six-Headed PyrohydraScent</name>
   </collection>
   <collection>
+    <name>SquidInk Cloud</name>
+  </collection>
+  <collection>
+    <name>SquidJet</name>
+  </collection>
+  <collection>
     <name>Stone GiantRock Catching</name>
   </collection>
   <collection>
@@ -5114,6 +5702,42 @@
     <name>TigerScent</name>
   </collection>
   <collection>
+    <name>TitanSpell-Like AbilityBestow curse</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityCrushing hand</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityDaylight</name>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityDeeper darkness</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityGreater restoration</name>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityHoly smite</name>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityRemove curse</name>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityUnholy blight</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
     <name>TriceratopsScent</name>
   </collection>
   <collection>
@@ -5145,6 +5769,21 @@
   </collection>
   <collection>
     <name>TyrannosaurusScent</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, HugeScent</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, LargeScent</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, MediumScent</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, SmallScent</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, TinyScent</name>
   </collection>
   <collection>
     <name>Water Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
