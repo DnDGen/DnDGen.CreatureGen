@@ -3514,9 +3514,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
 
                     foreach (var testCase in testCases)
                     {
-                        var speeds = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
-                        yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"AbilityAdjustments({testCase.Key}, [{string.Join("], [", speeds)}])");
+                        yield return new TestCaseData(testCase.Key, testCase.Value);
                     }
                 }
             }

@@ -3634,14 +3634,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             {
                 foreach (var testCase in testCases)
                 {
-                    var total = testCase.Value.Count();
-                    var description = total.ToString();
-
-                    if (testCase.Value.FirstOrDefault()?.FirstOrDefault() == None)
-                        description = None;
-
-                    yield return new TestCaseData(testCase.Key, testCase.Value)
-                        .SetName($"SpecialQualityData({testCase.Key}, {description})");
+                    yield return new TestCaseData(testCase.Key, testCase.Value);
                 }
             }
         }

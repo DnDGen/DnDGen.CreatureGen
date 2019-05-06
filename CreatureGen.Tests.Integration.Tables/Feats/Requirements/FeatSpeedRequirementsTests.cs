@@ -58,9 +58,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     foreach (var testCase in testCases)
                     {
-                        var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
-                        yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"SpeedRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                        yield return new TestCaseData(testCase.Key, testCase.Value);
                     }
                 }
             }
@@ -79,9 +77,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     foreach (var testCase in testCases)
                     {
-                        var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
-                        yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"SpeedRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                        yield return new TestCaseData(testCase.Key, testCase.Value);
                     }
                 }
             }
@@ -105,9 +101,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     foreach (var testCase in testCases)
                     {
-                        var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
-                        yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"SpeedRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                        yield return new TestCaseData(testCase.Key, testCase.Value);
                     }
                 }
             }
@@ -126,9 +120,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     foreach (var testCase in testCases)
                     {
-                        var requirements = testCase.Value.Select(kvp => $"{kvp.Key}:{kvp.Value}");
-                        yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"SpeedRequirements({testCase.Key}, [{string.Join("], [", requirements)}])");
+                        yield return new TestCaseData(testCase.Key, testCase.Value);
                     }
                 }
             }

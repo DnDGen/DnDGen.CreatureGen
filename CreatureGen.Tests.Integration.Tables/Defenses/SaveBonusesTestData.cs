@@ -5,6 +5,7 @@ using CreatureGen.Tables;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CreatureGen.Tests.Integration.Tables.Defenses
 {
@@ -1213,14 +1214,7 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
             {
                 foreach (var testCase in testCases)
                 {
-                    var total = testCase.Value.Count;
-                    var description = total.ToString();
-
-                    if (testCase.Value.ContainsKey(None))
-                        description = None;
-
-                    yield return new TestCaseData(testCase.Key, testCase.Value)
-                        .SetName($"SaveBonuses({testCase.Key}, {description})");
+                    yield return new TestCaseData(testCase.Key, testCase.Value);
                 }
             }
         }
@@ -1286,7 +1280,13 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
             get
             {
                 var testCases = new Dictionary<string, Dictionary<string, int>>();
-                var subtypes = CreatureConstants.Types.Subtypes.All();
+                var subtypes = CreatureConstants.Types.Subtypes.All()
+                    .Except(new[]
+                    {
+                        CreatureConstants.Types.Subtypes.Gnoll,
+                        CreatureConstants.Types.Subtypes.Human,
+                        CreatureConstants.Types.Subtypes.Orc,
+                    }); //INFO: This is duplicated from the creature entry
 
                 foreach (var subtype in subtypes)
                 {
@@ -1319,8 +1319,6 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Types.Subtypes.Fire][None] = 0;
 
-                testCases[CreatureConstants.Types.Subtypes.Gnoll][None] = 0;
-
                 testCases[CreatureConstants.Types.Subtypes.Gnome][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Goblinoid][None] = 0;
@@ -1330,15 +1328,11 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.Types.Subtypes.Halfling][GetData(GroupConstants.All)] = 1;
                 testCases[CreatureConstants.Types.Subtypes.Halfling][GetData(GroupConstants.All, "morale against fear")] = 2;
 
-                testCases[CreatureConstants.Types.Subtypes.Human][None] = 0;
-
                 testCases[CreatureConstants.Types.Subtypes.Incorporeal][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Lawful][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Native][None] = 0;
-
-                testCases[CreatureConstants.Types.Subtypes.Orc][None] = 0;
 
                 testCases[CreatureConstants.Types.Subtypes.Reptilian][None] = 0;
 

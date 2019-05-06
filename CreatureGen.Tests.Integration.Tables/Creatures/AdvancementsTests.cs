@@ -850,20 +850,12 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
 
                     foreach (var testCase in testCases)
                     {
-                        var description = None;
-
                         if (testCase.Value.Any() && testCase.Value.First().Key == None)
                         {
                             testCase.Value.Clear();
                         }
-                        else
-                        {
-                            var advancements = testCase.Value.Select(kvp => $"{string.Join(",", kvp.Value)}:{kvp.Key}");
-                            description = string.Join("], [", advancements);
-                        }
 
-                        yield return new TestCaseData(testCase.Key, testCase.Value)
-                            .SetName($"Advancement({testCase.Key}, [{description}])");
+                        yield return new TestCaseData(testCase.Key, testCase.Value);
                     }
                 }
             }

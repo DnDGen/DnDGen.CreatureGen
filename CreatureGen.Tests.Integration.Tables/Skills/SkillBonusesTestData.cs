@@ -1675,7 +1675,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Zelekhut][GetData(SkillConstants.Search)] = 4;
                 testCases[CreatureConstants.Zelekhut][GetData(SkillConstants.SenseMotive)] = 4;
 
-                return TestDataHelper.EnumerateTestCases("SkillBonuses", testCases);
+                return TestDataHelper.EnumerateTestCases(testCases);
             }
         }
 
@@ -1721,7 +1721,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Types.Vermin][None] = 0;
 
-                return TestDataHelper.EnumerateTestCases("SkillBonuses", testCases);
+                return TestDataHelper.EnumerateTestCases(testCases);
             }
         }
 
@@ -1795,7 +1795,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Types.Subtypes.Water][GetData(SkillConstants.Swim, condition: "special action or avoid a hazard")] = 8;
                 testCases[CreatureConstants.Types.Subtypes.Water][GetData(SkillConstants.Swim, condition: "can always take 10")] = 10;
 
-                return TestDataHelper.EnumerateTestCases("SkillBonuses", testCases);
+                return TestDataHelper.EnumerateTestCases(testCases);
             }
         }
 
@@ -2428,24 +2428,17 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[SkillConstants.UseRope][GetData(SkillConstants.Climb, condition: "with rope")] = 2;
                 testCases[SkillConstants.UseRope][GetData(SkillConstants.EscapeArtist, condition: "escaping rope bonds")] = 2;
 
-                return TestDataHelper.EnumerateTestCases("SkillSynergies", testCases);
+                return TestDataHelper.EnumerateTestCases(testCases);
             }
         }
 
         private static class TestDataHelper
         {
-            public static IEnumerable EnumerateTestCases(string testName, Dictionary<string, Dictionary<string, int>> testCases)
+            public static IEnumerable EnumerateTestCases(Dictionary<string, Dictionary<string, int>> testCases)
             {
                 foreach (var testCase in testCases)
                 {
-                    var total = testCase.Value.Count;
-                    var description = total.ToString();
-
-                    if (testCase.Value.ContainsKey(None))
-                        description = None;
-
-                    yield return new TestCaseData(testCase.Key, testCase.Value)
-                        .SetName($"{testName}({testCase.Key}, {description})");
+                    yield return new TestCaseData(testCase.Key, testCase.Value);
                 }
             }
         }
