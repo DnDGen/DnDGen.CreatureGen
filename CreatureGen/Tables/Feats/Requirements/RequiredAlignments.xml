@@ -4550,6 +4550,123 @@
     <name>GithzeraiInertial Armor</name>
   </collection>
   <collection>
+    <name>GithzeraiMartial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>GithzeraiMartial Weapon ProficiencyShort sword</name>
+  </collection>
+  <collection>
+    <name>GithzeraiSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>GithzeraiSpell-Like AbilityDaze</name>
+  </collection>
+  <collection>
+    <name>GithzeraiSpell-Like AbilityFeather fall</name>
+  </collection>
+  <collection>
+    <name>GithzeraiSpell-Like AbilityShatter</name>
+  </collection>
+  <collection>
+    <name>GlabrezuDamage ReductionVulnerable to good weapons</name>
+  </collection>
+  <collection>
+    <name>GlabrezuEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>GlabrezuEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>GlabrezuEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>GlabrezuImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>GlabrezuImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>GlabrezuSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>GlabrezuSpell-Like AbilityChaos hammer</name>
+  </collection>
+  <collection>
+    <name>GlabrezuSpell-Like AbilityConfusion</name>
+  </collection>
+  <collection>
+    <name>GlabrezuSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>GlabrezuSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>GlabrezuSpell-Like AbilityMirror image</name>
+  </collection>
+  <collection>
+    <name>GlabrezuSpell-Like AbilityPower word stun</name>
+  </collection>
+  <collection>
+    <name>GlabrezuSpell-Like AbilityReverse gravity</name>
+  </collection>
+  <collection>
+    <name>GlabrezuSpell-Like AbilityTrue seeing</name>
+  </collection>
+  <collection>
+    <name>GlabrezuSpell-Like AbilityUnholy blight</name>
+  </collection>
+  <collection>
+    <name>GlabrezuSpell-Like AbilityWish: for a mortal humanoid. The demon can use this ability to offer a mortal whatever he or she desires - but unless the wish is used to create pain and suffering in the world, the glabrezu demands either terrible evil acts or great sacrifice as compensation.</name>
+  </collection>
+  <collection>
+    <name>GlabrezuTelepathy</name>
+  </collection>
+  <collection>
+    <name>GnollArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>GnollDarkvision</name>
+  </collection>
+  <collection>
+    <name>GnollMartial Weapon ProficiencyBattleaxe</name>
+  </collection>
+  <collection>
+    <name>GnollMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>GnomeArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>GnomeLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>GnomeSimple Weapon ProficiencyLight crossbow</name>
+  </collection>
+  <collection>
+    <name>GnomeAttack BonusKobold</name>
+  </collection>
+  <collection>
+    <name>GnomeAttack BonusGoblinoid</name>
+  </collection>
+  <collection>
+    <name>GnomeWeapon FamiliarityGnome hooked hammer</name>
+  </collection>
+  <collection>
+    <name>GoblinArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>GoblinDarkvision</name>
+  </collection>
+  <collection>
+    <name>GoblinSimple Weapon ProficiencyJavelin</name>
+  </collection>
+  <collection>
+    <name>GoblinSimple Weapon ProficiencyMorningstar</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, AdultBlindsense</name>
   </collection>
   <collection>
@@ -4562,10 +4679,19 @@
     <name>Gold Dragon, AdultKeen Senses</name>
   </collection>
   <collection>
+    <name>Gold Dragon, AdultLuck Bonus</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Gold Dragon, AdultSpell-Like AbilityBless</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Gold Dragon, AncientBlindsense</name>
@@ -4580,10 +4706,25 @@
     <name>Gold Dragon, AncientKeen Senses</name>
   </collection>
   <collection>
+    <name>Gold Dragon, AncientLuck Bonus</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, AncientSpell Resistance</name>
   </collection>
   <collection>
+    <name>Gold Dragon, AncientSpell-Like AbilityBless</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientSpell-Like AbilityGeas/Quest</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientSpell-Like AbilitySunburst</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, AncientWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Gold Dragon, Great WyrmBlindsense</name>
@@ -4598,10 +4739,28 @@
     <name>Gold Dragon, Great WyrmKeen Senses</name>
   </collection>
   <collection>
+    <name>Gold Dragon, Great WyrmLuck Bonus</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, Great WyrmSpell Resistance</name>
   </collection>
   <collection>
+    <name>Gold Dragon, Great WyrmSpell-Like AbilityBless</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmSpell-Like AbilityForesight</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmSpell-Like AbilityGeas/Quest</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmSpell-Like AbilitySunburst</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, Great WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, JuvenileAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Gold Dragon, JuvenileBlindsense</name>
@@ -4613,7 +4772,13 @@
     <name>Gold Dragon, JuvenileKeen Senses</name>
   </collection>
   <collection>
+    <name>Gold Dragon, JuvenileSpell-Like AbilityBless</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, JuvenileWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Gold Dragon, Mature AdultBlindsense</name>
@@ -4628,10 +4793,19 @@
     <name>Gold Dragon, Mature AdultKeen Senses</name>
   </collection>
   <collection>
+    <name>Gold Dragon, Mature AdultLuck Bonus</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Gold Dragon, Mature AdultSpell-Like AbilityBless</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, Mature AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Gold Dragon, OldBlindsense</name>
@@ -4646,10 +4820,22 @@
     <name>Gold Dragon, OldKeen Senses</name>
   </collection>
   <collection>
+    <name>Gold Dragon, OldLuck Bonus</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, OldSpell Resistance</name>
   </collection>
   <collection>
+    <name>Gold Dragon, OldSpell-Like AbilityBless</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldSpell-Like AbilityGeas/Quest</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Gold Dragon, Very OldBlindsense</name>
@@ -4664,10 +4850,22 @@
     <name>Gold Dragon, Very OldKeen Senses</name>
   </collection>
   <collection>
+    <name>Gold Dragon, Very OldLuck Bonus</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, Very OldSpell Resistance</name>
   </collection>
   <collection>
+    <name>Gold Dragon, Very OldSpell-Like AbilityBless</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldSpell-Like AbilityGeas/Quest</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, Very OldWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very YoungAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Gold Dragon, Very YoungBlindsense</name>
@@ -4682,6 +4880,9 @@
     <name>Gold Dragon, Very YoungWater Breathing</name>
   </collection>
   <collection>
+    <name>Gold Dragon, WyrmAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, WyrmBlindsense</name>
   </collection>
   <collection>
@@ -4694,10 +4895,25 @@
     <name>Gold Dragon, WyrmKeen Senses</name>
   </collection>
   <collection>
+    <name>Gold Dragon, WyrmLuck Bonus</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, WyrmSpell Resistance</name>
   </collection>
   <collection>
+    <name>Gold Dragon, WyrmSpell-Like AbilityBless</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmSpell-Like AbilityGeas/Quest</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmSpell-Like AbilitySunburst</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, WyrmWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmlingAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Gold Dragon, WyrmlingBlindsense</name>
@@ -4712,6 +4928,9 @@
     <name>Gold Dragon, WyrmlingWater Breathing</name>
   </collection>
   <collection>
+    <name>Gold Dragon, YoungAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, YoungBlindsense</name>
   </collection>
   <collection>
@@ -4722,6 +4941,9 @@
   </collection>
   <collection>
     <name>Gold Dragon, YoungWater Breathing</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
   </collection>
   <collection>
     <name>Gold Dragon, Young AdultBlindsense</name>
@@ -4739,7 +4961,49 @@
     <name>Gold Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Gold Dragon, Young AdultSpell-Like AbilityBless</name>
+  </collection>
+  <collection>
     <name>Gold Dragon, Young AdultWater Breathing</name>
+  </collection>
+  <collection>
+    <name>GorgonScent</name>
+  </collection>
+  <collection>
+    <name>Gray ElfLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>Gray ElfMartial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>Gray ElfMartial Weapon ProficiencyComposite shortbow</name>
+  </collection>
+  <collection>
+    <name>Gray ElfMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>Gray ElfMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>Gray ElfMartial Weapon ProficiencyRapier</name>
+  </collection>
+  <collection>
+    <name>Gray ElfMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>Gray OozeImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Gray OozeImmunityFire</name>
+  </collection>
+  <collection>
+    <name>Gray OozeTransparent</name>
+  </collection>
+  <collection>
+    <name>Gray RenderScent</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadChange ShapeAny humanoid form</name>
   </collection>
   <collection>
     <name>Gray SlaadEnergy ResistanceAcid</name>
