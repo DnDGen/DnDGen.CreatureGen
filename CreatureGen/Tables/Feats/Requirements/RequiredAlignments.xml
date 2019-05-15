@@ -5006,6 +5006,9 @@
     <name>Gray SlaadChange ShapeAny humanoid form</name>
   </collection>
   <collection>
+    <name>Gray SlaadDamage ReductionVulnerable to lawful weapons</name>
+  </collection>
+  <collection>
     <name>Gray SlaadEnergy ResistanceAcid</name>
   </collection>
   <collection>
@@ -5045,7 +5048,16 @@
     <name>Greater BarghestSpell-Like AbilityDimension door</name>
   </collection>
   <collection>
+    <name>Greater BarghestSpell-Like AbilityInvisibility sphere</name>
+  </collection>
+  <collection>
     <name>Greater BarghestSpell-Like AbilityLevitate</name>
+  </collection>
+  <collection>
+    <name>Greater BarghestSpell-Like AbilityMass bull's strength</name>
+  </collection>
+  <collection>
+    <name>Greater BarghestSpell-Like AbilityMass enlarge person</name>
   </collection>
   <collection>
     <name>Greater BarghestSpell-Like AbilityMisdirection</name>
@@ -5055,6 +5067,12 @@
   </collection>
   <collection>
     <name>Greater BarghestSpell-Like AbilityRage</name>
+  </collection>
+  <collection>
+    <name>Greater ShadowTurn Resistance</name>
+  </collection>
+  <collection>
+    <name>Greater Stone GolemDamage ReductionVulnerable to adamantine weapons</name>
   </collection>
   <collection>
     <name>Greater Stone GolemImmunityMagic (see creature description)</name>
@@ -5073,6 +5091,9 @@
   </collection>
   <collection>
     <name>Green Dragon, AdultKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Green Dragon, AdultSpell Resistance</name>
@@ -5099,7 +5120,13 @@
     <name>Green Dragon, AncientSpell Resistance</name>
   </collection>
   <collection>
+    <name>Green Dragon, AncientSpell-Like AbilityDominate person</name>
+  </collection>
+  <collection>
     <name>Green Dragon, AncientSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Green Dragon, AncientWater Breathing</name>
@@ -5123,7 +5150,16 @@
     <name>Green Dragon, Great WyrmSpell Resistance</name>
   </collection>
   <collection>
+    <name>Green Dragon, Great WyrmSpell-Like AbilityCommand plants</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmSpell-Like AbilityDominate person</name>
+  </collection>
+  <collection>
     <name>Green Dragon, Great WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Green Dragon, Great WyrmWater Breathing</name>
@@ -5162,6 +5198,9 @@
     <name>Green Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Green Dragon, Mature AdultSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
     <name>Green Dragon, Mature AdultWater Breathing</name>
   </collection>
   <collection>
@@ -5186,6 +5225,9 @@
     <name>Green Dragon, OldSpell-Like AbilityPlant growth</name>
   </collection>
   <collection>
+    <name>Green Dragon, OldSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
     <name>Green Dragon, OldWater Breathing</name>
   </collection>
   <collection>
@@ -5208,6 +5250,9 @@
   </collection>
   <collection>
     <name>Green Dragon, Very OldSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Green Dragon, Very OldWater Breathing</name>
@@ -5246,7 +5291,13 @@
     <name>Green Dragon, WyrmSpell Resistance</name>
   </collection>
   <collection>
+    <name>Green Dragon, WyrmSpell-Like AbilityDominate person</name>
+  </collection>
+  <collection>
     <name>Green Dragon, WyrmSpell-Like AbilityPlant growth</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Green Dragon, WyrmWater Breathing</name>
@@ -5303,6 +5354,36 @@
     <name>Green Dragon, Young AdultWater Breathing</name>
   </collection>
   <collection>
+    <name>Green HagDarkvision</name>
+  </collection>
+  <collection>
+    <name>Green HagSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Green HagSpell-Like AbilityDancing lights</name>
+  </collection>
+  <collection>
+    <name>Green HagSpell-Like AbilityDisguise self</name>
+  </collection>
+  <collection>
+    <name>Green HagSpell-Like AbilityGhost sound</name>
+  </collection>
+  <collection>
+    <name>Green HagSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>Green HagSpell-Like AbilityPass without trace</name>
+  </collection>
+  <collection>
+    <name>Green HagSpell-Like AbilityTongues</name>
+  </collection>
+  <collection>
+    <name>Green HagSpell-Like AbilityWater breathing</name>
+  </collection>
+  <collection>
+    <name>Green SlaadChange ShapeMedium or Large humanoid form</name>
+  </collection>
+  <collection>
     <name>Green SlaadEnergy ResistanceAcid</name>
   </collection>
   <collection>
@@ -5321,6 +5402,276 @@
     <name>Green SlaadImmunitySonic</name>
   </collection>
   <collection>
+    <name>GrickDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>GrickScent</name>
+  </collection>
+  <collection>
+    <name>GrickTrack</name>
+  </collection>
+  <collection>
+    <name>GriffonScent</name>
+  </collection>
+  <collection>
+    <name>GrigDamage ReductionVulnerable to cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>GrigDodge</name>
+  </collection>
+  <collection>
+    <name>GrigMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>GrigMartial Weapon ProficiencyShort sword</name>
+  </collection>
+  <collection>
+    <name>GrigSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>GrigSpell-Like AbilityDisguise self</name>
+  </collection>
+  <collection>
+    <name>GrigSpell-Like AbilityEntangle</name>
+  </collection>
+  <collection>
+    <name>GrigSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>GrigSpell-Like AbilityPyrotechnics</name>
+  </collection>
+  <collection>
+    <name>GrigSpell-Like AbilityVentriloquism</name>
+  </collection>
+  <collection>
+    <name>GrigWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Grig with fiddleDamage ReductionVulnerable to cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>Grig with fiddleDodge</name>
+  </collection>
+  <collection>
+    <name>Grig with fiddleMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>Grig with fiddleMartial Weapon ProficiencyShort sword</name>
+  </collection>
+  <collection>
+    <name>Grig with fiddleSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Grig with fiddleSpell-Like AbilityDisguise self</name>
+  </collection>
+  <collection>
+    <name>Grig with fiddleSpell-Like AbilityEntangle</name>
+  </collection>
+  <collection>
+    <name>Grig with fiddleSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>Grig with fiddleSpell-Like AbilityPyrotechnics</name>
+  </collection>
+  <collection>
+    <name>Grig with fiddleSpell-Like AbilityVentriloquism</name>
+  </collection>
+  <collection>
+    <name>Grig with fiddleWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>GrimlockBlindsight</name>
+  </collection>
+  <collection>
+    <name>GrimlockImmunityAttack forms that rely on sight</name>
+  </collection>
+  <collection>
+    <name>GrimlockImmunityGaze attacks</name>
+  </collection>
+  <collection>
+    <name>GrimlockImmunityIllusions</name>
+  </collection>
+  <collection>
+    <name>GrimlockImmunityVisual effects</name>
+  </collection>
+  <collection>
+    <name>GrimlockScent</name>
+  </collection>
+  <collection>
+    <name>GrimlockTrack</name>
+  </collection>
+  <collection>
+    <name>Guardian NagaEschew Materials</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilityClairaudience/Clairvoyance</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilityComprehend languages</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilityLegend lore</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilityLocate object</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilityRead magic</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilityRemove curse</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilitySymbol of death</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilitySymbol of fear</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilitySymbol of insanity</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilitySymbol of pain</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilitySymbol of persuasion</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilitySymbol of sleep</name>
+  </collection>
+  <collection>
+    <name>GynosphinxSpell-Like AbilitySymbol of stunning</name>
+  </collection>
+  <collection>
+    <name>Half-ElfElven Blood</name>
+  </collection>
+  <collection>
+    <name>Half-ElfLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>Half-ElfMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>Half-OrcOrc Blood</name>
+  </collection>
+  <collection>
+    <name>HalflingAttack Bonusthrown weapons and slings</name>
+  </collection>
+  <collection>
+    <name>HarpySimple Weapon ProficiencyClub</name>
+  </collection>
+  <collection>
+    <name>HawkWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Heavy HorseScent</name>
+  </collection>
+  <collection>
+    <name>Heavy WarhorseScent</name>
+  </collection>
+  <collection>
+    <name>Hell HoundScent</name>
+  </collection>
+  <collection>
+    <name>Hell HoundTrack</name>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)Damage ReductionVulnerable to good weapons</name>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)Energy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)Invisible in Light</name>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)Scent</name>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)Spell Resistance</name>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)Telepathy</name>
+  </collection>
+  <collection>
+    <name>Hellwasp SwarmDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Hellwasp SwarmEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Hellwasp SwarmHive Mind</name>
+  </collection>
+  <collection>
+    <name>HezrouDamage ReductionVulnerable to good weapons</name>
+  </collection>
+  <collection>
+    <name>HezrouEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>HezrouEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>HezrouEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>HezrouImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>HezrouImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>HezrouSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>HezrouSpell-Like AbilityBlasphemy</name>
+  </collection>
+  <collection>
+    <name>HezrouSpell-Like AbilityChaos hammer</name>
+  </collection>
+  <collection>
+    <name>HezrouSpell-Like AbilityGaseous form</name>
+  </collection>
+  <collection>
+    <name>HezrouSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>HezrouSpell-Like AbilityUnholy blight</name>
+  </collection>
+  <collection>
+    <name>HezrouTelepathy</name>
+  </collection>
+  <collection>
+    <name>High ElfLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>High ElfMartial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>High ElfMartial Weapon ProficiencyComposite shortbow</name>
+  </collection>
+  <collection>
+    <name>High ElfMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>High ElfMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>High ElfMartial Weapon ProficiencyRapier</name>
+  </collection>
+  <collection>
+    <name>High ElfMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
     <name>Hill DwarfDarkvision</name>
   </collection>
   <collection>
@@ -5336,7 +5687,37 @@
     <name>Hill DwarfMartial Weapon ProficiencyShortbow</name>
   </collection>
   <collection>
+    <name>Hill GiantArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Hill GiantArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>Hill GiantMartial Weapon ProficiencyGreatclub</name>
+  </collection>
+  <collection>
     <name>Hill GiantRock Catching</name>
+  </collection>
+  <collection>
+    <name>HippogriffScent</name>
+  </collection>
+  <collection>
+    <name>HobgoblinArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>HobgoblinDarkvision</name>
+  </collection>
+  <collection>
+    <name>HobgoblinMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>HobgoblinSimple Weapon ProficiencyJavelin</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Damage ReductionBulnerable to good, silver weapons</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Energy ResistanceAcid</name>
   </collection>
   <collection>
     <name>Iron GolemImmunityMagic (see creature description)</name>
@@ -5384,6 +5765,12 @@
     <name>LacedonTurn Resistance</name>
   </collection>
   <collection>
+    <name>Light HorseScent</name>
+  </collection>
+  <collection>
+    <name>Light WarhorseScent</name>
+  </collection>
+  <collection>
     <name>LionScent</name>
   </collection>
   <collection>
@@ -5424,6 +5811,12 @@
   </collection>
   <collection>
     <name>Mountain DwarfMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>Nessian WarhoundScent</name>
+  </collection>
+  <collection>
+    <name>Nessian WarhoundTrack</name>
   </collection>
   <collection>
     <name>Nine-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
@@ -5718,6 +6111,9 @@
   </collection>
   <collection>
     <name>Seven-Headed PyrohydraScent</name>
+  </collection>
+  <collection>
+    <name>ShadowTurn Resistance</name>
   </collection>
   <collection>
     <name>Shark, HugeKeen Scent</name>
