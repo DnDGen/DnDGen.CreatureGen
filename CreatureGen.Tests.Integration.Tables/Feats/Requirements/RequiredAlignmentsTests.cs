@@ -2234,8 +2234,18 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Hobgoblin, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Javelin)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Hobgoblin, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
 
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.WeaponProficiency_Exotic, WeaponConstants.SpikedChain)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to good, silver weapons")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Acid)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Fire)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.Immunity, "Poison")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.Regeneration, "Does not regenerate damage from good-aligned, silvered weapons")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SeeInDarkness, "Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelAlignment)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Teleport_Greater + ": self plus 50 pounds of objects only")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MagicCircleAgainstAlignment)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Horse_Heavy, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
 

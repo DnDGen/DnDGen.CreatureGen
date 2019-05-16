@@ -5714,10 +5714,37 @@
     <name>HobgoblinSimple Weapon ProficiencyJavelin</name>
   </collection>
   <collection>
-    <name>Horned Devil (Cornugon)Damage ReductionBulnerable to good, silver weapons</name>
+    <name>Horned Devil (Cornugon)Damage ReductionVulnerable to good, silver weapons</name>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)Energy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Energy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)ImmunityFire</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)ImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)RegenerationDoes not regenerate damage from good-aligned, silvered weapons</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)See in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Spell Resistance</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Spell-Like AbilityDispel good/evil/law/chaos</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Spell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Spell-Like AbilityMagic circle against chaos/law/good/evil</name>
   </collection>
   <collection>
     <name>Iron GolemImmunityMagic (see creature description)</name>
