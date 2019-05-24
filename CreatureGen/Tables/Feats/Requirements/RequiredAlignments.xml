@@ -5762,7 +5762,7 @@
     <name>Horned Devil (Cornugon)Telepathy</name>
   </collection>
   <collection>
-    <name>Hound ArchonChange ShapeAny canine form of Small to Large</name>
+    <name>Hound ArchonChange ShapeAny canine form of Small to Large size</name>
   </collection>
   <collection>
     <name>Hound ArchonDamage ReductionVulnerable to evil weapons</name>
@@ -5777,7 +5777,199 @@
     <name>Hound ArchonSpell Resistance</name>
   </collection>
   <collection>
+    <name>Hound ArchonSpell-Like AbilityAid</name>
+  </collection>
+  <collection>
+    <name>Hound ArchonSpell-Like AbilityContinual flame</name>
+  </collection>
+  <collection>
+    <name>Hound ArchonSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Hound ArchonSpell-Like AbilityMessage</name>
+  </collection>
+  <collection>
+    <name>HumanoidShield Proficiency</name>
+  </collection>
+  <collection>
+    <name>HumanoidSimple Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>HyenaScent</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Damage ReductionVulnerable to good weapons</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Energy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Energy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)ImmunityFire</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)ImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)RegenerationDoes not regenerate good damage</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)See in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Simple Weapon ProficiencyLongspear</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Simple Weapon ProficiencySpear</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Simple Weapon ProficiencyShortspear</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Spell Resistance</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Spell-Like AbilityCone of cold</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Spell-Like AbilityFly</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Spell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Spell-Like AbilityIce storm</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Spell-Like AbilityPersistent image</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Spell-Like AbilityUnholy aura</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Spell-Like AbilityWall of ice</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Telepathy</name>
+  </collection>
+  <collection>
+    <name>Ice MephitDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Ice MephitFast HealingTouching a piece of ice at least Tiny in size, or ambient temperature is freezing or lower</name>
+  </collection>
+  <collection>
+    <name>Ice MephitSpell-Like AbilityChill metal</name>
+  </collection>
+  <collection>
+    <name>Ice MephitSpell-Like AbilityMagic missile</name>
+  </collection>
+  <collection>
+    <name>ImpAlternate FormImp Alternate Form</name>
+  </collection>
+  <collection>
+    <name>ImpDamage ReductionVulnerable to good or silver weapons</name>
+  </collection>
+  <collection>
+    <name>ImpEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>ImpFast Healing</name>
+  </collection>
+  <collection>
+    <name>ImpImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>ImpSpell-Like AbilityCommune: ask 6 questions</name>
+  </collection>
+  <collection>
+    <name>ImpSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>ImpSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>ImpSpell-Like AbilityInvisibility: self only</name>
+  </collection>
+  <collection>
+    <name>ImpSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>IncorporealImmunity50% chance to ignore any damage from a corporeal source (except for positive energy, negative energy, force effects such as magic missiles, or attacks made with ghost touch weapons)</name>
+  </collection>
+  <collection>
+    <name>IncorporealImmunityBlindsense</name>
+  </collection>
+  <collection>
+    <name>IncorporealImmunityBlindsight</name>
+  </collection>
+  <collection>
+    <name>IncorporealImmunityFalling or falling damage</name>
+  </collection>
+  <collection>
+    <name>IncorporealImmunityGrapple</name>
+  </collection>
+  <collection>
+    <name>IncorporealImmunityNonmagical attacks</name>
+  </collection>
+  <collection>
+    <name>IncorporealImmunityScent</name>
+  </collection>
+  <collection>
+    <name>IncorporealImmunityTremorsense</name>
+  </collection>
+  <collection>
+    <name>IncorporealImmunityTrip</name>
+  </collection>
+  <collection>
+    <name>Invisible StalkerImproved Tracking</name>
+  </collection>
+  <collection>
+    <name>Invisible StalkerNatural Invisibility</name>
+  </collection>
+  <collection>
+    <name>Iron GolemDamage ReductionVulnerable to adamantine weapons</name>
+  </collection>
+  <collection>
     <name>Iron GolemImmunityMagic (see creature description)</name>
+  </collection>
+  <collection>
+    <name>JanniArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>JanniArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>JanniElemental Endurance</name>
+  </collection>
+  <collection>
+    <name>JanniImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>JanniMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>JanniMartial Weapon ProficiencyScimitar</name>
+  </collection>
+  <collection>
+    <name>JanniSpell-Like AbilityCreate food and water</name>
+  </collection>
+  <collection>
+    <name>JanniSpell-Like AbilityEthereal jaunt</name>
+  </collection>
+  <collection>
+    <name>JanniSpell-Like AbilityInvisibility: self only</name>
+  </collection>
+  <collection>
+    <name>JanniSpell-Like AbilityPlane shift: Genie and up to 8 other creatures, provided they all link hands with the genie</name>
+  </collection>
+  <collection>
+    <name>JanniSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
+    <name>JanniTelepathy</name>
   </collection>
   <collection>
     <name>Juvenile ArrowhawkEnergy ResistanceCold</name>
@@ -5819,7 +6011,244 @@
     <name>KapoacinthFreeze</name>
   </collection>
   <collection>
+    <name>KoboldDarkvision</name>
+  </collection>
+  <collection>
+    <name>KoboldLight Sensitivity</name>
+  </collection>
+  <collection>
+    <name>KoboldSimple Weapon ProficiencySling</name>
+  </collection>
+  <collection>
+    <name>KoboldSimple Weapon ProficiencySpear</name>
+  </collection>
+  <collection>
+    <name>KolyarutArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>KolyarutArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>KolyarutArmor Proficiency (Heavy)</name>
+  </collection>
+  <collection>
+    <name>KolyarutDamage ReductionVulnerable to chaotic weapons</name>
+  </collection>
+  <collection>
+    <name>KolyarutFast Healing</name>
+  </collection>
+  <collection>
+    <name>KolyarutMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>KolyarutSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>KolyarutSpell-Like AbilityDiscern lies</name>
+  </collection>
+  <collection>
+    <name>KolyarutSpell-Like AbilityDisguise self</name>
+  </collection>
+  <collection>
+    <name>KolyarutSpell-Like AbilityFear</name>
+  </collection>
+  <collection>
+    <name>KolyarutSpell-Like AbilityGeas/Quest</name>
+  </collection>
+  <collection>
+    <name>KolyarutSpell-Like AbilityHold monster</name>
+  </collection>
+  <collection>
+    <name>KolyarutSpell-Like AbilityHold person</name>
+  </collection>
+  <collection>
+    <name>KolyarutSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>KolyarutSpell-Like AbilityLocate creature</name>
+  </collection>
+  <collection>
+    <name>KolyarutSpell-Like AbilityMark of justice</name>
+  </collection>
+  <collection>
+    <name>KolyarutSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>KrakenInk Cloud</name>
+  </collection>
+  <collection>
+    <name>KrakenJet</name>
+  </collection>
+  <collection>
+    <name>KrakenSpell-Like AbilityControl weather</name>
+  </collection>
+  <collection>
+    <name>KrakenSpell-Like AbilityControl winds</name>
+  </collection>
+  <collection>
+    <name>KrakenSpell-Like AbilityDominate animal</name>
+  </collection>
+  <collection>
+    <name>KrakenSpell-Like AbilityResist energy</name>
+  </collection>
+  <collection>
+    <name>KrensharScent</name>
+  </collection>
+  <collection>
+    <name>KrensharTrack</name>
+  </collection>
+  <collection>
+    <name>Kuo-toaAdhesive</name>
+  </collection>
+  <collection>
+    <name>Kuo-toaAlertness</name>
+  </collection>
+  <collection>
+    <name>Kuo-toaAmphibious</name>
+  </collection>
+  <collection>
+    <name>Kuo-toaEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Kuo-toaImmunityParalysis</name>
+  </collection>
+  <collection>
+    <name>Kuo-toaImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Kuo-toaKeen Sight</name>
+  </collection>
+  <collection>
+    <name>Kuo-toaLight Blindness</name>
+  </collection>
+  <collection>
+    <name>Kuo-toaSimple Weapon ProficiencyShortspear</name>
+  </collection>
+  <collection>
+    <name>Kuo-toaSlippery</name>
+  </collection>
+  <collection>
     <name>LacedonTurn Resistance</name>
+  </collection>
+  <collection>
+    <name>LamiaSimple Weapon ProficiencyDagger</name>
+  </collection>
+  <collection>
+    <name>LamiaSpell-Like AbilityCharm monster</name>
+  </collection>
+  <collection>
+    <name>LamiaSpell-Like AbilityDeep slumber</name>
+  </collection>
+  <collection>
+    <name>LamiaSpell-Like AbilityDisguise self</name>
+  </collection>
+  <collection>
+    <name>LamiaSpell-Like AbilityMajor image</name>
+  </collection>
+  <collection>
+    <name>LamiaSpell-Like AbilityMirror image</name>
+  </collection>
+  <collection>
+    <name>LamiaSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>LamiaSpell-Like AbilityVentriloquism</name>
+  </collection>
+  <collection>
+    <name>LammasuSpell-Like AbilityDimension door</name>
+  </collection>
+  <collection>
+    <name>LammasuSpell-Like AbilityGreater invisibility: self only</name>
+  </collection>
+  <collection>
+    <name>LammasuSpell-Like AbilityMagic circle against chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Lantern ArchonDamage ReductionVulnerable to magic, evil weapons</name>
+  </collection>
+  <collection>
+    <name>Lantern ArchonSpell-Like AbilityAid</name>
+  </collection>
+  <collection>
+    <name>Lantern ArchonSpell-Like AbilityContinual flame</name>
+  </collection>
+  <collection>
+    <name>Lantern ArchonSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>LemureDamage ReductionVulnerable to good or silver weapons</name>
+  </collection>
+  <collection>
+    <name>LemureEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>LemureEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>LemureImmunityFire</name>
+  </collection>
+  <collection>
+    <name>LemureImmunityMind-Affecting Effects</name>
+  </collection>
+  <collection>
+    <name>LemureImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>LemureSee in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell</name>
+  </collection>
+  <collection>
+    <name>LeonalDamage ReductionVulnerable to evil, silver weapons</name>
+  </collection>
+  <collection>
+    <name>LeonalEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>LeonalEnergy ResistanceSonic</name>
+  </collection>
+  <collection>
+    <name>LeonalImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>LeonalImmunityPetrification</name>
+  </collection>
+  <collection>
+    <name>LeonalLay on Hands</name>
+  </collection>
+  <collection>
+    <name>LeonalProtective Aura</name>
+  </collection>
+  <collection>
+    <name>LeonalSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>LeonalSpell-Like AbilityCure/inflict critical wounds</name>
+  </collection>
+  <collection>
+    <name>LeonalSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>LeonalSpell-Like AbilityFireball</name>
+  </collection>
+  <collection>
+    <name>LeonalSpell-Like AbilityHeal/Harm</name>
+  </collection>
+  <collection>
+    <name>LeonalSpell-Like AbilityHold monster</name>
+  </collection>
+  <collection>
+    <name>LeonalSpell-Like AbilityNeutralize poison</name>
+  </collection>
+  <collection>
+    <name>LeonalSpell-Like AbilityRemove disease</name>
+  </collection>
+  <collection>
+    <name>LeonalSpell-Like AbilitySpeak with animals: does not require sound</name>
+  </collection>
+  <collection>
+    <name>LeonalSpell-Like AbilityWall of force</name>
+  </collection>
+  <collection>
+    <name>LeopardScent</name>
   </collection>
   <collection>
     <name>Light HorseScent</name>
@@ -5828,7 +6257,58 @@
     <name>Light WarhorseScent</name>
   </collection>
   <collection>
+    <name>LillendEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>LillendImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>LillendSpell-Like AbilityBardic music ability as a 6th-level Bard</name>
+  </collection>
+  <collection>
+    <name>LillendSpell-Like AbilityCharm person</name>
+  </collection>
+  <collection>
+    <name>LillendSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>LillendSpell-Like AbilityHallucinatory terrain</name>
+  </collection>
+  <collection>
+    <name>LillendSpell-Like AbilityKnock</name>
+  </collection>
+  <collection>
+    <name>LillendSpell-Like AbilityLight</name>
+  </collection>
+  <collection>
+    <name>LillendSpell-Like AbilitySpeak with animals</name>
+  </collection>
+  <collection>
+    <name>LillendSpell-Like AbilitySpeak with plants</name>
+  </collection>
+  <collection>
     <name>LionScent</name>
+  </collection>
+  <collection>
+    <name>LizardWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>LizardfolkArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>LizardfolkHold Breath</name>
+  </collection>
+  <collection>
+    <name>LocathahSimple Weapon ProficiencyLongspear</name>
+  </collection>
+  <collection>
+    <name>LocathahSimple Weapon ProficiencyLight crossbow</name>
+  </collection>
+  <collection>
+    <name>Magical BeastDarkvision</name>
+  </collection>
+  <collection>
+    <name>Magical BeastLow-Light Vision</name>
   </collection>
   <collection>
     <name>MegaraptorScent</name>
@@ -6411,6 +6891,9 @@
   </collection>
   <collection>
     <name>Stone Giant ElderRock Catching</name>
+  </collection>
+  <collection>
+    <name>Stone GolemDamage ReductionVulnerable to adamantine weapons</name>
   </collection>
   <collection>
     <name>Stone GolemImmunityMagic (see creature description)</name>
