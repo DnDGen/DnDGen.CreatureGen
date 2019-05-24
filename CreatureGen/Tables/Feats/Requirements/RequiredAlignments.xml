@@ -5723,6 +5723,9 @@
     <name>Horned Devil (Cornugon)Energy ResistanceCold</name>
   </collection>
   <collection>
+    <name>Horned Devil (Cornugon)Exotic Weapon ProficiencySpiked chain</name>
+  </collection>
+  <collection>
     <name>Horned Devil (Cornugon)ImmunityFire</name>
   </collection>
   <collection>
@@ -5741,10 +5744,37 @@
     <name>Horned Devil (Cornugon)Spell-Like AbilityDispel good/evil/law/chaos</name>
   </collection>
   <collection>
+    <name>Horned Devil (Cornugon)Spell-Like AbilityFireball</name>
+  </collection>
+  <collection>
     <name>Horned Devil (Cornugon)Spell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
   </collection>
   <collection>
+    <name>Horned Devil (Cornugon)Spell-Like AbilityLightning bolt</name>
+  </collection>
+  <collection>
     <name>Horned Devil (Cornugon)Spell-Like AbilityMagic circle against chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Spell-Like AbilityPersistent image</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Telepathy</name>
+  </collection>
+  <collection>
+    <name>Hound ArchonChange ShapeAny canine form of Small to Large</name>
+  </collection>
+  <collection>
+    <name>Hound ArchonDamage ReductionVulnerable to evil weapons</name>
+  </collection>
+  <collection>
+    <name>Hound ArchonMartial Weapon ProficiencyGreatsword</name>
+  </collection>
+  <collection>
+    <name>Hound ArchonScent</name>
+  </collection>
+  <collection>
+    <name>Hound ArchonSpell Resistance</name>
   </collection>
   <collection>
     <name>Iron GolemImmunityMagic (see creature description)</name>

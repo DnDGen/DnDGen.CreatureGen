@@ -2244,8 +2244,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SeeInDarkness, "Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelAlignment)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Teleport_Greater + ": self plus 50 pounds of objects only")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Fireball)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.LightningBolt)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MagicCircleAgainstAlignment)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.PersistentImage)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Teleport_Greater + ": self plus 50 pounds of objects only")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.Telepathy, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Horse_Heavy, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
 
@@ -2254,6 +2258,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Horse_Light, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Horse_Light_War, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HoundArchon, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Greatsword)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HoundArchon, FeatConstants.SpecialQualities.ChangeShape, "Any canine form of Small to Large size")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HoundArchon, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to evil weapons")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HoundArchon, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.HoundArchon, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Hydra_5Heads, FeatConstants.CombatReflexes, "Can use all of its heads for Attacks of Opportunity")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Hydra_5Heads, FeatConstants.SpecialQualities.FastHealing, string.Empty)] = new string[0];
