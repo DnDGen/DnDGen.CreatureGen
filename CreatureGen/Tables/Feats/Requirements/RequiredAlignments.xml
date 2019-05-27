@@ -6311,6 +6311,126 @@
     <name>Magical BeastLow-Light Vision</name>
   </collection>
   <collection>
+    <name>Magma MephitChange ShapeA pool of lava 3 feet in diameter and 6 inches deep</name>
+  </collection>
+  <collection>
+    <name>Magma MephitDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Magma MephitFast HealingTouching magma, lava, or a flame at least as large as a torch</name>
+  </collection>
+  <collection>
+    <name>Magma MephitSpell-Like AbilityPyrotechnics</name>
+  </collection>
+  <collection>
+    <name>MagminDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>MagminMelt Weapons</name>
+  </collection>
+  <collection>
+    <name>MalentiBlindsense</name>
+  </collection>
+  <collection>
+    <name>MalentiFreshwater Sensitivity</name>
+  </collection>
+  <collection>
+    <name>MalentiLight Sensitivity</name>
+  </collection>
+  <collection>
+    <name>MalentiMartial Weapon ProficiencyTrident</name>
+  </collection>
+  <collection>
+    <name>MalentiMultiattack</name>
+  </collection>
+  <collection>
+    <name>MalentiSimple Weapon ProficiencyHeavy crossbow</name>
+  </collection>
+  <collection>
+    <name>MalentiSpeak With Sharks</name>
+  </collection>
+  <collection>
+    <name>MalentiWater Dependent</name>
+  </collection>
+  <collection>
+    <name>ManticoreScent</name>
+  </collection>
+  <collection>
+    <name>ManticoreTrack</name>
+  </collection>
+  <collection>
+    <name>MarilithDamage ReductionVulnerable to good, cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>MarilithEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>MarilithEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>MarilithEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>MarilithImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>MarilithImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>MarilithMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>MarilithMultiweapon Fighting</name>
+  </collection>
+  <collection>
+    <name>MarilithSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>MarilithSpell-Like AbilityAlign weapon</name>
+  </collection>
+  <collection>
+    <name>MarilithSpell-Like AbilityBlade barrier</name>
+  </collection>
+  <collection>
+    <name>MarilithSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>MarilithSpell-Like AbilityMagic weapon</name>
+  </collection>
+  <collection>
+    <name>MarilithSpell-Like AbilityProject image</name>
+  </collection>
+  <collection>
+    <name>MarilithSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>MarilithSpell-Like AbilityTelekinesis</name>
+  </collection>
+  <collection>
+    <name>MarilithSpell-Like AbilityUnholy aura</name>
+  </collection>
+  <collection>
+    <name>MarilithTelepathy</name>
+  </collection>
+  <collection>
+    <name>MarutArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>MarutArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>MarutArmor Proficiency (Heavy)</name>
+  </collection>
+  <collection>
+    <name>MarutDamage ReductionVulnerable to chaotic weapons</name>
+  </collection>
+  <collection>
+    <name>MarutFast Healing</name>
+  </collection>
+  <collection>
+    <name>MarutSpell Resistance</name>
+  </collection>
+  <collection>
     <name>MegaraptorScent</name>
   </collection>
   <collection>
@@ -6621,6 +6741,48 @@
   </collection>
   <collection>
     <name>Red SlaadImmunitySonic</name>
+  </collection>
+  <collection>
+    <name>SahuaginBlindsense</name>
+  </collection>
+  <collection>
+    <name>SahuaginFreshwater Sensitivity</name>
+  </collection>
+  <collection>
+    <name>SahuaginMartial Weapon ProficiencyTrident</name>
+  </collection>
+  <collection>
+    <name>SahuaginMultiattack</name>
+  </collection>
+  <collection>
+    <name>SahuaginSimple Weapon ProficiencyHeavy crossbow</name>
+  </collection>
+  <collection>
+    <name>SahuaginSpeak With Sharks</name>
+  </collection>
+  <collection>
+    <name>SahuaginWater Dependent</name>
+  </collection>
+  <collection>
+    <name>Sahuagin MutantBlindsense</name>
+  </collection>
+  <collection>
+    <name>Sahuagin MutantFreshwater Sensitivity</name>
+  </collection>
+  <collection>
+    <name>Sahuagin MutantMartial Weapon ProficiencyTrident</name>
+  </collection>
+  <collection>
+    <name>Sahuagin MutantMultiattack</name>
+  </collection>
+  <collection>
+    <name>Sahuagin MutantSimple Weapon ProficiencyHeavy crossbow</name>
+  </collection>
+  <collection>
+    <name>Sahuagin MutantSpeak With Sharks</name>
+  </collection>
+  <collection>
+    <name>Sahuagin MutantWater Dependent</name>
   </collection>
   <collection>
     <name>Seven-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
