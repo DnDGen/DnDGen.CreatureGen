@@ -2487,7 +2487,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Marilith, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.SeeInvisibility)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Marilith, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Telekinesis)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Marilith, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Teleport_Greater + ": self plus 50 pounds of objects only")] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Marilith, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Unhallow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Marilith, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.UnholyAura)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Marilith, FeatConstants.SpecialQualities.Telepathy, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Marut, FeatConstants.ArmorProficiency_Light, string.Empty)] = new string[0];
