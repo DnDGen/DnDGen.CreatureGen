@@ -6431,7 +6431,67 @@
     <name>MarutSpell Resistance</name>
   </collection>
   <collection>
+    <name>MarutSpell-Like AbilityAir walk</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityChain lightning</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityCircle of death</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityDimension door</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityEarthquake</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityFear</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityGeas/Quest</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityGreater command</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityGreater dispel magic</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityLocate creature</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityMark of justice</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityMass cure/inflict light wounds</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityPlane shift</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityTrue seeing</name>
+  </collection>
+  <collection>
+    <name>MarutSpell-Like AbilityWall of Force</name>
+  </collection>
+  <collection>
+    <name>MedusaMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>MedusaSimple Weapon ProficiencyDagger</name>
+  </collection>
+  <collection>
     <name>MegaraptorScent</name>
+  </collection>
+  <collection>
+    <name>MerfolkAmphibious</name>
+  </collection>
+  <collection>
+    <name>MerfolkArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>MerfolkLow-Light Vision</name>
   </collection>
   <collection>
     <name>Minor XornAll-Around Vision</name>
