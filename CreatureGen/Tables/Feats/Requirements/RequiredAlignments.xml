@@ -6473,7 +6473,7 @@
     <name>MarutSpell-Like AbilityTrue seeing</name>
   </collection>
   <collection>
-    <name>MarutSpell-Like AbilityWall of Force</name>
+    <name>MarutSpell-Like AbilityWall of force</name>
   </collection>
   <collection>
     <name>MedusaMartial Weapon ProficiencyShortbow</name>
@@ -6492,6 +6492,54 @@
   </collection>
   <collection>
     <name>MerfolkLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>MerfolkMartial Weapon ProficiencyTrident</name>
+  </collection>
+  <collection>
+    <name>MerfolkSimple Weapon ProficiencyHeavy crossbow</name>
+  </collection>
+  <collection>
+    <name>MerrowArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>MerrowArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>MerrowDarkvision</name>
+  </collection>
+  <collection>
+    <name>MerrowSimple Weapon ProficiencyJavelin</name>
+  </collection>
+  <collection>
+    <name>MerrowSimple Weapon ProficiencyLongspear</name>
+  </collection>
+  <collection>
+    <name>MimicImmunityAcid</name>
+  </collection>
+  <collection>
+    <name>MimicMimic Shape</name>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)Spell Resistance</name>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)Spell-Like AbilityCharm monster</name>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)Spell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)Spell-Like AbilityLevitate</name>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)Spell-Like AbilityPlane shift</name>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)Spell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)Telepathy</name>
   </collection>
   <collection>
     <name>Minor XornAll-Around Vision</name>
@@ -6515,6 +6563,126 @@
     <name>Minor XornTremorsense</name>
   </collection>
   <collection>
+    <name>MinotaurMartial Weapon ProficiencyGreataxe</name>
+  </collection>
+  <collection>
+    <name>MinotaurNatural Cunning</name>
+  </collection>
+  <collection>
+    <name>MinotaurScent</name>
+  </collection>
+  <collection>
+    <name>MonkeyWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, LargeWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, MediumWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, SmallWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, TinyWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous HumanoidDarkvision</name>
+  </collection>
+  <collection>
+    <name>Monstrous HumanoidShield Proficiency</name>
+  </collection>
+  <collection>
+    <name>Monstrous HumanoidSimple Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, ColossalTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, GargantuanTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, HugeTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, LargeTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, MediumTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, SmallTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, SmallWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, TinyTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, TinyWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, ColossalTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, GargantuanTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, HugeTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, LargeTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, MediumTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, MediumWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, SmallTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, SmallWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, TinyTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, TinyWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, ColossalTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, GargantuanTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, HugeTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, LargeTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, MediumTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, MediumWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, SmallTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, SmallWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, TinyTremorsense</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, TinyWeapon Finesse</name>
+  </collection>
+  <collection>
     <name>Mountain DwarfDarkvision</name>
   </collection>
   <collection>
@@ -6530,10 +6698,277 @@
     <name>Mountain DwarfMartial Weapon ProficiencyShortbow</name>
   </collection>
   <collection>
+    <name>MuleScent</name>
+  </collection>
+  <collection>
+    <name>MummyDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>MummyVulnerabilityFire</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeDamage ReductionVulnerable to good weapons</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeSpell-Like AbilityCall lightning</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeSpell-Like AbilityFeeblemind</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeSpell-Like AbilityGreater dispel magic</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeSpell-Like AbilitySlow</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeSpell-Like AbilityTrue seeing</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeSpell-Like AbilityUnholy aura</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeTelepathy</name>
+  </collection>
+  <collection>
     <name>Nessian WarhoundScent</name>
   </collection>
   <collection>
     <name>Nessian WarhoundTrack</name>
+  </collection>
+  <collection>
+    <name>Night HagChange ShapeAny Small or Medium Humanoid</name>
+  </collection>
+  <collection>
+    <name>Night HagDamage ReductionVulnerable to cold iron, magic weapons</name>
+  </collection>
+  <collection>
+    <name>Night HagImmunityCharm</name>
+  </collection>
+  <collection>
+    <name>Night HagImmunityCold</name>
+  </collection>
+  <collection>
+    <name>Night HagImmunityFear</name>
+  </collection>
+  <collection>
+    <name>Night HagImmunityFire</name>
+  </collection>
+  <collection>
+    <name>Night HagImmunitySleep</name>
+  </collection>
+  <collection>
+    <name>Night HagSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerAversion to Daylight</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerDamage ReductionVulnerable to silver, magic weapons</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerDesecrating Aura</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerImmunityCold</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityCone of cold</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityConfusion</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityContagion</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityDeeper darkness</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityFinger of death</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityGreater dispel magic</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityHaste</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityHold monster</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityMass hold monster</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityPlane shift</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerSpell-Like AbilityUnholy blight</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerTelepathy</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerTremorsense</name>
+  </collection>
+  <collection>
+    <name>NightmareSpell-Like AbilityAstral projection</name>
+  </collection>
+  <collection>
+    <name>NightmareSpell-Like AbilityEtherealness</name>
+  </collection>
+  <collection>
+    <name>Nightmare, CauchemarSpell-Like AbilityAstral projection</name>
+  </collection>
+  <collection>
+    <name>Nightmare, CauchemarSpell-Like AbilityEtherealness</name>
+  </collection>
+  <collection>
+    <name>NightwalkerAversion to Daylight</name>
+  </collection>
+  <collection>
+    <name>NightwalkerDamage ReductionVulnerable to silver, magic weapons</name>
+  </collection>
+  <collection>
+    <name>NightwalkerDesecrating Aura</name>
+  </collection>
+  <collection>
+    <name>NightwalkerImmunityCold</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityCone of cold</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityConfusion</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityContagion</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityDeeper darkness</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityFinger of death</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityGreater dispel magic</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityHaste</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityHold monster</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityPlane shift</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>NightwalkerSpell-Like AbilityUnholy blight</name>
+  </collection>
+  <collection>
+    <name>NightwalkerTelepathy</name>
+  </collection>
+  <collection>
+    <name>NightwingAversion to Daylight</name>
+  </collection>
+  <collection>
+    <name>NightwingDamage ReductionVulnerable to silver, magic weapons</name>
+  </collection>
+  <collection>
+    <name>NightwingDesecrating Aura</name>
+  </collection>
+  <collection>
+    <name>NightwingImmunityCold</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityCone of cold</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityConfusion</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityContagion</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityDeeper darkness</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityFinger of death</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityGreater dispel magic</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityHaste</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityHold monster</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityPlane shift</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>NightwingSpell-Like AbilityUnholy blight</name>
+  </collection>
+  <collection>
+    <name>NightwingTelepathy</name>
   </collection>
   <collection>
     <name>Nine-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
