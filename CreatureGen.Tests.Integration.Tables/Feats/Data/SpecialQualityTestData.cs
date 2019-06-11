@@ -2883,6 +2883,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Orc].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.LightSensitivity));
                 testCases[CreatureConstants.Orc].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Falchion, requiresEquipment: true));
                 testCases[CreatureConstants.Orc].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Greataxe, requiresEquipment: true));
+                testCases[CreatureConstants.Orc].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Javelin, requiresEquipment: true));
                 testCases[CreatureConstants.Orc].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
                 testCases[CreatureConstants.Orc_Half].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.OrcBlood));

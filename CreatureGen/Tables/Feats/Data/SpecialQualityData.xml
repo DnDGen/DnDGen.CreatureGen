@@ -3649,6 +3649,7 @@
     <entry>Light Sensitivity#0##0##0#False</entry>
     <entry>Martial Weapon Proficiency#0#Falchion#0##0#True</entry>
     <entry>Martial Weapon Proficiency#0#Greataxe#0##0#True</entry>
+    <entry>Simple Weapon Proficiency#0#Javelin#0##0#True</entry>
   </collection>
   <collection>
     <name>Orca Whale</name>

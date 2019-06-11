@@ -7166,10 +7166,169 @@
     <name>Ogre MageSpell-Like AbilityInvisibility</name>
   </collection>
   <collection>
+    <name>Ogre MageSpell-Like AbilitySleep</name>
+  </collection>
+  <collection>
+    <name>OozeBlindsight</name>
+  </collection>
+  <collection>
+    <name>OozeImmunityCritical hits</name>
+  </collection>
+  <collection>
+    <name>OozeImmunityFlanking</name>
+  </collection>
+  <collection>
+    <name>OozeImmunityGaze attacks, visual effects, illusions, and other attack forms that rely on sight</name>
+  </collection>
+  <collection>
+    <name>OozeImmunityMind-Affecting Effects</name>
+  </collection>
+  <collection>
+    <name>OozeImmunityParalysis</name>
+  </collection>
+  <collection>
+    <name>OozeImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>OozeImmunityPolymorph</name>
+  </collection>
+  <collection>
+    <name>OozeImmunitySleep</name>
+  </collection>
+  <collection>
+    <name>OozeImmunityStunning</name>
+  </collection>
+  <collection>
+    <name>Ooze MephitDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Ooze MephitFast HealingIn a wet or muddy environment</name>
+  </collection>
+  <collection>
+    <name>Ooze MephitSpell-Like AbilityAcid arrow</name>
+  </collection>
+  <collection>
+    <name>Ooze MephitSpell-Like AbilityStinking cloud</name>
+  </collection>
+  <collection>
+    <name>OrcArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>OrcDarkvision</name>
+  </collection>
+  <collection>
+    <name>OrcLight Sensitivity</name>
+  </collection>
+  <collection>
+    <name>OrcMartial Weapon ProficiencyFalchion</name>
+  </collection>
+  <collection>
+    <name>OrcMartial Weapon ProficiencyGreataxe</name>
+  </collection>
+  <collection>
+    <name>OrcSimple Weapon ProficiencyJavelin</name>
+  </collection>
+  <collection>
     <name>Orca WhaleBlindsight</name>
   </collection>
   <collection>
     <name>Orca WhaleHold Breath</name>
+  </collection>
+  <collection>
+    <name>OtyughScent</name>
+  </collection>
+  <collection>
+    <name>OutsiderDarkvision</name>
+  </collection>
+  <collection>
+    <name>OutsiderMartial Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>OutsiderShield Proficiency</name>
+  </collection>
+  <collection>
+    <name>OutsiderSimple Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>OwlWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>OwlbearScent</name>
+  </collection>
+  <collection>
+    <name>PegasusScent</name>
+  </collection>
+  <collection>
+    <name>PegasusSpell-Like AbilityDetect chaos/law/good/evil: within 60-foot radius</name>
+  </collection>
+  <collection>
+    <name>Phantom FungusSpell-Like AbilityGreater invisibility</name>
+  </collection>
+  <collection>
+    <name>Phase SpiderSpell-Like AbilityEthereal jaunt</name>
+  </collection>
+  <collection>
+    <name>PhasmAlternate FormAny form Large size or smaller, including Humanoid</name>
+  </collection>
+  <collection>
+    <name>PhasmAmorphous</name>
+  </collection>
+  <collection>
+    <name>PhasmScent</name>
+  </collection>
+  <collection>
+    <name>PhasmTelepathy</name>
+  </collection>
+  <collection>
+    <name>PhasmTremorsense</name>
+  </collection>
+  <collection>
+    <name>Pit FiendDamage ReductionVulnerable to good, silver weapons</name>
+  </collection>
+  <collection>
+    <name>Pit FiendEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>Pit FiendEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Pit FiendImmunityFire</name>
+  </collection>
+  <collection>
+    <name>Pit FiendImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>Pit FiendRegenerationDoes not regenerate damage from good spells or effects, or from good-aligned silvered weapons</name>
+  </collection>
+  <collection>
+    <name>Piut FiendSee in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityBlasphemy</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityCreate undead</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityFireball</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityGreater dispel magic</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityMagic circle against chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Pit FiendTelepathy</name>
   </collection>
   <collection>
     <name>Polar BearScent</name>
