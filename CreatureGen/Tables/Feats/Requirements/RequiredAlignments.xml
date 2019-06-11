@@ -7097,10 +7097,73 @@
     <name>NymphSpell-Like AbilityDimension door</name>
   </collection>
   <collection>
+    <name>NymphUnearthly Grace</name>
+  </collection>
+  <collection>
+    <name>NymphWild Empathy</name>
+  </collection>
+  <collection>
     <name>OctopusInk Cloud</name>
   </collection>
   <collection>
+    <name>Ochre JellySplit</name>
+  </collection>
+  <collection>
     <name>OctopusJet</name>
+  </collection>
+  <collection>
+    <name>OgreArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>OgreArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>OgreDarkvision</name>
+  </collection>
+  <collection>
+    <name>OgreMartial Weapon ProficiencyGreatclub</name>
+  </collection>
+  <collection>
+    <name>OgreSimple Weapon ProficiencyJavelin</name>
+  </collection>
+  <collection>
+    <name>Ogre MageArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Ogre MageChange ShapeAny Small, Medium, or Large Humanoid or Giant</name>
+  </collection>
+  <collection>
+    <name>Ogre MageDarkvision</name>
+  </collection>
+  <collection>
+    <name>Ogre MageFlight</name>
+  </collection>
+  <collection>
+    <name>Ogre MageMartial Weapon ProficiencyGreatsword</name>
+  </collection>
+  <collection>
+    <name>Ogre MageMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>Ogre MageRegenerationFire and acid deal normal damage</name>
+  </collection>
+  <collection>
+    <name>Ogre MageSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Ogre MageSpell-Like AbilityCharm person</name>
+  </collection>
+  <collection>
+    <name>Ogre MageSpell-Like AbilityCone of cold</name>
+  </collection>
+  <collection>
+    <name>Ogre MageSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Ogre MageSpell-Like AbilityGaseous form</name>
+  </collection>
+  <collection>
+    <name>Ogre MageSpell-Like AbilityInvisibility</name>
   </collection>
   <collection>
     <name>Orca WhaleBlindsight</name>
