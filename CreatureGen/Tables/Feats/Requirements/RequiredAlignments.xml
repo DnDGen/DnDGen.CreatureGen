@@ -6998,6 +6998,36 @@
     <name>Nine-Headed PyrohydraScent</name>
   </collection>
   <collection>
+    <name>NixieAmphibious</name>
+  </collection>
+  <collection>
+    <name>NixieDamage ReductionVulnerable to cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>NixieDodge</name>
+  </collection>
+  <collection>
+    <name>NixieMartial Weapon ProficiencyShort sword</name>
+  </collection>
+  <collection>
+    <name>NixieSimple Weapon ProficiencyLight crossbow</name>
+  </collection>
+  <collection>
+    <name>NixieSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>NixieSpell-Like AbilityCharm person</name>
+  </collection>
+  <collection>
+    <name>NixieSpell-Like AbilityWater breathing</name>
+  </collection>
+  <collection>
+    <name>NixieWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>NixieWild Empathy</name>
+  </collection>
+  <collection>
     <name>Noble DjinniImmunityAcid</name>
   </collection>
   <collection>
@@ -7028,6 +7058,9 @@
     <name>Noble DjinniSpell-Like AbilityWind walk</name>
   </collection>
   <collection>
+    <name>Noble DjinniSpell-Like AbilityWish: 3 wishes to any non-genie who captures it</name>
+  </collection>
+  <collection>
     <name>Noble DjinniTelepathy</name>
   </collection>
   <collection>
@@ -7035,6 +7068,33 @@
   </collection>
   <collection>
     <name>Noble SalamanderMultiattack</name>
+  </collection>
+  <collection>
+    <name>Noble SalamanderSpell-Like AbilityBurning hands</name>
+  </collection>
+  <collection>
+    <name>Noble SalamanderSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>Noble SalamanderSpell-Like AbilityFireball</name>
+  </collection>
+  <collection>
+    <name>Noble SalamanderSpell-Like AbilityFlaming sphere</name>
+  </collection>
+  <collection>
+    <name>Noble SalamanderSpell-Like AbilitySummon monster VII: Huge fire elemental</name>
+  </collection>
+  <collection>
+    <name>Noble SalamanderSpell-Like AbilityWall of fire</name>
+  </collection>
+  <collection>
+    <name>NymphDamage ReductionVulnerable to cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>NymphSimple Weapon ProficiencyDagger</name>
+  </collection>
+  <collection>
+    <name>NymphSpell-Like AbilityDimension door</name>
   </collection>
   <collection>
     <name>OctopusInk Cloud</name>
