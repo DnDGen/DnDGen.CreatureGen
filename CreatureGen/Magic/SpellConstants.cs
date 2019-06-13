@@ -22,7 +22,7 @@
         public const string Blink = "Blink";
         public const string Blasphemy = "Blasphemy";
         public const string Bless = "Bless";
-        public const string BlindnessDeafness = "Blindness/deafness";
+        public const string BlindnessDeafness = "Blindness/Deafness";
         public const string Blur = "Blur";
         public const string BullsStrength = "Bull's strength";
         public const string BurningHands = "Burning hands";
@@ -39,10 +39,10 @@
         public const string ConeOfCold = "Cone of cold";
         public const string Contagion = "Contagion";
         public const string ContinualFlame = "Continual flame";
-        public const string CureInflictCriticalWounds = "Cure/inflict critical wounds";
-        public const string CureInflictLightWounds = "Cure/inflict light wounds";
-        public const string CureInflictModerateWounds = "Cure/inflict moderate wounds";
-        public const string CureInflictSeriousWounds = "Cure/inflict serious wounds";
+        public const string CureInflictCriticalWounds = "Cure/Inflict critical wounds";
+        public const string CureInflictLightWounds = "Cure/Inflict light wounds";
+        public const string CureInflictModerateWounds = "Cure/Inflict moderate wounds";
+        public const string CureInflictSeriousWounds = "Cure/Inflict serious wounds";
         public const string DancingLights = "Dancing lights";
         public const string Darkness = "Darkness";
         public const string Darkvision = "Darkvision";
@@ -59,7 +59,7 @@
         public const string DetectUndead = "Detect undead";
         public const string DimensionDoor = "Dimension door";
         public const string DisguiseSelf = "Disguise self";
-        public const string DispelAlignment = "Dispel good/evil/law/chaos";
+        public const string DispelAlignment = "Dispel chaos/evil/good/law";
         public const string DispelMagic = "Dispel magic";
         public const string Displacement = "Displacement";
         public const string DisruptUndead = "Disrupt undead";
@@ -118,7 +118,7 @@
         public const string MageArmor = "Mage armor";
         public const string MageHand = "Mage hand";
         public const string MagicAura = "Magic aura";
-        public const string MagicCircleAgainstAlignment = "Magic circle against chaos/law/good/evil";
+        public const string MagicCircleAgainstAlignment = "Magic circle against chaos/evil/good/law";
         public const string MagicMissile = "Magic missile";
         public const string MagicMouth = "Magic mouth";
         public const string MagicWeapon = "Magic weapon";
@@ -142,7 +142,7 @@
         public const string Poison = "Poison";
         public const string Polymorph = "Polymorph";
         public const string Prestidigitation = "Prestidigitation";
-        public const string ProtectionFromAlignment = "Protection from chaos/law/good/evil";
+        public const string ProtectionFromAlignment = "Protection from chaos/evil/good/law";
         public const string ProtectionFromArrows = "Protection from arrows";
         public const string RayOfEnfeeblement = "Ray of enfeeblement";
         public const string RayOfFrost = "Ray of frost";
@@ -490,7 +490,7 @@
         public const string WaterWalk = "Water walk";
         public const string TreeStride = "Tree stride";
         public const string CreateWater = "Create water";
-        public const string CureInflictMinorWounds = "Cure/inflict minor wounds";
+        public const string CureInflictMinorWounds = "Cure/Inflict minor wounds";
         public const string Guidance = "Guidance";
         public const string PurifyFoodAndDrink = "Purify food and drink";
         public const string Virtue = "Virtue";
@@ -499,7 +499,7 @@
         public const string Command = "Command";
         public const string CurseWater = "Curse water";
         public const string Deathwatch = "Deathwatch";
-        public const string DetectAlignment = "Detect chaos/law/good/evil";
+        public const string DetectAlignment = "Detect chaos/evil/good/law";
         public const string DivineFavor = "Divine favor";
         public const string Doom = "Doom";
         public const string HideFromUndead = "Hide from undead";

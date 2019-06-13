@@ -368,7 +368,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             {
                 Assert.That(testCaseSpecialQualityDatas.Any(d =>
                     d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility
-                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]), Is.True, $"TEST CASE: Spell-Like Ability/{data[DataIndexConstants.SpecialQualityData.FocusIndex]}");
+                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]), Is.True, $"TEST CASE: Spell-Like Ability - {data[DataIndexConstants.SpecialQualityData.FocusIndex]}");
 
                 var testCaseData = testCaseSpecialQualityDatas.First(d =>
                     d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility
