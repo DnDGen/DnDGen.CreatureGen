@@ -904,8 +904,8 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.PitFiend][SpeedConstants.Fly] = 60;
                     testCases[CreatureConstants.Pixie][SpeedConstants.Land] = 20;
                     testCases[CreatureConstants.Pixie][SpeedConstants.Fly] = 60;
-                    testCases[CreatureConstants.Pixie_WithIrresistableDance][SpeedConstants.Land] = 20;
-                    testCases[CreatureConstants.Pixie_WithIrresistableDance][SpeedConstants.Fly] = 60;
+                    testCases[CreatureConstants.Pixie_WithIrresistibleDance][SpeedConstants.Land] = 20;
+                    testCases[CreatureConstants.Pixie_WithIrresistibleDance][SpeedConstants.Fly] = 60;
                     testCases[CreatureConstants.Pony][SpeedConstants.Land] = 40;
                     testCases[CreatureConstants.Pony_War][SpeedConstants.Land] = 40;
                     testCases[CreatureConstants.Porpoise][SpeedConstants.Swim] = 80;

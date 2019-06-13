@@ -3275,7 +3275,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Ride,
             SkillConstants.Search,
             SkillConstants.SenseMotive)]
-        [TestCase(CreatureConstants.Pixie_WithIrresistableDance,
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance,
             SkillConstants.Bluff,
             SkillConstants.Concentration,
             SkillConstants.EscapeArtist,

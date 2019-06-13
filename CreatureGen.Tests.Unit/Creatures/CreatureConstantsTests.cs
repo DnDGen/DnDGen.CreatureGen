@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Creatures;
+using CreatureGen.Magic;
 using NUnit.Framework;
 using System.Linq;
 using System.Reflection;
@@ -532,7 +533,7 @@ namespace CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Nightmare_Cauchemar, CreatureConstants.Nightmare + ", Cauchemar")]
         [TestCase(CreatureConstants.Ogre_Merrow, "Merrow")]
         [TestCase(CreatureConstants.BoneDevil_Osyluth, "Bone Devil (Osyluth)")]
-        [TestCase(CreatureConstants.Pixie_WithIrresistableDance, CreatureConstants.Pixie + " with Irresistable Dance")]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance, CreatureConstants.Pixie + " with " + SpellConstants.IrresistibleDance)]
         [TestCase(CreatureConstants.Pyrohydra_5Heads, "Five-Headed " + CreatureConstants.Groups.Pyrohydra)]
         [TestCase(CreatureConstants.Pyrohydra_6Heads, "Six-Headed " + CreatureConstants.Groups.Pyrohydra)]
         [TestCase(CreatureConstants.Pyrohydra_7Heads, "Seven-Headed " + CreatureConstants.Groups.Pyrohydra)]

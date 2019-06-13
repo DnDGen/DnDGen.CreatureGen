@@ -696,7 +696,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Nixie, CreatureConstants.Types.Fey,
             CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Pixie, CreatureConstants.Types.Fey)]
-        [TestCase(CreatureConstants.Pixie_WithIrresistableDance, CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance, CreatureConstants.Types.Fey)]
         [TestCase(CreatureConstants.Grimlock, CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.Gynosphinx, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Halfling_Deep, CreatureConstants.Types.Humanoid,

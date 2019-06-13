@@ -494,7 +494,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Phasm, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Seven, null, true, 0, 5, 0)]
         [TestCase(CreatureConstants.PitFiend, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Twenty, null, false, 18, 23, 2)]
         [TestCase(CreatureConstants.Pixie, SizeConstants.Small, 5, 5, ChallengeRatingConstants.Four, 4, true, 8, 1, 2)]
-        [TestCase(CreatureConstants.Pixie_WithIrresistableDance, SizeConstants.Small, 5, 5, ChallengeRatingConstants.Five, 6, true, 8, 1, 2)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance, SizeConstants.Small, 5, 5, ChallengeRatingConstants.Five, 6, true, 8, 1, 2)]
         [TestCase(CreatureConstants.Pony, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneFourth, null, false, 0, 2, 0)]
         [TestCase(CreatureConstants.Pony_War, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, null, false, 0, 2, 0)]
         [TestCase(CreatureConstants.Porpoise, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneHalf, null, false, 0, 2, 0)]

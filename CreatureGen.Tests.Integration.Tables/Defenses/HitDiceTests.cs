@@ -466,7 +466,7 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Phasm, 15)]
         [TestCase(CreatureConstants.PitFiend, 18)]
         [TestCase(CreatureConstants.Pixie, 1)]
-        [TestCase(CreatureConstants.Pixie_WithIrresistableDance, 1)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance, 1)]
         [TestCase(CreatureConstants.Pony, 2)]
         [TestCase(CreatureConstants.Pony_War, 2)]
         [TestCase(CreatureConstants.Porpoise, 2)]

@@ -1154,9 +1154,9 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Pixie][GetData(SkillConstants.Search)] = 2;
                 testCases[CreatureConstants.Pixie][GetData(SkillConstants.Spot)] = 2;
 
-                testCases[CreatureConstants.Pixie_WithIrresistableDance][GetData(SkillConstants.Listen)] = 2;
-                testCases[CreatureConstants.Pixie_WithIrresistableDance][GetData(SkillConstants.Search)] = 2;
-                testCases[CreatureConstants.Pixie_WithIrresistableDance][GetData(SkillConstants.Spot)] = 2;
+                testCases[CreatureConstants.Pixie_WithIrresistibleDance][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Pixie_WithIrresistibleDance][GetData(SkillConstants.Search)] = 2;
+                testCases[CreatureConstants.Pixie_WithIrresistibleDance][GetData(SkillConstants.Spot)] = 2;
 
                 testCases[CreatureConstants.Pony][None] = 0;
 

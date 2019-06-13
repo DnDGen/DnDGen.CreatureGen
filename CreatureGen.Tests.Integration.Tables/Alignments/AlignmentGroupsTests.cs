@@ -774,7 +774,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Phasm, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral)]
         [TestCase(CreatureConstants.PitFiend, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Pixie, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood)]
-        [TestCase(CreatureConstants.Pixie_WithIrresistableDance, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood)]
         [TestCase(CreatureConstants.Pony)]
         [TestCase(CreatureConstants.Pony_War)]
         [TestCase(CreatureConstants.Porpoise)]

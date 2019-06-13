@@ -910,7 +910,7 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Pixie][None] = 0;
 
-                testCases[CreatureConstants.Pixie_WithIrresistableDance][None] = 0;
+                testCases[CreatureConstants.Pixie_WithIrresistibleDance][None] = 0;
 
                 testCases[CreatureConstants.Pony][None] = 0;
 

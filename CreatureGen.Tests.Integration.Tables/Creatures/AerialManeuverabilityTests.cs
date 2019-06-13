@@ -483,7 +483,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Phasm)]
         [TestCase(CreatureConstants.PitFiend, "Average Maneuverability")]
         [TestCase(CreatureConstants.Pixie, "Good Maneuverability")]
-        [TestCase(CreatureConstants.Pixie_WithIrresistableDance, "Good Maneuverability")]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance, "Good Maneuverability")]
         [TestCase(CreatureConstants.Pony)]
         [TestCase(CreatureConstants.Pony_War)]
         [TestCase(CreatureConstants.Porpoise)]

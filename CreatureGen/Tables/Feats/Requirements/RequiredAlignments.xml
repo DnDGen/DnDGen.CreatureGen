@@ -7301,7 +7301,7 @@
     <name>Pit FiendRegenerationDoes not regenerate damage from good spells or effects, or from good-aligned silvered weapons</name>
   </collection>
   <collection>
-    <name>Piut FiendSee in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell</name>
+    <name>Pit FiendSee in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell</name>
   </collection>
   <collection>
     <name>Pit FiendSpell Resistance</name>
@@ -7328,7 +7328,106 @@
     <name>Pit FiendSpell-Like AbilityMagic circle against chaos/law/good/evil</name>
   </collection>
   <collection>
+    <name>Pit FiendSpell-Like AbilityMass hold monster</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityMeteor swarm</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityPersistent image</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityPower word stun</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityUnholy aura</name>
+  </collection>
+  <collection>
+    <name>Pit FiendSpell-Like AbilityWish</name>
+  </collection>
+  <collection>
     <name>Pit FiendTelepathy</name>
+  </collection>
+  <collection>
+    <name>PixieDamage ReductionVulnerable to cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>PixieDodge</name>
+  </collection>
+  <collection>
+    <name>PixieMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>PixieMartial Weapon ProficiencyShort sword</name>
+  </collection>
+  <collection>
+    <name>PixieSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>PixieSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>PixieSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>PixieSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>PixieSpell-Like AbilityEntangle</name>
+  </collection>
+  <collection>
+    <name>PixieSpell-Like AbilityGreater invisibility</name>
+  </collection>
+  <collection>
+    <name>PixieSpell-Like AbilityLesser confusion</name>
+  </collection>
+  <collection>
+    <name>PixieSpell-Like AbilityPermanent image: visual and auditory elements only</name>
+  </collection>
+  <collection>
+    <name>PixieWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceDamage ReductionVulnerable to cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceDodge</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceMartial Weapon ProficiencyShort sword</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell-Like AbilityDetect chaos/law/good/evil</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell-Like AbilityEntangle</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell-Like AbilityGreater invisibility</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell-Like AbilityIrresistible dance</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell-Like AbilityLesser confusion</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell-Like AbilityPermanent image: visual and auditory elements only</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceWeapon Finesse</name>
   </collection>
   <collection>
     <name>Polar BearScent</name>

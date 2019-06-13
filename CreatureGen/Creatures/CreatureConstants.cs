@@ -668,7 +668,7 @@ namespace CreatureGen.Creatures
         public const string Phasm = "Phasm";
         public const string PitFiend = "Pit Fiend";
         public const string Pixie = "Pixie";
-        public const string Pixie_WithIrresistableDance = "Pixie with Irresistable Dance";
+        public const string Pixie_WithIrresistibleDance = "Pixie with Irresistible dance";
         public const string Angel_Planetar = "Angel, Planetar";
         public const string Pony = "Pony";
         public const string Pony_War = "Warpony";
@@ -1261,7 +1261,7 @@ namespace CreatureGen.Creatures
                 Phasm,
                 PitFiend,
                 Pixie,
-                Pixie_WithIrresistableDance,
+                Pixie_WithIrresistibleDance,
                 Angel_Planetar,
                 Pony,
                 Pony_War,

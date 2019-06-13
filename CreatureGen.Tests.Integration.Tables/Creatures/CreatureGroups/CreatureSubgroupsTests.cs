@@ -407,7 +407,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Grig,
             CreatureConstants.Grig_WithFiddle,
             CreatureConstants.Pixie,
-            CreatureConstants.Pixie_WithIrresistableDance,
+            CreatureConstants.Pixie_WithIrresistibleDance,
             CreatureConstants.Nixie)]
         [TestCase(CreatureConstants.Groups.Tojanida,
             CreatureConstants.Tojanida_Juvenile,

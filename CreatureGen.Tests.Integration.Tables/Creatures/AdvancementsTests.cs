@@ -642,7 +642,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.PitFiend][RollHelper.GetRoll(18, 19, 36)] = GetData(SizeConstants.Large, 10, 10);
                     testCases[CreatureConstants.PitFiend][RollHelper.GetRoll(18, 37, 54)] = GetData(SizeConstants.Huge, 15, 15);
                     testCases[CreatureConstants.Pixie][RollHelper.GetRoll(1, 2, 3)] = GetData(SizeConstants.Small, 5, 5);
-                    testCases[CreatureConstants.Pixie_WithIrresistableDance][RollHelper.GetRoll(1, 2, 3)] = GetData(SizeConstants.Small, 5, 5);
+                    testCases[CreatureConstants.Pixie_WithIrresistibleDance][RollHelper.GetRoll(1, 2, 3)] = GetData(SizeConstants.Small, 5, 5);
                     testCases[CreatureConstants.Pony][None] = new string[0];
                     testCases[CreatureConstants.Pony_War][None] = new string[0];
                     testCases[CreatureConstants.Porpoise][RollHelper.GetRoll(2, 3, 4)] = GetData(SizeConstants.Medium, 5, 5);
