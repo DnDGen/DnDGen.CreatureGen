@@ -7535,10 +7535,40 @@
     <name>RatWeapon Finesse</name>
   </collection>
   <collection>
+    <name>Rat SwarmHalf DamagePiercing weapons</name>
+  </collection>
+  <collection>
+    <name>Rat SwarmHalf DamageSlashing weapons</name>
+  </collection>
+  <collection>
     <name>Rat SwarmScent</name>
   </collection>
   <collection>
     <name>Rat SwarmWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>RavenWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>RavidFlight</name>
+  </collection>
+  <collection>
+    <name>RavidImmunityFire</name>
+  </collection>
+  <collection>
+    <name>RavidSpell-Like AbilityAnimate objects</name>
+  </collection>
+  <collection>
+    <name>Razor BoarDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Razor BoarFast Healing</name>
+  </collection>
+  <collection>
+    <name>Razor BoarScent</name>
+  </collection>
+  <collection>
+    <name>Razor BoarSpell Resistance</name>
   </collection>
   <collection>
     <name>Red Dragon, AdultBlindsense</name>
