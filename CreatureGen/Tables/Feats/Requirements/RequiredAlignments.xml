@@ -7586,6 +7586,9 @@
     <name>Red Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Red Dragon, AdultSpell-Like AbilityLocate object</name>
+  </collection>
+  <collection>
     <name>Red Dragon, AncientBlindsense</name>
   </collection>
   <collection>
@@ -7599,6 +7602,15 @@
   </collection>
   <collection>
     <name>Red Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientSpell-Like AbilityFind the path</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientSpell-Like AbilityLocate object</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Red Dragon, Great WyrmBlindsense</name>
@@ -7616,6 +7628,18 @@
     <name>Red Dragon, Great WyrmSpell Resistance</name>
   </collection>
   <collection>
+    <name>Red Dragon, Great WyrmSpell-Like AbilityDiscern location</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmSpell-Like AbilityFind the path</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmSpell-Like AbilityLocate object</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
     <name>Red Dragon, JuvenileBlindsense</name>
   </collection>
   <collection>
@@ -7623,6 +7647,9 @@
   </collection>
   <collection>
     <name>Red Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, JuvenileSpell-Like AbilityLocate object</name>
   </collection>
   <collection>
     <name>Red Dragon, Mature AdultBlindsense</name>
@@ -7640,6 +7667,9 @@
     <name>Red Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Red Dragon, Mature AdultSpell-Like AbilityLocate object</name>
+  </collection>
+  <collection>
     <name>Red Dragon, OldBlindsense</name>
   </collection>
   <collection>
@@ -7655,6 +7685,12 @@
     <name>Red Dragon, OldSpell Resistance</name>
   </collection>
   <collection>
+    <name>Red Dragon, OldSpell-Like AbilityLocate object</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
     <name>Red Dragon, Very OldBlindsense</name>
   </collection>
   <collection>
@@ -7668,6 +7704,12 @@
   </collection>
   <collection>
     <name>Red Dragon, Very OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldSpell-Like AbilityLocate object</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Red Dragon, Very YoungBlindsense</name>
@@ -7692,6 +7734,15 @@
   </collection>
   <collection>
     <name>Red Dragon, WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmSpell-Like AbilityFind the path</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmSpell-Like AbilityLocate object</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Red Dragon, WyrmlingBlindsense</name>
@@ -7727,6 +7778,9 @@
     <name>Red Dragon, Young AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Red Dragon, Young AdultSpell-Like AbilityLocate object</name>
+  </collection>
+  <collection>
     <name>Red SlaadEnergy ResistanceAcid</name>
   </collection>
   <collection>
@@ -7745,10 +7799,52 @@
     <name>Red SlaadImmunitySonic</name>
   </collection>
   <collection>
+    <name>RemorhazHeat</name>
+  </collection>
+  <collection>
+    <name>RemorhazTremorsense</name>
+  </collection>
+  <collection>
+    <name>RetrieverFast Healing</name>
+  </collection>
+  <collection>
+    <name>Rock GnomeMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>Rock GnomeSpell-Like AbilityDancing lights</name>
+  </collection>
+  <collection>
+    <name>Rock GnomeSpell-Like AbilityGhost sound</name>
+  </collection>
+  <collection>
+    <name>Rock GnomeSpell-Like AbilityPrestidigitation</name>
+  </collection>
+  <collection>
+    <name>Rock GnomeSpell-Like AbilitySpeak with animals: burrowing mammals only, duration 1 minute</name>
+  </collection>
+  <collection>
+    <name>RoperEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>RoperImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>RoperSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>RoperVulnerabilityFire</name>
+  </collection>
+  <collection>
+    <name>Rust MonsterScent</name>
+  </collection>
+  <collection>
     <name>SahuaginBlindsense</name>
   </collection>
   <collection>
     <name>SahuaginFreshwater Sensitivity</name>
+  </collection>
+  <collection>
+    <name>SahuaginLight Blindness</name>
   </collection>
   <collection>
     <name>SahuaginMartial Weapon ProficiencyTrident</name>
@@ -7772,6 +7868,9 @@
     <name>Sahuagin MutantFreshwater Sensitivity</name>
   </collection>
   <collection>
+    <name>Sahuagin MutantLight Blindness</name>
+  </collection>
+  <collection>
     <name>Sahuagin MutantMartial Weapon ProficiencyTrident</name>
   </collection>
   <collection>
@@ -7785,6 +7884,78 @@
   </collection>
   <collection>
     <name>Sahuagin MutantWater Dependent</name>
+  </collection>
+  <collection>
+    <name>Salt MephitDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Salt MephitFast HealingIn an arid environment</name>
+  </collection>
+  <collection>
+    <name>Salt MephitSpell-Like AbilityDraw moisture from the air</name>
+  </collection>
+  <collection>
+    <name>Salt MephitSpell-Like AbilityGlitterdust</name>
+  </collection>
+  <collection>
+    <name>SatyrAlertness</name>
+  </collection>
+  <collection>
+    <name>SatyrDamage ReductionVulnerable to cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>SatyrMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>SatyrSimple Weapon ProficiencyDagger</name>
+  </collection>
+  <collection>
+    <name>Satyr with pipesAlertness</name>
+  </collection>
+  <collection>
+    <name>Satyr with pipesDamage ReductionVulnerable to cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>Satyr with pipesMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>Satyr with pipesSimple Weapon ProficiencyDagger</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkMartial Weapon ProficiencyLance</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSpell-Like AbilityMajor image</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSpell-Like AbilityMirror image</name>
+  </collection>
+  <collection>
+    <name>ScragDarkvision</name>
+  </collection>
+  <collection>
+    <name>ScragRegenerationFire and acid deal normal damage; only regenerates when immersed in water</name>
+  </collection>
+  <collection>
+    <name>ScragScent</name>
+  </collection>
+  <collection>
+    <name>Sea CatHold Breath</name>
+  </collection>
+  <collection>
+    <name>Sea CatScent</name>
+  </collection>
+  <collection>
+    <name>Sea HagAmphibious</name>
+  </collection>
+  <collection>
+    <name>Sea HagSpell Resistance</name>
   </collection>
   <collection>
     <name>Seven-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
@@ -8133,6 +8304,15 @@
   </collection>
   <collection>
     <name>TriceratopsScent</name>
+  </collection>
+  <collection>
+    <name>TrollDarkvision</name>
+  </collection>
+  <collection>
+    <name>TrollRegenerationFire and acid deal normal damage</name>
+  </collection>
+  <collection>
+    <name>TrollScent</name>
   </collection>
   <collection>
     <name>Twelve-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
