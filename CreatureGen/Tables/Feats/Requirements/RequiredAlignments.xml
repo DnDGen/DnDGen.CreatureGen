@@ -7988,16 +7988,76 @@
     <name>ShadowTurn Resistance</name>
   </collection>
   <collection>
+    <name>Shadow MastiffScent</name>
+  </collection>
+  <collection>
+    <name>Shadow MastiffShadow Blend</name>
+  </collection>
+  <collection>
+    <name>Shadow MastiffTrack</name>
+  </collection>
+  <collection>
+    <name>Shambling MoundDarkvision</name>
+  </collection>
+  <collection>
+    <name>Shambling MoundEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>Shambling MoundImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>ShapechangerShield Proficiency</name>
+  </collection>
+  <collection>
+    <name>ShapechangerSimple Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>Shark, HugeBlindsense</name>
+  </collection>
+  <collection>
     <name>Shark, HugeKeen Scent</name>
+  </collection>
+  <collection>
+    <name>Shark, LargeBlindsense</name>
   </collection>
   <collection>
     <name>Shark, LargeKeen Scent</name>
   </collection>
   <collection>
+    <name>Shark, MediumBlindsense</name>
+  </collection>
+  <collection>
     <name>Shark, MediumKeen Scent</name>
   </collection>
   <collection>
+    <name>Shield GuardianFast Healing</name>
+  </collection>
+  <collection>
+    <name>Shield GuardianFind Master</name>
+  </collection>
+  <collection>
+    <name>Shield GuardianGuard</name>
+  </collection>
+  <collection>
+    <name>Shield GuardianSpell Storing</name>
+  </collection>
+  <collection>
+    <name>Shield GuardianSpell-Like AbilityShield other: within 100 feet of the amulet.  Does not provide spell's AC or save bonuses</name>
+  </collection>
+  <collection>
+    <name>Shocker LizardElectricity Sense</name>
+  </collection>
+  <collection>
+    <name>Shocker LizardImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, AdultDamage ReductionVulnerable to magic weapons</name>
@@ -8015,7 +8075,19 @@
     <name>Silver Dragon, AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Silver Dragon, AdultSpell-Like AbilityFeather fall</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, AncientBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, AncientDamage ReductionVulnerable to magic weapons</name>
@@ -8033,7 +8105,25 @@
     <name>Silver Dragon, AncientSpell Resistance</name>
   </collection>
   <collection>
+    <name>Silver Dragon, AncientSpell-Like AbilityControl weather</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientSpell-Like AbilityControl winds</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientSpell-Like AbilityFeather fall</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, Great WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, Great WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -8051,7 +8141,28 @@
     <name>Silver Dragon, Great WyrmSpell Resistance</name>
   </collection>
   <collection>
+    <name>Silver Dragon, Great WyrmSpell-Like AbilityControl weather</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmSpell-Like AbilityControl winds</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmSpell-Like AbilityFeather fall</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmSpell-Like AbilityReverse gravity</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, JuvenileAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, JuvenileBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, JuvenileCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, JuvenileDarkvision</name>
@@ -8063,7 +8174,16 @@
     <name>Silver Dragon, JuvenileKeen Senses</name>
   </collection>
   <collection>
+    <name>Silver Dragon, JuvenileSpell-Like AbilityFeather fall</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, Mature AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, Mature AdultDamage ReductionVulnerable to magic weapons</name>
@@ -8081,7 +8201,19 @@
     <name>Silver Dragon, Mature AdultSpell Resistance</name>
   </collection>
   <collection>
+    <name>Silver Dragon, Mature AdultSpell-Like AbilityFeather fall</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, OldDamage ReductionVulnerable to magic weapons</name>
@@ -8099,7 +8231,22 @@
     <name>Silver Dragon, OldSpell Resistance</name>
   </collection>
   <collection>
+    <name>Silver Dragon, OldSpell-Like AbilityControl winds</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldSpell-Like AbilityFeather fall</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, Very OldBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, Very OldDamage ReductionVulnerable to magic weapons</name>
@@ -8117,7 +8264,22 @@
     <name>Silver Dragon, Very OldSpell Resistance</name>
   </collection>
   <collection>
+    <name>Silver Dragon, Very OldSpell-Like AbilityControl winds</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldSpell-Like AbilityFeather fall</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very YoungAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, Very YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very YoungCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, Very YoungDarkvision</name>
@@ -8129,7 +8291,13 @@
     <name>Silver Dragon, Very YoungKeen Senses</name>
   </collection>
   <collection>
+    <name>Silver Dragon, WyrmAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, WyrmBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, WyrmDamage ReductionVulnerable to magic weapons</name>
@@ -8147,7 +8315,25 @@
     <name>Silver Dragon, WyrmSpell Resistance</name>
   </collection>
   <collection>
+    <name>Silver Dragon, WyrmSpell-Like AbilityControl weather</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmSpell-Like AbilityControl winds</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmSpell-Like AbilityFeather fall</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmlingAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, WyrmlingBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmlingCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, WyrmlingDarkvision</name>
@@ -8159,7 +8345,13 @@
     <name>Silver Dragon, WyrmlingKeen Senses</name>
   </collection>
   <collection>
+    <name>Silver Dragon, YoungAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, YoungBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, YoungCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, YoungDarkvision</name>
@@ -8171,7 +8363,13 @@
     <name>Silver Dragon, YoungKeen Senses</name>
   </collection>
   <collection>
+    <name>Silver Dragon, Young AdultAlternate FormAnimal or Humanoid form of Medium size or smaller</name>
+  </collection>
+  <collection>
     <name>Silver Dragon, Young AdultBlindsense</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultCloudwalking</name>
   </collection>
   <collection>
     <name>Silver Dragon, Young AdultDamage ReductionVulnerable to magic weapons</name>
@@ -8187,6 +8385,9 @@
   </collection>
   <collection>
     <name>Silver Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultSpell-Like AbilityFeather fall</name>
   </collection>
   <collection>
     <name>Six-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
@@ -8216,16 +8417,94 @@
     <name>Six-Headed PyrohydraScent</name>
   </collection>
   <collection>
+    <name>SkumAmphibious</name>
+  </collection>
+  <collection>
+    <name>SpectreSunlight Powerlessness</name>
+  </collection>
+  <collection>
+    <name>SpectreTurn Resistance</name>
+  </collection>
+  <collection>
+    <name>SpectreUnnatural Aura</name>
+  </collection>
+  <collection>
+    <name>Spider EaterScent</name>
+  </collection>
+  <collection>
+    <name>Spider EaterSpell-Like AbilityFreedom of movement</name>
+  </collection>
+  <collection>
+    <name>Spider SwarmTremorsense</name>
+  </collection>
+  <collection>
+    <name>Spider SwarmWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Spirit NagaEschew Materials</name>
+  </collection>
+  <collection>
     <name>SquidInk Cloud</name>
   </collection>
   <collection>
     <name>SquidJet</name>
   </collection>
   <collection>
+    <name>Steam MephitDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Steam MephitFast HealingTouching boiling water or in a hot, humid area</name>
+  </collection>
+  <collection>
+    <name>Steam MephitSpell-Like AbilityBlur</name>
+  </collection>
+  <collection>
+    <name>Steam MephitSpell-Like AbilityRainstorm of boiling water</name>
+  </collection>
+  <collection>
+    <name>StirgeWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Stone GiantArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Stone GiantArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>Stone GiantDarkvision</name>
+  </collection>
+  <collection>
+    <name>Stone GiantMartial Weapon ProficiencyGreatclub</name>
+  </collection>
+  <collection>
     <name>Stone GiantRock Catching</name>
   </collection>
   <collection>
+    <name>Stone Giant ElderArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Stone Giant ElderArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>Stone Giant ElderDarkvision</name>
+  </collection>
+  <collection>
+    <name>Stone Giant ElderMartial Weapon ProficiencyGreatclub</name>
+  </collection>
+  <collection>
     <name>Stone Giant ElderRock Catching</name>
+  </collection>
+  <collection>
+    <name>Stone Giant ElderSpell-Like AbilityStone shape</name>
+  </collection>
+  <collection>
+    <name>Stone Giant ElderSpell-Like AbilityStone tell</name>
+  </collection>
+  <collection>
+    <name>Stone Giant ElderSpell-Like AbilityTransmute mud to rock</name>
+  </collection>
+  <collection>
+    <name>Stone Giant ElderSpell-Like AbilityTransmute rock to mud</name>
   </collection>
   <collection>
     <name>Stone GolemDamage ReductionVulnerable to adamantine weapons</name>
@@ -8234,7 +8513,25 @@
     <name>Stone GolemImmunityMagic (see creature description)</name>
   </collection>
   <collection>
+    <name>Storm GiantArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Storm GiantArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>Storm GiantImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>Storm GiantMartial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>Storm GiantMartial Weapon ProficiencyGreatsword</name>
+  </collection>
+  <collection>
     <name>Storm GiantRock Catching</name>
+  </collection>
+  <collection>
+    <name>Storm GiantSpell-Like AbilityCall lightning</name>
   </collection>
   <collection>
     <name>Ten-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
