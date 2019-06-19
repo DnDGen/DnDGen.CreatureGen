@@ -8534,6 +8534,96 @@
     <name>Storm GiantSpell-Like AbilityCall lightning</name>
   </collection>
   <collection>
+    <name>Storm GiantSpell-Like AbilityChain lightning</name>
+  </collection>
+  <collection>
+    <name>Storm GiantSpell-Like AbilityControl weather</name>
+  </collection>
+  <collection>
+    <name>Storm GiantSpell-Like AbilityFreedom of movement</name>
+  </collection>
+  <collection>
+    <name>Storm GiantSpell-Like AbilityLevitate</name>
+  </collection>
+  <collection>
+    <name>Storm GiantWater Breathing</name>
+  </collection>
+  <collection>
+    <name>SuccubusChange ShapeAny Small or Medium Humanoid</name>
+  </collection>
+  <collection>
+    <name>SuccubusDamage ReductionVulnerable to good or cold iron weapons</name>
+  </collection>
+  <collection>
+    <name>SuccubusEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>SuccubusEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>SuccubusEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>SuccubusImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>SuccubusImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>SuccubusSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>SuccubusSpell-Like AbilityCharm monster</name>
+  </collection>
+  <collection>
+    <name>SuccubusSpell-Like AbilityDetect chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>SuccubusSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>SuccubusSpell-Like AbilityEthereal jaunt: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>SuccubusSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>SuccubusSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>SuccubusSpell-Like AbilityTongues</name>
+  </collection>
+  <collection>
+    <name>SuccubusTelepathy</name>
+  </collection>
+  <collection>
+    <name>SvirfneblinArmor Proficiency (Heavy)</name>
+  </collection>
+  <collection>
+    <name>SvirfneblinArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>SvirfneblinDarkvision</name>
+  </collection>
+  <collection>
+    <name>SvirfneblinMartial Weapon ProficiencyHeavy pick</name>
+  </collection>
+  <collection>
+    <name>SvirfneblinSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>SvirfneblinSpell-Like AbilityBlindness/Deafness</name>
+  </collection>
+  <collection>
+    <name>SvirfneblinSpell-Like AbilityBlur</name>
+  </collection>
+  <collection>
+    <name>SvirfneblinSpell-Like AbilityDisguise self</name>
+  </collection>
+  <collection>
+    <name>SvirfneblinStonecunning</name>
+  </collection>
+  <collection>
     <name>Ten-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
   </collection>
   <collection>
