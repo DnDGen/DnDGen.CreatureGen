@@ -3821,8 +3821,6 @@
   </collection>
   <collection>
     <name>Rat Swarm</name>
-    <entry>Half Damage#0#Piercing weapons#0##0#False</entry>
-    <entry>Half Damage#0#Slashing weapons#0##0#False</entry>
     <entry>Scent#0##0##0#False</entry>
     <entry>Weapon Finesse#0##0##0#False</entry>
   </collection>

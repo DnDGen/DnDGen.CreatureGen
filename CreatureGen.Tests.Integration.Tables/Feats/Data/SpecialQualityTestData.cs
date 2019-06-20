@@ -3034,8 +3034,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Rat_Dire].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
                 testCases[CreatureConstants.Rat_Dire].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.HalfDamage, focus: "Slashing weapons"));
-                testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.HalfDamage, focus: "Piercing weapons"));
                 testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
                 testCases[CreatureConstants.Rat_Swarm].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 

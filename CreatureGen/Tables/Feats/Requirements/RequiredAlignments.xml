@@ -7535,12 +7535,6 @@
     <name>RatWeapon Finesse</name>
   </collection>
   <collection>
-    <name>Rat SwarmHalf DamagePiercing weapons</name>
-  </collection>
-  <collection>
-    <name>Rat SwarmHalf DamageSlashing weapons</name>
-  </collection>
-  <collection>
     <name>Rat SwarmScent</name>
   </collection>
   <collection>
@@ -8622,6 +8616,36 @@
   </collection>
   <collection>
     <name>SvirfneblinStonecunning</name>
+  </collection>
+  <collection>
+    <name>SwarmHalf DamagePiercing</name>
+  </collection>
+  <collection>
+    <name>SwarmHalf DamageSlashing</name>
+  </collection>
+  <collection>
+    <name>SwarmImmunityAny spell that targets a specific number of creatures, including single-target spells</name>
+  </collection>
+  <collection>
+    <name>SwarmImmunityBull Rush</name>
+  </collection>
+  <collection>
+    <name>SwarmImmunityCritical hits</name>
+  </collection>
+  <collection>
+    <name>SwarmImmunityDying state</name>
+  </collection>
+  <collection>
+    <name>SwarmImmunityFlanking</name>
+  </collection>
+  <collection>
+    <name>SwarmImmunityGrapple</name>
+  </collection>
+  <collection>
+    <name>SwarmImmunityStaggering</name>
+  </collection>
+  <collection>
+    <name>SwarmImmunityTrip</name>
   </collection>
   <collection>
     <name>Ten-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
