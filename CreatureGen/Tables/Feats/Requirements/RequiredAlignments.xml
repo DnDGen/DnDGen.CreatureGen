@@ -8648,6 +8648,36 @@
     <name>SwarmImmunityTrip</name>
   </collection>
   <collection>
+    <name>SwarmImmunityWeapon damage</name>
+  </collection>
+  <collection>
+    <name>SwarmVulnerabilityArea-of-effect spells</name>
+  </collection>
+  <collection>
+    <name>SwarmVulnerabilityHigh winds</name>
+  </collection>
+  <collection>
+    <name>SwarmVulnerabilitySplash damage</name>
+  </collection>
+  <collection>
+    <name>TarrasqueCarapace</name>
+  </collection>
+  <collection>
+    <name>TarrasqueDamage ReductionVulnerable to epic weapons</name>
+  </collection>
+  <collection>
+    <name>TarrasqueImmunityAbility Damage</name>
+  </collection>
+  <collection>
+    <name>TarrasqueImmunityDisease</name>
+  </collection>
+  <collection>
+    <name>TarrasqueImmunityEnergy Drain</name>
+  </collection>
+  <collection>
+    <name>TarrasqueImmunityFire</name>
+  </collection>
+  <collection>
     <name>Ten-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
   </collection>
   <collection>

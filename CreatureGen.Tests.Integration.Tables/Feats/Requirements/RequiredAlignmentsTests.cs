@@ -3274,6 +3274,13 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Stirge, FeatConstants.WeaponFinesse, string.Empty)] = new string[0];
 
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Tarrasque, FeatConstants.SpecialQualities.Carapace, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Tarrasque, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to epic weapons")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Tarrasque, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Fire)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Tarrasque, FeatConstants.SpecialQualities.Immunity, "Ability Damage")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Tarrasque, FeatConstants.SpecialQualities.Immunity, "Disease")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Tarrasque, FeatConstants.SpecialQualities.Immunity, "Energy Drain")] = new string[0];
+
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Tiger, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Tiger_Dire, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
@@ -3566,6 +3573,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.Immunity, "Grapple")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.Immunity, "Staggering")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.Immunity, "Trip")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.Immunity, "Weapon damage")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.Vulnerability, "Area-of-effect spells")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.Vulnerability, "High winds")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.Vulnerability, "Splash damage")] = new string[0];
 
                     foreach (var testCase in testCases)
                     {
