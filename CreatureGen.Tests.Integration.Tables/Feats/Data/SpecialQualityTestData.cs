@@ -3363,7 +3363,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Titan].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DeeperDarkness, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Titan].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.UnholyBlight, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Titan].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CrushingHand, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                testCases[CreatureConstants.Titan].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "any Small or Medium humanoid", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.Titan].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Any Small or Medium Humanoid", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
 
                 testCases[CreatureConstants.Toad].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Amphibious));
 

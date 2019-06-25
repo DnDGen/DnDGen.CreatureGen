@@ -8678,6 +8678,18 @@
     <name>TarrasqueImmunityFire</name>
   </collection>
   <collection>
+    <name>TarrasqueImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>TarrasqueRegenerationNo form of attack deals lethal damage to the tarrasque</name>
+  </collection>
+  <collection>
+    <name>TarrasqueScent</name>
+  </collection>
+  <collection>
+    <name>TarrasqueSpell Resistance</name>
+  </collection>
+  <collection>
     <name>Ten-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
   </collection>
   <collection>
@@ -8705,15 +8717,75 @@
     <name>Ten-Headed PyrohydraScent</name>
   </collection>
   <collection>
+    <name>TendriculosRegenerationBludgeoning weapons and acid deal normal damage</name>
+  </collection>
+  <collection>
+    <name>ThoqquaHeat</name>
+  </collection>
+  <collection>
+    <name>ThoqquaTremorsense</name>
+  </collection>
+  <collection>
+    <name>TieflingArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>TieflingEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>TieflingEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>TieflingEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>TieflingSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
     <name>TigerScent</name>
+  </collection>
+  <collection>
+    <name>TitanArmor Proficiency (Heavy)</name>
+  </collection>
+  <collection>
+    <name>TitanArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>TitanArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>TitanChange ShapeAny Small or Medium Humanoid</name>
+  </collection>
+  <collection>
+    <name>TitanDamage ReductionVulnerable to lawful weapons</name>
+  </collection>
+  <collection>
+    <name>TitanMartial Weapon ProficiencyWarhammer</name>
+  </collection>
+  <collection>
+    <name>TitanOversized WeaponGargantuan</name>
+  </collection>
+  <collection>
+    <name>TitanSimple Weapon ProficiencyJavelin</name>
+  </collection>
+  <collection>
+    <name>TitanSpell Resistance</name>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityBestow curse</name>
     <entry>Chaotic Evil</entry>
   </collection>
   <collection>
+    <name>TitanSpell-Like AbilityChain lightning</name>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityCharm monster</name>
+  </collection>
+  <collection>
     <name>TitanSpell-Like AbilityCrushing hand</name>
     <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityCure/Inflict critical wounds</name>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityDaylight</name>
@@ -8725,9 +8797,24 @@
     <entry>Chaotic Evil</entry>
   </collection>
   <collection>
+    <name>TitanSpell-Like AbilityEtherealness</name>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityFire storm</name>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityGate</name>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityGreater dispel magic</name>
+  </collection>
+  <collection>
     <name>TitanSpell-Like AbilityGreater restoration</name>
     <entry>Chaotic Good</entry>
     <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityHold monster</name>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityHoly smite</name>
@@ -8735,16 +8822,64 @@
     <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
+    <name>TitanSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityInvisibility purge</name>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityLevitate</name>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityMaze</name>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityMeteor swarm</name>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilityPersistent image</name>
+  </collection>
+  <collection>
     <name>TitanSpell-Like AbilityRemove curse</name>
     <entry>Chaotic Good</entry>
     <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>TitanSpell-Like AbilitySummon nature's ally IX</name>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityUnholy blight</name>
     <entry>Chaotic Evil</entry>
   </collection>
   <collection>
+    <name>TitanSpell-Like AbilityWord of chaos</name>
+  </collection>
+  <collection>
+    <name>ToadAmphibious</name>
+  </collection>
+  <collection>
+    <name>TreantDamage ReductionVulnerable to slashing weapons</name>
+  </collection>
+  <collection>
+    <name>TreantVulnerabilityFire</name>
+  </collection>
+  <collection>
     <name>TriceratopsScent</name>
+  </collection>
+  <collection>
+    <name>TritonSpell-Like AbilitySummon nature's ally IV</name>
+  </collection>
+  <collection>
+    <name>TroglodyteDarkvision</name>
+  </collection>
+  <collection>
+    <name>TroglodyteMultiattack</name>
+  </collection>
+  <collection>
+    <name>TroglodyteSimple Weapon ProficiencyClub</name>
+  </collection>
+  <collection>
+    <name>TroglodyteSimple Weapon ProficiencyJavelin</name>
   </collection>
   <collection>
     <name>TrollDarkvision</name>
@@ -8754,6 +8889,27 @@
   </collection>
   <collection>
     <name>TrollScent</name>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber HulkTremorsense</name>
+  </collection>
+  <collection>
+    <name>Trumpet ArchonDamage ReductionVulnerable to evil weapons</name>
+  </collection>
+  <collection>
+    <name>Trumpet ArchonMartial Weapon ProficiencyGreatsword</name>
+  </collection>
+  <collection>
+    <name>Trumpet ArchonSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Trumpet ArchonSpell-Like AbilityContinual flame</name>
+  </collection>
+  <collection>
+    <name>Trumpet ArchonSpell-Like AbilityDetect chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>Trumpet ArchonSpell-Like AbilityMessage</name>
   </collection>
   <collection>
     <name>Twelve-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity</name>
@@ -8784,6 +8940,123 @@
   </collection>
   <collection>
     <name>TyrannosaurusScent</name>
+  </collection>
+  <collection>
+    <name>Umber HulkTremorsense</name>
+  </collection>
+  <collection>
+    <name>UndeadDarkvision</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityAbility Damage to Strength, Dexterity, or Constitution</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityAbility Drain</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityCritical hits</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityDeath</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityDeath from massive damage</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityDisease</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityEffect that requires a Fortitude save</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityEnergy Drain</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityExhaustion</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityFatigue</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityMind-Affecting Effects</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityNonlethal damage</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityParalysis</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunitySleep</name>
+  </collection>
+  <collection>
+    <name>UndeadImmunityStunning</name>
+  </collection>
+  <collection>
+    <name>UndeadShield Proficiency</name>
+  </collection>
+  <collection>
+    <name>UndeadSimple Weapon ProficiencyAll</name>
+  </collection>
+  <collection>
+    <name>UnicornImmunityCharm</name>
+  </collection>
+  <collection>
+    <name>UnicornImmunityCompulsion</name>
+  </collection>
+  <collection>
+    <name>UnicornImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>UnicornScent</name>
+  </collection>
+  <collection>
+    <name>UnicornSpell-Like AbilityCure/Inflict light wounds</name>
+  </collection>
+  <collection>
+    <name>UnicornSpell-Like AbilityCure/Inflict moderate wounds</name>
+  </collection>
+  <collection>
+    <name>UnicornSpell-Like AbilityDetect chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>UnicornSpell-Like AbilityGreater teleport: within its forest home</name>
+  </collection>
+  <collection>
+    <name>UnicornSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>UnicornSpell-Like AbilityNeutralize poison</name>
+  </collection>
+  <collection>
+    <name>UnicornWild Empathy</name>
+  </collection>
+  <collection>
+    <name>Vampire SpawnAlertness</name>
+  </collection>
+  <collection>
+    <name>Vampire SpawnDamage ReductionVulnerable to silver weapons</name>
+  </collection>
+  <collection>
+    <name>Vampire SpawnEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>Vampire SpawnEnergy ResistanceElectricity</name>
+  </collection>
+  <collection>
+    <name>Vampire SpawnFast Healing</name>
+  </collection>
+  <collection>
+    <name>Vampire SpawnImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>Vampire SpawnLightning Reflexes</name>
+  </collection>
+  <collection>
+    <name>Vampire SpawnSpell-Like AbilityGaseous form</name>
   </collection>
   <collection>
     <name>Viper Snake, HugeScent</name>
