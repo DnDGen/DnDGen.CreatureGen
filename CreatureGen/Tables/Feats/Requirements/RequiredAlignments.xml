@@ -9059,6 +9059,21 @@
     <name>Vampire SpawnSpell-Like AbilityGaseous form</name>
   </collection>
   <collection>
+    <name>Vampire SpawnSpell-Like AbilitySpider climb</name>
+  </collection>
+  <collection>
+    <name>Vampire SpawnTurn Resistance</name>
+  </collection>
+  <collection>
+    <name>VargouilleWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>VerminDarkvision</name>
+  </collection>
+  <collection>
+    <name>VerminImmunityMind-Affecting Effects</name>
+  </collection>
+  <collection>
     <name>Viper Snake, HugeScent</name>
   </collection>
   <collection>
@@ -9072,6 +9087,42 @@
   </collection>
   <collection>
     <name>Viper Snake, TinyScent</name>
+  </collection>
+  <collection>
+    <name>VrockDamage ReductionVulnerable to good weapons</name>
+  </collection>
+  <collection>
+    <name>VrockEnergy ResistanceAcid</name>
+  </collection>
+  <collection>
+    <name>VrockEnergy ResistanceCold</name>
+  </collection>
+  <collection>
+    <name>VrockEnergy ResistanceFire</name>
+  </collection>
+  <collection>
+    <name>VrockImmunityElectricity</name>
+  </collection>
+  <collection>
+    <name>VrockImmunityPoison</name>
+  </collection>
+  <collection>
+    <name>VrockSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>VrockSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
+  </collection>
+  <collection>
+    <name>VrockSpell-Like AbilityHeroism</name>
+  </collection>
+  <collection>
+    <name>VrockSpell-Like AbilityMirror image</name>
+  </collection>
+  <collection>
+    <name>VrockSpell-Like AbilityTelekinesis</name>
+  </collection>
+  <collection>
+    <name>VrockTelepathy</name>
   </collection>
   <collection>
     <name>WarponyScent</name>
@@ -9089,6 +9140,21 @@
     <name>Water Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
+    <name>Water MephitDamage ReductionVulnerable to magic weapons</name>
+  </collection>
+  <collection>
+    <name>Water MephitFast HealingExposed to rain or submerged up to its waist in water</name>
+  </collection>
+  <collection>
+    <name>Water MephitSpell-Like AbilityAcid arrow</name>
+  </collection>
+  <collection>
+    <name>Water MephitSpell-Like AbilityStinking cloud</name>
+  </collection>
+  <collection>
+    <name>Water NagaEschew Materials</name>
+  </collection>
+  <collection>
     <name>WeaselScent</name>
   </collection>
   <collection>
@@ -9104,10 +9170,19 @@
     <name>White Dragon, AdultDarkvision</name>
   </collection>
   <collection>
+    <name>White Dragon, AdultIcewalking</name>
+  </collection>
+  <collection>
     <name>White Dragon, AdultKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultSpell-Like AbilityGust of wind</name>
   </collection>
   <collection>
     <name>White Dragon, AncientBlindsense</name>
@@ -9119,10 +9194,25 @@
     <name>White Dragon, AncientDarkvision</name>
   </collection>
   <collection>
+    <name>White Dragon, AncientFreezing Fog</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientIcewalking</name>
+  </collection>
+  <collection>
     <name>White Dragon, AncientKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, AncientSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientSpell-Like AbilityGust of wind</name>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientSpell-Like AbilityWall of ice</name>
   </collection>
   <collection>
     <name>White Dragon, Great WyrmBlindsense</name>
@@ -9134,10 +9224,28 @@
     <name>White Dragon, Great WyrmDarkvision</name>
   </collection>
   <collection>
+    <name>White Dragon, Great WyrmFreezing Fog</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmIcewalking</name>
+  </collection>
+  <collection>
     <name>White Dragon, Great WyrmKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, Great WyrmSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmSpell-Like AbilityControl weather</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmSpell-Like AbilityGust of wind</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmSpell-Like AbilityWall of ice</name>
   </collection>
   <collection>
     <name>White Dragon, JuvenileBlindsense</name>
@@ -9146,7 +9254,13 @@
     <name>White Dragon, JuvenileDarkvision</name>
   </collection>
   <collection>
+    <name>White Dragon, JuvenileIcewalking</name>
+  </collection>
+  <collection>
     <name>White Dragon, JuvenileKeen Senses</name>
+  </collection>
+  <collection>
+    <name>White Dragon, JuvenileSpell-Like AbilityFog cloud</name>
   </collection>
   <collection>
     <name>White Dragon, Mature AdultBlindsense</name>
@@ -9158,10 +9272,19 @@
     <name>White Dragon, Mature AdultDarkvision</name>
   </collection>
   <collection>
+    <name>White Dragon, Mature AdultIcewalking</name>
+  </collection>
+  <collection>
     <name>White Dragon, Mature AdultKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, Mature AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultSpell-Like AbilityGust of wind</name>
   </collection>
   <collection>
     <name>White Dragon, OldBlindsense</name>
@@ -9173,10 +9296,22 @@
     <name>White Dragon, OldDarkvision</name>
   </collection>
   <collection>
+    <name>White Dragon, OldFreezing Fog</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldIcewalking</name>
+  </collection>
+  <collection>
     <name>White Dragon, OldKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, OldSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>White Dragon, OldSpell-Like AbilityGust of wind</name>
   </collection>
   <collection>
     <name>White Dragon, Very OldBlindsense</name>
@@ -9188,16 +9323,31 @@
     <name>White Dragon, Very OldDarkvision</name>
   </collection>
   <collection>
+    <name>White Dragon, Very OldFreezing Fog</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldIcewalking</name>
+  </collection>
+  <collection>
     <name>White Dragon, Very OldKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, Very OldSpell Resistance</name>
   </collection>
   <collection>
+    <name>White Dragon, Very OldSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldSpell-Like AbilityGust of wind</name>
+  </collection>
+  <collection>
     <name>White Dragon, Very YoungBlindsense</name>
   </collection>
   <collection>
     <name>White Dragon, Very YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Very YoungIcewalking</name>
   </collection>
   <collection>
     <name>White Dragon, Very YoungKeen Senses</name>
@@ -9212,16 +9362,34 @@
     <name>White Dragon, WyrmDarkvision</name>
   </collection>
   <collection>
+    <name>White Dragon, WyrmFreezing Fog</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmIcewalking</name>
+  </collection>
+  <collection>
     <name>White Dragon, WyrmKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, WyrmSpell Resistance</name>
   </collection>
   <collection>
+    <name>White Dragon, WyrmSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmSpell-Like AbilityGust of wind</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmSpell-Like AbilityWall of ice</name>
+  </collection>
+  <collection>
     <name>White Dragon, WyrmlingBlindsense</name>
   </collection>
   <collection>
     <name>White Dragon, WyrmlingDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmlingIcewalking</name>
   </collection>
   <collection>
     <name>White Dragon, WyrmlingKeen Senses</name>
@@ -9231,6 +9399,9 @@
   </collection>
   <collection>
     <name>White Dragon, YoungDarkvision</name>
+  </collection>
+  <collection>
+    <name>White Dragon, YoungIcewalking</name>
   </collection>
   <collection>
     <name>White Dragon, YoungKeen Senses</name>
@@ -9245,10 +9416,49 @@
     <name>White Dragon, Young AdultDarkvision</name>
   </collection>
   <collection>
+    <name>White Dragon, Young AdultIcewalking</name>
+  </collection>
+  <collection>
     <name>White Dragon, Young AdultKeen Senses</name>
   </collection>
   <collection>
     <name>White Dragon, Young AdultSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultSpell-Like AbilityFog cloud</name>
+  </collection>
+  <collection>
+    <name>Wild ElfLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>Wild ElfMartial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>Wild ElfMartial Weapon ProficiencyComposite shortbow</name>
+  </collection>
+  <collection>
+    <name>Wild ElfMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>Wild ElfMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>Wild ElfMartial Weapon ProficiencyRapier</name>
+  </collection>
+  <collection>
+    <name>Wild ElfMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>Will-O'-WispImmunitySpells and spell-like effects that allow spell resistance, except Magic Missile and Maze</name>
+  </collection>
+  <collection>
+    <name>Will-O'-WispNatural Invisibility</name>
+  </collection>
+  <collection>
+    <name>Will-O'-WispWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Winter WolfScent</name>
   </collection>
   <collection>
     <name>WolfScent</name>
@@ -9261,6 +9471,30 @@
   </collection>
   <collection>
     <name>WolverineTrack</name>
+  </collection>
+  <collection>
+    <name>Wood ElfLow-Light Vision</name>
+  </collection>
+  <collection>
+    <name>Wood ElfMartial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>Wood ElfMartial Weapon ProficiencyComposite shortbow</name>
+  </collection>
+  <collection>
+    <name>Wood ElfMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>Wood ElfMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>Wood ElfMartial Weapon ProficiencyRapier</name>
+  </collection>
+  <collection>
+    <name>Wood ElfMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>WorgScent</name>
   </collection>
   <collection>
     <name>WraithAlertness</name>
@@ -9276,5 +9510,233 @@
   </collection>
   <collection>
     <name>WraithUnnatural Aura</name>
+  </collection>
+  <collection>
+    <name>WyvernMultiattack</name>
+  </collection>
+  <collection>
+    <name>WyvernScent</name>
+  </collection>
+  <collection>
+    <name>XillMultiattack</name>
+  </collection>
+  <collection>
+    <name>XillPlanewalk</name>
+  </collection>
+  <collection>
+    <name>XillSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Yeth HoundDamage ReductionVulnerable to silver weapons</name>
+  </collection>
+  <collection>
+    <name>Yeth HoundFlight</name>
+  </collection>
+  <collection>
+    <name>Yeth HoundScent</name>
+  </collection>
+  <collection>
+    <name>YrthakBlindsight</name>
+  </collection>
+  <collection>
+    <name>YrthakImmunityAttacks that rely on sight</name>
+  </collection>
+  <collection>
+    <name>YrthakImmunityGaze attacks</name>
+  </collection>
+  <collection>
+    <name>YrthakImmunityIllusions</name>
+  </collection>
+  <collection>
+    <name>YrthakImmunityVisual effects</name>
+  </collection>
+  <collection>
+    <name>YrthakVulnerabilitySonic</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationAlertness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationAlternate Forma Tiny to Large viper</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationBlind-Fight</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationChameleon Power</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationMartial Weapon ProficiencyScimitar</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationMartial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationScent</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationSpell-Like AbilityAnimal trance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationSpell-Like AbilityBaleful polymorph: into snake form only</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationSpell-Like AbilityDeeper darkness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationSpell-Like AbilityDetect poison</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationSpell-Like AbilityEntangle</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationSpell-Like AbilityFear</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationSpell-Like AbilityNeutralize poison</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodAlertness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodAlternate Forma Tiny to Large viper</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodBlind-Fight</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodChameleon Power</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodMartial Weapon ProficiencyScimitar</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodMartial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodScent</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodSpell-Like AbilityAnimal trance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodSpell-Like AbilityCause fear</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodSpell-Like AbilityDeeper darkness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodSpell-Like AbilityDetect poison</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodSpell-Like AbilityEntangle</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodSpell-Like AbilityNeutralize poison</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti HalfbloodSpell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodAlertness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodAlternate Forma Tiny to Large viper</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodBlind-Fight</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodMartial Weapon ProficiencyScimitar</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodMartial Weapon ProficiencyLongbow</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodSpell-Like AbilityAnimal trance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodSpell-Like AbilityCause fear</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodSpell-Like AbilityCharm person</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodSpell-Like AbilityDarkness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodSpell-Like AbilityDetect poison</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodSpell-Like AbilityEntangle</name>
+  </collection>
+  <collection>
+    <name>ZelekhutArmor Proficiency (Heavy)</name>
+  </collection>
+  <collection>
+    <name>ZelekhutArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>ZelekhutArmor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>ZelekhutDamage ReductionVulnerable to chaotic weapons</name>
+  </collection>
+  <collection>
+    <name>ZelekhutExotic Weapon ProficiencySpiked chain</name>
+  </collection>
+  <collection>
+    <name>ZelekhutFast Healing</name>
+  </collection>
+  <collection>
+    <name>ZelekhutMounted Combat</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell Resistance</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell-Like AbilityClairaudience/Clairvoyance</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell-Like AbilityDimensional anchor</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell-Like AbilityDispel magic</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell-Like AbilityEarthquake</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell-Like AbilityFear</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell-Like AbilityHold monster</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell-Like AbilityHold person</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell-Like AbilityLesser geas</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell-Like AbilityLocate creature</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell-Like AbilityMark of justice</name>
+  </collection>
+  <collection>
+    <name>ZelekhutSpell-Like AbilityTrue seeing</name>
   </collection>
 </collections>

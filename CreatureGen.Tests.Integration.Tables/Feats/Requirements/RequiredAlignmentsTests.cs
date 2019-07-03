@@ -1692,66 +1692,103 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Adult, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Adult, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Adult, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Adult, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Adult, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Adult, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Adult, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FogCloud)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Adult, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GustOfWind)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Ancient, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Ancient, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Ancient, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Ancient, FeatConstants.SpecialQualities.FreezingFog, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Ancient, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Ancient, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Ancient, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Ancient, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FogCloud)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Ancient, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GustOfWind)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Ancient, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.WallOfIce)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_GreatWyrm, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_GreatWyrm, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_GreatWyrm, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_GreatWyrm, FeatConstants.SpecialQualities.FreezingFog, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_GreatWyrm, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_GreatWyrm, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_GreatWyrm, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_GreatWyrm, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ControlWeather)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_GreatWyrm, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FogCloud)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_GreatWyrm, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GustOfWind)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_GreatWyrm, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.WallOfIce)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Juvenile, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Juvenile, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Juvenile, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Juvenile, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Juvenile, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FogCloud)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_MatureAdult, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_MatureAdult, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_MatureAdult, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_MatureAdult, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_MatureAdult, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_MatureAdult, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_MatureAdult, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FogCloud)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_MatureAdult, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GustOfWind)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Old, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Old, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Old, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Old, FeatConstants.SpecialQualities.FreezingFog, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Old, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Old, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Old, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Old, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FogCloud)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Old, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GustOfWind)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryOld, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryOld, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryOld, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryOld, FeatConstants.SpecialQualities.FreezingFog, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryOld, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryOld, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryOld, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryOld, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FogCloud)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryOld, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GustOfWind)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryYoung, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryYoung, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryYoung, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_VeryYoung, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrm, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrm, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrm, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrm, FeatConstants.SpecialQualities.FreezingFog, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrm, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrm, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrm, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrm, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FogCloud)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrm, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GustOfWind)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrm, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.WallOfIce)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrmling, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrmling, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrmling, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Wyrmling, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Young, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Young, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Young, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_Young, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_YoungAdult, FeatConstants.SpecialQualities.Blindsense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_YoungAdult, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_YoungAdult, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0]; ;
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_YoungAdult, FeatConstants.SpecialQualities.Icewalking, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_YoungAdult, FeatConstants.SpecialQualities.KeenSenses, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_YoungAdult, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Dragon_White_YoungAdult, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FogCloud)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.DragonTurtle, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Fire)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.DragonTurtle, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
@@ -1936,6 +1973,22 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_High, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Rapier)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_High, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Shortbow)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_High, FeatConstants.SpecialQualities.LowLightVision, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wild, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeLongbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wild, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeShortbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wild, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wild, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longsword)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wild, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Rapier)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wild, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Shortbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wild, FeatConstants.SpecialQualities.LowLightVision, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeLongbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeShortbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longsword)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Rapier)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Shortbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elf_Wood, FeatConstants.SpecialQualities.LowLightVision, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Erinyes, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longsword)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Erinyes, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeLongbow)] = new string[0];
@@ -2677,6 +2730,11 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Mephit_Steam, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Blur)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Mephit_Steam, FeatConstants.SpecialQualities.SpellLikeAbility, "Rainstorm of boiling water")] = new string[0];
 
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Mephit_Water, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Mephit_Water, FeatConstants.SpecialQualities.FastHealing, "Exposed to rain or submerged up to its waist in water")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Mephit_Water, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AcidArrow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Mephit_Water, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.StinkingCloud)] = new string[0];
+
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Merfolk, FeatConstants.ArmorProficiency_Light, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Merfolk, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Trident)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Merfolk, FeatConstants.WeaponProficiency_Simple, WeaponConstants.HeavyCrossbow)] = new string[0];
@@ -2712,6 +2770,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Naga_Guardian, FeatConstants.EschewMaterials, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Naga_Spirit, FeatConstants.EschewMaterials, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Naga_Water, FeatConstants.EschewMaterials, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Nalfeshnee, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to good weapons")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Nalfeshnee, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Acid)] = new string[0];
@@ -3307,7 +3367,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Titan, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Javelin)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Titan, FeatConstants.SpecialQualities.ChangeShape, "Any Small or Medium Humanoid")] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Titan, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to lawful weapons")] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Titan, FeatConstants.SpecialQualities.OversizedWeapon, SizeConstants.Gargantuan)] = new[] { AlignmentConstants.ChaoticEvil };
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Titan, FeatConstants.SpecialQualities.OversizedWeapon, SizeConstants.Gargantuan)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.BestowCurse)] = new[] { AlignmentConstants.ChaoticEvil };
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ChainLightning)] = new string[0];
@@ -3420,6 +3480,13 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Vrock, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Vrock, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Vrock, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Electricity)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Vrock, FeatConstants.SpecialQualities.Immunity, "Poison")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Vrock, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Vrock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Heroism)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Vrock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MirrorImage)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Vrock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Telekinesis)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Vrock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Teleport_Greater + ": self plus 50 pounds of objects only")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Vrock, FeatConstants.SpecialQualities.Telepathy, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Weasel, FeatConstants.WeaponFinesse, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Weasel, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
@@ -3436,6 +3503,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Whale_Orca, FeatConstants.SpecialQualities.Blindsight, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Whale_Orca, FeatConstants.SpecialQualities.HoldBreath, string.Empty)] = new string[0];
 
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.WillOWisp, FeatConstants.WeaponFinesse, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.WillOWisp, FeatConstants.SpecialQualities.Immunity, "Spells and spell-like effects that allow spell resistance, except Magic Missile and Maze")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.WillOWisp, FeatConstants.SpecialQualities.NaturalInvisibility, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.WinterWolf, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Wolf, FeatConstants.Track, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Wolf, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
 
@@ -3447,6 +3520,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Wolverine_Dire, FeatConstants.Track, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Wolverine_Dire, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Worg, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Wraith, FeatConstants.Alertness, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Wraith, FeatConstants.Initiative_Improved, string.Empty)] = new string[0];
@@ -3460,6 +3535,13 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Wraith_Dread, FeatConstants.SpecialQualities.Lifesense, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Wraith_Dread, FeatConstants.SpecialQualities.TurnResistance, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Wraith_Dread, FeatConstants.SpecialQualities.UnnaturalAura, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Wyvern, FeatConstants.Monster.Multiattack, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Wyvern, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Xill, FeatConstants.Monster.Multiattack, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Xill, FeatConstants.SpecialQualities.Planewalk, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Xill, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Xorn_Average, FeatConstants.Cleave, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Xorn_Average, FeatConstants.SpecialQualities.AllAroundVision, string.Empty)] = new string[0];
@@ -3486,6 +3568,83 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Xorn_Minor, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Cold)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Xorn_Minor, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Fire)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Xorn_Minor, FeatConstants.SpecialQualities.Tremorsense, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YethHound, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to silver weapons")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YethHound, FeatConstants.SpecialQualities.Flight, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YethHound, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Yrthak, FeatConstants.SpecialQualities.Blindsight, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Yrthak, FeatConstants.SpecialQualities.Immunity, "Attacks that rely on sight")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Yrthak, FeatConstants.SpecialQualities.Immunity, "Gaze attacks")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Yrthak, FeatConstants.SpecialQualities.Immunity, "Illusions")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Yrthak, FeatConstants.SpecialQualities.Immunity, "Visual effects")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Yrthak, FeatConstants.SpecialQualities.Vulnerability, FeatConstants.Foci.Elements.Sonic)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.Alertness, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.BlindFight, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Scimitar)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeLongbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.AlternateForm, "a Tiny to Large viper")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.ChameleonPower, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AnimalTrance)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.BalefulPolymorph + ": into snake form only")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectPoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Entangle)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Fear)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.NeutralizePoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Suggestion)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.Alertness, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.BlindFight, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Scimitar)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeLongbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.AlternateForm, "a Tiny to Large viper")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.ChameleonPower, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AnimalTrance)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CauseFear)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectPoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Entangle)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.NeutralizePoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Suggestion)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.Alertness, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.BlindFight, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Scimitar)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.SpecialQualities.AlternateForm, "a Tiny to Large viper")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AnimalTrance)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CauseFear)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CharmPerson)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Darkness)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectPoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Entangle)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.ArmorProficiency_Heavy, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.ArmorProficiency_Light, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.MountedCombat, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.WeaponProficiency_Exotic, WeaponConstants.SpikedChain)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to chaotic weapons")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.FastHealing, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ClairaudienceClairvoyance)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DimensionalAnchor)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelMagic)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Earthquake)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Fear)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Geas_Lesser)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HoldMonster)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HoldPerson)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.LocateCreature)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MarkOfJustice)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Zelekhut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.TrueSeeing)] = new string[0];
 
                     foreach (var testCase in testCases)
                     {
