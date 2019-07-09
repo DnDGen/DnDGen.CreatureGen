@@ -119,6 +119,7 @@
     <Compile Include="Selectors\Collections\IAdvancementSelector.cs" />
     <Compile Include="Selectors\Collections\IBonusSelector.cs" />
     <Compile Include="Selectors\Collections\TypeAndAmountSelector.cs" />
+    <Compile Include="Selectors\Helpers\AttackHelper.cs" />
     <Compile Include="Selectors\Helpers\SpecialQualityHelper.cs" />
     <Compile Include="Selectors\Helpers\TypeAndAmountHelper.cs" />
     <Compile Include="Selectors\Selections\AdvancementSelection.cs" />
