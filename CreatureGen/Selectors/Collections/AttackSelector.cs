@@ -27,8 +27,6 @@ namespace CreatureGen.Selectors.Collections
                 selections.Add(selection);
             }
 
-            //TODO: figure out how to say the attack should be equipment/generated
-
             return selections;
         }
 
@@ -37,12 +35,12 @@ namespace CreatureGen.Selectors.Collections
             var sections = input.Split(AttackSelection.Divider);
 
             var selection = new AttackSelection();
-            selection.IsMelee = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsMelee]);
-            selection.IsNatural = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsNatural]);
-            selection.IsPrimary = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsPrimary]);
-            selection.IsSpecial = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsSpecial]);
-            selection.Name = sections[DataIndexConstants.AttackData.Name];
-            selection.Damage = sections[DataIndexConstants.AttackData.Damage];
+            selection.IsMelee = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsMeleeIndex]);
+            selection.IsNatural = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsNaturalIndex]);
+            selection.IsPrimary = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsPrimaryIndex]);
+            selection.IsSpecial = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsSpecialIndex]);
+            selection.Name = sections[DataIndexConstants.AttackData.NameIndex];
+            selection.Damage = sections[DataIndexConstants.AttackData.DamageIndex];
 
             if (selection.IsNatural)
                 selection.Damage = GetAdjustedDamage(selection.Damage, originalSize, advancedSize);

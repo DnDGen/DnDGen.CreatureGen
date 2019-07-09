@@ -4143,15 +4143,18 @@
   </collection>
   <collection>
     <name>Forest GnomeSpell-Like AbilityDancing lights</name>
+    <entry>Charisma@10</entry>
   </collection>
   <collection>
     <name>Forest GnomeSpell-Like AbilityGhost sound</name>
+    <entry>Charisma@10</entry>
   </collection>
   <collection>
     <name>Forest GnomeSpell-Like AbilityPass without trace: self only</name>
   </collection>
   <collection>
     <name>Forest GnomeSpell-Like AbilityPrestidigitation</name>
+    <entry>Charisma@10</entry>
   </collection>
   <collection>
     <name>Forest GnomeSpell-Like AbilitySpeak with animals: on a very basic level with forest animals</name>
@@ -7839,12 +7842,15 @@
   </collection>
   <collection>
     <name>Rock GnomeSpell-Like AbilityDancing lights</name>
+    <entry>Charisma@10</entry>
   </collection>
   <collection>
     <name>Rock GnomeSpell-Like AbilityGhost sound</name>
+    <entry>Charisma@10</entry>
   </collection>
   <collection>
     <name>Rock GnomeSpell-Like AbilityPrestidigitation</name>
+    <entry>Charisma@10</entry>
   </collection>
   <collection>
     <name>Rock GnomeSpell-Like AbilitySpeak with animals: burrowing mammals only, duration 1 minute</name>
@@ -8805,7 +8811,6 @@
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityBestow curse</name>
-    <entry>Chaotic Evil</entry>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityChain lightning</name>
@@ -8815,19 +8820,15 @@
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityCrushing hand</name>
-    <entry>Chaotic Evil</entry>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityCure/Inflict critical wounds</name>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityDaylight</name>
-    <entry>Chaotic Good</entry>
-    <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityDeeper darkness</name>
-    <entry>Chaotic Evil</entry>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityEtherealness</name>
@@ -8843,16 +8844,12 @@
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityGreater restoration</name>
-    <entry>Chaotic Good</entry>
-    <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityHold monster</name>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityHoly smite</name>
-    <entry>Chaotic Good</entry>
-    <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityInvisibility</name>
@@ -8874,15 +8871,12 @@
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityRemove curse</name>
-    <entry>Chaotic Good</entry>
-    <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilitySummon nature's ally IX</name>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityUnholy blight</name>
-    <entry>Chaotic Evil</entry>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityWord of chaos</name>

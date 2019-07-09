@@ -84,6 +84,9 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 SaveConstants.Fortitude,
                 SaveConstants.Reflex,
                 SaveConstants.Will,
+                GroupConstants.GoodBaseAttack,
+                GroupConstants.AverageBaseAttack,
+                GroupConstants.PoorBaseAttack,
             };
 
             var names = entries.Union(templates).Union(types).Union(subtypes);

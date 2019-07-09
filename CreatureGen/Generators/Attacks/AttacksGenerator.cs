@@ -69,7 +69,7 @@ namespace CreatureGen.Generators.Attacks
         public IEnumerable<Attack> GenerateAttacks(string creatureName, string originalSize, string size, int baseAttackBonus, Dictionary<string, Ability> abilities)
         {
             var attackSelections = attackSelector.Select(creatureName, originalSize, size);
-            var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.AttackBonuses, size);
+            var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, size);
             var attacks = new List<Attack>();
 
             foreach (var attackSelection in attackSelections)
@@ -77,7 +77,7 @@ namespace CreatureGen.Generators.Attacks
                 var attack = new Attack();
                 attacks.Add(attack);
 
-                attack.Damage = attackSelection.Damage;
+                attack.Damage = GetAttackDamage(attackSelection, abilities);
                 attack.Name = attackSelection.Name;
                 attack.IsMelee = attackSelection.IsMelee;
                 attack.IsNatural = attackSelection.IsNatural;
@@ -93,6 +93,42 @@ namespace CreatureGen.Generators.Attacks
             }
 
             return attacks;
+        }
+
+        private string GetAttackDamage(AttackSelection selection, Dictionary<string, Ability> abilities, IEnumerable<AttackSelection> otherAttacks)
+        {
+            var damage = selection.Damage;
+
+            foreach (var kvp in abilities)
+            {
+                var target = kvp.Key.ToUpper();
+                var bonus = kvp.Value.Modifier;
+
+                if (!selection.IsPrimary)
+                {
+                    bonus /= 2;
+                }
+                else if (IsSolePrimary(selection, otherAttacks))
+                {
+                    bonus *= 3;
+                    bonus /= 2;
+                }
+
+                if (damage.Contains(target))
+                {
+                    damage.Replace(target, bonus.ToString());
+                }
+            }
+
+            return damage;
+        }
+
+        private bool IsSolePrimary(AttackSelection selection, IEnumerable<AttackSelection> otherAttacks)
+        {
+            var soleCount = otherAttacks.Count(a => !a.IsSpecial
+                && a.IsMelee == selection.IsMelee
+                && a.IsNatural == selection.IsNatural);
+            return soleCount < 2;
         }
 
         private Ability GetAbilityForAttack(Dictionary<string, Ability> abilities, AttackSelection attackSelection)

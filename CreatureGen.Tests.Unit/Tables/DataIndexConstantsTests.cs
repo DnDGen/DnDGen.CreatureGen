@@ -33,23 +33,23 @@ namespace CreatureGen.Tests.Unit.Tables
             Assert.That(data, Is.All.Empty);
         }
 
-        [TestCase(DataIndexConstants.AttackData.Name, 0)]
-        [TestCase(DataIndexConstants.AttackData.Damage, 1)]
-        [TestCase(DataIndexConstants.AttackData.IsNatural, 2)]
-        [TestCase(DataIndexConstants.AttackData.IsMelee, 3)]
-        [TestCase(DataIndexConstants.AttackData.IsPrimary, 4)]
-        [TestCase(DataIndexConstants.AttackData.IsSpecial, 5)]
+        [TestCase(DataIndexConstants.AttackData.NameIndex, 0)]
+        [TestCase(DataIndexConstants.AttackData.DamageIndex, 1)]
+        [TestCase(DataIndexConstants.AttackData.IsNaturalIndex, 2)]
+        [TestCase(DataIndexConstants.AttackData.IsMeleeIndex, 3)]
+        [TestCase(DataIndexConstants.AttackData.IsPrimaryIndex, 4)]
+        [TestCase(DataIndexConstants.AttackData.IsSpecialIndex, 5)]
         public void AttackDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
         }
 
-        [TestCase(DataIndexConstants.AttackData.Name)]
-        [TestCase(DataIndexConstants.AttackData.Damage)]
-        [TestCase(DataIndexConstants.AttackData.IsNatural)]
-        [TestCase(DataIndexConstants.AttackData.IsMelee)]
-        [TestCase(DataIndexConstants.AttackData.IsPrimary)]
-        [TestCase(DataIndexConstants.AttackData.IsSpecial)]
+        [TestCase(DataIndexConstants.AttackData.NameIndex)]
+        [TestCase(DataIndexConstants.AttackData.DamageIndex)]
+        [TestCase(DataIndexConstants.AttackData.IsNaturalIndex)]
+        [TestCase(DataIndexConstants.AttackData.IsMeleeIndex)]
+        [TestCase(DataIndexConstants.AttackData.IsPrimaryIndex)]
+        [TestCase(DataIndexConstants.AttackData.IsSpecialIndex)]
         public void AttackDataIndicesInitialized(int index)
         {
             var data = DataIndexConstants.AttackData.InitializeData();

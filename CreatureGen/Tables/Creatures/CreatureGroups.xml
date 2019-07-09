@@ -1856,4 +1856,28 @@
     <name>Zombie</name>
     <entry>Has Skeleton</entry>
   </collection>
+  <collection>
+    <name>Good Base Attack</name>
+    <entry>Dragon</entry>
+    <entry>Magical Beast</entry>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Outsider</entry>
+  </collection>
+  <collection>
+    <name>Average Base Attack</name>
+    <entry>Aberration</entry>
+    <entry>Animal</entry>
+    <entry>Construct</entry>
+    <entry>Elemental</entry>
+    <entry>Giant</entry>
+    <entry>Humanoid</entry>
+    <entry>Ooze</entry>
+    <entry>Plant</entry>
+    <entry>Vermin</entry>
+  </collection>
+  <collection>
+    <name>Poor Base Attack</name>
+    <entry>Fey</entry>
+    <entry>Undead</entry>
+  </collection>
 </collections>

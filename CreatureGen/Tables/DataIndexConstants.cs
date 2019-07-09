@@ -15,16 +15,16 @@
 
         internal static class AttackData
         {
-            public const int Name = 0;
-            public const int Damage = 1;
-            public const int IsNatural = 2;
-            public const int IsMelee = 3;
-            public const int IsPrimary = 4;
-            public const int IsSpecial = 5;
+            public const int NameIndex = 0;
+            public const int DamageIndex = 1;
+            public const int IsNaturalIndex = 2;
+            public const int IsMeleeIndex = 3;
+            public const int IsPrimaryIndex = 4;
+            public const int IsSpecialIndex = 5;
 
             public static string[] InitializeData()
             {
-                return DataIndexConstants.InitializeData(IsSpecial);
+                return DataIndexConstants.InitializeData(IsSpecialIndex);
             }
         }
 
