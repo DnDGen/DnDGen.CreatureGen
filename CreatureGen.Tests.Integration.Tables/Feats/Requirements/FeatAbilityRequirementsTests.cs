@@ -2287,15 +2287,21 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.AttackBonus, CreatureConstants.Types.Subtypes.Orc)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.AttackBonus, CreatureConstants.Types.Subtypes.Reptilian)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DancingLights)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DancingLights)][AbilityConstants.Charisma] = 10;
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GhostSound)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GhostSound)][AbilityConstants.Charisma] = 10;
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.PassWithoutTrace + ": self only")] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Prestidigitation)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Prestidigitation)][AbilityConstants.Charisma] = 10;
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.SpeakWithAnimals + ": on a very basic level with forest animals")] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Rock, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longsword)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Rock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DancingLights)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Rock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DancingLights)][AbilityConstants.Charisma] = 10;
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Rock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GhostSound)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Rock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GhostSound)][AbilityConstants.Charisma] = 10;
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Rock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Prestidigitation)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Rock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Prestidigitation)][AbilityConstants.Charisma] = 10;
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Rock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.SpeakWithAnimals + ": burrowing mammals only, duration 1 minute")] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Gnome_Svirfneblin, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new Dictionary<string, int>();
