@@ -77,7 +77,7 @@ namespace CreatureGen.Generators.Attacks
                 var attack = new Attack();
                 attacks.Add(attack);
 
-                attack.Damage = GetAttackDamage(attackSelection, abilities);
+                attack.Damage = GetAttackDamage(attackSelection, abilities, attackSelections);
                 attack.Name = attackSelection.Name;
                 attack.IsMelee = attackSelection.IsMelee;
                 attack.IsNatural = attackSelection.IsNatural;
