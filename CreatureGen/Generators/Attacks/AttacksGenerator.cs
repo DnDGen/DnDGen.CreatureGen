@@ -116,7 +116,7 @@ namespace CreatureGen.Generators.Attacks
 
                 if (damage.Contains(target))
                 {
-                    damage.Replace(target, bonus.ToString());
+                    damage = damage.Replace(target, bonus.ToString());
                 }
             }
 

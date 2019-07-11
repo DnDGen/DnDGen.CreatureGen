@@ -297,7 +297,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             attacks.Add(new AttackSelection { Name = "attack 1" });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.AttackBonuses, "size")).Returns(90210);
+            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(90210);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
             var generatedAttack = generatedAttacks.Single();
@@ -312,7 +312,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             attacks.Add(new AttackSelection { Name = "attack 1", IsSpecial = true });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.AttackBonuses, "size")).Returns(90210);
+            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(90210);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
             var generatedAttack = generatedAttacks.Single();
@@ -649,12 +649,12 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(3));
 
             var attacks = generatedAttacks.ToArray();
-            Assert.That(attackSelections[0].Name, Is.EqualTo("attack"));
-            Assert.That(attackSelections[0].Damage, Is.EqualTo("damage + 67650"));
-            Assert.That(attackSelections[1].Name, Is.EqualTo("nat attack"));
-            Assert.That(attackSelections[1].Damage, Is.EqualTo("damage + 45100 + effect"));
-            Assert.That(attackSelections[2].Name, Is.EqualTo("nat attack"));
-            Assert.That(attackSelections[2].Damage, Is.EqualTo("damage + 45100 + effect"));
+            Assert.That(attacks[0].Name, Is.EqualTo("attack"));
+            Assert.That(attacks[0].Damage, Is.EqualTo("damage + 67650"));
+            Assert.That(attacks[1].Name, Is.EqualTo("nat attack"));
+            Assert.That(attacks[1].Damage, Is.EqualTo("damage + 45100 + effect"));
+            Assert.That(attacks[2].Name, Is.EqualTo("nat attack"));
+            Assert.That(attacks[2].Damage, Is.EqualTo("damage + 45100 + effect"));
         }
 
         [TestCase(AbilityConstants.Strength)]

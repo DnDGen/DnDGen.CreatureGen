@@ -55,19 +55,21 @@ namespace CreatureGen.Selectors.Collections
             var orderedSizes = SizeConstants.GetOrdered();
             var sizeDifference = Array.IndexOf(orderedSizes, advancedSize) - Array.IndexOf(orderedSizes, originalSize);
 
+            var damageMaps = new Dictionary<string, string>();
+            damageMaps["2d8"] = "3d8";
+            damageMaps["2d6"] = "3d6";
+            damageMaps["1d10"] = "2d8";
+            damageMaps["1d8"] = "2d6";
+            damageMaps["1d6"] = "1d8";
+            damageMaps["1d4"] = "1d6";
+            damageMaps["1d3"] = "1d4";
+            damageMaps["1d2"] = "1d3";
+
             while (sizeDifference-- > 0)
             {
-                switch (adjustedDamage)
+                foreach (var kvp in damageMaps)
                 {
-                    case "1d2": adjustedDamage = "1d3"; break;
-                    case "1d3": adjustedDamage = "1d4"; break;
-                    case "1d4": adjustedDamage = "1d6"; break;
-                    case "1d6": adjustedDamage = "1d8"; break;
-                    case "1d8": adjustedDamage = "2d6"; break;
-                    case "1d10": adjustedDamage = "2d8"; break;
-                    case "2d6": adjustedDamage = "3d6"; break;
-                    case "2d8": adjustedDamage = "3d8"; break;
-                    default: throw new ArgumentException($"{originalDamage} is not a valid damage that can be advanced to {advancedSize} size from {originalSize}");
+                    adjustedDamage = adjustedDamage.Replace(kvp.Key, kvp.Value);
                 }
             }
 
