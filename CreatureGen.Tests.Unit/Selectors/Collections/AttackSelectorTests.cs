@@ -488,6 +488,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         [TestCase("1d6 + STRENGTH", "1d8 + STRENGTH")]
         [TestCase("1d6+STRENGTH+Slime", "1d8+STRENGTH+Slime")]
         [TestCase("1d6 + STRENGTH + Slime", "1d8 + STRENGTH + Slime")]
+        [TestCase("2d6+2 + STRENGTH + 1d4 acid", "3d6+2 + STRENGTH + 1d6 acid")]
         [TestCase("1d4 Wisdom drain", "1d6 Wisdom drain")]
         public void AdjustDamageForAdvancedSizeForNaturalAttackWithNonRollDamage(string originalDamage, string advancedDamage)
         {
@@ -509,6 +510,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         }
 
         [TestCase("4d6")]
+        [TestCase("4d4")]
         public void AdjustDamageForAdvancedSizeForNaturalAttackWithNonAdjustableRollDamage(string originalDamage)
         {
             var attackData = new[]
