@@ -81,32 +81,634 @@
     <entry>Fly@150</entry>
   </collection>
   <collection>
-    <name>Animated Object, Colossal</name>
+    <name>Animated Object, Anvil, Colossal</name>
     <entry>Land@10</entry>
   </collection>
   <collection>
-    <name>Animated Object, Gargantuan</name>
+    <name>Animated Object, Anvil, Gargantuan</name>
     <entry>Land@10</entry>
   </collection>
   <collection>
-    <name>Animated Object, Huge</name>
+    <name>Animated Object, Anvil, Huge</name>
     <entry>Land@20</entry>
   </collection>
   <collection>
-    <name>Animated Object, Large</name>
+    <name>Animated Object, Anvil, Large</name>
     <entry>Land@20</entry>
   </collection>
   <collection>
-    <name>Animated Object, Medium</name>
+    <name>Animated Object, Anvil, Medium</name>
     <entry>Land@30</entry>
   </collection>
   <collection>
-    <name>Animated Object, Small</name>
+    <name>Animated Object, Anvil, Small</name>
     <entry>Land@30</entry>
   </collection>
   <collection>
-    <name>Animated Object, Tiny</name>
+    <name>Animated Object, Anvil, Tiny</name>
     <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Colossal</name>
+    <entry>Land@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Gargantuan</name>
+    <entry>Land@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Huge</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Large</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Medium</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Small</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Tiny</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Colossal</name>
+    <entry>Land@10</entry>
+    <entry>Swim@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Gargantuan</name>
+    <entry>Land@10</entry>
+    <entry>Swim@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Huge</name>
+    <entry>Land@20</entry>
+    <entry>Swim@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Large</name>
+    <entry>Land@20</entry>
+    <entry>Swim@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Medium</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Small</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Tiny</name>
+    <entry>Land@40</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Colossal</name>
+    <entry>Land@10</entry>
+    <entry>Swim@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Gargantuan</name>
+    <entry>Land@10</entry>
+    <entry>Swim@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Huge</name>
+    <entry>Land@20</entry>
+    <entry>Swim@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Large</name>
+    <entry>Land@20</entry>
+    <entry>Swim@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Medium</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Small</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Tiny</name>
+    <entry>Land@40</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Colossal</name>
+    <entry>Land@10</entry>
+    <entry>Fly@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Gargantuan</name>
+    <entry>Land@10</entry>
+    <entry>Fly@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Huge</name>
+    <entry>Land@20</entry>
+    <entry>Fly@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Large</name>
+    <entry>Land@20</entry>
+    <entry>Fly@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Medium</name>
+    <entry>Land@30</entry>
+    <entry>Fly@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Small</name>
+    <entry>Land@30</entry>
+    <entry>Fly@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Tiny</name>
+    <entry>Land@40</entry>
+    <entry>Fly@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Colossal</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Gargantuan</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Huge</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Large</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Medium</name>
+    <entry>Land@70</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Small</name>
+    <entry>Land@70</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Tiny</name>
+    <entry>Land@80</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Colossal</name>
+    <entry>Land@10</entry>
+    <entry>Climb@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Gargantuan</name>
+    <entry>Land@10</entry>
+    <entry>Climb@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Huge</name>
+    <entry>Land@20</entry>
+    <entry>Climb@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Large</name>
+    <entry>Land@20</entry>
+    <entry>Climb@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Medium</name>
+    <entry>Land@30</entry>
+    <entry>Climb@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Small</name>
+    <entry>Land@30</entry>
+    <entry>Climb@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Tiny</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Colossal</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Gargantuan</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Huge</name>
+    <entry>Land@40</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Large</name>
+    <entry>Land@40</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Medium</name>
+    <entry>Land@50</entry>
+    <entry>Swim@25</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Small</name>
+    <entry>Land@50</entry>
+    <entry>Swim@25</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Tiny</name>
+    <entry>Land@60</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Colossal</name>
+    <entry>Land@10</entry>
+    <entry>Climb@5</entry>
+    <entry>Fly@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Gargantuan</name>
+    <entry>Land@10</entry>
+    <entry>Climb@5</entry>
+    <entry>Fly@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Huge</name>
+    <entry>Land@20</entry>
+    <entry>Climb@10</entry>
+    <entry>Fly@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Large</name>
+    <entry>Land@20</entry>
+    <entry>Climb@10</entry>
+    <entry>Fly@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Medium</name>
+    <entry>Land@30</entry>
+    <entry>Climb@15</entry>
+    <entry>Fly@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Small</name>
+    <entry>Land@30</entry>
+    <entry>Climb@15</entry>
+    <entry>Fly@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Tiny</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+    <entry>Fly@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Colossal</name>
+    <entry>Land@20</entry>
+    <entry>Swim@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Gargantuan</name>
+    <entry>Land@20</entry>
+    <entry>Swim@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Huge</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Large</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Medium</name>
+    <entry>Land@40</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Small</name>
+    <entry>Land@40</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Tiny</name>
+    <entry>Land@50</entry>
+    <entry>Swim@25</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Colossal</name>
+    <entry>Land@10</entry>
+    <entry>Climb@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Gargantuan</name>
+    <entry>Land@10</entry>
+    <entry>Climb@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Huge</name>
+    <entry>Land@20</entry>
+    <entry>Climb@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Large</name>
+    <entry>Land@20</entry>
+    <entry>Climb@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Medium</name>
+    <entry>Land@30</entry>
+    <entry>Climb@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Small</name>
+    <entry>Land@30</entry>
+    <entry>Climb@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Tiny</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Colossal</name>
+    <entry>Land@10</entry>
+    <entry>Fly@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Gargantuan</name>
+    <entry>Land@10</entry>
+    <entry>Fly@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Huge</name>
+    <entry>Land@20</entry>
+    <entry>Fly@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Large</name>
+    <entry>Land@20</entry>
+    <entry>Fly@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Medium</name>
+    <entry>Land@30</entry>
+    <entry>Fly@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Small</name>
+    <entry>Land@30</entry>
+    <entry>Fly@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Tiny</name>
+    <entry>Land@40</entry>
+    <entry>Fly@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Colossal</name>
+    <entry>Land@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Gargantuan</name>
+    <entry>Land@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Huge</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Large</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Medium</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Small</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Tiny</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Colossal</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Gargantuan</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Huge</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Large</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Medium</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Small</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Tiny</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Colossal</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Huge</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Large</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Medium</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Small</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Tiny</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Colossal</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Gargantuan</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Huge</name>
+    <entry>Land@40</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Large</name>
+    <entry>Land@40</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Medium</name>
+    <entry>Land@50</entry>
+    <entry>Swim@25</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Small</name>
+    <entry>Land@50</entry>
+    <entry>Swim@25</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Tiny</name>
+    <entry>Land@60</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Colossal</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Gargantuan</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Huge</name>
+    <entry>Land@40</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Large</name>
+    <entry>Land@40</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Medium</name>
+    <entry>Land@50</entry>
+    <entry>Swim@25</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Small</name>
+    <entry>Land@50</entry>
+    <entry>Swim@25</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Tiny</name>
+    <entry>Land@60</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Colossal</name>
+    <entry>Land@10</entry>
+    <entry>Fly@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Gargantuan</name>
+    <entry>Land@10</entry>
+    <entry>Fly@5</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Huge</name>
+    <entry>Land@20</entry>
+    <entry>Fly@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Large</name>
+    <entry>Land@20</entry>
+    <entry>Fly@10</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Medium</name>
+    <entry>Land@30</entry>
+    <entry>Fly@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Small</name>
+    <entry>Land@30</entry>
+    <entry>Fly@15</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Tiny</name>
+    <entry>Land@40</entry>
+    <entry>Fly@20</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Colossal</name>
+    <entry>Land@50</entry>
+    <entry>Swim@25</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Gargantuan</name>
+    <entry>Land@50</entry>
+    <entry>Swim@25</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Huge</name>
+    <entry>Land@60</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Large</name>
+    <entry>Land@60</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Medium</name>
+    <entry>Land@70</entry>
+    <entry>Swim@35</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Small</name>
+    <entry>Land@70</entry>
+    <entry>Swim@35</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Tiny</name>
+    <entry>Land@80</entry>
+    <entry>Swim@40</entry>
   </collection>
   <collection>
     <name>Ankheg</name>

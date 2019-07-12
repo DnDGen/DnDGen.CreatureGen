@@ -46,7 +46,7 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
         }
 
         [TestCaseSource(typeof(AttackTestData), "Creatures")]
-        public void SpecialQualityData(string creature, List<string[]> entries)
+        public void AttackData(string creature, List<string[]> entries)
         {
             if (!entries.Any())
                 Assert.Fail("Test case did not specify attacks or NONE");

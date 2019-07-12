@@ -69,25 +69,431 @@
     <entry>Good Maneuverability</entry>
   </collection>
   <collection>
-    <name>Animated Object, Colossal</name>
+    <name>Animated Object, Anvil, Colossal</name>
   </collection>
   <collection>
-    <name>Animated Object, Gargantuan</name>
+    <name>Animated Object, Anvil, Gargantuan</name>
   </collection>
   <collection>
-    <name>Animated Object, Huge</name>
+    <name>Animated Object, Anvil, Huge</name>
   </collection>
   <collection>
-    <name>Animated Object, Large</name>
+    <name>Animated Object, Anvil, Large</name>
   </collection>
   <collection>
-    <name>Animated Object, Medium</name>
+    <name>Animated Object, Anvil, Medium</name>
   </collection>
   <collection>
-    <name>Animated Object, Small</name>
+    <name>Animated Object, Anvil, Small</name>
   </collection>
   <collection>
-    <name>Animated Object, Tiny</name>
+    <name>Animated Object, Anvil, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Colossal</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Gargantuan</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Huge</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Large</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Medium</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Small</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Tiny</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Colossal</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Gargantuan</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Huge</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Large</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Medium</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Small</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Tiny</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Colossal</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Gargantuan</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Huge</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Large</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Medium</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Small</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Tiny</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Colossal</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Gargantuan</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Huge</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Large</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Medium</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Small</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Tiny</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Tiny</name>
   </collection>
   <collection>
     <name>Ankheg</name>

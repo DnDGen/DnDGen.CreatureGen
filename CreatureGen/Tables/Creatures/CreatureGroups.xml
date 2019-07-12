@@ -121,13 +121,139 @@
   </collection>
   <collection>
     <name>Animated Object</name>
-    <entry>Animated Object, Tiny</entry>
-    <entry>Animated Object, Small</entry>
-    <entry>Animated Object, Medium</entry>
-    <entry>Animated Object, Large</entry>
-    <entry>Animated Object, Huge</entry>
-    <entry>Animated Object, Gargantuan</entry>
-    <entry>Animated Object, Colossal</entry>
+    <entry>Animated Object, Anvil, Tiny</entry>
+    <entry>Animated Object, Anvil, Small</entry>
+    <entry>Animated Object, Anvil, Medium</entry>
+    <entry>Animated Object, Anvil, Large</entry>
+    <entry>Animated Object, Anvil, Huge</entry>
+    <entry>Animated Object, Anvil, Gargantuan</entry>
+    <entry>Animated Object, Anvil, Colossal</entry>
+    <entry>Animated Object, Block (Stone), Tiny</entry>
+    <entry>Animated Object, Block (Stone), Small</entry>
+    <entry>Animated Object, Block (Stone), Medium</entry>
+    <entry>Animated Object, Block (Stone), Large</entry>
+    <entry>Animated Object, Block (Stone), Huge</entry>
+    <entry>Animated Object, Block (Stone), Gargantuan</entry>
+    <entry>Animated Object, Block (Stone), Colossal</entry>
+    <entry>Animated Object, Block (Wood), Tiny</entry>
+    <entry>Animated Object, Block (Wood), Small</entry>
+    <entry>Animated Object, Block (Wood), Medium</entry>
+    <entry>Animated Object, Block (Wood), Large</entry>
+    <entry>Animated Object, Block (Wood), Huge</entry>
+    <entry>Animated Object, Block (Wood), Gargantuan</entry>
+    <entry>Animated Object, Block (Wood), Colossal</entry>
+    <entry>Animated Object, Box, Tiny</entry>
+    <entry>Animated Object, Box, Small</entry>
+    <entry>Animated Object, Box, Medium</entry>
+    <entry>Animated Object, Box, Large</entry>
+    <entry>Animated Object, Box, Huge</entry>
+    <entry>Animated Object, Box, Gargantuan</entry>
+    <entry>Animated Object, Box, Colossal</entry>
+    <entry>Animated Object, Carpet, Tiny</entry>
+    <entry>Animated Object, Carpet, Small</entry>
+    <entry>Animated Object, Carpet, Medium</entry>
+    <entry>Animated Object, Carpet, Large</entry>
+    <entry>Animated Object, Carpet, Huge</entry>
+    <entry>Animated Object, Carpet, Gargantuan</entry>
+    <entry>Animated Object, Carpet, Colossal</entry>
+    <entry>Animated Object, Carriage, Tiny</entry>
+    <entry>Animated Object, Carriage, Small</entry>
+    <entry>Animated Object, Carriage, Medium</entry>
+    <entry>Animated Object, Carriage, Large</entry>
+    <entry>Animated Object, Carriage, Huge</entry>
+    <entry>Animated Object, Carriage, Gargantuan</entry>
+    <entry>Animated Object, Carriage, Colossal</entry>
+    <entry>Animated Object, Chain, Tiny</entry>
+    <entry>Animated Object, Chain, Small</entry>
+    <entry>Animated Object, Chain, Medium</entry>
+    <entry>Animated Object, Chain, Large</entry>
+    <entry>Animated Object, Chain, Huge</entry>
+    <entry>Animated Object, Chain, Gargantuan</entry>
+    <entry>Animated Object, Chain, Colossal</entry>
+    <entry>Animated Object, Chair, Tiny</entry>
+    <entry>Animated Object, Chair, Small</entry>
+    <entry>Animated Object, Chair, Medium</entry>
+    <entry>Animated Object, Chair, Large</entry>
+    <entry>Animated Object, Chair, Huge</entry>
+    <entry>Animated Object, Chair, Gargantuan</entry>
+    <entry>Animated Object, Chair, Colossal</entry>
+    <entry>Animated Object, Clothes, Tiny</entry>
+    <entry>Animated Object, Clothes, Small</entry>
+    <entry>Animated Object, Clothes, Medium</entry>
+    <entry>Animated Object, Clothes, Large</entry>
+    <entry>Animated Object, Clothes, Huge</entry>
+    <entry>Animated Object, Clothes, Gargantuan</entry>
+    <entry>Animated Object, Clothes, Colossal</entry>
+    <entry>Animated Object, Ladder, Tiny</entry>
+    <entry>Animated Object, Ladder, Small</entry>
+    <entry>Animated Object, Ladder, Medium</entry>
+    <entry>Animated Object, Ladder, Large</entry>
+    <entry>Animated Object, Ladder, Huge</entry>
+    <entry>Animated Object, Ladder, Gargantuan</entry>
+    <entry>Animated Object, Ladder, Colossal</entry>
+    <entry>Animated Object, Rope, Tiny</entry>
+    <entry>Animated Object, Rope, Small</entry>
+    <entry>Animated Object, Rope, Medium</entry>
+    <entry>Animated Object, Rope, Large</entry>
+    <entry>Animated Object, Rope, Huge</entry>
+    <entry>Animated Object, Rope, Gargantuan</entry>
+    <entry>Animated Object, Rope, Colossal</entry>
+    <entry>Animated Object, Rug, Tiny</entry>
+    <entry>Animated Object, Rug, Small</entry>
+    <entry>Animated Object, Rug, Medium</entry>
+    <entry>Animated Object, Rug, Large</entry>
+    <entry>Animated Object, Rug, Huge</entry>
+    <entry>Animated Object, Rug, Gargantuan</entry>
+    <entry>Animated Object, Rug, Colossal</entry>
+    <entry>Animated Object, Sled, Tiny</entry>
+    <entry>Animated Object, Sled, Small</entry>
+    <entry>Animated Object, Sled, Medium</entry>
+    <entry>Animated Object, Sled, Large</entry>
+    <entry>Animated Object, Sled, Huge</entry>
+    <entry>Animated Object, Sled, Gargantuan</entry>
+    <entry>Animated Object, Sled, Colossal</entry>
+    <entry>Animated Object, Statue (Animal), Tiny</entry>
+    <entry>Animated Object, Statue (Animal), Small</entry>
+    <entry>Animated Object, Statue (Animal), Medium</entry>
+    <entry>Animated Object, Statue (Animal), Large</entry>
+    <entry>Animated Object, Statue (Animal), Huge</entry>
+    <entry>Animated Object, Statue (Animal), Gargantuan</entry>
+    <entry>Animated Object, Statue (Animal), Colossal</entry>
+    <entry>Animated Object, Statue (Humanoid), Tiny</entry>
+    <entry>Animated Object, Statue (Humanoid), Small</entry>
+    <entry>Animated Object, Statue (Humanoid), Medium</entry>
+    <entry>Animated Object, Statue (Humanoid), Large</entry>
+    <entry>Animated Object, Statue (Humanoid), Huge</entry>
+    <entry>Animated Object, Statue (Humanoid), Gargantuan</entry>
+    <entry>Animated Object, Statue (Humanoid), Colossal</entry>
+    <entry>Animated Object, Stool, Tiny</entry>
+    <entry>Animated Object, Stool, Small</entry>
+    <entry>Animated Object, Stool, Medium</entry>
+    <entry>Animated Object, Stool, Large</entry>
+    <entry>Animated Object, Stool, Huge</entry>
+    <entry>Animated Object, Stool, Gargantuan</entry>
+    <entry>Animated Object, Stool, Colossal</entry>
+    <entry>Animated Object, Table, Tiny</entry>
+    <entry>Animated Object, Table, Small</entry>
+    <entry>Animated Object, Table, Medium</entry>
+    <entry>Animated Object, Table, Large</entry>
+    <entry>Animated Object, Table, Huge</entry>
+    <entry>Animated Object, Table, Gargantuan</entry>
+    <entry>Animated Object, Table, Colossal</entry>
+    <entry>Animated Object, Tapestry, Tiny</entry>
+    <entry>Animated Object, Tapestry, Small</entry>
+    <entry>Animated Object, Tapestry, Medium</entry>
+    <entry>Animated Object, Tapestry, Large</entry>
+    <entry>Animated Object, Tapestry, Huge</entry>
+    <entry>Animated Object, Tapestry, Gargantuan</entry>
+    <entry>Animated Object, Tapestry, Colossal</entry>
+    <entry>Animated Object, Wagon, Tiny</entry>
+    <entry>Animated Object, Wagon, Small</entry>
+    <entry>Animated Object, Wagon, Medium</entry>
+    <entry>Animated Object, Wagon, Large</entry>
+    <entry>Animated Object, Wagon, Huge</entry>
+    <entry>Animated Object, Wagon, Gargantuan</entry>
+    <entry>Animated Object, Wagon, Colossal</entry>
   </collection>
   <collection>
     <name>Aquatic</name>

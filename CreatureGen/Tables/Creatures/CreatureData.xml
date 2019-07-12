@@ -110,7 +110,7 @@
     <entry>2</entry>
   </collection>
   <collection>
-    <name>Animated Object, Colossal</name>
+    <name>Animated Object, Anvil, Colossal</name>
     <entry>10</entry>
     <entry></entry>
     <entry>20</entry>
@@ -122,7 +122,7 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Animated Object, Gargantuan</name>
+    <name>Animated Object, Anvil, Gargantuan</name>
     <entry>7</entry>
     <entry></entry>
     <entry>15</entry>
@@ -134,7 +134,7 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Animated Object, Huge</name>
+    <name>Animated Object, Anvil, Huge</name>
     <entry>5</entry>
     <entry></entry>
     <entry>10</entry>
@@ -146,7 +146,7 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Animated Object, Large</name>
+    <name>Animated Object, Anvil, Large</name>
     <entry>3</entry>
     <entry></entry>
     <entry>5</entry>
@@ -158,7 +158,7 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Animated Object, Medium</name>
+    <name>Animated Object, Anvil, Medium</name>
     <entry>2</entry>
     <entry></entry>
     <entry>5</entry>
@@ -170,7 +170,7 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Animated Object, Small</name>
+    <name>Animated Object, Anvil, Small</name>
     <entry>1</entry>
     <entry></entry>
     <entry>5</entry>
@@ -182,7 +182,1519 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Animated Object, Tiny</name>
+    <name>Animated Object, Anvil, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Tiny</name>
+    <entry>1/2</entry>
+    <entry></entry>
+    <entry>0</entry>
+    <entry>Tiny</entry>
+    <entry>2.5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Colossal</name>
+    <entry>10</entry>
+    <entry></entry>
+    <entry>20</entry>
+    <entry>Colossal</entry>
+    <entry>30</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>12</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Gargantuan</name>
+    <entry>7</entry>
+    <entry></entry>
+    <entry>15</entry>
+    <entry>Gargantuan</entry>
+    <entry>20</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>8</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Huge</name>
+    <entry>5</entry>
+    <entry></entry>
+    <entry>10</entry>
+    <entry>Huge</entry>
+    <entry>15</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>6</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Large</name>
+    <entry>3</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Large</entry>
+    <entry>10</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>5</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Medium</name>
+    <entry>2</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Medium</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>4</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Small</name>
+    <entry>1</entry>
+    <entry></entry>
+    <entry>5</entry>
+    <entry>Small</entry>
+    <entry>5</entry>
+    <entry>False</entry>
+    <entry>0</entry>
+    <entry>2</entry>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Tiny</name>
     <entry>1/2</entry>
     <entry></entry>
     <entry>0</entry>
