@@ -1,6 +1,6 @@
 ﻿using CreatureGen.Creatures;
 using CreatureGen.Selectors.Collections;
-using CreatureGen.Selectors.Selections;
+using CreatureGen.Selectors.Helpers;
 using CreatureGen.Tables;
 using DnDGen.Core.Selectors.Collections;
 using Moq;
@@ -49,7 +49,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var attackData = new[]
             {
-                GetData("name", "damage", isNatural, isMelee, isPrimary, isSpecial)
+                GetData("name", "damage", 9266, "time period", "attack type", isNatural, isMelee, isPrimary, isSpecial, "save", "save ability", 90210)
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
@@ -63,20 +63,76 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(attack.IsMelee, Is.EqualTo(isMelee));
             Assert.That(attack.IsNatural, Is.EqualTo(isNatural));
             Assert.That(attack.IsPrimary, Is.EqualTo(isPrimary));
+            Assert.That(attack.IsSpecial, Is.EqualTo(isSpecial));
             Assert.That(attack.Name, Is.EqualTo("name"));
+            Assert.That(attack.FrequencyQuantity, Is.EqualTo(9266));
+            Assert.That(attack.FrequencyTimePeriod, Is.EqualTo("time period"));
+            Assert.That(attack.Save, Is.EqualTo("save"));
+            Assert.That(attack.SaveAbility, Is.EqualTo("save ability"));
+            Assert.That(attack.BaseSave, Is.EqualTo(90210));
+            Assert.That(attack.AttackType, Is.EqualTo("attack type"));
         }
 
-        private string GetData(string name, string damage, bool isNatural = false, bool isMelee = false, bool isPrimary = false, bool isSpecial = false)
+        [TestCase(false, false, false, false)]
+        [TestCase(false, false, false, true)]
+        [TestCase(false, false, true, false)]
+        [TestCase(false, false, true, true)]
+        [TestCase(false, true, false, false)]
+        [TestCase(false, true, false, true)]
+        [TestCase(false, true, true, false)]
+        [TestCase(false, true, true, true)]
+        [TestCase(true, false, false, false)]
+        [TestCase(true, false, false, true)]
+        [TestCase(true, false, true, false)]
+        [TestCase(true, false, true, true)]
+        [TestCase(true, true, false, false)]
+        [TestCase(true, true, false, true)]
+        [TestCase(true, true, true, false)]
+        [TestCase(true, true, true, true)]
+        public void SelectAttackWithoutSave(bool isNatural, bool isMelee, bool isPrimary, bool isSpecial)
         {
-            var data = DataIndexConstants.AttackData.InitializeData();
-            data[DataIndexConstants.AttackData.DamageIndex] = damage;
-            data[DataIndexConstants.AttackData.IsMeleeIndex] = isMelee.ToString();
-            data[DataIndexConstants.AttackData.IsNaturalIndex] = isNatural.ToString();
-            data[DataIndexConstants.AttackData.IsPrimaryIndex] = isPrimary.ToString();
-            data[DataIndexConstants.AttackData.IsSpecialIndex] = isSpecial.ToString();
-            data[DataIndexConstants.AttackData.NameIndex] = name;
+            var attackData = new[]
+            {
+                GetData("name", "damage", 9266, "time period", "attack type", isNatural, isMelee, isPrimary, isSpecial)
+            };
 
-            return string.Join(AttackSelection.Divider.ToString(), data);
+            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
+
+            var attacks = attackSelector.Select("creature", "original size", "advanced size");
+            Assert.That(attacks, Is.Not.Empty);
+            Assert.That(attacks.Count, Is.EqualTo(1));
+
+            var attack = attacks.Single();
+            Assert.That(attack.Damage, Is.EqualTo("damage"));
+            Assert.That(attack.IsMelee, Is.EqualTo(isMelee));
+            Assert.That(attack.IsNatural, Is.EqualTo(isNatural));
+            Assert.That(attack.IsPrimary, Is.EqualTo(isPrimary));
+            Assert.That(attack.IsSpecial, Is.EqualTo(isSpecial));
+            Assert.That(attack.Name, Is.EqualTo("name"));
+            Assert.That(attack.FrequencyQuantity, Is.EqualTo(9266));
+            Assert.That(attack.FrequencyTimePeriod, Is.EqualTo("time period"));
+            Assert.That(attack.Save, Is.Null);
+            Assert.That(attack.SaveAbility, Is.Null);
+            Assert.That(attack.BaseSave, Is.Zero);
+            Assert.That(attack.AttackType, Is.EqualTo("attack type"));
+        }
+
+        private string GetData(
+            string name,
+            string damage,
+            int frequencyQuantity,
+            string frequencyTimePeriod,
+            string attackType,
+            bool isNatural = false,
+            bool isMelee = false,
+            bool isPrimary = false,
+            bool isSpecial = false,
+            string save = null,
+            string saveAbility = null,
+            int baseSave = 0)
+        {
+            var data = AttackHelper.BuildData(name, damage, attackType, frequencyQuantity, frequencyTimePeriod, isMelee, isNatural, isPrimary, isSpecial, save, saveAbility, baseSave);
+            return AttackHelper.BuildData(data);
         }
 
         [Test]
@@ -84,8 +140,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var attackData = new[]
             {
-                GetData("name", "damage"),
-                GetData("other name", "other damage"),
+                GetData("name", "damage", 9266, "time period", "attack type"),
+                GetData("other name", "other damage", 9266, "time period", "attack type"),
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
@@ -467,7 +523,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var attackData = new[]
             {
-                GetData("name", originalDamage, isNatural: true)
+                GetData("name", originalDamage, 9266, "time period", "attack type", isNatural: true)
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
@@ -494,7 +550,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var attackData = new[]
             {
-                GetData("name", originalDamage, isNatural: true)
+                GetData("name", originalDamage, 9266, "time period", "attack type", isNatural: true)
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
@@ -515,7 +571,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var attackData = new[]
             {
-                GetData("name", originalDamage, isNatural: true)
+                GetData("name", originalDamage, 9266, "time period", "attack type", isNatural: true)
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
@@ -535,12 +591,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var attackData = new[]
             {
-                GetData("name", "1d2", isNatural: false)
+                GetData("name", "1d2", 9266, "time period", "attack type", isNatural: false)
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
 
-            var attacks = attackSelector.Select("creature", SizeConstants.Medium, SizeConstants.Large);
+            var attacks = attackSelector.Select("creature", SizeConstants.Fine, SizeConstants.Colossal);
             Assert.That(attacks, Is.Not.Empty);
             Assert.That(attacks.Count, Is.EqualTo(1));
 

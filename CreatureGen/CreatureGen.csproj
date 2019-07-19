@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attacks\Attack.cs" />
+    <Compile Include="Attacks\SaveDieCheck.cs" />
     <Compile Include="Creatures\ChallengeRatingConstants.cs" />
     <Compile Include="Creatures\CreatureConstants.cs" />
     <Compile Include="Creatures\CreatureType.cs" />

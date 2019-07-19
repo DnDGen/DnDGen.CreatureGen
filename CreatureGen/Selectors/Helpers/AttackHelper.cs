@@ -5,7 +5,19 @@ namespace CreatureGen.Selectors.Helpers
 {
     public static class AttackHelper
     {
-        public static string[] BuildData(string name, string damage, bool isMelee, bool isNatural, bool isPrimary, bool isSpecial)
+        public static string[] BuildData(
+            string name,
+            string damage,
+            string attackType,
+            int frequencyQuantity,
+            string frequencyTimePeriod,
+            bool isMelee,
+            bool isNatural,
+            bool isPrimary,
+            bool isSpecial,
+            string save = null,
+            string saveAbility = null,
+            int baseSave = 0)
         {
             var data = DataIndexConstants.AttackData.InitializeData();
 
@@ -15,6 +27,12 @@ namespace CreatureGen.Selectors.Helpers
             data[DataIndexConstants.AttackData.IsNaturalIndex] = isNatural.ToString();
             data[DataIndexConstants.AttackData.IsPrimaryIndex] = isPrimary.ToString();
             data[DataIndexConstants.AttackData.IsSpecialIndex] = isSpecial.ToString();
+            data[DataIndexConstants.AttackData.FrequencyQuantityIndex] = frequencyQuantity.ToString();
+            data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = frequencyTimePeriod;
+            data[DataIndexConstants.AttackData.SaveIndex] = save;
+            data[DataIndexConstants.AttackData.SaveAbilityIndex] = saveAbility;
+            data[DataIndexConstants.AttackData.BaseSaveIndex] = baseSave.ToString();
+            data[DataIndexConstants.AttackData.AttackTypeIndex] = attackType;
 
             return data;
         }

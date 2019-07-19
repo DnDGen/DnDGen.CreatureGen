@@ -177,10 +177,21 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(true, true, false, true)]
         [TestCase(true, true, true, false)]
         [TestCase(true, true, true, true)]
-        public void GenerateAttack(bool isNatural, bool isMelee, bool isPrimary, bool isSpecial)
+        public void GenerateAttack_WithoutSave(bool isNatural, bool isMelee, bool isPrimary, bool isSpecial)
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", Damage = "damage", IsMelee = isMelee, IsNatural = isNatural, IsPrimary = isPrimary, IsSpecial = isSpecial });
+            attacks.Add(new AttackSelection()
+            {
+                Name = "attack",
+                Damage = "damage",
+                AttackType = "attack type",
+                FrequencyQuantity = 9266,
+                FrequencyTimePeriod = "time period",
+                IsMelee = isMelee,
+                IsNatural = isNatural,
+                IsPrimary = isPrimary,
+                IsSpecial = isSpecial
+            });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
@@ -196,6 +207,150 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attack.IsNatural, Is.EqualTo(isNatural));
             Assert.That(attack.IsPrimary, Is.EqualTo(isPrimary));
             Assert.That(attack.IsSpecial, Is.EqualTo(isSpecial));
+            Assert.That(attack.AttackType, Is.EqualTo("attack type"));
+            Assert.That(attack.Frequency, Is.Not.Null);
+            Assert.That(attack.Frequency.Quantity, Is.EqualTo(9266));
+            Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("time period"));
+        }
+
+        [TestCase(false, false, false, false, AbilityConstants.Charisma)]
+        [TestCase(false, false, false, false, AbilityConstants.Constitution)]
+        [TestCase(false, false, false, false, AbilityConstants.Dexterity)]
+        [TestCase(false, false, false, false, AbilityConstants.Intelligence)]
+        [TestCase(false, false, false, false, AbilityConstants.Strength)]
+        [TestCase(false, false, false, false, AbilityConstants.Wisdom)]
+        [TestCase(false, false, false, true, AbilityConstants.Charisma)]
+        [TestCase(false, false, false, true, AbilityConstants.Constitution)]
+        [TestCase(false, false, false, true, AbilityConstants.Dexterity)]
+        [TestCase(false, false, false, true, AbilityConstants.Intelligence)]
+        [TestCase(false, false, false, true, AbilityConstants.Strength)]
+        [TestCase(false, false, false, true, AbilityConstants.Wisdom)]
+        [TestCase(false, false, true, false, AbilityConstants.Charisma)]
+        [TestCase(false, false, true, false, AbilityConstants.Constitution)]
+        [TestCase(false, false, true, false, AbilityConstants.Dexterity)]
+        [TestCase(false, false, true, false, AbilityConstants.Intelligence)]
+        [TestCase(false, false, true, false, AbilityConstants.Strength)]
+        [TestCase(false, false, true, false, AbilityConstants.Wisdom)]
+        [TestCase(false, false, true, true, AbilityConstants.Charisma)]
+        [TestCase(false, false, true, true, AbilityConstants.Constitution)]
+        [TestCase(false, false, true, true, AbilityConstants.Dexterity)]
+        [TestCase(false, false, true, true, AbilityConstants.Intelligence)]
+        [TestCase(false, false, true, true, AbilityConstants.Strength)]
+        [TestCase(false, false, true, true, AbilityConstants.Wisdom)]
+        [TestCase(false, true, false, false, AbilityConstants.Charisma)]
+        [TestCase(false, true, false, false, AbilityConstants.Constitution)]
+        [TestCase(false, true, false, false, AbilityConstants.Dexterity)]
+        [TestCase(false, true, false, false, AbilityConstants.Intelligence)]
+        [TestCase(false, true, false, false, AbilityConstants.Strength)]
+        [TestCase(false, true, false, false, AbilityConstants.Wisdom)]
+        [TestCase(false, true, false, true, AbilityConstants.Charisma)]
+        [TestCase(false, true, false, true, AbilityConstants.Constitution)]
+        [TestCase(false, true, false, true, AbilityConstants.Dexterity)]
+        [TestCase(false, true, false, true, AbilityConstants.Intelligence)]
+        [TestCase(false, true, false, true, AbilityConstants.Strength)]
+        [TestCase(false, true, false, true, AbilityConstants.Wisdom)]
+        [TestCase(false, true, true, false, AbilityConstants.Charisma)]
+        [TestCase(false, true, true, false, AbilityConstants.Constitution)]
+        [TestCase(false, true, true, false, AbilityConstants.Dexterity)]
+        [TestCase(false, true, true, false, AbilityConstants.Intelligence)]
+        [TestCase(false, true, true, false, AbilityConstants.Strength)]
+        [TestCase(false, true, true, false, AbilityConstants.Wisdom)]
+        [TestCase(false, true, true, true, AbilityConstants.Charisma)]
+        [TestCase(false, true, true, true, AbilityConstants.Constitution)]
+        [TestCase(false, true, true, true, AbilityConstants.Dexterity)]
+        [TestCase(false, true, true, true, AbilityConstants.Intelligence)]
+        [TestCase(false, true, true, true, AbilityConstants.Strength)]
+        [TestCase(false, true, true, true, AbilityConstants.Wisdom)]
+        [TestCase(true, false, false, false, AbilityConstants.Charisma)]
+        [TestCase(true, false, false, false, AbilityConstants.Constitution)]
+        [TestCase(true, false, false, false, AbilityConstants.Dexterity)]
+        [TestCase(true, false, false, false, AbilityConstants.Intelligence)]
+        [TestCase(true, false, false, false, AbilityConstants.Strength)]
+        [TestCase(true, false, false, false, AbilityConstants.Wisdom)]
+        [TestCase(true, false, false, true, AbilityConstants.Charisma)]
+        [TestCase(true, false, false, true, AbilityConstants.Constitution)]
+        [TestCase(true, false, false, true, AbilityConstants.Dexterity)]
+        [TestCase(true, false, false, true, AbilityConstants.Intelligence)]
+        [TestCase(true, false, false, true, AbilityConstants.Strength)]
+        [TestCase(true, false, false, true, AbilityConstants.Wisdom)]
+        [TestCase(true, false, true, false, AbilityConstants.Charisma)]
+        [TestCase(true, false, true, false, AbilityConstants.Constitution)]
+        [TestCase(true, false, true, false, AbilityConstants.Dexterity)]
+        [TestCase(true, false, true, false, AbilityConstants.Intelligence)]
+        [TestCase(true, false, true, false, AbilityConstants.Strength)]
+        [TestCase(true, false, true, false, AbilityConstants.Wisdom)]
+        [TestCase(true, false, true, true, AbilityConstants.Charisma)]
+        [TestCase(true, false, true, true, AbilityConstants.Constitution)]
+        [TestCase(true, false, true, true, AbilityConstants.Dexterity)]
+        [TestCase(true, false, true, true, AbilityConstants.Intelligence)]
+        [TestCase(true, false, true, true, AbilityConstants.Strength)]
+        [TestCase(true, false, true, true, AbilityConstants.Wisdom)]
+        [TestCase(true, true, false, false, AbilityConstants.Charisma)]
+        [TestCase(true, true, false, false, AbilityConstants.Constitution)]
+        [TestCase(true, true, false, false, AbilityConstants.Dexterity)]
+        [TestCase(true, true, false, false, AbilityConstants.Intelligence)]
+        [TestCase(true, true, false, false, AbilityConstants.Strength)]
+        [TestCase(true, true, false, false, AbilityConstants.Wisdom)]
+        [TestCase(true, true, false, true, AbilityConstants.Charisma)]
+        [TestCase(true, true, false, true, AbilityConstants.Constitution)]
+        [TestCase(true, true, false, true, AbilityConstants.Dexterity)]
+        [TestCase(true, true, false, true, AbilityConstants.Intelligence)]
+        [TestCase(true, true, false, true, AbilityConstants.Strength)]
+        [TestCase(true, true, false, true, AbilityConstants.Wisdom)]
+        [TestCase(true, true, true, false, AbilityConstants.Charisma)]
+        [TestCase(true, true, true, false, AbilityConstants.Constitution)]
+        [TestCase(true, true, true, false, AbilityConstants.Dexterity)]
+        [TestCase(true, true, true, false, AbilityConstants.Intelligence)]
+        [TestCase(true, true, true, false, AbilityConstants.Strength)]
+        [TestCase(true, true, true, false, AbilityConstants.Wisdom)]
+        [TestCase(true, true, true, true, AbilityConstants.Charisma)]
+        [TestCase(true, true, true, true, AbilityConstants.Constitution)]
+        [TestCase(true, true, true, true, AbilityConstants.Dexterity)]
+        [TestCase(true, true, true, true, AbilityConstants.Intelligence)]
+        [TestCase(true, true, true, true, AbilityConstants.Strength)]
+        [TestCase(true, true, true, true, AbilityConstants.Wisdom)]
+        public void GenerateAttack_WithSave(bool isNatural, bool isMelee, bool isPrimary, bool isSpecial, string saveAbility)
+        {
+            var attacks = new List<AttackSelection>();
+            attacks.Add(new AttackSelection()
+            {
+                Name = "attack",
+                Damage = "damage",
+                AttackType = "attack type",
+                FrequencyQuantity = 9266,
+                FrequencyTimePeriod = "time period",
+                IsMelee = isMelee,
+                IsNatural = isNatural,
+                IsPrimary = isPrimary,
+                IsSpecial = isSpecial,
+                Save = "save",
+                SaveAbility = saveAbility,
+                BaseSave = 90210,
+            });
+
+            mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
+
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            Assert.That(generatedAttacks, Is.Not.Empty);
+            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()));
+            Assert.That(generatedAttacks.Count, Is.EqualTo(1));
+
+            var attack = generatedAttacks.Single();
+            Assert.That(attack.Name, Is.EqualTo("attack"));
+            Assert.That(attack.Damage, Is.EqualTo("damage"));
+            Assert.That(attack.IsMelee, Is.EqualTo(isMelee));
+            Assert.That(attack.IsNatural, Is.EqualTo(isNatural));
+            Assert.That(attack.IsPrimary, Is.EqualTo(isPrimary));
+            Assert.That(attack.IsSpecial, Is.EqualTo(isSpecial));
+            Assert.That(attack.AttackType, Is.EqualTo("attack type"));
+            Assert.That(attack.Frequency, Is.Not.Null);
+            Assert.That(attack.Frequency.Quantity, Is.EqualTo(9266));
+            Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("time period"));
+
+            Assert.That(attack.Save, Is.Not.Null);
+            Assert.That(attack.Save.BaseValue, Is.EqualTo(90210));
+            Assert.That(attack.Save.BaseAbility, Is.EqualTo(abilities[saveAbility]));
+            Assert.That(attack.Save.Save, Is.EqualTo("save"));
         }
 
         [Test]
@@ -428,6 +583,12 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
             Assert.That(attack.Damage, Is.EqualTo($"damage + {bonus} + effect"));
+        }
+
+        [Test]
+        public void IfAttackIsMelee_AddStrengthModifierToDamage()
+        {
+            Assert.Fail("not yet written");
         }
 
         [TestCase(AbilityConstants.Strength)]

@@ -1,6 +1,8 @@
 ﻿using CreatureGen.Abilities;
 using CreatureGen.Creatures;
+using CreatureGen.Defenses;
 using CreatureGen.Feats;
+using CreatureGen.Magic;
 using CreatureGen.Selectors.Helpers;
 using NUnit.Framework;
 using System.Collections;
@@ -25,17 +27,14 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                     testCases[creature] = new List<string[]>();
                 }
 
-                testCases[CreatureConstants.Aasimar].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, true, false, true, false));
-                testCases[CreatureConstants.Aasimar].Add(AttackHelper.BuildData(AttributeConstants.Ranged, string.Empty, false, false, true, false));
-                testCases[CreatureConstants.Aasimar].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, false, true, true, true));
+                testCases[CreatureConstants.Aasimar].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                testCases[CreatureConstants.Aasimar].Add(AttackHelper.BuildData(AttributeConstants.Ranged, string.Empty, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
+                testCases[CreatureConstants.Aasimar].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-                testCases[CreatureConstants.Aboleth].Add(AttackHelper.BuildData("Tentacle", $"1d6 + {AbilityConstants.Strength.ToUpper()} + Slime", true, true, true, false));
-                testCases[CreatureConstants.Aboleth].Add(AttackHelper.BuildData("Tentacle", $"1d6 + {AbilityConstants.Strength.ToUpper()} + Slime", true, true, true, false));
-                testCases[CreatureConstants.Aboleth].Add(AttackHelper.BuildData("Tentacle", $"1d6 + {AbilityConstants.Strength.ToUpper()} + Slime", true, true, true, false));
-                testCases[CreatureConstants.Aboleth].Add(AttackHelper.BuildData("Tentacle", $"1d6 + {AbilityConstants.Strength.ToUpper()} + Slime", true, true, true, false));
-                testCases[CreatureConstants.Aboleth].Add(AttackHelper.BuildData("Enslave", string.Empty, false, true, true, true));
-                testCases[CreatureConstants.Aboleth].Add(AttackHelper.BuildData("Slime", string.Empty, true, true, false, true));
-                testCases[CreatureConstants.Aboleth].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, false, true, true, true));
+                testCases[CreatureConstants.Aboleth].Add(AttackHelper.BuildData("Tentacle", $"1d6 + {AbilityConstants.Strength.ToUpper()} + Slime", "melee", 4, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Aboleth].Add(AttackHelper.BuildData("Enslave", string.Empty, "spell", 3, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma, 14));
+                testCases[CreatureConstants.Aboleth].Add(AttackHelper.BuildData("Slime", string.Empty, "melee", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution, 14));
+                testCases[CreatureConstants.Aboleth].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 testCases[CreatureConstants.Achaierai].Add(AttackHelper.BuildData("Claw", $"1d6 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
                 testCases[CreatureConstants.Achaierai].Add(AttackHelper.BuildData("Claw", $"1d6 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
@@ -569,53 +568,51 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.BarbedDevil_Hamatula].Add(AttackHelper.BuildData("Impale", "3d8+9", true, true, false, true));
                 testCases[CreatureConstants.BarbedDevil_Hamatula].Add(AttackHelper.BuildData("Summon Devil", string.Empty, false, true, true, true));
 
-                //testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
-                //testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Goblin or wolf", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PassWithoutTrace + ": in wolf form", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Blink, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Levitate, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Misdirection, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Rage, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CharmMonster, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CrushingDespair, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DimensionDoor, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData("Bite", $"1d6 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData("Claw", $"1d4 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData("Claw", $"1d4 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, false, true, true, true));
+                testCases[CreatureConstants.Barghest].Add(AttackHelper.BuildData("Feed", string.Empty, true, true, true, true));
 
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Goblin or wolf", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PassWithoutTrace + ": in wolf form", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Blink, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Levitate, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Misdirection, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Rage, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.InvisibilitySphere, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CharmMonster, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CrushingDespair, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DimensionDoor, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.BullsStrength_Mass, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EnlargePerson_Mass, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
+                testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData("Bite", $"1d8 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData("Claw", $"1d6 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData("Claw", $"1d6 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, false, true, true, true));
+                testCases[CreatureConstants.Barghest_Greater].Add(AttackHelper.BuildData("Feed", string.Empty, true, true, true, true));
 
-                //testCases[CreatureConstants.Basilisk].Add(AttackHelper.BuildData(None));
+                testCases[CreatureConstants.Basilisk].Add(AttackHelper.BuildData("Bite", $"1d8 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Basilisk].Add(AttackHelper.BuildData("Petrifying Gaze", string.Empty, false, true, true, true));
 
-                //testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-                //testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-                //testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
+                testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(AttackHelper.BuildData("Bite", $"2d8 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(AttackHelper.BuildData("Petrifying Gaze", string.Empty, false, true, true, true));
+                testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(AttackHelper.BuildData("Smite Good", string.Empty, true, true, true, true));
 
-                //testCases[CreatureConstants.Bat].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 20));
+                //Bats have no attacks
 
-                //testCases[CreatureConstants.Bat_Dire].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 40));
+                testCases[CreatureConstants.Bat_Dire].Add(AttackHelper.BuildData("Bite", $"1d8 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
 
-                //testCases[CreatureConstants.Bat_Swarm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 20));
+                testCases[CreatureConstants.Bat_Swarm].Add(AttackHelper.BuildData("Swarm", $"1d6", true, true, true, false));
+                testCases[CreatureConstants.Bat_Swarm].Add(AttackHelper.BuildData("Distraction", string.Empty, true, true, true, true));
+                testCases[CreatureConstants.Bat_Swarm].Add(AttackHelper.BuildData("Wounding", string.Empty, true, true, true, true));
 
-                //testCases[CreatureConstants.Bear_Black].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Bear_Black].Add(AttackHelper.BuildData("Claw", $"1d4 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Bear_Black].Add(AttackHelper.BuildData("Claw", $"1d4 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Bear_Black].Add(AttackHelper.BuildData("Bite", $"1d6 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
 
-                //testCases[CreatureConstants.Bear_Brown].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Bear_Brown].Add(AttackHelper.BuildData("Claw", $"1d8 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Bear_Brown].Add(AttackHelper.BuildData("Claw", $"1d8 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Bear_Brown].Add(AttackHelper.BuildData("Bite", $"2d6 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Bear_Brown].Add(AttackHelper.BuildData("Improved Grab", string.Empty, true, true, false, true));
 
-                //testCases[CreatureConstants.Bear_Dire].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Bear_Dire].Add(AttackHelper.BuildData("Claw", $"2d4 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Bear_Dire].Add(AttackHelper.BuildData("Claw", $"2d4 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Bear_Dire].Add(AttackHelper.BuildData("Bite", $"2d8 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Bear_Dire].Add(AttackHelper.BuildData("Improved Grab", string.Empty, true, true, false, true));
 
-                //testCases[CreatureConstants.Bear_Polar].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Bear_Polar].Add(AttackHelper.BuildData("Claw", $"1d8 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Bear_Polar].Add(AttackHelper.BuildData("Claw", $"1d8 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Bear_Polar].Add(AttackHelper.BuildData("Bite", $"2d6 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Bear_Polar].Add(AttackHelper.BuildData("Improved Grab", string.Empty, true, true, false, true));
 
                 testCases[CreatureConstants.BeardedDevil_Barbazu].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, true, false, true, false));
                 testCases[CreatureConstants.BeardedDevil_Barbazu].Add(AttackHelper.BuildData("Claw", $"2d8 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
@@ -633,22 +630,47 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Bebilith].Add(AttackHelper.BuildData("Poison", "Initial damage 1d6 Con, Secondary damage 2d6 Con", true, true, false, true));
                 testCases[CreatureConstants.Bebilith].Add(AttackHelper.BuildData("Rend Armor", $"4d6+18", true, true, false, true));
 
-                //testCases[CreatureConstants.Bee_Giant].Add(AttackHelper.BuildData(None));
+                testCases[CreatureConstants.Bee_Giant].Add(AttackHelper.BuildData("Sting", $"1d4 + {AbilityConstants.Strength.ToUpper()} + poison", true, true, true, false));
+                testCases[CreatureConstants.Bee_Giant].Add(AttackHelper.BuildData("Poison", "Initial and secondary damage 1d4 Con", true, true, false, true));
 
-                //testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Tripping"));
-                //testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData("Bite", $"2d4 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData("Breath Weapon", "7d6 electricity", false, true, true, true));
+                testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData("Constrict", "2d8+8", true, true, false, true));
+                testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData("Improved Grab", string.Empty, true, true, false, true));
+                testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData("Rake", "1d4+4", true, true, false, true));
+                testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData("Rake", "1d4+4", true, true, false, true));
+                testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData("Rake", "1d4+4", true, true, false, true));
+                testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData("Rake", "1d4+4", true, true, false, true));
+                testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData("Rake", "1d4+4", true, true, false, true));
+                testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData("Rake", "1d4+4", true, true, false, true));
+                testCases[CreatureConstants.Behir].Add(AttackHelper.BuildData("Swallow Whole", string.Empty, true, true, false, true));
 
-                //testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision));
-                //testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AntimagicCone));
-                //testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Flight));
-                //testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData(FeatConstants.Alertness, power: 2));
+                testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData("Bite", $"2d4 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData("Eye ray", SpellConstants.CharmMonster, false, true, true, true));
+                testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData("Eye ray", SpellConstants.CharmPerson, false, true, true, true));
+                testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData("Eye ray", SpellConstants.CureInflictModerateWounds, false, true, true, true));
+                testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData("Eye ray", SpellConstants.Disintegrate, false, true, true, true));
+                testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData("Eye ray", SpellConstants.Fear, false, true, true, true));
+                testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData("Eye ray", SpellConstants.FingerOfDeath, false, true, true, true));
+                testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData("Eye ray", SpellConstants.FleshToStone, false, true, true, true));
+                testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData("Eye ray", SpellConstants.Sleep, false, true, true, true));
+                testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData("Eye ray", SpellConstants.Slow, false, true, true, true));
+                testCases[CreatureConstants.Beholder].Add(AttackHelper.BuildData("Eye ray", SpellConstants.Telekinesis, false, true, true, true));
 
-                //testCases[CreatureConstants.Beholder_Gauth].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AllAroundVision));
-                //testCases[CreatureConstants.Beholder_Gauth].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Flight));
-                //testCases[CreatureConstants.Beholder_Gauth].Add(AttackHelper.BuildData(FeatConstants.Alertness, power: 2));
+                testCases[CreatureConstants.Beholder_Gauth].Add(AttackHelper.BuildData("Bite", $"1d6 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Beholder_Gauth].Add(AttackHelper.BuildData("Eye ray", SpellConstants.Sleep, false, true, true, true));
+                testCases[CreatureConstants.Beholder_Gauth].Add(AttackHelper.BuildData("Eye ray", SpellConstants.CureInflictModerateWounds, false, true, true, true));
+                testCases[CreatureConstants.Beholder_Gauth].Add(AttackHelper.BuildData("Eye ray", SpellConstants.DispelMagic, false, true, true, true));
+                testCases[CreatureConstants.Beholder_Gauth].Add(AttackHelper.BuildData("Eye ray", SpellConstants.ScorchingRay, false, true, true, true));
+                testCases[CreatureConstants.Beholder_Gauth].Add(AttackHelper.BuildData("Eye ray", "Paralysis", false, true, true, true));
+                testCases[CreatureConstants.Beholder_Gauth].Add(AttackHelper.BuildData("Eye ray", SpellConstants.RayOfExhaustion, false, true, true, true));
 
-                //testCases[CreatureConstants.Belker].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SmokeForm));
+                testCases[CreatureConstants.Belker].Add(AttackHelper.BuildData("Wing", $"1d6 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Belker].Add(AttackHelper.BuildData("Wing", $"1d6 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
+                testCases[CreatureConstants.Belker].Add(AttackHelper.BuildData("Bite", $"1d4 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Belker].Add(AttackHelper.BuildData("Claw", $"1d3 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Belker].Add(AttackHelper.BuildData("Claw", $"1d3 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
+                testCases[CreatureConstants.Belker].Add(AttackHelper.BuildData("Smoke Claw", $"3d4", true, true, true, true));
 
                 //testCases[CreatureConstants.Bison].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
@@ -736,8 +758,9 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
                 //testCases[CreatureConstants.Centipede_Monstrous_Colossal].Add(AttackHelper.BuildData(None));
 
-                //testCases[CreatureConstants.Centipede_Swarm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 30));
-                //testCases[CreatureConstants.Centipede_Swarm].Add(AttackHelper.BuildData(FeatConstants.WeaponFinesse));
+                testCases[CreatureConstants.Centipede_Swarm].Add(AttackHelper.BuildData("Swarm", $"2d6 + poison", true, true, true, false));
+                testCases[CreatureConstants.Centipede_Swarm].Add(AttackHelper.BuildData("Distraction", string.Empty, true, true, true, true));
+                testCases[CreatureConstants.Centipede_Swarm].Add(AttackHelper.BuildData("Poison", "Initial and secondary damage 1d4 Dex", true, true, true, true));
 
                 testCases[CreatureConstants.ChainDevil_Kyton].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, true, true, true, false));
                 testCases[CreatureConstants.ChainDevil_Kyton].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, true, true, true, false));
@@ -2559,9 +2582,10 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Hellcat_Bezekira].Add(AttackHelper.BuildData("Rake", $"1d8 + {AbilityConstants.Strength.ToUpper()}", true, true, false, true));
                 testCases[CreatureConstants.Hellcat_Bezekira].Add(AttackHelper.BuildData("Rake", $"1d8 + {AbilityConstants.Strength.ToUpper()}", true, true, false, true));
 
-                //testCases[CreatureConstants.Hellwasp_Swarm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Hellwasp_Swarm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.HiveMind));
-                //testCases[CreatureConstants.Hellwasp_Swarm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+                testCases[CreatureConstants.Hellwasp_Swarm].Add(AttackHelper.BuildData("Swarm", $"3d6 + poison", true, true, true, false));
+                testCases[CreatureConstants.Hellwasp_Swarm].Add(AttackHelper.BuildData("Distraction", string.Empty, true, true, true, true));
+                testCases[CreatureConstants.Hellwasp_Swarm].Add(AttackHelper.BuildData("Inhabit", string.Empty, true, true, true, true));
+                testCases[CreatureConstants.Hellwasp_Swarm].Add(AttackHelper.BuildData("Poison", "Initial and secondary damage 1d6 Dex", true, true, true, true));
 
                 testCases[CreatureConstants.Hezrou].Add(AttackHelper.BuildData("Bite", $"4d4 + {AbilityConstants.Strength.ToUpper()}", true, true, true, false));
                 testCases[CreatureConstants.Hezrou].Add(AttackHelper.BuildData("Claw", $"1d8 + {AbilityConstants.Strength.ToUpper()}", true, true, false, false));
@@ -2794,7 +2818,8 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 //testCases[CreatureConstants.Locathah].Add(AttackHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Longspear, requiresEquipment: true));
                 //testCases[CreatureConstants.Locathah].Add(AttackHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.LightCrossbow, requiresEquipment: true));
 
-                //testCases[CreatureConstants.Locust_Swarm].Add(AttackHelper.BuildData(None));
+                testCases[CreatureConstants.Locust_Swarm].Add(AttackHelper.BuildData("Swarm", $"2d6", true, true, true, false));
+                testCases[CreatureConstants.Locust_Swarm].Add(AttackHelper.BuildData("Distraction", string.Empty, true, true, true, true));
 
                 //testCases[CreatureConstants.Magmin].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
                 //testCases[CreatureConstants.Magmin].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.MeltWeapons));
@@ -3217,8 +3242,9 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 //testCases[CreatureConstants.Rat_Dire].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
                 //testCases[CreatureConstants.Rat_Dire].Add(AttackHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                //testCases[CreatureConstants.Rat_Swarm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
-                //testCases[CreatureConstants.Rat_Swarm].Add(AttackHelper.BuildData(FeatConstants.WeaponFinesse));
+                testCases[CreatureConstants.Rat_Swarm].Add(AttackHelper.BuildData("Swarm", $"1d6 + disease", true, true, true, false));
+                testCases[CreatureConstants.Rat_Swarm].Add(AttackHelper.BuildData("Disease", "Filth Fever", true, true, true, true));
+                testCases[CreatureConstants.Rat_Swarm].Add(AttackHelper.BuildData("Distraction", string.Empty, true, true, true, true));
 
                 //testCases[CreatureConstants.Raven].Add(AttackHelper.BuildData(FeatConstants.WeaponFinesse));
 
@@ -3467,8 +3493,9 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 //testCases[CreatureConstants.SpiderEater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FreedomOfMovement, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
                 //testCases[CreatureConstants.SpiderEater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
-                //testCases[CreatureConstants.Spider_Swarm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 30));
-                //testCases[CreatureConstants.Spider_Swarm].Add(AttackHelper.BuildData(FeatConstants.WeaponFinesse));
+                testCases[CreatureConstants.Spider_Swarm].Add(AttackHelper.BuildData("Swarm", $"1d6 + poison", true, true, true, false));
+                testCases[CreatureConstants.Spider_Swarm].Add(AttackHelper.BuildData("Poison", "Initial and secondary damage 1d3 Str", true, true, true, true));
+                testCases[CreatureConstants.Spider_Swarm].Add(AttackHelper.BuildData("Distraction", string.Empty, true, true, true, true));
 
                 //testCases[CreatureConstants.Squid].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.InkCloud));
                 //testCases[CreatureConstants.Squid].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Jet));
@@ -3502,9 +3529,9 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 //testCases[CreatureConstants.Thoqqua].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
                 //testCases[CreatureConstants.Thoqqua].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Heat));
 
-                testCases[CreatureConstants.Tiefling].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, true, false, true, false));
-                testCases[CreatureConstants.Tiefling].Add(AttackHelper.BuildData(AttributeConstants.Ranged, string.Empty, false, false, true, false));
-                testCases[CreatureConstants.Tiefling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, false, true, true, true));
+                testCases[CreatureConstants.Tiefling].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                testCases[CreatureConstants.Tiefling].Add(AttackHelper.BuildData(AttributeConstants.Ranged, string.Empty, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
+                testCases[CreatureConstants.Tiefling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 //testCases[CreatureConstants.Tiger].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 

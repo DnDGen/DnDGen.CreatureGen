@@ -21,10 +21,16 @@
             public const int IsMeleeIndex = 3;
             public const int IsPrimaryIndex = 4;
             public const int IsSpecialIndex = 5;
+            public const int FrequencyQuantityIndex = 6;
+            public const int FrequencyTimePeriodIndex = 7;
+            public const int SaveAbilityIndex = 8;
+            public const int BaseSaveIndex = 9;
+            public const int SaveIndex = 10;
+            public const int AttackTypeIndex = 11;
 
             public static string[] InitializeData()
             {
-                return DataIndexConstants.InitializeData(IsSpecialIndex);
+                return DataIndexConstants.InitializeData(AttackTypeIndex);
             }
         }
 

@@ -44,15 +44,7 @@ namespace CreatureGen.Selectors.Collections
 
         private AttackSelection Parse(string input, string originalSize, string advancedSize)
         {
-            var sections = input.Split(AttackSelection.Divider);
-
-            var selection = new AttackSelection();
-            selection.IsMelee = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsMeleeIndex]);
-            selection.IsNatural = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsNaturalIndex]);
-            selection.IsPrimary = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsPrimaryIndex]);
-            selection.IsSpecial = Convert.ToBoolean(sections[DataIndexConstants.AttackData.IsSpecialIndex]);
-            selection.Name = sections[DataIndexConstants.AttackData.NameIndex];
-            selection.Damage = sections[DataIndexConstants.AttackData.DamageIndex];
+            var selection = AttackSelection.From(input);
 
             if (selection.IsNatural)
                 selection.Damage = GetAdjustedDamage(selection.Damage, originalSize, advancedSize);

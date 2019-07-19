@@ -83,13 +83,23 @@ namespace CreatureGen.Generators.Attacks
                 attack.IsNatural = attackSelection.IsNatural;
                 attack.IsPrimary = attackSelection.IsPrimary;
                 attack.IsSpecial = attackSelection.IsSpecial;
+                attack.AttackType = attackSelection.AttackType;
 
-                if (attack.IsSpecial)
-                    continue;
+                attack.Frequency = new Frequency();
+                attack.Frequency.Quantity = attackSelection.FrequencyQuantity;
+                attack.Frequency.TimePeriod = attackSelection.FrequencyTimePeriod;
+
+                if (!string.IsNullOrEmpty(attackSelection.Save))
+                {
+                    attack.Save = new SaveDieCheck();
+                    attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];
+                    attack.Save.BaseValue = attackSelection.BaseSave;
+                    attack.Save.Save = attackSelection.Save;
+                }
 
                 attack.BaseAttackBonus = baseAttackBonus;
-                attack.BaseAbility = GetAbilityForAttack(abilities, attackSelection);
                 attack.SizeModifierForAttackBonus = sizeModifier;
+                attack.BaseAbility = GetAbilityForAttack(abilities, attackSelection);
             }
 
             return attacks;

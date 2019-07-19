@@ -1,4 +1,5 @@
 ﻿using CreatureGen.Abilities;
+using CreatureGen.Feats;
 
 namespace CreatureGen.Attacks
 {
@@ -14,6 +15,9 @@ namespace CreatureGen.Attacks
         public bool IsSpecial { get; set; }
         public bool IsNatural { get; set; }
         public int SecondaryAttackModifiers { get; set; }
+        public Frequency Frequency { get; set; }
+        public SaveDieCheck Save { get; set; }
+        public string AttackType { get; set; }
 
         public int TotalAttackBonus
         {
