@@ -477,47 +477,6 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(generatedAttack.SizeModifierForAttackBonus, Is.Zero);
         }
 
-        [TestCase(AbilityConstants.Strength, true, true)]
-        [TestCase(AbilityConstants.Strength, true, false)]
-        [TestCase(AbilityConstants.Strength, false, true)]
-        [TestCase(AbilityConstants.Strength, false, false)]
-        [TestCase(AbilityConstants.Constitution, true, true)]
-        [TestCase(AbilityConstants.Constitution, true, false)]
-        [TestCase(AbilityConstants.Constitution, false, true)]
-        [TestCase(AbilityConstants.Constitution, false, false)]
-        [TestCase(AbilityConstants.Dexterity, true, true)]
-        [TestCase(AbilityConstants.Dexterity, true, false)]
-        [TestCase(AbilityConstants.Dexterity, false, true)]
-        [TestCase(AbilityConstants.Dexterity, false, false)]
-        [TestCase(AbilityConstants.Intelligence, true, true)]
-        [TestCase(AbilityConstants.Intelligence, true, false)]
-        [TestCase(AbilityConstants.Intelligence, false, true)]
-        [TestCase(AbilityConstants.Intelligence, false, false)]
-        [TestCase(AbilityConstants.Wisdom, true, true)]
-        [TestCase(AbilityConstants.Wisdom, true, false)]
-        [TestCase(AbilityConstants.Wisdom, false, true)]
-        [TestCase(AbilityConstants.Wisdom, false, false)]
-        [TestCase(AbilityConstants.Charisma, true, true)]
-        [TestCase(AbilityConstants.Charisma, true, false)]
-        [TestCase(AbilityConstants.Charisma, false, true)]
-        [TestCase(AbilityConstants.Charisma, false, false)]
-        public void GenerateAttackWithAbilityInDamage_Primary_Sole(string ability, bool isMelee, bool isNatural)
-        {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = true, IsMelee = isMelee, IsNatural = isNatural });
-
-            abilities[ability].BaseScore = 90210;
-
-            mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
-
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
-
-            var attack = generatedAttacks.Single();
-            Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.Damage, Is.EqualTo("damage + 67650 + effect"));
-        }
-
         [TestCase(1, -7)]
         [TestCase(2, -6)]
         [TestCase(3, -6)]
@@ -568,10 +527,10 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(48, 28)]
         [TestCase(49, 28)]
         [TestCase(50, 30)]
-        public void GenerateAttackWithAbilityInDamage_Primary_Sole(int value, int bonus)
+        public void GenerateAttack_Primary_Melee_Sole(int value, int bonus)
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {AbilityConstants.Strength.ToUpper()} + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
+            attacks.Add(new AttackSelection() { Name = "attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
 
             abilities[AbilityConstants.Strength].BaseScore = value;
 
@@ -582,30 +541,37 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.Damage, Is.EqualTo($"damage + {bonus} + effect"));
+            Assert.That(attack.Damage, Is.EqualTo($"{bonus} + damage + effect"));
         }
 
         [Test]
-        public void IfAttackIsMelee_AddStrengthModifierToDamage()
+        public void GenerateAttack_Primary_Ranged()
         {
-            Assert.Fail("not yet written");
+            var attacks = new List<AttackSelection>();
+            attacks.Add(new AttackSelection() { Name = "attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = false, IsNatural = true });
+
+            abilities[AbilityConstants.Strength].BaseScore = 90210;
+
+            mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
+
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
+
+            var attack = generatedAttacks.Single();
+            Assert.That(attack.Name, Is.EqualTo("attack"));
+            Assert.That(attack.Damage, Is.EqualTo($"damage + effect"));
         }
 
-        [TestCase(AbilityConstants.Strength)]
-        [TestCase(AbilityConstants.Constitution)]
-        [TestCase(AbilityConstants.Dexterity)]
-        [TestCase(AbilityConstants.Intelligence)]
-        [TestCase(AbilityConstants.Wisdom)]
-        [TestCase(AbilityConstants.Charisma)]
-        public void GenerateAttackWithAbilityInDamage_Primary_AllSole(string ability)
+        [Test]
+        public void GenerateAttack_Primary_AllSole()
         {
             var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection() { Name = "nat melee attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
-            attackSelections.Add(new AttackSelection() { Name = "nat range attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = true, IsMelee = false, IsNatural = true });
-            attackSelections.Add(new AttackSelection() { Name = "melee attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = true, IsMelee = true, IsNatural = false });
-            attackSelections.Add(new AttackSelection() { Name = "range attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = true, IsMelee = false, IsNatural = false });
+            attackSelections.Add(new AttackSelection() { Name = "nat melee attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
+            attackSelections.Add(new AttackSelection() { Name = "nat range attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = false, IsNatural = true });
+            attackSelections.Add(new AttackSelection() { Name = "melee attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = true, IsNatural = false });
+            attackSelections.Add(new AttackSelection() { Name = "range attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = false, IsNatural = false });
 
-            abilities[ability].BaseScore = 90210;
+            abilities[AbilityConstants.Strength].BaseScore = 90210;
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
@@ -616,52 +582,30 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attacks[0].Name, Is.EqualTo("nat melee attack"));
             Assert.That(attacks[0].IsMelee, Is.True);
             Assert.That(attacks[0].IsNatural, Is.True);
-            Assert.That(attacks[0].Damage, Is.EqualTo("damage + 67650 + effect"));
+            Assert.That(attacks[0].Damage, Is.EqualTo("67650 + damage + effect"));
             Assert.That(attacks[1].Name, Is.EqualTo("nat range attack"));
             Assert.That(attacks[1].IsMelee, Is.False);
             Assert.That(attacks[1].IsNatural, Is.True);
-            Assert.That(attacks[1].Damage, Is.EqualTo("damage + 67650 + effect"));
+            Assert.That(attacks[1].Damage, Is.EqualTo("67650 + damage + effect"));
             Assert.That(attacks[2].Name, Is.EqualTo("melee attack"));
             Assert.That(attacks[2].IsMelee, Is.True);
             Assert.That(attacks[2].IsNatural, Is.False);
-            Assert.That(attacks[2].Damage, Is.EqualTo("damage + 67650 + effect"));
+            Assert.That(attacks[2].Damage, Is.EqualTo("67650 + damage + effect"));
             Assert.That(attacks[3].Name, Is.EqualTo("range attack"));
             Assert.That(attacks[3].IsMelee, Is.False);
             Assert.That(attacks[3].IsNatural, Is.False);
-            Assert.That(attacks[3].Damage, Is.EqualTo("damage + 67650 + effect"));
+            Assert.That(attacks[3].Damage, Is.EqualTo("67650 + damage + effect"));
         }
 
-        [TestCase(AbilityConstants.Strength, true, true)]
-        [TestCase(AbilityConstants.Strength, true, false)]
-        [TestCase(AbilityConstants.Strength, false, true)]
-        [TestCase(AbilityConstants.Strength, false, false)]
-        [TestCase(AbilityConstants.Constitution, true, true)]
-        [TestCase(AbilityConstants.Constitution, true, false)]
-        [TestCase(AbilityConstants.Constitution, false, true)]
-        [TestCase(AbilityConstants.Constitution, false, false)]
-        [TestCase(AbilityConstants.Dexterity, true, true)]
-        [TestCase(AbilityConstants.Dexterity, true, false)]
-        [TestCase(AbilityConstants.Dexterity, false, true)]
-        [TestCase(AbilityConstants.Dexterity, false, false)]
-        [TestCase(AbilityConstants.Intelligence, true, true)]
-        [TestCase(AbilityConstants.Intelligence, true, false)]
-        [TestCase(AbilityConstants.Intelligence, false, true)]
-        [TestCase(AbilityConstants.Intelligence, false, false)]
-        [TestCase(AbilityConstants.Wisdom, true, true)]
-        [TestCase(AbilityConstants.Wisdom, true, false)]
-        [TestCase(AbilityConstants.Wisdom, false, true)]
-        [TestCase(AbilityConstants.Wisdom, false, false)]
-        [TestCase(AbilityConstants.Charisma, true, true)]
-        [TestCase(AbilityConstants.Charisma, true, false)]
-        [TestCase(AbilityConstants.Charisma, false, true)]
-        [TestCase(AbilityConstants.Charisma, false, false)]
-        public void GenerateAttackWithAbilityInDamage_Primary_Multiple(string ability, bool isMelee, bool isNatural)
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GenerateAttack_Primary_Multiple(bool isNatural)
         {
             var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = true, IsMelee = isMelee, IsNatural = isNatural });
-            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = true, IsMelee = isMelee, IsNatural = isNatural });
+            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = true, IsNatural = isNatural });
+            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = true, IsNatural = isNatural });
 
-            abilities[ability].BaseScore = 90210;
+            abilities[AbilityConstants.Strength].BaseScore = 90210;
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
@@ -670,9 +614,9 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("attack"));
-            Assert.That(attacks[0].Damage, Is.EqualTo("damage + 45100 + effect"));
+            Assert.That(attacks[0].Damage, Is.EqualTo("45100 + damage + effect"));
             Assert.That(attacks[1].Name, Is.EqualTo("attack"));
-            Assert.That(attacks[1].Damage, Is.EqualTo("damage + 45100 + effect"));
+            Assert.That(attacks[1].Damage, Is.EqualTo("45100 + damage + effect"));
         }
 
         [TestCase(1, -5)]
@@ -725,11 +669,11 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(48, 19)]
         [TestCase(49, 19)]
         [TestCase(50, 20)]
-        public void GenerateAttackWithAbilityInDamage_Primary_Multiple(int value, int bonus)
+        public void GenerateAttack_Primary_Multiple(int value, int bonus)
         {
             var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {AbilityConstants.Strength.ToUpper()} + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
-            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {AbilityConstants.Strength.ToUpper()} + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
+            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
+            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
 
             abilities[AbilityConstants.Strength].BaseScore = value;
 
@@ -740,42 +684,20 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("attack"));
-            Assert.That(attacks[0].Damage, Is.EqualTo($"damage + {bonus} + effect"));
+            Assert.That(attacks[0].Damage, Is.EqualTo($"{bonus} + damage + effect"));
             Assert.That(attacks[1].Name, Is.EqualTo("attack"));
-            Assert.That(attacks[1].Damage, Is.EqualTo($"damage + {bonus} + effect"));
+            Assert.That(attacks[1].Damage, Is.EqualTo($"{bonus} + damage + effect"));
         }
 
-        [TestCase(AbilityConstants.Strength, true, true)]
-        [TestCase(AbilityConstants.Strength, true, false)]
-        [TestCase(AbilityConstants.Strength, false, true)]
-        [TestCase(AbilityConstants.Strength, false, false)]
-        [TestCase(AbilityConstants.Constitution, true, true)]
-        [TestCase(AbilityConstants.Constitution, true, false)]
-        [TestCase(AbilityConstants.Constitution, false, true)]
-        [TestCase(AbilityConstants.Constitution, false, false)]
-        [TestCase(AbilityConstants.Dexterity, true, true)]
-        [TestCase(AbilityConstants.Dexterity, true, false)]
-        [TestCase(AbilityConstants.Dexterity, false, true)]
-        [TestCase(AbilityConstants.Dexterity, false, false)]
-        [TestCase(AbilityConstants.Intelligence, true, true)]
-        [TestCase(AbilityConstants.Intelligence, true, false)]
-        [TestCase(AbilityConstants.Intelligence, false, true)]
-        [TestCase(AbilityConstants.Intelligence, false, false)]
-        [TestCase(AbilityConstants.Wisdom, true, true)]
-        [TestCase(AbilityConstants.Wisdom, true, false)]
-        [TestCase(AbilityConstants.Wisdom, false, true)]
-        [TestCase(AbilityConstants.Wisdom, false, false)]
-        [TestCase(AbilityConstants.Charisma, true, true)]
-        [TestCase(AbilityConstants.Charisma, true, false)]
-        [TestCase(AbilityConstants.Charisma, false, true)]
-        [TestCase(AbilityConstants.Charisma, false, false)]
-        public void GenerateAttackWithAbilityInDamage_Primary_WithSecondary(string ability, bool isMelee, bool isNatural)
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GenerateAttack_Primary_WithSecondary(bool isNatural)
         {
             var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = true, IsMelee = isMelee, IsNatural = isNatural });
-            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = false, IsMelee = isMelee, IsNatural = isNatural });
+            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = true, IsNatural = isNatural });
+            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + effect", IsPrimary = false, IsMelee = true, IsNatural = isNatural });
 
-            abilities[ability].BaseScore = 90210;
+            abilities[AbilityConstants.Strength].BaseScore = 90210;
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
@@ -784,25 +706,20 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("attack"));
-            Assert.That(attacks[0].Damage, Is.EqualTo("damage + 45100 + effect"));
+            Assert.That(attacks[0].Damage, Is.EqualTo("45100 + damage + effect"));
             Assert.That(attacks[1].Name, Is.EqualTo("attack"));
-            Assert.That(attacks[1].Damage, Is.EqualTo("damage + 22550 + effect"));
+            Assert.That(attacks[1].Damage, Is.EqualTo("22550 + damage + effect"));
         }
 
-        [TestCase(AbilityConstants.Strength)]
-        [TestCase(AbilityConstants.Constitution)]
-        [TestCase(AbilityConstants.Dexterity)]
-        [TestCase(AbilityConstants.Intelligence)]
-        [TestCase(AbilityConstants.Wisdom)]
-        [TestCase(AbilityConstants.Charisma)]
-        public void GenerateAttackWithAbilityInDamage_Primary_SoleAndMultiple(string ability)
+        [Test]
+        public void GenerateAttack_Primary_SoleAndMultiple()
         {
             var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {ability.ToUpper()}", IsPrimary = true, IsMelee = true, IsNatural = false });
-            attackSelections.Add(new AttackSelection() { Name = "nat attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
-            attackSelections.Add(new AttackSelection() { Name = "nat attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
+            attackSelections.Add(new AttackSelection() { Name = "attack", Damage = $"damage", IsPrimary = true, IsMelee = true, IsNatural = false });
+            attackSelections.Add(new AttackSelection() { Name = "nat attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
+            attackSelections.Add(new AttackSelection() { Name = "nat attack", Damage = $"damage + effect", IsPrimary = true, IsMelee = true, IsNatural = true });
 
-            abilities[ability].BaseScore = 90210;
+            abilities[AbilityConstants.Strength].BaseScore = 90210;
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
@@ -811,25 +728,20 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("attack"));
-            Assert.That(attacks[0].Damage, Is.EqualTo("damage + 67650"));
+            Assert.That(attacks[0].Damage, Is.EqualTo("67650 + damage"));
             Assert.That(attacks[1].Name, Is.EqualTo("nat attack"));
-            Assert.That(attacks[1].Damage, Is.EqualTo("damage + 45100 + effect"));
+            Assert.That(attacks[1].Damage, Is.EqualTo("45100 + damage + effect"));
             Assert.That(attacks[2].Name, Is.EqualTo("nat attack"));
-            Assert.That(attacks[2].Damage, Is.EqualTo("damage + 45100 + effect"));
+            Assert.That(attacks[2].Damage, Is.EqualTo("45100 + damage + effect"));
         }
 
-        [TestCase(AbilityConstants.Strength)]
-        [TestCase(AbilityConstants.Constitution)]
-        [TestCase(AbilityConstants.Dexterity)]
-        [TestCase(AbilityConstants.Intelligence)]
-        [TestCase(AbilityConstants.Wisdom)]
-        [TestCase(AbilityConstants.Charisma)]
-        public void GenerateAttackWithAbilityInDamage_Secondary(string ability)
+        [Test]
+        public void GenerateAttack_Secondary()
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {ability.ToUpper()} + effect", IsPrimary = false });
+            attacks.Add(new AttackSelection() { Name = "attack", Damage = $"damage + effect", IsPrimary = false, IsMelee = true });
 
-            abilities[ability].BaseScore = 90210;
+            abilities[AbilityConstants.Strength].BaseScore = 90210;
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
@@ -838,7 +750,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.Damage, Is.EqualTo("damage + 22550 + effect"));
+            Assert.That(attack.Damage, Is.EqualTo("22550 + damage + effect"));
         }
 
         [TestCase(1, -2)]
@@ -891,10 +803,10 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(48, 9)]
         [TestCase(49, 9)]
         [TestCase(50, 10)]
-        public void GenerateAttackWithAbilityInDamage_Secondary(int value, int bonus)
+        public void GenerateAttack_Secondary(int value, int bonus)
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {AbilityConstants.Strength.ToUpper()} + effect", IsPrimary = false, IsMelee = true, IsNatural = true });
+            attacks.Add(new AttackSelection() { Name = "attack", Damage = $"damage + effect", IsPrimary = false, IsMelee = true, IsNatural = true });
 
             abilities[AbilityConstants.Strength].BaseScore = value;
 
@@ -905,7 +817,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.Damage, Is.EqualTo($"damage + {bonus} + effect"));
+            Assert.That(attack.Damage, Is.EqualTo($"{bonus} + damage + effect"));
         }
 
         [TestCase(AbilityConstants.Strength)]
@@ -917,9 +829,9 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateAttackWithAbilityEffectInDamage(string ability)
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {ability} drain" });
+            attacks.Add(new AttackSelection() { Name = "attack", Damage = $"damage + {ability} drain", IsMelee = true });
 
-            abilities[ability].BaseScore = 90210;
+            abilities[AbilityConstants.Strength].BaseScore = 90210;
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
@@ -928,7 +840,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.Damage, Is.EqualTo($"damage + {ability} drain"));
+            Assert.That(attack.Damage, Is.EqualTo($"22550 + damage + {ability} drain"));
         }
 
         [Test]
