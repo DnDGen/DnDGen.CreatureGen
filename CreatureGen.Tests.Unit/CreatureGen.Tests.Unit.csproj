@@ -92,6 +92,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attacks\SaveDieCheckTests.cs" />
     <Compile Include="Creatures\SizeConstantsTests.cs" />
     <Compile Include="Creatures\SpeedConstantsTests.cs" />
     <Compile Include="Defenses\ArmorClassConstantsTests.cs" />
