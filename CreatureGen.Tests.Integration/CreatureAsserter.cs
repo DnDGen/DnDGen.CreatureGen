@@ -228,7 +228,7 @@ namespace CreatureGen.Tests.Integration
         private void AssertAttack(Attack attack, Creature creature)
         {
             Assert.That(attack.Name, Is.Not.Empty, creature.Summary);
-            Assert.That(attack.Damage, Is.Not.Empty, attack.Name);
+            Assert.That(attack.DamageRoll, Is.Not.Empty, attack.Name);
 
             if (!attack.IsNatural)
             {

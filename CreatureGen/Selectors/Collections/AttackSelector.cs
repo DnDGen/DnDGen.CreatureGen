@@ -47,7 +47,7 @@ namespace CreatureGen.Selectors.Collections
             var selection = AttackSelection.From(input);
 
             if (selection.IsNatural)
-                selection.Damage = GetAdjustedDamage(selection.Damage, originalSize, advancedSize);
+                selection.DamageRoll = GetAdjustedDamage(selection.DamageRoll, originalSize, advancedSize);
 
             return selection;
         }

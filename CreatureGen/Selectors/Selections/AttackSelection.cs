@@ -8,7 +8,9 @@ namespace CreatureGen.Selectors.Selections
     {
         public const char Divider = '@';
 
-        public string Damage { get; set; }
+        public string DamageRoll { get; set; }
+        public string DamageEffect { get; set; }
+        public double DamageBonusMultiplier { get; set; }
         public string Name { get; set; }
         public bool IsPrimary { get; set; }
         public bool IsMelee { get; set; }
@@ -23,7 +25,8 @@ namespace CreatureGen.Selectors.Selections
 
         public AttackSelection()
         {
-            Damage = string.Empty;
+            DamageRoll = string.Empty;
+            DamageEffect = string.Empty;
             Name = string.Empty;
         }
 
@@ -36,7 +39,9 @@ namespace CreatureGen.Selectors.Selections
             selection.IsPrimary = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsPrimaryIndex]);
             selection.IsSpecial = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsSpecialIndex]);
             selection.Name = data[DataIndexConstants.AttackData.NameIndex];
-            selection.Damage = data[DataIndexConstants.AttackData.DamageIndex];
+            selection.DamageRoll = data[DataIndexConstants.AttackData.DamageRollIndex];
+            selection.DamageEffect = data[DataIndexConstants.AttackData.DamageEffectIndex];
+            selection.DamageBonusMultiplier = Convert.ToDouble(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex]);
             selection.FrequencyQuantity = Convert.ToInt32(data[DataIndexConstants.AttackData.FrequencyQuantityIndex]);
             selection.FrequencyTimePeriod = data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex];
             selection.Save = data[DataIndexConstants.AttackData.SaveIndex];

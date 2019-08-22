@@ -8,6 +8,6 @@ namespace CreatureGen.Attacks
         public int BaseValue { get; set; }
         public string Save { get; set; }
 
-        public int Value => BaseValue + BaseAbility.Modifier;
+        public int DC => BaseValue + BaseAbility.Modifier;
     }
 }

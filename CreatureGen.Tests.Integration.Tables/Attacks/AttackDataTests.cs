@@ -23,12 +23,20 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
         protected override void PopulateIndices(IEnumerable<string> collection)
         {
-            indices[DataIndexConstants.AttackData.DamageIndex] = "Damage";
+            indices[DataIndexConstants.AttackData.DamageRollIndex] = "Damage Roll";
             indices[DataIndexConstants.AttackData.IsMeleeIndex] = "Is Melee";
             indices[DataIndexConstants.AttackData.IsNaturalIndex] = "Is Natural";
             indices[DataIndexConstants.AttackData.IsPrimaryIndex] = "Is Primary";
             indices[DataIndexConstants.AttackData.IsSpecialIndex] = "Is Special";
             indices[DataIndexConstants.AttackData.NameIndex] = "Name";
+            indices[DataIndexConstants.AttackData.AttackTypeIndex] = "Attack Type";
+            indices[DataIndexConstants.AttackData.BaseSaveIndex] = "Base Save";
+            indices[DataIndexConstants.AttackData.DamageEffectIndex] = "Damage Effect";
+            indices[DataIndexConstants.AttackData.FrequencyQuantityIndex] = "Frequency Quantity";
+            indices[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = "Frequency Time Period";
+            indices[DataIndexConstants.AttackData.SaveAbilityIndex] = "Save Ability";
+            indices[DataIndexConstants.AttackData.SaveIndex] = "Save";
+            indices[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = "Damage Bonus Multiplier";
         }
 
         [SetUp]

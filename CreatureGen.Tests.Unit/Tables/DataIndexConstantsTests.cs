@@ -34,7 +34,7 @@ namespace CreatureGen.Tests.Unit.Tables
         }
 
         [TestCase(DataIndexConstants.AttackData.NameIndex, 0)]
-        [TestCase(DataIndexConstants.AttackData.DamageIndex, 1)]
+        [TestCase(DataIndexConstants.AttackData.DamageRollIndex, 1)]
         [TestCase(DataIndexConstants.AttackData.IsNaturalIndex, 2)]
         [TestCase(DataIndexConstants.AttackData.IsMeleeIndex, 3)]
         [TestCase(DataIndexConstants.AttackData.IsPrimaryIndex, 4)]
@@ -45,13 +45,14 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.AttackData.BaseSaveIndex, 9)]
         [TestCase(DataIndexConstants.AttackData.SaveIndex, 10)]
         [TestCase(DataIndexConstants.AttackData.AttackTypeIndex, 11)]
+        [TestCase(DataIndexConstants.AttackData.DamageEffectIndex, 12)]
         public void AttackDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
         }
 
         [TestCase(DataIndexConstants.AttackData.NameIndex)]
-        [TestCase(DataIndexConstants.AttackData.DamageIndex)]
+        [TestCase(DataIndexConstants.AttackData.DamageRollIndex)]
         [TestCase(DataIndexConstants.AttackData.IsNaturalIndex)]
         [TestCase(DataIndexConstants.AttackData.IsMeleeIndex)]
         [TestCase(DataIndexConstants.AttackData.IsPrimaryIndex)]
@@ -62,6 +63,7 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.AttackData.BaseSaveIndex)]
         [TestCase(DataIndexConstants.AttackData.SaveIndex)]
         [TestCase(DataIndexConstants.AttackData.AttackTypeIndex)]
+        [TestCase(DataIndexConstants.AttackData.DamageEffectIndex)]
         public void AttackDataIndicesInitialized(int index)
         {
             var data = DataIndexConstants.AttackData.InitializeData();

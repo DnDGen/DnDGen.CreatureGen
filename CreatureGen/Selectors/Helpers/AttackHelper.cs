@@ -7,7 +7,9 @@ namespace CreatureGen.Selectors.Helpers
     {
         public static string[] BuildData(
             string name,
-            string damage,
+            string damageRoll,
+            string damageEffect,
+            double damageBonusMultiplier,
             string attackType,
             int frequencyQuantity,
             string frequencyTimePeriod,
@@ -22,7 +24,9 @@ namespace CreatureGen.Selectors.Helpers
             var data = DataIndexConstants.AttackData.InitializeData();
 
             data[DataIndexConstants.AttackData.NameIndex] = name;
-            data[DataIndexConstants.AttackData.DamageIndex] = damage;
+            data[DataIndexConstants.AttackData.DamageRollIndex] = damageRoll;
+            data[DataIndexConstants.AttackData.DamageEffectIndex] = damageEffect;
+            data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = damageBonusMultiplier.ToString();
             data[DataIndexConstants.AttackData.IsMeleeIndex] = isMelee.ToString();
             data[DataIndexConstants.AttackData.IsNaturalIndex] = isNatural.ToString();
             data[DataIndexConstants.AttackData.IsPrimaryIndex] = isPrimary.ToString();
