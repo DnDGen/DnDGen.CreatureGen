@@ -91,7 +91,7 @@ namespace CreatureGen.Generators.Attacks
                 attack.Frequency.Quantity = attackSelection.FrequencyQuantity;
                 attack.Frequency.TimePeriod = attackSelection.FrequencyTimePeriod;
 
-                if (!string.IsNullOrEmpty(attackSelection.Save))
+                if (!string.IsNullOrEmpty(attackSelection.SaveAbility))
                 {
                     attack.Save = new SaveDieCheck();
                     attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];
