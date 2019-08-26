@@ -20,7 +20,6 @@ namespace CreatureGen.Selectors.Selections
         public string FrequencyTimePeriod { get; set; }
         public string Save { get; set; }
         public string SaveAbility { get; set; }
-        public int BaseSave { get; set; }
         public string AttackType { get; set; }
 
         public AttackSelection()
@@ -46,7 +45,6 @@ namespace CreatureGen.Selectors.Selections
             selection.FrequencyTimePeriod = data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex];
             selection.Save = data[DataIndexConstants.AttackData.SaveIndex];
             selection.SaveAbility = data[DataIndexConstants.AttackData.SaveAbilityIndex];
-            selection.BaseSave = Convert.ToInt32(data[DataIndexConstants.AttackData.BaseSaveIndex]);
             selection.AttackType = data[DataIndexConstants.AttackData.AttackTypeIndex];
 
             return selection;

@@ -30,7 +30,6 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
             indices[DataIndexConstants.AttackData.IsSpecialIndex] = "Is Special";
             indices[DataIndexConstants.AttackData.NameIndex] = "Name";
             indices[DataIndexConstants.AttackData.AttackTypeIndex] = "Attack Type";
-            indices[DataIndexConstants.AttackData.BaseSaveIndex] = "Base Save";
             indices[DataIndexConstants.AttackData.DamageEffectIndex] = "Damage Effect";
             indices[DataIndexConstants.AttackData.FrequencyQuantityIndex] = "Frequency Quantity";
             indices[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = "Frequency Time Period";

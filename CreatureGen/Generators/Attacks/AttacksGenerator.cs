@@ -66,7 +66,7 @@ namespace CreatureGen.Generators.Attacks
             return baseAttackBonus + strength.Modifier + sizeModifier;
         }
 
-        public IEnumerable<Attack> GenerateAttacks(string creatureName, string originalSize, string size, int baseAttackBonus, Dictionary<string, Ability> abilities)
+        public IEnumerable<Attack> GenerateAttacks(string creatureName, string originalSize, string size, int baseAttackBonus, Dictionary<string, Ability> abilities, int hitDiceQuantity)
         {
             var attackSelections = attackSelector.Select(creatureName, originalSize, size);
             var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, size);
@@ -95,7 +95,7 @@ namespace CreatureGen.Generators.Attacks
                 {
                     attack.Save = new SaveDieCheck();
                     attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];
-                    attack.Save.BaseValue = attackSelection.BaseSave;
+                    attack.Save.BaseValue = 10 + hitDiceQuantity / 2;
                     attack.Save.Save = attackSelection.Save;
                 }
 

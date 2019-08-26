@@ -125,7 +125,7 @@ namespace CreatureGen.Generators.Creatures
                 creature.Alignment);
 
             creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
-            creature.Attacks = attacksGenerator.GenerateAttacks(creatureName, creatureData.Size, creature.Size, creature.BaseAttackBonus, creature.Abilities);
+            creature.Attacks = attacksGenerator.GenerateAttacks(creatureName, creatureData.Size, creature.Size, creature.BaseAttackBonus, creature.Abilities, creature.HitPoints.RoundedHitDiceQuantity);
 
             creature.Feats = featsGenerator.GenerateFeats(
                 creature.HitPoints,

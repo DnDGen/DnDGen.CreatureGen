@@ -430,6 +430,7 @@ namespace CreatureGen.Feats
             public const string Week = "Week";
             public const string Month = "Month";
             public const string Year = "Year";
+            public const string Life = "Life";
         }
 
         public static class Foci

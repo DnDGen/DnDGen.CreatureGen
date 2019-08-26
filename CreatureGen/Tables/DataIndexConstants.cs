@@ -24,11 +24,10 @@
             public const int FrequencyQuantityIndex = 6;
             public const int FrequencyTimePeriodIndex = 7;
             public const int SaveAbilityIndex = 8;
-            public const int BaseSaveIndex = 9;
-            public const int SaveIndex = 10;
-            public const int AttackTypeIndex = 11;
-            public const int DamageEffectIndex = 12;
-            public const int DamageBonusMultiplierIndex = 13;
+            public const int SaveIndex = 9;
+            public const int AttackTypeIndex = 10;
+            public const int DamageEffectIndex = 11;
+            public const int DamageBonusMultiplierIndex = 12;
 
             public static string[] InitializeData()
             {

@@ -42,10 +42,9 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.AttackData.FrequencyQuantityIndex, 6)]
         [TestCase(DataIndexConstants.AttackData.FrequencyTimePeriodIndex, 7)]
         [TestCase(DataIndexConstants.AttackData.SaveAbilityIndex, 8)]
-        [TestCase(DataIndexConstants.AttackData.BaseSaveIndex, 9)]
-        [TestCase(DataIndexConstants.AttackData.SaveIndex, 10)]
-        [TestCase(DataIndexConstants.AttackData.AttackTypeIndex, 11)]
-        [TestCase(DataIndexConstants.AttackData.DamageEffectIndex, 12)]
+        [TestCase(DataIndexConstants.AttackData.SaveIndex, 9)]
+        [TestCase(DataIndexConstants.AttackData.AttackTypeIndex, 10)]
+        [TestCase(DataIndexConstants.AttackData.DamageEffectIndex, 11)]
         public void AttackDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
@@ -60,7 +59,6 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.AttackData.FrequencyQuantityIndex)]
         [TestCase(DataIndexConstants.AttackData.FrequencyTimePeriodIndex)]
         [TestCase(DataIndexConstants.AttackData.SaveAbilityIndex)]
-        [TestCase(DataIndexConstants.AttackData.BaseSaveIndex)]
         [TestCase(DataIndexConstants.AttackData.SaveIndex)]
         [TestCase(DataIndexConstants.AttackData.AttackTypeIndex)]
         [TestCase(DataIndexConstants.AttackData.DamageEffectIndex)]

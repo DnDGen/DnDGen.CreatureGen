@@ -18,8 +18,7 @@ namespace CreatureGen.Selectors.Helpers
             bool isPrimary,
             bool isSpecial,
             string save = null,
-            string saveAbility = null,
-            int baseSave = 0)
+            string saveAbility = null)
         {
             var data = DataIndexConstants.AttackData.InitializeData();
 
@@ -35,7 +34,6 @@ namespace CreatureGen.Selectors.Helpers
             data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = frequencyTimePeriod;
             data[DataIndexConstants.AttackData.SaveIndex] = save;
             data[DataIndexConstants.AttackData.SaveAbilityIndex] = saveAbility;
-            data[DataIndexConstants.AttackData.BaseSaveIndex] = baseSave.ToString();
             data[DataIndexConstants.AttackData.AttackTypeIndex] = attackType;
 
             return data;
