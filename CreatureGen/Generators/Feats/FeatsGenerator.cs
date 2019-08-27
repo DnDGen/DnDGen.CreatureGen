@@ -18,15 +18,13 @@ namespace CreatureGen.Generators.Feats
     internal class FeatsGenerator : IFeatsGenerator
     {
         private readonly ICollectionSelector collectionsSelector;
-        private readonly IAdjustmentsSelector adjustmentsSelector;
         private readonly IFeatsSelector featsSelector;
         private readonly IFeatFocusGenerator featFocusGenerator;
         private readonly Dice dice;
 
-        public FeatsGenerator(ICollectionSelector collectionsSelector, IAdjustmentsSelector adjustmentsSelector, IFeatsSelector featsSelector, IFeatFocusGenerator featFocusGenerator, Dice dice)
+        public FeatsGenerator(ICollectionSelector collectionsSelector, IFeatsSelector featsSelector, IFeatFocusGenerator featFocusGenerator, Dice dice)
         {
             this.collectionsSelector = collectionsSelector;
-            this.adjustmentsSelector = adjustmentsSelector;
             this.featsSelector = featsSelector;
             this.featFocusGenerator = featFocusGenerator;
             this.dice = dice;

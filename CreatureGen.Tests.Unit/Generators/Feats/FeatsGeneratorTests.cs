@@ -24,7 +24,6 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         private Mock<ICollectionSelector> mockCollectionsSelector;
         private Mock<IFeatsSelector> mockFeatsSelector;
         private Mock<IFeatFocusGenerator> mockFeatFocusGenerator;
-        private Mock<IAdjustmentsSelector> mockAdjustmentsSelector;
         private IFeatsGenerator featsGenerator;
         private Dictionary<string, Ability> abilities;
         private Dictionary<string, Measurement> speeds;
@@ -44,9 +43,8 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             mockCollectionsSelector = new Mock<ICollectionSelector>();
             mockFeatsSelector = new Mock<IFeatsSelector>();
             mockFeatFocusGenerator = new Mock<IFeatFocusGenerator>();
-            mockAdjustmentsSelector = new Mock<IAdjustmentsSelector>();
             mockDice = new Mock<Dice>();
-            featsGenerator = new FeatsGenerator(mockCollectionsSelector.Object, mockAdjustmentsSelector.Object, mockFeatsSelector.Object, mockFeatFocusGenerator.Object, mockDice.Object);
+            featsGenerator = new FeatsGenerator(mockCollectionsSelector.Object, mockFeatsSelector.Object, mockFeatFocusGenerator.Object, mockDice.Object);
 
             abilities = new Dictionary<string, Ability>();
             skills = new List<Skill>();
@@ -704,6 +702,49 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "wrong size", alignment);
             Assert.That(specialQualities, Is.Empty);
+        }
+
+        [Test]
+        public void GetSpecialQualityWithSave()
+        {
+            var specialQualitySelection = new SpecialQualitySelection();
+            specialQualitySelection.Feat = "special quality";
+            specialQualitySelection.SaveAbility = "save ability";
+            specialQualitySelection.Save = "save";
+            specialQualitySelection.SaveBaseValue = 9266;
+
+            abilities["save ability"] = new Ability("save ability");
+
+            specialQualitySelections.Add(specialQualitySelection);
+
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+            Assert.That(specialQuality.Save, Is.Not.Null);
+            Assert.That(specialQuality.Save.BaseAbility, Is.EqualTo(abilities["save ability"]));
+            Assert.That(specialQuality.Save.Save, Is.EqualTo("save"));
+            Assert.That(specialQuality.Save.BaseValue, Is.EqualTo(9266));
+        }
+
+        [Test]
+        public void GetSpecialQualityWithoutSave()
+        {
+            var specialQualitySelection = new SpecialQualitySelection();
+            specialQualitySelection.Feat = "special quality";
+            specialQualitySelection.SaveAbility = string.Empty;
+            specialQualitySelection.Save = "save";
+            specialQualitySelection.SaveBaseValue = 9266;
+
+            abilities["save ability"] = new Ability("save ability");
+
+            specialQualitySelections.Add(specialQualitySelection);
+
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+            Assert.That(specialQuality.Save, Is.Null);
         }
     }
 }

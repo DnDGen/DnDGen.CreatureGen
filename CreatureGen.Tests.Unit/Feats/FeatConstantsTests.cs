@@ -276,6 +276,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.SpecialQualities.Planewalk, "Planewalk")]
         [TestCase(FeatConstants.SpecialQualities.ProtectiveAura, "Protective Aura")]
         [TestCase(FeatConstants.SpecialQualities.ProtectiveSlime, "Protective Slime")]
+        [TestCase(FeatConstants.SpecialQualities.Psionic, "Psionic")]
         [TestCase(FeatConstants.SpecialQualities.Quickness, "Quickness")]
         [TestCase(FeatConstants.SpecialQualities.Regeneration, "Regeneration")]
         [TestCase(FeatConstants.SpecialQualities.RockCatching, "Rock Catching")]

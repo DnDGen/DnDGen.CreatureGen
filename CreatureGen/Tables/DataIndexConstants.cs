@@ -44,10 +44,13 @@
             public const int FrequencyTimePeriodIndex = 4;
             public const int RandomFociQuantityIndex = 5;
             public const int RequiresEquipmentIndex = 6;
+            public const int SaveAbilityIndex = 7;
+            public const int SaveIndex = 8;
+            public const int SaveBaseValueIndex = 9;
 
             public static string[] InitializeData()
             {
-                return DataIndexConstants.InitializeData(RequiresEquipmentIndex);
+                return DataIndexConstants.InitializeData(SaveBaseValueIndex);
             }
         }
 

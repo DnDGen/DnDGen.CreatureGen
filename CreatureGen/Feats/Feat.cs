@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CreatureGen.Attacks;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CreatureGen.Feats
@@ -10,6 +11,7 @@ namespace CreatureGen.Feats
         public int Power { get; set; }
         public Frequency Frequency { get; set; }
         public bool CanBeTakenMultipleTimes { get; set; }
+        public SaveDieCheck Save { get; set; }
 
         public Feat()
         {

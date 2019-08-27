@@ -154,6 +154,9 @@ namespace CreatureGen.Selectors.Collections
                     specialQualitySelection.Frequency.TimePeriod = data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex];
                     specialQualitySelection.RandomFociQuantity = data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex];
                     specialQualitySelection.RequiresEquipment = Convert.ToBoolean(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex]);
+                    specialQualitySelection.Save = data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex];
+                    specialQualitySelection.SaveAbility = data[DataIndexConstants.SpecialQualityData.SaveIndex];
+                    specialQualitySelection.SaveBaseValue = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex]);
 
                     var requirementKey = SpecialQualityHelper.BuildRequirementKey(source, data);
                     specialQualitySelection.RequiredFeats = GetRequiredFeats(requirementKey);

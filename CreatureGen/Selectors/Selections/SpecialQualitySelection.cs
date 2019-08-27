@@ -18,6 +18,9 @@ namespace CreatureGen.Selectors.Selections
         public IEnumerable<string> RequiredSizes { get; set; }
         public IEnumerable<string> RequiredAlignments { get; set; }
         public bool RequiresEquipment { get; set; }
+        public string SaveAbility { get; set; }
+        public string Save { get; set; }
+        public int SaveBaseValue { get; set; }
 
         public SpecialQualitySelection()
         {
@@ -29,6 +32,8 @@ namespace CreatureGen.Selectors.Selections
             RequiredFeats = Enumerable.Empty<RequiredFeatSelection>();
             RequiredSizes = Enumerable.Empty<string>();
             RequiredAlignments = Enumerable.Empty<string>();
+            SaveAbility = string.Empty;
+            Save = string.Empty;
         }
 
         public bool RequirementsMet(Dictionary<string, Ability> abilities, IEnumerable<Feat> feats, bool canUseEquipment, string size, Alignment alignment)

@@ -14,6 +14,9 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex, 4)]
         [TestCase(DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex, 5)]
         [TestCase(DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex, 6)]
+        [TestCase(DataIndexConstants.SpecialQualityData.SaveAbilityIndex, 7)]
+        [TestCase(DataIndexConstants.SpecialQualityData.SaveIndex, 8)]
+        [TestCase(DataIndexConstants.SpecialQualityData.SaveBaseValueIndex, 9)]
         public void SpecialQualityDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
@@ -26,6 +29,9 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex)]
         [TestCase(DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex)]
         [TestCase(DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.SaveAbilityIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.SaveIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.SaveBaseValueIndex)]
         public void SpecialQualityDataIndicesInitialized(int index)
         {
             var data = DataIndexConstants.SpecialQualityData.InitializeData();

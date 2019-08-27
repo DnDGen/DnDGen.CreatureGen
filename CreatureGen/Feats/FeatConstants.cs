@@ -307,6 +307,7 @@ namespace CreatureGen.Feats
             public const string Planewalk = "Planewalk";
             public const string ProtectiveAura = "Protective Aura";
             public const string ProtectiveSlime = "Protective Slime";
+            public const string Psionic = "Psionic";
             public const string Quickness = "Quickness";
             public const string Regeneration = "Regeneration";
             public const string RockCatching = "Rock Catching";

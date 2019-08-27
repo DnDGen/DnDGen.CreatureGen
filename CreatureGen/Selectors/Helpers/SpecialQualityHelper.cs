@@ -5,12 +5,32 @@ namespace CreatureGen.Selectors.Helpers
 {
     public static class SpecialQualityHelper
     {
-        public static string[] BuildData(string featName, string focus = "", int frequencyQuantity = 0, string frequencyTimePeriod = "", int power = 0, int randomFociQuantity = 0, bool requiresEquipment = false)
+        public static string[] BuildData(
+            string featName,
+            string focus = "",
+            int frequencyQuantity = 0,
+            string frequencyTimePeriod = "",
+            int power = 0,
+            int randomFociQuantity = 0,
+            bool requiresEquipment = false,
+            string saveAbility = "",
+            string save = "",
+            int saveBaseValue = 0)
         {
-            return BuildData(featName, randomFociQuantity.ToString(), focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment);
+            return BuildData(featName, randomFociQuantity.ToString(), focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment, saveAbility, save, saveBaseValue);
         }
 
-        public static string[] BuildData(string featName, string randomFociQuantity, string focus = "", int frequencyQuantity = 0, string frequencyTimePeriod = "", int power = 0, bool requiresEquipment = false)
+        public static string[] BuildData(
+            string featName,
+            string randomFociQuantity,
+            string focus = "",
+            int frequencyQuantity = 0,
+            string frequencyTimePeriod = "",
+            int power = 0,
+            bool requiresEquipment = false,
+            string saveAbility = "",
+            string save = "",
+            int saveBaseValue = 0)
         {
             var data = DataIndexConstants.SpecialQualityData.InitializeData();
 
@@ -21,6 +41,9 @@ namespace CreatureGen.Selectors.Helpers
             data[DataIndexConstants.SpecialQualityData.PowerIndex] = Convert.ToString(power);
             data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex] = randomFociQuantity;
             data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex] = Convert.ToString(requiresEquipment);
+            data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex] = saveAbility;
+            data[DataIndexConstants.SpecialQualityData.SaveIndex] = save;
+            data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex] = Convert.ToString(saveBaseValue);
 
             return data;
         }

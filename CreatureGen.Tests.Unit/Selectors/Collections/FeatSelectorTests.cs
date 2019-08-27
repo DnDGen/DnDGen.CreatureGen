@@ -65,6 +65,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -97,6 +98,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(first.RandomFociQuantity, Is.Empty);
             Assert.That(first.RequiredFeats, Is.Empty);
             Assert.That(first.RequiresEquipment, Is.False);
+            Assert.That(first.Save, Is.Null);
 
             Assert.That(last.Feat, Is.EqualTo("special quality 2"));
             Assert.That(last.FocusType, Is.Empty);
@@ -107,11 +109,23 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(last.RandomFociQuantity, Is.Empty);
             Assert.That(last.RequiredFeats, Is.Empty);
             Assert.That(last.RequiresEquipment, Is.False);
+            Assert.That(last.Save, Is.Null);
         }
 
-        private void AddSpecialQualityData(string source, string featName, string focus = "", int frequencyQuantity = 0, string frequencyTimePeriod = "", int power = 0, string randomFociQuantity = "", bool requiresEquipment = false)
+        private void AddSpecialQualityData(
+            string source,
+            string featName,
+            string focus = "",
+            int frequencyQuantity = 0,
+            string frequencyTimePeriod = "",
+            int power = 0,
+            string randomFociQuantity = "",
+            bool requiresEquipment = false,
+            string saveAbility = "",
+            string save = "",
+            int saveBaseValue = 0)
         {
-            var data = SpecialQualityHelper.BuildData(featName, randomFociQuantity, focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment);
+            var data = SpecialQualityHelper.BuildData(featName, randomFociQuantity, focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment, saveAbility, save, saveBaseValue);
             var entry = SpecialQualityHelper.BuildData(data);
 
             if (!specialQualitiesData.ContainsKey(source))
@@ -139,6 +153,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -160,6 +175,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -192,6 +208,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -224,6 +241,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -259,6 +277,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -280,6 +299,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -301,6 +321,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.EqualTo("random foci quantity"));
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -330,6 +351,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(1));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
 
             var requiredFeat = specialQuality.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -363,6 +385,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(1));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
 
             var requiredFeat = specialQuality.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -396,6 +419,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(1));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
 
             var requiredFeat = specialQuality.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -430,6 +454,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(2));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -468,6 +493,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(2));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -506,6 +532,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(2));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -535,6 +562,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.True);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -556,6 +584,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -577,6 +606,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -600,6 +630,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -625,6 +656,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(first.RandomFociQuantity, Is.Empty);
             Assert.That(first.RequiredFeats, Is.Empty);
             Assert.That(first.RequiresEquipment, Is.False);
+            Assert.That(first.Save, Is.Null);
 
             Assert.That(last.Feat, Is.EqualTo("special quality 2"));
             Assert.That(last.FocusType, Is.Empty);
@@ -635,6 +667,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(last.RandomFociQuantity, Is.Empty);
             Assert.That(last.RequiredFeats, Is.Empty);
             Assert.That(last.RequiresEquipment, Is.False);
+            Assert.That(last.Save, Is.Null);
         }
 
         [Test]
@@ -659,6 +692,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[0].RandomFociQuantity, Is.Empty);
             Assert.That(specialQualities[0].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[0].RequiresEquipment, Is.False);
+            Assert.That(specialQualities[0].Save, Is.Null);
 
             Assert.That(specialQualities[1].Feat, Is.EqualTo("special quality 2"));
             Assert.That(specialQualities[1].FocusType, Is.Empty);
@@ -669,6 +703,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[1].RandomFociQuantity, Is.Empty);
             Assert.That(specialQualities[1].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[1].RequiresEquipment, Is.False);
+            Assert.That(specialQualities[1].Save, Is.Null);
 
             Assert.That(specialQualities[2].Feat, Is.EqualTo("special quality 3"));
             Assert.That(specialQualities[2].FocusType, Is.Empty);
@@ -679,6 +714,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[2].RandomFociQuantity, Is.Empty);
             Assert.That(specialQualities[2].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[2].RequiresEquipment, Is.False);
+            Assert.That(specialQualities[2].Save, Is.Null);
 
             Assert.That(specialQualities[3].Feat, Is.EqualTo("special quality 4"));
             Assert.That(specialQualities[3].FocusType, Is.Empty);
@@ -689,6 +725,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[3].RandomFociQuantity, Is.Empty);
             Assert.That(specialQualities[3].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[3].RequiresEquipment, Is.False);
+            Assert.That(specialQualities[3].Save, Is.Null);
         }
 
         [Test]
@@ -715,6 +752,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Null);
         }
 
         [Test]
@@ -739,6 +777,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[0].RandomFociQuantity, Is.Empty);
             Assert.That(specialQualities[0].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[0].RequiresEquipment, Is.False);
+            Assert.That(specialQualities[0].Save, Is.Null);
 
             Assert.That(specialQualities[1].Feat, Is.EqualTo("special quality"));
             Assert.That(specialQualities[1].FocusType, Is.Empty);
@@ -749,6 +788,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[1].RandomFociQuantity, Is.Empty);
             Assert.That(specialQualities[1].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[1].RequiresEquipment, Is.False);
+            Assert.That(specialQualities[1].Save, Is.Null);
 
             Assert.That(specialQualities[2].Feat, Is.EqualTo("special quality"));
             Assert.That(specialQualities[2].FocusType, Is.Empty);
@@ -759,6 +799,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[2].RandomFociQuantity, Is.Empty);
             Assert.That(specialQualities[2].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[2].RequiresEquipment, Is.False);
+            Assert.That(specialQualities[2].Save, Is.Null);
 
             Assert.That(specialQualities[3].Feat, Is.EqualTo("special quality"));
             Assert.That(specialQualities[3].FocusType, Is.Empty);
@@ -769,6 +810,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[3].RandomFociQuantity, Is.Empty);
             Assert.That(specialQualities[3].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[3].RequiresEquipment, Is.True);
+            Assert.That(specialQualities[3].Save, Is.Null);
         }
 
         //INFO: Type or Subtype special qualities might have size requirements
@@ -870,6 +912,34 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RequiredAlignments, Contains.Item("lawfulness other goodness"));
             Assert.That(specialQuality.RequiredAlignments, Contains.Item("other lawfulness other goodness"));
             Assert.That(specialQuality.RequiredAlignments.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void GetNoSaveForSpecialQuality()
+        {
+            AddSpecialQualityData("creature", "special quality");
+
+            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+            Assert.That(specialQuality.SaveAbility, Is.Empty);
+            Assert.That(specialQuality.Save, Is.Empty);
+            Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+        }
+
+        [Test]
+        public void GetSaveForSpecialQuality()
+        {
+            AddSpecialQualityData("creature", "special quality", saveAbility: "save ability", save: "save", saveBaseValue: 9266);
+
+            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+            Assert.That(specialQuality.SaveAbility, Is.EqualTo("save ability"));
+            Assert.That(specialQuality.Save, Is.EqualTo("save"));
+            Assert.That(specialQuality.SaveBaseValue, Is.EqualTo(9266));
         }
 
         [Test]
