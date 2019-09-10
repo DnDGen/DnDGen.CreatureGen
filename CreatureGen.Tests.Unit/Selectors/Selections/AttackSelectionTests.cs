@@ -35,12 +35,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void FromData_ReturnsSelection_WithSave()
         {
-            var data = AttackHelper.BuildData("name", "damage", "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, "save", "save ability", 90210);
+            var data = AttackHelper.BuildData("name", "damage", "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, "save", "save ability");
             var rawData = AttackHelper.BuildData(data);
 
             var selection = AttackSelection.From(rawData);
             Assert.That(selection.AttackType, Is.EqualTo("attack type"));
-            Assert.That(selection.BaseSave, Is.EqualTo(90210));
             Assert.That(selection.DamageRoll, Is.EqualTo("damage"));
             Assert.That(selection.DamageEffect, Is.EqualTo("effect"));
             Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(4.2));
@@ -58,12 +57,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void FromData_ReturnsSelection_WithoutSave()
         {
-            var data = AttackHelper.BuildData("name", "damage", "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, string.Empty, string.Empty, 0);
+            var data = AttackHelper.BuildData("name", "damage", "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, string.Empty, string.Empty);
             var rawData = AttackHelper.BuildData(data);
 
             var selection = AttackSelection.From(rawData);
             Assert.That(selection.AttackType, Is.EqualTo("attack type"));
-            Assert.That(selection.BaseSave, Is.Zero);
             Assert.That(selection.DamageRoll, Is.EqualTo("damage"));
             Assert.That(selection.DamageEffect, Is.EqualTo("effect"));
             Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(4.2));

@@ -186,7 +186,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
                 DamageRoll = "damage roll",
                 DamageEffect = "damage effect",
                 AttackType = "attack type",
-                FrequencyQuantity = 9266,
+                FrequencyQuantity = 42,
                 FrequencyTimePeriod = "time period",
                 IsMelee = isMelee,
                 IsNatural = isNatural,
@@ -196,7 +196,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 90210);
             Assert.That(generatedAttacks, Is.Not.Empty);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()));
             Assert.That(generatedAttacks.Count, Is.EqualTo(1));
@@ -211,7 +211,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attack.IsSpecial, Is.EqualTo(isSpecial));
             Assert.That(attack.AttackType, Is.EqualTo("attack type"));
             Assert.That(attack.Frequency, Is.Not.Null);
-            Assert.That(attack.Frequency.Quantity, Is.EqualTo(9266));
+            Assert.That(attack.Frequency.Quantity, Is.EqualTo(42));
             Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("time period"));
 
             Assert.That(attack.Save, Is.Null);
@@ -322,7 +322,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
                 DamageRoll = "damage roll",
                 DamageEffect = "damage effect",
                 AttackType = "attack type",
-                FrequencyQuantity = 9266,
+                FrequencyQuantity = 42,
                 FrequencyTimePeriod = "time period",
                 IsMelee = isMelee,
                 IsNatural = isNatural,
@@ -330,12 +330,11 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
                 IsSpecial = isSpecial,
                 Save = "save",
                 SaveAbility = saveAbility,
-                BaseSave = 90210,
             });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks, Is.Not.Empty);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()));
             Assert.That(generatedAttacks.Count, Is.EqualTo(1));
@@ -354,7 +353,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("time period"));
 
             Assert.That(attack.Save, Is.Not.Null);
-            Assert.That(attack.Save.BaseValue, Is.EqualTo(90210));
+            Assert.That(attack.Save.BaseValue, Is.EqualTo(310));
             Assert.That(attack.Save.BaseAbility, Is.EqualTo(abilities[saveAbility]));
             Assert.That(attack.Save.Save, Is.EqualTo("save"));
         }
@@ -368,7 +367,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks, Is.Not.Empty);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()));
             Assert.That(generatedAttacks.Count, Is.EqualTo(2));
@@ -389,7 +388,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks, Is.Empty);
         }
 
@@ -401,7 +400,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.BaseAttackBonus, Is.EqualTo(9266));
@@ -415,7 +414,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
@@ -429,7 +428,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
@@ -445,7 +444,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
@@ -460,7 +459,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
             mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(90210);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.SizeModifier, Is.EqualTo(90210));
@@ -475,7 +474,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
             mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(90210);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.BaseAttackBonus, Is.Zero);
@@ -533,16 +532,26 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(48, 28)]
         [TestCase(49, 28)]
         [TestCase(50, 30)]
-        public void GenerateAttack_Primary_Melee_Sole(int value, int bonus)
+        public void GenerateAttack_WithDamageMultiplier(int value, int bonus)
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 1.5, FrequencyQuantity = 1, IsPrimary = true, IsMelee = true, IsNatural = true });
+            attacks.Add(new AttackSelection()
+            {
+                Name = "attack",
+                DamageRoll = $"damage",
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 1.5,
+                FrequencyQuantity = 1,
+                IsPrimary = true,
+                IsMelee = true,
+                IsNatural = true
+            });
 
             abilities[AbilityConstants.Strength].BaseScore = value;
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
@@ -562,7 +571,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
@@ -582,7 +591,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
@@ -605,7 +614,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(4));
 
             var attacks = generatedAttacks.ToArray();
@@ -646,7 +655,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(1));
 
             var attacks = generatedAttacks.ToArray();
@@ -715,7 +724,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(1));
 
             var attacks = generatedAttacks.ToArray();
@@ -737,7 +746,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(2));
 
             var attacks = generatedAttacks.ToArray();
@@ -762,7 +771,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(3));
 
             var attacks = generatedAttacks.ToArray();
@@ -786,7 +795,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
@@ -855,7 +864,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
@@ -880,7 +889,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();

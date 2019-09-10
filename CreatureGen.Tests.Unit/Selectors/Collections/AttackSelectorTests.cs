@@ -49,7 +49,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         {
             var attackData = new[]
             {
-                GetData("name", "damage", "effect", 4.2, 9266, "time period", "attack type", isNatural, isMelee, isPrimary, isSpecial, "save", "save ability", 90210)
+                GetData("name", "damage", "effect", 4.2, 9266, "time period", "attack type", isNatural, isMelee, isPrimary, isSpecial, "save", "save ability")
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
@@ -71,7 +71,6 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(attack.FrequencyTimePeriod, Is.EqualTo("time period"));
             Assert.That(attack.Save, Is.EqualTo("save"));
             Assert.That(attack.SaveAbility, Is.EqualTo("save ability"));
-            Assert.That(attack.BaseSave, Is.EqualTo(90210));
             Assert.That(attack.AttackType, Is.EqualTo("attack type"));
         }
 
@@ -117,7 +116,6 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(attack.FrequencyTimePeriod, Is.EqualTo("time period"));
             Assert.That(attack.Save, Is.Null);
             Assert.That(attack.SaveAbility, Is.Null);
-            Assert.That(attack.BaseSave, Is.Zero);
             Assert.That(attack.AttackType, Is.EqualTo("attack type"));
         }
 
@@ -134,10 +132,9 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             bool isPrimary = false,
             bool isSpecial = false,
             string save = null,
-            string saveAbility = null,
-            int baseSave = 0)
+            string saveAbility = null)
         {
-            var data = AttackHelper.BuildData(name, damageRoll, damageEffect, damageBonusMultiplier, attackType, frequencyQuantity, frequencyTimePeriod, isMelee, isNatural, isPrimary, isSpecial, save, saveAbility, baseSave);
+            var data = AttackHelper.BuildData(name, damageRoll, damageEffect, damageBonusMultiplier, attackType, frequencyQuantity, frequencyTimePeriod, isMelee, isNatural, isPrimary, isSpecial, save, saveAbility);
             return AttackHelper.BuildData(data);
         }
 
