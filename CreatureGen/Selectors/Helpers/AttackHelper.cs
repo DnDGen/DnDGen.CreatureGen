@@ -18,7 +18,8 @@ namespace CreatureGen.Selectors.Helpers
             bool isPrimary,
             bool isSpecial,
             string save = null,
-            string saveAbility = null)
+            string saveAbility = null,
+            int saveDcBonus = 0)
         {
             var data = DataIndexConstants.AttackData.InitializeData();
 
@@ -35,6 +36,7 @@ namespace CreatureGen.Selectors.Helpers
             data[DataIndexConstants.AttackData.SaveIndex] = save;
             data[DataIndexConstants.AttackData.SaveAbilityIndex] = saveAbility;
             data[DataIndexConstants.AttackData.AttackTypeIndex] = attackType;
+            data[DataIndexConstants.AttackData.SaveDcBonusIndex] = saveDcBonus.ToString();
 
             return data;
         }

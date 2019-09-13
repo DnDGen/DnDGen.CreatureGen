@@ -95,7 +95,7 @@ namespace CreatureGen.Generators.Attacks
                 {
                     attack.Save = new SaveDieCheck();
                     attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];
-                    attack.Save.BaseValue = 10 + hitDiceQuantity / 2;
+                    attack.Save.BaseValue = 10 + hitDiceQuantity / 2 + attackSelection.SaveDcBonus;
                     attack.Save.Save = attackSelection.Save;
                 }
 

@@ -21,6 +21,7 @@ namespace CreatureGen.Selectors.Selections
         public string Save { get; set; }
         public string SaveAbility { get; set; }
         public string AttackType { get; set; }
+        public int SaveDcBonus { get; set; }
 
         public AttackSelection()
         {
@@ -46,6 +47,7 @@ namespace CreatureGen.Selectors.Selections
             selection.Save = data[DataIndexConstants.AttackData.SaveIndex];
             selection.SaveAbility = data[DataIndexConstants.AttackData.SaveAbilityIndex];
             selection.AttackType = data[DataIndexConstants.AttackData.AttackTypeIndex];
+            selection.SaveDcBonus = Convert.ToInt32(data[DataIndexConstants.AttackData.SaveDcBonusIndex]);
 
             return selection;
         }

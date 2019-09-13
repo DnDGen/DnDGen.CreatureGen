@@ -330,6 +330,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
                 IsSpecial = isSpecial,
                 Save = "save",
                 SaveAbility = saveAbility,
+                SaveDcBonus = 1337
             });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
@@ -353,7 +354,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("time period"));
 
             Assert.That(attack.Save, Is.Not.Null);
-            Assert.That(attack.Save.BaseValue, Is.EqualTo(310));
+            Assert.That(attack.Save.BaseValue, Is.EqualTo(310 + 1337));
             Assert.That(attack.Save.BaseAbility, Is.EqualTo(abilities[saveAbility]));
             Assert.That(attack.Save.Save, Is.EqualTo("save"));
         }

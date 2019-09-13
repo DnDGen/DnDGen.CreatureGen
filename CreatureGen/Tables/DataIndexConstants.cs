@@ -28,10 +28,11 @@
             public const int AttackTypeIndex = 10;
             public const int DamageEffectIndex = 11;
             public const int DamageBonusMultiplierIndex = 12;
+            public const int SaveDcBonusIndex = 13;
 
             public static string[] InitializeData()
             {
-                return DataIndexConstants.InitializeData(DamageBonusMultiplierIndex);
+                return DataIndexConstants.InitializeData(SaveDcBonusIndex);
             }
         }
 

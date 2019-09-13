@@ -51,6 +51,8 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.AttackData.SaveIndex, 9)]
         [TestCase(DataIndexConstants.AttackData.AttackTypeIndex, 10)]
         [TestCase(DataIndexConstants.AttackData.DamageEffectIndex, 11)]
+        [TestCase(DataIndexConstants.AttackData.DamageBonusMultiplierIndex, 12)]
+        [TestCase(DataIndexConstants.AttackData.SaveDcBonusIndex, 13)]
         public void AttackDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
@@ -68,6 +70,8 @@ namespace CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.AttackData.SaveIndex)]
         [TestCase(DataIndexConstants.AttackData.AttackTypeIndex)]
         [TestCase(DataIndexConstants.AttackData.DamageEffectIndex)]
+        [TestCase(DataIndexConstants.AttackData.DamageBonusMultiplierIndex)]
+        [TestCase(DataIndexConstants.AttackData.SaveDcBonusIndex)]
         public void AttackDataIndicesInitialized(int index)
         {
             var data = DataIndexConstants.AttackData.InitializeData();

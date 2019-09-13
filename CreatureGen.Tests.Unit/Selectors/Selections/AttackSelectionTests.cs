@@ -35,7 +35,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void FromData_ReturnsSelection_WithSave()
         {
-            var data = AttackHelper.BuildData("name", "damage", "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, "save", "save ability");
+            var data = AttackHelper.BuildData("name", "damage", "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, "save", "save ability", 90210);
             var rawData = AttackHelper.BuildData(data);
 
             var selection = AttackSelection.From(rawData);
@@ -52,6 +52,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.Name, Is.EqualTo("name"));
             Assert.That(selection.Save, Is.EqualTo("save"));
             Assert.That(selection.SaveAbility, Is.EqualTo("save ability"));
+            Assert.That(selection.SaveDcBonus, Is.EqualTo(90210));
         }
 
         [Test]
@@ -74,6 +75,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.Name, Is.EqualTo("name"));
             Assert.That(selection.Save, Is.Empty);
             Assert.That(selection.SaveAbility, Is.Empty);
+            Assert.That(selection.SaveDcBonus, Is.Zero);
         }
     }
 }
