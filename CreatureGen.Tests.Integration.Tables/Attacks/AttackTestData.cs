@@ -3199,13 +3199,10 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 //testCases[CreatureConstants.Remorhaz].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Heat));
                 //testCases[CreatureConstants.Remorhaz].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
 
-                testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Claw", $"2d6", true, true, true, false));
-                testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Claw", $"2d6", true, true, true, false));
-                testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Claw", $"2d6", true, true, true, false));
-                testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Claw", $"2d6", true, true, true, false));
-                testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Bite", $"1d8", true, true, false, false));
-                testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Eye Ray", string.Empty, false, true, false, true));
-                testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Find Target", string.Empty, false, true, false, true));
+                testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 1, "melee", 4, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Eye Ray", string.Empty, string.Empty, 0, "ranged touch", 1, FeatConstants.Frequencies.Round, false, true, false, true, string.Empty, AbilityConstants.Dexterity));
+                testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Find Target", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
                 testCases[CreatureConstants.Retriever].Add(AttackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
                 //testCases[CreatureConstants.Rhinoceras].Add(AttackHelper.BuildData(None));
@@ -3295,10 +3292,9 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 //testCases[CreatureConstants.SeaCat].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.HoldBreath));
                 //testCases[CreatureConstants.SeaCat].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
-                testCases[CreatureConstants.SeaHag].Add(AttackHelper.BuildData("Claw", $"1d4", true, true, true, false));
-                testCases[CreatureConstants.SeaHag].Add(AttackHelper.BuildData("Claw", $"1d4", true, true, true, false));
-                testCases[CreatureConstants.SeaHag].Add(AttackHelper.BuildData("Horrific Appearance", "2d6 Strength damage", false, true, true, true));
-                testCases[CreatureConstants.SeaHag].Add(AttackHelper.BuildData("Evil Eye", string.Empty, false, true, true, true));
+                testCases[CreatureConstants.SeaHag].Add(AttackHelper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.SeaHag].Add(AttackHelper.BuildData("Horrific Appearance", string.Empty, "2d6 Strength damage", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
+                testCases[CreatureConstants.SeaHag].Add(AttackHelper.BuildData("Evil Eye", string.Empty, string.Empty, 0, "supernatural ability", 3, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
 
                 //testCases[CreatureConstants.Shadow].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.TurnResistance, power: 2));
 
@@ -3433,7 +3429,7 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 //testCases[CreatureConstants.SpiderEater].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
                 testCases[CreatureConstants.Spider_Swarm].Add(AttackHelper.BuildData("Swarm", $"1d6", "poison", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Spider_Swarm].Add(AttackHelper.BuildData("Poison", "Initial and secondary damage 1d3 Str", true, true, true, true));
+                testCases[CreatureConstants.Spider_Swarm].Add(AttackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1d3 Str", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
                 testCases[CreatureConstants.Spider_Swarm].Add(AttackHelper.BuildData("Distraction", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Turn, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
                 //testCases[CreatureConstants.Squid].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.InkCloud));
@@ -3446,9 +3442,8 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
                 //testCases[CreatureConstants.Stirge].Add(AttackHelper.BuildData(FeatConstants.WeaponFinesse));
 
-                testCases[CreatureConstants.Succubus].Add(AttackHelper.BuildData("Claw", $"1d6", true, true, true, false));
-                testCases[CreatureConstants.Succubus].Add(AttackHelper.BuildData("Claw", $"1d6", true, true, true, false));
-                testCases[CreatureConstants.Succubus].Add(AttackHelper.BuildData("Energy Drain", string.Empty, true, true, true, true));
+                testCases[CreatureConstants.Succubus].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Succubus].Add(AttackHelper.BuildData("Energy Drain", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, string.Empty, AbilityConstants.Charisma));
                 testCases[CreatureConstants.Succubus].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Succubus].Add(AttackHelper.BuildData("Summon Demon", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
 
@@ -3468,8 +3463,8 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 //testCases[CreatureConstants.Thoqqua].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
                 //testCases[CreatureConstants.Thoqqua].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Heat));
 
-                testCases[CreatureConstants.Tiefling].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-                testCases[CreatureConstants.Tiefling].Add(AttackHelper.BuildData(AttributeConstants.Ranged, string.Empty, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
+                testCases[CreatureConstants.Tiefling].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                testCases[CreatureConstants.Tiefling].Add(AttackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
                 testCases[CreatureConstants.Tiefling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 //testCases[CreatureConstants.Tiger].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
@@ -3593,15 +3588,13 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
                 //testCases[CreatureConstants.VioletFungus].Add(AttackHelper.BuildData(None));
 
-                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Claw", $"2d6", true, true, true, false));
-                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Claw", $"2d6", true, true, true, false));
-                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Bite", $"1d8", true, true, false, false));
-                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Talon", $"1d6", true, true, false, false));
-                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Talon", $"1d6", true, true, false, false));
-                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Dance of Ruin", string.Empty, false, true, true, true));
+                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Talon", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Dance of Ruin", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Turn, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Charisma));
                 testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Spores", string.Empty, false, true, true, true));
-                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Stunning Screech", string.Empty, false, true, true, true));
+                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Spores", "1d8", string.Empty, 0, "melee", 1, FeatConstants.Frequencies.Turn, false, true, true, true));
+                testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Stunning Screech", string.Empty, string.Empty, 0, "melee", 1, FeatConstants.Frequencies.Hour, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
                 testCases[CreatureConstants.Vrock].Add(AttackHelper.BuildData("Summon Demon", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
 
                 //testCases[CreatureConstants.Wasp_Giant].Add(AttackHelper.BuildData(None));
