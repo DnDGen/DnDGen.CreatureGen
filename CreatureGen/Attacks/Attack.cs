@@ -38,7 +38,7 @@ namespace CreatureGen.Attacks
         {
             get
             {
-                var bonuses = new List<int>();
+                var bonuses = new List<int>(4);
                 var decrement = 0;
 
                 do
@@ -46,7 +46,7 @@ namespace CreatureGen.Attacks
                     bonuses.Add(TotalAttackBonus - decrement);
                     decrement += 5;
                 }
-                while (BaseAttackBonus - decrement > 0 && IsPrimary && !IsNatural);
+                while (BaseAttackBonus - decrement > 0 && IsPrimary && !IsNatural && bonuses.Capacity > bonuses.Count);
 
                 return bonuses.ToArray();
             }
@@ -56,6 +56,9 @@ namespace CreatureGen.Attacks
         {
             get
             {
+                if (string.IsNullOrEmpty(DamageRoll))
+                    return DamageEffect;
+
                 var damage = DamageRoll;
                 if (DamageBonus > 0)
                     damage += $"+{DamageBonus}";

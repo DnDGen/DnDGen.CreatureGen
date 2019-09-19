@@ -350,7 +350,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attack.IsSpecial, Is.EqualTo(isSpecial));
             Assert.That(attack.AttackType, Is.EqualTo("attack type"));
             Assert.That(attack.Frequency, Is.Not.Null);
-            Assert.That(attack.Frequency.Quantity, Is.EqualTo(9266));
+            Assert.That(attack.Frequency.Quantity, Is.EqualTo(42));
             Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("time period"));
 
             Assert.That(attack.Save, Is.Not.Null);
@@ -470,7 +470,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateSpecialAttack()
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection { Name = "attack 1", IsSpecial = true });
+            attacks.Add(new AttackSelection { Name = "attack 1", IsMelee = true, IsSpecial = true });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
             mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(90210);
@@ -478,20 +478,20 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
             var generatedAttack = generatedAttacks.Single();
 
-            Assert.That(generatedAttack.BaseAttackBonus, Is.Zero);
-            Assert.That(generatedAttack.BaseAbility, Is.Null);
-            Assert.That(generatedAttack.SizeModifier, Is.Zero);
+            Assert.That(generatedAttack.BaseAttackBonus, Is.EqualTo(9266));
+            Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]), generatedAttack.BaseAbility?.Name);
+            Assert.That(generatedAttack.SizeModifier, Is.EqualTo(90210));
         }
 
-        [TestCase(1, -7)]
+        [TestCase(1, -8)]
         [TestCase(2, -6)]
         [TestCase(3, -6)]
-        [TestCase(4, -4)]
-        [TestCase(5, -4)]
+        [TestCase(4, -5)]
+        [TestCase(5, -5)]
         [TestCase(6, -3)]
         [TestCase(7, -3)]
-        [TestCase(8, -1)]
-        [TestCase(9, -1)]
+        [TestCase(8, -2)]
+        [TestCase(9, -2)]
         [TestCase(10, 0)]
         [TestCase(11, 0)]
         [TestCase(12, 1)]
@@ -773,13 +773,13 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(3));
+            Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(2));
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("attack"));
             Assert.That(attacks[0].DamageRoll, Is.EqualTo("damage"));
             Assert.That(attacks[0].DamageBonus, Is.EqualTo(67650));
-            Assert.That(attacks[0].DamageEffect, Is.Null);
+            Assert.That(attacks[0].DamageEffect, Is.Empty);
             Assert.That(attacks[1].Name, Is.EqualTo("nat attack"));
             Assert.That(attacks[1].DamageRoll, Is.EqualTo("damage"));
             Assert.That(attacks[1].DamageBonus, Is.EqualTo(45100));
@@ -806,15 +806,15 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
 
-        [TestCase(1, -2)]
+        [TestCase(1, -3)]
         [TestCase(2, -2)]
         [TestCase(3, -2)]
-        [TestCase(4, -1)]
-        [TestCase(5, -1)]
+        [TestCase(4, -2)]
+        [TestCase(5, -2)]
         [TestCase(6, -1)]
         [TestCase(7, -1)]
-        [TestCase(8, 0)]
-        [TestCase(9, 0)]
+        [TestCase(8, -1)]
+        [TestCase(9, -1)]
         [TestCase(10, 0)]
         [TestCase(11, 0)]
         [TestCase(12, 0)]

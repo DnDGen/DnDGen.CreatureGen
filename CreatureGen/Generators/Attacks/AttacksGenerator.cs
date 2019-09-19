@@ -79,7 +79,7 @@ namespace CreatureGen.Generators.Attacks
 
                 attack.DamageRoll = attackSelection.DamageRoll;
                 attack.DamageEffect = attackSelection.DamageEffect;
-                attack.DamageBonus = Convert.ToInt32(abilities[AbilityConstants.Strength].Modifier * attackSelection.DamageBonusMultiplier);
+                attack.DamageBonus = Convert.ToInt32(Math.Floor(abilities[AbilityConstants.Strength].Modifier * attackSelection.DamageBonusMultiplier));
                 attack.Name = attackSelection.Name;
                 attack.IsMelee = attackSelection.IsMelee;
                 attack.IsNatural = attackSelection.IsNatural;

@@ -518,7 +518,7 @@ namespace CreatureGen.Tests.Unit.Attacks
             attack.DamageBonus = -2;
             attack.DamageEffect = "poison";
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8-1 plus poison"));
+            Assert.That(attack.Damage, Is.EqualTo("1d8-2 plus poison"));
         }
 
         [Test]
