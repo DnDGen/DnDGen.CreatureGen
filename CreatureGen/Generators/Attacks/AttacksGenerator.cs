@@ -79,7 +79,7 @@ namespace CreatureGen.Generators.Attacks
 
                 attack.DamageRoll = attackSelection.DamageRoll;
                 attack.DamageEffect = attackSelection.DamageEffect;
-                attack.DamageBonus = Convert.ToInt32(Math.Floor(abilities[AbilityConstants.Strength].Modifier * attackSelection.DamageBonusMultiplier));
+                attack.DamageBonus = GetDamageBonus(abilities, attackSelection.DamageBonusMultiplier);
                 attack.Name = attackSelection.Name;
                 attack.IsMelee = attackSelection.IsMelee;
                 attack.IsNatural = attackSelection.IsNatural;
@@ -107,15 +107,13 @@ namespace CreatureGen.Generators.Attacks
             return attacks;
         }
 
-        private bool IsSolePrimary(AttackSelection selection, IEnumerable<AttackSelection> otherAttacks)
+        private int GetDamageBonus(Dictionary<string, Ability> abilities, double multiplier)
         {
-            if (!selection.IsPrimary || selection.FrequencyQuantity > 1)
-                return false;
+            var modifier = abilities[AbilityConstants.Strength].Modifier;
+            if (modifier < 0)
+                return modifier;
 
-            var soleCount = otherAttacks.Count(a => !a.IsSpecial
-                && a.IsMelee == selection.IsMelee
-                && a.IsNatural == selection.IsNatural);
-            return soleCount < 2;
+            return Convert.ToInt32(Math.Floor(abilities[AbilityConstants.Strength].Modifier * multiplier));
         }
 
         private Ability GetAbilityForAttack(Dictionary<string, Ability> abilities, AttackSelection attackSelection)

@@ -483,57 +483,157 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(generatedAttack.SizeModifier, Is.EqualTo(90210));
         }
 
-        [TestCase(1, -8)]
-        [TestCase(2, -6)]
-        [TestCase(3, -6)]
-        [TestCase(4, -5)]
-        [TestCase(5, -5)]
-        [TestCase(6, -3)]
-        [TestCase(7, -3)]
-        [TestCase(8, -2)]
-        [TestCase(9, -2)]
-        [TestCase(10, 0)]
-        [TestCase(11, 0)]
-        [TestCase(12, 1)]
-        [TestCase(13, 1)]
-        [TestCase(14, 3)]
-        [TestCase(15, 3)]
-        [TestCase(16, 4)]
-        [TestCase(17, 4)]
-        [TestCase(18, 6)]
-        [TestCase(19, 6)]
-        [TestCase(20, 7)]
-        [TestCase(21, 7)]
-        [TestCase(22, 9)]
-        [TestCase(23, 9)]
-        [TestCase(24, 10)]
-        [TestCase(25, 10)]
-        [TestCase(26, 12)]
-        [TestCase(27, 12)]
-        [TestCase(28, 13)]
-        [TestCase(29, 13)]
-        [TestCase(30, 15)]
-        [TestCase(31, 15)]
-        [TestCase(32, 16)]
-        [TestCase(33, 16)]
-        [TestCase(34, 18)]
-        [TestCase(35, 18)]
-        [TestCase(36, 19)]
-        [TestCase(37, 19)]
-        [TestCase(38, 21)]
-        [TestCase(39, 21)]
-        [TestCase(40, 22)]
-        [TestCase(41, 22)]
-        [TestCase(42, 24)]
-        [TestCase(43, 24)]
-        [TestCase(44, 25)]
-        [TestCase(45, 25)]
-        [TestCase(46, 27)]
-        [TestCase(47, 27)]
-        [TestCase(48, 28)]
-        [TestCase(49, 28)]
-        [TestCase(50, 30)]
-        public void GenerateAttack_WithDamageMultiplier(int value, int bonus)
+        [TestCase(1, 0.5, -5)]
+        [TestCase(2, 0.5, -4)]
+        [TestCase(3, 0.5, -4)]
+        [TestCase(4, 0.5, -3)]
+        [TestCase(5, 0.5, -3)]
+        [TestCase(6, 0.5, -2)]
+        [TestCase(7, 0.5, -2)]
+        [TestCase(8, 0.5, -1)]
+        [TestCase(9, 0.5, -1)]
+        [TestCase(10, 0.5, 0)]
+        [TestCase(11, 0.5, 0)]
+        [TestCase(12, 0.5, 0)]
+        [TestCase(13, 0.5, 0)]
+        [TestCase(14, 0.5, 1)]
+        [TestCase(15, 0.5, 1)]
+        [TestCase(16, 0.5, 1)]
+        [TestCase(17, 0.5, 1)]
+        [TestCase(18, 0.5, 2)]
+        [TestCase(19, 0.5, 2)]
+        [TestCase(20, 0.5, 2)]
+        [TestCase(21, 0.5, 2)]
+        [TestCase(22, 0.5, 3)]
+        [TestCase(23, 0.5, 3)]
+        [TestCase(24, 0.5, 3)]
+        [TestCase(25, 0.5, 3)]
+        [TestCase(26, 0.5, 4)]
+        [TestCase(27, 0.5, 4)]
+        [TestCase(28, 0.5, 4)]
+        [TestCase(29, 0.5, 4)]
+        [TestCase(30, 0.5, 5)]
+        [TestCase(31, 0.5, 5)]
+        [TestCase(32, 0.5, 5)]
+        [TestCase(33, 0.5, 5)]
+        [TestCase(34, 0.5, 6)]
+        [TestCase(35, 0.5, 6)]
+        [TestCase(36, 0.5, 6)]
+        [TestCase(37, 0.5, 6)]
+        [TestCase(38, 0.5, 7)]
+        [TestCase(39, 0.5, 7)]
+        [TestCase(40, 0.5, 7)]
+        [TestCase(41, 0.5, 7)]
+        [TestCase(42, 0.5, 8)]
+        [TestCase(43, 0.5, 8)]
+        [TestCase(44, 0.5, 8)]
+        [TestCase(45, 0.5, 8)]
+        [TestCase(46, 0.5, 9)]
+        [TestCase(47, 0.5, 9)]
+        [TestCase(48, 0.5, 9)]
+        [TestCase(49, 0.5, 9)]
+        [TestCase(50, 0.5, 10)]
+        [TestCase(1, 1, -5)]
+        [TestCase(2, 1, -4)]
+        [TestCase(3, 1, -4)]
+        [TestCase(4, 1, -3)]
+        [TestCase(5, 1, -3)]
+        [TestCase(6, 1, -2)]
+        [TestCase(7, 1, -2)]
+        [TestCase(8, 1, -1)]
+        [TestCase(9, 1, -1)]
+        [TestCase(10, 1, 0)]
+        [TestCase(11, 1, 0)]
+        [TestCase(12, 1, 1)]
+        [TestCase(13, 1, 1)]
+        [TestCase(14, 1, 2)]
+        [TestCase(15, 1, 2)]
+        [TestCase(16, 1, 3)]
+        [TestCase(17, 1, 3)]
+        [TestCase(18, 1, 4)]
+        [TestCase(19, 1, 4)]
+        [TestCase(20, 1, 5)]
+        [TestCase(21, 1, 5)]
+        [TestCase(22, 1, 6)]
+        [TestCase(23, 1, 6)]
+        [TestCase(24, 1, 7)]
+        [TestCase(25, 1, 7)]
+        [TestCase(26, 1, 8)]
+        [TestCase(27, 1, 8)]
+        [TestCase(28, 1, 9)]
+        [TestCase(29, 1, 9)]
+        [TestCase(30, 1, 10)]
+        [TestCase(31, 1, 10)]
+        [TestCase(32, 1, 11)]
+        [TestCase(33, 1, 11)]
+        [TestCase(34, 1, 12)]
+        [TestCase(35, 1, 12)]
+        [TestCase(36, 1, 13)]
+        [TestCase(37, 1, 13)]
+        [TestCase(38, 1, 14)]
+        [TestCase(39, 1, 14)]
+        [TestCase(40, 1, 15)]
+        [TestCase(41, 1, 15)]
+        [TestCase(42, 1, 16)]
+        [TestCase(43, 1, 16)]
+        [TestCase(44, 1, 17)]
+        [TestCase(45, 1, 17)]
+        [TestCase(46, 1, 18)]
+        [TestCase(47, 1, 18)]
+        [TestCase(48, 1, 19)]
+        [TestCase(49, 1, 19)]
+        [TestCase(50, 1, 20)]
+        [TestCase(1, 1.5, -5)]
+        [TestCase(2, 1.5, -4)]
+        [TestCase(3, 1.5, -4)]
+        [TestCase(4, 1.5, -3)]
+        [TestCase(5, 1.5, -3)]
+        [TestCase(6, 1.5, -2)]
+        [TestCase(7, 1.5, -2)]
+        [TestCase(8, 1.5, -1)]
+        [TestCase(9, 1.5, -1)]
+        [TestCase(10, 1.5, 0)]
+        [TestCase(11, 1.5, 0)]
+        [TestCase(12, 1.5, 1)]
+        [TestCase(13, 1.5, 1)]
+        [TestCase(14, 1.5, 3)]
+        [TestCase(15, 1.5, 3)]
+        [TestCase(16, 1.5, 4)]
+        [TestCase(17, 1.5, 4)]
+        [TestCase(18, 1.5, 6)]
+        [TestCase(19, 1.5, 6)]
+        [TestCase(20, 1.5, 7)]
+        [TestCase(21, 1.5, 7)]
+        [TestCase(22, 1.5, 9)]
+        [TestCase(23, 1.5, 9)]
+        [TestCase(24, 1.5, 10)]
+        [TestCase(25, 1.5, 10)]
+        [TestCase(26, 1.5, 12)]
+        [TestCase(27, 1.5, 12)]
+        [TestCase(28, 1.5, 13)]
+        [TestCase(29, 1.5, 13)]
+        [TestCase(30, 1.5, 15)]
+        [TestCase(31, 1.5, 15)]
+        [TestCase(32, 1.5, 16)]
+        [TestCase(33, 1.5, 16)]
+        [TestCase(34, 1.5, 18)]
+        [TestCase(35, 1.5, 18)]
+        [TestCase(36, 1.5, 19)]
+        [TestCase(37, 1.5, 19)]
+        [TestCase(38, 1.5, 21)]
+        [TestCase(39, 1.5, 21)]
+        [TestCase(40, 1.5, 22)]
+        [TestCase(41, 1.5, 22)]
+        [TestCase(42, 1.5, 24)]
+        [TestCase(43, 1.5, 24)]
+        [TestCase(44, 1.5, 25)]
+        [TestCase(45, 1.5, 25)]
+        [TestCase(46, 1.5, 27)]
+        [TestCase(47, 1.5, 27)]
+        [TestCase(48, 1.5, 28)]
+        [TestCase(49, 1.5, 28)]
+        [TestCase(50, 1.5, 30)]
+        public void GenerateAttack_WithDamageMultiplier(int strengthValue, double multiplier, int bonus)
         {
             var attacks = new List<AttackSelection>();
             attacks.Add(new AttackSelection()
@@ -541,14 +641,14 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
                 Name = "attack",
                 DamageRoll = $"damage",
                 DamageEffect = "effect",
-                DamageBonusMultiplier = 1.5,
+                DamageBonusMultiplier = multiplier,
                 FrequencyQuantity = 1,
                 IsPrimary = true,
                 IsMelee = true,
                 IsNatural = true
             });
 
-            abilities[AbilityConstants.Strength].BaseScore = value;
+            abilities[AbilityConstants.Strength].BaseScore = strengthValue;
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
@@ -666,75 +766,6 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attacks[0].DamageEffect, Is.EqualTo("effect"));
         }
 
-        [TestCase(1, -5)]
-        [TestCase(2, -4)]
-        [TestCase(3, -4)]
-        [TestCase(4, -3)]
-        [TestCase(5, -3)]
-        [TestCase(6, -2)]
-        [TestCase(7, -2)]
-        [TestCase(8, -1)]
-        [TestCase(9, -1)]
-        [TestCase(10, 0)]
-        [TestCase(11, 0)]
-        [TestCase(12, 1)]
-        [TestCase(13, 1)]
-        [TestCase(14, 2)]
-        [TestCase(15, 2)]
-        [TestCase(16, 3)]
-        [TestCase(17, 3)]
-        [TestCase(18, 4)]
-        [TestCase(19, 4)]
-        [TestCase(20, 5)]
-        [TestCase(21, 5)]
-        [TestCase(22, 6)]
-        [TestCase(23, 6)]
-        [TestCase(24, 7)]
-        [TestCase(25, 7)]
-        [TestCase(26, 8)]
-        [TestCase(27, 8)]
-        [TestCase(28, 9)]
-        [TestCase(29, 9)]
-        [TestCase(30, 10)]
-        [TestCase(31, 10)]
-        [TestCase(32, 11)]
-        [TestCase(33, 11)]
-        [TestCase(34, 12)]
-        [TestCase(35, 12)]
-        [TestCase(36, 13)]
-        [TestCase(37, 13)]
-        [TestCase(38, 14)]
-        [TestCase(39, 14)]
-        [TestCase(40, 15)]
-        [TestCase(41, 15)]
-        [TestCase(42, 16)]
-        [TestCase(43, 16)]
-        [TestCase(44, 17)]
-        [TestCase(45, 17)]
-        [TestCase(46, 18)]
-        [TestCase(47, 18)]
-        [TestCase(48, 19)]
-        [TestCase(49, 19)]
-        [TestCase(50, 20)]
-        public void GenerateAttack_Primary_Multiple(int value, int bonus)
-        {
-            var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection() { Name = "attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 1, FrequencyQuantity = 2, IsPrimary = true, IsMelee = true, IsNatural = true });
-
-            abilities[AbilityConstants.Strength].BaseScore = value;
-
-            mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
-
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(1));
-
-            var attacks = generatedAttacks.ToArray();
-            Assert.That(attacks[0].Name, Is.EqualTo("attack"));
-            Assert.That(attacks[0].DamageRoll, Is.EqualTo("damage"));
-            Assert.That(attacks[0].DamageBonus, Is.EqualTo(bonus));
-            Assert.That(attacks[0].DamageEffect, Is.EqualTo("effect"));
-        }
-
         [TestCase(true)]
         [TestCase(false)]
         public void GenerateAttack_Primary_WithSecondary(bool isNatural)
@@ -803,75 +834,6 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attack.Name, Is.EqualTo("attack"));
             Assert.That(attack.DamageRoll, Is.EqualTo("damage"));
             Assert.That(attack.DamageBonus, Is.EqualTo(22550));
-            Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
-        }
-
-        [TestCase(1, -3)]
-        [TestCase(2, -2)]
-        [TestCase(3, -2)]
-        [TestCase(4, -2)]
-        [TestCase(5, -2)]
-        [TestCase(6, -1)]
-        [TestCase(7, -1)]
-        [TestCase(8, -1)]
-        [TestCase(9, -1)]
-        [TestCase(10, 0)]
-        [TestCase(11, 0)]
-        [TestCase(12, 0)]
-        [TestCase(13, 0)]
-        [TestCase(14, 1)]
-        [TestCase(15, 1)]
-        [TestCase(16, 1)]
-        [TestCase(17, 1)]
-        [TestCase(18, 2)]
-        [TestCase(19, 2)]
-        [TestCase(20, 2)]
-        [TestCase(21, 2)]
-        [TestCase(22, 3)]
-        [TestCase(23, 3)]
-        [TestCase(24, 3)]
-        [TestCase(25, 3)]
-        [TestCase(26, 4)]
-        [TestCase(27, 4)]
-        [TestCase(28, 4)]
-        [TestCase(29, 4)]
-        [TestCase(30, 5)]
-        [TestCase(31, 5)]
-        [TestCase(32, 5)]
-        [TestCase(33, 5)]
-        [TestCase(34, 6)]
-        [TestCase(35, 6)]
-        [TestCase(36, 6)]
-        [TestCase(37, 6)]
-        [TestCase(38, 7)]
-        [TestCase(39, 7)]
-        [TestCase(40, 7)]
-        [TestCase(41, 7)]
-        [TestCase(42, 8)]
-        [TestCase(43, 8)]
-        [TestCase(44, 8)]
-        [TestCase(45, 8)]
-        [TestCase(46, 9)]
-        [TestCase(47, 9)]
-        [TestCase(48, 9)]
-        [TestCase(49, 9)]
-        [TestCase(50, 10)]
-        public void GenerateAttack_Secondary(int value, int bonus)
-        {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 0.5, FrequencyQuantity = 1, IsPrimary = false, IsMelee = true, IsNatural = true });
-
-            abilities[AbilityConstants.Strength].BaseScore = value;
-
-            mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
-
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
-
-            var attack = generatedAttacks.Single();
-            Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageRoll, Is.EqualTo("damage"));
-            Assert.That(attack.DamageBonus, Is.EqualTo(bonus));
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
 

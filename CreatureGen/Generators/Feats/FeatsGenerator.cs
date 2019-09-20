@@ -61,6 +61,14 @@ namespace CreatureGen.Generators.Feats
                 specialQuality.Frequency = specialQualitySelection.Frequency;
                 specialQuality.Power = specialQualitySelection.Power;
 
+                if (!string.IsNullOrEmpty(specialQualitySelection.SaveAbility))
+                {
+                    specialQuality.Save = new SaveDieCheck();
+                    specialQuality.Save.BaseAbility = abilities[specialQualitySelection.SaveAbility];
+                    specialQuality.Save.Save = specialQualitySelection.Save;
+                    specialQuality.Save.BaseValue = specialQualitySelection.SaveBaseValue;
+                }
+
                 specialQualities.Add(specialQuality);
             }
 
