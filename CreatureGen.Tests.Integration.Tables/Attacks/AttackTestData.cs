@@ -641,11 +641,18 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Belker].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Belker].Add(AttackHelper.BuildData("Smoke Claw", $"3d4", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-                //testCases[CreatureConstants.Bison].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Bison].Add(AttackHelper.BuildData("Gore", $"1d8", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Bison].Add(AttackHelper.BuildData("Stampede", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Strength));
 
-                //testCases[CreatureConstants.BlackPudding].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Split));
+                testCases[CreatureConstants.BlackPudding].Add(AttackHelper.BuildData("Slam", $"2d6 + 2d6 acid", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.BlackPudding].Add(AttackHelper.BuildData("Acid", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, false, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.BlackPudding].Add(AttackHelper.BuildData("Constrict", $"2d6 + 2d6 acid", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.BlackPudding].Add(AttackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-                //testCases[CreatureConstants.BlackPudding_Elder].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Split));
+                testCases[CreatureConstants.BlackPudding_Elder].Add(AttackHelper.BuildData("Slam", $"3d6 + 3d6 acid", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.BlackPudding_Elder].Add(AttackHelper.BuildData("Acid", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, false, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.BlackPudding_Elder].Add(AttackHelper.BuildData("Constrict", $"2d8 + 2d6 acid", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.BlackPudding_Elder].Add(AttackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
                 //testCases[CreatureConstants.BlinkDog].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Blink, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 //testCases[CreatureConstants.BlinkDog].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DimensionDoor, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
