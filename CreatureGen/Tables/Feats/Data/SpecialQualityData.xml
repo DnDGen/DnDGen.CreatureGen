@@ -1645,9 +1645,9 @@
     <entry>Spell Resistance#28##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Wall of stone#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Wall of stone#1#Day#0#False#Charisma#Reflex#15</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
@@ -1660,9 +1660,9 @@
     <entry>Spell-Like Ability#0#Move earth#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Wall of stone#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Wall of stone#1#Day#0#False#Charisma#Reflex#15</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
@@ -1693,8 +1693,8 @@
     <entry>Spell Resistance#25##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False#Charisma#Reflex#15</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Old</name>
@@ -1706,8 +1706,8 @@
     <entry>Spell Resistance#26##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False#Charisma#Reflex#15</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Young</name>
@@ -1727,9 +1727,9 @@
     <entry>Spell Resistance#29##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stone shape#2#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Wall of stone#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Wall of stone#1#Day#0#False#Charisma#Reflex#15</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrmling</name>
@@ -1772,7 +1772,7 @@
   </collection>
   <collection>
     <name>Dark Naga</name>
-    <entry>Spell-Like Ability#0#Detect thoughts#0#Constant#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#Constant#0#False#Charisma#Will#12</entry>
     <entry>Immunity#0#Any form of mind reading#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
   </collection>
@@ -1823,9 +1823,9 @@
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True###0</entry>
     <entry>Spell Resistance#15##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Darkness#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Daze#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Daze#1#Day#0#False#Charisma#Will#10</entry>
     <entry>Spell-Like Ability#0#Ghost sound#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Sound burst#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Sound burst#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Vulnerability#0#Sunlight#0##0#False###0</entry>
   </collection>
   <collection>
@@ -1834,9 +1834,9 @@
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True###0</entry>
     <entry>Spell Resistance#15##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Darkness#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Daze#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Daze#1#Day#0#False#Charisma#Will#10</entry>
     <entry>Spell-Like Ability#0#Ghost sound#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Sound burst#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Sound burst#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Vulnerability#0#Sunlight#0##0#False###0</entry>
   </collection>
   <collection>
@@ -1851,13 +1851,13 @@
     <name>Devourer</name>
     <entry>Spell Deflection#0##0##0#False###0</entry>
     <entry>Spell Resistance#21##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Confusion#1#Round#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Control undead#1#Round#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Ghoul touch#1#Round#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Confusion#1#Round#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Control undead#1#Round#0#False#Charisma#Will#17</entry>
+    <entry>Spell-Like Ability#0#Ghoul touch#1#Round#0#False#Charisma#Fortitude#12</entry>
     <entry>Spell-Like Ability#0#Lesser planar ally#1#Round#0#False###0</entry>
     <entry>Spell-Like Ability#0#Ray of enfeeblement#1#Round#0#False###0</entry>
     <entry>Spell-Like Ability#0#Spectral hand#1#Round#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#1#Round#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Round#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#True seeing#1#Round#0#False###0</entry>
   </collection>
   <collection>
@@ -1935,7 +1935,7 @@
     <entry>Spell-Like Ability#0#Gaseous form#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility: self only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Major creation: created vegetable matter is permanent#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Persistent image#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Persistent image#1#Day#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Plane shift: Genie and up to 8 other creatures, provided they all link hands with the genie#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Wind walk#1#Day#0#False###0</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
@@ -1959,7 +1959,7 @@
     <entry>Change Shape#0#Any Small or Medium Humanoid#0#At Will#0#False###0</entry>
     <entry>Immunity#0#Charm effects#0##0#False###0</entry>
     <entry>Immunity#0#Sleep#0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
   </collection>
   <collection>
     <name>Dragon</name>
@@ -1995,8 +1995,8 @@
     <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Scare#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Scare#1#Day#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False#Charisma#Fortitude#13</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2005,14 +2005,14 @@
     <entry>Simple Weapon Proficiency#0#Dagger#0##0#True###0</entry>
     <entry>Spell Resistance#17##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Clairaudience/Clairvoyance#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False#Charisma#Will#10</entry>
     <entry>Spell-Like Ability#0#Darkness#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Faerie fire#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Levitate#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Drow</name>
@@ -2031,11 +2031,11 @@
     <entry>Damage Reduction#5#Vulnerable to cold iron weapons#1#Hit#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Longbow#0##0#True###0</entry>
     <entry>Simple Weapon Proficiency#0#Dagger#0##0#True###0</entry>
-    <entry>Spell-Like Ability#0#Charm person#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Deep slumber#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Entangle#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Charm person#3#Day#0#False#Charisma#Will#11</entry>
+    <entry>Spell-Like Ability#0#Deep slumber#3#Day#0#False#Charisma#Will#13</entry>
+    <entry>Spell-Like Ability#0#Entangle#0#At Will#0#False#Charisma#Reflex#11</entry>
     <entry>Spell-Like Ability#0#Speak with plants#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#Tree shape#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Tree stride#3#Day#0#False###0</entry>
     <entry>Tree Dependent#0##0##0#False###0</entry>
