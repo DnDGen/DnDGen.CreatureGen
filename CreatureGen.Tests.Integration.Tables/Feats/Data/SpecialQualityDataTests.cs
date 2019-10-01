@@ -393,6 +393,45 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        public void PsionicHasCorrectData(string creature)
+        {
+            Assert.That(table.Keys, Contains.Item(creature));
+
+            var datas = table[creature]
+                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Psionic);
+
+            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
+
+            foreach (var data in datas)
+            {
+                Assert.That(testCaseSpecialQualityDatas.Any(d =>
+                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Psionic
+                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]), Is.True, $"TEST CASE: Psionic - {data[DataIndexConstants.SpecialQualityData.FocusIndex]}");
+
+                var testCaseData = testCaseSpecialQualityDatas.First(d =>
+                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Psionic
+                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]);
+
+                var focus = testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex];
+
+                Assert.That(focus, Is.Not.Empty, "TEST CASE: Focus");
+                Assert.That(Convert.ToInt32(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, $"TEST CASE: {focus} - Frequency Quantity");
+                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, focus, $"TEST CASE: {focus} - Frequency Time Period");
+                Assert.That(Convert.ToInt32(testCaseData[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Zero, focus, $"TEST CASE: {focus} - Power");
+
+                focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
+
+                Assert.That(focus, Is.Not.Empty, "XML: Focus");
+                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, $"XML: {focus} - Frequency Quantity");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, focus, $"XML: {focus} - Frequency Time Period");
+                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Zero, focus, $"XML: {focus} - Power");
+            }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), "Types")]
+        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void EnergyResistanceHasCorrectData(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));

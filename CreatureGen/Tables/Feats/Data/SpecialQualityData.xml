@@ -2323,7 +2323,7 @@
     <name>Fire Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Fast Healing#2#Touching a flame at least as large as a torch#1#Turn#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Heat metal#1#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Heat metal#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Scorching ray#1#Hour#0#False#Charisma#Will#12</entry>
   </collection>
   <collection>
@@ -2597,8 +2597,8 @@
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True###0</entry>
     <entry>Spell Resistance#6##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Daze#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Mage hand#3#Day#0#False###0</entry>
+    <entry>Psionic#0#Daze#3#Day#0#False#Charisma#Will#10</entry>
+    <entry>Psionic#0#Mage hand#3#Day#0#False###0</entry>
   </collection>
   <collection>
     <name>Githzerai</name>
@@ -2607,9 +2607,9 @@
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True###0</entry>
     <entry>Spell Resistance#6##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Daze#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Feather fall#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Shatter#3#Day#0#False###0</entry>
+    <entry>Psionic#0#Daze#3#Day#0#False#Charisma#Will#10</entry>
+    <entry>Psionic#0#Feather fall#3#Day#0#False###0</entry>
+    <entry>Psionic#0#Shatter#3#Day#0#False#Charisma#Will#12</entry>
   </collection>
   <collection>
     <name>Glabrezu</name>
@@ -2620,15 +2620,15 @@
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell Resistance#21##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Confusion#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Confusion#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Mirror image#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Power word stun#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Reverse gravity#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Reverse gravity#0#At Will#0#False#Charisma#Reflex#17</entry>
     <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Wish: for a mortal humanoid. The demon can use this ability to offer a mortal whatever he or she desires - but unless the wish is used to create pain and suffering in the world, the glabrezu demands either terrible evil acts or great sacrifice as compensation.#1#Month#0#False###0</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
@@ -2681,7 +2681,7 @@
     <entry>Spell Resistance#30##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Bless#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Geas/Quest#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Sunburst#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Sunburst#1#Day#0#False#Charisma#Reflex#18</entry>
     <entry>Water Breathing#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2696,7 +2696,7 @@
     <entry>Spell-Like Ability#0#Bless#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Foresight#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Geas/Quest#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Sunburst#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Sunburst#1#Day#0#False#Charisma#Reflex#18</entry>
     <entry>Water Breathing#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2765,7 +2765,7 @@
     <entry>Spell Resistance#31##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Bless#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Geas/Quest#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Sunburst#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Sunburst#1#Day#0#False#Charisma#Reflex#18</entry>
     <entry>Water Breathing#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2839,16 +2839,16 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Blink#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Charm monster#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Crushing despair#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Charm monster#1#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Crushing despair#1#Day#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Dimension door#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility sphere#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Levitate#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Mass bull's strength#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Mass enlarge person#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Misdirection#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Misdirection#0#At Will#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Pass without trace: in wolf form#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Rage#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Rage#0#At Will#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Greater Shadow</name>
@@ -2867,7 +2867,7 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Spell Resistance#21##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
     <entry>Water Breathing#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2878,9 +2878,9 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Spell Resistance#27##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Dominate person#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Dominate person#3#Day#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
     <entry>Water Breathing#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2891,10 +2891,10 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Spell Resistance#30##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Command plants#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Dominate person#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Command plants#1#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Dominate person#3#Day#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
     <entry>Water Breathing#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2913,7 +2913,7 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Spell Resistance#22##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
     <entry>Water Breathing#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2925,7 +2925,7 @@
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Spell Resistance#24##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
     <entry>Water Breathing#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2937,7 +2937,7 @@
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Spell Resistance#25##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
     <entry>Water Breathing#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2956,9 +2956,9 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Spell Resistance#28##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Dominate person#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Dominate person#3#Day#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Plant growth#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
     <entry>Water Breathing#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2993,7 +2993,7 @@
     <entry>Spell Resistance#18##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Dancing lights#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Ghost sound#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Ghost sound#0#At Will#0#False#Charisma#Will#10</entry>
     <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Pass without trace#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Tongues#0#At Will#0#False###0</entry>
@@ -3027,10 +3027,10 @@
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True###0</entry>
     <entry>Spell Resistance#17##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Disguise self#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Entangle#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Invisibility#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Pyrotechnics#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Entangle#3#Day#0#False#Charisma#Reflex#11</entry>
+    <entry>Spell-Like Ability#0#Invisibility: self only#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Pyrotechnics#3#Day#0#False#Charisma##12</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False#Charisma#Will#11</entry>
     <entry>Weapon Finesse#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -3041,10 +3041,10 @@
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True###0</entry>
     <entry>Spell Resistance#17##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Disguise self#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Entangle#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Invisibility#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Pyrotechnics#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Entangle#3#Day#0#False#Charisma#Reflex#11</entry>
+    <entry>Spell-Like Ability#0#Invisibility: self only#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Pyrotechnics#3#Day#0#False#Charisma##12</entry>
+    <entry>Spell-Like Ability#0#Ventriloquism#3#Day#0#False#Charisma#Will#11</entry>
     <entry>Weapon Finesse#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -3070,15 +3070,15 @@
     <entry>Spell-Like Ability#0#Legend lore#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Locate object#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Read magic#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Remove curse#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Remove curse#1#Day#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#See invisibility#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Symbol of death#1#Week#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Symbol of fear#1#Week#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Symbol of insanity#1#Week#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Symbol of pain#1#Week#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Symbol of persuasion#1#Week#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Symbol of sleep#1#Week#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Symbol of stunning#1#Week#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Symbol of death#1#Week#0#False#Charisma#Fortitude#18</entry>
+    <entry>Spell-Like Ability#0#Symbol of fear#1#Week#0#False#Charisma#Will#18</entry>
+    <entry>Spell-Like Ability#0#Symbol of insanity#1#Week#0#False#Charisma#Will#18</entry>
+    <entry>Spell-Like Ability#0#Symbol of pain#1#Week#0#False#Charisma#Fortitude#18</entry>
+    <entry>Spell-Like Ability#0#Symbol of persuasion#1#Week#0#False#Charisma#Will#18</entry>
+    <entry>Spell-Like Ability#0#Symbol of sleep#1#Week#0#False#Charisma#Will#18</entry>
+    <entry>Spell-Like Ability#0#Symbol of stunning#1#Week#0#False#Charisma#Will#18</entry>
   </collection>
   <collection>
     <name>Half-Elf</name>
@@ -3139,11 +3139,11 @@
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell Resistance#19##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Blasphemy#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Blasphemy#3#Day#0#False#Charisma#Will#17</entry>
+    <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Gaseous form#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
   <collection>
@@ -3199,16 +3199,17 @@
     <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False###0</entry>
     <entry>Exotic Weapon Proficiency#0#Spiked chain#0##0#True###0</entry>
     <entry>Spell Resistance#28##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Dispel chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Dispel chaos/evil/good/law#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Fireball#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Lightning bolt#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13</entry>
+    <entry>Spell-Like Ability#0#Lightning bolt#3#Day#0#False#Charisma#Reflex#13</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Hound Archon</name>
+    <entry>Aura of Menace#0##0##0#False#Charisma#Will#15</entry>
     <entry>Change Shape#0#Any canine form of Small to Large size#0#At Will#0#False###0</entry>
     <entry>Damage Reduction#10#Vulnerable to evil weapons#1#Hit#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True###0</entry>
@@ -3247,20 +3248,20 @@
     <entry>Simple Weapon Proficiency#0#Spear#0##0#True###0</entry>
     <entry>Simple Weapon Proficiency#0#Shortspear#0##0#True###0</entry>
     <entry>Spell Resistance#25##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cone of cold#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cone of cold#0#At Will#0#False#Charisma#Reflex#15</entry>
     <entry>Spell-Like Ability#0#Fly#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Ice storm#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Wall of ice#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Ice storm#0#At Will#0#False#Charisma#Reflex#14</entry>
+    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False#Charisma#Will#18</entry>
+    <entry>Spell-Like Ability#0#Wall of ice#0#At Will#0#False#Charisma#Reflex#14</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Ice Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Fast Healing#2#Touching a piece of ice at least Tiny in size, or ambient temperature is freezing or lower#1#Turn#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Chill metal#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Chill metal#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Magic missile#1#Hour#0#False###0</entry>
   </collection>
   <collection>
@@ -3274,7 +3275,7 @@
     <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility: self only#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Incorporeal</name>
@@ -3351,16 +3352,16 @@
     <entry>Fast Healing#5##1#Turn#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True###0</entry>
     <entry>Spell Resistance#22##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Discern lies#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Discern lies#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Geas/Quest#1#Week#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Hold monster#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Hold person#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Hold monster#1#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Hold person#0#At Will#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Locate creature#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Mark of justice#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#0#At Will#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Kraken</name>
@@ -3368,7 +3369,7 @@
     <entry>Jet#0##1#Round#0#False###0</entry>
     <entry>Spell-Like Ability#0#Control weather#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Dominate animal#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Dominate animal#1#Day#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#Resist energy#1#Day#0#False###0</entry>
   </collection>
   <collection>
@@ -3396,13 +3397,13 @@
   <collection>
     <name>Lamia</name>
     <entry>Simple Weapon Proficiency#0#Dagger#0##0#True###0</entry>
-    <entry>Spell-Like Ability#0#Charm monster#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Charm monster#3#Day#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Major image#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Major image#3#Day#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#Mirror image#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#Ventriloquism#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Deep slumber#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Deep slumber#1#Day#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
@@ -3412,6 +3413,7 @@
   </collection>
   <collection>
     <name>Lantern Archon</name>
+    <entry>Aura of Menace#0##0##0#False#Charisma#Will#12</entry>
     <entry>Damage Reduction#10#Vulnerable to magic, evil weapons#1#Hit#0#False###0</entry>
     <entry>Spell-Like Ability#0#Aid#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False###0</entry>
@@ -3440,11 +3442,11 @@
     <entry>Lay on Hands#0##0##0#False###0</entry>
     <entry>Protective Aura#0##0##0#False###0</entry>
     <entry>Spell Resistance#28##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cure/Inflict critical wounds#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cure/Inflict critical wounds#3#Day#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Fireball#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Heal/Harm#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Hold monster#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Fireball#0#At Will#0#False#Charisma#Reflex#13</entry>
+    <entry>Spell-Like Ability#0#Heal/Harm#1#Day#0#False#Charisma#Will#16</entry>
+    <entry>Spell-Like Ability#0#Hold monster#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Neutralize poison#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Remove disease#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Speak with animals: does not require sound#0#At Will#0#False###0</entry>
@@ -3470,9 +3472,9 @@
     <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Bardic music ability as a 6th-level Bard#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Charm person#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Charm person#1#Day#0#False#Charisma#Will#11</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Hallucinatory terrain#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Hallucinatory terrain#3#Day#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Knock#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Light#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Speak with animals#1#Day#0#False###0</entry>
@@ -3509,12 +3511,12 @@
     <entry>Change Shape#0#A pool of lava 3 feet in diameter and 6 inches deep#1#Hour#0#False###0</entry>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Fast Healing#2#Touching magma, lava, or a flame at least as large as a torch#1#Turn#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Pyrotechnics#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Pyrotechnics#1#Day#0#False#Charisma#Will#12</entry>
   </collection>
   <collection>
     <name>Magmin</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Melt Weapons#0##0##0#False###0</entry>
+    <entry>Melt Weapons#0##0##0#False#Constitution#Fortitude#11</entry>
   </collection>
   <collection>
     <name>Malenti</name>
@@ -3547,13 +3549,13 @@
     <entry>Multiweapon Fighting#0##0##0#True###0</entry>
     <entry>Spell Resistance#25##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Align weapon#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Blade barrier#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Blade barrier#0#At Will#0#False#Charisma#Reflex#16</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Magic weapon#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Project image#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Project image#0#At Will#0#False#Charisma#Will#17</entry>
     <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Telekinesis#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Telekinesis#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False#Charisma#Fortitude#18</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
   <collection>
@@ -3565,20 +3567,20 @@
     <entry>Fast Healing#10##1#Turn#0#False###0</entry>
     <entry>Spell Resistance#25##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Air walk#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Chain lightning#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Circle of death#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Chain lightning#1#Day#0#False#Charisma#Reflex#16</entry>
+    <entry>Spell-Like Ability#0#Circle of death#1#Day#0#False#Charisma#Fortitude#16</entry>
     <entry>Spell-Like Ability#0#Dimension door#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Greater command#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Greater command#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Locate creature#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Mark of justice#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Mass cure/inflict light wounds#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Mass cure/inflict light wounds#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#True seeing#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Wall of force#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Earthquake#1#Week#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Earthquake#1#Week#0#False#Charisma#Reflex#18</entry>
     <entry>Spell-Like Ability#0#Geas/Quest#1#Week#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Plane shift#1#Week#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Plane shift#1#Week#0#False#Charisma#Will#17</entry>
   </collection>
   <collection>
     <name>Medusa</name>
@@ -3613,11 +3615,11 @@
   <collection>
     <name>Mind Flayer (Illithid)</name>
     <entry>Spell Resistance#25##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Levitate#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Plane shift#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#0#At Will#0#False###0</entry>
+    <entry>Psionic#0#Charm monster#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Psionic#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
+    <entry>Psionic#0#Levitate#0#At Will#0#False###0</entry>
+    <entry>Psionic#0#Plane shift#0#At Will#0#False###0</entry>
+    <entry>Psionic#0#Suggestion#0#At Will#0#False#Charisma#Will#13</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
   <collection>
@@ -3796,13 +3798,13 @@
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
     <entry>Spell Resistance#22##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Call lightning#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Feeblemind#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Call lightning#0#At Will#0#False#Charisma#Reflex#13</entry>
+    <entry>Spell-Like Ability#0#Feeblemind#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Slow#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Slow#0#At Will#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#True seeing#0#Constant#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False#Charisma#Will#18</entry>
   </collection>
   <collection>
     <name>Native</name>
@@ -3830,20 +3832,20 @@
     <entry>Desecrating Aura#0##0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Spell Resistance#31##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cone of cold#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Confusion#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Contagion#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cone of cold#3#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Confusion#3#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Contagion#0#At Will#0#False#Charisma#Fortitude#14</entry>
     <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Finger of death#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Finger of death#1#Day#0#False#Charisma#Fortitude#17</entry>
     <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Haste#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Hold monster#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Hold monster#3#Day#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Mass hold monster#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Plane shift#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Mass hold monster#1#Day#0#False#Charisma#Will#19</entry>
+    <entry>Spell-Like Ability#0#Plane shift#1#Day#0#False#Charisma#Will#17</entry>
     <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
     <entry>Tremorsense#60##0##0#False###0</entry>
   </collection>
@@ -3864,19 +3866,19 @@
     <entry>Desecrating Aura#0##0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Spell Resistance#29##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cone of cold#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Confusion#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Contagion#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cone of cold#1#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Confusion#3#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Contagion#0#At Will#0#False#Charisma#Fortitude#14</entry>
     <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Finger of death#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Finger of death#1#Day#0#False#Charisma#Fortitude#17</entry>
     <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Haste#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Hold monster#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Hold monster#3#Day#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Invisibility#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Plane shift#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Plane shift#1#Day#0#False#Charisma#Will#17</entry>
     <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
   <collection>
@@ -3886,19 +3888,19 @@
     <entry>Desecrating Aura#0##0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Spell Resistance#27##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cone of cold#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Confusion#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Contagion#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cone of cold#1#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Confusion#3#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Contagion#0#At Will#0#False#Charisma#Fortitude#14</entry>
     <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Finger of death#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Finger of death#1#Day#0#False#Charisma#Fortitude#17</entry>
     <entry>Spell-Like Ability#0#Greater dispel magic#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Haste#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Hold monster#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Hold monster#3#Day#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Invisibility#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Plane shift#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Plane shift#1#Day#0#False#Charisma#Will#17</entry>
     <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
   <collection>
@@ -3927,7 +3929,7 @@
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True###0</entry>
     <entry>Simple Weapon Proficiency#0#Light crossbow#0##0#True###0</entry>
     <entry>Spell Resistance#16##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Charm person#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Charm person#3#Day#0#False#Charisma#Will#11</entry>
     <entry>Spell-Like Ability#0#Water breathing#1#Day#0#False###0</entry>
     <entry>Weapon Finesse#0##0##0#False###0</entry>
     <entry>Wild Empathy#0##0##0#False###0</entry>
@@ -3941,7 +3943,7 @@
     <entry>Spell-Like Ability#0#Gaseous form#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility: self only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Major creation: created vegetable matter is permanent#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Persistent image#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Persistent image#1#Day#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Plane shift: Genie and up to 8 other creatures, provided they all link hands with the genie#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Wind walk#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Wish: 3 wishes to any non-genie who captures it#0#At Will#0#False###0</entry>
@@ -3951,12 +3953,12 @@
     <name>Noble Salamander</name>
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Multiattack#0##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Burning hands#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Burning hands#3#Day#0#False#Charisma#Reflex#11</entry>
     <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Fireball#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Flaming sphere#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13</entry>
+    <entry>Spell-Like Ability#0#Flaming sphere#3#Day#0#False#Charisma#Reflex#12</entry>
     <entry>Spell-Like Ability#0#Summon monster VII: Huge fire elemental#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Wall of fire#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Wall of fire#3#Day#0#False#Charisma#Reflex#14</entry>
   </collection>
   <collection>
     <name>Nymph</name>
@@ -3993,12 +3995,12 @@
     <entry>Martial Weapon Proficiency#0#Longbow#0##0#True###0</entry>
     <entry>Regeneration#5#Fire and acid deal normal damage#1#Round#0#False###0</entry>
     <entry>Spell Resistance#19##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Charm person#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cone of cold#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Charm person#1#Day#0#False#Charisma#Will#11</entry>
+    <entry>Spell-Like Ability#0#Cone of cold#1#Day#0#False#Charisma#Reflex#15</entry>
     <entry>Spell-Like Ability#0#Darkness#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Gaseous form#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Sleep#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Sleep#1#Day#0#False#Charisma#Will#11</entry>
   </collection>
   <collection>
     <name>Ooze</name>
@@ -4018,7 +4020,7 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Fast Healing#2#In a wet or muddy environment#1#Turn#0#False###0</entry>
     <entry>Spell-Like Ability#0#Acid arrow#1#Hour#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False#Charisma#Fortitude#13</entry>
   </collection>
   <collection>
     <name>Orc</name>
@@ -4084,18 +4086,18 @@
     <entry>Regeneration#5#Does not regenerate damage from good spells or effects, or from good-aligned silvered weapons#1#Round#0#False###0</entry>
     <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False###0</entry>
     <entry>Spell Resistance#32##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Blasphemy#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Blasphemy#0#At Will#0#False#Charisma#Will#17</entry>
     <entry>Spell-Like Ability#0#Create undead#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Fireball#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Fireball#0#At Will#0#False#Charisma#Reflex#13</entry>
     <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Mass hold monster#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Meteor swarm#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Mass hold monster#0#At Will#0#False#Charisma#Will#19</entry>
+    <entry>Spell-Like Ability#0#Meteor swarm#1#Day#0#False#Charisma#Reflex#19</entry>
+    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Power word stun#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Unholy aura#0#At Will#0#False#Charisma#Will#18</entry>
     <entry>Spell-Like Ability#0#Wish#1#Year#0#False###0</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
@@ -4108,12 +4110,12 @@
     <entry>Spell Resistance#15##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect thoughts#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Entangle#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Entangle#1#Day#0#False#Charisma#Reflex#11</entry>
     <entry>Spell-Like Ability#0#Greater invisibility#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Lesser confusion#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Permanent image: visual and auditory elements only#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Lesser confusion#1#Day#0#False#Charisma#Will#11</entry>
+    <entry>Spell-Like Ability#0#Permanent image: visual and auditory elements only#1#Day#0#False#Charisma#Will#16</entry>
     <entry>Weapon Finesse#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -4125,13 +4127,13 @@
     <entry>Spell Resistance#15##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect thoughts#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Entangle#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Entangle#1#Day#0#False#Charisma#Reflex#11</entry>
     <entry>Spell-Like Ability#0#Greater invisibility#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Irresistible dance#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Lesser confusion#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Permanent image: visual and auditory elements only#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Lesser confusion#1#Day#0#False#Charisma#Will#11</entry>
+    <entry>Spell-Like Ability#0#Permanent image: visual and auditory elements only#1#Day#0#False#Charisma#Will#16</entry>
     <entry>Weapon Finesse#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -4175,7 +4177,7 @@
     <entry>Damage Reduction#5#Vulnerable to good or cold iron weapons#1#Hit#0#False###0</entry>
     <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cause fear: 30-foot radius area from the quasit#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cause fear: 30-foot radius area from the quasit#1#Day#0#False#Charisma#Will#11</entry>
     <entry>Spell-Like Ability#0#Commune: can ask 6 questions#1#Week#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
@@ -4186,7 +4188,7 @@
     <entry>Change Shape#0#Any Humanoid form#0#At Will#0#False###0</entry>
     <entry>Damage Reduction#15#Vulnerable to good, piercing weapons#1#Hit#0#False###0</entry>
     <entry>Spell Resistance#27##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect thoughts#0#Constant#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#Constant#0#False#Charisma#Will#12</entry>
   </collection>
   <collection>
     <name>Rast</name>
@@ -4235,9 +4237,9 @@
     <entry>Darkvision#120##0##0#False###0</entry>
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#28##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Find the path#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Find the path#1#Day#0#False#Charisma#Will#16</entry>
     <entry>Spell-Like Ability#0#Locate object#10#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
@@ -4247,9 +4249,9 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#32##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Discern location#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Find the path#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Find the path#1#Day#0#False#Charisma#Will#16</entry>
     <entry>Spell-Like Ability#0#Locate object#12#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
@@ -4275,7 +4277,7 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#24##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Locate object#8#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Old</name>
@@ -4285,7 +4287,7 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#26##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Locate object#9#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Young</name>
@@ -4300,9 +4302,9 @@
     <entry>Darkvision#120##0##0#False###0</entry>
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#30##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Find the path#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Find the path#1#Day#0#False#Charisma#Will#16</entry>
     <entry>Spell-Like Ability#0#Locate object#11#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrmling</name>
@@ -4356,7 +4358,7 @@
     <name>Rock Gnome</name>
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True###0</entry>
     <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Ghost sound#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Ghost sound#1#Day#0#False#Charisma#Will#10</entry>
     <entry>Spell-Like Ability#0#Prestidigitation#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Speak with animals: burrowing mammals only, duration 1 minute#1#Day#0#False###0</entry>
   </collection>
@@ -4397,8 +4399,8 @@
     <name>Salt Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Fast Healing#2#In an arid environment#1#Turn#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Draw moisture from the air#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Glitterdust#1#Hour#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Draw moisture from the air#1#Day#0#False#Charisma#Fortitude#12</entry>
+    <entry>Spell-Like Ability#0#Glitterdust#1#Hour#0#False#Charisma#Will#12</entry>
   </collection>
   <collection>
     <name>Satyr</name>
@@ -4419,7 +4421,7 @@
     <entry>Energy Resistance#5#Fire#1#Round#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Lance#0##0#True###0</entry>
     <entry>Spell Resistance#18##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Major image#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Major image#1#Day#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#Mirror image#2#Day#0#False###0</entry>
   </collection>
   <collection>
@@ -4532,7 +4534,7 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#29##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Control weather#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False#Charisma#Fortitude#15</entry>
     <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
   </collection>
@@ -4547,10 +4549,10 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#32##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Control weather#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False#Charisma#Fortitude#15</entry>
     <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Reverse gravity#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Reverse gravity#1#Day#0#False#Charisma#Reflex#17</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
@@ -4585,7 +4587,7 @@
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#26##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False#Charisma#Fortitude#15</entry>
     <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
   </collection>
@@ -4599,7 +4601,7 @@
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#27##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False#Charisma#Fortitude#15</entry>
     <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
   </collection>
@@ -4623,7 +4625,7 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#30##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Control weather#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Control winds#3#Day#0#False#Charisma#Fortitude#15</entry>
     <entry>Spell-Like Ability#0#Feather fall#2#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
   </collection>
@@ -4709,7 +4711,7 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Fast Healing#2#Touching boiling water or in a hot, humid area#1#Turn#0#False###0</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Rainstorm of boiling water#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Rainstorm of boiling water#1#Day#0#False#Charisma#Reflex#12</entry>
   </collection>
   <collection>
     <name>Stirge</name>
@@ -4732,8 +4734,8 @@
     <entry>Martial Weapon Proficiency#0#Greatclub#0##0#True###0</entry>
     <entry>Spell-Like Ability#0#Stone shape#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stone tell#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Transmute mud to rock#1#Day#0#False#Charisma#Reflex#15</entry>
+    <entry>Spell-Like Ability#0#Transmute rock to mud#1#Day#0#False#Charisma#Reflex#15</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
@@ -4748,8 +4750,8 @@
     <entry>Rock Catching#0##1#Round#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True###0</entry>
-    <entry>Spell-Like Ability#0#Call lightning#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Chain lightning#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Call lightning#1#Day#0#False#Charisma#Reflex#13</entry>
+    <entry>Spell-Like Ability#0#Chain lightning#1#Day#0#False#Charisma#Reflex#16</entry>
     <entry>Spell-Like Ability#0#Control weather#2#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Freedom of movement#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Levitate#2#Day#0#False###0</entry>
@@ -4765,12 +4767,12 @@
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell Resistance#18##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Ethereal jaunt: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#0#At Will#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False###0</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
@@ -4782,7 +4784,7 @@
     <entry>Martial Weapon Proficiency#0#Heavy pick#0##0#True###0</entry>
     <entry>Stonecunning#0##0##0#False###0</entry>
     <entry>Spell Resistance#11##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Blindness/Deafness#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Blindness/Deafness#1#Day#0#False#Charisma#Fortitude#14</entry>
     <entry>Spell-Like Ability#0#Blur#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Disguise self#1#Day#0#False###0</entry>
   </collection>
@@ -4869,30 +4871,30 @@
     <entry>Oversized Weapon#0#Gargantuan#0##0#True###0</entry>
     <entry>Simple Weapon Proficiency#0#Javelin#0##0#True###0</entry>
     <entry>Spell Resistance#32##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Bestow curse#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Chain lightning#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Bestow curse#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Chain lightning#0#At Will#0#False#Charisma#Reflex#16</entry>
+    <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Crushing hand#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cure/Inflict critical wounds#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cure/Inflict critical wounds#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Daylight#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Etherealness#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Fire storm#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Fire storm#0#At Will#0#False#Charisma#Reflex#17</entry>
     <entry>Spell-Like Ability#0#Gate#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater restoration#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Hold monster#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Holy smite#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Hold monster#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Holy smite#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility purge#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Levitate#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Maze#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Meteor swarm#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Remove curse#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Meteor swarm#1#Day#0#False#Charisma#Reflex#19</entry>
+    <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Remove curse#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Summon nature's ally IX#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Word of chaos#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Word of chaos#3#Day#0#False#Charisma#Will#15</entry>
   </collection>
   <collection>
     <name>Toad</name>
@@ -4930,6 +4932,7 @@
   </collection>
   <collection>
     <name>Trumpet Archon</name>
+    <entry>Aura of Menace#0##0##0#False#Charisma#Will#18</entry>
     <entry>Damage Reduction#10#Vulnerable to evil weapons#1#Hit#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True###0</entry>
     <entry>Spell Resistance#29##0##0#False###0</entry>
@@ -4996,7 +4999,7 @@
     <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater teleport: within its forest home#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#Constant#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Neutralize poison#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Neutralize poison#1#Day#0#False#Charisma#Will#14</entry>
     <entry>Wild Empathy#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -5056,7 +5059,7 @@
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Heroism#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Mirror image#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Telekinesis#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Telekinesis#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
   <collection>
@@ -5093,7 +5096,7 @@
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Fast Healing#2#Exposed to rain or submerged up to its waist in water#1#Turn#0#False###0</entry>
     <entry>Spell-Like Ability#0#Acid arrow#1#Hour#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False#Charisma#Fortitude#13</entry>
   </collection>
   <collection>
     <name>Water Naga</name>
@@ -5113,34 +5116,34 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#18##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False#Charisma#Fortitude#12</entry>
   </collection>
   <collection>
     <name>White Dragon, Ancient</name>
     <entry>Blindsense#60##0##0#False###0</entry>
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Darkvision#120##0##0#False###0</entry>
-    <entry>Freezing Fog#0##3#Day#0#False###0</entry>
+    <entry>Freezing Fog#0##3#Day#0#False#Charisma#Reflex#15</entry>
     <entry>Icewalking#0##0##0#False###0</entry>
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#24##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Wall of ice#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False#Charisma#Fortitude#12</entry>
+    <entry>Spell-Like Ability#0#Wall of ice#3#Day#0#False#Charisma#Reflex#14</entry>
   </collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
     <entry>Blindsense#60##0##0#False###0</entry>
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Darkvision#120##0##0#False###0</entry>
-    <entry>Freezing Fog#0##3#Day#0#False###0</entry>
+    <entry>Freezing Fog#0##3#Day#0#False#Charisma#Reflex#15</entry>
     <entry>Icewalking#0##0##0#False###0</entry>
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#27##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Control weather#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Wall of ice#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False#Charisma#Fortitude#12</entry>
+    <entry>Spell-Like Ability#0#Wall of ice#3#Day#0#False#Charisma#Reflex#14</entry>
   </collection>
   <collection>
     <name>White Dragon, Juvenile</name>
@@ -5159,31 +5162,31 @@
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#20##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False#Charisma#Fortitude#12</entry>
   </collection>
   <collection>
     <name>White Dragon, Old</name>
     <entry>Blindsense#60##0##0#False###0</entry>
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Darkvision#120##0##0#False###0</entry>
-    <entry>Freezing Fog#0##3#Day#0#False###0</entry>
+    <entry>Freezing Fog#0##3#Day#0#False#Charisma#Reflex#15</entry>
     <entry>Icewalking#0##0##0#False###0</entry>
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#21##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False#Charisma#Fortitude#12</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Old</name>
     <entry>Blindsense#60##0##0#False###0</entry>
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Darkvision#120##0##0#False###0</entry>
-    <entry>Freezing Fog#0##3#Day#0#False###0</entry>
+    <entry>Freezing Fog#0##3#Day#0#False#Charisma#Reflex#15</entry>
     <entry>Icewalking#0##0##0#False###0</entry>
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#23##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False#Charisma#Fortitude#12</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Young</name>
@@ -5197,13 +5200,13 @@
     <entry>Blindsense#60##0##0#False###0</entry>
     <entry>Damage Reduction#20#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Darkvision#120##0##0#False###0</entry>
-    <entry>Freezing Fog#0##3#Day#0#False###0</entry>
+    <entry>Freezing Fog#0##3#Day#0#False#Charisma#Reflex#15</entry>
     <entry>Icewalking#0##0##0#False###0</entry>
     <entry>Keen Senses#0##0##0#False###0</entry>
     <entry>Spell Resistance#25##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Wall of ice#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Gust of wind#3#Day#0#False#Charisma#Fortitude#12</entry>
+    <entry>Spell-Like Ability#0#Wall of ice#3#Day#0#False#Charisma#Reflex#14</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrmling</name>
@@ -5320,14 +5323,14 @@
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
     <entry>Spell Resistance#18##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Animal trance#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Baleful polymorph: into snake form only#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Animal trance#0#At Will#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Baleful polymorph: into snake form only#1#Day#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Deeper darkness#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect poison#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Entangle#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Fear#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Neutralize poison#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Entangle#0#At Will#0#False#Charisma#Reflex#11</entry>
+    <entry>Spell-Like Ability#0#Fear#1#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Neutralize poison#3#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood</name>
@@ -5339,13 +5342,13 @@
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
     <entry>Spell Resistance#16##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Animal trance#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cause fear#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Animal trance#3#Day#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Cause fear#3#Day#0#False#Charisma#Will#11</entry>
     <entry>Spell-Like Ability#0#Deeper darkness#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect poison#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Entangle#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Neutralize poison#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Entangle#3#Day#0#False#Charisma#Reflex#11</entry>
+    <entry>Spell-Like Ability#0#Neutralize poison#1#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
@@ -5355,12 +5358,12 @@
     <entry>Martial Weapon Proficiency#0#Scimitar#0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Longbow#0##0#True###0</entry>
     <entry>Spell Resistance#14##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Animal trance#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cause fear#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Charm person#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Animal trance#1#Day#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Cause fear#1#Day#0#False#Charisma#Will#11</entry>
+    <entry>Spell-Like Ability#0#Charm person#1#Day#0#False#Charisma#Will#11</entry>
     <entry>Spell-Like Ability#0#Darkness#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect poison#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Entangle#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Entangle#1#Day#0#False#Charisma#Reflex#11</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>
@@ -5376,10 +5379,10 @@
     <entry>Spell-Like Ability#0#Dimensional anchor#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Earthquake#1#Week#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Hold monster#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Hold person#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Lesser geas#1#Week#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Hold monster#3#Day#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Hold person#0#At Will#0#False#Charisma#Will#13</entry>
+    <entry>Spell-Like Ability#0#Lesser geas#1#Week#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Locate creature#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Mark of justice#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#True seeing#0#At Will#0#False###0</entry>
