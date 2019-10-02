@@ -440,22 +440,25 @@
     <name>AbolethMucus Cloud</name>
   </collection>
   <collection>
-    <name>AbolethSpell-Like AbilityHypnotic pattern</name>
+    <name>AbolethPsionicHypnotic pattern</name>
   </collection>
   <collection>
-    <name>AbolethSpell-Like AbilityIllusory wall</name>
+    <name>AbolethPsionicIllusory wall</name>
   </collection>
   <collection>
-    <name>AbolethSpell-Like AbilityMirage arcana</name>
+    <name>AbolethPsionicMirage arcana</name>
   </collection>
   <collection>
-    <name>AbolethSpell-Like AbilityPersistent image</name>
+    <name>AbolethPsionicPersistent image</name>
   </collection>
   <collection>
-    <name>AbolethSpell-Like AbilityProgrammed image</name>
+    <name>AbolethPsionicProgrammed image</name>
   </collection>
   <collection>
-    <name>AbolethSpell-Like AbilityProject image</name>
+    <name>AbolethPsionicProject image</name>
+  </collection>
+  <collection>
+    <name>AbolethPsionicVeil</name>
   </collection>
   <collection>
     <name>AberrationDarkvision</name>
@@ -889,9 +892,6 @@
   </collection>
   <collection>
     <name>AraneaChange ShapeSmall or Medium humanoid; or Medium spider-human hybrid (like a Lycanthrope)</name>
-  </collection>
-  <collection>
-    <name>ArchonAura of Menace</name>
   </collection>
   <collection>
     <name>ArchonDarkvision</name>
@@ -4605,10 +4605,10 @@
     <name>GithyankiSpell Resistance</name>
   </collection>
   <collection>
-    <name>GithyankiSpell-Like AbilityDaze</name>
+    <name>GithyankiPsionicDaze</name>
   </collection>
   <collection>
-    <name>GithyankiSpell-Like AbilityMage hand</name>
+    <name>GithyankiPsionicMage hand</name>
   </collection>
   <collection>
     <name>GithzeraiDarkvision</name>
@@ -4626,13 +4626,13 @@
     <name>GithzeraiSpell Resistance</name>
   </collection>
   <collection>
-    <name>GithzeraiSpell-Like AbilityDaze</name>
+    <name>GithzeraiPsionicDaze</name>
   </collection>
   <collection>
-    <name>GithzeraiSpell-Like AbilityFeather fall</name>
+    <name>GithzeraiPsionicFeather fall</name>
   </collection>
   <collection>
-    <name>GithzeraiSpell-Like AbilityShatter</name>
+    <name>GithzeraiPsionicShatter</name>
   </collection>
   <collection>
     <name>GlabrezuDamage ReductionVulnerable to good weapons</name>
@@ -5502,7 +5502,7 @@
     <name>GrigSpell-Like AbilityEntangle</name>
   </collection>
   <collection>
-    <name>GrigSpell-Like AbilityInvisibility</name>
+    <name>GrigSpell-Like AbilityInvisibility: self only</name>
   </collection>
   <collection>
     <name>GrigSpell-Like AbilityPyrotechnics</name>
@@ -5535,7 +5535,7 @@
     <name>Grig with fiddleSpell-Like AbilityEntangle</name>
   </collection>
   <collection>
-    <name>Grig with fiddleSpell-Like AbilityInvisibility</name>
+    <name>Grig with fiddleSpell-Like AbilityInvisibility: self only</name>
   </collection>
   <collection>
     <name>Grig with fiddleSpell-Like AbilityPyrotechnics</name>
@@ -5827,6 +5827,9 @@
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)Telepathy</name>
+  </collection>
+  <collection>
+    <name>Hound ArchonAura of Menace</name>
   </collection>
   <collection>
     <name>Hound ArchonChange ShapeAny canine form of Small to Large size</name>
@@ -6232,6 +6235,9 @@
     <name>LammasuSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
   </collection>
   <collection>
+    <name>Lantern ArchonAura of Menace</name>
+  </collection>
+  <collection>
     <name>Lantern ArchonDamage ReductionVulnerable to magic, evil weapons</name>
   </collection>
   <collection>
@@ -6592,19 +6598,19 @@
     <name>Mind Flayer (Illithid)Spell Resistance</name>
   </collection>
   <collection>
-    <name>Mind Flayer (Illithid)Spell-Like AbilityCharm monster</name>
+    <name>Mind Flayer (Illithid)PsionicCharm monster</name>
   </collection>
   <collection>
-    <name>Mind Flayer (Illithid)Spell-Like AbilityDetect thoughts</name>
+    <name>Mind Flayer (Illithid)PsionicDetect thoughts</name>
   </collection>
   <collection>
-    <name>Mind Flayer (Illithid)Spell-Like AbilityLevitate</name>
+    <name>Mind Flayer (Illithid)PsionicLevitate</name>
   </collection>
   <collection>
-    <name>Mind Flayer (Illithid)Spell-Like AbilityPlane shift</name>
+    <name>Mind Flayer (Illithid)PsionicPlane shift</name>
   </collection>
   <collection>
-    <name>Mind Flayer (Illithid)Spell-Like AbilitySuggestion</name>
+    <name>Mind Flayer (Illithid)PsionicSuggestion</name>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)Telepathy</name>
@@ -8951,6 +8957,9 @@
   </collection>
   <collection>
     <name>Truly Horrid Umber HulkTremorsense</name>
+  </collection>
+  <collection>
+    <name>Trumpet ArchonAura of Menace</name>
   </collection>
   <collection>
     <name>Trumpet ArchonDamage ReductionVulnerable to evil weapons</name>

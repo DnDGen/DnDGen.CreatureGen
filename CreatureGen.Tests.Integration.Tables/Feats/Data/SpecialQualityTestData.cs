@@ -702,8 +702,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Camel_Dromedary].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
                 testCases[CreatureConstants.CarrionCrawler].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.CarrionCrawler].Add(SpecialQualityHelper.BuildData(FeatConstants.Alertness, power: 2));
 
                 testCases[CreatureConstants.Cat].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Cat].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponFinesse));
 
                 testCases[CreatureConstants.Centaur].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longsword, requiresEquipment: true));
                 testCases[CreatureConstants.Centaur].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.CompositeLongbow, requiresEquipment: true));
