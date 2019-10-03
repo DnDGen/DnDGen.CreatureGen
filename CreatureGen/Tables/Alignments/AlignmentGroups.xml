@@ -1072,7 +1072,23 @@
     <name>Cheetah</name>
   </collection>
   <collection>
-    <name>Chimera</name>
+    <name>Chimera (Black Dragon head)</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
     <entry>UsuallyChaotic Evil</entry>
   </collection>
   <collection>
@@ -3076,7 +3092,19 @@
     <entry>UsuallyChaotic Evil</entry>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood</name>
+    <name>Yuan-ti Halfblood (Snake Head)</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+    <entry>UsuallyChaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
     <entry>UsuallyChaotic Evil</entry>
   </collection>
   <collection>

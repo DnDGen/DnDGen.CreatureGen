@@ -1962,7 +1962,43 @@
     <entry>Wisdom@2</entry>
   </collection>
   <collection>
-    <name>Chimera</name>
+    <name>Chimera (Black Dragon head)</name>
+    <entry>Charisma@0</entry>
+    <entry>Constitution@6</entry>
+    <entry>Dexterity@2</entry>
+    <entry>Intelligence@-6</entry>
+    <entry>Strength@8</entry>
+    <entry>Wisdom@2</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+    <entry>Charisma@0</entry>
+    <entry>Constitution@6</entry>
+    <entry>Dexterity@2</entry>
+    <entry>Intelligence@-6</entry>
+    <entry>Strength@8</entry>
+    <entry>Wisdom@2</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+    <entry>Charisma@0</entry>
+    <entry>Constitution@6</entry>
+    <entry>Dexterity@2</entry>
+    <entry>Intelligence@-6</entry>
+    <entry>Strength@8</entry>
+    <entry>Wisdom@2</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+    <entry>Charisma@0</entry>
+    <entry>Constitution@6</entry>
+    <entry>Dexterity@2</entry>
+    <entry>Intelligence@-6</entry>
+    <entry>Strength@8</entry>
+    <entry>Wisdom@2</entry>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
     <entry>Charisma@0</entry>
     <entry>Constitution@6</entry>
     <entry>Dexterity@2</entry>
@@ -6050,7 +6086,34 @@
     <entry>Wisdom@10</entry>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood</name>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+    <entry>Charisma@6</entry>
+    <entry>Constitution@2</entry>
+    <entry>Dexterity@2</entry>
+    <entry>Intelligence@8</entry>
+    <entry>Strength@4</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head)</name>
+    <entry>Charisma@6</entry>
+    <entry>Constitution@2</entry>
+    <entry>Dexterity@2</entry>
+    <entry>Intelligence@8</entry>
+    <entry>Strength@4</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+    <entry>Charisma@6</entry>
+    <entry>Constitution@2</entry>
+    <entry>Dexterity@2</entry>
+    <entry>Intelligence@8</entry>
+    <entry>Strength@4</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
     <entry>Charisma@6</entry>
     <entry>Constitution@2</entry>
     <entry>Dexterity@2</entry>

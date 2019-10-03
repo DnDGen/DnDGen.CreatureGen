@@ -332,7 +332,11 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Chaotic,
             CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Cheetah, CreatureConstants.Types.Animal)]
-        [TestCase(CreatureConstants.Chimera, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Chimera_Black, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Chimera_Blue, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Chimera_Green, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Chimera_Red, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Chimera_White, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Choker, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Chuul, CreatureConstants.Types.Aberration,
             CreatureConstants.Types.Subtypes.Aquatic)]
@@ -1273,7 +1277,10 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Yrthak, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.YuanTi_Abomination, CreatureConstants.Types.MonstrousHumanoid)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeArms, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, CreatureConstants.Types.MonstrousHumanoid)]
         public void CreatureTypes(string creature, params string[] types)
         {

@@ -998,7 +998,23 @@
     <entry>3</entry>
   </collection>
   <collection>
-    <name>Chimera</name>
+    <name>Chimera (Black Dragon head)</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+    <entry>9</entry>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
     <entry>9</entry>
   </collection>
   <collection>
@@ -2906,7 +2922,19 @@
     <entry>9</entry>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood</name>
+    <name>Yuan-ti Halfblood (Snake Head)</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+    <entry>7</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
     <entry>7</entry>
   </collection>
   <collection>

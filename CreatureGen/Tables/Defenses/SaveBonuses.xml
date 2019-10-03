@@ -769,7 +769,19 @@
     <name>Cheetah</name>
   </collection>
   <collection>
-    <name>Chimera</name>
+    <name>Chimera (Black Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
   </collection>
   <collection>
     <name>Choker</name>
@@ -2272,7 +2284,16 @@
     <name>Yuan-ti Abomination</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood</name>
+    <name>Yuan-ti Halfblood (Snake Head)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>

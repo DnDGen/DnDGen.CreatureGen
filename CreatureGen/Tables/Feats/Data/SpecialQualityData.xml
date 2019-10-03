@@ -1554,7 +1554,23 @@
     <entry>Sprint#0##1#Hour#0#False###0</entry>
   </collection>
   <collection>
-    <name>Chimera</name>
+    <name>Chimera (Black Dragon head)</name>
+    <entry>Scent#0##0##0#False###0</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+    <entry>Scent#0##0##0#False###0</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+    <entry>Scent#0##0##0#False###0</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+    <entry>Scent#0##0##0#False###0</entry>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -5333,7 +5349,59 @@
     <entry>Spell-Like Ability#0#Suggestion#3#Day#0#False#Charisma#Will#13</entry>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood</name>
+    <name>Yuan-ti Halfblood (Snake Head)</name>
+    <entry>Alertness#2##0##0#False###0</entry>
+    <entry>Alternate Form#0#a Tiny to Large viper#0#At Will#0#False###0</entry>
+    <entry>Blind-Fight#2##0##0#False###0</entry>
+    <entry>Chameleon Power#0##0##0#False###0</entry>
+    <entry>Martial Weapon Proficiency#0#Scimitar#0##0#True###0</entry>
+    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True###0</entry>
+    <entry>Scent#0##0##0#False###0</entry>
+    <entry>Spell Resistance#16##0##0#False###0</entry>
+    <entry>Spell-Like Ability#0#Animal trance#3#Day#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Cause fear#3#Day#0#False#Charisma#Will#11</entry>
+    <entry>Spell-Like Ability#0#Deeper darkness#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect poison#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Entangle#3#Day#0#False#Charisma#Reflex#11</entry>
+    <entry>Spell-Like Ability#0#Neutralize poison#1#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False#Charisma#Will#13</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+    <entry>Alertness#2##0##0#False###0</entry>
+    <entry>Alternate Form#0#a Tiny to Large viper#0#At Will#0#False###0</entry>
+    <entry>Blind-Fight#2##0##0#False###0</entry>
+    <entry>Chameleon Power#0##0##0#False###0</entry>
+    <entry>Scent#0##0##0#False###0</entry>
+    <entry>Spell Resistance#16##0##0#False###0</entry>
+    <entry>Spell-Like Ability#0#Animal trance#3#Day#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Cause fear#3#Day#0#False#Charisma#Will#11</entry>
+    <entry>Spell-Like Ability#0#Deeper darkness#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect poison#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Entangle#3#Day#0#False#Charisma#Reflex#11</entry>
+    <entry>Spell-Like Ability#0#Neutralize poison#1#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False#Charisma#Will#13</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+    <entry>Alertness#2##0##0#False###0</entry>
+    <entry>Alternate Form#0#a Tiny to Large viper#0#At Will#0#False###0</entry>
+    <entry>Blind-Fight#2##0##0#False###0</entry>
+    <entry>Chameleon Power#0##0##0#False###0</entry>
+    <entry>Martial Weapon Proficiency#0#Scimitar#0##0#True###0</entry>
+    <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True###0</entry>
+    <entry>Scent#0##0##0#False###0</entry>
+    <entry>Spell Resistance#16##0##0#False###0</entry>
+    <entry>Spell-Like Ability#0#Animal trance#3#Day#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Cause fear#3#Day#0#False#Charisma#Will#11</entry>
+    <entry>Spell-Like Ability#0#Deeper darkness#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect poison#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Entangle#3#Day#0#False#Charisma#Reflex#11</entry>
+    <entry>Spell-Like Ability#0#Neutralize poison#1#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False#Charisma#Will#13</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
     <entry>Alertness#2##0##0#False###0</entry>
     <entry>Alternate Form#0#a Tiny to Large viper#0#At Will#0#False###0</entry>
     <entry>Blind-Fight#2##0##0#False###0</entry>

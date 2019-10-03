@@ -730,7 +730,23 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Chimera,
+        [TestCase(CreatureConstants.Chimera_Black,
+            SkillConstants.Hide,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Chimera_Blue,
+            SkillConstants.Hide,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Chimera_Green,
+            SkillConstants.Hide,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Chimera_Red,
+            SkillConstants.Hide,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Chimera_White,
             SkillConstants.Hide,
             SkillConstants.Listen,
             SkillConstants.Spot)]
@@ -4175,7 +4191,28 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Listen,
             SkillConstants.MoveSilently,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood,
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeArms,
+            SkillConstants.Concentration,
+            SkillConstants.Craft + "2",
+            SkillConstants.Hide,
+            SkillConstants.Knowledge + "2",
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead,
+            SkillConstants.Concentration,
+            SkillConstants.Craft + "2",
+            SkillConstants.Hide,
+            SkillConstants.Knowledge + "2",
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail,
+            SkillConstants.Concentration,
+            SkillConstants.Craft + "2",
+            SkillConstants.Hide,
+            SkillConstants.Knowledge + "2",
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs,
             SkillConstants.Concentration,
             SkillConstants.Craft + "2",
             SkillConstants.Hide,

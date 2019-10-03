@@ -415,7 +415,10 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Xorn_Minor)]
         [TestCase(CreatureConstants.Groups.YuanTi,
             CreatureConstants.YuanTi_Abomination,
-            CreatureConstants.YuanTi_Halfblood,
+            CreatureConstants.YuanTi_Halfblood_SnakeArms,
+            CreatureConstants.YuanTi_Halfblood_SnakeHead,
+            CreatureConstants.YuanTi_Halfblood_SnakeTail,
+            CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs,
             CreatureConstants.YuanTi_Pureblood)]
         public void CreatureSubgroup(string creature, params string[] subgroup)
         {
@@ -660,7 +663,11 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Behir,
                 CreatureConstants.BlinkDog,
                 CreatureConstants.Bulette,
-                CreatureConstants.Chimera,
+                CreatureConstants.Chimera_Black,
+                CreatureConstants.Chimera_Blue,
+                CreatureConstants.Chimera_Green,
+                CreatureConstants.Chimera_Red,
+                CreatureConstants.Chimera_White,
                 CreatureConstants.Cockatrice,
                 CreatureConstants.Darkmantle,
                 CreatureConstants.Digester,

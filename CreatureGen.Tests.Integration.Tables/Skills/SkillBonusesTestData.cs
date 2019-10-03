@@ -497,9 +497,25 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Cheetah][None] = 0;
 
-                testCases[CreatureConstants.Chimera][GetData(SkillConstants.Spot)] = 2;
-                testCases[CreatureConstants.Chimera][GetData(SkillConstants.Listen)] = 2;
-                testCases[CreatureConstants.Chimera][GetData(SkillConstants.Hide, condition: "in areas of scrubland or brush")] = 4;
+                testCases[CreatureConstants.Chimera_Black][GetData(SkillConstants.Spot)] = 2;
+                testCases[CreatureConstants.Chimera_Black][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Chimera_Black][GetData(SkillConstants.Hide, condition: "in areas of scrubland or brush")] = 4;
+
+                testCases[CreatureConstants.Chimera_Blue][GetData(SkillConstants.Spot)] = 2;
+                testCases[CreatureConstants.Chimera_Blue][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Chimera_Blue][GetData(SkillConstants.Hide, condition: "in areas of scrubland or brush")] = 4;
+
+                testCases[CreatureConstants.Chimera_Green][GetData(SkillConstants.Spot)] = 2;
+                testCases[CreatureConstants.Chimera_Green][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Chimera_Green][GetData(SkillConstants.Hide, condition: "in areas of scrubland or brush")] = 4;
+
+                testCases[CreatureConstants.Chimera_Red][GetData(SkillConstants.Spot)] = 2;
+                testCases[CreatureConstants.Chimera_Red][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Chimera_Red][GetData(SkillConstants.Hide, condition: "in areas of scrubland or brush")] = 4;
+
+                testCases[CreatureConstants.Chimera_White][GetData(SkillConstants.Spot)] = 2;
+                testCases[CreatureConstants.Chimera_White][GetData(SkillConstants.Listen)] = 2;
+                testCases[CreatureConstants.Chimera_White][GetData(SkillConstants.Hide, condition: "in areas of scrubland or brush")] = 4;
 
                 testCases[CreatureConstants.Choker][GetData(SkillConstants.Climb)] = 8;
                 testCases[CreatureConstants.Choker][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
@@ -1917,7 +1933,13 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.YuanTi_Pureblood][GetData(SkillConstants.Disguise, condition: "when impersonating a human")] = 5;
 
-                testCases[CreatureConstants.YuanTi_Halfblood][GetData(SkillConstants.Hide, condition: "when using Chameleon Power")] = 10;
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms][GetData(SkillConstants.Hide, condition: "when using Chameleon Power")] = 10;
+
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead][GetData(SkillConstants.Hide, condition: "when using Chameleon Power")] = 10;
+
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail][GetData(SkillConstants.Hide, condition: "when using Chameleon Power")] = 10;
+
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][GetData(SkillConstants.Hide, condition: "when using Chameleon Power")] = 10;
 
                 testCases[CreatureConstants.YuanTi_Abomination][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
                 testCases[CreatureConstants.YuanTi_Abomination][GetData(SkillConstants.Swim, condition: "special action or avoid a hazard")] = 8;

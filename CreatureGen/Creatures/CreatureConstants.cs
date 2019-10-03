@@ -435,7 +435,11 @@ namespace CreatureGen.Creatures
         public const string ChainDevil_Kyton = "Chain Devil (Kyton)";
         public const string ChaosBeast = "Chaos Beast";
         public const string Cheetah = "Cheetah";
-        public const string Chimera = "Chimera";
+        public const string Chimera_Black = "Chimera (Black Dragon head)";
+        public const string Chimera_Blue = "Chimera (Blue Dragon head)";
+        public const string Chimera_Green = "Chimera (Green Dragon head)";
+        public const string Chimera_Red = "Chimera (Red Dragon head)";
+        public const string Chimera_White = "Chimera (White Dragon head)";
         public const string Choker = "Choker";
         public const string Chuul = "Chuul";
         public const string Cloaker = "Cloaker";
@@ -941,7 +945,10 @@ namespace CreatureGen.Creatures
         public const string YethHound = "Yeth Hound";
         public const string Yrthak = "Yrthak";
         public const string YuanTi_Abomination = "Yuan-ti Abomination";
-        public const string YuanTi_Halfblood = "Yuan-ti Halfblood";
+        public const string YuanTi_Halfblood_SnakeHead = "Yuan-ti Halfblood (Snake Head)";
+        public const string YuanTi_Halfblood_SnakeArms = "Yuan-ti Halfblood (Human Head, Arms are Snakes)";
+        public const string YuanTi_Halfblood_SnakeTailAndHumanLegs = "Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)";
+        public const string YuanTi_Halfblood_SnakeTail = "Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)";
         public const string YuanTi_Pureblood = "Yuan-ti Pureblood";
 
         public static IEnumerable<string> All()
@@ -1154,7 +1161,11 @@ namespace CreatureGen.Creatures
                 ChainDevil_Kyton,
                 ChaosBeast,
                 Cheetah,
-                Chimera,
+                Chimera_Black,
+                Chimera_Blue,
+                Chimera_Green,
+                Chimera_Red,
+                Chimera_White,
                 Choker,
                 Chuul,
                 Cloaker,
@@ -1660,7 +1671,10 @@ namespace CreatureGen.Creatures
                 YethHound,
                 Yrthak,
                 YuanTi_Abomination,
-                YuanTi_Halfblood,
+                YuanTi_Halfblood_SnakeArms,
+                YuanTi_Halfblood_SnakeHead,
+                YuanTi_Halfblood_SnakeTail,
+                YuanTi_Halfblood_SnakeTailAndHumanLegs,
                 YuanTi_Pureblood,
             };
         }

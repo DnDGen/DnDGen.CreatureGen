@@ -808,7 +808,11 @@
     <entry>Basilisk</entry>
     <entry>Behir</entry>
     <entry>Bulette</entry>
-    <entry>Chimera</entry>
+    <entry>Chimera (Black Dragon head)</entry>
+    <entry>Chimera (Blue Dragon head)</entry>
+    <entry>Chimera (Green Dragon head)</entry>
+    <entry>Chimera (Red Dragon head)</entry>
+    <entry>Chimera (White Dragon head)</entry>
     <entry>Cockatrice</entry>
     <entry>Displacer Beast</entry>
     <entry>Displacer Beast Pack Lord</entry>
@@ -1212,7 +1216,11 @@
     <entry>Basilisk</entry>
     <entry>Behir</entry>
     <entry>Bulette</entry>
-    <entry>Chimera</entry>
+    <entry>Chimera (Black Dragon head)</entry>
+    <entry>Chimera (Blue Dragon head)</entry>
+    <entry>Chimera (Green Dragon head)</entry>
+    <entry>Chimera (Red Dragon head)</entry>
+    <entry>Chimera (White Dragon head)</entry>
     <entry>Cockatrice</entry>
     <entry>Displacer Beast</entry>
     <entry>Displacer Beast Pack Lord</entry>
@@ -1372,7 +1380,11 @@
     <entry>Behir</entry>
     <entry>Blink Dog</entry>
     <entry>Bulette</entry>
-    <entry>Chimera</entry>
+    <entry>Chimera (Black Dragon head)</entry>
+    <entry>Chimera (Blue Dragon head)</entry>
+    <entry>Chimera (Green Dragon head)</entry>
+    <entry>Chimera (Red Dragon head)</entry>
+    <entry>Chimera (White Dragon head)</entry>
     <entry>Cockatrice</entry>
     <entry>Darkmantle</entry>
     <entry>Digester</entry>
@@ -1501,7 +1513,11 @@
     <entry>Behir</entry>
     <entry>Blink Dog</entry>
     <entry>Bulette</entry>
-    <entry>Chimera</entry>
+    <entry>Chimera (Black Dragon head)</entry>
+    <entry>Chimera (Blue Dragon head)</entry>
+    <entry>Chimera (Green Dragon head)</entry>
+    <entry>Chimera (Red Dragon head)</entry>
+    <entry>Chimera (White Dragon head)</entry>
     <entry>Cockatrice</entry>
     <entry>Displacer Beast</entry>
     <entry>Displacer Beast Pack Lord</entry>
@@ -1975,7 +1991,10 @@
   <collection>
     <name>Yuan-ti</name>
     <entry>Yuan-ti Abomination</entry>
-    <entry>Yuan-ti Halfblood</entry>
+    <entry>Yuan-ti Halfblood (Snake Head)</entry>
+    <entry>Yuan-ti Halfblood (Human Head, Arms are Snakes)</entry>
+    <entry>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</entry>
+    <entry>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</entry>
     <entry>Yuan-ti Pureblood</entry>
   </collection>
   <collection>

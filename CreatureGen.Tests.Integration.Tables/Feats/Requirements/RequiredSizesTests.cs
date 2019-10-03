@@ -585,7 +585,15 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Cheetah, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Cheetah, FeatConstants.SpecialQualities.Sprint, string.Empty)] = new string[0];
 
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Chimera, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Chimera_Black, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Chimera_Blue, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Chimera_Green, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Chimera_Red, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Chimera_White, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Choker, FeatConstants.Initiative_Improved, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Choker, FeatConstants.SpecialQualities.Quickness, string.Empty)] = new string[0];
@@ -3628,21 +3636,67 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.NeutralizePoison)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Suggestion)] = new string[0];
 
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.Alertness, string.Empty)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.BlindFight, string.Empty)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Scimitar)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeLongbow)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.AlternateForm, "a Tiny to Large viper")] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.ChameleonPower, string.Empty)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AnimalTrance)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CauseFear)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectPoison)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Entangle)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.NeutralizePoison)] = new string[0];
-                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Suggestion)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.Alertness, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.BlindFight, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.AlternateForm, "a Tiny to Large viper")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.ChameleonPower, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AnimalTrance)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CauseFear)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectPoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Entangle)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.NeutralizePoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Suggestion)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.Alertness, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.BlindFight, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Scimitar)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeLongbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.AlternateForm, "a Tiny to Large viper")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.ChameleonPower, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AnimalTrance)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CauseFear)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectPoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Entangle)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.NeutralizePoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Suggestion)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.Alertness, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.BlindFight, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Scimitar)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeLongbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.AlternateForm, "a Tiny to Large viper")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.ChameleonPower, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AnimalTrance)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CauseFear)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectPoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Entangle)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.NeutralizePoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Suggestion)] = new string[0];
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.Alertness, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.BlindFight, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Scimitar)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeLongbow)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.AlternateForm, "a Tiny to Large viper")] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.ChameleonPower, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AnimalTrance)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CauseFear)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectPoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Entangle)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.NeutralizePoison)] = new string[0];
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Suggestion)] = new string[0];
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.Alertness, string.Empty)] = new string[0];
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.YuanTi_Pureblood, FeatConstants.BlindFight, string.Empty)] = new string[0];

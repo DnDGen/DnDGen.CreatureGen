@@ -881,7 +881,27 @@
     <entry>Medium,5,5@1d2</entry>
   </collection>
   <collection>
-    <name>Chimera</name>
+    <name>Chimera (Black Dragon head)</name>
+    <entry>Large,10,5@1d4</entry>
+    <entry>Huge,15,10@1d12+1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+    <entry>Large,10,5@1d4</entry>
+    <entry>Huge,15,10@1d12+1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+    <entry>Large,10,5@1d4</entry>
+    <entry>Huge,15,10@1d12+1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+    <entry>Large,10,5@1d4</entry>
+    <entry>Huge,15,10@1d12+1d3+3</entry>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
     <entry>Large,10,5@1d4</entry>
     <entry>Huge,15,10@1d12+1d3+3</entry>
   </collection>
@@ -2824,7 +2844,16 @@
     <name>Yuan-ti Abomination</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood</name>
+    <name>Yuan-ti Halfblood (Snake Head)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>

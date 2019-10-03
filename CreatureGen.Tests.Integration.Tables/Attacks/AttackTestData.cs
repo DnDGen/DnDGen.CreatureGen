@@ -736,10 +736,39 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.ChaosBeast].Add(AttackHelper.BuildData("Claw", $"1d3", "Corporeal Instability", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.ChaosBeast].Add(AttackHelper.BuildData("Corporeal Instability", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 
-                //testCases[CreatureConstants.Cheetah].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
-                //testCases[CreatureConstants.Cheetah].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Sprint, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hour));
+                testCases[CreatureConstants.Cheetah].Add(AttackHelper.BuildData("Bite", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Cheetah].Add(AttackHelper.BuildData("Claw", $"1d2", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Cheetah].Add(AttackHelper.BuildData("Trip", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-                //testCases[CreatureConstants.Chimera].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Chimera_Black].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Black].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Black].Add(AttackHelper.BuildData("Gore", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Black].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Chimera_Black].Add(AttackHelper.BuildData("Breath weapon", $"3d8 acid", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                testCases[CreatureConstants.Chimera_Blue].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Blue].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Blue].Add(AttackHelper.BuildData("Gore", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Blue].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Chimera_Blue].Add(AttackHelper.BuildData("Breath weapon", $"3d8 lightning", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                testCases[CreatureConstants.Chimera_Green].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Green].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Green].Add(AttackHelper.BuildData("Gore", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Green].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Chimera_Green].Add(AttackHelper.BuildData("Breath weapon", $"3d8 gas (acid)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                testCases[CreatureConstants.Chimera_Red].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Red].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Red].Add(AttackHelper.BuildData("Gore", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Red].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Chimera_Red].Add(AttackHelper.BuildData("Breath weapon", $"3d8 fire", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                testCases[CreatureConstants.Chimera_White].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_White].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_White].Add(AttackHelper.BuildData("Gore", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_White].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Chimera_White].Add(AttackHelper.BuildData("Breath weapon", $"3d8 cold", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
                 //testCases[CreatureConstants.Choker].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Quickness));
                 //testCases[CreatureConstants.Choker].Add(AttackHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));

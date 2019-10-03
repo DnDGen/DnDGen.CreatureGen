@@ -441,7 +441,15 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Cheetah][None] = 0;
 
-                testCases[CreatureConstants.Chimera][None] = 0;
+                testCases[CreatureConstants.Chimera_Black][None] = 0;
+
+                testCases[CreatureConstants.Chimera_Blue][None] = 0;
+
+                testCases[CreatureConstants.Chimera_Green][None] = 0;
+
+                testCases[CreatureConstants.Chimera_Red][None] = 0;
+
+                testCases[CreatureConstants.Chimera_White][None] = 0;
 
                 testCases[CreatureConstants.Choker][None] = 0;
 
@@ -1450,7 +1458,13 @@ namespace CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.YuanTi_Abomination][None] = 0;
 
-                testCases[CreatureConstants.YuanTi_Halfblood][None] = 0;
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms][None] = 0;
+
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead][None] = 0;
+
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail][None] = 0;
+
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][None] = 0;
 
                 testCases[CreatureConstants.YuanTi_Pureblood][None] = 0;
 
