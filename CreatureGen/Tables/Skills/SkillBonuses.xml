@@ -827,7 +827,31 @@
     <name>Cheetah</name>
   </collection>
   <collection>
-    <name>Chimera</name>
+    <name>Chimera (Black Dragon head)</name>
+    <entry>Hide$in areas of scrubland or brush@4</entry>
+    <entry>Listen@2</entry>
+    <entry>Spot@2</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+    <entry>Hide$in areas of scrubland or brush@4</entry>
+    <entry>Listen@2</entry>
+    <entry>Spot@2</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+    <entry>Hide$in areas of scrubland or brush@4</entry>
+    <entry>Listen@2</entry>
+    <entry>Spot@2</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+    <entry>Hide$in areas of scrubland or brush@4</entry>
+    <entry>Listen@2</entry>
+    <entry>Spot@2</entry>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
     <entry>Hide$in areas of scrubland or brush@4</entry>
     <entry>Listen@2</entry>
     <entry>Spot@2</entry>
@@ -2969,7 +2993,19 @@
     <entry>Swim$can always take 10@10</entry>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood</name>
+    <name>Yuan-ti Halfblood (Snake Head)</name>
+    <entry>Hide$when using Chameleon Power@10</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+    <entry>Hide$when using Chameleon Power@10</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+    <entry>Hide$when using Chameleon Power@10</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
     <entry>Hide$when using Chameleon Power@10</entry>
   </collection>
   <collection>

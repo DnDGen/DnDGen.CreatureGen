@@ -2733,7 +2733,13 @@
     <name>Carrion CrawlerScent</name>
   </collection>
   <collection>
+    <name>Carrion CrawlerAlertness</name>
+  </collection>
+  <collection>
     <name>CatScent</name>
+  </collection>
+  <collection>
+    <name>CatWeapon Finesse</name>
   </collection>
   <collection>
     <name>CentaurMartial Weapon ProficiencyLongsword</name>
@@ -2781,7 +2787,19 @@
     <name>CheetahSprint</name>
   </collection>
   <collection>
-    <name>ChimeraScent</name>
+    <name>Chimera (Black Dragon head)Scent</name>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)Scent</name>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)Scent</name>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)Scent</name>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)Scent</name>
   </collection>
   <collection>
     <name>ChokerQuickness</name>
@@ -9671,49 +9689,178 @@
     <name>Yuan-ti AbominationSpell-Like AbilitySuggestion</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodAlertness</name>
+    <name>Yuan-ti Halfblood (Snake Head)Alertness</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodAlternate Forma Tiny to Large viper</name>
+    <name>Yuan-ti Halfblood (Snake Head)Alternate Forma Tiny to Large viper</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodBlind-Fight</name>
+    <name>Yuan-ti Halfblood (Snake Head)Blind-Fight</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodChameleon Power</name>
+    <name>Yuan-ti Halfblood (Snake Head)Chameleon Power</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodMartial Weapon ProficiencyScimitar</name>
+    <name>Yuan-ti Halfblood (Snake Head)Martial Weapon ProficiencyScimitar</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodMartial Weapon ProficiencyComposite longbow</name>
+    <name>Yuan-ti Halfblood (Snake Head)Martial Weapon ProficiencyComposite longbow</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodScent</name>
+    <name>Yuan-ti Halfblood (Snake Head)Scent</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodSpell Resistance</name>
+    <name>Yuan-ti Halfblood (Snake Head)Spell Resistance</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodSpell-Like AbilityAnimal trance</name>
+    <name>Yuan-ti Halfblood (Snake Head)Spell-Like AbilityAnimal trance</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodSpell-Like AbilityCause fear</name>
+    <name>Yuan-ti Halfblood (Snake Head)Spell-Like AbilityCause fear</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodSpell-Like AbilityDeeper darkness</name>
+    <name>Yuan-ti Halfblood (Snake Head)Spell-Like AbilityDeeper darkness</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodSpell-Like AbilityDetect poison</name>
+    <name>Yuan-ti Halfblood (Snake Head)Spell-Like AbilityDetect poison</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodSpell-Like AbilityEntangle</name>
+    <name>Yuan-ti Halfblood (Snake Head)Spell-Like AbilityEntangle</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodSpell-Like AbilityNeutralize poison</name>
+    <name>Yuan-ti Halfblood (Snake Head)Spell-Like AbilityNeutralize poison</name>
   </collection>
   <collection>
-    <name>Yuan-ti HalfbloodSpell-Like AbilitySuggestion</name>
+    <name>Yuan-ti Halfblood (Snake Head)Spell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Alertness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Alternate Forma Tiny to Large viper</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Blind-Fight</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Chameleon Power</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Scent</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell Resistance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell-Like AbilityAnimal trance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell-Like AbilityCause fear</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell-Like AbilityDeeper darkness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell-Like AbilityDetect poison</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell-Like AbilityEntangle</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell-Like AbilityNeutralize poison</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Alertness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Alternate Forma Tiny to Large viper</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Blind-Fight</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Chameleon Power</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Martial Weapon ProficiencyScimitar</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Martial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Scent</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell Resistance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell-Like AbilityAnimal trance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell-Like AbilityCause fear</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell-Like AbilityDeeper darkness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell-Like AbilityDetect poison</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell-Like AbilityEntangle</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell-Like AbilityNeutralize poison</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell-Like AbilitySuggestion</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Alertness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Alternate Forma Tiny to Large viper</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Blind-Fight</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Chameleon Power</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Martial Weapon ProficiencyScimitar</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Martial Weapon ProficiencyComposite longbow</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Scent</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell Resistance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell-Like AbilityAnimal trance</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell-Like AbilityCause fear</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell-Like AbilityDeeper darkness</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell-Like AbilityDetect poison</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell-Like AbilityEntangle</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell-Like AbilityNeutralize poison</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell-Like AbilitySuggestion</name>
   </collection>
   <collection>
     <name>Yuan-ti PurebloodAlertness</name>

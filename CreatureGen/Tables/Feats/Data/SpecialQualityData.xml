@@ -1515,10 +1515,12 @@
   <collection>
     <name>Carrion Crawler</name>
     <entry>Scent#0##0##0#False###0</entry>
+    <entry>Alertness#2##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Cat</name>
     <entry>Scent#0##0##0#False###0</entry>
+    <entry>Weapon Finesse#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Centaur</name>
