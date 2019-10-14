@@ -763,7 +763,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Couatl].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Any Small or Medium humanoid", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Couatl].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EtherealJaunt, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.Couatl].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Psionic, focus: SpellConstants.DetectAlignment, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.Couatl].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Psionic, focus: SpellConstants.DetectThoughts, frequencyTimePeriod: FeatConstants.Frequencies.AtWill, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveBaseValue: 12));
+                testCases[CreatureConstants.Couatl].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Psionic, focus: SpellConstants.Invisibility, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.Couatl].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Psionic, focus: SpellConstants.PlaneShift, frequencyTimePeriod: FeatConstants.Frequencies.AtWill, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveBaseValue: 17));
                 testCases[CreatureConstants.Couatl].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Telepathy, power: 90));
+                testCases[CreatureConstants.Couatl].Add(SpecialQualityHelper.BuildData(FeatConstants.EschewMaterials));
 
                 testCases[CreatureConstants.Criosphinx].Add(SpecialQualityHelper.BuildData(None));
 
@@ -804,6 +809,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Cryohydra_12Heads].Add(SpecialQualityHelper.BuildData(FeatConstants.CombatReflexes, focus: "Can use all of its heads for Attacks of Opportunity"));
 
                 testCases[CreatureConstants.Darkmantle].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 90));
+                testCases[CreatureConstants.Darkmantle].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
 
                 testCases[CreatureConstants.Deinonychus].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
 
