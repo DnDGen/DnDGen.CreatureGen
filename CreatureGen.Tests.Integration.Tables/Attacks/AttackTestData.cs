@@ -837,1193 +837,1293 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Darkmantle].Add(AttackHelper.BuildData("Constrict", $"1d4", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
                 testCases[CreatureConstants.Deinonychus].Add(AttackHelper.BuildData("Talons", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Deinonychus].Add(AttackHelper.BuildData("Foreclaw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Deinonychus].Add(AttackHelper.BuildData("Bite", $"2d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Deinonychus].Add(AttackHelper.BuildData("Foreclaw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Deinonychus].Add(AttackHelper.BuildData("Bite", $"2d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Deinonychus].Add(AttackHelper.BuildData("Pounce", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-                //testCases[CreatureConstants.Delver].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Delver].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.StoneShape, frequencyQuantity: 6, frequencyTimePeriod: FeatConstants.Frequencies.Hour));
-                //testCases[CreatureConstants.Delver].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
-
-                //testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Madness));
-                //testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 15));
-                //testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: "Sunlight"));
-                //testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GhostSound, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Daze, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SoundBurst, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.ShortSword, requiresEquipment: true));
-                //testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
-
-                //testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 15));
-                //testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Vulnerability, focus: "Sunlight"));
-                //testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GhostSound, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Daze, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SoundBurst, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.ShortSword, requiresEquipment: true));
-                //testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
-
-                //testCases[CreatureConstants.Destrachan].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 100));
-                //testCases[CreatureConstants.Destrachan].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Gaze attacks"));
-                //testCases[CreatureConstants.Destrachan].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Visual effects"));
-                //testCases[CreatureConstants.Destrachan].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Illusions"));
-                //testCases[CreatureConstants.Destrachan].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Attacks that rely on sight"));
-
-                //testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellDeflection));
-                //testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
-                //testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Confusion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-                //testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlUndead, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-                //testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GhoulTouch, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-                //testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlanarAlly_Lesser, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-                //testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.RayOfEnfeeblement, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-                //testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpectralHand, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-                //testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-                //testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TrueSeeing, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-
-                //testCases[CreatureConstants.Digester].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Digester].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
-
-                //testCases[CreatureConstants.DisplacerBeast].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Displacement));
-
-                //testCases[CreatureConstants.DisplacerBeast_PackLord].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Displacement));
-
-                //testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Telepathy, power: 100));
-                //testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlaneShift + ": Genie and up to 8 other creatures, provided they all link hands with the genie", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Invisibility + ": self only", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateFoodAndWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateWater + ": creates wine instead of water", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.MajorCreation + ": created vegetable matter is permanent", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PersistentImage, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WindWalk, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GaseousForm, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
-
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Telepathy, power: 100));
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlaneShift + ": Genie and up to 8 other creatures, provided they all link hands with the genie", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Invisibility + ": self only", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateFoodAndWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateWater + ": creates wine instead of water", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.MajorCreation + ": created vegetable matter is permanent", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PersistentImage, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WindWalk, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GaseousForm, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Wish + ": 3 wishes to any non-genie who captures it", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
-
-                //testCases[CreatureConstants.Dog].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
-                //testCases[CreatureConstants.Dog].Add(AttackHelper.BuildData(FeatConstants.Track));
-
-                //testCases[CreatureConstants.Dog_Riding].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
-                //testCases[CreatureConstants.Dog_Riding].Add(AttackHelper.BuildData(FeatConstants.Track));
-
-                //testCases[CreatureConstants.Donkey].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
-
-                //testCases[CreatureConstants.Doppelganger].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Any Small or Medium Humanoid", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Doppelganger].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectThoughts, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Doppelganger].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-                //testCases[CreatureConstants.Doppelganger].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Charm effects"));
-
-                //testCases[CreatureConstants.DragonTurtle].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
-                //testCases[CreatureConstants.DragonTurtle].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
-
-                //testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-
-                //testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-
-                //testCases[CreatureConstants.Dragon_Black_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-
-                //testCases[CreatureConstants.Dragon_Black_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Black_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 17));
-
-                //testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 18));
-                //testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
-                //testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 22));
-                //testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
-                //testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
-                //testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.InsectPlague, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 26));
-                //testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.InsectPlague, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28));
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CorruptWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.InsectPlague, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CharmReptiles, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Blue_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
-
-                //testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
-                //testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19));
-
-                //testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
-                //testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
-                //testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
-                //testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 22));
-                //testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
-                //testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24));
-                //testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HallucinatoryTerrain, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
-                //testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
-                //testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HallucinatoryTerrain, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
-                //testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27));
-                //testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HallucinatoryTerrain, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Veil, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 29));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HallucinatoryTerrain, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Veil, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.CreateDestroyWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SoundImitation));
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 31));
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Ventriloquism, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HallucinatoryTerrain, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Veil, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.MirageArcana, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-
-                //testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-
-                //testCases[CreatureConstants.Dragon_Green_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-
-                //testCases[CreatureConstants.Dragon_Green_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-
-                //testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19));
-
-                //testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
-                //testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 22));
-                //testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24));
-                //testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
-                //testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27));
-                //testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DominatePerson, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28));
-                //testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DominatePerson, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 30));
-                //testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlantGrowth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DominatePerson, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CommandPlants, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-
-                //testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-
-                //testCases[CreatureConstants.Dragon_Red_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-
-                //testCases[CreatureConstants.Dragon_Red_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Red_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 4, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 5, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19));
-
-                //testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 6, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
-
-                //testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 7, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
-
-                //testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 8, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24));
-                //testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 9, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 26));
-                //testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 10, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28));
-                //testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FindThePath, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 11, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 30));
-                //testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FindThePath, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.LocateObject, frequencyQuantity: 12, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 32));
-                //testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FindThePath, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DiscernLocation, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_White_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-
-                //testCases[CreatureConstants.Dragon_White_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-
-                //testCases[CreatureConstants.Dragon_White_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-
-                //testCases[CreatureConstants.Dragon_White_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-                //testCases[CreatureConstants.Dragon_White_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-                //testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 16));
-
-                //testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-                //testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 18));
-                //testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-                //testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 20));
-                //testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-                //testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
-                //testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.FreezingFog, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-                //testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
-                //testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.FreezingFog, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-                //testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24));
-                //testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.FreezingFog, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WallOfIce, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-                //testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
-                //testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.FreezingFog, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WallOfIce, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Icewalking));
-                //testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27));
-                //testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GustOfWind, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.FreezingFog, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WallOfIce, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWeather, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-
-                //testCases[CreatureConstants.Dragon_Brass_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-
-                //testCases[CreatureConstants.Dragon_Brass_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-
-                //testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EndureElements + ": radius 40 ft.", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EndureElements + ": radius 50 ft.", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 18));
-
-                //testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EndureElements + ": radius 60 ft.", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 20));
-                //testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EndureElements + ": radius 70 ft.", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 22));
-                //testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EndureElements + ": radius 80 ft.", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24));
-                //testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWinds, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EndureElements + ": radius 90 ft.", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
-                //testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWinds, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EndureElements + ": radius 100 ft.", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27));
-                //testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWinds, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWeather, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EndureElements + ": radius 110 ft.", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWinds, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWeather, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EndureElements + ": radius 120 ft.", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 30));
-                //testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Suggestion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWinds, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWeather, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SummonMonsterVII + ": one Djinni", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-
-                //testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-
-                //testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 20));
-
-                //testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 22));
-                //testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateFoodAndWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
-                //testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateFoodAndWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateFoodAndWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectThoughts, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 26));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateFoodAndWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectThoughts, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateFoodAndWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectThoughts, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 29));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateFoodAndWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectThoughts, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 31));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateFoodAndWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectThoughts, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWater, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWeather, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-
-                //testCases[CreatureConstants.Dragon_Copper_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-
-                //testCases[CreatureConstants.Dragon_Copper_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-
-                //testCases[CreatureConstants.Dragon_Copper_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-
-                //testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-                //testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19));
-
-                //testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-                //testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
-                //testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.StoneShape, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-                //testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
-                //testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.StoneShape, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-                //testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
-                //testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.StoneShape, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteMudToRock, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteRockToMud, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-                //testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 26));
-                //testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.StoneShape, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteMudToRock, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteRockToMud, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-                //testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28));
-                //testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.StoneShape, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteMudToRock, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteRockToMud, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WallOfStone, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 29));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.StoneShape, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteMudToRock, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteRockToMud, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WallOfStone, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 31));
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.StoneShape, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteMudToRock, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteRockToMud, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WallOfStone, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.MoveEarth, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Gold_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-
-                //testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-
-                //testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-
-                //testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Bless, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Bless, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21));
-
-                //testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Bless, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
-                //testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.LuckBonus, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Bless, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
-                //testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.LuckBonus, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Bless, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27));
-                //testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.LuckBonus, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GeasQuest, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Bless, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28));
-                //testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.LuckBonus, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GeasQuest, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Bless, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 30));
-                //testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.LuckBonus, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GeasQuest, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Sunburst, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Bless, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 31));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.LuckBonus, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GeasQuest, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Sunburst, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Bless, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 33));
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.LuckBonus, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GeasQuest, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Sunburst, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Foresight, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Silver_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-
-                //testCases[CreatureConstants.Dragon_Silver_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-
-                //testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-
-                //testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-                //testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FeatherFall, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-                //testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FeatherFall, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 20));
-
-                //testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-                //testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FeatherFall, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 22));
-                //testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-                //testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FeatherFall, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24));
-                //testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-                //testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FeatherFall, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 26));
-                //testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWinds, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-                //testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FeatherFall, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27));
-                //testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWinds, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FeatherFall, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 29));
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWinds, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWeather, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FeatherFall, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 30));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWinds, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWeather, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 60));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.KeenSenses));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 120));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Animal or Humanoid form of Medium size or smaller", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Cloudwalking));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FeatherFall, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 20, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 32));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.FogCloud, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWinds, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ControlWeather, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ReverseGravity, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-
-                //testCases[CreatureConstants.Dragonne].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Scent));
+                testCases[CreatureConstants.Delver].Add(AttackHelper.BuildData("Slam", $"1d6 bludgeoning + 2d6 acid", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Delver].Add(AttackHelper.BuildData("Corrosive Slime", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
+                testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData("Poison use", string.Empty, "Greenblood Oil or Monstrous Spider Venom", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData("Greenblood Oil", string.Empty, "Injury DC 13, Initial 1 Con, Secondary 1d2 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData("Monstrous Spider Venom", string.Empty, "Injury DC 12, Initial and secondary 1d4 Str", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Derro].Add(AttackHelper.BuildData("Sneak Attack", $"1d6", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+
+                testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
+                testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData("Poison use", string.Empty, "Greenblood Oil or Monstrous Spider Venom", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData("Greenblood Oil", string.Empty, "Injury DC 13, Initial 1 Con, Secondary 1d2 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData("Monstrous Spider Venom", string.Empty, "Injury DC 12, Initial and secondary 1d4 Str", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Derro_Sane].Add(AttackHelper.BuildData("Sneak Attack", $"1d6", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+
+                testCases[CreatureConstants.Destrachan].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Destrachan].Add(AttackHelper.BuildData("Destructive harmonics", string.Empty, string.Empty, 1, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Charisma));
+
+                testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData("Energy Drain", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Charisma));
+                testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData("Trap Essence", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Devourer].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                testCases[CreatureConstants.Digester].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Digester].Add(AttackHelper.BuildData("Acid Spray", string.Empty, string.Empty, 0, "extraordinary ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                testCases[CreatureConstants.DisplacerBeast].Add(AttackHelper.BuildData("Tentacle", $"1d6", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.DisplacerBeast].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+
+                testCases[CreatureConstants.DisplacerBeast_PackLord].Add(AttackHelper.BuildData("Tentacle", $"1d8", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.DisplacerBeast_PackLord].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+
+                testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData("Slam", $"1d8", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData("Air mastery", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData("Whirlwind", string.Empty, string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Turn}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex, saveDcBonus: 3));
+                testCases[CreatureConstants.Djinni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData("Slam", $"1d8", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData("Air mastery", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData("Whirlwind", string.Empty, string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Turn}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex, saveDcBonus: 3));
+                testCases[CreatureConstants.Djinni_Noble].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                testCases[CreatureConstants.Dog].Add(AttackHelper.BuildData("Bite", $"1d4", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+
+                testCases[CreatureConstants.Dog_Riding].Add(AttackHelper.BuildData("Bite", $"1d6", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+
+                testCases[CreatureConstants.Donkey].Add(AttackHelper.BuildData("Bite", $"1d2", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+
+                testCases[CreatureConstants.Doppelganger].Add(AttackHelper.BuildData("Slam", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Doppelganger].Add(AttackHelper.BuildData("Detect Thoughts", string.Empty, string.Empty, 1, "supernatural ability", 0, FeatConstants.Frequencies.Constant, false, true, true, true));
+
+                testCases[CreatureConstants.DragonTurtle].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.DragonTurtle].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.DragonTurtle].Add(AttackHelper.BuildData("Breath Weapon", "12d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.DragonTurtle].Add(AttackHelper.BuildData("Capsize", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //Tiny
+                testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon", $"2d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //small
+                testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(AttackHelper.BuildData("Bite", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(AttackHelper.BuildData("Claw", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon", $"4d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Black_Young].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_Young].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Young].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Young].Add(AttackHelper.BuildData("Breath Weapon", $"6d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Black_Juvenile].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_Juvenile].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Juvenile].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Juvenile].Add(AttackHelper.BuildData("Breath Weapon", $"8d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon", $"10d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //large
+                testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData("Breath Weapon", $"12d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_Adult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon", $"14d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData("Breath Weapon", $"16d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_Old].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData("Breath Weapon", $"18d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_VeryOld].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData("Breath Weapon", $"20d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_Ancient].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData("Breath Weapon", $"22d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_Wyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon", $"24d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //small
+                testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon", $"2d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon", $"4d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Blue_Young].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_Young].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Young].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Young].Add(AttackHelper.BuildData("Breath Weapon", $"6d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //large
+                testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData("Breath Weapon", $"8d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon", $"10d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData("Breath Weapon", $"12d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_Adult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon", $"14d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData("Breath Weapon", $"16d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_Old].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData("Breath Weapon", $"18d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData("Breath Weapon", $"20d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_Ancient].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData("Breath Weapon", $"22d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon", $"24d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //small
+                testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon", $"2d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon", $"4d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Green_Young].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_Young].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Young].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Young].Add(AttackHelper.BuildData("Breath Weapon", $"6d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //large
+                testCases[CreatureConstants.Dragon_Green_Juvenile].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_Juvenile].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Juvenile].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Juvenile].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Juvenile].Add(AttackHelper.BuildData("Breath Weapon", $"8d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_Juvenile].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon", $"10d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData("Breath Weapon", $"12d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_Adult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon", $"14d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData("Breath Weapon", $"16d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_Old].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData("Breath Weapon", $"18d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_VeryOld].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData("Breath Weapon", $"20d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_Ancient].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData("Breath Weapon", $"22d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_Wyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon", $"24d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon", $"2d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //large
+                testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon", $"4d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //large
+                testCases[CreatureConstants.Dragon_Red_Young].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_Young].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Young].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Young].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Young].Add(AttackHelper.BuildData("Breath Weapon", $"6d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Young].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Red_Juvenile].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_Juvenile].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Juvenile].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Juvenile].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Juvenile].Add(AttackHelper.BuildData("Breath Weapon", $"8d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Juvenile].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon", $"10d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData("Breath Weapon", $"12d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_Adult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon", $"14d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData("Breath Weapon", $"16d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_Old].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData("Breath Weapon", $"18d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_VeryOld].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData("Breath Weapon", $"20d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_Ancient].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData("Breath Weapon", $"22d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_Wyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //colossal
+                testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData("Bite", $"4d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData("Claw", $"4d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData("Wing", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData("Tail Slap", $"4d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData("Crush", $"4d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon", $"24d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //tiny
+                testCases[CreatureConstants.Dragon_White_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon", $"1d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //small
+                testCases[CreatureConstants.Dragon_White_VeryYoung].Add(AttackHelper.BuildData("Bite", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_VeryYoung].Add(AttackHelper.BuildData("Claw", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon", $"2d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //medium
+                testCases[CreatureConstants.Dragon_White_Young].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_Young].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Young].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Young].Add(AttackHelper.BuildData("Breath Weapon", $"3d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+
+                //medium
+                testCases[CreatureConstants.Dragon_White_Juvenile].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_Juvenile].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Juvenile].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Juvenile].Add(AttackHelper.BuildData("Breath Weapon", $"4d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon", $"5d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_YoungAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //large
+                testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData("Breath Weapon", $"6d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_Adult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon", $"7d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_MatureAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData("Breath Weapon", $"8d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_Old].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData("Breath Weapon", $"9d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_VeryOld].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData("Breath Weapon", $"10d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_Ancient].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData("Breath Weapon", $"11d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_Wyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon", $"12d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //tiny
+                testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"1d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //small
+                testCases[CreatureConstants.Dragon_Brass_VeryYoung].Add(AttackHelper.BuildData("Bite", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_VeryYoung].Add(AttackHelper.BuildData("Claw", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"2d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+2 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Brass_Young].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_Young].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Young].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Young].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"3d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_Young].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+3 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_Young].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"4d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"5d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //large
+                testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"6d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_Adult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"7d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"8d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_Old].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"9d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"10d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_Ancient].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"11d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"12d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //small
+                testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"2d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"4d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+2 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_VeryYoung].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"6d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+3 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_Young].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"8d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"10d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"12d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_Adult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"14d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"16d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_Old].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"18d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"20d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"22d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon (electricity)", $"24d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+                testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //tiny
+                testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"2d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+
+                //small
+                testCases[CreatureConstants.Dragon_Copper_VeryYoung].Add(AttackHelper.BuildData("Bite", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_VeryYoung].Add(AttackHelper.BuildData("Claw", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"4d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+2 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Copper_Young].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_Young].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Young].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Young].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"6d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_Young].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+3 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Copper_Young].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Copper_Juvenile].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_Juvenile].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Juvenile].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Juvenile].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"8d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_Juvenile].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Copper_Juvenile].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"10d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"12d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_Adult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"14d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"16d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_Old].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"18d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"20d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_Ancient].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"22d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"24d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Gold_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Wyrmling].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"2d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "1 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+
+                //large
+                testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"4d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "2 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+
+                //large
+                testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"6d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "3 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Gold_Young].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"8d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "4 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"10d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "5 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"12d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "6 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_Adult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"14d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "7 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"16d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "8 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_Old].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"18d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "9 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"20d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "10 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_Ancient].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //colossal
+                testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData("Bite", $"4d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData("Claw", $"4d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData("Wing", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData("Tail Slap", $"4d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData("Crush", $"4d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"22d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "11 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //colossal
+                testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData("Bite", $"4d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData("Claw", $"4d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData("Wing", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData("Tail Slap", $"4d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData("Crush", $"4d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"24d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "12 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //small
+                testCases[CreatureConstants.Dragon_Silver_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"2d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Silver_VeryYoung].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_VeryYoung].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_VeryYoung].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"4d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_VeryYoung].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+2 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+
+                //medium
+                testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData("Bite", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData("Wing", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"6d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+3 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Silver_Young].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"8d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+
+                //large
+                testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData("Claw", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"10d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"12d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_Adult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"14d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"16d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_Old].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //huge
+                testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData("Claw", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData("Wing", $"1d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData("Tail Slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData("Crush", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"18d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"20d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_Ancient].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //gargantuan
+                testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData("Bite", $"4d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData("Claw", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData("Wing", $"2d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData("Tail Slap", $"2d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData("Crush", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"22d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                //colossal
+                testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData("Bite", $"4d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData("Claw", $"4d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData("Wing", $"2d8", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData("Tail Slap", $"4d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData("Crush", $"4d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData("Tail Sweep", $"2d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon (cold)", $"24d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(AttackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+
+                testCases[CreatureConstants.Dragonne].Add(AttackHelper.BuildData("Bite", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragonne].Add(AttackHelper.BuildData("Claw", $"2d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragonne].Add(AttackHelper.BuildData("Pounce", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+                testCases[CreatureConstants.Dragonne].Add(AttackHelper.BuildData("Roar", string.Empty, string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
 
                 testCases[CreatureConstants.Dretch].Add(AttackHelper.BuildData("Claw", $"1d6", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dretch].Add(AttackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
@@ -2089,19 +2189,10 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
                 //testCases[CreatureConstants.Eagle_Giant].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Evasion));
 
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Any Small, Medium, or Large Humanoid or Giant", frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Telepathy, power: 100));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlaneShift + ": Genie and up to 8 other creatures, provided they all link hands with the genie", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectMagic, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ProduceFlame, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Pyrotechnics, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ScorchingRay + ": 1 ray only", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Invisibility, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.WallOfFire, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Wish + ": Grant up to 3 wishes to nongenies", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PermanentImage, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GaseousForm, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
+                testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData("Slam", $"1d8", "Heat", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData("Change Size", string.Empty, string.Empty, 0, "spell-like ability", 2, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData("Heat", "1d6 fire", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, false, true, true, true));
+                testCases[CreatureConstants.Efreeti].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 testCases[CreatureConstants.Elasmosaurus].Add(AttackHelper.BuildData("Bite", $"2d8", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
@@ -2706,18 +2797,10 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 //testCases[CreatureConstants.InvisibleStalker].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.NaturalInvisibility));
                 //testCases[CreatureConstants.InvisibleStalker].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Tracking_Improved));
 
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Telepathy, power: 100));
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.ElementalEndurance));
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.PlaneShift + ": Genie and up to 8 other creatures, provided they all link hands with the genie", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Invisibility + ": self only", frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpeakWithAnimals, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CreateFoodAndWater, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.EtherealJaunt, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.ArmorProficiency_Medium, requiresEquipment: true));
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Scimitar, requiresEquipment: true));
-                //testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longbow, requiresEquipment: true));
+                testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
+                testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData("Change Size", string.Empty, string.Empty, 0, "spell-like ability", 2, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Janni].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 //testCases[CreatureConstants.Kobold].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 //testCases[CreatureConstants.Kobold].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.LightSensitivity));
