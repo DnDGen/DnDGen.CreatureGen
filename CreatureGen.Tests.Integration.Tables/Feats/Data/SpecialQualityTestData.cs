@@ -2799,6 +2799,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.KuoToa].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Electricity, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.KuoToa].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Slippery));
                 testCases[CreatureConstants.KuoToa].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Shortspear, requiresEquipment: true));
+                testCases[CreatureConstants.KuoToa].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Exotic, focus: WeaponConstants.PincerStaff, requiresEquipment: true));
                 testCases[CreatureConstants.KuoToa].Add(SpecialQualityHelper.BuildData(FeatConstants.Alertness, power: 2));
 
                 testCases[CreatureConstants.Lamia].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Dagger, requiresEquipment: true));
@@ -4174,6 +4175,9 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Types.Subtypes.Good].Add(SpecialQualityHelper.BuildData(None));
 
                 testCases[CreatureConstants.Types.Subtypes.Halfling].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.AttackBonus, focus: "thrown weapons and slings", power: 1));
+                testCases[CreatureConstants.Types.Subtypes.Halfling].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
+                testCases[CreatureConstants.Types.Subtypes.Halfling].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longsword, requiresEquipment: true));
+                testCases[CreatureConstants.Types.Subtypes.Halfling].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.LightCrossbow, requiresEquipment: true));
 
                 testCases[CreatureConstants.Types.Subtypes.Incorporeal].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Nonmagical attacks"));
                 testCases[CreatureConstants.Types.Subtypes.Incorporeal].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "50% chance to ignore any damage from a corporeal source (except for positive energy, negative energy, force effects such as magic missiles, or attacks made with ghost touch weapons)"));
