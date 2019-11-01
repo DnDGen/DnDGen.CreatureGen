@@ -75,7 +75,7 @@
     </Reference>
     <Reference Include="System.XML" />
     <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DnDGen.TreasureGen.9.1.0\lib\TreasureGen.dll</HintPath>
+      <HintPath>..\packages\DnDGen.TreasureGen.9.2.0\lib\TreasureGen.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Attacks\AttackDataTests.cs" />
     <Compile Include="Attacks\AttackTestData.cs" />
+    <Compile Include="Attacks\GrapplesBonusesTests.cs" />
     <Compile Include="Creatures\AdvancementsTests.cs" />
     <Compile Include="Creatures\AerialManeuverabilityTests.cs" />
     <Compile Include="Creatures\CreatureDataTests.cs" />

@@ -57,13 +57,14 @@ namespace CreatureGen.Generators.Attacks
             return hitDiceQuantity / 2;
         }
 
-        public int? GenerateGrappleBonus(string size, int baseAttackBonus, Ability strength)
+        public int? GenerateGrappleBonus(string creature, string size, int baseAttackBonus, Ability strength)
         {
             if (!strength.HasScore)
                 return null;
 
             var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, size);
-            return baseAttackBonus + strength.Modifier + sizeModifier;
+            var creatureModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, creature);
+            return baseAttackBonus + strength.Modifier + sizeModifier + creatureModifier;
         }
 
         public IEnumerable<Attack> GenerateAttacks(string creatureName, string originalSize, string size, int baseAttackBonus, Dictionary<string, Ability> abilities, int hitDiceQuantity)

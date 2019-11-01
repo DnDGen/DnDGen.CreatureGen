@@ -5,9 +5,9 @@
     <name>Aasimar</name>
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
-    <entry>Energy Resistance#5#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Electricity#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#5#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Daylight#1#Day#0#False###0</entry>
   </collection>
   <collection>
@@ -30,8 +30,8 @@
   <collection>
     <name>Abyssal Greater Basilisk</name>
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell Resistance#23##0##0#False###0</entry>
   </collection>
   <collection>
@@ -40,8 +40,8 @@
   </collection>
   <collection>
     <name>Adult Arrowhawk</name>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
@@ -49,8 +49,8 @@
   <collection>
     <name>Adult Tojanida</name>
     <entry>All-Around Vision#0##0##0#False###0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
@@ -61,29 +61,41 @@
   <collection>
     <name>Air Elemental, Elder</name>
     <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0#False###0</entry>
+    <entry>Weapon Finesse#0##0##0#False###0</entry>
+    <entry>Improved Initiative#4##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Air Elemental, Greater</name>
     <entry>Damage Reduction#10#No physical vulnerabilities#1#Hit#0#False###0</entry>
+    <entry>Weapon Finesse#0##0##0#False###0</entry>
+    <entry>Improved Initiative#4##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Air Elemental, Huge</name>
     <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False###0</entry>
+    <entry>Weapon Finesse#0##0##0#False###0</entry>
+    <entry>Improved Initiative#4##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Air Elemental, Large</name>
     <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False###0</entry>
+    <entry>Weapon Finesse#0##0##0#False###0</entry>
+    <entry>Improved Initiative#4##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Air Elemental, Medium</name>
+    <entry>Weapon Finesse#0##0##0#False###0</entry>
+    <entry>Improved Initiative#4##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Air Elemental, Small</name>
+    <entry>Weapon Finesse#0##0##0#False###0</entry>
+    <entry>Improved Initiative#4##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Air Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Exposed to moving air#1#Turn#0#False###0</entry>
+    <entry>Fast Healing#2#Exposed to moving air#1#Turn (1 minute)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Gust of wind#1#Day#0#False#Charisma#Fortitude#12</entry>
   </collection>
@@ -97,8 +109,8 @@
   <collection>
     <name>Angel</name>
     <entry>Darkvision#60##0##0#False###0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
@@ -137,7 +149,7 @@
     <entry>Change Shape#0#Small or Medium Humanoid#0#At Will#0#False###0</entry>
     <entry>Damage Reduction#10#Vulnerable to evil#1#Hit#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True###0</entry>
-    <entry>Regeneration#10#Does not regenerate evil damage#1#Round#0#False###0</entry>
+    <entry>Regeneration#10#Does not regenerate evil damage#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell Resistance#30##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Blade barrier#3#Day#0#False#Charisma#Reflex#16</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False###0</entry>
@@ -169,7 +181,7 @@
     <entry>Damage Reduction#15#Vulnerable to epic evil#1#Hit#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True###0</entry>
-    <entry>Regeneration#15#Does not regenerate evil damage#1#Round#0#False###0</entry>
+    <entry>Regeneration#15#Does not regenerate evil damage#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell Resistance#32##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Aid#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Animate objects#0#At Will#0#False###0</entry>
@@ -656,8 +668,8 @@
     <name>Assassin Vine</name>
     <entry>Blindsight#30##0##0#False###0</entry>
     <entry>Camouflage#0##0##0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
   </collection>
   <collection>
@@ -677,7 +689,7 @@
     <entry>Cleave#0##0##0#False###0</entry>
     <entry>Damage Reduction#5#Vulnerable to bludgeoning weapons#1#Hit#0#False###0</entry>
     <entry>Earth Glide#0##0##0#False###0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Tremorsense#60##0##0#False###0</entry>
@@ -685,8 +697,8 @@
   <collection>
     <name>Avoral</name>
     <entry>Damage Reduction#10#Vulnerable to evil or silver weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Sonic#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
     <entry>Lay on Hands#0##0##0#False###0</entry>
@@ -715,9 +727,9 @@
   <collection>
     <name>Babau</name>
     <entry>Damage Reduction#10#Vulnerable to good or cold iron weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Protective Slime#0##0##0#False#Constitution#Reflex#13</entry>
@@ -746,8 +758,8 @@
   <collection>
     <name>Balor</name>
     <entry>Damage Reduction#15#Vulnerable to good, cold iron weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Exotic Weapon Proficiency#0#Whip#0##0#True###0</entry>
     <entry>Flaming Body#0##0##0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
@@ -772,8 +784,8 @@
     <name>Barbed Devil (Hamatula)</name>
     <entry>Barbed Defense#0##0##0#False###0</entry>
     <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False###0</entry>
@@ -814,8 +826,8 @@
   <collection>
     <name>Bearded Devil (Barbazu)</name>
     <entry>Damage Reduction#5#Vulnerable to good or silver weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Glaive#0##0#True###0</entry>
@@ -1001,7 +1013,7 @@
     <name>Blink Dog</name>
     <entry>Scent#0##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Blink#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Dimension door#1#Round#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Dimension door#1#Round (6 seconds)#0#False###0</entry>
     <entry>Track#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -1143,11 +1155,11 @@
   </collection>
   <collection>
     <name>Blue Slaad</name>
-    <entry>Energy Resistance#5#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Fire#1#Round#0#False###0</entry>
-    <entry>Fast Healing#5##1#Turn#0#False###0</entry>
+    <entry>Energy Resistance#5#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
   </collection>
   <collection>
@@ -1157,16 +1169,16 @@
   <collection>
     <name>Bodak</name>
     <entry>Damage Reduction#10#Vulnerable to cold iron weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Vulnerability#0#Sunlight#0##0#False###0</entry>
   </collection>
   <collection>
     <name>Bone Devil (Osyluth)</name>
     <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False###0</entry>
@@ -1183,8 +1195,8 @@
     <name>Bralani</name>
     <entry>Alternate Form#0#Humanoid or whirlwind form#0#At Will#0#False###0</entry>
     <entry>Damage Reduction#10#Vulnerable to cold iron or evil weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
     <entry>Low-Light Vision#0##0##0#False###0</entry>
@@ -1538,7 +1550,7 @@
     <entry>Damage Reduction#5#Vulnerable to good or silver weapons#1#Hit#0#False###0</entry>
     <entry>Exotic Weapon Proficiency#0#Spiked chain#0##0#True###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
-    <entry>Regeneration#2#Does not regenerate damage from silver weapons or good-aligned damage#1#Round#0#False###0</entry>
+    <entry>Regeneration#2#Does not regenerate damage from silver weapons or good-aligned damage#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell Resistance#18##0##0#False###0</entry>
   </collection>
   <collection>
@@ -1599,7 +1611,7 @@
     <name>Cloud Giant</name>
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Oversized Weapon#0#Gargantuan#0##0#True###0</entry>
-    <entry>Rock Catching#0##1#Round#0#False###0</entry>
+    <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
     <entry>Simple Weapon Proficiency#0#Morningstar#0##0#True###0</entry>
     <entry>Spell-Like Ability#0#Fog cloud#1#Day#0#False###0</entry>
@@ -1780,6 +1792,11 @@
     <entry>Change Shape#0#Any Small or Medium humanoid#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Ethereal jaunt#0#At Will#0#False###0</entry>
     <entry>Telepathy#90##0##0#False###0</entry>
+    <entry>Psionic#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Psionic#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
+    <entry>Psionic#0#Invisibility#0#At Will#0#False###0</entry>
+    <entry>Psionic#0#Plane shift#0#At Will#0#False#Charisma#Will#17</entry>
+    <entry>Eschew Materials#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Criosphinx</name>
@@ -1797,16 +1814,17 @@
   <collection>
     <name>Darkmantle</name>
     <entry>Blindsight#90##0##0#False###0</entry>
+    <entry>Spell-Like Ability#0#Darkness#1#Day#0#False###0</entry>
   </collection>
   <collection>
     <name>Death Slaad</name>
     <entry>Change Shape#0#Any humanoid form#0#At Will#0#False###0</entry>
     <entry>Damage Reduction#10#Vulnerable to lawful weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#5#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Fire#1#Round#0#False###0</entry>
-    <entry>Fast Healing#5##1#Turn#0#False###0</entry>
+    <entry>Energy Resistance#5#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
   </collection>
@@ -1838,6 +1856,7 @@
     <name>Derro</name>
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Madness#0##0##0#False###0</entry>
+    <entry>Exotic Weapon Proficiency#0#Light repeating crossbow#0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True###0</entry>
     <entry>Spell Resistance#15##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Darkness#0#At Will#0#False###0</entry>
@@ -1849,6 +1868,7 @@
   <collection>
     <name>Derro (Sane)</name>
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
+    <entry>Exotic Weapon Proficiency#0#Light repeating crossbow#0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True###0</entry>
     <entry>Spell Resistance#15##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Darkness#0#At Will#0#False###0</entry>
@@ -1869,14 +1889,14 @@
     <name>Devourer</name>
     <entry>Spell Deflection#0##0##0#False###0</entry>
     <entry>Spell Resistance#21##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Confusion#1#Round#0#False#Charisma#Will#14</entry>
-    <entry>Spell-Like Ability#0#Control undead#1#Round#0#False#Charisma#Will#17</entry>
-    <entry>Spell-Like Ability#0#Ghoul touch#1#Round#0#False#Charisma#Fortitude#12</entry>
-    <entry>Spell-Like Ability#0#Lesser planar ally#1#Round#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Ray of enfeeblement#1#Round#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Spectral hand#1#Round#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Suggestion#1#Round#0#False#Charisma#Will#13</entry>
-    <entry>Spell-Like Ability#0#True seeing#1#Round#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Confusion#1#Round (6 seconds)#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Control undead#1#Round (6 seconds)#0#False#Charisma#Will#17</entry>
+    <entry>Spell-Like Ability#0#Ghoul touch#1#Round (6 seconds)#0#False#Charisma#Fortitude#12</entry>
+    <entry>Spell-Like Ability#0#Lesser planar ally#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Ray of enfeeblement#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Spectral hand#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Suggestion#1#Round (6 seconds)#0#False#Charisma#Will#13</entry>
+    <entry>Spell-Like Ability#0#True seeing#1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Digester</name>
@@ -2008,9 +2028,9 @@
   <collection>
     <name>Dretch</name>
     <entry>Damage Reduction#5#Vulnerable to good or cold iron weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Scare#1#Day#0#False#Charisma#Will#12</entry>
@@ -2074,7 +2094,7 @@
   <collection>
     <name>Dust Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#In arid, dusty environment#1#Turn#0#False###0</entry>
+    <entry>Fast Healing#2#In arid, dusty environment#1#Turn (1 minute)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Wind wall#1#Day#0#False#Charisma#Will#13</entry>
   </collection>
@@ -2125,7 +2145,7 @@
   <collection>
     <name>Earth Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Underground or buried up to its waist in earth#1#Turn#0#False###0</entry>
+    <entry>Fast Healing#2#Underground or buried up to its waist in earth#1#Turn (1 minute)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Enlarge person: self only#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Soften earth and stone#1#Day#0#False###0</entry>
   </collection>
@@ -2148,19 +2168,19 @@
   <collection>
     <name>Eight-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#18##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#18##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Eight-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#18##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#18##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#18##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#18##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2169,8 +2189,8 @@
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
@@ -2183,8 +2203,8 @@
   <collection>
     <name>Elder Tojanida</name>
     <entry>All-Around Vision#0##0##0#False###0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
@@ -2195,7 +2215,7 @@
     <entry>Cleave#0##0##0#False###0</entry>
     <entry>Damage Reduction#5#Vulnerable to bludgeoning weapons#1#Hit#0#False###0</entry>
     <entry>Earth Glide#0##0##0#False###0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Tremorsense#60##0##0#False###0</entry>
@@ -2219,19 +2239,19 @@
   <collection>
     <name>Eleven-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#21##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#21##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#21##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#21##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#21##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#21##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2242,8 +2262,8 @@
   <collection>
     <name>Erinyes</name>
     <entry>Damage Reduction#5#Vulnerable to good weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True###0</entry>
@@ -2335,31 +2355,31 @@
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True###0</entry>
-    <entry>Rock Catching#0##1#Round#0#False###0</entry>
+    <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Fire Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Touching a flame at least as large as a torch#1#Turn#0#False###0</entry>
+    <entry>Fast Healing#2#Touching a flame at least as large as a torch#1#Turn (1 minute)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Heat metal#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Scorching ray#1#Hour#0#False#Charisma#Will#12</entry>
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#15##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#15##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Five-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#15##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#15##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Five-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#15##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#15##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2384,10 +2404,10 @@
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Sonic#1#Round#0#False###0</entry>
-    <entry>Fast Healing#2##1#Turn#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Fast Healing#2##1#Turn (1 minute)#0#False###0</entry>
     <entry>Hive Mind#0##0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
@@ -2405,11 +2425,11 @@
   </collection>
   <collection>
     <name>Formian Queen</name>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Sonic#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round (6 seconds)#0#False###0</entry>
     <entry>Eschew Materials#0##0##0#False###0</entry>
-    <entry>Fast Healing#2##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#2##1#Turn (1 minute)#0#False###0</entry>
     <entry>Hive Mind#0##0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
@@ -2431,9 +2451,9 @@
   </collection>
   <collection>
     <name>Formian Taskmaster</name>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Sonic#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round (6 seconds)#0#False###0</entry>
     <entry>Hive Mind#0##0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
@@ -2444,9 +2464,9 @@
   </collection>
   <collection>
     <name>Formian Warrior</name>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Sonic#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round (6 seconds)#0#False###0</entry>
     <entry>Hive Mind#0##0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
@@ -2455,21 +2475,21 @@
   </collection>
   <collection>
     <name>Formian Worker</name>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Sonic#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round (6 seconds)#0#False###0</entry>
     <entry>Hive Mind#0##0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cure/Inflict serious wounds: 8 workers work together to cast the spell#1#Round#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Make whole: 3 workers work together to cast the spell#1#Round#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cure/Inflict serious wounds: 8 workers work together to cast the spell#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Make whole: 3 workers work together to cast the spell#1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Frost Giant</name>
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Greataxe#0##0#True###0</entry>
-    <entry>Rock Catching#0##1#Round#0#False###0</entry>
+    <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Frost Worm</name>
@@ -2495,8 +2515,8 @@
     <name>Ghaele</name>
     <entry>Alternate Form#0#Humanoid and globe forms#0#At Will#0#False###0</entry>
     <entry>Damage Reduction#10#Vulnerable to evil, cold iron weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
     <entry>Low-Light Vision#0##0##0#False###0</entry>
@@ -2577,8 +2597,8 @@
   </collection>
   <collection>
     <name>Giant Octopus</name>
-    <entry>Ink Cloud#0##1#Turn#0#False###0</entry>
-    <entry>Jet#0##1#Round#0#False###0</entry>
+    <entry>Ink Cloud#0##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Jet#0##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Giant Owl</name>
@@ -2589,8 +2609,8 @@
   </collection>
   <collection>
     <name>Giant Squid</name>
-    <entry>Ink Cloud#0##1#Turn#0#False###0</entry>
-    <entry>Jet#0##1#Round#0#False###0</entry>
+    <entry>Ink Cloud#0##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Jet#0##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Giant Stag Beetle</name>
@@ -2632,9 +2652,9 @@
   <collection>
     <name>Glabrezu</name>
     <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell Resistance#21##0##0#False###0</entry>
@@ -2844,11 +2864,11 @@
     <name>Gray Slaad</name>
     <entry>Change Shape#0#Any humanoid form#0#At Will#0#False###0</entry>
     <entry>Damage Reduction#10#Vulnerable to lawful weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#5#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Fire#1#Round#0#False###0</entry>
-    <entry>Fast Healing#5##1#Turn#0#False###0</entry>
+    <entry>Energy Resistance#5#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
   </collection>
   <collection>
@@ -3020,11 +3040,11 @@
   <collection>
     <name>Green Slaad</name>
     <entry>Change Shape#0#Medium or Large humanoid form#0#At Will#0#False###0</entry>
-    <entry>Energy Resistance#5#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Fire#1#Round#0#False###0</entry>
-    <entry>Fast Healing#5##1#Turn#0#False###0</entry>
+    <entry>Energy Resistance#5#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
   </collection>
   <collection>
@@ -3111,6 +3131,9 @@
   <collection>
     <name>Halfling</name>
     <entry>Attack Bonus#1#thrown weapons and slings#0##0#False###0</entry>
+    <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
+    <entry>Martial Weapon Proficiency#0#Longsword#0##0#True###0</entry>
+    <entry>Simple Weapon Proficiency#0#Light crossbow#0##0#True###0</entry>
   </collection>
   <collection>
     <name>Harpy</name>
@@ -3136,7 +3159,7 @@
   <collection>
     <name>Hellcat (Bezekira)</name>
     <entry>Damage Reduction#5#Vulnerable to good weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Invisible in Light#0##0##0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
     <entry>Spell Resistance#19##0##0#False###0</entry>
@@ -3145,15 +3168,15 @@
   <collection>
     <name>Hellwasp Swarm</name>
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Hive Mind#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
     <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell Resistance#19##0##0#False###0</entry>
@@ -3190,7 +3213,7 @@
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatclub#0##0#True###0</entry>
-    <entry>Rock Catching#0##1#Round#0#False###0</entry>
+    <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>
@@ -3209,11 +3232,11 @@
   <collection>
     <name>Horned Devil (Cornugon)</name>
     <entry>Damage Reduction#10#Vulnerable to good, silver weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
-    <entry>Regeneration#5#Does not regenerate damage from good-aligned, silvered weapons#1#Round#0#False###0</entry>
+    <entry>Regeneration#5#Does not regenerate damage from good-aligned, silvered weapons#1#Round (6 seconds)#0#False###0</entry>
     <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False###0</entry>
     <entry>Exotic Weapon Proficiency#0#Spiked chain#0##0#True###0</entry>
     <entry>Spell Resistance#28##0##0#False###0</entry>
@@ -3256,11 +3279,11 @@
   <collection>
     <name>Ice Devil (Gelugon)</name>
     <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
-    <entry>Regeneration#5#Does not regenerate good damage#1#Round#0#False###0</entry>
+    <entry>Regeneration#5#Does not regenerate good damage#1#Round (6 seconds)#0#False###0</entry>
     <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False###0</entry>
     <entry>Simple Weapon Proficiency#0#Longspear#0##0#True###0</entry>
     <entry>Simple Weapon Proficiency#0#Spear#0##0#True###0</entry>
@@ -3278,7 +3301,7 @@
   <collection>
     <name>Ice Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Touching a piece of ice at least Tiny in size, or ambient temperature is freezing or lower#1#Turn#0#False###0</entry>
+    <entry>Fast Healing#2#Touching a piece of ice at least Tiny in size, or ambient temperature is freezing or lower#1#Turn (1 minute)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Chill metal#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Magic missile#1#Hour#0#False###0</entry>
   </collection>
@@ -3286,8 +3309,8 @@
     <name>Imp</name>
     <entry>Alternate Form#0#Imp Alternate Form#0#At Will#1d2#False###0</entry>
     <entry>Damage Reduction#5#Vulnerable to good or silver weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#5#Fire#1#Round#0#False###0</entry>
-    <entry>Fast Healing#2##1#Turn#0#False###0</entry>
+    <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Fast Healing#2##1#Turn (1 minute)#0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Commune: ask 6 questions#1#Week#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
@@ -3334,8 +3357,8 @@
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
@@ -3343,8 +3366,8 @@
   <collection>
     <name>Juvenile Tojanida</name>
     <entry>All-Around Vision#0##0##0#False###0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Acid#0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
@@ -3367,7 +3390,7 @@
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Armor Proficiency (Heavy)#0##0##0#True###0</entry>
     <entry>Damage Reduction#10#Vulnerable to chaotic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#5##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True###0</entry>
     <entry>Spell Resistance#22##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Discern lies#0#At Will#0#False#Charisma#Will#14</entry>
@@ -3383,8 +3406,8 @@
   </collection>
   <collection>
     <name>Kraken</name>
-    <entry>Ink Cloud#0##1#Turn#0#False###0</entry>
-    <entry>Jet#0##1#Round#0#False###0</entry>
+    <entry>Ink Cloud#0##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Jet#0##1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Control weather#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Dominate animal#1#Day#0#False#Charisma#Will#13</entry>
@@ -3400,12 +3423,13 @@
     <entry>Adhesive#0##0##0#False###0</entry>
     <entry>Alertness#2##0##0#False###0</entry>
     <entry>Amphibious#0##0##0#False###0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Paralysis#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Keen Sight#0##0##0#False###0</entry>
     <entry>Light Blindness#0##0##0#False###0</entry>
     <entry>Simple Weapon Proficiency#0#Shortspear#0##0#True###0</entry>
+    <entry>Exotic Weapon Proficiency#0#Pincer staff#0##0#True###0</entry>
     <entry>Slippery#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -3443,8 +3467,8 @@
   <collection>
     <name>Lemure</name>
     <entry>Damage Reduction#5#Vulnerable to good or silver weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Immunity#0#Mind-Affecting Effects#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
@@ -3453,8 +3477,8 @@
   <collection>
     <name>Leonal</name>
     <entry>Damage Reduction#10#Vulnerable to evil, silver weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Sonic#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Sonic#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
     <entry>Lay on Hands#0##0##0#False###0</entry>
@@ -3487,7 +3511,7 @@
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Bardic music ability as a 6th-level Bard#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Charm person#1#Day#0#False#Charisma#Will#11</entry>
@@ -3528,7 +3552,7 @@
     <name>Magma Mephit</name>
     <entry>Change Shape#0#A pool of lava 3 feet in diameter and 6 inches deep#1#Hour#0#False###0</entry>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Touching magma, lava, or a flame at least as large as a torch#1#Turn#0#False###0</entry>
+    <entry>Fast Healing#2#Touching magma, lava, or a flame at least as large as a torch#1#Turn (1 minute)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Pyrotechnics#1#Day#0#False#Charisma#Will#12</entry>
   </collection>
   <collection>
@@ -3558,9 +3582,9 @@
   <collection>
     <name>Marilith</name>
     <entry>Damage Reduction#10#Vulnerable to good, cold iron weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True###0</entry>
@@ -3582,7 +3606,7 @@
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Armor Proficiency (Heavy)#0##0##0#True###0</entry>
     <entry>Damage Reduction#15#Vulnerable to chaotic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#10##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#10##1#Turn (1 minute)#0#False###0</entry>
     <entry>Spell Resistance#25##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Air walk#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Chain lightning#1#Day#0#False#Charisma#Reflex#16</entry>
@@ -3645,7 +3669,7 @@
     <entry>All-Around Vision#0##0##0#False###0</entry>
     <entry>Damage Reduction#5#Vulnerable to bludgeoning weapons#1#Hit#0#False###0</entry>
     <entry>Earth Glide#0##0##0#False###0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Tremorsense#60##0##0#False###0</entry>
@@ -3809,9 +3833,9 @@
   <collection>
     <name>Nalfeshnee</name>
     <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
@@ -3924,19 +3948,19 @@
   <collection>
     <name>Nine-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#19##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#19##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Nine-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#19##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#19##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Nine-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#19##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#19##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -3992,8 +4016,8 @@
   </collection>
   <collection>
     <name>Octopus</name>
-    <entry>Ink Cloud#0##1#Turn#0#False###0</entry>
-    <entry>Jet#0##1#Round#0#False###0</entry>
+    <entry>Ink Cloud#0##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Jet#0##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Ogre</name>
@@ -4011,7 +4035,7 @@
     <entry>Flight#0##0##0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Longbow#0##0#True###0</entry>
-    <entry>Regeneration#5#Fire and acid deal normal damage#1#Round#0#False###0</entry>
+    <entry>Regeneration#5#Fire and acid deal normal damage#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell Resistance#19##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Charm person#1#Day#0#False#Charisma#Will#11</entry>
     <entry>Spell-Like Ability#0#Cone of cold#1#Day#0#False#Charisma#Reflex#15</entry>
@@ -4036,7 +4060,7 @@
   <collection>
     <name>Ooze Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#In a wet or muddy environment#1#Turn#0#False###0</entry>
+    <entry>Fast Healing#2#In a wet or muddy environment#1#Turn (1 minute)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Acid arrow#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False#Charisma#Fortitude#13</entry>
   </collection>
@@ -4097,11 +4121,11 @@
   <collection>
     <name>Pit Fiend</name>
     <entry>Damage Reduction#15#Vulnerable to good, silver weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
-    <entry>Regeneration#5#Does not regenerate damage from good spells or effects, or from good-aligned silvered weapons#1#Round#0#False###0</entry>
+    <entry>Regeneration#5#Does not regenerate damage from good spells or effects, or from good-aligned silvered weapons#1#Round (6 seconds)#0#False###0</entry>
     <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False###0</entry>
     <entry>Spell Resistance#32##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Blasphemy#0#At Will#0#False#Charisma#Will#17</entry>
@@ -4193,7 +4217,7 @@
     <name>Quasit</name>
     <entry>Alternate Form#0#Bat, Small or Medium monstrous centipede, toad, and wolf#0#At Will#0#False###0</entry>
     <entry>Damage Reduction#5#Vulnerable to good or cold iron weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Cause fear: 30-foot radius area from the quasit#1#Day#0#False#Charisma#Will#11</entry>
     <entry>Spell-Like Ability#0#Commune: can ask 6 questions#1#Week#0#False###0</entry>
@@ -4230,12 +4254,12 @@
     <name>Ravid</name>
     <entry>Flight#0##0##0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Animate objects#1#Round#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Animate objects#1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Razor Boar</name>
     <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#10##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#10##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
     <entry>Spell Resistance#21##0##0#False###0</entry>
   </collection>
@@ -4347,12 +4371,12 @@
   </collection>
   <collection>
     <name>Red Slaad</name>
-    <entry>Fast Healing#5##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
-    <entry>Energy Resistance#5#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#5#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Remorhaz</name>
@@ -4364,7 +4388,7 @@
   </collection>
   <collection>
     <name>Retriever</name>
-    <entry>Fast Healing#5##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
   </collection>
   <collection>
     <name>Rhinoceras</name>
@@ -4382,7 +4406,7 @@
   </collection>
   <collection>
     <name>Roper</name>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Spell Resistance#30##0##0#False###0</entry>
     <entry>Vulnerability#0#Fire#0##0#False###0</entry>
@@ -4416,7 +4440,7 @@
   <collection>
     <name>Salt Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#In an arid environment#1#Turn#0#False###0</entry>
+    <entry>Fast Healing#2#In an arid environment#1#Turn (1 minute)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Draw moisture from the air#1#Day#0#False#Charisma#Fortitude#12</entry>
     <entry>Spell-Like Ability#0#Glitterdust#1#Hour#0#False#Charisma#Will#12</entry>
   </collection>
@@ -4436,7 +4460,7 @@
   </collection>
   <collection>
     <name>Scorpionfolk</name>
-    <entry>Energy Resistance#5#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Lance#0##0#True###0</entry>
     <entry>Spell Resistance#18##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Major image#1#Day#0#False#Charisma#Will#13</entry>
@@ -4445,7 +4469,7 @@
   <collection>
     <name>Scrag</name>
     <entry>Darkvision#90##0##0#False###0</entry>
-    <entry>Regeneration#5#Fire and acid deal normal damage; only regenerates when immersed in water#1#Round#0#False###0</entry>
+    <entry>Regeneration#5#Fire and acid deal normal damage; only regenerates when immersed in water#1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -4461,19 +4485,19 @@
   <collection>
     <name>Seven-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#17##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#17##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Seven-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#17##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#17##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Seven-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#17##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#17##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -4489,7 +4513,7 @@
   <collection>
     <name>Shambling Mound</name>
     <entry>Darkvision#60##0##0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
   </collection>
   <collection>
@@ -4514,7 +4538,7 @@
   </collection>
   <collection>
     <name>Shield Guardian</name>
-    <entry>Fast Healing#5##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Find Master#0##0##0#False###0</entry>
     <entry>Guard#0##0##0#False###0</entry>
     <entry>Spell Storing#0##0##0#False###0</entry>
@@ -4680,19 +4704,19 @@
   <collection>
     <name>Six-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#16##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#16##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Six-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#16##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#16##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Six-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#16##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#16##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -4721,13 +4745,13 @@
   </collection>
   <collection>
     <name>Squid</name>
-    <entry>Ink Cloud#0##1#Turn#0#False###0</entry>
-    <entry>Jet#0##1#Round#0#False###0</entry>
+    <entry>Ink Cloud#0##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Jet#0##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Touching boiling water or in a hot, humid area#1#Turn#0#False###0</entry>
+    <entry>Fast Healing#2#Touching boiling water or in a hot, humid area#1#Turn (1 minute)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Rainstorm of boiling water#1#Day#0#False#Charisma#Reflex#12</entry>
   </collection>
@@ -4740,7 +4764,7 @@
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Darkvision#60##0##0#False###0</entry>
-    <entry>Rock Catching#0##1#Round#0#False###0</entry>
+    <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatclub#0##0#True###0</entry>
   </collection>
   <collection>
@@ -4748,7 +4772,7 @@
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Darkvision#60##0##0#False###0</entry>
-    <entry>Rock Catching#0##1#Round#0#False###0</entry>
+    <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatclub#0##0#True###0</entry>
     <entry>Spell-Like Ability#0#Stone shape#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stone tell#1#Day#0#False###0</entry>
@@ -4765,7 +4789,7 @@
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
-    <entry>Rock Catching#0##1#Round#0#False###0</entry>
+    <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Composite longbow#0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True###0</entry>
     <entry>Spell-Like Ability#0#Call lightning#1#Day#0#False#Charisma#Reflex#13</entry>
@@ -4779,9 +4803,9 @@
     <name>Succubus</name>
     <entry>Change Shape#0#Any Small or Medium Humanoid#0#At Will#0#False###0</entry>
     <entry>Damage Reduction#10#Vulnerable to good or cold iron weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell Resistance#18##0##0#False###0</entry>
@@ -4835,31 +4859,31 @@
     <entry>Immunity#0#Energy Drain#0##0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
-    <entry>Regeneration#40#No form of attack deals lethal damage to the tarrasque#1#Round#0#False###0</entry>
+    <entry>Regeneration#40#No form of attack deals lethal damage to the tarrasque#1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
     <entry>Spell Resistance#32##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#20##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#20##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Ten-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#20##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#20##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Ten-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#20##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#20##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Tendriculos</name>
-    <entry>Regeneration#10#Bludgeoning weapons and acid deal normal damage#1#Round#0#False###0</entry>
+    <entry>Regeneration#10#Bludgeoning weapons and acid deal normal damage#1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Thoqqua</name>
@@ -4869,9 +4893,9 @@
   <collection>
     <name>Tiefling</name>
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
-    <entry>Energy Resistance#5#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Electricity#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#5#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Darkness#1#Day#0#False###0</entry>
   </collection>
   <collection>
@@ -4941,7 +4965,7 @@
   <collection>
     <name>Troll</name>
     <entry>Darkvision#90##0##0#False###0</entry>
-    <entry>Regeneration#5#Fire and acid deal normal damage#1#Round#0#False###0</entry>
+    <entry>Regeneration#5#Fire and acid deal normal damage#1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -4961,19 +4985,19 @@
   <collection>
     <name>Twelve-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#22##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#22##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#22##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#22##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#22##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#22##1#Turn (1 minute)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -5024,9 +5048,9 @@
     <name>Vampire Spawn</name>
     <entry>Alertness#2##0##0#False###0</entry>
     <entry>Damage Reduction#5#Vulnerable to silver weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Electricity#1#Round#0#False###0</entry>
-    <entry>Fast Healing#2##1#Turn#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Fast Healing#2##1#Turn (1 minute)#0#False###0</entry>
     <entry>Improved Initiative#4##0##0#False###0</entry>
     <entry>Lightning Reflexes#2##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Gaseous form#0#At Will#0#False###0</entry>
@@ -5068,9 +5092,9 @@
   <collection>
     <name>Vrock</name>
     <entry>Damage Reduction#10#Vulnerable to good weapons#1#Hit#0#False###0</entry>
-    <entry>Energy Resistance#10#Acid#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Cold#1#Round#0#False###0</entry>
-    <entry>Energy Resistance#10#Fire#1#Round#0#False###0</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Electricity#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell Resistance#17##0##0#False###0</entry>
@@ -5112,7 +5136,7 @@
   <collection>
     <name>Water Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Exposed to rain or submerged up to its waist in water#1#Turn#0#False###0</entry>
+    <entry>Fast Healing#2#Exposed to rain or submerged up to its waist in water#1#Turn (1 minute)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Acid arrow#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False#Charisma#Fortitude#13</entry>
   </collection>
@@ -5442,7 +5466,7 @@
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Damage Reduction#10#Vulnerable to chaotic weapons#1#Hit#0#False###0</entry>
     <entry>Exotic Weapon Proficiency#0#Spiked chain#0##0#True###0</entry>
-    <entry>Fast Healing#5##1#Turn#0#False###0</entry>
+    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Mounted Combat#0##0##0#False###0</entry>
     <entry>Spell Resistance#20##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Clairaudience/Clairvoyance#0#At Will#0#False###0</entry>

@@ -623,6 +623,11 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Couatl, FeatConstants.SpecialQualities.ChangeShape, "Any Small or Medium humanoid")] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Couatl, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.EtherealJaunt)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Couatl, FeatConstants.SpecialQualities.Telepathy, string.Empty)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Couatl, FeatConstants.SpecialQualities.Psionic, SpellConstants.DetectAlignment)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Couatl, FeatConstants.SpecialQualities.Psionic, SpellConstants.DetectThoughts)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Couatl, FeatConstants.SpecialQualities.Psionic, SpellConstants.Invisibility)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Couatl, FeatConstants.SpecialQualities.Psionic, SpellConstants.PlaneShift)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Couatl, FeatConstants.EschewMaterials, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Crocodile, FeatConstants.SpecialQualities.HoldBreath, string.Empty)] = new Dictionary<string, int>();
 
@@ -661,6 +666,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Cryohydra_12Heads, FeatConstants.SpecialQualities.Scent, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Darkmantle, FeatConstants.SpecialQualities.Blindsight, string.Empty)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Darkmantle, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Darkness)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Deinonychus, FeatConstants.SpecialQualities.Scent, string.Empty)] = new Dictionary<string, int>();
 
@@ -670,6 +676,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro, FeatConstants.ArmorProficiency_Light, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro, FeatConstants.WeaponProficiency_Martial, WeaponConstants.ShortSword)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro, FeatConstants.WeaponProficiency_Exotic, WeaponConstants.LightRepeatingCrossbow)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro, FeatConstants.SpecialQualities.Madness, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Darkness)] = new Dictionary<string, int>();
@@ -680,6 +687,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro_Sane, FeatConstants.ArmorProficiency_Light, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro_Sane, FeatConstants.WeaponProficiency_Martial, WeaponConstants.ShortSword)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro_Sane, FeatConstants.WeaponProficiency_Exotic, WeaponConstants.LightRepeatingCrossbow)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro_Sane, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro_Sane, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Darkness)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Derro_Sane, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Daze)] = new Dictionary<string, int>();
@@ -1932,12 +1940,26 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elasmosaurus, FeatConstants.SpecialQualities.Scent, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Elder, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities")] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Elder, FeatConstants.WeaponFinesse, string.Empty)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Elder, FeatConstants.Initiative_Improved, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Greater, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities")] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Greater, FeatConstants.WeaponFinesse, string.Empty)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Greater, FeatConstants.Initiative_Improved, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Huge, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities")] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Huge, FeatConstants.WeaponFinesse, string.Empty)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Huge, FeatConstants.Initiative_Improved, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Large, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities")] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Large, FeatConstants.WeaponFinesse, string.Empty)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Large, FeatConstants.Initiative_Improved, string.Empty)] = new Dictionary<string, int>();
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Medium, FeatConstants.WeaponFinesse, string.Empty)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Medium, FeatConstants.Initiative_Improved, string.Empty)] = new Dictionary<string, int>();
+
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Small, FeatConstants.WeaponFinesse, string.Empty)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Air_Small, FeatConstants.Initiative_Improved, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Earth_Elder, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities")] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Elemental_Earth_Elder, FeatConstants.SpecialQualities.EarthGlide, string.Empty)] = new Dictionary<string, int>();
@@ -2613,6 +2635,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.KuoToa, FeatConstants.Alertness, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.KuoToa, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Shortspear)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.KuoToa, FeatConstants.WeaponProficiency_Exotic, WeaponConstants.PincerStaff)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.KuoToa, FeatConstants.SpecialQualities.Adhesive, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.KuoToa, FeatConstants.SpecialQualities.Amphibious, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.KuoToa, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Electricity)] = new Dictionary<string, int>();
@@ -2825,6 +2848,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Naga_Dark, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectThoughts)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Naga_Dark, FeatConstants.SpecialQualities.Immunity, "Any form of mind reading")] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Naga_Dark, FeatConstants.SpecialQualities.Immunity, "Poison")] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Naga_Dark, FeatConstants.EschewMaterials, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Naga_Guardian, FeatConstants.EschewMaterials, string.Empty)] = new Dictionary<string, int>();
 
@@ -3930,6 +3954,9 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Gnome, FeatConstants.SpecialQualities.WeaponFamiliarity, WeaponConstants.GnomeHookedHammer)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Halfling, FeatConstants.SpecialQualities.AttackBonus, "thrown weapons and slings")] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Halfling, FeatConstants.ArmorProficiency_Light, string.Empty)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Halfling, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longsword)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Halfling, FeatConstants.WeaponProficiency_Simple, WeaponConstants.LightCrossbow)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Incorporeal, FeatConstants.SpecialQualities.Immunity, "50% chance to ignore any damage from a corporeal source (except for positive energy, negative energy, force effects such as magic missiles, or attacks made with ghost touch weapons)")] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Types.Subtypes.Incorporeal, FeatConstants.SpecialQualities.Immunity, FeatConstants.SpecialQualities.Blindsense)] = new Dictionary<string, int>();

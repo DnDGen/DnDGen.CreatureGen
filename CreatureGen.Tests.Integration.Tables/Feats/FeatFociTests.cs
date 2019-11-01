@@ -100,7 +100,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats
             WeaponConstants.HeavyRepeatingCrossbow,
             WeaponConstants.LightRepeatingCrossbow,
             WeaponConstants.Shuriken,
-            WeaponConstants.Net)]
+            WeaponConstants.Net,
+            WeaponConstants.PincerStaff)]
         [TestCase("Imp Alternate Form",
             CreatureConstants.Spider_Monstrous_Hunter_Small,
             CreatureConstants.Spider_Monstrous_Hunter_Medium,

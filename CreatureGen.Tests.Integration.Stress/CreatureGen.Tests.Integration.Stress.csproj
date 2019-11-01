@@ -79,7 +79,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="TreasureGen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DnDGen.TreasureGen.9.1.0\lib\TreasureGen.dll</HintPath>
+      <HintPath>..\packages\DnDGen.TreasureGen.9.2.0\lib\TreasureGen.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>

@@ -522,13 +522,49 @@
     <name>Air Elemental, ElderDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
+    <name>Air Elemental, ElderWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, ElderImproved Initiative</name>
+  </collection>
+  <collection>
     <name>Air Elemental, GreaterDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, GreaterWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, GreaterImproved Initiative</name>
   </collection>
   <collection>
     <name>Air Elemental, HugeDamage ReductionNo physical vulnerabilities</name>
   </collection>
   <collection>
+    <name>Air Elemental, HugeWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, HugeImproved Initiative</name>
+  </collection>
+  <collection>
     <name>Air Elemental, LargeDamage ReductionNo physical vulnerabilities</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, LargeWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, LargeImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, MediumWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, MediumImproved Initiative</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, SmallWeapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, SmallImproved Initiative</name>
   </collection>
   <collection>
     <name>Air MephitDamage ReductionVulnerable to magic weapons</name>
@@ -3222,6 +3258,21 @@
     <name>CouatlTelepathy</name>
   </collection>
   <collection>
+    <name>CouatlPsionicDetect chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>CouatlPsionicDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>CouatlPsionicInvisibility</name>
+  </collection>
+  <collection>
+    <name>CouatlPsionicPlane shift</name>
+  </collection>
+  <collection>
+    <name>CouatlEschew Materials</name>
+  </collection>
+  <collection>
     <name>CrocodileHold Breath</name>
   </collection>
   <collection>
@@ -3234,7 +3285,13 @@
     <name>Dark NagaImmunityPoison</name>
   </collection>
   <collection>
+    <name>Dark NagaEschew Materials</name>
+  </collection>
+  <collection>
     <name>DarkmantleBlindsight</name>
+  </collection>
+  <collection>
+    <name>DarkmantleSpell-Like AbilityDarkness</name>
   </collection>
   <collection>
     <name>Death SlaadChange ShapeAny humanoid form</name>
@@ -3306,6 +3363,9 @@
     <name>DerroMadness</name>
   </collection>
   <collection>
+    <name>DerroExotic Weapon ProficiencyLight repeating crossbow</name>
+  </collection>
+  <collection>
     <name>DerroMartial Weapon ProficiencyShort sword</name>
   </collection>
   <collection>
@@ -3328,6 +3388,9 @@
   </collection>
   <collection>
     <name>Derro (Sane)Armor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)Exotic Weapon ProficiencyLight repeating crossbow</name>
   </collection>
   <collection>
     <name>Derro (Sane)Martial Weapon ProficiencyShort sword</name>
@@ -5652,6 +5715,15 @@
     <name>HalflingAttack Bonusthrown weapons and slings</name>
   </collection>
   <collection>
+    <name>HalflingMartial Weapon ProficiencyLongsword</name>
+  </collection>
+  <collection>
+    <name>HalflingSimple Weapon ProficiencyLight crossbow</name>
+  </collection>
+  <collection>
+    <name>HalflingArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
     <name>HarpySimple Weapon ProficiencyClub</name>
   </collection>
   <collection>
@@ -6212,6 +6284,9 @@
   </collection>
   <collection>
     <name>Kuo-toaSimple Weapon ProficiencyShortspear</name>
+  </collection>
+  <collection>
+    <name>Kuo-toaExotic Weapon ProficiencyPincer staff</name>
   </collection>
   <collection>
     <name>Kuo-toaSlippery</name>

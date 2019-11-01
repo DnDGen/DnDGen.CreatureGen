@@ -133,9 +133,10 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             abilities[AbilityConstants.Strength].BaseScore = 90210;
 
             mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, "size")).Returns(42);
+            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, "creature")).Returns(600);
 
-            var grappleBonus = attacksGenerator.GenerateGrappleBonus("size", 9266, abilities[AbilityConstants.Strength]);
-            Assert.That(grappleBonus, Is.EqualTo(9266 + abilities[AbilityConstants.Strength].Modifier + 42));
+            var grappleBonus = attacksGenerator.GenerateGrappleBonus("creature", "size", 9266, abilities[AbilityConstants.Strength]);
+            Assert.That(grappleBonus, Is.EqualTo(9266 + abilities[AbilityConstants.Strength].Modifier + 42 + 600));
         }
 
         [Test]
@@ -144,8 +145,9 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
             abilities[AbilityConstants.Strength].BaseScore = 1;
 
             mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, "size")).Returns(-1);
+            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, "creature")).Returns(0);
 
-            var grappleBonus = attacksGenerator.GenerateGrappleBonus("size", 0, abilities[AbilityConstants.Strength]);
+            var grappleBonus = attacksGenerator.GenerateGrappleBonus("creature", "size", 0, abilities[AbilityConstants.Strength]);
             Assert.That(grappleBonus, Is.EqualTo(0 + abilities[AbilityConstants.Strength].Modifier - 1));
             Assert.That(grappleBonus, Is.EqualTo(-6));
         }
@@ -155,9 +157,7 @@ namespace CreatureGen.Tests.Unit.Generators.Attacks
         {
             abilities[AbilityConstants.Strength].BaseScore = 0;
 
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, "size")).Returns(42);
-
-            var grappleBonus = attacksGenerator.GenerateGrappleBonus("size", 9266, abilities[AbilityConstants.Strength]);
+            var grappleBonus = attacksGenerator.GenerateGrappleBonus("creature", "size", 9266, abilities[AbilityConstants.Strength]);
             Assert.That(grappleBonus, Is.Null);
         }
 

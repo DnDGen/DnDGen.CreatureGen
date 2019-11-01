@@ -143,7 +143,7 @@ namespace CreatureGen.Generators.Creatures
             creature.Skills = skillsGenerator.ApplyBonusesFromFeats(creature.Skills, creature.Feats, creature.Abilities);
             creature.HitPoints = hitPointsGenerator.RegenerateWith(creature.HitPoints, creature.Feats);
 
-            creature.GrappleBonus = attacksGenerator.GenerateGrappleBonus(creature.Size, creature.BaseAttackBonus, creature.Abilities[AbilityConstants.Strength]);
+            creature.GrappleBonus = attacksGenerator.GenerateGrappleBonus(creatureName, creature.Size, creature.BaseAttackBonus, creature.Abilities[AbilityConstants.Strength]);
 
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
             creature.Attacks = attacksGenerator.ApplyAttackBonuses(creature.Attacks, allFeats, creature.Abilities);

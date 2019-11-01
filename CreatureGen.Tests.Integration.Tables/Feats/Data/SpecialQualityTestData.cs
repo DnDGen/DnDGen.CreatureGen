@@ -835,6 +835,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Daze, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveBaseValue: 10));
                 testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SoundBurst, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveBaseValue: 12));
                 testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.ShortSword, requiresEquipment: true));
+                testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Exotic, focus: WeaponConstants.LightRepeatingCrossbow, requiresEquipment: true));
                 testCases[CreatureConstants.Derro_Sane].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
                 testCases[CreatureConstants.Destrachan].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 100));
@@ -886,7 +887,6 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Djinni_Noble].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Wish + ": 3 wishes to any non-genie who captures it", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Djinni_Noble].Add(SpecialQualityHelper.BuildData(FeatConstants.Initiative_Improved, power: 4));
 
-                testCases[CreatureConstants.Dog].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
                 testCases[CreatureConstants.Dog].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Scent));
                 testCases[CreatureConstants.Dog].Add(SpecialQualityHelper.BuildData(FeatConstants.Track));
 
@@ -2870,6 +2870,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Lizardfolk].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.HoldBreath));
                 testCases[CreatureConstants.Lizardfolk].Add(SpecialQualityHelper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
+                testCases[CreatureConstants.Lizardfolk].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Club, requiresEquipment: true));
+                testCases[CreatureConstants.Lizardfolk].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Javelin, requiresEquipment: true));
 
                 testCases[CreatureConstants.Locathah].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Longspear, requiresEquipment: true));
                 testCases[CreatureConstants.Locathah].Add(SpecialQualityHelper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.LightCrossbow, requiresEquipment: true));
@@ -3013,6 +3015,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Naga_Dark].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectThoughts, frequencyTimePeriod: FeatConstants.Frequencies.Constant, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveBaseValue: 12));
                 testCases[CreatureConstants.Naga_Dark].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Any form of mind reading"));
                 testCases[CreatureConstants.Naga_Dark].Add(SpecialQualityHelper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
+                testCases[CreatureConstants.Naga_Dark].Add(SpecialQualityHelper.BuildData(FeatConstants.EschewMaterials));
 
                 testCases[CreatureConstants.Naga_Guardian].Add(SpecialQualityHelper.BuildData(FeatConstants.EschewMaterials));
 
