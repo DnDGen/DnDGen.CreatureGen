@@ -825,7 +825,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateCreatureGrappleBonus()
         {
-            mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("size", 753, abilities[AbilityConstants.Strength])).Returns(2345);
+            mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("creature", "size", 753, abilities[AbilityConstants.Strength])).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.EqualTo(2345));
@@ -836,7 +836,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreatureAdvancement();
 
-            mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("advanced size", 999, abilities[AbilityConstants.Strength])).Returns(2345);
+            mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("creature", "advanced size", 999, abilities[AbilityConstants.Strength])).Returns(2345);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.EqualTo(2345));
@@ -846,7 +846,7 @@ namespace CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateNoGrappleBonus()
         {
             int? noBonus = null;
-            mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("size", 753, abilities[AbilityConstants.Strength])).Returns(noBonus);
+            mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("creature", "size", 753, abilities[AbilityConstants.Strength])).Returns(noBonus);
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.GrappleBonus, Is.Null);
