@@ -709,7 +709,7 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
         [TestCase(CreatureConstants.Squid, 4)]
         [TestCase(CreatureConstants.Squid_Giant, 0)]
         [TestCase(CreatureConstants.StagBeetle_Giant, 0)]
-        [TestCase(CreatureConstants.Stirge, 0)]
+        [TestCase(CreatureConstants.Stirge, 12)]
         [TestCase(CreatureConstants.Succubus, 0)]
         [TestCase(CreatureConstants.Tarrasque, 0)]
         [TestCase(CreatureConstants.Tendriculos, 0)]
