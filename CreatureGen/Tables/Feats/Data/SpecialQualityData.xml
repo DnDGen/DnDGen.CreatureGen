@@ -682,6 +682,7 @@
     <name>Average Salamander</name>
     <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Multiattack#0##0##0#False###0</entry>
+    <entry>Simple Weapon Proficiency#0#Spear#0##0#True###0</entry>
   </collection>
   <collection>
     <name>Average Xorn</name>
@@ -1161,6 +1162,10 @@
     <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
+    <entry>Spell-Like Ability#0#Hold person#0#At Will#0#False#Charisma#Will#13</entry>
+    <entry>Spell-Like Ability#0#Passwall#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Telekinesis#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Chaos hammer#1#Day#0#False#Charisma#Will#14</entry>
   </collection>
   <collection>
     <name>Boar</name>
@@ -2385,6 +2390,7 @@
   <collection>
     <name>Flamebrother Salamander</name>
     <entry>Multiattack#0##0##0#False###0</entry>
+    <entry>Simple Weapon Proficiency#0#Spear#0##0#True###0</entry>
   </collection>
   <collection>
     <name>Flesh Golem</name>
@@ -2870,6 +2876,16 @@
     <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
+    <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Protection from chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Shatter#0#At Will#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Dispel chaos/evil/good/law#3#Day#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13</entry>
   </collection>
   <collection>
     <name>Greater Barghest</name>
@@ -3046,6 +3062,16 @@
     <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
+    <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Protection from chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Shatter#0#At Will#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Dispel chaos/evil/good/law#3#Day#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Deeper darkness#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13</entry>
   </collection>
   <collection>
     <name>Grick</name>
@@ -3995,6 +4021,7 @@
     <name>Noble Salamander</name>
     <entry>Damage Reduction#15#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
     <entry>Multiattack#0##0##0#False###0</entry>
+    <entry>Simple Weapon Proficiency#0#Longspear#0##0#True###0</entry>
     <entry>Spell-Like Ability#0#Burning hands#3#Day#0#False#Charisma#Reflex#11</entry>
     <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13</entry>
