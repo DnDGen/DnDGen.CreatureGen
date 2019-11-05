@@ -1410,7 +1410,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         {
             var aquaticCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Aquatic);
 
-            AssertCollection(aquaticCreatures.Intersect(table.Keys), aquaticCreatures);
+            Assert.That(table.Keys, Is.SupersetOf(aquaticCreatures));
 
             foreach (var creature in aquaticCreatures)
             {
@@ -1428,7 +1428,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         {
             var aquaticCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Water);
 
-            AssertCollection(aquaticCreatures.Intersect(table.Keys), aquaticCreatures);
+            Assert.That(table.Keys, Is.SupersetOf(aquaticCreatures));
 
             foreach (var creature in aquaticCreatures)
             {

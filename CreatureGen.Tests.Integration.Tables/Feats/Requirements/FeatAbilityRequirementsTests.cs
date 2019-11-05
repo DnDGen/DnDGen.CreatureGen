@@ -2711,6 +2711,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Lizardfolk, FeatConstants.ArmorProficiency_Light, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Lizardfolk, FeatConstants.SpecialQualities.HoldBreath, string.Empty)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Lizardfolk, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Club)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Lizardfolk, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Javelin)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Locathah, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Longspear)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Locathah, FeatConstants.WeaponProficiency_Simple, WeaponConstants.LightCrossbow)] = new Dictionary<string, int>();
@@ -3207,11 +3209,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Sahuagin_Mutant, FeatConstants.SpecialQualities.SpeakWithSharks, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Sahuagin_Mutant, FeatConstants.SpecialQualities.WaterDependent, string.Empty)] = new Dictionary<string, int>();
 
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Salamander_Average, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Spear)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Salamander_Average, FeatConstants.Monster.Multiattack, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Salamander_Average, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons")] = new Dictionary<string, int>();
 
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Salamander_Flamebrother, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Spear)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Salamander_Flamebrother, FeatConstants.Monster.Multiattack, string.Empty)] = new Dictionary<string, int>();
 
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Salamander_Noble, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Longspear)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Salamander_Noble, FeatConstants.Monster.Multiattack, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Salamander_Noble, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons")] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Salamander_Noble, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.BurningHands)] = new Dictionary<string, int>();
@@ -3299,6 +3304,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Blue, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Blue, FeatConstants.SpecialQualities.FastHealing, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Blue, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Sonic)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Blue, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ChaosHammer)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Blue, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HoldPerson)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Blue, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Passwall)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Blue, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Telekinesis)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.ChangeShape, "Any humanoid form")] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to lawful weapons")] = new Dictionary<string, int>();
@@ -3309,6 +3318,25 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.FastHealing, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Sonic)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.Telepathy, string.Empty)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AnimateObjects)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ChaosHammer)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectMagic)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelAlignment)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Fear)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FingerOfDeath)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Fireball)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Fly)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Identify)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Invisibility)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MagicCircleAgainstAlignment)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.SeeInvisibility)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Shatter)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CircleOfDeath)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CloakOfChaos)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.WordOfChaos)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Implosion)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Death, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.PowerWordBlind)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.ChangeShape, "Any humanoid form")] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to lawful weapons")] = new Dictionary<string, int>();
@@ -3318,6 +3346,19 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.FastHealing, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Sonic)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ChaosHammer)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectMagic)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Identify)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Invisibility)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.LightningBolt)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MagicCircleAgainstAlignment)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.SeeInvisibility)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Shatter)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AnimateObjects)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelAlignment)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Fly)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Gray, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.PowerWordStun)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.ChangeShape, "Medium or Large humanoid form")] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Acid)] = new Dictionary<string, int>();
@@ -3326,6 +3367,16 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.FastHealing, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Sonic)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ChaosHammer)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectMagic)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectThoughts)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Fear)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ProtectionFromAlignment)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.SeeInvisibility)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Shatter)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelAlignment)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness)] = new Dictionary<string, int>();
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Green, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Fireball)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Red, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Acid)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Slaad_Red, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold)] = new Dictionary<string, int>();
@@ -3344,8 +3395,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Snake_Viper_Medium, FeatConstants.SpecialQualities.Scent, string.Empty)] = new Dictionary<string, int>();
 
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Snake_Viper_Small, FeatConstants.WeaponFinesse, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Snake_Viper_Small, FeatConstants.SpecialQualities.Scent, string.Empty)] = new Dictionary<string, int>();
 
+                    testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Snake_Viper_Tiny, FeatConstants.WeaponFinesse, string.Empty)] = new Dictionary<string, int>();
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Snake_Viper_Tiny, FeatConstants.SpecialQualities.Scent, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[SpecialQualityHelper.BuildRequirementKey(CreatureConstants.Spectre, FeatConstants.SpecialQualities.SunlightPowerlessness, string.Empty)] = new Dictionary<string, int>();

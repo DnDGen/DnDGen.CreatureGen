@@ -917,7 +917,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
-            AssertCollection(table.Keys.Intersect(creatures), creatures);
+            Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {
@@ -935,7 +935,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
-            AssertCollection(table.Keys.Intersect(creatures), creatures);
+            Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {

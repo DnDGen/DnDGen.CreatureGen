@@ -776,7 +776,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             var aerialSpeeds = speeds.Where(kvp => kvp.Value.Any(s => s.Type == SpeedConstants.Fly));
             var aerialCreatures = aerialSpeeds.Select(kvp => kvp.Key);
 
-            AssertCollection(aerialCreatures.Intersect(table.Keys), aerialCreatures);
+            Assert.That(table.Keys, Is.SupersetOf(aerialCreatures));
 
             foreach (var creature in aerialCreatures)
             {
@@ -796,7 +796,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             var nonAerialSpeeds = speeds.Except(aerialSpeeds);
             var nonAerialCreatures = nonAerialSpeeds.Select(kvp => kvp.Key);
 
-            AssertCollection(nonAerialCreatures.Intersect(table.Keys), nonAerialCreatures);
+            Assert.That(table.Keys, Is.SupersetOf(nonAerialCreatures));
 
             foreach (var creature in nonAerialCreatures)
             {

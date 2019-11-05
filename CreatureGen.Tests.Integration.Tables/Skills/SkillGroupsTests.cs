@@ -4611,8 +4611,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             var creatureTypes = CollectionSelector.Explode(TableNameConstants.Collection.CreatureTypes, creature);
             creatureTypes = creatureTypes.Except(new[] { creature });
 
-            Assert.That(table.Keys, Contains.Item(creature));
-            AssertCollection(creatureTypes.Intersect(table.Keys), creatureTypes);
+            Assert.That(table.Keys, Contains.Item(creature)
+                .And.SupersetOf(creatureTypes));
 
             foreach (var creatureType in creatureTypes)
             {
@@ -4632,8 +4632,8 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
 
             var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
-            Assert.That(table.Keys, Contains.Item(creatureType));
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
+            Assert.That(table.Keys, Contains.Item(creatureType)
+                .And.SupersetOf(creatures));
 
             var creatureSkillGroups = table.Where(kvp => creatures.Contains(kvp.Key)).Select(kvp => kvp.Value);
             var commonSkills = creatureSkillGroups.First();

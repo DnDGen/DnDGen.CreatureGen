@@ -25,7 +25,7 @@ namespace CreatureGen.Tests.Integration.Tables
         protected void AssertCollectionNames(IEnumerable<string> names)
         {
             AssertUniqueCollection(names);
-            AssertCollection(table.Keys, names);
+            Assert.That(table.Keys, Is.EquivalentTo(names));
         }
 
         protected IEnumerable<string> GetCollection(string name)
@@ -49,15 +49,8 @@ namespace CreatureGen.Tests.Integration.Tables
 
         public void AssertCollection(string name, params string[] collection)
         {
-            Assert.That(table.Keys, Contains.Item(name));
-            AssertCollection(table[name], collection);
-        }
-
-        protected void AssertCollection(IEnumerable<string> actual, IEnumerable<string> expected, string message = "")
-        {
-            Assert.That(actual, Is.EquivalentTo(expected), message);
-            Assert.That(expected, Is.EquivalentTo(actual), message);
-            Assert.That(actual.Count(), Is.EqualTo(expected.Count()), message);
+            Assert.That(table, Contains.Key(name));
+            Assert.That(table[name], Is.EquivalentTo(collection));
         }
 
         public void AssertOrderedCollection(string name, params string[] collection)

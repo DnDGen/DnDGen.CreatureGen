@@ -4129,7 +4129,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
+            Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {
@@ -4144,7 +4144,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
+            Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {
@@ -4161,7 +4161,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
+            Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {
@@ -4176,7 +4176,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
 
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
+            Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {
@@ -4204,7 +4204,7 @@ namespace CreatureGen.Tests.Integration.Tables.Abilities
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
+            Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             var allAbilities = TypesAndAmountsSelector.Select(tableName, GroupConstants.All);
             var allAbilitiesNames = allAbilities.Select(a => a.Type);

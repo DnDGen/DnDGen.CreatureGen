@@ -118,7 +118,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             var celestialCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature);
 
-            AssertCollection(celestialCreatures, validCreatures);
+            Assert.That(celestialCreatures, Is.EquivalentTo(validCreatures));
         }
 
         private bool AlignmentMatches(string creature, params string[] alignmentGroups)
@@ -189,7 +189,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             var celestialCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfCelestial);
 
-            AssertCollection(celestialCreatures, validCreatures);
+            Assert.That(celestialCreatures, Is.EquivalentTo(validCreatures));
         }
 
         [Test]
@@ -217,7 +217,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             var dragonCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfDragon);
 
-            AssertCollection(dragonCreatures, validCreatures);
+            Assert.That(dragonCreatures, Is.EquivalentTo(validCreatures));
         }
 
         [Test]
@@ -256,7 +256,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             var fiendishCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.FiendishCreature);
 
-            AssertCollection(fiendishCreatures, validCreatures);
+            Assert.That(fiendishCreatures, Is.EquivalentTo(validCreatures));
         }
 
         [Test]
@@ -295,7 +295,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             var fiendishCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend);
 
-            AssertCollection(fiendishCreatures, validCreatures);
+            Assert.That(fiendishCreatures, Is.EquivalentTo(validCreatures));
         }
     }
 }

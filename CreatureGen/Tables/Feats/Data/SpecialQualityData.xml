@@ -1815,6 +1815,7 @@
     <entry>Spell-Like Ability#0#Detect thoughts#0#Constant#0#False#Charisma#Will#12</entry>
     <entry>Immunity#0#Any form of mind reading#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
+    <entry>Eschew Materials#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Darkmantle</name>
@@ -1832,6 +1833,25 @@
     <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
+    <entry>Spell-Like Ability#0#Animate objects#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Dispel chaos/evil/good/law#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Finger of death#0#At Will#0#False#Charisma#Fortitude#17</entry>
+    <entry>Spell-Like Ability#0#Fireball#0#At Will#0#False#Charisma#Reflex#13</entry>
+    <entry>Spell-Like Ability#0#Fly#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Identify#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Shatter#0#At Will#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Circle of death#3#Day#0#False#Charisma#Fortitude#16</entry>
+    <entry>Spell-Like Ability#0#Cloak of chaos#3#Day#0#False#Charisma#Will#18</entry>
+    <entry>Spell-Like Ability#0#Word of chaos#3#Day#0#False#Charisma#Will#17</entry>
+    <entry>Spell-Like Ability#0#Implosion#1#Day#0#False#Charisma#Fortitude#19</entry>
+    <entry>Spell-Like Ability#0#Power word blind#1#Day#0#False###0</entry>
   </collection>
   <collection>
     <name>Deep Dwarf</name>
@@ -2879,13 +2899,16 @@
     <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
-    <entry>Spell-Like Ability#0#Fear#0#At Will#0#False#Charisma#Will#14</entry>
-    <entry>Spell-Like Ability#0#Protection from chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Identify#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Lightning bolt#0#At Will#0#False#Charisma#Reflex#13</entry>
+    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Shatter#0#At Will#0#False#Charisma#Will#12</entry>
+    <entry>Spell-Like Ability#0#Animate objects#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Dispel chaos/evil/good/law#3#Day#0#False#Charisma#Will#15</entry>
-    <entry>Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13</entry>
+    <entry>Spell-Like Ability#0#Fly#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Power word stun#1#Day#0#False###0</entry>
   </collection>
   <collection>
     <name>Greater Barghest</name>
@@ -3560,6 +3583,8 @@
     <name>Lizardfolk</name>
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Hold Breath#0##0##0#False###0</entry>
+    <entry>Simple Weapon Proficiency#0#Club#0##0#True###0</entry>
+    <entry>Simple Weapon Proficiency#0#Javelin#0##0#True###0</entry>
   </collection>
   <collection>
     <name>Locathah</name>
@@ -5111,10 +5136,12 @@
   <collection>
     <name>Viper Snake, Small</name>
     <entry>Scent#0##0##0#False###0</entry>
+    <entry>Weapon Finesse#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Viper Snake, Tiny</name>
     <entry>Scent#0##0##0#False###0</entry>
+    <entry>Weapon Finesse#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Vrock</name>

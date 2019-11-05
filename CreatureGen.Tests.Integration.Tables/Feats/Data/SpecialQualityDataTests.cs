@@ -481,7 +481,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             var types = CollectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
             var creatureTypes = types[creature].Except(new[] { creature }); //INFO: In case creature name duplicates as type, such as Gnoll
 
-            AssertCollection(table.Keys.Intersect(creatureTypes), creatureTypes);
+            Assert.That(table.Keys, Is.SupersetOf(creatureTypes));
 
             var creatureTestCaseSpecialQualityDatas = GetTestCaseData(creature);
             var creatureTestCaseSpecialQualities = creatureTestCaseSpecialQualityDatas.Select(d => SpecialQualityHelper.BuildData(d));

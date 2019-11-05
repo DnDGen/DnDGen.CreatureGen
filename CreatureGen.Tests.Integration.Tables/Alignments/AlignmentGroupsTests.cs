@@ -1128,7 +1128,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
+            Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {
@@ -1155,7 +1155,7 @@ namespace CreatureGen.Tests.Integration.Tables.Alignments
         {
             var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
-            AssertCollection(creatures.Intersect(table.Keys), creatures);
+            Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {

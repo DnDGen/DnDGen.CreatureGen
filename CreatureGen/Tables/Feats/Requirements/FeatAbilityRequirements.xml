@@ -941,6 +941,9 @@
     <name>Average SalamanderMultiattack</name>
   </collection>
   <collection>
+    <name>Average SalamanderSimple Weapon ProficiencySpear</name>
+  </collection>
+  <collection>
     <name>Average XornAll-Around Vision</name>
   </collection>
   <collection>
@@ -1956,6 +1959,18 @@
   </collection>
   <collection>
     <name>Blue SlaadImmunitySonic</name>
+  </collection>
+  <collection>
+    <name>Blue SlaadSpell-Like AbilityChaos hammer</name>
+  </collection>
+  <collection>
+    <name>Blue SlaadSpell-Like AbilityHold person</name>
+  </collection>
+  <collection>
+    <name>Blue SlaadSpell-Like AbilityPasswall</name>
+  </collection>
+  <collection>
+    <name>Blue SlaadSpell-Like AbilityTelekinesis</name>
   </collection>
   <collection>
     <name>BoarScent</name>
@@ -3290,6 +3305,63 @@
     <name>Death SlaadTelepathy</name>
   </collection>
   <collection>
+    <name>Death SlaadSpell-Like AbilityAnimate objects</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityChaos hammer</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityDeeper darkness</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityDispel chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityFear</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityFinger of death</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityFireball</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityFly</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityIdentify</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityShatter</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityCircle of death</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityCloak of chaos</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityWord of chaos</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityImplosion</name>
+  </collection>
+  <collection>
+    <name>Death SlaadSpell-Like AbilityPower word blind</name>
+  </collection>
+  <collection>
     <name>Deep DwarfDarkvision</name>
   </collection>
   <collection>
@@ -4206,6 +4278,9 @@
   </collection>
   <collection>
     <name>Flamebrother SalamanderMultiattack</name>
+  </collection>
+  <collection>
+    <name>Flamebrother SalamanderSimple Weapon ProficiencySpear</name>
   </collection>
   <collection>
     <name>Flesh GolemDamage ReductionVulnerable to adamantine weapons</name>
@@ -5144,6 +5219,45 @@
     <name>Gray SlaadImmunitySonic</name>
   </collection>
   <collection>
+    <name>Gray SlaadSpell-Like AbilityChaos hammer</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilityDeeper darkness</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilityIdentify</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilityInvisibility</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilityLightning bolt</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilityShatter</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilityAnimate objects</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilityDispel chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilityFly</name>
+  </collection>
+  <collection>
+    <name>Gray SlaadSpell-Like AbilityPower word stun</name>
+  </collection>
+  <collection>
     <name>Greater BarghestChange ShapeGoblin or wolf</name>
   </collection>
   <collection>
@@ -5517,6 +5631,36 @@
   </collection>
   <collection>
     <name>Green SlaadImmunitySonic</name>
+  </collection>
+  <collection>
+    <name>Green SlaadSpell-Like AbilityChaos hammer</name>
+  </collection>
+  <collection>
+    <name>Green SlaadSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>Green SlaadSpell-Like AbilityDetect thoughts</name>
+  </collection>
+  <collection>
+    <name>Green SlaadSpell-Like AbilityFear</name>
+  </collection>
+  <collection>
+    <name>Green SlaadSpell-Like AbilityProtection from chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>Green SlaadSpell-Like AbilitySee invisibility</name>
+  </collection>
+  <collection>
+    <name>Green SlaadSpell-Like AbilityShatter</name>
+  </collection>
+  <collection>
+    <name>Green SlaadSpell-Like AbilityDispel chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>Green SlaadSpell-Like AbilityDeeper darkness</name>
+  </collection>
+  <collection>
+    <name>Green SlaadSpell-Like AbilityFireball</name>
   </collection>
   <collection>
     <name>GrickDamage ReductionVulnerable to magic weapons</name>
@@ -6434,6 +6578,12 @@
     <name>LizardfolkHold Breath</name>
   </collection>
   <collection>
+    <name>LizardfolkSimple Weapon ProficiencyClub</name>
+  </collection>
+  <collection>
+    <name>LizardfolkSimple Weapon ProficiencyJavelin</name>
+  </collection>
+  <collection>
     <name>LocathahSimple Weapon ProficiencyLongspear</name>
   </collection>
   <collection>
@@ -7221,6 +7371,9 @@
   </collection>
   <collection>
     <name>Noble SalamanderSpell-Like AbilityWall of fire</name>
+  </collection>
+  <collection>
+    <name>Noble SalamanderSimple Weapon ProficiencyLongspear</name>
   </collection>
   <collection>
     <name>NymphDamage ReductionVulnerable to cold iron weapons</name>
@@ -9215,7 +9368,13 @@
     <name>Viper Snake, SmallScent</name>
   </collection>
   <collection>
+    <name>Viper Snake, SmallWeapon Finesse</name>
+  </collection>
+  <collection>
     <name>Viper Snake, TinyScent</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, TinyWeapon Finesse</name>
   </collection>
   <collection>
     <name>VrockDamage ReductionVulnerable to good weapons</name>
