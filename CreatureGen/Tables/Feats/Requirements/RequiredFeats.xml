@@ -972,6 +972,9 @@
     <name>Average SalamanderMultiattack</name>
   </collection>
   <collection>
+    <name>Average SalamanderSimple Weapon ProficiencySpear</name>
+  </collection>
+  <collection>
     <name>Average XornAll-Around Vision</name>
   </collection>
   <collection>
@@ -4310,6 +4313,9 @@
     <name>Flamebrother SalamanderMultiattack</name>
   </collection>
   <collection>
+    <name>Flamebrother SalamanderSimple Weapon ProficiencySpear</name>
+  </collection>
+  <collection>
     <name>Flesh GolemDamage ReductionVulnerable to adamantine weapons</name>
   </collection>
   <collection>
@@ -5662,6 +5668,9 @@
   </collection>
   <collection>
     <name>Green SlaadSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>Green SlaadSpell-Like AbilityDetect thoughts</name>
   </collection>
   <collection>
     <name>Green SlaadSpell-Like AbilityFear</name>
@@ -7395,6 +7404,9 @@
   </collection>
   <collection>
     <name>Noble SalamanderSpell-Like AbilityWall of fire</name>
+  </collection>
+  <collection>
+    <name>Noble SalamanderSimple Weapon ProficiencyLongspear</name>
   </collection>
   <collection>
     <name>NymphDamage ReductionVulnerable to cold iron weapons</name>
@@ -9389,7 +9401,13 @@
     <name>Viper Snake, SmallScent</name>
   </collection>
   <collection>
+    <name>Viper Snake, SmallWeapon Finesse</name>
+  </collection>
+  <collection>
     <name>Viper Snake, TinyScent</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, TinyWeapon Finesse</name>
   </collection>
   <collection>
     <name>VrockDamage ReductionVulnerable to good weapons</name>

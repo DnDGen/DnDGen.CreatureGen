@@ -42,10 +42,6 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Aberration</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
     <name>Aboleth</name>
     <entry>0</entry>
   </collection>
@@ -114,10 +110,6 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Animal</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
     <name>Animated Object, Anvil, Colossal</name>
     <entry>0</entry>
   </collection>
@@ -143,7 +135,7 @@
   </collection>
   <collection>
     <name>Animated Object, Anvil, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Stone), Colossal</name>
@@ -171,7 +163,7 @@
   </collection>
   <collection>
     <name>Animated Object, Block (Stone), Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Wood), Colossal</name>
@@ -199,7 +191,7 @@
   </collection>
   <collection>
     <name>Animated Object, Block (Wood), Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Box, Colossal</name>
@@ -227,7 +219,7 @@
   </collection>
   <collection>
     <name>Animated Object, Box, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Carpet, Colossal</name>
@@ -255,7 +247,7 @@
   </collection>
   <collection>
     <name>Animated Object, Carpet, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Carriage, Colossal</name>
@@ -283,7 +275,7 @@
   </collection>
   <collection>
     <name>Animated Object, Carriage, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Chain, Colossal</name>
@@ -311,7 +303,7 @@
   </collection>
   <collection>
     <name>Animated Object, Chain, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Chair, Colossal</name>
@@ -339,7 +331,7 @@
   </collection>
   <collection>
     <name>Animated Object, Chair, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Clothes, Colossal</name>
@@ -367,7 +359,7 @@
   </collection>
   <collection>
     <name>Animated Object, Clothes, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Ladder, Colossal</name>
@@ -395,7 +387,7 @@
   </collection>
   <collection>
     <name>Animated Object, Ladder, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Rope, Colossal</name>
@@ -423,7 +415,7 @@
   </collection>
   <collection>
     <name>Animated Object, Rope, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Rug, Colossal</name>
@@ -451,7 +443,7 @@
   </collection>
   <collection>
     <name>Animated Object, Rug, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Sled, Colossal</name>
@@ -479,7 +471,7 @@
   </collection>
   <collection>
     <name>Animated Object, Sled, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Animal), Colossal</name>
@@ -507,7 +499,7 @@
   </collection>
   <collection>
     <name>Animated Object, Statue (Animal), Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Humanoid), Colossal</name>
@@ -535,7 +527,7 @@
   </collection>
   <collection>
     <name>Animated Object, Statue (Humanoid), Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Stool, Colossal</name>
@@ -563,7 +555,7 @@
   </collection>
   <collection>
     <name>Animated Object, Stool, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Table, Colossal</name>
@@ -591,7 +583,7 @@
   </collection>
   <collection>
     <name>Animated Object, Table, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Tapestry, Colossal</name>
@@ -619,7 +611,7 @@
   </collection>
   <collection>
     <name>Animated Object, Tapestry, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Animated Object, Wagon, Colossal</name>
@@ -647,7 +639,7 @@
   </collection>
   <collection>
     <name>Animated Object, Wagon, Tiny</name>
-    <entry>0.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Ankheg</name>
@@ -727,7 +719,7 @@
   </collection>
   <collection>
     <name>Bat</name>
-    <entry>.25</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
@@ -1011,7 +1003,7 @@
   </collection>
   <collection>
     <name>Cat</name>
-    <entry>.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Centaur</name>
@@ -1079,10 +1071,6 @@
   </collection>
   <collection>
     <name>Constrictor Snake</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
-    <name>Construct</name>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1270,10 +1258,6 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Dragon</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
     <name>Dragon Turtle</name>
     <entry>0</entry>
   </collection>
@@ -1378,10 +1362,6 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Elemental</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
     <name>Elephant</name>
     <entry>0</entry>
   </collection>
@@ -1415,10 +1395,6 @@
   </collection>
   <collection>
     <name>Ettin</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
-    <name>Fey</name>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1527,10 +1503,6 @@
   </collection>
   <collection>
     <name>Ghoul</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
-    <name>Giant</name>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1767,11 +1739,11 @@
   </collection>
   <collection>
     <name>Grig</name>
-    <entry>.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Grig with fiddle</name>
-    <entry>.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Grimlock</name>
@@ -1867,10 +1839,6 @@
   </collection>
   <collection>
     <name>Human</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
-    <name>Humanoid</name>
     <entry>0</entry>
   </collection>
   <collection>
@@ -1983,7 +1951,7 @@
   </collection>
   <collection>
     <name>Lizard</name>
-    <entry>.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
@@ -1995,10 +1963,6 @@
   </collection>
   <collection>
     <name>Locust Swarm</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
-    <name>Magical Beast</name>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2095,14 +2059,10 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
-    <entry>.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
-    <entry>.25</entry>
-  </collection>
-  <collection>
-    <name>Monstrous Humanoid</name>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2131,7 +2091,7 @@
   </collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
-    <entry>.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Colossal</name>
@@ -2159,7 +2119,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Tiny</name>
-    <entry>.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Colossal</name>
@@ -2187,7 +2147,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Tiny</name>
-    <entry>.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
@@ -2278,10 +2238,6 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Ooze</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
     <name>Ooze Mephit</name>
     <entry>0</entry>
   </collection>
@@ -2295,10 +2251,6 @@
   </collection>
   <collection>
     <name>Otyugh</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
-    <name>Outsider</name>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2338,10 +2290,6 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Plant</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
     <name>Polar Bear</name>
     <entry>0</entry>
   </collection>
@@ -2375,7 +2323,7 @@
   </collection>
   <collection>
     <name>Rat</name>
-    <entry>.25</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Rat Swarm</name>
@@ -2383,7 +2331,7 @@
   </collection>
   <collection>
     <name>Raven</name>
-    <entry>.25</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Ravid</name>
@@ -2639,7 +2587,7 @@
   </collection>
   <collection>
     <name>Squid</name>
-    <entry>0</entry>
+    <entry>4</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
@@ -2647,7 +2595,7 @@
   </collection>
   <collection>
     <name>Stirge</name>
-    <entry>0</entry>
+    <entry>12</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
@@ -2715,7 +2663,7 @@
   </collection>
   <collection>
     <name>Toad</name>
-    <entry>.25</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Treant</name>
@@ -2766,10 +2714,6 @@
     <entry>0</entry>
   </collection>
   <collection>
-    <name>Undead</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
     <name>Unicorn</name>
     <entry>0</entry>
   </collection>
@@ -2779,10 +2723,6 @@
   </collection>
   <collection>
     <name>Vargouille</name>
-    <entry>0</entry>
-  </collection>
-  <collection>
-    <name>Vermin</name>
     <entry>0</entry>
   </collection>
   <collection>
@@ -2807,7 +2747,7 @@
   </collection>
   <collection>
     <name>Viper Snake, Tiny</name>
-    <entry>.25</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>Vrock</name>
@@ -2851,7 +2791,7 @@
   </collection>
   <collection>
     <name>Weasel</name>
-    <entry>.5</entry>
+    <entry>0</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
