@@ -909,7 +909,7 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
                 //Tiny
                 testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon", $"2d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
                 //small
