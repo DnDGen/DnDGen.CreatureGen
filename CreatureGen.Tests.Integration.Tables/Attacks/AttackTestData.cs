@@ -1371,7 +1371,7 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
                 //tiny
                 testCases[CreatureConstants.Dragon_White_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Dragon_White_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_White_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon", $"1d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
                 //small
@@ -1481,7 +1481,7 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
                 //tiny
                 testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (fire)", $"1d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
                 testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(AttackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -1741,7 +1741,7 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
                 //tiny
                 testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData("Claw", $"1d3", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (acid)", $"2d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(AttackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 

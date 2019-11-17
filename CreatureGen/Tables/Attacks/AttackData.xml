@@ -2461,8 +2461,8 @@
     <entry>Bite@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@1d4@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon (fire)@4d6 fire@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Breath Weapon (sleep)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Sleep for 1d6+4 rounds@0@0</entry>
+    <entry>Breath Weapon (fire)@3d6 fire@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (sleep)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Sleep for 1d6+3 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -2471,46 +2471,53 @@
     <entry>Bite@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@1d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon (fire)@3d6 fire@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Breath Weapon (sleep)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Sleep for 1d6+3 rounds@0@0</entry>
+    <entry>Tail Slap@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon (fire)@5d6 fire@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (sleep)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Sleep for 1d6+5 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Adult</name>
-    <entry>15</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Huge</entry>
-    <entry>15</entry>
-    <entry>True</entry>
-    <entry>7</entry>
-    <entry>20</entry>
-    <entry>0</entry>
+    <entry>Bite@2d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@2d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@1d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Crush@2d8@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
+    <entry>Breath Weapon (electricity)@6d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+6 rounds@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Ancient</name>
-    <entry>22</entry>
-    <entry></entry>
-    <entry>15</entry>
-    <entry>Gargantuan</entry>
-    <entry>20</entry>
-    <entry>True</entry>
-    <entry>15</entry>
-    <entry>32</entry>
-    <entry>0</entry>
+    <entry>Bite@4d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@2d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@2d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@2d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Crush@4d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
+    <entry>Tail Sweep@2d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
+    <entry>Breath Weapon (electricity)@10d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+10 rounds@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Great Wyrm</name>
-    <entry>25</entry>
-    <entry></entry>
-    <entry>15</entry>
-    <entry>Gargantuan</entry>
-    <entry>20</entry>
-    <entry>True</entry>
-    <entry>19</entry>
-    <entry>38</entry>
-    <entry>0</entry>
+    <entry>Bite@4d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@2d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@2d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@2d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Crush@4d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
+    <entry>Tail Sweep@2d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
+    <entry>Breath Weapon (electricity)@12d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+12 rounds@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Juvenile</name>
@@ -2574,15 +2581,17 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrm</name>
-    <entry>23</entry>
-    <entry></entry>
-    <entry>15</entry>
-    <entry>Gargantuan</entry>
-    <entry>20</entry>
-    <entry>True</entry>
-    <entry>17</entry>
-    <entry>35</entry>
-    <entry>0</entry>
+    <entry>Bite@4d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@2d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@2d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@2d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Crush@4d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
+    <entry>Tail Sweep@2d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
+    <entry>Breath Weapon (electricity)@11d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+11 rounds@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrmling</name>
