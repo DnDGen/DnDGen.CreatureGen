@@ -2485,7 +2485,7 @@
     <entry>Wing@1d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Tail Slap@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Crush@2d8@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
-    <entry>Breath Weapon (electricity)@6d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (electricity)@12d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+6 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -2499,7 +2499,7 @@
     <entry>Tail Slap@2d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Crush@4d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@2d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
-    <entry>Breath Weapon (electricity)@10d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (electricity)@20d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+10 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -2513,7 +2513,7 @@
     <entry>Tail Slap@2d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Crush@4d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@2d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
-    <entry>Breath Weapon (electricity)@12d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (electricity)@24d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+12 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -2521,15 +2521,14 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Juvenile</name>
-    <entry>9</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>True</entry>
-    <entry>3</entry>
-    <entry>14</entry>
-    <entry>0</entry>
+    <entry>Bite@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon (electricity)@8d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+4 rounds@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Mature Adult</name>
