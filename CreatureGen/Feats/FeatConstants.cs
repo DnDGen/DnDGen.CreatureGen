@@ -425,7 +425,7 @@ namespace CreatureGen.Feats
             public const string AtWill = "At Will";
             public const string Hit = "Hit";
             public const string Round = "Round (6 seconds)";
-            public const string Turn = "Turn (1 minute)";
+            public const string Minute = "Minute (10 rounds)";
             public const string Hour = "Hour";
             public const string Day = "Day";
             public const string Week = "Week";

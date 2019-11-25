@@ -164,7 +164,7 @@ namespace CreatureGen.Tests.Integration
                     .Or.EqualTo(FeatConstants.Frequencies.AtWill)
                     .Or.EqualTo(FeatConstants.Frequencies.Hit)
                     .Or.EqualTo(FeatConstants.Frequencies.Round)
-                    .Or.EqualTo(FeatConstants.Frequencies.Turn)
+                    .Or.EqualTo(FeatConstants.Frequencies.Minute)
                     .Or.EqualTo(FeatConstants.Frequencies.Day)
                     .Or.EqualTo(FeatConstants.Frequencies.Week)
                     .Or.Empty, $"{creature.Summary} {feat.Name}");

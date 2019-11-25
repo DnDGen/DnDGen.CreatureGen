@@ -321,7 +321,7 @@ namespace CreatureGen.Tests.Unit.Feats
         [TestCase(FeatConstants.Frequencies.AtWill, "At Will")]
         [TestCase(FeatConstants.Frequencies.Hit, "Hit")]
         [TestCase(FeatConstants.Frequencies.Round, "Round (6 seconds)")]
-        [TestCase(FeatConstants.Frequencies.Turn, "Turn (1 minute)")]
+        [TestCase(FeatConstants.Frequencies.Minute, "Minute (10 rounds)")]
         [TestCase(FeatConstants.Frequencies.Hour, "Hour")]
         [TestCase(FeatConstants.Frequencies.Day, "Day")]
         [TestCase(FeatConstants.Frequencies.Week, "Week")]

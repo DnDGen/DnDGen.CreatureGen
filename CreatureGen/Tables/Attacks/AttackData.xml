@@ -968,15 +968,9 @@
   </collection>
   <collection>
     <name>Brown Bear</name>
-    <entry>4</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>0</entry>
+    <entry>Claw@1d8@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Polar Bear</name>
@@ -1131,267 +1125,140 @@
   </collection>
   <collection>
     <name>Bugbear</name>
-    <entry>2</entry>
-    <entry>1</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Unarmed Strike@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Bulette</name>
-    <entry>7</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Huge</entry>
-    <entry>15</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>12</entry>
-    <entry>0</entry>
+    <entry>Bite@2d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@2d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Leap@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Cachalot Whale</name>
-    <entry>7</entry>
-    <entry></entry>
-    <entry>15</entry>
-    <entry>Gargantuan</entry>
-    <entry>20</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>9</entry>
-    <entry>0</entry>
+    <entry>Bite@4d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Tail Slap@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
-    <entry>1</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>0</entry>
+    <entry>Bite@1d4@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Camel, Dromedary (One-Humped)</name>
-    <entry>1</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>0</entry>
+    <entry>Bite@1d4@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Carrion Crawler</name>
-    <entry>4</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>6</entry>
-    <entry>0</entry>
+    <entry>Tentacle@@True@True@True@False@8@Round (6 seconds)@@@melee@Paralysis@0@0</entry>
+    <entry>Bite@1d4@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Paralysis@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@paralyzed for 2d4 rounds@0@0</entry>
   </collection>
   <collection>
     <name>Cat</name>
-    <entry>1/4</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>Tiny</entry>
-    <entry>2.5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>Claw@1d2@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d3@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Centaur</name>
-    <entry>3</entry>
-    <entry>2</entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Unarmed Strike@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Hoof@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Centipede Swarm</name>
-    <entry>4</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>Diminutive</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>Swarm@2d6@True@True@True@False@1@Round (6 seconds)@@@swarm@Poison@0@0</entry>
+    <entry>Distraction@@True@True@True@True@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Poison@@True@True@True@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d4 Dex@0@0</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
-    <entry>6</entry>
-    <entry>6</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>8</entry>
-    <entry>2</entry>
+    <entry>Melee@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Dancing Chains@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@0</entry>
+    <entry>Unnerving Gaze@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Chaos Beast</name>
-    <entry>7</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>0</entry>
+    <entry>Claw@1d3@True@True@True@False@2@Round (6 seconds)@@@melee@Corporeal Instability@1@0</entry>
+    <entry>Corporeal Instability@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Cheetah</name>
-    <entry>2</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d2@True@True@True@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Trip@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Chimera (Black Dragon head)</name>
-    <entry>7</entry>
-    <entry>2</entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>9</entry>
-    <entry>0</entry>
+    <entry>Bite@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath weapon@3d8 acid@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Chimera (Blue Dragon head)</name>
-    <entry>7</entry>
-    <entry>2</entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>9</entry>
-    <entry>0</entry>
+    <entry>Bite@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath weapon@3d8 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Chimera (Green Dragon head)</name>
-    <entry>7</entry>
-    <entry>2</entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>9</entry>
-    <entry>0</entry>
+    <entry>Bite@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath weapon@3d8 acid@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Chimera (Red Dragon head)</name>
-    <entry>7</entry>
-    <entry>2</entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>9</entry>
-    <entry>0</entry>
+    <entry>Bite@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath weapon@3d8 fire@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Chimera (White Dragon head)</name>
-    <entry>7</entry>
-    <entry>2</entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>9</entry>
-    <entry>0</entry>
+    <entry>Bite@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath weapon@3d8 cold@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Choker</name>
-    <entry>2</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Small</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>4</entry>
-    <entry>0</entry>
+    <entry>Tentacle@1d3@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Constrict@1d3@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
   </collection>
   <collection>
     <name>Chuul</name>
-    <entry>7</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>10</entry>
-    <entry>0</entry>
+    <entry>Claw@2d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Constrict@3d6@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Paralytic Tentacles@1d8@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@6 round paralysis@0.5@0</entry>
   </collection>
   <collection>
     <name>Cloaker</name>
-    <entry>5</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>7</entry>
-    <entry>0</entry>
+    <entry>Tail slap@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Moan@@True@False@False@True@1@Round (6 seconds)@Charisma@@extraordinary ability@@0@0</entry>
+    <entry>Engulf@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Cockatrice</name>
-    <entry>3</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Small</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>Bite@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@Petrification@1@0</entry>
+    <entry>Petrification@@True@False@False@True@1@Round (6 seconds)@Constitution@Fortitude@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Constrictor Snake</name>
-    <entry>2</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>2</entry>
-    <entry>0</entry>
+    <entry>Bite@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Constrict@1d3@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
   </collection>
   <collection>
     <name>Couatl</name>
@@ -2532,51 +2399,51 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Mature Adult</name>
-    <entry>17</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Huge</entry>
-    <entry>15</entry>
-    <entry>True</entry>
-    <entry>9</entry>
-    <entry>23</entry>
-    <entry>0</entry>
+    <entry>Bite@2d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@2d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@1d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Crush@2d8@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
+    <entry>Breath Weapon (electricity)@14d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+7 rounds@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Old</name>
-    <entry>19</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Huge</entry>
-    <entry>15</entry>
-    <entry>True</entry>
-    <entry>11</entry>
-    <entry>26</entry>
-    <entry>0</entry>
+    <entry>Bite@2d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@2d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@1d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Crush@2d8@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
+    <entry>Breath Weapon (electricity)@16d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+8 rounds@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Very Old</name>
-    <entry>20</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Huge</entry>
-    <entry>15</entry>
-    <entry>True</entry>
-    <entry>13</entry>
-    <entry>29</entry>
-    <entry>0</entry>
+    <entry>Bite@2d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@2d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@1d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Crush@2d8@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
+    <entry>Breath Weapon (electricity)@18d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+9 rounds@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Very Young</name>
-    <entry>5</entry>
-    <entry>4</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>8</entry>
-    <entry>0</entry>
+    <entry>Bite@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@1d4@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon (electricity)@4d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+2 rounds@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrm</name>
@@ -2586,7 +2453,7 @@
     <entry>Tail Slap@2d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Crush@4d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@2d6@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
-    <entry>Breath Weapon (electricity)@11d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (electricity)@22d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+11 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -2594,51 +2461,45 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrmling</name>
-    <entry>3</entry>
-    <entry>4</entry>
-    <entry>5</entry>
-    <entry>Small</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>0</entry>
+    <entry>Bite@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d4@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon (electricity)@2d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+1 rounds@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Young</name>
-    <entry>7</entry>
-    <entry>6</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>1</entry>
-    <entry>11</entry>
-    <entry>0</entry>
+    <entry>Bite@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@1d4@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon (electricity)@6d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+3 rounds@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Young Adult</name>
-    <entry>12</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>True</entry>
-    <entry>5</entry>
-    <entry>17</entry>
-    <entry>0</entry>
+    <entry>Bite@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon (electricity)@10d6 electricity@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+5 rounds@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
-    <entry>14</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>7</entry>
-    <entry>19</entry>
-    <entry>0</entry>
+    <entry>Bite@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d8@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Wing@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon (acid)@12d4 acid@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon (slow gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Slowed for 1d6+6 rounds@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Ancient</name>
@@ -3758,15 +3619,11 @@
   </collection>
   <collection>
     <name>Cloud Giant</name>
-    <entry>11</entry>
-    <entry>0</entry>
-    <entry>15</entry>
-    <entry>Huge</entry>
-    <entry>15</entry>
-    <entry>True</entry>
-    <entry>15</entry>
-    <entry>12</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Slam@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Rock@2d8@True@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
+    <entry>Rock Throwing@@True@False@True@False@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Fire Giant</name>
@@ -4070,15 +3927,9 @@
   </collection>
   <collection>
     <name>Clay Golem</name>
-    <entry>10</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>14</entry>
-    <entry>2</entry>
+    <entry>Slam@2d10@True@True@True@False@2@Round (6 seconds)@@@melee@Cursed Wound@1@0</entry>
+    <entry>Berserk@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Cursed Wound@@True@True@True@True@1@Hit@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Flesh Golem</name>
