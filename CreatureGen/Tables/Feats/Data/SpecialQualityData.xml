@@ -95,7 +95,7 @@
   <collection>
     <name>Air Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Exposed to moving air#1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2#Exposed to moving air#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Gust of wind#1#Day#0#False#Charisma#Fortitude#12</entry>
   </collection>
@@ -1160,7 +1160,7 @@
     <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
-    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Hold person#0#At Will#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#Passwall#0#At Will#0#False###0</entry>
@@ -1830,7 +1830,7 @@
     <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
-    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
     <entry>Telepathy#100##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Animate objects#0#At Will#0#False###0</entry>
@@ -2119,7 +2119,7 @@
   <collection>
     <name>Dust Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#In arid, dusty environment#1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2#In arid, dusty environment#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Wind wall#1#Day#0#False#Charisma#Will#13</entry>
   </collection>
@@ -2170,7 +2170,7 @@
   <collection>
     <name>Earth Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Underground or buried up to its waist in earth#1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2#Underground or buried up to its waist in earth#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Enlarge person: self only#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Soften earth and stone#1#Day#0#False###0</entry>
   </collection>
@@ -2193,19 +2193,19 @@
   <collection>
     <name>Eight-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#18##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#18##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Eight-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#18##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#18##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#18##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#18##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2264,19 +2264,19 @@
   <collection>
     <name>Eleven-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#21##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#21##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#21##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#21##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#21##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#21##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2385,26 +2385,26 @@
   <collection>
     <name>Fire Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Touching a flame at least as large as a torch#1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2#Touching a flame at least as large as a torch#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Heat metal#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Scorching ray#1#Hour#0#False#Charisma#Will#12</entry>
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#15##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#15##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Five-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#15##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#15##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Five-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#15##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#15##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -2433,7 +2433,7 @@
     <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#10#Sonic#1#Round (6 seconds)#0#False###0</entry>
-    <entry>Fast Healing#2##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2##1#Round (6 seconds)#0#False###0</entry>
     <entry>Hive Mind#0##0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
@@ -2455,7 +2455,7 @@
     <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#10#Sonic#1#Round (6 seconds)#0#False###0</entry>
     <entry>Eschew Materials#0##0##0#False###0</entry>
-    <entry>Fast Healing#2##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2##1#Round (6 seconds)#0#False###0</entry>
     <entry>Hive Mind#0##0##0#False###0</entry>
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
@@ -2623,7 +2623,7 @@
   </collection>
   <collection>
     <name>Giant Octopus</name>
-    <entry>Ink Cloud#0##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Ink Cloud#0##1#Minute (10 rounds)#0#False###0</entry>
     <entry>Jet#0##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
@@ -2635,7 +2635,7 @@
   </collection>
   <collection>
     <name>Giant Squid</name>
-    <entry>Ink Cloud#0##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Ink Cloud#0##1#Minute (10 rounds)#0#False###0</entry>
     <entry>Jet#0##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
@@ -2894,7 +2894,7 @@
     <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
-    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False###0</entry>
@@ -3083,7 +3083,7 @@
     <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
-    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
@@ -3350,7 +3350,7 @@
   <collection>
     <name>Ice Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Touching a piece of ice at least Tiny in size, or ambient temperature is freezing or lower#1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2#Touching a piece of ice at least Tiny in size, or ambient temperature is freezing or lower#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Chill metal#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Magic missile#1#Hour#0#False###0</entry>
   </collection>
@@ -3359,7 +3359,7 @@
     <entry>Alternate Form#0#Imp Alternate Form#0#At Will#1d2#False###0</entry>
     <entry>Damage Reduction#5#Vulnerable to good or silver weapons#1#Hit#0#False###0</entry>
     <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0</entry>
-    <entry>Fast Healing#2##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2##1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Commune: ask 6 questions#1#Week#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
@@ -3439,7 +3439,7 @@
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Armor Proficiency (Heavy)#0##0##0#True###0</entry>
     <entry>Damage Reduction#10#Vulnerable to chaotic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True###0</entry>
     <entry>Spell Resistance#22##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Discern lies#0#At Will#0#False#Charisma#Will#14</entry>
@@ -3455,7 +3455,7 @@
   </collection>
   <collection>
     <name>Kraken</name>
-    <entry>Ink Cloud#0##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Ink Cloud#0##1#Minute (10 rounds)#0#False###0</entry>
     <entry>Jet#0##1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Control weather#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Control winds#1#Day#0#False###0</entry>
@@ -3603,7 +3603,7 @@
     <name>Magma Mephit</name>
     <entry>Change Shape#0#A pool of lava 3 feet in diameter and 6 inches deep#1#Hour#0#False###0</entry>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Touching magma, lava, or a flame at least as large as a torch#1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2#Touching magma, lava, or a flame at least as large as a torch#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Pyrotechnics#1#Day#0#False#Charisma#Will#12</entry>
   </collection>
   <collection>
@@ -3657,7 +3657,7 @@
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Armor Proficiency (Heavy)#0##0##0#True###0</entry>
     <entry>Damage Reduction#15#Vulnerable to chaotic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#10##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#10##1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell Resistance#25##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Air walk#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Chain lightning#1#Day#0#False#Charisma#Reflex#16</entry>
@@ -3999,19 +3999,19 @@
   <collection>
     <name>Nine-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#19##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#19##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Nine-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#19##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#19##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Nine-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#19##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#19##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -4068,7 +4068,7 @@
   </collection>
   <collection>
     <name>Octopus</name>
-    <entry>Ink Cloud#0##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Ink Cloud#0##1#Minute (10 rounds)#0#False###0</entry>
     <entry>Jet#0##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
@@ -4112,7 +4112,7 @@
   <collection>
     <name>Ooze Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#In a wet or muddy environment#1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2#In a wet or muddy environment#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Acid arrow#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False#Charisma#Fortitude#13</entry>
   </collection>
@@ -4311,7 +4311,7 @@
   <collection>
     <name>Razor Boar</name>
     <entry>Damage Reduction#5#No physical vulnerabilities#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#10##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#10##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
     <entry>Spell Resistance#21##0##0#False###0</entry>
   </collection>
@@ -4423,7 +4423,7 @@
   </collection>
   <collection>
     <name>Red Slaad</name>
-    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Sonic#0##0#False###0</entry>
     <entry>Energy Resistance#5#Acid#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0</entry>
@@ -4440,7 +4440,7 @@
   </collection>
   <collection>
     <name>Retriever</name>
-    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Rhinoceras</name>
@@ -4492,7 +4492,7 @@
   <collection>
     <name>Salt Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#In an arid environment#1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2#In an arid environment#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Draw moisture from the air#1#Day#0#False#Charisma#Fortitude#12</entry>
     <entry>Spell-Like Ability#0#Glitterdust#1#Hour#0#False#Charisma#Will#12</entry>
   </collection>
@@ -4537,19 +4537,19 @@
   <collection>
     <name>Seven-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#17##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#17##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Seven-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#17##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#17##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Seven-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#17##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#17##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -4590,7 +4590,7 @@
   </collection>
   <collection>
     <name>Shield Guardian</name>
-    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0</entry>
     <entry>Find Master#0##0##0#False###0</entry>
     <entry>Guard#0##0##0#False###0</entry>
     <entry>Spell Storing#0##0##0#False###0</entry>
@@ -4756,19 +4756,19 @@
   <collection>
     <name>Six-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#16##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#16##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Six-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#16##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#16##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Six-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#16##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#16##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -4797,13 +4797,13 @@
   </collection>
   <collection>
     <name>Squid</name>
-    <entry>Ink Cloud#0##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Ink Cloud#0##1#Minute (10 rounds)#0#False###0</entry>
     <entry>Jet#0##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Touching boiling water or in a hot, humid area#1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2#Touching boiling water or in a hot, humid area#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Blur#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Rainstorm of boiling water#1#Day#0#False#Charisma#Reflex#12</entry>
   </collection>
@@ -4918,19 +4918,19 @@
   <collection>
     <name>Ten-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#20##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#20##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Ten-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#20##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#20##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Ten-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#20##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#20##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -5037,19 +5037,19 @@
   <collection>
     <name>Twelve-Headed Cryohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#22##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#22##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Hydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#22##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#22##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Pyrohydra</name>
     <entry>Combat Reflexes#0#Can use all of its heads for Attacks of Opportunity#0##0#False###0</entry>
-    <entry>Fast Healing#22##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#22##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
   </collection>
   <collection>
@@ -5102,7 +5102,7 @@
     <entry>Damage Reduction#5#Vulnerable to silver weapons#1#Hit#0#False###0</entry>
     <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0</entry>
     <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0</entry>
-    <entry>Fast Healing#2##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2##1#Round (6 seconds)#0#False###0</entry>
     <entry>Improved Initiative#4##0##0#False###0</entry>
     <entry>Lightning Reflexes#2##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Gaseous form#0#At Will#0#False###0</entry>
@@ -5190,7 +5190,7 @@
   <collection>
     <name>Water Mephit</name>
     <entry>Damage Reduction#5#Vulnerable to magic weapons#1#Hit#0#False###0</entry>
-    <entry>Fast Healing#2#Exposed to rain or submerged up to its waist in water#1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#2#Exposed to rain or submerged up to its waist in water#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Acid arrow#1#Hour#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stinking cloud#1#Day#0#False#Charisma#Fortitude#13</entry>
   </collection>
@@ -5520,7 +5520,7 @@
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Damage Reduction#10#Vulnerable to chaotic weapons#1#Hit#0#False###0</entry>
     <entry>Exotic Weapon Proficiency#0#Spiked chain#0##0#True###0</entry>
-    <entry>Fast Healing#5##1#Turn (1 minute)#0#False###0</entry>
+    <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0</entry>
     <entry>Mounted Combat#0##0##0#False###0</entry>
     <entry>Spell Resistance#20##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Clairaudience/Clairvoyance#0#At Will#0#False###0</entry>
