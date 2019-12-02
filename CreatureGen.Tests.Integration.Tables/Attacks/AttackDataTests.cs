@@ -36,6 +36,7 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
             indices[DataIndexConstants.AttackData.SaveAbilityIndex] = "Save Ability";
             indices[DataIndexConstants.AttackData.SaveIndex] = "Save";
             indices[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = "Damage Bonus Multiplier";
+            indices[DataIndexConstants.AttackData.SaveDcBonusIndex] = "Save DC Bonus Multiplier";
         }
 
         [SetUp]
