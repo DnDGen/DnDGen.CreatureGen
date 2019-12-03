@@ -2,16 +2,25 @@
 using CreatureGen.Skills;
 using CreatureGen.Tables;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CreatureGen.Tests.Integration.Tables.Skills
 {
     [TestFixture]
-    public class SkillDataTests : CollectionTests
+    public class SkillDataTests : DataTests
     {
         protected override string tableName
         {
             get { return TableNameConstants.Collection.SkillData; }
+        }
+
+        protected override void PopulateIndices(IEnumerable<string> collection)
+        {
+            indices[DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex] = "Base Ability Name";
+            indices[DataIndexConstants.SkillSelectionData.FocusIndex] = "Focus";
+            indices[DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex] = "Random Foci Quantity";
+            indices[DataIndexConstants.SkillSelectionData.SkillNameIndex] = "Skill Name";
         }
 
         [Test]
@@ -92,18 +101,18 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(SkillConstants.Tumble, AbilityConstants.Dexterity)]
         [TestCase(SkillConstants.UseMagicDevice, AbilityConstants.Charisma)]
         [TestCase(SkillConstants.UseRope, AbilityConstants.Dexterity)]
-        public void SkillSelectionData(string name, string baseStat, string skillName = "", int randomFoci = 0)
+        public void SkillSelectionData(string name, string baseAbility, string skillName = "", int randomFoci = 0)
         {
             if (string.IsNullOrEmpty(skillName))
                 skillName = name;
 
-            var collection = new string[4];
-            collection[DataIndexConstants.SkillSelectionData.BaseStatName] = baseStat;
-            collection[DataIndexConstants.SkillSelectionData.RandomFociQuantity] = randomFoci.ToString();
-            collection[DataIndexConstants.SkillSelectionData.SkillName] = skillName;
-            collection[DataIndexConstants.SkillSelectionData.Focus] = string.Empty;
+            var data = new string[4];
+            data[DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex] = baseAbility;
+            data[DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex] = randomFoci.ToString();
+            data[DataIndexConstants.SkillSelectionData.SkillNameIndex] = skillName;
+            data[DataIndexConstants.SkillSelectionData.FocusIndex] = string.Empty;
 
-            AssertOrderedCollection(name, collection);
+            Data(name, data);
         }
 
         [TestCase(SkillConstants.Craft, AbilityConstants.Intelligence, SkillConstants.Foci.Craft.Alchemy)]
@@ -251,17 +260,17 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Weaver)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.Wheelwright)]
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.WildernessGuide)]
-        public void SkillSelectionData(string skillName, string baseStat, string focus)
+        public void SkillSelectionData(string skillName, string baseAbility, string focus)
         {
             var name = $"{skillName}/{focus}";
 
-            var collection = new string[4];
-            collection[DataIndexConstants.SkillSelectionData.BaseStatName] = baseStat;
-            collection[DataIndexConstants.SkillSelectionData.RandomFociQuantity] = "0";
-            collection[DataIndexConstants.SkillSelectionData.SkillName] = skillName;
-            collection[DataIndexConstants.SkillSelectionData.Focus] = focus;
+            var data = new string[4];
+            data[DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex] = baseAbility;
+            data[DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex] = 0.ToString();
+            data[DataIndexConstants.SkillSelectionData.SkillNameIndex] = skillName;
+            data[DataIndexConstants.SkillSelectionData.FocusIndex] = focus;
 
-            AssertOrderedCollection(name, collection);
+            Data(name, data);
         }
     }
 }

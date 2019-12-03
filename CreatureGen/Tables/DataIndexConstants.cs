@@ -77,10 +77,10 @@
 
         internal static class SkillSelectionData
         {
-            public const int BaseStatName = 0;
-            public const int SkillName = 1;
-            public const int RandomFociQuantity = 2;
-            public const int Focus = 3;
+            public const int BaseAbilityNameIndex = 0;
+            public const int SkillNameIndex = 1;
+            public const int RandomFociQuantityIndex = 2;
+            public const int FocusIndex = 3;
         }
 
         internal static class CreatureData

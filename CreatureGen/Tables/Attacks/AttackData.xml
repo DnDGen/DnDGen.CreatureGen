@@ -1003,15 +1003,13 @@
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
-    <entry>6</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>8</entry>
-    <entry>7</entry>
-    <entry>0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Sleep@0@0</entry>
+    <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Cure/Inflict moderate wounds@0@0</entry>
+    <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@@@supernatural ability@Dispel magic@0@0</entry>
+    <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@@@supernatural ability@Scorching ray@0@0</entry>
+    <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@Paralysis@0@0</entry>
+    <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@@@supernatural ability@Ray of exhaustion@0@0</entry>
   </collection>
   <collection>
     <name>Belker</name>
@@ -2904,12 +2902,12 @@
   <collection>
     <name>Fire Elemental, Medium</name>
     <entry>Slam@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@Burn@1@0</entry>
-    <entry>Burn@1d8 fire@True@True@False@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@0@0</entry>
+    <entry>Burn@1d6 fire@True@True@False@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Small</name>
     <entry>Slam@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@Burn@1@0</entry>
-    <entry>Burn@1d6 fire@True@True@False@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@0@0</entry>
+    <entry>Burn@1d4 fire@True@True@False@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
@@ -3061,9 +3059,9 @@
   </collection>
   <collection>
     <name>Forest Gnome</name>
-    <entry>Melee@@False@True@True@False@2@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Ranged@@False@False@True@False@2@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2@True@True@True@False@2@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
@@ -3081,7 +3079,7 @@
   <collection>
     <name>Formian Taskmaster</name>
     <entry>Sting@2d4@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1@0</entry>
-    <entry>Claw@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Claw@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d6 Str@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Dominated creature@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
@@ -3089,13 +3087,13 @@
   <collection>
     <name>Formian Warrior</name>
     <entry>Sting@2d4@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1@0</entry>
-    <entry>Claw@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Claw@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Bite@1d4@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d6 Str@0@0</entry>
   </collection>
   <collection>
     <name>Formian Worker</name>
-    <entry>Bite@1d4@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Bite@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Frost Worm</name>
@@ -3106,15 +3104,9 @@
   </collection>
   <collection>
     <name>Gargoyle</name>
-    <entry>4</entry>
-    <entry>5</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>4</entry>
-    <entry>2</entry>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Gore@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Kapoacinth</name>
@@ -3207,7 +3199,7 @@
     <name>Frost Giant</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Slam@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Rock@2d8@True@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
+    <entry>Rock@2d6@True@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
     <entry>Rock Throwing@@True@False@True@False@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
   </collection>
   <collection>

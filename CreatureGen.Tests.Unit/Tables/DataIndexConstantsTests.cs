@@ -113,10 +113,10 @@ namespace CreatureGen.Tests.Unit.Tables
             Assert.That(data, Is.All.Empty);
         }
 
-        [TestCase(DataIndexConstants.SkillSelectionData.BaseStatName, 0)]
-        [TestCase(DataIndexConstants.SkillSelectionData.SkillName, 1)]
-        [TestCase(DataIndexConstants.SkillSelectionData.RandomFociQuantity, 2)]
-        [TestCase(DataIndexConstants.SkillSelectionData.Focus, 3)]
+        [TestCase(DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex, 0)]
+        [TestCase(DataIndexConstants.SkillSelectionData.SkillNameIndex, 1)]
+        [TestCase(DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex, 2)]
+        [TestCase(DataIndexConstants.SkillSelectionData.FocusIndex, 3)]
         public void SkillSelectionDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));

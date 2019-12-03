@@ -23,10 +23,10 @@ namespace CreatureGen.Selectors.Collections
             var data = collectionSelector.SelectFrom(TableNameConstants.Collection.SkillData, skill).ToArray();
 
             var selection = new SkillSelection();
-            selection.BaseAbilityName = data[DataIndexConstants.SkillSelectionData.BaseStatName];
-            selection.SkillName = data[DataIndexConstants.SkillSelectionData.SkillName];
-            selection.RandomFociQuantity = Convert.ToInt32(data[DataIndexConstants.SkillSelectionData.RandomFociQuantity]);
-            selection.Focus = data[DataIndexConstants.SkillSelectionData.Focus];
+            selection.BaseAbilityName = data[DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex];
+            selection.SkillName = data[DataIndexConstants.SkillSelectionData.SkillNameIndex];
+            selection.RandomFociQuantity = Convert.ToInt32(data[DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex]);
+            selection.Focus = data[DataIndexConstants.SkillSelectionData.FocusIndex];
 
             return selection;
         }

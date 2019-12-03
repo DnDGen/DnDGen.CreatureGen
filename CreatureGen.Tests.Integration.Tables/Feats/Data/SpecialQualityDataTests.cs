@@ -26,6 +26,20 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 
         protected override string tableName => TableNameConstants.Collection.SpecialQualityData;
 
+        protected override void PopulateIndices(IEnumerable<string> collection)
+        {
+            indices[DataIndexConstants.SpecialQualityData.FeatNameIndex] = "Feat Name";
+            indices[DataIndexConstants.SpecialQualityData.FocusIndex] = "Focus";
+            indices[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex] = "Frequency Quantity";
+            indices[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex] = "Frequency Time Period";
+            indices[DataIndexConstants.SpecialQualityData.PowerIndex] = "Power";
+            indices[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex] = "Random Foci Quantity";
+            indices[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex] = "Requires Equipment";
+            indices[DataIndexConstants.SpecialQualityData.SaveAbilityIndex] = "Save Ability";
+            indices[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex] = "Save Base Value";
+            indices[DataIndexConstants.SpecialQualityData.SaveIndex] = "Save";
+        }
+
         [SetUp]
         public void Setup()
         {

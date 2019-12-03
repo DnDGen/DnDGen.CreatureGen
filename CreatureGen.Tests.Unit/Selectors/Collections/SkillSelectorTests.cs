@@ -34,10 +34,10 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         public void SelectSkillsFromInnerCollectionSelector()
         {
             var skillData = new string[4];
-            skillData[DataIndexConstants.SkillSelectionData.BaseStatName] = "base stat";
-            skillData[DataIndexConstants.SkillSelectionData.Focus] = "focus";
-            skillData[DataIndexConstants.SkillSelectionData.RandomFociQuantity] = "9266";
-            skillData[DataIndexConstants.SkillSelectionData.SkillName] = "skill name";
+            skillData[DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex] = "base stat";
+            skillData[DataIndexConstants.SkillSelectionData.FocusIndex] = "focus";
+            skillData[DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex] = "9266";
+            skillData[DataIndexConstants.SkillSelectionData.SkillNameIndex] = "skill name";
 
             mockInnerSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillData, "skill")).Returns(skillData);
 
