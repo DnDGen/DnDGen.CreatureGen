@@ -45,6 +45,8 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         {
             var clientID = Guid.NewGuid();
             ClientIdManager.SetClientID(clientID);
+
+            helper = new SpecialQualityHelper();
         }
 
         [Test]
@@ -70,7 +72,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             if (entries[0][DataIndexConstants.SpecialQualityData.FeatNameIndex] == SpecialQualityTestData.None)
                 entries.Clear();
 
-            AssertData(creature, entries, e => SpecialQualityHelper.BuildData(e));
+            AssertData(creature, entries);
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
@@ -78,11 +80,11 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void BonusFeatsHaveCorrectData(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var feats = FeatsSelector.SelectFeats();
             var datas = table[creature]
-                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Select(helper.ParseEntry)
                 .Where(d => feats.Any(f => f.Feat == d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
@@ -109,7 +111,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void ProficiencyFeatsHaveCorrectFoci(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var proficiencyFeats = new[]
             {
@@ -119,7 +121,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             };
 
             var datas = table[creature]
-                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Select(helper.ParseEntry)
                 .Where(d => proficiencyFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]))
                 .Where(d => d[DataIndexConstants.SpecialQualityData.FocusIndex] != GroupConstants.All);
 
@@ -156,7 +158,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void FeatsFocusingOnWeaponsOrArmorRequireEquipment(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var weaponAndArmorFeats = new[]
             {
@@ -182,7 +184,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             };
 
             var datas = table[creature]
-                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Select(helper.ParseEntry)
                 .Where(d => weaponAndArmorFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
@@ -219,14 +221,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void FastHealingHasCorrectFrequency(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var collection = table[creature];
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
 
             foreach (var entry in collection)
             {
-                var data = SpecialQualityHelper.ParseData(entry);
+                var data = helper.ParseEntry(entry);
 
                 if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] != FeatConstants.SpecialQualities.FastHealing)
                     continue;
@@ -246,14 +248,14 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void RegenerationHasCorrectFrequency(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var collection = table[creature];
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
 
             foreach (var entry in collection)
             {
-                var data = SpecialQualityHelper.ParseData(entry);
+                var data = helper.ParseEntry(entry);
 
                 if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] != FeatConstants.SpecialQualities.Regeneration)
                     continue;
@@ -273,10 +275,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void DamageReductionHasCorrectData(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var datas = table[creature]
-                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Select(helper.ParseEntry)
                 .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.DamageReduction);
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
@@ -303,10 +305,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void ImmunityHasCorrectData(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var datas = table[creature]
-                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Select(helper.ParseEntry)
                 .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Immunity);
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
@@ -339,10 +341,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void ChangeShapeHasCorrectData(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var datas = table[creature]
-                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Select(helper.ParseEntry)
                 .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.ChangeShape);
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
@@ -368,10 +370,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void SpellLikeAbilityHasCorrectData(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var datas = table[creature]
-                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Select(helper.ParseEntry)
                 .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility);
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
@@ -407,10 +409,10 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void PsionicHasCorrectData(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var datas = table[creature]
-                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Select(helper.ParseEntry)
                 .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Psionic);
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
@@ -446,7 +448,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void EnergyResistanceHasCorrectData(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var energies = new[]
             {
@@ -458,7 +460,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             };
 
             var datas = table[creature]
-                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Select(helper.ParseEntry)
                 .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.EnergyResistance);
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);
@@ -496,12 +498,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             Assert.That(table.Keys, Is.SupersetOf(creatureTypes));
 
             var creatureTestCaseSpecialQualityDatas = GetTestCaseData(creature);
-            var creatureTestCaseSpecialQualities = creatureTestCaseSpecialQualityDatas.Select(d => SpecialQualityHelper.BuildData(d));
+            var creatureTestCaseSpecialQualities = creatureTestCaseSpecialQualityDatas.Select(helper.BuildEntry);
 
             foreach (var creatureType in creatureTypes)
             {
                 var creatureTypeTestCaseSpecialQualityDatas = GetTestCaseData(creatureType);
-                var creatureTypeTestCaseSpecialQualities = creatureTypeTestCaseSpecialQualityDatas.Select(d => SpecialQualityHelper.BuildData(d));
+                var creatureTypeTestCaseSpecialQualities = creatureTypeTestCaseSpecialQualityDatas.Select(helper.BuildEntry);
 
                 var overlap = creatureTypeTestCaseSpecialQualities.Intersect(creatureTestCaseSpecialQualities);
                 Assert.That(overlap, Is.Empty, $"TEST CASE v TEST CASE: {creature} - {creatureType}");
@@ -520,7 +522,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         public void CreaturesThatCanChangeShapeIntoHumanoidCanUseEquipment(string creature)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
+            Assert.That(table, Contains.Key(creature));
 
             var changeShapeFeats = new[]
             {
@@ -529,7 +531,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             };
 
             var datas = table[creature]
-                .Select(e => SpecialQualityHelper.ParseData(e))
+                .Select(helper.ParseEntry)
                 .Where(d => changeShapeFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
 
             var testCaseSpecialQualityDatas = GetTestCaseData(creature);

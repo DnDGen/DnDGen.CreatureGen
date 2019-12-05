@@ -1,11 +1,16 @@
-﻿using CreatureGen.Tables;
+﻿using CreatureGen.Selectors.Selections;
+using CreatureGen.Tables;
 using System;
 
 namespace CreatureGen.Selectors.Helpers
 {
-    public static class SpecialQualityHelper
+    public class SpecialQualityHelper : DataHelper
     {
-        public static string[] BuildData(
+        public SpecialQualityHelper()
+            : base(SpecialQualitySelection.Divider)
+        { }
+
+        public string[] BuildData(
             string featName,
             string focus = "",
             int frequencyQuantity = 0,
@@ -20,7 +25,7 @@ namespace CreatureGen.Selectors.Helpers
             return BuildData(featName, randomFociQuantity.ToString(), focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment, saveAbility, save, saveBaseValue);
         }
 
-        public static string[] BuildData(
+        public string[] BuildData(
             string featName,
             string randomFociQuantity,
             string focus = "",
@@ -48,30 +53,9 @@ namespace CreatureGen.Selectors.Helpers
             return data;
         }
 
-        public static string BuildRequirementKey(string creature, string[] data)
+        public override string BuildKey(string creature, string[] data)
         {
-            return BuildRequirementKey(creature, data[DataIndexConstants.SpecialQualityData.FeatNameIndex], data[DataIndexConstants.SpecialQualityData.FocusIndex]);
-        }
-
-        public static string BuildRequirementKey(string creature, string featName, string focus)
-        {
-            return $"{creature}{featName}{focus}";
-        }
-
-        public static string BuildRequirementKey(string creature, string input)
-        {
-            var data = ParseData(input);
-            return BuildRequirementKey(creature, data);
-        }
-
-        public static string BuildData(string[] data)
-        {
-            return string.Join("#", data);
-        }
-
-        public static string[] ParseData(string input)
-        {
-            return input.Split('#');
+            return BuildKeyFromSections(creature, data[DataIndexConstants.SpecialQualityData.FeatNameIndex], data[DataIndexConstants.SpecialQualityData.FocusIndex]);
         }
     }
 }

@@ -14,11 +14,14 @@ namespace CreatureGen.Selectors.Collections
     {
         private readonly ICollectionSelector collectionsSelector;
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly SpecialQualityHelper helper;
 
         public FeatsSelector(ICollectionSelector collectionsSelector, ITypeAndAmountSelector typeAndAmountSelector)
         {
             this.collectionsSelector = collectionsSelector;
             this.typeAndAmountSelector = typeAndAmountSelector;
+
+            helper = new SpecialQualityHelper();
         }
 
         public IEnumerable<FeatSelection> SelectFeats()
@@ -144,7 +147,7 @@ namespace CreatureGen.Selectors.Collections
 
                 foreach (var specialQuality in newSpecialQualities)
                 {
-                    var data = SpecialQualityHelper.ParseData(specialQuality);
+                    var data = helper.ParseEntry(specialQuality);
 
                     var specialQualitySelection = new SpecialQualitySelection();
                     specialQualitySelection.Feat = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
@@ -158,7 +161,7 @@ namespace CreatureGen.Selectors.Collections
                     specialQualitySelection.SaveAbility = data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex];
                     specialQualitySelection.SaveBaseValue = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex]);
 
-                    var requirementKey = SpecialQualityHelper.BuildRequirementKey(source, data);
+                    var requirementKey = helper.BuildKey(source, data);
                     specialQualitySelection.RequiredFeats = GetRequiredFeats(requirementKey);
                     specialQualitySelection.MinimumAbilities = GetRequiredAbilities(requirementKey);
                     specialQualitySelection.RequiredSizes = GetRequiredSizes(requirementKey);

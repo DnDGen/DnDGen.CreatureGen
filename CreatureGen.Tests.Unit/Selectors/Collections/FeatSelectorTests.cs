@@ -23,6 +23,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
         private Dictionary<string, IEnumerable<string>> featsData;
         private Dictionary<string, List<string>> specialQualitiesData;
         private CreatureType creatureType;
+        private SpecialQualityHelper helper;
 
         [SetUp]
         public void Setup()
@@ -44,6 +45,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 .Returns(Enumerable.Empty<TypeAndAmountSelection>());
             mockCollectionsSelector.Setup(s => s.SelectAllFrom(TableNameConstants.Collection.FeatData)).Returns(featsData);
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SpecialQualityData, It.IsAny<string>())).Returns((string t, string c) => specialQualitiesData[c]);
+
+            helper = new SpecialQualityHelper();
         }
 
         [Test]
@@ -131,8 +134,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             string save = "",
             int saveBaseValue = 0)
         {
-            var data = SpecialQualityHelper.BuildData(featName, randomFociQuantity, focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment, saveAbility, save, saveBaseValue);
-            var entry = SpecialQualityHelper.BuildData(data);
+            var data = helper.BuildData(featName, randomFociQuantity, focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment, saveAbility, save, saveBaseValue);
+            var entry = helper.BuildEntry(data);
 
             if (!specialQualitiesData.ContainsKey(source))
                 specialQualitiesData[source] = new List<string>();

@@ -8,11 +8,13 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
     public class AttackSelectionTests
     {
         private AttackSelection selection;
+        private AttackHelper helper;
 
         [SetUp]
         public void Setup()
         {
             selection = new AttackSelection();
+            helper = new AttackHelper();
         }
 
         [Test]
@@ -35,8 +37,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void FromData_ReturnsSelection_WithSave()
         {
-            var data = AttackHelper.BuildData("name", "damage", "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, "save", "save ability", 90210);
-            var rawData = AttackHelper.BuildData(data);
+            var data = helper.BuildData("name", "damage", "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, "save", "save ability", 90210);
+            var rawData = helper.BuildEntry(data);
 
             var selection = AttackSelection.From(rawData);
             Assert.That(selection.AttackType, Is.EqualTo("attack type"));
@@ -58,8 +60,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void FromData_ReturnsSelection_WithoutSave()
         {
-            var data = AttackHelper.BuildData("name", "damage", "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, string.Empty, string.Empty);
-            var rawData = AttackHelper.BuildData(data);
+            var data = helper.BuildData("name", "damage", "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, string.Empty, string.Empty);
+            var rawData = helper.BuildEntry(data);
 
             var selection = AttackSelection.From(rawData);
             Assert.That(selection.AttackType, Is.EqualTo("attack type"));

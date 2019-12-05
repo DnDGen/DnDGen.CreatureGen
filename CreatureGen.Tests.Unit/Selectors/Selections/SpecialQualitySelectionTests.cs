@@ -44,6 +44,12 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
+        public void SpecialQualitySelectionDivider()
+        {
+            Assert.That(SpecialQualitySelection.Divider, Is.EqualTo('#'));
+        }
+
+        [Test]
         public void RequirementsMetIfNoRequirements()
         {
             var met = selection.RequirementsMet(abilities, feats, false, "size", alignment);

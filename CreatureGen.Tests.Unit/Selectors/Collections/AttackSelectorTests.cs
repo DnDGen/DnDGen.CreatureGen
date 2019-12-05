@@ -14,12 +14,14 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
     {
         private IAttackSelector attackSelector;
         private Mock<ICollectionSelector> mockCollectionSelector;
+        private AttackHelper helper;
 
         [SetUp]
         public void Setup()
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
             attackSelector = new AttackSelector(mockCollectionSelector.Object);
+            helper = new AttackHelper();
         }
 
         [Test]
@@ -137,7 +139,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             string saveAbility = null,
             int saveDcBonus = 0)
         {
-            var data = AttackHelper.BuildData(
+            var data = helper.BuildData(
                 name,
                 damageRoll,
                 damageEffect,
@@ -152,7 +154,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
                 save,
                 saveAbility,
                 saveDcBonus);
-            return AttackHelper.BuildData(data);
+            return helper.BuildEntry(data);
         }
 
         [Test]

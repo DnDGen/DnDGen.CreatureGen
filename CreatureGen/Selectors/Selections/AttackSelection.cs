@@ -32,7 +32,9 @@ namespace CreatureGen.Selectors.Selections
 
         public static AttackSelection From(string rawData)
         {
-            var data = AttackHelper.ParseData(rawData);
+            var helper = new AttackHelper();
+            var data = helper.ParseEntry(rawData);
+
             var selection = new AttackSelection();
             selection.IsMelee = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsMeleeIndex]);
             selection.IsNatural = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsNaturalIndex]);

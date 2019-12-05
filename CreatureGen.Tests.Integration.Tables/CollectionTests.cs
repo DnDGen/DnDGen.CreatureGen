@@ -33,7 +33,7 @@ namespace CreatureGen.Tests.Integration.Tables
             return table[name];
         }
 
-        private void AssertUniqueCollection(IEnumerable<string> collection)
+        protected void AssertUniqueCollection(IEnumerable<string> collection)
         {
             var duplicateItems = collection.Where(s => collection.Count(c => c == s) > 1);
             var duplicates = string.Join(", ", duplicateItems.Distinct());
@@ -59,7 +59,7 @@ namespace CreatureGen.Tests.Integration.Tables
             AssertOrderedCollection(table[name], collection);
         }
 
-        private void AssertOrderedCollection(IEnumerable<string> actual, IEnumerable<string> expected)
+        protected void AssertOrderedCollection(IEnumerable<string> actual, IEnumerable<string> expected, int metaIndex = -1)
         {
             PopulateIndices(actual);
             var expectedArray = expected.ToArray();
@@ -74,6 +74,9 @@ namespace CreatureGen.Tests.Integration.Tables
                 var actualItem = actualArray[index];
 
                 var message = $"Index {index}";
+                if (metaIndex > -1)
+                    message = $"Index {metaIndex}-{index}";
+
                 if (!string.IsNullOrEmpty(indices[index]))
                     message += $" ({indices[index]})";
 

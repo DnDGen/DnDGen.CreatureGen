@@ -8,6 +8,8 @@ namespace CreatureGen.Selectors.Selections
 {
     internal class SpecialQualitySelection
     {
+        public const char Divider = '#';
+
         public string Feat { get; set; }
         public Frequency Frequency { get; set; }
         public string FocusType { get; set; }

@@ -3,9 +3,13 @@ using CreatureGen.Tables;
 
 namespace CreatureGen.Selectors.Helpers
 {
-    public static class AttackHelper
+    public class AttackHelper : DataHelper
     {
-        public static string[] BuildData(
+        public AttackHelper()
+            : base(AttackSelection.Divider)
+        { }
+
+        public string[] BuildData(
             string name,
             string damageRoll,
             string damageEffect,
@@ -41,14 +45,9 @@ namespace CreatureGen.Selectors.Helpers
             return data;
         }
 
-        public static string BuildData(string[] data)
+        public override string BuildKey(string creature, string[] data)
         {
-            return string.Join(AttackSelection.Divider.ToString(), data);
-        }
-
-        public static string[] ParseData(string input)
-        {
-            return input.Split(AttackSelection.Divider);
+            return BuildKeyFromSections(creature, data[DataIndexConstants.AttackData.NameIndex], data[DataIndexConstants.AttackData.IsPrimaryIndex]);
         }
     }
 }
