@@ -62,9 +62,7 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
             if (entries[0][DataIndexConstants.AttackData.NameIndex] == AttackTestData.None)
                 entries.Clear();
 
-            var data = entries.Select(e => AttackHelper.BuildData(e)).ToArray();
-
-            AssertDistinctCollection(creature, data);
+            AssertData(creature, entries, e => AttackHelper.BuildData(e));
         }
     }
 }

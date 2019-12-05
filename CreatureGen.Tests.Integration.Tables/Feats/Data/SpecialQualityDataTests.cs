@@ -14,7 +14,7 @@ using System.Linq;
 namespace CreatureGen.Tests.Integration.Tables.Feats.Data
 {
     [TestFixture]
-    public class SpecialQualityDataTests : CollectionTests
+    public class SpecialQualityDataTests : DataTests
     {
         //INFO: Need this for the feats selector
         [Inject]
@@ -70,9 +70,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             if (entries[0][DataIndexConstants.SpecialQualityData.FeatNameIndex] == SpecialQualityTestData.None)
                 entries.Clear();
 
-            var data = entries.Select(e => SpecialQualityHelper.BuildData(e)).ToArray();
-
-            AssertDistinctCollection(creature, data);
+            AssertData(creature, entries, e => SpecialQualityHelper.BuildData(e));
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]

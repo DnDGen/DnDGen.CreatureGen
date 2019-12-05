@@ -112,7 +112,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             data[DataIndexConstants.SkillSelectionData.SkillNameIndex] = skillName;
             data[DataIndexConstants.SkillSelectionData.FocusIndex] = string.Empty;
 
-            Data(name, data);
+            AssertSegmentedData(name, data);
         }
 
         [TestCase(SkillConstants.Craft, AbilityConstants.Intelligence, SkillConstants.Foci.Craft.Alchemy)]
@@ -270,7 +270,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             data[DataIndexConstants.SkillSelectionData.SkillNameIndex] = skillName;
             data[DataIndexConstants.SkillSelectionData.FocusIndex] = focus;
 
-            Data(name, data);
+            AssertSegmentedData(name, data);
         }
     }
 }

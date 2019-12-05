@@ -787,7 +787,7 @@ namespace CreatureGen.Tests.Integration.Tables.Creatures
             collection[DataIndexConstants.CreatureData.NaturalArmor] = naturalArmor.ToString();
             collection[DataIndexConstants.CreatureData.NumberOfHands] = numberOfHands.ToString();
 
-            Data(creature, collection);
+            AssertSegmentedData(creature, collection);
         }
 
         [Test]

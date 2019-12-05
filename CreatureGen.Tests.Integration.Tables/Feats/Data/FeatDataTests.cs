@@ -202,7 +202,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = Convert.ToString(specialAttacks);
             data[DataIndexConstants.FeatData.RequiresSpellLikeAbility] = Convert.ToString(spellLikeAbility);
 
-            Data(name, data);
+            AssertSegmentedData(name, data);
         }
     }
 }
