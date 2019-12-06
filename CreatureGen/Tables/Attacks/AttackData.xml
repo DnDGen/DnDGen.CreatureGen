@@ -3170,7 +3170,7 @@
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Rock Throwing@@True@False@True@False@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Rock@2d6@True@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
-    <entry>Slam@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Slam@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Stone Giant</name>
@@ -3510,7 +3510,7 @@
     <name>Hobgoblin</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
