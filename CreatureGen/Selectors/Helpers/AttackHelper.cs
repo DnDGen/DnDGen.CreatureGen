@@ -49,5 +49,12 @@ namespace CreatureGen.Selectors.Helpers
         {
             return BuildKeyFromSections(creature, data[DataIndexConstants.AttackData.NameIndex], data[DataIndexConstants.AttackData.IsPrimaryIndex]);
         }
+
+        public override bool ValidateEntry(string entry)
+        {
+            var data = ParseEntry(entry);
+            return data.Length > DataIndexConstants.AttackData.NameIndex
+                && data.Length > DataIndexConstants.AttackData.IsPrimaryIndex;
+        }
     }
 }

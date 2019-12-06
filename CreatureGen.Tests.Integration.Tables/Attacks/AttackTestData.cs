@@ -2417,7 +2417,7 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
                 testCases[CreatureConstants.Giant_Hill].Add(helper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Giant_Hill].Add(helper.BuildData("Slam", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Giant_Hill].Add(helper.BuildData("Rock", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, false, true, true, false));
+                testCases[CreatureConstants.Giant_Hill].Add(helper.BuildData("Rock", $"2d6", string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, true, true, false));
                 testCases[CreatureConstants.Giant_Hill].Add(helper.BuildData("Rock Throwing", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, false));
 
                 testCases[CreatureConstants.Giant_Stone].Add(helper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));

@@ -49,7 +49,7 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
             var specialQualityData = CollectionMapper.Map(TableNameConstants.Collection.SpecialQualityData);
             var specialQualities = specialQualityData
                 .Where(kvp => kvp.Value.Any())
-                .SelectMany(kvp => kvp.Value.Select(v => helper.BuildKeyFromSections(kvp.Key, v)));
+                .SelectMany(kvp => kvp.Value.Select(v => helper.BuildKey(kvp.Key, v)));
 
             var names = feats.Union(metamagic).Union(monster).Union(craft).Union(specialQualities);
 

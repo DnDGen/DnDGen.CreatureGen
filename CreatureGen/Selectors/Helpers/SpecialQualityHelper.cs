@@ -57,5 +57,12 @@ namespace CreatureGen.Selectors.Helpers
         {
             return BuildKeyFromSections(creature, data[DataIndexConstants.SpecialQualityData.FeatNameIndex], data[DataIndexConstants.SpecialQualityData.FocusIndex]);
         }
+
+        public override bool ValidateEntry(string entry)
+        {
+            var data = ParseEntry(entry);
+            return data.Length > DataIndexConstants.SpecialQualityData.FeatNameIndex
+                && data.Length > DataIndexConstants.SpecialQualityData.FocusIndex;
+        }
     }
 }

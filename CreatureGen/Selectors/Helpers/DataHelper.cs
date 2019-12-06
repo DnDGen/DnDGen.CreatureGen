@@ -26,6 +26,7 @@
         }
 
         public abstract string BuildKey(string creature, string[] data);
+        public abstract bool ValidateEntry(string entry);
 
         public string BuildKeyFromSections(string creature, params string[] keySections)
         {

@@ -26,10 +26,10 @@ namespace CreatureGen.Tests.Integration.Tables
             AssertUniqueCollection(entries);
 
             Assert.That(table, Contains.Key(name));
-            if (table[name].Count() != entries.Count())
+            var isValid = entries.All(helper.ValidateEntry) && table[name].All(helper.ValidateEntry);
+            if (table[name].Count() != entries.Count() || !isValid)
             {
                 Assert.That(table[name], Is.EquivalentTo(entries));
-                return;
             }
 
             var actual = table[name]
@@ -43,7 +43,11 @@ namespace CreatureGen.Tests.Integration.Tables
 
             for (var i = 0; i < actual.Length; i++)
             {
-                AssertOrderedCollection(actual[i], expected[i], i);
+                var actualKey = helper.BuildKey(name, actual[i]);
+                var expectedKey = helper.BuildKey(name, expected[i]);
+                Assert.That(actualKey, Is.EqualTo(expectedKey), $"Index {i}");
+
+                AssertOrderedCollection(actual[i], expected[i], i, actualKey);
             }
 
             AssertUniqueCollection(table[name]);
