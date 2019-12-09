@@ -133,6 +133,7 @@
     <Compile Include="Selectors\Collections\BonusSelectorTests.cs" />
     <Compile Include="Selectors\Collections\CreatureDataSelectorTests.cs" />
     <Compile Include="Selectors\Collections\TypeAndAmountSelectorTests.cs" />
+    <Compile Include="Selectors\Helpers\AttackHelperTests.cs" />
     <Compile Include="Selectors\Helpers\SpecialQualityHelperTests.cs" />
     <Compile Include="Selectors\Helpers\TypeAndAmountHelperTests.cs" />
     <Compile Include="Selectors\Selections\AdvancementSelectionTests.cs" />

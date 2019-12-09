@@ -3089,15 +3089,9 @@
   </collection>
   <collection>
     <name>Kapoacinth</name>
-    <entry>4</entry>
-    <entry>5</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>4</entry>
-    <entry>2</entry>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Gore@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Gelatinous Cube</name>
@@ -3133,15 +3127,11 @@
   </collection>
   <collection>
     <name>Lacedon</name>
-    <entry>1</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>2</entry>
-    <entry>2</entry>
+    <entry>Bite@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@Disease, Paralysis@1@0</entry>
+    <entry>Claw@1d3@True@True@False@False@2@Round (6 seconds)@@@melee@Paralysis@0.5@0</entry>
+    <entry>Disease@@True@True@False@True@1@Hit@@@supernatural ability@Ghoul Fever@0@0</entry>
+    <entry>Ghoul Fever@@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@incubation period 1 day, damage 1d3 Con and 1d3 Dex@0@0</entry>
+    <entry>Paralysis@@True@True@False@True@1@Hit@Charisma@Fortitude@extraordinary ability@1d4+1 rounds@0@0</entry>
   </collection>
   <collection>
     <name>Cloud Giant</name>
@@ -3326,7 +3316,9 @@
   </collection>
   <collection>
     <name>Iron Golem</name>
-    <entry>Slam@2d8@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Slam@2d10@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Breath weapon@@True@False@True@True@1@1d4+1 Round (6 seconds)@@@supernatural ability@Poisonous Gas@0@0</entry>
+    <entry>Poisonous Gas@@True@False@True@True@1@Round (6 seconds)@Constitution@Fortitude@melee@Initial damage 1d4 Con, secondary damage 3d4 Con@0@0</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
@@ -3519,15 +3511,15 @@
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
-    <entry>16</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>True</entry>
-    <entry>15</entry>
-    <entry>19</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@2d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@2d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@infernal wound@0.5@0</entry>
+    <entry>Fear Aura@@True@False@False@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@0</entry>
+    <entry>Infernal Wound@2@True@True@False@True@1@Round (6 seconds)@Constitution@@supernatural ability@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Stun@@True@True@False@True@1@Hit@Strength@Fortitude@supernatural ability@@0@0</entry>
+    <entry>Summon Devil@@True@False@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Heavy Horse</name>
@@ -3540,51 +3532,24 @@
   </collection>
   <collection>
     <name>Light Horse</name>
-    <entry>1</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>0</entry>
+    <entry>Hoof@1d4@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Light Warhorse</name>
-    <entry>1</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>4</entry>
-    <entry>0</entry>
+    <entry>Hoof@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d3@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Hound Archon</name>
-    <entry>4</entry>
-    <entry>5</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>6</entry>
-    <entry>0</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Slam@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
-    <entry>2</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Small</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>3</entry>
-    <entry>4</entry>
-    <entry>0</entry>
+    <entry>Light Ray@1d6@True@True@True@False@2@Round (6 seconds)@@@ranged touch@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Trumpet Archon</name>
@@ -3600,18 +3565,14 @@
   </collection>
   <collection>
     <name>Howler</name>
-    <entry>3</entry>
-    <entry>3</entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>0</entry>
+    <entry>Bite@2d8@True@True@True@False@1@Round (6 seconds)@@@melee@1d4 Quills@1@0</entry>
+    <entry>Quill@1d6@True@True@True@True@1@Round (6 seconds)@Dexterity@Reflex@extraordinary ability@@0.5@0</entry>
+    <entry>Howl@@True@False@True@True@1@Hour@Charisma@Will@extraordinary ability@1 Wis@0@0</entry>
   </collection>
   <collection>
     <name>Human</name>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
     <entry>Unarmed Strike@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
@@ -3728,111 +3689,63 @@
   </collection>
   <collection>
     <name>Hyena</name>
-    <entry>1</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>2</entry>
-    <entry>0</entry>
+    <entry>Bite@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Trip@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
-    <entry>13</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>True</entry>
-    <entry>13</entry>
-    <entry>18</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Claw@1d10@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail@3d6@True@True@False@False@1@Round (6 seconds)@@@melee@slow@0.5@0</entry>
+    <entry>Fear Aura@@True@False@False@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Slow@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@@0@0</entry>
+    <entry>Summon Devil@@True@False@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Imp</name>
-    <entry>2</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>Tiny</entry>
-    <entry>2.5</entry>
-    <entry>False</entry>
-    <entry>6</entry>
-    <entry>5</entry>
-    <entry>0</entry>
+    <entry>Sting@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@poison@1.5@0</entry>
+    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial damage 1d4 Dex, Secondary damage 2d4 Dex@0@2</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Invisible Stalker</name>
-    <entry>7</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>4</entry>
-    <entry>0</entry>
+    <entry>Slam@2d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Janni</name>
-    <entry>4</entry>
-    <entry>5</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>12</entry>
-    <entry>1</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Change Size@@True@False@True@True@2@Day@Charisma@Fortitude@spell-like ability@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
-    <entry>3</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Small</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>4</entry>
-    <entry>0</entry>
+    <entry>Bite@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Electricity ray@2d6@True@False@True@True@1@Round (6 seconds)@@@ranged touch, supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Kobold</name>
-    <entry>1/4</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>Small</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Kolyarut</name>
-    <entry>12</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>13</entry>
-    <entry>10</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Slam@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Vampiric Touch@5d6@True@True@True@True@1@Round (6 seconds)@@@melee touch@@0@0</entry>
+    <entry>Enervation Ray@@True@False@True@True@1@Round (6 seconds)@@@ranged touch@1d4 negative levels@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Marut</name>
-    <entry>15</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>14</entry>
-    <entry>16</entry>
-    <entry>2</entry>
+    <entry>Slam@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@Fist of Thunder@1@0</entry>
+    <entry>Slam@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@Fist of Lightning@1@0</entry>
+    <entry>Fist of Thunder@3d6 sonic@True@True@True@True@1@Round (6 seconds)@Strength@Fortitude@supernatural ability@deafened 2d6 rounds@0@0</entry>
+    <entry>Fist of Lightning@3d6 electricity@True@True@True@True@1@Round (6 seconds)@Strength@Fortitude@supernatural ability@blinded 2d6 rounds@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>
@@ -3848,131 +3761,85 @@
   </collection>
   <collection>
     <name>Kraken</name>
-    <entry>12</entry>
-    <entry></entry>
-    <entry>15</entry>
-    <entry>Gargantuan</entry>
-    <entry>20</entry>
-    <entry>False</entry>
-    <entry>9</entry>
-    <entry>14</entry>
-    <entry>0</entry>
+    <entry>Tentacle@2d8@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Arm@1d6@True@True@False@False@6@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Bite@4d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Constrict (Tentacle)@2d8@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Constrict (Arm)@1d6@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
   </collection>
   <collection>
     <name>Krenshar</name>
-    <entry>1</entry>
-    <entry>2</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>3</entry>
-    <entry>3</entry>
-    <entry>0</entry>
+    <entry>Bite@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d4@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Scare@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Scare with Screech@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Kuo-toa</name>
-    <entry>2</entry>
-    <entry>3</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>6</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Lightning Bolt@1d6 per whip@True@True@True@False@1@1d4 Round (6 seconds)@@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Lamia</name>
-    <entry>6</entry>
-    <entry>4</entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>True</entry>
-    <entry>9</entry>
-    <entry>7</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Touch@@True@True@True@False@1@Round (6 seconds)@@@melee@1d4 Wisdom Drain@0@0</entry>
+    <entry>Claw@1d4@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
-    <entry>8</entry>
-    <entry>5</entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>7</entry>
-    <entry>10</entry>
-    <entry>0</entry>
+    <entry>Claw@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Rake@1d6@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
   </collection>
   <collection>
     <name>Lemure</name>
-    <entry>1</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>4</entry>
-    <entry>0</entry>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Leonal</name>
-    <entry>12</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>10</entry>
-    <entry>14</entry>
-    <entry>2</entry>
+    <entry>Claw@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Roar@2d6 sonic@True@False@True@True@3@Day@Charisma@Fortitude@supernatural ability@@0@0</entry>
+    <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Rake@1d6@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Leopard</name>
-    <entry>2</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>0</entry>
+    <entry>Bite@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d3@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Rake@1d3@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
-    <entry>1/2</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>Small</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>7</entry>
-    <entry>6</entry>
-    <entry>10</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>True</entry>
-    <entry>10</entry>
-    <entry>5</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Unarmed Strike@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Tail slap@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Constrict@2d6@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell@@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Lion</name>
-    <entry>Claw@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@1d6@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@1d4@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Dire Lion</name>
@@ -3984,135 +3851,73 @@
   </collection>
   <collection>
     <name>Lizard</name>
-    <entry>1/6</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>Tiny</entry>
-    <entry>2.5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>Bite@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Monitor Lizard</name>
-    <entry>2</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>0</entry>
+    <entry>Bite@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
-    <entry>1</entry>
-    <entry>1</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d4@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Locathah</name>
-    <entry>1/2</entry>
-    <entry>1</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Unarmed Strike@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Locust Swarm</name>
-    <entry>3</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>Diminutive</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>Swarm@2d6@True@True@True@False@1@Round (6 seconds)@@@swarm@@0@0</entry>
+    <entry>Distraction@@True@True@True@True@1@Minute (10 rounds)@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Magmin</name>
-    <entry>3</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Small</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>6</entry>
-    <entry>0</entry>
+    <entry>Burning Touch@1d8 fire@True@True@True@False@2@Round (6 seconds)@@@melee@Combustion@0@0</entry>
+    <entry>Slam@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@Combustion@1.5@0</entry>
+    <entry>Combustion@1d8 fire@True@True@False@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@0@0</entry>
+    <entry>Fiery Aura@1d6 fire@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Manta Ray</name>
-    <entry>1</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>0</entry>
+    <entry>Ram@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Manticore</name>
-    <entry>5</entry>
-    <entry>3</entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>6</entry>
-    <entry>0</entry>
+    <entry>Claw@2d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Spikes@@True@False@True@False@6@Round (6 seconds)@@@ranged@Tail Spikes@0@0</entry>
+    <entry>Tail Spikes@1d8@True@False@True@True@24@Day@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Marilith</name>
-    <entry>17</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>True</entry>
-    <entry>16</entry>
-    <entry>16</entry>
-    <entry>6</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Melee@@False@True@False@False@5@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@4d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Slam@1d8@True@True@True@False@6@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Constrict@4d6@True@True@False@True@1@Round (6 seconds)@Strength@Fortitude@extraordinary ability@@1.5@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Summon Demon@@True@False@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Medusa</name>
-    <entry>7</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
+    <entry>Snakes@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
+    <entry>Petrifying Gaze@@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@Permanent petrification@0@0</entry>
+    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial damage 1d6 Str, Secondary damage 2d6 Str@0@0</entry>
   </collection>
   <collection>
     <name>Megaraptor</name>
-    <entry>6</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>6</entry>
-    <entry>0</entry>
+    <entry>Talons@2d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Foreclaw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Bite@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Dust Mephit</name>
@@ -4137,15 +3942,15 @@
   </collection>
   <collection>
     <name>Ice Mephit</name>
-    <entry>Claw@1d3@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Breath weapon@1d4@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
+    <entry>Claw@1d3 + 1d4 cold@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Breath weapon@1d4 cold@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Mephit@@True@True@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Magma Mephit</name>
-    <entry>Claw@1d3@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Breath weapon@1d4@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
+    <entry>Claw@1d3 + 1d4 fire@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Breath weapon@1d4 fire@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Mephit@@True@True@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
@@ -4179,171 +3984,82 @@
   </collection>
   <collection>
     <name>Merfolk</name>
-    <entry>1/2</entry>
-    <entry>1</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Unarmed Strike@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Merrow</name>
-    <entry>3</entry>
-    <entry>2</entry>
-    <entry>10</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Unarmed Strike@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Mimic</name>
-    <entry>4</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>0</entry>
+    <entry>Slam@1d8@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Adhesive@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Crush@1d8@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
-    <entry>8</entry>
-    <entry>7</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>8</entry>
-    <entry>3</entry>
-    <entry>2</entry>
+    <entry>Tentacle@1d4@True@True@True@False@4@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Mind Blast@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@spell-like ability@3d4 rounds stunned@1@0</entry>
+    <entry>Psionic@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Extract@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Minotaur</name>
-    <entry>4</entry>
-    <entry>2</entry>
-    <entry>10</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Powerful Charge@4d6@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
   </collection>
   <collection>
     <name>Mohrg</name>
-    <entry>8</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>9</entry>
-    <entry>0</entry>
+    <entry>Slam@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Tongue@@True@True@True@False@1@Round (6 seconds)@@@melee touch@Paralyzing Touch@0@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Paralyzing Touch@@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@1d4 minutes paralyzed@0@0</entry>
+    <entry>Create Spawn@@True@True@False@True@1@Hit@@@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monkey</name>
-    <entry>1/6</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>Tiny</entry>
-    <entry>2.5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>Bite@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
-    <entry>9</entry>
-    <entry></entry>
-    <entry>20</entry>
-    <entry>Colossal</entry>
-    <entry>30</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>16</entry>
-    <entry>0</entry>
+    <entry>Bite@4d6@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
+    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 2d6 Dex@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
-    <entry>6</entry>
-    <entry></entry>
-    <entry>15</entry>
-    <entry>Gargantuan</entry>
-    <entry>20</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>10</entry>
-    <entry>0</entry>
+    <entry>Bite@2d8@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
+    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d8 Dex@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
-    <entry>2</entry>
-    <entry></entry>
-    <entry>10</entry>
-    <entry>Huge</entry>
-    <entry>15</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>6</entry>
-    <entry>0</entry>
+    <entry>Bite@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
+    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d6 Dex@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
-    <entry>1</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Large</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>0</entry>
+    <entry>Bite@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
+    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d4 Dex@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
-    <entry>1/2</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>2</entry>
-    <entry>0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
+    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d3 Dex@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
-    <entry>1/4</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>Small</entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>0</entry>
+    <entry>Bite@1d4@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
+    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d2 Dex@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
-    <entry>1/8</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>Tiny</entry>
-    <entry>2.5</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>0</entry>
+    <entry>Bite@1d3@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
+    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1 Dex@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
@@ -5233,15 +4949,10 @@
   </collection>
   <collection>
     <name>Malenti</name>
-    <entry>2</entry>
-    <entry>2</entry>
-    <entry>5</entry>
-    <entry>Medium</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Unarmed Strike@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Blood Frenzy@@True@False@True@True@1@Day@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Satyr</name>
@@ -5491,15 +5202,9 @@
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
-    <entry>1/2</entry>
-    <entry>0</entry>
-    <entry>5</entry>
-    <entry>Small</entry>
-    <entry>5</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>2</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Tarrasque</name>
@@ -5927,8 +5632,8 @@
   </collection>
   <collection>
     <name>Minor Xorn</name>
-    <entry>Bite@4d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Claw@1d4@True@True@False@False@3@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Bite@2d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d3@True@True@False@False@3@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Elder Xorn</name>

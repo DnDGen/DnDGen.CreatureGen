@@ -59,7 +59,7 @@ namespace CreatureGen.Tests.Integration.Tables
             AssertOrderedCollection(table[name], collection);
         }
 
-        protected void AssertOrderedCollection(IEnumerable<string> actual, IEnumerable<string> expected, int metaIndex = -1, string metaKey = "")
+        protected void AssertOrderedCollection(IEnumerable<string> actual, IEnumerable<string> expected, string metaKey = "")
         {
             PopulateIndices(actual);
             var expectedArray = expected.ToArray();
@@ -74,9 +74,6 @@ namespace CreatureGen.Tests.Integration.Tables
                 var actualItem = actualArray[index];
 
                 var message = $"Index {index}";
-
-                if (metaIndex > -1)
-                    message = $"Index {metaIndex}-{index}";
 
                 if (!string.IsNullOrEmpty(metaKey))
                     message = $"Key {metaKey}: {message}";

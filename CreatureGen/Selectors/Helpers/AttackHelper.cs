@@ -37,8 +37,8 @@ namespace CreatureGen.Selectors.Helpers
             data[DataIndexConstants.AttackData.IsSpecialIndex] = isSpecial.ToString();
             data[DataIndexConstants.AttackData.FrequencyQuantityIndex] = frequencyQuantity.ToString();
             data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = frequencyTimePeriod;
-            data[DataIndexConstants.AttackData.SaveIndex] = save;
-            data[DataIndexConstants.AttackData.SaveAbilityIndex] = saveAbility;
+            data[DataIndexConstants.AttackData.SaveIndex] = save ?? string.Empty;
+            data[DataIndexConstants.AttackData.SaveAbilityIndex] = saveAbility ?? string.Empty;
             data[DataIndexConstants.AttackData.AttackTypeIndex] = attackType;
             data[DataIndexConstants.AttackData.SaveDcBonusIndex] = saveDcBonus.ToString();
 
@@ -47,14 +47,18 @@ namespace CreatureGen.Selectors.Helpers
 
         public override string BuildKey(string creature, string[] data)
         {
-            return BuildKeyFromSections(creature, data[DataIndexConstants.AttackData.NameIndex], data[DataIndexConstants.AttackData.IsPrimaryIndex]);
+            return BuildKeyFromSections(creature,
+                data[DataIndexConstants.AttackData.NameIndex],
+                data[DataIndexConstants.AttackData.IsPrimaryIndex],
+                data[DataIndexConstants.AttackData.DamageRollIndex],
+                data[DataIndexConstants.AttackData.DamageEffectIndex]);
         }
 
         public override bool ValidateEntry(string entry)
         {
             var data = ParseEntry(entry);
-            return data.Length > DataIndexConstants.AttackData.NameIndex
-                && data.Length > DataIndexConstants.AttackData.IsPrimaryIndex;
+            var init = DataIndexConstants.AttackData.InitializeData();
+            return data.Length == init.Length;
         }
     }
 }

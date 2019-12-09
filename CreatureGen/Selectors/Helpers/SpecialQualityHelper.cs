@@ -61,8 +61,8 @@ namespace CreatureGen.Selectors.Helpers
         public override bool ValidateEntry(string entry)
         {
             var data = ParseEntry(entry);
-            return data.Length > DataIndexConstants.SpecialQualityData.FeatNameIndex
-                && data.Length > DataIndexConstants.SpecialQualityData.FocusIndex;
+            var init = DataIndexConstants.SpecialQualityData.InitializeData();
+            return data.Length == init.Length;
         }
     }
 }

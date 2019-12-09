@@ -24,6 +24,7 @@ namespace CreatureGen.Tests.Integration.Tables
         private void AssertData(string name, IEnumerable<string> entries)
         {
             AssertUniqueCollection(entries);
+            AssertUniqueCollection(entries.Select(e => helper.BuildKey(name, e)));
 
             Assert.That(table, Contains.Key(name));
             var isValid = entries.All(helper.ValidateEntry) && table[name].All(helper.ValidateEntry);
@@ -41,13 +42,15 @@ namespace CreatureGen.Tests.Integration.Tables
                 .OrderBy(d => helper.BuildKey(name, d))
                 .ToArray();
 
+            AssertUniqueCollection(table[name].Select(e => helper.BuildKey(name, e)));
+
             for (var i = 0; i < actual.Length; i++)
             {
                 var actualKey = helper.BuildKey(name, actual[i]);
                 var expectedKey = helper.BuildKey(name, expected[i]);
-                Assert.That(actualKey, Is.EqualTo(expectedKey), $"Index {i}");
 
-                AssertOrderedCollection(actual[i], expected[i], i, actualKey);
+                Assert.That(actualKey, Is.EqualTo(expectedKey), $"Index {i}");
+                AssertOrderedCollection(actual[i], expected[i], actualKey);
             }
 
             AssertUniqueCollection(table[name]);

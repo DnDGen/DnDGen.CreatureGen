@@ -139,7 +139,9 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Combats\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CreatureGen.Tests.Integration\CreatureGen.Tests.Integration.csproj">
       <Project>{a9371758-2de3-43af-857d-7140b1c0a78c}</Project>
