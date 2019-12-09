@@ -170,5 +170,34 @@ namespace CreatureGen.Tests.Unit.Selectors.Helpers
             var key = helper.BuildKeyFromSections("creature", "My Attack", primary.ToString(), roll, effect);
             Assert.That(key, Is.EqualTo($"creatureMy Attack{primary}{roll}{effect}"));
         }
+
+        [TestCase(0, false)]
+        [TestCase(1, false)]
+        [TestCase(2, false)]
+        [TestCase(3, false)]
+        [TestCase(4, false)]
+        [TestCase(5, false)]
+        [TestCase(6, false)]
+        [TestCase(7, false)]
+        [TestCase(8, false)]
+        [TestCase(9, false)]
+        [TestCase(10, false)]
+        [TestCase(11, false)]
+        [TestCase(12, false)]
+        [TestCase(13, false)]
+        [TestCase(14, true)]
+        [TestCase(15, false)]
+        [TestCase(16, false)]
+        [TestCase(17, false)]
+        [TestCase(18, false)]
+        [TestCase(19, false)]
+        [TestCase(20, false)]
+        public void ValidateEntry_IsValid(int length, bool isValid)
+        {
+            var data = new string[length];
+            var entry = helper.BuildEntry(data);
+            var valid = helper.ValidateEntry(entry);
+            Assert.That(valid, Is.EqualTo(isValid));
+        }
     }
 }

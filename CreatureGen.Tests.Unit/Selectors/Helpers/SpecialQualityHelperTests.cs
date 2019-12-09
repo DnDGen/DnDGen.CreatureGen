@@ -213,48 +213,61 @@ namespace CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data.Length, Is.EqualTo(10));
         }
 
-        [Test]
-        public void BuildKey_FromData_WithFocus()
+        [TestCase("")]
+        [TestCase("my focus")]
+        [TestCase("Clairaudience/Clairvoyance")]
+        public void BuildKey_FromData(string focus)
         {
-            var data = helper.ParseEntry("Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0#False###0");
+            var data = helper.ParseEntry($"Special Quality#0#{focus}#3#Day#0#False###0");
             var key = helper.BuildKey("creature", data);
-            Assert.That(key, Is.EqualTo("creatureSpell-Like AbilityClairaudience/Clairvoyance"));
+            Assert.That(key, Is.EqualTo($"creatureSpecial Quality{focus}"));
         }
 
-        [Test]
-        public void BuildKey_FromData_WithoutFocus()
+        [TestCase("")]
+        [TestCase("my focus")]
+        [TestCase("Clairaudience/Clairvoyance")]
+        public void BuildKey_FromEntry(string focus)
         {
-            var data = helper.ParseEntry("All-Around Vision#0##0##0#False###0");
-            var key = helper.BuildKey("creature", data);
-            Assert.That(key, Is.EqualTo("creatureAll-Around Vision"));
+            var key = helper.BuildKey("creature", $"Special Quality#0#{focus}#3#Day#0#False###0");
+            Assert.That(key, Is.EqualTo($"creatureSpecial Quality{focus}"));
         }
 
-        [Test]
-        public void BuildKey_FromString_WithFocus()
+        [TestCase("")]
+        [TestCase("my focus")]
+        [TestCase("Clairaudience/Clairvoyance")]
+        public void BuildKeyFromSections(string focus)
         {
-            var key = helper.BuildKey("creature", "Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0#False###0");
-            Assert.That(key, Is.EqualTo("creatureSpell-Like AbilityClairaudience/Clairvoyance"));
+            var key = helper.BuildKeyFromSections("creature", "Special Quality", focus);
+            Assert.That(key, Is.EqualTo($"creatureSpecial Quality{focus}"));
         }
 
-        [Test]
-        public void BuildKey_FromString_WithoutFocus()
+        [TestCase(0, false)]
+        [TestCase(1, false)]
+        [TestCase(2, false)]
+        [TestCase(3, false)]
+        [TestCase(4, false)]
+        [TestCase(5, false)]
+        [TestCase(6, false)]
+        [TestCase(7, false)]
+        [TestCase(8, false)]
+        [TestCase(9, false)]
+        [TestCase(10, true)]
+        [TestCase(11, false)]
+        [TestCase(12, false)]
+        [TestCase(13, false)]
+        [TestCase(14, false)]
+        [TestCase(15, false)]
+        [TestCase(16, false)]
+        [TestCase(17, false)]
+        [TestCase(18, false)]
+        [TestCase(19, false)]
+        [TestCase(20, false)]
+        public void ValidateEntry_IsValid(int length, bool isValid)
         {
-            var key = helper.BuildKey("creature", "All-Around Vision#0##0##0#False###0");
-            Assert.That(key, Is.EqualTo("creatureAll-Around Vision"));
-        }
-
-        [Test]
-        public void BuildKeyFromSections_FromNameAndFocus_WithFocus()
-        {
-            var key = helper.BuildKeyFromSections("creature", "Spell-Like Ability", "Clairaudience/Clairvoyance");
-            Assert.That(key, Is.EqualTo("creatureSpell-Like AbilityClairaudience/Clairvoyance"));
-        }
-
-        [Test]
-        public void BuildKeyFromSections_FromNameAndFocus_WithoutFocus()
-        {
-            var key = helper.BuildKeyFromSections("creature", "All-Around Vision", string.Empty);
-            Assert.That(key, Is.EqualTo("creatureAll-Around Vision"));
+            var data = new string[length];
+            var entry = helper.BuildEntry(data);
+            var valid = helper.ValidateEntry(entry);
+            Assert.That(valid, Is.EqualTo(isValid));
         }
     }
 }
