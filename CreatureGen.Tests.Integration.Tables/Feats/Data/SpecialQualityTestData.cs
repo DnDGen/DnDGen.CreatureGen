@@ -3045,9 +3045,15 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
                 testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
                 testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Charm"));
-                testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+                testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: SpellConstants.Sleep));
                 testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Fear"));
                 testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
+                testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectAlignment, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectMagic, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.MagicMissile, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.RayOfEnfeeblement, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+                testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Sleep, frequencyTimePeriod: FeatConstants.Frequencies.AtWill, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveBaseValue: 11));
+                testCases[CreatureConstants.NightHag].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Etherealness, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
 
                 testCases[CreatureConstants.Nightcrawler].Add(helper.BuildData(FeatConstants.SpecialQualities.AversionToDaylight));
                 testCases[CreatureConstants.Nightcrawler].Add(helper.BuildData(FeatConstants.SpecialQualities.DesecratingAura));

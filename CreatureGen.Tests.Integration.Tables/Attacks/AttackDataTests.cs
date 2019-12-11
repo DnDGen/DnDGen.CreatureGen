@@ -87,8 +87,12 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 .Select(helper.ParseEntry)
                 .Any(d => d[DataIndexConstants.AttackData.NameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility);
 
-            var hasSpellLikeAbilitySpecialQuality = specialQualities.Any(q => q.Feat == FeatConstants.SpecialQualities.SpellLikeAbility);
-            Assert.That(hasSpellLikeAbilityAttack, Is.EqualTo(hasSpellLikeAbilitySpecialQuality));
+            //INFO: Want to ignore constant effects such as Doppelganger's Detect Thoughts and Copper Dragon's Spider Climb
+            var spellLikeAbilitySpecialQuality = specialQualities.FirstOrDefault(q =>
+                q.Feat == FeatConstants.SpecialQualities.SpellLikeAbility
+                && q.Frequency.TimePeriod != FeatConstants.Frequencies.Constant);
+            var hasSpellLikeAbilitySpecialQuality = spellLikeAbilitySpecialQuality != null;
+            Assert.That(hasSpellLikeAbilityAttack, Is.EqualTo(hasSpellLikeAbilitySpecialQuality), spellLikeAbilitySpecialQuality?.Feat);
         }
 
         private CreatureType GetCreatureType(string creatureName)
@@ -144,28 +148,48 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 .Select(helper.ParseEntry)
                 .Any(d => !Convert.ToBoolean(d[DataIndexConstants.AttackData.IsNaturalIndex]));
 
-            Assert.That(hasUnnaturalAttack, Is.EqualTo(creatureData.CanUseEquipment));
+            if (!hasUnnaturalAttack)
+            {
+                Assert.Pass($"{creature} has all-natural, 100% USDA Organic attacks");
+            }
+
+            Assert.That(creatureData.CanUseEquipment, Is.True.And.EqualTo(hasUnnaturalAttack));
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
-        public void CreatureHasNaturalMeleeAttack(string creature)
+        public void CreatureWithUnnaturalAttack_HasNaturalMeleeAttack(string creature)
         {
             Assert.That(table, Contains.Key(creature));
             Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
+
+            var hasUnnaturalAttack = table[creature]
+                .Select(helper.ParseEntry)
+                .Any(d => !Convert.ToBoolean(d[DataIndexConstants.AttackData.IsNaturalIndex]));
+
+            if (!hasUnnaturalAttack)
+            {
+                Assert.Pass($"{creature} has all-natural, 100% USDA Organic attacks");
+            }
 
             var naturalAttack = table[creature]
                 .Select(helper.ParseEntry)
                 .FirstOrDefault(d => d[DataIndexConstants.AttackData.IsNaturalIndex] == bool.TrueString
                     && d[DataIndexConstants.AttackData.IsMeleeIndex] == bool.TrueString
+                    && d[DataIndexConstants.AttackData.IsPrimaryIndex] == bool.TrueString
                     && d[DataIndexConstants.AttackData.IsSpecialIndex] == bool.FalseString);
 
             Assert.That(naturalAttack, Is.Not.Null);
             Assert.That(naturalAttack[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("melee"));
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round));
             Assert.That(naturalAttack[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(bool.TrueString));
             Assert.That(naturalAttack[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(bool.TrueString));
             Assert.That(naturalAttack[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.FalseString));
+            Assert.That(naturalAttack[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.TrueString));
             Assert.That(naturalAttack[DataIndexConstants.AttackData.NameIndex], Is.Not.Empty);
+            Assert.That(naturalAttack[DataIndexConstants.AttackData.DamageRollIndex], Is.Not.Empty);
+            Assert.That(naturalAttack[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.Not.EqualTo(0.ToString()));
+            Assert.That(naturalAttack[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo("0.5")
+                .Or.EqualTo("1")
+                .Or.EqualTo("1.5"));
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
@@ -180,7 +204,7 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
             if (improvedGrab == null)
             {
-                Assert.Pass();
+                Assert.Pass($"{creature} does not have attack 'Improved Grab'");
             }
 
             Assert.That(improvedGrab[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("extraordinary ability"));
@@ -211,22 +235,22 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
             if (spells == null)
             {
-                Assert.Pass();
+                Assert.Pass($"{creature} does not have attack 'Spells'");
             }
 
             Assert.That(spells[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("spell-like ability"));
-            Assert.That(spells[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo("0"));
+            Assert.That(spells[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo(0.ToString()));
             Assert.That(spells[DataIndexConstants.AttackData.DamageEffectIndex], Is.Empty);
             Assert.That(spells[DataIndexConstants.AttackData.DamageRollIndex], Is.Empty);
-            Assert.That(spells[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo("1"));
+            Assert.That(spells[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()));
             Assert.That(spells[DataIndexConstants.AttackData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round));
             Assert.That(spells[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(bool.FalseString));
             Assert.That(spells[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(spells[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.FalseString));
+            Assert.That(spells[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.TrueString));
             Assert.That(spells[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.TrueString));
             Assert.That(spells[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("Spells"));
             Assert.That(spells[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
-            Assert.That(spells[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo("0"));
+            Assert.That(spells[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
             Assert.That(spells[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
         }
 
@@ -238,26 +262,26 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
 
             var spellLikeAbility = table[creature]
                 .Select(helper.ParseEntry)
-                .FirstOrDefault(d => d[DataIndexConstants.AttackData.NameIndex] == "Spells");
+                .FirstOrDefault(d => d[DataIndexConstants.AttackData.NameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility);
 
             if (spellLikeAbility == null)
             {
-                Assert.Pass();
+                Assert.Pass($"{creature} does not have attack '{FeatConstants.SpecialQualities.SpellLikeAbility}'");
             }
 
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("spell-like ability"));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo("0"));
+            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo(0.ToString()));
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.DamageEffectIndex], Is.Empty);
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.DamageRollIndex], Is.Empty);
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo("1"));
+            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()));
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round));
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(bool.FalseString));
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.FalseString));
+            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.TrueString));
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("Spell-Like Ability"));
+            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.NameIndex], Is.EqualTo(FeatConstants.SpecialQualities.SpellLikeAbility));
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo("0"));
+            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
         }
     }
