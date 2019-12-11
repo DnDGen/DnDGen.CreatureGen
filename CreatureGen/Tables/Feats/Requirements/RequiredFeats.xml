@@ -7100,6 +7100,24 @@
     <name>Night HagSpell Resistance</name>
   </collection>
   <collection>
+    <name>Night HagSpell-Like AbilityDetect chaos/evil/good/law</name>
+  </collection>
+  <collection>
+    <name>Night HagSpell-Like AbilityDetect magic</name>
+  </collection>
+  <collection>
+    <name>Night HagSpell-Like AbilityMagic missile</name>
+  </collection>
+  <collection>
+    <name>Night HagSpell-Like AbilityRay of enfeeblement</name>
+  </collection>
+  <collection>
+    <name>Night HagSpell-Like AbilitySleep</name>
+  </collection>
+  <collection>
+    <name>Night HagSpell-Like AbilityEtherealness</name>
+  </collection>
+  <collection>
     <name>NightcrawlerAversion to Daylight</name>
   </collection>
   <collection>

@@ -3917,6 +3917,12 @@
     <entry>Immunity#0#Fear#0##0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Spell Resistance#25##0##0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic missile#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Ray of enfeeblement#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Sleep#0#At Will#0#False#Charisma#Will#11</entry>
+    <entry>Spell-Like Ability#0#Etherealness#0#At Will#0#False###0</entry>
   </collection>
   <collection>
     <name>Nightcrawler</name>

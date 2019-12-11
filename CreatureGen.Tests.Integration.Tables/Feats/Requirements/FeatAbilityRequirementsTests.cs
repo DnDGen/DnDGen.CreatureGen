@@ -2891,6 +2891,12 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.Immunity, "Sleep")] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.Immunity, "Fear")] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectAlignment)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectMagic)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MagicMissile)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.RayOfEnfeeblement)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Sleep)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Etherealness)] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Nightcrawler, FeatConstants.SpecialQualities.AversionToDaylight, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Nightcrawler, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to silver, magic weapons")] = new Dictionary<string, int>();

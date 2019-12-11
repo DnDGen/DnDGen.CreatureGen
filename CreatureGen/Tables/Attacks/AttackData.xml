@@ -3078,7 +3078,7 @@
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Slam@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Rock@2d8@True@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
-    <entry>Rock Throwing@@True@False@True@False@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Rock Throwing@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -3086,19 +3086,19 @@
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Slam@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Rock@2d6@True@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
-    <entry>Rock Throwing@@True@False@True@False@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Rock Throwing@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
   </collection>
   <collection>
     <name>Frost Giant</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Slam@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Rock@2d6@True@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
-    <entry>Rock Throwing@@True@False@True@False@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Rock Throwing@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
   </collection>
   <collection>
     <name>Hill Giant</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Rock Throwing@@True@False@True@False@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Rock Throwing@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Rock@2d6@True@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
     <entry>Slam@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
@@ -3106,14 +3106,14 @@
     <name>Stone Giant</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Rock@2d8@True@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
-    <entry>Rock Throwing@@True@False@True@False@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Rock Throwing@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Slam@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Rock@2d8@True@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
-    <entry>Rock Throwing@@True@False@True@False@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Rock Throwing@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Slam@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -3500,6 +3500,7 @@
   <collection>
     <name>Trumpet Archon</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Trumpet@@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@1d4 rounds paralyzed@0@0</entry>
@@ -3658,6 +3659,7 @@
     <name>Janni</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Unarmed Strike@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Change Size@@True@False@True@True@2@Day@Charisma@Fortitude@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -3691,6 +3693,7 @@
   <collection>
     <name>Zelekhut</name>
     <entry>Melee@@False@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Unarmed Strike@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Electrified Weapon@1d6 electricity@True@True@False@True@1@Hit@@@extraordinary ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -3702,6 +3705,7 @@
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Constrict (Tentacle)@2d8@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Constrict (Arm)@1d6@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Krenshar</name>
@@ -3718,10 +3722,11 @@
   </collection>
   <collection>
     <name>Lamia</name>
-    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Touch@@True@True@True@False@1@Round (6 seconds)@@@melee@1d4 Wisdom Drain@0@0</entry>
     <entry>Claw@1d4@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
+    <entry>Touch@@True@True@True@False@1@Round (6 seconds)@@@melee touch@Wisdom Drain@0@0</entry>
+    <entry>Wisdom Drain@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@1d4 Wisdom Drain@0@0</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
@@ -4800,6 +4805,7 @@
     <name>Unicorn</name>
     <entry>Horn@1d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Hoof@1d4@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Vampire Spawn</name>
@@ -4807,6 +4813,7 @@
     <entry>Blood Drain@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@1d4 Con@0@0</entry>
     <entry>Domination@@True@True@True@True@1@Hit@Charisma@Will@supernatural ability@Dominate person@0@0</entry>
     <entry>Energy Drain@@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@1 negative level@0@0</entry>
+    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Vargouille</name>

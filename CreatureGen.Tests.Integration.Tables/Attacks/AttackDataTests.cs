@@ -153,11 +153,11 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
                 Assert.Pass($"{creature} has all-natural, 100% USDA Organic attacks");
             }
 
-            Assert.That(creatureData.CanUseEquipment, Is.True.And.EqualTo(hasUnnaturalAttack));
+            Assert.That(hasUnnaturalAttack, Is.True.And.EqualTo(creatureData.CanUseEquipment));
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
-        public void CreatureWithUnnaturalAttack_HasNaturalMeleeAttack(string creature)
+        public void CreatureWithUnnaturalAttack_HasNaturalAttack(string creature)
         {
             Assert.That(table, Contains.Key(creature));
             Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
@@ -174,22 +174,13 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
             var naturalAttack = table[creature]
                 .Select(helper.ParseEntry)
                 .FirstOrDefault(d => d[DataIndexConstants.AttackData.IsNaturalIndex] == bool.TrueString
-                    && d[DataIndexConstants.AttackData.IsMeleeIndex] == bool.TrueString
-                    && d[DataIndexConstants.AttackData.IsPrimaryIndex] == bool.TrueString
                     && d[DataIndexConstants.AttackData.IsSpecialIndex] == bool.FalseString);
 
             Assert.That(naturalAttack, Is.Not.Null);
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("melee"));
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.FalseString));
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.TrueString));
             Assert.That(naturalAttack[DataIndexConstants.AttackData.NameIndex], Is.Not.Empty);
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.DamageRollIndex], Is.Not.Empty);
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.Not.EqualTo(0.ToString()));
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo("0.5")
-                .Or.EqualTo("1")
-                .Or.EqualTo("1.5"));
+            Assert.That(naturalAttack[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(bool.TrueString), naturalAttack[DataIndexConstants.AttackData.NameIndex]);
+            Assert.That(naturalAttack[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.FalseString), naturalAttack[DataIndexConstants.AttackData.NameIndex]);
+            Assert.That(naturalAttack[DataIndexConstants.AttackData.DamageRollIndex], Is.Not.Empty, naturalAttack[DataIndexConstants.AttackData.NameIndex]);
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
