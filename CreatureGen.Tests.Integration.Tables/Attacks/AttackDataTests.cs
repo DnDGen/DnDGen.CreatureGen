@@ -106,6 +106,23 @@ namespace CreatureGen.Tests.Integration.Tables.Attacks
             return creatureType;
         }
 
+        [Test]
+        public void AllAttackKeysUnique()
+        {
+            var keys = new List<string>();
+
+            foreach (var kvp in table)
+            {
+                foreach (var value in kvp.Value)
+                {
+                    var key = helper.BuildKey(kvp.Key, value);
+                    keys.Add(key);
+                }
+            }
+
+            Assert.That(keys, Is.Unique);
+        }
+
         [TestCaseSource(typeof(CreatureTestData), "All")]
         public void CreatureWithPsionicAttack_HasPsionicSpecialQuality(string creature)
         {

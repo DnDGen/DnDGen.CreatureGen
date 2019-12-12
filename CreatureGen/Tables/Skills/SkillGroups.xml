@@ -2,6 +2,138 @@
 
 <collections>
   <collection>
+    <name>Armor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Armor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>Armor Proficiency (Heavy)</name>
+  </collection>
+  <collection>
+    <name>Augment Summoning</name>
+  </collection>
+  <collection>
+    <name>Blind-Fight</name>
+  </collection>
+  <collection>
+    <name>Cleave</name>
+  </collection>
+  <collection>
+    <name>Combat Casting</name>
+  </collection>
+  <collection>
+    <name>Combat Expertise</name>
+  </collection>
+  <collection>
+    <name>Combat Reflexes</name>
+  </collection>
+  <collection>
+    <name>Deflect Arrows</name>
+  </collection>
+  <collection>
+    <name>Diehard</name>
+  </collection>
+  <collection>
+    <name>Dodge</name>
+  </collection>
+  <collection>
+    <name>Endurance</name>
+  </collection>
+  <collection>
+    <name>Eschew Materials</name>
+  </collection>
+  <collection>
+    <name>Exotic Weapon Proficiency</name>
+  </collection>
+  <collection>
+    <name>Simple Weapon Proficiency</name>
+  </collection>
+  <collection>
+    <name>Martial Weapon Proficiency</name>
+  </collection>
+  <collection>
+    <name>Far Shot</name>
+  </collection>
+  <collection>
+    <name>Great Cleave</name>
+  </collection>
+  <collection>
+    <name>Great Fortitude</name>
+  </collection>
+  <collection>
+    <name>Greater Spell Focus</name>
+  </collection>
+  <collection>
+    <name>Greater Spell Penetration</name>
+  </collection>
+  <collection>
+    <name>Greater Two-Weapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Improved Bull Rush</name>
+  </collection>
+  <collection>
+    <name>Improved Counterspell</name>
+  </collection>
+  <collection>
+    <name>Improved Critical</name>
+  </collection>
+  <collection>
+    <name>Improved Disarm</name>
+  </collection>
+  <collection>
+    <name>Improved Feint</name>
+  </collection>
+  <collection>
+    <name>Improved Grapple</name>
+  </collection>
+  <collection>
+    <name>Improved Initiative</name>
+  </collection>
+  <collection>
+    <name>Improved Overrun</name>
+  </collection>
+  <collection>
+    <name>Improved Precise Shot</name>
+  </collection>
+  <collection>
+    <name>Improved Shield Bash</name>
+  </collection>
+  <collection>
+    <name>Improved Sunder</name>
+  </collection>
+  <collection>
+    <name>Improved Trip</name>
+  </collection>
+  <collection>
+    <name>Improved Two-Weapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Improved Unarmed Strike</name>
+  </collection>
+  <collection>
+    <name>Iron Will</name>
+  </collection>
+  <collection>
+    <name>Lightning Reflexes</name>
+  </collection>
+  <collection>
+    <name>Rapid Shot</name>
+  </collection>
+  <collection>
+    <name>Rapid Reload</name>
+  </collection>
+  <collection>
+    <name>Shield Proficiency</name>
+  </collection>
+  <collection>
+    <name>Tower Shield Proficiency</name>
+  </collection>
+  <collection>
+    <name>Trample</name>
+  </collection>
+  <collection>
     <name>Aasimar</name>
     <entry>Heal</entry>
     <entry>Knowledge/Religion</entry>

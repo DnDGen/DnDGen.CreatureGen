@@ -53,24 +53,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Profession,
             });
 
-            var feats = new[]
-            {
-                FeatConstants.Acrobatic,
-                FeatConstants.Agile,
-                FeatConstants.Alertness,
-                FeatConstants.AnimalAffinity,
-                FeatConstants.Athletic,
-                FeatConstants.Deceitful,
-                FeatConstants.DeftHands,
-                FeatConstants.Diligent,
-                FeatConstants.Investigator,
-                FeatConstants.MagicalAptitude,
-                FeatConstants.Negotiator,
-                FeatConstants.NimbleFingers,
-                FeatConstants.Persuasive,
-                FeatConstants.SelfSufficient,
-                FeatConstants.Stealthy,
-            };
+            var feats = FeatConstants.All();
 
             var misc = new[]
             {
@@ -90,6 +73,7 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
             AssertCollectionNames(names);
         }
 
+        [TestCase(FeatConstants.ArmorProficiency_Heavy)]
         [TestCase(FeatConstants.Acrobatic,
             SkillConstants.Jump,
             SkillConstants.Tumble)]
@@ -102,39 +86,113 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(FeatConstants.AnimalAffinity,
             SkillConstants.HandleAnimal,
             SkillConstants.Ride)]
+        [TestCase(FeatConstants.ArmorProficiency_Heavy)]
+        [TestCase(FeatConstants.ArmorProficiency_Light)]
+        [TestCase(FeatConstants.ArmorProficiency_Medium)]
         [TestCase(FeatConstants.Athletic,
             SkillConstants.Climb,
             SkillConstants.Swim)]
+        [TestCase(FeatConstants.AugmentSummoning)]
+        [TestCase(FeatConstants.BlindFight)]
+        [TestCase(FeatConstants.BullRush_Improved)]
+        [TestCase(FeatConstants.Cleave)]
+        [TestCase(FeatConstants.Cleave_Great)]
+        [TestCase(FeatConstants.CombatCasting)]
+        [TestCase(FeatConstants.CombatExpertise)]
+        [TestCase(FeatConstants.CombatReflexes)]
+        [TestCase(FeatConstants.Counterspell_Improved)]
+        [TestCase(FeatConstants.Critical_Improved)]
         [TestCase(FeatConstants.Deceitful,
             SkillConstants.Disguise,
             SkillConstants.Forgery)]
+        [TestCase(FeatConstants.DeflectArrows)]
         [TestCase(FeatConstants.DeftHands,
             SkillConstants.SleightOfHand,
             SkillConstants.UseRope)]
+        [TestCase(FeatConstants.Diehard)]
         [TestCase(FeatConstants.Diligent,
             SkillConstants.Appraise,
             SkillConstants.DecipherScript)]
+        [TestCase(FeatConstants.Disarm_Improved)]
+        [TestCase(FeatConstants.Dodge)]
+        [TestCase(FeatConstants.Endurance)]
+        [TestCase(FeatConstants.EschewMaterials)]
+        [TestCase(FeatConstants.FarShot)]
+        [TestCase(FeatConstants.Feint_Improved)]
+        [TestCase(FeatConstants.Grapple_Improved)]
+        [TestCase(FeatConstants.GreatFortitude)]
+        [TestCase(FeatConstants.Initiative_Improved)]
         [TestCase(FeatConstants.Investigator,
             SkillConstants.GatherInformation,
             SkillConstants.Search)]
+        [TestCase(FeatConstants.IronWill)]
+        [TestCase(FeatConstants.LightningReflexes)]
         [TestCase(FeatConstants.MagicalAptitude,
             SkillConstants.Spellcraft,
             SkillConstants.UseMagicDevice)]
+        [TestCase(FeatConstants.Manyshot)]
+        [TestCase(FeatConstants.Mobility)]
+        [TestCase(FeatConstants.MountedArchery)]
+        [TestCase(FeatConstants.MountedCombat)]
         [TestCase(FeatConstants.Negotiator,
             SkillConstants.Diplomacy,
             SkillConstants.SenseMotive)]
         [TestCase(FeatConstants.NimbleFingers,
             SkillConstants.DisableDevice,
             SkillConstants.OpenLock)]
+        [TestCase(FeatConstants.Overrun_Improved)]
         [TestCase(FeatConstants.Persuasive,
             SkillConstants.Bluff,
             SkillConstants.Intimidate)]
+        [TestCase(FeatConstants.PointBlankShot)]
+        [TestCase(FeatConstants.PowerAttack)]
+        [TestCase(FeatConstants.PreciseShot)]
+        [TestCase(FeatConstants.PreciseShot_Improved)]
+        [TestCase(FeatConstants.QuickDraw)]
+        [TestCase(FeatConstants.RapidReload)]
+        [TestCase(FeatConstants.RapidShot)]
+        [TestCase(FeatConstants.RideByAttack)]
+        [TestCase(FeatConstants.Run)]
         [TestCase(FeatConstants.SelfSufficient,
             SkillConstants.Heal,
             SkillConstants.Survival)]
+        [TestCase(FeatConstants.ShieldBash_Improved)]
+        [TestCase(FeatConstants.ShieldProficiency)]
+        [TestCase(FeatConstants.ShieldProficiency_Tower)]
+        [TestCase(FeatConstants.ShotOnTheRun)]
+        [TestCase(FeatConstants.SkillFocus)]
+        [TestCase(FeatConstants.SnatchArrows)]
+        [TestCase(FeatConstants.SpellFocus)]
+        [TestCase(FeatConstants.SpellFocus_Greater)]
+        [TestCase(FeatConstants.SpellPenetration)]
+        [TestCase(FeatConstants.SpellPenetration_Greater)]
+        [TestCase(FeatConstants.SpiritedCharge)]
+        [TestCase(FeatConstants.SpringAttack)]
         [TestCase(FeatConstants.Stealthy,
             SkillConstants.Hide,
             SkillConstants.MoveSilently)]
+        [TestCase(FeatConstants.StunningFist)]
+        [TestCase(FeatConstants.Sunder_Improved)]
+        [TestCase(FeatConstants.Toughness)]
+        [TestCase(FeatConstants.Track)]
+        [TestCase(FeatConstants.Trample)]
+        [TestCase(FeatConstants.Trip_Improved)]
+        [TestCase(FeatConstants.TwoWeaponDefense)]
+        [TestCase(FeatConstants.TwoWeaponFighting)]
+        [TestCase(FeatConstants.TwoWeaponFighting_Greater)]
+        [TestCase(FeatConstants.TwoWeaponFighting_Improved)]
+        [TestCase(FeatConstants.UnarmedStrike_Improved)]
+        [TestCase(FeatConstants.WeaponFinesse)]
+        [TestCase(FeatConstants.WeaponFocus)]
+        [TestCase(FeatConstants.WeaponProficiency_Exotic)]
+        [TestCase(FeatConstants.WeaponProficiency_Martial)]
+        [TestCase(FeatConstants.WeaponProficiency_Simple)]
+        [TestCase(FeatConstants.WhirlwindAttack)]
+        public void FeatSkillBonusGroup(string name, params string[] skills)
+        {
+            base.AssertDistinctCollection(name, skills);
+        }
+
         [TestCase(GroupConstants.ArmorCheckPenalty,
             SkillConstants.Balance,
             SkillConstants.Climb,

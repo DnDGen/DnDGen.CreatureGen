@@ -75,6 +75,23 @@ namespace CreatureGen.Tests.Integration.Tables.Feats.Data
             AssertData(creature, entries);
         }
 
+        [Test]
+        public void AllSpecialQualityKeysUnique()
+        {
+            var keys = new List<string>();
+
+            foreach (var kvp in table)
+            {
+                foreach (var value in kvp.Value)
+                {
+                    var key = helper.BuildKey(kvp.Key, value);
+                    keys.Add(key);
+                }
+            }
+
+            Assert.That(keys, Is.Unique);
+        }
+
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
