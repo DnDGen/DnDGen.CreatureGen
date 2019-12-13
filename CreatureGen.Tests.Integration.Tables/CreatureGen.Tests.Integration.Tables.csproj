@@ -96,6 +96,7 @@
     <Compile Include="Creatures\CreatureGroups\CreatureBaseAttackGroupsTests.cs" />
     <Compile Include="Creatures\CreatureGroups\CreatureSaveGroupsTests.cs" />
     <Compile Include="Creatures\CreatureGroups\CreatureTemplateGroupsTests.cs" />
+    <Compile Include="Defenses\ArmorClassBonusesTests.cs" />
     <Compile Include="Defenses\HitDiceTests.cs" />
     <Compile Include="Defenses\SaveBonusesTestData.cs" />
     <Compile Include="Defenses\SaveBonusesTests.cs" />

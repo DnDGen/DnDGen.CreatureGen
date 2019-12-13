@@ -119,19 +119,94 @@
     <name>Lightning Reflexes</name>
   </collection>
   <collection>
+    <name>Manyshot</name>
+  </collection>
+  <collection>
+    <name>Mobility</name>
+  </collection>
+  <collection>
+    <name>Mounted Archery</name>
+  </collection>
+  <collection>
+    <name>Mounted Combat</name>
+  </collection>
+  <collection>
+    <name>Point Blank Shot</name>
+  </collection>
+  <collection>
+    <name>Power Attack</name>
+  </collection>
+  <collection>
+    <name>Precise Shot</name>
+  </collection>
+  <collection>
+    <name>Quick Draw</name>
+  </collection>
+  <collection>
     <name>Rapid Shot</name>
   </collection>
   <collection>
     <name>Rapid Reload</name>
   </collection>
   <collection>
+    <name>Ride-By Attack</name>
+  </collection>
+  <collection>
+    <name>Run</name>
+  </collection>
+  <collection>
     <name>Shield Proficiency</name>
+  </collection>
+  <collection>
+    <name>Shot On The Run</name>
+  </collection>
+  <collection>
+    <name>Skill Focus</name>
+  </collection>
+  <collection>
+    <name>Snatch Arrows</name>
+  </collection>
+  <collection>
+    <name>Spell Focus</name>
+  </collection>
+  <collection>
+    <name>Spell Penetration</name>
+  </collection>
+  <collection>
+    <name>Spirited Charge</name>
+  </collection>
+  <collection>
+    <name>Spring Attack</name>
+  </collection>
+  <collection>
+    <name>Stunning Fist</name>
+  </collection>
+  <collection>
+    <name>Toughness</name>
   </collection>
   <collection>
     <name>Tower Shield Proficiency</name>
   </collection>
   <collection>
+    <name>Track</name>
+  </collection>
+  <collection>
     <name>Trample</name>
+  </collection>
+  <collection>
+    <name>Two-Weapon Defense</name>
+  </collection>
+  <collection>
+    <name>Two-Weapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Weapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Weapon Focus</name>
+  </collection>
+  <collection>
+    <name>Whirlwind Attack</name>
   </collection>
   <collection>
     <name>Aasimar</name>

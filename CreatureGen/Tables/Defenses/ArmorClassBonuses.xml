@@ -1,0 +1,691 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Aasimar</name>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+  </collection>
+  <collection>
+    <name>Aboleth</name>
+  </collection>
+  <collection>
+    <name>Achaierai</name>
+  </collection>
+  <collection>
+    <name>Allip</name>
+  </collection>
+  <collection>
+    <name>Androsphinx</name>
+  </collection>
+  <collection>
+    <name>Criosphinx</name>
+  </collection>
+  <collection>
+    <name>Gynosphinx</name>
+  </collection>
+  <collection>
+    <name>Hieracosphinx</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Tiny</name>
+  </collection>
+  <collection>
+    <name>Ankheg</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral Deva</name>
+    <entry>Deflection$Protective Aura@4</entry>
+  </collection>
+  <collection>
+    <name>Angel, Planetar</name>
+    <entry>Deflection$Protective Aura@4</entry>
+  </collection>
+  <collection>
+    <name>Angel, Solar</name>
+    <entry>Deflection$Protective Aura@4</entry>
+  </collection>
+  <collection>
+    <name>Annis</name>
+  </collection>
+  <collection>
+    <name>Green Hag</name>
+  </collection>
+  <collection>
+    <name>Sea Hag</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, Queen</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, Soldier</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, Worker</name>
+  </collection>
+  <collection>
+    <name>Ape</name>
+  </collection>
+  <collection>
+    <name>Dire Ape</name>
+  </collection>
+  <collection>
+    <name>Aranea</name>
+  </collection>
+  <collection>
+    <name>Adult Arrowhawk</name>
+  </collection>
+  <collection>
+    <name>Elder Arrowhawk</name>
+  </collection>
+  <collection>
+    <name>Juvenile Arrowhawk</name>
+  </collection>
+  <collection>
+    <name>Assassin Vine</name>
+  </collection>
+  <collection>
+    <name>Athach</name>
+  </collection>
+  <collection>
+    <name>Avoral</name>
+  </collection>
+  <collection>
+    <name>Azer</name>
+  </collection>
+  <collection>
+    <name>Babau</name>
+  </collection>
+  <collection>
+    <name>Balor</name>
+  </collection>
+  <collection>
+    <name>Bebilith</name>
+  </collection>
+  <collection>
+    <name>Dretch</name>
+  </collection>
+  <collection>
+    <name>Glabrezu</name>
+  </collection>
+  <collection>
+    <name>Hezrou</name>
+  </collection>
+  <collection>
+    <name>Marilith</name>
+  </collection>
+  <collection>
+    <name>Nalfeshnee</name>
+  </collection>
+  <collection>
+    <name>Quasit</name>
+  </collection>
+  <collection>
+    <name>Retriever</name>
+  </collection>
+  <collection>
+    <name>Succubus</name>
+  </collection>
+  <collection>
+    <name>Vrock</name>
+  </collection>
+  <collection>
+    <name>Baboon</name>
+  </collection>
+  <collection>
+    <name>Badger</name>
+  </collection>
+  <collection>
+    <name>Dire Badger</name>
+  </collection>
+  <collection>
+    <name>Basilisk</name>
+  </collection>
+  <collection>
+    <name>Abyssal Greater Basilisk</name>
+  </collection>
+  <collection>
+    <name>Barbed Devil (Hamatula)</name>
+  </collection>
+  <collection>
+    <name>Bearded Devil (Barbazu)</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)</name>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)</name>
+  </collection>
+  <collection>
+    <name>Erinyes</name>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)</name>
+  </collection>
+  <collection>
+    <name>Imp</name>
+  </collection>
+  <collection>
+    <name>Lemure</name>
+  </collection>
+  <collection>
+    <name>Pit Fiend</name>
+  </collection>
+  <collection>
+    <name>Barghest</name>
+  </collection>
+  <collection>
+    <name>Greater Barghest</name>
+  </collection>
+  <collection>
+    <name>Bat</name>
+  </collection>
+  <collection>
+    <name>Dire Bat</name>
+  </collection>
+  <collection>
+    <name>Bat Swarm</name>
+  </collection>
+  <collection>
+    <name>Centipede Swarm</name>
+  </collection>
+  <collection>
+    <name>Hellwasp Swarm</name>
+  </collection>
+  <collection>
+    <name>Locust Swarm</name>
+  </collection>
+  <collection>
+    <name>Rat Swarm</name>
+  </collection>
+  <collection>
+    <name>Spider Swarm</name>
+  </collection>
+  <collection>
+    <name>Black Bear</name>
+  </collection>
+  <collection>
+    <name>Brown Bear</name>
+  </collection>
+  <collection>
+    <name>Dire Bear</name>
+  </collection>
+  <collection>
+    <name>Polar Bear</name>
+  </collection>
+  <collection>
+    <name>Behir</name>
+  </collection>
+  <collection>
+    <name>Beholder</name>
+  </collection>
+  <collection>
+    <name>Gauth (Lesser Beholder)</name>
+  </collection>
+  <collection>
+    <name>Belker</name>
+  </collection>
+  <collection>
+    <name>Bison</name>
+  </collection>
+  <collection>
+    <name>Black Pudding</name>
+  </collection>
+  <collection>
+    <name>Elder Black Pudding</name>
+  </collection>
+  <collection>
+    <name>Gelatinous Cube</name>
+  </collection>
+  <collection>
+    <name>Gray Ooze</name>
+  </collection>
+  <collection>
+    <name>Ochre Jelly</name>
+  </collection>
+  <collection>
+    <name>Blink Dog</name>
+  </collection>
+  <collection>
+    <name>Boar</name>
+  </collection>
+  <collection>
+    <name>Dire Boar</name>
+  </collection>
+  <collection>
+    <name>Giant Bee</name>
+  </collection>
+  <collection>
+    <name>Bodak</name>
+  </collection>
+  <collection>
+    <name>Giant Bombardier Beetle</name>
+  </collection>
+  <collection>
+    <name>Bralani</name>
+  </collection>
+  <collection>
+    <name>Bugbear</name>
+  </collection>
+  <collection>
+    <name>Bulette</name>
+  </collection>
+  <collection>
+    <name>Camel, Bactrian (Two-Humped)</name>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)</name>
+  </collection>
+  <collection>
+    <name>Carrion Crawler</name>
+  </collection>
+  <collection>
+    <name>Cat</name>
+  </collection>
+  <collection>
+    <name>Centaur</name>
+  </collection>
+</collections>
