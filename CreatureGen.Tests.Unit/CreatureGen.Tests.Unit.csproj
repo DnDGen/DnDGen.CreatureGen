@@ -142,6 +142,8 @@
     <Compile Include="Selectors\Selections\BonusSelectionTests.cs" />
     <Compile Include="Selectors\Selections\TypeAndAmountSelectionTests.cs" />
     <Compile Include="BonusTests.cs" />
+    <Compile Include="Templates\CreatureBuilder.cs" />
+    <Compile Include="Templates\NoneApplicatorTests.cs" />
     <Compile Include="TestCaseSources\NumericTestData.cs" />
     <Compile Include="Verifiers\CreatureVerifierTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

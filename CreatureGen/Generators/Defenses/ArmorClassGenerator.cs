@@ -46,7 +46,9 @@ namespace CreatureGen.Generators.Defenses
             }
 
             if (naturalArmor > 0)
+            {
                 armorClass.AddBonus(ArmorClassConstants.Natural, naturalArmor);
+            }
 
             armorClass = GetRacialArmorClassBonuses(armorClass, creatureName, creatureType);
 

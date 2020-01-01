@@ -68,7 +68,7 @@ namespace CreatureGen.Tests.Integration
 
         private void VerifyStatistics(Creature creature)
         {
-            Assert.That(creature.ChallengeRating, Is.Not.Negative, creature.Summary);
+            Assert.That(ChallengeRatingConstants.GetOrdered(), Contains.Item(creature.ChallengeRating));
             Assert.That(creature.Size, Is.EqualTo(SizeConstants.Large)
                 .Or.EqualTo(SizeConstants.Colossal)
                 .Or.EqualTo(SizeConstants.Gargantuan)
@@ -126,18 +126,19 @@ namespace CreatureGen.Tests.Integration
 
             foreach (var skill in creature.Skills)
             {
-                Assert.That(skill.ArmorCheckPenalty, Is.Not.Positive, creature.Summary);
-                Assert.That(skill.Ranks, Is.AtMost(skill.RankCap), creature.Summary);
-                Assert.That(skill.RankCap, Is.Positive, creature.Summary);
-                Assert.That(skill.Bonus, Is.Not.Negative);
-                Assert.That(skill.BaseAbility, Is.Not.Null);
-                Assert.That(creature.Abilities.Values, Contains.Item(skill.BaseAbility));
-                Assert.That(skill.Focus, Is.Not.Null);
+                var message = creature.Summary + skill.Name;
+
+                Assert.That(skill.ArmorCheckPenalty, Is.Not.Positive, message);
+                Assert.That(skill.Ranks, Is.AtMost(skill.RankCap), message);
+                Assert.That(skill.RankCap, Is.Positive, message);
+                Assert.That(skill.BaseAbility, Is.Not.Null, message);
+                Assert.That(creature.Abilities.Values, Contains.Item(skill.BaseAbility), message);
+                Assert.That(skill.Focus, Is.Not.Null, message);
 
                 if (skillsWithFoci.Contains(skill.Name))
-                    Assert.That(skill.Focus, Is.Not.Empty);
+                    Assert.That(skill.Focus, Is.Not.Empty, message);
                 else
-                    Assert.That(skill.Focus, Is.Empty);
+                    Assert.That(skill.Focus, Is.Empty, message);
             }
 
             var skillNamesAndFoci = creature.Skills.Select(s => s.Name + s.Focus);

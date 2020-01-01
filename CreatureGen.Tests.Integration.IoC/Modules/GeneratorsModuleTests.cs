@@ -1,10 +1,12 @@
-﻿using CreatureGen.Generators.Abilities;
+﻿using CreatureGen.Creatures;
+using CreatureGen.Generators.Abilities;
 using CreatureGen.Generators.Alignments;
 using CreatureGen.Generators.Attacks;
 using CreatureGen.Generators.Creatures;
 using CreatureGen.Generators.Defenses;
 using CreatureGen.Generators.Feats;
 using CreatureGen.Generators.Skills;
+using CreatureGen.Templates;
 using CreatureGen.Verifiers;
 using NUnit.Framework;
 using RollGen;
@@ -120,6 +122,123 @@ namespace CreatureGen.Tests.Integration.IoC.Modules
         public void SpeedsGeneratorIsNotASingleton()
         {
             AssertNotSingleton<ISpeedsGenerator>();
+        }
+
+        [TestCase(CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(CreatureConstants.Templates.Ghost)]
+        [TestCase(CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(CreatureConstants.Templates.HalfDragon)]
+        [TestCase(CreatureConstants.Templates.HalfFiend)]
+        [TestCase(CreatureConstants.Templates.Lich)]
+        [TestCase(CreatureConstants.Templates.None)]
+        [TestCase(CreatureConstants.Templates.Skeleton)]
+        [TestCase(CreatureConstants.Templates.Vampire)]
+        [TestCase(CreatureConstants.Templates.Werebear)]
+        [TestCase(CreatureConstants.Templates.Wereboar)]
+        [TestCase(CreatureConstants.Templates.Wererat)]
+        [TestCase(CreatureConstants.Templates.Weretiger)]
+        [TestCase(CreatureConstants.Templates.Werewolf)]
+        [TestCase(CreatureConstants.Templates.Zombie)]
+        public void TemplateApplicatorIsInjected(string name)
+        {
+            AssertNotSingleton<TemplateApplicator>(name);
+        }
+
+        [Test]
+        public void CelestialCreatureApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, CelestialCreatureApplicator>(CreatureConstants.Templates.CelestialCreature);
+        }
+
+        [Test]
+        public void FiendishCreatureApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, FiendishCreatureApplicator>(CreatureConstants.Templates.FiendishCreature);
+        }
+
+        [Test]
+        public void GhostApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, GhostApplicator>(CreatureConstants.Templates.Ghost);
+        }
+
+        [Test]
+        public void HalfCelestialApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, HalfCelestialApplicator>(CreatureConstants.Templates.HalfCelestial);
+        }
+
+        [Test]
+        public void HalfDragonApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, HalfDragonApplicator>(CreatureConstants.Templates.HalfDragon);
+        }
+
+        [Test]
+        public void HalfFiendApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, HalfFiendApplicator>(CreatureConstants.Templates.HalfFiend);
+        }
+
+        [Test]
+        public void LichApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, LichApplicator>(CreatureConstants.Templates.Lich);
+        }
+
+        [Test]
+        public void NoneApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, NoneApplicator>(CreatureConstants.Templates.None);
+        }
+
+        [Test]
+        public void SkeletonApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, SkeletonApplicator>(CreatureConstants.Templates.Skeleton);
+        }
+
+        [Test]
+        public void VampireApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, VampireApplicator>(CreatureConstants.Templates.Vampire);
+        }
+
+        [Test]
+        public void WerebearApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, WerebearApplicator>(CreatureConstants.Templates.Werebear);
+        }
+
+        [Test]
+        public void WereboarApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, WereboarApplicator>(CreatureConstants.Templates.Wereboar);
+        }
+
+        [Test]
+        public void WereratApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, WereratApplicator>(CreatureConstants.Templates.Wererat);
+        }
+
+        [Test]
+        public void WeretigerApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, WeretigerApplicator>(CreatureConstants.Templates.Weretiger);
+        }
+
+        [Test]
+        public void WerewolfApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, WerewolfApplicator>(CreatureConstants.Templates.Werewolf);
+        }
+
+        [Test]
+        public void ZombieApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, ZombieApplicator>(CreatureConstants.Templates.Zombie);
         }
     }
 }
