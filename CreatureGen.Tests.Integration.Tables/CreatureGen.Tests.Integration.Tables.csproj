@@ -127,7 +127,6 @@
     <Compile Include="Alignments\AlignmentGroupsTests.cs" />
     <Compile Include="Defenses\SizeModifiersTests.cs" />
     <Compile Include="CollectionTests.cs" />
-    <Compile Include="Defenses\ArmorClassModifiersTests.cs" />
     <Compile Include="DataTests.cs" />
     <Compile Include="PercentileTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

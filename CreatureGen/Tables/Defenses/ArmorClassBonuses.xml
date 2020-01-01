@@ -688,4 +688,46 @@
   <collection>
     <name>Centaur</name>
   </collection>
+  <collection>
+    <name>Monstrous Centipede, Colossal</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Huge</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Large</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Medium</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Small</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Tiny</name>
+  </collection>
+  <collection>
+    <name>Chaos Beast</name>
+  </collection>
+  <collection>
+    <name>Cheetah</name>
+  </collection>
+  <collection>
+    <name>Chimera (Black Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
+  </collection>
 </collections>

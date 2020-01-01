@@ -179,9 +179,6 @@
     <EmbeddedResource Include="Tables\Alignments\AlignmentGroups.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\Defenses\ArmorClassModifiers.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Tables\Defenses\SizeModifiers.xml" />
   </ItemGroup>
   <ItemGroup>
