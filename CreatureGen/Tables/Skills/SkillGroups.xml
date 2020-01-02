@@ -209,6 +209,108 @@
     <name>Whirlwind Attack</name>
   </collection>
   <collection>
+    <name>Brew Potion</name>
+  </collection>
+  <collection>
+    <name>Ability Focus</name>
+  </collection>
+  <collection>
+    <name>Awesome Blow</name>
+  </collection>
+  <collection>
+    <name>Craft Construct</name>
+  </collection>
+  <collection>
+    <name>Craft Magic Arms and Armor</name>
+  </collection>
+  <collection>
+    <name>Craft Rod</name>
+  </collection>
+  <collection>
+    <name>Craft Staff</name>
+  </collection>
+  <collection>
+    <name>Craft Wand</name>
+  </collection>
+  <collection>
+    <name>Craft Wondrous Item</name>
+  </collection>
+  <collection>
+    <name>Empower Spell</name>
+  </collection>
+  <collection>
+    <name>Empower Spell-Like Ability</name>
+  </collection>
+  <collection>
+    <name>Enlarge Spell</name>
+  </collection>
+  <collection>
+    <name>Extend Spell</name>
+  </collection>
+  <collection>
+    <name>Flyby Attack</name>
+  </collection>
+  <collection>
+    <name>Forge Ring</name>
+  </collection>
+  <collection>
+    <name>Greater Multiweapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Heighten Spell</name>
+  </collection>
+  <collection>
+    <name>Hover</name>
+  </collection>
+  <collection>
+    <name>Improved Flyby Attack</name>
+  </collection>
+  <collection>
+    <name>Improved Multiattack</name>
+  </collection>
+  <collection>
+    <name>Improved Multiweapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Improved Natural Armor</name>
+  </collection>
+  <collection>
+    <name>Improved Natural Attack</name>
+  </collection>
+  <collection>
+    <name>Maximize Spell</name>
+  </collection>
+  <collection>
+    <name>Multiattack</name>
+  </collection>
+  <collection>
+    <name>Multiweapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Quicken Spell</name>
+  </collection>
+  <collection>
+    <name>Quicken Spell-Like Ability</name>
+  </collection>
+  <collection>
+    <name>Scribe Scroll</name>
+  </collection>
+  <collection>
+    <name>Silent Spell</name>
+  </collection>
+  <collection>
+    <name>Snatch</name>
+  </collection>
+  <collection>
+    <name>Still Spell</name>
+  </collection>
+  <collection>
+    <name>Widen Spell</name>
+  </collection>
+  <collection>
+    <name>Wingover</name>
+  </collection>
+  <collection>
     <name>Aasimar</name>
     <entry>Heal</entry>
     <entry>Knowledge/Religion</entry>

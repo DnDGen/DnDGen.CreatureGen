@@ -166,8 +166,12 @@ namespace CreatureGen.Tests.Integration
                     .Or.EqualTo(FeatConstants.Frequencies.Hit)
                     .Or.EqualTo(FeatConstants.Frequencies.Round)
                     .Or.EqualTo(FeatConstants.Frequencies.Minute)
+                    .Or.EqualTo(FeatConstants.Frequencies.Hour)
                     .Or.EqualTo(FeatConstants.Frequencies.Day)
                     .Or.EqualTo(FeatConstants.Frequencies.Week)
+                    .Or.EqualTo(FeatConstants.Frequencies.Month)
+                    .Or.EqualTo(FeatConstants.Frequencies.Year)
+                    .Or.EqualTo(FeatConstants.Frequencies.Life)
                     .Or.Empty, $"{creature.Summary} {feat.Name}");
 
                 if (!creature.CanUseEquipment)
@@ -228,20 +232,51 @@ namespace CreatureGen.Tests.Integration
 
         private void AssertAttack(Attack attack, Creature creature)
         {
-            Assert.That(attack.Name, Is.Not.Empty, creature.Summary);
-            Assert.That(attack.DamageRoll, Is.Not.Empty, attack.Name);
+            var message = $"Creature: {creature.Summary}\nAttack: {attack.Name}";
+            Assert.That(attack.Name, Is.Not.Empty, message);
+            Assert.That(attack.AttackType, Is.Not.Empty, message);
+            Assert.That(attack.BaseAttackBonus, Is.Not.Negative, message);
+            Assert.That(attack.Frequency, Is.Not.Null, message);
+            Assert.That(attack.Frequency.Quantity, Is.Positive, message);
+            Assert.That(attack.Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round)
+                .Or.EqualTo(FeatConstants.Frequencies.Minute)
+                .Or.EqualTo(FeatConstants.Frequencies.Hour)
+                .Or.EqualTo(FeatConstants.Frequencies.Day)
+                .Or.EqualTo(FeatConstants.Frequencies.Week)
+                .Or.EqualTo(FeatConstants.Frequencies.Month)
+                .Or.EqualTo(FeatConstants.Frequencies.Year), message);
 
             if (!attack.IsNatural)
             {
-                var message = $"Creature: {creature.Summary}\nAttack: {attack.Name}";
                 Assert.That(creature.CanUseEquipment, Is.True, message);
             }
-        }
 
-        private string GetAllFeatsMessage(IEnumerable<Feat> feats)
-        {
-            var featsWithFoci = feats.Where(f => f.Foci.Any()).Select(f => $"{f.Name}: {string.Join(", ", f.Foci)}").OrderBy(f => f);
-            return string.Join("; ", featsWithFoci);
+            if (attack.IsPrimary)
+            {
+                Assert.That(attack.SecondaryAttackPenalty, Is.Zero);
+            }
+
+            if (!attack.IsSpecial)
+            {
+                Assert.That(attack.BaseAbility, Is.Not.Null, message);
+                Assert.That(creature.Abilities.Values, Contains.Item(attack.BaseAbility), message);
+
+                if (attack.IsNatural)
+                {
+                    Assert.That(attack.Damage, Is.Not.Empty, message);
+                }
+            }
+
+            if (attack.Save != null)
+            {
+                Assert.That(creature.Abilities.Values, Contains.Item(attack.Save.BaseAbility), message);
+                Assert.That(attack.Save.BaseValue, Is.Positive, message);
+                Assert.That(attack.Save.DC, Is.Positive, message);
+                Assert.That(attack.Save.Save, Is.EqualTo(SaveConstants.Fortitude)
+                    .Or.EqualTo(SaveConstants.Reflex)
+                    .Or.EqualTo(SaveConstants.Will)
+                    .Or.Empty, message);
+            }
         }
     }
 }

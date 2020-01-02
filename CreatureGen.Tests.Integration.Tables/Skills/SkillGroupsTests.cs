@@ -53,7 +53,10 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Profession,
             });
 
-            var feats = FeatConstants.All();
+            var feats = FeatConstants.All()
+                .Union(FeatConstants.Metamagic.All())
+                .Union(FeatConstants.MagicItemCreation.All())
+                .Union(FeatConstants.Monster.All());
 
             var misc = new[]
             {
@@ -188,6 +191,40 @@ namespace CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(FeatConstants.WeaponProficiency_Martial)]
         [TestCase(FeatConstants.WeaponProficiency_Simple)]
         [TestCase(FeatConstants.WhirlwindAttack)]
+        [TestCase(FeatConstants.MagicItemCreation.BrewPotion)]
+        [TestCase(FeatConstants.MagicItemCreation.CraftMagicArmsAndArmor)]
+        [TestCase(FeatConstants.MagicItemCreation.CraftRod)]
+        [TestCase(FeatConstants.MagicItemCreation.CraftStaff)]
+        [TestCase(FeatConstants.MagicItemCreation.CraftWand)]
+        [TestCase(FeatConstants.MagicItemCreation.CraftWondrousItem)]
+        [TestCase(FeatConstants.MagicItemCreation.ForgeRing)]
+        [TestCase(FeatConstants.MagicItemCreation.ScribeScroll)]
+        [TestCase(FeatConstants.Metamagic.EmpowerSpell)]
+        [TestCase(FeatConstants.Metamagic.EnlargeSpell)]
+        [TestCase(FeatConstants.Metamagic.ExtendSpell)]
+        [TestCase(FeatConstants.Metamagic.HeightenSpell)]
+        [TestCase(FeatConstants.Metamagic.MaximizeSpell)]
+        [TestCase(FeatConstants.Metamagic.QuickenSpell)]
+        [TestCase(FeatConstants.Metamagic.SilentSpell)]
+        [TestCase(FeatConstants.Metamagic.StillSpell)]
+        [TestCase(FeatConstants.Metamagic.WidenSpell)]
+        [TestCase(FeatConstants.Monster.AbilityFocus)]
+        [TestCase(FeatConstants.Monster.AwesomeBlow)]
+        [TestCase(FeatConstants.Monster.CraftConstruct)]
+        [TestCase(FeatConstants.Monster.EmpowerSpellLikeAbility)]
+        [TestCase(FeatConstants.Monster.FlybyAttack)]
+        [TestCase(FeatConstants.Monster.FlybyAttack_Improved)]
+        [TestCase(FeatConstants.Monster.Hover)]
+        [TestCase(FeatConstants.Monster.Multiattack)]
+        [TestCase(FeatConstants.Monster.Multiattack_Improved)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Greater)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Improved)]
+        [TestCase(FeatConstants.Monster.NaturalArmor_Improved)]
+        [TestCase(FeatConstants.Monster.NaturalAttack_Improved)]
+        [TestCase(FeatConstants.Monster.QuickenSpellLikeAbility)]
+        [TestCase(FeatConstants.Monster.Snatch)]
+        [TestCase(FeatConstants.Monster.Wingover)]
         public void FeatSkillBonusGroup(string name, params string[] skills)
         {
             base.AssertDistinctCollection(name, skills);
