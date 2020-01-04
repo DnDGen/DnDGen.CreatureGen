@@ -31,6 +31,7 @@ namespace CreatureGen.Generators.Feats
             Dictionary<string, Measurement> speeds,
             int naturalArmor,
             int hands,
-            string size);
+            string size,
+            bool canUseEquipment);
     }
 }

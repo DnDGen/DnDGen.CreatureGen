@@ -911,6 +911,7 @@
   </collection>
   <collection>
     <name>Ape</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Aranea</name>
@@ -942,12 +943,15 @@
   </collection>
   <collection>
     <name>Baboon</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Badger</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Baleen Whale</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Balor</name>
@@ -967,6 +971,7 @@
   </collection>
   <collection>
     <name>Bat</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
@@ -998,9 +1003,11 @@
   </collection>
   <collection>
     <name>Bison</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Black Bear</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Black Pudding</name>
@@ -1012,6 +1019,7 @@
   </collection>
   <collection>
     <name>Boar</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Bodak</name>
@@ -1027,6 +1035,7 @@
   </collection>
   <collection>
     <name>Brown Bear</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Bugbear</name>
@@ -1038,12 +1047,15 @@
   </collection>
   <collection>
     <name>Cachalot Whale</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Camel, Dromedary (One-Humped)</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Carrion Crawler</name>
@@ -1051,6 +1063,7 @@
   </collection>
   <collection>
     <name>Cat</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Centaur</name>
@@ -1070,6 +1083,7 @@
   </collection>
   <collection>
     <name>Cheetah</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Chimera (Black Dragon head)</name>
@@ -1109,6 +1123,7 @@
   </collection>
   <collection>
     <name>Constrictor Snake</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Couatl</name>
@@ -1120,6 +1135,7 @@
   </collection>
   <collection>
     <name>Crocodile</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dark Naga</name>
@@ -1159,21 +1175,27 @@
   </collection>
   <collection>
     <name>Dire Ape</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dire Badger</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dire Bat</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dire Bear</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dire Boar</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dire Lion</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Displacer Beast</name>
@@ -1193,12 +1215,15 @@
   </collection>
   <collection>
     <name>Dog</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dog, Riding</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Donkey</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Doppelganger</name>
@@ -1727,6 +1752,7 @@
   </collection>
   <collection>
     <name>Eagle</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Eagle</name>
@@ -1846,6 +1872,7 @@
   </collection>
   <collection>
     <name>Elephant</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Aquatic Elf</name>
@@ -1945,39 +1972,51 @@
   </collection>
   <collection>
     <name>Giant Ant, Queen</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Ant, Soldier</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Ant, Worker</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Bee</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Bombardier Beetle</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Constrictor Snake</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Crocodile</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Fire Beetle</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Octopus</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Praying Mantis</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Stag Beetle</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Wasp</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Cloud Giant</name>
@@ -2138,6 +2177,7 @@
   </collection>
   <collection>
     <name>Hawk</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Hell Hound</name>
@@ -2185,15 +2225,19 @@
   </collection>
   <collection>
     <name>Heavy Horse</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Heavy Warhorse</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Light Horse</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Light Warhorse</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Human</name>
@@ -2297,6 +2341,7 @@
   </collection>
   <collection>
     <name>Hyena</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
@@ -2360,6 +2405,7 @@
   </collection>
   <collection>
     <name>Leopard</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Lillend</name>
@@ -2367,9 +2413,11 @@
   </collection>
   <collection>
     <name>Lion</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Lizard</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
@@ -2389,6 +2437,7 @@
   </collection>
   <collection>
     <name>Manta Ray</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Manticore</name>
@@ -2476,96 +2525,127 @@
   </collection>
   <collection>
     <name>Monitor Lizard</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monkey</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Medium</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Small</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Colossal</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Gargantuan</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Huge</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Large</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Medium</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Small</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Tiny</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Colossal</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Huge</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Large</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Medium</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Small</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Tiny</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Mule</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Mummy</name>
@@ -2617,6 +2697,7 @@
   </collection>
   <collection>
     <name>Octopus</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Ogre</name>
@@ -2632,6 +2713,7 @@
   </collection>
   <collection>
     <name>Orca Whale</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Otyugh</name>
@@ -2639,6 +2721,7 @@
   </collection>
   <collection>
     <name>Owl</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Owl</name>
@@ -2682,15 +2765,19 @@
   </collection>
   <collection>
     <name>Polar Bear</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Pony</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Warpony</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Porpoise</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Pseudodragon</name>
@@ -2714,9 +2801,11 @@
   </collection>
   <collection>
     <name>Rat</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dire Rat</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Rat Swarm</name>
@@ -2724,6 +2813,7 @@
   </collection>
   <collection>
     <name>Raven</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Ravid</name>
@@ -2743,9 +2833,11 @@
   </collection>
   <collection>
     <name>Rhinoceras</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Roc</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Roper</name>
@@ -2821,15 +2913,19 @@
   </collection>
   <collection>
     <name>Dire Shark</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Shark, Huge</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Shark, Large</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Shark, Medium</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Shield Guardian</name>
@@ -2889,9 +2985,11 @@
   </collection>
   <collection>
     <name>Squid</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Giant Squid</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Stirge</name>
@@ -2919,9 +3017,11 @@
   </collection>
   <collection>
     <name>Tiger</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dire Tiger</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Titan</name>
@@ -2929,6 +3029,7 @@
   </collection>
   <collection>
     <name>Toad</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Adult Tojanida</name>
@@ -2996,18 +3097,23 @@
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Viper Snake, Large</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Viper Snake, Medium</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Viper Snake, Small</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Viper Snake, Tiny</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Vrock</name>
@@ -3019,9 +3125,11 @@
   </collection>
   <collection>
     <name>Weasel</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dire Weasel</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Wight</name>
@@ -3037,15 +3145,19 @@
   </collection>
   <collection>
     <name>Wolf</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dire Wolf</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Wolverine</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Dire Wolverine</name>
+    <entry>AlwaysTrue Neutral</entry>
   </collection>
   <collection>
     <name>Worg</name>

@@ -41,24 +41,25 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.Feat, Is.Empty);
             Assert.That(selection.FocusType, Is.Empty);
             Assert.That(selection.Frequency, Is.Not.Null);
-            Assert.That(selection.Power, Is.EqualTo(0));
+            Assert.That(selection.Power, Is.Zero);
             Assert.That(selection.RequiredAbilities, Is.Empty);
-            Assert.That(selection.RequiredBaseAttack, Is.EqualTo(0));
+            Assert.That(selection.RequiredBaseAttack, Is.Zero);
             Assert.That(selection.RequiredFeats, Is.Empty);
-            Assert.That(selection.RequiredHands, Is.EqualTo(0));
-            Assert.That(selection.RequiredNaturalWeapons, Is.EqualTo(0));
+            Assert.That(selection.RequiredHands, Is.Zero);
+            Assert.That(selection.RequiredNaturalWeapons, Is.Zero);
             Assert.That(selection.RequiredSizes, Is.Empty);
             Assert.That(selection.RequiredSkills, Is.Empty);
             Assert.That(selection.RequiredSpeeds, Is.Empty);
             Assert.That(selection.RequiresNaturalArmor, Is.False);
             Assert.That(selection.RequiresSpecialAttack, Is.False);
             Assert.That(selection.RequiresSpellLikeAbility, Is.False);
+            Assert.That(selection.RequiresEquipment, Is.False);
         }
 
         [Test]
         public void ImmutableRequirementsMetIfNoRequirements()
         {
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -135,7 +136,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredBaseAttack = requiredBaseAttack;
 
-            var met = selection.ImmutableRequirementsMet(baseAttack, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(baseAttack, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -144,7 +145,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredBaseAttack = requiredBaseAttack;
 
-            var met = selection.ImmutableRequirementsMet(baseAttack, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(baseAttack, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -153,7 +154,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.MinimumCasterLevel = requiredCasterLevel;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, casterLevel, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, casterLevel, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -162,7 +163,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.MinimumCasterLevel = requiredCasterLevel;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, casterLevel, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, casterLevel, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -176,7 +177,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["other ability"] = new Ability("other ability");
             abilities["other ability"].BaseScore = int.MaxValue;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -190,7 +191,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["other ability"] = new Ability("other ability");
             abilities["other ability"].BaseScore = int.MaxValue;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -204,7 +205,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["other ability"] = new Ability("other ability");
             abilities["other ability"].BaseScore = int.MinValue;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -216,7 +217,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             abilities["other ability"] = new Ability("other ability");
             abilities["other ability"].BaseScore = 0;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -234,7 +235,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills[1].Ranks = int.MaxValue;
             skills[1].ClassSkill = true;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -252,7 +253,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills[1].Ranks = int.MaxValue;
             skills[1].ClassSkill = false;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -270,7 +271,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills[1].Ranks = int.MinValue;
             skills[1].ClassSkill = true;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -288,7 +289,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills[1].Ranks = int.MinValue;
             skills[1].ClassSkill = false;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -342,7 +343,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills[1].Ranks = ranks2;
             skills[1].ClassSkill = classSkill2;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.EqualTo(isMet));
         }
 
@@ -353,7 +354,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             skills.Add(new Skill("skill", abilities["ability"], 10));
             skills[0].ClassSkill = false;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -491,7 +492,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
 
             selection.RequiresSpecialAttack = true;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -503,7 +504,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
 
             selection.RequiresSpecialAttack = true;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -515,7 +516,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
 
             selection.RequiresSpecialAttack = false;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -566,7 +567,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredSpeeds["other speed"] = 0;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -576,7 +577,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             speeds["speed"].Value = speed;
             selection.RequiredSpeeds["speed"] = requiredSpeed;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -586,7 +587,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
             speeds["speed"].Value = speed;
             selection.RequiredSpeeds["speed"] = requiredSpeed;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -595,7 +596,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiresNaturalArmor = true;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, naturalArmor, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, naturalArmor, 0, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -604,7 +605,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiresNaturalArmor = true;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, naturalArmor, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, naturalArmor, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -613,7 +614,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiresNaturalArmor = false;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -629,7 +630,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
                 attacks.Add(new Attack { IsNatural = true, Name = $"natural attack {naturalWeapons}" });
             }
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -645,7 +646,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
                 attacks.Add(new Attack { IsNatural = true, Name = $"natural attack {naturalWeapons}" });
             }
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -654,7 +655,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredNaturalWeapons = 0;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -663,7 +664,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredHands = requiredHands;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, hands, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, hands, string.Empty, false);
             Assert.That(met, Is.False);
         }
 
@@ -672,7 +673,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredHands = requiredHands;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, hands, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, hands, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -681,7 +682,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredHands = 0;
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty);
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, false);
             Assert.That(met, Is.True);
         }
 
@@ -690,7 +691,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredSizes = new[] { "size" };
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, "wrong size");
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, "wrong size", false);
             Assert.That(met, Is.False);
         }
 
@@ -699,7 +700,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredSizes = new[] { "size", "other size" };
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, "wrong size");
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, "wrong size", false);
             Assert.That(met, Is.False);
         }
 
@@ -708,7 +709,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredSizes = new[] { "size" };
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, "size");
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, "size", false);
             Assert.That(met, Is.True);
         }
 
@@ -717,7 +718,7 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredSizes = new[] { "size", "other size" };
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, "other size");
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, "other size", false);
             Assert.That(met, Is.True);
         }
 
@@ -726,8 +727,19 @@ namespace CreatureGen.Tests.Unit.Selectors.Selections
         {
             Assert.That(selection.RequiredSizes, Is.Empty);
 
-            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, "wrong size");
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, "wrong size", false);
             Assert.That(met, Is.True);
+        }
+
+        [TestCase(true, true, true)]
+        [TestCase(true, false, true)]
+        [TestCase(false, true, false)]
+        [TestCase(false, false, true)]
+        public void HonorEquipmentRequirement(bool canUseEquipment, bool requiresEquipment, bool shouldBeMet)
+        {
+            selection.RequiresEquipment = requiresEquipment;
+            var met = selection.ImmutableRequirementsMet(0, abilities, skills, attacks, 0, speeds, 0, 0, string.Empty, canUseEquipment);
+            Assert.That(met, Is.EqualTo(shouldBeMet));
         }
     }
 }

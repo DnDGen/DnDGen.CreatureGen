@@ -155,12 +155,14 @@ namespace CreatureGen.Tests.Integration
 
             foreach (var feat in allFeats)
             {
-                Assert.That(feat.Name, Is.Not.Empty, creature.Summary);
-                Assert.That(feat.Foci, Is.Not.Null, $"{creature.Summary} {feat.Name}");
-                Assert.That(feat.Foci, Is.All.Not.Null, $"{creature.Summary} {feat.Name}");
-                Assert.That(feat.Foci, Is.All.Not.EqualTo(FeatConstants.Foci.NoValidFociAvailable), $"{creature.Summary} {feat.Name}");
-                Assert.That(feat.Power, Is.Not.Negative, $"{creature.Summary} {feat.Name}");
-                Assert.That(feat.Frequency.Quantity, Is.Not.Negative, $"{creature.Summary} {feat.Name}");
+                var message = $"Creature: {creature.Summary}\nFeat: {feat.Name}";
+
+                Assert.That(feat.Name, Is.Not.Empty, message);
+                Assert.That(feat.Foci, Is.Not.Null, message);
+                Assert.That(feat.Foci, Is.All.Not.Null, message);
+                Assert.That(feat.Foci, Is.All.Not.EqualTo(FeatConstants.Foci.NoValidFociAvailable), message);
+                Assert.That(feat.Power, Is.Not.Negative, message);
+                Assert.That(feat.Frequency.Quantity, Is.Not.Negative, message);
                 Assert.That(feat.Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Constant)
                     .Or.EqualTo(FeatConstants.Frequencies.AtWill)
                     .Or.EqualTo(FeatConstants.Frequencies.Hit)
@@ -172,14 +174,14 @@ namespace CreatureGen.Tests.Integration
                     .Or.EqualTo(FeatConstants.Frequencies.Month)
                     .Or.EqualTo(FeatConstants.Frequencies.Year)
                     .Or.EqualTo(FeatConstants.Frequencies.Life)
-                    .Or.Empty, $"{creature.Summary} {feat.Name}");
+                    .Or.Empty, message);
 
                 if (!creature.CanUseEquipment)
                 {
                     var weaponFoci = feat.Foci.Intersect(weapons);
-                    Assert.That(weaponFoci, Is.Empty, $"{creature.Summary} {feat.Name}");
+                    Assert.That(weaponFoci, Is.Empty, message);
 
-                    //Also should assert that equipment is empty, but equipment does not exist on creatures yet
+                    //TODO: Also should assert that equipment is empty, but equipment does not exist on creatures yet
                     //add it once we have added that
                 }
             }
@@ -189,27 +191,30 @@ namespace CreatureGen.Tests.Integration
         {
             Assert.That(creature.BaseAttackBonus, Is.Not.Negative, creature.Summary);
 
-            Assert.That(creature.HitPoints.DefaultTotal, Is.Positive, creature.Summary);
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.Positive, creature.Summary);
             Assert.That(creature.HitPoints.HitDie, Is.Positive, creature.Summary);
-            Assert.That(creature.HitPoints.DefaultRoll, Is.Not.Empty, creature.Summary);
-            Assert.That(creature.HitPoints.DefaultRoll, Contains.Substring($"{creature.HitPoints.HitDiceQuantity}d{creature.HitPoints.HitDie}"), creature.Summary);
-            Assert.That(creature.HitPoints.Total, Is.Positive, creature.Summary);
-            Assert.That(creature.HitPoints.Total, Is.AtLeast(creature.HitPoints.HitDiceQuantity), creature.Summary);
-            Assert.That(creature.HitPoints.DefaultTotal, Is.Positive, creature.Summary);
-            Assert.That(creature.HitPoints.DefaultTotal, Is.AtLeast(creature.HitPoints.HitDiceQuantity), creature.Summary);
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.AtLeast(1), creature.Summary);
+            Assert.That(creature.HitPoints.DefaultRoll, Contains.Substring($"{creature.HitPoints.RoundedHitDiceQuantity}d{creature.HitPoints.HitDie}"), creature.Summary);
+            Assert.That(creature.HitPoints.Total, Is.Positive
+                .And.AtLeast(creature.HitPoints.HitDiceQuantity)
+                .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity), creature.Summary);
+            Assert.That(creature.HitPoints.DefaultTotal, Is.Positive
+                .And.AtLeast(creature.HitPoints.HitDiceQuantity)
+                .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity), creature.Summary);
 
-            Assert.That(creature.Attacks, Is.Not.Empty, creature.Summary);
-            Assert.That(creature.MeleeAttack, Is.Not.Null, creature.Summary);
-            Assert.That(creature.MeleeAttack.IsMelee, Is.True, creature.Summary);
-            Assert.That(creature.MeleeAttack.IsSpecial, Is.False, creature.Summary);
-            Assert.That(creature.FullMeleeAttack, Is.Not.Empty, creature.Summary);
-            Assert.That(creature.FullMeleeAttack.All(a => a.IsMelee && !a.IsSpecial), Is.True, creature.Summary);
+            Assert.That(creature.FullMeleeAttack, Is.Not.Null, creature.Summary);
             Assert.That(creature.FullRangedAttack, Is.Not.Null, creature.Summary);
 
-            if (creature.FullRangedAttack.Any())
+            if (creature.MeleeAttack != null)
             {
-                Assert.That(creature.RangedAttack, Is.Not.Null, creature.Summary);
+                Assert.That(creature.MeleeAttack.IsMelee, Is.True, creature.Summary);
+                Assert.That(creature.MeleeAttack.IsSpecial, Is.False, creature.Summary);
+                Assert.That(creature.FullMeleeAttack, Is.Not.Empty, creature.Summary);
+                Assert.That(creature.FullMeleeAttack.All(a => a.IsMelee && !a.IsSpecial), Is.True, creature.Summary);
+            }
+
+            if (creature.RangedAttack != null)
+            {
                 Assert.That(creature.RangedAttack.IsMelee, Is.False, creature.Summary);
                 Assert.That(creature.RangedAttack.IsSpecial, Is.False, creature.Summary);
                 Assert.That(creature.FullRangedAttack, Is.Not.Empty, creature.Summary);
@@ -238,13 +243,15 @@ namespace CreatureGen.Tests.Integration
             Assert.That(attack.BaseAttackBonus, Is.Not.Negative, message);
             Assert.That(attack.Frequency, Is.Not.Null, message);
             Assert.That(attack.Frequency.Quantity, Is.Positive, message);
-            Assert.That(attack.Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round)
-                .Or.EqualTo(FeatConstants.Frequencies.Minute)
-                .Or.EqualTo(FeatConstants.Frequencies.Hour)
-                .Or.EqualTo(FeatConstants.Frequencies.Day)
-                .Or.EqualTo(FeatConstants.Frequencies.Week)
-                .Or.EqualTo(FeatConstants.Frequencies.Month)
-                .Or.EqualTo(FeatConstants.Frequencies.Year), message);
+            Assert.That(attack.Frequency.TimePeriod, Contains.Substring(FeatConstants.Frequencies.Round)
+                .Or.Contains(FeatConstants.Frequencies.Hit)
+                .Or.Contains(FeatConstants.Frequencies.Minute)
+                .Or.Contains(FeatConstants.Frequencies.Hour)
+                .Or.Contains(FeatConstants.Frequencies.Day)
+                .Or.Contains(FeatConstants.Frequencies.Week)
+                .Or.Contains(FeatConstants.Frequencies.Month)
+                .Or.Contains(FeatConstants.Frequencies.Year)
+                .Or.Contains(FeatConstants.Frequencies.Life), message);
 
             if (!attack.IsNatural)
             {

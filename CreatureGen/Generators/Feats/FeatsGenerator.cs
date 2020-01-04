@@ -107,7 +107,8 @@ namespace CreatureGen.Generators.Feats
             Dictionary<string, Measurement> speeds,
             int naturalArmor,
             int hands,
-            string size)
+            string size,
+            bool canUseEquipment)
         {
             if (!abilities[AbilityConstants.Intelligence].HasScore)
                 return Enumerable.Empty<Feat>();
@@ -124,7 +125,8 @@ namespace CreatureGen.Generators.Feats
                 speeds,
                 naturalArmor,
                 hands,
-                size);
+                size,
+                canUseEquipment);
 
             return feats;
         }
@@ -254,7 +256,8 @@ namespace CreatureGen.Generators.Feats
             Dictionary<string, Measurement> speeds,
             int naturalArmor,
             int hands,
-            string size)
+            string size,
+            bool canUseEquipment)
         {
             var featSelections = featsSelector.SelectFeats();
 
@@ -269,7 +272,8 @@ namespace CreatureGen.Generators.Feats
                     speeds,
                     naturalArmor,
                     hands,
-                    size))
+                    size,
+                    canUseEquipment))
                 .ToArray();
 
             var feats = PopulateFeatsRandomlyFrom(abilities, skills, baseAttackBonus, specialQualities, availableFeats, quantity, casterLevel, attacks);

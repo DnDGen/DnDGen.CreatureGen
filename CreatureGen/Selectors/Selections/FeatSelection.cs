@@ -25,6 +25,7 @@ namespace CreatureGen.Selectors.Selections
         public bool RequiresNaturalArmor { get; set; }
         public bool RequiresSpecialAttack { get; set; }
         public bool RequiresSpellLikeAbility { get; set; }
+        public bool RequiresEquipment { get; set; }
         public int RequiredNaturalWeapons { get; set; }
         public int RequiredHands { get; set; }
         public IEnumerable<string> RequiredSizes { get; set; }
@@ -50,12 +51,9 @@ namespace CreatureGen.Selectors.Selections
             Dictionary<string, Measurement> speeds,
             int naturalArmor,
             int hands,
-            string size)
+            string size,
+            bool canUseEquipment)
         {
-            foreach (var requiredAbility in RequiredAbilities)
-                if (abilities[requiredAbility.Key].FullScore < requiredAbility.Value)
-                    return false;
-
             if (baseAttackBonus < RequiredBaseAttack)
                 return false;
 
@@ -65,7 +63,10 @@ namespace CreatureGen.Selectors.Selections
             if (hands < RequiredHands)
                 return false;
 
-            if (RequiredSkills.Any() && !RequiredSkills.All(s => s.RequirementMet(skills)))
+            if (RequiresNaturalArmor && naturalArmor <= 0)
+                return false;
+
+            if (RequiresEquipment && !canUseEquipment)
                 return false;
 
             if (RequiresSpecialAttack && !attacks.Any(a => a.IsSpecial))
@@ -74,11 +75,15 @@ namespace CreatureGen.Selectors.Selections
             if (attacks.Count(a => a.IsNatural) < RequiredNaturalWeapons)
                 return false;
 
-            if (RequiresNaturalArmor && naturalArmor <= 0)
+            if (RequiredSkills.Any() && !RequiredSkills.All(s => s.RequirementMet(skills)))
                 return false;
 
             if (RequiredSizes.Any() && !RequiredSizes.Contains(size))
                 return false;
+
+            foreach (var requiredAbility in RequiredAbilities)
+                if (abilities[requiredAbility.Key].FullScore < requiredAbility.Value)
+                    return false;
 
             foreach (var requiredSpeed in RequiredSpeeds)
                 if (!speeds.ContainsKey(requiredSpeed.Key) || speeds[requiredSpeed.Key].Value < requiredSpeed.Value)

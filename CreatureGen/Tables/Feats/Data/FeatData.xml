@@ -14,6 +14,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Acrobatic</name>
@@ -28,6 +29,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Agile</name>
@@ -42,6 +44,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Alertness</name>
@@ -56,6 +59,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Animal Affinity</name>
@@ -70,6 +74,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Athletic</name>
@@ -84,6 +89,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Armor Proficiency (Heavy)</name>
@@ -98,6 +104,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Armor Proficiency (Light)</name>
@@ -112,6 +119,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Armor Proficiency (Medium)</name>
@@ -126,6 +134,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Augment Summoning</name>
@@ -140,6 +149,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Awesome Blow</name>
@@ -154,6 +164,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Blind-Fight</name>
@@ -168,6 +179,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Brew Potion</name>
@@ -182,6 +194,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Cleave</name>
@@ -196,6 +209,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Combat Casting</name>
@@ -210,6 +224,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Combat Expertise</name>
@@ -224,6 +239,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Combat Reflexes</name>
@@ -238,6 +254,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Craft Construct</name>
@@ -252,6 +269,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Craft Magic Arms and Armor</name>
@@ -266,6 +284,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Craft Rod</name>
@@ -280,6 +299,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Craft Staff</name>
@@ -294,6 +314,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Craft Wand</name>
@@ -308,6 +329,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Craft Wondrous Item</name>
@@ -322,6 +344,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Deceitful</name>
@@ -336,6 +359,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Deflect Arrows</name>
@@ -350,6 +374,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Deft Hands</name>
@@ -364,6 +389,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Diehard</name>
@@ -378,6 +404,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Diligent</name>
@@ -392,6 +419,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Dodge</name>
@@ -406,6 +434,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Empower Spell</name>
@@ -420,6 +449,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Empower Spell-Like Ability</name>
@@ -434,6 +464,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Endurance</name>
@@ -448,6 +479,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Enlarge Spell</name>
@@ -462,6 +494,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Eschew Materials</name>
@@ -476,6 +509,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Exotic Weapon Proficiency</name>
@@ -490,6 +524,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>1</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Extend Spell</name>
@@ -504,6 +539,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Far Shot</name>
@@ -518,6 +554,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Flyby Attack</name>
@@ -532,6 +569,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Forge Ring</name>
@@ -546,6 +584,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Great Cleave</name>
@@ -560,6 +599,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Greater Multiweapon Fighting</name>
@@ -574,6 +614,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>3</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Greater Spell Focus</name>
@@ -588,6 +629,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Greater Spell Penetration</name>
@@ -602,6 +644,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Greater Two-Weapon Fighting</name>
@@ -616,6 +659,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>2</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Great Fortitude</name>
@@ -630,6 +674,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Heighten Spell</name>
@@ -644,6 +689,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Hover</name>
@@ -658,6 +704,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Bull Rush</name>
@@ -672,6 +719,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Counterspell</name>
@@ -686,6 +734,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Critical</name>
@@ -700,6 +749,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Disarm</name>
@@ -714,6 +764,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Feint</name>
@@ -728,6 +779,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Flyby Attack</name>
@@ -742,6 +794,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Grapple</name>
@@ -756,6 +809,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Initiative</name>
@@ -770,6 +824,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Multiattack</name>
@@ -784,6 +839,7 @@
     <entry>False</entry>
     <entry>3</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Multiweapon Fighting</name>
@@ -798,6 +854,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>3</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Improved Natural Armor</name>
@@ -812,6 +869,7 @@
     <entry>True</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Natural Attack</name>
@@ -826,6 +884,7 @@
     <entry>False</entry>
     <entry>1</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Overrun</name>
@@ -840,6 +899,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Precise Shot</name>
@@ -854,6 +914,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Shield Bash</name>
@@ -867,7 +928,8 @@
     <entry>False</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>1</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Improved Sunder</name>
@@ -882,6 +944,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Trip</name>
@@ -896,6 +959,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Improved Two-Weapon Fighting</name>
@@ -910,6 +974,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>2</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Improved Unarmed Strike</name>
@@ -924,6 +989,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Investigator</name>
@@ -938,6 +1004,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Iron Will</name>
@@ -952,6 +1019,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Lightning Reflexes</name>
@@ -966,6 +1034,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Magical Aptitude</name>
@@ -980,6 +1049,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Manyshot</name>
@@ -994,6 +1064,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Martial Weapon Proficiency</name>
@@ -1008,6 +1079,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>1</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Maximize Spell</name>
@@ -1022,6 +1094,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Mobility</name>
@@ -1036,6 +1109,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Mounted Archery</name>
@@ -1050,6 +1124,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Mounted Combat</name>
@@ -1064,6 +1139,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Multiattack</name>
@@ -1078,6 +1154,7 @@
     <entry>False</entry>
     <entry>3</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Multiweapon Fighting</name>
@@ -1092,6 +1169,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>3</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Negotiator</name>
@@ -1106,6 +1184,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Nimble Fingers</name>
@@ -1120,6 +1199,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Persuasive</name>
@@ -1134,6 +1214,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Point Blank Shot</name>
@@ -1148,6 +1229,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Power Attack</name>
@@ -1162,6 +1244,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Precise Shot</name>
@@ -1176,6 +1259,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Quick Draw</name>
@@ -1190,6 +1274,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Quicken Spell</name>
@@ -1204,6 +1289,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Quicken Spell-Like Ability</name>
@@ -1218,6 +1304,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Rapid Reload</name>
@@ -1231,7 +1318,8 @@
     <entry>False</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>2</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Rapid Shot</name>
@@ -1246,6 +1334,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Ride-By Attack</name>
@@ -1260,6 +1349,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Run</name>
@@ -1274,6 +1364,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Scribe Scroll</name>
@@ -1288,6 +1379,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Self-Sufficient</name>
@@ -1302,6 +1394,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Shield Proficiency</name>
@@ -1315,7 +1408,8 @@
     <entry>False</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>1</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Shot On The Run</name>
@@ -1330,6 +1424,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Silent Spell</name>
@@ -1344,6 +1439,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Simple Weapon Proficiency</name>
@@ -1358,6 +1454,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>1</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Skill Focus</name>
@@ -1372,6 +1469,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Snatch</name>
@@ -1386,6 +1484,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Snatch Arrows</name>
@@ -1400,6 +1499,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Spell Focus</name>
@@ -1414,6 +1514,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Spell Penetration</name>
@@ -1428,6 +1529,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Spirited Charge</name>
@@ -1442,6 +1544,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Spring Attack</name>
@@ -1456,6 +1559,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Stealthy</name>
@@ -1470,6 +1574,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Still Spell</name>
@@ -1484,6 +1589,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Stunning Fist</name>
@@ -1498,6 +1604,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Toughness</name>
@@ -1512,6 +1619,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Tower Shield Proficiency</name>
@@ -1525,7 +1633,8 @@
     <entry>False</entry>
     <entry>False</entry>
     <entry>0</entry>
-    <entry>0</entry>
+    <entry>1</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Track</name>
@@ -1540,6 +1649,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Trample</name>
@@ -1554,6 +1664,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Two-Weapon Defense</name>
@@ -1568,6 +1679,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>2</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Two-Weapon Fighting</name>
@@ -1582,6 +1694,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>2</entry>
+    <entry>True</entry>
   </collection>
   <collection>
     <name>Weapon Finesse</name>
@@ -1596,6 +1709,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Weapon Focus</name>
@@ -1610,6 +1724,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Whirlwind Attack</name>
@@ -1624,6 +1739,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Widen Spell</name>
@@ -1638,6 +1754,7 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
   <collection>
     <name>Wingover</name>
@@ -1652,5 +1769,6 @@
     <entry>False</entry>
     <entry>0</entry>
     <entry>0</entry>
+    <entry>False</entry>
   </collection>
 </collections>

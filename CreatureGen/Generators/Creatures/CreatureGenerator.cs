@@ -138,7 +138,8 @@ namespace CreatureGen.Generators.Creatures
                 creature.Speeds,
                 creatureData.NaturalArmor,
                 creature.NumberOfHands,
-                creature.Size);
+                creature.Size,
+                creature.CanUseEquipment);
 
             creature.Skills = skillsGenerator.ApplyBonusesFromFeats(creature.Skills, creature.Feats, creature.Abilities);
             creature.HitPoints = hitPointsGenerator.RegenerateWith(creature.HitPoints, creature.Feats);

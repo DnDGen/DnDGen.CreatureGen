@@ -74,7 +74,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             hitPoints.HitDiceQuantity = 20;
             AddFeatSelections(8);
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             Assert.That(feats, Is.Empty);
         }
 
@@ -103,7 +103,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             hitPoints.HitDiceQuantity = hitDiceQuantity;
             AddFeatSelections(numberOfFeats + 2);
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var featNames = feats.Select(f => f.Name);
 
             for (var i = 0; i < numberOfFeats; i++)
@@ -126,7 +126,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void DoNotGetFeatIfNoneAvailable()
         {
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             Assert.That(feats, Is.Empty);
         }
 
@@ -136,7 +136,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             AddFeatSelections(1);
             featSelections[0].RequiredBaseAttack = 90210;
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             Assert.That(feats, Is.Empty);
         }
 
@@ -151,7 +151,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<FeatSelection>>(fs => fs.Count() == 2)))
                 .Returns((IEnumerable<FeatSelection> fs) => fs.First());
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var featNames = feats.Select(f => f.Name);
 
             Assert.That(featNames, Contains.Item(featSelections[0].Feat));
@@ -165,7 +165,20 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             AddFeatSelections(2);
             featSelections[0].RequiredBaseAttack = 9266;
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9265, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9265, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
+            var featNames = feats.Select(f => f.Name);
+
+            Assert.That(featNames, Contains.Item(featSelections[1].Feat));
+            Assert.That(featNames.Count(), Is.EqualTo(1));
+        }
+
+        [Test]
+        public void DoNotGetFeatsWithUnmetPrerequisite_NeedsEquipment()
+        {
+            AddFeatSelections(2);
+            featSelections[0].RequiresEquipment = true;
+
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9265, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var featNames = feats.Select(f => f.Name);
 
             Assert.That(featNames, Contains.Item(featSelections[1].Feat));
@@ -178,7 +191,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             AddFeatSelections(2);
             featSelections[0].RequiredBaseAttack = 9266;
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var featNames = feats.Select(f => f.Name);
 
             Assert.That(featNames, Contains.Item(featSelections[0].Feat));
@@ -195,7 +208,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             var index = 0;
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatSelection>>())).Returns((IEnumerable<FeatSelection> fs) => fs.ElementAt(index++ % fs.Count()));
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var featNames = feats.Select(f => f.Name);
 
             Assert.That(featNames, Contains.Item(featSelections[0].Feat));
@@ -212,7 +225,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
 
             AddFeatSelections(2);
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var featNames = feats.Select(f => f.Name);
             Assert.That(featNames.Single(), Is.EqualTo("feat2"));
         }
@@ -225,7 +238,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             mockFeatFocusGenerator.Setup(g => g.GenerateFrom("feat1", "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities, attacks))
                 .Returns("focus");
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var onlyFeat = feats.Single();
 
             Assert.That(onlyFeat.Name, Is.EqualTo(featSelections[0].Feat));
@@ -250,7 +263,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 .Returns(() => featSelections[index])
                 .Callback(() => index++);
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             Assert.That(feats.Count(), Is.EqualTo(2));
 
             var first = feats.First();
@@ -272,7 +285,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             mockFeatFocusGenerator.SetupSequence(g => g.GenerateFrom("feat1", "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities, attacks))
                 .Returns("focus 1").Returns("focus 2");
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var onlyFeat = feats.Single();
 
             Assert.That(onlyFeat.Name, Is.EqualTo(featSelections[0].Feat));
@@ -288,7 +301,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             hitPoints.HitDiceQuantity = 3;
             featSelections[0].CanBeTakenMultipleTimes = true;
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var first = feats.First();
             var last = feats.Last();
 
@@ -306,7 +319,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             mockFeatFocusGenerator.Setup(g => g.GenerateFrom(featSelections[0].Feat, "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities, attacks))
                 .Returns(FeatConstants.Foci.NoValidFociAvailable);
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             Assert.That(feats, Is.Empty);
         }
 
@@ -319,7 +332,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             mockFeatFocusGenerator.Setup(g => g.GenerateFrom(featSelections[0].Feat, "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities, attacks))
                 .Returns(FeatConstants.Foci.NoValidFociAvailable);
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var onlyFeat = feats.Single();
             Assert.That(onlyFeat.Name, Is.EqualTo(featSelections[1].Feat));
         }
@@ -331,7 +344,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             mockFeatFocusGenerator.Setup(g => g.GenerateFrom(featSelections[0].Feat, string.Empty, skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities, attacks))
                 .Returns(string.Empty);
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var feat = feats.Single();
 
             Assert.That(feat.Name, Is.EqualTo(featSelections[0].Feat));
@@ -353,7 +366,7 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             mockFeatFocusGenerator.SetupSequence(g => g.GenerateFrom("additional feat", "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities, attacks))
                 .Returns("focus").Returns("wrong focus");
 
-            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var feat = feats.Single();
             Assert.That(feat.Foci.Single(), Is.EqualTo("focus"));
             Assert.That(feat.Frequency.Quantity, Is.EqualTo(9266));

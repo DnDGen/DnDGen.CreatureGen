@@ -1085,7 +1085,8 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             bool requiresSpellLikeAbility = false,
             bool requiresNaturalArmor = false,
             int requiredNaturalWeaponQuantity = 0,
-            int requiredHandQuantity = 0)
+            int requiredHandQuantity = 0,
+            bool requiresEquipment = false)
         {
             var data = DataIndexConstants.FeatData.InitializeData();
 
@@ -1096,10 +1097,11 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
             data[DataIndexConstants.FeatData.PowerIndex] = power.ToString();
             data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = minimumCasterLevel.ToString();
             data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = requiresSpecialAttack.ToString();
-            data[DataIndexConstants.FeatData.RequiresSpellLikeAbility] = requiresSpellLikeAbility.ToString();
-            data[DataIndexConstants.FeatData.RequiresNaturalArmor] = requiresNaturalArmor.ToString();
+            data[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex] = requiresSpellLikeAbility.ToString();
+            data[DataIndexConstants.FeatData.RequiresNaturalArmorIndex] = requiresNaturalArmor.ToString();
             data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = requiredNaturalWeaponQuantity.ToString();
             data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = requiredHandQuantity.ToString();
+            data[DataIndexConstants.FeatData.RequiresEquipmentIndex] = requiresEquipment.ToString();
 
             return data;
         }
@@ -2065,6 +2067,34 @@ namespace CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.RequiredSizes, Is.Empty);
+        }
+
+        [Test]
+        public void GetFeatRequiringEquipment()
+        {
+            featsData["feat"] = BuildFeatData(requiresEquipment: true);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiresEquipment, Is.True);
+        }
+
+        [Test]
+        public void GetFeatNotRequiringEquipment()
+        {
+            featsData["feat"] = BuildFeatData(requiresEquipment: false);
+
+            var feats = featsSelector.SelectFeats();
+            Assert.That(feats.Count(), Is.EqualTo(1));
+
+            var feat = feats.Single();
+
+            Assert.That(feat.Feat, Is.EqualTo("feat"));
+            Assert.That(feat.RequiresEquipment, Is.False);
         }
     }
 }

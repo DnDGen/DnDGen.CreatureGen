@@ -47,8 +47,9 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
             alignment = new Alignment("creature alignment");
         }
 
-        [Test]
-        public void ReturnInnerFeats()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void ReturnInnerFeats(bool canUseEquipment)
         {
             var feats = new[]
             {
@@ -56,14 +57,15 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 new Feat { Name = "other feat" },
             };
 
-            mockInnerGenerator.Setup(g => g.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size")).Returns(feats);
+            mockInnerGenerator.Setup(g => g.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", canUseEquipment)).Returns(feats);
 
-            var generatedFeats = decorator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var generatedFeats = decorator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", canUseEquipment);
             Assert.That(generatedFeats, Is.EqualTo(feats));
         }
 
-        [Test]
-        public void LogEventsForFeatsGeneration()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void LogEventsForFeatsGeneration(bool canUseEquipment)
         {
             var feats = new[]
             {
@@ -71,9 +73,9 @@ namespace CreatureGen.Tests.Unit.Generators.Feats
                 new Feat { Name = "other feat" },
             };
 
-            mockInnerGenerator.Setup(g => g.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size")).Returns(feats);
+            mockInnerGenerator.Setup(g => g.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", canUseEquipment)).Returns(feats);
 
-            var generatedFeats = decorator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size");
+            var generatedFeats = decorator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", canUseEquipment);
             Assert.That(generatedFeats, Is.EqualTo(feats));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
             mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Generating feats"), Times.Once);
