@@ -39,7 +39,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             mockDice.Setup(d => d.Roll(3)).Returns(mockPartialDie.Object);
             mockPartialDie.Setup(d => d.d(6)).Returns(mockPartialTotal.Object);
 
-            mockPartialTotal.SetupSequence(d => d.AsSum()).Returns(42).Returns(600).Returns(1337);
+            mockPartialTotal.SetupSequence(d => d.AsSum<int>()).Returns(42).Returns(600).Returns(1337);
         }
 
         [Test]

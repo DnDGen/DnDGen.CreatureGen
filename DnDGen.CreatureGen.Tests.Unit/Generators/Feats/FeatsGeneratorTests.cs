@@ -531,7 +531,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
 
             var count = 1;
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
-            mockDice.Setup(d => d.Roll("dice roll").AsSum()).Returns(3);
+            mockDice.Setup(d => d.Roll("dice roll").AsSum<int>()).Returns(3);
 
             specialQualitySelections.Add(featSelection);
 
@@ -552,7 +552,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
 
             var count = 1;
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
-            mockDice.Setup(d => d.Roll("dice roll").AsSum()).Returns(3);
+            mockDice.Setup(d => d.Roll("dice roll").AsSum<int>()).Returns(3);
 
             specialQualitySelections.Add(featSelection);
 
@@ -573,7 +573,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
 
             var count = 1;
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++ / 2}");
-            mockDice.Setup(d => d.Roll("dice roll").AsSum()).Returns(3);
+            mockDice.Setup(d => d.Roll("dice roll").AsSum<int>()).Returns(3);
 
             specialQualitySelections.Add(featSelection);
 
@@ -594,7 +594,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
 
             var count = 1;
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
-            mockDice.Setup(d => d.Roll("dice roll").AsSum()).Returns(3);
+            mockDice.Setup(d => d.Roll("dice roll").AsSum<int>()).Returns(3);
 
             specialQualitySelections.Add(featSelection);
 

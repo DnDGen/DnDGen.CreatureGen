@@ -4275,6 +4275,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 featsWithFoci.Add($"{FeatConstants.SkillFocus}/{SkillConstants.UseMagicDevice}");
                 featsWithFoci.Add($"{FeatConstants.SkillFocus}/{SkillConstants.UseRope}");
 
+                featsWithFoci.Add($"{FeatConstants.SpecialQualities.AlternateForm}/{CreatureConstants.Boar}");
+
                 return featsWithFoci;
             }
 

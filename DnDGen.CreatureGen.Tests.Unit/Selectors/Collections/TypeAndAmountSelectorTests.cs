@@ -30,7 +30,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             var mockPartialRoll = new Mock<PartialRoll>();
             mockDice.Setup(d => d.Roll(roll)).Returns(mockPartialRoll.Object);
 
-            var sequence = mockPartialRoll.SetupSequence(r => r.AsSum());
+            var sequence = mockPartialRoll.SetupSequence(r => r.AsSum<int>());
 
             foreach (var sum in sums)
                 sequence = sequence.Returns(sum);

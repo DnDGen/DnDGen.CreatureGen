@@ -68,7 +68,11 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
         private void VerifyStatistics(Creature creature)
         {
-            Assert.That(ChallengeRatingConstants.GetOrdered(), Contains.Item(creature.ChallengeRating));
+            var ordered = ChallengeRatingConstants.GetOrdered();
+            var numbers = Enumerable.Range(1, 100).Select(i => i.ToString());
+            var challengeRatings = ordered.Union(numbers);
+
+            Assert.That(challengeRatings, Contains.Item(creature.ChallengeRating));
             Assert.That(creature.Size, Is.EqualTo(SizeConstants.Large)
                 .Or.EqualTo(SizeConstants.Colossal)
                 .Or.EqualTo(SizeConstants.Gargantuan)
@@ -199,8 +203,8 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 .And.AtLeast(creature.HitPoints.HitDiceQuantity)
                 .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity), creature.Summary);
             Assert.That(creature.HitPoints.DefaultTotal, Is.Positive
-                .And.AtLeast(creature.HitPoints.HitDiceQuantity)
-                .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity), creature.Summary);
+                .And.AtLeast(creature.HitPoints.HitDiceQuantity + creature.Abilities[AbilityConstants.Constitution].Modifier)
+                .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity + creature.Abilities[AbilityConstants.Constitution].Modifier), creature.Summary);
 
             Assert.That(creature.FullMeleeAttack, Is.Not.Null, creature.Summary);
             Assert.That(creature.FullRangedAttack, Is.Not.Null, creature.Summary);
@@ -242,7 +246,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(attack.AttackType, Is.Not.Empty, message);
             Assert.That(attack.BaseAttackBonus, Is.Not.Negative, message);
             Assert.That(attack.Frequency, Is.Not.Null, message);
-            Assert.That(attack.Frequency.Quantity, Is.Positive, message);
+            Assert.That(attack.Frequency.Quantity, Is.Not.Negative, message);
             Assert.That(attack.Frequency.TimePeriod, Contains.Substring(FeatConstants.Frequencies.Round)
                 .Or.Contains(FeatConstants.Frequencies.Hit)
                 .Or.Contains(FeatConstants.Frequencies.Minute)
@@ -251,7 +255,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 .Or.Contains(FeatConstants.Frequencies.Week)
                 .Or.Contains(FeatConstants.Frequencies.Month)
                 .Or.Contains(FeatConstants.Frequencies.Year)
-                .Or.Contains(FeatConstants.Frequencies.Life), message);
+                .Or.Contains(FeatConstants.Frequencies.Life)
+                .Or.Contains(FeatConstants.Frequencies.AtWill)
+                .Or.Contains(FeatConstants.Frequencies.Constant), message);
 
             if (!attack.IsNatural)
             {

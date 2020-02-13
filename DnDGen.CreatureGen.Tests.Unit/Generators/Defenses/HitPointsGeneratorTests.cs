@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
                 mockPartialRolls[quantity] = new Mock<PartialRoll>();
 
             var endRoll = new Mock<PartialRoll>();
-            endRoll.Setup(r => r.AsIndividualRolls()).Returns(rolls);
+            endRoll.Setup(r => r.AsIndividualRolls<int>()).Returns(rolls);
 
             mockPartialRolls[quantity].Setup(r => r.d(die)).Returns(endRoll.Object);
         }

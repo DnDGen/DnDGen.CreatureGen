@@ -98,9 +98,19 @@ namespace DnDGen.CreatureGen.Defenses
 
         public void RollDefault(Dice dice)
         {
-            var averageTotal = dice.Roll(DefaultRoll).AsPotentialAverage();
-            var floor = Math.Floor(averageTotal);
-            DefaultTotal = Convert.ToInt32(floor);
+            var average = dice.Roll(RoundedHitDiceQuantity).d(HitDie).AsPotentialAverage();
+            average = Math.Max(1, average);
+
+            if (0 < HitDiceQuantity && HitDiceQuantity < 1)
+            {
+                average /= divisor;
+            }
+
+            average = Math.Max(1, average);
+            average += Constitution.Modifier * RoundedHitDiceQuantity;
+            average = Math.Max(RoundedHitDiceQuantity, average);
+
+            DefaultTotal = Convert.ToInt32(Math.Floor(average)) + Bonus;
         }
     }
 }

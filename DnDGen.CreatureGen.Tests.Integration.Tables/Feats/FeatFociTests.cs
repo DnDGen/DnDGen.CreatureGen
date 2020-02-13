@@ -47,22 +47,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats
         [Test]
         public void SimpleWeaponProficiencyFoci()
         {
-            var foci = WeaponConstants.GetAllSimple().ToArray();
-            base.AssertDistinctCollection(FeatConstants.WeaponProficiency_Simple, foci);
+            var foci = WeaponConstants.GetAllSimple();
+            var ammunition = WeaponConstants.GetAllAmmunition();
+            foci = foci.Except(ammunition);
+            base.AssertDistinctCollection(FeatConstants.WeaponProficiency_Simple, foci.ToArray());
         }
 
         [Test]
         public void MartialWeaponProficiencyFoci()
         {
-            var foci = WeaponConstants.GetAllMartial().ToArray();
-            base.AssertDistinctCollection(FeatConstants.WeaponProficiency_Martial, foci);
+            var foci = WeaponConstants.GetAllMartial();
+            var ammunition = WeaponConstants.GetAllAmmunition();
+            foci = foci.Except(ammunition);
+            base.AssertDistinctCollection(FeatConstants.WeaponProficiency_Martial, foci.ToArray());
         }
 
         [Test]
         public void ExoticWeaponProficiencyFoci()
         {
-            var foci = WeaponConstants.GetAllExotic().ToArray();
-            base.AssertDistinctCollection(FeatConstants.WeaponProficiency_Exotic, foci);
+            var foci = WeaponConstants.GetAllExotic();
+            var ammunition = WeaponConstants.GetAllAmmunition();
+            foci = foci.Except(ammunition);
+            base.AssertDistinctCollection(FeatConstants.WeaponProficiency_Exotic, foci.ToArray());
         }
 
         [Test]

@@ -1132,7 +1132,8 @@
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
-    <entry>Melee@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Melee@@False@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Unarmed Strike@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Dancing Chains@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@0</entry>
     <entry>Unnerving Gaze@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@0</entry>
   </collection>
