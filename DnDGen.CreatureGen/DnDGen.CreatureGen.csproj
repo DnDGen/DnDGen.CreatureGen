@@ -1,0 +1,130 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp3.1;net45</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Karl M. Speer</Authors>
+    <Company>DnDGen</Company>
+    <Product>CreatureGen</Product>
+    <Description>This generates creatures for the Dungeons and Dragons 3.5 system.</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/DnDGen/CreatureGen</PackageProjectUrl>
+    <PackageIcon>18531-twenty-sided-dice-vector-thumb.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/DnDGen/CreatureGen</RepositoryUrl>
+    <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
+    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Tables\Abilities\AbilityAdjustments.xml" />
+    <None Remove="Tables\Alignments\AlignmentGroups.xml" />
+    <None Remove="Tables\Attacks\AttackData.xml" />
+    <None Remove="Tables\Attacks\GrappleBonuses.xml" />
+    <None Remove="Tables\Creatures\Advancements.xml" />
+    <None Remove="Tables\Creatures\AerialManeuverability.xml" />
+    <None Remove="Tables\Creatures\CreatureData.xml" />
+    <None Remove="Tables\Creatures\CreatureGroups.xml" />
+    <None Remove="Tables\Creatures\CreatureTypes.xml" />
+    <None Remove="Tables\Creatures\DragonSpecies.xml" />
+    <None Remove="Tables\Creatures\Speeds.xml" />
+    <None Remove="Tables\Defenses\ArmorClassBonuses.xml" />
+    <None Remove="Tables\Defenses\HitDice.xml" />
+    <None Remove="Tables\Defenses\SaveBonuses.xml" />
+    <None Remove="Tables\Defenses\SizeModifiers.xml" />
+    <None Remove="Tables\Feats\Data\FeatData.xml" />
+    <None Remove="Tables\Feats\Data\SkillSynergyFeatData.xml" />
+    <None Remove="Tables\Feats\Data\SpecialQualityData.xml" />
+    <None Remove="Tables\Feats\FeatFoci.xml" />
+    <None Remove="Tables\Feats\FeatGroups.xml" />
+    <None Remove="Tables\Feats\Requirements\FeatAbilityRequirements.xml" />
+    <None Remove="Tables\Feats\Requirements\FeatSkillRankRequirements.xml" />
+    <None Remove="Tables\Feats\Requirements\FeatSpeedRequirements.xml" />
+    <None Remove="Tables\Feats\Requirements\RequiredAlignments.xml" />
+    <None Remove="Tables\Feats\Requirements\RequiredFeats.xml" />
+    <None Remove="Tables\Feats\Requirements\RequiredSizes.xml" />
+    <None Remove="Tables\Skills\SkillBonuses.xml" />
+    <None Remove="Tables\Skills\SkillData.xml" />
+    <None Remove="Tables\Skills\SkillGroups.xml" />
+    <None Remove="Tables\Skills\SkillPoints.xml" />
+    <None Remove="Tables\Traits.xml" />
+    <None Include="..\..\TreasureGen\DnDGen.TreasureGen\18531-twenty-sided-dice-vector-thumb.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\AbilityAdjustments.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Alignments\AlignmentGroups.xml" />
+    <EmbeddedResource Include="Tables\Attacks\AttackData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Attacks\GrappleBonuses.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Advancements.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\AerialManeuverability.xml" />
+    <EmbeddedResource Include="Tables\Creatures\CreatureData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\CreatureGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\CreatureTypes.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\DragonSpecies.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Speeds.xml" />
+    <EmbeddedResource Include="Tables\Defenses\ArmorClassBonuses.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Defenses\HitDice.xml" />
+    <EmbeddedResource Include="Tables\Defenses\SaveBonuses.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Defenses\SizeModifiers.xml" />
+    <EmbeddedResource Include="Tables\Feats\Data\FeatData.xml" />
+    <EmbeddedResource Include="Tables\Feats\Data\SkillSynergyFeatData.xml" />
+    <EmbeddedResource Include="Tables\Feats\Data\SpecialQualityData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Feats\FeatFoci.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Feats\FeatGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Feats\Requirements\FeatAbilityRequirements.xml" />
+    <EmbeddedResource Include="Tables\Feats\Requirements\FeatSkillRankRequirements.xml" />
+    <EmbeddedResource Include="Tables\Feats\Requirements\FeatSpeedRequirements.xml" />
+    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredAlignments.xml" />
+    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredFeats.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredSizes.xml" />
+    <EmbeddedResource Include="Tables\Skills\SkillBonuses.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Skills\SkillData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Skills\SkillGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
+    <EmbeddedResource Include="Tables\Traits.xml" />
+  </ItemGroup>
+
+  <!--Needed for Framework compatibility when building in Travis-->
+  <ItemGroup>
+    <PackageReference Include="DnDGen.EventGen" Version="3.0.0" />
+    <PackageReference Include="DnDGen.Infrastructure" Version="4.0.0" />
+    <PackageReference Include="DnDGen.RollGen" Version="15.1.0" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="10.0.0" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

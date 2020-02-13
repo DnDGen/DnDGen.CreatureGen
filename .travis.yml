@@ -1,22 +1,15 @@
 language: csharp
-mono: latest
-solution: CreatureGen.sln
-install:
-  - curl -O https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-  - mono ./nuget.exe restore CreatureGen.sln
-  - mono ./nuget.exe install NUnit.Runners -OutputDirectory testrunner
+solution: DnDGen.TreasureGen.sln
+mono: none
+dotnet: 3.1
+
 script:
-  - msbuild CreatureGen.sln /p:TargetFrameworkVersion="v4.5" /p:Configuration=Stress
-  - set -e
-  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./CreatureGen.Tests.Unit/bin/Stress/CreatureGen.Tests.Unit.dll
-  - set -e
-  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./CreatureGen.Tests.Integration.IoC/bin/Stress/CreatureGen.Tests.Integration.IoC.dll
-  - set -e
-  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./CreatureGen.Tests.Integration.Tables/bin/Stress/CreatureGen.Tests.Integration.Tables.dll
-  - set -e
-  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./CreatureGen.Tests.Integration/bin/Stress/CreatureGen.Tests.Integration.dll
-  - set -e
-  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./CreatureGen.Tests.Integration.Stress/bin/Stress/CreatureGen.Tests.Integration.Stress.dll
+  - dotnet build DnDGen.CreatureGen.sln -c Release
+    && dotnet test ./DnDGen.CreatureGen.Tests.Unit/DnDGen.CreatureGen.Tests.Unit.csproj -v normal
+    && dotnet test ./DnDGen.CreatureGen.Tests.Integration.IoC/DnDGen.CreatureGen.Tests.Integration.IoC.csproj -v normal
+    && dotnet test ./DnDGen.CreatureGen.Tests.Integration.Tables/DnDGen.CreatureGen.Tests.Integration.Tables.csproj -v normal
+    && dotnet test ./DnDGen.CreatureGen.Tests.Integration/DnDGen.CreatureGen.Tests.Integration.csproj -v normal
+    && dotnet test ./DnDGen.CreatureGen.Tests.Integration.Stress/DnDGen.CreatureGen.Tests.Integration.Stress.csproj -v normal -c Stress
 deploy:
   skip_cleanup: true
   provider: script
