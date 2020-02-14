@@ -66,8 +66,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats
         public void ExoticWeaponProficiencyFoci()
         {
             var foci = WeaponConstants.GetAllExotic();
-            var ammunition = WeaponConstants.GetAllAmmunition();
-            foci = foci.Except(ammunition);
             base.AssertDistinctCollection(FeatConstants.WeaponProficiency_Exotic, foci.ToArray());
         }
 

@@ -6,6 +6,7 @@
         public const string All = "All";
         public const string ArmorBonus = "Armor Bonus";
         public const string ArmorCheckPenalty = "Armor Check Penalty";
+        public const string ArmorProficiency = "Armor Proficiency";
         public const string AttackBonus = "Attack Bonus";
         public const string AverageBaseAttack = "Average Base Attack";
         public const string Deflection = "Deflection";

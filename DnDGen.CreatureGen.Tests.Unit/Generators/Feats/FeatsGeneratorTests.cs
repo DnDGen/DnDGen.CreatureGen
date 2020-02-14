@@ -453,6 +453,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         }
 
         [Test]
+        public void BUG_GetSpecialQualityThatMeetRequirements_OutOfOrder()
+        {
+            var specialQualitySelection = new SpecialQualitySelection();
+            specialQualitySelection.Feat = "special quality";
+            specialQualitySelection.RequiredFeats = new[]
+            {
+                new RequiredFeatSelection { Feat = "required feat" }
+            };
+            var requirementSelection = new SpecialQualitySelection();
+            requirementSelection.Feat = "required feat";
+            specialQualitySelections.Add(specialQualitySelection);
+            specialQualitySelections.Add(requirementSelection);
+
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
+            Assert.That(specialQualities.Count(), Is.EqualTo(2));
+        }
+
+        [Test]
         public void GetFociForSpecialQualities()
         {
             var specialQualitySelection = new SpecialQualitySelection();

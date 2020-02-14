@@ -30,6 +30,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(creature.Feats, Is.Empty);
             Assert.That(creature.FullMeleeAttack, Is.Empty);
             Assert.That(creature.FullRangedAttack, Is.Empty);
+            Assert.That(creature.Equipment, Is.Not.Null);
             Assert.That(creature.GrappleBonus, Is.Null);
             Assert.That(creature.HitPoints, Is.Not.Null);
             Assert.That(creature.InitiativeBonus, Is.Zero);

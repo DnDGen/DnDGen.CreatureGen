@@ -48,29 +48,42 @@ namespace DnDGen.CreatureGen.Generators.Feats
                     selection.Power += hitPoints.RoundedHitDiceQuantity;
 
             var specialQualities = new List<Feat>();
+            var previousCount = specialQualities.Count;
+            var pickedSelections = new List<SpecialQualitySelection>();
 
-            foreach (var specialQualitySelection in specialQualitySelections)
+            do
             {
-                if (!specialQualitySelection.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment))
-                    continue;
+                previousCount = specialQualities.Count;
 
-                var specialQuality = new Feat();
-                specialQuality.Name = specialQualitySelection.Feat;
-                specialQuality.Foci = GetFoci(specialQualitySelection, skills, abilities);
-
-                specialQuality.Frequency = specialQualitySelection.Frequency;
-                specialQuality.Power = specialQualitySelection.Power;
-
-                if (!string.IsNullOrEmpty(specialQualitySelection.SaveAbility))
+                foreach (var specialQualitySelection in specialQualitySelections)
                 {
-                    specialQuality.Save = new SaveDieCheck();
-                    specialQuality.Save.BaseAbility = abilities[specialQualitySelection.SaveAbility];
-                    specialQuality.Save.Save = specialQualitySelection.Save;
-                    specialQuality.Save.BaseValue = specialQualitySelection.SaveBaseValue;
+                    if (!specialQualitySelection.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment))
+                        continue;
+
+                    pickedSelections.Add(specialQualitySelection);
+
+                    var specialQuality = new Feat();
+                    specialQuality.Name = specialQualitySelection.Feat;
+                    specialQuality.Foci = GetFoci(specialQualitySelection, skills, abilities);
+
+                    specialQuality.Frequency = specialQualitySelection.Frequency;
+                    specialQuality.Power = specialQualitySelection.Power;
+
+                    if (!string.IsNullOrEmpty(specialQualitySelection.SaveAbility))
+                    {
+                        specialQuality.Save = new SaveDieCheck();
+                        specialQuality.Save.BaseAbility = abilities[specialQualitySelection.SaveAbility];
+                        specialQuality.Save.Save = specialQualitySelection.Save;
+                        specialQuality.Save.BaseValue = specialQualitySelection.SaveBaseValue;
+                    }
+
+                    specialQualities.Add(specialQuality);
                 }
 
-                specialQualities.Add(specialQuality);
-            }
+                specialQualitySelections = specialQualitySelections
+                    .Except(pickedSelections)
+                    .ToArray();
+            } while (previousCount != specialQualities.Count && specialQualitySelections.Any());
 
             return specialQualities;
         }

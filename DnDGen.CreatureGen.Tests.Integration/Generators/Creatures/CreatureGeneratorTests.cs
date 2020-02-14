@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.EventGen;
+using DnDGen.TreasureGen.Items;
 using Ninject;
 using NUnit.Framework;
 using System;
@@ -30,16 +31,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             creatureAsserter = new CreatureAsserter();
         }
 
-        [Test]
-        public void DoSpellsForThoseWhoCastAsSpellcaster()
+        [TestCase(CreatureConstants.Rakshasa)]
+        public void CanGenerateSpellsForThoseWhoCastAsSpellcaster(string creatureName)
         {
             Assert.Fail("TODO");
         }
 
-        [Test]
-        public void DoEquipment()
+        [TestCase(CreatureConstants.Human)]
+        [TestCase(CreatureConstants.Dwarf_Hill)]
+        [TestCase(CreatureConstants.Elf_Half)]
+        [TestCase(CreatureConstants.Elf_High)]
+        [TestCase(CreatureConstants.Gnome_Rock)]
+        [TestCase(CreatureConstants.Halfling_Lightfoot)]
+        [TestCase(CreatureConstants.Orc)]
+        [TestCase(CreatureConstants.Orc_Half)]
+        [TestCase(CreatureConstants.Goblin)]
+        [TestCase(CreatureConstants.Ogre)]
+        [TestCase(CreatureConstants.Balor)]
+        public void CanGenerateEquipment(string creatureName)
         {
-            Assert.Fail("TODO");
+            var creature = CreatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Equipment, Is.Not.Null);
+            Assert.That(creature.Equipment.Weapons, Is.Not.Empty);
+
+            var unnaturalAttacks = creature.Attacks.Where(a => !a.IsNatural);
+
+            foreach (var attack in unnaturalAttacks)
+            {
+                var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name) as Weapon;
+                Assert.That(weapon, Is.Not.Null);
+                Assert.That(attack.DamageRoll, Is.EqualTo(weapon.Damage));
+            }
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]

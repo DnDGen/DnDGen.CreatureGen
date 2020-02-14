@@ -10,6 +10,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(GroupConstants.All, "All")]
         [TestCase(GroupConstants.ArmorBonus, "Armor Bonus")]
         [TestCase(GroupConstants.ArmorCheckPenalty, "Armor Check Penalty")]
+        [TestCase(GroupConstants.ArmorProficiency, "Armor Proficiency")]
         [TestCase(GroupConstants.AttackBonus, "Attack Bonus")]
         [TestCase(GroupConstants.AverageBaseAttack, "Average Base Attack")]
         [TestCase(GroupConstants.Deflection, "Deflection")]

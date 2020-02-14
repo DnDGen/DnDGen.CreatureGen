@@ -88,8 +88,8 @@ namespace DnDGen.CreatureGen.Defenses
         {
             var rolls = dice.Roll(RoundedHitDiceQuantity).d(HitDie).AsIndividualRolls();
 
-            if (HitDiceQuantity < 1)
-                rolls = rolls.Select(r => r / divisor);
+            if (0 < HitDiceQuantity && HitDiceQuantity < 1)
+                rolls = rolls.Select(r => Math.Max(1, r / divisor));
 
             rolls = rolls.Select(r => Math.Max(r + Constitution.Modifier, 1));
 
@@ -106,7 +106,7 @@ namespace DnDGen.CreatureGen.Defenses
                 average /= divisor;
             }
 
-            average = Math.Max(1, average);
+            average = Math.Max(RoundedHitDiceQuantity, average);
             average += Constitution.Modifier * RoundedHitDiceQuantity;
             average = Math.Max(RoundedHitDiceQuantity, average);
 

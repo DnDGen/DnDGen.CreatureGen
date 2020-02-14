@@ -23,6 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats
                 GroupConstants.Initiative,
                 GroupConstants.TakenMultipleTimes,
                 GroupConstants.WeaponProficiency,
+                GroupConstants.ArmorProficiency,
                 SaveConstants.Fortitude,
                 SaveConstants.Reflex,
                 SaveConstants.Will,
@@ -48,6 +49,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats
             FeatConstants.WeaponProficiency_Exotic,
             FeatConstants.WeaponProficiency_Martial,
             FeatConstants.WeaponProficiency_Simple)]
+        [TestCase(GroupConstants.ArmorProficiency,
+            FeatConstants.ArmorProficiency_Heavy,
+            FeatConstants.ArmorProficiency_Light,
+            FeatConstants.ArmorProficiency_Medium,
+            FeatConstants.ShieldProficiency,
+            FeatConstants.ShieldProficiency_Tower)]
         [TestCase(SaveConstants.Fortitude,
             FeatConstants.GreatFortitude)]
         [TestCase(SaveConstants.Reflex,

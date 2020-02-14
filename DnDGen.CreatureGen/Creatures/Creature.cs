@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Skills;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,6 +89,8 @@ namespace DnDGen.CreatureGen.Creatures
             }
         }
 
+        public Equipment Equipment { get; set; }
+
         public Creature()
         {
             Abilities = new Dictionary<string, Ability>();
@@ -107,6 +110,7 @@ namespace DnDGen.CreatureGen.Creatures
             Template = string.Empty;
             Type = new CreatureType();
             Speeds = new Dictionary<string, Measurement>();
+            Equipment = new Equipment();
         }
     }
 }

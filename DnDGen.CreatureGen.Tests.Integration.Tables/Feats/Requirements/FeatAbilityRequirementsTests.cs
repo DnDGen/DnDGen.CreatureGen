@@ -4276,6 +4276,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 featsWithFoci.Add($"{FeatConstants.SkillFocus}/{SkillConstants.UseRope}");
 
                 featsWithFoci.Add($"{FeatConstants.SpecialQualities.AlternateForm}/{CreatureConstants.Boar}");
+                featsWithFoci.Add($"{FeatConstants.SpecialQualities.AlternateForm}/{CreatureConstants.Rat}");
+                featsWithFoci.Add($"{FeatConstants.SpecialQualities.AlternateForm}/{CreatureConstants.Raven}");
+                featsWithFoci.Add($"{FeatConstants.SpecialQualities.AlternateForm}/{CreatureConstants.Spider_Monstrous_Hunter_Small}");
+                featsWithFoci.Add($"{FeatConstants.SpecialQualities.AlternateForm}/{CreatureConstants.Spider_Monstrous_Hunter_Medium}");
+                featsWithFoci.Add($"{FeatConstants.SpecialQualities.AlternateForm}/{CreatureConstants.Spider_Monstrous_WebSpinner_Small}");
+                featsWithFoci.Add($"{FeatConstants.SpecialQualities.AlternateForm}/{CreatureConstants.Spider_Monstrous_WebSpinner_Medium}");
 
                 return featsWithFoci;
             }

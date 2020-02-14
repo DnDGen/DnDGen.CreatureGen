@@ -36,7 +36,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             creatureType = new CreatureType();
             creatureType.Name = "creature type";
             specialQualitiesData = new Dictionary<string, List<string>>();
-            specialQualitiesData["creature"] = new List<string>();
+            specialQualitiesData[creature] = new List<string>();
             specialQualitiesData[creatureType.Name] = new List<string>();
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, It.IsAny<string>())).Returns(Enumerable.Empty<string>());
@@ -52,9 +52,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQuality()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -76,19 +76,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetNoSpecialQualities()
         {
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SpecialQualityData, "creature")).Returns(Enumerable.Empty<string>());
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SpecialQualityData, creature)).Returns(Enumerable.Empty<string>());
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities, Is.Empty);
         }
 
         [Test]
         public void GetSpecialQualities()
         {
-            AddSpecialQualityData("creature", "special quality 1");
-            AddSpecialQualityData("creature", "special quality 2");
+            AddSpecialQualityData(creature, "special quality 1");
+            AddSpecialQualityData(creature, "special quality 2");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(2));
 
             var first = specialQualities.First();
@@ -146,9 +146,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithFocusType()
         {
-            AddSpecialQualityData("creature", "special quality", focus: "focus type");
+            AddSpecialQualityData(creature, "special quality", focus: "focus type");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -170,9 +170,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithFrequency()
         {
-            AddSpecialQualityData("creature", "special quality", frequencyQuantity: 9266, frequencyTimePeriod: "fortnight");
+            AddSpecialQualityData(creature, "special quality", frequencyQuantity: 9266, frequencyTimePeriod: "fortnight");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -194,7 +194,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithMinimumAbility()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
             var abilityRequirements = new[]
             {
@@ -204,7 +204,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality"))
                 .Returns(abilityRequirements);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -239,7 +239,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creature typespecial quality"))
                 .Returns(abilityRequirements);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -264,7 +264,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithMinimumAbilities()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
             var abilityRequirements = new[]
             {
@@ -275,7 +275,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality"))
                 .Returns(abilityRequirements);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -302,9 +302,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithPower()
         {
-            AddSpecialQualityData("creature", "special quality", power: 9266);
+            AddSpecialQualityData(creature, "special quality", power: 9266);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -326,9 +326,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRandomFociQuantity()
         {
-            AddSpecialQualityData("creature", "special quality", randomFociQuantity: "random foci quantity");
+            AddSpecialQualityData(creature, "special quality", randomFociQuantity: "random foci quantity");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -350,7 +350,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeat()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
             var requiredFeats = new[]
             {
@@ -359,7 +359,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -395,7 +395,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creature typespecial quality")).Returns(requiredFeats);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -422,7 +422,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeatWithFocus()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
             var requiredFeats = new[]
             {
@@ -431,7 +431,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -458,7 +458,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeats()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
             var requiredFeats = new[]
             {
@@ -468,7 +468,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -499,7 +499,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeatsWithFoci()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
             var requiredFeats = new[]
             {
@@ -509,7 +509,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -540,7 +540,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeatWithAndWithoutFoci()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
             var requiredFeats = new[]
             {
@@ -550,7 +550,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -581,9 +581,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiresEquipment()
         {
-            AddSpecialQualityData("creature", "special quality", requiresEquipment: true);
+            AddSpecialQualityData(creature, "special quality", requiresEquipment: true);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -605,9 +605,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithNotRequiresEquipment()
         {
-            AddSpecialQualityData("creature", "special quality", requiresEquipment: false);
+            AddSpecialQualityData(creature, "special quality", requiresEquipment: false);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -631,7 +631,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             AddSpecialQualityData(creatureType.Name, "special quality");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -657,7 +657,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             AddSpecialQualityData("subtype", "special quality");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -684,7 +684,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             AddSpecialQualityData("subtype", "special quality 1");
             AddSpecialQualityData("other subtype", "special quality 2");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(2));
 
             var first = specialQualities.First();
@@ -722,12 +722,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             creatureType.SubTypes = new[] { "subtype", "other subtype" };
 
-            AddSpecialQualityData("creature", "special quality 1");
+            AddSpecialQualityData(creature, "special quality 1");
             AddSpecialQualityData(creatureType.Name, "special quality 2", save: "my save", saveAbility: "save ability", saveBaseValue: 9266);
             AddSpecialQualityData("subtype", "special quality 3");
             AddSpecialQualityData("other subtype", "special quality 4");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType).ToArray();
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType).ToArray();
             Assert.That(specialQualities.Length, Is.EqualTo(4));
 
             Assert.That(specialQualities[0].Feat, Is.EqualTo("special quality 1"));
@@ -788,12 +788,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             creatureType.SubTypes = new[] { "subtype", "other subtype" };
 
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
             AddSpecialQualityData(creatureType.Name, "special quality");
             AddSpecialQualityData("subtype", "special quality");
             AddSpecialQualityData("other subtype", "special quality");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType).ToArray();
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType).ToArray();
             Assert.That(specialQualities.Length, Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -817,12 +817,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             creatureType.SubTypes = new[] { "subtype", "other subtype" };
 
-            AddSpecialQualityData("creature", "special quality", focus: "focus");
+            AddSpecialQualityData(creature, "special quality", focus: "focus");
             AddSpecialQualityData(creatureType.Name, "special quality", frequencyQuantity: 9266, frequencyTimePeriod: "fortnight");
             AddSpecialQualityData("subtype", "special quality", power: 90210);
             AddSpecialQualityData("other subtype", "special quality", requiresEquipment: true);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType).ToArray();
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType).ToArray();
             Assert.That(specialQualities.Length, Is.EqualTo(4));
 
             Assert.That(specialQualities[0].Feat, Is.EqualTo("special quality"));
@@ -883,9 +883,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetNoSizeRequirementForSpecialQuality()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -897,12 +897,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSizeRequirementForSpecialQuality()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality"))
                 .Returns(new[] { "size" });
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -915,12 +915,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSizeRequirementsForSpecialQuality()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality"))
                 .Returns(new[] { "size", "other size" });
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -933,9 +933,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetNoAlignmentRequirementForSpecialQuality()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -946,12 +946,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetAlignmentRequirementForSpecialQuality()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredAlignments, "creaturespecial quality"))
                 .Returns(new[] { "lawfulness goodness" });
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -963,12 +963,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetAlignmentRequirementsForSpecialQuality()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredAlignments, "creaturespecial quality"))
                 .Returns(new[] { "lawfulness goodness", "other lawfulness goodness", "lawfulness other goodness", "other lawfulness other goodness" });
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -982,9 +982,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetNoSaveForSpecialQuality()
         {
-            AddSpecialQualityData("creature", "special quality");
+            AddSpecialQualityData(creature, "special quality");
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();
@@ -996,9 +996,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSaveForSpecialQuality()
         {
-            AddSpecialQualityData("creature", "special quality", saveAbility: "save ability", save: "save", saveBaseValue: 9266);
+            AddSpecialQualityData(creature, "special quality", saveAbility: "save ability", save: "save", saveBaseValue: 9266);
 
-            var specialQualities = featsSelector.SelectSpecialQualities("creature", creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
 
             var specialQuality = specialQualities.Single();

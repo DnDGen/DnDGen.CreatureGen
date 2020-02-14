@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Generators.Alignments;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Generators.Items;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
@@ -35,6 +36,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private readonly IAdvancementSelector advancementSelector;
         private readonly IAttacksGenerator attacksGenerator;
         private readonly ISpeedsGenerator speedsGenerator;
+        private readonly IEquipmentGenerator equipmentGenerator;
 
         public CreatureGenerator(IAlignmentGenerator alignmentGenerator,
             ICreatureVerifier creatureVerifier,
@@ -49,7 +51,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             JustInTimeFactory justInTimeFactory,
             IAdvancementSelector advancementSelector,
             IAttacksGenerator attacksGenerator,
-            ISpeedsGenerator speedsGenerator)
+            ISpeedsGenerator speedsGenerator,
+            IEquipmentGenerator equipmentGenerator)
         {
             this.alignmentGenerator = alignmentGenerator;
             this.abilitiesGenerator = abilitiesGenerator;
@@ -65,6 +68,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             this.advancementSelector = advancementSelector;
             this.attacksGenerator = attacksGenerator;
             this.speedsGenerator = speedsGenerator;
+            this.equipmentGenerator = equipmentGenerator;
         }
 
         public Creature Generate(string creatureName, string template)
@@ -154,6 +158,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities, creature.Size, creatureName, creature.Type, allFeats, creatureData.NaturalArmor);
             creature.Saves = savesGenerator.GenerateWith(creature.Name, creature.Type, creature.HitPoints, allFeats, creature.Abilities);
+
+            creature.Equipment = equipmentGenerator.Generate(creature.Name, creature.CanUseEquipment, allFeats);
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = templateApplicator.ApplyTo(creature);
