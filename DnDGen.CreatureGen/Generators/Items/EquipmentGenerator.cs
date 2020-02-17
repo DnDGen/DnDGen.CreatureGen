@@ -32,9 +32,10 @@ namespace DnDGen.CreatureGen.Generators.Items
             var weaponProficiencyFeatNames = collectionSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
             var weaponProficiencyFeats = feats.Where(f => weaponProficiencyFeatNames.Contains(f.Name));
 
+            var weapons = new List<Weapon>();
+
             if (weaponProficiencyFeats.Any() && unnaturalAttacks.Any())
             {
-                var weapons = new List<Item>();
                 var weaponNames = WeaponConstants.GetAllWeapons(false);
 
                 var equipmentMeleeAttacks = unnaturalAttacks.Where(a => a.Name == AttributeConstants.Melee);
@@ -97,30 +98,25 @@ namespace DnDGen.CreatureGen.Generators.Items
                 var proficientArmorNames = GetProficientArmorNames(armorProficiencyFeats);
                 var nonProficientArmorNames = armorNames.Except(proficientArmorNames);
 
-                var weighted = collectionSelector.CreateWeighted(proficientArmorNames, null, null, nonProficientArmorNames);
-                var armorName = collectionSelector.SelectRandomFrom(weighted);
+                var armorName = collectionSelector.SelectRandomFrom(proficientArmorNames, null, null, nonProficientArmorNames);
 
                 equipment.Armor = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Armor, armorName);
 
                 var shieldNames = ArmorConstants.GetAllShields(false);
                 var proficientShieldNames = GetProficientShieldNames(armorProficiencyFeats);
 
-                if (proficientShieldNames.Any())
+                var hasTwoHandedWeapon = weapons.Any(w => w.Attributes.Contains(AttributeConstants.Melee) && w.Attributes.Contains(AttributeConstants.TwoHanded));
+                if (proficientShieldNames.Any() && !hasTwoHandedWeapon)
                 {
                     var nonProficientShieldNames = shieldNames.Except(proficientShieldNames);
 
-                    weighted = collectionSelector.CreateWeighted(proficientShieldNames, null, null, nonProficientShieldNames);
-                    var shieldName = collectionSelector.SelectRandomFrom(weighted);
+                    var shieldName = collectionSelector.SelectRandomFrom(proficientShieldNames, null, null, nonProficientShieldNames);
 
                     equipment.Shield = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Armor, shieldName);
                 }
             }
 
             // check if creature has specific items (such as hag heartstone, flaming whip for balor, etc.)
-
-            // if not two-handed weapon, and proficient in shield, get shield
-
-            throw new NotImplementedException();
 
             return equipment;
         }
