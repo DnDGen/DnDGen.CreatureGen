@@ -36,12 +36,12 @@ namespace DnDGen.CreatureGen.Generators.Items
 
             if (weaponProficiencyFeats.Any() && unnaturalAttacks.Any())
             {
-                var weaponNames = WeaponConstants.GetAllWeapons(false);
+                var weaponNames = WeaponConstants.GetAllWeapons(false, true);
 
                 var equipmentMeleeAttacks = unnaturalAttacks.Where(a => a.Name == AttributeConstants.Melee);
                 if (equipmentMeleeAttacks.Any())
                 {
-                    var meleeWeaponNames = WeaponConstants.GetAllMelee(false);
+                    var meleeWeaponNames = WeaponConstants.GetAllMelee(false, false);
 
                     var proficientMeleeWeaponNames = GetProficientWeaponNames(feats, weaponProficiencyFeats, meleeWeaponNames);
                     var nonProficientMeleeWeaponNames = weaponNames
@@ -65,7 +65,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                 var equipmentRangedAttacks = unnaturalAttacks.Where(a => a.Name == AttributeConstants.Ranged);
                 if (equipmentRangedAttacks.Any())
                 {
-                    var rangedWeaponNames = WeaponConstants.GetAllRanged(false);
+                    var rangedWeaponNames = WeaponConstants.GetAllRanged(false, true);
 
                     var proficientRangedWeaponNames = GetProficientWeaponNames(feats, weaponProficiencyFeats, rangedWeaponNames);
                     var nonProficientRangedWeaponNames = weaponNames
@@ -134,6 +134,8 @@ namespace DnDGen.CreatureGen.Generators.Items
                 .SelectMany(f => f.Foci)
                 .Intersect(baseWeapons);
 
+            //TODO: Need to translate and include templates...
+
             if (weaponFoci.Any())
             {
                 common.AddRange(weaponFoci);
@@ -178,19 +180,19 @@ namespace DnDGen.CreatureGen.Generators.Items
 
             if (feats.Any(f => f.Name == FeatConstants.ArmorProficiency_Light))
             {
-                var armor = ArmorConstants.GetAllLight(false);
+                var armor = ArmorConstants.GetAllLightArmors(false);
                 names.AddRange(armor);
             }
 
             if (feats.Any(f => f.Name == FeatConstants.ArmorProficiency_Medium))
             {
-                var armor = ArmorConstants.GetAllMedium(false);
+                var armor = ArmorConstants.GetAllMediumArmors(false);
                 names.AddRange(armor);
             }
 
             if (feats.Any(f => f.Name == FeatConstants.ArmorProficiency_Heavy))
             {
-                var armor = ArmorConstants.GetAllHeavy(false);
+                var armor = ArmorConstants.GetAllHeavyArmors(false);
                 names.AddRange(armor);
             }
 
