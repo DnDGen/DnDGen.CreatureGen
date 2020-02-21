@@ -74,7 +74,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 var templatedAttack = templatedCreature.Attacks.FirstOrDefault(a => a.Name == attack.Name);
                 Assert.That(templatedAttack, Is.Not.Null);
-                Assert.That(templatedAttack.AttackBonuses, Is.EqualTo(attack.AttackBonuses));
+                Assert.That(templatedAttack.FullAttackBonuses, Is.EqualTo(attack.FullAttackBonuses));
                 Assert.That(templatedAttack.AttackType, Is.EqualTo(attack.AttackType));
                 Assert.That(templatedAttack.BaseAbility, Is.EqualTo(templatedCreature.Abilities[attack.BaseAbility.Name]));
                 Assert.That(templatedAttack.BaseAttackBonus, Is.EqualTo(attack.BaseAttackBonus));

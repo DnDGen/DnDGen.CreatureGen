@@ -159,7 +159,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities, creature.Size, creatureName, creature.Type, allFeats, creatureData.NaturalArmor);
             creature.Saves = savesGenerator.GenerateWith(creature.Name, creature.Type, creature.HitPoints, allFeats, creature.Abilities);
 
-            creature.Equipment = equipmentGenerator.Generate(creature.Name, creature.CanUseEquipment, allFeats);
+            creature.Equipment = equipmentGenerator.Generate(creature.Name, creature.CanUseEquipment, allFeats, creature.HitPoints.RoundedHitDiceQuantity, creature.Attacks);
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = templateApplicator.ApplyTo(creature);

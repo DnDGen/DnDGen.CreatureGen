@@ -1238,17 +1238,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         }
 
         [Test]
-        [Ignore("Need to have equipment stuff done first")]
-        public void ApplyDexterityForMeleeInsteadOfStrengthForLightWeaponsIfWeaponFinesse()
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void ApplyDexterityForMeleeInsteadOfStrengthForNaturalAttacksIfWeaponFinesse()
+        public void ApplyDexterityForMeleeInsteadOfStrengthForNaturalAttacksIfWeaponFinesse_IfNatural()
         {
             var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
+            attacks.Add(new Attack { Name = "attack 1", IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength], IsNatural = true });
 
             var feats = new[] { new Feat { Name = FeatConstants.WeaponFinesse } };
 
@@ -1256,6 +1249,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
+        }
+
+        [Test]
+        public void DoNotApplyDexterityForMeleeInsteadOfStrengthForNaturalAttacksIfWeaponFinesse_Unnatural()
+        {
+            var attacks = new List<Attack>();
+            attacks.Add(new Attack { Name = "attack 1", IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength], IsNatural = false });
+
+            var feats = new[] { new Feat { Name = FeatConstants.WeaponFinesse } };
+
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
+            var generatedAttack = generatedAttacks.Single();
+
+            Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
         }
 
         [Test]

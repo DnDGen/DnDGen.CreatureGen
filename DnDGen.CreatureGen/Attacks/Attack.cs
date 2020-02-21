@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Feats;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Attacks
 {
@@ -17,10 +18,10 @@ namespace DnDGen.CreatureGen.Attacks
         public bool IsPrimary { get; set; }
         public bool IsSpecial { get; set; }
         public bool IsNatural { get; set; }
-        public int SecondaryAttackPenalty { get; set; }
         public Frequency Frequency { get; set; }
         public SaveDieCheck Save { get; set; }
         public string AttackType { get; set; }
+        public List<int> AttackBonuses { get; set; }
 
         public int TotalAttackBonus
         {
@@ -30,15 +31,15 @@ namespace DnDGen.CreatureGen.Attacks
                 if (BaseAbility != null)
                     abilityBonus = BaseAbility.Modifier;
 
-                return BaseAttackBonus + abilityBonus + SizeModifier + SecondaryAttackPenalty;
+                return BaseAttackBonus + abilityBonus + SizeModifier + AttackBonuses.Sum();
             }
         }
 
-        public int[] AttackBonuses
+        public int[] FullAttackBonuses
         {
             get
             {
-                var bonuses = new List<int>(4);
+                var bonuses = new List<int>();
                 var decrement = 0;
 
                 do
@@ -46,7 +47,7 @@ namespace DnDGen.CreatureGen.Attacks
                     bonuses.Add(TotalAttackBonus - decrement);
                     decrement += 5;
                 }
-                while (BaseAttackBonus - decrement > 0 && IsPrimary && !IsNatural && bonuses.Capacity > bonuses.Count);
+                while (BaseAttackBonus - decrement > 0 && IsPrimary && !IsNatural && bonuses.Count < 4);
 
                 return bonuses.ToArray();
             }
@@ -78,6 +79,7 @@ namespace DnDGen.CreatureGen.Attacks
         {
             Name = string.Empty;
             DamageRoll = string.Empty;
+            AttackBonuses = new List<int>();
         }
     }
 }

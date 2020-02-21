@@ -200,7 +200,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockArmorClassGenerator.Setup(g => g.GenerateWith(abilities, creatureData.Size, creatureName, It.Is<CreatureType>(c => c.Name == types[0]), feats, creatureData.NaturalArmor)).Returns(armorClass);
 
             mockSpeedsGenerator.Setup(g => g.Generate(creatureName)).Returns(speeds);
-            mockEquipmentGenerator.Setup(g => g.Generate(creatureName, creatureData.CanUseEquipment, It.IsAny<IEnumerable<Feat>>())).Returns(equipment);
+            mockEquipmentGenerator.Setup(g => g.Generate(creatureName, creatureData.CanUseEquipment, It.IsAny<IEnumerable<Feat>>(), hitPoints.RoundedHitDiceQuantity, attacks)).Returns(equipment);
         }
 
         [Test]

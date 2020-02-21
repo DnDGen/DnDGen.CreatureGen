@@ -132,13 +132,16 @@ namespace DnDGen.CreatureGen.Generators.Attacks
 
             foreach (var attack in attacks)
             {
-                if (attack.IsSpecial)
+                throw new Exception("need to handle rocks an unnatural attacks");
+
+                if (attack.IsSpecial || !attack.IsNatural)
                     continue;
 
-                if (!attack.IsPrimary && attack.IsNatural && hasMultiattack)
-                    attack.SecondaryAttackPenalty -= 2;
-                else if (!attack.IsPrimary)
-                    attack.SecondaryAttackPenalty -= 5;
+                if (!attack.IsPrimary)
+                    attack.AttackBonuses.Add(-5);
+
+                if (!attack.IsPrimary && hasMultiattack)
+                    attack.AttackBonuses.Add(3);
 
                 if (hasWeaponFinesse && attack.IsMelee)
                 {

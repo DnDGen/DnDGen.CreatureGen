@@ -646,32 +646,39 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
-        [Test, Ignore("Have to have equipment first")]
+        [Test]
         public void SetMaxDexterityBonusBasedOnArmor()
         {
             Assert.Fail("not yet written");
         }
 
-        [Test, Ignore("Have to have equipment first")]
+        [Test]
         public void ApplyArmorBonusFromArmor()
         {
             Assert.Fail("not yet written");
         }
 
-        [Test, Ignore("Have to have equipment first")]
+        [Test]
         public void ApplyArmorBonusFromMagicalArmor()
         {
             Assert.Fail("not yet written");
         }
 
-        [Test, Ignore("Have to have equipment first")]
+        [Test]
         public void ApplyShieldBonusFromShield()
         {
             Assert.Fail("not yet written");
         }
 
-        [Test, Ignore("Have to have equipment first")]
+        [Test]
         public void ApplyShieldBonusFromMagicalShield()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        //example is Two-Weapon Defense
+        [Test]
+        public void ApplyShieldBonusFromFeat()
         {
             Assert.Fail("not yet written");
         }

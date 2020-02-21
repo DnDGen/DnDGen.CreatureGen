@@ -51,14 +51,14 @@ namespace DnDGen.CreatureGen.Tests.Integration
             if (!creature.CanUseEquipment)
             {
                 Assert.That(creature.Equipment.Weapons, Is.Empty, creature.Summary);
-                Assert.That(creature.Equipment.Armor, Is.Null, creature.Summary;
+                Assert.That(creature.Equipment.Armor, Is.Null, creature.Summary);
                 Assert.That(creature.Equipment.Items, Is.Empty, creature.Summary);
                 return;
             }
 
             var armorNames = ArmorConstants.GetAllArmors(true);
             var shieldNames = ArmorConstants.GetAllShields(true);
-            var weaponNames = WeaponConstants.GetAllWeapons();
+            var weaponNames = WeaponConstants.GetAllWeapons(true, false);
 
             Assert.That(creature.Equipment.Weapons, Is.All.InstanceOf<Weapon>(), creature.Summary);
 
@@ -214,7 +214,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.Feats, Is.Not.Null, creature.Summary);
             Assert.That(creature.SpecialQualities, Is.Not.Null, creature.Summary);
 
-            var weapons = WeaponConstants.GetAllWeapons();
+            var weapons = WeaponConstants.GetAllWeapons(false, false);
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
 
             foreach (var feat in allFeats)
@@ -324,9 +324,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(creature.CanUseEquipment, Is.True, message);
             }
 
-            if (attack.IsPrimary)
+            if (!attack.IsPrimary)
             {
-                Assert.That(attack.SecondaryAttackPenalty, Is.Zero);
+                Assert.That(attack.AttackBonuses, Contains.Item(-5));
             }
 
             if (!attack.IsSpecial)
