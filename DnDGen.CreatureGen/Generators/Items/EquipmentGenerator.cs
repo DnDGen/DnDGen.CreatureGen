@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.Infrastructure.Selectors.Percentiles;
 using DnDGen.TreasureGen.Items;
 using System;
 using System.Collections.Generic;
@@ -15,14 +16,21 @@ namespace DnDGen.CreatureGen.Generators.Items
     {
         private readonly ICollectionSelector collectionSelector;
         private readonly IItemsGenerator itemGenerator;
+        private readonly IPercentileSelector percentileSelector;
 
-        public EquipmentGenerator(ICollectionSelector collectionSelector, IItemsGenerator itemGenerator)
+        public EquipmentGenerator(ICollectionSelector collectionSelector, IItemsGenerator itemGenerator, IPercentileSelector percentileSelector)
         {
             this.collectionSelector = collectionSelector;
             this.itemGenerator = itemGenerator;
+            this.percentileSelector = percentileSelector;
         }
 
-        public Equipment Generate(string creatureName, bool canUseEquipment, IEnumerable<Feat> feats, int level, IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities)
+        public IEnumerable<Attack> AddAttacks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Equipment Generate(string creatureName, bool canUseEquipment, IEnumerable<Feat> feats, int level, IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities, int numberOfHands)
         {
             var equipment = new Equipment();
 
@@ -46,14 +54,60 @@ namespace DnDGen.CreatureGen.Generators.Items
                 {
                     var meleeWeaponNames = WeaponConstants.GetAllMelee(false, false);
 
-                    var proficientMeleeWeaponNames = GetProficientWeaponNames(feats, weaponProficiencyFeats, meleeWeaponNames);
-                    var nonProficientMeleeWeaponNames = weaponNames
-                        .Except(proficientMeleeWeaponNames.Common)
-                        .Except(proficientMeleeWeaponNames.Uncommon);
-
                     var nonProficiencyFeats = feats.Except(weaponProficiencyFeats);
                     var hasWeaponFinesse = feats.Any(f => f.Name == FeatConstants.WeaponFinesse);
                     var light = WeaponConstants.GetAllLightMelee(true, false);
+                    var greaterTwoWeaponFeat = feats.Any(f => f.Name == FeatConstants.TwoWeaponFighting_Greater
+                            || f.Name == FeatConstants.Monster.MultiweaponFighting_Greater);
+                    var improvedTwoWeaponFeat = greaterTwoWeaponFeat
+                        || feats.Any(f => f.Name == FeatConstants.TwoWeaponFighting_Improved
+                            || f.Name == FeatConstants.Monster.MultiweaponFighting_Improved);
+                    var twoWeaponFeat = improvedTwoWeaponFeat
+                        || feats.Any(f => f.Name == FeatConstants.TwoWeaponFighting
+                            || f.Name == FeatConstants.Monster.MultiweaponFighting);
+                    var twoWeapon = twoWeaponFeat
+                        || equipmentMeleeAttacks.Count() > 1
+                        || percentileSelector.SelectFrom(.01);
+
+                    if (twoWeapon)
+                    {
+                        while (equipmentMeleeAttacks.Count() < numberOfHands)
+                        {
+                            //add other melee attacks (number equal to number of hands)
+                            //... how to add attacks so that they get back to the creature...
+                        }
+
+                        foreach (var attack in equipmentMeleeAttacks)
+                        {
+                            if (attack.IsPrimary)
+                            {
+                                attack.MaxNumberOfAttacks = 4;
+                                attack.AttackBonuses.Add(-6);
+
+                                if (twoWeaponFeat)
+                                    attack.AttackBonuses.Add(2);
+                            }
+                            else
+                            {
+                                attack.MaxNumberOfAttacks = 1;
+                                attack.AttackBonuses.Add(-10);
+
+                                if (twoWeaponFeat)
+                                    attack.AttackBonuses.Add(6);
+
+                                if (improvedTwoWeaponFeat)
+                                    attack.MaxNumberOfAttacks++;
+
+                                if (greaterTwoWeaponFeat)
+                                    attack.MaxNumberOfAttacks++;
+                            }
+                        }
+                    }
+
+                    var proficientMeleeWeaponNames = GetProficientWeaponNames(feats, weaponProficiencyFeats, meleeWeaponNames, twoWeapon);
+                    var nonProficientMeleeWeaponNames = weaponNames
+                        .Except(proficientMeleeWeaponNames.Common)
+                        .Except(proficientMeleeWeaponNames.Uncommon);
 
                     foreach (var attack in equipmentMeleeAttacks)
                     {
@@ -81,9 +135,15 @@ namespace DnDGen.CreatureGen.Generators.Items
                             attack.AttackBonuses.Add(feat.Power);
                         }
 
-                        if (hasWeaponFinesse && light.Any(weapon.NameMatches))
+                        var isLight = light.Any(weapon.NameMatches);
+                        if (hasWeaponFinesse && isLight)
                         {
                             attack.BaseAbility = abilities[AbilityConstants.Dexterity];
+                        }
+
+                        if (twoWeapon && isLight)
+                        {
+                            attack.AttackBonuses.Add(2);
                         }
                     }
                 }
@@ -94,7 +154,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                 {
                     var rangedWeaponNames = WeaponConstants.GetAllRanged(false, false);
 
-                    var proficientRangedWeaponNames = GetProficientWeaponNames(feats, weaponProficiencyFeats, rangedWeaponNames);
+                    var proficientRangedWeaponNames = GetProficientWeaponNames(feats, weaponProficiencyFeats, rangedWeaponNames, false);
                     var nonProficientRangedWeaponNames = weaponNames
                         .Except(proficientRangedWeaponNames.Common)
                         .Except(proficientRangedWeaponNames.Uncommon);
@@ -169,7 +229,8 @@ namespace DnDGen.CreatureGen.Generators.Items
         private (IEnumerable<string> Common, IEnumerable<string> Uncommon) GetProficientWeaponNames(
             IEnumerable<Feat> feats,
             IEnumerable<Feat> proficiencyFeats,
-            IEnumerable<string> baseWeapons)
+            IEnumerable<string> baseWeapons,
+            bool twoWeapons)
         {
             var common = new List<string>();
             var uncommon = new List<string>();
@@ -219,6 +280,13 @@ namespace DnDGen.CreatureGen.Generators.Items
 
             common = common.Except(ammunition).ToList();
             uncommon = uncommon.Except(ammunition).ToList();
+
+            var twoHandedWeapons = WeaponConstants.GetAllTwoHandedMelee(false, false);
+            if (twoWeapons)
+            {
+                common = common.Except(twoHandedWeapons).ToList();
+                uncommon = uncommon.Except(twoHandedWeapons).ToList();
+            }
 
             SwapForTemplates(common, WeaponConstants.CompositeShortbow,
                 WeaponConstants.CompositePlus0Shortbow,

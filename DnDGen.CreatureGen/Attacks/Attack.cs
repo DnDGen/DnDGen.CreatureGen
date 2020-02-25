@@ -22,6 +22,7 @@ namespace DnDGen.CreatureGen.Attacks
         public SaveDieCheck Save { get; set; }
         public string AttackType { get; set; }
         public List<int> AttackBonuses { get; set; }
+        public int MaxNumberOfAttacks { get; set; }
 
         public int TotalAttackBonus
         {
@@ -47,7 +48,7 @@ namespace DnDGen.CreatureGen.Attacks
                     bonuses.Add(TotalAttackBonus - decrement);
                     decrement += 5;
                 }
-                while (BaseAttackBonus - decrement > 0 && IsPrimary && !IsNatural && bonuses.Count < 4);
+                while (BaseAttackBonus - decrement > 0 && bonuses.Count < MaxNumberOfAttacks);
 
                 return bonuses.ToArray();
             }
@@ -80,6 +81,7 @@ namespace DnDGen.CreatureGen.Attacks
             Name = string.Empty;
             DamageRoll = string.Empty;
             AttackBonuses = new List<int>();
+            MaxNumberOfAttacks = 1;
         }
     }
 }

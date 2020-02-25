@@ -865,13 +865,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                     It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleMelee)),
                     null,
                     It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
-                .Returns(WeaponConstants.HeavyMace);
+                .Returns(WeaponConstants.LightMace);
 
             var weapon = new Weapon();
-            weapon.Name = WeaponConstants.HeavyMace;
+            weapon.Name = WeaponConstants.LightMace;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.HeavyMace))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightMace))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
@@ -879,7 +879,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
 
             Assert.That(attacks, Has.Count.EqualTo(6));
-            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.HeavyMace));
+            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.LightMace));
             Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
@@ -930,8 +930,126 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         }
 
         [Test]
-        public void GenerateMeleeWeapon_MultipleWeapons_FromSingleAttack_AsTwoWeaponFighting()
+        public void GenerateMeleeWeapon_MultipleWeapons_FromSingleAttack_WithoutTwoWeaponFightingFeat_OneHanded()
         {
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var oneHanded = WeaponConstants.GetAllOneHandedMelee(false, false);
+            var simpleMelee = simple.Intersect(melee);
+            var oneHandedSimpleMelee = oneHanded.Intersect(simpleMelee);
+            var non = melee.Except(simple);
+
+            mockCollectionSelector
+                .SetupSequence(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(oneHandedSimpleMelee)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns(WeaponConstants.Dagger)
+                .Returns(WeaponConstants.LightMace);
+
+            var mace = new Weapon();
+            mace.Name = WeaponConstants.LightMace;
+            mace.Damage = "my mace damage";
+
+            var dagger = new Weapon();
+            dagger.Name = WeaponConstants.Dagger;
+            dagger.Damage = "my dagger damage";
+
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightMace))
+                .Returns(mace);
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
+                .Returns(dagger);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(2));
+            Assert.That(equipment.Weapons.First(), Is.EqualTo(dagger));
+            Assert.That(equipment.Weapons.First(), Is.EqualTo(mace));
+
+            Assert.That(attacks, Has.Count.EqualTo(7));
+            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dagger));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my dagger damage"));
+            Assert.That(attacks[5].IsMelee, Is.True);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].AttackBonuses, Has.Count.EqualTo(1).And.Contains(-6));
+            Assert.That(attacks[5].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
+            Assert.That(attacks[6].Name, Is.EqualTo(WeaponConstants.LightMace));
+            Assert.That(attacks[6].DamageRoll, Is.EqualTo("my mace damage"));
+            Assert.That(attacks[6].IsMelee, Is.True);
+            Assert.That(attacks[6].IsNatural, Is.False);
+            Assert.That(attacks[6].IsSpecial, Is.False);
+            Assert.That(attacks[6].AttackBonuses, Has.Count.EqualTo(1).And.Contains(-10));
+            Assert.That(attacks[6].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
+
+            //rare, to choose two-weapon (or multi-weapon) if not chosen feat
+            //verify penalties
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateMeleeWeapon_MultipleWeapons_FromSingleAttack_WithoutTwoWeaponFightingFeat_Light()
+        {
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var oneHanded = WeaponConstants.GetAllOneHandedMelee(false, false);
+            var simpleMelee = simple.Intersect(melee);
+            var oneHandedSimpleMelee = oneHanded.Intersect(simpleMelee);
+            var non = melee.Except(simple);
+
+            mockCollectionSelector
+                .SetupSequence(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(oneHandedSimpleMelee)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns(WeaponConstants.Dagger)
+                .Returns(WeaponConstants.LightMace);
+
+            var mace = new Weapon();
+            mace.Name = WeaponConstants.LightMace;
+            mace.Damage = "my mace damage";
+
+            var dagger = new Weapon();
+            dagger.Name = WeaponConstants.Dagger;
+            dagger.Damage = "my dagger damage";
+
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightMace))
+                .Returns(mace);
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
+                .Returns(dagger);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(2));
+            Assert.That(equipment.Weapons.First(), Is.EqualTo(dagger));
+            Assert.That(equipment.Weapons.First(), Is.EqualTo(mace));
+
+            Assert.That(attacks, Has.Count.EqualTo(7));
+            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dagger));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my dagger damage"));
+            Assert.That(attacks[5].IsMelee, Is.True);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].AttackBonuses, Has.Count.EqualTo(2).And.Contains(-6).And.Contains(2));
+            Assert.That(attacks[5].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
+            Assert.That(attacks[6].Name, Is.EqualTo(WeaponConstants.LightMace));
+            Assert.That(attacks[6].DamageRoll, Is.EqualTo("my mace damage"));
+            Assert.That(attacks[6].IsMelee, Is.True);
+            Assert.That(attacks[6].IsNatural, Is.False);
+            Assert.That(attacks[6].IsSpecial, Is.False);
+            Assert.That(attacks[6].AttackBonuses, Has.Count.EqualTo(2).And.Contains(-10).And.Contains(2));
+            Assert.That(attacks[6].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
+
             //rare, to choose two-weapon (or multi-weapon) if not chosen feat
             //verify penalties
             Assert.Fail("not yet written");
