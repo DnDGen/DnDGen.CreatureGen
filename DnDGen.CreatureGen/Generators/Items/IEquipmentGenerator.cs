@@ -8,6 +8,7 @@ namespace DnDGen.CreatureGen.Generators.Items
 {
     internal interface IEquipmentGenerator
     {
-        Equipment Generate(string creatureName, bool canUseEquipment, IEnumerable<Feat> feats, int level, IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities, int numberOfHands);
+        IEnumerable<Attack> AddAttacks(IEnumerable<Feat> feats, IEnumerable<Attack> attacks, int numberOfHands);
+        Equipment Generate(string creatureName, bool canUseEquipment, IEnumerable<Feat> feats, int level, IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities);
     }
 }
