@@ -234,6 +234,14 @@ namespace DnDGen.CreatureGen.Generators.Items
                         .Except(proficientRangedWeaponNames.Uncommon);
 
                     var nonProficiencyFeats = feats.Except(weaponProficiencyFeats);
+                    var crossbows = new[]
+                    {
+                        WeaponConstants.HandCrossbow,
+                        WeaponConstants.HeavyCrossbow,
+                        WeaponConstants.LightCrossbow,
+                    };
+
+                    var rapidReload = feats.FirstOrDefault(f => f.Name == FeatConstants.RapidReload);
 
                     foreach (var attack in equipmentRangedAttacks)
                     {
@@ -261,7 +269,33 @@ namespace DnDGen.CreatureGen.Generators.Items
                             attack.AttackBonuses.Add(feat.Power);
                         }
 
-                        //TODO: Check max number of attacks - bow vs javelin vs crossboiw, rapid reload, rapid shot, etc.
+                        if (!attack.IsPrimary)
+                        {
+                            attack.MaxNumberOfAttacks = 1;
+                            continue;
+                        }
+
+                        if (weapon.Attributes.Contains(AttributeConstants.Thrown)
+                            || weapon.Attributes.Contains(AttributeConstants.Projectile))
+                        {
+                            attack.MaxNumberOfAttacks = 4;
+                        }
+                        else
+                        {
+                            attack.MaxNumberOfAttacks = 1;
+                        }
+
+                        if (crossbows.Any(c => weapon.NameMatches(c)))
+                        {
+                            attack.MaxNumberOfAttacks = 1;
+
+                            if (rapidReload?.Foci?.Any(f => weapon.NameMatches(f)) == true
+                                && (weapon.NameMatches(WeaponConstants.LightCrossbow)
+                                    || weapon.NameMatches(WeaponConstants.HandCrossbow)))
+                            {
+                                attack.MaxNumberOfAttacks = 4;
+                            }
+                        }
                     }
                 }
 
