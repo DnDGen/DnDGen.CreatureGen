@@ -63,9 +63,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 IsPrimary = a.IsPrimary,
                 IsSpecial = a.IsSpecial,
                 Name = a.Name,
-                //TODO: Save
-                SecondaryAttackPenalty = a.SecondaryAttackPenalty,
+                Save = a.Save == null ? null : new SaveDieCheck
+                {
+                    BaseAbility = creature.Abilities[a.Save.BaseAbility.Name],
+                    BaseValue = a.Save.BaseValue,
+                    Save = a.Save.Save,
+                },
+                AttackBonuses = new List<int>(a.AttackBonuses),
                 SizeModifier = a.SizeModifier,
+                MaxNumberOfAttacks = a.MaxNumberOfAttacks,
             });
 
             creature.BaseAttackBonus = source.BaseAttackBonus;
@@ -76,10 +82,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 CanBeTakenMultipleTimes = f.CanBeTakenMultipleTimes,
                 Foci = f.Foci,
-                //TODO: Frequency
+                Frequency = f.Frequency == null ? null : new Frequency
+                {
+                    Quantity = f.Frequency.Quantity,
+                    TimePeriod = f.Frequency.TimePeriod,
+                },
                 Name = f.Name,
                 Power = f.Power,
-                //TODO: save
+                Save = f.Save == null ? null : new SaveDieCheck
+                {
+                    BaseAbility = creature.Abilities[f.Save.BaseAbility.Name],
+                    BaseValue = f.Save.BaseValue,
+                    Save = f.Save.Save,
+                },
             });
 
             creature.GrappleBonus = source.GrappleBonus;

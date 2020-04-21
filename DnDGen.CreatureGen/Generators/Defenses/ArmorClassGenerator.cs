@@ -2,8 +2,10 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.TreasureGen.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +23,7 @@ namespace DnDGen.CreatureGen.Generators.Defenses
             this.adjustmentsSelector = adjustmentsSelector;
         }
 
-        public ArmorClass GenerateWith(Dictionary<string, Ability> abilities, string size, string creatureName, CreatureType creatureType, IEnumerable<Feat> feats, int naturalArmor)
+        public ArmorClass GenerateWith(Dictionary<string, Ability> abilities, string size, string creatureName, CreatureType creatureType, IEnumerable<Feat> feats, int naturalArmor, Equipment equipment)
         {
             var armorClass = new ArmorClass();
             armorClass.Dexterity = abilities[AbilityConstants.Dexterity];
@@ -51,6 +53,26 @@ namespace DnDGen.CreatureGen.Generators.Defenses
             }
 
             armorClass = GetRacialArmorClassBonuses(armorClass, creatureName, creatureType);
+            armorClass = GetEquipmentArmorClassBonuses(armorClass, equipment);
+
+            return armorClass;
+        }
+
+        private ArmorClass GetEquipmentArmorClassBonuses(ArmorClass armorClass, Equipment equipment)
+        {
+            if (equipment.Armor != null)
+            {
+                var armor = equipment.Armor as Armor;
+                var bonus = armor.ArmorBonus + armor.Magic.Bonus;
+                armorClass.AddBonus(ArmorClassConstants.Armor, bonus);
+            }
+
+            if (equipment.Shield != null)
+            {
+                var shield = equipment.Shield as Armor;
+                var bonus = shield.ArmorBonus + shield.Magic.Bonus;
+                armorClass.AddBonus(ArmorClassConstants.Shield, bonus);
+            }
 
             return armorClass;
         }

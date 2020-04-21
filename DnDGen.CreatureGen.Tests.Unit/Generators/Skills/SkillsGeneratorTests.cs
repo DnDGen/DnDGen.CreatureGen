@@ -3199,8 +3199,92 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(bonus.Value, Is.EqualTo(9266));
         }
 
-        [Test, Ignore("Can't do this until equipment is done, since weight depends on worn armor")]
+        [Test]
         public void StormGiantsIgnoreWeightPenaltyForSwimSkill()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_NoSkills()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_NoSkillsWithArmorCheckPenalties()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_NoArmorOrShield()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_NoArmorOrShield_Swim()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_NoArmorOrShield_Swim_StormGiant()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_Armor()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_Armor_Swim()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_Armor_Swim_StormGiant()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_Shield()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_Shield_Swim()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_Shield_Swim_StormGiant()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_ArmorAndShield()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_ArmorAndShield_Swim()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void SetArmorCheckPenalties_ArmorAndShield_Swim_StormGiant()
         {
             Assert.Fail("not yet written");
         }

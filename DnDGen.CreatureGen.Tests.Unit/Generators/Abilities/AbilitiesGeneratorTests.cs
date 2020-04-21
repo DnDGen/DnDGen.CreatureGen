@@ -1,8 +1,11 @@
-﻿using DnDGen.CreatureGen.Generators.Abilities;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Generators.Abilities;
+using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.RollGen;
+using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -105,6 +108,202 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
             Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
             Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [Test]
+        public void ApplyMaxModifier_NoEquipment()
+        {
+            var abilities = new Dictionary<string, Ability>();
+            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
+            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
+            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
+            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
+            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
+
+            var equipment = new Equipment();
+            equipment.Armor = null;
+            equipment.Shield = null;
+
+            var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
+            Assert.That(modifiedAbilities, Is.EqualTo(abilities));
+            Assert.That(modifiedAbilities[AbilityConstants.Strength].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Constitution].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Dexterity].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Intelligence].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Wisdom].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Charisma].MaxModifier, Is.EqualTo(int.MaxValue));
+        }
+
+        [Test]
+        public void ApplyMaxModifier_ArmorOnly()
+        {
+            var abilities = new Dictionary<string, Ability>();
+            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
+            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
+            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
+            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
+            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor
+            {
+                MaxDexterityBonus = 9266,
+            };
+            equipment.Shield = null;
+
+            var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
+            Assert.That(modifiedAbilities, Is.EqualTo(abilities));
+            Assert.That(modifiedAbilities[AbilityConstants.Strength].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Constitution].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Dexterity].MaxModifier, Is.EqualTo(9266));
+            Assert.That(modifiedAbilities[AbilityConstants.Intelligence].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Wisdom].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Charisma].MaxModifier, Is.EqualTo(int.MaxValue));
+        }
+
+        [Test]
+        public void ApplyMaxModifier_ShieldOnly_NoMax()
+        {
+            var abilities = new Dictionary<string, Ability>();
+            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
+            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
+            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
+            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
+            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
+
+            var equipment = new Equipment();
+            equipment.Armor = null;
+            equipment.Shield = new Armor();
+
+            var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
+            Assert.That(modifiedAbilities, Is.EqualTo(abilities));
+            Assert.That(modifiedAbilities[AbilityConstants.Strength].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Constitution].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Dexterity].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Intelligence].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Wisdom].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Charisma].MaxModifier, Is.EqualTo(int.MaxValue));
+        }
+
+        [Test]
+        public void ApplyMaxModifier_ShieldOnly_WithMax()
+        {
+            var abilities = new Dictionary<string, Ability>();
+            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
+            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
+            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
+            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
+            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
+
+            var equipment = new Equipment();
+            equipment.Armor = null;
+            equipment.Shield = new Armor
+            {
+                MaxDexterityBonus = 9266,
+            };
+
+            var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
+            Assert.That(modifiedAbilities, Is.EqualTo(abilities));
+            Assert.That(modifiedAbilities[AbilityConstants.Strength].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Constitution].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Dexterity].MaxModifier, Is.EqualTo(9266));
+            Assert.That(modifiedAbilities[AbilityConstants.Intelligence].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Wisdom].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Charisma].MaxModifier, Is.EqualTo(int.MaxValue));
+        }
+
+        [Test]
+        public void ApplyMaxModifier_ArmorAndShield_NoShieldMax()
+        {
+            var abilities = new Dictionary<string, Ability>();
+            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
+            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
+            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
+            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
+            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor
+            {
+                MaxDexterityBonus = 9266
+            };
+            equipment.Shield = new Armor();
+
+            var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
+            Assert.That(modifiedAbilities, Is.EqualTo(abilities));
+            Assert.That(modifiedAbilities[AbilityConstants.Strength].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Constitution].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Dexterity].MaxModifier, Is.EqualTo(9266));
+            Assert.That(modifiedAbilities[AbilityConstants.Intelligence].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Wisdom].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Charisma].MaxModifier, Is.EqualTo(int.MaxValue));
+        }
+
+        [Test]
+        public void ApplyMaxModifier_ArmorAndShield_WithShieldMax_Higher()
+        {
+            var abilities = new Dictionary<string, Ability>();
+            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
+            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
+            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
+            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
+            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor
+            {
+                MaxDexterityBonus = 9266
+            };
+            equipment.Shield = new Armor
+            {
+                MaxDexterityBonus = 90210
+            };
+
+            var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
+            Assert.That(modifiedAbilities, Is.EqualTo(abilities));
+            Assert.That(modifiedAbilities[AbilityConstants.Strength].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Constitution].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Dexterity].MaxModifier, Is.EqualTo(9266));
+            Assert.That(modifiedAbilities[AbilityConstants.Intelligence].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Wisdom].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Charisma].MaxModifier, Is.EqualTo(int.MaxValue));
+        }
+
+        [Test]
+        public void ApplyMaxModifier_ArmorAndShield_WithShieldMax_Lower()
+        {
+            var abilities = new Dictionary<string, Ability>();
+            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
+            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
+            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
+            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
+            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor
+            {
+                MaxDexterityBonus = 9266
+            };
+            equipment.Shield = new Armor
+            {
+                MaxDexterityBonus = 42
+            };
+
+            var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
+            Assert.That(modifiedAbilities, Is.EqualTo(abilities));
+            Assert.That(modifiedAbilities[AbilityConstants.Strength].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Constitution].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Dexterity].MaxModifier, Is.EqualTo(42));
+            Assert.That(modifiedAbilities[AbilityConstants.Intelligence].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Wisdom].MaxModifier, Is.EqualTo(int.MaxValue));
+            Assert.That(modifiedAbilities[AbilityConstants.Charisma].MaxModifier, Is.EqualTo(int.MaxValue));
         }
     }
 }

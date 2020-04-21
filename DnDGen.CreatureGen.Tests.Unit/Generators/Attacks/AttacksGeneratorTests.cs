@@ -1111,7 +1111,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
-            Assert.That(generatedAttack.SecondaryAttackPenalty, Is.Zero);
+            Assert.That(generatedAttack.AttackBonuses, Is.Empty);
+            Assert.That(generatedAttack.TotalAttackBonus, Is.Zero);
         }
 
         [Test]
@@ -1125,7 +1126,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
-            Assert.That(generatedAttack.SecondaryAttackPenalty, Is.Zero);
+            Assert.That(generatedAttack.AttackBonuses, Is.Empty);
+            Assert.That(generatedAttack.TotalAttackBonus, Is.Zero);
         }
 
         [Test]
@@ -1139,7 +1141,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
-            Assert.That(generatedAttack.SecondaryAttackPenalty, Is.Zero);
+            Assert.That(generatedAttack.AttackBonuses, Is.Empty);
+            Assert.That(generatedAttack.TotalAttackBonus, Is.Zero);
         }
 
         [Test]
@@ -1153,7 +1156,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
-            Assert.That(generatedAttack.SecondaryAttackPenalty, Is.Zero);
+            Assert.That(generatedAttack.AttackBonuses, Is.Empty);
+            Assert.That(generatedAttack.TotalAttackBonus, Is.Zero);
         }
 
         [Test]
@@ -1167,7 +1171,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
-            Assert.That(generatedAttack.SecondaryAttackPenalty, Is.EqualTo(-5));
+            Assert.That(generatedAttack.AttackBonuses, Has.Count.EqualTo(1).And.Contains(-5));
+            Assert.That(generatedAttack.TotalAttackBonus, Is.EqualTo(-5));
         }
 
         [Test]
@@ -1181,7 +1186,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
-            Assert.That(generatedAttack.SecondaryAttackPenalty, Is.EqualTo(-5));
+            Assert.That(generatedAttack.AttackBonuses, Has.Count.EqualTo(1).And.Contains(-5));
+            Assert.That(generatedAttack.TotalAttackBonus, Is.EqualTo(-5));
         }
 
         [Test]
@@ -1195,7 +1201,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
-            Assert.That(generatedAttack.SecondaryAttackPenalty, Is.EqualTo(-5));
+            Assert.That(generatedAttack.AttackBonuses, Has.Count.EqualTo(1).And.Contains(-5));
+            Assert.That(generatedAttack.TotalAttackBonus, Is.EqualTo(-5));
         }
 
         [Test]
@@ -1209,7 +1216,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
             var generatedAttack = generatedAttacks.Single();
 
-            Assert.That(generatedAttack.SecondaryAttackPenalty, Is.EqualTo(-2));
+            Assert.That(generatedAttack.AttackBonuses, Has.Count.EqualTo(2)
+                .And.Contains(-5)
+                .And.Contains(3));
+            Assert.That(generatedAttack.TotalAttackBonus, Is.EqualTo(-2));
         }
 
         [Test]
@@ -1234,7 +1244,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
 
             foreach (var attack in generatedAttacks)
-                Assert.That(attack.SecondaryAttackPenalty, Is.Zero);
+            {
+                Assert.That(attack.AttackBonuses, Is.Empty);
+                Assert.That(attack.TotalAttackBonus, Is.Zero);
+            }
         }
 
         [Test]

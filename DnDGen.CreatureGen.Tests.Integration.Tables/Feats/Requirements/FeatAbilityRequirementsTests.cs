@@ -4076,19 +4076,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             {
                 var featsWithFoci = new List<string>();
 
-                var simpleWeapons = WeaponConstants.GetAllSimple();
+                var simpleWeapons = WeaponConstants.GetAllSimple(false, true);
                 foreach (var weapon in simpleWeapons)
                 {
                     featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Simple}/{weapon}");
                 }
 
-                var martialWeapons = WeaponConstants.GetAllMartial();
+                var martialWeapons = WeaponConstants.GetAllMartial(false, true);
                 foreach (var weapon in martialWeapons)
                 {
                     featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Martial}/{weapon}");
                 }
 
-                var exoticWeapons = WeaponConstants.GetAllExotic();
+                var exoticWeapons = WeaponConstants.GetAllExotic(false, true);
                 foreach (var weapon in exoticWeapons)
                 {
                     featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Exotic}/{weapon}");

@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Defenses;
+using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
@@ -26,6 +27,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         private CreatureType creatureType;
         private Dictionary<string, Ability> abilities;
         private Dictionary<string, List<BonusSelection>> racialBonuses;
+        private Equipment equipment;
 
         [SetUp]
         public void Setup()
@@ -38,6 +40,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             creatureType = new CreatureType();
             abilities = new Dictionary<string, Ability>();
             racialBonuses = new Dictionary<string, List<BonusSelection>>();
+            equipment = new Equipment();
 
             creatureType.Name = "creature type";
             abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
@@ -58,7 +61,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
         private ArmorClass GenerateAndAssertArmorClass(int full = ArmorClass.BaseArmorClass, int flatFooted = ArmorClass.BaseArmorClass, int touch = ArmorClass.BaseArmorClass, bool isConditional = false, int naturalArmor = 0)
         {
-            var armorClass = armorClassGenerator.GenerateWith(abilities, "size", "creature", creatureType, feats, naturalArmor);
+            var armorClass = armorClassGenerator.GenerateWith(abilities, "size", "creature", creatureType, feats, naturalArmor, equipment);
 
             Assert.That(armorClass.TotalBonus, Is.EqualTo(full), "full");
             Assert.That(armorClass.FlatFootedBonus, Is.EqualTo(flatFooted), "flat-footed");
@@ -104,7 +107,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             abilities[AbilityConstants.Dexterity].BaseScore = abilityValue;
 
             var expected = ArmorClass.BaseArmorClass + abilities[AbilityConstants.Dexterity].Modifier;
-            var armorClass = GenerateAndAssertArmorClass(expected, touch: expected);
+            GenerateAndAssertArmorClass(expected, touch: expected);
         }
 
         [TestCase(0, 1)]
@@ -647,7 +650,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         }
 
         [Test]
-        public void SetMaxDexterityBonusBasedOnArmor()
+        public void ApplyArmorBonus_NoArmorOrShield()
         {
             Assert.Fail("not yet written");
         }
@@ -665,6 +668,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         }
 
         [Test]
+        public void ApplyArmorBonusFromCursedMagicalArmor()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void ApplyShieldBonusFromShield()
         {
             Assert.Fail("not yet written");
@@ -672,6 +681,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
         [Test]
         public void ApplyShieldBonusFromMagicalShield()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyShieldBonusFromCursedMagicalShield()
         {
             Assert.Fail("not yet written");
         }

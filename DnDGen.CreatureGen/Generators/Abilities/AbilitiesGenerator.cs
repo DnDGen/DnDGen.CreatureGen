@@ -1,7 +1,9 @@
 ﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.RollGen;
+using DnDGen.TreasureGen.Items;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,6 +42,27 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             foreach (var abilityName in missingAbilities)
             {
                 abilities[abilityName].BaseScore = 0;
+            }
+
+            return abilities;
+        }
+
+        public Dictionary<string, Ability> SetMaxBonuses(Dictionary<string, Ability> abilities, Equipment equipment)
+        {
+            if (equipment.Armor != null)
+            {
+                var armor = equipment.Armor as Armor;
+                abilities[AbilityConstants.Dexterity].MaxModifier = armor.MaxDexterityBonus;
+            }
+
+            if (equipment.Shield != null)
+            {
+                var shield = equipment.Shield as Armor;
+
+                if (shield.MaxDexterityBonus < abilities[AbilityConstants.Dexterity].MaxModifier)
+                {
+                    abilities[AbilityConstants.Dexterity].MaxModifier = shield.MaxDexterityBonus;
+                }
             }
 
             return abilities;

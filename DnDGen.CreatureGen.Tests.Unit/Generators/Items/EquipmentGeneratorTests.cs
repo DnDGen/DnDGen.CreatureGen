@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Items;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.Infrastructure.Selectors.Percentiles;
 using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
@@ -18,6 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         private IEquipmentGenerator equipmentGenerator;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<IItemsGenerator> mockItemGenerator;
+        private Mock<IPercentileSelector> mockPercentileSelector;
         private List<Feat> feats;
         private List<Attack> attacks;
         private Dictionary<string, Ability> abilities;
@@ -27,8 +29,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockItemGenerator = new Mock<IItemsGenerator>();
+            mockPercentileSelector = new Mock<IPercentileSelector>();
 
-            equipmentGenerator = new EquipmentGenerator(mockCollectionSelector.Object, mockItemGenerator.Object);
+            equipmentGenerator = new EquipmentGenerator(
+                mockCollectionSelector.Object,
+                mockItemGenerator.Object,
+                mockPercentileSelector.Object);
 
             abilities = new Dictionary<string, Ability>();
             abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength) { BaseScore = 42 };

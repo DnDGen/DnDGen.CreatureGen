@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Skills;
+using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.EventGen;
 using Moq;
@@ -124,6 +125,55 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(generatedSkills, Is.EqualTo(updatedSkills));
             Assert.That(generatedSkills, Is.Not.EqualTo(skills));
             mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+        }
+
+        [Test]
+        public void ReturnInnerModifiedSkills()
+        {
+            var skills = new[]
+            {
+                new Skill("skill 1", abilities["ability"], 9266),
+                new Skill("skill 2", abilities["ability"], 90210),
+            };
+
+            var updatedSkills = new[]
+            {
+                new Skill("skill 1", abilities["ability"], 9266),
+                new Skill("skill 2", abilities["ability"], 90210),
+            };
+
+            var equipment = new Equipment();
+
+            mockInnerGenerator.Setup(g => g.SetArmorCheckPenalties(skills, equipment)).Returns(updatedSkills);
+
+            var modifiedSkills = decorator.SetArmorCheckPenalties(skills, equipment);
+            Assert.That(modifiedSkills, Is.EqualTo(updatedSkills));
+        }
+
+        [Test]
+        public void LogEventsForSettingArmorCheckPenalties()
+        {
+            var skills = new[]
+            {
+                new Skill("skill 1", abilities["ability"], 9266),
+                new Skill("skill 2", abilities["ability"], 90210),
+            };
+
+            var updatedSkills = new[]
+            {
+                new Skill("skill 1", abilities["ability"], 9266),
+                new Skill("skill 2", abilities["ability"], 90210),
+            };
+
+            var equipment = new Equipment();
+
+            mockInnerGenerator.Setup(g => g.SetArmorCheckPenalties(skills, equipment)).Returns(updatedSkills);
+
+            var modifiedSkills = decorator.SetArmorCheckPenalties(skills, equipment);
+            Assert.That(modifiedSkills, Is.EqualTo(updatedSkills));
+            mockEventQueue.Verify(q => q.Enqueue(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
+            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Setting armor check penalties"), Times.Once);
+            mockEventQueue.Verify(q => q.Enqueue("CreatureGen", $"Set armor check penalties"), Times.Once);
         }
     }
 }

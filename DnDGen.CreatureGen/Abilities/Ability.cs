@@ -8,6 +8,7 @@ namespace DnDGen.CreatureGen.Abilities
         public int BaseScore { get; set; }
         public int RacialAdjustment { get; set; }
         public int AdvancementAdjustment { get; set; }
+        public int MaxModifier { get; set; }
 
         public bool HasScore
         {
@@ -36,7 +37,8 @@ namespace DnDGen.CreatureGen.Abilities
                     return 0;
 
                 var even = FullScore - FullScore % 2;
-                return (even - 10) / 2;
+                var modifier = (even - 10) / 2;
+                return Math.Min(MaxModifier, modifier);
             }
         }
 
@@ -44,6 +46,7 @@ namespace DnDGen.CreatureGen.Abilities
         {
             Name = name;
             BaseScore = 10;
+            MaxModifier = int.MaxValue;
         }
     }
 }

@@ -5,10 +5,12 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Generators.Items;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Verifiers;
 using DnDGen.RollGen;
+using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 
 namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
@@ -122,6 +124,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         public void SpeedsGeneratorIsNotASingleton()
         {
             AssertNotSingleton<ISpeedsGenerator>();
+        }
+
+        [Test]
+        public void EquipmentGeneratorIsNotASingleton()
+        {
+            AssertNotSingleton<IEquipmentGenerator>();
+        }
+
+        [Test]
+        public void EXTERNAL_ItemsGeneratorIsInjected()
+        {
+            AssertNotSingleton<IItemsGenerator>();
         }
 
         [TestCase(CreatureConstants.Templates.CelestialCreature)]

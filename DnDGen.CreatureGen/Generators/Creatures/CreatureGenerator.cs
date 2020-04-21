@@ -155,10 +155,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.Attacks = equipmentGenerator.AddAttacks(allFeats, creature.Attacks, creature.NumberOfHands);
             creature.Equipment = equipmentGenerator.Generate(creature.Name, creature.CanUseEquipment, allFeats, creature.HitPoints.RoundedHitDiceQuantity, creature.Attacks, creature.Abilities);
 
+            creature.Abilities = abilitiesGenerator.SetMaxBonuses(creature.Abilities, creature.Equipment);
+            creature.Skills = skillsGenerator.SetArmorCheckPenalties(creature.Skills, creature.Equipment);
+
             creature.InitiativeBonus = ComputeInitiative(creature.Abilities, creature.Feats);
             creature.Speeds = speedsGenerator.Generate(creature.Name);
-
-            creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities, creature.Size, creatureName, creature.Type, allFeats, creatureData.NaturalArmor);
+            creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities, creature.Size, creatureName, creature.Type, allFeats, creatureData.NaturalArmor, creature.Equipment);
             creature.Saves = savesGenerator.GenerateWith(creature.Name, creature.Type, creature.HitPoints, allFeats, creature.Abilities);
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);

@@ -2,11 +2,13 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.TreasureGen.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -314,6 +316,33 @@ namespace DnDGen.CreatureGen.Generators.Skills
                         if (skill != null)
                             skill.AddBonus(feat.Power);
                     }
+                }
+            }
+
+            return skills;
+        }
+
+        public IEnumerable<Skill> SetArmorCheckPenalties(IEnumerable<Skill> skills, Equipment equipment)
+        {
+            var armorCheckSkills = skills.Where(s => s.HasArmorCheckPenalty);
+
+            foreach (var skill in armorCheckSkills)
+            {
+                if (equipment.Armor != null)
+                {
+                    var armor = equipment.Armor as Armor;
+                    skill.ArmorCheckPenalty += armor.ArmorCheckPenalty;
+                }
+
+                if (equipment.Shield != null)
+                {
+                    var shield = equipment.Shield as Armor;
+                    skill.ArmorCheckPenalty += shield.ArmorCheckPenalty;
+                }
+
+                if (skill.Name == SkillConstants.Swim)
+                {
+                    skill.ArmorCheckPenalty *= 2;
                 }
             }
 

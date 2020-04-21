@@ -90,7 +90,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Assert.That(templatedAttack.IsSpecial, Is.EqualTo(attack.IsSpecial));
                 Assert.That(templatedAttack.Name, Is.EqualTo(attack.Name));
                 Assert.That(templatedAttack.Save, Is.EqualTo(attack.Save));
-                Assert.That(templatedAttack.SecondaryAttackPenalty, Is.EqualTo(attack.SecondaryAttackPenalty));
+                Assert.That(templatedAttack.AttackBonuses, Is.EqualTo(attack.AttackBonuses));
                 Assert.That(templatedAttack.SizeModifier, Is.EqualTo(attack.SizeModifier));
                 Assert.That(templatedAttack.TotalAttackBonus, Is.EqualTo(attack.TotalAttackBonus));
             }

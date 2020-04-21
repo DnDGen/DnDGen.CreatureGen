@@ -2,6 +2,7 @@
 using DnDGen.EventGen.IoC;
 using DnDGen.Infrastructure.IoC;
 using DnDGen.RollGen.IoC;
+using DnDGen.TreasureGen.IoC;
 using Ninject;
 using NUnit.Framework;
 
@@ -25,6 +26,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             var infrastructureLoader = new InfrastructureModuleLoader();
             infrastructureLoader.LoadModules(kernel);
+
+            var treasureGenLoader = new TreasureGenModuleLoader();
+            treasureGenLoader.LoadModules(kernel);
 
             var creatureGenLoader = new CreatureGenModuleLoader();
             creatureGenLoader.LoadModules(kernel);

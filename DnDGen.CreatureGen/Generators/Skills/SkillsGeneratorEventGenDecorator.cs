@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.EventGen;
 using System.Collections.Generic;
@@ -34,6 +35,15 @@ namespace DnDGen.CreatureGen.Generators.Skills
             eventQueue.Enqueue("CreatureGen", $"Generated {skills.Count()} skills");
 
             return skills;
+        }
+
+        public IEnumerable<Skill> SetArmorCheckPenalties(IEnumerable<Skill> skills, Equipment equipment)
+        {
+            eventQueue.Enqueue("CreatureGen", $"Setting armor check penalties");
+            var modifiedSkills = innerGenerator.SetArmorCheckPenalties(skills, equipment);
+            eventQueue.Enqueue("CreatureGen", $"Set armor check penalties");
+
+            return modifiedSkills;
         }
     }
 }
