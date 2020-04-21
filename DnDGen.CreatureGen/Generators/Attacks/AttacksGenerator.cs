@@ -129,23 +129,31 @@ namespace DnDGen.CreatureGen.Generators.Attacks
         {
             var hasMultiattack = feats.Any(f => f.Name == FeatConstants.Monster.Multiattack);
             var hasWeaponFinesse = feats.Any(f => f.Name == FeatConstants.WeaponFinesse);
+            var rockThrowing = feats.FirstOrDefault(f => f.Name == FeatConstants.SpecialQualities.RockThrowing);
 
             foreach (var attack in attacks)
             {
-                throw new Exception("need to handle rocks an unnatural attacks");
-
-                if (attack.IsSpecial || !attack.IsNatural)
+                if (attack.IsSpecial)
                     continue;
 
                 if (!attack.IsPrimary)
+                {
                     attack.AttackBonuses.Add(-5);
+                }
 
-                if (!attack.IsPrimary && hasMultiattack)
+                if (!attack.IsPrimary && attack.IsNatural && hasMultiattack)
+                {
                     attack.AttackBonuses.Add(3);
+                }
 
-                if (hasWeaponFinesse && attack.IsMelee)
+                if (hasWeaponFinesse && attack.IsNatural && attack.IsMelee)
                 {
                     attack.BaseAbility = abilities[AbilityConstants.Dexterity];
+                }
+
+                if (rockThrowing != null && attack.Name == "Rock")
+                {
+                    attack.AttackBonuses.Add(rockThrowing.Power);
                 }
             }
 

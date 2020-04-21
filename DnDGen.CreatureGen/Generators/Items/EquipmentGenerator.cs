@@ -38,7 +38,8 @@ namespace DnDGen.CreatureGen.Generators.Items
             var repeatedAttacks = unnaturalAttacks.Where(a => a.Frequency.Quantity > 1).ToArray();
             foreach (var attack in repeatedAttacks)
             {
-                var individualAttacks = Enumerable.Range(1, attack.Frequency.Quantity).Select(i => Clone(attack));
+                var individualAttacks = Enumerable.Range(1, attack.Frequency.Quantity)
+                    .Select(i => Clone(attack));
 
                 foreach (var individualAttack in individualAttacks)
                 {
@@ -54,7 +55,8 @@ namespace DnDGen.CreatureGen.Generators.Items
                 return allAttacks;
 
             //Add additional melee attacks for two/multi-weapon fighting
-            var superiorTwoWeaponFeat = feats.Any(f => f.Name == FeatConstants.SpecialQualities.TwoWeaponFighting_Superior);
+            var superiorTwoWeaponFeat = feats.Any(f => f.Name == FeatConstants.SpecialQualities.TwoWeaponFighting_Superior
+                || f.Name == FeatConstants.SpecialQualities.MultiweaponFighting_Superior);
             var greaterTwoWeaponFeat = superiorTwoWeaponFeat
                 || feats.Any(f => f.Name == FeatConstants.TwoWeaponFighting_Greater
                     || f.Name == FeatConstants.Monster.MultiweaponFighting_Greater);

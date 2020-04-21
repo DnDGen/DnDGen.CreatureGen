@@ -311,6 +311,7 @@ namespace DnDGen.CreatureGen.Feats
             public const string Quickness = "Quickness";
             public const string Regeneration = "Regeneration";
             public const string RockCatching = "Rock Catching";
+            public const string RockThrowing = "Rock Throwing";
             public const string Scent = "Scent";
             public const string SeeInDarkness = "See in Darkness";
             public const string ShadowBlend = "Shadow Blend";
@@ -335,6 +336,7 @@ namespace DnDGen.CreatureGen.Feats
             public const string Tremorsense = "Tremorsense";
             public const string TurnResistance = "Turn Resistance";
             public const string TwoWeaponFighting_Superior = "Superior Two-Weapon Fighting";
+            public const string MultiweaponFighting_Superior = "Superior Multiweapon Fighting";
             public const string UncannyDodge = "Uncanny Dodge";
             public const string UnearthlyGrace = "Unearthly Grace";
             public const string UnnaturalAura = "Unnatural Aura";

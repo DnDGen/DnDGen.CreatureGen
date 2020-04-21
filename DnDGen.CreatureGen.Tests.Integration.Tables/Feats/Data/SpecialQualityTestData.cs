@@ -76,7 +76,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Angel_AstralDeva].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.BladeBarrier, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Reflex, saveBaseValue: 16));
                 testCases[CreatureConstants.Angel_AstralDeva].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HealHarm, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveBaseValue: 16));
                 testCases[CreatureConstants.Angel_AstralDeva].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.HeavyMace, requiresEquipment: true));
-                
+
                 testCases[CreatureConstants.Angel_Planetar].Add(helper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Small or Medium Humanoid", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Angel_Planetar].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to evil", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
                 testCases[CreatureConstants.Angel_Planetar].Add(helper.BuildData(FeatConstants.SpecialQualities.Regeneration, focus: "Does not regenerate evil damage", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -2365,6 +2365,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Ghoul_Lacedon].Add(helper.BuildData(FeatConstants.SpecialQualities.TurnResistance, power: 2));
 
+                testCases[CreatureConstants.Giant_Cloud].Add(helper.BuildData(FeatConstants.SpecialQualities.RockThrowing, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round, power: 1));
                 testCases[CreatureConstants.Giant_Cloud].Add(helper.BuildData(FeatConstants.SpecialQualities.RockCatching, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Giant_Cloud].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
                 testCases[CreatureConstants.Giant_Cloud].Add(helper.BuildData(FeatConstants.SpecialQualities.OversizedWeapon, focus: SizeConstants.Gargantuan, requiresEquipment: true));
@@ -2374,27 +2375,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Giant_Cloud].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Morningstar, requiresEquipment: true));
                 testCases[CreatureConstants.Giant_Cloud].Add(helper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
+                testCases[CreatureConstants.Giant_Fire].Add(helper.BuildData(FeatConstants.SpecialQualities.RockThrowing, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round, power: 1));
                 testCases[CreatureConstants.Giant_Fire].Add(helper.BuildData(FeatConstants.SpecialQualities.RockCatching, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Giant_Fire].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Greatsword, requiresEquipment: true));
                 testCases[CreatureConstants.Giant_Fire].Add(helper.BuildData(FeatConstants.ArmorProficiency_Heavy, requiresEquipment: true));
                 testCases[CreatureConstants.Giant_Fire].Add(helper.BuildData(FeatConstants.ArmorProficiency_Medium, requiresEquipment: true));
                 testCases[CreatureConstants.Giant_Fire].Add(helper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
+                testCases[CreatureConstants.Giant_Frost].Add(helper.BuildData(FeatConstants.SpecialQualities.RockThrowing, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round, power: 1));
                 testCases[CreatureConstants.Giant_Frost].Add(helper.BuildData(FeatConstants.SpecialQualities.RockCatching, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Giant_Frost].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Greataxe, requiresEquipment: true));
                 testCases[CreatureConstants.Giant_Frost].Add(helper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
+                testCases[CreatureConstants.Giant_Hill].Add(helper.BuildData(FeatConstants.SpecialQualities.RockThrowing, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round, power: 1));
                 testCases[CreatureConstants.Giant_Hill].Add(helper.BuildData(FeatConstants.SpecialQualities.RockCatching, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Giant_Hill].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Greatclub, requiresEquipment: true));
                 testCases[CreatureConstants.Giant_Hill].Add(helper.BuildData(FeatConstants.ArmorProficiency_Medium, requiresEquipment: true));
                 testCases[CreatureConstants.Giant_Hill].Add(helper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
+                testCases[CreatureConstants.Giant_Stone].Add(helper.BuildData(FeatConstants.SpecialQualities.RockThrowing, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round, power: 1));
                 testCases[CreatureConstants.Giant_Stone].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Giant_Stone].Add(helper.BuildData(FeatConstants.SpecialQualities.RockCatching, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Giant_Stone].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Greatclub, requiresEquipment: true));
                 testCases[CreatureConstants.Giant_Stone].Add(helper.BuildData(FeatConstants.ArmorProficiency_Medium, requiresEquipment: true));
                 testCases[CreatureConstants.Giant_Stone].Add(helper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
+                testCases[CreatureConstants.Giant_Stone_Elder].Add(helper.BuildData(FeatConstants.SpecialQualities.RockThrowing, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round, power: 1));
                 testCases[CreatureConstants.Giant_Stone_Elder].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
                 testCases[CreatureConstants.Giant_Stone_Elder].Add(helper.BuildData(FeatConstants.SpecialQualities.RockCatching, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Giant_Stone_Elder].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Greatclub, requiresEquipment: true));
@@ -2405,6 +2411,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Giant_Stone_Elder].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteRockToMud, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Reflex, saveBaseValue: 15));
                 testCases[CreatureConstants.Giant_Stone_Elder].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteMudToRock, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Reflex, saveBaseValue: 15));
 
+                testCases[CreatureConstants.Giant_Storm].Add(helper.BuildData(FeatConstants.SpecialQualities.RockThrowing, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round, power: 1));
                 testCases[CreatureConstants.Giant_Storm].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
                 testCases[CreatureConstants.Giant_Storm].Add(helper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
                 testCases[CreatureConstants.Giant_Storm].Add(helper.BuildData(FeatConstants.SpecialQualities.RockCatching, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -2904,6 +2911,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Marilith].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Teleport_Greater + ": self plus 50 pounds of objects only", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
                 testCases[CreatureConstants.Marilith].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.UnholyAura, frequencyTimePeriod: FeatConstants.Frequencies.AtWill, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude, saveBaseValue: 18));
                 testCases[CreatureConstants.Marilith].Add(helper.BuildData(FeatConstants.Monster.MultiweaponFighting, requiresEquipment: true));
+                testCases[CreatureConstants.Marilith].Add(helper.BuildData(FeatConstants.SpecialQualities.MultiweaponFighting_Superior, requiresEquipment: true));
                 testCases[CreatureConstants.Marilith].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longsword, requiresEquipment: true));
 
                 testCases[CreatureConstants.Marut].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to chaotic weapons", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));

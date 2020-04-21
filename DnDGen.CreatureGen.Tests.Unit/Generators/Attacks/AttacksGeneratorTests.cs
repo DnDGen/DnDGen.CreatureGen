@@ -1291,5 +1291,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
         }
+
+        [Test]
+        public void ApplyRockThrowingBonusToRockAttack()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void DoNotApplyRockThrowingBonusToRockAttack()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void DoNotApplyRockThrowingBonusToNonRockAttack()
+        {
+            Assert.Fail("not yet written");
+        }
     }
 }

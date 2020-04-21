@@ -8,6 +8,7 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
+using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -652,43 +653,182 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         [Test]
         public void ApplyArmorBonus_NoArmorOrShield()
         {
-            Assert.Fail("not yet written");
+            equipment.Armor = null;
+            equipment.Shield = null;
+
+            var armorClass = GenerateAndAssertArmorClass();
+
+            Assert.That(armorClass.ArmorBonus, Is.Zero);
+            Assert.That(armorClass.ArmorBonuses, Is.Empty);
+
+            Assert.That(armorClass.ShieldBonus, Is.Zero);
+            Assert.That(armorClass.ShieldBonuses, Is.Empty);
+
         }
 
         [Test]
         public void ApplyArmorBonusFromArmor()
         {
-            Assert.Fail("not yet written");
+            equipment.Armor = new Armor
+            {
+                ArmorBonus = 42
+            };
+            equipment.Shield = null;
+
+            var armorClass = GenerateAndAssertArmorClass(52, 52, 10);
+
+            Assert.That(armorClass.ArmorBonus, Is.EqualTo(42));
+            Assert.That(armorClass.ArmorBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = armorClass.ArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(42));
+            Assert.That(bonus.IsConditional, Is.False);
+
+            Assert.That(armorClass.ShieldBonus, Is.Zero);
+            Assert.That(armorClass.ShieldBonuses, Is.Empty);
         }
 
         [Test]
         public void ApplyArmorBonusFromMagicalArmor()
         {
-            Assert.Fail("not yet written");
+            equipment.Armor = new Armor
+            {
+                ArmorBonus = 42,
+                Magic = new TreasureGen.Items.Magical.Magic { Bonus = 96 }
+            };
+            equipment.Shield = null;
+
+            var armorClass = GenerateAndAssertArmorClass(52 + 96, 52 + 96, 10);
+
+            Assert.That(armorClass.ArmorBonus, Is.EqualTo(42 + 96));
+            Assert.That(armorClass.ArmorBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = armorClass.ArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(42 + 96));
+            Assert.That(bonus.IsConditional, Is.False);
+
+            Assert.That(armorClass.ShieldBonus, Is.Zero);
+            Assert.That(armorClass.ShieldBonuses, Is.Empty);
         }
 
         [Test]
         public void ApplyArmorBonusFromCursedMagicalArmor()
         {
-            Assert.Fail("not yet written");
+            equipment.Armor = new Armor
+            {
+                ArmorBonus = 42,
+                Magic = new TreasureGen.Items.Magical.Magic { Bonus = -9 }
+            };
+            equipment.Shield = null;
+
+            var armorClass = GenerateAndAssertArmorClass(52 - 9, 52 - 9, 10);
+
+            Assert.That(armorClass.ArmorBonus, Is.EqualTo(42 - 9));
+            Assert.That(armorClass.ArmorBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = armorClass.ArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(42 - 9));
+            Assert.That(bonus.IsConditional, Is.False);
+
+            Assert.That(armorClass.ShieldBonus, Is.Zero);
+            Assert.That(armorClass.ShieldBonuses, Is.Empty);
         }
 
         [Test]
         public void ApplyShieldBonusFromShield()
         {
-            Assert.Fail("not yet written");
+            equipment.Armor = null;
+            equipment.Shield = new Armor
+            {
+                ArmorBonus = 42
+            }; ;
+
+            var armorClass = GenerateAndAssertArmorClass(52, 52, 10);
+
+            Assert.That(armorClass.ArmorBonus, Is.Zero);
+            Assert.That(armorClass.ArmorBonuses, Is.Empty);
+
+            Assert.That(armorClass.ShieldBonus, Is.EqualTo(42));
+            Assert.That(armorClass.ShieldBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = armorClass.ShieldBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(42));
+            Assert.That(bonus.IsConditional, Is.False);
         }
 
         [Test]
         public void ApplyShieldBonusFromMagicalShield()
         {
-            Assert.Fail("not yet written");
+            equipment.Armor = null;
+            equipment.Shield = new Armor
+            {
+                ArmorBonus = 42,
+                Magic = new TreasureGen.Items.Magical.Magic { Bonus = 96 }
+            }; ;
+
+            var armorClass = GenerateAndAssertArmorClass(52 + 96, 52 + 96, 10);
+
+            Assert.That(armorClass.ArmorBonus, Is.Zero);
+            Assert.That(armorClass.ArmorBonuses, Is.Empty);
+
+            Assert.That(armorClass.ShieldBonus, Is.EqualTo(42 + 96));
+            Assert.That(armorClass.ShieldBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = armorClass.ShieldBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(42 + 96));
+            Assert.That(bonus.IsConditional, Is.False);
         }
 
         [Test]
         public void ApplyShieldBonusFromCursedMagicalShield()
         {
-            Assert.Fail("not yet written");
+            equipment.Armor = null;
+            equipment.Shield = new Armor
+            {
+                ArmorBonus = 42,
+                Magic = new TreasureGen.Items.Magical.Magic { Bonus = -96 }
+            }; ;
+
+            var armorClass = GenerateAndAssertArmorClass(52 - 9, 52 - 9, 10);
+
+            Assert.That(armorClass.ArmorBonus, Is.Zero);
+            Assert.That(armorClass.ArmorBonuses, Is.Empty);
+
+            Assert.That(armorClass.ShieldBonus, Is.EqualTo(42 - 9));
+            Assert.That(armorClass.ShieldBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = armorClass.ShieldBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(42 - 9));
+            Assert.That(bonus.IsConditional, Is.False);
+        }
+
+        [Test]
+        public void ApplyBonusesFromArmorAndShield()
+        {
+            equipment.Armor = new Armor
+            {
+                ArmorBonus = 42,
+            };
+            equipment.Shield = new Armor
+            {
+                ArmorBonus = 96,
+            };
+
+            var armorClass = GenerateAndAssertArmorClass(52 + 96, 52 + 96, 10);
+
+            Assert.That(armorClass.ArmorBonus, Is.EqualTo(42));
+            Assert.That(armorClass.ArmorBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = armorClass.ArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(42));
+            Assert.That(bonus.IsConditional, Is.False);
+
+            Assert.That(armorClass.ShieldBonus, Is.EqualTo(96));
+            Assert.That(armorClass.ShieldBonuses.Count(), Is.EqualTo(1));
+
+            bonus = armorClass.ShieldBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(96));
+            Assert.That(bonus.IsConditional, Is.False);
         }
 
         //example is Two-Weapon Defense

@@ -1361,6 +1361,152 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         {
             Assert.Fail("not yet written");
         }
+
+        [Test]
+        public void AddAttacks_NoUnnaturalAttacks()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalMeleeAttack_FrequencyOf1()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalMeleeAttacks_FrequencyOf1()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalMeleeAttack_FrequencyGreaterThan1()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalMeleeAttacks_FrequencyGreaterThan1()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalRangedAttack_FrequencyOf1()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalRangedAttacks_FrequencyOf1()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalRangedAttack_FrequencyGreaterThan1()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalRangedAttacks_FrequencyGreaterThan1()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalEquippedMeleeAttack_FillHands()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalEquippedRangedAttack_FillHands()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalEquippedMeleeAttacks_Untrained()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalEquippedRangedAttacks_Untrained()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalEquippedMeleeAttacks_Preset()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void AddAttacks_UnnaturalEquippedRangedAttacks_Preset()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(FeatConstants.TwoWeaponFighting)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting)]
+        public void AddAttacks_UnnaturalEquippedMeleeAttacks_TwoWeapon(string feat)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(FeatConstants.TwoWeaponFighting)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting)]
+        public void AddAttacks_UnnaturalEquippedRangedAttacks_TwoWeapon(string feat)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(FeatConstants.TwoWeaponFighting_Improved)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Improved)]
+        public void AddAttacks_UnnaturalEquippedMeleeAttacks_TwoWeapon_Improved(string feat)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(FeatConstants.TwoWeaponFighting_Improved)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Improved)]
+        public void AddAttacks_UnnaturalEquippedRangedAttacks_TwoWeapon_Improved(string feat)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(FeatConstants.TwoWeaponFighting_Greater)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Greater)]
+        public void AddAttacks_UnnaturalEquippedMeleeAttacks_TwoWeapon_Greater(string feat)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(FeatConstants.TwoWeaponFighting_Greater)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Greater)]
+        public void AddAttacks_UnnaturalEquippedRangedAttacks_TwoWeapon_Greater(string feat)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(FeatConstants.SpecialQualities.TwoWeaponFighting_Superior)]
+        [TestCase(FeatConstants.SpecialQualities.MultiweaponFighting_Superior)]
+        public void AddAttacks_UnnaturalEquippedMeleeAttacks_TwoWeapon_Superior(string feat)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(FeatConstants.SpecialQualities.TwoWeaponFighting_Superior)]
+        [TestCase(FeatConstants.SpecialQualities.MultiweaponFighting_Superior)]
+        public void AddAttacks_UnnaturalEquippedRangedAttacks_TwoWeapon_Superior(string feat)
+        {
+            Assert.Fail("not yet written");
+        }
     }
 
     public static class LinqExtensions
