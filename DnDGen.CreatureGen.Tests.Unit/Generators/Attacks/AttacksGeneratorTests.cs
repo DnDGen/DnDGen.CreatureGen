@@ -1295,19 +1295,43 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplyRockThrowingBonusToRockAttack()
         {
-            Assert.Fail("not yet written");
+            var attacks = new List<Attack>();
+            attacks.Add(new Attack { Name = "Rock", IsMelee = false, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Dexterity] });
+
+            var feats = new[] { new Feat { Name = FeatConstants.SpecialQualities.RockThrowing, Power = 42 } };
+
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
+            var generatedAttack = generatedAttacks.Single();
+
+            Assert.That(generatedAttack.AttackBonuses, Has.Count.EqualTo(1).And.Contains(42));
         }
 
         [Test]
         public void DoNotApplyRockThrowingBonusToRockAttack()
         {
-            Assert.Fail("not yet written");
+            var attacks = new List<Attack>();
+            attacks.Add(new Attack { Name = "Rock", IsMelee = false, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Dexterity] });
+
+            var feats = new[] { new Feat { Name = "not " + FeatConstants.SpecialQualities.RockThrowing, Power = 42 } };
+
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
+            var generatedAttack = generatedAttacks.Single();
+
+            Assert.That(generatedAttack.AttackBonuses, Is.Empty);
         }
 
         [Test]
         public void DoNotApplyRockThrowingBonusToNonRockAttack()
         {
-            Assert.Fail("not yet written");
+            var attacks = new List<Attack>();
+            attacks.Add(new Attack { Name = "not Rock", IsMelee = false, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Dexterity] });
+
+            var feats = new[] { new Feat { Name = FeatConstants.SpecialQualities.RockThrowing, Power = 42 } };
+
+            var generatedAttacks = attacksGenerator.ApplyAttackBonuses(attacks, feats, abilities);
+            var generatedAttack = generatedAttacks.Single();
+
+            Assert.That(generatedAttack.AttackBonuses, Is.Empty);
         }
     }
 }

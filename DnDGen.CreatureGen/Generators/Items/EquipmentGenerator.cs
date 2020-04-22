@@ -28,62 +28,55 @@ namespace DnDGen.CreatureGen.Generators.Items
         public IEnumerable<Attack> AddAttacks(IEnumerable<Feat> feats, IEnumerable<Attack> attacks, int numberOfHands)
         {
             var allAttacks = new List<Attack>(attacks);
-
             var unnaturalAttacks = allAttacks.Where(a => !a.IsNatural);
-
             if (!unnaturalAttacks.Any())
                 return allAttacks;
 
             //Duplicate attacks
             var repeatedAttacks = unnaturalAttacks.Where(a => a.Frequency.Quantity > 1).ToArray();
+
             foreach (var attack in repeatedAttacks)
             {
                 var individualAttacks = Enumerable.Range(1, attack.Frequency.Quantity)
-                    .Select(i => Clone(attack));
+                    .Select(i => Clone(attack))
+                    .ToArray();
 
                 foreach (var individualAttack in individualAttacks)
                 {
                     individualAttack.Frequency.Quantity = 1;
                 }
 
-                allAttacks.AddRange(individualAttacks);
                 allAttacks.Remove(attack);
+                allAttacks.AddRange(individualAttacks);
             }
 
-            var equipmentMeleeAttacks = unnaturalAttacks.Where(a => a.Name == AttributeConstants.Melee);
-            if (!equipmentMeleeAttacks.Any())
+            var equipmentAttacks = unnaturalAttacks.Where(a => a.Name == AttributeConstants.Melee || a.Name == AttributeConstants.Ranged);
+            if (!equipmentAttacks.Any())
                 return allAttacks;
 
             //Add additional melee attacks for two/multi-weapon fighting
             var superiorTwoWeaponFeat = feats.Any(f => f.Name == FeatConstants.SpecialQualities.TwoWeaponFighting_Superior
                 || f.Name == FeatConstants.SpecialQualities.MultiweaponFighting_Superior);
-            var greaterTwoWeaponFeat = superiorTwoWeaponFeat
-                || feats.Any(f => f.Name == FeatConstants.TwoWeaponFighting_Greater
-                    || f.Name == FeatConstants.Monster.MultiweaponFighting_Greater);
-            var improvedTwoWeaponFeat = greaterTwoWeaponFeat
-                || feats.Any(f => f.Name == FeatConstants.TwoWeaponFighting_Improved
-                    || f.Name == FeatConstants.Monster.MultiweaponFighting_Improved);
-            var twoWeaponFeat = improvedTwoWeaponFeat
-                || feats.Any(f => f.Name == FeatConstants.TwoWeaponFighting
-                    || f.Name == FeatConstants.Monster.MultiweaponFighting);
-            var twoWeapon = twoWeaponFeat
-                || equipmentMeleeAttacks.Count() > 1
+            var greaterTwoWeaponFeat = feats.Any(f => f.Name == FeatConstants.TwoWeaponFighting_Greater
+                || f.Name == FeatConstants.Monster.MultiweaponFighting_Greater);
+            var improvedTwoWeaponFeat = feats.Any(f => f.Name == FeatConstants.TwoWeaponFighting_Improved
+                || f.Name == FeatConstants.Monster.MultiweaponFighting_Improved);
+            var twoWeaponFeat = feats.Any(f => f.Name == FeatConstants.TwoWeaponFighting
+                || f.Name == FeatConstants.Monster.MultiweaponFighting);
+            var twoWeapon = superiorTwoWeaponFeat
+                || greaterTwoWeaponFeat
+                || improvedTwoWeaponFeat
+                || twoWeaponFeat
+                || equipmentAttacks.Count() > 1
                 || percentileSelector.SelectFrom(.01);
 
             if (!twoWeapon)
                 return allAttacks;
 
-            var attackToClone = equipmentMeleeAttacks.Last();
+            allAttacks = AddAttacksPerHand(AttributeConstants.Melee, numberOfHands, allAttacks);
+            allAttacks = AddAttacksPerHand(AttributeConstants.Ranged, numberOfHands, allAttacks);
 
-            while (equipmentMeleeAttacks.Count() < numberOfHands)
-            {
-                var clone = Clone(attackToClone);
-                clone.IsPrimary = false;
-
-                allAttacks.Add(clone);
-            }
-
-            foreach (var attack in equipmentMeleeAttacks)
+            foreach (var attack in equipmentAttacks)
             {
                 if (attack.IsPrimary)
                 {
@@ -116,6 +109,25 @@ namespace DnDGen.CreatureGen.Generators.Items
             }
 
             return allAttacks;
+        }
+
+        private List<Attack> AddAttacksPerHand(string name, int numberOfHands, List<Attack> attacks)
+        {
+            var namedAttacks = attacks.Where(a => a.Name == name);
+            if (!namedAttacks.Any())
+                return attacks;
+
+            var attackToClone = namedAttacks.Last();
+
+            while (namedAttacks.Count() < numberOfHands)
+            {
+                var clone = Clone(attackToClone);
+                clone.IsPrimary = false;
+
+                attacks.Add(clone);
+            }
+
+            return attacks;
         }
 
         private Attack Clone(Attack attack)
@@ -180,7 +192,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                     var twoHandedAllowed = equipmentMeleeAttacks.Count() < 2;
 
                     var proficientMeleeWeaponNames = GetProficientWeaponNames(feats, weaponProficiencyFeats, meleeWeaponNames, twoHandedAllowed);
-                    var nonProficientMeleeWeaponNames = weaponNames
+                    var nonProficientMeleeWeaponNames = meleeWeaponNames
                         .Except(proficientMeleeWeaponNames.Common)
                         .Except(proficientMeleeWeaponNames.Uncommon);
 
@@ -199,9 +211,13 @@ namespace DnDGen.CreatureGen.Generators.Items
                             attack.AttackBonuses.Add(-4);
                         }
 
-                        if (weapon.Magic.Bonus > 0)
+                        if (weapon.Magic.Bonus != 0)
                         {
                             attack.AttackBonuses.Add(weapon.Magic.Bonus);
+                        }
+                        else if (weapon.Traits.Contains(TraitConstants.Masterwork))
+                        {
+                            attack.AttackBonuses.Add(1);
                         }
 
                         var bonusFeats = nonProficiencyFeats.Where(f => f.Foci.Any(weapon.NameMatches));
@@ -264,6 +280,10 @@ namespace DnDGen.CreatureGen.Generators.Items
                         {
                             attack.AttackBonuses.Add(weapon.Magic.Bonus);
                         }
+                        else if (weapon.Traits.Contains(TraitConstants.Masterwork))
+                        {
+                            attack.AttackBonuses.Add(1);
+                        }
 
                         var bonusFeats = nonProficiencyFeats.Where(f => f.Foci.Any(weapon.NameMatches));
                         foreach (var feat in bonusFeats)
@@ -271,18 +291,8 @@ namespace DnDGen.CreatureGen.Generators.Items
                             attack.AttackBonuses.Add(feat.Power);
                         }
 
-                        if (!attack.IsPrimary)
-                        {
-                            attack.MaxNumberOfAttacks = 1;
-                            continue;
-                        }
-
-                        if (weapon.Attributes.Contains(AttributeConstants.Thrown)
-                            || weapon.Attributes.Contains(AttributeConstants.Projectile))
-                        {
-                            attack.MaxNumberOfAttacks = 4;
-                        }
-                        else
+                        if (!weapon.Attributes.Contains(AttributeConstants.Thrown)
+                            && !weapon.Attributes.Contains(AttributeConstants.Projectile))
                         {
                             attack.MaxNumberOfAttacks = 1;
                         }

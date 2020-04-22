@@ -2236,6 +2236,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Ettercap].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
 
+                testCases[CreatureConstants.Ettin].Add(helper.BuildData(FeatConstants.TwoWeaponFighting, requiresEquipment: true));
                 testCases[CreatureConstants.Ettin].Add(helper.BuildData(FeatConstants.SpecialQualities.TwoWeaponFighting_Superior, requiresEquipment: true));
                 testCases[CreatureConstants.Ettin].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Morningstar, requiresEquipment: true));
                 testCases[CreatureConstants.Ettin].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Javelin, requiresEquipment: true));

@@ -46,8 +46,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             attacks = new List<Attack>();
             attacks.Add(new Attack { Name = "natural melee attack", IsNatural = true, IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
-            attacks.Add(new Attack { Name = "natural ranged attack", IsNatural = true, IsMelee = false, BaseAbility = abilities[AbilityConstants.Strength] });
-            attacks.Add(new Attack { Name = "unnatural melee attack", IsNatural = false, IsMelee = true, BaseAbility = abilities[AbilityConstants.Dexterity] });
+            attacks.Add(new Attack { Name = "natural ranged attack", IsNatural = true, IsMelee = false, BaseAbility = abilities[AbilityConstants.Dexterity] });
+            attacks.Add(new Attack { Name = "unnatural melee attack", IsNatural = false, IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
             attacks.Add(new Attack { Name = "unnatural ranged attack", IsNatural = false, IsMelee = false, BaseAbility = abilities[AbilityConstants.Dexterity] });
             attacks.Add(new Attack { Name = "special attack", IsNatural = false, IsMelee = true, IsSpecial = true });
 
@@ -232,7 +232,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = "my mace";
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightMace))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
@@ -610,13 +610,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                     It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleMelee)),
                     null,
                     It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
-                .Returns("not proficient weapon");
+                .Returns(WeaponConstants.GnomeHookedHammer);
 
             var weapon = new Weapon();
-            weapon.Name = "my weird weapon";
+            weapon.Name = "my gnome hooked hammer";
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "not proficient weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.GnomeHookedHammer))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
@@ -624,7 +624,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
 
             Assert.That(attacks, Has.Count.EqualTo(6));
-            Assert.That(attacks[5].Name, Is.EqualTo("my weird weapon"));
+            Assert.That(attacks[5].Name, Is.EqualTo("my gnome hooked hammer"));
             Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
@@ -813,6 +813,46 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         }
 
         [Test]
+        public void GenerateMeleeWeapon_MasterworkBonus()
+        {
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var simpleMelee = simple.Intersect(melee);
+            var non = melee.Except(simple);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleMelee)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("simple weapon");
+
+            var weapon = new Weapon();
+            weapon.Name = "my simple weapon";
+            weapon.Damage = "my damage";
+            weapon.Traits.Add(TraitConstants.Masterwork);
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Returns(weapon);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
+            Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo("my simple weapon"));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].IsMelee, Is.True);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].AttackBonuses, Has.Count.EqualTo(1).And.Contains(1));
+        }
+
+        [Test]
         public void GenerateMeleeWeapon_ApplyDexterityForMeleeInsteadOfStrengthForLightWeaponsIfWeaponFinesse()
         {
             attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
@@ -849,7 +889,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
-            Assert.That(attacks[5].AttackBonuses, Is.Empty);
+            Assert.That(attacks[5].AttackBonuses, Has.Count.EqualTo(1).And.Contains(2));
             Assert.That(attacks[5].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
         }
 
@@ -933,180 +973,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(attacks[5].IsSpecial, Is.False);
             Assert.That(attacks[5].AttackBonuses, Is.Empty);
             Assert.That(attacks[5].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
-        }
-
-        [Test]
-        public void GenerateMeleeWeapon_MultipleWeapons_FromSingleAttack_WithoutTwoWeaponFightingFeat_OneHanded()
-        {
-            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
-            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
-
-            var simple = WeaponConstants.GetAllSimple(false, false);
-            var melee = WeaponConstants.GetAllMelee(false, false);
-            var oneHanded = WeaponConstants.GetAllOneHandedMelee(false, false);
-            var simpleMelee = simple.Intersect(melee);
-            var oneHandedSimpleMelee = oneHanded.Intersect(simpleMelee);
-            var non = melee.Except(simple);
-
-            mockCollectionSelector
-                .SetupSequence(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
-                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(oneHandedSimpleMelee)),
-                    null,
-                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
-                .Returns(WeaponConstants.Dagger)
-                .Returns(WeaponConstants.LightMace);
-
-            var mace = new Weapon();
-            mace.Name = WeaponConstants.LightMace;
-            mace.Damage = "my mace damage";
-
-            var dagger = new Weapon();
-            dagger.Name = WeaponConstants.Dagger;
-            dagger.Damage = "my dagger damage";
-
-            mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightMace))
-                .Returns(mace);
-            mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
-                .Returns(dagger);
-
-            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
-            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(2));
-            Assert.That(equipment.Weapons.First(), Is.EqualTo(dagger));
-            Assert.That(equipment.Weapons.First(), Is.EqualTo(mace));
-
-            Assert.That(attacks, Has.Count.EqualTo(7));
-            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dagger));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my dagger damage"));
-            Assert.That(attacks[5].IsMelee, Is.True);
-            Assert.That(attacks[5].IsNatural, Is.False);
-            Assert.That(attacks[5].IsSpecial, Is.False);
-            Assert.That(attacks[5].AttackBonuses, Has.Count.EqualTo(1).And.Contains(-6));
-            Assert.That(attacks[5].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
-            Assert.That(attacks[6].Name, Is.EqualTo(WeaponConstants.LightMace));
-            Assert.That(attacks[6].DamageRoll, Is.EqualTo("my mace damage"));
-            Assert.That(attacks[6].IsMelee, Is.True);
-            Assert.That(attacks[6].IsNatural, Is.False);
-            Assert.That(attacks[6].IsSpecial, Is.False);
-            Assert.That(attacks[6].AttackBonuses, Has.Count.EqualTo(1).And.Contains(-10));
-            Assert.That(attacks[6].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
-
-            //rare, to choose two-weapon (or multi-weapon) if not chosen feat
-            //verify penalties
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void GenerateMeleeWeapon_MultipleWeapons_FromSingleAttack_WithoutTwoWeaponFightingFeat_Light()
-        {
-            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
-            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
-
-            var simple = WeaponConstants.GetAllSimple(false, false);
-            var melee = WeaponConstants.GetAllMelee(false, false);
-            var oneHanded = WeaponConstants.GetAllOneHandedMelee(false, false);
-            var simpleMelee = simple.Intersect(melee);
-            var oneHandedSimpleMelee = oneHanded.Intersect(simpleMelee);
-            var non = melee.Except(simple);
-
-            mockCollectionSelector
-                .SetupSequence(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
-                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(oneHandedSimpleMelee)),
-                    null,
-                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
-                .Returns(WeaponConstants.Dagger)
-                .Returns(WeaponConstants.LightMace);
-
-            var mace = new Weapon();
-            mace.Name = WeaponConstants.LightMace;
-            mace.Damage = "my mace damage";
-
-            var dagger = new Weapon();
-            dagger.Name = WeaponConstants.Dagger;
-            dagger.Damage = "my dagger damage";
-
-            mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightMace))
-                .Returns(mace);
-            mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
-                .Returns(dagger);
-
-            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
-            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(2));
-            Assert.That(equipment.Weapons.First(), Is.EqualTo(dagger));
-            Assert.That(equipment.Weapons.First(), Is.EqualTo(mace));
-
-            Assert.That(attacks, Has.Count.EqualTo(7));
-            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dagger));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my dagger damage"));
-            Assert.That(attacks[5].IsMelee, Is.True);
-            Assert.That(attacks[5].IsNatural, Is.False);
-            Assert.That(attacks[5].IsSpecial, Is.False);
-            Assert.That(attacks[5].AttackBonuses, Has.Count.EqualTo(2).And.Contains(-6).And.Contains(2));
-            Assert.That(attacks[5].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
-            Assert.That(attacks[6].Name, Is.EqualTo(WeaponConstants.LightMace));
-            Assert.That(attacks[6].DamageRoll, Is.EqualTo("my mace damage"));
-            Assert.That(attacks[6].IsMelee, Is.True);
-            Assert.That(attacks[6].IsNatural, Is.False);
-            Assert.That(attacks[6].IsSpecial, Is.False);
-            Assert.That(attacks[6].AttackBonuses, Has.Count.EqualTo(2).And.Contains(-10).And.Contains(2));
-            Assert.That(attacks[6].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
-
-            //rare, to choose two-weapon (or multi-weapon) if not chosen feat
-            //verify penalties
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void GenerateMeleeWeapon_MultipleWeapons_FromSingleAttack_WhenTwoWeaponFightingSelected()
-        {
-            //chosen feat, so generate two
-            //verify penalties
-            //verify only one-handed or light weapons
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void GenerateMeleeWeapon_MultipleWeapons_FromSingleAttack_WhenMultiWeaponFightingSelected()
-        {
-            //chosen feat, so generate = number of hands
-            //verify penalties
-            //verify only one-handed or light weapons
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void GenerateMeleeWeapon_ApplyTwoWeaponFightingPenalties_WithBonuses()
-        {
-            //two-weapon fighting
-            //multiweapon fighting
-            //verify penalties
-            //verify only one-handed or light weapons
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void GenerateMeleeWeapon_ApplyTwoWeaponFightingPenalties_ExtraOffhandAttack()
-        {
-            //improved two-weapon fighting
-            //improved multiweapon fighting
-            //verify penalties
-            //verify only one-handed or light weapons
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void GenerateMeleeWeapon_ApplyTwoWeaponFightingPenalties_MultipleExtraOffhandAttack()
-        {
-            //greater two-weapon fighting
-            //greater multiweapon fighting
-            //verify penalties
-            //verify only one-handed or light weapons
-            Assert.Fail("not yet written");
         }
 
         [Test]
@@ -1260,6 +1126,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         }
 
         [Test]
+        public void GenerateRangedWeapon_MasterworkBonus()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void GenerateMultipleRangedWeapons()
         {
             Assert.Fail("not yet written");
@@ -1299,19 +1171,87 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateArmor_Light()
         {
-            Assert.Fail("not yet written");
+            feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
+
+            var light = ArmorConstants.GetAllLightArmors(false);
+            var medium = ArmorConstants.GetAllMediumArmors(false);
+            var heavy = ArmorConstants.GetAllHeavyArmors(false);
+            var armors = light;
+            var non = medium.Union(heavy);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(armors)),
+                    null,
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("my armor");
+
+            var armor = new Armor { Name = "my armor" };
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor"))
+                .Returns(armor);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Armor, Is.EqualTo(armor));
         }
 
         [Test]
         public void GenerateArmor_Medium()
         {
-            Assert.Fail("not yet written");
+            feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
+            feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Medium });
+
+            var light = ArmorConstants.GetAllLightArmors(false);
+            var medium = ArmorConstants.GetAllMediumArmors(false);
+            var heavy = ArmorConstants.GetAllHeavyArmors(false);
+            var armors = light.Union(medium);
+            var non = heavy;
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(armors)),
+                    null,
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("my armor");
+
+            var armor = new Armor { Name = "my armor" };
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor"))
+                .Returns(armor);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Armor, Is.EqualTo(armor));
         }
 
         [Test]
         public void GenerateArmor_Heavy()
         {
-            Assert.Fail("not yet written");
+            feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
+            feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Medium });
+            feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Heavy });
+
+            var light = ArmorConstants.GetAllLightArmors(false);
+            var medium = ArmorConstants.GetAllMediumArmors(false);
+            var heavy = ArmorConstants.GetAllHeavyArmors(false);
+            var armors = light.Union(medium).Union(heavy);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(armors)),
+                    null,
+                    null,
+                    It.Is<IEnumerable<string>>(nn => !nn.Any())))
+                .Returns("my armor");
+
+            var armor = new Armor { Name = "my armor" };
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor"))
+                .Returns(armor);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Armor, Is.EqualTo(armor));
         }
 
         [Test]
@@ -1365,147 +1305,679 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void AddAttacks_NoUnnaturalAttacks()
         {
-            Assert.Fail("not yet written");
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = "my attack",
+                IsNatural = true,
+                IsMelee = true,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 2,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Is.EqualTo(attacks).And.Length.EqualTo(1));
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo("my attack"));
+            Assert.That(updatedAttacks[0].IsNatural, Is.True);
+            Assert.That(updatedAttacks[0].IsMelee, Is.True);
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(2));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void AddAttacks_UnnaturalAttack_FrequencyOf1(bool melee)
+        {
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = "my attack",
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Is.EqualTo(attacks).And.Length.EqualTo(1));
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo("my attack"));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void AddAttacks_UnnaturalAttacks_FrequencyOf1(bool melee)
+        {
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = "my attack",
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+            attacks.Add(new Attack
+            {
+                Name = "my other attack",
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Is.EqualTo(attacks).And.Length.EqualTo(2));
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo("my attack"));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[1].Name, Is.EqualTo("my other attack"));
+            Assert.That(updatedAttacks[1].IsNatural, Is.False);
+            Assert.That(updatedAttacks[1].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[1].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[1].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void AddAttacks_UnnaturalAttack_FrequencyGreaterThan1(bool melee)
+        {
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = "my attack",
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 2,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Has.Length.EqualTo(2));
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo("my attack"));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[1].Name, Is.EqualTo("my attack"));
+            Assert.That(updatedAttacks[1].IsNatural, Is.False);
+            Assert.That(updatedAttacks[1].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[1].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[1].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void AddAttacks_UnnaturalAttacks_FrequencyGreaterThan1(bool melee)
+        {
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = "my attack",
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 2,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+            attacks.Add(new Attack
+            {
+                Name = "my other attack",
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 3,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Has.Length.EqualTo(5));
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo("my attack"));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[1].Name, Is.EqualTo("my attack"));
+            Assert.That(updatedAttacks[1].IsNatural, Is.False);
+            Assert.That(updatedAttacks[1].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[1].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[1].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[2].Name, Is.EqualTo("my other attack"));
+            Assert.That(updatedAttacks[2].IsNatural, Is.False);
+            Assert.That(updatedAttacks[2].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[2].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[2].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[2].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[3].Name, Is.EqualTo("my other attack"));
+            Assert.That(updatedAttacks[3].IsNatural, Is.False);
+            Assert.That(updatedAttacks[3].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[3].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[3].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[3].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[4].Name, Is.EqualTo("my other attack"));
+            Assert.That(updatedAttacks[4].IsNatural, Is.False);
+            Assert.That(updatedAttacks[4].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[4].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[4].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[4].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
         }
 
         [Test]
-        public void AddAttacks_UnnaturalMeleeAttack_FrequencyOf1()
+        public void AddAttacks_MixedUnnaturalAttacks_FrequencyGreaterThan1()
         {
-            Assert.Fail("not yet written");
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = "my attack",
+                IsNatural = false,
+                IsMelee = true,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 2,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+            attacks.Add(new Attack
+            {
+                Name = "my other attack",
+                IsNatural = false,
+                IsMelee = false,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 3,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Has.Length.EqualTo(5));
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo("my attack"));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.True);
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[1].Name, Is.EqualTo("my attack"));
+            Assert.That(updatedAttacks[1].IsNatural, Is.False);
+            Assert.That(updatedAttacks[1].IsMelee, Is.True);
+            Assert.That(updatedAttacks[1].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[1].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[2].Name, Is.EqualTo("my other attack"));
+            Assert.That(updatedAttacks[2].IsNatural, Is.False);
+            Assert.That(updatedAttacks[2].IsMelee, Is.False);
+            Assert.That(updatedAttacks[2].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[2].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[2].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[3].Name, Is.EqualTo("my other attack"));
+            Assert.That(updatedAttacks[3].IsNatural, Is.False);
+            Assert.That(updatedAttacks[3].IsMelee, Is.False);
+            Assert.That(updatedAttacks[3].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[3].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[3].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[4].Name, Is.EqualTo("my other attack"));
+            Assert.That(updatedAttacks[4].IsNatural, Is.False);
+            Assert.That(updatedAttacks[4].IsMelee, Is.False);
+            Assert.That(updatedAttacks[4].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[4].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[4].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
         }
 
-        [Test]
-        public void AddAttacks_UnnaturalMeleeAttacks_FrequencyOf1()
+        [TestCase(true, FeatConstants.TwoWeaponFighting, 2)]
+        [TestCase(true, FeatConstants.Monster.MultiweaponFighting, 3)]
+        [TestCase(false, FeatConstants.TwoWeaponFighting, 2)]
+        [TestCase(false, FeatConstants.Monster.MultiweaponFighting, 3)]
+        public void AddAttacks_UnnaturalEquippedAttack_FillHands(bool melee, string feat, int numberOfHands)
         {
-            Assert.Fail("not yet written");
+            var name = melee ? AttributeConstants.Melee : AttributeConstants.Ranged;
+
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            feats.Add(new Feat { Name = feat });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, numberOfHands).ToArray();
+            Assert.That(updatedAttacks, Has.Length.EqualTo(numberOfHands));
+
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+
+            for (var i = 1; i < numberOfHands; i++)
+            {
+                Assert.That(updatedAttacks[i].Name, Is.EqualTo(name));
+                Assert.That(updatedAttacks[i].IsNatural, Is.False);
+                Assert.That(updatedAttacks[i].IsMelee, Is.EqualTo(melee));
+                Assert.That(updatedAttacks[i].IsPrimary, Is.False);
+                Assert.That(updatedAttacks[i].Frequency.Quantity, Is.EqualTo(1));
+                Assert.That(updatedAttacks[i].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            }
         }
 
-        [Test]
-        public void AddAttacks_UnnaturalMeleeAttack_FrequencyGreaterThan1()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void AddAttacks_UnnaturalEquippedAttacks_Untrained(bool melee)
         {
-            Assert.Fail("not yet written");
+            var name = melee ? AttributeConstants.Melee : AttributeConstants.Ranged;
+
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            feats.Add(new Feat { Name = "my feat" });
+            mockPercentileSelector
+                .Setup(s => s.SelectFrom(.01))
+                .Returns(true);
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Has.Length.EqualTo(2));
+
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[0].MaxNumberOfAttacks, Is.EqualTo(4));
+            Assert.That(updatedAttacks[0].AttackBonuses, Has.Count.EqualTo(1).And.Contains(-6));
+            Assert.That(updatedAttacks[0].TotalAttackBonus, Is.EqualTo(-6));
+            Assert.That(updatedAttacks[1].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[1].IsNatural, Is.False);
+            Assert.That(updatedAttacks[1].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[1].IsPrimary, Is.False);
+            Assert.That(updatedAttacks[1].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[1].MaxNumberOfAttacks, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].AttackBonuses, Has.Count.EqualTo(1).And.Contains(-10));
+            Assert.That(updatedAttacks[1].TotalAttackBonus, Is.EqualTo(-10));
         }
 
-        [Test]
-        public void AddAttacks_UnnaturalMeleeAttacks_FrequencyGreaterThan1()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void AddAttacks_UnnaturalEquippedAttacks_Preset(bool melee)
         {
-            Assert.Fail("not yet written");
+            var name = melee ? AttributeConstants.Melee : AttributeConstants.Ranged;
+
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = false,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            feats.Add(new Feat { Name = "my feat" });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Is.EqualTo(attacks).And.Length.EqualTo(2));
+
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[0].MaxNumberOfAttacks, Is.EqualTo(4));
+            Assert.That(updatedAttacks[0].AttackBonuses, Has.Count.EqualTo(1).And.Contains(-6));
+            Assert.That(updatedAttacks[0].TotalAttackBonus, Is.EqualTo(-6));
+            Assert.That(updatedAttacks[1].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[1].IsNatural, Is.False);
+            Assert.That(updatedAttacks[1].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[1].IsPrimary, Is.False);
+            Assert.That(updatedAttacks[1].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[1].MaxNumberOfAttacks, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].AttackBonuses, Has.Count.EqualTo(1).And.Contains(-10));
+            Assert.That(updatedAttacks[1].TotalAttackBonus, Is.EqualTo(-10));
         }
 
-        [Test]
-        public void AddAttacks_UnnaturalRangedAttack_FrequencyOf1()
+        [TestCase(FeatConstants.TwoWeaponFighting, true)]
+        [TestCase(FeatConstants.TwoWeaponFighting, false)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting, true)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting, false)]
+        public void AddAttacks_UnnaturalEquippedAttacks_TwoWeapon(string feat, bool melee)
         {
-            Assert.Fail("not yet written");
+            var name = melee ? AttributeConstants.Melee : AttributeConstants.Ranged;
+
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = false,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            feats.Add(new Feat { Name = "my feat" });
+            feats.Add(new Feat { Name = feat });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Is.EqualTo(attacks).And.Length.EqualTo(2));
+
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[0].MaxNumberOfAttacks, Is.EqualTo(4));
+            Assert.That(updatedAttacks[0].AttackBonuses, Has.Count.EqualTo(2)
+                .And.Contains(-6)
+                .And.Contains(2));
+            Assert.That(updatedAttacks[0].TotalAttackBonus, Is.EqualTo(-4));
+            Assert.That(updatedAttacks[1].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[1].IsNatural, Is.False);
+            Assert.That(updatedAttacks[1].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[1].IsPrimary, Is.False);
+            Assert.That(updatedAttacks[1].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[1].MaxNumberOfAttacks, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].AttackBonuses, Has.Count.EqualTo(2)
+                .And.Contains(-10)
+                .And.Contains(6));
+            Assert.That(updatedAttacks[1].TotalAttackBonus, Is.EqualTo(-4));
         }
 
-        [Test]
-        public void AddAttacks_UnnaturalRangedAttacks_FrequencyOf1()
+        [TestCase(FeatConstants.TwoWeaponFighting_Improved, true)]
+        [TestCase(FeatConstants.TwoWeaponFighting_Improved, false)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Improved, true)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Improved, false)]
+        public void AddAttacks_UnnaturalEquippedAttacks_TwoWeapon_Improved(string feat, bool melee)
         {
-            Assert.Fail("not yet written");
+            var name = melee ? AttributeConstants.Melee : AttributeConstants.Ranged;
+
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = false,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            feats.Add(new Feat { Name = "my feat" });
+            feats.Add(new Feat { Name = feat });
+            feats.Add(new Feat { Name = FeatConstants.TwoWeaponFighting });
+            feats.Add(new Feat { Name = FeatConstants.Monster.MultiweaponFighting });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Is.EqualTo(attacks).And.Length.EqualTo(2));
+
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[0].MaxNumberOfAttacks, Is.EqualTo(4));
+            Assert.That(updatedAttacks[0].AttackBonuses, Has.Count.EqualTo(2)
+                .And.Contains(-6)
+                .And.Contains(2));
+            Assert.That(updatedAttacks[0].TotalAttackBonus, Is.EqualTo(-4));
+            Assert.That(updatedAttacks[1].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[1].IsNatural, Is.False);
+            Assert.That(updatedAttacks[1].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[1].IsPrimary, Is.False);
+            Assert.That(updatedAttacks[1].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[1].MaxNumberOfAttacks, Is.EqualTo(2));
+            Assert.That(updatedAttacks[1].AttackBonuses, Has.Count.EqualTo(2)
+                .And.Contains(-10)
+                .And.Contains(6));
+            Assert.That(updatedAttacks[1].TotalAttackBonus, Is.EqualTo(-4));
         }
 
-        [Test]
-        public void AddAttacks_UnnaturalRangedAttack_FrequencyGreaterThan1()
+        [TestCase(FeatConstants.TwoWeaponFighting_Greater, true)]
+        [TestCase(FeatConstants.TwoWeaponFighting_Greater, false)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Greater, true)]
+        [TestCase(FeatConstants.Monster.MultiweaponFighting_Greater, false)]
+        public void AddAttacks_UnnaturalEquippedAttacks_TwoWeapon_Greater(string feat, bool melee)
         {
-            Assert.Fail("not yet written");
+            var name = melee ? AttributeConstants.Melee : AttributeConstants.Ranged;
+
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = false,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            feats.Add(new Feat { Name = "my feat" });
+            feats.Add(new Feat { Name = feat });
+            feats.Add(new Feat { Name = FeatConstants.TwoWeaponFighting });
+            feats.Add(new Feat { Name = FeatConstants.Monster.MultiweaponFighting });
+            feats.Add(new Feat { Name = FeatConstants.TwoWeaponFighting_Improved });
+            feats.Add(new Feat { Name = FeatConstants.Monster.MultiweaponFighting_Improved });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Is.EqualTo(attacks).And.Length.EqualTo(2));
+
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[0].MaxNumberOfAttacks, Is.EqualTo(4));
+            Assert.That(updatedAttacks[0].AttackBonuses, Has.Count.EqualTo(2)
+                .And.Contains(-6)
+                .And.Contains(2));
+            Assert.That(updatedAttacks[0].TotalAttackBonus, Is.EqualTo(-4));
+            Assert.That(updatedAttacks[1].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[1].IsNatural, Is.False);
+            Assert.That(updatedAttacks[1].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[1].IsPrimary, Is.False);
+            Assert.That(updatedAttacks[1].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[1].MaxNumberOfAttacks, Is.EqualTo(3));
+            Assert.That(updatedAttacks[1].AttackBonuses, Has.Count.EqualTo(2)
+                .And.Contains(-10)
+                .And.Contains(6));
+            Assert.That(updatedAttacks[1].TotalAttackBonus, Is.EqualTo(-4));
         }
 
-        [Test]
-        public void AddAttacks_UnnaturalRangedAttacks_FrequencyGreaterThan1()
+        [TestCase(FeatConstants.SpecialQualities.TwoWeaponFighting_Superior, true)]
+        [TestCase(FeatConstants.SpecialQualities.TwoWeaponFighting_Superior, false)]
+        [TestCase(FeatConstants.SpecialQualities.MultiweaponFighting_Superior, true)]
+        [TestCase(FeatConstants.SpecialQualities.MultiweaponFighting_Superior, false)]
+        public void AddAttacks_UnnaturalEquippedAttacks_TwoWeapon_Superior(string feat, bool melee)
         {
-            Assert.Fail("not yet written");
-        }
+            var name = melee ? AttributeConstants.Melee : AttributeConstants.Ranged;
 
-        [Test]
-        public void AddAttacks_UnnaturalEquippedMeleeAttack_FillHands()
-        {
-            Assert.Fail("not yet written");
-        }
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+            attacks.Add(new Attack
+            {
+                Name = name,
+                IsNatural = false,
+                IsMelee = melee,
+                IsPrimary = false,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
 
-        [Test]
-        public void AddAttacks_UnnaturalEquippedRangedAttack_FillHands()
-        {
-            Assert.Fail("not yet written");
-        }
+            feats.Add(new Feat { Name = "my feat" });
+            feats.Add(new Feat { Name = feat });
+            feats.Add(new Feat { Name = FeatConstants.TwoWeaponFighting });
+            feats.Add(new Feat { Name = FeatConstants.Monster.MultiweaponFighting });
 
-        [Test]
-        public void AddAttacks_UnnaturalEquippedMeleeAttacks_Untrained()
-        {
-            Assert.Fail("not yet written");
-        }
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 2).ToArray();
+            Assert.That(updatedAttacks, Is.EqualTo(attacks).And.Length.EqualTo(2));
 
-        [Test]
-        public void AddAttacks_UnnaturalEquippedRangedAttacks_Untrained()
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void AddAttacks_UnnaturalEquippedMeleeAttacks_Preset()
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void AddAttacks_UnnaturalEquippedRangedAttacks_Preset()
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [TestCase(FeatConstants.TwoWeaponFighting)]
-        [TestCase(FeatConstants.Monster.MultiweaponFighting)]
-        public void AddAttacks_UnnaturalEquippedMeleeAttacks_TwoWeapon(string feat)
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [TestCase(FeatConstants.TwoWeaponFighting)]
-        [TestCase(FeatConstants.Monster.MultiweaponFighting)]
-        public void AddAttacks_UnnaturalEquippedRangedAttacks_TwoWeapon(string feat)
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [TestCase(FeatConstants.TwoWeaponFighting_Improved)]
-        [TestCase(FeatConstants.Monster.MultiweaponFighting_Improved)]
-        public void AddAttacks_UnnaturalEquippedMeleeAttacks_TwoWeapon_Improved(string feat)
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [TestCase(FeatConstants.TwoWeaponFighting_Improved)]
-        [TestCase(FeatConstants.Monster.MultiweaponFighting_Improved)]
-        public void AddAttacks_UnnaturalEquippedRangedAttacks_TwoWeapon_Improved(string feat)
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [TestCase(FeatConstants.TwoWeaponFighting_Greater)]
-        [TestCase(FeatConstants.Monster.MultiweaponFighting_Greater)]
-        public void AddAttacks_UnnaturalEquippedMeleeAttacks_TwoWeapon_Greater(string feat)
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [TestCase(FeatConstants.TwoWeaponFighting_Greater)]
-        [TestCase(FeatConstants.Monster.MultiweaponFighting_Greater)]
-        public void AddAttacks_UnnaturalEquippedRangedAttacks_TwoWeapon_Greater(string feat)
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [TestCase(FeatConstants.SpecialQualities.TwoWeaponFighting_Superior)]
-        [TestCase(FeatConstants.SpecialQualities.MultiweaponFighting_Superior)]
-        public void AddAttacks_UnnaturalEquippedMeleeAttacks_TwoWeapon_Superior(string feat)
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [TestCase(FeatConstants.SpecialQualities.TwoWeaponFighting_Superior)]
-        [TestCase(FeatConstants.SpecialQualities.MultiweaponFighting_Superior)]
-        public void AddAttacks_UnnaturalEquippedRangedAttacks_TwoWeapon_Superior(string feat)
-        {
-            Assert.Fail("not yet written");
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[0].MaxNumberOfAttacks, Is.EqualTo(4));
+            Assert.That(updatedAttacks[0].AttackBonuses, Has.Count.EqualTo(3)
+                .And.Contains(-6)
+                .And.Contains(2)
+                .And.Contains(4));
+            Assert.That(updatedAttacks[0].TotalAttackBonus, Is.Zero);
+            Assert.That(updatedAttacks[1].Name, Is.EqualTo(name));
+            Assert.That(updatedAttacks[1].IsNatural, Is.False);
+            Assert.That(updatedAttacks[1].IsMelee, Is.EqualTo(melee));
+            Assert.That(updatedAttacks[1].IsPrimary, Is.False);
+            Assert.That(updatedAttacks[1].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[1].MaxNumberOfAttacks, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].AttackBonuses, Has.Count.EqualTo(3)
+                .And.Contains(-10)
+                .And.Contains(6)
+                .And.Contains(4));
+            Assert.That(updatedAttacks[1].TotalAttackBonus, Is.Zero);
         }
     }
 

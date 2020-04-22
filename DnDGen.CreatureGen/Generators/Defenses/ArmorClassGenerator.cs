@@ -52,6 +52,11 @@ namespace DnDGen.CreatureGen.Generators.Defenses
                 armorClass.AddBonus(ArmorClassConstants.Natural, naturalArmor);
             }
 
+            if (feats.Any(f => f.Name == FeatConstants.TwoWeaponDefense))
+            {
+                armorClass.AddBonus(ArmorClassConstants.Shield, 1);
+            }
+
             armorClass = GetRacialArmorClassBonuses(armorClass, creatureName, creatureType);
             armorClass = GetEquipmentArmorClassBonuses(armorClass, equipment);
 

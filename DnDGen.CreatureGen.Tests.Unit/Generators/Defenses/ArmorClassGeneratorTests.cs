@@ -786,7 +786,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             equipment.Shield = new Armor
             {
                 ArmorBonus = 42,
-                Magic = new TreasureGen.Items.Magical.Magic { Bonus = -96 }
+                Magic = new TreasureGen.Items.Magical.Magic { Bonus = -9 }
             }; ;
 
             var armorClass = GenerateAndAssertArmorClass(52 - 9, 52 - 9, 10);
@@ -835,7 +835,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         [Test]
         public void ApplyShieldBonusFromFeat()
         {
-            Assert.Fail("not yet written");
+            var feat = new Feat();
+            feat.Name = FeatConstants.TwoWeaponDefense;
+            feats.Add(feat);
+
+            var otherFeat = new Feat();
+            otherFeat.Name = "feat 2";
+            otherFeat.Power = 1;
+            feats.Add(otherFeat);
+
+            var armorClass = GenerateAndAssertArmorClass(11, 11, 10);
+            Assert.That(armorClass.ArmorBonus, Is.Zero);
+            Assert.That(armorClass.DeflectionBonus, Is.Zero);
+            Assert.That(armorClass.NaturalArmorBonus, Is.Zero);
+            Assert.That(armorClass.ShieldBonus, Is.EqualTo(1));
+            Assert.That(armorClass.SizeModifier, Is.Zero);
+            Assert.That(armorClass.Dexterity.Modifier, Is.Zero);
         }
 
         [TestCaseSource(typeof(NumericTestData), "BaseAbilityTestNumbers")]
