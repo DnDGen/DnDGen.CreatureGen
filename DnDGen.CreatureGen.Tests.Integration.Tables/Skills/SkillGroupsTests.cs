@@ -39,7 +39,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [Test]
         public void SkillGroupsNames()
         {
-            var creatures = CreatureConstants.All();
+            var creatures = CreatureConstants.GetAll();
             var creatureTypes = CreatureConstants.Types.All();
             var creatureSubtypes = CreatureConstants.Types.Subtypes.All();
 

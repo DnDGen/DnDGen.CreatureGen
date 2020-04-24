@@ -951,7 +951,7 @@ namespace DnDGen.CreatureGen.Creatures
         public const string YuanTi_Halfblood_SnakeTail = "Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)";
         public const string YuanTi_Pureblood = "Yuan-ti Pureblood";
 
-        public static IEnumerable<string> All()
+        public static IEnumerable<string> GetAll()
         {
             return new[]
             {

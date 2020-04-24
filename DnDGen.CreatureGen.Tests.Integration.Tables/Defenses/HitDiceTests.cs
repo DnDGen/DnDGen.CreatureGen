@@ -17,7 +17,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [Test]
         public void HitDiceNames()
         {
-            var creatures = CreatureConstants.All();
+            var creatures = CreatureConstants.GetAll();
             var types = CreatureConstants.Types.All();
 
             var names = creatures.Union(types);

@@ -37,7 +37,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [Test]
         public void AlignmentGroupsNames()
         {
-            var creatures = CreatureConstants.All();
+            var creatures = CreatureConstants.GetAll();
 
             var names = new[]
             {

@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Selectors.Collections;
+﻿using DnDGen.CreatureGen.Selectors;
+using DnDGen.CreatureGen.Selectors.Collections;
 using Ninject.Modules;
 
 namespace DnDGen.CreatureGen.IoC.Modules
@@ -15,6 +16,7 @@ namespace DnDGen.CreatureGen.IoC.Modules
             Bind<IAttackSelector>().To<AttackSelector>();
             Bind<IAdvancementSelector>().To<AdvancementSelector>();
             Bind<IBonusSelector>().To<BonusSelector>();
+            Bind<IItemSelector>().To<ItemSelector>();
         }
     }
 }

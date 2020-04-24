@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void SpeedsNames()
         {
-            var names = CreatureConstants.All();
+            var names = CreatureConstants.GetAll();
             AssertCollectionNames(names);
         }
 
@@ -56,7 +56,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 get
                 {
                     var testCases = new Dictionary<string, Dictionary<string, int>>();
-                    var creatures = CreatureConstants.All();
+                    var creatures = CreatureConstants.GetAll();
 
                     foreach (var creature in creatures)
                     {

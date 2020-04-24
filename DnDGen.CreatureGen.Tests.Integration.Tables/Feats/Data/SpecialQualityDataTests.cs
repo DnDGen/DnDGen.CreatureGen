@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [Test]
         public void SpecialQualityDataNames()
         {
-            var creatures = CreatureConstants.All();
+            var creatures = CreatureConstants.GetAll();
             var types = CreatureConstants.Types.All();
             var subtypes = CreatureConstants.Types.Subtypes.All();
 

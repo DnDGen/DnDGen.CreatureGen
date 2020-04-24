@@ -49,7 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void CreatureDataNames()
         {
-            var names = CreatureConstants.All();
+            var names = CreatureConstants.GetAll();
             AssertCollectionNames(names);
         }
 

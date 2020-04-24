@@ -2,10 +2,14 @@
 using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Items;
+using DnDGen.CreatureGen.Selectors;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Generators;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.Infrastructure.Selectors.Percentiles;
 using DnDGen.TreasureGen.Items;
+using DnDGen.TreasureGen.Items.Magical;
+using DnDGen.TreasureGen.Items.Mundane;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -20,6 +24,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<IItemsGenerator> mockItemGenerator;
         private Mock<IPercentileSelector> mockPercentileSelector;
+        private Mock<IItemSelector> mockItemSelector;
+        private Mock<JustInTimeFactory> mockJustInTimeFactory;
         private List<Feat> feats;
         private List<Attack> attacks;
         private Dictionary<string, Ability> abilities;
@@ -30,11 +36,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockItemGenerator = new Mock<IItemsGenerator>();
             mockPercentileSelector = new Mock<IPercentileSelector>();
+            mockItemSelector = new Mock<IItemSelector>();
+            mockJustInTimeFactory = new Mock<JustInTimeFactory>();
 
             equipmentGenerator = new EquipmentGenerator(
                 mockCollectionSelector.Object,
                 mockItemGenerator.Object,
-                mockPercentileSelector.Object);
+                mockPercentileSelector.Object,
+                mockItemSelector.Object,
+                mockJustInTimeFactory.Object);
 
             abilities = new Dictionary<string, Ability>();
             abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength) { BaseScore = 42 };
@@ -1309,42 +1319,386 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void DoNotGenerateShield_IfNoFreeHands_TwoHandedWeapon()
         {
-            Assert.Fail("not yet written");
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+            feats.Add(new Feat { Name = FeatConstants.ShieldProficiency });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var simpleMelee = simple.Intersect(melee);
+            var non = melee.Except(simple);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleMelee)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns(WeaponConstants.Quarterstaff);
+
+            var weapon = new Weapon();
+            weapon.Name = WeaponConstants.Quarterstaff;
+            weapon.Damage = "my damage";
+            weapon.Attributes = new[] { AttributeConstants.Melee, AttributeConstants.TwoHanded };
+
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Quarterstaff))
+                .Returns(weapon);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+
+            Assert.That(equipment.Weapons.Count(), Is.EqualTo(1));
+            Assert.That(equipment.Weapons, Contains.Item(weapon));
+            Assert.That(equipment.Shield, Is.Null);
+            mockItemGenerator.Verify(g => g.GenerateAtLevel(It.IsAny<int>(), ItemTypeConstants.Armor, It.IsAny<string>()), Times.Never);
         }
 
         [Test]
         public void DoNotGenerateShield_IfNoFreeHands_TwoWeaponAttacks()
         {
-            Assert.Fail("not yet written");
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Strength] });
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, IsPrimary = false, BaseAbility = abilities[AbilityConstants.Strength] });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+            feats.Add(new Feat { Name = FeatConstants.ShieldProficiency });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var twoHanded = WeaponConstants.GetAllTwoHandedMelee(false, false);
+            var simpleMelee = simple.Intersect(melee).Except(twoHanded);
+            var non = melee.Except(simple).Except(twoHanded);
+
+            mockCollectionSelector
+                .SetupSequence(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleMelee)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns(WeaponConstants.Dagger)
+                .Returns(WeaponConstants.Club);
+
+            var dagger = new Weapon();
+            dagger.Name = WeaponConstants.Dagger;
+            dagger.Damage = "my dagger damage";
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
+                .Returns(dagger);
+
+            var club = new Weapon();
+            club.Name = WeaponConstants.Club;
+            club.Damage = "my club damage";
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club))
+                .Returns(club);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+
+            Assert.That(equipment.Weapons.Count(), Is.EqualTo(2));
+            Assert.That(equipment.Weapons, Contains.Item(dagger)
+                .And.Contains(club));
+            Assert.That(equipment.Shield, Is.Null);
+            mockItemGenerator.Verify(g => g.GenerateAtLevel(It.IsAny<int>(), ItemTypeConstants.Armor, It.IsAny<string>()), Times.Never);
         }
 
         [Test]
-        public void GenerateArmor_Predetermined()
+        public void GenerateShield_IfFreeHands_MeleeAndRangedWeaponAttacks()
         {
-            Assert.Fail("not yet written");
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Strength] });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Dexterity] });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+            feats.Add(new Feat { Name = FeatConstants.ShieldProficiency });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var ranged = WeaponConstants.GetAllRanged(false, false);
+            var simpleMelee = simple.Intersect(melee);
+            var simpleRanged = simple.Intersect(ranged);
+            var nonMelee = melee.Except(simple);
+            var nonRanged = ranged.Except(simple);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleMelee)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(nonMelee))))
+                .Returns(WeaponConstants.Dagger);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleRanged)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(nonRanged))))
+                .Returns(WeaponConstants.LightCrossbow);
+
+            var dagger = new Weapon();
+            dagger.Name = WeaponConstants.Dagger;
+            dagger.Damage = "my dagger damage";
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
+                .Returns(dagger);
+
+            var crossbow = new Weapon();
+            crossbow.Name = WeaponConstants.LightCrossbow;
+            crossbow.Damage = "my crossbow damage";
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightCrossbow))
+                .Returns(crossbow);
+
+            var shields = ArmorConstants.GetAllShields(false);
+            var non = new[] { ArmorConstants.TowerShield };
+            var proficientShields = shields.Except(non);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(shields)),
+                    null,
+                    null,
+                    It.Is<IEnumerable<string>>(nn => !nn.Any())))
+                .Returns("my shield");
+
+            var shield = new Armor { Name = "my shield" };
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield"))
+                .Returns(shield);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+
+            Assert.That(equipment.Weapons.Count(), Is.EqualTo(2));
+            Assert.That(equipment.Weapons, Contains.Item(dagger)
+                .And.Contains(crossbow));
+            Assert.That(equipment.Shield, Is.EqualTo(shield));
         }
 
         [Test]
-        public void GenerateShield_Predetermined()
+        public void DoNotGenerateShield_IfNoFreeHands_MultiweaponAttacks()
         {
-            Assert.Fail("not yet written");
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Strength] });
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, IsPrimary = false, BaseAbility = abilities[AbilityConstants.Strength] });
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, IsPrimary = false, BaseAbility = abilities[AbilityConstants.Strength] });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+            feats.Add(new Feat { Name = FeatConstants.ShieldProficiency });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var twoHanded = WeaponConstants.GetAllTwoHandedMelee(false, false);
+            var simpleOneHandedMelee = simple.Intersect(melee).Except(twoHanded);
+            var non = melee.Except(simple).Except(twoHanded);
+
+            mockCollectionSelector
+                .SetupSequence(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleOneHandedMelee)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns(WeaponConstants.Dagger)
+                .Returns(WeaponConstants.Club)
+                .Returns(WeaponConstants.LightPick);
+
+            var dagger = new Weapon();
+            dagger.Name = WeaponConstants.Dagger;
+            dagger.Damage = "my dagger damage";
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
+                .Returns(dagger);
+
+            var club = new Weapon();
+            club.Name = WeaponConstants.Club;
+            club.Damage = "my club damage";
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club))
+                .Returns(club);
+
+            var pick = new Weapon();
+            pick.Name = WeaponConstants.LightPick;
+            pick.Damage = "my pick damage";
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightPick))
+                .Returns(pick);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+
+            Assert.That(equipment.Weapons.Count(), Is.EqualTo(3));
+            Assert.That(equipment.Weapons, Contains.Item(dagger)
+                .And.Contains(club)
+                .And.Contains(pick));
+            Assert.That(equipment.Shield, Is.Null);
+            mockItemGenerator.Verify(g => g.GenerateAtLevel(It.IsAny<int>(), ItemTypeConstants.Armor, It.IsAny<string>()), Times.Never);
         }
 
         [Test]
-        public void GenerateItem_Predetermined()
+        public void GenerateArmor_Predetermined_Mundane()
         {
-            Assert.Fail("not yet written");
+            feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Returns(new[] { "my armor template" });
+
+            var template = new Item
+            {
+                ItemType = ItemTypeConstants.Armor,
+                Name = "my armor template"
+            };
+            mockItemSelector
+                .Setup(s => s.SelectFrom("my armor template"))
+                .Returns(template);
+
+            var mockMundaneItemGenerator = new Mock<MundaneItemGenerator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<MundaneItemGenerator>(ItemTypeConstants.Armor))
+                .Returns(mockMundaneItemGenerator.Object);
+
+            var armor = new Armor { Name = "my armor" };
+            mockMundaneItemGenerator
+                .Setup(g => g.GenerateFrom(template, false))
+                .Returns(armor);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Armor, Is.EqualTo(armor));
         }
 
         [Test]
-        public void GenerateCustomItem_Predetermined()
+        public void GenerateArmor_Predetermined_Magical()
         {
-            Assert.Fail("not yet written");
+            feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Returns(new[] { "my armor template" });
+
+            var template = new Item
+            {
+                ItemType = ItemTypeConstants.Armor,
+                Name = "my armor template",
+                IsMagical = true,
+            };
+            mockItemSelector
+                .Setup(s => s.SelectFrom("my armor template"))
+                .Returns(template);
+
+            var mockMagicalItemGenerator = new Mock<MagicalItemGenerator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<MagicalItemGenerator>(ItemTypeConstants.Armor))
+                .Returns(mockMagicalItemGenerator.Object);
+
+            var armor = new Armor { Name = "my armor" };
+            mockMagicalItemGenerator
+                .Setup(g => g.GenerateFrom(template, false))
+                .Returns(armor);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Armor, Is.EqualTo(armor));
+        }
+
+        //Example is Nessian Warhound with its barding
+        [Test]
+        public void GenerateArmor_Predetermined_EvenIfCannotUseEquipment()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Returns(new[] { "my armor template" });
+
+            var template = new Item
+            {
+                ItemType = ItemTypeConstants.Armor,
+                Name = "my armor template",
+                IsMagical = true,
+            };
+            mockItemSelector
+                .Setup(s => s.SelectFrom("my armor template"))
+                .Returns(template);
+
+            var mockMagicalItemGenerator = new Mock<MagicalItemGenerator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<MagicalItemGenerator>(ItemTypeConstants.Armor))
+                .Returns(mockMagicalItemGenerator.Object);
+
+            var armor = new Armor { Name = "my armor" };
+            mockMagicalItemGenerator
+                .Setup(g => g.GenerateFrom(template, false))
+                .Returns(armor);
+
+            var equipment = equipmentGenerator.Generate("creature", false, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Armor, Is.EqualTo(armor));
+        }
+
+        [Test]
+        public void GenerateItem_Predetermined_Mundane()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Returns(new[] { "my item template" });
+
+            var template = new Item
+            {
+                ItemType = "my item type",
+                Name = "my item template"
+            };
+            mockItemSelector
+                .Setup(s => s.SelectFrom("my item template"))
+                .Returns(template);
+
+            var mockMundaneItemGenerator = new Mock<MundaneItemGenerator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<MundaneItemGenerator>("my item type"))
+                .Returns(mockMundaneItemGenerator.Object);
+
+            var item = new Item { Name = "my item" };
+            mockMundaneItemGenerator
+                .Setup(g => g.GenerateFrom(template, false))
+                .Returns(item);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Items.Count(), Is.EqualTo(1));
+            Assert.That(equipment.Items, Contains.Item(item));
+        }
+
+        [Test]
+        public void GenerateItem_Predetermined_Magical()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Returns(new[] { "my item template" });
+
+            var template = new Item
+            {
+                ItemType = "my item type",
+                Name = "my item template",
+                IsMagical = true,
+            };
+            mockItemSelector
+                .Setup(s => s.SelectFrom("my item template"))
+                .Returns(template);
+
+            var mockMagicalItemGenerator = new Mock<MagicalItemGenerator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<MagicalItemGenerator>("my item type"))
+                .Returns(mockMagicalItemGenerator.Object);
+
+            var item = new Item { Name = "my item" };
+            mockMagicalItemGenerator
+                .Setup(g => g.GenerateFrom(template, false))
+                .Returns(item);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Items.Count(), Is.EqualTo(1));
+            Assert.That(equipment.Items, Contains.Item(item));
         }
 
         [Test]
         public void GenerateMultipleItems()
         {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateMultipleItems_Predetermined()
+        {
+            //armor
+            //shield (3 hands)
+            //2 melee weapons, 2 ranged weapon
+            //item
             Assert.Fail("not yet written");
         }
 
@@ -1358,10 +1712,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var simple = WeaponConstants.GetAllSimple(false, false);
             var melee = WeaponConstants.GetAllMelee(false, false);
             var ranged = WeaponConstants.GetAllRanged(false, false);
+            var ammunition = WeaponConstants.GetAllAmmunition(false, false);
             var simpleMelee = simple.Intersect(melee);
-            var simpleRanged = simple.Intersect(ranged);
+            var simpleRanged = simple.Intersect(ranged).Except(ammunition);
             var nonMelee = melee.Except(simple);
-            var nonRanged = ranged.Except(simple);
+            var nonRanged = ranged.Except(simple).Except(ammunition);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
@@ -1431,12 +1786,39 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield"))
                 .Returns(shield);
 
-            Assert.Fail("set up predetermined items");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Returns(new[] { "my item template" });
+
+            var template = new Item
+            {
+                ItemType = "my item type",
+                Name = "my item template",
+                IsMagical = true,
+            };
+            mockItemSelector
+                .Setup(s => s.SelectFrom("my item template"))
+                .Returns(template);
+
+            var mockMagicalItemGenerator = new Mock<MagicalItemGenerator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<MagicalItemGenerator>("my item type"))
+                .Returns(mockMagicalItemGenerator.Object);
+
+            var item = new Item { Name = "my item" };
+            mockMagicalItemGenerator
+                .Setup(g => g.GenerateFrom(template, false))
+                .Returns(item);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
-            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(2));
-            Assert.That(equipment.Weapons.First(), Is.EqualTo(meleeWeapon));
-            Assert.That(equipment.Weapons.Last(), Is.EqualTo(rangedWeapon));
+            Assert.That(equipment.Weapons.Count(), Is.EqualTo(2));
+            Assert.That(equipment.Weapons, Contains.Item(meleeWeapon)
+                .And.Contains(rangedWeapon));
+
+            Assert.That(equipment.Armor, Is.EqualTo(armor));
+            Assert.That(equipment.Shield, Is.EqualTo(shield));
+            Assert.That(equipment.Items.Count(), Is.EqualTo(1));
+            Assert.That(equipment.Items, Contains.Item(item));
 
             Assert.That(attacks, Has.Count.EqualTo(7));
             Assert.That(attacks[5].Name, Is.EqualTo("my simple melee weapon"));
@@ -1452,11 +1834,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(attacks[6].IsNatural, Is.False);
             Assert.That(attacks[6].IsSpecial, Is.False);
             Assert.That(attacks[6].AttackBonuses, Is.Empty);
-
-            Assert.That(equipment.Armor, Is.EqualTo(armor));
-            Assert.That(equipment.Shield, Is.EqualTo(shield));
-
-            Assert.Fail("assert predetermined items");
         }
 
         [Test]
@@ -2142,6 +2519,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
     {
         public static bool IsEquivalentTo<T>(this IEnumerable<T> source, IEnumerable<T> target)
         {
+            if (source == null || target == null)
+            {
+                return source == target;
+            }
+
             return source.Count() == target.Count()
                 && !source.Except(target).Any();
         }

@@ -59,7 +59,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [Test]
         public void AttackDataNames()
         {
-            var names = CreatureConstants.All();
+            var names = CreatureConstants.GetAll();
             AssertCollectionNames(names);
         }
 

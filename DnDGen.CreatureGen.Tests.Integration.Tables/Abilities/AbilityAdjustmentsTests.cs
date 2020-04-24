@@ -42,7 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [Test]
         public void AbilityAdjustmentsNames()
         {
-            var creatures = CreatureConstants.All();
+            var creatures = CreatureConstants.GetAll();
             var names = creatures.Union(new[] { GroupConstants.All });
 
             AssertCollectionNames(names);
@@ -70,7 +70,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                     testCases[GroupConstants.All][AbilityConstants.Strength] = 0;
                     testCases[GroupConstants.All][AbilityConstants.Wisdom] = 0;
 
-                    var creatures = CreatureConstants.All();
+                    var creatures = CreatureConstants.GetAll();
 
                     foreach (var creature in creatures)
                     {

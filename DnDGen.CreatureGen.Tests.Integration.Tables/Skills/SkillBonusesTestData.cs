@@ -17,7 +17,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             get
             {
                 var testCases = new Dictionary<string, Dictionary<string, int>>();
-                var creatures = CreatureConstants.All();
+                var creatures = CreatureConstants.GetAll();
 
                 foreach (var creature in creatures)
                 {

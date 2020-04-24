@@ -36,7 +36,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void CreatureTypesNames()
         {
-            var creatures = CreatureConstants.All();
+            var creatures = CreatureConstants.GetAll();
             AssertCollectionNames(creatures);
         }
 

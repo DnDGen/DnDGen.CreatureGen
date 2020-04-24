@@ -861,7 +861,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [Test]
         public void AllCreatureConstants()
         {
-            var creatures = CreatureConstants.All();
+            var creatures = CreatureConstants.GetAll();
             var creatureConstants = typeof(CreatureConstants);
             var fields = creatureConstants.GetFields(BindingFlags.Public | BindingFlags.Static);
             var constantFields = fields.Where(f => f.IsLiteral && !f.IsInitOnly);

@@ -10,7 +10,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
         {
             get
             {
-                var creatures = CreatureConstants.All();
+                var creatures = CreatureConstants.GetAll();
 
                 foreach (var creature in creatures)
                 {

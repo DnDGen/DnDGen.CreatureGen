@@ -15,7 +15,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [Test]
         public void SkillBonusesNames()
         {
-            var creatures = CreatureConstants.All();
+            var creatures = CreatureConstants.GetAll();
             var types = CreatureConstants.Types.All();
             var subtypes = CreatureConstants.Types.Subtypes.All();
 

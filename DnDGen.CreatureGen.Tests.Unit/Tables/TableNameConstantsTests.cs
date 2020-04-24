@@ -20,6 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Collection.FeatData, "FeatData")]
         [TestCase(TableNameConstants.Collection.FeatFoci, "FeatFoci")]
         [TestCase(TableNameConstants.Collection.FeatGroups, "FeatGroups")]
+        [TestCase(TableNameConstants.Collection.PredeterminedItems, "PredeterminedItems")]
         [TestCase(TableNameConstants.Collection.RequiredAlignments, "RequiredAlignments")]
         [TestCase(TableNameConstants.Collection.RequiredFeats, "RequiredFeats")]
         [TestCase(TableNameConstants.Collection.RequiredSizes, "RequiredSizes")]

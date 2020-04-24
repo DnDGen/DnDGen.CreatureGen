@@ -23,7 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             get
             {
                 var testCases = new Dictionary<string, List<string[]>>();
-                var creatures = CreatureConstants.All();
+                var creatures = CreatureConstants.GetAll();
                 var helper = new SpecialQualityHelper();
 
                 foreach (var creature in creatures)
@@ -488,6 +488,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Avoral].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25));
 
                 testCases[CreatureConstants.Azer].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 13));
+                testCases[CreatureConstants.Azer].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.LightHammer, requiresEquipment: true));
+                testCases[CreatureConstants.Azer].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Warhammer, requiresEquipment: true));
+                testCases[CreatureConstants.Azer].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Spear, requiresEquipment: true));
+                testCases[CreatureConstants.Azer].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Shortspear, requiresEquipment: true));
+                testCases[CreatureConstants.Azer].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Longspear, requiresEquipment: true));
 
                 testCases[CreatureConstants.Babau].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
                 testCases[CreatureConstants.Babau].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));

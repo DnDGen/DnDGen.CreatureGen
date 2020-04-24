@@ -26,7 +26,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AdvancementsNames()
         {
-            var creatures = CreatureConstants.All();
+            var creatures = CreatureConstants.GetAll();
             var creatureTypes = CreatureConstants.Types.All();
 
             var names = creatures.Union(creatureTypes);
@@ -61,7 +61,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 get
                 {
                     var testCases = new Dictionary<string, Dictionary<string, string[]>>();
-                    var creatures = CreatureConstants.All();
+                    var creatures = CreatureConstants.GetAll();
 
                     foreach (var creature in creatures)
                     {

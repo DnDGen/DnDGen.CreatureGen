@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Selectors.Collections;
+﻿using DnDGen.CreatureGen.Selectors;
+using DnDGen.CreatureGen.Selectors.Collections;
 using NUnit.Framework;
 
 namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
@@ -52,6 +53,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         public void BonusSelectorIsInjected()
         {
             AssertNotSingleton<IBonusSelector>();
+        }
+
+        [Test]
+        public void ItemSelectorIsInjected()
+        {
+            AssertNotSingleton<IItemSelector>();
         }
     }
 }

@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AerialManeuverabilityNames()
         {
-            var creatures = CreatureConstants.All();
+            var creatures = CreatureConstants.GetAll();
             AssertCollectionNames(creatures);
         }
 

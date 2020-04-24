@@ -23,6 +23,7 @@
             public const string SpecialQualityData = "SpecialQualityData";
             public const string FeatFoci = "FeatFoci";
             public const string FeatGroups = "FeatGroups";
+            public const string PredeterminedItems = "PredeterminedItems";
             public const string RequiredAlignments = "RequiredAlignments";
             public const string RequiredFeats = "RequiredFeats";
             public const string RequiredSizes = "RequiredSizes";

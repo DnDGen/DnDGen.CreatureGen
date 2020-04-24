@@ -26,7 +26,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 SizeConstants.Fine,
             };
 
-            var creatures = CreatureConstants.All();
+            var creatures = CreatureConstants.GetAll();
             var names = sizes.Union(creatures);
 
             AssertCollectionNames(names);
