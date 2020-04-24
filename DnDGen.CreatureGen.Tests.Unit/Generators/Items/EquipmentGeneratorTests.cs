@@ -1257,11 +1257,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateShield()
         {
-            Assert.Fail("not yet written");
+            feats.Add(new Feat { Name = FeatConstants.ShieldProficiency });
+
+            var shields = ArmorConstants.GetAllShields(false);
+            var non = new[] { ArmorConstants.TowerShield };
+            var proficientShields = shields.Except(non);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(proficientShields)),
+                    null,
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("my shield");
+
+            var shield = new Armor { Name = "my shield" };
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield"))
+                .Returns(shield);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Shield, Is.EqualTo(shield));
         }
 
         [Test]
         public void GenerateShield_Tower()
+        {
+            feats.Add(new Feat { Name = FeatConstants.ShieldProficiency });
+
+            var shields = ArmorConstants.GetAllShields(false);
+            var non = new[] { ArmorConstants.TowerShield };
+            var proficientShields = shields.Except(non);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(shields)),
+                    null,
+                    null,
+                    It.Is<IEnumerable<string>>(nn => !nn.Any())))
+                .Returns("my shield");
+
+            var shield = new Armor { Name = "my shield" };
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield"))
+                .Returns(shield);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Shield, Is.EqualTo(shield));
+        }
+
+        [Test]
+        public void DoNotGenerateShield_IfNoFreeHands_TwoHandedWeapon()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void DoNotGenerateShield_IfNoFreeHands_TwoWeaponAttacks()
         {
             Assert.Fail("not yet written");
         }
@@ -1299,7 +1351,112 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateAllEquipment()
         {
-            Assert.Fail("not yet written");
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var ranged = WeaponConstants.GetAllRanged(false, false);
+            var simpleMelee = simple.Intersect(melee);
+            var simpleRanged = simple.Intersect(ranged);
+            var nonMelee = melee.Except(simple);
+            var nonRanged = ranged.Except(simple);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleMelee)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(nonMelee))))
+                .Returns("simple melee weapon");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleRanged)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(nonRanged))))
+                .Returns("simple ranged weapon");
+
+            var meleeWeapon = new Weapon();
+            meleeWeapon.Name = "my simple melee weapon";
+            meleeWeapon.Damage = "my damage";
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple melee weapon"))
+                .Returns(meleeWeapon);
+
+            var rangedWeapon = new Weapon();
+            rangedWeapon.Name = "my simple ranged weapon";
+            rangedWeapon.Damage = "my damage";
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple ranged weapon"))
+                .Returns(rangedWeapon);
+
+            feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
+
+            var light = ArmorConstants.GetAllLightArmors(false);
+            var allArmors = ArmorConstants.GetAllArmors(false);
+            var non = allArmors.Except(light);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(light)),
+                    null,
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("my armor");
+
+            var armor = new Armor { Name = "my armor" };
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor"))
+                .Returns(armor);
+
+            feats.Add(new Feat { Name = FeatConstants.ShieldProficiency });
+
+            var shields = ArmorConstants.GetAllShields(false);
+            var tower = new[] { ArmorConstants.TowerShield };
+            var proficientShields = shields.Except(tower);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(proficientShields)),
+                    null,
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(tower))))
+                .Returns("my shield");
+
+            var shield = new Armor { Name = "my shield" };
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield"))
+                .Returns(shield);
+
+            Assert.Fail("set up predetermined items");
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities);
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(2));
+            Assert.That(equipment.Weapons.First(), Is.EqualTo(meleeWeapon));
+            Assert.That(equipment.Weapons.Last(), Is.EqualTo(rangedWeapon));
+
+            Assert.That(attacks, Has.Count.EqualTo(7));
+            Assert.That(attacks[5].Name, Is.EqualTo("my simple melee weapon"));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].IsMelee, Is.True);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].AttackBonuses, Is.Empty);
+
+            Assert.That(attacks[6].Name, Is.EqualTo("my simple ranged weapon"));
+            Assert.That(attacks[6].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[6].IsMelee, Is.False);
+            Assert.That(attacks[6].IsNatural, Is.False);
+            Assert.That(attacks[6].IsSpecial, Is.False);
+            Assert.That(attacks[6].AttackBonuses, Is.Empty);
+
+            Assert.That(equipment.Armor, Is.EqualTo(armor));
+            Assert.That(equipment.Shield, Is.EqualTo(shield));
+
+            Assert.Fail("assert predetermined items");
         }
 
         [Test]

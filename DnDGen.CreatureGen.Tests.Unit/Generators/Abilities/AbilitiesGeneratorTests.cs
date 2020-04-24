@@ -176,7 +176,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             var equipment = new Equipment();
             equipment.Armor = null;
-            equipment.Shield = new Armor();
+            equipment.Shield = new Armor
+            {
+                MaxDexterityBonus = int.MaxValue
+            };
 
             var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
             Assert.That(modifiedAbilities, Is.EqualTo(abilities));
@@ -232,7 +235,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             {
                 MaxDexterityBonus = 9266
             };
-            equipment.Shield = new Armor();
+            equipment.Shield = new Armor
+            {
+                MaxDexterityBonus = int.MaxValue
+            };
 
             var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
             Assert.That(modifiedAbilities, Is.EqualTo(abilities));
