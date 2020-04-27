@@ -180,7 +180,7 @@ namespace DnDGen.CreatureGen.Generators.Items
 
             //Get predetermined items
             var allPredeterminedItems = GetPredeterminedItems(creatureName);
-            var predeterminedWeapons = allPredeterminedItems.Where(i => i is Weapon);
+            var predeterminedWeapons = allPredeterminedItems.Where(i => i is Weapon).ToList();
             var predeterminedArmors = allPredeterminedItems.Where(i => i is Armor);
             equipment.Items = allPredeterminedItems.Except(predeterminedWeapons).Except(predeterminedArmors);
 
@@ -230,13 +230,27 @@ namespace DnDGen.CreatureGen.Generators.Items
                     foreach (var attack in equipmentMeleeAttacks)
                     {
                         //set predetermined melee weapons first
+                        Weapon weapon = null;
+                        string weaponName = null;
 
-                        var weaponName = collectionSelector.SelectRandomFrom(
-                            proficientMeleeWeaponNames.Common,
-                            proficientMeleeWeaponNames.Uncommon,
-                            null,
-                            nonProficientMeleeWeaponNames);
-                        var weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName) as Weapon;
+                        if (predeterminedWeapons.Any())
+                        {
+                            weapon = predeterminedWeapons
+                                .FirstOrDefault(i => i.Attributes.Contains(AttributeConstants.Melee))
+                                as Weapon;
+                            weaponName = weapon.Name;
+
+                            predeterminedWeapons.RemoveAt(0);
+                        }
+                        else
+                        {
+                            weaponName = collectionSelector.SelectRandomFrom(
+                                proficientMeleeWeaponNames.Common,
+                                proficientMeleeWeaponNames.Uncommon,
+                                null,
+                                nonProficientMeleeWeaponNames);
+                            weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName) as Weapon;
+                        }
 
                         weapons.Add(weapon);
 
