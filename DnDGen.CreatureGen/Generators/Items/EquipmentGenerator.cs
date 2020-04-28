@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Attacks;
+using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors;
@@ -174,14 +175,20 @@ namespace DnDGen.CreatureGen.Generators.Items
             return clone;
         }
 
-        public Equipment Generate(string creatureName, bool canUseEquipment, IEnumerable<Feat> feats, int level, IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities)
+        public Equipment Generate(string creatureName, bool canUseEquipment, IEnumerable<Feat> feats, int level, IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities, string size)
         {
             var equipment = new Equipment();
 
             //Get predetermined items
-            var allPredeterminedItems = GetPredeterminedItems(creatureName);
-            var predeterminedWeapons = allPredeterminedItems.Where(i => i is Weapon).ToList();
-            var predeterminedArmors = allPredeterminedItems.Where(i => i is Armor);
+            var allPredeterminedItems = GetPredeterminedItems(creatureName, size);
+            var predeterminedWeapons = allPredeterminedItems
+                .Where(i => i is Weapon)
+                .Select(i => i as Weapon)
+                .ToList();
+            var predeterminedArmors = allPredeterminedItems
+                .Where(i => i is Armor)
+                .Select(i => i as Armor)
+                .ToList();
             equipment.Items = allPredeterminedItems.Except(predeterminedWeapons).Except(predeterminedArmors);
 
             if (predeterminedArmors.Any())
@@ -227,24 +234,22 @@ namespace DnDGen.CreatureGen.Generators.Items
                         nonProficientMeleeWeaponNames = nonProficientMeleeWeaponNames.Except(twoHandedWeapons);
                     }
 
+                    var primaryMeleeAttacks = equipmentMeleeAttacks.Where(a => a.IsPrimary).ToArray();
+                    var primaryLightBonusAdded = false;
+
                     foreach (var attack in equipmentMeleeAttacks)
                     {
-                        //set predetermined melee weapons first
                         Weapon weapon = null;
-                        string weaponName = null;
 
-                        if (predeterminedWeapons.Any())
+                        if (predeterminedWeapons.Any(i => i.Attributes.Contains(AttributeConstants.Melee)))
                         {
-                            weapon = predeterminedWeapons
-                                .FirstOrDefault(i => i.Attributes.Contains(AttributeConstants.Melee))
-                                as Weapon;
-                            weaponName = weapon.Name;
+                            weapon = predeterminedWeapons.First(i => i.Attributes.Contains(AttributeConstants.Melee));
 
-                            predeterminedWeapons.RemoveAt(0);
+                            predeterminedWeapons.Remove(weapon);
                         }
                         else
                         {
-                            weaponName = collectionSelector.SelectRandomFrom(
+                            var weaponName = collectionSelector.SelectRandomFrom(
                                 proficientMeleeWeaponNames.Common,
                                 proficientMeleeWeaponNames.Uncommon,
                                 null,
@@ -257,7 +262,9 @@ namespace DnDGen.CreatureGen.Generators.Items
                         attack.Name = weapon.Name;
                         attack.DamageRoll = weapon.Damage;
 
-                        if (nonProficientMeleeWeaponNames.Contains(weaponName))
+                        //Is not proficient with the weapon
+                        if (!proficientMeleeWeaponNames.Common.Any(weapon.NameMatches)
+                            && !proficientMeleeWeaponNames.Uncommon.Any(weapon.NameMatches))
                         {
                             attack.AttackBonuses.Add(-4);
                         }
@@ -274,7 +281,8 @@ namespace DnDGen.CreatureGen.Generators.Items
                         var bonusFeats = nonProficiencyFeats.Where(f => f.Foci.Any(weapon.NameMatches));
                         foreach (var feat in bonusFeats)
                         {
-                            attack.AttackBonuses.Add(feat.Power);
+                            if (feat.Power != 0)
+                                attack.AttackBonuses.Add(feat.Power);
                         }
 
                         var isLight = light.Any(weapon.NameMatches);
@@ -283,9 +291,19 @@ namespace DnDGen.CreatureGen.Generators.Items
                             attack.BaseAbility = abilities[AbilityConstants.Dexterity];
                         }
 
-                        if (!hasMultipleEquippedMeleeAttacks && isLight)
+                        if (hasMultipleEquippedMeleeAttacks && !attack.IsPrimary && isLight)
                         {
                             attack.AttackBonuses.Add(2);
+
+                            if (!primaryLightBonusAdded)
+                            {
+                                foreach (var primaryAttack in primaryMeleeAttacks)
+                                {
+                                    primaryAttack.AttackBonuses.Add(2);
+                                }
+                            }
+
+                            primaryLightBonusAdded = true;
                         }
                     }
                 }
@@ -315,26 +333,40 @@ namespace DnDGen.CreatureGen.Generators.Items
 
                     foreach (var attack in equipmentRangedAttacks)
                     {
-                        //set predetermined ranged weapons first
+                        Weapon weapon = null;
 
-                        var weaponName = collectionSelector.SelectRandomFrom(
-                            proficientRangedWeaponNames.Common,
-                            proficientRangedWeaponNames.Uncommon,
-                            null,
-                            nonProficientRangedWeaponNames);
-                        var weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName) as Weapon;
+                        if (predeterminedWeapons.Any(i =>
+                            i.Attributes.Contains(AttributeConstants.Ranged)
+                            && !i.Attributes.Contains(AttributeConstants.Melee)))
+                        {
+                            weapon = predeterminedWeapons.First(i =>
+                                i.Attributes.Contains(AttributeConstants.Ranged)
+                                && !i.Attributes.Contains(AttributeConstants.Melee));
+
+                            predeterminedWeapons.Remove(weapon);
+                        }
+                        else
+                        {
+                            var weaponName = collectionSelector.SelectRandomFrom(
+                                proficientRangedWeaponNames.Common,
+                                proficientRangedWeaponNames.Uncommon,
+                                null,
+                                nonProficientRangedWeaponNames);
+                            weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName) as Weapon;
+                        }
 
                         weapons.Add(weapon);
 
                         attack.Name = weapon.Name;
                         attack.DamageRoll = weapon.Damage;
 
-                        if (nonProficientRangedWeaponNames.Contains(weaponName))
+                        if (!proficientRangedWeaponNames.Common.Any(weapon.NameMatches)
+                            && !proficientRangedWeaponNames.Uncommon.Any(weapon.NameMatches))
                         {
                             attack.AttackBonuses.Add(-4);
                         }
 
-                        if (weapon.Magic.Bonus > 0)
+                        if (weapon.Magic.Bonus != 0)
                         {
                             attack.AttackBonuses.Add(weapon.Magic.Bonus);
                         }
@@ -346,7 +378,8 @@ namespace DnDGen.CreatureGen.Generators.Items
                         var bonusFeats = nonProficiencyFeats.Where(f => f.Foci.Any(weapon.NameMatches));
                         foreach (var feat in bonusFeats)
                         {
-                            attack.AttackBonuses.Add(feat.Power);
+                            if (feat.Power != 0)
+                                attack.AttackBonuses.Add(feat.Power);
                         }
 
                         if (!weapon.Attributes.Contains(AttributeConstants.Thrown)
@@ -355,11 +388,11 @@ namespace DnDGen.CreatureGen.Generators.Items
                             attack.MaxNumberOfAttacks = 1;
                         }
 
-                        if (crossbows.Any(c => weapon.NameMatches(c)))
+                        if (crossbows.Any(weapon.NameMatches))
                         {
                             attack.MaxNumberOfAttacks = 1;
 
-                            if (rapidReload?.Foci?.Any(f => weapon.NameMatches(f)) == true
+                            if (rapidReload?.Foci?.Any(weapon.NameMatches) == true
                                 && (weapon.NameMatches(WeaponConstants.LightCrossbow)
                                     || weapon.NameMatches(WeaponConstants.HandCrossbow)))
                             {
@@ -385,7 +418,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                     var nonProficientArmorNames = armorNames.Except(proficientArmorNames);
                     var armorName = collectionSelector.SelectRandomFrom(proficientArmorNames, null, null, nonProficientArmorNames);
 
-                    equipment.Armor = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Armor, armorName);
+                    equipment.Armor = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Armor, armorName) as Armor;
                 }
 
                 var shieldNames = ArmorConstants.GetAllShields(false);
@@ -400,7 +433,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                     var nonProficientShieldNames = shieldNames.Except(proficientShieldNames);
                     var shieldName = collectionSelector.SelectRandomFrom(proficientShieldNames, null, null, nonProficientShieldNames);
 
-                    equipment.Shield = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Armor, shieldName);
+                    equipment.Shield = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Armor, shieldName) as Armor;
                 }
             }
 
@@ -435,21 +468,24 @@ namespace DnDGen.CreatureGen.Generators.Items
                 uncommon.AddRange(weaponFoci);
             }
 
-            if (proficiencyFeats.Any(f => f.Name == FeatConstants.WeaponProficiency_Simple && f.Foci.Contains(GroupConstants.All)))
+            if (proficiencyFeats.Any(f => f.Name == FeatConstants.WeaponProficiency_Simple
+                && f.Foci.Contains(GroupConstants.All)))
             {
                 var simpleWeapons = WeaponConstants.GetAllSimple(false, false);
                 simpleWeapons = simpleWeapons.Intersect(baseWeapons);
                 uncommon.AddRange(simpleWeapons);
             }
 
-            if (proficiencyFeats.Any(f => f.Name == FeatConstants.WeaponProficiency_Martial && f.Foci.Contains(GroupConstants.All)))
+            if (proficiencyFeats.Any(f => f.Name == FeatConstants.WeaponProficiency_Martial
+                && f.Foci.Contains(GroupConstants.All)))
             {
                 var martialWeapons = WeaponConstants.GetAllMartial(false, false);
                 martialWeapons = martialWeapons.Intersect(baseWeapons);
                 uncommon.AddRange(martialWeapons);
             }
 
-            if (proficiencyFeats.Any(f => f.Name == FeatConstants.WeaponProficiency_Exotic && f.Foci.Contains(GroupConstants.All)))
+            if (proficiencyFeats.Any(f => f.Name == FeatConstants.WeaponProficiency_Exotic
+                && f.Foci.Contains(GroupConstants.All)))
             {
                 var exoticWeapons = WeaponConstants.GetAllExotic(false, false);
                 exoticWeapons = exoticWeapons.Intersect(baseWeapons);
@@ -550,11 +586,11 @@ namespace DnDGen.CreatureGen.Generators.Items
             return names;
         }
 
-        private IEnumerable<Item> GetPredeterminedItems(string creatureName)
+        private IEnumerable<Item> GetPredeterminedItems(string creatureName, string size)
         {
             var setItems = new List<Item>();
             var setTreasure = collectionSelector.SelectFrom(TableNameConstants.Collection.PredeterminedItems, creatureName);
-            var setItemTemplates = GetTemplates(setTreasure);
+            var setItemTemplates = GetTemplates(setTreasure, size);
 
             foreach (var template in setItemTemplates)
             {
@@ -565,17 +601,21 @@ namespace DnDGen.CreatureGen.Generators.Items
             return setItems;
         }
 
-        private IEnumerable<Item> GetTemplates(IEnumerable<string> setTreasure)
+        private IEnumerable<Item> GetTemplates(IEnumerable<string> setTreasure, string size)
         {
             var templates = new List<Item>();
+            var sizes = SizeConstants.GetOrdered();
 
             foreach (var setItemTemplate in setTreasure)
             {
                 var template = itemSelector.SelectFrom(setItemTemplate);
+                if (!template.Traits.Intersect(sizes).Any())
+                {
+                    template.Traits.Add(size);
+                }
+
                 templates.Add(template);
             }
-
-            //if weapon or armor, and if no size set, use the creature's size
 
             return templates;
         }

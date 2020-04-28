@@ -153,7 +153,14 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
             creature.Attacks = attacksGenerator.ApplyAttackBonuses(creature.Attacks, allFeats, creature.Abilities);
             creature.Attacks = equipmentGenerator.AddAttacks(allFeats, creature.Attacks, creature.NumberOfHands);
-            creature.Equipment = equipmentGenerator.Generate(creature.Name, creature.CanUseEquipment, allFeats, creature.HitPoints.RoundedHitDiceQuantity, creature.Attacks, creature.Abilities);
+            creature.Equipment = equipmentGenerator.Generate(
+                creature.Name,
+                creature.CanUseEquipment,
+                allFeats,
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Attacks,
+                creature.Abilities,
+                creature.Size);
 
             creature.Abilities = abilitiesGenerator.SetMaxBonuses(creature.Abilities, creature.Equipment);
             creature.Skills = skillsGenerator.SetArmorCheckPenalties(creature.Skills, creature.Equipment);

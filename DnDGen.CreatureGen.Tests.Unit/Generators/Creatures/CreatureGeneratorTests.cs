@@ -236,7 +236,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.IsAny<IEnumerable<Feat>>(),
                     hitPoints.RoundedHitDiceQuantity,
                     attacks,
-                    abilities))
+                    abilities,
+                    creatureData.Size))
                 .Returns(equipment);
         }
 
@@ -287,7 +288,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.IsAny<IEnumerable<Feat>>(),
                     hitPoints.RoundedHitDiceQuantity,
                     attacks,
-                    abilities))
+                    abilities,
+                    creatureData.Size))
                 .Returns(equipment);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -577,7 +579,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.IsAny<IEnumerable<Feat>>(),
                     advancedHitPoints.RoundedHitDiceQuantity,
                     attacks,
-                    abilities))
+                    abilities,
+                    advancement.Size))
                 .Returns(advancedEquipment);
 
             mockArmorClassGenerator
@@ -674,7 +677,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.IsAny<IEnumerable<Feat>>(),
                     advancedHitPoints.RoundedHitDiceQuantity,
                     equipmentAdvancedAttacks,
-                    abilities))
+                    abilities,
+                    "advanced size"))
                 .Returns(advancedEquipment);
 
             var advancedArmorClass = new ArmorClass();
@@ -821,7 +825,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.IsAny<IEnumerable<Feat>>(),
                     advancedHitPoints.RoundedHitDiceQuantity,
                     equipmentAdvancedAttacks,
-                    abilities))
+                    abilities,
+                    "advanced size"))
                 .Returns(advancedEquipment);
 
             var advancedArmorClass = new ArmorClass();
@@ -910,7 +915,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.IsAny<IEnumerable<Feat>>(),
                     updatedHitPoints.RoundedHitDiceQuantity,
                     attacks,
-                    abilities))
+                    abilities,
+                    creatureData.Size))
                 .Returns(equipment);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -983,7 +989,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.IsAny<IEnumerable<Feat>>(),
                     advancedUpdatedHitPoints.RoundedHitDiceQuantity,
                     equipmentAdvancedAttacks,
-                    abilities))
+                    abilities,
+                    "advanced size"))
                 .Returns(advancedEquipment);
 
             var advancedArmorClass = new ArmorClass();
@@ -1092,7 +1099,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.IsAny<IEnumerable<Feat>>(),
                     advancedHitPoints.RoundedHitDiceQuantity,
                     equipmentAdvancedAttacks,
-                    abilities))
+                    abilities,
+                    "advanced size"))
                 .Returns(advancedEquipment);
 
             var advancedArmorClass = new ArmorClass();
@@ -1159,7 +1167,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockEquipmentGenerator.Setup(g => g.AddAttacks(feats, modifiedAttacks, creatureData.NumberOfHands)).Returns(equipmentAttacks);
 
             mockEquipmentGenerator
-                .Setup(g => g.Generate("creature", creatureData.CanUseEquipment, feats, hitPoints.RoundedHitDiceQuantity, equipmentAttacks, abilities))
+                .Setup(g => g.Generate(
+                    "creature",
+                    creatureData.CanUseEquipment,
+                    feats,
+                    hitPoints.RoundedHitDiceQuantity,
+                    equipmentAttacks,
+                    abilities,
+                    creatureData.Size))
                 .Returns(equipment);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -1232,7 +1247,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.IsAny<IEnumerable<Feat>>(),
                     advancedHitPoints.RoundedHitDiceQuantity,
                     equipmentAttacks,
-                    abilities))
+                    abilities,
+                    "advanced size"))
                 .Returns(advancedEquipment);
 
             var advancedArmorClass = new ArmorClass();
@@ -1458,7 +1474,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.IsAny<IEnumerable<Feat>>(),
                     advancedHitPoints.RoundedHitDiceQuantity,
                     equipmentAdvancedAttacks,
-                    abilities))
+                    abilities,
+                    "advanced size"))
                 .Returns(advancedEquipment);
 
             var advancedArmorClass = new ArmorClass();
