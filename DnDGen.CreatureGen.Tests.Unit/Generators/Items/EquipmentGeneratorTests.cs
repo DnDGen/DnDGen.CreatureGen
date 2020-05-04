@@ -1631,10 +1631,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
 
             var simple = WeaponConstants.GetAllSimple(false, false);
-            var ranged = WeaponConstants.GetAllRanged(false, false);
-            var ammo = WeaponConstants.GetAllAmmunition(false, false);
-            var simpleRanged = simple.Intersect(ranged).Except(ammo);
-            var non = ranged.Except(simple).Except(ammo);
+            var ranged = GetRangedWithBowTemplates();
+            var simpleRanged = simple.Intersect(ranged);
+            var non = ranged.Except(simpleRanged);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
@@ -1667,7 +1666,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateRangedWeapon_NonProficiencyFocus()
         {
-            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
             var foci = new[] { WeaponConstants.Dart };
             feats.Add(new Feat { Name = "weapon feat", Foci = foci });
@@ -1709,17 +1708,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateRangedWeapon_MultipleNonProficiencyFoci()
         {
-            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
             var foci = new[] { WeaponConstants.Dart, WeaponConstants.Javelin };
             feats.Add(new Feat { Name = "weapon feat", Foci = foci });
 
-            var bowTemplates = GetBowTemplates();
-            var simple = WeaponConstants.GetAllSimple(false, false).Union(bowTemplates);
+            var simple = WeaponConstants.GetAllSimple(false, false);
             var ranged = GetRangedWithBowTemplates();
-            var ammo = WeaponConstants.GetAllAmmunition(false, false).Except(new[] { WeaponConstants.Shuriken });
-            var simpleRanged = simple.Intersect(ranged).Except(ammo);
-            var non = ranged.Except(simple).Except(ammo);
+            var simpleRanged = simple.Intersect(ranged);
+            var non = ranged.Except(simple);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
@@ -1752,7 +1749,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateRangedWeapon_MultipleNonProficiencyFoci_MultipleFeat()
         {
-            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
             var foci = new[] { WeaponConstants.Dart, WeaponConstants.Javelin };
             feats.Add(new Feat { Name = "weapon feat", Foci = foci });
@@ -1990,10 +1987,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             feats.Add(new Feat { Name = "bonus feat", Power = 90210, Foci = new[] { WeaponConstants.Dart } });
 
             var simple = WeaponConstants.GetAllSimple(false, false);
-            var ranged = WeaponConstants.GetAllRanged(false, false);
-            var ammo = WeaponConstants.GetAllAmmunition(false, false);
-            var simpleRanged = simple.Intersect(ranged).Except(ammo);
-            var non = ranged.Except(simple).Except(ammo);
+            var ranged = GetRangedWithBowTemplates();
+            var simpleRanged = simple.Intersect(ranged);
+            var non = ranged.Except(simpleRanged);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
@@ -2026,9 +2022,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         private List<string> GetRangedWithBowTemplates()
         {
             var ranged = WeaponConstants.GetAllRanged(false, false).ToList();
+            var ammo = WeaponConstants.GetAllAmmunition(false, false).Except(new[] { WeaponConstants.Shuriken });
 
             ranged.Remove(WeaponConstants.CompositeShortbow);
             ranged.Remove(WeaponConstants.CompositeLongbow);
+            ranged = ranged.Except(ammo).ToList();
 
             var bowTemplates = GetBowTemplates();
             ranged.AddRange(bowTemplates);
@@ -2062,9 +2060,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var bowTemplates = GetBowTemplates();
             var martial = WeaponConstants.GetAllMartial(false, false).Union(bowTemplates);
             var ranged = GetRangedWithBowTemplates();
-            var ammo = WeaponConstants.GetAllAmmunition(false, false);
-            var martialRanged = martial.Intersect(ranged).Except(ammo);
-            var non = ranged.Except(martial).Except(ammo);
+            var martialRanged = martial.Intersect(ranged);
+            var non = ranged.Except(martialRanged);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
@@ -2106,10 +2103,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             feats.Add(new Feat { Name = "bonus feat", Power = 42, Foci = new[] { WeaponConstants.Javelin, "my other weapon" } });
 
             var simple = WeaponConstants.GetAllSimple(false, false);
-            var ranged = WeaponConstants.GetAllRanged(false, false);
-            var ammo = WeaponConstants.GetAllAmmunition(false, false);
-            var simpleRanged = simple.Intersect(ranged).Except(ammo);
-            var non = ranged.Except(simple).Except(ammo);
+            var ranged = GetRangedWithBowTemplates();
+            var simpleRanged = simple.Intersect(ranged);
+            var non = ranged.Except(simpleRanged);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
@@ -2168,15 +2164,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateRangedWeapon_MagicBonus()
         {
-            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
 
-            var bowTemplates = GetBowTemplates();
-            var simple = WeaponConstants.GetAllSimple(false, false).Union(bowTemplates);
+            var simple = WeaponConstants.GetAllSimple(false, false);
             var ranged = GetRangedWithBowTemplates();
-            var ammo = WeaponConstants.GetAllAmmunition(false, false).Except(new[] { WeaponConstants.Shuriken });
-            var simpleRanged = simple.Intersect(ranged).Except(ammo);
-            var non = ranged.Except(simple).Except(ammo);
+            var simpleRanged = simple.Intersect(ranged);
+            var non = ranged.Except(simpleRanged);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
@@ -2212,15 +2206,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateRangedWeapon_MasterworkBonus()
         {
-            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
 
-            var bowTemplates = GetBowTemplates();
-            var simple = WeaponConstants.GetAllSimple(false, false).Union(bowTemplates);
+            var simple = WeaponConstants.GetAllSimple(false, false);
             var ranged = GetRangedWithBowTemplates();
-            var ammo = WeaponConstants.GetAllAmmunition(false, false).Except(new[] { WeaponConstants.Shuriken });
-            var simpleRanged = simple.Intersect(ranged).Except(ammo);
-            var non = ranged.Except(simple).Except(ammo);
+            var simpleRanged = simple.Intersect(ranged);
+            var non = ranged.Except(simpleRanged);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
@@ -2260,10 +2252,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
 
             var simple = WeaponConstants.GetAllSimple(false, false);
-            var ranged = WeaponConstants.GetAllRanged(false, false);
             var ammo = WeaponConstants.GetAllAmmunition(false, false);
-            var simpleRanged = simple.Intersect(ranged).Except(ammo);
-            var non = ranged.Except(simple).Except(ammo);
+            var ranged = GetRangedWithBowTemplates();
+            var simpleRanged = simple.Intersect(ranged);
+            var non = ranged.Except(simpleRanged);
 
             mockCollectionSelector
                 .SetupSequence(s => s.SelectRandomFrom(
@@ -3009,12 +3001,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var simple = WeaponConstants.GetAllSimple(false, false);
             var melee = WeaponConstants.GetAllMelee(false, false);
-            var ranged = WeaponConstants.GetAllRanged(false, false);
             var ammunition = WeaponConstants.GetAllAmmunition(false, false);
+            var ranged = GetRangedWithBowTemplates();
             var simpleMelee = simple.Intersect(melee);
-            var simpleRanged = simple.Intersect(ranged).Except(ammunition);
-            var nonMelee = melee.Except(simple);
-            var nonRanged = ranged.Except(simple).Except(ammunition);
+            var simpleRanged = simple.Intersect(ranged);
+            var nonMelee = melee.Except(simpleMelee);
+            var nonRanged = ranged.Except(simpleRanged);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(

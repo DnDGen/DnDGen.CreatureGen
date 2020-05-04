@@ -312,14 +312,12 @@ namespace DnDGen.CreatureGen.Generators.Items
                 var equipmentRangedAttacks = unnaturalAttacks.Where(a => a.Name == AttributeConstants.Ranged);
                 if (equipmentRangedAttacks.Any())
                 {
-                    var rangedWeaponNames = WeaponConstants.GetAllRanged(false, false);
+                    var rangedWeaponNames = GetRangedWithBowTemplates();
 
                     var proficientRangedWeaponNames = GetProficientWeaponNames(feats, weaponProficiencyFeats, rangedWeaponNames, !hasMultipleEquippedMeleeAttacks);
-                    var ammunition = WeaponConstants.GetAllAmmunition(false, false);
                     var nonProficientRangedWeaponNames = rangedWeaponNames
                         .Except(proficientRangedWeaponNames.Common)
-                        .Except(proficientRangedWeaponNames.Uncommon)
-                        .Except(ammunition);
+                        .Except(proficientRangedWeaponNames.Uncommon);
 
                     var nonProficiencyFeats = feats.Except(weaponProficiencyFeats);
                     var crossbows = new[]
@@ -440,6 +438,36 @@ namespace DnDGen.CreatureGen.Generators.Items
             return equipment;
         }
 
+        private List<string> GetRangedWithBowTemplates()
+        {
+            var ranged = WeaponConstants.GetAllRanged(false, false).ToList();
+            var ammo = WeaponConstants.GetAllAmmunition(false, false).Except(new[] { WeaponConstants.Shuriken });
+
+            ranged.Remove(WeaponConstants.CompositeShortbow);
+            ranged.Remove(WeaponConstants.CompositeLongbow);
+            ranged = ranged.Except(ammo).ToList();
+
+            var bowTemplates = GetBowTemplates();
+            ranged.AddRange(bowTemplates);
+
+            return ranged;
+        }
+
+        private IEnumerable<string> GetBowTemplates()
+        {
+            return new[]
+            {
+                WeaponConstants.CompositePlus0Shortbow,
+                WeaponConstants.CompositePlus1Shortbow,
+                WeaponConstants.CompositePlus2Shortbow,
+                WeaponConstants.CompositePlus0Longbow,
+                WeaponConstants.CompositePlus1Longbow,
+                WeaponConstants.CompositePlus2Longbow,
+                WeaponConstants.CompositePlus3Longbow,
+                WeaponConstants.CompositePlus4Longbow
+            };
+        }
+
         private (IEnumerable<string> Common, IEnumerable<string> Uncommon) GetProficientWeaponNames(
             IEnumerable<Feat> feats,
             IEnumerable<Feat> proficiencyFeats,
@@ -479,7 +507,9 @@ namespace DnDGen.CreatureGen.Generators.Items
             if (proficiencyFeats.Any(f => f.Name == FeatConstants.WeaponProficiency_Martial
                 && f.Foci.Contains(GroupConstants.All)))
             {
-                var martialWeapons = WeaponConstants.GetAllMartial(false, false);
+                var bowTemplates = GetBowTemplates();
+                var martialWeapons = WeaponConstants.GetAllMartial(false, false).Union(bowTemplates);
+
                 martialWeapons = martialWeapons.Intersect(baseWeapons);
                 uncommon.AddRange(martialWeapons);
             }
