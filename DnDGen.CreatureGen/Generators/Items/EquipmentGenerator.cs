@@ -355,6 +355,26 @@ namespace DnDGen.CreatureGen.Generators.Items
 
                         weapons.Add(weapon);
 
+                        //Get ammunition
+                        if (!string.IsNullOrEmpty(weapon.Ammunition))
+                        {
+                            Weapon ammo = null;
+
+                            if (predeterminedWeapons.Any(i => i.NameMatches(weapon.Ammunition)))
+                            {
+                                ammo = predeterminedWeapons.First(i => i.NameMatches(weapon.Ammunition));
+
+                                predeterminedWeapons.Remove(ammo);
+                            }
+                            else
+                            {
+                                ammo = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weapon.Ammunition) as Weapon;
+                            }
+
+                            weapons.Add(ammo);
+                        }
+
+                        //Set up the attack
                         attack.Name = weapon.Name;
                         attack.DamageRoll = weapon.Damage;
 
