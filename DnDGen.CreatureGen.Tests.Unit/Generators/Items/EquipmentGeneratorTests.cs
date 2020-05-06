@@ -1117,7 +1117,43 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateMeleeWeapon_OfCreatureSize()
         {
-            Assert.Fail("not yet written");
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var simpleMelee = simple.Intersect(melee);
+            var non = melee.Except(simple);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleMelee)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("simple weapon");
+
+            var weapon = new Weapon();
+            weapon.Name = WeaponConstants.Club;
+            weapon.Damage = "my damage";
+            weapon.Size = "size";
+
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
+                .Returns(weapon);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
+            Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
+            Assert.That(weapon.Size, Is.EqualTo("size");
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].IsMelee, Is.True);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].AttackBonuses, Is.Empty);
         }
 
         [Test]
@@ -3668,13 +3704,61 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateArmor_OfCreatureSize()
         {
-            Assert.Fail("not yet written");
+            feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
+
+            var light = ArmorConstants.GetAllLightArmors(false);
+            var medium = ArmorConstants.GetAllMediumArmors(false);
+            var heavy = ArmorConstants.GetAllHeavyArmors(false);
+            var armors = light;
+            var non = medium.Union(heavy);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(armors)),
+                    null,
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("my armor");
+
+            var armor = new Armor { Name = "my armor" };
+            armor.Size = "size";
+
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor", "size"))
+                .Returns(armor);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Armor, Is.EqualTo(armor));
+            Assert.That(equipment.Armor.Size, Is.EqualTo("size"));
         }
 
         [Test]
         public void GenerateShield_OfCreatureSize()
         {
-            Assert.Fail("not yet written");
+            feats.Add(new Feat { Name = FeatConstants.ShieldProficiency });
+
+            var shields = ArmorConstants.GetAllShields(false);
+            var non = new[] { ArmorConstants.TowerShield };
+            var proficientShields = shields.Except(non);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(proficientShields)),
+                    null,
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("my shield");
+
+            var shield = new Armor { Name = "my shield" };
+            shield.Size = "size";
+
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield", "size"))
+                .Returns(shield);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Shield, Is.EqualTo(shield));
+            Assert.That(equipment.Shield.Size, Is.EqualTo("size"));
         }
 
         [Test]

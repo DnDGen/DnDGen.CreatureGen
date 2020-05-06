@@ -497,23 +497,47 @@ namespace DnDGen.CreatureGen.Generators.Items
             var common = new List<string>();
             var uncommon = new List<string>();
 
-            var weaponFoci = feats
+            var nonProficiencyFoci = feats
                 .Except(proficiencyFeats)
-                .SelectMany(f => f.Foci)
-                .Intersect(baseWeapons);
+                .SelectMany(f => f.Foci);
 
-            if (weaponFoci.Any())
+            nonProficiencyFoci = SwapForTemplates(nonProficiencyFoci, WeaponConstants.CompositeShortbow,
+                WeaponConstants.CompositePlus0Shortbow,
+                WeaponConstants.CompositePlus1Shortbow,
+                WeaponConstants.CompositePlus2Shortbow);
+
+            nonProficiencyFoci = SwapForTemplates(nonProficiencyFoci, WeaponConstants.CompositeLongbow,
+                WeaponConstants.CompositePlus0Longbow,
+                WeaponConstants.CompositePlus1Longbow,
+                WeaponConstants.CompositePlus2Longbow,
+                WeaponConstants.CompositePlus3Longbow,
+                WeaponConstants.CompositePlus4Longbow);
+
+            var nonProficiencyWeaponFoci = nonProficiencyFoci.Intersect(baseWeapons);
+            if (nonProficiencyWeaponFoci.Any())
             {
-                common.AddRange(weaponFoci);
+                common.AddRange(nonProficiencyWeaponFoci);
             }
 
-            weaponFoci = proficiencyFeats
-                .SelectMany(f => f.Foci)
-                .Intersect(baseWeapons);
+            var proficiencyFoci = proficiencyFeats.SelectMany(f => f.Foci);
 
-            if (weaponFoci.Any())
+            proficiencyFoci = SwapForTemplates(proficiencyFoci, WeaponConstants.CompositeShortbow,
+                WeaponConstants.CompositePlus0Shortbow,
+                WeaponConstants.CompositePlus1Shortbow,
+                WeaponConstants.CompositePlus2Shortbow);
+
+            proficiencyFoci = SwapForTemplates(proficiencyFoci, WeaponConstants.CompositeLongbow,
+                WeaponConstants.CompositePlus0Longbow,
+                WeaponConstants.CompositePlus1Longbow,
+                WeaponConstants.CompositePlus2Longbow,
+                WeaponConstants.CompositePlus3Longbow,
+                WeaponConstants.CompositePlus4Longbow);
+
+            var proficiencyWeaponFoci = proficiencyFoci.Intersect(baseWeapons);
+
+            if (proficiencyWeaponFoci.Any())
             {
-                uncommon.AddRange(weaponFoci);
+                uncommon.AddRange(proficiencyWeaponFoci);
             }
 
             if (proficiencyFeats.Any(f => f.Name == FeatConstants.WeaponProficiency_Simple
@@ -555,24 +579,24 @@ namespace DnDGen.CreatureGen.Generators.Items
                 uncommon = uncommon.Except(twoHandedWeapons).ToList();
             }
 
-            SwapForTemplates(common, WeaponConstants.CompositeShortbow,
+            common = SwapForTemplates(common, WeaponConstants.CompositeShortbow,
                 WeaponConstants.CompositePlus0Shortbow,
                 WeaponConstants.CompositePlus1Shortbow,
                 WeaponConstants.CompositePlus2Shortbow);
 
-            SwapForTemplates(common, WeaponConstants.CompositeLongbow,
+            common = SwapForTemplates(common, WeaponConstants.CompositeLongbow,
                 WeaponConstants.CompositePlus0Longbow,
                 WeaponConstants.CompositePlus1Longbow,
                 WeaponConstants.CompositePlus2Longbow,
                 WeaponConstants.CompositePlus3Longbow,
                 WeaponConstants.CompositePlus4Longbow);
 
-            SwapForTemplates(uncommon, WeaponConstants.CompositeShortbow,
+            uncommon = SwapForTemplates(uncommon, WeaponConstants.CompositeShortbow,
                 WeaponConstants.CompositePlus0Shortbow,
                 WeaponConstants.CompositePlus1Shortbow,
                 WeaponConstants.CompositePlus2Shortbow);
 
-            SwapForTemplates(uncommon, WeaponConstants.CompositeLongbow,
+            uncommon = SwapForTemplates(uncommon, WeaponConstants.CompositeLongbow,
                 WeaponConstants.CompositePlus0Longbow,
                 WeaponConstants.CompositePlus1Longbow,
                 WeaponConstants.CompositePlus2Longbow,
@@ -582,15 +606,17 @@ namespace DnDGen.CreatureGen.Generators.Items
             return (common, uncommon);
         }
 
-        private List<string> SwapForTemplates(List<string> names, string source, params string[] templates)
+        private List<string> SwapForTemplates(IEnumerable<string> names, string source, params string[] templates)
         {
-            if (!names.Contains(source))
-                return names;
+            var swappedNames = names.ToList();
 
-            names.Remove(source);
-            names.AddRange(templates);
+            if (!swappedNames.Contains(source))
+                return swappedNames;
 
-            return names;
+            swappedNames.Remove(source);
+            swappedNames.AddRange(templates);
+
+            return swappedNames;
         }
 
         private IEnumerable<string> GetProficientArmorNames(IEnumerable<Feat> feats)
