@@ -254,7 +254,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                                 proficientMeleeWeaponNames.Uncommon,
                                 null,
                                 nonProficientMeleeWeaponNames);
-                            weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName) as Weapon;
+                            weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName, size) as Weapon;
                         }
 
                         weapons.Add(weapon);
@@ -350,7 +350,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                                 proficientRangedWeaponNames.Uncommon,
                                 null,
                                 nonProficientRangedWeaponNames);
-                            weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName) as Weapon;
+                            weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName, size) as Weapon;
                         }
 
                         weapons.Add(weapon);
@@ -368,7 +368,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                             }
                             else
                             {
-                                ammo = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weapon.Ammunition) as Weapon;
+                                ammo = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weapon.Ammunition, size) as Weapon;
                             }
 
                             weapons.Add(ammo);
@@ -436,7 +436,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                     var nonProficientArmorNames = armorNames.Except(proficientArmorNames);
                     var armorName = collectionSelector.SelectRandomFrom(proficientArmorNames, null, null, nonProficientArmorNames);
 
-                    equipment.Armor = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Armor, armorName) as Armor;
+                    equipment.Armor = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Armor, armorName, size) as Armor;
                 }
 
                 var shieldNames = ArmorConstants.GetAllShields(false);
@@ -451,7 +451,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                     var nonProficientShieldNames = shieldNames.Except(proficientShieldNames);
                     var shieldName = collectionSelector.SelectRandomFrom(proficientShieldNames, null, null, nonProficientShieldNames);
 
-                    equipment.Shield = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Armor, shieldName) as Armor;
+                    equipment.Shield = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Armor, shieldName, size) as Armor;
                 }
             }
 
@@ -477,14 +477,14 @@ namespace DnDGen.CreatureGen.Generators.Items
         {
             return new[]
             {
-                WeaponConstants.CompositePlus0Shortbow,
-                WeaponConstants.CompositePlus1Shortbow,
-                WeaponConstants.CompositePlus2Shortbow,
-                WeaponConstants.CompositePlus0Longbow,
-                WeaponConstants.CompositePlus1Longbow,
-                WeaponConstants.CompositePlus2Longbow,
-                WeaponConstants.CompositePlus3Longbow,
-                WeaponConstants.CompositePlus4Longbow
+                WeaponConstants.CompositeShortbow_StrengthPlus0,
+                WeaponConstants.CompositeShortbow_StrengthPlus1,
+                WeaponConstants.CompositeShortbow_StrengthPlus2,
+                WeaponConstants.CompositeLongbow_StrengthPlus0,
+                WeaponConstants.CompositeLongbow_StrengthPlus1,
+                WeaponConstants.CompositeLongbow_StrengthPlus2,
+                WeaponConstants.CompositeLongbow_StrengthPlus3,
+                WeaponConstants.CompositeLongbow_StrengthPlus4
             };
         }
 
@@ -502,16 +502,16 @@ namespace DnDGen.CreatureGen.Generators.Items
                 .SelectMany(f => f.Foci);
 
             nonProficiencyFoci = SwapForTemplates(nonProficiencyFoci, WeaponConstants.CompositeShortbow,
-                WeaponConstants.CompositePlus0Shortbow,
-                WeaponConstants.CompositePlus1Shortbow,
-                WeaponConstants.CompositePlus2Shortbow);
+                WeaponConstants.CompositeShortbow_StrengthPlus0,
+                WeaponConstants.CompositeShortbow_StrengthPlus1,
+                WeaponConstants.CompositeShortbow_StrengthPlus2);
 
             nonProficiencyFoci = SwapForTemplates(nonProficiencyFoci, WeaponConstants.CompositeLongbow,
-                WeaponConstants.CompositePlus0Longbow,
-                WeaponConstants.CompositePlus1Longbow,
-                WeaponConstants.CompositePlus2Longbow,
-                WeaponConstants.CompositePlus3Longbow,
-                WeaponConstants.CompositePlus4Longbow);
+                WeaponConstants.CompositeLongbow_StrengthPlus0,
+                WeaponConstants.CompositeLongbow_StrengthPlus1,
+                WeaponConstants.CompositeLongbow_StrengthPlus2,
+                WeaponConstants.CompositeLongbow_StrengthPlus3,
+                WeaponConstants.CompositeLongbow_StrengthPlus4);
 
             var nonProficiencyWeaponFoci = nonProficiencyFoci.Intersect(baseWeapons);
             if (nonProficiencyWeaponFoci.Any())
@@ -522,16 +522,16 @@ namespace DnDGen.CreatureGen.Generators.Items
             var proficiencyFoci = proficiencyFeats.SelectMany(f => f.Foci);
 
             proficiencyFoci = SwapForTemplates(proficiencyFoci, WeaponConstants.CompositeShortbow,
-                WeaponConstants.CompositePlus0Shortbow,
-                WeaponConstants.CompositePlus1Shortbow,
-                WeaponConstants.CompositePlus2Shortbow);
+                WeaponConstants.CompositeShortbow_StrengthPlus0,
+                WeaponConstants.CompositeShortbow_StrengthPlus1,
+                WeaponConstants.CompositeShortbow_StrengthPlus2);
 
             proficiencyFoci = SwapForTemplates(proficiencyFoci, WeaponConstants.CompositeLongbow,
-                WeaponConstants.CompositePlus0Longbow,
-                WeaponConstants.CompositePlus1Longbow,
-                WeaponConstants.CompositePlus2Longbow,
-                WeaponConstants.CompositePlus3Longbow,
-                WeaponConstants.CompositePlus4Longbow);
+                WeaponConstants.CompositeLongbow_StrengthPlus0,
+                WeaponConstants.CompositeLongbow_StrengthPlus1,
+                WeaponConstants.CompositeLongbow_StrengthPlus2,
+                WeaponConstants.CompositeLongbow_StrengthPlus3,
+                WeaponConstants.CompositeLongbow_StrengthPlus4);
 
             var proficiencyWeaponFoci = proficiencyFoci.Intersect(baseWeapons);
 
@@ -580,28 +580,28 @@ namespace DnDGen.CreatureGen.Generators.Items
             }
 
             common = SwapForTemplates(common, WeaponConstants.CompositeShortbow,
-                WeaponConstants.CompositePlus0Shortbow,
-                WeaponConstants.CompositePlus1Shortbow,
-                WeaponConstants.CompositePlus2Shortbow);
+                WeaponConstants.CompositeShortbow_StrengthPlus0,
+                WeaponConstants.CompositeShortbow_StrengthPlus1,
+                WeaponConstants.CompositeShortbow_StrengthPlus2);
 
             common = SwapForTemplates(common, WeaponConstants.CompositeLongbow,
-                WeaponConstants.CompositePlus0Longbow,
-                WeaponConstants.CompositePlus1Longbow,
-                WeaponConstants.CompositePlus2Longbow,
-                WeaponConstants.CompositePlus3Longbow,
-                WeaponConstants.CompositePlus4Longbow);
+                WeaponConstants.CompositeLongbow_StrengthPlus0,
+                WeaponConstants.CompositeLongbow_StrengthPlus1,
+                WeaponConstants.CompositeLongbow_StrengthPlus2,
+                WeaponConstants.CompositeLongbow_StrengthPlus3,
+                WeaponConstants.CompositeLongbow_StrengthPlus4);
 
             uncommon = SwapForTemplates(uncommon, WeaponConstants.CompositeShortbow,
-                WeaponConstants.CompositePlus0Shortbow,
-                WeaponConstants.CompositePlus1Shortbow,
-                WeaponConstants.CompositePlus2Shortbow);
+                WeaponConstants.CompositeShortbow_StrengthPlus0,
+                WeaponConstants.CompositeShortbow_StrengthPlus1,
+                WeaponConstants.CompositeShortbow_StrengthPlus2);
 
             uncommon = SwapForTemplates(uncommon, WeaponConstants.CompositeLongbow,
-                WeaponConstants.CompositePlus0Longbow,
-                WeaponConstants.CompositePlus1Longbow,
-                WeaponConstants.CompositePlus2Longbow,
-                WeaponConstants.CompositePlus3Longbow,
-                WeaponConstants.CompositePlus4Longbow);
+                WeaponConstants.CompositeLongbow_StrengthPlus0,
+                WeaponConstants.CompositeLongbow_StrengthPlus1,
+                WeaponConstants.CompositeLongbow_StrengthPlus2,
+                WeaponConstants.CompositeLongbow_StrengthPlus3,
+                WeaponConstants.CompositeLongbow_StrengthPlus4);
 
             return (common, uncommon);
         }
@@ -701,11 +701,11 @@ namespace DnDGen.CreatureGen.Generators.Items
             if (template.IsMagical)
             {
                 var magicalGenerator = justInTimeFactory.Build<MagicalItemGenerator>(template.ItemType);
-                return magicalGenerator.GenerateFrom(template, false);
+                return magicalGenerator.Generate(template, false);
             }
 
             var mundaneGenerator = justInTimeFactory.Build<MundaneItemGenerator>(template.ItemType);
-            return mundaneGenerator.GenerateFrom(template, false);
+            return mundaneGenerator.Generate(template, false);
         }
     }
 }

@@ -12,6 +12,6 @@ namespace DnDGen.CreatureGen.Generators.Skills
     {
         IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, CreatureType creatureType, Dictionary<string, Ability> abilities, bool canUseEquipment, string size);
         IEnumerable<Skill> ApplyBonusesFromFeats(IEnumerable<Skill> skills, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities);
-        IEnumerable<Skill> SetArmorCheckPenalties(IEnumerable<Skill> skills, Equipment equipment);
+        IEnumerable<Skill> SetArmorCheckPenalties(string creature, IEnumerable<Skill> skills, Equipment equipment);
     }
 }

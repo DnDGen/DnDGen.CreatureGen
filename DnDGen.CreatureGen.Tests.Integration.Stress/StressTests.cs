@@ -1,8 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Verifiers;
-using DnDGen.EventGen;
 using DnDGen.Stress;
-using DnDGen.Stress.Events;
 using Ninject;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -21,7 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress
         [OneTimeSetUp]
         public void OneTimeStressSetup()
         {
-            var options = new StressorWithEventsOptions();
+            var options = new StressorOptions();
             options.RunningAssembly = Assembly.GetExecutingAssembly();
 
 #if STRESS
@@ -30,11 +28,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress
             options.IsFullStress = false;
 #endif
 
-            options.ClientIdManager = GetNewInstanceOf<ClientIDManager>();
-            options.EventQueue = GetNewInstanceOf<GenEventQueue>();
-            options.Source = "CreatureGen";
-
-            stressor = new StressorWithEvents(options);
+            stressor = new Stressor(options);
         }
 
         protected IEnumerable<string> allCreatures;

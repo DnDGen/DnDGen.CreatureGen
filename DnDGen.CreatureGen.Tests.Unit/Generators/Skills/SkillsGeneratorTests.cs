@@ -3,11 +3,13 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Skills;
+using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -3200,93 +3202,476 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void StormGiantsIgnoreWeightPenaltyForSwimSkill()
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
         public void SetArmorCheckPenalties_NoSkills()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>();
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor { Name = "my armor", ArmorCheckPenalty = -9266 };
+            equipment.Shield = new Armor { Name = "my shield", ArmorCheckPenalty = -90210 };
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills).And.Empty);
         }
 
         [Test]
         public void SetArmorCheckPenalties_NoSkillsWithArmorCheckPenalties()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor { Name = "my armor", ArmorCheckPenalty = -42 };
+            equipment.Shield = new Armor { Name = "my shield", ArmorCheckPenalty = -600 };
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
         }
 
         [Test]
         public void SetArmorCheckPenalties_NoArmorOrShield()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = null;
+            equipment.Shield = null;
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
         }
 
         [Test]
         public void SetArmorCheckPenalties_NoArmorOrShield_Swim()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+                new Skill(SkillConstants.Swim, new Ability("ability 1"), 42)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = null;
+            equipment.Shield = null;
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[2].Name, Is.EqualTo(SkillConstants.Swim));
+            Assert.That(skills[2].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[2].ArmorCheckPenalty, Is.Zero);
         }
 
         [Test]
         public void SetArmorCheckPenalties_NoArmorOrShield_Swim_StormGiant()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+                new Skill(SkillConstants.Swim, new Ability("ability 1"), 42)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = null;
+            equipment.Shield = null;
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties(CreatureConstants.Giant_Storm, skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[2].Name, Is.EqualTo(SkillConstants.Swim));
+            Assert.That(skills[2].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[2].ArmorCheckPenalty, Is.Zero);
         }
 
         [Test]
         public void SetArmorCheckPenalties_Armor()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor { Name = "my armor", ArmorCheckPenalty = -42 };
+            equipment.Shield = null;
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-42));
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
         }
 
         [Test]
         public void SetArmorCheckPenalties_Armor_Swim()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+                new Skill(SkillConstants.Swim, new Ability("ability 1"), 42)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor { Name = "my armor", ArmorCheckPenalty = -600 };
+            equipment.Shield = null;
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-600));
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[2].Name, Is.EqualTo(SkillConstants.Swim));
+            Assert.That(skills[2].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[2].ArmorCheckPenalty, Is.EqualTo(-1200));
         }
 
         [Test]
         public void SetArmorCheckPenalties_Armor_Swim_StormGiant()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+                new Skill(SkillConstants.Swim, new Ability("ability 1"), 42)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor { Name = "my armor", ArmorCheckPenalty = -600 };
+            equipment.Shield = null;
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties(CreatureConstants.Giant_Storm, skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-600));
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[2].Name, Is.EqualTo(SkillConstants.Swim));
+            Assert.That(skills[2].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[2].ArmorCheckPenalty, Is.EqualTo(-600));
         }
 
         [Test]
         public void SetArmorCheckPenalties_Shield()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = null;
+            equipment.Shield = new Armor { Name = "my shield", ArmorCheckPenalty = -600 };
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-600));
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
         }
 
         [Test]
         public void SetArmorCheckPenalties_Shield_Swim()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+                new Skill(SkillConstants.Swim, new Ability("ability 1"), 42)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = null;
+            equipment.Shield = new Armor { Name = "my shield", ArmorCheckPenalty = -1337 };
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-1337));
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[2].Name, Is.EqualTo(SkillConstants.Swim));
+            Assert.That(skills[2].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[2].ArmorCheckPenalty, Is.EqualTo(-1337 * 2));
         }
 
         [Test]
         public void SetArmorCheckPenalties_Shield_Swim_StormGiant()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+                new Skill(SkillConstants.Swim, new Ability("ability 1"), 42)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = null;
+            equipment.Shield = new Armor { Name = "my shield", ArmorCheckPenalty = -1337 };
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties(CreatureConstants.Giant_Storm, skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-1337));
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[2].Name, Is.EqualTo(SkillConstants.Swim));
+            Assert.That(skills[2].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[2].ArmorCheckPenalty, Is.EqualTo(-1337));
         }
 
         [Test]
         public void SetArmorCheckPenalties_ArmorAndShield()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor { Name = "my armor", ArmorCheckPenalty = -42 };
+            equipment.Shield = new Armor { Name = "my shield", ArmorCheckPenalty = -600 };
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-642));
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
         }
 
         [Test]
         public void SetArmorCheckPenalties_ArmorAndShield_Swim()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+                new Skill(SkillConstants.Swim, new Ability("ability 1"), 42)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor { Name = "my armor", ArmorCheckPenalty = -600 };
+            equipment.Shield = new Armor { Name = "my shield", ArmorCheckPenalty = -1337 };
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-1937));
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[2].Name, Is.EqualTo(SkillConstants.Swim));
+            Assert.That(skills[2].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[2].ArmorCheckPenalty, Is.EqualTo(-1937 * 2));
         }
 
         [Test]
         public void SetArmorCheckPenalties_ArmorAndShield_Swim_StormGiant()
         {
-            Assert.Fail("not yet written");
+            var skills = new List<Skill>
+            {
+                new Skill("skill 1", new Ability("ability 1"), 9266)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+                new Skill("skill 2", new Ability("ability 2"), 90210)
+                {
+                    HasArmorCheckPenalty = false,
+                },
+                new Skill(SkillConstants.Swim, new Ability("ability 1"), 42)
+                {
+                    HasArmorCheckPenalty = true,
+                },
+            };
+
+            var equipment = new Equipment();
+            equipment.Armor = new Armor { Name = "my armor", ArmorCheckPenalty = -600 };
+            equipment.Shield = new Armor { Name = "my shield", ArmorCheckPenalty = -1337 };
+
+            var modifiedSkills = skillsGenerator.SetArmorCheckPenalties(CreatureConstants.Giant_Storm, skills, equipment);
+
+            Assert.That(modifiedSkills, Is.EqualTo(skills));
+            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-1937));
+            Assert.That(skills[1].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[1].HasArmorCheckPenalty, Is.False);
+            Assert.That(skills[1].ArmorCheckPenalty, Is.Zero);
+            Assert.That(skills[2].Name, Is.EqualTo(SkillConstants.Swim));
+            Assert.That(skills[2].HasArmorCheckPenalty, Is.True);
+            Assert.That(skills[2].ArmorCheckPenalty, Is.EqualTo(-1937));
         }
     }
 }

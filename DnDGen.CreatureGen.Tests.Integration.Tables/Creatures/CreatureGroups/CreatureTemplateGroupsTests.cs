@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.EventGen;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Ninject;
 using NUnit.Framework;
@@ -16,15 +15,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
     {
         [Inject]
         public ICollectionSelector CollectionSelector { get; set; }
-        [Inject]
-        public ClientIDManager ClientIdManager { get; set; }
-
-        [SetUp]
-        public void Setup()
-        {
-            var clientId = Guid.NewGuid();
-            ClientIdManager.SetClientID(clientId);
-        }
 
         [Test]
         public void CreatureGroupNames()

@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.EventGen;
 using Ninject;
 using NUnit.Framework;
 using System;
@@ -16,9 +15,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
     [TestFixture]
     public class SpecialQualityDataTests : DataTests
     {
-        //INFO: Need this for the feats selector
-        [Inject]
-        public ClientIDManager ClientIdManager { get; set; }
         [Inject]
         internal IFeatsSelector FeatsSelector { get; set; }
         [Inject]
@@ -43,9 +39,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [SetUp]
         public void Setup()
         {
-            var clientID = Guid.NewGuid();
-            ClientIdManager.SetClientID(clientID);
-
             helper = new SpecialQualityHelper();
         }
 

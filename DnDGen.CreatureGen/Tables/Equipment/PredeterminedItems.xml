@@ -2,13 +2,10 @@
 
 <collections>
   <collection>
-    <name>Character[1]{Aasimar}@Warrior@</name>
+    <name>Aasimar</name>
   </collection>
   <collection>
     <name>Aboleth</name>
-  </collection>
-  <collection>
-    <name>Aboleth$Mage$</name>
   </collection>
   <collection>
     <name>Achaierai</name>
@@ -23,25 +20,403 @@
     <name>Ankheg</name>
   </collection>
   <collection>
-    <name>Animated object$Colossal$</name>
+    <name>Animated Object, Anvil, Colossal</name>
   </collection>
   <collection>
-    <name>Animated object$Gargantuan$</name>
+    <name>Animated Object, Anvil, Gargantuan</name>
   </collection>
   <collection>
-    <name>Animated object$Huge$</name>
+    <name>Animated Object, Anvil, Huge</name>
   </collection>
   <collection>
-    <name>Animated object$Large$</name>
+    <name>Animated Object, Anvil, Large</name>
   </collection>
   <collection>
-    <name>Animated object$Medium$</name>
+    <name>Animated Object, Anvil, Medium</name>
   </collection>
   <collection>
-    <name>Animated object$Small$</name>
+    <name>Animated Object, Anvil, Small</name>
   </collection>
   <collection>
-    <name>Animated object$Tiny$</name>
+    <name>Animated Object, Anvil, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Tiny</name>
   </collection>
   <collection>
     <name>Annis</name>
@@ -50,67 +425,47 @@
     <name>Sea hag</name>
   </collection>
   <collection>
-    <name>Giant ant$Soldier$</name>
+    <name>Giant Ant, Soldier</name>
   </collection>
   <collection>
-    <name>Giant ant$Worker$</name>
+    <name>Giant Ant, Worker</name>
   </collection>
   <collection>
-    <name>Giant ant$Queen$</name>
+    <name>Giant Ant, Queen</name>
   </collection>
   <collection>
     <name>Ape</name>
   </collection>
   <collection>
-    <name>Dire ape</name>
+    <name>Dire Ape</name>
   </collection>
   <collection>
     <name>Aranea</name>
   </collection>
   <collection>
-    <name>Arrowhawk$Adult$</name>
+    <name>Adult Arrowhawk</name>
   </collection>
   <collection>
-    <name>Arrowhawk$Elder$</name>
+    <name>Elder Arrowhawk</name>
   </collection>
   <collection>
-    <name>Arrowhawk$Juvenile$</name>
+    <name>Juvenile Arrowhawk</name>
   </collection>
   <collection>
     <name>Astral deva</name>
     <entry>Heavy mace[Weapon]#Medium#(3){Disruption}@True@</entry>
   </collection>
   <collection>
-    <name>Assassin vine</name>
+    <name>Assassin Vine</name>
   </collection>
   <collection>
     <name>Athach</name>
-    <entry>Morningstar[Weapon]#Huge#</entry>
-    <entry>Morningstar[Weapon]#Huge#</entry>
-    <entry>Morningstar[Weapon]#Huge#</entry>
   </collection>
   <collection>
     <name>Avoral</name>
   </collection>
   <collection>
     <name>Azer</name>
-    <entry>Warhammer[Weapon]#Medium#</entry>
-    <entry>Shortspear[Weapon]#Medium#</entry>
-  </collection>
-  <collection>
-    <name>Azer$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Azer}</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Azer}</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Azer}</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Azer}</name>
   </collection>
   <collection>
     <name>Babau</name>
@@ -122,58 +477,55 @@
     <name>Badger</name>
   </collection>
   <collection>
-    <name>Dire badger</name>
-  </collection>
-  <collection>
-    <name>Badger$Celestial creature$</name>
+    <name>Dire Badger</name>
   </collection>
   <collection>
     <name>Balor</name>
-    <entry>Longsword[Weapon]#Large#(1){Vorpal}@True@</entry>
-    <entry>Whip[Weapon]#Large#(1){Flaming}@True@</entry>
+    <entry>Longsword[Weapon](1){Vorpal}@True@</entry>
+    <entry>Whip[Weapon]#tipped with hooks, spikes, and balls, dealing slashing and bludgeoning damage#(1){Flaming}@True@</entry>
   </collection>
   <collection>
     <name>Barghest</name>
   </collection>
   <collection>
-    <name>Barghest$Greater$</name>
+    <name>Greater Barghest</name>
   </collection>
   <collection>
     <name>Basilisk</name>
   </collection>
   <collection>
-    <name>Basilisk$Abyssal Greater$</name>
+    <name>Abyssal Greater Basilisk</name>
   </collection>
   <collection>
     <name>Bat</name>
   </collection>
   <collection>
-    <name>Dire bat</name>
+    <name>Dire Bat</name>
   </collection>
   <collection>
-    <name>Bat swarm</name>
+    <name>Bat Swarm</name>
   </collection>
   <collection>
-    <name>Bearded Devil(Barbazu)</name>
+    <name>Bearded Devil (Barbazu)</name>
     <entry>Glaive[Weapon]#Medium#</entry>
   </collection>
   <collection>
-    <name>Black bear</name>
+    <name>Black Bear</name>
   </collection>
   <collection>
-    <name>Brown bear</name>
+    <name>Brown Bear</name>
   </collection>
   <collection>
-    <name>Dire bear</name>
+    <name>Dire Bear</name>
   </collection>
   <collection>
-    <name>Polar bear</name>
+    <name>Polar Bear</name>
   </collection>
   <collection>
     <name>Bebilith</name>
   </collection>
   <collection>
-    <name>Giant bee</name>
+    <name>Giant Bee</name>
   </collection>
   <collection>
     <name>Behir</name>
@@ -188,1948 +540,75 @@
     <name>Bison</name>
   </collection>
   <collection>
-    <name>Black pudding</name>
+    <name>Black Pudding</name>
   </collection>
   <collection>
-    <name>Black pudding$Elder$</name>
+    <name>Elder Black Pudding</name>
   </collection>
   <collection>
-    <name>Blink dog</name>
+    <name>Blink Dog</name>
   </collection>
   <collection>
     <name>Boar</name>
   </collection>
   <collection>
-    <name>Dire boar</name>
+    <name>Dire Boar</name>
   </collection>
   <collection>
     <name>Bodak</name>
   </collection>
   <collection>
-    <name>Giant bombardier beetle</name>
+    <name>Giant Bombardier Beetle</name>
   </collection>
   <collection>
     <name>Bralani</name>
-    <entry>Scimitar[Weapon]#Medium#(1){Holy}@True@</entry>
-    <entry>Composite longbow[Weapon]#+4 Strength bonus,Medium#(1){Holy}@True@</entry>
+    <entry>Scimitar[Weapon](1){Holy}@True@</entry>
+    <entry>Composite longbow[Weapon]#+4 Strength bonus#(1){Holy}@True@</entry>
   </collection>
   <collection>
     <name>Bugbear</name>
-    <entry>Morningstar[Weapon]#Medium#</entry>
-    <entry>Javelin[Weapon]#Medium#</entry>
-  </collection>
-  <collection>
-    <name>Bugbear$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+1]{Bugbear}</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[2]{Bugbear}</name>
   </collection>
   <collection>
     <name>Bulette</name>
   </collection>
   <collection>
-    <name>Camel</name>
+    <name>Camel, Bactrian (Two-Humped)</name>
   </collection>
   <collection>
-    <name>Carrion crawler</name>
+    <name>Camel, Dromedary (One-Humped)</name>
+  </collection>
+  <collection>
+    <name>Carrion Crawler</name>
   </collection>
   <collection>
     <name>Cat</name>
   </collection>
   <collection>
     <name>Centaur</name>
-    <entry>Longsword[Weapon]#Large#</entry>
-    <entry>Composite longbow[Weapon]#Large,+4 Strength bonus#</entry>
   </collection>
   <collection>
-    <name>Centaur$Noncombatant$</name>
+    <name>Centipede Swarm</name>
   </collection>
   <collection>
-    <name>Character(Leader)[1d4+1]{Centaur}@Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[2d3+3]{Centaur}@Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Centaur}</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Centaur}</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Colossal$</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Gargantuan$</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Huge$</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Large$</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Medium$</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Small$</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Tiny$</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Colossal Fiendish creature$</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Gargantuan Fiendish creature$</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Huge Fiendish creature$</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Large Fiendish creature$</name>
-  </collection>
-  <collection>
-    <name>Monstrous centipede$Medium Fiendish creature$</name>
-  </collection>
-  <collection>
-    <name>Centipede swarm</name>
-  </collection>
-  <collection>
-    <name>Chaos beast</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[1]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[2]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[3]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[4]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[5]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[6]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[7]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[8]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[9]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[10]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[11]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[12]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[13]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[14]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[15]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[16]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[17]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[18]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[19]</name>
-  </collection>
-  <collection>
-    <name>Character(Adventurer)[20]</name>
-  </collection>
-  <collection>
-    <name>Character(Adviser)[1]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Adviser)[1d2+1]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Adviser)[1d2+3]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Adviser)[1d2+5]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Adviser)[1d2+7]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Adviser)[1d2+9]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Adviser)[1d2+11]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Adviser)[1d2+13]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Adviser)[1d2+15]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Adviser)[1d2+17]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Adviser)[20]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[1]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[2]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[3]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[4]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[5]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[6]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[7]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[8]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[9]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[10]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[11]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[12]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[13]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[14]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[15]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[16]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[17]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[18]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[19]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Animal trainer)[20]@Druid&amp;Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character(Architect)[1]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Architect)[1d2+1]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Architect)[1d2+3]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Architect)[1d2+5]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Architect)[1d2+7]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Architect)[1d2+9]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Architect)[1d2+11]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Architect)[1d2+13]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Architect)[1d2+15]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Architect)[1d2+17]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Architect)[20]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Artisan)[1]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Artisan)[1d2+1]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Artisan)[1d2+3]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Artisan)[1d2+5]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Artisan)[1d2+7]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Artisan)[1d2+9]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Artisan)[1d2+11]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Artisan)[1d2+13]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Artisan)[1d2+15]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Artisan)[1d2+17]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Artisan)[20]@Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Bandit)[1]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Bandit)[1d2+1]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Bandit)[1d2+3]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Bandit)[1d2+5]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Bandit)[1d2+7]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Bandit)[1d2+9]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Bandit)[1d2+11]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Bandit)[1d2+13]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Bandit)[1d2+15]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Bandit)[1d2+17]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Bandit)[20]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Beggar)[1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Beggar)[1d2+1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Beggar)[1d2+3]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Beggar)[1d2+5]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Beggar)[1d2+7]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Beggar)[1d2+9]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Beggar)[1d2+11]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Beggar)[1d2+13]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Beggar)[1d2+15]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Beggar)[1d2+17]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Beggar)[20]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Businessman)[1]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Businessman)[1d2+1]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Businessman)[1d2+3]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Businessman)[1d2+5]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Businessman)[1d2+7]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Businessman)[1d2+9]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Businessman)[1d2+11]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Businessman)[1d2+13]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Businessman)[1d2+15]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Businessman)[1d2+17]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Businessman)[20]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[1]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[2]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[3]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[4]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[5]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[6]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[8]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[9]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[10]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[11]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[1d2+1]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[1d2+3]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[1d2+5]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[1d2+7]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[1d2+9]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[1d2+11]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[1d2+13]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[1d2+15]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[1d2+17]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[20]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Construction Worker)[1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Construction Worker)[1d2+1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Construction Worker)[1d2+3]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Construction Worker)[1d2+5]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Construction Worker)[1d2+7]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Construction Worker)[1d2+9]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Construction Worker)[1d2+11]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Construction Worker)[1d2+13]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Construction Worker)[1d2+15]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Construction Worker)[1d2+17]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Construction Worker)[20]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[1]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[2]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[3]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[4]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[5]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[6]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[7]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[8]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[9]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[10]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[11]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[12]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[13]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[14]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[15]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[16]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[17]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[18]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[19]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Crusader)[20]@Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[1]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[1d2+1]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[1d2+3]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[1d2+5]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[1d2+7]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[1d2+9]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[1d2+11]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[1d2+13]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[1d2+15]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[1d2+17]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[20]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[1]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[2]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[3]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[4]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[5]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[6]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[7]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[8]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[9]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[10]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[11]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[12]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[13]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[14]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[15]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[16]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[17]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[18]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[19]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Doctor)[20]@Cleric&amp;Druid@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous entertainer)[11]@Bard&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous entertainer)[12]@Bard&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous entertainer)[13]@Bard&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous entertainer)[14]@Bard&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous entertainer)[15]@Bard&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous entertainer)[16]@Bard&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous entertainer)[17]@Bard&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous entertainer)[18]@Bard&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous entertainer)[19]@Bard&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous entertainer)[20]@Bard&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous Priest)[11]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous Priest)[12]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous Priest)[13]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous Priest)[14]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous Priest)[15]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous Priest)[16]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous Priest)[17]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous Priest)[18]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous Priest)[19]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous Priest)[20]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous researcher)[11]@Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous researcher)[12]@Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous researcher)[13]@Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous researcher)[14]@Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous researcher)[15]@Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous researcher)[16]@Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous researcher)[17]@Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous researcher)[18]@Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous researcher)[19]@Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Famous researcher)[20]@Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Farmer)[1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Farmer)[1d2+1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Farmer)[1d2+3]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Farmer)[1d2+5]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Farmer)[1d2+7]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Farmer)[1d2+9]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Farmer)[1d2+11]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Farmer)[1d2+13]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Farmer)[1d2+15]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Farmer)[1d2+17]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Farmer)[20]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Fortuneteller)[1]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Fortuneteller)[1d2+1]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Fortuneteller)[1d2+3]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Fortuneteller)[1d2+5]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Fortuneteller)[1d2+7]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Fortuneteller)[1d2+9]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Fortuneteller)[1d2+11]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Fortuneteller)[1d2+13]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Fortuneteller)[1d2+15]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Fortuneteller)[1d2+17]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Fortuneteller)[20]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Gentry)[1]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Gentry)[1d2+1]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Gentry)[1d2+3]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Gentry)[1d2+5]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Gentry)[1d2+7]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Gentry)[1d2+9]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Gentry)[1d2+11]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Gentry)[1d2+13]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Gentry)[1d2+15]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Gentry)[1d2+17]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Gentry)[20]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[1]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[1d2+1]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[1d2+3]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[1d2+5]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[1d2+7]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[1d2+9]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[1d2+11]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[1d2+13]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[1d2+15]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[1d2+17]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[20]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Herder)[1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Herder)[1d2+1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Herder)[1d2+3]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Herder)[1d2+5]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Herder)[1d2+7]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Herder)[1d2+9]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Herder)[1d2+11]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Herder)[1d2+13]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Herder)[1d2+15]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Herder)[1d2+17]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Herder)[20]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[1]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[2]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[3]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[4]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[5]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[6]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[7]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[8]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[9]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[10]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[11]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[12]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[13]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[14]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[15]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[16]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[17]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[18]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[19]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hitman)[20]@Barbarian&amp;Fighter&amp;Ranger&amp;Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[1]@Commoner&amp;Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[1d2+1]@Commoner&amp;Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[1d2+3]@Commoner&amp;Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[1d2+5]@Commoner&amp;Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[1d2+7]@Commoner&amp;Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[1d2+9]@Commoner&amp;Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[1d2+11]@Commoner&amp;Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[1d2+13]@Commoner&amp;Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[1d2+15]@Commoner&amp;Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[1d2+17]@Commoner&amp;Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[20]@Commoner&amp;Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1]@Bard@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[2]@Bard@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[3]@Bard@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[4]@Bard@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[5]@Bard@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[6]@Bard@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[7]@Bard@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[8]@Bard@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[9]@Bard@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[10]@Bard@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[11]@Bard@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1]@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[2]@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[3]@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[4]@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[5]@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[6]@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[7]@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[8]@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[9]@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[10]@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[11]@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[2]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[3]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[4]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[5]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[6]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[7]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[8]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[9]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[10]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[11]@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d2+1]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d2+3]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d2+5]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d2+7]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d2+9]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d2+11]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d2+13]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d2+15]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d2+17]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[20]@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Merchant)[1]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Merchant)[1d2+1]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Merchant)[1d2+3]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Merchant)[1d2+5]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Merchant)[1d2+7]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Merchant)[1d2+9]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Merchant)[1d2+11]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Merchant)[1d2+13]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Merchant)[1d2+15]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Merchant)[1d2+17]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Merchant)[20]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Minstrel)[1]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Minstrel)[1d2+1]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Minstrel)[1d2+3]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Minstrel)[1d2+5]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Minstrel)[1d2+7]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Minstrel)[1d2+9]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Minstrel)[1d2+11]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Minstrel)[1d2+13]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Minstrel)[1d2+15]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Minstrel)[1d2+17]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Minstrel)[20]@Commoner&amp;Expert@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[1]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[1d2+1]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[1d2+3]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[1d2+5]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[1d2+7]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[1d2+9]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[1d2+11]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[1d2+13]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[1d2+15]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[1d2+17]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[20]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[1]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[2]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[3]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[4]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[5]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[6]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[7]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[8]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[9]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[10]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[11]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[12]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[13]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[14]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[15]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[16]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[17]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[18]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[19]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Missionary)[20]@Cleric&amp;Druid&amp;Monk&amp;Paladin@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[1]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[2]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[3]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[4]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[5]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[6]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[7]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[8]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[9]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[10]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[11]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[12]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[13]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[14]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[15]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[16]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[17]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[18]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[19]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pickpocket)[20]@Rogue@</name>
-  </collection>
-  <collection>
-    <name>Character(Pilgrim)[1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Pilgrim)[1d2+1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Pilgrim)[1d2+3]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Pilgrim)[1d2+5]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Pilgrim)[1d2+7]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Pilgrim)[1d2+9]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Pilgrim)[1d2+11]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Pilgrim)[1d2+13]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Pilgrim)[1d2+15]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Pilgrim)[1d2+17]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Pilgrim)[20]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Politician)[1]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Politician)[1d2+1]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Politician)[1d2+3]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Politician)[1d2+5]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Politician)[1d2+7]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Politician)[1d2+9]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Politician)[1d2+11]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Politician)[1d2+13]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Politician)[1d2+15]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Politician)[1d2+17]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Politician)[20]@Aristocrat@</name>
-  </collection>
-  <collection>
-    <name>Character(Protestor)[1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Protestor)[1d2+1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Protestor)[1d2+3]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Protestor)[1d2+5]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Protestor)[1d2+7]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Protestor)[1d2+9]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Protestor)[1d2+11]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Protestor)[1d2+13]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Protestor)[1d2+15]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Protestor)[1d2+17]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Protestor)[20]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Retired adventurer)[11]</name>
-  </collection>
-  <collection>
-    <name>Character(Retired adventurer)[12]</name>
-  </collection>
-  <collection>
-    <name>Character(Retired adventurer)[13]</name>
-  </collection>
-  <collection>
-    <name>Character(Retired adventurer)[14]</name>
-  </collection>
-  <collection>
-    <name>Character(Retired adventurer)[15]</name>
-  </collection>
-  <collection>
-    <name>Character(Retired adventurer)[16]</name>
-  </collection>
-  <collection>
-    <name>Character(Retired adventurer)[17]</name>
-  </collection>
-  <collection>
-    <name>Character(Retired adventurer)[18]</name>
-  </collection>
-  <collection>
-    <name>Character(Retired adventurer)[19]</name>
-  </collection>
-  <collection>
-    <name>Character(Retired adventurer)[20]</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[1]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[2]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[3]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[4]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[5]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[6]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[7]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[8]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[9]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[10]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[11]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[12]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[13]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[14]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[15]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[16]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[17]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[18]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[19]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Scholar)[20]@Monk&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[1]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[2]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[3]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[4]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[5]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[6]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[7]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[8]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[9]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[10]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[11]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[12]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[13]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[14]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[15]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[16]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[17]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[18]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[19]</name>
-  </collection>
-  <collection>
-    <name>Character(Sellsword)[20]</name>
-  </collection>
-  <collection>
-    <name>Character(Servant)[1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Servant)[1d2+1]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Servant)[1d2+3]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Servant)[1d2+5]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Servant)[1d2+7]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Servant)[1d2+9]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Servant)[1d2+11]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Servant)[1d2+13]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Servant)[1d2+15]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Servant)[1d2+17]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Servant)[20]@Commoner@</name>
-  </collection>
-  <collection>
-    <name>Character(Star Student)[1]</name>
-  </collection>
-  <collection>
-    <name>Character(Star Student)[2]</name>
-  </collection>
-  <collection>
-    <name>Character(Star Student)[3]</name>
-  </collection>
-  <collection>
-    <name>Character(Star Student)[4]</name>
-  </collection>
-  <collection>
-    <name>Character(Star Student)[5]</name>
-  </collection>
-  <collection>
-    <name>Character(Star Student)[6]</name>
-  </collection>
-  <collection>
-    <name>Character(Star Student)[7]</name>
-  </collection>
-  <collection>
-    <name>Character(Star Student)[8]</name>
-  </collection>
-  <collection>
-    <name>Character(Star Student)[9]</name>
-  </collection>
-  <collection>
-    <name>Character(Star Student)[10]</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[1]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[1d2+1]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[1d2+3]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[1d2+5]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[1d2+7]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[1d2+9]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[1d2+11]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[1d2+13]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[1d2+15]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[1d2+17]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[20]@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[1]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[2]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[3]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[4]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[5]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[6]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[7]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[8]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[9]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[10]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[11]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[12]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[13]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[14]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[15]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[16]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[17]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[18]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[19]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Street performer)[20]@Bard&amp;Rogue&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Student)[1]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Student)[1d2+1]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Student)[1d2+3]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Student)[1d2+5]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Student)[1d2+7]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Student)[1d2+9]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Student)[1d2+11]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Student)[1d2+13]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Student)[1d2+15]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Student)[1d2+17]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Teacher)[11]</name>
-  </collection>
-  <collection>
-    <name>Character(Teacher)[12]</name>
-  </collection>
-  <collection>
-    <name>Character(Teacher)[13]</name>
-  </collection>
-  <collection>
-    <name>Character(Teacher)[14]</name>
-  </collection>
-  <collection>
-    <name>Character(Teacher)[15]</name>
-  </collection>
-  <collection>
-    <name>Character(Teacher)[16]</name>
-  </collection>
-  <collection>
-    <name>Character(Teacher)[17]</name>
-  </collection>
-  <collection>
-    <name>Character(Teacher)[18]</name>
-  </collection>
-  <collection>
-    <name>Character(Teacher)[19]</name>
-  </collection>
-  <collection>
-    <name>Character(Teacher)[20]</name>
-  </collection>
-  <collection>
-    <name>Character(Traveler)[1]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Traveler)[1d2+1]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Traveler)[1d2+3]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Traveler)[1d2+5]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Traveler)[1d2+7]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Traveler)[1d2+9]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Traveler)[1d2+11]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Traveler)[1d2+13]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Traveler)[1d2+15]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Traveler)[1d2+17]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(Traveler)[20]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character(War hero)[11]@Barbarian&amp;Cleric&amp;Fighter&amp;Monk&amp;Paladin&amp;Ranger&amp;Sorcerer&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(War hero)[12]@Barbarian&amp;Cleric&amp;Fighter&amp;Monk&amp;Paladin&amp;Ranger&amp;Sorcerer&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(War hero)[13]@Barbarian&amp;Cleric&amp;Fighter&amp;Monk&amp;Paladin&amp;Ranger&amp;Sorcerer&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(War hero)[14]@Barbarian&amp;Cleric&amp;Fighter&amp;Monk&amp;Paladin&amp;Ranger&amp;Sorcerer&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(War hero)[15]@Barbarian&amp;Cleric&amp;Fighter&amp;Monk&amp;Paladin&amp;Ranger&amp;Sorcerer&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(War hero)[16]@Barbarian&amp;Cleric&amp;Fighter&amp;Monk&amp;Paladin&amp;Ranger&amp;Sorcerer&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(War hero)[17]@Barbarian&amp;Cleric&amp;Fighter&amp;Monk&amp;Paladin&amp;Ranger&amp;Sorcerer&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(War hero)[18]@Barbarian&amp;Cleric&amp;Fighter&amp;Monk&amp;Paladin&amp;Ranger&amp;Sorcerer&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(War hero)[19]@Barbarian&amp;Cleric&amp;Fighter&amp;Monk&amp;Paladin&amp;Ranger&amp;Sorcerer&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character(War hero)[20]@Barbarian&amp;Cleric&amp;Fighter&amp;Monk&amp;Paladin&amp;Ranger&amp;Sorcerer&amp;Wizard@</name>
-  </collection>
-  <collection>
-    <name>Character[1]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+1]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+3]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+5]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+7]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+9]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+11]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+13]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+15]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+17]@Any NPC@</name>
-  </collection>
-  <collection>
-    <name>Character[20]@Any NPC@</name>
+    <name>Chaos Beast</name>
   </collection>
   <collection>
     <name>Cheetah</name>
   </collection>
   <collection>
-    <name>Chimera</name>
+    <name>Chimera (Black Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
   </collection>
   <collection>
     <name>Choker</name>
@@ -2141,7 +620,7 @@
     <name>Cloaker</name>
   </collection>
   <collection>
-    <name>Horned Devil(Cornugon)</name>
+    <name>Horned Devil (Cornugon)</name>
     <entry>Spiked chain[Weapon]#Large#</entry>
   </collection>
   <collection>
@@ -2170,17 +649,9 @@
   </collection>
   <collection>
     <name>Derro</name>
-    <entry>Short sword[Weapon]#Small#</entry>
-    <entry>Light repeating crossbow[Weapon]#Small#</entry>
   </collection>
   <collection>
-    <name>Derro$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[3]{Derro}@Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character[1d4+4]{Derro}@Sorcerer@</name>
+    <name>Derro (Sane)</name>
   </collection>
   <collection>
     <name>Destrachan</name>
@@ -2192,25 +663,22 @@
     <name>Digester</name>
   </collection>
   <collection>
-    <name>Displacer beast</name>
+    <name>Displacer Beast</name>
   </collection>
   <collection>
-    <name>Displacer beast$Pack Lord$</name>
+    <name>Displacer Beast Pack Lord</name>
   </collection>
   <collection>
     <name>Djinni</name>
   </collection>
   <collection>
-    <name>Djinni$Noble$</name>
+    <name>Noble Djinni</name>
   </collection>
   <collection>
     <name>Dog</name>
   </collection>
   <collection>
-    <name>Dog$Celestial creature$</name>
-  </collection>
-  <collection>
-    <name>Dog$Riding$</name>
+    <name>Dog, Riding</name>
   </collection>
   <collection>
     <name>Donkey</name>
@@ -2219,367 +687,367 @@
     <name>Doppelganger</name>
   </collection>
   <collection>
-    <name>Black dragon$Wyrmling$</name>
+    <name>Black Dragon, Adult</name>
   </collection>
   <collection>
-    <name>Black dragon$Very young$</name>
+    <name>Black Dragon, Ancient</name>
   </collection>
   <collection>
-    <name>Black dragon$Young$</name>
+    <name>Black Dragon, Great Wyrm</name>
   </collection>
   <collection>
-    <name>Black dragon$Juvenile$</name>
+    <name>Black Dragon, Juvenile</name>
   </collection>
   <collection>
-    <name>Black dragon$Young adult$</name>
+    <name>Black Dragon, Mature Adult</name>
   </collection>
   <collection>
-    <name>Black dragon$Adult$</name>
+    <name>Black Dragon, Old</name>
   </collection>
   <collection>
-    <name>Black dragon$Mature adult$</name>
+    <name>Black Dragon, Very Old</name>
   </collection>
   <collection>
-    <name>Black dragon$Old$</name>
+    <name>Black Dragon, Very Young</name>
   </collection>
   <collection>
-    <name>Black dragon$Very old$</name>
+    <name>Black Dragon, Wyrm</name>
   </collection>
   <collection>
-    <name>Black dragon$Ancient$</name>
+    <name>Black Dragon, Wyrmling</name>
   </collection>
   <collection>
-    <name>Black dragon$Wyrm$</name>
+    <name>Black Dragon, Young Adult</name>
   </collection>
   <collection>
-    <name>Black dragon$Great wyrm$</name>
+    <name>Black Dragon, Young</name>
   </collection>
   <collection>
-    <name>Blue dragon$Wyrmling$</name>
+    <name>Blue Dragon, Adult</name>
   </collection>
   <collection>
-    <name>Blue dragon$Very young$</name>
+    <name>Blue Dragon, Ancient</name>
   </collection>
   <collection>
-    <name>Blue dragon$Young$</name>
+    <name>Blue Dragon, Great Wyrm</name>
   </collection>
   <collection>
-    <name>Blue dragon$Juvenile$</name>
+    <name>Blue Dragon, Juvenile</name>
   </collection>
   <collection>
-    <name>Blue dragon$Young adult$</name>
+    <name>Blue Dragon, Mature Adult</name>
   </collection>
   <collection>
-    <name>Blue dragon$Adult$</name>
+    <name>Blue Dragon, Old</name>
   </collection>
   <collection>
-    <name>Blue dragon$Mature adult$</name>
+    <name>Blue Dragon, Very Old</name>
   </collection>
   <collection>
-    <name>Blue dragon$Old$</name>
+    <name>Blue Dragon, Very Young</name>
   </collection>
   <collection>
-    <name>Blue dragon$Very old$</name>
+    <name>Blue Dragon, Wyrm</name>
   </collection>
   <collection>
-    <name>Blue dragon$Ancient$</name>
+    <name>Blue Dragon, Wyrmling</name>
   </collection>
   <collection>
-    <name>Blue dragon$Wyrm$</name>
+    <name>Blue Dragon, Young Adult</name>
   </collection>
   <collection>
-    <name>Blue dragon$Great wyrm$</name>
+    <name>Blue Dragon, Young</name>
   </collection>
   <collection>
-    <name>Green dragon$Wyrmling$</name>
+    <name>Green Dragon, Adult</name>
   </collection>
   <collection>
-    <name>Green dragon$Very young$</name>
+    <name>Green Dragon, Ancient</name>
   </collection>
   <collection>
-    <name>Green dragon$Young$</name>
+    <name>Green Dragon, Great Wyrm</name>
   </collection>
   <collection>
-    <name>Green dragon$Juvenile$</name>
+    <name>Green Dragon, Juvenile</name>
   </collection>
   <collection>
-    <name>Green dragon$Young adult$</name>
+    <name>Green Dragon, Mature Adult</name>
   </collection>
   <collection>
-    <name>Green dragon$Adult$</name>
+    <name>Green Dragon, Old</name>
   </collection>
   <collection>
-    <name>Green dragon$Mature adult$</name>
+    <name>Green Dragon, Very Old</name>
   </collection>
   <collection>
-    <name>Green dragon$Old$</name>
+    <name>Green Dragon, Very Young</name>
   </collection>
   <collection>
-    <name>Green dragon$Very old$</name>
+    <name>Green Dragon, Wyrm</name>
   </collection>
   <collection>
-    <name>Green dragon$Ancient$</name>
+    <name>Green Dragon, Wyrmling</name>
   </collection>
   <collection>
-    <name>Green dragon$Wyrm$</name>
+    <name>Green Dragon, Young Adult</name>
   </collection>
   <collection>
-    <name>Green dragon$Great wyrm$</name>
+    <name>Green Dragon, Young</name>
   </collection>
   <collection>
-    <name>Red dragon$Wyrmling$</name>
+    <name>Red Dragon, Adult</name>
   </collection>
   <collection>
-    <name>Red dragon$Very young$</name>
+    <name>Red Dragon, Ancient</name>
   </collection>
   <collection>
-    <name>Red dragon$Young$</name>
+    <name>Red Dragon, Great Wyrm</name>
   </collection>
   <collection>
-    <name>Red dragon$Juvenile$</name>
+    <name>Red Dragon, Juvenile</name>
   </collection>
   <collection>
-    <name>Red dragon$Young adult$</name>
+    <name>Red Dragon, Mature Adult</name>
   </collection>
   <collection>
-    <name>Red dragon$Adult$</name>
+    <name>Red Dragon, Old</name>
   </collection>
   <collection>
-    <name>Red dragon$Mature adult$</name>
+    <name>Red Dragon, Very Old</name>
   </collection>
   <collection>
-    <name>Red dragon$Old$</name>
+    <name>Red Dragon, Very Young</name>
   </collection>
   <collection>
-    <name>Red dragon$Very old$</name>
+    <name>Red Dragon, Wyrm</name>
   </collection>
   <collection>
-    <name>Red dragon$Ancient$</name>
+    <name>Red Dragon, Wyrmling</name>
   </collection>
   <collection>
-    <name>Red dragon$Wyrm$</name>
+    <name>Red Dragon, Young Adult</name>
   </collection>
   <collection>
-    <name>Red dragon$Great wyrm$</name>
+    <name>Red Dragon, Young</name>
   </collection>
   <collection>
-    <name>White dragon$Wyrmling$</name>
+    <name>White Dragon, Adult</name>
   </collection>
   <collection>
-    <name>White dragon$Very young$</name>
+    <name>White Dragon, Ancient</name>
   </collection>
   <collection>
-    <name>White dragon$Young$</name>
+    <name>White Dragon, Great Wyrm</name>
   </collection>
   <collection>
-    <name>White dragon$Juvenile$</name>
+    <name>White Dragon, Juvenile</name>
   </collection>
   <collection>
-    <name>White dragon$Young adult$</name>
+    <name>White Dragon, Mature Adult</name>
   </collection>
   <collection>
-    <name>White dragon$Adult$</name>
+    <name>White Dragon, Old</name>
   </collection>
   <collection>
-    <name>White dragon$Mature adult$</name>
+    <name>White Dragon, Very Old</name>
   </collection>
   <collection>
-    <name>White dragon$Old$</name>
+    <name>White Dragon, Very Young</name>
   </collection>
   <collection>
-    <name>White dragon$Very old$</name>
+    <name>White Dragon, Wyrm</name>
   </collection>
   <collection>
-    <name>White dragon$Ancient$</name>
+    <name>White Dragon, Wyrmling</name>
   </collection>
   <collection>
-    <name>White dragon$Wyrm$</name>
+    <name>White Dragon, Young Adult</name>
   </collection>
   <collection>
-    <name>White dragon$Great wyrm$</name>
+    <name>White Dragon, Young</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Wyrmling$</name>
+    <name>Brass Dragon, Adult</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Very young$</name>
+    <name>Brass Dragon, Ancient</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Young$</name>
+    <name>Brass Dragon, Great Wyrm</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Juvenile$</name>
+    <name>Brass Dragon, Juvenile</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Young adult$</name>
+    <name>Brass Dragon, Mature Adult</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Adult$</name>
+    <name>Brass Dragon, Old</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Mature adult$</name>
+    <name>Brass Dragon, Very Old</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Old$</name>
+    <name>Brass Dragon, Very Young</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Very old$</name>
+    <name>Brass Dragon, Wyrm</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Ancient$</name>
+    <name>Brass Dragon, Wyrmling</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Wyrm$</name>
+    <name>Brass Dragon, Young Adult</name>
   </collection>
   <collection>
-    <name>Bronze dragon$Great wyrm$</name>
+    <name>Brass Dragon, Young</name>
   </collection>
   <collection>
-    <name>Brass dragon$Wyrmling$</name>
+    <name>Bronze Dragon, Adult</name>
   </collection>
   <collection>
-    <name>Brass dragon$Very young$</name>
+    <name>Bronze Dragon, Ancient</name>
   </collection>
   <collection>
-    <name>Brass dragon$Young$</name>
+    <name>Bronze Dragon, Great Wyrm</name>
   </collection>
   <collection>
-    <name>Brass dragon$Juvenile$</name>
+    <name>Bronze Dragon, Juvenile</name>
   </collection>
   <collection>
-    <name>Brass dragon$Young adult$</name>
+    <name>Bronze Dragon, Mature Adult</name>
   </collection>
   <collection>
-    <name>Brass dragon$Adult$</name>
+    <name>Bronze Dragon, Old</name>
   </collection>
   <collection>
-    <name>Brass dragon$Mature adult$</name>
+    <name>Bronze Dragon, Very Old</name>
   </collection>
   <collection>
-    <name>Brass dragon$Old$</name>
+    <name>Bronze Dragon, Very Young</name>
   </collection>
   <collection>
-    <name>Brass dragon$Very old$</name>
+    <name>Bronze Dragon, Wyrm</name>
   </collection>
   <collection>
-    <name>Brass dragon$Ancient$</name>
+    <name>Bronze Dragon, Wyrmling</name>
   </collection>
   <collection>
-    <name>Brass dragon$Wyrm$</name>
+    <name>Bronze Dragon, Young Adult</name>
   </collection>
   <collection>
-    <name>Brass dragon$Great wyrm$</name>
+    <name>Bronze Dragon, Young</name>
   </collection>
   <collection>
-    <name>Copper dragon$Wyrmling$</name>
+    <name>Copper Dragon, Adult</name>
   </collection>
   <collection>
-    <name>Copper dragon$Very young$</name>
+    <name>Copper Dragon, Ancient</name>
   </collection>
   <collection>
-    <name>Copper dragon$Young$</name>
+    <name>Copper Dragon, Great Wyrm</name>
   </collection>
   <collection>
-    <name>Copper dragon$Juvenile$</name>
+    <name>Copper Dragon, Juvenile</name>
   </collection>
   <collection>
-    <name>Copper dragon$Young adult$</name>
+    <name>Copper Dragon, Mature Adult</name>
   </collection>
   <collection>
-    <name>Copper dragon$Adult$</name>
+    <name>Copper Dragon, Old</name>
   </collection>
   <collection>
-    <name>Copper dragon$Mature adult$</name>
+    <name>Copper Dragon, Very Old</name>
   </collection>
   <collection>
-    <name>Copper dragon$Old$</name>
+    <name>Copper Dragon, Very Young</name>
   </collection>
   <collection>
-    <name>Copper dragon$Very old$</name>
+    <name>Copper Dragon, Wyrm</name>
   </collection>
   <collection>
-    <name>Copper dragon$Ancient$</name>
+    <name>Copper Dragon, Wyrmling</name>
   </collection>
   <collection>
-    <name>Copper dragon$Wyrm$</name>
+    <name>Copper Dragon, Young Adult</name>
   </collection>
   <collection>
-    <name>Copper dragon$Great wyrm$</name>
+    <name>Copper Dragon, Young</name>
   </collection>
   <collection>
-    <name>Gold dragon$Wyrmling$</name>
+    <name>Gold Dragon, Adult</name>
   </collection>
   <collection>
-    <name>Gold dragon$Very young$</name>
+    <name>Gold Dragon, Ancient</name>
   </collection>
   <collection>
-    <name>Gold dragon$Young$</name>
+    <name>Gold Dragon, Great Wyrm</name>
   </collection>
   <collection>
-    <name>Gold dragon$Juvenile$</name>
+    <name>Gold Dragon, Juvenile</name>
   </collection>
   <collection>
-    <name>Gold dragon$Young adult$</name>
+    <name>Gold Dragon, Mature Adult</name>
   </collection>
   <collection>
-    <name>Gold dragon$Adult$</name>
+    <name>Gold Dragon, Old</name>
   </collection>
   <collection>
-    <name>Gold dragon$Mature adult$</name>
+    <name>Gold Dragon, Very Old</name>
   </collection>
   <collection>
-    <name>Gold dragon$Old$</name>
+    <name>Gold Dragon, Very Young</name>
   </collection>
   <collection>
-    <name>Gold dragon$Very old$</name>
+    <name>Gold Dragon, Wyrm</name>
   </collection>
   <collection>
-    <name>Gold dragon$Ancient$</name>
+    <name>Gold Dragon, Wyrmling</name>
   </collection>
   <collection>
-    <name>Gold dragon$Wyrm$</name>
+    <name>Gold Dragon, Young Adult</name>
   </collection>
   <collection>
-    <name>Gold dragon$Great wyrm$</name>
+    <name>Gold Dragon, Young</name>
   </collection>
   <collection>
-    <name>Silver dragon$Wyrmling$</name>
+    <name>Silver Dragon, Adult</name>
   </collection>
   <collection>
-    <name>Silver dragon$Very young$</name>
+    <name>Silver Dragon, Ancient</name>
   </collection>
   <collection>
-    <name>Silver dragon$Young$</name>
+    <name>Silver Dragon, Great Wyrm</name>
   </collection>
   <collection>
-    <name>Silver dragon$Juvenile$</name>
+    <name>Silver Dragon, Juvenile</name>
   </collection>
   <collection>
-    <name>Silver dragon$Young adult$</name>
+    <name>Silver Dragon, Mature Adult</name>
   </collection>
   <collection>
-    <name>Silver dragon$Adult$</name>
+    <name>Silver Dragon, Old</name>
   </collection>
   <collection>
-    <name>Silver dragon$Mature adult$</name>
+    <name>Silver Dragon, Very Old</name>
   </collection>
   <collection>
-    <name>Silver dragon$Old$</name>
+    <name>Silver Dragon, Very Young</name>
   </collection>
   <collection>
-    <name>Silver dragon$Very old$</name>
+    <name>Silver Dragon, Wyrm</name>
   </collection>
   <collection>
-    <name>Silver dragon$Ancient$</name>
+    <name>Silver Dragon, Wyrmling</name>
   </collection>
   <collection>
-    <name>Silver dragon$Wyrm$</name>
+    <name>Silver Dragon, Young Adult</name>
   </collection>
   <collection>
-    <name>Silver dragon$Great wyrm$</name>
+    <name>Silver Dragon, Young</name>
   </collection>
   <collection>
-    <name>Dragon turtle</name>
+    <name>Dragon Turtle</name>
   </collection>
   <collection>
     <name>Dragonne</name>
@@ -2704,184 +1172,94 @@
     <name>Elephant</name>
   </collection>
   <collection>
-    <name>Elemental(Air)$Elder$</name>
+    <name>Air Elemental, Elder</name>
   </collection>
   <collection>
-    <name>Elemental(Air)$Greater$</name>
+    <name>Air Elemental, Greater</name>
   </collection>
   <collection>
-    <name>Elemental(Air)$Huge$</name>
+    <name>Air Elemental, Huge</name>
   </collection>
   <collection>
-    <name>Elemental(Air)$Large$</name>
+    <name>Air Elemental, Large</name>
   </collection>
   <collection>
-    <name>Elemental(Air)$Medium$</name>
+    <name>Air Elemental, Medium</name>
   </collection>
   <collection>
-    <name>Elemental(Air)$Small$</name>
+    <name>Air Elemental, Small</name>
   </collection>
   <collection>
-    <name>Elemental(Earth)$Elder$</name>
+    <name>Earth Elemental, Elder</name>
   </collection>
   <collection>
-    <name>Elemental(Earth)$Greater$</name>
+    <name>Earth Elemental, Greater</name>
   </collection>
   <collection>
-    <name>Elemental(Earth)$Huge$</name>
+    <name>Earth Elemental, Huge</name>
   </collection>
   <collection>
-    <name>Elemental(Earth)$Large$</name>
+    <name>Earth Elemental, Large</name>
   </collection>
   <collection>
-    <name>Elemental(Earth)$Medium$</name>
+    <name>Earth Elemental, Medium</name>
   </collection>
   <collection>
-    <name>Elemental(Earth)$Small$</name>
+    <name>Earth Elemental, Small</name>
   </collection>
   <collection>
-    <name>Elemental(Fire)$Elder$</name>
+    <name>Fire Elemental, Elder</name>
   </collection>
   <collection>
-    <name>Elemental(Fire)$Greater$</name>
+    <name>Fire Elemental, Greater</name>
   </collection>
   <collection>
-    <name>Elemental(Fire)$Huge$</name>
+    <name>Fire Elemental, Huge</name>
   </collection>
   <collection>
-    <name>Elemental(Fire)$Large$</name>
+    <name>Fire Elemental, Large</name>
   </collection>
   <collection>
-    <name>Elemental(Fire)$Medium$</name>
+    <name>Fire Elemental, Medium</name>
   </collection>
   <collection>
-    <name>Elemental(Fire)$Small$</name>
+    <name>Fire Elemental, Small</name>
   </collection>
   <collection>
-    <name>Elemental(Water)$Elder$</name>
+    <name>Water Elemental, Elder</name>
   </collection>
   <collection>
-    <name>Elemental(Water)$Greater$</name>
+    <name>Water Elemental, Greater</name>
   </collection>
   <collection>
-    <name>Elemental(Water)$Huge$</name>
+    <name>Water Elemental, Huge</name>
   </collection>
   <collection>
-    <name>Elemental(Water)$Large$</name>
+    <name>Water Elemental, Large</name>
   </collection>
   <collection>
-    <name>Elemental(Water)$Medium$</name>
+    <name>Water Elemental, Medium</name>
   </collection>
   <collection>
-    <name>Elemental(Water)$Small$</name>
+    <name>Water Elemental, Small</name>
   </collection>
   <collection>
-    <name>Character(Captain)[7]{Aquatic Elf}@Warrior@</name>
+    <name>Aquatic Elf</name>
   </collection>
   <collection>
-    <name>Aquatic Elf$Noncombatant$</name>
+    <name>Gray Elf</name>
   </collection>
   <collection>
-    <name>Character[1]{Aquatic Elf}@Warrior@</name>
+    <name>Half-Elf</name>
   </collection>
   <collection>
-    <name>Character(Sergeant)[3]{Aquatic Elf}@Warrior@</name>
+    <name>High Elf</name>
   </collection>
   <collection>
-    <name>Character(Leader)[1d4+2]{Aquatic Elf}@Warrior@</name>
+    <name>Wild Elf</name>
   </collection>
   <collection>
-    <name>Character(Lieutenant)[5]{Aquatic Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Gray Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Gray Elf$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Gray Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Gray Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Gray Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Gray Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Half-Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Half-Elf$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Half-Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Half-Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Half-Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Half-Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{High Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>High Elf$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{High Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{High Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{High Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{High Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Wild Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Wild Elf$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Wild Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Wild Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Wild Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Wild Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Wood Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Wood Elf$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Wood Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Wood Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Wood Elf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Wood Elf}@Warrior@</name>
+    <name>Wood Elf</name>
   </collection>
   <collection>
     <name>Erinyes</name>
@@ -2890,10 +1268,10 @@
     <entry>Rope, 50 ft.[Tool]</entry>
   </collection>
   <collection>
-    <name>Ethereal filcher</name>
+    <name>Ethereal Filcher</name>
   </collection>
   <collection>
-    <name>Ethereal marauder</name>
+    <name>Ethereal Marauder</name>
   </collection>
   <collection>
     <name>Ettercap</name>
@@ -2904,209 +1282,79 @@
     <entry>Morningstar[Weapon]#Large#</entry>
   </collection>
   <collection>
-    <name>Giant fire beetle</name>
+    <name>Giant Fire Beetle</name>
   </collection>
   <collection>
-    <name>Giant fire beetle$Celestial creature$</name>
+    <name>Formian Queen</name>
   </collection>
   <collection>
-    <name>Formian$Queen$</name>
+    <name>Formian Taskmaster</name>
   </collection>
   <collection>
-    <name>Formian$Taskmaster$</name>
+    <name>Formian Warrior</name>
   </collection>
   <collection>
-    <name>Formian$Warrior$</name>
+    <name>Formian Worker</name>
   </collection>
   <collection>
-    <name>Formian$Worker$</name>
+    <name>Formian Myrmarch</name>
   </collection>
   <collection>
-    <name>Formian$Myrmarch$</name>
-    <entry>Javelin[Weapon]#Large#</entry>
+    <name>Frost Worm</name>
   </collection>
   <collection>
-    <name>Frost worm</name>
-  </collection>
-  <collection>
-    <name>Ice Devil(Gelugon)</name>
+    <name>Ice Devil (Gelugon)</name>
     <entry>Longspear[Weapon]#Large#</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
   </collection>
   <collection>
-    <name>Gargoyle$Kapoacinth$</name>
+    <name>Kapoacinth</name>
   </collection>
   <collection>
-    <name>Gelatinous cube</name>
+    <name>Gelatinous Cube</name>
   </collection>
   <collection>
     <name>Ghaele</name>
     <entry>Greatsword[Weapon]#Medium#(4){Holy}@True@</entry>
   </collection>
   <collection>
-    <name>Character[1]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[2]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[3]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[4]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[5]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[6]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[7]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[8]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[9]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[10]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[11]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[12]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[13]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[14]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[15]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[16]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[17]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[18]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[19]#Ghost#</name>
-  </collection>
-  <collection>
-    <name>Character[20]#Ghost#</name>
-  </collection>
-  <collection>
     <name>Ghoul</name>
   </collection>
   <collection>
-    <name>Ghoul$Lacedon$</name>
+    <name>Lacedon</name>
   </collection>
   <collection>
-    <name>Ghoul$Ghast$</name>
+    <name>Ghast</name>
   </collection>
   <collection>
-    <name>Cloud giant</name>
+    <name>Cloud Giant</name>
     <entry>Morningstar[Weapon]#Gargantuan#</entry>
   </collection>
   <collection>
-    <name>Cloud giant$Noncombatant$</name>
+    <name>Fire Giant</name>
   </collection>
   <collection>
-    <name>Character[1d4+3]{Cloud Giant}@Cleric&amp;Sorcerer@</name>
+    <name>Frost Giant</name>
   </collection>
   <collection>
-    <name>Fire giant</name>
-    <entry>Greatsword[Weapon]#Large#</entry>
-  </collection>
-  <collection>
-    <name>Fire giant$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1d2]{Fire Giant}@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character[1d3+2]{Fire Giant}@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+5]{Fire Giant}@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2]{Fire Giant}@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character[1d3+2]{Fire Giant}@Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+5]{Fire Giant}@Cleric&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Frost giant</name>
-    <entry>Greataxe[Weapon]#Large#</entry>
-    <entry>Chain shirt[Armor]#Large#</entry>
-  </collection>
-  <collection>
-    <name>Frost giant$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1d2]{Frost Giant}@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character[1d3+2]{Frost Giant}@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+5]{Frost Giant}@Adept@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2]{Frost Giant}@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character[1d3+2]{Frost Giant}@Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character[1d2+5]{Frost Giant}@Cleric&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Character(Jarl)[8]{Frost Giant}@Barbarian&amp;Cleric&amp;Fighter&amp;Sorcerer@</name>
-  </collection>
-  <collection>
-    <name>Hill giant</name>
+    <name>Hill Giant</name>
     <entry>Greatclub[Weapon]#Large#</entry>
     <entry>Hide armor[Armor]#Large#</entry>
   </collection>
   <collection>
-    <name>Hill giant$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Stone giant</name>
+    <name>Stone Giant</name>
     <entry>Greatclub[Weapon]#Large#</entry>
   </collection>
   <collection>
-    <name>Stone giant$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Stone giant$Elder$</name>
+    <name>Elder Stone Giant</name>
     <entry>Greatclub[Weapon]#Large#</entry>
   </collection>
   <collection>
-    <name>Storm giant</name>
+    <name>Storm Giant</name>
     <entry>Greatsword[Weapon]#Huge#</entry>
     <entry>Composite longbow[Weapon]#Huge,+14 Strength bonus#</entry>
-  </collection>
-  <collection>
-    <name>Storm giant$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1d4+6]{Storm Giant}@Cleric&amp;Sorcerer@</name>
   </collection>
   <collection>
     <name>Gibbering mouther</name>
@@ -3115,34 +1363,10 @@
     <name>Girallon</name>
   </collection>
   <collection>
-    <name>Character[3]{Githyanki}@Fighter@</name>
+    <name>Githyanki</name>
   </collection>
   <collection>
-    <name>Character(Sergeant)[7]{Githyanki}</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[7]{Githyanki}</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[9]{Githyanki}</name>
-  </collection>
-  <collection>
-    <name>Character(Supreme Leader)[16]{Githyanki}</name>
-  </collection>
-  <collection>
-    <name>Character(Student)[3]{Githzerai}</name>
-  </collection>
-  <collection>
-    <name>Character(Teacher)[7]{Githzerai}</name>
-  </collection>
-  <collection>
-    <name>Character(Mentor)[9]{Githzerai}</name>
-  </collection>
-  <collection>
-    <name>Character(Master)[13]{Githzerai}</name>
-  </collection>
-  <collection>
-    <name>Character(Sensei)[16]{Githzerai}</name>
+    <name>Githzerai</name>
   </collection>
   <collection>
     <name>Glabrezu</name>
@@ -3153,97 +1377,37 @@
     <entry>Shortbow[Weapon]#Medium#</entry>
   </collection>
   <collection>
-    <name>Gnoll$Noncombatant$</name>
+    <name>Forest Gnome</name>
   </collection>
   <collection>
-    <name>Character(Sergeant)[3]{Gnoll}</name>
+    <name>Rock Gnome</name>
   </collection>
   <collection>
-    <name>Character(Leader)[1d3+3]{Gnoll}</name>
+    <name>Goblin</name>
   </collection>
   <collection>
-    <name>Character(Leader)[1d3+5]{Gnoll}</name>
+    <name>Flesh Golem</name>
   </collection>
   <collection>
-    <name>Character(Lieutenant)[1d2+3]{Gnoll}</name>
+    <name>Clay Golem</name>
   </collection>
   <collection>
-    <name>Character(Captain)[7]{Forest Gnome}@Warrior@</name>
+    <name>Iron Golem</name>
   </collection>
   <collection>
-    <name>Character[1]{Forest Gnome}@Warrior@</name>
+    <name>Stone Golem</name>
   </collection>
   <collection>
-    <name>Character(Sergeant)[3]{Forest Gnome}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Forest Gnome}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Forest Gnome}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[3]{Forest Gnome}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Rock Gnome}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Rock Gnome}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Rock Gnome}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Rock Gnome}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Rock Gnome}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[3]{Rock Gnome}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Goblin$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Goblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d3+5]{Goblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d3+3]{Goblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[1d2+3]{Goblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Goblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Golem$Flesh$</name>
-  </collection>
-  <collection>
-    <name>Golem$Clay$</name>
-  </collection>
-  <collection>
-    <name>Golem$Iron$</name>
-  </collection>
-  <collection>
-    <name>Golem$Stone$</name>
-  </collection>
-  <collection>
-    <name>Golem$Greater Stone$</name>
+    <name>Greater Stone Golem</name>
   </collection>
   <collection>
     <name>Gorgon</name>
   </collection>
   <collection>
-    <name>Gray render</name>
+    <name>Gray Render</name>
   </collection>
   <collection>
-    <name>Green hag</name>
+    <name>Green Hag</name>
   </collection>
   <collection>
     <name>Grick</name>
@@ -3261,74 +1425,23 @@
     <entry>Battleaxe[Weapon]#Medium#</entry>
   </collection>
   <collection>
-    <name>Character(Leader)[1d3+2]{Grimlock}</name>
-  </collection>
-  <collection>
     <name>Gynosphinx</name>
   </collection>
   <collection>
-    <name>Barbed Devil(Hamatula)</name>
+    <name>Barbed Devil (Hamatula)</name>
   </collection>
   <collection>
-    <name>Character(Captain)[7]{Deep Halfling}@Warrior@</name>
+    <name>Deep Halfling</name>
   </collection>
   <collection>
-    <name>Deep Halfling$Noncombatant$</name>
+    <name>Lightfoot Halfling</name>
   </collection>
   <collection>
-    <name>Character[1]{Deep Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Deep Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Deep Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Deep Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Lightfoot Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Lightfoot Halfling$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Lightfoot Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Lightfoot Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Lightfoot Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Lightfoot Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Tallfellow Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Tallfellow Halfling$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Tallfellow Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Tallfellow Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Tallfellow Halfling}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Tallfellow Halfling}@Warrior@</name>
+    <name>Tallfellow Halfling</name>
   </collection>
   <collection>
     <name>Harpy</name>
     <entry>Club[Weapon]#Medium#</entry>
-  </collection>
-  <collection>
-    <name>Character(Archer)[7]{Harpy}@Fighter@</name>
   </collection>
   <collection>
     <name>Hawk</name>
@@ -3337,10 +1450,10 @@
     <name>Hell hound</name>
   </collection>
   <collection>
-    <name>Hellcat(Bezekira)</name>
+    <name>Hellcat (Bezekira)</name>
   </collection>
   <collection>
-    <name>Hellwasp swarm</name>
+    <name>Hellwasp Swarm</name>
   </collection>
   <collection>
     <name>Hezrou</name>
@@ -3395,76 +1508,76 @@
     <name>Howler</name>
   </collection>
   <collection>
-    <name>Hydra$5 heads$</name>
+    <name>Five-Headed Cryohydra</name>
   </collection>
   <collection>
-    <name>Hydra$6 heads$</name>
+    <name>Five-Headed Hydra</name>
   </collection>
   <collection>
-    <name>Hydra$7 heads$</name>
+    <name>Five-Headed Pyrohydra</name>
   </collection>
   <collection>
-    <name>Hydra$8 heads$</name>
+    <name>Six-Headed Cryohydra</name>
   </collection>
   <collection>
-    <name>Hydra$9 heads$</name>
+    <name>Six-Headed Hydra</name>
   </collection>
   <collection>
-    <name>Hydra$10 heads$</name>
+    <name>Six-Headed Pyrohydra</name>
   </collection>
   <collection>
-    <name>Hydra$11 heads$</name>
+    <name>Seven-Headed Cryohydra</name>
   </collection>
   <collection>
-    <name>Hydra$12 heads$</name>
+    <name>Seven-Headed Hydra</name>
   </collection>
   <collection>
-    <name>Cryohydra$5 heads$</name>
+    <name>Seven-Headed Pyrohydra</name>
   </collection>
   <collection>
-    <name>Cryohydra$6 heads$</name>
+    <name>Eight-Headed Cryohydra</name>
   </collection>
   <collection>
-    <name>Cryohydra$7 heads$</name>
+    <name>Eight-Headed Hydra</name>
   </collection>
   <collection>
-    <name>Cryohydra$8 heads$</name>
+    <name>Eight-Headed Pyrohydra</name>
   </collection>
   <collection>
-    <name>Cryohydra$9 heads$</name>
+    <name>Nine-Headed Cryohydra</name>
   </collection>
   <collection>
-    <name>Cryohydra$10 heads$</name>
+    <name>Nine-Headed Hydra</name>
   </collection>
   <collection>
-    <name>Cryohydra$11 heads$</name>
+    <name>Nine-Headed Pyrohydra</name>
   </collection>
   <collection>
-    <name>Cryohydra$12 heads$</name>
+    <name>Ten-Headed Cryohydra</name>
   </collection>
   <collection>
-    <name>Pyrohydra$5 heads$</name>
+    <name>Ten-Headed Hydra</name>
   </collection>
   <collection>
-    <name>Pyrohydra$6 heads$</name>
+    <name>Ten-Headed Pyrohydra</name>
   </collection>
   <collection>
-    <name>Pyrohydra$7 heads$</name>
+    <name>Eleven-Headed Cryohydra</name>
   </collection>
   <collection>
-    <name>Pyrohydra$8 heads$</name>
+    <name>Eleven-Headed Hydra</name>
   </collection>
   <collection>
-    <name>Pyrohydra$9 heads$</name>
+    <name>Eleven-Headed Pyrohydra</name>
   </collection>
   <collection>
-    <name>Pyrohydra$10 heads$</name>
+    <name>Twelve-Headed Cryohydra</name>
   </collection>
   <collection>
-    <name>Pyrohydra$11 heads$</name>
+    <name>Twelve-Headed Hydra</name>
   </collection>
   <collection>
-    <name>Pyrohydra$12 heads$</name>
+    <name>Twelve-Headed Pyrohydra</name>
   </collection>
   <collection>
     <name>Hyena</name>
@@ -3481,8 +1594,9 @@
     <entry>Longbow[Weapon]#Medium#</entry>
   </collection>
   <collection>
-    <name>Chain Devil(Kyton)</name>
-    <entry>Spiked chain[Weapon]#Medium#</entry>
+    <name>Chain Devil (Kyton)</name>
+    <entry>Spiked chain[Weapon]</entry>
+    <entry>Spiked chain[Weapon]</entry>
   </collection>
   <collection>
     <name>Kobold$Noncombatant$</name>
@@ -3557,66 +1671,6 @@
     <name>Leopard</name>
   </collection>
   <collection>
-    <name>Character[1]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[2]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[3]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[4]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[5]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[6]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[7]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[8]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[9]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[10]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[11]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[12]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[13]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[14]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[15]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[16]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[17]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[18]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[19]#Lich#</name>
-  </collection>
-  <collection>
-    <name>Character[20]#Lich#</name>
-  </collection>
-  <collection>
     <name>Lillend</name>
     <entry>Short sword[Weapon]#Large#</entry>
   </collection>
@@ -3624,10 +1678,7 @@
     <name>Lion</name>
   </collection>
   <collection>
-    <name>Dire lion</name>
-  </collection>
-  <collection>
-    <name>Livestock$Noncombatant$</name>
+    <name>Dire Lion</name>
   </collection>
   <collection>
     <name>Lizard</name>
@@ -3638,43 +1689,16 @@
     <entry>Javelin[Weapon]#Medium#</entry>
   </collection>
   <collection>
-    <name>Lizardfolk$Noncombatant$</name>
+    <name>Locathah</name>
   </collection>
   <collection>
-    <name>Character(Leader)[1d4+2]{Lizardfolk}</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[2d4+2]{Lizardfolk}</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[1d4+2]{Lizardfolk}</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Locathah}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Locathah$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Locathah}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Locathah}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Locathah}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Locathah}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Locust swarm</name>
+    <name>Locust Swarm</name>
   </collection>
   <collection>
     <name>Magmin</name>
   </collection>
   <collection>
-    <name>Manta ray</name>
+    <name>Manta Ray</name>
   </collection>
   <collection>
     <name>Manticore</name>
@@ -3700,64 +1724,43 @@
     <name>Megaraptor</name>
   </collection>
   <collection>
-    <name>Mephit[3]</name>
+    <name>Air Mephit</name>
   </collection>
   <collection>
-    <name>Mephit(Air)</name>
+    <name>Dust Mephit</name>
   </collection>
   <collection>
-    <name>Mephit(Dust)</name>
+    <name>Earth Mephit</name>
   </collection>
   <collection>
-    <name>Mephit(Earth)</name>
+    <name>Fire Mephit</name>
   </collection>
   <collection>
-    <name>Mephit(Fire)</name>
+    <name>Ice Mephit</name>
   </collection>
   <collection>
-    <name>Mephit(Ice)</name>
+    <name>Magma Mephit</name>
   </collection>
   <collection>
-    <name>Mephit(Magma)</name>
+    <name>Ooze Mephit</name>
   </collection>
   <collection>
-    <name>Mephit(Ooze)</name>
+    <name>Salt Mephit</name>
   </collection>
   <collection>
-    <name>Mephit(Salt)</name>
+    <name>Steam Mephit</name>
   </collection>
   <collection>
-    <name>Mephit(Steam)</name>
+    <name>Water Mephit</name>
   </collection>
   <collection>
-    <name>Mephit(Water)</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Merfolk}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[3]{Merfolk}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Merfolk}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Merfolk}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Merfolk}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Merfolk}@Warrior@</name>
+    <name>Merfolk</name>
   </collection>
   <collection>
     <name>Mimic</name>
   </collection>
   <collection>
     <name>Mind flayer</name>
-  </collection>
-  <collection>
-    <name>Character[9]{Mind Flayer}@Sorcerer@</name>
   </collection>
   <collection>
     <name>Minotaur</name>
@@ -3773,38 +1776,32 @@
     <name>Monkey</name>
   </collection>
   <collection>
-    <name>Monkey$Celestial creature$</name>
-  </collection>
-  <collection>
     <name>Mule</name>
   </collection>
   <collection>
     <name>Mummy</name>
   </collection>
   <collection>
-    <name>Character(Lord)[10]#Mummy#@Cleric@</name>
+    <name>Dark Naga</name>
   </collection>
   <collection>
-    <name>Naga$Dark$</name>
+    <name>Guardian Naga</name>
   </collection>
   <collection>
-    <name>Naga$Guardian$</name>
+    <name>Spirit Naga</name>
   </collection>
   <collection>
-    <name>Naga$Spirit$</name>
-  </collection>
-  <collection>
-    <name>Naga$Water$</name>
+    <name>Water Naga</name>
   </collection>
   <collection>
     <name>Nalfeshnee</name>
   </collection>
   <collection>
-    <name>Nessian warhound</name>
+    <name>Nessian Warhound</name>
     <entry>Chain shirt[Armor]#Barding,Large#(2)@True@</entry>
   </collection>
   <collection>
-    <name>Night hag</name>
+    <name>Night Hag</name>
   </collection>
   <collection>
     <name>Nightcrawler</name>
@@ -3813,7 +1810,7 @@
     <name>Nightmare</name>
   </collection>
   <collection>
-    <name>Nightmare$Cauchemar$</name>
+    <name>Nightmare, Cauchemar</name>
   </collection>
   <collection>
     <name>Nightwalker</name>
@@ -3834,7 +1831,7 @@
     <name>Octopus</name>
   </collection>
   <collection>
-    <name>Giant octopus</name>
+    <name>Giant Octopus</name>
   </collection>
   <collection>
     <name>Ogre</name>
@@ -3842,18 +1839,12 @@
     <entry>Javelin[Weapon]#Large#</entry>
   </collection>
   <collection>
-    <name>Character[4]{Ogre}@Barbarian@</name>
-  </collection>
-  <collection>
-    <name>Ogre$Merrow$</name>
+    <name>Merrow</name>
     <entry>Longspear[Weapon]#Large#</entry>
     <entry>Javelin[Weapon]#Large#</entry>
   </collection>
   <collection>
-    <name>Character[4]{Merrow}@Barbarian@</name>
-  </collection>
-  <collection>
-    <name>Ogre mage</name>
+    <name>Ogre Mage</name>
     <entry>Greatsword[Weapon]#Large#</entry>
     <entry>Longbow[Weapon]#Large#</entry>
   </collection>
@@ -3861,49 +1852,19 @@
     <name>Gray ooze</name>
   </collection>
   <collection>
-    <name>Ochre jelly</name>
+    <name>Ochre Jelly</name>
   </collection>
   <collection>
-    <name>Orc$Noncombatant$</name>
+    <name>Orc</name>
   </collection>
   <collection>
-    <name>Character[1]{Orc}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Orc}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Orc}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Orc}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Orc}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Half-Orc$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Half-Orc}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Half-Orc}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Half-Orc}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Half-Orc}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Half-Orc}@Warrior@</name>
+    <name>Half-Orc</name>
   </collection>
   <collection>
     <name>Otyugh</name>
   </collection>
   <collection>
-    <name>Bone Devil(Osyluth)</name>
+    <name>Bone Devil (Osyluth)</name>
   </collection>
   <collection>
     <name>Owl</name>
@@ -3912,25 +1873,22 @@
     <name>Giant owl</name>
   </collection>
   <collection>
-    <name>Owl$Celestial creature$</name>
-  </collection>
-  <collection>
     <name>Owlbear</name>
   </collection>
   <collection>
     <name>Pegasus</name>
   </collection>
   <collection>
-    <name>Phantom fungus</name>
+    <name>Phantom Fungus</name>
   </collection>
   <collection>
-    <name>Phase spider</name>
+    <name>Phase Spider</name>
   </collection>
   <collection>
     <name>Phasm</name>
   </collection>
   <collection>
-    <name>Pit fiend</name>
+    <name>Pit Fiend</name>
   </collection>
   <collection>
     <name>Pixie</name>
@@ -3956,16 +1914,13 @@
     <name>Porpoise</name>
   </collection>
   <collection>
-    <name>Porpoise$Celestial creature$</name>
-  </collection>
-  <collection>
-    <name>Giant praying mantis</name>
+    <name>Giant Praying Mantis</name>
   </collection>
   <collection>
     <name>Pseudodragon</name>
   </collection>
   <collection>
-    <name>Purple worm</name>
+    <name>Purple Worm</name>
   </collection>
   <collection>
     <name>Quasit</name>
@@ -3980,25 +1935,19 @@
     <name>Rat</name>
   </collection>
   <collection>
-    <name>Dire rat</name>
+    <name>Dire Rat</name>
   </collection>
   <collection>
-    <name>Dire rat$Fiendish creature$</name>
-  </collection>
-  <collection>
-    <name>Rat swarm</name>
+    <name>Rat Swarm</name>
   </collection>
   <collection>
     <name>Raven</name>
   </collection>
   <collection>
-    <name>Raven$Fiendish creature$</name>
-  </collection>
-  <collection>
     <name>Ravid</name>
   </collection>
   <collection>
-    <name>Razor boar</name>
+    <name>Razor Boar</name>
   </collection>
   <collection>
     <name>Remorhaz</name>
@@ -4045,16 +1994,13 @@
     <name>Character(Underpriest)[1d4+2]{Sahuagin}@Cleric@</name>
   </collection>
   <collection>
-    <name>Salamander$Flamebrother$</name>
-    <entry>Shortspear[Weapon]#Small#</entry>
+    <name>Flamebrother Salamander</name>
   </collection>
   <collection>
-    <name>Salamander$Average$</name>
-    <entry>Shortspear[Weapon]#Medium#</entry>
+    <name>Average Salamander</name>
   </collection>
   <collection>
-    <name>Salamander$Noble$</name>
-    <entry>Longspear[Weapon]#Large#(3)@True@</entry>
+    <name>Noble Salamander</name>
   </collection>
   <collection>
     <name>Satyr</name>
@@ -4066,27 +2012,6 @@
     <entry>Dagger[Weapon]#Medium#</entry>
     <entry>Shortbow[Weapon]#Medium#</entry>
     <entry>Pipes[Tool]</entry>
-  </collection>
-  <collection>
-    <name>Monstrous scorpion$Colossal$</name>
-  </collection>
-  <collection>
-    <name>Monstrous scorpion$Gargantuan$</name>
-  </collection>
-  <collection>
-    <name>Monstrous scorpion$Huge$</name>
-  </collection>
-  <collection>
-    <name>Monstrous scorpion$Large$</name>
-  </collection>
-  <collection>
-    <name>Monstrous scorpion$Medium$</name>
-  </collection>
-  <collection>
-    <name>Monstrous scorpion$Small$</name>
-  </collection>
-  <collection>
-    <name>Monstrous scorpion$Tiny$</name>
   </collection>
   <collection>
     <name>Scorpionfolk</name>
@@ -4108,79 +2033,52 @@
     <name>Shadow</name>
   </collection>
   <collection>
-    <name>Shadow$Greater$</name>
+    <name>Greater Shadow</name>
   </collection>
   <collection>
-    <name>Shadow mastiff</name>
+    <name>Shadow Mastiff</name>
   </collection>
   <collection>
-    <name>Shambling mound</name>
+    <name>Shambling Mound</name>
   </collection>
   <collection>
-    <name>Dire shark</name>
+    <name>Dire Shark</name>
   </collection>
   <collection>
-    <name>Shark$Medium$</name>
+    <name>Shark, Medium</name>
   </collection>
   <collection>
-    <name>Shark$Large$</name>
+    <name>Shark, Large</name>
   </collection>
   <collection>
-    <name>Shark$Huge$</name>
+    <name>Shark, Huge</name>
   </collection>
   <collection>
-    <name>Shield guardian</name>
+    <name>Shield Guardian</name>
   </collection>
   <collection>
-    <name>Shocker lizard</name>
+    <name>Shocker Lizard</name>
   </collection>
   <collection>
     <name>Shrieker</name>
   </collection>
   <collection>
-    <name>Skeleton$Human$</name>
-  </collection>
-  <collection>
-    <name>Skeleton$Wolf$</name>
-  </collection>
-  <collection>
-    <name>Skeleton$Owlbear$</name>
-  </collection>
-  <collection>
-    <name>Skeleton$Troll$</name>
-  </collection>
-  <collection>
-    <name>Skeleton$Chimera$</name>
-  </collection>
-  <collection>
-    <name>Skeleton$Ettin$</name>
-  </collection>
-  <collection>
-    <name>Skeleton$Megaraptor$</name>
-  </collection>
-  <collection>
-    <name>Skeleton$Cloud giant$</name>
-  </collection>
-  <collection>
-    <name>Skeleton$Red dragon$Young adult$$</name>
-  </collection>
-  <collection>
     <name>Skum</name>
   </collection>
   <collection>
-    <name>Slaad$Blue$</name>
+    <name>Blue Slaad</name>
   </collection>
   <collection>
-    <name>Slaad$Death$</name>
+    <name>Death Slaad</name>
   </collection>
   <collection>
-    <name>Slaad$Gray$</name>
+    <name>Gray Slaad</name>
   </collection>
   <collection>
-    <name>Slaad$Green$</name>
+    <name>Green Slaad</name>
   </collection>
   <collection>
-    <name>Slaad$Red$</name>
+    <name>Red Slaad</name>
   </collection>
   <collection>
     <name>Solar</name>
@@ -4188,64 +2086,127 @@
     <entry>Composite longbow[Weapon]#+5 Strength bonus,Large#(2){Creates slaying arrows keyed to any creature type or subtype$5$}@True@</entry>
   </collection>
   <collection>
-    <name>Constrictor snake</name>
+    <name>Constrictor Snake</name>
   </collection>
   <collection>
-    <name>Giant constrictor snake</name>
+    <name>Giant Constrictor Snake</name>
   </collection>
   <collection>
-    <name>Viper snake$Huge$</name>
+    <name>Viper Snake, Huge</name>
   </collection>
   <collection>
-    <name>Viper snake$Large$</name>
+    <name>Viper Snake, Large</name>
   </collection>
   <collection>
-    <name>Viper snake$Medium$</name>
+    <name>Viper Snake, Medium</name>
   </collection>
   <collection>
-    <name>Viper snake$Small$</name>
+    <name>Viper Snake, Small</name>
   </collection>
   <collection>
-    <name>Viper snake$Tiny$</name>
+    <name>Viper Snake, Tiny</name>
   </collection>
   <collection>
     <name>Spectre</name>
   </collection>
   <collection>
-    <name>Monstrous spider$Colossal$</name>
+    <name>Monstrous Centipede, Colossal</name>
   </collection>
   <collection>
-    <name>Monstrous spider$Gargantuan$</name>
+    <name>Monstrous Centipede, Gargantuan</name>
   </collection>
   <collection>
-    <name>Monstrous spider$Huge$</name>
+    <name>Monstrous Centipede, Huge</name>
   </collection>
   <collection>
-    <name>Monstrous spider$Large$</name>
+    <name>Monstrous Centipede, Large</name>
   </collection>
   <collection>
-    <name>Monstrous spider$Medium$</name>
+    <name>Monstrous Centipede, Medium</name>
   </collection>
   <collection>
-    <name>Monstrous spider$Small$</name>
+    <name>Monstrous Centipede, Small</name>
   </collection>
   <collection>
-    <name>Monstrous spider$Tiny$</name>
+    <name>Monstrous Centipede, Tiny</name>
   </collection>
   <collection>
-    <name>Spider swarm</name>
+    <name>Monstrous Scorpion, Colossal</name>
   </collection>
   <collection>
-    <name>Spider eater</name>
+    <name>Monstrous Scorpion, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Huge</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Large</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Medium</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Small</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Tiny</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Colossal</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Huge</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Large</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Medium</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Small</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Tiny</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Colossal</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Huge</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Large</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Medium</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Small</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Tiny</name>
+  </collection>
+  <collection>
+    <name>Spider Swarm</name>
+  </collection>
+  <collection>
+    <name>Spider Eater</name>
   </collection>
   <collection>
     <name>Squid</name>
   </collection>
   <collection>
-    <name>Giant squid</name>
+    <name>Giant Squid</name>
   </collection>
   <collection>
-    <name>Giant stag beetle</name>
+    <name>Giant Stag Beetle</name>
   </collection>
   <collection>
     <name>Stirge</name>
@@ -4254,22 +2215,7 @@
     <name>Succubus</name>
   </collection>
   <collection>
-    <name>Character(Captain)[7]{Svirfneblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Svirfneblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[3]{Svirfneblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Svirfneblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Svirfneblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Svirfneblin}@Warrior@</name>
+    <name>Svirfneblin</name>
   </collection>
   <collection>
     <name>Tarrasque</name>
@@ -4281,13 +2227,13 @@
     <name>Thoqqua</name>
   </collection>
   <collection>
-    <name>Character[1]{Tiefling}@Warrior@</name>
+    <name>Tiefling</name>
   </collection>
   <collection>
     <name>Tiger</name>
   </collection>
   <collection>
-    <name>Dire tiger</name>
+    <name>Dire Tiger</name>
   </collection>
   <collection>
     <name>Titan</name>
@@ -4298,13 +2244,13 @@
     <name>Toad</name>
   </collection>
   <collection>
-    <name>Tojanida$Adult$</name>
+    <name>Adult Tojanida</name>
   </collection>
   <collection>
-    <name>Tojanida$Elder$</name>
+    <name>Elder Tojanida</name>
   </collection>
   <collection>
-    <name>Tojanida$Juvenile$</name>
+    <name>Juvenile Tojanida</name>
   </collection>
   <collection>
     <name>Treant</name>
@@ -4354,132 +2300,34 @@
     <name>Unicorn</name>
   </collection>
   <collection>
-    <name>Unicorn$Celestial Charger$</name>
-  </collection>
-  <collection>
-    <name>Character[1]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[2]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[3]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[4]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[5]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[6]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[7]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[8]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[9]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[10]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[11]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[12]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[13]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[14]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[15]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[16]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[17]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[18]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[19]#Vampire#</name>
-  </collection>
-  <collection>
-    <name>Character[20]#Vampire#</name>
-  </collection>
-  <collection>
     <name>Vampire spawn</name>
   </collection>
   <collection>
     <name>Vargouille</name>
   </collection>
   <collection>
-    <name>Violet fungus</name>
+    <name>Violet Fungus</name>
   </collection>
   <collection>
     <name>Vrock</name>
   </collection>
   <collection>
-    <name>Giant wasp</name>
+    <name>Giant Wasp</name>
   </collection>
   <collection>
     <name>Weasel</name>
   </collection>
   <collection>
-    <name>Dire weasel</name>
+    <name>Dire Weasel</name>
   </collection>
   <collection>
-    <name>Werebear</name>
-    <entry>Greataxe[Weapon]#Medium#</entry>
-    <entry>Throwing axe[Weapon]#Medium#</entry>
+    <name>Baleen Whale</name>
   </collection>
   <collection>
-    <name>Wereboar</name>
-    <entry>Battleaxe[Weapon]#Medium#</entry>
-    <entry>Javelin[Weapon]#Medium#</entry>
-    <entry>Scale mail[Armor]#Medium#</entry>
-    <entry>Heavy wooden shield[Armor]#Medium#</entry>
+    <name>Cachalot Whale</name>
   </collection>
   <collection>
-    <name>Hill giant dire wereboar</name>
-    <entry>Greatclub[Weapon]#Large#</entry>
-    <entry>Hide armor[Armor]#Large#</entry>
-  </collection>
-  <collection>
-    <name>Wererat</name>
-    <entry>Rapier[Weapon]#Medium#</entry>
-    <entry>Light crossbow[Weapon]#Medium#</entry>
-  </collection>
-  <collection>
-    <name>Weretiger</name>
-    <entry>Glaive[Weapon]#Medium#</entry>
-    <entry>Composite longbow[Weapon]#Medium,+1 Strength bonus#</entry>
-  </collection>
-  <collection>
-    <name>Werewolf</name>
-    <entry>Longsword[Weapon]#Medium#</entry>
-    <entry>Light crossbow[Weapon]#Medium#</entry>
-  </collection>
-  <collection>
-    <name>Character(Lord)[10]#Werewolf#@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Whale$Baleen$</name>
-  </collection>
-  <collection>
-    <name>Whale$Cachalot$</name>
-  </collection>
-  <collection>
-    <name>Whale$Orca$</name>
+    <name>Orca Whale</name>
   </collection>
   <collection>
     <name>Wight</name>
@@ -4494,13 +2342,13 @@
     <name>Wolf</name>
   </collection>
   <collection>
-    <name>Dire wolf</name>
+    <name>Dire Wolf</name>
   </collection>
   <collection>
     <name>Wolverine</name>
   </collection>
   <collection>
-    <name>Dire wolverine</name>
+    <name>Dire Wolverine</name>
   </collection>
   <collection>
     <name>Worg</name>
@@ -4509,7 +2357,7 @@
     <name>Wraith</name>
   </collection>
   <collection>
-    <name>Wraith$Dread$</name>
+    <name>Dread Wraith</name>
   </collection>
   <collection>
     <name>Wyvern</name>
@@ -4518,13 +2366,13 @@
     <name>Xill</name>
   </collection>
   <collection>
-    <name>Xorn$Minor$</name>
+    <name>Minor Xorn</name>
   </collection>
   <collection>
-    <name>Xorn$Average$</name>
+    <name>Average Xorn</name>
   </collection>
   <collection>
-    <name>Xorn$Elder$</name>
+    <name>Elder Xorn</name>
   </collection>
   <collection>
     <name>Yeth hound</name>
@@ -4533,17 +2381,17 @@
     <name>Yrthak</name>
   </collection>
   <collection>
-    <name>Yuan-ti$Pureblood$</name>
+    <name>Pureblood Yuan-ti</name>
     <entry>Longbow[Weapon]#Medium#</entry>
     <entry>Scimitar[Weapon]#Medium#</entry>
   </collection>
   <collection>
-    <name>Yuan-ti$Halfblood$</name>
+    <name>Halfblood Yuan-ti</name>
     <entry>Composite longbow[Weapon]#Medium,+2 Strength bonus#</entry>
     <entry>Scimitar[Weapon]#Medium#</entry>
   </collection>
   <collection>
-    <name>Yuan-ti$Abomination$</name>
+    <name>Abomination Yuan-ti</name>
     <entry>Composite longbow[Weapon]#Large,+4 Strength bonus#</entry>
     <entry>Scimitar[Weapon]#Large#</entry>
   </collection>
@@ -4551,29 +2399,5 @@
     <name>Zelekhut</name>
     <entry>Spiked chain[Weapon]#Large#</entry>
     <entry>Spiked chain[Weapon]#Large#</entry>
-  </collection>
-  <collection>
-    <name>Zombie$Kobold$</name>
-  </collection>
-  <collection>
-    <name>Zombie$Human$</name>
-  </collection>
-  <collection>
-    <name>Zombie$Bugbear$</name>
-  </collection>
-  <collection>
-    <name>Zombie$Gray render$</name>
-  </collection>
-  <collection>
-    <name>Zombie$Minotaur$</name>
-  </collection>
-  <collection>
-    <name>Zombie$Ogre$</name>
-  </collection>
-  <collection>
-    <name>Zombie$Troglodyte$</name>
-  </collection>
-  <collection>
-    <name>Zombie$Wyvern$</name>
   </collection>
 </collections>

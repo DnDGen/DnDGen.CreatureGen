@@ -8,7 +8,6 @@ using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
-using DnDGen.TreasureGen.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +42,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
 
             skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities);
             skills = ApplyBonuses(creatureName, creatureType, skills, size);
-            skills = ApplySkillSynergy(creatureName, skills, size);
+            skills = ApplySkillSynergy(skills);
 
             return skills;
         }
@@ -105,7 +104,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             return skills;
         }
 
-        private IEnumerable<Skill> ApplySkillSynergy(string creature, IEnumerable<Skill> skills, string size)
+        private IEnumerable<Skill> ApplySkillSynergy(IEnumerable<Skill> skills)
         {
             var synergyOpportunities = skills.Where(s => s.EffectiveRanks >= 5);
 
@@ -322,7 +321,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             return skills;
         }
 
-        public IEnumerable<Skill> SetArmorCheckPenalties(IEnumerable<Skill> skills, Equipment equipment)
+        public IEnumerable<Skill> SetArmorCheckPenalties(string creature, IEnumerable<Skill> skills, Equipment equipment)
         {
             var armorCheckSkills = skills.Where(s => s.HasArmorCheckPenalty);
 
@@ -330,17 +329,17 @@ namespace DnDGen.CreatureGen.Generators.Skills
             {
                 if (equipment.Armor != null)
                 {
-                    var armor = equipment.Armor as Armor;
+                    var armor = equipment.Armor;
                     skill.ArmorCheckPenalty += armor.ArmorCheckPenalty;
                 }
 
                 if (equipment.Shield != null)
                 {
-                    var shield = equipment.Shield as Armor;
+                    var shield = equipment.Shield;
                     skill.ArmorCheckPenalty += shield.ArmorCheckPenalty;
                 }
 
-                if (skill.Name == SkillConstants.Swim)
+                if (skill.Name == SkillConstants.Swim && creature != CreatureConstants.Giant_Storm)
                 {
                     skill.ArmorCheckPenalty *= 2;
                 }

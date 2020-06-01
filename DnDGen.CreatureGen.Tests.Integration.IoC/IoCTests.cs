@@ -18,13 +18,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC
             Stopwatch.Reset();
         }
 
-        protected void AssertSingleton<T>()
-        {
-            var first = InjectAndAssertDuration<T>();
-            var second = InjectAndAssertDuration<T>();
-            Assert.That(first, Is.EqualTo(second));
-        }
-
         private T InjectAndAssertDuration<T>()
         {
             Stopwatch.Restart();
@@ -63,13 +56,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC
             where T : I
         {
             var item = InjectAndAssertDuration<I>(name);
-            Assert.That(item, Is.InstanceOf<T>());
-        }
-
-        protected void AssertIsInstanceOf<I, T>()
-            where T : I
-        {
-            var item = InjectAndAssertDuration<I>();
             Assert.That(item, Is.InstanceOf<T>());
         }
     }

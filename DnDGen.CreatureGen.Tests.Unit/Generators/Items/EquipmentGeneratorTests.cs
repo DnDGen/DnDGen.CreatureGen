@@ -159,7 +159,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Club;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -200,7 +200,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Dagger;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -243,7 +243,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.LightMace;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightMace))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightMace, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -281,7 +281,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Club;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -319,7 +319,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Dagger;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -357,7 +357,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Greataxe;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Greataxe))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Greataxe, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -395,7 +395,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Greatsword;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Greatsword))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Greatsword, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -433,7 +433,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Whip;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Whip))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Whip, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -471,7 +471,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.SpikedChain;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.SpikedChain))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.SpikedChain, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -510,7 +510,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Club;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -549,7 +549,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Longsword;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "martial weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "martial weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -588,7 +588,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.GnomeHookedHammer;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "exotic weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "exotic weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -627,7 +627,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = "my gnome hooked hammer";
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.GnomeHookedHammer))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.GnomeHookedHammer, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -675,7 +675,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Attributes = new[] { "my attribute", AttributeConstants.Melee };
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.ShortSword))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.ShortSword, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -726,7 +726,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             };
 
             mockMagicalItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                     .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -767,7 +767,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Club;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -810,7 +810,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.BaseNames = new[] { WeaponConstants.BastardSword, WeaponConstants.ShortSword };
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -852,7 +852,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Club;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -899,7 +899,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 Attributes = new[] { AttributeConstants.Melee }
             };
             mockMundaneItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
 
             attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
@@ -958,7 +958,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 Attributes = new[] { AttributeConstants.Melee }
             };
             mockMundaneItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
 
             attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
@@ -1021,7 +1021,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 Attributes = new[] { AttributeConstants.Melee }
             };
             mockMagicalItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
 
             attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
@@ -1081,7 +1081,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 Attributes = new[] { AttributeConstants.Melee }
             };
             mockMagicalItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
 
             attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
@@ -1145,7 +1145,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
             Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
             Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
-            Assert.That(weapon.Size, Is.EqualTo("size");
+            Assert.That(weapon.Size, Is.EqualTo("size"));
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
@@ -1180,7 +1180,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Damage = "my damage";
             weapon.Magic.Bonus = 1337;
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1220,7 +1220,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Damage = "my damage";
             weapon.Traits.Add(TraitConstants.Masterwork);
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1262,7 +1262,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Magic.Bonus = 2;
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1302,7 +1302,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Dagger;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1343,7 +1343,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Club;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1384,7 +1384,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Quarterstaff;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Quarterstaff))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Quarterstaff, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1427,8 +1427,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 .Returns(secondary);
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, It.IsAny<string>()))
-                .Returns((int l, string t, string n) => new Weapon { Name = n, Damage = $"my {n} damage" });
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, It.IsAny<string>(), "size"))
+                .Returns((int l, string t, string n, string[] tt) => new Weapon { Name = n, Damage = $"my {n} damage" });
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
             Assert.That(equipment.Weapons.Count(), Is.EqualTo(2));
@@ -1499,8 +1499,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 .Returns(third);
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, It.IsAny<string>()))
-                .Returns((int l, string t, string n) => new Weapon { Name = n, Damage = $"my {n} damage" });
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, It.IsAny<string>(), "size"))
+                .Returns((int l, string t, string n, string[] tt) => new Weapon { Name = n, Damage = $"my {n} damage" });
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
             Assert.That(equipment.Weapons.Count(), Is.EqualTo(3));
@@ -1596,8 +1596,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 .Returns(third);
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, It.IsAny<string>()))
-                .Returns((int l, string t, string n) => new Weapon { Name = n, Damage = $"my {n} damage" });
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, It.IsAny<string>(), "size"))
+                .Returns((int l, string t, string n, string[] tt) => new Weapon { Name = n, Damage = $"my {n} damage" });
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
             Assert.That(equipment.Weapons.Count(), Is.EqualTo(4));
@@ -1689,7 +1689,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Dart;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1730,7 +1730,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Dart;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dart))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dart, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1771,7 +1771,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Javelin;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Javelin))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Javelin, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1814,7 +1814,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.LightCrossbow;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightCrossbow))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightCrossbow, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1852,7 +1852,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Dart;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dart))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dart, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1890,7 +1890,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Dart;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dart))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dart, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1928,7 +1928,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Longbow;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Longbow))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Longbow, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1944,14 +1944,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(attacks[5].AttackBonuses, Is.Empty);
         }
 
-        [TestCase(WeaponConstants.CompositeShortbow, WeaponConstants.CompositePlus0Shortbow)]
-        [TestCase(WeaponConstants.CompositeShortbow, WeaponConstants.CompositePlus1Shortbow)]
-        [TestCase(WeaponConstants.CompositeShortbow, WeaponConstants.CompositePlus2Shortbow)]
-        [TestCase(WeaponConstants.CompositeLongbow, WeaponConstants.CompositePlus0Longbow)]
-        [TestCase(WeaponConstants.CompositeLongbow, WeaponConstants.CompositePlus1Longbow)]
-        [TestCase(WeaponConstants.CompositeLongbow, WeaponConstants.CompositePlus2Longbow)]
-        [TestCase(WeaponConstants.CompositeLongbow, WeaponConstants.CompositePlus3Longbow)]
-        [TestCase(WeaponConstants.CompositeLongbow, WeaponConstants.CompositePlus4Longbow)]
+        [TestCase(WeaponConstants.CompositeShortbow, WeaponConstants.CompositeShortbow_StrengthPlus0)]
+        [TestCase(WeaponConstants.CompositeShortbow, WeaponConstants.CompositeShortbow_StrengthPlus1)]
+        [TestCase(WeaponConstants.CompositeShortbow, WeaponConstants.CompositeShortbow_StrengthPlus2)]
+        [TestCase(WeaponConstants.CompositeLongbow, WeaponConstants.CompositeLongbow_StrengthPlus0)]
+        [TestCase(WeaponConstants.CompositeLongbow, WeaponConstants.CompositeLongbow_StrengthPlus1)]
+        [TestCase(WeaponConstants.CompositeLongbow, WeaponConstants.CompositeLongbow_StrengthPlus2)]
+        [TestCase(WeaponConstants.CompositeLongbow, WeaponConstants.CompositeLongbow_StrengthPlus3)]
+        [TestCase(WeaponConstants.CompositeLongbow, WeaponConstants.CompositeLongbow_StrengthPlus4)]
         public void GenerateRangedWeapon_Proficient_Focus_Martial_CompositeBow(string compositeBow, string compositeTemplate)
         {
             attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
@@ -1974,7 +1974,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = compositeTemplate;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, compositeTemplate))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, compositeTemplate, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2012,7 +2012,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Longbow;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Longbow))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Longbow, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2050,7 +2050,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Shuriken;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Shuriken))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Shuriken, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2088,7 +2088,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.HandCrossbow;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.HandCrossbow))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.HandCrossbow, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2127,7 +2127,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Dart;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2167,7 +2167,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Longbow;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "martial weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "martial weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2206,7 +2206,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Shuriken;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "exotic weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "exotic weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2245,7 +2245,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = "my hand crossbow";
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.HandCrossbow))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.HandCrossbow, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2286,7 +2286,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Dart;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2321,18 +2321,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         {
             var shortBows = new[]
             {
-                WeaponConstants.CompositePlus0Shortbow,
-                WeaponConstants.CompositePlus1Shortbow,
-                WeaponConstants.CompositePlus2Shortbow,
+                WeaponConstants.CompositeShortbow_StrengthPlus0,
+                WeaponConstants.CompositeShortbow_StrengthPlus1,
+                WeaponConstants.CompositeShortbow_StrengthPlus2,
             };
 
             var longBows = new[]
             {
-                WeaponConstants.CompositePlus0Longbow,
-                WeaponConstants.CompositePlus1Longbow,
-                WeaponConstants.CompositePlus2Longbow,
-                WeaponConstants.CompositePlus3Longbow,
-                WeaponConstants.CompositePlus4Longbow
+                WeaponConstants.CompositeLongbow_StrengthPlus0,
+                WeaponConstants.CompositeLongbow_StrengthPlus1,
+                WeaponConstants.CompositeLongbow_StrengthPlus2,
+                WeaponConstants.CompositeLongbow_StrengthPlus3,
+                WeaponConstants.CompositeLongbow_StrengthPlus4
             };
 
             if (compositeBow == WeaponConstants.CompositeLongbow)
@@ -2375,7 +2375,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.BaseNames = new[] { WeaponConstants.Longbow };
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "martial weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "martial weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2417,7 +2417,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Name = WeaponConstants.Javelin;
             weapon.Damage = "my damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2464,7 +2464,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 Attributes = new[] { AttributeConstants.Ranged }
             };
             mockMundaneItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
 
             attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
@@ -2523,7 +2523,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 Attributes = new[] { AttributeConstants.Ranged }
             };
             mockMundaneItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
 
             attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
@@ -2586,7 +2586,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 Attributes = new[] { AttributeConstants.Ranged }
             };
             mockMagicalItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
 
             attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
@@ -2646,7 +2646,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 Attributes = new[] { AttributeConstants.Ranged }
             };
             mockMagicalItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
 
             attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
@@ -2682,7 +2682,43 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateRangedWeapon_OfCreatureSize()
         {
-            Assert.Fail("not yet written");
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var ranged = GetRangedWithBowTemplates();
+            var simpleRanged = simple.Intersect(ranged);
+            var non = ranged.Except(simple);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleRanged)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("simple weapon");
+
+            var weapon = new Weapon();
+            weapon.Name = WeaponConstants.Dart;
+            weapon.Damage = "my sized damage";
+            weapon.Size = "size";
+
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
+                .Returns(weapon);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
+            Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
+            Assert.That(weapon.Size, Is.EqualTo("size"));
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my sized damage"));
+            Assert.That(attacks[5].IsMelee, Is.False);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].AttackBonuses, Is.Empty);
         }
 
         [Test]
@@ -2711,7 +2747,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Ammunition = "my ammo";
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "martial weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "martial weapon", "size"))
                 .Returns(weapon);
 
             var ammo = new Weapon();
@@ -2720,12 +2756,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             ammo.Quantity = 42;
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "my ammo"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "my ammo", "size"))
                 .Returns(ammo);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
-            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
-            Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(2));
+            Assert.That(equipment.Weapons.First(), Is.EqualTo(weapon));
+            Assert.That(equipment.Weapons.Last(), Is.EqualTo(ammo));
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Longbow));
@@ -2762,7 +2799,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Traits = new HashSet<string> { TraitConstants.Masterwork };
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2803,7 +2840,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Traits = new HashSet<string> { TraitConstants.Masterwork };
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2845,14 +2882,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             dart.Name = WeaponConstants.Dart;
             dart.Damage = "my dart damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(dart);
 
             var javelin = new Weapon();
             javelin.Name = WeaponConstants.Javelin;
             javelin.Damage = "my javelin damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "other simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "other simple weapon", "size"))
                 .Returns(javelin);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2879,27 +2916,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateRangedWeapon_Thrown()
         {
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void GenerateRangedWeapon_Projectile()
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void GenerateRangedWeapon_NeitherThrownNorProjectile()
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [TestCase(WeaponConstants.HandCrossbow)]
-        [TestCase(WeaponConstants.LightCrossbow)]
-        [TestCase(WeaponConstants.HeavyCrossbow)]
-        public void GenerateRangedWeapon_Crossbow(string crossbow)
-        {
-            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false, MaxNumberOfAttacks = 4 });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Exotic, Foci = new[] { WeaponConstants.HandCrossbow } });
 
@@ -2914,7 +2931,135 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                     It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(proficientRanged)),
                     null,
                     It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
-                .Returns("simple weapon");
+                .Returns("my ranged weapon");
+
+            var weapon = new Weapon();
+            weapon.Name = "my ranged weapon";
+            weapon.Damage = "my damage";
+            weapon.Attributes = new[] { AttributeConstants.Thrown };
+
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "my ranged weapon", "size"))
+                .Returns(weapon);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
+            Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo("my ranged weapon"));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].IsMelee, Is.False);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].MaxNumberOfAttacks, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void GenerateRangedWeapon_Projectile()
+        {
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false, MaxNumberOfAttacks = 4 });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Exotic, Foci = new[] { WeaponConstants.HandCrossbow } });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var ranged = GetRangedWithBowTemplates();
+            var proficientRanged = simple.Intersect(ranged).Union(new[] { WeaponConstants.HandCrossbow });
+            var non = ranged.Except(proficientRanged);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(proficientRanged)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("my ranged weapon");
+
+            var weapon = new Weapon();
+            weapon.Name = "my ranged weapon";
+            weapon.Damage = "my damage";
+            weapon.Attributes = new[] { AttributeConstants.Projectile };
+
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "my ranged weapon", "size"))
+                .Returns(weapon);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
+            Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo("my ranged weapon"));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].IsMelee, Is.False);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].MaxNumberOfAttacks, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void GenerateRangedWeapon_NeitherThrownNorProjectile()
+        {
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false, MaxNumberOfAttacks = 4 });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Exotic, Foci = new[] { WeaponConstants.HandCrossbow } });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var ranged = GetRangedWithBowTemplates();
+            var proficientRanged = simple.Intersect(ranged).Union(new[] { WeaponConstants.HandCrossbow });
+            var non = ranged.Except(proficientRanged);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(proficientRanged)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("my ranged weapon");
+
+            var weapon = new Weapon();
+            weapon.Name = "my ranged weapon";
+            weapon.Damage = "my damage";
+            weapon.Attributes = new[] { "not thrown", "not projectile" };
+
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "my ranged weapon", "size"))
+                .Returns(weapon);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
+            Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo("my ranged weapon"));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].IsMelee, Is.False);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].MaxNumberOfAttacks, Is.EqualTo(1));
+        }
+
+        [TestCase(WeaponConstants.HandCrossbow)]
+        [TestCase(WeaponConstants.LightCrossbow)]
+        [TestCase(WeaponConstants.HeavyCrossbow)]
+        public void GenerateRangedWeapon_Crossbow(string crossbow)
+        {
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false, MaxNumberOfAttacks = 4 });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Exotic, Foci = new[] { WeaponConstants.HandCrossbow } });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var ranged = GetRangedWithBowTemplates();
+            var proficientRanged = simple.Intersect(ranged).Union(new[] { WeaponConstants.HandCrossbow });
+            var non = ranged.Except(proficientRanged);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(proficientRanged)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns(crossbow);
 
             var weapon = new Weapon();
             weapon.Name = crossbow;
@@ -2922,7 +3067,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Attributes = new[] { AttributeConstants.Projectile };
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, crossbow, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2944,7 +3089,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [TestCase(WeaponConstants.HeavyCrossbow)]
         public void GenerateRangedWeapon_Crossbow_BaseName(string crossbow)
         {
-            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false, MaxNumberOfAttacks = 4 });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Exotic, Foci = new[] { WeaponConstants.HandCrossbow } });
 
@@ -2968,7 +3113,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.BaseNames = new[] { "my base name", crossbow };
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2990,7 +3135,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [TestCase(WeaponConstants.HeavyCrossbow, 1)]
         public void GenerateRangedWeapon_Crossbow_WithRapidReload(string crossbow, int maxAttacks)
         {
-            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false, MaxNumberOfAttacks = 4 });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Exotic, Foci = new[] { WeaponConstants.HandCrossbow } });
             feats.Add(new Feat { Name = FeatConstants.RapidReload, Foci = new[] { crossbow } });
@@ -3014,7 +3159,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Attributes = new[] { AttributeConstants.Projectile };
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3036,7 +3181,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [TestCase(WeaponConstants.HeavyCrossbow, 1)]
         public void GenerateRangedWeapon_Crossbow_BaseName_WithRapidReload(string crossbow, int maxAttacks)
         {
-            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false, MaxNumberOfAttacks = 4 });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Exotic, Foci = new[] { WeaponConstants.HandCrossbow } });
             feats.Add(new Feat { Name = FeatConstants.RapidReload, Foci = new[] { crossbow } });
@@ -3061,7 +3206,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.BaseNames = new[] { "my base name", crossbow };
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3081,9 +3226,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [TestCase(WeaponConstants.HandCrossbow)]
         [TestCase(WeaponConstants.LightCrossbow)]
         [TestCase(WeaponConstants.HeavyCrossbow)]
-        public void GenerateRangedWeapon_Crossbow_WithRapidReload_WrongCrossbow(string crossbow, int maxAttacks)
+        public void GenerateRangedWeapon_Crossbow_WithRapidReload_WrongCrossbow(string crossbow)
         {
-            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false, MaxNumberOfAttacks = 4 });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Exotic, Foci = new[] { WeaponConstants.HandCrossbow } });
             feats.Add(new Feat { Name = FeatConstants.RapidReload, Foci = new[] { "wrong crossbow" } });
@@ -3107,7 +3252,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Attributes = new[] { AttributeConstants.Projectile };
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3206,7 +3351,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var armor = new Armor { Name = "my armor" };
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor", "size"))
                 .Returns(armor);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3235,7 +3380,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var armor = new Armor { Name = "my armor" };
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor", "size"))
                 .Returns(armor);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3264,7 +3409,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var armor = new Armor { Name = "my armor" };
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor", "size"))
                 .Returns(armor);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3290,7 +3435,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var shield = new Armor { Name = "my shield" };
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield", "size"))
                 .Returns(shield);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3301,10 +3446,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateShield_Tower()
         {
             feats.Add(new Feat { Name = FeatConstants.ShieldProficiency });
+            feats.Add(new Feat { Name = FeatConstants.ShieldProficiency_Tower });
 
             var shields = ArmorConstants.GetAllShields(false);
-            var non = new[] { ArmorConstants.TowerShield };
-            var proficientShields = shields.Except(non);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
@@ -3312,11 +3456,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                     null,
                     null,
                     It.Is<IEnumerable<string>>(nn => !nn.Any())))
-                .Returns("my shield");
+                .Returns("my tower shield");
 
-            var shield = new Armor { Name = "my shield" };
+            var shield = new Armor { Name = "my tower shield" };
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my tower shield", "size"))
                 .Returns(shield);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3349,7 +3493,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Attributes = new[] { AttributeConstants.Melee, AttributeConstants.TwoHanded };
 
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Quarterstaff))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Quarterstaff, "size"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3387,14 +3531,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             dagger.Name = WeaponConstants.Dagger;
             dagger.Damage = "my dagger damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(dagger);
 
             var club = new Weapon();
             club.Name = WeaponConstants.Club;
             club.Damage = "my club damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club, "size"))
                 .Returns(club);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3416,7 +3560,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var simple = WeaponConstants.GetAllSimple(false, false);
             var melee = WeaponConstants.GetAllMelee(false, false);
-            var ranged = WeaponConstants.GetAllRanged(false, false);
+            var ranged = GetRangedWithBowTemplates();
             var simpleMelee = simple.Intersect(melee);
             var simpleRanged = simple.Intersect(ranged);
             var nonMelee = melee.Except(simple);
@@ -3442,14 +3586,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             dagger.Name = WeaponConstants.Dagger;
             dagger.Damage = "my dagger damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(dagger);
 
             var crossbow = new Weapon();
             crossbow.Name = WeaponConstants.LightCrossbow;
             crossbow.Damage = "my crossbow damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightCrossbow))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightCrossbow, "size"))
                 .Returns(crossbow);
 
             var shields = ArmorConstants.GetAllShields(false);
@@ -3458,15 +3602,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(shields)),
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(proficientShields)),
                     null,
                     null,
-                    It.Is<IEnumerable<string>>(nn => !nn.Any())))
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
                 .Returns("my shield");
 
             var shield = new Armor { Name = "my shield" };
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield", "size"))
                 .Returns(shield);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3506,21 +3650,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             dagger.Name = WeaponConstants.Dagger;
             dagger.Damage = "my dagger damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(dagger);
 
             var club = new Weapon();
             club.Name = WeaponConstants.Club;
             club.Damage = "my club damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club, "size"))
                 .Returns(club);
 
             var pick = new Weapon();
             pick.Name = WeaponConstants.LightPick;
             pick.Damage = "my pick damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightPick))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightPick, "size"))
                 .Returns(pick);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3559,7 +3703,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var armor = new Armor { Name = "my armor" };
             mockMundaneItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(armor);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3591,7 +3735,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var armor = new Armor { Name = "my armor" };
             mockMundaneItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(armor);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3627,7 +3771,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var armor = new Armor { Name = "my armor" };
             mockMagicalItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(armor);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3660,7 +3804,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var armor = new Armor { Name = "my armor" };
             mockMagicalItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(armor);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3694,7 +3838,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var armor = new Armor { Name = "my armor" };
             mockMagicalItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(armor);
 
             var equipment = equipmentGenerator.Generate("creature", false, feats, 9266, attacks, abilities, "size");
@@ -3784,7 +3928,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var item = new Item { Name = "my item" };
             mockMundaneItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(item);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3816,7 +3960,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var item = new Item { Name = "my item" };
             mockMagicalItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(item);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3856,7 +4000,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var mundaneItem = new Item { Name = "my mundane item" };
             mockMundaneItemGenerator
-                .Setup(g => g.GenerateFrom(mundaneTemplate, false))
+                .Setup(g => g.Generate(mundaneTemplate, false))
                 .Returns(mundaneItem);
 
             var mockMagicalItemGenerator = new Mock<MagicalItemGenerator>();
@@ -3866,7 +4010,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var magicalItem = new Item { Name = "my magical item" };
             mockMagicalItemGenerator
-                .Setup(g => g.GenerateFrom(magicalTemplate, false))
+                .Setup(g => g.Generate(magicalTemplate, false))
                 .Returns(magicalItem);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -3911,14 +4055,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             meleeWeapon.Name = WeaponConstants.Club;
             meleeWeapon.Damage = "my club damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple melee weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple melee weapon", "size"))
                 .Returns(meleeWeapon);
 
             var rangedWeapon = new Weapon();
             rangedWeapon.Name = WeaponConstants.Dart;
             rangedWeapon.Damage = "my dart damage";
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple ranged weapon"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple ranged weapon", "size"))
                 .Returns(rangedWeapon);
 
             feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
@@ -3937,7 +4081,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var armor = new Armor { Name = "my armor" };
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my armor", "size"))
                 .Returns(armor);
 
             feats.Add(new Feat { Name = FeatConstants.ShieldProficiency });
@@ -3956,7 +4100,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var shield = new Armor { Name = "my shield" };
             mockItemGenerator
-                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield"))
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Armor, "my shield", "size"))
                 .Returns(shield);
 
             mockCollectionSelector
@@ -3980,7 +4124,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var item = new Item { Name = "my item" };
             mockMagicalItemGenerator
-                .Setup(g => g.GenerateFrom(template, false))
+                .Setup(g => g.Generate(template, false))
                 .Returns(item);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");

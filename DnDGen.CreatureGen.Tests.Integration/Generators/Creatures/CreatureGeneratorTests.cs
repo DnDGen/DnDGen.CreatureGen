@@ -3,11 +3,9 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.EventGen;
 using DnDGen.TreasureGen.Items;
 using Ninject;
 using NUnit.Framework;
-using System;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
@@ -17,17 +15,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
     {
         [Inject]
         public ICreatureGenerator CreatureGenerator { get; set; }
-        [Inject]
-        public ClientIDManager ClientIdManager { get; set; }
 
         private CreatureAsserter creatureAsserter;
 
         [SetUp]
         public void Setup()
         {
-            var clientId = Guid.NewGuid();
-            ClientIdManager.SetClientID(clientId);
-
             creatureAsserter = new CreatureAsserter();
         }
 

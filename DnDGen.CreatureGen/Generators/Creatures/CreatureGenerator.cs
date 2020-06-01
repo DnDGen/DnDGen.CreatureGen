@@ -163,7 +163,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Size);
 
             creature.Abilities = abilitiesGenerator.SetMaxBonuses(creature.Abilities, creature.Equipment);
-            creature.Skills = skillsGenerator.SetArmorCheckPenalties(creature.Skills, creature.Equipment);
+            creature.Skills = skillsGenerator.SetArmorCheckPenalties(creature.Name, creature.Skills, creature.Equipment);
 
             creature.InitiativeBonus = ComputeInitiative(creature.Abilities, creature.Feats);
             creature.Speeds = speedsGenerator.Generate(creature.Name);

@@ -26,28 +26,12 @@ namespace DnDGen.CreatureGen.IoC.Modules
             Bind<ISpeedsGenerator>().To<SpeedsGenerator>();
             Bind<IEquipmentGenerator>().To<EquipmentGenerator>();
 
-            BindDecoratedGenerators();
-        }
-
-        private void BindDecoratedGenerators()
-        {
-            Bind<ICreatureGenerator>().To<CreatureGenerator>().WhenInjectedInto<CreatureGeneratorEventDecorator>();
-            Bind<ICreatureGenerator>().To<CreatureGeneratorEventDecorator>();
-
-            Bind<IAlignmentGenerator>().To<AlignmentGenerator>().WhenInjectedInto<AlignmentGeneratorEventDecorator>();
-            Bind<IAlignmentGenerator>().To<AlignmentGeneratorEventDecorator>();
-
-            Bind<IAbilitiesGenerator>().To<AbilitiesGenerator>().WhenInjectedInto<AbilitiesGeneratorEventDecorator>();
-            Bind<IAbilitiesGenerator>().To<AbilitiesGeneratorEventDecorator>();
-
-            Bind<ISkillsGenerator>().To<SkillsGenerator>().WhenInjectedInto<SkillsGeneratorEventGenDecorator>();
-            Bind<ISkillsGenerator>().To<SkillsGeneratorEventGenDecorator>();
-
-            Bind<IFeatsGenerator>().To<FeatsGenerator>().WhenInjectedInto<FeatsGeneratorEventDecorator>();
-            Bind<IFeatsGenerator>().To<FeatsGeneratorEventDecorator>();
-
-            Bind<IFeatFocusGenerator>().To<FeatFocusGenerator>().WhenInjectedInto<FeatFocusGeneratorEventDecorator>();
-            Bind<IFeatFocusGenerator>().To<FeatFocusGeneratorEventDecorator>();
+            Bind<ICreatureGenerator>().To<CreatureGenerator>();
+            Bind<IAlignmentGenerator>().To<AlignmentGenerator>();
+            Bind<IAbilitiesGenerator>().To<AbilitiesGenerator>();
+            Bind<ISkillsGenerator>().To<SkillsGenerator>();
+            Bind<IFeatsGenerator>().To<FeatsGenerator>();
+            Bind<IFeatFocusGenerator>().To<FeatFocusGenerator>();
 
             Bind<TemplateApplicator>().To<CelestialCreatureApplicator>().Named(CreatureConstants.Templates.CelestialCreature);
             Bind<TemplateApplicator>().To<FiendishCreatureApplicator>().Named(CreatureConstants.Templates.FiendishCreature);

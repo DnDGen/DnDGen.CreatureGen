@@ -1,11 +1,9 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.EventGen;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Ninject;
 using NUnit.Framework;
-using System;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
@@ -15,8 +13,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     {
         [Inject]
         public ICollectionSelector CollectionSelector { get; set; }
-        [Inject]
-        public ClientIDManager ClientIdManager { get; set; }
 
         protected override string tableName
         {
@@ -24,13 +20,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             {
                 return TableNameConstants.Collection.CreatureTypes;
             }
-        }
-
-        [SetUp]
-        public void Setup()
-        {
-            var clientId = Guid.NewGuid();
-            ClientIdManager.SetClientID(clientId);
         }
 
         [Test]

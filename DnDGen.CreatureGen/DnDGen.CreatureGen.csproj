@@ -32,6 +32,7 @@
     <None Remove="Tables\Defenses\HitDice.xml" />
     <None Remove="Tables\Defenses\SaveBonuses.xml" />
     <None Remove="Tables\Defenses\SizeModifiers.xml" />
+    <None Remove="Tables\Equipment\PredeterminedItems.xml" />
     <None Remove="Tables\Feats\Data\FeatData.xml" />
     <None Remove="Tables\Feats\Data\SkillSynergyFeatData.xml" />
     <None Remove="Tables\Feats\Data\SpecialQualityData.xml" />
@@ -86,6 +87,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Defenses\SizeModifiers.xml" />
+    <EmbeddedResource Include="Tables\Equipment\PredeterminedItems.xml" />
     <EmbeddedResource Include="Tables\Feats\Data\FeatData.xml" />
     <EmbeddedResource Include="Tables\Feats\Data\SkillSynergyFeatData.xml" />
     <EmbeddedResource Include="Tables\Feats\Data\SpecialQualityData.xml">
@@ -120,14 +122,10 @@
 
   <!--Needed for Framework compatibility when building in Travis-->
   <ItemGroup>
-    <PackageReference Include="DnDGen.EventGen" Version="3.0.0" />
-    <PackageReference Include="DnDGen.Infrastructure" Version="4.0.0" />
+    <PackageReference Include="DnDGen.Infrastructure" Version="4.1.1" />
     <PackageReference Include="DnDGen.RollGen" Version="15.1.0" />
-    <PackageReference Include="DnDGen.TreasureGen" Version="10.1.0" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="10.2.0" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tables\Equipment\" />
   </ItemGroup>
 
 </Project>

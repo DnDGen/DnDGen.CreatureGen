@@ -179,6 +179,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(skills);
             mockSkillsGenerator
                 .Setup(g => g.SetArmorCheckPenalties(
+                    creatureName,
                     skills,
                     equipment))
                 .Returns(skills);
@@ -517,9 +518,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
         }
 
-        private HitPoints SetUpCreatureAdvancement(int advancementAmount = 1337, string creature = "creature")
+        private HitPoints SetUpCreatureAdvancement(int advancementAmount = 1337, string creatureName = "creature")
         {
-            mockAdvancementSelector.Setup(s => s.IsAdvanced(creature)).Returns(true);
+            mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
 
             var advancement = new AdvancementSelection();
             advancement.AdditionalHitDice = advancementAmount;
@@ -533,7 +534,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             advancement.NaturalArmorAdjustment = 8245;
             advancement.StrengthAdjustment = 3456;
 
-            mockAdvancementSelector.Setup(s => s.SelectRandomFor(creature, It.Is<CreatureType>(c => c.Name == types[0]), creatureData.Size, creatureData.ChallengeRating)).Returns(advancement);
+            mockAdvancementSelector.Setup(s => s.SelectRandomFor(creatureName, It.Is<CreatureType>(c => c.Name == types[0]), creatureData.Size, creatureData.ChallengeRating)).Returns(advancement);
 
             var advancedHitPoints = new HitPoints();
             advancedHitPoints.Constitution = abilities[AbilityConstants.Constitution];
@@ -542,11 +543,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             advancedHitPoints.DefaultTotal = 492;
             advancedHitPoints.Total = 862;
 
-            mockHitPointsGenerator.Setup(g => g.GenerateFor(creature, It.Is<CreatureType>(c => c.Name == types[0]), abilities[AbilityConstants.Constitution], "advanced size", advancementAmount)).Returns(advancedHitPoints);
+            mockHitPointsGenerator.Setup(g => g.GenerateFor(creatureName, It.Is<CreatureType>(c => c.Name == types[0]), abilities[AbilityConstants.Constitution], "advanced size", advancementAmount)).Returns(advancedHitPoints);
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(advancedHitPoints, It.IsAny<IEnumerable<Feat>>())).Returns(advancedHitPoints);
 
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(999);
-            mockAttacksGenerator.Setup(g => g.GenerateAttacks(creature, creatureData.Size, advancement.Size, 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(attacks);
+            mockAttacksGenerator.Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, advancement.Size, 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(attacks);
 
             var advancedNaturalArmor = creatureData.NaturalArmor + advancement.NaturalArmorAdjustment;
 
@@ -574,7 +575,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     creatureData.NumberOfHands))
                 .Returns(attacks);
             mockEquipmentGenerator
-                .Setup(g => g.Generate(creature,
+                .Setup(g => g.Generate(creatureName,
                     creatureData.CanUseEquipment,
                     It.IsAny<IEnumerable<Feat>>(),
                     advancedHitPoints.RoundedHitDiceQuantity,
@@ -587,7 +588,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(g => g.GenerateWith(
                     abilities,
                     advancement.Size,
-                    creature,
+                    creatureName,
                     It.Is<CreatureType>(c => c.Name == types[0]),
                     It.IsAny<IEnumerable<Feat>>(),
                     advancedNaturalArmor,
@@ -599,7 +600,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(abilities);
 
             mockSkillsGenerator
-                .Setup(g => g.SetArmorCheckPenalties(skills, advancedEquipment))
+                .Setup(g => g.SetArmorCheckPenalties(creatureName, skills, advancedEquipment))
                 .Returns(skills);
 
             return advancedHitPoints;
@@ -698,7 +699,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(abilities);
 
             mockSkillsGenerator
-                .Setup(g => g.SetArmorCheckPenalties(advancedSkills, advancedEquipment))
+                .Setup(g => g.SetArmorCheckPenalties("creature", advancedSkills, advancedEquipment))
                 .Returns(advancedSkills);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -846,7 +847,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(abilities);
 
             mockSkillsGenerator
-                .Setup(g => g.SetArmorCheckPenalties(advancedSkills, advancedEquipment))
+                .Setup(g => g.SetArmorCheckPenalties("creature", advancedSkills, advancedEquipment))
                 .Returns(advancedSkills);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -1010,7 +1011,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(abilities);
 
             mockSkillsGenerator
-                .Setup(g => g.SetArmorCheckPenalties(advancedSkills, advancedEquipment))
+                .Setup(g => g.SetArmorCheckPenalties("creature", advancedSkills, advancedEquipment))
                 .Returns(advancedSkills);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -1025,6 +1026,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockSkillsGenerator
                 .Setup(g => g.SetArmorCheckPenalties(
+                    "creature",
                     updatedSkills,
                     equipment))
                 .Returns(updatedSkills);
@@ -1120,7 +1122,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(abilities);
 
             mockSkillsGenerator
-                .Setup(g => g.SetArmorCheckPenalties(updatedSkills, advancedEquipment))
+                .Setup(g => g.SetArmorCheckPenalties("creature", updatedSkills, advancedEquipment))
                 .Returns(updatedSkills);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -1268,7 +1270,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(abilities);
 
             mockSkillsGenerator
-                .Setup(g => g.SetArmorCheckPenalties(advancedSkills, advancedEquipment))
+                .Setup(g => g.SetArmorCheckPenalties("creature", advancedSkills, advancedEquipment))
                 .Returns(advancedSkills);
 
             var creature = creatureGenerator.Generate("creature", "template");
@@ -1495,7 +1497,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(abilities);
 
             mockSkillsGenerator
-                .Setup(g => g.SetArmorCheckPenalties(advancedSkills, advancedEquipment))
+                .Setup(g => g.SetArmorCheckPenalties("creature", advancedSkills, advancedEquipment))
                 .Returns(advancedSkills);
 
             var creature = creatureGenerator.Generate("creature", "template");

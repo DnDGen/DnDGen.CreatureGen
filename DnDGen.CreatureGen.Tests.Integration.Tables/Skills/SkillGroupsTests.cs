@@ -5,7 +5,6 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.EventGen;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Ninject;
 using NUnit.Framework;
@@ -20,20 +19,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [Inject]
         public ICollectionSelector CollectionSelector { get; set; }
         [Inject]
-        public ClientIDManager ClientIdManager { get; set; }
-        [Inject]
         internal ITypeAndAmountSelector TypesAndAmountsSelector { get; set; }
 
         protected override string tableName
         {
             get { return TableNameConstants.Collection.SkillGroups; }
-        }
-
-        [SetUp]
-        public void Setup()
-        {
-            var clientId = Guid.NewGuid();
-            ClientIdManager.SetClientID(clientId);
         }
 
         [Test]

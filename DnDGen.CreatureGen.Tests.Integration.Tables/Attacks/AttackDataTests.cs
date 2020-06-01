@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.EventGen;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Ninject;
 using NUnit.Framework;
@@ -19,9 +18,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
     {
         [Inject]
         public ICollectionSelector CollectionSelector { get; set; }
-        //INFO: Need this for the feats selector
-        [Inject]
-        public ClientIDManager ClientIDManager { get; set; }
         [Inject]
         internal IFeatsSelector FeatsSelector { get; set; }
         [Inject]
@@ -50,9 +46,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [SetUp]
         public void Setup()
         {
-            var clientId = Guid.NewGuid();
-            ClientIDManager.SetClientID(clientId);
-
             helper = new AttackHelper();
         }
 

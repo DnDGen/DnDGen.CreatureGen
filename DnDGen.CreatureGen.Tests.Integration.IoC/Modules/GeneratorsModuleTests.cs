@@ -25,21 +25,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         }
 
         [Test]
-        public void AlignmentGeneratorIsDecorated()
-        {
-            AssertIsInstanceOf<IAlignmentGenerator, AlignmentGeneratorEventDecorator>();
-        }
-
-        [Test]
         public void CreatureGeneratorIsNotBuiltAsSingleton()
         {
             AssertNotSingleton<ICreatureGenerator>();
-        }
-
-        [Test]
-        public void CreatureGeneratorIsDecorated()
-        {
-            AssertIsInstanceOf<ICreatureGenerator, CreatureGeneratorEventDecorator>();
         }
 
         [Test]
@@ -61,33 +49,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         }
 
         [Test]
-        public void AbilitiesGeneratorIsDecorated()
-        {
-            AssertIsInstanceOf<IAbilitiesGenerator, AbilitiesGeneratorEventDecorator>();
-        }
-
-        [Test]
         public void SkillsGeneratorIsNotBuiltAsSingleton()
         {
             AssertNotSingleton<ISkillsGenerator>();
         }
 
         [Test]
-        public void SkillsGeneratorIsDecorated()
-        {
-            AssertIsInstanceOf<ISkillsGenerator, SkillsGeneratorEventGenDecorator>();
-        }
-
-        [Test]
         public void FeatsGeneratorIsNotBuiltAsSingleton()
         {
             AssertNotSingleton<IFeatsGenerator>();
-        }
-
-        [Test]
-        public void FeatsGeneratorIsDecorated()
-        {
-            AssertIsInstanceOf<IFeatsGenerator, FeatsGeneratorEventDecorator>();
         }
 
         [Test]
@@ -100,12 +70,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         public void FeatFocusGeneratorIsNotASingleton()
         {
             AssertNotSingleton<IFeatFocusGenerator>();
-        }
-
-        [Test]
-        public void FeatFocusGeneratorIsDecorated()
-        {
-            AssertIsInstanceOf<IFeatFocusGenerator, FeatFocusGeneratorEventDecorator>();
         }
 
         [Test]

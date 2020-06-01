@@ -1,5 +1,4 @@
 ﻿using DnDGen.CreatureGen.IoC;
-using DnDGen.EventGen.IoC;
 using DnDGen.Infrastructure.IoC;
 using DnDGen.RollGen.IoC;
 using DnDGen.TreasureGen.IoC;
@@ -20,9 +19,6 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             var rollGenLoader = new RollGenModuleLoader();
             rollGenLoader.LoadModules(kernel);
-
-            var eventGenLoader = new EventGenModuleLoader();
-            eventGenLoader.LoadModules(kernel);
 
             var infrastructureLoader = new InfrastructureModuleLoader();
             infrastructureLoader.LoadModules(kernel);
