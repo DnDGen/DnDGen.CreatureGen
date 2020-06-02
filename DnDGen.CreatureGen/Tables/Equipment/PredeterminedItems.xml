@@ -422,7 +422,7 @@
     <name>Annis</name>
   </collection>
   <collection>
-    <name>Sea hag</name>
+    <name>Sea Hag</name>
   </collection>
   <collection>
     <name>Giant Ant, Soldier</name>
@@ -452,8 +452,8 @@
     <name>Juvenile Arrowhawk</name>
   </collection>
   <collection>
-    <name>Astral deva</name>
-    <entry>Heavy mace[Weapon]#Medium#(3){Disruption}@True@</entry>
+    <name>Angel, Astral Deva</name>
+    <entry>Heavy mace[Weapon](3){Disruption}@True@</entry>
   </collection>
   <collection>
     <name>Assassin Vine</name>
@@ -507,7 +507,7 @@
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
-    <entry>Glaive[Weapon]#Medium#</entry>
+    <entry>Glaive[Weapon]#Saw-toothed#</entry>
   </collection>
   <collection>
     <name>Black Bear</name>
@@ -621,7 +621,7 @@
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
-    <entry>Spiked chain[Weapon]#Large#</entry>
+    <entry>Spiked chain[Weapon]</entry>
   </collection>
   <collection>
     <name>Cockatrice</name>
@@ -636,7 +636,7 @@
     <name>Crocodile</name>
   </collection>
   <collection>
-    <name>Giant crocodile</name>
+    <name>Giant Crocodile</name>
   </collection>
   <collection>
     <name>Darkmantle</name>
@@ -1057,110 +1057,30 @@
   </collection>
   <collection>
     <name>Drider</name>
-    <entry>Dagger[Weapon]#Large#</entry>
-    <entry>Dagger[Weapon]#Large#</entry>
-    <entry>Shortbow[Weapon]#Large#</entry>
   </collection>
   <collection>
-    <name>Character(Captain)[9]{Drow}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Drow$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Drow}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[2]{Drow}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Drow}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[6]{Drow}@Warrior@</name>
+    <name>Drow</name>
   </collection>
   <collection>
     <name>Dryad</name>
-    <entry>Dagger[Weapon]#Medium#</entry>
-    <entry>Longbow[Weapon]#Medium,Masterwork#</entry>
   </collection>
   <collection>
-    <name>Character(Captain)[9]{Duergar Dwarf}@Warrior@</name>
+    <name>Duergar</name>
   </collection>
   <collection>
-    <name>Duergar$Noncombatant$</name>
+    <name>Deep Dwarf</name>
   </collection>
   <collection>
-    <name>Character[1]{Duergar Dwarf}@Warrior@</name>
+    <name>Hill Dwarf</name>
   </collection>
   <collection>
-    <name>Character(Sergeant)[3]{Duergar Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d6+2]{Duergar Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[6]{Duergar Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Deep Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Deep Dwarf$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Deep Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Deep Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Deep Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Deep Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Hill Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Hill Dwarf$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Hill Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Hill Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Hill Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Hill Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Captain)[7]{Mountain Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Mountain Dwarf$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Mountain Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Mountain Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d4+2]{Mountain Dwarf}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[5]{Mountain Dwarf}@Warrior@</name>
+    <name>Mountain Dwarf</name>
   </collection>
   <collection>
     <name>Eagle</name>
   </collection>
   <collection>
-    <name>Giant eagle</name>
+    <name>Giant Eagle</name>
   </collection>
   <collection>
     <name>Efreeti</name>
@@ -1263,8 +1183,7 @@
   </collection>
   <collection>
     <name>Erinyes</name>
-    <entry>Longsword[Weapon]#Medium#</entry>
-    <entry>Composite longbow[Weapon]#+5 Strength bonus,Medium#(1){Flaming}@True@</entry>
+    <entry>Composite longbow[Weapon]#+5 Strength bonus#(1){Flaming}@True@</entry>
     <entry>Rope, 50 ft.[Tool]</entry>
   </collection>
   <collection>
@@ -1278,8 +1197,10 @@
   </collection>
   <collection>
     <name>Ettin</name>
-    <entry>Javelin[Weapon]#Large#</entry>
-    <entry>Morningstar[Weapon]#Large#</entry>
+    <entry>Javelin[Weapon]</entry>
+    <entry>Javelin[Weapon]</entry>
+    <entry>Morningstar[Weapon]</entry>
+    <entry>Morningstar[Weapon]</entry>
   </collection>
   <collection>
     <name>Giant Fire Beetle</name>
@@ -1304,7 +1225,7 @@
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
-    <entry>Longspear[Weapon]#Large#</entry>
+    <entry>Spear[Weapon]</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
@@ -1317,7 +1238,7 @@
   </collection>
   <collection>
     <name>Ghaele</name>
-    <entry>Greatsword[Weapon]#Medium#(4){Holy}@True@</entry>
+    <entry>Greatsword[Weapon](4){Holy}@True@</entry>
   </collection>
   <collection>
     <name>Ghoul</name>
@@ -1340,24 +1261,19 @@
   </collection>
   <collection>
     <name>Hill Giant</name>
-    <entry>Greatclub[Weapon]#Large#</entry>
-    <entry>Hide armor[Armor]#Large#</entry>
   </collection>
   <collection>
     <name>Stone Giant</name>
-    <entry>Greatclub[Weapon]#Large#</entry>
   </collection>
   <collection>
-    <name>Elder Stone Giant</name>
-    <entry>Greatclub[Weapon]#Large#</entry>
+    <name>Stone Giant Elder</name>
   </collection>
   <collection>
     <name>Storm Giant</name>
-    <entry>Greatsword[Weapon]#Huge#</entry>
-    <entry>Composite longbow[Weapon]#Huge,+14 Strength bonus#</entry>
+    <entry>Composite longbow[Weapon]#+14 Strength bonus#</entry>
   </collection>
   <collection>
-    <name>Gibbering mouther</name>
+    <name>Gibbering Mouther</name>
   </collection>
   <collection>
     <name>Girallon</name>
@@ -1422,7 +1338,7 @@
   </collection>
   <collection>
     <name>Grimlock</name>
-    <entry>Battleaxe[Weapon]#Medium#</entry>
+    <entry>Battleaxe[Weapon]#Stone#</entry>
   </collection>
   <collection>
     <name>Gynosphinx</name>
@@ -1441,13 +1357,12 @@
   </collection>
   <collection>
     <name>Harpy</name>
-    <entry>Club[Weapon]#Medium#</entry>
   </collection>
   <collection>
     <name>Hawk</name>
   </collection>
   <collection>
-    <name>Hell hound</name>
+    <name>Hell Hound</name>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
@@ -1465,44 +1380,29 @@
     <name>Hippogriff</name>
   </collection>
   <collection>
-    <name>Hobgoblin$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Hobgoblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d3+5]{Hobgoblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d3+3]{Hobgoblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[1d2+3]{Hobgoblin}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Hobgoblin}@Warrior@</name>
+    <name>Hobgoblin</name>
   </collection>
   <collection>
     <name>Homunculus</name>
   </collection>
   <collection>
-    <name>Light warhorse</name>
+    <name>Human</name>
   </collection>
   <collection>
-    <name>Light horse</name>
+    <name>Light Warhorse</name>
   </collection>
   <collection>
-    <name>Heavy warhorse</name>
+    <name>Light Horse</name>
   </collection>
   <collection>
-    <name>Heavy horse</name>
+    <name>Heavy Warhorse</name>
   </collection>
   <collection>
-    <name>Hound archon</name>
-    <entry>Greatsword[Weapon]#Medium#</entry>
+    <name>Heavy Horse</name>
   </collection>
   <collection>
-    <name>Character(Hero)[11]{Hound Archon}@Paladin@</name>
+    <name>Hound Archon</name>
+    <entry>Greatsword[Weapon]</entry>
   </collection>
   <collection>
     <name>Howler</name>
@@ -1586,7 +1486,7 @@
     <name>Imp</name>
   </collection>
   <collection>
-    <name>Invisible stalker</name>
+    <name>Invisible Stalker</name>
   </collection>
   <collection>
     <name>Janni</name>
@@ -1599,26 +1499,10 @@
     <entry>Spiked chain[Weapon]</entry>
   </collection>
   <collection>
-    <name>Kobold$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[1]{Kobold}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d3+5]{Kobold}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Leader)[1d3+3]{Kobold}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Sergeant)[3]{Kobold}@Warrior@</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[1d2+3]{Kobold}@Warrior@</name>
+    <name>Kobold</name>
   </collection>
   <collection>
     <name>Kolyarut</name>
-    <entry>Longsword[Weapon]#Medium#(2)@True@</entry>
   </collection>
   <collection>
     <name>Kraken</name>
@@ -1628,38 +1512,15 @@
   </collection>
   <collection>
     <name>Kuo-toa</name>
-    <entry>Shortspear[Weapon]#Medium#</entry>
-  </collection>
-  <collection>
-    <name>Kuo-toa$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character[8]{Kuo-toa}@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character[10]{Kuo-toa}@Fighter@</name>
-  </collection>
-  <collection>
-    <name>Character(Monitor)[4]{Kuo-toa}@Monk@</name>
-  </collection>
-  <collection>
-    <name>Character(Whip)[3]{Kuo-toa}@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Whip)[10]{Kuo-toa}@Cleric@</name>
   </collection>
   <collection>
     <name>Lamia</name>
-    <entry>Dagger[Weapon]#Large#</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
   </collection>
   <collection>
-    <name>Lammasu$Golden Protector$</name>
-  </collection>
-  <collection>
-    <name>Lantern archon</name>
+    <name>Lantern Archon</name>
   </collection>
   <collection>
     <name>Lemure</name>
@@ -1672,7 +1533,6 @@
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>Short sword[Weapon]#Large#</entry>
   </collection>
   <collection>
     <name>Lion</name>
@@ -1760,14 +1620,13 @@
     <name>Mimic</name>
   </collection>
   <collection>
-    <name>Mind flayer</name>
+    <name>Mind Flayer (Illithid)</name>
   </collection>
   <collection>
     <name>Minotaur</name>
-    <entry>Greataxe[Weapon]#Large#</entry>
   </collection>
   <collection>
-    <name>Monitor lizard</name>
+    <name>Monitor Lizard</name>
   </collection>
   <collection>
     <name>Mohrg</name>
@@ -1798,7 +1657,7 @@
   </collection>
   <collection>
     <name>Nessian Warhound</name>
-    <entry>Chain shirt[Armor]#Barding,Large#(2)@True@</entry>
+    <entry>Chain shirt[Armor]#Barding#(2)@True@</entry>
   </collection>
   <collection>
     <name>Night Hag</name>
@@ -1825,7 +1684,6 @@
   </collection>
   <collection>
     <name>Nymph</name>
-    <entry>Dagger[Weapon]#Medium#</entry>
   </collection>
   <collection>
     <name>Octopus</name>
@@ -1849,7 +1707,7 @@
     <entry>Longbow[Weapon]#Large#</entry>
   </collection>
   <collection>
-    <name>Gray ooze</name>
+    <name>Gray Ooze</name>
   </collection>
   <collection>
     <name>Ochre Jelly</name>
@@ -1870,7 +1728,7 @@
     <name>Owl</name>
   </collection>
   <collection>
-    <name>Giant owl</name>
+    <name>Giant Owl</name>
   </collection>
   <collection>
     <name>Owlbear</name>
@@ -1901,8 +1759,8 @@
     <entry>Longbow[Weapon]#Small#</entry>
   </collection>
   <collection>
-    <name>Planetar</name>
-    <entry>Greatsword[Weapon]#Large#(3)@True@</entry>
+    <name>Angel, Planetar</name>
+    <entry>Greatsword[Weapon](3)@True@</entry>
   </collection>
   <collection>
     <name>Pony</name>
@@ -1965,33 +1823,12 @@
     <name>Roper</name>
   </collection>
   <collection>
-    <name>Rust monster</name>
+    <name>Rust Monster</name>
   </collection>
   <collection>
     <name>Sahuagin</name>
     <entry>Trident[Weapon]#Medium#</entry>
     <entry>Heavy crossbow[Weapon]#Medium#</entry>
-  </collection>
-  <collection>
-    <name>Sahuagin$Noncombatant$</name>
-  </collection>
-  <collection>
-    <name>Character(Baron)[1d3+5]{Sahuagin}</name>
-  </collection>
-  <collection>
-    <name>Character(Lieutenant)[3]{Sahuagin}</name>
-  </collection>
-  <collection>
-    <name>Character(Guard)[4]{Sahuagin}</name>
-  </collection>
-  <collection>
-    <name>Character(Chieftan)[4]{Sahuagin}</name>
-  </collection>
-  <collection>
-    <name>Character(Priest)[7]{Sahuagin}@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Character(Underpriest)[1d4+2]{Sahuagin}@Cleric@</name>
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
@@ -2015,19 +1852,9 @@
   </collection>
   <collection>
     <name>Scorpionfolk</name>
-    <entry>Lance[Weapon]#Large#</entry>
   </collection>
   <collection>
-    <name>Character[1d3+2]{Scorpionfolk}@Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character[1d3+5]{Scorpionfolk}@Ranger@</name>
-  </collection>
-  <collection>
-    <name>Character[1d3+5]{Scorpionfolk}@Cleric@</name>
-  </collection>
-  <collection>
-    <name>Sea cat</name>
+    <name>Sea Cat</name>
   </collection>
   <collection>
     <name>Shadow</name>
@@ -2081,7 +1908,7 @@
     <name>Red Slaad</name>
   </collection>
   <collection>
-    <name>Solar</name>
+    <name>Angel, Solar</name>
     <entry>Greatsword[Weapon]#Large#(5){Dancing}@True@</entry>
     <entry>Composite longbow[Weapon]#+5 Strength bonus,Large#(2){Creates slaying arrows keyed to any creature type or subtype$5$}@True@</entry>
   </collection>
@@ -2269,38 +2096,29 @@
     <entry>Javelin[Weapon]#Medium#</entry>
   </collection>
   <collection>
-    <name>Troglodyte$Noncombatant$</name>
-  </collection>
-  <collection>
     <name>Troll</name>
   </collection>
   <collection>
-    <name>Character(Hunter)[6]{Troll}@Ranger@</name>
+    <name>Scrag</name>
   </collection>
   <collection>
-    <name>Troll$Scrag$</name>
-  </collection>
-  <collection>
-    <name>Character(Hunter)[6]{Scrag}@Ranger@</name>
-  </collection>
-  <collection>
-    <name>Trumpet archon</name>
-    <entry>Greatsword[Weapon]#Medium#(4)@True@</entry>
+    <name>Trumpet Archon</name>
+    <entry>Greatsword[Weapon]#The Archon Trumpet#(4)@True@</entry>
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
   </collection>
   <collection>
-    <name>Umber hulk</name>
+    <name>Umber Hulk</name>
   </collection>
   <collection>
-    <name>Umber hulk$Truly horrid$</name>
+    <name>Truly Horrid Umber Hulk</name>
   </collection>
   <collection>
     <name>Unicorn</name>
   </collection>
   <collection>
-    <name>Vampire spawn</name>
+    <name>Vampire Spawn</name>
   </collection>
   <collection>
     <name>Vargouille</name>
@@ -2336,7 +2154,7 @@
     <name>Will-O'-Wisp</name>
   </collection>
   <collection>
-    <name>Winter wolf</name>
+    <name>Winter Wolf</name>
   </collection>
   <collection>
     <name>Wolf</name>
@@ -2375,25 +2193,28 @@
     <name>Elder Xorn</name>
   </collection>
   <collection>
-    <name>Yeth hound</name>
+    <name>Yeth Hound</name>
   </collection>
   <collection>
     <name>Yrthak</name>
   </collection>
   <collection>
-    <name>Pureblood Yuan-ti</name>
-    <entry>Longbow[Weapon]#Medium#</entry>
-    <entry>Scimitar[Weapon]#Medium#</entry>
+    <name>Yuan-ti Pureblood</name>
   </collection>
   <collection>
-    <name>Halfblood Yuan-ti</name>
-    <entry>Composite longbow[Weapon]#Medium,+2 Strength bonus#</entry>
-    <entry>Scimitar[Weapon]#Medium#</entry>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
   </collection>
   <collection>
-    <name>Abomination Yuan-ti</name>
-    <entry>Composite longbow[Weapon]#Large,+4 Strength bonus#</entry>
-    <entry>Scimitar[Weapon]#Large#</entry>
+    <name>Yuan-ti Halfblood (Snake Head)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Abomination</name>
   </collection>
   <collection>
     <name>Zelekhut</name>

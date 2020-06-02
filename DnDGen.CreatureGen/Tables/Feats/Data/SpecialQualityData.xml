@@ -724,6 +724,11 @@
   <collection>
     <name>Azer</name>
     <entry>Spell Resistance#13##0##0#False###0</entry>
+    <entry>Martial Weapon Proficiency#0#Light hammer#0##0#True###0</entry>
+    <entry>Martial Weapon Proficiency#0#Warhammer#0##0#True###0</entry>
+    <entry>Simple Weapon Proficiency#0#Spear#0##0#True###0</entry>
+    <entry>Simple Weapon Proficiency#0#Shortspear#0##0#True###0</entry>
+    <entry>Simple Weapon Proficiency#0#Longspear#0##0#True###0</entry>
   </collection>
   <collection>
     <name>Babau</name>
@@ -1616,6 +1621,7 @@
     <name>Cloud Giant</name>
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Oversized Weapon#0#Gargantuan#0##0#True###0</entry>
+    <entry>Rock Throwing#1##1#Round (6 seconds)#0#False###0</entry>
     <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
     <entry>Simple Weapon Proficiency#0#Morningstar#0##0#True###0</entry>
@@ -2321,6 +2327,7 @@
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Simple Weapon Proficiency#0#Javelin#0##0#True###0</entry>
     <entry>Simple Weapon Proficiency#0#Morningstar#0##0#True###0</entry>
+    <entry>Two-Weapon Fighting#0##0##0#True###0</entry>
     <entry>Superior Two-Weapon Fighting#0##0##0#True###0</entry>
   </collection>
   <collection>
@@ -2381,6 +2388,7 @@
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True###0</entry>
     <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
+    <entry>Rock Throwing#1##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Fire Mephit</name>
@@ -2516,6 +2524,7 @@
     <entry>Armor Proficiency (Light)#0##0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Greataxe#0##0#True###0</entry>
     <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
+    <entry>Rock Throwing#1##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Frost Worm</name>
@@ -3263,6 +3272,7 @@
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatclub#0##0#True###0</entry>
     <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
+    <entry>Rock Throwing#1##1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>
@@ -3640,6 +3650,7 @@
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Longsword#0##0#True###0</entry>
     <entry>Multiweapon Fighting#0##0##0#True###0</entry>
+    <entry>Superior Multiweapon Fighting#0##0##0#True###0</entry>
     <entry>Spell Resistance#25##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Align weapon#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Blade barrier#0#At Will#0#False#Charisma#Reflex#16</entry>
@@ -4523,6 +4534,15 @@
     <entry>Spell Resistance#18##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Major image#1#Day#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#Mirror image#2#Day#0#False###0</entry>
+    <entry>Martial Weapon Proficiency#0#Falchion#0##0#True###0</entry>
+    <entry>Martial Weapon Proficiency#0#Shortbow#0##0#True###0</entry>
+    <entry>Martial Weapon Proficiency#0#Composite shortbow#0##0#True###0</entry>
+    <entry>Martial Weapon Proficiency#0#Scimitar#0##0#True###0</entry>
+    <entry>Simple Weapon Proficiency#0#Light crossbow#0##0#True###0</entry>
+    <entry>Simple Weapon Proficiency#0#Heavy crossbow#0##0#True###0</entry>
+    <entry>Simple Weapon Proficiency#0#Spear#0##0#True###0</entry>
+    <entry>Simple Weapon Proficiency#0#Shortspear#0##0#True###0</entry>
+    <entry>Simple Weapon Proficiency#0#Longspear#0##0#True###0</entry>
   </collection>
   <collection>
     <name>Scrag</name>
@@ -4823,6 +4843,7 @@
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Darkvision#60##0##0#False###0</entry>
     <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
+    <entry>Rock Throwing#1##1#Round (6 seconds)#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatclub#0##0#True###0</entry>
   </collection>
   <collection>
@@ -4831,6 +4852,7 @@
     <entry>Armor Proficiency (Medium)#0##0##0#True###0</entry>
     <entry>Darkvision#60##0##0#False###0</entry>
     <entry>Rock Catching#0##1#Round (6 seconds)#0#False###0</entry>
+    <entry>Rock Throwing#1##1#Round (6 seconds)#0#False###0</entry>
     <entry>Martial Weapon Proficiency#0#Greatclub#0##0#True###0</entry>
     <entry>Spell-Like Ability#0#Stone shape#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Stone tell#1#Day#0#False###0</entry>

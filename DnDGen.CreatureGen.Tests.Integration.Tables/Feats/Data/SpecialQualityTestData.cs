@@ -2417,7 +2417,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Giant_Stone_Elder].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteRockToMud, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Reflex, saveBaseValue: 15));
                 testCases[CreatureConstants.Giant_Stone_Elder].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.TransmuteMudToRock, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Reflex, saveBaseValue: 15));
 
-                testCases[CreatureConstants.Giant_Storm].Add(helper.BuildData(FeatConstants.SpecialQualities.RockThrowing, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round, power: 1));
                 testCases[CreatureConstants.Giant_Storm].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
                 testCases[CreatureConstants.Giant_Storm].Add(helper.BuildData(FeatConstants.SpecialQualities.WaterBreathing));
                 testCases[CreatureConstants.Giant_Storm].Add(helper.BuildData(FeatConstants.SpecialQualities.RockCatching, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -3455,6 +3454,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.MajorImage, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveBaseValue: 13));
                 testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.MirrorImage, frequencyQuantity: 2, frequencyTimePeriod: FeatConstants.Frequencies.Day));
                 testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Lance, requiresEquipment: true));
+                testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Falchion, requiresEquipment: true));
+                testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Shortbow, requiresEquipment: true));
+                testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.CompositeShortbow, requiresEquipment: true));
+                testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Scimitar, requiresEquipment: true));
+                testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.LightCrossbow, requiresEquipment: true));
+                testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.HeavyCrossbow, requiresEquipment: true));
+                testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Spear, requiresEquipment: true));
+                testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Longspear, requiresEquipment: true));
+                testCases[CreatureConstants.Scorpionfolk].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Shortspear, requiresEquipment: true));
 
                 testCases[CreatureConstants.Shadow].Add(helper.BuildData(FeatConstants.SpecialQualities.TurnResistance, power: 2));
 

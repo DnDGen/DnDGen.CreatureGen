@@ -378,6 +378,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Avoral, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.TrueSeeing)] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.WeaponProficiency_Martial, WeaponConstants.LightHammer)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Warhammer)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Spear)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Shortspear)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Longspear)] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Babau, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to good or cold iron weapons")] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Babau, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Acid)] = new Dictionary<string, int>();
@@ -2108,6 +2113,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ettin, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ettin, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Javelin)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ettin, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Morningstar)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Ettin, FeatConstants.TwoWeaponFighting, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ettin, FeatConstants.SpecialQualities.TwoWeaponFighting_Superior, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.FormianMyrmarch, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Javelin)] = new Dictionary<string, int>();
@@ -2235,6 +2241,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Morningstar)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.OversizedWeapon, SizeConstants.Gargantuan)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.RockCatching, string.Empty)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.Scent, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FogCloud)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Levitate + ": self plus 2,000 pounds")] = new Dictionary<string, int>();
@@ -2245,21 +2252,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Fire, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Fire, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Greatsword)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Fire, FeatConstants.SpecialQualities.RockCatching, string.Empty)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Fire, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Frost, FeatConstants.ArmorProficiency_Light, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Frost, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Greataxe)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Frost, FeatConstants.SpecialQualities.RockCatching, string.Empty)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Frost, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Hill, FeatConstants.ArmorProficiency_Light, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Hill, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Hill, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Greatclub)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Hill, FeatConstants.SpecialQualities.RockCatching, string.Empty)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Hill, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.ArmorProficiency_Light, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Greatclub)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.SpecialQualities.RockCatching, string.Empty)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.ArmorProficiency_Light, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new Dictionary<string, int>();
@@ -2270,6 +2281,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.StoneTell)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.TransmuteMudToRock)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.TransmuteRockToMud)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Storm, FeatConstants.ArmorProficiency_Light, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Storm, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new Dictionary<string, int>();
@@ -2743,6 +2755,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longsword)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.Monster.MultiweaponFighting, string.Empty)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.SpecialQualities.MultiweaponFighting_Superior, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to good, cold iron weapons")] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Acid)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold)] = new Dictionary<string, int>();
@@ -3277,6 +3290,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpion_Monstrous_Tiny, FeatConstants.SpecialQualities.Tremorsense, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Lance)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Scimitar)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Falchion)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Shortbow)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeShortbow)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MajorImage)] = new Dictionary<string, int>();
@@ -4076,19 +4093,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             {
                 var featsWithFoci = new List<string>();
 
-                var simpleWeapons = WeaponConstants.GetAllSimple(false, true);
+                var simpleWeapons = WeaponConstants.GetAllSimple(false, false);
                 foreach (var weapon in simpleWeapons)
                 {
                     featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Simple}/{weapon}");
                 }
 
-                var martialWeapons = WeaponConstants.GetAllMartial(false, true);
+                var martialWeapons = WeaponConstants.GetAllMartial(false, false);
                 foreach (var weapon in martialWeapons)
                 {
                     featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Martial}/{weapon}");
                 }
 
-                var exoticWeapons = WeaponConstants.GetAllExotic(false, true);
+                var exoticWeapons = WeaponConstants.GetAllExotic(false, false);
                 foreach (var weapon in exoticWeapons)
                 {
                     featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Exotic}/{weapon}");

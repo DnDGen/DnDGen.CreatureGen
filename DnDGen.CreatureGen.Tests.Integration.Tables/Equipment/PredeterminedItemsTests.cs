@@ -430,12 +430,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [TestCase(CreatureConstants.Ghoul)]
         [TestCase(CreatureConstants.Ghoul_Lacedon)]
         [TestCase(CreatureConstants.Ghoul_Ghast)]
-        [TestCase(CreatureConstants.Giant_Fire)]
-        [TestCase(CreatureConstants.Giant_Frost)]
-        [TestCase(CreatureConstants.Giant_Hill)]
-        [TestCase(CreatureConstants.Giant_Stone)]
-        [TestCase(CreatureConstants.Giant_Stone_Elder)]
-        [TestCase(CreatureConstants.Giant_Storm)]
         [TestCase(CreatureConstants.GibberingMouther)]
         [TestCase(CreatureConstants.Girallon)]
         [TestCase(CreatureConstants.Glabrezu)]
@@ -673,6 +667,40 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [TestCase(CreatureConstants.Centaur)]
         [TestCase(CreatureConstants.Derro)]
         [TestCase(CreatureConstants.Derro_Sane)]
+        [TestCase(CreatureConstants.Dwarf_Deep)]
+        [TestCase(CreatureConstants.Dwarf_Duergar)]
+        [TestCase(CreatureConstants.Dwarf_Hill)]
+        [TestCase(CreatureConstants.Dwarf_Mountain)]
+        [TestCase(CreatureConstants.Elf_Aquatic)]
+        [TestCase(CreatureConstants.Elf_Drow)]
+        [TestCase(CreatureConstants.Elf_Gray)]
+        [TestCase(CreatureConstants.Elf_Half)]
+        [TestCase(CreatureConstants.Elf_High)]
+        [TestCase(CreatureConstants.Elf_Wild)]
+        [TestCase(CreatureConstants.Elf_Wood)]
+        [TestCase(CreatureConstants.Human)]
+        [TestCase(CreatureConstants.Orc)]
+        [TestCase(CreatureConstants.Orc_Half)]
+        [TestCase(CreatureConstants.Halfling_Deep)]
+        [TestCase(CreatureConstants.Halfling_Lightfoot)]
+        [TestCase(CreatureConstants.Halfling_Tallfellow)]
+        [TestCase(CreatureConstants.Gnome_Forest)]
+        [TestCase(CreatureConstants.Gnome_Rock)]
+        [TestCase(CreatureConstants.Gnome_Svirfneblin)]
+        [TestCase(CreatureConstants.Hobgoblin)]
+        [TestCase(CreatureConstants.Goblin)]
+        [TestCase(CreatureConstants.Kobold)]
+        [TestCase(CreatureConstants.Merfolk)]
+        [TestCase(CreatureConstants.Tiefling)]
+        [TestCase(CreatureConstants.Scorpionfolk)]
+        [TestCase(CreatureConstants.YuanTi_Pureblood)]
+        [TestCase(CreatureConstants.YuanTi_Abomination)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeArms)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs)]
+        [TestCase(CreatureConstants.Drider)]
+        [TestCase(CreatureConstants.Dryad)]
         public void CreatureHasNoPredeterminedItems(string entry)
         {
             base.AssertDistinctCollection(entry);
@@ -685,10 +713,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [TestCase(CreatureConstants.Grimlock, WeaponConstants.Battleaxe, ItemTypeConstants.Weapon, 0, "", "Stone")]
         [TestCase(CreatureConstants.HornedDevil_Cornugon, WeaponConstants.SpikedChain, ItemTypeConstants.Weapon, 0, "")]
         [TestCase(CreatureConstants.HoundArchon, WeaponConstants.Greatsword, ItemTypeConstants.Weapon, 0, "")]
-        [TestCase(CreatureConstants.IceDevil_Gelugon, WeaponConstants.Longspear, ItemTypeConstants.Weapon, 0, "")]
+        [TestCase(CreatureConstants.IceDevil_Gelugon, WeaponConstants.Spear, ItemTypeConstants.Weapon, 0, "")]
         [TestCase(CreatureConstants.HellHound_NessianWarhound, ArmorConstants.ChainShirt, ItemTypeConstants.Armor, 2, "", "Barding")]
         [TestCase(CreatureConstants.Angel_Planetar, WeaponConstants.Greatsword, ItemTypeConstants.Weapon, 3, "")]
-        [TestCase(CreatureConstants.Scorpionfolk, WeaponConstants.Lance, ItemTypeConstants.Weapon, 0, "")]
         [TestCase(CreatureConstants.TrumpetArchon, WeaponConstants.Greatsword, ItemTypeConstants.Weapon, 4, "", "The Archon Trumpet")]
         public void CreatureHasOnePresetItem(string entry, string itemName, string itemType, int itemBonus, string abilityName, params string[] traits)
         {
@@ -723,7 +750,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [Test]
         public void BalorItems()
         {
-            var longsword = FormatSetItem(WeaponConstants.Longsword, ItemTypeConstants.Weapon, 1, SpecialAbilityConstants.Vorpal, 0, false);
+            var longsword = FormatSetItem(WeaponConstants.Longsword, ItemTypeConstants.Weapon, 1, SpecialAbilityConstants.Vorpal);
             var whip = FormatSetItem(WeaponConstants.Whip, ItemTypeConstants.Weapon, 1, SpecialAbilityConstants.Flaming, 0, false, "tipped with hooks, spikes, and balls, dealing slashing and bludgeoning damage");
 
             base.AssertCollection(CreatureConstants.Balor, new[] { longsword, whip });
@@ -732,7 +759,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [Test]
         public void BralaniItems()
         {
-            var scimitar = FormatSetItem(WeaponConstants.Scimitar, ItemTypeConstants.Weapon, 1, SpecialAbilityConstants.Holy, 0, false);
+            var scimitar = FormatSetItem(WeaponConstants.Scimitar, ItemTypeConstants.Weapon, 1, SpecialAbilityConstants.Holy);
             var longbow = FormatSetItem(WeaponConstants.CompositeLongbow, ItemTypeConstants.Weapon, 1, SpecialAbilityConstants.Holy, 0, false, "+4 Strength bonus");
             base.AssertCollection(CreatureConstants.Bralani, new[] { scimitar, longbow });
         }
@@ -742,69 +769,55 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         {
             var spikedChains = new[]
             {
-                FormatSetItem(WeaponConstants.SpikedChain, ItemTypeConstants.Weapon, 0, string.Empty, 0, false),
-                FormatSetItem(WeaponConstants.SpikedChain, ItemTypeConstants.Weapon, 0, string.Empty, 0, false),
+                FormatSetItem(WeaponConstants.SpikedChain, ItemTypeConstants.Weapon),
+                FormatSetItem(WeaponConstants.SpikedChain, ItemTypeConstants.Weapon),
             };
 
             base.AssertCollection(CreatureConstants.ChainDevil_Kyton, spikedChains);
         }
 
         [Test]
-        public void DriderItems()
-        {
-            var dagger = FormatSetItem(WeaponConstants.Dagger, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
-            var shortbow = FormatSetItem(WeaponConstants.Shortbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
-
-            base.AssertCollection(CreatureConstants.Drider, new[] { dagger, dagger, shortbow });
-            Assert.Fail("needs to be verified");
-        }
-
-        [Test]
-        public void DryadItems()
-        {
-            var dagger = FormatSetItem(WeaponConstants.Dagger, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-            var longbow = FormatSetItem(WeaponConstants.Longbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium, TraitConstants.Masterwork);
-
-            base.AssertCollection(CreatureConstants.Dryad, new[] { dagger, longbow });
-            Assert.Fail("needs to be verified");
-        }
-
-        [Test]
         public void ErinyesItems()
         {
-            var longsword = FormatSetItem(WeaponConstants.Longsword, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-            var longbow = FormatSetItem(WeaponConstants.CompositeLongbow, ItemTypeConstants.Weapon, 1, SpecialAbilityConstants.Flaming, 0, false, "+5 Strength bonus", TraitConstants.Sizes.Medium);
+            var longbow = FormatSetItem(WeaponConstants.CompositeLongbow, ItemTypeConstants.Weapon, 1, SpecialAbilityConstants.Flaming, 0, false, "+5 Strength bonus");
             var rope = FormatSetItem("Rope, 50 ft.", ItemTypeConstants.Tool);
 
-            base.AssertCollection(CreatureConstants.Erinyes, new[] { longsword, longbow, rope });
-            Assert.Fail("needs to be verified");
+            base.AssertCollection(CreatureConstants.Erinyes, new[] { longbow, rope });
         }
 
         [Test]
         public void EttinItems()
         {
-            var morningstar = FormatSetItem(WeaponConstants.Morningstar, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
-            var javelin = FormatSetItem(WeaponConstants.Javelin, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
+            var morningstar1 = FormatSetItem(WeaponConstants.Morningstar, ItemTypeConstants.Weapon);
+            var morningstar2 = FormatSetItem(WeaponConstants.Morningstar, ItemTypeConstants.Weapon);
+            var javelin1 = FormatSetItem(WeaponConstants.Javelin, ItemTypeConstants.Weapon);
+            var javelin2 = FormatSetItem(WeaponConstants.Javelin, ItemTypeConstants.Weapon);
 
-            base.AssertCollection(CreatureConstants.Ettin, new[] { morningstar, javelin });
-            Assert.Fail("needs to be verified");
+            base.AssertCollection(CreatureConstants.Ettin, new[] { morningstar1, morningstar2, javelin1, javelin2 });
+        }
+
+        [Test]
+        public void FireGiantItems()
+        {
+            var armor = FormatSetItem(ArmorConstants.HalfPlate, ItemTypeConstants.Armor, 0, string.Empty, 0, false, "Blackened steel");
+
+            base.AssertCollection(CreatureConstants.Giant_Fire, new[] { armor });
         }
 
         [Test]
         public void FrostGiantItems()
         {
-            var greataxe = FormatSetItem(WeaponConstants.Greataxe, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
-            var armor = FormatSetItem(ArmorConstants.ChainShirt, ItemTypeConstants.Armor, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
+            var greataxe = FormatSetItem(WeaponConstants.Greataxe, ItemTypeConstants.Weapon);
+            var armor = FormatSetItem(ArmorConstants.ChainShirt, ItemTypeConstants.Armor);
 
             base.AssertCollection(CreatureConstants.Giant_Frost, new[] { greataxe, armor });
-            Assert.Fail("needs to be verified");
         }
 
         [Test]
         public void HillGiantItems()
         {
-            var greatclub = FormatSetItem(WeaponConstants.Greatclub, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
-            var armor = FormatSetItem(ArmorConstants.HideArmor, ItemTypeConstants.Armor, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
+            var greatclub = FormatSetItem(WeaponConstants.Greatclub, ItemTypeConstants.Weapon);
+            var armor = FormatSetItem(ArmorConstants.HideArmor, ItemTypeConstants.Armor);
 
             base.AssertCollection(CreatureConstants.Giant_Hill, new[] { greatclub, armor });
             Assert.Fail("needs to be verified");
@@ -971,13 +984,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         }
 
         [Test]
+        public void StoneGiantItems()
+        {
+            var club = FormatSetItem(WeaponConstants.Greatclub, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, "Stone");
+            var armor = FormatSetItem(ArmorConstants.HideArmor, ItemTypeConstants.Armor, 0, string.Empty, 0, false, "dyed in shades of brown and gray to match the stone around them");
+
+            base.AssertCollection(CreatureConstants.Giant_Stone, new[] { club, armor });
+        }
+
+        [Test]
+        public void StoneGiantElderItems()
+        {
+            var club = FormatSetItem(WeaponConstants.Greatclub, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, "Stone");
+            var armor = FormatSetItem(ArmorConstants.HideArmor, ItemTypeConstants.Armor, 0, string.Empty, 0, false, "dyed in shades of brown and gray to match the stone around them");
+
+            base.AssertCollection(CreatureConstants.Giant_Stone_Elder, new[] { club, armor });
+        }
+
+        [Test]
         public void StormGiantItems()
         {
-            var greatsword = FormatSetItem(WeaponConstants.Greatsword, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Huge);
-            var longbow = FormatSetItem(WeaponConstants.CompositeLongbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Huge, "+14 Strength bonus");
+            var longbow = FormatSetItem(WeaponConstants.CompositeLongbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, "+14 Strength bonus");
 
-            base.AssertCollection(CreatureConstants.Giant_Storm, new[] { greatsword, longbow });
-            Assert.Fail("needs to be verified");
+            base.AssertCollection(CreatureConstants.Giant_Storm, new[] { longbow });
         }
 
         [Test]
@@ -1007,39 +1036,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
             var javelin = FormatSetItem(WeaponConstants.Javelin, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
 
             base.AssertCollection(CreatureConstants.Troglodyte, new[] { club, javelin });
-            Assert.Fail("needs to be verified");
-        }
-
-        [Test]
-        public void YuanTiPurebloodItems()
-        {
-            var scimitar = FormatSetItem(WeaponConstants.Scimitar, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-            var longbow = FormatSetItem(WeaponConstants.Longbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-
-            base.AssertCollection(CreatureConstants.YuanTi_Pureblood, new[] { scimitar, longbow });
-            Assert.Fail("needs to be verified");
-        }
-
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeArms)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs)]
-        public void YuanTiHalfbloodItems(string yuanTiHalfblood)
-        {
-            var scimitar = FormatSetItem(WeaponConstants.Scimitar, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-            var longbow = FormatSetItem(WeaponConstants.CompositeLongbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium, "+2 Strength bonus");
-
-            base.AssertCollection(yuanTiHalfblood, new[] { scimitar, longbow });
-            Assert.Fail("needs to be verified");
-        }
-
-        [Test]
-        public void YuanTiAbominationItems()
-        {
-            var scimitar = FormatSetItem(WeaponConstants.Scimitar, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
-            var longbow = FormatSetItem(WeaponConstants.CompositeLongbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large, "+4 Strength bonus");
-
-            base.AssertCollection(CreatureConstants.YuanTi_Abomination, new[] { scimitar, longbow });
             Assert.Fail("needs to be verified");
         }
 
