@@ -1255,9 +1255,12 @@
   </collection>
   <collection>
     <name>Fire Giant</name>
+    <entry>Half-plate[Armor]#Blackened steel#</entry>
   </collection>
   <collection>
     <name>Frost Giant</name>
+    <entry>Greataxe[Weapon]</entry>
+    <entry>Chain shirt[Armor]</entry>
   </collection>
   <collection>
     <name>Hill Giant</name>

@@ -35,6 +35,14 @@
     <entry>Simple Weapon Proficiency</entry>
   </collection>
   <collection>
+    <name>Armor Proficiency</name>
+    <entry>Armor Proficiency (Light)</entry>
+    <entry>Armor Proficiency (Medium)</entry>
+    <entry>Armor Proficiency (Heavy)</entry>
+    <entry>Shield Proficiency</entry>
+    <entry>Tower Shield Proficiency</entry>
+  </collection>
+  <collection>
     <name>Will</name>
     <entry>Iron Will</entry>
   </collection>

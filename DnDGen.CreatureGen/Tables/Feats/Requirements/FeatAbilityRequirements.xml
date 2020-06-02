@@ -9040,6 +9040,33 @@
     <name>ScorpionfolkMartial Weapon ProficiencyLance</name>
   </collection>
   <collection>
+    <name>ScorpionfolkMartial Weapon ProficiencyFalchion</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkMartial Weapon ProficiencyScimitar</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkMartial Weapon ProficiencyComposite shortbow</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSimple Weapon ProficiencyLight crossbow</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSimple Weapon ProficiencyHeavy crossbow</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSimple Weapon ProficiencyShortspear</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSimple Weapon ProficiencySpear</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSimple Weapon ProficiencyLongspear</name>
+  </collection>
+  <collection>
     <name>ScorpionfolkSpell Resistance</name>
   </collection>
   <collection>

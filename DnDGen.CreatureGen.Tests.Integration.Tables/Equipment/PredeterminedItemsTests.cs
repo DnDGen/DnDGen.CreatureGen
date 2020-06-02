@@ -701,6 +701,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs)]
         [TestCase(CreatureConstants.Drider)]
         [TestCase(CreatureConstants.Dryad)]
+        [TestCase(CreatureConstants.Gnoll)]
+        [TestCase(CreatureConstants.Janni)]
+        [TestCase(CreatureConstants.Lizardfolk)]
+        [TestCase(CreatureConstants.Medusa)]
+        [TestCase(CreatureConstants.Nixie)]
+        [TestCase(CreatureConstants.OgreMage)]
         public void CreatureHasNoPredeterminedItems(string entry)
         {
             base.AssertDistinctCollection(entry);
@@ -788,12 +794,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [Test]
         public void EttinItems()
         {
-            var morningstar1 = FormatSetItem(WeaponConstants.Morningstar, ItemTypeConstants.Weapon);
-            var morningstar2 = FormatSetItem(WeaponConstants.Morningstar, ItemTypeConstants.Weapon);
-            var javelin1 = FormatSetItem(WeaponConstants.Javelin, ItemTypeConstants.Weapon);
-            var javelin2 = FormatSetItem(WeaponConstants.Javelin, ItemTypeConstants.Weapon);
+            var morningstar = FormatSetItem(WeaponConstants.Morningstar, ItemTypeConstants.Weapon);
+            var javelin = FormatSetItem(WeaponConstants.Javelin, ItemTypeConstants.Weapon);
 
-            base.AssertCollection(CreatureConstants.Ettin, new[] { morningstar1, morningstar2, javelin1, javelin2 });
+            base.AssertCollection(CreatureConstants.Ettin, new[] { morningstar, morningstar, javelin, javelin });
         }
 
         [Test]
@@ -820,76 +824,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
             var armor = FormatSetItem(ArmorConstants.HideArmor, ItemTypeConstants.Armor);
 
             base.AssertCollection(CreatureConstants.Giant_Hill, new[] { greatclub, armor });
-            Assert.Fail("needs to be verified");
         }
 
-        [Test]
-        public void GnollItems()
+        [TestCase(CreatureConstants.Grig)]
+        [TestCase(CreatureConstants.Grig_WithFiddle)]
+        public void GrigItems(string creature)
         {
-            var battleaxe = FormatSetItem(WeaponConstants.Battleaxe, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-            var shortbow = FormatSetItem(WeaponConstants.Shortbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
+            var shortSword = FormatSetItem(WeaponConstants.ShortSword, ItemTypeConstants.Weapon);
+            var longbow = FormatSetItem(WeaponConstants.Longbow, ItemTypeConstants.Weapon);
 
-            base.AssertCollection(CreatureConstants.Gnoll, new[] { battleaxe, shortbow });
-            Assert.Fail("needs to be verified");
-        }
-
-        [Test]
-        public void GrigItems()
-        {
-            var shortSword = FormatSetItem(WeaponConstants.ShortSword, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Tiny);
-            var longbow = FormatSetItem(WeaponConstants.Longbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Tiny);
-
-            base.AssertCollection(CreatureConstants.Grig, new[] { shortSword, longbow });
-            Assert.Fail("needs to be verified");
-        }
-
-        [Test]
-        public void JanniItems()
-        {
-            var scimitar = FormatSetItem(WeaponConstants.Scimitar, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-            var longbow = FormatSetItem(WeaponConstants.Longbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-
-            base.AssertCollection(CreatureConstants.Janni, new[] { scimitar, longbow });
-            Assert.Fail("needs to be verified");
-        }
-
-        [Test]
-        public void LizardfolkItems()
-        {
-            var club = FormatSetItem(WeaponConstants.Club, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-            var javelin = FormatSetItem(WeaponConstants.Javelin, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-
-            base.AssertCollection(CreatureConstants.Lizardfolk, new[] { club, javelin });
-            Assert.Fail("needs to be verified");
+            base.AssertCollection(creature, new[] { shortSword, longbow });
         }
 
         [Test]
         public void MarilithItems()
         {
-            var longsword = FormatSetItem(WeaponConstants.Longsword, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
+            var longsword = FormatSetItem(WeaponConstants.Longsword, ItemTypeConstants.Weapon);
 
-            base.AssertCollection(CreatureConstants.Marilith, new[] { longsword, longsword, longsword, longsword, longsword, longsword });
-            Assert.Fail("needs to be verified");
-        }
-
-        [Test]
-        public void MedusaItems()
-        {
-            var dagger = FormatSetItem(WeaponConstants.Dagger, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-            var shortbow = FormatSetItem(WeaponConstants.Shortbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Medium);
-
-            base.AssertCollection(CreatureConstants.Medusa, new[] { dagger, shortbow });
-            Assert.Fail("needs to be verified");
-        }
-
-        [Test]
-        public void NixieItems()
-        {
-            var shortSword = FormatSetItem(WeaponConstants.ShortSword, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Small);
-            var crossbow = FormatSetItem(WeaponConstants.LightCrossbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Small);
-
-            base.AssertCollection(CreatureConstants.Nixie, new[] { shortSword, crossbow });
-            Assert.Fail("needs to be verified");
+            base.AssertCollection(CreatureConstants.Marilith, new[]
+            {
+                longsword,
+                longsword,
+                longsword,
+                longsword,
+                longsword,
+                longsword
+            });
         }
 
         [Test]
@@ -899,7 +859,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
             var javelin = FormatSetItem(WeaponConstants.Javelin, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
 
             base.AssertCollection(CreatureConstants.Ogre, new[] { greatclub, javelin });
-            Assert.Fail("needs to be verified");
         }
 
         [Test]
@@ -909,37 +868,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
             var javelin = FormatSetItem(WeaponConstants.Javelin, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
 
             base.AssertCollection(CreatureConstants.Ogre_Merrow, new[] { longspear, javelin });
-            Assert.Fail("needs to be verified");
         }
 
-        [Test]
-        public void OgreMageItems()
+        [TestCase(CreatureConstants.Pixie)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance)]
+        public void PixieItems(string creatureName)
         {
-            var greatsword = FormatSetItem(WeaponConstants.Greatsword, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
-            var longbow = FormatSetItem(WeaponConstants.Longbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Large);
+            var shortSword = FormatSetItem(WeaponConstants.ShortSword, ItemTypeConstants.Weapon);
+            var longbow = FormatSetItem(WeaponConstants.Longbow, ItemTypeConstants.Weapon);
+            var memoryArrow = FormatSetItem(WeaponConstants.Arrow, ItemTypeConstants.Weapon, 0, string.Empty, 0, true, "Causes memory loss (see special attack)");
+            var sleepArrow = FormatSetItem(WeaponConstants.Arrow, ItemTypeConstants.Weapon, 0, string.Empty, 0, true, "Causes sleep (see special attack)");
 
-            base.AssertCollection(CreatureConstants.OgreMage, new[] { greatsword, longbow });
-            Assert.Fail("needs to be verified");
-        }
-
-        [Test]
-        public void PixieItems()
-        {
-            var shortSword = FormatSetItem(WeaponConstants.ShortSword, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Small);
-            var longbow = FormatSetItem(WeaponConstants.Longbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Small);
-
-            base.AssertCollection(CreatureConstants.Pixie, new[] { shortSword, longbow });
-            Assert.Fail("needs to be verified");
-        }
-
-        [Test]
-        public void PixieWithIrresistableDanceItems()
-        {
-            var shortSword = FormatSetItem(WeaponConstants.ShortSword, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Small);
-            var longbow = FormatSetItem(WeaponConstants.Longbow, ItemTypeConstants.Weapon, 0, string.Empty, 0, false, TraitConstants.Sizes.Small);
-
-            base.AssertCollection(CreatureConstants.Pixie_WithIrresistibleDance, new[] { shortSword, longbow });
-            Assert.Fail("needs to be verified");
+            base.AssertCollection(creatureName, new[] { shortSword, longbow, memoryArrow, sleepArrow });
         }
 
         [Test]
