@@ -4552,6 +4552,7 @@
   <collection>
     <name>Scorpionfolk</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@0@0</entry>
     <entry>Sting@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
     <entry>Claw@1d6@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d4 Dex@0@0</entry>

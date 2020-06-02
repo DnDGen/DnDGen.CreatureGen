@@ -142,32 +142,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 }
             }
 
-            public static IEnumerable SpecialQualities
-            {
-                get
-                {
-                    var testCases = new Dictionary<string, string[]>();
-
-                    testCases[CreatureConstants.Aasimar + FeatConstants.ArmorProficiency_Light] = new string[0];
-                    testCases[CreatureConstants.Aasimar + FeatConstants.ArmorProficiency_Medium] = new string[0];
-                    testCases[CreatureConstants.Aasimar + FeatConstants.SpecialQualities.EnergyResistance] = new string[0];
-                    testCases[CreatureConstants.Aasimar + FeatConstants.SpecialQualities.SpellLikeAbility] = new string[0];
-
-                    testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.MucusCloud] = new string[0];
-                    testCases[CreatureConstants.Aboleth + FeatConstants.SpecialQualities.SpellLikeAbility] = new string[0];
-
-                    testCases[CreatureConstants.Basilisk_AbyssalGreater + FeatConstants.SpecialQualities.DamageReduction] = new string[0];
-
-                    testCases[CreatureConstants.Types.Aberration + FeatConstants.WeaponProficiency_Simple] = new string[0];
-                    testCases[CreatureConstants.Types.Aberration + FeatConstants.ShieldProficiency] = new string[0];
-
-                    foreach (var testCase in testCases)
-                    {
-                        yield return new TestCaseData(testCase.Key, testCase.Value);
-                    }
-                }
-            }
-
             public static IEnumerable CreatureSpecialQualities
             {
                 get
@@ -354,6 +328,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Avoral, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.TrueSeeing)] = new string[0];
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.WeaponProficiency_Martial, WeaponConstants.LightHammer)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Warhammer)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Spear)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Shortspear)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Azer, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Longspear)] = new string[0];
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Babau, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to good or cold iron weapons")] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Babau, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Acid)] = new string[0];
@@ -2084,6 +2063,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ettin, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ettin, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Javelin)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ettin, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Morningstar)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Ettin, FeatConstants.TwoWeaponFighting, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ettin, FeatConstants.SpecialQualities.TwoWeaponFighting_Superior, string.Empty)] = new string[0];
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.FormianMyrmarch, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Javelin)] = new string[0];
@@ -2211,6 +2191,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Morningstar)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.OversizedWeapon, SizeConstants.Gargantuan)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.RockCatching, string.Empty)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FogCloud)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Levitate + ": self plus 2,000 pounds")] = new string[0];
@@ -2221,21 +2202,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Fire, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Fire, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Greatsword)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Fire, FeatConstants.SpecialQualities.RockCatching, string.Empty)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Fire, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new string[0];
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Frost, FeatConstants.ArmorProficiency_Light, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Frost, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Greataxe)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Frost, FeatConstants.SpecialQualities.RockCatching, string.Empty)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Frost, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new string[0];
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Hill, FeatConstants.ArmorProficiency_Light, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Hill, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Hill, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Greatclub)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Hill, FeatConstants.SpecialQualities.RockCatching, string.Empty)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Hill, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new string[0];
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.ArmorProficiency_Light, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Greatclub)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.SpecialQualities.Darkvision, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.SpecialQualities.RockCatching, string.Empty)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new string[0];
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.ArmorProficiency_Light, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new string[0];
@@ -2246,6 +2231,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.StoneTell)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.TransmuteMudToRock)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.TransmuteRockToMud)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Stone_Elder, FeatConstants.SpecialQualities.RockThrowing, string.Empty)] = new string[0];
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Storm, FeatConstants.ArmorProficiency_Light, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Storm, FeatConstants.ArmorProficiency_Medium, string.Empty)] = new string[0];
@@ -2713,6 +2699,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longsword)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.Monster.MultiweaponFighting, string.Empty)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.SpecialQualities.MultiweaponFighting_Superior, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to good, cold iron weapons")] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Acid)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marilith, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold)] = new string[0];
@@ -3247,6 +3234,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpion_Monstrous_Tiny, FeatConstants.SpecialQualities.Tremorsense, string.Empty)] = new string[0];
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Lance)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Falchion)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Scimitar)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Shortbow)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Martial, WeaponConstants.CompositeShortbow)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Simple, WeaponConstants.HeavyCrossbow)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Simple, WeaponConstants.LightCrossbow)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Spear)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Longspear)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.WeaponProficiency_Simple, WeaponConstants.Shortspear)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Scorpionfolk, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MajorImage)] = new string[0];

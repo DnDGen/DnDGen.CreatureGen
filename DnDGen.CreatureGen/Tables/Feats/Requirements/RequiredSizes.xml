@@ -1014,6 +1014,21 @@
     <name>AzerSpell Resistance</name>
   </collection>
   <collection>
+    <name>AzerMartial Weapon ProficiencyLight hammer</name>
+  </collection>
+  <collection>
+    <name>AzerMartial Weapon ProficiencyWarhammer</name>
+  </collection>
+  <collection>
+    <name>AzerSimple Weapon ProficiencyShortspear</name>
+  </collection>
+  <collection>
+    <name>AzerSimple Weapon ProficiencySpear</name>
+  </collection>
+  <collection>
+    <name>AzerSimple Weapon ProficiencyLongspear</name>
+  </collection>
+  <collection>
     <name>BabauDamage ReductionVulnerable to good or cold iron weapons</name>
   </collection>
   <collection>
@@ -2829,6 +2844,9 @@
     <name>Cloud GiantRock Catching</name>
   </collection>
   <collection>
+    <name>Cloud GiantRock Throwing</name>
+  </collection>
+  <collection>
     <name>Cloud GiantScent</name>
   </collection>
   <collection>
@@ -4131,6 +4149,9 @@
     <name>EttinSimple Weapon ProficiencyMorningstar</name>
   </collection>
   <collection>
+    <name>EttinTwo-Weapon Fighting</name>
+  </collection>
+  <collection>
     <name>EttinSuperior Two-Weapon Fighting</name>
   </collection>
   <collection>
@@ -4210,6 +4231,9 @@
   </collection>
   <collection>
     <name>Fire GiantRock Catching</name>
+  </collection>
+  <collection>
+    <name>Fire GiantRock Throwing</name>
   </collection>
   <collection>
     <name>Fire MephitDamage ReductionVulnerable to magic weapons</name>
@@ -4498,6 +4522,9 @@
   </collection>
   <collection>
     <name>Frost GiantRock Catching</name>
+  </collection>
+  <collection>
+    <name>Frost GiantRock Throwing</name>
   </collection>
   <collection>
     <name>Frost WormDeath Throes</name>
@@ -5940,6 +5967,9 @@
     <name>Hill GiantRock Catching</name>
   </collection>
   <collection>
+    <name>Hill GiantRock Throwing</name>
+  </collection>
+  <collection>
     <name>HippogriffScent</name>
   </collection>
   <collection>
@@ -6637,6 +6667,9 @@
   </collection>
   <collection>
     <name>MarilithMultiweapon Fighting</name>
+  </collection>
+  <collection>
+    <name>MarilithSuperior Multiweapon Fighting</name>
   </collection>
   <collection>
     <name>MarilithSpell Resistance</name>
@@ -8208,6 +8241,33 @@
     <name>ScorpionfolkSpell-Like AbilityMirror image</name>
   </collection>
   <collection>
+    <name>ScorpionfolkMartial Weapon ProficiencyFalchion</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkMartial Weapon ProficiencyScimitar</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkMartial Weapon ProficiencyShortbow</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkMartial Weapon ProficiencyComposite shortbow</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSimple Weapon ProficiencyLight crossbow</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSimple Weapon ProficiencyHeavy crossbow</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSimple Weapon ProficiencyShortspear</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSimple Weapon ProficiencySpear</name>
+  </collection>
+  <collection>
+    <name>ScorpionfolkSimple Weapon ProficiencyLongspear</name>
+  </collection>
+  <collection>
     <name>ScragDarkvision</name>
   </collection>
   <collection>
@@ -8751,6 +8811,9 @@
     <name>Stone GiantRock Catching</name>
   </collection>
   <collection>
+    <name>Stone GiantRock Throwing</name>
+  </collection>
+  <collection>
     <name>Stone Giant ElderArmor Proficiency (Light)</name>
   </collection>
   <collection>
@@ -8764,6 +8827,9 @@
   </collection>
   <collection>
     <name>Stone Giant ElderRock Catching</name>
+  </collection>
+  <collection>
+    <name>Stone Giant ElderRock Throwing</name>
   </collection>
   <collection>
     <name>Stone Giant ElderSpell-Like AbilityStone shape</name>
