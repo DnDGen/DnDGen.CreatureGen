@@ -2557,6 +2557,131 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         }
 
         [Test]
+        public void GenerateRangedWeapon_Predetermined_WithAmmunition()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Returns(new[] { "my weapon template" });
+
+            var template = new Item
+            {
+                ItemType = ItemTypeConstants.Weapon,
+                Name = "my weapon template"
+            };
+            mockItemSelector
+                .Setup(s => s.SelectFrom("my weapon template"))
+                .Returns(template);
+
+            var mockMundaneItemGenerator = new Mock<MundaneItemGenerator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<MundaneItemGenerator>(ItemTypeConstants.Weapon))
+                .Returns(mockMundaneItemGenerator.Object);
+
+            var weapon = new Weapon
+            {
+                Name = "my projectile weapon",
+                Damage = "my predetermined damage",
+                Attributes = new[] { AttributeConstants.Ranged },
+                Ammunition = "my ammo",
+            };
+            mockMundaneItemGenerator
+                .Setup(g => g.Generate(template, false))
+                .Returns(weapon);
+
+            var ammo = new Weapon
+            {
+                Name = "my ammo",
+                Damage = "my ammo damage",
+                Attributes = new[] { AttributeConstants.Ranged },
+            };
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "my ammo", "size"))
+                .Returns(ammo);
+
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(2));
+            Assert.That(equipment.Weapons.First(), Is.EqualTo(weapon));
+            Assert.That(equipment.Weapons.Last(), Is.EqualTo(ammo));
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo("my projectile weapon"));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].IsMelee, Is.False);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+        }
+
+        [Test]
+        public void GenerateRangedWeapon_Predetermined_WithPredeterminedAmmunition()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Returns(new[] { "my weapon template", "my ammo template" });
+
+            var weaponTemplate = new Item
+            {
+                ItemType = ItemTypeConstants.Weapon,
+                Name = "my weapon template"
+            };
+            mockItemSelector
+                .Setup(s => s.SelectFrom("my weapon template"))
+                .Returns(weaponTemplate);
+
+            var ammoTemplate = new Item
+            {
+                ItemType = ItemTypeConstants.Weapon,
+                Name = "my ammo template"
+            };
+            mockItemSelector
+                .Setup(s => s.SelectFrom("my ammo template"))
+                .Returns(ammoTemplate);
+
+            var mockMundaneItemGenerator = new Mock<MundaneItemGenerator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<MundaneItemGenerator>(ItemTypeConstants.Weapon))
+                .Returns(mockMundaneItemGenerator.Object);
+
+            var weapon = new Weapon
+            {
+                Name = "my projectile weapon",
+                Damage = "my predetermined damage",
+                Attributes = new[] { AttributeConstants.Ranged },
+                Ammunition = "my ammo"
+            };
+            mockMundaneItemGenerator
+                .Setup(g => g.Generate(weaponTemplate, false))
+                .Returns(weapon);
+
+            var ammo = new Weapon
+            {
+                Name = "my ammo",
+                Damage = "my ammo damage",
+                Attributes = new[] { AttributeConstants.Ranged }
+            };
+            mockMundaneItemGenerator
+                .Setup(g => g.Generate(ammoTemplate, false))
+                .Returns(ammo);
+
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(2));
+            Assert.That(equipment.Weapons.First(), Is.EqualTo(weapon));
+            Assert.That(equipment.Weapons.Last(), Is.EqualTo(ammo));
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo("my projectile weapon"));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].IsMelee, Is.False);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+        }
+
+        [Test]
         public void GenerateRangedWeapon_Predetermined_Magical_WithSize()
         {
             mockCollectionSelector

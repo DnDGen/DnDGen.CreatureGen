@@ -534,6 +534,9 @@
     <name>Beholder</name>
   </collection>
   <collection>
+    <name>Gauth (Lesser Beholder)</name>
+  </collection>
+  <collection>
     <name>Belker</name>
   </collection>
   <collection>
@@ -1264,12 +1267,18 @@
   </collection>
   <collection>
     <name>Hill Giant</name>
+    <entry>Greatclub[Weapon]</entry>
+    <entry>Hide armor[Armor]</entry>
   </collection>
   <collection>
     <name>Stone Giant</name>
+    <entry>Greatclub[Weapon]#Stone#</entry>
+    <entry>Hide armor[Armor]#dyed in shades of brown and gray to match the stone around them#</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
+    <entry>Greatclub[Weapon]#Stone#</entry>
+    <entry>Hide armor[Armor]#dyed in shades of brown and gray to match the stone around them#</entry>
   </collection>
   <collection>
     <name>Storm Giant</name>
@@ -1292,8 +1301,6 @@
   </collection>
   <collection>
     <name>Gnoll</name>
-    <entry>Battleaxe[Weapon]#Medium#</entry>
-    <entry>Shortbow[Weapon]#Medium#</entry>
   </collection>
   <collection>
     <name>Forest Gnome</name>
@@ -1333,8 +1340,13 @@
   </collection>
   <collection>
     <name>Grig</name>
-    <entry>Short sword[Weapon]#Tiny#</entry>
-    <entry>Longbow[Weapon]#Tiny#</entry>
+    <entry>Short sword[Weapon]</entry>
+    <entry>Longbow[Weapon]</entry>
+  </collection>
+  <collection>
+    <name>Grig with fiddle</name>
+    <entry>Short sword[Weapon]</entry>
+    <entry>Longbow[Weapon]</entry>
   </collection>
   <collection>
     <name>Griffon</name>
@@ -1493,8 +1505,6 @@
   </collection>
   <collection>
     <name>Janni</name>
-    <entry>Scimitar[Weapon]#Medium#</entry>
-    <entry>Longbow[Weapon]#Medium#</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
@@ -1548,8 +1558,6 @@
   </collection>
   <collection>
     <name>Lizardfolk</name>
-    <entry>Club[Weapon]#Medium#</entry>
-    <entry>Javelin[Weapon]#Medium#</entry>
   </collection>
   <collection>
     <name>Locathah</name>
@@ -1568,20 +1576,18 @@
   </collection>
   <collection>
     <name>Marilith</name>
-    <entry>Longsword[Weapon]#Large#</entry>
-    <entry>Longsword[Weapon]#Large#</entry>
-    <entry>Longsword[Weapon]#Large#</entry>
-    <entry>Longsword[Weapon]#Large#</entry>
-    <entry>Longsword[Weapon]#Large#</entry>
-    <entry>Longsword[Weapon]#Large#</entry>
+    <entry>Longsword[Weapon]</entry>
+    <entry>Longsword[Weapon]</entry>
+    <entry>Longsword[Weapon]</entry>
+    <entry>Longsword[Weapon]</entry>
+    <entry>Longsword[Weapon]</entry>
+    <entry>Longsword[Weapon]</entry>
   </collection>
   <collection>
     <name>Marut</name>
   </collection>
   <collection>
     <name>Medusa</name>
-    <entry>Shortbow[Weapon]#Medium#</entry>
-    <entry>Dagger[Weapon]#Medium#</entry>
   </collection>
   <collection>
     <name>Megaraptor</name>
@@ -1682,8 +1688,6 @@
   </collection>
   <collection>
     <name>Nixie</name>
-    <entry>Short sword[Weapon]#Small#</entry>
-    <entry>Light crossbow[Weapon]#Small#</entry>
   </collection>
   <collection>
     <name>Nymph</name>
@@ -1696,18 +1700,16 @@
   </collection>
   <collection>
     <name>Ogre</name>
-    <entry>Greatclub[Weapon]#Large#</entry>
-    <entry>Javelin[Weapon]#Large#</entry>
+    <entry>Greatclub[Weapon]</entry>
+    <entry>Javelin[Weapon]</entry>
   </collection>
   <collection>
     <name>Merrow</name>
-    <entry>Longspear[Weapon]#Large#</entry>
-    <entry>Javelin[Weapon]#Large#</entry>
+    <entry>Longspear[Weapon]</entry>
+    <entry>Javelin[Weapon]</entry>
   </collection>
   <collection>
     <name>Ogre Mage</name>
-    <entry>Greatsword[Weapon]#Large#</entry>
-    <entry>Longbow[Weapon]#Large#</entry>
   </collection>
   <collection>
     <name>Gray Ooze</name>
@@ -1753,13 +1755,17 @@
   </collection>
   <collection>
     <name>Pixie</name>
-    <entry>Short sword[Weapon]#Small#</entry>
-    <entry>Longbow[Weapon]#Small#</entry>
+    <entry>Short sword[Weapon]</entry>
+    <entry>Longbow[Weapon]</entry>
+    <entry>Arrow[Weapon]#Causes memory loss (see special attack)#@True@</entry>
+    <entry>Arrow[Weapon]#Causes sleep (see special attack)#@True@</entry>
   </collection>
   <collection>
-    <name>Pixie$with Irresistable Dance$</name>
-    <entry>Short sword[Weapon]#Small#</entry>
-    <entry>Longbow[Weapon]#Small#</entry>
+    <name>Pixie with Irresistible dance</name>
+    <entry>Short sword[Weapon]</entry>
+    <entry>Longbow[Weapon]</entry>
+    <entry>Arrow[Weapon]#Causes memory loss (see special attack)#@True@</entry>
+    <entry>Arrow[Weapon]#Causes sleep (see special attack)#@True@</entry>
   </collection>
   <collection>
     <name>Angel, Planetar</name>
@@ -1830,8 +1836,12 @@
   </collection>
   <collection>
     <name>Sahuagin</name>
-    <entry>Trident[Weapon]#Medium#</entry>
-    <entry>Heavy crossbow[Weapon]#Medium#</entry>
+  </collection>
+  <collection>
+    <name>Malenti</name>
+  </collection>
+  <collection>
+    <name>Sahuagin Mutant</name>
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
@@ -1844,13 +1854,13 @@
   </collection>
   <collection>
     <name>Satyr</name>
-    <entry>Dagger[Weapon]#Medium#</entry>
-    <entry>Shortbow[Weapon]#Medium#</entry>
+    <entry>Dagger[Weapon]</entry>
+    <entry>Shortbow[Weapon]</entry>
   </collection>
   <collection>
-    <name>Satyr$with pipes$</name>
-    <entry>Dagger[Weapon]#Medium#</entry>
-    <entry>Shortbow[Weapon]#Medium#</entry>
+    <name>Satyr with pipes</name>
+    <entry>Dagger[Weapon]</entry>
+    <entry>Shortbow[Weapon]</entry>
     <entry>Pipes[Tool]</entry>
   </collection>
   <collection>
@@ -1912,8 +1922,8 @@
   </collection>
   <collection>
     <name>Angel, Solar</name>
-    <entry>Greatsword[Weapon]#Large#(5){Dancing}@True@</entry>
-    <entry>Composite longbow[Weapon]#+5 Strength bonus,Large#(2){Creates slaying arrows keyed to any creature type or subtype$5$}@True@</entry>
+    <entry>Greatsword[Weapon](5){Dancing}@True@</entry>
+    <entry>Composite longbow[Weapon]#+5 Strength bonus#(2){Creates slaying arrows keyed to any creature type or subtype$5$}@True@</entry>
   </collection>
   <collection>
     <name>Constrictor Snake</name>
@@ -2068,7 +2078,7 @@
   <collection>
     <name>Titan</name>
     <entry>Warhammer[Weapon]#Gargantuan,Adamantine#(3)@True@</entry>
-    <entry>Half-plate[Armor]#Huge#(4)@True@</entry>
+    <entry>Half-plate[Armor](4)@True@</entry>
   </collection>
   <collection>
     <name>Toad</name>
@@ -2090,13 +2100,11 @@
   </collection>
   <collection>
     <name>Triton</name>
-    <entry>Trident[Weapon]#Medium#</entry>
-    <entry>Heavy crossbow[Weapon]#Medium#</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
-    <entry>Club[Weapon]#Medium#</entry>
-    <entry>Javelin[Weapon]#Medium#</entry>
+    <entry>Club[Weapon]</entry>
+    <entry>Javelin[Weapon]</entry>
   </collection>
   <collection>
     <name>Troll</name>
@@ -2221,7 +2229,7 @@
   </collection>
   <collection>
     <name>Zelekhut</name>
-    <entry>Spiked chain[Weapon]#Large#</entry>
-    <entry>Spiked chain[Weapon]#Large#</entry>
+    <entry>Spiked chain[Weapon]</entry>
+    <entry>Spiked chain[Weapon]</entry>
   </collection>
 </collections>

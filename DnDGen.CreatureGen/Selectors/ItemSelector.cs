@@ -68,6 +68,18 @@ namespace DnDGen.CreatureGen.Selectors
                 }
             }
 
+            var ammunition = WeaponConstants.GetAllAmmunition(false, false);
+            var thrown = WeaponConstants.GetAllThrown(false, false);
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var thrownRanged = thrown.Except(melee).Intersect(simple);
+            var needRandomQuantity = ammunition.Union(thrownRanged);
+
+            if (needRandomQuantity.Contains(template.Name))
+            {
+                template.Quantity = 0;
+            }
+
             return template;
         }
 

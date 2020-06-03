@@ -27,6 +27,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
             Assert.That(item.Magic.SpecialAbilities, Is.Empty);
             Assert.That(item.Magic.Bonus, Is.EqualTo(0));
             Assert.That(item.IsMagical, Is.False);
+            Assert.That(item.Quantity, Is.EqualTo(1));
         }
 
         [Test]
@@ -39,6 +40,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
             Assert.That(item.Traits, Is.Empty);
             Assert.That(item.Magic.SpecialAbilities, Is.Empty);
             Assert.That(item.IsMagical, Is.True);
+            Assert.That(item.Quantity, Is.EqualTo(1));
         }
 
         [Test]
@@ -51,6 +53,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
             Assert.That(item.Traits, Is.Empty);
             Assert.That(item.IsMagical, Is.True);
             Assert.That(item.Magic.SpecialAbilities.Count, Is.EqualTo(2));
+            Assert.That(item.Quantity, Is.EqualTo(1));
 
             var first = item.Magic.SpecialAbilities.First();
             var last = item.Magic.SpecialAbilities.Last();
@@ -70,6 +73,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
             Assert.That(item.Traits, Is.Empty);
             Assert.That(item.IsMagical, Is.True);
             Assert.That(item.Magic.SpecialAbilities.Count, Is.EqualTo(2));
+            Assert.That(item.Quantity, Is.EqualTo(1));
 
             var first = item.Magic.SpecialAbilities.First();
             var last = item.Magic.SpecialAbilities.Last();
@@ -92,6 +96,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
             Assert.That(item.Magic.SpecialAbilities, Is.Empty);
             Assert.That(item.Magic.Bonus, Is.EqualTo(0));
             Assert.That(item.IsMagical, Is.False);
+            Assert.That(item.Quantity, Is.EqualTo(1));
         }
 
         [Test]
@@ -105,6 +110,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
             Assert.That(item.Traits, Is.Empty);
             Assert.That(item.Magic.SpecialAbilities, Is.Empty);
             Assert.That(item.Magic.Bonus, Is.EqualTo(0));
+            Assert.That(item.Quantity, Is.EqualTo(1));
         }
 
         [Test]
@@ -126,6 +132,84 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
             Assert.That(first.BonusEquivalent, Is.EqualTo(90210));
             Assert.That(last.Name, Is.EqualTo("other special ability"));
             Assert.That(last.BonusEquivalent, Is.EqualTo(42));
+            Assert.That(item.Quantity, Is.EqualTo(1));
+        }
+
+        [TestCase(WeaponConstants.Arrow)]
+        [TestCase(WeaponConstants.CrossbowBolt)]
+        [TestCase(WeaponConstants.Shuriken)]
+        [TestCase(WeaponConstants.SlingBullet)]
+        public void SelectWithQuantityOf0_Ammunition(string ammo)
+        {
+            var ammos = WeaponConstants.GetAllAmmunition(false, false);
+            Assert.That(ammos, Contains.Item(ammo)
+                .And.EquivalentTo(new[]
+                {
+                    WeaponConstants.Arrow,
+                    WeaponConstants.CrossbowBolt,
+                    WeaponConstants.Shuriken,
+                    WeaponConstants.SlingBullet,
+                }));
+
+            var item = itemSelector.SelectFrom($"{ammo}[{ItemTypeConstants.Weapon}]");
+            Assert.That(item.Name, Is.EqualTo(ammo), ammo);
+            Assert.That(item.ItemType, Is.EqualTo(ItemTypeConstants.Weapon), ammo);
+            Assert.That(item.Traits, Is.Empty, ammo);
+            Assert.That(item.Magic.SpecialAbilities, Is.Empty, ammo);
+            Assert.That(item.Magic.Bonus, Is.Zero, ammo);
+            Assert.That(item.IsMagical, Is.False, ammo);
+            Assert.That(item.Quantity, Is.Zero, ammo);
+        }
+
+        [TestCase(WeaponConstants.Javelin)]
+        [TestCase(WeaponConstants.Dart)]
+        public void SelectWithQuantityOf0_Thrown(string weapon)
+        {
+            var thrown = WeaponConstants.GetAllThrown(false, false);
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+
+            var thrownRanged = thrown.Except(melee).Intersect(simple);
+            Assert.That(thrownRanged, Contains.Item(weapon)
+                .And.EquivalentTo(new[]
+                {
+                    WeaponConstants.Javelin,
+                    WeaponConstants.Dart,
+                }));
+
+            var item = itemSelector.SelectFrom($"{weapon}[{ItemTypeConstants.Weapon}]");
+            Assert.That(item.Name, Is.EqualTo(weapon), weapon);
+            Assert.That(item.ItemType, Is.EqualTo(ItemTypeConstants.Weapon), weapon);
+            Assert.That(item.Traits, Is.Empty, weapon);
+            Assert.That(item.Magic.SpecialAbilities, Is.Empty, weapon);
+            Assert.That(item.Magic.Bonus, Is.Zero, weapon);
+            Assert.That(item.IsMagical, Is.False, weapon);
+            Assert.That(item.Quantity, Is.Zero, weapon);
+        }
+
+        [Test]
+        public void SelectWithQuantityOf1_AllOtherWeapons()
+        {
+            var allWeapons = WeaponConstants.GetAllWeapons(false, false);
+            var ammos = WeaponConstants.GetAllAmmunition(false, false);
+            var thrown = WeaponConstants.GetAllThrown(false, false);
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var thrownRanged = thrown.Except(melee).Intersect(simple);
+
+            var weapons = allWeapons.Except(ammos).Except(thrownRanged);
+
+            foreach (var weapon in weapons)
+            {
+                var item = itemSelector.SelectFrom($"{weapon}[{ItemTypeConstants.Weapon}]");
+                Assert.That(item.Name, Is.EqualTo(weapon), weapon);
+                Assert.That(item.ItemType, Is.EqualTo(ItemTypeConstants.Weapon), weapon);
+                Assert.That(item.Traits, Is.Empty, weapon);
+                Assert.That(item.Magic.SpecialAbilities, Is.Empty, weapon);
+                Assert.That(item.Magic.Bonus, Is.Zero, weapon);
+                Assert.That(item.IsMagical, Is.False, weapon);
+                Assert.That(item.Quantity, Is.EqualTo(1), weapon);
+            }
         }
 
         [Test]
