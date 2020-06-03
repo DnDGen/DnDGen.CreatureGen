@@ -324,9 +324,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(creature.CanUseEquipment, Is.True, message);
             }
 
-            if (!attack.IsPrimary)
+            if (!attack.IsPrimary && !attack.IsSpecial)
             {
-                Assert.That(attack.AttackBonuses, Contains.Item(-5));
+                Assert.That(attack.AttackBonuses, Contains.Item(-5), message);
             }
 
             if (!attack.IsSpecial)
