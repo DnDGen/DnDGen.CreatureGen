@@ -301,7 +301,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
         private void AssertAttack(Attack attack, Creature creature)
         {
-            var message = $"Creature: {creature.Summary}\nAttack: {attack.Name}";
+            var message = $"Creature: {creature.Summary}; Attack: {attack.Name}";
             Assert.That(attack.Name, Is.Not.Empty, message);
             Assert.That(attack.AttackType, Is.Not.Empty, message);
             Assert.That(attack.BaseAttackBonus, Is.Not.Negative, message);
