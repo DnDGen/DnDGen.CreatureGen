@@ -25,7 +25,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         protected void AssertCollectionNames(IEnumerable<string> names)
         {
             AssertUniqueCollection(names);
-            Assert.That(table.Keys, Is.EquivalentTo(names));
+
+            //INFO: This is faster than Is.EquivalentTo() for large collections
+            Assert.That(table.Keys.OrderBy(k => k), Is.EqualTo(names.OrderBy(n => n)));
         }
 
         protected IEnumerable<string> GetCollection(string name)
@@ -50,7 +52,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         public void AssertCollection(string name, params string[] collection)
         {
             Assert.That(table, Contains.Key(name));
-            Assert.That(table[name], Is.EquivalentTo(collection));
+
+            //INFO: This is faster than Is.EquivalentTo() for large collections
+            Assert.That(table[name].OrderBy(e => e), Is.EqualTo(collection.OrderBy(e => e)));
         }
 
         public void AssertOrderedCollection(string name, params string[] collection)

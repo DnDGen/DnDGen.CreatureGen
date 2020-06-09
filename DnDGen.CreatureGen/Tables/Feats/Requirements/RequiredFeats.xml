@@ -6123,6 +6123,9 @@
     <name>Hound ArchonSpell-Like AbilityMessage</name>
   </collection>
   <collection>
+    <name>HumanArmor Proficiency (Light)</name>
+  </collection>
+  <collection>
     <name>HumanoidShield Proficiency</name>
     <entry>Armor Proficiency (Light)</entry>
   </collection>

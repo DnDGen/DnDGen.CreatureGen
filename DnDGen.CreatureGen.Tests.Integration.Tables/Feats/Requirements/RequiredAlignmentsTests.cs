@@ -45,7 +45,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 .Where(kvp => kvp.Value.Any())
                 .SelectMany(kvp => kvp.Value.Select(v => helper.BuildKey(kvp.Key, v)));
 
-            var names = feats.Union(metamagic).Union(monster).Union(craft).Union(specialQualities);
+            var names = new List<string>();
+            names.AddRange(feats);
+            names.AddRange(metamagic);
+            names.AddRange(monster);
+            names.AddRange(craft);
+            names.AddRange(specialQualities);
 
             return names;
         }
@@ -2490,6 +2495,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HoundArchon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ContinualFlame)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HoundArchon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectAlignment)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HoundArchon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Message)] = new string[0];
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Human, FeatConstants.ArmorProficiency_Light, string.Empty)] = new string[0];
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Hydra_5Heads, FeatConstants.CombatReflexes, "Can use all of its heads for Attacks of Opportunity")] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Hydra_5Heads, FeatConstants.SpecialQualities.FastHealing, string.Empty)] = new string[0];

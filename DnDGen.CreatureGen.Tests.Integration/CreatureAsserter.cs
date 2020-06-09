@@ -51,53 +51,48 @@ namespace DnDGen.CreatureGen.Tests.Integration
             if (!creature.CanUseEquipment)
             {
                 Assert.That(creature.Equipment.Weapons, Is.Empty, creature.Summary);
-                Assert.That(creature.Equipment.Armor, Is.Null, creature.Summary);
                 Assert.That(creature.Equipment.Items, Is.Empty, creature.Summary);
-                return;
+
+                if (creature.Name == CreatureConstants.HellHound_NessianWarhound)
+                    Assert.That(creature.Equipment.Armor, Is.Not.Null, creature.Summary);
+                else
+                    Assert.That(creature.Equipment.Armor, Is.Null, creature.Summary);
             }
 
             var armorNames = ArmorConstants.GetAllArmors(true);
             var shieldNames = ArmorConstants.GetAllShields(true);
             var weaponNames = WeaponConstants.GetAllWeapons(true, false);
 
-            Assert.That(creature.Equipment.Weapons, Is.All.InstanceOf<Weapon>(), creature.Summary);
-
             if (creature.Equipment.Armor != null)
             {
-                Assert.That(creature.Equipment.Armor, Is.InstanceOf<Armor>(), creature.Summary + creature.Equipment.Armor.Name);
-
-                var armor = creature.Equipment.Armor as Armor;
-                Assert.That(armor.ArmorBonus, Is.Positive, creature.Summary + creature.Equipment.Armor.Name);
-                Assert.That(armorNames, Contains.Item(armor.Name), creature.Summary + creature.Equipment.Armor.Name);
+                Assert.That(creature.Equipment.Armor.ArmorBonus, Is.Positive, creature.Summary + creature.Equipment.Armor.Name);
+                Assert.That(armorNames, Contains.Item(creature.Equipment.Armor.Name), creature.Summary + creature.Equipment.Armor.Name);
             }
 
             if (creature.Equipment.Shield != null)
             {
-                Assert.That(creature.Equipment.Shield, Is.InstanceOf<Armor>(), creature.Summary + creature.Equipment.Shield.Name);
-
-                var shield = creature.Equipment.Shield as Armor;
-                Assert.That(shield.ArmorBonus, Is.Positive, creature.Summary + creature.Equipment.Shield.Name);
-                Assert.That(shieldNames, Contains.Item(shield.Name), creature.Summary + creature.Equipment.Shield.Name);
+                Assert.That(creature.Equipment.Shield.ArmorBonus, Is.Positive, creature.Summary + creature.Equipment.Shield.Name);
+                Assert.That(shieldNames, Contains.Item(creature.Equipment.Shield.Name), creature.Summary + creature.Equipment.Shield.Name);
             }
 
-            var unnaturalAttacks = creature.Attacks.Where(a => !a.IsNatural);
+            var unnaturalAttacks = creature.Attacks.Where(a => !a.IsNatural && weaponNames.Contains(a.Name));
 
             foreach (var attack in unnaturalAttacks)
             {
-                var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name) as Weapon;
-                Assert.That(weapon, Is.Not.Null);
-                Assert.That(weapon.Damage, Is.Not.Empty, creature.Summary + weapon.Name);
-                Assert.That(weaponNames, Contains.Item(weapon.Name), creature.Summary + weapon.Name);
+                var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name);
+                Assert.That(weapon, Is.Not.Null, $"{creature.Summary}: {attack.Name}");
+                Assert.That(weapon.Damage, Is.Not.Empty, $"{creature.Summary}: {weapon.Name}");
+                Assert.That(weaponNames, Contains.Item(weapon.Name), $"{creature.Summary}: {weapon.Name}");
 
-                Assert.That(attack.DamageRoll, Is.EqualTo(weapon.Damage), creature.Summary + weapon.Name);
+                Assert.That(attack.DamageRoll, Is.EqualTo(weapon.Damage), $"{creature.Summary}: {weapon.Name}");
 
                 if (weapon.Attributes.Contains(AttributeConstants.Melee))
                 {
-                    Assert.That(attack.AttackType, Contains.Substring("melee"), creature.Summary + weapon.Name);
+                    Assert.That(attack.AttackType, Contains.Substring("melee"), $"{creature.Summary}: {weapon.Name}");
                 }
                 else if (weapon.Attributes.Contains(AttributeConstants.Ranged))
                 {
-                    Assert.That(attack.AttackType, Contains.Substring("ranged"), creature.Summary + weapon.Name);
+                    Assert.That(attack.AttackType, Contains.Substring("ranged"), $"{creature.Summary}: {weapon.Name}");
                 }
             }
         }
@@ -324,7 +319,11 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(creature.CanUseEquipment, Is.True, message);
             }
 
-            if (!attack.IsPrimary && !attack.IsSpecial)
+            if (!attack.IsPrimary && !attack.IsSpecial && !attack.IsNatural)
+            {
+                Assert.That(attack.AttackBonuses, Contains.Item(-10), message);
+            }
+            else if (!attack.IsPrimary && !attack.IsSpecial && attack.IsNatural)
             {
                 Assert.That(attack.AttackBonuses, Contains.Item(-5), message);
             }

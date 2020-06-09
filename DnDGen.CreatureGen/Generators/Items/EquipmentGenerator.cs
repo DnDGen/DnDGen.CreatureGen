@@ -460,32 +460,17 @@ namespace DnDGen.CreatureGen.Generators.Items
 
         private List<string> GetRangedWithBowTemplates()
         {
-            var ranged = WeaponConstants.GetAllRanged(false, false).ToList();
-            var ammo = WeaponConstants.GetAllAmmunition(false, false).Except(new[] { WeaponConstants.Shuriken });
+            var ranged = WeaponConstants.GetAllRanged(false, true, false).ToList();
+            var ammo = WeaponConstants.GetAllAmmunition(false, false);
 
             ranged.Remove(WeaponConstants.CompositeShortbow);
             ranged.Remove(WeaponConstants.CompositeLongbow);
             ranged = ranged.Except(ammo).ToList();
 
-            var bowTemplates = GetBowTemplates();
-            ranged.AddRange(bowTemplates);
+            if (!ranged.Contains(WeaponConstants.Shuriken))
+                ranged.Add(WeaponConstants.Shuriken);
 
             return ranged;
-        }
-
-        private IEnumerable<string> GetBowTemplates()
-        {
-            return new[]
-            {
-                WeaponConstants.CompositeShortbow_StrengthPlus0,
-                WeaponConstants.CompositeShortbow_StrengthPlus1,
-                WeaponConstants.CompositeShortbow_StrengthPlus2,
-                WeaponConstants.CompositeLongbow_StrengthPlus0,
-                WeaponConstants.CompositeLongbow_StrengthPlus1,
-                WeaponConstants.CompositeLongbow_StrengthPlus2,
-                WeaponConstants.CompositeLongbow_StrengthPlus3,
-                WeaponConstants.CompositeLongbow_StrengthPlus4
-            };
         }
 
         private (IEnumerable<string> Common, IEnumerable<string> Uncommon) GetProficientWeaponNames(
@@ -551,8 +536,7 @@ namespace DnDGen.CreatureGen.Generators.Items
             if (proficiencyFeats.Any(f => f.Name == FeatConstants.WeaponProficiency_Martial
                 && f.Foci.Contains(GroupConstants.All)))
             {
-                var bowTemplates = GetBowTemplates();
-                var martialWeapons = WeaponConstants.GetAllMartial(false, false).Union(bowTemplates);
+                var martialWeapons = WeaponConstants.GetAllMartial(false, true);
 
                 martialWeapons = martialWeapons.Intersect(baseWeapons);
                 uncommon.AddRange(martialWeapons);

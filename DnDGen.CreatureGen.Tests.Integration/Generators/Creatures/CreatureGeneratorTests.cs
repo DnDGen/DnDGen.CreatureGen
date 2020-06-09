@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.TreasureGen.Items;
 using Ninject;
 using NUnit.Framework;
 using System.Linq;
@@ -41,21 +40,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Goblin)]
         [TestCase(CreatureConstants.Ogre)]
         [TestCase(CreatureConstants.Balor)]
-        public void CanGenerateEquipment(string creatureName)
+        public void CanGenerateWeapons(string creatureName)
         {
             var creature = CreatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
             creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Equipment, Is.Not.Null);
-            Assert.That(creature.Equipment.Weapons, Is.Not.Empty);
+            Assert.That(creature.Equipment.Weapons, Is.Not.Empty.And.All.Not.Null);
+        }
 
-            var unnaturalAttacks = creature.Attacks.Where(a => !a.IsNatural);
-
-            foreach (var attack in unnaturalAttacks)
-            {
-                var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name) as Weapon;
-                Assert.That(weapon, Is.Not.Null);
-                Assert.That(attack.DamageRoll, Is.EqualTo(weapon.Damage));
-            }
+        [TestCase(CreatureConstants.Human)]
+        [TestCase(CreatureConstants.Dwarf_Hill)]
+        [TestCase(CreatureConstants.Elf_Half)]
+        [TestCase(CreatureConstants.Elf_High)]
+        [TestCase(CreatureConstants.Gnome_Rock)]
+        [TestCase(CreatureConstants.Halfling_Lightfoot)]
+        [TestCase(CreatureConstants.Orc)]
+        [TestCase(CreatureConstants.Orc_Half)]
+        [TestCase(CreatureConstants.Goblin)]
+        [TestCase(CreatureConstants.Ogre)]
+        public void CanGenerateArmor(string creatureName)
+        {
+            var creature = CreatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Equipment, Is.Not.Null);
+            Assert.That(creature.Equipment.Armor, Is.Not.Null);
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
@@ -84,10 +92,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
             var specialQualityNames = creature.SpecialQualities.Select(q => q.Name);
             Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.Blindsight));
-            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.AllAroundVision));
-            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.Darkvision));
-            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.LowLightVision));
-            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.LowLightVision_Superior));
+            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.AllAroundVision)
+                .And.Not.Contain(FeatConstants.SpecialQualities.Darkvision)
+                .And.Not.Contain(FeatConstants.SpecialQualities.LowLightVision)
+                .And.Not.Contain(FeatConstants.SpecialQualities.LowLightVision_Superior));
         }
 
         [TestCase(CreatureConstants.Elf_Aquatic)]
@@ -106,19 +114,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
             var specialQualityNames = elf.SpecialQualities.Select(q => q.Name);
             Assert.That(specialQualityNames, Contains.Item(FeatConstants.ShieldProficiency));
-        }
-
-        [Test]
-        public void BUG_GiantOwlDoesNotDoubleUpOnLowLightVision()
-        {
-            var owl = CreatureGenerator.Generate(CreatureConstants.Owl_Giant, CreatureConstants.Templates.None);
-            creatureAsserter.AssertCreature(owl);
-
-            Assert.That(owl.SpecialQualities, Is.Not.Empty);
-
-            var specialQualityNames = owl.SpecialQualities.Select(q => q.Name);
-            Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.LowLightVision_Superior));
-            Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.LowLightVision));
         }
 
         [Test]

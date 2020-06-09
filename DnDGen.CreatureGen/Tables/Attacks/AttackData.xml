@@ -3385,6 +3385,8 @@
   </collection>
   <collection>
     <name>Half-Orc</name>
+    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
     <entry>Unarmed Strike@1d3@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>

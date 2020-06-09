@@ -85,6 +85,36 @@ namespace DnDGen.CreatureGen.Generators.Feats
                     .ToArray();
             } while (previousCount != specialQualities.Count && specialQualitySelections.Any());
 
+            //HACK: Handling this usecase because the orc creature and orc creature type are identical
+            if (creatureName == CreatureConstants.Orc_Half)
+            {
+                var lightSensitivity = specialQualities.First(f => f.Name == FeatConstants.SpecialQualities.LightSensitivity);
+                specialQualities.Remove(lightSensitivity);
+            }
+
+            //HACK: Requirements can't handle "remove this", so doing so here for particular use cases
+            var blindFeatNames = new[]
+            {
+                FeatConstants.SpecialQualities.Blindsense,
+                FeatConstants.SpecialQualities.Blindsight,
+            };
+
+            var visionFeatNames = new[]
+            {
+                FeatConstants.SpecialQualities.Darkvision,
+                FeatConstants.SpecialQualities.AllAroundVision,
+                FeatConstants.SpecialQualities.LowLightVision,
+                FeatConstants.SpecialQualities.LowLightVision_Superior,
+            };
+
+            var blindFeats = specialQualities.Where(f => blindFeatNames.Contains(f.Name));
+            if (blindFeats.Any())
+            {
+                specialQualities = specialQualities
+                    .Where(f => !visionFeatNames.Contains(f.Name))
+                    .ToList();
+            }
+
             return specialQualities;
         }
 

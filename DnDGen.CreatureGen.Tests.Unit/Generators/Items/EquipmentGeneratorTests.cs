@@ -2304,15 +2304,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
         private List<string> GetRangedWithBowTemplates()
         {
-            var ranged = WeaponConstants.GetAllRanged(false, false).ToList();
+            var ranged = WeaponConstants.GetAllRanged(false, true, false).ToList();
             var ammo = WeaponConstants.GetAllAmmunition(false, false).Except(new[] { WeaponConstants.Shuriken });
 
             ranged.Remove(WeaponConstants.CompositeShortbow);
             ranged.Remove(WeaponConstants.CompositeLongbow);
             ranged = ranged.Except(ammo).ToList();
-
-            var bowTemplates = GetBowTemplates();
-            ranged.AddRange(bowTemplates);
 
             return ranged;
         }

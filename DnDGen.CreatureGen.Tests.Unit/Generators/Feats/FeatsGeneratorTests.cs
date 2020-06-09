@@ -777,5 +777,69 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             var specialQuality = specialQualities.Single();
             Assert.That(specialQuality.Save, Is.Null);
         }
+
+        [Test]
+        public void BUG_HalfOrcIsNotSensitiveToLight()
+        {
+            var feat1 = new SpecialQualitySelection();
+            feat1.Feat = "special quality 1";
+
+            var lightSensitivity = new SpecialQualitySelection();
+            lightSensitivity.Feat = FeatConstants.SpecialQualities.LightSensitivity;
+
+            var feat2 = new SpecialQualitySelection();
+            feat2.Feat = "special quality 2";
+            feat2.Power = 9266;
+            feat2.Frequency.Quantity = 42;
+            feat2.Frequency.TimePeriod = "fortnight";
+
+            specialQualitySelections.Add(feat1);
+            specialQualitySelections.Add(lightSensitivity);
+            specialQualitySelections.Add(feat2);
+
+            mockFeatsSelector.Setup(s => s.SelectSpecialQualities(CreatureConstants.Orc_Half, creatureType)).Returns(specialQualitySelections);
+
+            var specialQualities = featsGenerator.GenerateSpecialQualities(CreatureConstants.Orc_Half, creatureType, hitPoints, abilities, skills, false, "size", alignment);
+            Assert.That(specialQualities.Count(), Is.EqualTo(2));
+            Assert.That(specialQualities.First().Name, Is.EqualTo("special quality 1"));
+            Assert.That(specialQualities.Last().Name, Is.EqualTo("special quality 2"));
+        }
+
+        [TestCase(FeatConstants.SpecialQualities.Blindsight)]
+        [TestCase(FeatConstants.SpecialQualities.Blindsense)]
+        public void BUG_IfBlind_RemoveSightFeats(string blindFeatName)
+        {
+            var feat1 = new SpecialQualitySelection();
+            feat1.Feat = "special quality 1";
+
+            var blindFeat = new SpecialQualitySelection();
+            blindFeat.Feat = blindFeatName;
+
+            var feat2 = new SpecialQualitySelection();
+            feat2.Feat = "special quality 2";
+            feat2.Power = 9266;
+            feat2.Frequency.Quantity = 42;
+            feat2.Frequency.TimePeriod = "fortnight";
+
+            var sightedFeats = new[]
+            {
+                new SpecialQualitySelection { Feat = FeatConstants.SpecialQualities.AllAroundVision },
+                new SpecialQualitySelection { Feat = FeatConstants.SpecialQualities.Darkvision },
+                new SpecialQualitySelection { Feat = FeatConstants.SpecialQualities.LowLightVision },
+                new SpecialQualitySelection { Feat = FeatConstants.SpecialQualities.LowLightVision_Superior },
+            };
+
+            specialQualitySelections.Add(feat1);
+            specialQualitySelections.AddRange(sightedFeats);
+            specialQualitySelections.Add(blindFeat);
+            specialQualitySelections.Add(feat2);
+
+            var specialQualities = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
+            var array = specialQualities.ToArray();
+            Assert.That(array, Has.Length.EqualTo(3));
+            Assert.That(array[0].Name, Is.EqualTo("special quality 1"));
+            Assert.That(array[1].Name, Is.EqualTo(blindFeatName));
+            Assert.That(array[2].Name, Is.EqualTo("special quality 2"));
+        }
     }
 }

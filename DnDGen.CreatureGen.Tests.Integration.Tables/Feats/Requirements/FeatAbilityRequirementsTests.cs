@@ -54,12 +54,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
             var featsWithFoci = AbilityRequirementsTestData.GetFeatsWithFoci();
 
-            var names = feats
-                .Union(metamagic)
-                .Union(monster)
-                .Union(craft)
-                .Union(specialQualities)
-                .Union(featsWithFoci);
+            var names = new List<string>();
+            names.AddRange(feats);
+            names.AddRange(metamagic);
+            names.AddRange(monster);
+            names.AddRange(craft);
+            names.AddRange(specialQualities);
+            names.AddRange(featsWithFoci);
 
             return names;
         }
@@ -2548,6 +2549,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HoundArchon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ContinualFlame)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HoundArchon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectAlignment)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HoundArchon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Message)] = new Dictionary<string, int>();
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Human, FeatConstants.ArmorProficiency_Light, string.Empty)] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Hydra_5Heads, FeatConstants.CombatReflexes, "Can use all of its heads for Attacks of Opportunity")] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Hydra_5Heads, FeatConstants.SpecialQualities.FastHealing, string.Empty)] = new Dictionary<string, int>();

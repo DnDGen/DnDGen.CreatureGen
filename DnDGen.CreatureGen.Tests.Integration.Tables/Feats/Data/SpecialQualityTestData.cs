@@ -2687,7 +2687,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 testCases[CreatureConstants.Howler].Add(helper.BuildData(None));
 
-                testCases[CreatureConstants.Human].Add(helper.BuildData(None));
+                testCases[CreatureConstants.Human].Add(helper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
                 testCases[CreatureConstants.Hydra_5Heads].Add(helper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
                 testCases[CreatureConstants.Hydra_5Heads].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
