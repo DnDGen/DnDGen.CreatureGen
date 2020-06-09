@@ -49,7 +49,7 @@
     <None Remove="Tables\Skills\SkillGroups.xml" />
     <None Remove="Tables\Skills\SkillPoints.xml" />
     <None Remove="Tables\Traits.xml" />
-    <None Include="..\..\TreasureGen\DnDGen.TreasureGen\18531-twenty-sided-dice-vector-thumb.png">
+    <None Include="..\..\CreatureGen\DnDGen.CreatureGen\18531-twenty-sided-dice-vector-thumb.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
