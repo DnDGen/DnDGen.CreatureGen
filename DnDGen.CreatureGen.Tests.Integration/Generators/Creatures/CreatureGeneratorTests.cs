@@ -26,7 +26,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Rakshasa)]
         public void CanGenerateSpellsForThoseWhoCastAsSpellcaster(string creatureName)
         {
-            Assert.Fail("TODO");
+            var creature = CreatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreature(creature);
+
+            Assert.That(creature.Magic, Is.Not.Null);
+            Assert.That(creature.Magic.Caster, Is.Not.Empty);
+            Assert.That(creature.Magic.CasterLevel, Is.Positive);
+            Assert.That(creature.Magic.ArcaneSpellFailure, Is.Not.Negative);
+            Assert.That(creature.Magic.Domains, Is.Not.Null);
+            Assert.That(creature.Magic.KnownSpells, Is.Not.Empty.And.All.Not.Null);
+            Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty.And.All.Not.Null);
         }
 
         [TestCase(CreatureConstants.Human)]

@@ -33,6 +33,7 @@
             public const string SkillData = "SkillData";
             public const string SkillGroups = "SkillGroups";
             public const string Speeds = "Speeds";
+            public const string SpellDomains = "SpellDomains";
             public const string SpellGroups = "SpellGroups";
             public const string TemplateGroups = "TemplateGroups";
             public const string WeightRolls = "WeightRolls";

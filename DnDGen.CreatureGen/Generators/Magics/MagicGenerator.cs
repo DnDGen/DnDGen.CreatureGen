@@ -42,16 +42,31 @@ namespace DnDGen.CreatureGen.Generators.Magics
             }
 
             var caster = casters.First();
+            magic.Caster = caster.Type;
+            magic.CasterLevel = caster.Amount;
 
-            //TODO: get domains
+            var possibleDomains = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellDomains, creatureName);
+            var domains = new HashSet<string>();
 
-            magic = MakeSpells(magic, caster.Type, caster.Amount, alignment, abilities);
+            if (possibleDomains.Any())
+            {
+                var domainCount = GetDomainCount(magic.Caster);
+                while (domains.Count < domainCount && domains.Count < possibleDomains.Count())
+                {
+                    var domain = collectionsSelector.SelectRandomFrom(possibleDomains);
+                    domains.Add(domain);
+                }
+            }
+
+            magic.Domains = domains;
+
+            magic = MakeSpells(magic, alignment, abilities);
 
             if (equipment.Armor == null && equipment.Shield == null)
                 return magic;
 
             var arcaneSpellcasters = collectionsSelector.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane);
-            if (!arcaneSpellcasters.Contains(caster.Type))
+            if (!arcaneSpellcasters.Contains(magic.Caster))
                 return magic;
 
             if (equipment.Armor != null)
@@ -67,14 +82,25 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return magic;
         }
 
-        private Magic MakeSpells(Magic magic, string caster, int casterLevel, Alignment alignment, Dictionary<string, Ability> abilities, params string[] domains)
+        private int GetDomainCount(string caster)
         {
-            magic.SpellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities, domains);
-            magic.KnownSpells = spellsGenerator.GenerateKnown(caster, casterLevel, alignment, abilities, domains);
+            switch (caster)
+            {
+                case SpellConstants.Casters.Cleric: return 2;
+                case SpellConstants.Casters.Sorcerer:
+                case SpellConstants.Casters.Wizard: return 1;
+                default: return 0;
+            }
+        }
+
+        private Magic MakeSpells(Magic magic, Alignment alignment, Dictionary<string, Ability> abilities)
+        {
+            magic.SpellsPerDay = spellsGenerator.GeneratePerDay(magic.Caster, magic.CasterLevel, abilities, magic.Domains.ToArray());
+            magic.KnownSpells = spellsGenerator.GenerateKnown(magic.Caster, magic.CasterLevel, alignment, abilities, magic.Domains.ToArray());
 
             var classesThatPrepareSpells = collectionsSelector.SelectFrom(TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells);
-            if (classesThatPrepareSpells.Contains(caster))
-                magic.PreparedSpells = spellsGenerator.GeneratePrepared(magic.KnownSpells, magic.SpellsPerDay, domains);
+            if (classesThatPrepareSpells.Contains(magic.Caster))
+                magic.PreparedSpells = spellsGenerator.GeneratePrepared(magic.KnownSpells, magic.SpellsPerDay, magic.Domains.ToArray());
 
             return magic;
         }

@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Items;
+using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Verifiers;
@@ -94,6 +95,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         public void EquipmentGeneratorIsNotASingleton()
         {
             AssertNotSingleton<IEquipmentGenerator>();
+        }
+
+        [Test]
+        public void MagicGeneratorIsNotASingleton()
+        {
+            AssertNotSingleton<IMagicGenerator>();
+        }
+
+        [Test]
+        public void SpellsGeneratorIsNotASingleton()
+        {
+            AssertNotSingleton<ISpellsGenerator>();
         }
 
         [Test]

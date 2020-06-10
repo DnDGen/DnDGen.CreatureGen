@@ -7,6 +7,7 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Items;
+using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
@@ -37,6 +38,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private readonly IAttacksGenerator attacksGenerator;
         private readonly ISpeedsGenerator speedsGenerator;
         private readonly IEquipmentGenerator equipmentGenerator;
+        private readonly IMagicGenerator magicGenerator;
 
         public CreatureGenerator(IAlignmentGenerator alignmentGenerator,
             ICreatureVerifier creatureVerifier,
@@ -52,7 +54,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             IAdvancementSelector advancementSelector,
             IAttacksGenerator attacksGenerator,
             ISpeedsGenerator speedsGenerator,
-            IEquipmentGenerator equipmentGenerator)
+            IEquipmentGenerator equipmentGenerator,
+            IMagicGenerator magicGenerator)
         {
             this.alignmentGenerator = alignmentGenerator;
             this.abilitiesGenerator = abilitiesGenerator;
@@ -69,6 +72,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             this.attacksGenerator = attacksGenerator;
             this.speedsGenerator = speedsGenerator;
             this.equipmentGenerator = equipmentGenerator;
+            this.magicGenerator = magicGenerator;
         }
 
         public Creature Generate(string creatureName, string template)
@@ -169,6 +173,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.Speeds = speedsGenerator.Generate(creature.Name);
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities, creature.Size, creatureName, creature.Type, allFeats, creatureData.NaturalArmor, creature.Equipment);
             creature.Saves = savesGenerator.GenerateWith(creature.Name, creature.Type, creature.HitPoints, allFeats, creature.Abilities);
+
+            creature.Magic = magicGenerator.GenerateWith(creature.Name, creature.Alignment, creature.Abilities, creature.Equipment);
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = templateApplicator.ApplyTo(creature);

@@ -11,8 +11,10 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Items;
+using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Items;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
@@ -48,6 +50,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<ISpeedsGenerator> mockSpeedsGenerator;
         private Mock<IEquipmentGenerator> mockEquipmentGenerator;
+        private Mock<IMagicGenerator> mockMagicGenerator;
 
         private Dictionary<string, Ability> abilities;
         private List<Skill> skills;
@@ -61,6 +64,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         private Dictionary<string, Measurement> speeds;
         private Alignment alignment;
         private Equipment equipment;
+        private Magic magic;
 
         [SetUp]
         public void Setup()
@@ -80,6 +84,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
             mockEquipmentGenerator = new Mock<IEquipmentGenerator>();
+            mockMagicGenerator = new Mock<IMagicGenerator>();
 
             creatureGenerator = new CreatureGenerator(
                 mockAlignmentGenerator.Object,
@@ -96,7 +101,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 mockAdvancementSelector.Object,
                 mockAttacksGenerator.Object,
                 mockSpeedsGenerator.Object,
-                mockEquipmentGenerator.Object);
+                mockEquipmentGenerator.Object,
+                mockMagicGenerator.Object);
 
             feats = new List<Feat>();
             abilities = new Dictionary<string, Ability>();
@@ -109,6 +115,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             armorClass = new ArmorClass();
             speeds = new Dictionary<string, Measurement>();
             equipment = new Equipment();
+            magic = new Magic();
 
             alignment = new Alignment("creature alignment");
 
@@ -240,6 +247,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     abilities,
                     creatureData.Size))
                 .Returns(equipment);
+
+            mockMagicGenerator
+                .Setup(g => g.GenerateWith(creatureName,
+                    alignment,
+                    abilities,
+                    equipment))
+                .Returns(magic);
         }
 
         [Test]
@@ -415,6 +429,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
+        public void GenerateCreatureMagic()
+        {
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.Magic, Is.EqualTo(magic));
+        }
+
+        [Test]
         public void DoNotGenerateAdvancedCreature()
         {
             SetUpCreatureAdvancement();
@@ -583,6 +604,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     abilities,
                     advancement.Size))
                 .Returns(advancedEquipment);
+
+            mockMagicGenerator
+                .Setup(g => g.GenerateWith(creatureName,
+                    alignment,
+                    abilities,
+                    advancedEquipment))
+                .Returns(magic);
 
             mockArmorClassGenerator
                 .Setup(g => g.GenerateWith(

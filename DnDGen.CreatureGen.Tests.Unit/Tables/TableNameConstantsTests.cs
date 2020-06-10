@@ -31,6 +31,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Collection.SkillGroups, "SkillGroups")]
         [TestCase(TableNameConstants.Collection.SpecialQualityData, "SpecialQualityData")]
         [TestCase(TableNameConstants.Collection.Speeds, "Speeds")]
+        [TestCase(TableNameConstants.Collection.SpellDomains, "SpellDomains")]
         [TestCase(TableNameConstants.Collection.SpellGroups, "SpellGroups")]
         [TestCase(TableNameConstants.Collection.TemplateGroups, "TemplateGroups")]
         [TestCase(TableNameConstants.Collection.WeightRolls, "WeightRolls")]

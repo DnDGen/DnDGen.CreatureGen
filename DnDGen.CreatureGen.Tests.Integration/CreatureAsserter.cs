@@ -38,10 +38,61 @@ namespace DnDGen.CreatureGen.Tests.Integration
             VerifyFeats(creature);
             VerifyCombat(creature);
             VerifyEquipment(creature);
+            VerifyMagic(creature);
 
             Assert.That(creature.ChallengeRating, Is.Not.Empty, creature.Summary);
             Assert.That(creature.CasterLevel, Is.Not.Negative, creature.Summary);
             Assert.That(creature.NumberOfHands, Is.Not.Negative, creature.Summary);
+        }
+
+        private void VerifyMagic(Creature creature)
+        {
+            Assert.That(creature.Magic, Is.Not.Null);
+
+            if (!string.IsNullOrEmpty(creature.Magic.Caster))
+            {
+                Assert.That(creature.Magic.CasterLevel, Is.Positive, creature.Summary);
+                Assert.That(creature.Magic.ArcaneSpellFailure, Is.Not.Negative, creature.Summary);
+                Assert.That(creature.Magic.KnownSpells, Is.Not.Empty, creature.Summary);
+                Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty, creature.Summary);
+                Assert.That(creature.Magic.PreparedSpells, Is.Not.Null, creature.Summary);
+                Assert.That(creature.Magic.Domains, Is.Not.Null, creature.Summary);
+
+                var hasDomain = creature.Magic.Domains.Any();
+
+                foreach (var spellQuantity in creature.Magic.SpellsPerDay)
+                {
+                    Assert.That(spellQuantity.BonusSpells, Is.Not.Negative, creature.Summary);
+                    Assert.That(spellQuantity.HasDomainSpell, Is.EqualTo(hasDomain && spellQuantity.Level > 0), creature.Summary);
+                    Assert.That(spellQuantity.Level, Is.InRange(0, 9), creature.Summary);
+                    Assert.That(spellQuantity.Quantity, Is.Not.Negative, creature.Summary);
+                    Assert.That(spellQuantity.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
+                    Assert.That(spellQuantity.TotalQuantity, Is.Not.Negative, creature.Summary);
+                }
+
+                foreach (var spell in creature.Magic.KnownSpells)
+                {
+                    Assert.That(spell.Metamagic, Is.Empty, creature.Summary);
+                    Assert.That(spell.Level, Is.InRange(0, 9), creature.Summary);
+                    Assert.That(spell.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
+                }
+
+                foreach (var spell in creature.Magic.PreparedSpells)
+                {
+                    Assert.That(spell.Metamagic, Is.Empty, creature.Summary);
+                    Assert.That(spell.Level, Is.InRange(0, 9), creature.Summary);
+                    Assert.That(spell.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
+                }
+            }
+            else
+            {
+                Assert.That(creature.Magic.CasterLevel, Is.Zero, creature.Summary);
+                Assert.That(creature.Magic.ArcaneSpellFailure, Is.Zero, creature.Summary);
+                Assert.That(creature.Magic.KnownSpells, Is.Empty, creature.Summary);
+                Assert.That(creature.Magic.SpellsPerDay, Is.Empty, creature.Summary);
+                Assert.That(creature.Magic.PreparedSpells, Is.Empty, creature.Summary);
+                Assert.That(creature.Magic.Domains, Is.Empty, creature.Summary);
+            }
         }
 
         private void VerifyEquipment(Creature creature)

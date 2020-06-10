@@ -11,6 +11,7 @@ namespace DnDGen.CreatureGen.Magics
         public int ArcaneSpellFailure { get; set; }
         public string Caster { get; set; }
         public int CasterLevel { get; set; }
+        public IEnumerable<string> Domains { get; set; }
 
         public Magic()
         {
@@ -18,6 +19,7 @@ namespace DnDGen.CreatureGen.Magics
             KnownSpells = Enumerable.Empty<Spell>();
             PreparedSpells = Enumerable.Empty<Spell>();
             Caster = string.Empty;
+            Domains = Enumerable.Empty<string>();
         }
     }
 }

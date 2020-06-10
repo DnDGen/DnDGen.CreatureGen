@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Items;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Skills;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +36,8 @@ namespace DnDGen.CreatureGen.Creatures
         public int CasterLevel { get; set; }
         public int NumberOfHands { get; set; }
         public bool CanUseEquipment { get; set; }
-
         public IEnumerable<Attack> Attacks { get; set; }
+        public Magic Magic { get; set; }
 
         public IEnumerable<Attack> FullMeleeAttack
         {
@@ -111,6 +112,7 @@ namespace DnDGen.CreatureGen.Creatures
             Type = new CreatureType();
             Speeds = new Dictionary<string, Measurement>();
             Equipment = new Equipment();
+            Magic = new Magic();
         }
     }
 }

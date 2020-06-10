@@ -1,7 +1,7 @@
 ﻿using DnDGen.CreatureGen.Magics;
 using NUnit.Framework;
 
-namespace DnDGen.CreatureGen.Tests.Unit.Magic
+namespace DnDGen.CreatureGen.Tests.Unit.Magics
 {
     [TestFixture]
     public class SpellConstantsTests
