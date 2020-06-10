@@ -15,14 +15,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
         }
 
         [Test]
+        public void DefaultScoreIs10()
+        {
+            Assert.That(Ability.DefaultScore, Is.EqualTo(10));
+        }
+
+        [Test]
         public void AbilityInitialized()
         {
             Assert.That(ability.Name, Is.EqualTo("ability name"));
-            Assert.That(ability.BaseScore, Is.EqualTo(10));
+            Assert.That(ability.BaseScore, Is.EqualTo(Ability.DefaultScore));
             Assert.That(ability.RacialAdjustment, Is.Zero);
             Assert.That(ability.AdvancementAdjustment, Is.Zero);
             Assert.That(ability.Modifier, Is.Zero);
-            Assert.That(ability.FullScore, Is.EqualTo(10));
+            Assert.That(ability.FullScore, Is.EqualTo(Ability.DefaultScore));
             Assert.That(ability.MaxModifier, Is.EqualTo(int.MaxValue));
         }
 
@@ -609,7 +615,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
             ability.AdvancementAdjustment = 9266;
             ability.RacialAdjustment = 90210;
 
-            Assert.That(ability.FullScore, Is.EqualTo(10 + 9266 + 90210));
+            Assert.That(ability.FullScore, Is.EqualTo(Ability.DefaultScore + 9266 + 90210));
             Assert.That(ability.Modifier, Is.EqualTo(49738));
         }
 

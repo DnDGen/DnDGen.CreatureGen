@@ -1,5 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Magic;
+using DnDGen.CreatureGen.Magics;
 using NUnit.Framework;
 using System.Linq;
 using System.Reflection;

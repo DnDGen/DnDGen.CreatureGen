@@ -1,4 +1,4 @@
-﻿using DnDGen.CreatureGen.Magic;
+﻿using DnDGen.CreatureGen.Magics;
 using NUnit.Framework;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Magic
@@ -591,6 +591,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Magic
         [TestCase(SpellConstants.HolySword, "Holy sword")]
         [TestCase(SpellConstants.Sources.Arcane, "Arcane")]
         [TestCase(SpellConstants.Sources.Divine, "Divine")]
+        [TestCase(SpellConstants.Casters.Cleric, "Cleric")]
+        [TestCase(SpellConstants.Casters.Druid, "Druid")]
+        [TestCase(SpellConstants.Casters.Sorcerer, "Sorcerer")]
+        [TestCase(SpellConstants.Casters.Wizard, "Wizard")]
         public void SpellConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));

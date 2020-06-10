@@ -1,6 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
-using DnDGen.CreatureGen.Magic;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.TreasureGen.Items;

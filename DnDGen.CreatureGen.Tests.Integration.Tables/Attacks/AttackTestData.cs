@@ -2,7 +2,7 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
-using DnDGen.CreatureGen.Magic;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;

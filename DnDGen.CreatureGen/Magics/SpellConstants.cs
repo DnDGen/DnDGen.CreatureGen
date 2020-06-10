@@ -1,4 +1,4 @@
-﻿namespace DnDGen.CreatureGen.Magic
+﻿namespace DnDGen.CreatureGen.Magics
 {
     public static class SpellConstants
     {
@@ -6,6 +6,14 @@
         {
             public const string Arcane = "Arcane";
             public const string Divine = "Divine";
+        }
+
+        public static class Casters
+        {
+            public const string Cleric = "Cleric";
+            public const string Druid = "Druid";
+            public const string Sorcerer = "Sorcerer";
+            public const string Wizard = "Wizard";
         }
 
         public const string AcidArrow = "Acid arrow";

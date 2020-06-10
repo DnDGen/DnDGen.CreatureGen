@@ -20,6 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(GroupConstants.ManualCrossbows, "Manual Crossbows")]
         [TestCase(GroupConstants.NaturalArmor, "Natural Armor")]
         [TestCase(GroupConstants.PoorBaseAttack, "Poor Base Attack")]
+        [TestCase(GroupConstants.PreparesSpells, "Prepares Spells")]
         [TestCase(GroupConstants.Skills, "Skills")]
         [TestCase(GroupConstants.SkillSynergy, "Skill Synergy")]
         [TestCase(GroupConstants.TakenMultipleTimes, "Taken Multiple Times")]

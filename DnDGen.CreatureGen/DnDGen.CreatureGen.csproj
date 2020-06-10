@@ -17,6 +17,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Generators\Magic\**" />
+    <EmbeddedResource Remove="Generators\Magic\**" />
+    <None Remove="Generators\Magic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Tables\Abilities\AbilityAdjustments.xml" />
     <None Remove="Tables\Alignments\AlignmentGroups.xml" />
     <None Remove="Tables\Attacks\AttackData.xml" />

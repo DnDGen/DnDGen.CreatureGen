@@ -4,6 +4,8 @@ namespace DnDGen.CreatureGen.Abilities
 {
     public class Ability
     {
+        public const int DefaultScore = 10;
+
         public string Name { get; private set; }
         public int BaseScore { get; set; }
         public int RacialAdjustment { get; set; }
@@ -37,7 +39,7 @@ namespace DnDGen.CreatureGen.Abilities
                     return 0;
 
                 var even = FullScore - FullScore % 2;
-                var modifier = (even - 10) / 2;
+                var modifier = (even - DefaultScore) / 2;
                 return Math.Min(MaxModifier, modifier);
             }
         }
@@ -45,7 +47,7 @@ namespace DnDGen.CreatureGen.Abilities
         public Ability(string name)
         {
             Name = name;
-            BaseScore = 10;
+            BaseScore = DefaultScore;
             MaxModifier = int.MaxValue;
         }
     }
