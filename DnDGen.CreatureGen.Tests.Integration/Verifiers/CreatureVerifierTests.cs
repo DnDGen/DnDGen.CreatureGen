@@ -10,17 +10,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
     [TestFixture]
     public class CreatureVerifierTests : IntegrationTests
     {
-        [Inject]
-        public ICreatureVerifier CreatureVerifier { get; set; }
-        [Inject]
-        public Stopwatch Stopwatch { get; set; }
+        private ICreatureVerifier creatureVerifier;
+        private Stopwatch stopwatch;
 
         private TimeSpan timeLimit;
 
         [SetUp]
         public void Setup()
         {
-            Stopwatch.Reset();
+            stopwatch = new Stopwatch();
+            stopwatch.Reset();
+
+            creatureVerifier = GetNewInstanceOf<ICreatureVerifier>();
+
             timeLimit = new TimeSpan(TimeSpan.TicksPerSecond);
         }
 
@@ -38,12 +40,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Vampire, true)]
         public void CreatureVerificationIsFast(string creatureName, string templateName, bool isValid)
         {
-            Stopwatch.Restart();
-            var verified = CreatureVerifier.VerifyCompatibility(creatureName, templateName);
-            Stopwatch.Stop();
+            stopwatch.Restart();
+            var verified = creatureVerifier.VerifyCompatibility(creatureName, templateName);
+            stopwatch.Stop();
 
             Assert.That(verified, Is.EqualTo(isValid));
-            Assert.That(Stopwatch.Elapsed, Is.LessThan(timeLimit));
+            Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit));
         }
     }
 }

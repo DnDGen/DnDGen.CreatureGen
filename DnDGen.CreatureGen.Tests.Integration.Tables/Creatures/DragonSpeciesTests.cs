@@ -8,10 +8,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Metaraces
     [TestFixture]
     public class DragonSpeciesTests : CollectionTests
     {
-        protected override string tableName
-        {
-            get { return TableNameConstants.Collection.DragonSpecies; }
-        }
+        protected override string tableName => TableNameConstants.Collection.DragonSpecies;
 
         [Test]
         public void DragonSpeciesNames()

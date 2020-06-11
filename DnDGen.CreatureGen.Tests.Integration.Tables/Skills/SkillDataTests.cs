@@ -26,9 +26,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [Test]
         public void SkillDataNames()
         {
-            var skillGroups = CollectionMapper.Map(TableNameConstants.Collection.SkillGroups);
+            var skillGroups = collectionMapper.Map(TableNameConstants.Collection.SkillGroups);
             //INFO: Getting the feat foci of skills includes foci for skills such as profession or craft
-            var featFoci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
+            var featFoci = collectionMapper.Map(TableNameConstants.Collection.FeatFoci);
             var otherSkills = new[]
             {
                 SkillConstants.Climb + AbilityConstants.Dexterity,

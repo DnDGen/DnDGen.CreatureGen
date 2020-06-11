@@ -16,14 +16,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
     [TestFixture]
     public class SkillGroupsTests : CollectionTests
     {
-        [Inject]
-        public ICollectionSelector CollectionSelector { get; set; }
-        [Inject]
-        internal ITypeAndAmountSelector TypesAndAmountsSelector { get; set; }
+        private ICollectionSelector collectionSelector;
+        private ITypeAndAmountSelector typesAndAmountsSelector;
 
         protected override string tableName
         {
             get { return TableNameConstants.Collection.SkillGroups; }
+        }
+
+        [SetUp]
+        public void Setup()
+        {
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            typesAndAmountsSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
         }
 
         [Test]
@@ -34,7 +39,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             var creatureSubtypes = CreatureConstants.Types.Subtypes.All();
 
             //INFO: Skills are here for groups of foci - therefore skills with explicit foci are not needed as names
-            var featFoci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
+            var featFoci = collectionMapper.Map(TableNameConstants.Collection.FeatFoci);
             var skillKeys = featFoci[GroupConstants.Skills].Where(s => !s.Contains("/")).Union(new[]
             {
                 SkillConstants.Craft,
@@ -4693,7 +4698,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCaseSource(typeof(CreatureTestData), "All")]
         public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature)
         {
-            var creatureTypes = CollectionSelector.Explode(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatureTypes = collectionSelector.Explode(TableNameConstants.Collection.CreatureTypes, creature);
             creatureTypes = creatureTypes.Except(new[] { creature });
 
             Assert.That(table.Keys, Contains.Item(creature)
@@ -4715,7 +4720,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             if (creatureType == CreatureConstants.Types.Subtypes.Augmented)
                 Assert.Pass("Augmented only applies to 1 creature, so 'common' is 'all'");
 
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             Assert.That(table.Keys, Contains.Item(creatureType)
                 .And.SupersetOf(creatures));

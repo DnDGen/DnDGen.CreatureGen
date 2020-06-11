@@ -15,10 +15,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
     [TestFixture]
     public class SpecialQualityDataTests : DataTests
     {
-        [Inject]
-        internal IFeatsSelector FeatsSelector { get; set; }
-        [Inject]
-        internal ICreatureDataSelector CreatureDataSelector { get; set; }
+        private IFeatsSelector featsSelector;
+        private ICreatureDataSelector creatureDataSelector;
 
         protected override string tableName => TableNameConstants.Collection.SpecialQualityData;
 
@@ -40,6 +38,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         public void Setup()
         {
             helper = new SpecialQualityHelper();
+
+            featsSelector = GetNewInstanceOf<IFeatsSelector>();
+            creatureDataSelector = GetNewInstanceOf<ICreatureDataSelector>();
         }
 
         [Test]
@@ -92,7 +93,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         {
             Assert.That(table, Contains.Key(creature));
 
-            var feats = FeatsSelector.SelectFeats();
+            var feats = featsSelector.SelectFeats();
             var datas = table[creature]
                 .Select(helper.ParseEntry)
                 .Where(d => feats.Any(f => f.Feat == d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
@@ -145,7 +146,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 var featName = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
                 var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
 
-                var featFoci = CollectionMapper.Map(TableNameConstants.Collection.FeatFoci);
+                var featFoci = collectionMapper.Map(TableNameConstants.Collection.FeatFoci);
                 var proficiencyFoci = featFoci[featName];
 
                 var testCaseData = testCaseSpecialQualityDatas.First(d =>
@@ -502,7 +503,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         public void NoOverlapBetweenCreatureAndCreatureTypes(string creature)
         {
-            var types = CollectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
+            var types = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
             var creatureTypes = types[creature].Except(new[] { creature }); //INFO: In case creature name duplicates as type, such as Gnoll
 
             Assert.That(table.Keys, Is.SupersetOf(creatureTypes));
@@ -554,7 +555,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 CreatureConstants.Types.MonstrousHumanoid,
             };
 
-            var creatureData = CreatureDataSelector.SelectFor(creature);
+            var creatureData = creatureDataSelector.SelectFor(creature);
 
             foreach (var data in datas)
             {

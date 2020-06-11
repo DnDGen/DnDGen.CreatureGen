@@ -13,8 +13,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
     [TestFixture]
     public class CreatureTemplateGroupsTests : CreatureGroupsTableTests
     {
-        [Inject]
-        public ICollectionSelector CollectionSelector { get; set; }
+        private ICollectionSelector collectionSelector;
+
+        [SetUp]
+        public void Setup()
+        {
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+        }
 
         [Test]
         public void CreatureGroupNames()
@@ -102,11 +107,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var validCreatures = typeCreatures.Where(c => AlignmentMatches(c, alignmentGroups));
             validCreatures = validCreatures.Where(c => !c.Contains("Celestial"));
 
-            var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-            var augmentedCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
+            var incorporealCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+            var augmentedCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
             validCreatures = validCreatures.Except(incorporealCreatures).Except(augmentedCreatures);
 
-            var celestialCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature);
+            var celestialCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature);
 
             Assert.That(celestialCreatures, Is.EquivalentTo(validCreatures));
         }
@@ -114,7 +119,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         private bool AlignmentMatches(string creature, params string[] alignmentGroups)
         {
             var alignments = GetAlignments(alignmentGroups);
-            var creatureAlignmentGroups = CollectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, creature);
+            var creatureAlignmentGroups = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, creature);
             if (!creatureAlignmentGroups.Any())
                 creatureAlignmentGroups = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral };
 
@@ -128,7 +133,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             foreach (var alignmentGroup in alignmentGroups)
             {
-                var explodedAlignments = CollectionSelector.Explode(TableNameConstants.Collection.AlignmentGroups, alignmentGroup);
+                var explodedAlignments = collectionSelector.Explode(TableNameConstants.Collection.AlignmentGroups, alignmentGroup);
                 alignments.AddRange(explodedAlignments);
             }
 
@@ -137,7 +142,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
         private IEnumerable<string> GetCreaturesOfTypes(params string[] types)
         {
-            var creatureTypes = CollectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
+            var creatureTypes = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
             var creaturesOfTypes = creatureTypes.Where(kvp => types.Contains(kvp.Value.First())).Select(kvp => kvp.Key);
 
             return creaturesOfTypes;
@@ -173,11 +178,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var validCreatures = typeCreatures.Where(c => AlignmentMatches(c, alignmentGroups));
             validCreatures = validCreatures.Where(c => !c.Contains("Celestial"));
 
-            var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-            var augmentedCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
+            var incorporealCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+            var augmentedCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
             validCreatures = validCreatures.Except(incorporealCreatures).Except(augmentedCreatures);
 
-            var celestialCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfCelestial);
+            var celestialCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfCelestial);
 
             Assert.That(celestialCreatures, Is.EquivalentTo(validCreatures));
         }
@@ -201,11 +206,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             var typeCreatures = GetCreaturesOfTypes(types);
 
-            var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-            var augmentedCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
+            var incorporealCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+            var augmentedCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
             var validCreatures = typeCreatures.Except(incorporealCreatures).Except(augmentedCreatures);
 
-            var dragonCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfDragon);
+            var dragonCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfDragon);
 
             Assert.That(dragonCreatures, Is.EquivalentTo(validCreatures));
         }
@@ -240,11 +245,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var validCreatures = typeCreatures.Where(c => AlignmentMatches(c, alignmentGroups));
             validCreatures = validCreatures.Where(c => !c.Contains("Fiendish"));
 
-            var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-            var augmentedCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
+            var incorporealCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+            var augmentedCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
             validCreatures = validCreatures.Except(incorporealCreatures).Except(augmentedCreatures);
 
-            var fiendishCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.FiendishCreature);
+            var fiendishCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.FiendishCreature);
 
             Assert.That(fiendishCreatures, Is.EquivalentTo(validCreatures));
         }
@@ -279,11 +284,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var validCreatures = typeCreatures.Where(c => AlignmentMatches(c, alignmentGroups));
             validCreatures = validCreatures.Where(c => !c.Contains("Fiendish"));
 
-            var incorporealCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-            var augmentedCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
+            var incorporealCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+            var augmentedCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
             validCreatures = validCreatures.Except(incorporealCreatures).Except(augmentedCreatures);
 
-            var fiendishCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend);
+            var fiendishCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend);
 
             Assert.That(fiendishCreatures, Is.EquivalentTo(validCreatures));
         }

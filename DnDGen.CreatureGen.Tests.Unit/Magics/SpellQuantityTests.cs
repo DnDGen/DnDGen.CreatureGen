@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Magics
             spellQuantity.Quantity = 0;
             spellQuantity.HasDomainSpell = true;
 
-            Assert.That(spellQuantity.TotalQuantity, Is.Zero);
+            Assert.That(spellQuantity.TotalQuantity, Is.EqualTo(1));
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Magics
             spellQuantity.BonusSpells = 90210;
             spellQuantity.HasDomainSpell = true;
 
-            Assert.That(spellQuantity.TotalQuantity, Is.EqualTo(90210));
+            Assert.That(spellQuantity.TotalQuantity, Is.EqualTo(90210 + 1));
         }
 
         [TestCase(1)]

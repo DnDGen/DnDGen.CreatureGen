@@ -19,7 +19,7 @@ namespace DnDGen.CreatureGen.Generators.Attacks
         private readonly IAdjustmentsSelector adjustmentsSelector;
         private readonly IAttackSelector attackSelector;
 
-        internal AttacksGenerator(ICollectionSelector collectionSelector, IAdjustmentsSelector adjustmentsSelector, IAttackSelector attackSelector)
+        public AttacksGenerator(ICollectionSelector collectionSelector, IAdjustmentsSelector adjustmentsSelector, IAttackSelector attackSelector)
         {
             this.collectionSelector = collectionSelector;
             this.adjustmentsSelector = adjustmentsSelector;

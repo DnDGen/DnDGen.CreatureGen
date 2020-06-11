@@ -1,0 +1,2412 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Aasimar</name>
+  </collection>
+  <collection>
+    <name>Aboleth</name>
+  </collection>
+  <collection>
+    <name>Abyssal Greater Basilisk</name>
+  </collection>
+  <collection>
+    <name>Achaierai</name>
+  </collection>
+  <collection>
+    <name>Adult Arrowhawk</name>
+    
+  </collection>
+  <collection>
+    <name>Adult Tojanida</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Elder</name>
+    
+  </collection>
+  <collection>
+    <name>Air Elemental, Greater</name>
+    
+  </collection>
+  <collection>
+    <name>Air Elemental, Huge</name>
+    
+  </collection>
+  <collection>
+    <name>Air Elemental, Large</name>
+    
+  </collection>
+  <collection>
+    <name>Air Elemental, Medium</name>
+    
+  </collection>
+  <collection>
+    <name>Air Elemental, Small</name>
+    
+  </collection>
+  <collection>
+    <name>Air Mephit</name>
+    
+  </collection>
+  <collection>
+    <name>Allip</name>
+    
+  </collection>
+  <collection>
+    <name>Androsphinx</name>
+    
+  </collection>
+  <collection>
+    <name>Angel, Astral Deva</name>
+    
+  </collection>
+  <collection>
+    <name>Angel, Planetar</name>
+    
+  </collection>
+  <collection>
+    <name>Angel, Solar</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Colossal</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Gargantuan</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Huge</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Large</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Medium</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Small</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Tiny</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Colossal</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Gargantuan</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Huge</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Large</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Medium</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Small</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Tiny</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Colossal</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Gargantuan</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Huge</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Large</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Medium</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Small</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Tiny</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Colossal</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Gargantuan</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Huge</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Large</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Medium</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Small</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Tiny</name>
+    
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Tiny</name>
+  </collection>
+  <collection>
+    <name>Ankheg</name>
+  </collection>
+  <collection>
+    <name>Annis</name>
+  </collection>
+  <collection>
+    <name>Ape</name>
+  </collection>
+  <collection>
+    <name>Aquatic Elf</name>
+  </collection>
+  <collection>
+    <name>Aranea</name>
+  </collection>
+  <collection>
+    <name>Assassin Vine</name>
+  </collection>
+  <collection>
+    <name>Athach</name>
+  </collection>
+  <collection>
+    <name>Average Salamander</name>
+  </collection>
+  <collection>
+    <name>Average Xorn</name>
+  </collection>
+  <collection>
+    <name>Avoral</name>
+    
+  </collection>
+  <collection>
+    <name>Azer</name>
+  </collection>
+  <collection>
+    <name>Babau</name>
+  </collection>
+  <collection>
+    <name>Baboon</name>
+  </collection>
+  <collection>
+    <name>Badger</name>
+  </collection>
+  <collection>
+    <name>Baleen Whale</name>
+  </collection>
+  <collection>
+    <name>Balor</name>
+    
+  </collection>
+  <collection>
+    <name>Barbed Devil (Hamatula)</name>
+  </collection>
+  <collection>
+    <name>Barghest</name>
+  </collection>
+  <collection>
+    <name>Basilisk</name>
+  </collection>
+  <collection>
+    <name>Bat</name>
+    
+  </collection>
+  <collection>
+    <name>Bat Swarm</name>
+    
+  </collection>
+  <collection>
+    <name>Bearded Devil (Barbazu)</name>
+  </collection>
+  <collection>
+    <name>Bebilith</name>
+  </collection>
+  <collection>
+    <name>Behir</name>
+  </collection>
+  <collection>
+    <name>Beholder</name>
+    
+  </collection>
+  <collection>
+    <name>Belker</name>
+    
+  </collection>
+  <collection>
+    <name>Bison</name>
+  </collection>
+  <collection>
+    <name>Black Bear</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Ancient</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Great Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Juvenile</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Old</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Old</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Young</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrmling</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Young Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Young</name>
+    
+  </collection>
+  <collection>
+    <name>Black Pudding</name>
+  </collection>
+  <collection>
+    <name>Blink Dog</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Ancient</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Juvenile</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Old</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Old</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Young</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrmling</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Slaad</name>
+  </collection>
+  <collection>
+    <name>Boar</name>
+  </collection>
+  <collection>
+    <name>Bodak</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)</name>
+  </collection>
+  <collection>
+    <name>Bralani</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Ancient</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Juvenile</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Old</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Old</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Young</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrmling</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Ancient</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Juvenile</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Old</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Old</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Young</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrmling</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young</name>
+    
+  </collection>
+  <collection>
+    <name>Brown Bear</name>
+  </collection>
+  <collection>
+    <name>Bugbear</name>
+  </collection>
+  <collection>
+    <name>Bulette</name>
+  </collection>
+  <collection>
+    <name>Cachalot Whale</name>
+  </collection>
+  <collection>
+    <name>Camel, Bactrian (Two-Humped)</name>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)</name>
+  </collection>
+  <collection>
+    <name>Carrion Crawler</name>
+  </collection>
+  <collection>
+    <name>Cat</name>
+  </collection>
+  <collection>
+    <name>Centaur</name>
+  </collection>
+  <collection>
+    <name>Centipede Swarm</name>
+  </collection>
+  <collection>
+    <name>Chaos Beast</name>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)</name>
+  </collection>
+  <collection>
+    <name>Cheetah</name>
+  </collection>
+  <collection>
+    <name>Chimera (Black Dragon head)</name>
+    
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+    
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+    
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+    
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
+    
+  </collection>
+  <collection>
+    <name>Choker</name>
+  </collection>
+  <collection>
+    <name>Chuul</name>
+  </collection>
+  <collection>
+    <name>Clay Golem</name>
+  </collection>
+  <collection>
+    <name>Cloaker</name>
+    
+  </collection>
+  <collection>
+    <name>Cloud Giant</name>
+  </collection>
+  <collection>
+    <name>Cockatrice</name>
+    
+  </collection>
+  <collection>
+    <name>Constrictor Snake</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Ancient</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Juvenile</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Old</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Old</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Young</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrmling</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young</name>
+    
+  </collection>
+  <collection>
+    <name>Couatl</name>
+    
+  </collection>
+  <collection>
+    <name>Criosphinx</name>
+    
+  </collection>
+  <collection>
+    <name>Crocodile</name>
+  </collection>
+  <collection>
+    <name>Dark Naga</name>
+  </collection>
+  <collection>
+    <name>Darkmantle</name>
+    
+  </collection>
+  <collection>
+    <name>Death Slaad</name>
+  </collection>
+  <collection>
+    <name>Deep Halfling</name>
+  </collection>
+  <collection>
+    <name>Deep Dwarf</name>
+  </collection>
+  <collection>
+    <name>Deinonychus</name>
+  </collection>
+  <collection>
+    <name>Delver</name>
+  </collection>
+  <collection>
+    <name>Derro</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane)</name>
+  </collection>
+  <collection>
+    <name>Destrachan</name>
+  </collection>
+  <collection>
+    <name>Devourer</name>
+  </collection>
+  <collection>
+    <name>Digester</name>
+  </collection>
+  <collection>
+    <name>Dire Ape</name>
+  </collection>
+  <collection>
+    <name>Dire Badger</name>
+  </collection>
+  <collection>
+    <name>Dire Bat</name>
+    
+  </collection>
+  <collection>
+    <name>Dire Bear</name>
+  </collection>
+  <collection>
+    <name>Dire Boar</name>
+  </collection>
+  <collection>
+    <name>Dire Lion</name>
+  </collection>
+  <collection>
+    <name>Dire Rat</name>
+  </collection>
+  <collection>
+    <name>Dire Shark</name>
+  </collection>
+  <collection>
+    <name>Dire Tiger</name>
+  </collection>
+  <collection>
+    <name>Dire Weasel</name>
+  </collection>
+  <collection>
+    <name>Dire Wolf</name>
+  </collection>
+  <collection>
+    <name>Dire Wolverine</name>
+  </collection>
+  <collection>
+    <name>Displacer Beast</name>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack Lord</name>
+  </collection>
+  <collection>
+    <name>Djinni</name>
+    
+  </collection>
+  <collection>
+    <name>Dog</name>
+  </collection>
+  <collection>
+    <name>Dog, Riding</name>
+  </collection>
+  <collection>
+    <name>Donkey</name>
+  </collection>
+  <collection>
+    <name>Doppelganger</name>
+  </collection>
+  <collection>
+    <name>Dragon Turtle</name>
+  </collection>
+  <collection>
+    <name>Dragonne</name>
+    
+  </collection>
+  <collection>
+    <name>Dread Wraith</name>
+    
+  </collection>
+  <collection>
+    <name>Dretch</name>
+  </collection>
+  <collection>
+    <name>Drider</name>
+  </collection>
+  <collection>
+    <name>Drow</name>
+  </collection>
+  <collection>
+    <name>Dryad</name>
+  </collection>
+  <collection>
+    <name>Duergar</name>
+  </collection>
+  <collection>
+    <name>Dust Mephit</name>
+    
+  </collection>
+  <collection>
+    <name>Eagle</name>
+    
+  </collection>
+  <collection>
+    <name>Earth Elemental, Elder</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Greater</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Huge</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Large</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Medium</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Small</name>
+  </collection>
+  <collection>
+    <name>Earth Mephit</name>
+    
+  </collection>
+  <collection>
+    <name>Efreeti</name>
+    
+  </collection>
+  <collection>
+    <name>Eight-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Elasmosaurus</name>
+  </collection>
+  <collection>
+    <name>Elder Arrowhawk</name>
+    
+  </collection>
+  <collection>
+    <name>Elder Black Pudding</name>
+  </collection>
+  <collection>
+    <name>Elder Tojanida</name>
+  </collection>
+  <collection>
+    <name>Elder Xorn</name>
+  </collection>
+  <collection>
+    <name>Elephant</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Erinyes</name>
+    
+  </collection>
+  <collection>
+    <name>Ethereal Filcher</name>
+  </collection>
+  <collection>
+    <name>Ethereal Marauder</name>
+  </collection>
+  <collection>
+    <name>Ettercap</name>
+  </collection>
+  <collection>
+    <name>Ettin</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Elder</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Greater</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Huge</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Large</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Medium</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Small</name>
+  </collection>
+  <collection>
+    <name>Fire Giant</name>
+  </collection>
+  <collection>
+    <name>Fire Mephit</name>
+    
+  </collection>
+  <collection>
+    <name>Five-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Five-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Five-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Flamebrother Salamander</name>
+  </collection>
+  <collection>
+    <name>Flesh Golem</name>
+  </collection>
+  <collection>
+    <name>Forest Gnome</name>
+  </collection>
+  <collection>
+    <name>Formian Myrmarch</name>
+  </collection>
+  <collection>
+    <name>Formian Queen</name>
+  </collection>
+  <collection>
+    <name>Formian Taskmaster</name>
+  </collection>
+  <collection>
+    <name>Formian Warrior</name>
+  </collection>
+  <collection>
+    <name>Formian Worker</name>
+  </collection>
+  <collection>
+    <name>Frost Giant</name>
+  </collection>
+  <collection>
+    <name>Frost Worm</name>
+  </collection>
+  <collection>
+    <name>Gargoyle</name>
+    
+  </collection>
+  <collection>
+    <name>Gauth (Lesser Beholder)</name>
+    
+  </collection>
+  <collection>
+    <name>Gelatinous Cube</name>
+  </collection>
+  <collection>
+    <name>Ghaele</name>
+    
+  </collection>
+  <collection>
+    <name>Ghast</name>
+  </collection>
+  <collection>
+    <name>Ghoul</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, Queen</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, Soldier</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, Worker</name>
+  </collection>
+  <collection>
+    <name>Giant Bee</name>
+    
+  </collection>
+  <collection>
+    <name>Giant Bombardier Beetle</name>
+  </collection>
+  <collection>
+    <name>Giant Constrictor Snake</name>
+  </collection>
+  <collection>
+    <name>Giant Crocodile</name>
+  </collection>
+  <collection>
+    <name>Giant Eagle</name>
+    
+  </collection>
+  <collection>
+    <name>Giant Fire Beetle</name>
+  </collection>
+  <collection>
+    <name>Giant Octopus</name>
+  </collection>
+  <collection>
+    <name>Giant Owl</name>
+    
+  </collection>
+  <collection>
+    <name>Giant Praying Mantis</name>
+    
+  </collection>
+  <collection>
+    <name>Giant Squid</name>
+  </collection>
+  <collection>
+    <name>Giant Stag Beetle</name>
+  </collection>
+  <collection>
+    <name>Giant Wasp</name>
+    
+  </collection>
+  <collection>
+    <name>Gibbering Mouther</name>
+  </collection>
+  <collection>
+    <name>Girallon</name>
+  </collection>
+  <collection>
+    <name>Githyanki</name>
+  </collection>
+  <collection>
+    <name>Githzerai</name>
+  </collection>
+  <collection>
+    <name>Glabrezu</name>
+  </collection>
+  <collection>
+    <name>Gnoll</name>
+  </collection>
+  <collection>
+    <name>Goblin</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Ancient</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Juvenile</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Old</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Old</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Young</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrmling</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young</name>
+    
+  </collection>
+  <collection>
+    <name>Gorgon</name>
+  </collection>
+  <collection>
+    <name>Gray Elf</name>
+  </collection>
+  <collection>
+    <name>Gray Ooze</name>
+  </collection>
+  <collection>
+    <name>Gray Render</name>
+  </collection>
+  <collection>
+    <name>Gray Slaad</name>
+  </collection>
+  <collection>
+    <name>Greater Barghest</name>
+  </collection>
+  <collection>
+    <name>Greater Shadow</name>
+    
+  </collection>
+  <collection>
+    <name>Greater Stone Golem</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Ancient</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Great Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Juvenile</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Old</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Old</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Young</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrmling</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Young Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Young</name>
+    
+  </collection>
+  <collection>
+    <name>Green Hag</name>
+  </collection>
+  <collection>
+    <name>Green Slaad</name>
+  </collection>
+  <collection>
+    <name>Grick</name>
+  </collection>
+  <collection>
+    <name>Griffon</name>
+    
+  </collection>
+  <collection>
+    <name>Grig</name>
+    
+  </collection>
+  <collection>
+    <name>Grig with fiddle</name>
+    
+  </collection>
+  <collection>
+    <name>Grimlock</name>
+  </collection>
+  <collection>
+    <name>Guardian Naga</name>
+  </collection>
+  <collection>
+    <name>Gynosphinx</name>
+    
+  </collection>
+  <collection>
+    <name>Half-Elf</name>
+  </collection>
+  <collection>
+    <name>Half-Orc</name>
+  </collection>
+  <collection>
+    <name>Harpy</name>
+    
+  </collection>
+  <collection>
+    <name>Hawk</name>
+    
+  </collection>
+  <collection>
+    <name>Heavy Horse</name>
+  </collection>
+  <collection>
+    <name>Heavy Warhorse</name>
+  </collection>
+  <collection>
+    <name>Hell Hound</name>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)</name>
+  </collection>
+  <collection>
+    <name>Hellwasp Swarm</name>
+    
+  </collection>
+  <collection>
+    <name>Hezrou</name>
+  </collection>
+  <collection>
+    <name>Hieracosphinx</name>
+    
+  </collection>
+  <collection>
+    <name>High Elf</name>
+  </collection>
+  <collection>
+    <name>Hill Dwarf</name>
+  </collection>
+  <collection>
+    <name>Hill Giant</name>
+  </collection>
+  <collection>
+    <name>Hippogriff</name>
+    
+  </collection>
+  <collection>
+    <name>Hobgoblin</name>
+  </collection>
+  <collection>
+    <name>Homunculus</name>
+    
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)</name>
+    
+  </collection>
+  <collection>
+    <name>Hound Archon</name>
+  </collection>
+  <collection>
+    <name>Howler</name>
+  </collection>
+  <collection>
+    <name>Human</name>
+  </collection>
+  <collection>
+    <name>Hyena</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)</name>
+  </collection>
+  <collection>
+    <name>Ice Mephit</name>
+    
+  </collection>
+  <collection>
+    <name>Invisible Stalker</name>
+    
+  </collection>
+  <collection>
+    <name>Imp</name>
+    
+  </collection>
+  <collection>
+    <name>Iron Golem</name>
+  </collection>
+  <collection>
+    <name>Janni</name>
+    
+  </collection>
+  <collection>
+    <name>Juvenile Arrowhawk</name>
+    
+  </collection>
+  <collection>
+    <name>Juvenile Tojanida</name>
+  </collection>
+  <collection>
+    <name>Kapoacinth</name>
+  </collection>
+  <collection>
+    <name>Kobold</name>
+  </collection>
+  <collection>
+    <name>Kolyarut</name>
+  </collection>
+  <collection>
+    <name>Kraken</name>
+  </collection>
+  <collection>
+    <name>Krenshar</name>
+  </collection>
+  <collection>
+    <name>Kuo-toa</name>
+  </collection>
+  <collection>
+    <name>Lacedon</name>
+  </collection>
+  <collection>
+    <name>Lamia</name>
+  </collection>
+  <collection>
+    <name>Lammasu</name>
+    
+  </collection>
+  <collection>
+    <name>Lantern Archon</name>
+    
+  </collection>
+  <collection>
+    <name>Lemure</name>
+  </collection>
+  <collection>
+    <name>Leonal</name>
+  </collection>
+  <collection>
+    <name>Leopard</name>
+  </collection>
+  <collection>
+    <name>Light Horse</name>
+  </collection>
+  <collection>
+    <name>Light Warhorse</name>
+  </collection>
+  <collection>
+    <name>Lightfoot Halfling</name>
+  </collection>
+  <collection>
+    <name>Lillend</name>
+    
+  </collection>
+  <collection>
+    <name>Lion</name>
+  </collection>
+  <collection>
+    <name>Lizard</name>
+  </collection>
+  <collection>
+    <name>Lizardfolk</name>
+  </collection>
+  <collection>
+    <name>Locathah</name>
+  </collection>
+  <collection>
+    <name>Locust Swarm</name>
+    
+  </collection>
+  <collection>
+    <name>Magma Mephit</name>
+    
+  </collection>
+  <collection>
+    <name>Magmin</name>
+  </collection>
+  <collection>
+    <name>Manta Ray</name>
+  </collection>
+  <collection>
+    <name>Manticore</name>
+    
+  </collection>
+  <collection>
+    <name>Marilith</name>
+  </collection>
+  <collection>
+    <name>Marut</name>
+  </collection>
+  <collection>
+    <name>Medusa</name>
+  </collection>
+  <collection>
+    <name>Megaraptor</name>
+  </collection>
+  <collection>
+    <name>Merfolk</name>
+  </collection>
+  <collection>
+    <name>Merrow</name>
+  </collection>
+  <collection>
+    <name>Mimic</name>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)</name>
+  </collection>
+  <collection>
+    <name>Minor Xorn</name>
+  </collection>
+  <collection>
+    <name>Minotaur</name>
+  </collection>
+  <collection>
+    <name>Mohrg</name>
+  </collection>
+  <collection>
+    <name>Monitor Lizard</name>
+  </collection>
+  <collection>
+    <name>Monkey</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Colossal</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Huge</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Large</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Medium</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Small</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Tiny</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Colossal</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Huge</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Large</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Medium</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Small</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Tiny</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Colossal</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Huge</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Large</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Medium</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Small</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Tiny</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Colossal</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Huge</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Large</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Medium</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Small</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Tiny</name>
+  </collection>
+  <collection>
+    <name>Mountain Dwarf</name>
+  </collection>
+  <collection>
+    <name>Mule</name>
+  </collection>
+  <collection>
+    <name>Mummy</name>
+  </collection>
+  <collection>
+    <name>Nalfeshnee</name>
+    
+  </collection>
+  <collection>
+    <name>Nessian Warhound</name>
+  </collection>
+  <collection>
+    <name>Night Hag</name>
+  </collection>
+  <collection>
+    <name>Nightcrawler</name>
+  </collection>
+  <collection>
+    <name>Nightmare</name>
+    
+  </collection>
+  <collection>
+    <name>Nightmare, Cauchemar</name>
+    
+  </collection>
+  <collection>
+    <name>Nightwalker</name>
+    
+  </collection>
+  <collection>
+    <name>Nightwing</name>
+    
+  </collection>
+  <collection>
+    <name>Nine-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Nixie</name>
+  </collection>
+  <collection>
+    <name>Noble Djinni</name>
+    
+  </collection>
+  <collection>
+    <name>Noble Salamander</name>
+  </collection>
+  <collection>
+    <name>Nymph</name>
+  </collection>
+  <collection>
+    <name>Ochre Jelly</name>
+  </collection>
+  <collection>
+    <name>Octopus</name>
+  </collection>
+  <collection>
+    <name>Ogre</name>
+  </collection>
+  <collection>
+    <name>Ogre Mage</name>
+    
+  </collection>
+  <collection>
+    <name>Ooze Mephit</name>
+    
+  </collection>
+  <collection>
+    <name>Orc</name>
+  </collection>
+  <collection>
+    <name>Orca Whale</name>
+  </collection>
+  <collection>
+    <name>Otyugh</name>
+  </collection>
+  <collection>
+    <name>Owl</name>
+    
+  </collection>
+  <collection>
+    <name>Owlbear</name>
+  </collection>
+  <collection>
+    <name>Pegasus</name>
+    
+  </collection>
+  <collection>
+    <name>Phantom Fungus</name>
+  </collection>
+  <collection>
+    <name>Phase Spider</name>
+  </collection>
+  <collection>
+    <name>Phasm</name>
+  </collection>
+  <collection>
+    <name>Pit Fiend</name>
+    
+  </collection>
+  <collection>
+    <name>Pixie</name>
+    
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible dance</name>
+    
+  </collection>
+  <collection>
+    <name>Polar Bear</name>
+  </collection>
+  <collection>
+    <name>Pony</name>
+  </collection>
+  <collection>
+    <name>Porpoise</name>
+  </collection>
+  <collection>
+    <name>Pseudodragon</name>
+    
+  </collection>
+  <collection>
+    <name>Purple Worm</name>
+  </collection>
+  <collection>
+    <name>Quasit</name>
+    
+  </collection>
+  <collection>
+    <name>Rakshasa</name>
+  </collection>
+  <collection>
+    <name>Rast</name>
+    
+  </collection>
+  <collection>
+    <name>Rat</name>
+  </collection>
+  <collection>
+    <name>Rat Swarm</name>
+  </collection>
+  <collection>
+    <name>Raven</name>
+    
+  </collection>
+  <collection>
+    <name>Ravid</name>
+    
+  </collection>
+  <collection>
+    <name>Razor Boar</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Ancient</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Great Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Juvenile</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Old</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Old</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Young</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrmling</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Young Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Young</name>
+    
+  </collection>
+  <collection>
+    <name>Red Slaad</name>
+  </collection>
+  <collection>
+    <name>Remorhaz</name>
+  </collection>
+  <collection>
+    <name>Retriever</name>
+  </collection>
+  <collection>
+    <name>Rhinoceras</name>
+  </collection>
+  <collection>
+    <name>Roc</name>
+    
+  </collection>
+  <collection>
+    <name>Rock Gnome</name>
+  </collection>
+  <collection>
+    <name>Roper</name>
+  </collection>
+  <collection>
+    <name>Rust Monster</name>
+  </collection>
+  <collection>
+    <name>Sahuagin</name>
+  </collection>
+  <collection>
+    <name>Sahuagin Mutant</name>
+  </collection>
+  <collection>
+    <name>Malenti</name>
+  </collection>
+  <collection>
+    <name>Salt Mephit</name>
+    
+  </collection>
+  <collection>
+    <name>Satyr</name>
+  </collection>
+  <collection>
+    <name>Satyr with pipes</name>
+  </collection>
+  <collection>
+    <name>Scorpionfolk</name>
+  </collection>
+  <collection>
+    <name>Scrag</name>
+  </collection>
+  <collection>
+    <name>Sea Cat</name>
+  </collection>
+  <collection>
+    <name>Sea Hag</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Shadow</name>
+    
+  </collection>
+  <collection>
+    <name>Shadow Mastiff</name>
+  </collection>
+  <collection>
+    <name>Shambling Mound</name>
+  </collection>
+  <collection>
+    <name>Shark, Huge</name>
+  </collection>
+  <collection>
+    <name>Shark, Large</name>
+  </collection>
+  <collection>
+    <name>Shark, Medium</name>
+  </collection>
+  <collection>
+    <name>Shield Guardian</name>
+  </collection>
+  <collection>
+    <name>Shocker Lizard</name>
+  </collection>
+  <collection>
+    <name>Shrieker</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Ancient</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Juvenile</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Old</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Old</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Young</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrmling</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young Adult</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young</name>
+    
+  </collection>
+  <collection>
+    <name>Six-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Six-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Six-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Skum</name>
+  </collection>
+  <collection>
+    <name>Spectre</name>
+    
+  </collection>
+  <collection>
+    <name>Spider Eater</name>
+    
+  </collection>
+  <collection>
+    <name>Spider Swarm</name>
+  </collection>
+  <collection>
+    <name>Spirit Naga</name>
+  </collection>
+  <collection>
+    <name>Squid</name>
+  </collection>
+  <collection>
+    <name>Steam Mephit</name>
+    
+  </collection>
+  <collection>
+    <name>Stirge</name>
+    
+  </collection>
+  <collection>
+    <name>Stone Giant</name>
+  </collection>
+  <collection>
+    <name>Stone Giant Elder</name>
+  </collection>
+  <collection>
+    <name>Stone Golem</name>
+  </collection>
+  <collection>
+    <name>Storm Giant</name>
+  </collection>
+  <collection>
+    <name>Succubus</name>
+    
+  </collection>
+  <collection>
+    <name>Svirfneblin</name>
+  </collection>
+  <collection>
+    <name>Tallfellow Halfling</name>
+  </collection>
+  <collection>
+    <name>Tarrasque</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Tendriculos</name>
+  </collection>
+  <collection>
+    <name>Thoqqua</name>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+  </collection>
+  <collection>
+    <name>Tiger</name>
+  </collection>
+  <collection>
+    <name>Titan</name>
+  </collection>
+  <collection>
+    <name>Toad</name>
+  </collection>
+  <collection>
+    <name>Treant</name>
+  </collection>
+  <collection>
+    <name>Triceratops</name>
+  </collection>
+  <collection>
+    <name>Triton</name>
+  </collection>
+  <collection>
+    <name>Troglodyte</name>
+  </collection>
+  <collection>
+    <name>Troll</name>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber Hulk</name>
+  </collection>
+  <collection>
+    <name>Trumpet Archon</name>
+    
+  </collection>
+  <collection>
+    <name>Twelve-Headed Cryohydra</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Hydra</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Pyrohydra</name>
+  </collection>
+  <collection>
+    <name>Tyrannosaurus</name>
+  </collection>
+  <collection>
+    <name>Umber Hulk</name>
+  </collection>
+  <collection>
+    <name>Unicorn</name>
+  </collection>
+  <collection>
+    <name>Vampire Spawn</name>
+  </collection>
+  <collection>
+    <name>Vargouille</name>
+    
+  </collection>
+  <collection>
+    <name>Violet Fungus</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Huge</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Large</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Medium</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Small</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Tiny</name>
+  </collection>
+  <collection>
+    <name>Vrock</name>
+    
+  </collection>
+  <collection>
+    <name>Warpony</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Elder</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Greater</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Huge</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Large</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Medium</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Small</name>
+  </collection>
+  <collection>
+    <name>Water Mephit</name>
+    
+  </collection>
+  <collection>
+    <name>Water Naga</name>
+  </collection>
+  <collection>
+    <name>Weasel</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Adult</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Ancient</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Great Wyrm</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Juvenile</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Mature Adult</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Old</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Very Old</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Very Young</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrm</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrmling</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Young Adult</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Young</name>
+  </collection>
+  <collection>
+    <name>Wight</name>
+  </collection>
+  <collection>
+    <name>Wild Elf</name>
+  </collection>
+  <collection>
+    <name>Will-O'-Wisp</name>
+  </collection>
+  <collection>
+    <name>Winter Wolf</name>
+  </collection>
+  <collection>
+    <name>Wolf</name>
+  </collection>
+  <collection>
+    <name>Wolverine</name>
+  </collection>
+  <collection>
+    <name>Worg</name>
+  </collection>
+  <collection>
+    <name>Wood Elf</name>
+  </collection>
+  <collection>
+    <name>Wraith</name>
+  </collection>
+  <collection>
+    <name>Wyvern</name>
+  </collection>
+  <collection>
+    <name>Xill</name>
+  </collection>
+  <collection>
+    <name>Yeth Hound</name>
+  </collection>
+  <collection>
+    <name>Yrthak</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Abomination</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Pureblood</name>
+  </collection>
+  <collection>
+    <name>Zelekhut</name>
+  </collection>
+</collections>

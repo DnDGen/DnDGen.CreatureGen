@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.RollGen;
-using Ninject;
 using NUnit.Framework;
 using System;
 using System.Collections;
@@ -16,12 +15,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class AdvancementsTests : TypesAndAmountsTests
     {
-        [Inject]
-        public Dice Dice { get; set; }
-        [Inject]
-        internal ICreatureDataSelector CreatureDataSelector { get; set; }
+        private Dice dice;
+        private ICreatureDataSelector creatureDataSelector;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Advancements;
+
+        [SetUp]
+        public void Setup()
+        {
+            dice = GetNewInstanceOf<Dice>();
+            creatureDataSelector = GetNewInstanceOf<ICreatureDataSelector>();
+        }
 
         [Test]
         public void AdvancementsNames()
@@ -1043,16 +1047,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var roll in rolls)
             {
-                var minimum = Dice.Roll(roll).AsPotentialMinimum();
+                var minimum = dice.Roll(roll).AsPotentialMinimum();
                 Assert.That(minimum, Is.Positive);
 
-                var maximum = Dice.Roll(roll).AsPotentialMaximum();
+                var maximum = dice.Roll(roll).AsPotentialMaximum();
                 var range = Enumerable.Range(minimum, maximum - minimum + 1);
 
                 foreach (var otherRoll in rolls.Except(new[] { roll }))
                 {
-                    var otherMinimum = Dice.Roll(otherRoll).AsPotentialMinimum();
-                    var otherMaximum = Dice.Roll(otherRoll).AsPotentialMaximum();
+                    var otherMinimum = dice.Roll(otherRoll).AsPotentialMinimum();
+                    var otherMaximum = dice.Roll(otherRoll).AsPotentialMaximum();
                     var otherRange = Enumerable.Range(otherMinimum, otherMaximum - otherMinimum + 1);
 
                     Assert.That(range.Intersect(otherRange), Is.Empty, $"{roll} vs {otherRoll}");
@@ -1069,7 +1073,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.Pass($"No advancements to test for {creature}");
 
             var sizes = table[creature].Select(a => TypeAndAmountHelper.Parse(a)[0].Split(',')[0]);
-            var data = CreatureDataSelector.SelectFor(creature);
+            var data = creatureDataSelector.SelectFor(creature);
 
             var orderedSizes = SizeConstants.GetOrdered();
             var originalSizeIndex = Array.IndexOf(orderedSizes, data.Size);
@@ -1109,7 +1113,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 var sizeIndex = Array.IndexOf(orderedSizes, size);
 
                 var roll = TypeAndAmountHelper.Parse(advancement)[1];
-                var minimum = Dice.Roll(roll).AsPotentialMinimum();
+                var minimum = dice.Roll(roll).AsPotentialMinimum();
 
                 foreach (var otherAdvancement in table[creature].Except(new[] { advancement }))
                 {
@@ -1117,7 +1121,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     var otherSizeIndex = Array.IndexOf(orderedSizes, otherSize);
 
                     var otherRoll = TypeAndAmountHelper.Parse(otherAdvancement)[1];
-                    var otherMinimum = Dice.Roll(otherRoll).AsPotentialMinimum();
+                    var otherMinimum = dice.Roll(otherRoll).AsPotentialMinimum();
 
                     if (minimum < otherMinimum)
                         Assert.That(sizeIndex, Is.LessThan(otherSizeIndex), $"{size} < {otherSize}");

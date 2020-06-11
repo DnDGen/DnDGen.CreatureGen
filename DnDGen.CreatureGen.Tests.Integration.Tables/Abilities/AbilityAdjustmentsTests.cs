@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
-using Ninject;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,17 +14,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
     [TestFixture]
     public class AbilityAdjustmentsTests : TypesAndAmountsTests
     {
-        [Inject]
-        public ICollectionSelector CollectionSelector { get; set; }
-        [Inject]
-        internal ITypeAndAmountSelector TypesAndAmountsSelector { get; set; }
+        private ICollectionSelector collectionSelector;
+        private ITypeAndAmountSelector typesAndAmountsSelector;
 
-        protected override string tableName
+        protected override string tableName => TableNameConstants.TypeAndAmount.AbilityAdjustments;
+
+        [SetUp]
+        public void Setup()
         {
-            get
-            {
-                return TableNameConstants.TypeAndAmount.AbilityAdjustments;
-            }
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            typesAndAmountsSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
         }
 
         [Test]
@@ -4069,7 +4067,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         {
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var abilities = TypesAndAmountsSelector.Select(tableName, creature);
+            var abilities = typesAndAmountsSelector.Select(tableName, creature);
             Assert.That(abilities, Is.Not.Empty, creature);
 
             var abilityNames = abilities.Select(a => a.Type);
@@ -4081,7 +4079,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         {
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var abilities = TypesAndAmountsSelector.Select(tableName, creature);
+            var abilities = typesAndAmountsSelector.Select(tableName, creature);
             Assert.That(abilities, Is.Not.Empty, creature);
 
             foreach (var ability in abilities)
@@ -4105,7 +4103,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
 
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var abilities = TypesAndAmountsSelector.Select(tableName, creature);
+            var abilities = typesAndAmountsSelector.Select(tableName, creature);
             Assert.That(abilities, Is.Not.Empty, creature);
 
             var abilityNames = abilities.Select(a => a.Type);
@@ -4116,13 +4114,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Undead)]
         public void DoNotHaveConstitution(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {
-                var abilities = TypesAndAmountsSelector.Select(tableName, creature);
+                var abilities = typesAndAmountsSelector.Select(tableName, creature);
                 var abilityNames = abilities.Select(a => a.Type);
                 Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Constitution), creature);
             }
@@ -4131,13 +4129,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Subtypes.Incorporeal)]
         public void DoNotHaveStrength(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {
-                var abilities = TypesAndAmountsSelector.Select(tableName, creature);
+                var abilities = typesAndAmountsSelector.Select(tableName, creature);
                 var abilityNames = abilities.Select(a => a.Type);
                 Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Strength), creature);
             }
@@ -4148,13 +4146,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Vermin)]
         public void DoNotHaveIntelligence(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {
-                var abilities = TypesAndAmountsSelector.Select(tableName, creature);
+                var abilities = typesAndAmountsSelector.Select(tableName, creature);
                 var abilityNames = abilities.Select(a => a.Type);
                 Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Intelligence), creature);
             }
@@ -4163,13 +4161,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [Test]
         public void AnimalsHaveLowIntelligence()
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
 
             Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {
-                var abilities = TypesAndAmountsSelector.Select(tableName, creature);
+                var abilities = typesAndAmountsSelector.Select(tableName, creature);
                 var abilityNames = abilities.Select(a => a.Type);
                 Assert.That(abilityNames, Contains.Item(AbilityConstants.Intelligence), creature);
 
@@ -4191,16 +4189,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Plant, Ignore = "Some plants lack intelligence")]
         public void HaveAllAbilities(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             Assert.That(table.Keys, Is.SupersetOf(creatures));
 
-            var allAbilities = TypesAndAmountsSelector.Select(tableName, GroupConstants.All);
+            var allAbilities = typesAndAmountsSelector.Select(tableName, GroupConstants.All);
             var allAbilitiesNames = allAbilities.Select(a => a.Type);
 
             foreach (var creature in creatures)
             {
-                var abilities = TypesAndAmountsSelector.Select(tableName, creature);
+                var abilities = typesAndAmountsSelector.Select(tableName, creature);
                 var abilityNames = abilities.Select(a => a.Type);
                 Assert.That(allAbilitiesNames, Is.EquivalentTo(abilityNames), creature);
             }

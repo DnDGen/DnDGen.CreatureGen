@@ -9,10 +9,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
     [TestFixture]
     public class HitDiceTests : AdjustmentsTests
     {
-        protected override string tableName
-        {
-            get { return TableNameConstants.Adjustments.HitDice; }
-        }
+        protected override string tableName => TableNameConstants.Adjustments.HitDice;
 
         [Test]
         public void HitDiceNames()

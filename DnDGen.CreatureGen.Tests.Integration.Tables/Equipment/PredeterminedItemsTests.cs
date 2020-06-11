@@ -11,15 +11,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
     [TestFixture]
     public class PredeterminedItemsTests : CollectionTests
     {
-        [Inject]
-        internal IItemSelector ItemSelector { get; set; }
+        private IItemSelector itemSelector;
 
-        protected override string tableName
+        protected override string tableName => TableNameConstants.Collection.PredeterminedItems;
+
+        [SetUp]
+        public void Setup()
         {
-            get
-            {
-                return TableNameConstants.Collection.PredeterminedItems;
-            }
+            itemSelector = GetNewInstanceOf<IItemSelector>();
         }
 
         [Test]
@@ -756,7 +755,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
             foreach (var trait in traits)
                 item.Traits.Add(trait);
 
-            return ItemSelector.SelectFrom(item);
+            return itemSelector.SelectFrom(item);
         }
 
         [Test]

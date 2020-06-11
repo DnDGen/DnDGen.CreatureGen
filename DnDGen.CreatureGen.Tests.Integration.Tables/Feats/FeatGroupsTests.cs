@@ -8,10 +8,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats
     [TestFixture]
     public class FeatGroupsTests : CollectionTests
     {
-        protected override string tableName
-        {
-            get { return TableNameConstants.Collection.FeatGroups; }
-        }
+        protected override string tableName => TableNameConstants.Collection.FeatGroups;
 
         [Test]
         public void FeatGroupsNames()

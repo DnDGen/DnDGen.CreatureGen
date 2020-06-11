@@ -37,7 +37,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Collection.WeightRolls, "WeightRolls")]
         [TestCase(TableNameConstants.Percentile.AlignmentGoodness, "AlignmentGoodness")]
         [TestCase(TableNameConstants.Percentile.AlignmentLawfulness, "AlignmentLawfulness")]
-        [TestCase(TableNameConstants.Percentile.Traits, "Traits")]
         [TestCase(TableNameConstants.TrueOrFalse.Male, "Male")]
         [TestCase(TableNameConstants.TypeAndAmount.AbilityAdjustments, "AbilityAdjustments")]
         [TestCase(TableNameConstants.TypeAndAmount.Advancements, "Advancements")]

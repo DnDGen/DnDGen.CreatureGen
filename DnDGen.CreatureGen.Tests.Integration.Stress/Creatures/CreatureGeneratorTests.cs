@@ -9,12 +9,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
     [TestFixture]
     public class CreatureGeneratorTests : StressTests
     {
-        [Inject]
-        public CreatureAsserter CreatureAsserter { get; set; }
-        [Inject]
-        public ICollectionSelector CollectionSelector { get; set; }
-        [Inject]
-        public ICreatureGenerator CreatureGenerator { get; set; }
+        private CreatureAsserter creatureAsserter;
+        private ICollectionSelector collectionSelector;
+        private ICreatureGenerator creatureGenerator;
+
+        [SetUp]
+        public void Setup()
+        {
+            creatureAsserter = new CreatureAsserter();
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
+        }
 
         [Test]
         public void StressCreature()
@@ -24,11 +29,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertCreature()
         {
-            var randomCreatureName = CollectionSelector.SelectRandomFrom(allCreatures);
+            var randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
 
-            var creature = CreatureGenerator.Generate(randomCreatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(randomCreatureName, CreatureConstants.Templates.None);
 
-            CreatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature);
         }
 
         [Test]
@@ -39,15 +44,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertCreatureWithTemplate()
         {
-            var randomCreatureName = CollectionSelector.SelectRandomFrom(allCreatures);
-            var randomTemplate = CollectionSelector.SelectRandomFrom(allTemplates);
+            var randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
+            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
 
-            while (!CreatureVerifier.VerifyCompatibility(randomCreatureName, randomTemplate))
-                randomCreatureName = CollectionSelector.SelectRandomFrom(allCreatures);
+            while (!creatureVerifier.VerifyCompatibility(randomCreatureName, randomTemplate))
+                randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
 
-            var creature = CreatureGenerator.Generate(randomCreatureName, randomTemplate);
+            var creature = creatureGenerator.Generate(randomCreatureName, randomTemplate);
 
-            CreatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature);
         }
     }
 }

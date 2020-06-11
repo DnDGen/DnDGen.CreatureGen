@@ -11,13 +11,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
     [TestFixture]
     public class FeatSkillRankRequirementsTests : TypesAndAmountsTests
     {
-        protected override string tableName
-        {
-            get
-            {
-                return TableNameConstants.TypeAndAmount.FeatSkillRankRequirements;
-            }
-        }
+        protected override string tableName => TableNameConstants.TypeAndAmount.FeatSkillRankRequirements;
 
         [Test]
         public void FeatSkillRankRequirementsNames()

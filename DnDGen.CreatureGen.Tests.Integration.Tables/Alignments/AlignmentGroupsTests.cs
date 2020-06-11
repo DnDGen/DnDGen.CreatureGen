@@ -12,15 +12,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
     [TestFixture]
     public class AlignmentGroupsTests : CollectionTests
     {
-        [Inject]
-        public ICollectionSelector CollectionSelector { get; set; }
+        private ICollectionSelector collectionSelector;
 
-        protected override string tableName
+        protected override string tableName => TableNameConstants.Collection.AlignmentGroups;
+
+        [SetUp]
+        public void Setup()
         {
-            get
-            {
-                return TableNameConstants.Collection.AlignmentGroups;
-            }
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
         }
 
         [Test]
@@ -1076,7 +1075,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         public void UsuallyAlignmentHasMajority(string alignment)
         {
             var group = AlignmentConstants.Modifiers.Usually + alignment;
-            var weightedAlignments = CollectionSelector.ExplodeAndPreserveDuplicates(tableName, group);
+            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, group);
 
             var alignmentCount = weightedAlignments.Count(a => a == alignment);
             var halfCount = weightedAlignments.Count() / 2;
@@ -1095,7 +1094,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         public void OftenAlignmentIsMode(string alignment)
         {
             var group = AlignmentConstants.Modifiers.Often + alignment;
-            var weightedAlignments = CollectionSelector.ExplodeAndPreserveDuplicates(tableName, group);
+            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, group);
 
             var modeCount = weightedAlignments
                 .GroupBy(a => a)
@@ -1113,13 +1112,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Types.Vermin)]
         public void AllCreaturesOfTypeAreTrueNeutral(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
             {
-                var alignments = CollectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
+                var alignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
                 Assert.That(alignments, Has.Count.EqualTo(1).And.Contains(AlignmentConstants.TrueNeutral), creature);
             }
         }
@@ -1127,7 +1126,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCaseSource(typeof(CreatureTestData), "All")]
         public void AllCreaturesHaveAlignment(string creature)
         {
-            var alignments = CollectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
+            var alignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
             Assert.That(alignments, Is.Not.Empty, creature);
         }
 
@@ -1138,7 +1137,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
 
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var creatureAlignments = CollectionSelector.Explode(tableName, creature);
+            var creatureAlignments = collectionSelector.Explode(tableName, creature);
             Assert.That(creatureAlignments, Is.SubsetOf(allAlignments), creature);
         }
     }

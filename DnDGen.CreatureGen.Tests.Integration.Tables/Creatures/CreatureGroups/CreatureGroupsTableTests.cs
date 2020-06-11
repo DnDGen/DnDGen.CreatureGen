@@ -9,13 +9,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
     [TestFixture]
     public abstract class CreatureGroupsTableTests : CollectionTests
     {
-        protected override string tableName
-        {
-            get
-            {
-                return TableNameConstants.Collection.CreatureGroups;
-            }
-        }
+        protected override string tableName => TableNameConstants.Collection.CreatureGroups;
 
         protected void AssertCreatureGroupNamesAreComplete()
         {

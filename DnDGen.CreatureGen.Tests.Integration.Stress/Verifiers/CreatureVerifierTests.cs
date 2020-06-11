@@ -1,5 +1,4 @@
 ﻿using DnDGen.Infrastructure.Selectors.Collections;
-using Ninject;
 using NUnit.Framework;
 using System;
 using System.Diagnostics;
@@ -9,17 +8,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
     [TestFixture]
     public class CreatureVerifierTests : StressTests
     {
-        [Inject]
-        public ICollectionSelector CollectionSelector { get; set; }
-        [Inject]
-        public Stopwatch Stopwatch { get; set; }
-
+        private ICollectionSelector collectionSelector;
+        private Stopwatch stopwatch;
         private TimeSpan timeLimit;
 
         [SetUp]
         public void Setup()
         {
-            Stopwatch.Reset();
+            stopwatch = new Stopwatch();
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+
             timeLimit = new TimeSpan(TimeSpan.TicksPerSecond);
         }
 
@@ -31,15 +29,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
 
         private void ValidateRandomCreatureAndTemplate()
         {
-            var randomCreatureName = CollectionSelector.SelectRandomFrom(allCreatures);
-            var randomTemplate = CollectionSelector.SelectRandomFrom(allTemplates);
+            var randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
+            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
 
-            Stopwatch.Restart();
-            var verified = CreatureVerifier.VerifyCompatibility(randomCreatureName, randomTemplate);
-            Stopwatch.Stop();
+            stopwatch.Restart();
+            var verified = creatureVerifier.VerifyCompatibility(randomCreatureName, randomTemplate);
+            stopwatch.Stop();
 
             var message = $"Creature: {randomCreatureName}; Template: {randomTemplate}; Verified: {verified}";
-            Assert.That(Stopwatch.Elapsed, Is.LessThan(timeLimit), message);
+            Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), message);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             var monster = FeatConstants.Monster.All();
             var craft = FeatConstants.MagicItemCreation.All();
 
-            var specialQualityData = CollectionMapper.Map(TableNameConstants.Collection.SpecialQualityData);
+            var specialQualityData = collectionMapper.Map(TableNameConstants.Collection.SpecialQualityData);
             var specialQualities = specialQualityData
                 .Where(kvp => kvp.Value.Any())
                 .SelectMany(kvp => kvp.Value.Select(v => helper.BuildKey(kvp.Key, v)));

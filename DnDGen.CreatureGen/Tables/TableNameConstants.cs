@@ -59,7 +59,6 @@
         {
             public const string AlignmentGoodness = "AlignmentGoodness";
             public const string AlignmentLawfulness = "AlignmentLawfulness";
-            public const string Traits = "Traits";
         }
 
         internal static class TrueOrFalse

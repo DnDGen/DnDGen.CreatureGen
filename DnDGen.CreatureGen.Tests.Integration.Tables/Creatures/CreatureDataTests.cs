@@ -12,16 +12,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class CreatureDataTests : DataTests
     {
-        [Inject]
-        public ICollectionSelector CollectionSelector { get; set; }
+        private ICollectionSelector collectionSelector;
 
-        protected override string tableName
-        {
-            get
-            {
-                return TableNameConstants.Collection.CreatureData;
-            }
-        }
+        protected override string tableName => TableNameConstants.Collection.CreatureData;
 
         protected override void PopulateIndices(IEnumerable<string> collection)
         {
@@ -34,6 +27,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             indices[DataIndexConstants.CreatureData.Reach] = "Reach";
             indices[DataIndexConstants.CreatureData.Size] = "Size";
             indices[DataIndexConstants.CreatureData.Space] = "Space";
+        }
+
+        [SetUp]
+        public void Setup()
+        {
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
         }
 
         [Test]
@@ -905,7 +904,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
         public void CreaturesOfTypeCanUseEquipment(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             Assert.That(table.Keys, Is.SupersetOf(creatures));
 
@@ -923,7 +922,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Types.Vermin)]
         public void CreaturesOfTypeCannotUseEquipment(string creatureType)
         {
-            var creatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
             Assert.That(table.Keys, Is.SupersetOf(creatures));
 

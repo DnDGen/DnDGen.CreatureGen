@@ -11,15 +11,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class CreatureTypesTests : CollectionTests
     {
-        [Inject]
-        public ICollectionSelector CollectionSelector { get; set; }
+        private ICollectionSelector collectionSelector;
 
-        protected override string tableName
+        protected override string tableName => TableNameConstants.Collection.CreatureTypes;
+
+        [SetUp]
+        public void Setup()
         {
-            get
-            {
-                return TableNameConstants.Collection.CreatureTypes;
-            }
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
         }
 
         [Test]
@@ -1306,7 +1305,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(types.Take(1), Is.SubsetOf(allTypes), creature);
 
             var type = types.First();
-            var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+            var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
             Assert.That(creaturesOfType, Contains.Item(creature), type);
         }
 
@@ -1328,7 +1327,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var subtype in subtypes)
             {
-                var creaturesOfType = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
+                var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
                 Assert.That(creaturesOfType, Contains.Item(creature), subtype);
             }
         }

@@ -27,7 +27,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spellsPerDay.Where(s => s.TotalQuantity > 0 || s.HasDomainSpell);
         }
 
-        private IEnumerable<SpellQuantity> GetSpellsPerDay(string caster, int casterLevel, Dictionary<string, Ability> abilities, params string[] domains)
+        private IEnumerable<SpellQuantity> GetSpellsPerDay(string caster, int casterLevel, Dictionary<string, Ability> abilities, IEnumerable<string> domains)
         {
             var spellsForClass = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.SpellsPerDay, $"{caster}:{casterLevel}");
 
@@ -64,7 +64,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             if (divineCasters.Contains(caster))
                 return GetAllKnownSpells(caster, casterLevel, alignment, abilities, domains);
 
-            var quantities = GetKnownSpellQuantities(caster, casterLevel, abilities);
+            var quantities = GetKnownSpellQuantities(caster, casterLevel, abilities, domains);
 
             foreach (var spellQuantity in quantities)
             {
@@ -75,7 +75,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spells;
         }
 
-        private IEnumerable<Spell> GetAllKnownSpells(string caster, int casterLevel, Alignment alignment, Dictionary<string, Ability> abilities, params string[] domains)
+        private IEnumerable<Spell> GetAllKnownSpells(string caster, int casterLevel, Alignment alignment, Dictionary<string, Ability> abilities, IEnumerable<string> domains)
         {
             var spellsForClass = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.KnownSpells, $"{caster}:{casterLevel}");
 
@@ -102,7 +102,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spells;
         }
 
-        private IEnumerable<string> GetSpellNames(string caster, Alignment alignment, params string[] domains)
+        private IEnumerable<string> GetSpellNames(string caster, Alignment alignment, IEnumerable<string> domains)
         {
             var spellNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, caster);
 
@@ -124,7 +124,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spellNames;
         }
 
-        private IEnumerable<string> GetSpellNames(string caster, Alignment alignment, int level, params string[] domains)
+        private IEnumerable<string> GetSpellNames(string caster, Alignment alignment, int level, IEnumerable<string> domains)
         {
             var spellLevels = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.SpellLevels, caster);
 
@@ -147,7 +147,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spell;
         }
 
-        private IEnumerable<SpellQuantity> GetKnownSpellQuantities(string caster, int casterLevel, Dictionary<string, Ability> abilities, params string[] domains)
+        private IEnumerable<SpellQuantity> GetKnownSpellQuantities(string caster, int casterLevel, Dictionary<string, Ability> abilities, IEnumerable<string> domains)
         {
             var spellsForClass = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.KnownSpells, $"{caster}:{casterLevel}");
 
@@ -170,7 +170,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spellQuantities;
         }
 
-        private IEnumerable<Spell> GetRandomKnownSpellsForLevel(SpellQuantity spellQuantity, string caster, Alignment alignment, params string[] domains)
+        private IEnumerable<Spell> GetRandomKnownSpellsForLevel(SpellQuantity spellQuantity, string caster, Alignment alignment, IEnumerable<string> domains)
         {
             var spellNames = GetSpellNames(caster, alignment, spellQuantity.Level, domains);
             var knownSpells = new HashSet<Spell>();
@@ -233,7 +233,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spells;
         }
 
-        private IEnumerable<Spell> GetPreparedSpellsForLevel(SpellQuantity spellQuantity, IEnumerable<Spell> knownSpells, params string[] domains)
+        private IEnumerable<Spell> GetPreparedSpellsForLevel(SpellQuantity spellQuantity, IEnumerable<Spell> knownSpells, IEnumerable<string> domains)
         {
             var preparedSpells = new List<Spell>();
             var knownSpellsForLevel = knownSpells.Where(s => s.Level == spellQuantity.Level && s.Source == spellQuantity.Source);

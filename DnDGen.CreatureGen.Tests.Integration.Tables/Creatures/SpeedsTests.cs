@@ -14,14 +14,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class SpeedsTests : TypesAndAmountsTests
     {
-        [Inject]
-        public ICollectionSelector CollectionSelector { get; set; }
-        [Inject]
-        internal ITypeAndAmountSelector TypesAndAmountsSelector { get; set; }
+        private ICollectionSelector collectionSelector;
+        private ITypeAndAmountSelector typesAndAmountsSelector;
 
-        protected override string tableName
+        protected override string tableName => TableNameConstants.Collection.Speeds;
+
+        [SetUp]
+        public void Setup()
         {
-            get { return TableNameConstants.Collection.Speeds; }
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            typesAndAmountsSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
         }
 
         [Test]
@@ -1389,7 +1391,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             Assert.That(table.Keys, Contains.Item(creature));
 
-            var speeds = TypesAndAmountsSelector.Select(tableName, creature);
+            var speeds = typesAndAmountsSelector.Select(tableName, creature);
             Assert.That(speeds.Select(s => s.Amount), Is.All.Not.Negative, creature);
             Assert.That(speeds.Select(s => s.Amount % 5), Is.All.EqualTo(0), creature);
         }
@@ -1397,13 +1399,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AllAquaticCreaturesHaveSwimSpeeds()
         {
-            var aquaticCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Aquatic);
+            var aquaticCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Aquatic);
 
             Assert.That(table.Keys, Is.SupersetOf(aquaticCreatures));
 
             foreach (var creature in aquaticCreatures)
             {
-                var speeds = TypesAndAmountsSelector.Select(tableName, creature);
+                var speeds = typesAndAmountsSelector.Select(tableName, creature);
                 var aquaticSpeed = speeds.FirstOrDefault(s => s.Type == SpeedConstants.Swim);
 
                 Assert.That(aquaticSpeed, Is.Not.Null, creature);
@@ -1415,13 +1417,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AllWaterCreaturesHaveSwimSpeeds()
         {
-            var aquaticCreatures = CollectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Water);
+            var aquaticCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Water);
 
             Assert.That(table.Keys, Is.SupersetOf(aquaticCreatures));
 
             foreach (var creature in aquaticCreatures)
             {
-                var speeds = TypesAndAmountsSelector.Select(tableName, creature);
+                var speeds = typesAndAmountsSelector.Select(tableName, creature);
                 var aquaticSpeed = speeds.FirstOrDefault(s => s.Type == SpeedConstants.Swim);
 
                 Assert.That(aquaticSpeed, Is.Not.Null, creature);

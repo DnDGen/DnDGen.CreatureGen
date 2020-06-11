@@ -10,10 +10,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
     [TestFixture]
     public class FeatDataTests : DataTests
     {
-        protected override string tableName
-        {
-            get { return TableNameConstants.Collection.FeatData; }
-        }
+        protected override string tableName => TableNameConstants.Collection.FeatData;
 
         protected override void PopulateIndices(IEnumerable<string> collection)
         {

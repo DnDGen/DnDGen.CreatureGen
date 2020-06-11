@@ -5,7 +5,6 @@ using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
-using Ninject;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -16,12 +15,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
     [TestFixture]
     public class AttackDataTests : DataTests
     {
-        [Inject]
-        public ICollectionSelector CollectionSelector { get; set; }
-        [Inject]
-        internal IFeatsSelector FeatsSelector { get; set; }
-        [Inject]
-        internal ICreatureDataSelector CreatureDataSelector { get; set; }
+        private ICollectionSelector collectionSelector;
+        private IFeatsSelector featsSelector;
+        private ICreatureDataSelector creatureDataSelector;
 
         protected override string tableName => TableNameConstants.Collection.AttackData;
 
@@ -47,6 +43,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         public void Setup()
         {
             helper = new AttackHelper();
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            featsSelector = GetNewInstanceOf<IFeatsSelector>();
+            creatureDataSelector = GetNewInstanceOf<ICreatureDataSelector>();
         }
 
         [Test]
@@ -75,7 +74,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
 
             var creatureType = GetCreatureType(creature);
-            var specialQualities = FeatsSelector.SelectSpecialQualities(creature, creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             var hasSpellLikeAbilityAttack = table[creature]
                 .Select(helper.ParseEntry)
                 .Any(d => d[DataIndexConstants.AttackData.NameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility);
@@ -91,7 +90,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         private CreatureType GetCreatureType(string creatureName)
         {
             var creatureType = new CreatureType();
-            var types = CollectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creatureName);
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creatureName);
 
             creatureType.Name = types.First();
             creatureType.SubTypes = types.Skip(1);
@@ -123,7 +122,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
 
             var creatureType = GetCreatureType(creature);
-            var specialQualities = FeatsSelector.SelectSpecialQualities(creature, creatureType);
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             var hasPsionicAttack = table[creature]
                 .Select(helper.ParseEntry)
                 .Any(d => d[DataIndexConstants.AttackData.NameIndex] == FeatConstants.SpecialQualities.Psionic);
@@ -133,18 +132,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
-        [Ignore("Need to implement magic first")]
         public void CreatureWithSpellsAttack_HasMagicSpells(string creature)
         {
             Assert.That(table, Contains.Key(creature));
             Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
 
-            //TODO: Get creature magic
             var hasSpellsAttack = table[creature]
                 .Select(helper.ParseEntry)
                 .Any(d => d[DataIndexConstants.AttackData.NameIndex] == "Spells");
 
-            Assert.Fail("not yet written");
+            var caster = collectionSelector.SelectFrom(TableNameConstants.TypeAndAmount.Casters, creature);
+
+            if (hasSpellsAttack)
+            {
+                Assert.That(caster, Is.Not.Empty);
+            }
+            else
+            {
+                Assert.That(caster, Is.Empty);
+            }
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
@@ -153,7 +159,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(table, Contains.Key(creature));
             Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
 
-            var creatureData = CreatureDataSelector.SelectFor(creature);
+            var creatureData = creatureDataSelector.SelectFor(creature);
             var hasUnnaturalAttack = table[creature]
                 .Select(helper.ParseEntry)
                 .Any(d => !Convert.ToBoolean(d[DataIndexConstants.AttackData.IsNaturalIndex]));

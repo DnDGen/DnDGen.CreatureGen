@@ -15,7 +15,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
         [OneTimeSetUp]
         public void IntegrationTestsFixtureSetup()
         {
-            kernel = new StandardKernel(new NinjectSettings() { InjectNonPublic = true });
+            kernel = new StandardKernel();
 
             var rollGenLoader = new RollGenModuleLoader();
             rollGenLoader.LoadModules(kernel);
@@ -28,12 +28,6 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             var creatureGenLoader = new CreatureGenModuleLoader();
             creatureGenLoader.LoadModules(kernel);
-        }
-
-        [SetUp]
-        public void IntegrationTestsSetup()
-        {
-            kernel.Inject(this);
         }
 
         protected T GetNewInstanceOf<T>()

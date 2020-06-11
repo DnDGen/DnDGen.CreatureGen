@@ -50,11 +50,11 @@
     <None Remove="Tables\Feats\Requirements\RequiredAlignments.xml" />
     <None Remove="Tables\Feats\Requirements\RequiredFeats.xml" />
     <None Remove="Tables\Feats\Requirements\RequiredSizes.xml" />
+    <None Remove="Tables\Magics\Casters.xml" />
     <None Remove="Tables\Skills\SkillBonuses.xml" />
     <None Remove="Tables\Skills\SkillData.xml" />
     <None Remove="Tables\Skills\SkillGroups.xml" />
     <None Remove="Tables\Skills\SkillPoints.xml" />
-    <None Remove="Tables\Traits.xml" />
     <None Include="..\..\CreatureGen\DnDGen.CreatureGen\18531-twenty-sided-dice-vector-thumb.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -113,6 +113,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Feats\Requirements\RequiredSizes.xml" />
+    <EmbeddedResource Include="Tables\Magics\Casters.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\Skills\SkillBonuses.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -123,7 +126,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
-    <EmbeddedResource Include="Tables\Traits.xml" />
   </ItemGroup>
 
   <!--Needed for Framework compatibility when building in Travis-->
