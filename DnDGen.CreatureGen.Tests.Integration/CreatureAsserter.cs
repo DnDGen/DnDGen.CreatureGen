@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             if (!string.IsNullOrEmpty(creature.Magic.Caster))
             {
                 Assert.That(creature.Magic.CasterLevel, Is.Positive, creature.Summary);
-                Assert.That(creature.Magic.ArcaneSpellFailure, Is.Not.Negative, creature.Summary);
+                Assert.That(creature.Magic.ArcaneSpellFailure, Is.InRange(1, 100), creature.Summary);
                 Assert.That(creature.Magic.KnownSpells, Is.Not.Empty, creature.Summary);
                 Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty, creature.Summary);
                 Assert.That(creature.Magic.PreparedSpells, Is.Not.Null, creature.Summary);

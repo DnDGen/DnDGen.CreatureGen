@@ -30,24 +30,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         }
 
         [TestCaseSource(typeof(CreatureTestData), "All")]
-        public void CreaturesWithSpellAttackHaveCaster(string creature)
+        public void CreaturesWithCasterHaveSpellAttack(string creature)
         {
             var attacks = attackSelector.Select(creature, SizeConstants.Medium, SizeConstants.Medium);
+            var hasCaster = table[creature].Any();
 
-            if (attacks.Any(a => a.Name == "Spells"))
-            {
-                Assert.That(table[creature], Is.Not.Empty);
-            }
-            else
-            {
-                Assert.That(table[creature], Is.Empty);
-            }
+            Assert.That(attacks.Any(a => a.Name == "Spells"), Is.EqualTo(hasCaster));
         }
 
         [TestCase(CreatureConstants.Androsphinx, SpellConstants.Casters.Cleric, 6)]
         [TestCase(CreatureConstants.Angel_Planetar, SpellConstants.Casters.Cleric, 17)]
         [TestCase(CreatureConstants.Angel_Solar, SpellConstants.Casters.Cleric, 20)]
         [TestCase(CreatureConstants.Aranea, SpellConstants.Casters.Sorcerer, 3)]
+        [TestCase(CreatureConstants.Couatl, SpellConstants.Casters.Sorcerer, 9)]
         [TestCase(CreatureConstants.Dragon_Black_YoungAdult, SpellConstants.Casters.Sorcerer, 1)]
         [TestCase(CreatureConstants.Dragon_Black_Adult, SpellConstants.Casters.Sorcerer, 3)]
         [TestCase(CreatureConstants.Dragon_Black_MatureAdult, SpellConstants.Casters.Sorcerer, 5)]
@@ -141,7 +136,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         [TestCase(CreatureConstants.Dragon_Silver_Ancient, SpellConstants.Casters.Sorcerer, 15)]
         [TestCase(CreatureConstants.Dragon_Silver_Wyrm, SpellConstants.Casters.Sorcerer, 17)]
         [TestCase(CreatureConstants.Dragon_Silver_GreatWyrm, SpellConstants.Casters.Sorcerer, 19)]
+        [TestCase(CreatureConstants.Drider, SpellConstants.Casters.Sorcerer, 6)]
+        [TestCase(CreatureConstants.FormianQueen, SpellConstants.Casters.Sorcerer, 17)]
+        [TestCase(CreatureConstants.Ghaele, SpellConstants.Casters.Cleric, 14)]
+        [TestCase(CreatureConstants.Lammasu, SpellConstants.Casters.Cleric, 7)]
+        [TestCase(CreatureConstants.Lillend, SpellConstants.Casters.Bard, 6)]
+        [TestCase(CreatureConstants.Naga_Dark, SpellConstants.Casters.Sorcerer, 7)]
+        [TestCase(CreatureConstants.Naga_Guardian, SpellConstants.Casters.Sorcerer, 9)]
+        [TestCase(CreatureConstants.Naga_Spirit, SpellConstants.Casters.Sorcerer, 7)]
+        [TestCase(CreatureConstants.Naga_Water, SpellConstants.Casters.Sorcerer, 7)]
+        [TestCase(CreatureConstants.Nymph, SpellConstants.Casters.Druid, 7)]
         [TestCase(CreatureConstants.Rakshasa, SpellConstants.Casters.Sorcerer, 7)]
+        [TestCase(CreatureConstants.TrumpetArchon, SpellConstants.Casters.Cleric, 14)]
         public void CreatureCaster(string creature, string caster, int casterLevel)
         {
             var typeAndAmount = new Dictionary<string, int>();

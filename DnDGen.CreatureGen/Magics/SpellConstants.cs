@@ -10,10 +10,35 @@
 
         public static class Casters
         {
+            public const string Bard = "Bard";
             public const string Cleric = "Cleric";
             public const string Druid = "Druid";
             public const string Sorcerer = "Sorcerer";
             public const string Wizard = "Wizard";
+        }
+
+        public static class Domains
+        {
+            public const string Air = "Air";
+            public const string Animal = "Animal";
+            public const string Chaos = "Chaos";
+            public const string Destruction = "Destruction";
+            public const string Earth = "Earth";
+            public const string Enchantment = "Enchantment";
+            public const string Evil = "Evil";
+            public const string Fire = "Fire";
+            public const string Good = "Good";
+            public const string Healing = "Healing";
+            public const string Illusion = "Illusion";
+            public const string Knowledge = "Knowledge";
+            public const string Law = "Law";
+            public const string Luck = "Luck";
+            public const string Plant = "Plant";
+            public const string Protection = "Protection";
+            public const string Sun = "Sun";
+            public const string Trickery = "Trickery";
+            public const string War = "War";
+            public const string Water = "Water";
         }
 
         public const string AcidArrow = "Acid arrow";

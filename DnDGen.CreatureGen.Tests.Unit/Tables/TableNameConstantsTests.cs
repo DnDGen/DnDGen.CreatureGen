@@ -31,7 +31,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Collection.SkillGroups, "SkillGroups")]
         [TestCase(TableNameConstants.Collection.SpecialQualityData, "SpecialQualityData")]
         [TestCase(TableNameConstants.Collection.Speeds, "Speeds")]
-        [TestCase(TableNameConstants.Collection.SpellDomains, "SpellDomains")]
         [TestCase(TableNameConstants.Collection.SpellGroups, "SpellGroups")]
         [TestCase(TableNameConstants.Collection.TemplateGroups, "TemplateGroups")]
         [TestCase(TableNameConstants.Collection.WeightRolls, "WeightRolls")]
@@ -47,6 +46,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "FeatSpeedRequirements")]
         [TestCase(TableNameConstants.TypeAndAmount.SaveBonuses, "SaveBonuses")]
         [TestCase(TableNameConstants.TypeAndAmount.SkillBonuses, "SkillBonuses")]
+        [TestCase(TableNameConstants.TypeAndAmount.SpellDomains, "SpellDomains")]
+        [TestCase(TableNameConstants.TypeAndAmount.SpellLevels, "SpellLevels")]
         [TestCase(TableNameConstants.TypeAndAmount.SpellsPerDay, "SpellsPerDay")]
         public void TableNameConstant(string constant, string value)
         {

@@ -45,13 +45,22 @@ namespace DnDGen.CreatureGen.Generators.Magics
             magic.Caster = caster.Type;
             magic.CasterLevel = caster.Amount;
 
-            var possibleDomains = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellDomains, creatureName);
-            var domains = new HashSet<string>();
+            var domainTypesAndAmounts = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.SpellDomains, creatureName);
+            var domains = new List<string>();
 
-            if (possibleDomains.Any())
+            if (domainTypesAndAmounts.Any())
             {
-                var domainCount = GetDomainCount(magic.Caster);
-                while (domains.Count < domainCount && domains.Count < possibleDomains.Count())
+                var domainCount = domainTypesAndAmounts.First().Amount;
+                var possibleDomains = domainTypesAndAmounts
+                    .Select(d => d.Type)
+                    .Except(domains);
+
+                if (domainCount >= possibleDomains.Count())
+                {
+                    domains.AddRange(possibleDomains);
+                }
+
+                while (domains.Count < domainCount && possibleDomains.Any())
                 {
                     var domain = collectionsSelector.SelectRandomFrom(possibleDomains);
                     domains.Add(domain);
@@ -60,7 +69,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
 
             magic.Domains = domains;
 
-            magic = MakeSpells(magic, alignment, abilities);
+            magic = MakeSpells(creatureName, magic, alignment, abilities);
 
             if (equipment.Armor == null && equipment.Shield == null)
                 return magic;
@@ -82,21 +91,10 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return magic;
         }
 
-        private int GetDomainCount(string caster)
-        {
-            switch (caster)
-            {
-                case SpellConstants.Casters.Cleric: return 2;
-                case SpellConstants.Casters.Sorcerer:
-                case SpellConstants.Casters.Wizard: return 1;
-                default: return 0;
-            }
-        }
-
-        private Magic MakeSpells(Magic magic, Alignment alignment, Dictionary<string, Ability> abilities)
+        private Magic MakeSpells(string creature, Magic magic, Alignment alignment, Dictionary<string, Ability> abilities)
         {
             magic.SpellsPerDay = spellsGenerator.GeneratePerDay(magic.Caster, magic.CasterLevel, abilities, magic.Domains.ToArray());
-            magic.KnownSpells = spellsGenerator.GenerateKnown(magic.Caster, magic.CasterLevel, alignment, abilities, magic.Domains.ToArray());
+            magic.KnownSpells = spellsGenerator.GenerateKnown(creature, magic.Caster, magic.CasterLevel, alignment, abilities, magic.Domains.ToArray());
 
             var classesThatPrepareSpells = collectionsSelector.SelectFrom(TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells);
             if (classesThatPrepareSpells.Contains(magic.Caster))

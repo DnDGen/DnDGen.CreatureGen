@@ -87,7 +87,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown(caster.Type, caster.Amount, alignment, abilities))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities))
                 .Returns(knownSpells);
             mockSpellsGenerator
                 .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay))
@@ -101,20 +101,12 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             Assert.That(magic.PreparedSpells, Is.EqualTo(preparedSpells));
         }
 
-        //INFO: Example is Blue Dragons that can cast from cleric, air, evil, and law domains
-        //all as arcane spells (Sorcerer)
         [Test]
-        public void GeneratePredeterminedDomains()
+        public void GenerateDomains_None()
         {
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void GenerateNoDomains_NoDomainsForCreature()
-        {
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellDomains, "creature"))
-                .Returns(Enumerable.Empty<string>());
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
+                .Returns(Enumerable.Empty<TypeAndAmountSelection>());
 
             var spellsPerDay = new List<SpellQuantity> { new SpellQuantity() };
             var knownSpells = new List<Spell> { new Spell() };
@@ -124,7 +116,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown(caster.Type, caster.Amount, alignment, abilities))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities))
                 .Returns(knownSpells);
             mockSpellsGenerator
                 .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay))
@@ -139,62 +131,104 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             Assert.That(magic.PreparedSpells, Is.EqualTo(preparedSpells));
         }
 
+        //INFO: Example is Blue Dragons that can cast from cleric, air, evil, and law domains
+        //all as arcane spells (Sorcerer)
         [Test]
-        public void GenerateDomains_Cleric()
+        public void GenerateDomains_All()
         {
-            var creatureDomains = new[] { "domain 1", "domain 2", "domain 3", "domain 4" };
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellDomains, "creature"))
-                .Returns(creatureDomains);
-
-            caster.Type = SpellConstants.Casters.Cleric;
-            classesThatPrepareSpells.Add(SpellConstants.Casters.Cleric);
-
-            mockCollectionsSelector
-                .SetupSequence(s => s.SelectRandomFrom(creatureDomains))
-                .Returns("domain 2")
-                .Returns("domain 4")
-                .Returns("domain 666");
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
+                .Returns(new[]
+                {
+                    new TypeAndAmountSelection { Type = "domain 1", Amount = 4 },
+                    new TypeAndAmountSelection { Type = "domain 2", Amount = 4 },
+                    new TypeAndAmountSelection { Type = "domain 3", Amount = 4 },
+                    new TypeAndAmountSelection { Type = "domain 4", Amount = 4 },
+                });
 
             var spellsPerDay = new List<SpellQuantity> { new SpellQuantity() };
             var knownSpells = new List<Spell> { new Spell() };
             var preparedSpells = new List<Spell> { new Spell() };
 
             mockSpellsGenerator
-                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities, "domain 2", "domain 4"))
+                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities, "domain 1", "domain 2", "domain 3", "domain 4"))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown(caster.Type, caster.Amount, alignment, abilities, "domain 2", "domain 4"))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities, "domain 1", "domain 2", "domain 3", "domain 4"))
                 .Returns(knownSpells);
             mockSpellsGenerator
-                .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay, "domain 2", "domain 4"))
+                .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay, "domain 1", "domain 2", "domain 3", "domain 4"))
                 .Returns(preparedSpells);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
-            Assert.That(magic.Caster, Is.EqualTo(SpellConstants.Casters.Cleric));
+            Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
-            Assert.That(magic.Domains.Count(), Is.EqualTo(2));
-            Assert.That(magic.Domains, Contains.Item("domain 2").And.Contains("domain 4"));
+            Assert.That(magic.Domains.Count(), Is.EqualTo(4));
+            Assert.That(magic.Domains, Contains.Item("domain 1")
+                .And.Contains("domain 2")
+                .And.Contains("domain 3")
+                .And.Contains("domain 4"));
             Assert.That(magic.SpellsPerDay, Is.EqualTo(spellsPerDay));
             Assert.That(magic.KnownSpells, Is.EqualTo(knownSpells));
             Assert.That(magic.PreparedSpells, Is.EqualTo(preparedSpells));
         }
 
         [Test]
-        public void GenerateDomains_Cleric_Only1Available()
+        public void GenerateDomains_RandomSubset()
         {
-            var creatureDomains = new[] { "domain 3" };
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellDomains, "creature"))
-                .Returns(creatureDomains);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
+                .Returns(new[]
+                {
+                    new TypeAndAmountSelection { Type = "domain 1", Amount = 2 },
+                    new TypeAndAmountSelection { Type = "domain 2", Amount = 2 },
+                    new TypeAndAmountSelection { Type = "domain 3", Amount = 2 },
+                    new TypeAndAmountSelection { Type = "domain 4", Amount = 2 },
+                });
 
-            caster.Type = SpellConstants.Casters.Cleric;
-            classesThatPrepareSpells.Add(SpellConstants.Casters.Cleric);
-
+            var count = 0;
             mockCollectionsSelector
-                .SetupSequence(s => s.SelectRandomFrom(creatureDomains))
-                .Returns("domain 3")
-                .Returns("domain 666");
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> c) => c.ElementAt(count++ % c.Count()));
+
+            var spellsPerDay = new List<SpellQuantity> { new SpellQuantity() };
+            var knownSpells = new List<Spell> { new Spell() };
+            var preparedSpells = new List<Spell> { new Spell() };
+
+            mockSpellsGenerator
+                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities, "domain 1", "domain 3"))
+                .Returns(spellsPerDay);
+            mockSpellsGenerator
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities, "domain 1", "domain 3"))
+                .Returns(knownSpells);
+            mockSpellsGenerator
+                .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay, "domain 1", "domain 3"))
+                .Returns(preparedSpells);
+
+            var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
+            Assert.That(magic.Caster, Is.EqualTo("class name"));
+            Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.Domains.Count(), Is.EqualTo(2));
+            Assert.That(magic.Domains, Contains.Item("domain 1").And.Contains("domain 3"));
+            Assert.That(magic.SpellsPerDay, Is.EqualTo(spellsPerDay));
+            Assert.That(magic.KnownSpells, Is.EqualTo(knownSpells));
+            Assert.That(magic.PreparedSpells, Is.EqualTo(preparedSpells));
+        }
+
+        [Test]
+        public void GenerateDomains_Only1Available()
+        {
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
+                .Returns(new[]
+                {
+                    new TypeAndAmountSelection { Type = "domain 3", Amount = 1 },
+                });
+
+            var count = 0;
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> c) => c.ElementAt(count++ % c.Count()));
 
             var spellsPerDay = new List<SpellQuantity> { new SpellQuantity() };
             var knownSpells = new List<Spell> { new Spell() };
@@ -204,14 +238,14 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities, "domain 3"))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown(caster.Type, caster.Amount, alignment, abilities, "domain 3"))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities, "domain 3"))
                 .Returns(knownSpells);
             mockSpellsGenerator
                 .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay, "domain 3"))
                 .Returns(preparedSpells);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
-            Assert.That(magic.Caster, Is.EqualTo(SpellConstants.Casters.Cleric));
+            Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
             Assert.That(magic.Domains.Count(), Is.EqualTo(1));
             Assert.That(magic.Domains, Contains.Item("domain 3"));
@@ -221,83 +255,41 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         }
 
         [Test]
-        public void GenerateDomains_Cleric_DoNotRepeatDomains()
+        public void GenerateDomains_DoNotRepeatDomains()
         {
-            var creatureDomains = new[] { "domain 1", "domain 2", "domain 3", "domain 4" };
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellDomains, "creature"))
-                .Returns(creatureDomains);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
+                .Returns(new[]
+                {
+                    new TypeAndAmountSelection { Type = "domain 1", Amount = 2 },
+                    new TypeAndAmountSelection { Type = "domain 2", Amount = 2 },
+                    new TypeAndAmountSelection { Type = "domain 3", Amount = 2 },
+                    new TypeAndAmountSelection { Type = "domain 4", Amount = 2 },
+                });
 
-            caster.Type = SpellConstants.Casters.Cleric;
-            classesThatPrepareSpells.Add(SpellConstants.Casters.Cleric);
-
             mockCollectionsSelector
-                .SetupSequence(s => s.SelectRandomFrom(creatureDomains))
-                .Returns("domain 2")
-                .Returns("domain 2")
-                .Returns("domain 4")
-                .Returns("domain 666");
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> c) => c.First());
 
             var spellsPerDay = new List<SpellQuantity> { new SpellQuantity() };
             var knownSpells = new List<Spell> { new Spell() };
             var preparedSpells = new List<Spell> { new Spell() };
 
             mockSpellsGenerator
-                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities, "domain 2", "domain 4"))
+                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities, "domain 1", "domain 2"))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown(caster.Type, caster.Amount, alignment, abilities, "domain 2", "domain 4"))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities, "domain 1", "domain 2"))
                 .Returns(knownSpells);
             mockSpellsGenerator
-                .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay, "domain 2", "domain 4"))
+                .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay, "domain 1", "domain 2"))
                 .Returns(preparedSpells);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
-            Assert.That(magic.Caster, Is.EqualTo(SpellConstants.Casters.Cleric));
+            Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
             Assert.That(magic.Domains.Count(), Is.EqualTo(2));
-            Assert.That(magic.Domains, Contains.Item("domain 2").And.Contains("domain 4"));
-            Assert.That(magic.SpellsPerDay, Is.EqualTo(spellsPerDay));
-            Assert.That(magic.KnownSpells, Is.EqualTo(knownSpells));
-            Assert.That(magic.PreparedSpells, Is.EqualTo(preparedSpells));
-        }
-
-        [TestCase(SpellConstants.Casters.Sorcerer)]
-        [TestCase(SpellConstants.Casters.Wizard)]
-        public void GenerateDomains_SorcererOrWizard(string casterType)
-        {
-            var creatureDomains = new[] { "domain 1", "domain 2", "domain 3", "domain 4" };
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellDomains, "creature"))
-                .Returns(creatureDomains);
-
-            caster.Type = casterType;
-            classesThatPrepareSpells.Add(casterType);
-
-            mockCollectionsSelector
-                .SetupSequence(s => s.SelectRandomFrom(creatureDomains))
-                .Returns("domain 2")
-                .Returns("domain 666");
-
-            var spellsPerDay = new List<SpellQuantity> { new SpellQuantity() };
-            var knownSpells = new List<Spell> { new Spell() };
-            var preparedSpells = new List<Spell> { new Spell() };
-
-            mockSpellsGenerator
-                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities, "domain 2"))
-                .Returns(spellsPerDay);
-            mockSpellsGenerator
-                .Setup(g => g.GenerateKnown(caster.Type, caster.Amount, alignment, abilities, "domain 2"))
-                .Returns(knownSpells);
-            mockSpellsGenerator
-                .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay, "domain 2"))
-                .Returns(preparedSpells);
-
-            var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
-            Assert.That(magic.Caster, Is.EqualTo(casterType));
-            Assert.That(magic.CasterLevel, Is.EqualTo(42));
-            Assert.That(magic.Domains.Count(), Is.EqualTo(1));
-            Assert.That(magic.Domains, Contains.Item("domain 2"));
+            Assert.That(magic.Domains, Contains.Item("domain 1").And.Contains("domain 2"));
             Assert.That(magic.SpellsPerDay, Is.EqualTo(spellsPerDay));
             Assert.That(magic.KnownSpells, Is.EqualTo(knownSpells));
             Assert.That(magic.PreparedSpells, Is.EqualTo(preparedSpells));
@@ -316,7 +308,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown(caster.Type, caster.Amount, alignment, abilities))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities))
                 .Returns(knownSpells);
             mockSpellsGenerator
                 .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay))

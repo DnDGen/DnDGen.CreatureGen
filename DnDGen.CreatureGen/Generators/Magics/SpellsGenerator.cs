@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System;
@@ -56,38 +57,38 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spellsPerDay;
         }
 
-        public IEnumerable<Spell> GenerateKnown(string caster, int casterLevel, Alignment alignment, Dictionary<string, Ability> abilities, params string[] domains)
+        public IEnumerable<Spell> GenerateKnown(string creature, string caster, int casterLevel, Alignment alignment, Dictionary<string, Ability> abilities, params string[] domains)
         {
             var spells = new List<Spell>();
 
             var divineCasters = collectionsSelector.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Divine);
             if (divineCasters.Contains(caster))
-                return GetAllKnownSpells(caster, casterLevel, alignment, abilities, domains);
+                return GetAllKnownSpells(creature, caster, casterLevel, alignment, abilities, domains);
 
             var quantities = GetKnownSpellQuantities(caster, casterLevel, abilities, domains);
 
             foreach (var spellQuantity in quantities)
             {
-                var levelSpells = GetRandomKnownSpellsForLevel(spellQuantity, caster, alignment, domains);
+                var levelSpells = GetRandomKnownSpellsForLevel(creature, spellQuantity, caster, alignment, domains);
                 spells.AddRange(levelSpells);
             }
 
             return spells;
         }
 
-        private IEnumerable<Spell> GetAllKnownSpells(string caster, int casterLevel, Alignment alignment, Dictionary<string, Ability> abilities, IEnumerable<string> domains)
+        private IEnumerable<Spell> GetAllKnownSpells(string creature, string caster, int casterLevel, Alignment alignment, Dictionary<string, Ability> abilities, IEnumerable<string> domains)
         {
-            var spellsForClass = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.KnownSpells, $"{caster}:{casterLevel}");
+            var knownSpellQuantities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.KnownSpells, $"{caster}:{casterLevel}");
 
             var spellAbility = collectionsSelector.SelectFrom(TableNameConstants.Collection.AbilityGroups, $"{caster}:Spellcaster").Single();
             var maxSpellLevel = abilities[spellAbility].FullScore - 10;
-            var spellsForCharacter = spellsForClass.Where(s => Convert.ToInt32(s.Type) <= maxSpellLevel);
+            var knownSpellQuantitiesForCreature = knownSpellQuantities.Where(s => Convert.ToInt32(s.Type) <= maxSpellLevel);
             var spells = new List<Spell>();
 
-            foreach (var typeAndAmount in spellsForCharacter)
+            foreach (var typeAndAmount in knownSpellQuantitiesForCreature)
             {
                 var spellLevel = Convert.ToInt32(typeAndAmount.Type);
-                var spellNames = GetSpellNames(caster, alignment, spellLevel, domains);
+                var spellNames = GetSpellNamesForCaster(creature, caster, alignment, spellLevel, domains);
                 var specialistSpells = GetSpellNamesForFields(domains, spellLevel);
 
                 spellNames = spellNames.Union(specialistSpells);
@@ -102,11 +103,18 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spells;
         }
 
-        private IEnumerable<string> GetSpellNames(string caster, Alignment alignment, IEnumerable<string> domains)
+        private IEnumerable<string> GetSpellNames(string creature, string caster, Alignment alignment, IEnumerable<string> domains)
         {
-            var spellNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, caster);
+            var spellNames = new List<string>();
+
+            var casterSpellNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, caster);
+            spellNames.AddRange(casterSpellNames);
 
             var prohibited = new List<string>();
+
+            var creatureProhibited = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, $"{creature}:Prohibited");
+            prohibited.AddRange(creatureProhibited);
+
             var prohibitedByGoodness = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, $"{alignment.Goodness}:Prohibited");
             var prohibitedByLawfulness = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, $"{alignment.Lawfulness}:Prohibited");
 
@@ -115,23 +123,30 @@ namespace DnDGen.CreatureGen.Generators.Magics
 
             foreach (var domain in domains)
             {
+                var domainSpellNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, domain);
+                spellNames.AddRange(domainSpellNames);
+
                 var prohibitedByDomain = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, $"{domain}:Prohibited");
                 prohibited.AddRange(prohibitedByDomain);
             }
 
-            spellNames = spellNames.Except(prohibited);
+            spellNames = spellNames.Except(prohibited).ToList();
 
             return spellNames;
         }
 
-        private IEnumerable<string> GetSpellNames(string caster, Alignment alignment, int level, IEnumerable<string> domains)
+        private IEnumerable<string> GetSpellNamesForCaster(string creature, string caster, Alignment alignment, int level, IEnumerable<string> domains)
         {
-            var spellLevels = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.SpellLevels, caster);
+            var spellLevels = new List<TypeAndAmountSelection>();
+
+            var casterSpellLevels = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.SpellLevels, caster);
+            spellLevels.AddRange(casterSpellLevels);
 
             var spellNamesOfLevel = spellLevels
                 .Where(s => s.Amount == level)
                 .Select(s => s.Type);
-            var spellNames = GetSpellNames(caster, alignment, domains);
+
+            var spellNames = GetSpellNames(creature, caster, alignment, domains);
             spellNames = spellNames.Intersect(spellNamesOfLevel);
 
             return spellNames;
@@ -170,9 +185,9 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spellQuantities;
         }
 
-        private IEnumerable<Spell> GetRandomKnownSpellsForLevel(SpellQuantity spellQuantity, string caster, Alignment alignment, IEnumerable<string> domains)
+        private IEnumerable<Spell> GetRandomKnownSpellsForLevel(string creature, SpellQuantity spellQuantity, string caster, Alignment alignment, IEnumerable<string> domains)
         {
-            var spellNames = GetSpellNames(caster, alignment, spellQuantity.Level, domains);
+            var spellNames = GetSpellNamesForCaster(creature, caster, alignment, spellQuantity.Level, domains);
             var knownSpells = new HashSet<Spell>();
 
             if (spellQuantity.Quantity >= spellNames.Count())

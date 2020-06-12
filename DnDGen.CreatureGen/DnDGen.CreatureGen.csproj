@@ -51,6 +51,7 @@
     <None Remove="Tables\Feats\Requirements\RequiredFeats.xml" />
     <None Remove="Tables\Feats\Requirements\RequiredSizes.xml" />
     <None Remove="Tables\Magics\Casters.xml" />
+    <None Remove="Tables\Magics\SpellDomains.xml" />
     <None Remove="Tables\Skills\SkillBonuses.xml" />
     <None Remove="Tables\Skills\SkillData.xml" />
     <None Remove="Tables\Skills\SkillGroups.xml" />
@@ -113,6 +114,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Feats\Requirements\RequiredSizes.xml" />
+    <EmbeddedResource Include="Tables\Magics\SpellDomains.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\Magics\Casters.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -21,6 +21,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
         }
 
+        [TestCase(CreatureConstants.Angel_Planetar)]
+        [TestCase(CreatureConstants.Angel_Solar)]
+        [TestCase(CreatureConstants.Aranea)]
+        [TestCase(CreatureConstants.Dragon_Black_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Blue_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Green_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Red_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_White_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Brass_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Copper_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Gold_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Silver_GreatWyrm)]
         [TestCase(CreatureConstants.Rakshasa)]
         public void CanGenerateSpellsForThoseWhoCastAsSpellcaster(string creatureName)
         {
@@ -30,7 +43,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             Assert.That(creature.Magic, Is.Not.Null);
             Assert.That(creature.Magic.Caster, Is.Not.Empty);
             Assert.That(creature.Magic.CasterLevel, Is.Positive);
-            Assert.That(creature.Magic.ArcaneSpellFailure, Is.Not.Negative);
+            Assert.That(creature.Magic.ArcaneSpellFailure, Is.InRange(0, 100));
             Assert.That(creature.Magic.Domains, Is.Not.Null);
             Assert.That(creature.Magic.KnownSpells, Is.Not.Empty.And.All.Not.Null);
             Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty.And.All.Not.Null);

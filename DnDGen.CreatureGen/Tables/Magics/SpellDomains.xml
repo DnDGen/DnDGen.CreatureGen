@@ -54,7 +54,9 @@
   </collection>
   <collection>
     <name>Androsphinx</name>
-    <entry>Cleric@6</entry>
+    <entry>Good@3</entry>
+    <entry>Healing@3</entry>
+    <entry>Protection@3</entry>
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
@@ -62,11 +64,19 @@
   </collection>
   <collection>
     <name>Angel, Planetar</name>
-    <entry>Cleric@17</entry>
+    <entry>Air@2</entry>
+    <entry>Destruction@2</entry>
+    <entry>Good@2</entry>
+    <entry>Law@2</entry>
+    <entry>War@2</entry>
   </collection>
   <collection>
     <name>Angel, Solar</name>
-    <entry>Cleric@20</entry>
+    <entry>Air@2</entry>
+    <entry>Destruction@2</entry>
+    <entry>Good@2</entry>
+    <entry>Law@2</entry>
+    <entry>War@2</entry>
   </collection>
   <collection>
     <name>Animated Object, Anvil, Colossal</name>
@@ -509,7 +519,8 @@
   </collection>
   <collection>
     <name>Aranea</name>
-    <entry>Sorcerer@3</entry>
+    <entry>Enchantment@2</entry>
+    <entry>Illusion@2</entry>
   </collection>
   <collection>
     <name>Assassin Vine</name>
@@ -588,17 +599,14 @@
   </collection>
   <collection>
     <name>Black Dragon, Adult</name>
-    <entry>Sorcerer@3</entry>
     
   </collection>
   <collection>
     <name>Black Dragon, Ancient</name>
-    <entry>Sorcerer@11</entry>
     
   </collection>
   <collection>
     <name>Black Dragon, Great Wyrm</name>
-    <entry>Sorcerer@15</entry>
     
   </collection>
   <collection>
@@ -607,17 +615,14 @@
   </collection>
   <collection>
     <name>Black Dragon, Mature Adult</name>
-    <entry>Sorcerer@5</entry>
     
   </collection>
   <collection>
     <name>Black Dragon, Old</name>
-    <entry>Sorcerer@7</entry>
     
   </collection>
   <collection>
     <name>Black Dragon, Very Old</name>
-    <entry>Sorcerer@9</entry>
     
   </collection>
   <collection>
@@ -626,7 +631,6 @@
   </collection>
   <collection>
     <name>Black Dragon, Wyrm</name>
-    <entry>Sorcerer@13</entry>
     
   </collection>
   <collection>
@@ -635,7 +639,6 @@
   </collection>
   <collection>
     <name>Black Dragon, Young Adult</name>
-    <entry>Sorcerer@1</entry>
     
   </collection>
   <collection>
@@ -650,37 +653,58 @@
   </collection>
   <collection>
     <name>Blue Dragon, Adult</name>
-    <entry>Sorcerer@5</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Air@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Law@4</entry>
+
   </collection>
   <collection>
     <name>Blue Dragon, Ancient</name>
-    <entry>Sorcerer@13</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Air@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Law@4</entry>
+
   </collection>
   <collection>
     <name>Blue Dragon, Great Wyrm</name>
-    <entry>Sorcerer@17</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Air@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Law@4</entry>
+
   </collection>
   <collection>
     <name>Blue Dragon, Juvenile</name>
-    <entry>Sorcerer@1</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Air@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Law@4</entry>
+
   </collection>
   <collection>
     <name>Blue Dragon, Mature Adult</name>
-    <entry>Sorcerer@7</entry>
+    <entry>Cleric@4</entry>
+    <entry>Air@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Law@4</entry>
     
   </collection>
   <collection>
     <name>Blue Dragon, Old</name>
-    <entry>Sorcerer@9</entry>
+    <entry>Cleric@4</entry>
+    <entry>Air@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Law@4</entry>
     
   </collection>
   <collection>
     <name>Blue Dragon, Very Old</name>
-    <entry>Sorcerer@11</entry>
+    <entry>Cleric@4</entry>
+    <entry>Air@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Law@4</entry>
     
   </collection>
   <collection>
@@ -689,7 +713,10 @@
   </collection>
   <collection>
     <name>Blue Dragon, Wyrm</name>
-    <entry>Sorcerer@15</entry>
+    <entry>Cleric@4</entry>
+    <entry>Air@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Law@4</entry>
     
   </collection>
   <collection>
@@ -698,7 +725,10 @@
   </collection>
   <collection>
     <name>Blue Dragon, Young Adult</name>
-    <entry>Sorcerer@3</entry>
+    <entry>Cleric@4</entry>
+    <entry>Air@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Law@4</entry>
     
   </collection>
   <collection>
@@ -723,38 +753,45 @@
   </collection>
   <collection>
     <name>Brass Dragon, Adult</name>
-    <entry>Sorcerer@7</entry>
-    
+    <entry>Cleric@3</entry>
+    <entry>Chaos@3</entry>
+    <entry>Knowledge@3</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Ancient</name>
-    <entry>Sorcerer@15</entry>
-    
+    <entry>Cleric@3</entry>
+    <entry>Chaos@3</entry>
+    <entry>Knowledge@3</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Great Wyrm</name>
-    <entry>Sorcerer@19</entry>
-    
+    <entry>Cleric@3</entry>
+    <entry>Chaos@3</entry>
+    <entry>Knowledge@3</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Juvenile</name>
-    <entry>Sorcerer@3</entry>
-    
+    <entry>Cleric@3</entry>
+    <entry>Chaos@3</entry>
+    <entry>Knowledge@3</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Mature Adult</name>
-    <entry>Sorcerer@9</entry>
-    
+    <entry>Cleric@3</entry>
+    <entry>Chaos@3</entry>
+    <entry>Knowledge@3</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Old</name>
-    <entry>Sorcerer@11</entry>
-    
+    <entry>Cleric@3</entry>
+    <entry>Chaos@3</entry>
+    <entry>Knowledge@3</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Very Old</name>
-    <entry>Sorcerer@13</entry>
-    
+    <entry>Cleric@3</entry>
+    <entry>Chaos@3</entry>
+    <entry>Knowledge@3</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Very Young</name>
@@ -762,8 +799,9 @@
   </collection>
   <collection>
     <name>Brass Dragon, Wyrm</name>
-    <entry>Sorcerer@17</entry>
-    
+    <entry>Cleric@3</entry>
+    <entry>Chaos@3</entry>
+    <entry>Knowledge@3</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Wyrmling</name>
@@ -771,48 +809,64 @@
   </collection>
   <collection>
     <name>Brass Dragon, Young Adult</name>
-    <entry>Sorcerer@5</entry>
-    
+    <entry>Cleric@3</entry>
+    <entry>Chaos@3</entry>
+    <entry>Knowledge@3</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Young</name>
-    <entry>Sorcerer@1</entry>
-    
+    <entry>Cleric@3</entry>
+    <entry>Chaos@3</entry>
+    <entry>Knowledge@3</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Adult</name>
-    <entry>Sorcerer@7</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Animal@4</entry>
+    <entry>Law@4</entry>
+    <entry>Water@4</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Ancient</name>
-    <entry>Sorcerer@15</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Animal@4</entry>
+    <entry>Law@4</entry>
+    <entry>Water@4</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Great Wyrm</name>
-    <entry>Sorcerer@19</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Animal@4</entry>
+    <entry>Law@4</entry>
+    <entry>Water@4</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Juvenile</name>
-    <entry>Sorcerer@3</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Animal@4</entry>
+    <entry>Law@4</entry>
+    <entry>Water@4</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Mature Adult</name>
-    <entry>Sorcerer@9</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Animal@4</entry>
+    <entry>Law@4</entry>
+    <entry>Water@4</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Old</name>
-    <entry>Sorcerer@11</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Animal@4</entry>
+    <entry>Law@4</entry>
+    <entry>Water@4</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Very Old</name>
-    <entry>Sorcerer@13</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Animal@4</entry>
+    <entry>Law@4</entry>
+    <entry>Water@4</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Very Young</name>
@@ -820,8 +874,10 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrm</name>
-    <entry>Sorcerer@17</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Animal@4</entry>
+    <entry>Law@4</entry>
+    <entry>Water@4</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Wyrmling</name>
@@ -829,13 +885,17 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Young Adult</name>
-    <entry>Sorcerer@5</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Animal@4</entry>
+    <entry>Law@4</entry>
+    <entry>Water@4</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Young</name>
-    <entry>Sorcerer@1</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Animal@4</entry>
+    <entry>Law@4</entry>
+    <entry>Water@4</entry>
   </collection>
   <collection>
     <name>Brown Bear</name>
@@ -921,38 +981,52 @@
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
-    <entry>Sorcerer@7</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Earth@4</entry>
+    <entry>Trickery@4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Ancient</name>
-    <entry>Sorcerer@15</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Earth@4</entry>
+    <entry>Trickery@4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
-    <entry>Sorcerer@19</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Earth@4</entry>
+    <entry>Trickery@4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
-    <entry>Sorcerer@3</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Earth@4</entry>
+    <entry>Trickery@4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Mature Adult</name>
-    <entry>Sorcerer@9</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Earth@4</entry>
+    <entry>Trickery@4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Old</name>
-    <entry>Sorcerer@11</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Earth@4</entry>
+    <entry>Trickery@4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Old</name>
-    <entry>Sorcerer@13</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Earth@4</entry>
+    <entry>Trickery@4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Young</name>
@@ -960,8 +1034,10 @@
   </collection>
   <collection>
     <name>Copper Dragon, Wyrm</name>
-    <entry>Sorcerer@17</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Earth@4</entry>
+    <entry>Trickery@4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrmling</name>
@@ -969,18 +1045,24 @@
   </collection>
   <collection>
     <name>Copper Dragon, Young Adult</name>
-    <entry>Sorcerer@5</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Earth@4</entry>
+    <entry>Trickery@4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Young</name>
-    <entry>Sorcerer@1</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Earth@4</entry>
+    <entry>Trickery@4</entry>
   </collection>
   <collection>
     <name>Couatl</name>
-    <entry>Sorcerer@9</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Air@4</entry>
+    <entry>Good@4</entry>
+    <entry>Law@4</entry>
   </collection>
   <collection>
     <name>Criosphinx</name>
@@ -991,7 +1073,6 @@
   </collection>
   <collection>
     <name>Dark Naga</name>
-    <entry>Sorcerer@7</entry>
   </collection>
   <collection>
     <name>Darkmantle</name>
@@ -1102,7 +1183,11 @@
   </collection>
   <collection>
     <name>Drider</name>
-    <entry>Sorcerer@6</entry>
+    <entry>Cleric@2</entry>
+    <entry>Chaos@2</entry>
+    <entry>Destruction@2</entry>
+    <entry>Evil@2</entry>
+    <entry>Trickery@2</entry>
   </collection>
   <collection>
     <name>Drow</name>
@@ -1248,7 +1333,6 @@
   </collection>
   <collection>
     <name>Formian Queen</name>
-    <entry>Sorcerer@17</entry>
   </collection>
   <collection>
     <name>Formian Taskmaster</name>
@@ -1278,7 +1362,11 @@
   </collection>
   <collection>
     <name>Ghaele</name>
-    <entry>Cleric@14</entry>
+    <entry>Air@2</entry>
+    <entry>Animal@2</entry>
+    <entry>Chaos@2</entry>
+    <entry>Good@2</entry>
+    <entry>Plant@2</entry>
     
   </collection>
   <collection>
@@ -1360,38 +1448,53 @@
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
-    <entry>Sorcerer@7</entry>
+    <entry>Cleric@4</entry>
+    <entry>Law@4</entry>
+    <entry>Luck@4</entry>
+    <entry>Good@4</entry>
 
   </collection>
   <collection>
     <name>Gold Dragon, Ancient</name>
-    <entry>Sorcerer@15</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Law@4</entry>
+    <entry>Luck@4</entry>
+    <entry>Good@4</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Great Wyrm</name>
-    <entry>Sorcerer@19</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Law@4</entry>
+    <entry>Luck@4</entry>
+    <entry>Good@4</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
-    <entry>Sorcerer@3</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Law@4</entry>
+    <entry>Luck@4</entry>
+    <entry>Good@4</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Mature Adult</name>
-    <entry>Sorcerer@9</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Law@4</entry>
+    <entry>Luck@4</entry>
+    <entry>Good@4</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Old</name>
-    <entry>Sorcerer@11</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Law@4</entry>
+    <entry>Luck@4</entry>
+    <entry>Good@4</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Old</name>
-    <entry>Sorcerer@13</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Law@4</entry>
+    <entry>Luck@4</entry>
+    <entry>Good@4</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Young</name>
@@ -1399,8 +1502,10 @@
   </collection>
   <collection>
     <name>Gold Dragon, Wyrm</name>
-    <entry>Sorcerer@17</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Law@4</entry>
+    <entry>Luck@4</entry>
+    <entry>Good@4</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Wyrmling</name>
@@ -1408,13 +1513,17 @@
   </collection>
   <collection>
     <name>Gold Dragon, Young Adult</name>
-    <entry>Sorcerer@5</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Law@4</entry>
+    <entry>Luck@4</entry>
+    <entry>Good@4</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young</name>
-    <entry>Sorcerer@1</entry>
-
+    <entry>Cleric@4</entry>
+    <entry>Law@4</entry>
+    <entry>Luck@4</entry>
+    <entry>Good@4</entry>
   </collection>
   <collection>
     <name>Gorgon</name>
@@ -1443,38 +1552,24 @@
   </collection>
   <collection>
     <name>Green Dragon, Adult</name>
-    <entry>Sorcerer@5</entry>
-    
   </collection>
   <collection>
     <name>Green Dragon, Ancient</name>
-    <entry>Sorcerer@13</entry>
-    
   </collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
-    <entry>Sorcerer@17</entry>
-    
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
-    <entry>Sorcerer@1</entry>
-    
   </collection>
   <collection>
     <name>Green Dragon, Mature Adult</name>
-    <entry>Sorcerer@7</entry>
-    
   </collection>
   <collection>
     <name>Green Dragon, Old</name>
-    <entry>Sorcerer@9</entry>
-    
   </collection>
   <collection>
     <name>Green Dragon, Very Old</name>
-    <entry>Sorcerer@11</entry>
-    
   </collection>
   <collection>
     <name>Green Dragon, Very Young</name>
@@ -1482,8 +1577,6 @@
   </collection>
   <collection>
     <name>Green Dragon, Wyrm</name>
-    <entry>Sorcerer@15</entry>
-    
   </collection>
   <collection>
     <name>Green Dragon, Wyrmling</name>
@@ -1491,8 +1584,6 @@
   </collection>
   <collection>
     <name>Green Dragon, Young Adult</name>
-    <entry>Sorcerer@3</entry>
-    
   </collection>
   <collection>
     <name>Green Dragon, Young</name>
@@ -1524,7 +1615,9 @@
   </collection>
   <collection>
     <name>Guardian Naga</name>
-    <entry>Sorcerer@9</entry>
+    <entry>Cleric@3</entry>
+    <entry>Good@3</entry>
+    <entry>Law@3</entry>
   </collection>
   <collection>
     <name>Gynosphinx</name>
@@ -1658,7 +1751,10 @@
   </collection>
   <collection>
     <name>Lammasu</name>
-    <entry>Cleric@7</entry>
+    <entry>Good@2</entry>
+    <entry>Healing@2</entry>
+    <entry>Knowledge@2</entry>
+    <entry>Law@2</entry>
     
   </collection>
   <collection>
@@ -1685,8 +1781,6 @@
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>Bard@6</entry>
-    
   </collection>
   <collection>
     <name>Lion</name>
@@ -1900,7 +1994,6 @@
   </collection>
   <collection>
     <name>Nymph</name>
-    <entry>Druid@7</entry>
   </collection>
   <collection>
     <name>Ochre Jelly</name>
@@ -1982,7 +2075,6 @@
   </collection>
   <collection>
     <name>Rakshasa</name>
-    <entry>Sorcerer@7</entry>
   </collection>
   <collection>
     <name>Rast</name>
@@ -2007,38 +2099,52 @@
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
-    <entry>Sorcerer@7</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Fire@4</entry>
   </collection>
   <collection>
     <name>Red Dragon, Ancient</name>
-    <entry>Sorcerer@15</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Fire@4</entry>
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
-    <entry>Sorcerer@19</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Fire@4</entry>
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
-    <entry>Sorcerer@3</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Fire@4</entry>
   </collection>
   <collection>
     <name>Red Dragon, Mature Adult</name>
-    <entry>Sorcerer@9</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Fire@4</entry>
   </collection>
   <collection>
     <name>Red Dragon, Old</name>
-    <entry>Sorcerer@11</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Fire@4</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Old</name>
-    <entry>Sorcerer@13</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Fire@4</entry>
   </collection>
   <collection>
     <name>Red Dragon, Very Young</name>
@@ -2046,8 +2152,10 @@
   </collection>
   <collection>
     <name>Red Dragon, Wyrm</name>
-    <entry>Sorcerer@17</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Fire@4</entry>
   </collection>
   <collection>
     <name>Red Dragon, Wyrmling</name>
@@ -2055,13 +2163,17 @@
   </collection>
   <collection>
     <name>Red Dragon, Young Adult</name>
-    <entry>Sorcerer@5</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Fire@4</entry>
   </collection>
   <collection>
     <name>Red Dragon, Young</name>
-    <entry>Sorcerer@1</entry>
-    
+    <entry>Cleric@4</entry>
+    <entry>Chaos@4</entry>
+    <entry>Evil@4</entry>
+    <entry>Fire@4</entry>
   </collection>
   <collection>
     <name>Red Slaad</name>
@@ -2158,38 +2270,59 @@
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
-    <entry>Sorcerer@7</entry>
-
+    <entry>Cleric@5</entry>
+    <entry>Air@5</entry>
+    <entry>Good@5</entry>
+    <entry>Law@5</entry>
+    <entry>Sun@5</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Ancient</name>
-    <entry>Sorcerer@15</entry>
-
+    <entry>Cleric@5</entry>
+    <entry>Air@5</entry>
+    <entry>Good@5</entry>
+    <entry>Law@5</entry>
+    <entry>Sun@5</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Great Wyrm</name>
-    <entry>Sorcerer@19</entry>
-
+    <entry>Cleric@5</entry>
+    <entry>Air@5</entry>
+    <entry>Good@5</entry>
+    <entry>Law@5</entry>
+    <entry>Sun@5</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
-    <entry>Sorcerer@3</entry>
-
+    <entry>Cleric@5</entry>
+    <entry>Air@5</entry>
+    <entry>Good@5</entry>
+    <entry>Law@5</entry>
+    <entry>Sun@5</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Mature Adult</name>
-    <entry>Sorcerer@9</entry>
-
+    <entry>Cleric@5</entry>
+    <entry>Air@5</entry>
+    <entry>Good@5</entry>
+    <entry>Law@5</entry>
+    <entry>Sun@5</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Old</name>
-    <entry>Sorcerer@11</entry>
-
+    <entry>Cleric@5</entry>
+    <entry>Air@5</entry>
+    <entry>Good@5</entry>
+    <entry>Law@5</entry>
+    <entry>Sun@5</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Old</name>
-    <entry>Sorcerer@13</entry>
-
+    <entry>Cleric@5</entry>
+    <entry>Air@5</entry>
+    <entry>Good@5</entry>
+    <entry>Law@5</entry>
+    <entry>Sun@5</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Young</name>
@@ -2197,8 +2330,11 @@
   </collection>
   <collection>
     <name>Silver Dragon, Wyrm</name>
-    <entry>Sorcerer@17</entry>
-
+    <entry>Cleric@5</entry>
+    <entry>Air@5</entry>
+    <entry>Good@5</entry>
+    <entry>Law@5</entry>
+    <entry>Sun@5</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrmling</name>
@@ -2206,13 +2342,19 @@
   </collection>
   <collection>
     <name>Silver Dragon, Young Adult</name>
-    <entry>Sorcerer@5</entry>
-
+    <entry>Cleric@5</entry>
+    <entry>Air@5</entry>
+    <entry>Good@5</entry>
+    <entry>Law@5</entry>
+    <entry>Sun@5</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young</name>
-    <entry>Sorcerer@1</entry>
-
+    <entry>Cleric@5</entry>
+    <entry>Air@5</entry>
+    <entry>Good@5</entry>
+    <entry>Law@5</entry>
+    <entry>Sun@5</entry>
   </collection>
   <collection>
     <name>Six-Headed Cryohydra</name>
@@ -2239,7 +2381,9 @@
   </collection>
   <collection>
     <name>Spirit Naga</name>
-    <entry>Sorcerer@7</entry>
+    <entry>Cleric@3</entry>
+    <entry>Chaos@3</entry>
+    <entry>Evil@3</entry>
   </collection>
   <collection>
     <name>Squid</name>
@@ -2324,8 +2468,11 @@
   </collection>
   <collection>
     <name>Trumpet Archon</name>
-    <entry>Cleric@14</entry>
-    
+    <entry>Air@2</entry>
+    <entry>Destruction@2</entry>
+    <entry>Good@2</entry>
+    <entry>Law@2</entry>
+    <entry>War@2</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
@@ -2401,25 +2548,18 @@
   </collection>
   <collection>
     <name>Water Naga</name>
-    <entry>Sorcerer@7</entry>
   </collection>
   <collection>
     <name>Weasel</name>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
-    <entry>Sorcerer@1</entry>
-    
   </collection>
   <collection>
     <name>White Dragon, Ancient</name>
-    <entry>Sorcerer@9</entry>
-    
   </collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
-    <entry>Sorcerer@13</entry>
-    
   </collection>
   <collection>
     <name>White Dragon, Juvenile</name>
@@ -2427,25 +2567,18 @@
   </collection>
   <collection>
     <name>White Dragon, Mature Adult</name>
-    <entry>Sorcerer@3</entry>
-    
   </collection>
   <collection>
     <name>White Dragon, Old</name>
-    <entry>Sorcerer@5</entry>
-    
   </collection>
   <collection>
     <name>White Dragon, Very Old</name>
-    <entry>Sorcerer@7</entry>
-    
   </collection>
   <collection>
     <name>White Dragon, Very Young</name>
   </collection>
   <collection>
     <name>White Dragon, Wyrm</name>
-    <entry>Sorcerer@11</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrmling</name>

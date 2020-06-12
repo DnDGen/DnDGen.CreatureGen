@@ -53,8 +53,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         {
             Assert.That(table, Contains.Key(name));
 
-            //INFO: This is faster than Is.EquivalentTo() for large collections
-            Assert.That(table[name].OrderBy(e => e), Is.EqualTo(collection.OrderBy(e => e)));
+            if (collection.Count() <= 100)
+            {
+                Assert.That(table[name], Is.EquivalentTo(collection));
+            }
+            else
+            {
+                //INFO: This is faster than Is.EquivalentTo() for large collections
+                Assert.That(table[name].OrderBy(e => e), Is.EqualTo(collection.OrderBy(e => e)));
+            }
         }
 
         public void AssertOrderedCollection(string name, params string[] collection)
