@@ -80,7 +80,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.CharmPerson] = 1;
             spellLevels[SpellConstants.ComprehendLanguages] = 1;
             spellLevels[SpellConstants.Confusion_Lesser] = 1;
-            spellLevels[SpellConstants.CureInflictLightWounds] = 1;
+            spellLevels[SpellConstants.CureLightWounds] = 1;
             spellLevels[SpellConstants.DetectSecretDoors] = 1;
             spellLevels[SpellConstants.DisguiseSelf] = 1;
             spellLevels[SpellConstants.Erase] = 1;
@@ -109,7 +109,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.Blur] = 2;
             spellLevels[SpellConstants.CalmEmotions] = 2;
             spellLevels[SpellConstants.CatsGrace] = 2;
-            spellLevels[SpellConstants.CureInflictModerateWounds] = 2;
+            spellLevels[SpellConstants.CureModerateWounds] = 2;
             spellLevels[SpellConstants.Darkness] = 2;
             spellLevels[SpellConstants.DazeMonster] = 2;
             spellLevels[SpellConstants.DelayPoison] = 2;
@@ -144,7 +144,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.ClairaudienceClairvoyance] = 3;
             spellLevels[SpellConstants.Confusion] = 3;
             spellLevels[SpellConstants.CrushingDespair] = 3;
-            spellLevels[SpellConstants.CureInflictSeriousWounds] = 3;
+            spellLevels[SpellConstants.CureSeriousWounds] = 3;
             spellLevels[SpellConstants.Daylight] = 3;
             spellLevels[SpellConstants.DeepSlumber] = 3;
             spellLevels[SpellConstants.DispelMagic] = 3;
@@ -172,7 +172,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
 
             //4th-Level Bard Spells
             spellLevels[SpellConstants.BreakEnchantment] = 4;
-            spellLevels[SpellConstants.CureInflictCriticalWounds] = 4;
+            spellLevels[SpellConstants.CureCriticalWounds] = 4;
             spellLevels[SpellConstants.DetectScrying] = 4;
             spellLevels[SpellConstants.DimensionDoor] = 4;
             spellLevels[SpellConstants.DominatePerson] = 4;
@@ -194,7 +194,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.ZoneOfSilence] = 4;
 
             //5th - Level Bard Spells
-            spellLevels[SpellConstants.CureInflictLightWounds_Mass] = 5;
+            spellLevels[SpellConstants.CureLightWounds_Mass] = 5;
             spellLevels[SpellConstants.DispelMagic_Greater] = 5;
             spellLevels[SpellConstants.Dream] = 5;
             spellLevels[SpellConstants.FalseVision] = 5;
@@ -216,7 +216,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.AnimateObjects] = 6;
             spellLevels[SpellConstants.CatsGrace_Mass] = 6;
             spellLevels[SpellConstants.CharmMonster_Mass] = 6;
-            spellLevels[SpellConstants.CureInflictModerateWounds_Mass] = 6;
+            spellLevels[SpellConstants.CureModerateWounds_Mass] = 6;
             spellLevels[SpellConstants.EaglesSplendor_Mass] = 6;
             spellLevels[SpellConstants.Eyebite] = 6;
             spellLevels[SpellConstants.FindThePath] = 6;
@@ -243,7 +243,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
 
             //0 - Level Cleric Spells(Orisons)
             spellLevels[SpellConstants.CreateWater] = 0;
-            spellLevels[SpellConstants.CureInflictMinorWounds] = 0;
+            spellLevels[SpellConstants.CureMinorWounds] = 0;
+            spellLevels[SpellConstants.InflictMinorWounds] = 0;
             spellLevels[SpellConstants.DetectMagic] = 0;
             spellLevels[SpellConstants.DetectPoison] = 0;
             spellLevels[SpellConstants.Guidance] = 0;
@@ -261,7 +262,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.CauseFear] = 1;
             spellLevels[SpellConstants.Command] = 1;
             spellLevels[SpellConstants.ComprehendLanguages] = 1;
-            spellLevels[SpellConstants.CureInflictLightWounds] = 1;
+            spellLevels[SpellConstants.CureLightWounds] = 1;
+            spellLevels[SpellConstants.InflictLightWounds] = 1;
             spellLevels[SpellConstants.CurseWater] = 1;
             spellLevels[SpellConstants.Deathwatch] = 1;
             spellLevels[SpellConstants.DetectAlignment] = 1;
@@ -288,7 +290,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.BullsStrength] = 2;
             spellLevels[SpellConstants.CalmEmotions] = 2;
             spellLevels[SpellConstants.Consecrate] = 2;
-            spellLevels[SpellConstants.CureInflictModerateWounds] = 2;
+            spellLevels[SpellConstants.CureModerateWounds] = 2;
+            spellLevels[SpellConstants.InflictModerateWounds] = 2;
             spellLevels[SpellConstants.Darkness] = 2;
             spellLevels[SpellConstants.DeathKnell] = 2;
             spellLevels[SpellConstants.DelayPoison] = 2;
@@ -320,7 +323,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.Contagion] = 3;
             spellLevels[SpellConstants.ContinualFlame] = 3;
             spellLevels[SpellConstants.CreateFoodAndWater] = 3;
-            spellLevels[SpellConstants.CureInflictSeriousWounds] = 3;
+            spellLevels[SpellConstants.CureSeriousWounds] = 3;
+            spellLevels[SpellConstants.InflictSeriousWounds] = 3;
             spellLevels[SpellConstants.Daylight] = 3;
             spellLevels[SpellConstants.DeeperDarkness] = 3;
             spellLevels[SpellConstants.DispelMagic] = 3;
@@ -348,7 +352,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             //4th - Level Cleric Spells
             spellLevels[SpellConstants.AirWalk] = 4;
             spellLevels[SpellConstants.ControlWater] = 4;
-            spellLevels[SpellConstants.CureInflictCriticalWounds] = 4;
+            spellLevels[SpellConstants.CureCriticalWounds] = 4;
+            spellLevels[SpellConstants.InflictCriticalWounds] = 4;
             spellLevels[SpellConstants.DeathWard] = 4;
             spellLevels[SpellConstants.DimensionalAnchor] = 4;
             spellLevels[SpellConstants.DiscernLies] = 4;
@@ -374,7 +379,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.BreakEnchantment] = 5;
             spellLevels[SpellConstants.Command_Greater] = 5;
             spellLevels[SpellConstants.Commune] = 5;
-            spellLevels[SpellConstants.CureInflictLightWounds_Mass] = 5;
+            spellLevels[SpellConstants.InflictLightWounds_Mass] = 5;
+            spellLevels[SpellConstants.CureLightWounds_Mass] = 5;
             spellLevels[SpellConstants.DispelAlignment] = 5;
             spellLevels[SpellConstants.DisruptingWeapon] = 5;
             spellLevels[SpellConstants.FlameStrike] = 5;
@@ -402,14 +408,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.BladeBarrier] = 6;
             spellLevels[SpellConstants.BullsStrength_Mass] = 6;
             spellLevels[SpellConstants.CreateUndead] = 6;
-            spellLevels[SpellConstants.CureInflictModerateWounds_Mass] = 6;
+            spellLevels[SpellConstants.CureModerateWounds_Mass] = 6;
+            spellLevels[SpellConstants.InflictModerateWounds_Mass] = 6;
             spellLevels[SpellConstants.DispelMagic_Greater] = 6;
             spellLevels[SpellConstants.EaglesSplendor_Mass] = 6;
             spellLevels[SpellConstants.FindThePath] = 6;
             spellLevels[SpellConstants.Forbiddance] = 6;
             spellLevels[SpellConstants.GeasQuest] = 6;
             spellLevels[SpellConstants.GlyphOfWarding_Greater] = 6;
-            spellLevels[SpellConstants.HealHarm] = 6;
+            spellLevels[SpellConstants.Heal] = 6;
+            spellLevels[SpellConstants.Harm] = 6;
             spellLevels[SpellConstants.HeroesFeast] = 6;
             spellLevels[SpellConstants.OwlsWisdom_Mass] = 6;
             spellLevels[SpellConstants.PlanarAlly] = 6;
@@ -423,7 +431,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             //7th - Level Cleric Spells
             spellLevels[SpellConstants.Blasphemy] = 7;
             spellLevels[SpellConstants.ControlWeather] = 7;
-            spellLevels[SpellConstants.CureInflictSeriousWounds_Mass] = 7;
+            spellLevels[SpellConstants.CureSeriousWounds_Mass] = 7;
+            spellLevels[SpellConstants.InflictSeriousWounds_Mass] = 7;
             spellLevels[SpellConstants.Destruction] = 7;
             spellLevels[SpellConstants.Dictum] = 7;
             spellLevels[SpellConstants.EtherealJaunt] = 7;
@@ -443,7 +452,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.AntimagicField] = 8;
             spellLevels[SpellConstants.CloakOfChaos] = 8;
             spellLevels[SpellConstants.CreateGreaterUndead] = 8;
-            spellLevels[SpellConstants.CureInflictCriticalWounds_Mass] = 8;
+            spellLevels[SpellConstants.CureCriticalWounds_Mass] = 8;
+            spellLevels[SpellConstants.InflictCriticalWounds_Mass] = 8;
             spellLevels[SpellConstants.DimensionalLock] = 8;
             spellLevels[SpellConstants.DiscernLocation] = 8;
             spellLevels[SpellConstants.Earthquake] = 8;
@@ -478,7 +488,195 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            //0 - Level Druid Spells(Orisons)
+            spellLevels[SpellConstants.CreateWater] = 0;
+            spellLevels[SpellConstants.CureMinorWounds] = 0;
+            spellLevels[SpellConstants.DetectMagic] = 0;
+            spellLevels[SpellConstants.DetectPoison] = 0;
+            spellLevels[SpellConstants.Flare] = 0;
+            spellLevels[SpellConstants.Guidance] = 0;
+            spellLevels[SpellConstants.KnowDirection] = 0;
+            spellLevels[SpellConstants.Light] = 0;
+            spellLevels[SpellConstants.Mending] = 0;
+            spellLevels[SpellConstants.PurifyFoodAndDrink] = 0;
+            spellLevels[SpellConstants.ReadMagic] = 0;
+            spellLevels[SpellConstants.Resistance] = 0;
+            spellLevels[SpellConstants.Virtue] = 0;
+
+            //1st - Level Druid Spells
+            spellLevels[SpellConstants.CalmAnimals] = 1;
+            spellLevels[SpellConstants.CharmAnimal] = 1;
+            spellLevels[SpellConstants.CureLightWounds] = 1;
+            spellLevels[SpellConstants.DetectAnimalsOrPlants] = 1;
+            spellLevels[SpellConstants.DetectSnaresAndPits] = 1;
+            spellLevels[SpellConstants.EndureElements] = 1;
+            spellLevels[SpellConstants.Entangle] = 1;
+            spellLevels[SpellConstants.FaerieFire] = 1;
+            spellLevels[SpellConstants.Goodberry] = 1;
+            spellLevels[SpellConstants.HideFromAnimals] = 1;
+            spellLevels[SpellConstants.Jump] = 1;
+            spellLevels[SpellConstants.Longstrider] = 1;
+            spellLevels[SpellConstants.MagicFang] = 1;
+            spellLevels[SpellConstants.MagicStone] = 1;
+            spellLevels[SpellConstants.ObscuringMist] = 1;
+            spellLevels[SpellConstants.PassWithoutTrace] = 1;
+            spellLevels[SpellConstants.ProduceFlame] = 1;
+            spellLevels[SpellConstants.Shillelagh] = 1;
+            spellLevels[SpellConstants.SpeakWithAnimals] = 1;
+            spellLevels[SpellConstants.SummonNaturesAllyI] = 1;
+
+            //2nd - Level Druid Spells
+            spellLevels[SpellConstants.AnimalMessenger] = 2;
+            spellLevels[SpellConstants.AnimalTrance] = 2;
+            spellLevels[SpellConstants.Barkskin] = 2;
+            spellLevels[SpellConstants.BearsEndurance] = 2;
+            spellLevels[SpellConstants.BullsStrength] = 2;
+            spellLevels[SpellConstants.CatsGrace] = 2;
+            spellLevels[SpellConstants.ChillMetal] = 2;
+            spellLevels[SpellConstants.DelayPoison] = 2;
+            spellLevels[SpellConstants.FireTrap] = 2;
+            spellLevels[SpellConstants.FlameBlade] = 2;
+            spellLevels[SpellConstants.FlamingSphere] = 2;
+            spellLevels[SpellConstants.FogCloud] = 2;
+            spellLevels[SpellConstants.GustOfWind] = 2;
+            spellLevels[SpellConstants.HeatMetal] = 2;
+            spellLevels[SpellConstants.HoldAnimal] = 2;
+            spellLevels[SpellConstants.OwlsWisdom] = 2;
+            spellLevels[SpellConstants.ReduceAnimal] = 2;
+            spellLevels[SpellConstants.ResistEnergy] = 2;
+            spellLevels[SpellConstants.Restoration_Lesser] = 2;
+            spellLevels[SpellConstants.SoftenEarthAndStone] = 2;
+            spellLevels[SpellConstants.SpiderClimb] = 2;
+            spellLevels[SpellConstants.SummonNaturesAllyII] = 2;
+            spellLevels[SpellConstants.SummonSwarm] = 2;
+            spellLevels[SpellConstants.TreeShape] = 2;
+            spellLevels[SpellConstants.WarpWood] = 2;
+            spellLevels[SpellConstants.WoodShape] = 2;
+
+            //3rd - Level Druid Spells
+            spellLevels[SpellConstants.CallLightning] = 3;
+            spellLevels[SpellConstants.Contagion] = 3;
+            spellLevels[SpellConstants.CureModerateWounds] = 3;
+            spellLevels[SpellConstants.Daylight] = 3;
+            spellLevels[SpellConstants.DiminishPlants] = 3;
+            spellLevels[SpellConstants.DominateAnimal] = 3;
+            spellLevels[SpellConstants.MagicFang_Greater] = 3;
+            spellLevels[SpellConstants.MeldIntoStone] = 3;
+            spellLevels[SpellConstants.NeutralizePoison] = 3;
+            spellLevels[SpellConstants.PlantGrowth] = 3;
+            spellLevels[SpellConstants.Poison] = 3;
+            spellLevels[SpellConstants.ProtectionFromEnergy] = 3;
+            spellLevels[SpellConstants.Quench] = 3;
+            spellLevels[SpellConstants.RemoveDisease] = 3;
+            spellLevels[SpellConstants.SleetStorm] = 3;
+            spellLevels[SpellConstants.Snare] = 3;
+            spellLevels[SpellConstants.SpeakWithPlants] = 3;
+            spellLevels[SpellConstants.SpikeGrowth] = 3;
+            spellLevels[SpellConstants.StoneShape] = 3;
+            spellLevels[SpellConstants.SummonNaturesAllyIII] = 3;
+            spellLevels[SpellConstants.WaterBreathing] = 3;
+            spellLevels[SpellConstants.WindWall] = 3;
+
+            //4th - Level Druid Spells
+            spellLevels[SpellConstants.AirWalk] = 4;
+            spellLevels[SpellConstants.AntiplantShell] = 4;
+            spellLevels[SpellConstants.Blight] = 4;
+            spellLevels[SpellConstants.CommandPlants] = 4;
+            spellLevels[SpellConstants.ControlWater] = 4;
+            spellLevels[SpellConstants.CureSeriousWounds] = 4;
+            spellLevels[SpellConstants.DispelMagic] = 4;
+            spellLevels[SpellConstants.FlameStrike] = 4;
+            spellLevels[SpellConstants.FreedomOfMovement] = 4;
+            spellLevels[SpellConstants.GiantVermin] = 4;
+            spellLevels[SpellConstants.IceStorm] = 4;
+            spellLevels[SpellConstants.Reincarnate] = 4;
+            spellLevels[SpellConstants.RepelVermin] = 4;
+            spellLevels[SpellConstants.RustingGrasp] = 4;
+            spellLevels[SpellConstants.Scrying] = 4;
+            spellLevels[SpellConstants.SpikeStones] = 4;
+            spellLevels[SpellConstants.SummonNaturesAllyIV] = 4;
+
+            //5th - Level Druid Spells
+            spellLevels[SpellConstants.AnimalGrowth] = 5;
+            spellLevels[SpellConstants.Atonement] = 5;
+            spellLevels[SpellConstants.Awaken] = 5;
+            spellLevels[SpellConstants.BalefulPolymorph] = 5;
+            spellLevels[SpellConstants.CallLightningStorm] = 5;
+            spellLevels[SpellConstants.CommuneWithNature] = 5;
+            spellLevels[SpellConstants.ControlWinds] = 5;
+            spellLevels[SpellConstants.CureCriticalWounds] = 5;
+            spellLevels[SpellConstants.DeathWard] = 5;
+            spellLevels[SpellConstants.Hallow] = 5;
+            spellLevels[SpellConstants.InsectPlague] = 5;
+            spellLevels[SpellConstants.Stoneskin] = 5;
+            spellLevels[SpellConstants.SummonNaturesAllyV] = 5;
+            spellLevels[SpellConstants.TransmuteMudToRock] = 5;
+            spellLevels[SpellConstants.TransmuteRockToMud] = 5;
+            spellLevels[SpellConstants.TreeStride] = 5;
+            spellLevels[SpellConstants.Unhallow] = 5;
+            spellLevels[SpellConstants.WallOfFire] = 5;
+            spellLevels[SpellConstants.WallOfThorns] = 5;
+
+            //6th - Level Druid Spells
+            spellLevels[SpellConstants.AntilifeShell] = 6;
+            spellLevels[SpellConstants.BearsEndurance_Mass] = 6;
+            spellLevels[SpellConstants.BullsStrength_Mass] = 6;
+            spellLevels[SpellConstants.CatsGrace_Mass] = 6;
+            spellLevels[SpellConstants.CureLightWounds_Mass] = 6;
+            spellLevels[SpellConstants.DispelMagic_Greater] = 6;
+            spellLevels[SpellConstants.FindThePath] = 6;
+            spellLevels[SpellConstants.FireSeeds] = 6;
+            spellLevels[SpellConstants.Ironwood] = 6;
+            spellLevels[SpellConstants.Liveoak] = 6;
+            spellLevels[SpellConstants.MoveEarth] = 6;
+            spellLevels[SpellConstants.OwlsWisdom_Mass] = 6;
+            spellLevels[SpellConstants.RepelWood] = 6;
+            spellLevels[SpellConstants.Spellstaff] = 6;
+            spellLevels[SpellConstants.StoneTell] = 6;
+            spellLevels[SpellConstants.SummonNaturesAllyVI] = 6;
+            spellLevels[SpellConstants.TransportViaPlants] = 6;
+            spellLevels[SpellConstants.WallOfStone] = 6;
+
+            //7th - Level Druid Spells
+            spellLevels[SpellConstants.AnimatePlants] = 7;
+            spellLevels[SpellConstants.Changestaff] = 7;
+            spellLevels[SpellConstants.ControlWeather] = 7;
+            spellLevels[SpellConstants.CreepingDoom] = 7;
+            spellLevels[SpellConstants.CureModerateWounds_Mass] = 7;
+            spellLevels[SpellConstants.FireStorm] = 7;
+            spellLevels[SpellConstants.Heal] = 7;
+            spellLevels[SpellConstants.Scrying_Greater] = 7;
+            spellLevels[SpellConstants.SummonNaturesAllyVII] = 7;
+            spellLevels[SpellConstants.Sunbeam] = 7;
+            spellLevels[SpellConstants.TransmuteMetalToWood] = 7;
+            spellLevels[SpellConstants.TrueSeeing] = 7;
+            spellLevels[SpellConstants.WindWalk] = 7;
+
+            //8th - Level Druid Spells
+            spellLevels[SpellConstants.AnimalShapes] = 8;
+            spellLevels[SpellConstants.ControlPlants] = 8;
+            spellLevels[SpellConstants.CureSeriousWounds_Mass] = 8;
+            spellLevels[SpellConstants.Earthquake] = 8;
+            spellLevels[SpellConstants.FingerOfDeath] = 8;
+            spellLevels[SpellConstants.RepelMetalOrStone] = 8;
+            spellLevels[SpellConstants.ReverseGravity] = 8;
+            spellLevels[SpellConstants.SummonNaturesAllyVIII] = 8;
+            spellLevels[SpellConstants.Sunburst] = 8;
+            spellLevels[SpellConstants.Whirlwind] = 8;
+            spellLevels[SpellConstants.WordOfRecall] = 8;
+
+            //9th - Level Druid Spells
+            spellLevels[SpellConstants.Antipathy] = 9;
+            spellLevels[SpellConstants.CureCriticalWounds_Mass] = 9;
+            spellLevels[SpellConstants.ElementalSwarm] = 9;
+            spellLevels[SpellConstants.Foresight] = 9;
+            spellLevels[SpellConstants.Regenerate] = 9;
+            spellLevels[SpellConstants.Shambler] = 9;
+            spellLevels[SpellConstants.Shapechange] = 9;
+            spellLevels[SpellConstants.StormOfVengeance] = 9;
+            spellLevels[SpellConstants.SummonNaturesAllyIX] = 9;
+            spellLevels[SpellConstants.Sympathy] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Casters.Druid, spellLevels);
         }
 

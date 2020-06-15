@@ -287,7 +287,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Solar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DiscernLies)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Solar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelMagic_Greater)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Solar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Earthquake)] = new string[0];
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Solar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HealHarm)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Solar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Heal)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Solar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HolySmite)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Solar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Imprisonment)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Solar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Invisibility + " (self only)")] = new string[0];
@@ -576,7 +576,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Bralani, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Bralani, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Blur)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Bralani, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CharmPerson)] = new string[0];
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Bralani, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureInflictSeriousWounds)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Bralani, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureSeriousWounds)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Bralani, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GustOfWind)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Bralani, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.LightningBolt)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Bralani, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MirrorImage)] = new string[0];
@@ -2191,7 +2191,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Cold)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.Immunity, "Petrification")] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.Immunity, "Poison")] = new string[0];
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureInflictSeriousWounds + ": 8 workers work together to cast the spell")] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureSeriousWounds + ": 8 workers work together to cast the spell")] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.FormianWorker, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MakeWhole + ": 3 workers work together to cast the spell")] = new string[0];
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.FrostWorm, FeatConstants.SpecialQualities.DeathThroes, string.Empty)] = new string[0];
@@ -2221,7 +2221,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ghaele, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ColorSpray)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ghaele, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ComprehendLanguages)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ghaele, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ContinualFlame)] = new string[0];
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Ghaele, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureInflictLightWounds)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Ghaele, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureLightWounds)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ghaele, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DancingLights)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ghaele, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectAlignment)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Ghaele, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectThoughts)] = new string[0];
@@ -2711,10 +2711,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.LayOnHands, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.ProtectiveAura, string.Empty)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new string[0];
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureInflictCriticalWounds)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureCriticalWounds)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectThoughts)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Fireball)] = new string[0];
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HealHarm)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Heal)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HoldMonster)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.NeutralizePoison)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Leonal, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.RemoveDisease)] = new string[0];
@@ -2784,7 +2784,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ChainLightning)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CircleOfDeath)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Command_Greater)] = new string[0];
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Marut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureInflictLightWounds_Mass)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Marut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.InflictLightWounds_Mass)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DimensionDoor)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelMagic_Greater)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Marut, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Earthquake)] = new string[0];
@@ -3555,7 +3555,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ChainLightning)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CharmMonster)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CrushingHand)] = new string[0];
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureInflictCriticalWounds)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureCriticalWounds)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Daylight)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelMagic_Greater)] = new string[0];
@@ -3637,8 +3637,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Unicorn, FeatConstants.SpecialQualities.Immunity, "Compulsion")] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Unicorn, FeatConstants.SpecialQualities.Immunity, "Poison")] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Unicorn, FeatConstants.SpecialQualities.Scent, string.Empty)] = new string[0];
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Unicorn, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureInflictLightWounds)] = new string[0];
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Unicorn, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureInflictModerateWounds)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Unicorn, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureLightWounds)] = new string[0];
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Unicorn, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureModerateWounds)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Unicorn, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectAlignment)] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Unicorn, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Teleport_Greater + ": within its forest home")] = new string[0];
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Unicorn, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MagicCircleAgainstAlignment)] = new string[0];
