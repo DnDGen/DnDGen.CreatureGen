@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <None Remove="Tables\Abilities\AbilityAdjustments.xml" />
+    <None Remove="Tables\Abilities\AbilityGroups.xml" />
     <None Remove="Tables\Alignments\AlignmentGroups.xml" />
     <None Remove="Tables\Attacks\AttackData.xml" />
     <None Remove="Tables\Attacks\GrappleBonuses.xml" />
@@ -50,8 +51,11 @@
     <None Remove="Tables\Feats\Requirements\RequiredAlignments.xml" />
     <None Remove="Tables\Feats\Requirements\RequiredFeats.xml" />
     <None Remove="Tables\Feats\Requirements\RequiredSizes.xml" />
+    <None Remove="Tables\Magics\CasterGroups.xml" />
     <None Remove="Tables\Magics\Casters.xml" />
+    <None Remove="Tables\Magics\KnownSpells.xml" />
     <None Remove="Tables\Magics\SpellDomains.xml" />
+    <None Remove="Tables\Magics\SpellsPerDay.xml" />
     <None Remove="Tables\Skills\SkillBonuses.xml" />
     <None Remove="Tables\Skills\SkillData.xml" />
     <None Remove="Tables\Skills\SkillGroups.xml" />
@@ -63,6 +67,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\AbilityGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\Abilities\AbilityAdjustments.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -114,6 +121,15 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Feats\Requirements\RequiredSizes.xml" />
+    <EmbeddedResource Include="Tables\Magics\CasterGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Magics\KnownSpells.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Magics\SpellsPerDay.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\Magics\SpellDomains.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

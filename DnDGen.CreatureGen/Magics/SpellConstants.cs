@@ -14,7 +14,6 @@
             public const string Cleric = "Cleric";
             public const string Druid = "Druid";
             public const string Sorcerer = "Sorcerer";
-            public const string Wizard = "Wizard";
         }
 
         public static class Domains

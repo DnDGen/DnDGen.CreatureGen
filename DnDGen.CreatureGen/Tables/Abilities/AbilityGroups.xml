@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Bard:Spellcaster</name>
+    <entry>Charisma</entry>
+  </collection>
+  <collection>
+    <name>Cleric:Spellcaster</name>
+    <entry>Wisdom</entry>
+  </collection>
+  <collection>
+    <name>Druid:Spellcaster</name>
+    <entry>Wisdom</entry>
+  </collection>
+  <collection>
+    <name>Sorcerer:Spellcaster</name>
+    <entry>Charisma</entry>
+  </collection>
+</collections>

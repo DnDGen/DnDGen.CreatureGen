@@ -595,7 +595,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Magics
         [TestCase(SpellConstants.Casters.Cleric, "Cleric")]
         [TestCase(SpellConstants.Casters.Druid, "Druid")]
         [TestCase(SpellConstants.Casters.Sorcerer, "Sorcerer")]
-        [TestCase(SpellConstants.Casters.Wizard, "Wizard")]
         [TestCase(SpellConstants.Domains.Air, "Air")]
         [TestCase(SpellConstants.Domains.Animal, "Animal")]
         [TestCase(SpellConstants.Domains.Chaos, "Chaos")]
