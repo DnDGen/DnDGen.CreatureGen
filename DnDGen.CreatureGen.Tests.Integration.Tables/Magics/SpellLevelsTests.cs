@@ -266,7 +266,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.InflictLightWounds] = 1;
             spellLevels[SpellConstants.CurseWater] = 1;
             spellLevels[SpellConstants.Deathwatch] = 1;
-            spellLevels[SpellConstants.DetectAlignment] = 1;
+            spellLevels[SpellConstants.DetectChaos] = 1;
+            spellLevels[SpellConstants.DetectEvil] = 1;
+            spellLevels[SpellConstants.DetectGood] = 1;
+            spellLevels[SpellConstants.DetectLaw] = 1;
             spellLevels[SpellConstants.DetectUndead] = 1;
             spellLevels[SpellConstants.DivineFavor] = 1;
             spellLevels[SpellConstants.Doom] = 1;
@@ -276,7 +279,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.MagicStone] = 1;
             spellLevels[SpellConstants.MagicWeapon] = 1;
             spellLevels[SpellConstants.ObscuringMist] = 1;
-            spellLevels[SpellConstants.ProtectionFromAlignment] = 1;
+            spellLevels[SpellConstants.ProtectionFromChaos] = 1;
+            spellLevels[SpellConstants.ProtectionFromEvil] = 1;
+            spellLevels[SpellConstants.ProtectionFromGood] = 1;
+            spellLevels[SpellConstants.ProtectionFromLaw] = 1;
             spellLevels[SpellConstants.RemoveFear] = 1;
             spellLevels[SpellConstants.Sanctuary] = 1;
             spellLevels[SpellConstants.ShieldOfFaith] = 1;
@@ -332,7 +338,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.HelpingHand] = 3;
             spellLevels[SpellConstants.InvisibilityPurge] = 3;
             spellLevels[SpellConstants.LocateObject] = 3;
-            spellLevels[SpellConstants.MagicCircleAgainstAlignment] = 3;
+            spellLevels[SpellConstants.MagicCircleAgainstChaos] = 3;
+            spellLevels[SpellConstants.MagicCircleAgainstEvil] = 3;
+            spellLevels[SpellConstants.MagicCircleAgainstGood] = 3;
+            spellLevels[SpellConstants.MagicCircleAgainstLaw] = 3;
             spellLevels[SpellConstants.MagicVestment] = 3;
             spellLevels[SpellConstants.MeldIntoStone] = 3;
             spellLevels[SpellConstants.ObscureObject] = 3;
@@ -381,7 +390,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.Commune] = 5;
             spellLevels[SpellConstants.InflictLightWounds_Mass] = 5;
             spellLevels[SpellConstants.CureLightWounds_Mass] = 5;
-            spellLevels[SpellConstants.DispelAlignment] = 5;
+            spellLevels[SpellConstants.DispelChaos] = 5;
+            spellLevels[SpellConstants.DispelEvil] = 5;
+            spellLevels[SpellConstants.DispelGood] = 5;
+            spellLevels[SpellConstants.DispelLaw] = 5;
             spellLevels[SpellConstants.DisruptingWeapon] = 5;
             spellLevels[SpellConstants.FlameStrike] = 5;
             spellLevels[SpellConstants.Hallow] = 5;
@@ -685,7 +697,487 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            //0 - Level Sorcerer / Wizard Spells(Cantrips)
+            //Abjur
+            spellLevels[SpellConstants.Resistance] = 0;
+            //Conj
+            spellLevels[SpellConstants.AcidSplash] = 0;
+            //Div
+            spellLevels[SpellConstants.DetectPoison] = 0;
+            spellLevels[SpellConstants.DetectMagic] = 0;
+            spellLevels[SpellConstants.ReadMagic] = 0;
+            //Ench
+            spellLevels[SpellConstants.Daze] = 0;
+            //Evoc
+            spellLevels[SpellConstants.DancingLights] = 0;
+            spellLevels[SpellConstants.Flare] = 0;
+            spellLevels[SpellConstants.Light] = 0;
+            spellLevels[SpellConstants.RayOfFrost] = 0;
+            //Illus
+            spellLevels[SpellConstants.GhostSound] = 0;
+            //Necro
+            spellLevels[SpellConstants.DisruptUndead] = 0;
+            spellLevels[SpellConstants.TouchOfFatigue] = 0;
+            //Trans
+            spellLevels[SpellConstants.MageHand] = 0;
+            spellLevels[SpellConstants.Mending] = 0;
+            spellLevels[SpellConstants.Message] = 0;
+            spellLevels[SpellConstants.OpenClose] = 0;
+            //Univ
+            spellLevels[SpellConstants.ArcaneMark] = 0;
+            spellLevels[SpellConstants.Prestidigitation] = 0;
+
+            //1st - Level Sorcerer / Wizard Spells
+            //Abjur
+            spellLevels[SpellConstants.Alarm] = 1;
+            spellLevels[SpellConstants.EndureElements] = 1;
+            spellLevels[SpellConstants.HoldPortal] = 1;
+            spellLevels[SpellConstants.ProtectionFromChaos] = 1;
+            spellLevels[SpellConstants.ProtectionFromEvil] = 1;
+            spellLevels[SpellConstants.ProtectionFromGood] = 1;
+            spellLevels[SpellConstants.ProtectionFromLaw] = 1;
+            spellLevels[SpellConstants.Shield] = 1;
+            //Conj
+            spellLevels[SpellConstants.Grease] = 1;
+            spellLevels[SpellConstants.MageArmor] = 1;
+            spellLevels[SpellConstants.Mount] = 1;
+            spellLevels[SpellConstants.ObscuringMist] = 1;
+            spellLevels[SpellConstants.SummonMonsterI] = 1;
+            spellLevels[SpellConstants.UnseenServant] = 1;
+            //Div
+            spellLevels[SpellConstants.ComprehendLanguages] = 1;
+            spellLevels[SpellConstants.DetectSecretDoors] = 1;
+            spellLevels[SpellConstants.DetectUndead] = 1;
+            spellLevels[SpellConstants.Identify] = 1;
+            spellLevels[SpellConstants.TrueStrike] = 1;
+            //Ench
+            spellLevels[SpellConstants.CharmPerson] = 1;
+            spellLevels[SpellConstants.Hypnotism] = 1;
+            spellLevels[SpellConstants.Sleep] = 1;
+            //Evoc
+            spellLevels[SpellConstants.BurningHands] = 1;
+            spellLevels[SpellConstants.FloatingDisk] = 1;
+            spellLevels[SpellConstants.MagicMissile] = 1;
+            spellLevels[SpellConstants.ShockingGrasp] = 1;
+            //Illus
+            spellLevels[SpellConstants.ColorSpray] = 1;
+            spellLevels[SpellConstants.DisguiseSelf] = 1;
+            spellLevels[SpellConstants.MagicAura] = 1;
+            spellLevels[SpellConstants.SilentImage] = 1;
+            spellLevels[SpellConstants.Ventriloquism] = 1;
+            //Necro
+            spellLevels[SpellConstants.CauseFear] = 1;
+            spellLevels[SpellConstants.ChillTouch] = 1;
+            spellLevels[SpellConstants.RayOfEnfeeblement] = 1;
+            //Trans
+            spellLevels[SpellConstants.AnimateRope] = 1;
+            spellLevels[SpellConstants.EnlargePerson] = 1;
+            spellLevels[SpellConstants.Erase] = 1;
+            spellLevels[SpellConstants.ExpeditiousRetreat] = 1;
+            spellLevels[SpellConstants.FeatherFall] = 1;
+            spellLevels[SpellConstants.Jump] = 1;
+            spellLevels[SpellConstants.MagicWeapon] = 1;
+            spellLevels[SpellConstants.ReducePerson] = 1;
+
+            //2nd - Level Sorcerer / Wizard Spells
+            //Abjur
+            spellLevels[SpellConstants.ArcaneLock] = 2;
+            spellLevels[SpellConstants.ObscureObject] = 2;
+            spellLevels[SpellConstants.ProtectionFromArrows] = 2;
+            spellLevels[SpellConstants.ResistEnergy] = 2;
+            //Conj
+            spellLevels[SpellConstants.AcidArrow] = 2;
+            spellLevels[SpellConstants.FogCloud] = 2;
+            spellLevels[SpellConstants.Glitterdust] = 2;
+            spellLevels[SpellConstants.SummonMonsterII] = 2;
+            spellLevels[SpellConstants.SummonSwarm] = 2;
+            spellLevels[SpellConstants.Web] = 2;
+            //Div
+            spellLevels[SpellConstants.DetectThoughts] = 2;
+            spellLevels[SpellConstants.LocateObject] = 2;
+            spellLevels[SpellConstants.SeeInvisibility] = 2;
+            //Ench
+            spellLevels[SpellConstants.DazeMonster] = 2;
+            spellLevels[SpellConstants.HideousLaughter] = 2;
+            spellLevels[SpellConstants.TouchOfIdiocy] = 2;
+            //Evoc
+            spellLevels[SpellConstants.ContinualFlame] = 2;
+            spellLevels[SpellConstants.Darkness] = 2;
+            spellLevels[SpellConstants.FlamingSphere] = 2;
+            spellLevels[SpellConstants.GustOfWind] = 2;
+            spellLevels[SpellConstants.ScorchingRay] = 2;
+            spellLevels[SpellConstants.Shatter] = 2;
+            //Illus
+            spellLevels[SpellConstants.Blur] = 2;
+            spellLevels[SpellConstants.HypnoticPattern] = 2;
+            spellLevels[SpellConstants.Invisibility] = 2;
+            spellLevels[SpellConstants.MagicMouth] = 2;
+            spellLevels[SpellConstants.MinorImage] = 2;
+            spellLevels[SpellConstants.MirrorImage] = 2;
+            spellLevels[SpellConstants.Misdirection] = 2;
+            spellLevels[SpellConstants.PhantomTrap] = 2;
+            //Necro
+            spellLevels[SpellConstants.BlindnessDeafness] = 2;
+            spellLevels[SpellConstants.CommandUndead] = 2;
+            spellLevels[SpellConstants.FalseLife] = 2;
+            spellLevels[SpellConstants.GhoulTouch] = 2;
+            spellLevels[SpellConstants.Scare] = 2;
+            spellLevels[SpellConstants.SpectralHand] = 2;
+            //Trans
+            spellLevels[SpellConstants.AlterSelf] = 2;
+            spellLevels[SpellConstants.BearsEndurance] = 2;
+            spellLevels[SpellConstants.BullsStrength] = 2;
+            spellLevels[SpellConstants.CatsGrace] = 2;
+            spellLevels[SpellConstants.Darkvision] = 2;
+            spellLevels[SpellConstants.EaglesSplendor] = 2;
+            spellLevels[SpellConstants.FoxsCunning] = 2;
+            spellLevels[SpellConstants.Knock] = 2;
+            spellLevels[SpellConstants.Levitate] = 2;
+            spellLevels[SpellConstants.OwlsWisdom] = 2;
+            spellLevels[SpellConstants.Pyrotechnics] = 2;
+            spellLevels[SpellConstants.RopeTrick] = 2;
+            spellLevels[SpellConstants.SpiderClimb] = 2;
+            spellLevels[SpellConstants.WhisperingWind] = 2;
+
+            //3rd-Level Sorcerer/Wizard Spells
+            //Abjur
+            spellLevels[SpellConstants.DispelMagic] = 3;
+            spellLevels[SpellConstants.ExplosiveRunes] = 3;
+            spellLevels[SpellConstants.MagicCircleAgainstChaos] = 3;
+            spellLevels[SpellConstants.MagicCircleAgainstEvil] = 3;
+            spellLevels[SpellConstants.MagicCircleAgainstGood] = 3;
+            spellLevels[SpellConstants.MagicCircleAgainstLaw] = 3;
+            spellLevels[SpellConstants.Nondetection] = 3;
+            spellLevels[SpellConstants.ProtectionFromEnergy] = 3;
+            //Conj
+            spellLevels[SpellConstants.PhantomSteed] = 3;
+            spellLevels[SpellConstants.SepiaSnakeSigil] = 3;
+            spellLevels[SpellConstants.SleetStorm] = 3;
+            spellLevels[SpellConstants.StinkingCloud] = 3;
+            spellLevels[SpellConstants.SummonMonsterIII] = 3;
+            //Div
+            spellLevels[SpellConstants.ArcaneSight] = 3;
+            spellLevels[SpellConstants.ClairaudienceClairvoyance] = 3;
+            spellLevels[SpellConstants.Tongues] = 3;
+            //Ench
+            spellLevels[SpellConstants.DeepSlumber] = 3;
+            spellLevels[SpellConstants.Heroism] = 3;
+            spellLevels[SpellConstants.HoldPerson] = 3;
+            spellLevels[SpellConstants.Rage] = 3;
+            spellLevels[SpellConstants.Suggestion] = 3;
+            //Evoc
+            spellLevels[SpellConstants.Daylight] = 3;
+            spellLevels[SpellConstants.Fireball] = 3;
+            spellLevels[SpellConstants.LightningBolt] = 3;
+            spellLevels[SpellConstants.TinyHut] = 3;
+            spellLevels[SpellConstants.WindWall] = 3;
+            //Illus
+            spellLevels[SpellConstants.Displacement] = 3;
+            spellLevels[SpellConstants.IllusoryScript] = 3;
+            spellLevels[SpellConstants.InvisibilitySphere] = 3;
+            spellLevels[SpellConstants.MajorImage] = 3;
+            //Necro
+            spellLevels[SpellConstants.GentleRepose] = 3;
+            spellLevels[SpellConstants.HaltUndead] = 3;
+            spellLevels[SpellConstants.RayOfExhaustion] = 3;
+            spellLevels[SpellConstants.VampiricTouch] = 3;
+            //Trans
+            spellLevels[SpellConstants.Blink] = 3;
+            spellLevels[SpellConstants.FlameArrow] = 3;
+            spellLevels[SpellConstants.Fly] = 3;
+            spellLevels[SpellConstants.GaseousForm] = 3;
+            spellLevels[SpellConstants.Haste] = 3;
+            spellLevels[SpellConstants.KeenEdge] = 3;
+            spellLevels[SpellConstants.MagicWeapon_Greater] = 3;
+            spellLevels[SpellConstants.SecretPage] = 3;
+            spellLevels[SpellConstants.ShrinkItem] = 3;
+            spellLevels[SpellConstants.Slow] = 3;
+            spellLevels[SpellConstants.WaterBreathing] = 3;
+
+            //4th-Level Sorcerer/Wizard Spells
+            //Abjur
+            spellLevels[SpellConstants.DimensionalAnchor] = 4;
+            spellLevels[SpellConstants.FireTrap] = 4;
+            spellLevels[SpellConstants.GlobeOfInvulnerability_Lesser] = 4;
+            spellLevels[SpellConstants.RemoveCurse] = 4;
+            spellLevels[SpellConstants.Stoneskin] = 4;
+            //Conj
+            spellLevels[SpellConstants.BlackTentacles] = 4;
+            spellLevels[SpellConstants.DimensionDoor] = 4;
+            spellLevels[SpellConstants.MinorCreation] = 4;
+            spellLevels[SpellConstants.SecureShelter] = 4;
+            spellLevels[SpellConstants.SolidFog] = 4;
+            spellLevels[SpellConstants.SummonMonsterIV] = 4;
+            //Div
+            spellLevels[SpellConstants.ArcaneEye] = 4;
+            spellLevels[SpellConstants.DetectScrying] = 4;
+            spellLevels[SpellConstants.LocateCreature] = 4;
+            spellLevels[SpellConstants.Scrying] = 4;
+            //Ench
+            spellLevels[SpellConstants.CharmMonster] = 4;
+            spellLevels[SpellConstants.Confusion] = 4;
+            spellLevels[SpellConstants.CrushingDespair] = 4;
+            spellLevels[SpellConstants.Geas_Lesser] = 4;
+            //Evoc
+            spellLevels[SpellConstants.FireShield] = 4;
+            spellLevels[SpellConstants.IceStorm] = 4;
+            spellLevels[SpellConstants.ResilientSphere] = 4;
+            spellLevels[SpellConstants.Shout] = 4;
+            spellLevels[SpellConstants.WallOfFire] = 4;
+            spellLevels[SpellConstants.WallOfIce] = 4;
+            //Illus
+            spellLevels[SpellConstants.HallucinatoryTerrain] = 4;
+            spellLevels[SpellConstants.IllusoryWall] = 4;
+            spellLevels[SpellConstants.Invisibility_Greater] = 4;
+            spellLevels[SpellConstants.PhantasmalKiller] = 4;
+            spellLevels[SpellConstants.RainbowPattern] = 4;
+            spellLevels[SpellConstants.ShadowConjuration] = 4;
+            //Necro
+            spellLevels[SpellConstants.AnimateDead] = 4;
+            spellLevels[SpellConstants.BestowCurse] = 4;
+            spellLevels[SpellConstants.Contagion] = 4;
+            spellLevels[SpellConstants.Enervation] = 4;
+            spellLevels[SpellConstants.Fear] = 4;
+            //Trans
+            spellLevels[SpellConstants.EnlargePerson_Mass] = 4;
+            spellLevels[SpellConstants.MnemonicEnhancer] = 4;
+            spellLevels[SpellConstants.Polymorph] = 4;
+            spellLevels[SpellConstants.ReducePerson_Mass] = 4;
+            spellLevels[SpellConstants.StoneShape] = 4;
+
+            //5th-Level Sorcerer/Wizard Spells
+            //Abjur
+            spellLevels[SpellConstants.BreakEnchantment] = 5;
+            spellLevels[SpellConstants.Dismissal] = 5;
+            spellLevels[SpellConstants.MagesPrivateSanctum] = 5;
+            //Conj
+            spellLevels[SpellConstants.Cloudkill] = 5;
+            spellLevels[SpellConstants.MagesFaithfulHound] = 5;
+            spellLevels[SpellConstants.MajorCreation] = 5;
+            spellLevels[SpellConstants.PlanarBinding_Lesser] = 5;
+            spellLevels[SpellConstants.SecretChest] = 5;
+            spellLevels[SpellConstants.SummonMonsterV] = 5;
+            spellLevels[SpellConstants.Teleport] = 5;
+            spellLevels[SpellConstants.WallOfStone] = 5;
+            //Div
+            spellLevels[SpellConstants.ContactOtherPlane] = 5;
+            spellLevels[SpellConstants.PryingEyes] = 5;
+            spellLevels[SpellConstants.TelepathicBond] = 5;
+            //Ench
+            spellLevels[SpellConstants.DominatePerson] = 5;
+            spellLevels[SpellConstants.Feeblemind] = 5;
+            spellLevels[SpellConstants.HoldMonster] = 5;
+            spellLevels[SpellConstants.MindFog] = 5;
+            spellLevels[SpellConstants.SymbolOfSleep] = 5;
+            //Evoc
+            spellLevels[SpellConstants.ConeOfCold] = 5;
+            spellLevels[SpellConstants.InterposingHand] = 5;
+            spellLevels[SpellConstants.Sending] = 5;
+            spellLevels[SpellConstants.WallOfForce] = 5;
+            //Illus
+            spellLevels[SpellConstants.Dream] = 5;
+            spellLevels[SpellConstants.FalseVision] = 5;
+            spellLevels[SpellConstants.MirageArcana] = 5;
+            spellLevels[SpellConstants.Nightmare] = 5;
+            spellLevels[SpellConstants.PersistentImage] = 5;
+            spellLevels[SpellConstants.Seeming] = 5;
+            spellLevels[SpellConstants.ShadowEvocation] = 5;
+            //Necro
+            spellLevels[SpellConstants.Blight] = 5;
+            spellLevels[SpellConstants.MagicJar] = 5;
+            spellLevels[SpellConstants.SymbolOfPain] = 5;
+            spellLevels[SpellConstants.WavesOfFatigue] = 5;
+            //Trans
+            spellLevels[SpellConstants.AnimalGrowth] = 5;
+            spellLevels[SpellConstants.BalefulPolymorph] = 5;
+            spellLevels[SpellConstants.Fabricate] = 5;
+            spellLevels[SpellConstants.OverlandFlight] = 5;
+            spellLevels[SpellConstants.Passwall] = 5;
+            spellLevels[SpellConstants.Telekinesis] = 5;
+            spellLevels[SpellConstants.TransmuteMudToRock] = 5;
+            spellLevels[SpellConstants.TransmuteRockToMud] = 5;
+            //Univ
+            spellLevels[SpellConstants.Permanency] = 5;
+
+            //6th-Level Sorcerer/Wizard Spells
+            //Abjur
+            spellLevels[SpellConstants.AntimagicField] = 6;
+            spellLevels[SpellConstants.DispelMagic_Greater] = 6;
+            spellLevels[SpellConstants.GlobeOfInvulnerability] = 6;
+            spellLevels[SpellConstants.GuardsAndWards] = 6;
+            spellLevels[SpellConstants.Repulsion] = 6;
+            //Conj
+            spellLevels[SpellConstants.AcidFog] = 6;
+            spellLevels[SpellConstants.PlanarBinding] = 6;
+            spellLevels[SpellConstants.SummonMonsterVI] = 6;
+            spellLevels[SpellConstants.WallOfIron] = 6;
+            //Div
+            spellLevels[SpellConstants.AnalyzeDweomer] = 6;
+            spellLevels[SpellConstants.LegendLore] = 6;
+            spellLevels[SpellConstants.TrueSeeing] = 6;
+            //Ench
+            spellLevels[SpellConstants.GeasQuest] = 6;
+            spellLevels[SpellConstants.Heroism_Greater] = 6;
+            spellLevels[SpellConstants.Suggestion_Mass] = 6;
+            spellLevels[SpellConstants.SymbolOfPersuasion] = 6;
+            //Evoc
+            spellLevels[SpellConstants.ChainLightning] = 6;
+            spellLevels[SpellConstants.Contingency] = 6;
+            spellLevels[SpellConstants.ForcefulHand] = 6;
+            spellLevels[SpellConstants.FreezingSphere] = 6;
+            //Illus
+            spellLevels[SpellConstants.Mislead] = 6;
+            spellLevels[SpellConstants.PermanentImage] = 6;
+            spellLevels[SpellConstants.ProgrammedImage] = 6;
+            spellLevels[SpellConstants.ShadowWalk] = 6;
+            spellLevels[SpellConstants.Veil] = 6;
+            //Necro
+            spellLevels[SpellConstants.CircleOfDeath] = 6;
+            spellLevels[SpellConstants.CreateUndead] = 6;
+            spellLevels[SpellConstants.Eyebite] = 6;
+            spellLevels[SpellConstants.SymbolOfFear] = 6;
+            spellLevels[SpellConstants.UndeathToDeath] = 6;
+            //Trans
+            spellLevels[SpellConstants.BearsEndurance_Mass] = 6;
+            spellLevels[SpellConstants.BullsStrength_Mass] = 6;
+            spellLevels[SpellConstants.CatsGrace_Mass] = 6;
+            spellLevels[SpellConstants.ControlWater] = 6;
+            spellLevels[SpellConstants.Disintegrate] = 6;
+            spellLevels[SpellConstants.EaglesSplendor_Mass] = 6;
+            spellLevels[SpellConstants.FleshToStone] = 6;
+            spellLevels[SpellConstants.FoxsCunning_Mass] = 6;
+            spellLevels[SpellConstants.MagesLucubration] = 6;
+            spellLevels[SpellConstants.MoveEarth] = 6;
+            spellLevels[SpellConstants.OwlsWisdom_Mass] = 6;
+            spellLevels[SpellConstants.StoneToFlesh] = 6;
+            spellLevels[SpellConstants.Transformation] = 6;
+
+            //7th-Level Sorcerer/Wizard Spells
+            //Abjur
+            spellLevels[SpellConstants.Banishment] = 7;
+            spellLevels[SpellConstants.Sequester] = 7;
+            spellLevels[SpellConstants.SpellTurning] = 7;
+            //Conj
+            spellLevels[SpellConstants.InstantSummons] = 7;
+            spellLevels[SpellConstants.MagesMagnificentMansion] = 7;
+            spellLevels[SpellConstants.PhaseDoor] = 7;
+            spellLevels[SpellConstants.PlaneShift] = 7;
+            spellLevels[SpellConstants.SummonMonsterVII] = 7;
+            spellLevels[SpellConstants.Teleport_Greater] = 7;
+            spellLevels[SpellConstants.TeleportObject] = 7;
+            //Div
+            spellLevels[SpellConstants.ArcaneSight_Greater] = 7;
+            spellLevels[SpellConstants.Scrying_Greater] = 7;
+            spellLevels[SpellConstants.Vision] = 7;
+            //Ench
+            spellLevels[SpellConstants.HoldPerson_Mass] = 7;
+            spellLevels[SpellConstants.Insanity] = 7;
+            spellLevels[SpellConstants.PowerWordBlind] = 7;
+            spellLevels[SpellConstants.SymbolOfStunning] = 7;
+            //Evoc
+            spellLevels[SpellConstants.DelayedBlastFireball] = 7;
+            spellLevels[SpellConstants.Forcecage] = 7;
+            spellLevels[SpellConstants.GraspingHand] = 7;
+            spellLevels[SpellConstants.MagesSword] = 7;
+            spellLevels[SpellConstants.PrismaticSpray] = 7;
+            //Illus
+            spellLevels[SpellConstants.Invisibility_Mass] = 7;
+            spellLevels[SpellConstants.ProjectImage] = 7;
+            spellLevels[SpellConstants.ShadowConjuration_Greater] = 7;
+            spellLevels[SpellConstants.Simulacrum] = 7;
+            //Necro
+            spellLevels[SpellConstants.ControlUndead] = 7;
+            spellLevels[SpellConstants.FingerOfDeath] = 7;
+            spellLevels[SpellConstants.SymbolOfWeakness] = 7;
+            spellLevels[SpellConstants.WavesOfExhaustion] = 7;
+            //Trans
+            spellLevels[SpellConstants.ControlWeather] = 7;
+            spellLevels[SpellConstants.EtherealJaunt] = 7;
+            spellLevels[SpellConstants.ReverseGravity] = 7;
+            spellLevels[SpellConstants.Statue] = 7;
+            //Univ
+            spellLevels[SpellConstants.LimitedWish] = 7;
+
+            //8th-Level Sorcerer/Wizard Spells
+            //Abjur
+            spellLevels[SpellConstants.DimensionalLock] = 8;
+            spellLevels[SpellConstants.MindBlank] = 8;
+            spellLevels[SpellConstants.PrismaticWall] = 8;
+            spellLevels[SpellConstants.ProtectionFromSpells] = 8;
+            //Conj
+            spellLevels[SpellConstants.IncendiaryCloud] = 8;
+            spellLevels[SpellConstants.Maze] = 8;
+            spellLevels[SpellConstants.PlanarBinding_Greater] = 8;
+            spellLevels[SpellConstants.SummonMonsterVIII] = 8;
+            spellLevels[SpellConstants.TrapTheSoul] = 8;
+            //Div
+            spellLevels[SpellConstants.DiscernLocation] = 8;
+            spellLevels[SpellConstants.MomentOfPrescience] = 8;
+            spellLevels[SpellConstants.PryingEyes_Greater] = 8;
+            //Ench
+            spellLevels[SpellConstants.Antipathy] = 8;
+            spellLevels[SpellConstants.Binding] = 8;
+            spellLevels[SpellConstants.CharmMonster_Mass] = 8;
+            spellLevels[SpellConstants.Demand] = 8;
+            spellLevels[SpellConstants.IrresistibleDance] = 8;
+            spellLevels[SpellConstants.PowerWordStun] = 8;
+            spellLevels[SpellConstants.SymbolOfInsanity] = 8;
+            spellLevels[SpellConstants.Sympathy] = 8;
+            //Evoc
+            spellLevels[SpellConstants.ClenchedFist] = 8;
+            spellLevels[SpellConstants.PolarRay] = 8;
+            spellLevels[SpellConstants.Shout_Greater] = 8;
+            spellLevels[SpellConstants.Sunburst] = 8;
+            spellLevels[SpellConstants.TelekineticSphere] = 8;
+            //Illus
+            spellLevels[SpellConstants.ScintillatingPattern] = 8;
+            spellLevels[SpellConstants.Screen] = 8;
+            spellLevels[SpellConstants.ShadowEvocation_Greater] = 8;
+            //Necro
+            spellLevels[SpellConstants.Clone] = 8;
+            spellLevels[SpellConstants.CreateGreaterUndead] = 8;
+            spellLevels[SpellConstants.HorridWilting] = 8;
+            spellLevels[SpellConstants.SymbolOfDeath] = 8;
+            //Trans
+            spellLevels[SpellConstants.IronBody] = 8;
+            spellLevels[SpellConstants.PolymorphAnyObject] = 8;
+            spellLevels[SpellConstants.TemporalStasis] = 8;
+
+            //9th-Level Sorcerer/Wizard Spells
+            //Abjur
+            spellLevels[SpellConstants.Freedom] = 9;
+            spellLevels[SpellConstants.Imprisonment] = 9;
+            spellLevels[SpellConstants.MagesDisjunction] = 9;
+            spellLevels[SpellConstants.PrismaticSphere] = 9;
+            //Conj
+            spellLevels[SpellConstants.Gate] = 9;
+            spellLevels[SpellConstants.Refuge] = 9;
+            spellLevels[SpellConstants.SummonMonsterIX] = 9;
+            spellLevels[SpellConstants.TeleportationCircle] = 9;
+            //Div
+            spellLevels[SpellConstants.Foresight] = 9;
+            //Ench
+            spellLevels[SpellConstants.DominateMonster] = 9;
+            spellLevels[SpellConstants.HoldMonster_Mass] = 9;
+            spellLevels[SpellConstants.PowerWordKill] = 9;
+            //Evoc
+            spellLevels[SpellConstants.CrushingHand] = 9;
+            spellLevels[SpellConstants.MeteorSwarm] = 9;
+            //Illus
+            spellLevels[SpellConstants.Shades] = 9;
+            spellLevels[SpellConstants.Weird] = 9;
+            //Necro
+            spellLevels[SpellConstants.AstralProjection] = 9;
+            spellLevels[SpellConstants.EnergyDrain] = 9;
+            spellLevels[SpellConstants.SoulBind] = 9;
+            spellLevels[SpellConstants.WailOfTheBanshee] = 9;
+            //Trans
+            spellLevels[SpellConstants.Etherealness] = 9;
+            spellLevels[SpellConstants.Shapechange] = 9;
+            spellLevels[SpellConstants.TimeStop] = 9;
+            //Univ
+            spellLevels[SpellConstants.Wish] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Casters.Sorcerer, spellLevels);
         }
 
@@ -694,7 +1186,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.ObscuringMist] = 1;
+            spellLevels[SpellConstants.WindWall] = 2;
+            spellLevels[SpellConstants.GaseousForm] = 3;
+            spellLevels[SpellConstants.AirWalk] = 4;
+            spellLevels[SpellConstants.ControlWinds] = 5;
+            spellLevels[SpellConstants.ChainLightning] = 6;
+            spellLevels[SpellConstants.ControlWeather] = 7;
+            spellLevels[SpellConstants.Whirlwind] = 8;
+            spellLevels[SpellConstants.ElementalSwarm] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Air, spellLevels);
         }
 
@@ -703,16 +1204,34 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.CalmAnimals] = 1;
+            spellLevels[SpellConstants.HoldAnimal] = 2;
+            spellLevels[SpellConstants.DominateAnimal] = 3;
+            spellLevels[SpellConstants.SummonNaturesAllyIV] = 4;
+            spellLevels[SpellConstants.CommuneWithNature] = 5;
+            spellLevels[SpellConstants.AntilifeShell] = 6;
+            spellLevels[SpellConstants.AnimalShapes] = 7;
+            spellLevels[SpellConstants.SummonNaturesAllyVIII] = 8;
+            spellLevels[SpellConstants.Shapechange] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Animal, spellLevels);
         }
 
         [Test]
-        public void ChaospellLevels()
+        public void ChaosSpellLevels()
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.ProtectionFromLaw] = 1;
+            spellLevels[SpellConstants.Shatter] = 2;
+            spellLevels[SpellConstants.MagicCircleAgainstLaw] = 3;
+            spellLevels[SpellConstants.ChaosHammer] = 4;
+            spellLevels[SpellConstants.DispelLaw] = 5;
+            spellLevels[SpellConstants.AnimateObjects] = 6;
+            spellLevels[SpellConstants.WordOfChaos] = 7;
+            spellLevels[SpellConstants.CloakOfChaos] = 8;
+            spellLevels[SpellConstants.SummonMonsterIX] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Chaos, spellLevels);
         }
 
@@ -721,7 +1240,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.InflictLightWounds] = 1;
+            spellLevels[SpellConstants.Shatter] = 2;
+            spellLevels[SpellConstants.Contagion] = 3;
+            spellLevels[SpellConstants.InflictCriticalWounds] = 4;
+            spellLevels[SpellConstants.InflictLightWounds_Mass] = 5;
+            spellLevels[SpellConstants.Harm] = 6;
+            spellLevels[SpellConstants.Disintegrate] = 7;
+            spellLevels[SpellConstants.Earthquake] = 8;
+            spellLevels[SpellConstants.Implosion] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Destruction, spellLevels);
         }
 
@@ -730,7 +1258,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.MagicStone] = 1;
+            spellLevels[SpellConstants.SoftenEarthAndStone] = 2;
+            spellLevels[SpellConstants.StoneShape] = 3;
+            spellLevels[SpellConstants.SpikeStones] = 4;
+            spellLevels[SpellConstants.WallOfStone] = 5;
+            spellLevels[SpellConstants.Stoneskin] = 6;
+            spellLevels[SpellConstants.Earthquake] = 7;
+            spellLevels[SpellConstants.IronBody] = 8;
+            spellLevels[SpellConstants.ElementalSwarm] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Earth, spellLevels);
         }
 
@@ -748,7 +1285,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.ProtectionFromGood] = 1;
+            spellLevels[SpellConstants.Desecrate] = 2;
+            spellLevels[SpellConstants.MagicCircleAgainstGood] = 3;
+            spellLevels[SpellConstants.UnholyBlight] = 4;
+            spellLevels[SpellConstants.DispelGood] = 5;
+            spellLevels[SpellConstants.CreateUndead] = 6;
+            spellLevels[SpellConstants.Blasphemy] = 7;
+            spellLevels[SpellConstants.UnholyAura] = 8;
+            spellLevels[SpellConstants.SummonMonsterIX] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Evil, spellLevels);
         }
 
@@ -757,7 +1303,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.BurningHands] = 1;
+            spellLevels[SpellConstants.ProduceFlame] = 2;
+            spellLevels[SpellConstants.ResistEnergy] = 3;
+            spellLevels[SpellConstants.WallOfFire] = 4;
+            spellLevels[SpellConstants.FireShield] = 5;
+            spellLevels[SpellConstants.FireSeeds] = 6;
+            spellLevels[SpellConstants.FireStorm] = 7;
+            spellLevels[SpellConstants.IncendiaryCloud] = 8;
+            spellLevels[SpellConstants.ElementalSwarm] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Fire, spellLevels);
         }
 
@@ -766,7 +1321,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.ProtectionFromEvil] = 1;
+            spellLevels[SpellConstants.Aid] = 2;
+            spellLevels[SpellConstants.MagicCircleAgainstEvil] = 3;
+            spellLevels[SpellConstants.HolySmite] = 4;
+            spellLevels[SpellConstants.DispelEvil] = 5;
+            spellLevels[SpellConstants.BladeBarrier] = 6;
+            spellLevels[SpellConstants.HolyWord] = 7;
+            spellLevels[SpellConstants.HolyAura] = 8;
+            spellLevels[SpellConstants.SummonMonsterIX] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Good, spellLevels);
         }
 
@@ -775,7 +1339,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.CureLightWounds] = 1;
+            spellLevels[SpellConstants.CureModerateWounds] = 2;
+            spellLevels[SpellConstants.CureSeriousWounds] = 3;
+            spellLevels[SpellConstants.CureCriticalWounds] = 4;
+            spellLevels[SpellConstants.CureLightWounds_Mass] = 5;
+            spellLevels[SpellConstants.Heal] = 6;
+            spellLevels[SpellConstants.Regenerate] = 7;
+            spellLevels[SpellConstants.CureCriticalWounds_Mass] = 8;
+            spellLevels[SpellConstants.Heal_Mass] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Healing, spellLevels);
         }
 
@@ -793,7 +1366,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.DetectSecretDoors] = 1;
+            spellLevels[SpellConstants.DetectThoughts] = 2;
+            spellLevels[SpellConstants.ClairaudienceClairvoyance] = 3;
+            spellLevels[SpellConstants.Divination] = 4;
+            spellLevels[SpellConstants.TrueSeeing] = 5;
+            spellLevels[SpellConstants.FindThePath] = 6;
+            spellLevels[SpellConstants.LegendLore] = 7;
+            spellLevels[SpellConstants.DiscernLocation] = 8;
+            spellLevels[SpellConstants.Foresight] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Knowledge, spellLevels);
         }
 
@@ -802,7 +1384,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.ProtectionFromChaos] = 1;
+            spellLevels[SpellConstants.CalmEmotions] = 2;
+            spellLevels[SpellConstants.MagicCircleAgainstChaos] = 3;
+            spellLevels[SpellConstants.OrdersWrath] = 4;
+            spellLevels[SpellConstants.DispelChaos] = 5;
+            spellLevels[SpellConstants.HoldMonster] = 6;
+            spellLevels[SpellConstants.Dictum] = 7;
+            spellLevels[SpellConstants.ShieldOfLaw] = 8;
+            spellLevels[SpellConstants.SummonMonsterIX] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Law, spellLevels);
         }
 
@@ -811,7 +1402,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.EntropicShield] = 1;
+            spellLevels[SpellConstants.Aid] = 2;
+            spellLevels[SpellConstants.ProtectionFromEnergy] = 3;
+            spellLevels[SpellConstants.FreedomOfMovement] = 4;
+            spellLevels[SpellConstants.BreakEnchantment] = 5;
+            spellLevels[SpellConstants.Mislead] = 6;
+            spellLevels[SpellConstants.SpellTurning] = 7;
+            spellLevels[SpellConstants.MomentOfPrescience] = 8;
+            spellLevels[SpellConstants.Miracle] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Luck, spellLevels);
         }
 
@@ -820,7 +1420,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.Entangle] = 1;
+            spellLevels[SpellConstants.Barkskin] = 2;
+            spellLevels[SpellConstants.PlantGrowth] = 3;
+            spellLevels[SpellConstants.CommandPlants] = 4;
+            spellLevels[SpellConstants.WallOfThorns] = 5;
+            spellLevels[SpellConstants.RepelWood] = 6;
+            spellLevels[SpellConstants.AnimatePlants] = 7;
+            spellLevels[SpellConstants.ControlPlants] = 8;
+            spellLevels[SpellConstants.Shambler] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Plant, spellLevels);
         }
 
@@ -829,7 +1438,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.Sanctuary] = 1;
+            spellLevels[SpellConstants.ShieldOther] = 2;
+            spellLevels[SpellConstants.ProtectionFromEnergy] = 3;
+            spellLevels[SpellConstants.SpellImmunity] = 4;
+            spellLevels[SpellConstants.SpellResistance] = 5;
+            spellLevels[SpellConstants.AntimagicField] = 6;
+            spellLevels[SpellConstants.Repulsion] = 7;
+            spellLevels[SpellConstants.MindBlank] = 8;
+            spellLevels[SpellConstants.PrismaticSphere] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Protection, spellLevels);
         }
 
@@ -838,7 +1456,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.EndureElements] = 1;
+            spellLevels[SpellConstants.HeatMetal] = 2;
+            spellLevels[SpellConstants.SearingLight] = 3;
+            spellLevels[SpellConstants.FireShield] = 4;
+            spellLevels[SpellConstants.FlameStrike] = 5;
+            spellLevels[SpellConstants.FireSeeds] = 6;
+            spellLevels[SpellConstants.Sunbeam] = 7;
+            spellLevels[SpellConstants.Sunburst] = 8;
+            spellLevels[SpellConstants.PrismaticSphere] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Sun, spellLevels);
         }
 
@@ -847,7 +1474,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.DisguiseSelf] = 1;
+            spellLevels[SpellConstants.Invisibility] = 2;
+            spellLevels[SpellConstants.Nondetection] = 3;
+            spellLevels[SpellConstants.Confusion] = 4;
+            spellLevels[SpellConstants.FalseVision] = 5;
+            spellLevels[SpellConstants.Mislead] = 6;
+            spellLevels[SpellConstants.Screen] = 7;
+            spellLevels[SpellConstants.PolymorphAnyObject] = 8;
+            spellLevels[SpellConstants.TimeStop] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Trickery, spellLevels);
         }
 
@@ -856,7 +1492,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.MagicWeapon] = 1;
+            spellLevels[SpellConstants.SpiritualWeapon] = 2;
+            spellLevels[SpellConstants.MagicVestment] = 3;
+            spellLevels[SpellConstants.DivinePower] = 4;
+            spellLevels[SpellConstants.FlameStrike] = 5;
+            spellLevels[SpellConstants.BladeBarrier] = 6;
+            spellLevels[SpellConstants.PowerWordBlind] = 7;
+            spellLevels[SpellConstants.PowerWordStun] = 8;
+            spellLevels[SpellConstants.PowerWordKill] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.War, spellLevels);
         }
 
@@ -865,7 +1510,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            spellLevels[SpellConstants.ObscuringMist] = 1;
+            spellLevels[SpellConstants.FogCloud] = 2;
+            spellLevels[SpellConstants.WaterBreathing] = 3;
+            spellLevels[SpellConstants.ControlWater] = 4;
+            spellLevels[SpellConstants.IceStorm] = 5;
+            spellLevels[SpellConstants.ConeOfCold] = 6;
+            spellLevels[SpellConstants.AcidFog] = 7;
+            spellLevels[SpellConstants.HorridWilting] = 8;
+            spellLevels[SpellConstants.ElementalSwarm] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Water, spellLevels);
         }
     }

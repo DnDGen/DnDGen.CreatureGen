@@ -95,7 +95,10 @@
         public const string DetectUndead = "Detect undead";
         public const string DimensionDoor = "Dimension door";
         public const string DisguiseSelf = "Disguise self";
-        public const string DispelAlignment = "Dispel chaos/evil/good/law";
+        public const string DispelChaos = "Dispel chaos";
+        public const string DispelEvil = "Dispel evil";
+        public const string DispelGood = "Dispel good";
+        public const string DispelLaw = "Dispel law";
         public const string DispelMagic = "Dispel magic";
         public const string Displacement = "Displacement";
         public const string DisruptUndead = "Disrupt undead";
@@ -130,6 +133,7 @@
         public const string HaltUndead = "Halt undead";
         public const string Haste = "Haste";
         public const string Heal = "Heal";
+        public const string Heal_Mass = "Mass heal";
         public const string Harm = "Harm";
         public const string Heroism = "Heroism";
         public const string HideousLaughter = "Hideous laughter";
@@ -155,7 +159,10 @@
         public const string MageArmor = "Mage armor";
         public const string MageHand = "Mage hand";
         public const string MagicAura = "Magic aura";
-        public const string MagicCircleAgainstAlignment = "Magic circle against chaos/evil/good/law";
+        public const string MagicCircleAgainstChaos = "Magic circle against chaos";
+        public const string MagicCircleAgainstEvil = "Magic circle against evil";
+        public const string MagicCircleAgainstGood = "Magic circle against good";
+        public const string MagicCircleAgainstLaw = "Magic circle against law";
         public const string MagicMissile = "Magic missile";
         public const string MagicMouth = "Magic mouth";
         public const string MagicWeapon = "Magic weapon";
@@ -179,7 +186,10 @@
         public const string Poison = "Poison";
         public const string Polymorph = "Polymorph";
         public const string Prestidigitation = "Prestidigitation";
-        public const string ProtectionFromAlignment = "Protection from chaos/evil/good/law";
+        public const string ProtectionFromChaos = "Protection from chaos";
+        public const string ProtectionFromEvil = "Protection from evil";
+        public const string ProtectionFromGood = "Protection from good";
+        public const string ProtectionFromLaw = "Protection from law";
         public const string ProtectionFromArrows = "Protection from arrows";
         public const string RayOfEnfeeblement = "Ray of enfeeblement";
         public const string RayOfFrost = "Ray of frost";
@@ -539,7 +549,10 @@
         public const string Command = "Command";
         public const string CurseWater = "Curse water";
         public const string Deathwatch = "Deathwatch";
-        public const string DetectAlignment = "Detect chaos/evil/good/law";
+        public const string DetectChaos = "Detect chaos";
+        public const string DetectEvil = "Detect evil";
+        public const string DetectGood = "Detect good";
+        public const string DetectLaw = "Detect law";
         public const string DivineFavor = "Divine favor";
         public const string Doom = "Doom";
         public const string HideFromUndead = "Hide from undead";
