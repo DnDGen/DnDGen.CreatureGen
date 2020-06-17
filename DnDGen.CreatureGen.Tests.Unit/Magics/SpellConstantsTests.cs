@@ -457,7 +457,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Magics
         [TestCase(SpellConstants.FireSeeds, "Fire seeds")]
         [TestCase(SpellConstants.FireStorm, "Fire storm")]
         [TestCase(SpellConstants.FlameStrike, "Flame strike")]
-        [TestCase(SpellConstants.HealHarm_Mass, "Mass heal/harm")]
         [TestCase(SpellConstants.HeatMetal, "Heat metal")]
         [TestCase(SpellConstants.HoldAnimal, "Hold animal")]
         [TestCase(SpellConstants.ImbueWithSpellAbility, "Imbue with spell ability")]

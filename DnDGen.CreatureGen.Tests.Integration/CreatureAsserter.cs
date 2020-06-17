@@ -68,6 +68,12 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     Assert.That(spellQuantity.Quantity, Is.Not.Negative, creature.Summary);
                     Assert.That(spellQuantity.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
                     Assert.That(spellQuantity.TotalQuantity, Is.Not.Negative, creature.Summary);
+
+                    if (creature.Magic.PreparedSpells.Any())
+                    {
+                        var spells = creature.Magic.PreparedSpells.Where(s => s.Level == spellQuantity.Level);
+                        Assert.That(spells.Count(), Is.EqualTo(spellQuantity.TotalQuantity));
+                    }
                 }
 
                 foreach (var spell in creature.Magic.KnownSpells)
@@ -82,6 +88,10 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     Assert.That(spell.Metamagic, Is.Empty, creature.Summary);
                     Assert.That(spell.Level, Is.InRange(0, 9), creature.Summary);
                     Assert.That(spell.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
+
+                    var knownSpell = creature.Magic.KnownSpells.FirstOrDefault(s => s.Name == spell.Name);
+                    Assert.That(knownSpell, Is.Not.Null);
+                    Assert.That(knownSpell.Level, Is.EqualTo(spell.Level));
                 }
             }
             else

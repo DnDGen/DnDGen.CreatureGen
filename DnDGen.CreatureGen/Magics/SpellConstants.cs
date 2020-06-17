@@ -491,7 +491,6 @@
         public const string FireSeeds = "Fire seeds";
         public const string FireStorm = "Fire storm";
         public const string FlameStrike = "Flame strike";
-        public const string HealHarm_Mass = "Mass heal/harm";
         public const string HeatMetal = "Heat metal";
         public const string HoldAnimal = "Hold animal";
         public const string ImbueWithSpellAbility = "Imbue with spell ability";

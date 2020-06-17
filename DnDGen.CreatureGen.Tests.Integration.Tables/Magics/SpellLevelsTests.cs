@@ -484,7 +484,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             spellLevels[SpellConstants.EnergyDrain] = 9;
             spellLevels[SpellConstants.Etherealness] = 9;
             spellLevels[SpellConstants.Gate] = 9;
-            spellLevels[SpellConstants.HealHarm_Mass] = 9;
+            spellLevels[SpellConstants.Heal_Mass] = 9;
             spellLevels[SpellConstants.Implosion] = 9;
             spellLevels[SpellConstants.Miracle] = 9;
             spellLevels[SpellConstants.SoulBind] = 9;
@@ -1276,7 +1276,76 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            //0 - Level Sorcerer / Wizard Spells(Cantrips)
+            //Ench
+            spellLevels[SpellConstants.Daze] = 0;
+
+            //1st - Level Sorcerer / Wizard Spells
+            //Ench
+            spellLevels[SpellConstants.CharmPerson] = 1;
+            spellLevels[SpellConstants.Hypnotism] = 1;
+            spellLevels[SpellConstants.Sleep] = 1;
+
+            //2nd - Level Sorcerer / Wizard Spells
+            //Ench
+            spellLevels[SpellConstants.DazeMonster] = 2;
+            spellLevels[SpellConstants.HideousLaughter] = 2;
+            spellLevels[SpellConstants.TouchOfIdiocy] = 2;
+
+            //3rd-Level Sorcerer/Wizard Spells
+            //Ench
+            spellLevels[SpellConstants.DeepSlumber] = 3;
+            spellLevels[SpellConstants.Heroism] = 3;
+            spellLevels[SpellConstants.HoldPerson] = 3;
+            spellLevels[SpellConstants.Rage] = 3;
+            spellLevels[SpellConstants.Suggestion] = 3;
+
+            //4th-Level Sorcerer/Wizard Spells
+            //Ench
+            spellLevels[SpellConstants.CharmMonster] = 4;
+            spellLevels[SpellConstants.Confusion] = 4;
+            spellLevels[SpellConstants.CrushingDespair] = 4;
+            spellLevels[SpellConstants.Geas_Lesser] = 4;
+
+            //5th-Level Sorcerer/Wizard Spells
+            //Ench
+            spellLevels[SpellConstants.DominatePerson] = 5;
+            spellLevels[SpellConstants.Feeblemind] = 5;
+            spellLevels[SpellConstants.HoldMonster] = 5;
+            spellLevels[SpellConstants.MindFog] = 5;
+            spellLevels[SpellConstants.SymbolOfSleep] = 5;
+
+            //6th-Level Sorcerer/Wizard Spells
+            //Ench
+            spellLevels[SpellConstants.GeasQuest] = 6;
+            spellLevels[SpellConstants.Heroism_Greater] = 6;
+            spellLevels[SpellConstants.Suggestion_Mass] = 6;
+            spellLevels[SpellConstants.SymbolOfPersuasion] = 6;
+
+            //7th-Level Sorcerer/Wizard Spells
+            //Ench
+            spellLevels[SpellConstants.HoldPerson_Mass] = 7;
+            spellLevels[SpellConstants.Insanity] = 7;
+            spellLevels[SpellConstants.PowerWordBlind] = 7;
+            spellLevels[SpellConstants.SymbolOfStunning] = 7;
+
+            //8th-Level Sorcerer/Wizard Spells
+            //Ench
+            spellLevels[SpellConstants.Antipathy] = 8;
+            spellLevels[SpellConstants.Binding] = 8;
+            spellLevels[SpellConstants.CharmMonster_Mass] = 8;
+            spellLevels[SpellConstants.Demand] = 8;
+            spellLevels[SpellConstants.IrresistibleDance] = 8;
+            spellLevels[SpellConstants.PowerWordStun] = 8;
+            spellLevels[SpellConstants.SymbolOfInsanity] = 8;
+            spellLevels[SpellConstants.Sympathy] = 8;
+
+            //9th-Level Sorcerer/Wizard Spells
+            //Ench
+            spellLevels[SpellConstants.DominateMonster] = 9;
+            spellLevels[SpellConstants.HoldMonster_Mass] = 9;
+            spellLevels[SpellConstants.PowerWordKill] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Enchantment, spellLevels);
         }
 
@@ -1357,7 +1426,81 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         {
             var spellLevels = new Dictionary<string, int>();
 
-            Assert.Fail("need to add spells");
+            //0 - Level Sorcerer / Wizard Spells(Cantrips)
+            //Illus
+            spellLevels[SpellConstants.GhostSound] = 0;
+
+            //1st - Level Sorcerer / Wizard Spells
+            //Illus
+            spellLevels[SpellConstants.ColorSpray] = 1;
+            spellLevels[SpellConstants.DisguiseSelf] = 1;
+            spellLevels[SpellConstants.MagicAura] = 1;
+            spellLevels[SpellConstants.SilentImage] = 1;
+            spellLevels[SpellConstants.Ventriloquism] = 1;
+
+            //2nd - Level Sorcerer / Wizard Spells
+            //Illus
+            spellLevels[SpellConstants.Blur] = 2;
+            spellLevels[SpellConstants.HypnoticPattern] = 2;
+            spellLevels[SpellConstants.Invisibility] = 2;
+            spellLevels[SpellConstants.MagicMouth] = 2;
+            spellLevels[SpellConstants.MinorImage] = 2;
+            spellLevels[SpellConstants.MirrorImage] = 2;
+            spellLevels[SpellConstants.Misdirection] = 2;
+            spellLevels[SpellConstants.PhantomTrap] = 2;
+
+            //3rd-Level Sorcerer/Wizard Spells
+            //Illus
+            spellLevels[SpellConstants.Displacement] = 3;
+            spellLevels[SpellConstants.IllusoryScript] = 3;
+            spellLevels[SpellConstants.InvisibilitySphere] = 3;
+            spellLevels[SpellConstants.MajorImage] = 3;
+
+            //4th-Level Sorcerer/Wizard Spells
+            //Illus
+            spellLevels[SpellConstants.HallucinatoryTerrain] = 4;
+            spellLevels[SpellConstants.IllusoryWall] = 4;
+            spellLevels[SpellConstants.Invisibility_Greater] = 4;
+            spellLevels[SpellConstants.PhantasmalKiller] = 4;
+            spellLevels[SpellConstants.RainbowPattern] = 4;
+            spellLevels[SpellConstants.ShadowConjuration] = 4;
+
+            //5th-Level Sorcerer/Wizard Spells
+            //Illus
+            spellLevels[SpellConstants.Dream] = 5;
+            spellLevels[SpellConstants.FalseVision] = 5;
+            spellLevels[SpellConstants.MirageArcana] = 5;
+            spellLevels[SpellConstants.Nightmare] = 5;
+            spellLevels[SpellConstants.PersistentImage] = 5;
+            spellLevels[SpellConstants.Seeming] = 5;
+            spellLevels[SpellConstants.ShadowEvocation] = 5;
+
+            //6th-Level Sorcerer/Wizard Spells
+            //Illus
+            spellLevels[SpellConstants.Mislead] = 6;
+            spellLevels[SpellConstants.PermanentImage] = 6;
+            spellLevels[SpellConstants.ProgrammedImage] = 6;
+            spellLevels[SpellConstants.ShadowWalk] = 6;
+            spellLevels[SpellConstants.Veil] = 6;
+
+            //7th-Level Sorcerer/Wizard Spells
+            //Illus
+            spellLevels[SpellConstants.Invisibility_Mass] = 7;
+            spellLevels[SpellConstants.ProjectImage] = 7;
+            spellLevels[SpellConstants.ShadowConjuration_Greater] = 7;
+            spellLevels[SpellConstants.Simulacrum] = 7;
+
+            //8th-Level Sorcerer/Wizard Spells
+            //Illus
+            spellLevels[SpellConstants.ScintillatingPattern] = 8;
+            spellLevels[SpellConstants.Screen] = 8;
+            spellLevels[SpellConstants.ShadowEvocation_Greater] = 8;
+
+            //9th-Level Sorcerer/Wizard Spells
+            //Illus
+            spellLevels[SpellConstants.Shades] = 9;
+            spellLevels[SpellConstants.Weird] = 9;
+
             AssertTypesAndAmounts(SpellConstants.Domains.Illusion, spellLevels);
         }
 

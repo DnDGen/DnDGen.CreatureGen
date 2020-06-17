@@ -1,0 +1,971 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Bard</name>
+    <entry>Alarm@1</entry>
+    <entry>Alter self@2</entry>
+    <entry>Analyze dweomer@6</entry>
+    <entry>Animal messenger@2</entry>
+    <entry>Animal trance@2</entry>
+    <entry>Animate objects@6</entry>
+    <entry>Animate rope@1</entry>
+    <entry>Blindness/Deafness@2</entry>
+    <entry>Blink@3</entry>
+    <entry>Blur@2</entry>
+    <entry>Break enchantment@4</entry>
+    <entry>Calm emotions@2</entry>
+    <entry>Cat's grace@2</entry>
+    <entry>Cause fear@1</entry>
+    <entry>Charm monster@3</entry>
+    <entry>Charm person@1</entry>
+    <entry>Clairaudience/Clairvoyance@3</entry>
+    <entry>Comprehend languages@1</entry>
+    <entry>Confusion@3</entry>
+    <entry>Crushing despair@3</entry>
+    <entry>Cure critical wounds@4</entry>
+    <entry>Cure light wounds@1</entry>
+    <entry>Cure moderate wounds@2</entry>
+    <entry>Cure serious wounds@3</entry>
+    <entry>Dancing lights@0</entry>
+    <entry>Darkness@2</entry>
+    <entry>Daylight@3</entry>
+    <entry>Daze monster@2</entry>
+    <entry>Daze@0</entry>
+    <entry>Deep slumber@3</entry>
+    <entry>Delay poison@2</entry>
+    <entry>Detect magic@0</entry>
+    <entry>Detect scrying@4</entry>
+    <entry>Detect secret doors@1</entry>
+    <entry>Detect thoughts@2</entry>
+    <entry>Dimension door@4</entry>
+    <entry>Disguise self@1</entry>
+    <entry>Dispel magic@3</entry>
+    <entry>Displacement@3</entry>
+    <entry>Dominate person@4</entry>
+    <entry>Dream@5</entry>
+    <entry>Eagle's splendor@2</entry>
+    <entry>Enthrall@2</entry>
+    <entry>Erase@1</entry>
+    <entry>Expeditious retreat@1</entry>
+    <entry>Eyebite@6</entry>
+    <entry>False vision@5</entry>
+    <entry>Fear@3</entry>
+    <entry>Feather fall@1</entry>
+    <entry>Find the path@6</entry>
+    <entry>Flare@0</entry>
+    <entry>Fox's cunning@2</entry>
+    <entry>Freedom of movement@4</entry>
+    <entry>Gaseous form@3</entry>
+    <entry>Geas/Quest@6</entry>
+    <entry>Ghost sound@0</entry>
+    <entry>Glibness@3</entry>
+    <entry>Glitterdust@2</entry>
+    <entry>Good hope@3</entry>
+    <entry>Grease@1</entry>
+    <entry>Greater dispel magic@5</entry>
+    <entry>Greater heroism@5</entry>
+    <entry>Greater invisibility@4</entry>
+    <entry>Greater scrying@6</entry>
+    <entry>Greater shout@6</entry>
+    <entry>Hallucinatory terrain@4</entry>
+    <entry>Haste@3</entry>
+    <entry>Heroes' feast@6</entry>
+    <entry>Heroism@2</entry>
+    <entry>Hideous laughter@1</entry>
+    <entry>Hold monster@4</entry>
+    <entry>Hold person@2</entry>
+    <entry>Hypnotic pattern@2</entry>
+    <entry>Hypnotism@1</entry>
+    <entry>Identify@1</entry>
+    <entry>Illusory script@3</entry>
+    <entry>Invisibility sphere@3</entry>
+    <entry>Invisibility@2</entry>
+    <entry>Irresistible dance@6</entry>
+    <entry>Know direction@0</entry>
+    <entry>Legend lore@4</entry>
+    <entry>Lesser confusion@1</entry>
+    <entry>Lesser geas@3</entry>
+    <entry>Light@0</entry>
+    <entry>Locate creature@4</entry>
+    <entry>Locate object@2</entry>
+    <entry>Lullaby@0</entry>
+    <entry>Mage hand@0</entry>
+    <entry>Magic aura@1</entry>
+    <entry>Magic mouth@1</entry>
+    <entry>Major image@3</entry>
+    <entry>Mass cat's grace@6</entry>
+    <entry>Mass charm monster@6</entry>
+    <entry>Mass cure light wounds@5</entry>
+    <entry>Mass cure moderate wounds@6</entry>
+    <entry>Mass eagle's splendor@6</entry>
+    <entry>Mass fox's cunning@6</entry>
+    <entry>Mass suggestion@5</entry>
+    <entry>Mending@0</entry>
+    <entry>Message@0</entry>
+    <entry>Mind fog@5</entry>
+    <entry>Minor image@2</entry>
+    <entry>Mirage arcana@5</entry>
+    <entry>Mirror image@2</entry>
+    <entry>Misdirection@2</entry>
+    <entry>Mislead@5</entry>
+    <entry>Modify memory@4</entry>
+    <entry>Neutralize poison@4</entry>
+    <entry>Nightmare@5</entry>
+    <entry>Obscure object@1</entry>
+    <entry>Open/Close@0</entry>
+    <entry>Permanent image@6</entry>
+    <entry>Persistent image@5</entry>
+    <entry>Phantom steed@3</entry>
+    <entry>Prestidigitation@0</entry>
+    <entry>Programmed image@6</entry>
+    <entry>Project image@6</entry>
+    <entry>Pyrotechnics@2</entry>
+    <entry>Rage@2</entry>
+    <entry>Rainbow pattern@4</entry>
+    <entry>Read magic@0</entry>
+    <entry>Remove curse@3</entry>
+    <entry>Remove fear@1</entry>
+    <entry>Repel vermin@4</entry>
+    <entry>Resistance@0</entry>
+    <entry>Scare@2</entry>
+    <entry>Scrying@3</entry>
+    <entry>Sculpt sound@3</entry>
+    <entry>Secret page@3</entry>
+    <entry>Secure shelter@4</entry>
+    <entry>See invisibility@3</entry>
+    <entry>Seeming@5</entry>
+    <entry>Sepia snake sigil@3</entry>
+    <entry>Shadow conjuration@4</entry>
+    <entry>Shadow evocation@5</entry>
+    <entry>Shadow walk@5</entry>
+    <entry>Shatter@2</entry>
+    <entry>Shout@4</entry>
+    <entry>Silence@2</entry>
+    <entry>Silent image@1</entry>
+    <entry>Sleep@1</entry>
+    <entry>Slow@3</entry>
+    <entry>Song of discord@5</entry>
+    <entry>Sound burst@2</entry>
+    <entry>Speak with animals@3</entry>
+    <entry>Speak with plants@4</entry>
+    <entry>Suggestion@2</entry>
+    <entry>Summon instrument@0</entry>
+    <entry>Summon monster I@1</entry>
+    <entry>Summon monster II@2</entry>
+    <entry>Summon monster III@3</entry>
+    <entry>Summon monster IV@4</entry>
+    <entry>Summon monster V@5</entry>
+    <entry>Summon monster VI@6</entry>
+    <entry>Summon swarm@2</entry>
+    <entry>Sympathetic vibration@6</entry>
+    <entry>Tiny hut@3</entry>
+    <entry>Tongues@2</entry>
+    <entry>Undetectable alignment@1</entry>
+    <entry>Unseen servant@1</entry>
+    <entry>Veil@6</entry>
+    <entry>Ventriloquism@1</entry>
+    <entry>Whispering wind@2</entry>
+    <entry>Zone of silence@4</entry>
+  </collection>
+  <collection>
+    <name>Cleric</name>
+    <entry>Aid@2</entry>
+    <entry>Air walk@4</entry>
+    <entry>Align weapon@2</entry>
+    <entry>Animate dead@3</entry>
+    <entry>Animate objects@6</entry>
+    <entry>Antilife shell@6</entry>
+    <entry>Antimagic field@8</entry>
+    <entry>Astral projection@9</entry>
+    <entry>Atonement@5</entry>
+    <entry>Augury@2</entry>
+    <entry>Bane@1</entry>
+    <entry>Banishment@6</entry>
+    <entry>Bear's endurance@2</entry>
+    <entry>Bestow curse@3</entry>
+    <entry>Blade barrier@6</entry>
+    <entry>Blasphemy@7</entry>
+    <entry>Bless water@1</entry>
+    <entry>Bless@1</entry>
+    <entry>Blindness/Deafness@3</entry>
+    <entry>Break enchantment@5</entry>
+    <entry>Bull's strength@2</entry>
+    <entry>Calm emotions@2</entry>
+    <entry>Cause fear@1</entry>
+    <entry>Cloak of chaos@8</entry>
+    <entry>Command@1</entry>
+    <entry>Commune@5</entry>
+    <entry>Comprehend languages@1</entry>
+    <entry>Consecrate@2</entry>
+    <entry>Contagion@3</entry>
+    <entry>Continual flame@3</entry>
+    <entry>Control water@4</entry>
+    <entry>Control weather@7</entry>
+    <entry>Create food and water@3</entry>
+    <entry>Create greater undead@8</entry>
+    <entry>Create undead@6</entry>
+    <entry>Create water@0</entry>
+    <entry>Cure critical wounds@4</entry>
+    <entry>Cure light wounds@1</entry>
+    <entry>Cure minor wounds@0</entry>
+    <entry>Cure moderate wounds@2</entry>
+    <entry>Cure serious wounds@3</entry>
+    <entry>Curse water@1</entry>
+    <entry>Darkness@2</entry>
+    <entry>Daylight@3</entry>
+    <entry>Death knell@2</entry>
+    <entry>Death ward@4</entry>
+    <entry>Deathwatch@1</entry>
+    <entry>Deeper darkness@3</entry>
+    <entry>Delay poison@2</entry>
+    <entry>Desecrate@2</entry>
+    <entry>Destruction@7</entry>
+    <entry>Detect chaos@1</entry>
+    <entry>Detect evil@1</entry>
+    <entry>Detect good@1</entry>
+    <entry>Detect law@1</entry>
+    <entry>Detect magic@0</entry>
+    <entry>Detect poison@0</entry>
+    <entry>Detect undead@1</entry>
+    <entry>Dictum@7</entry>
+    <entry>Dimensional anchor@4</entry>
+    <entry>Dimensional lock@8</entry>
+    <entry>Discern lies@4</entry>
+    <entry>Discern location@8</entry>
+    <entry>Dismissal@4</entry>
+    <entry>Dispel chaos@5</entry>
+    <entry>Dispel evil@5</entry>
+    <entry>Dispel good@5</entry>
+    <entry>Dispel law@5</entry>
+    <entry>Dispel magic@3</entry>
+    <entry>Disrupting weapon@5</entry>
+    <entry>Divination@4</entry>
+    <entry>Divine favor@1</entry>
+    <entry>Divine power@4</entry>
+    <entry>Doom@1</entry>
+    <entry>Eagle's splendor@2</entry>
+    <entry>Earthquake@8</entry>
+    <entry>Endure elements@1</entry>
+    <entry>Energy drain@9</entry>
+    <entry>Enthrall@2</entry>
+    <entry>Entropic shield@1</entry>
+    <entry>Ethereal jaunt@7</entry>
+    <entry>Etherealness@9</entry>
+    <entry>Find the path@6</entry>
+    <entry>Find traps@2</entry>
+    <entry>Fire storm@8</entry>
+    <entry>Flame strike@5</entry>
+    <entry>Forbiddance@6</entry>
+    <entry>Freedom of movement@4</entry>
+    <entry>Gate@9</entry>
+    <entry>Geas/Quest@6</entry>
+    <entry>Gentle repose@2</entry>
+    <entry>Giant vermin@4</entry>
+    <entry>Glyph of warding@3</entry>
+    <entry>Greater command@5</entry>
+    <entry>Greater dispel magic@6</entry>
+    <entry>Greater glyph of warding@6</entry>
+    <entry>Greater magic weapon@4</entry>
+    <entry>Greater planar ally@8</entry>
+    <entry>Greater restoration@7</entry>
+    <entry>Greater scrying@7</entry>
+    <entry>Greater spell immunity@8</entry>
+    <entry>Guidance@0</entry>
+    <entry>Hallow@5</entry>
+    <entry>Harm@6</entry>
+    <entry>Heal@6</entry>
+    <entry>Helping hand@3</entry>
+    <entry>Heroes' feast@6</entry>
+    <entry>Hide from undead@1</entry>
+    <entry>Hold person@2</entry>
+    <entry>Holy aura@8</entry>
+    <entry>Holy word@7</entry>
+    <entry>Imbue with spell ability@4</entry>
+    <entry>Implosion@9</entry>
+    <entry>Inflict light wounds@1</entry>
+    <entry>Inflict critical wounds@4</entry>
+    <entry>Inflict moderate wounds@2</entry>
+    <entry>Inflict serious wounds@3</entry>
+    <entry>Inflict minor wounds@0</entry>
+    <entry>Insect plague@5</entry>
+    <entry>Invisibility purge@3</entry>
+    <entry>Lesser planar ally@4</entry>
+    <entry>Lesser restoration@2</entry>
+    <entry>Light@0</entry>
+    <entry>Locate object@3</entry>
+    <entry>Magic circle against chaos@3</entry>
+    <entry>Magic circle against evil@3</entry>
+    <entry>Magic circle against good@3</entry>
+    <entry>Magic circle against law@3</entry>
+    <entry>Magic stone@1</entry>
+    <entry>Magic vestment@3</entry>
+    <entry>Magic weapon@1</entry>
+    <entry>Make whole@2</entry>
+    <entry>Mark of justice@5</entry>
+    <entry>Mass bear's endurance@6</entry>
+    <entry>Mass bull's strength@6</entry>
+    <entry>Mass eagle's splendor@6</entry>
+    <entry>Mass owl's wisdom@6</entry>
+    <entry>Owl's wisdom@2</entry>
+    <entry>Mass cure critical wounds@8</entry>
+    <entry>Mass cure light wounds@5</entry>
+    <entry>Mass cure moderate wounds@6</entry>
+    <entry>Mass cure serious wounds@7</entry>
+    <entry>Mass heal@9</entry>
+    <entry>Mass inflict critical wounds@8</entry>
+    <entry>Mass inflict light wounds@5</entry>
+    <entry>Mass inflict moderate wounds@6</entry>
+    <entry>Mass inflict serious wounds@7</entry>
+    <entry>Meld into stone@3</entry>
+    <entry>Mending@0</entry>
+    <entry>Miracle@9</entry>
+    <entry>Neutralize poison@4</entry>
+    <entry>Obscure object@3</entry>
+    <entry>Obscuring mist@1</entry>
+    <entry>Planar ally@6</entry>
+    <entry>Plane shift@5</entry>
+    <entry>Poison@4</entry>
+    <entry>Prayer@3</entry>
+    <entry>Protection from chaos@1</entry>
+    <entry>Protection from evil@1</entry>
+    <entry>Protection from good@1</entry>
+    <entry>Protection from law@1</entry>
+    <entry>Protection from energy@3</entry>
+    <entry>Purify food and drink@0</entry>
+    <entry>Raise dead@5</entry>
+    <entry>Read magic@0</entry>
+    <entry>Refuge@7</entry>
+    <entry>Regenerate@7</entry>
+    <entry>Remove blindness/deafness@3</entry>
+    <entry>Remove curse@3</entry>
+    <entry>Remove disease@3</entry>
+    <entry>Remove fear@1</entry>
+    <entry>Remove paralysis@2</entry>
+    <entry>Repel vermin@4</entry>
+    <entry>Repulsion@7</entry>
+    <entry>Resist energy@2</entry>
+    <entry>Restoration@4</entry>
+    <entry>Resistance@0</entry>
+    <entry>Resurrection@7</entry>
+    <entry>Righteous might@5</entry>
+    <entry>Sanctuary@1</entry>
+    <entry>Scrying@5</entry>
+    <entry>Searing light@3</entry>
+    <entry>Sending@4</entry>
+    <entry>Shield of faith@1</entry>
+    <entry>Shield of law@8</entry>
+    <entry>Shield other@2</entry>
+    <entry>Silence@2</entry>
+    <entry>Shatter@2</entry>
+    <entry>Slay living@5</entry>
+    <entry>Soul bind@9</entry>
+    <entry>Sound burst@2</entry>
+    <entry>Speak with dead@3</entry>
+    <entry>Spell immunity@4</entry>
+    <entry>Spell resistance@5</entry>
+    <entry>Spiritual weapon@2</entry>
+    <entry>Status@2</entry>
+    <entry>Stone shape@3</entry>
+    <entry>Storm of vengeance@9</entry>
+    <entry>Summon monster I@1</entry>
+    <entry>Summon monster II@2</entry>
+    <entry>Summon monster III@3</entry>
+    <entry>Summon monster IV@4</entry>
+    <entry>Summon monster V@5</entry>
+    <entry>Summon monster VI@6</entry>
+    <entry>Summon monster VII@7</entry>
+    <entry>Summon monster VIII@8</entry>
+    <entry>Summon monster IX@9</entry>
+    <entry>Symbol of death@8</entry>
+    <entry>Symbol of fear@6</entry>
+    <entry>Symbol of insanity@8</entry>
+    <entry>Symbol of pain@5</entry>
+    <entry>Symbol of persuasion@6</entry>
+    <entry>Symbol of sleep@5</entry>
+    <entry>Symbol of stunning@7</entry>
+    <entry>Symbol of weakness@7</entry>
+    <entry>Tongues@4</entry>
+    <entry>True resurrection@9</entry>
+    <entry>True seeing@5</entry>
+    <entry>Undeath to death@6</entry>
+    <entry>Undetectable alignment@2</entry>
+    <entry>Unhallow@5</entry>
+    <entry>Unholy aura@8</entry>
+    <entry>Virtue@0</entry>
+    <entry>Wall of stone@5</entry>
+    <entry>Water breathing@3</entry>
+    <entry>Water walk@3</entry>
+    <entry>Wind walk@6</entry>
+    <entry>Wind wall@3</entry>
+    <entry>Word of chaos@7</entry>
+    <entry>Word of recall@6</entry>
+    <entry>Zone of truth@2</entry>
+  </collection>
+  <collection>
+    <name>Druid</name>
+    <entry>Animal growth@5</entry>
+    <entry>Air walk@4</entry>
+    <entry>Animal messenger@2</entry>
+    <entry>Animal shapes@8</entry>
+    <entry>Animal trance@2</entry>
+    <entry>Antilife shell@6</entry>
+    <entry>Animate plants@7</entry>
+    <entry>Antipathy@9</entry>
+    <entry>Atonement@5</entry>
+    <entry>Antiplant shell@4</entry>
+    <entry>Awaken@5</entry>
+    <entry>Baleful polymorph@5</entry>
+    <entry>Bear's endurance@2</entry>
+    <entry>Barkskin@2</entry>
+    <entry>Blight@4</entry>
+    <entry>Call lightning storm@5</entry>
+    <entry>Call lightning@3</entry>
+    <entry>Calm animals@1</entry>
+    <entry>Cat's grace@2</entry>
+    <entry>Changestaff@7</entry>
+    <entry>Bull's strength@2</entry>
+    <entry>Charm animal@1</entry>
+    <entry>Chill metal@2</entry>
+    <entry>Command plants@4</entry>
+    <entry>Commune with nature@5</entry>
+    <entry>Control plants@8</entry>
+    <entry>Control winds@5</entry>
+    <entry>Creeping doom@7</entry>
+    <entry>Contagion@3</entry>
+    <entry>Control water@4</entry>
+    <entry>Control weather@7</entry>
+    <entry>Create water@0</entry>
+    <entry>Cure critical wounds@5</entry>
+    <entry>Cure light wounds@1</entry>
+    <entry>Cure minor wounds@0</entry>
+    <entry>Cure moderate wounds@3</entry>
+    <entry>Cure serious wounds@4</entry>
+    <entry>Dispel magic@4</entry>
+    <entry>Dominate animal@3</entry>
+    <entry>Death ward@5</entry>
+    <entry>Detect animals or plants@1</entry>
+    <entry>Detect snares and pits@1</entry>
+    <entry>Diminish plants@3</entry>
+    <entry>Daylight@3</entry>
+    <entry>Elemental swarm@9</entry>
+    <entry>Entangle@1</entry>
+    <entry>Faerie fire@1</entry>
+    <entry>Finger of death@8</entry>
+    <entry>Delay poison@2</entry>
+    <entry>Fire seeds@6</entry>
+    <entry>Fire storm@7</entry>
+    <entry>Fire trap@2</entry>
+    <entry>Flame blade@2</entry>
+    <entry>Detect magic@0</entry>
+    <entry>Detect poison@0</entry>
+    <entry>Flame strike@4</entry>
+    <entry>Flaming sphere@2</entry>
+    <entry>Flare@0</entry>
+    <entry>Fog cloud@2</entry>
+    <entry>Foresight@9</entry>
+    <entry>Goodberry@1</entry>
+    <entry>Greater magic fang@3</entry>
+    <entry>Gust of wind@2</entry>
+    <entry>Hallow@5</entry>
+    <entry>Heal@7</entry>
+    <entry>Heat metal@2</entry>
+    <entry>Hide from animals@1</entry>
+    <entry>Hold animal@2</entry>
+    <entry>Ice storm@4</entry>
+    <entry>Insect plague@5</entry>
+    <entry>Ironwood@6</entry>
+    <entry>Jump@1</entry>
+    <entry>Earthquake@8</entry>
+    <entry>Endure elements@1</entry>
+    <entry>Know direction@0</entry>
+    <entry>Lesser restoration@2</entry>
+    <entry>Find the path@6</entry>
+    <entry>Freedom of movement@4</entry>
+    <entry>Giant vermin@4</entry>
+    <entry>Greater dispel magic@6</entry>
+    <entry>Light@0</entry>
+    <entry>Liveoak@6</entry>
+    <entry>Greater scrying@7</entry>
+    <entry>Longstrider@1</entry>
+    <entry>Guidance@0</entry>
+    <entry>Magic fang@1</entry>
+    <entry>Mass cat's grace@6</entry>
+    <entry>Magic stone@1</entry>
+    <entry>Mass bear's endurance@6</entry>
+    <entry>Mass bull's strength@6</entry>
+    <entry>Mass owl's wisdom@6</entry>
+    <entry>Owl's wisdom@2</entry>
+    <entry>Mass cure critical wounds@9</entry>
+    <entry>Mass cure light wounds@6</entry>
+    <entry>Mass cure moderate wounds@7</entry>
+    <entry>Mass cure serious wounds@8</entry>
+    <entry>Meld into stone@3</entry>
+    <entry>Mending@0</entry>
+    <entry>Move earth@6</entry>
+    <entry>Neutralize poison@3</entry>
+    <entry>Obscuring mist@1</entry>
+    <entry>Pass without trace@1</entry>
+    <entry>Plant growth@3</entry>
+    <entry>Poison@3</entry>
+    <entry>Produce flame@1</entry>
+    <entry>Quench@3</entry>
+    <entry>Reduce animal@2</entry>
+    <entry>Reincarnate@4</entry>
+    <entry>Repel metal or stone@8</entry>
+    <entry>Protection from energy@3</entry>
+    <entry>Purify food and drink@0</entry>
+    <entry>Repel wood@6</entry>
+    <entry>Read magic@0</entry>
+    <entry>Regenerate@9</entry>
+    <entry>Reverse gravity@8</entry>
+    <entry>Rusting grasp@4</entry>
+    <entry>Remove disease@3</entry>
+    <entry>Shambler@9</entry>
+    <entry>Shapechange@9</entry>
+    <entry>Repel vermin@4</entry>
+    <entry>Shillelagh@1</entry>
+    <entry>Resist energy@2</entry>
+    <entry>Sleet storm@3</entry>
+    <entry>Resistance@0</entry>
+    <entry>Snare@3</entry>
+    <entry>Soften earth and stone@2</entry>
+    <entry>Speak with animals@1</entry>
+    <entry>Scrying@4</entry>
+    <entry>Speak with plants@3</entry>
+    <entry>Spellstaff@6</entry>
+    <entry>Spike growth@3</entry>
+    <entry>Spike stones@4</entry>
+    <entry>Stone tell@6</entry>
+    <entry>Sympathy@9</entry>
+    <entry>Spider climb@2</entry>
+    <entry>Stoneskin@5</entry>
+    <entry>Summon swarm@2</entry>
+    <entry>Sunbeam@7</entry>
+    <entry>Sunburst@8</entry>
+    <entry>Transmute metal to wood@7</entry>
+    <entry>Transmute mud to rock@5</entry>
+    <entry>Transmute rock to mud@5</entry>
+    <entry>Transport via plants@6</entry>
+    <entry>Tree shape@2</entry>
+    <entry>Stone shape@3</entry>
+    <entry>Storm of vengeance@9</entry>
+    <entry>Summon nature's ally I@1</entry>
+    <entry>Summon nature's ally II@2</entry>
+    <entry>Summon nature's ally III@3</entry>
+    <entry>Summon nature's ally IV@4</entry>
+    <entry>Summon nature's ally V@5</entry>
+    <entry>Summon nature's ally VI@6</entry>
+    <entry>Summon nature's ally VII@7</entry>
+    <entry>Summon nature's ally VIII@8</entry>
+    <entry>Summon nature's ally IX@9</entry>
+    <entry>Tree stride@5</entry>
+    <entry>Wall of fire@5</entry>
+    <entry>Wall of thorns@5</entry>
+    <entry>Warp wood@2</entry>
+    <entry>Whirlwind@8</entry>
+    <entry>Wood shape@2</entry>
+    <entry>True seeing@7</entry>
+    <entry>Unhallow@5</entry>
+    <entry>Virtue@0</entry>
+    <entry>Wall of stone@6</entry>
+    <entry>Water breathing@3</entry>
+    <entry>Wind walk@7</entry>
+    <entry>Wind wall@3</entry>
+    <entry>Word of recall@8</entry>
+  </collection>
+  <collection>
+    <name>Sorcerer</name>
+    <entry>Acid arrow@2</entry>
+    <entry>Acid fog@6</entry>
+    <entry>Acid splash@0</entry>
+    <entry>Alarm@1</entry>
+    <entry>Alter self@2</entry>
+    <entry>Analyze dweomer@6</entry>
+    <entry>Animal growth@5</entry>
+    <entry>Animate dead@4</entry>
+    <entry>Animate rope@1</entry>
+    <entry>Antimagic field@6</entry>
+    <entry>Antipathy@8</entry>
+    <entry>Arcane eye@4</entry>
+    <entry>Arcane lock@2</entry>
+    <entry>Arcane mark@0</entry>
+    <entry>Arcane sight@3</entry>
+    <entry>Astral projection@9</entry>
+    <entry>Baleful polymorph@5</entry>
+    <entry>Banishment@7</entry>
+    <entry>Bear's endurance@2</entry>
+    <entry>Bull's strength@2</entry>
+    <entry>Cat's grace@2</entry>
+    <entry>Owl's wisdom@2</entry>
+    <entry>Eagle's splendor@2</entry>
+    <entry>Fox's cunning@2</entry>
+    <entry>Mass Bear's endurance@6</entry>
+    <entry>Mass Bull's strength@6</entry>
+    <entry>Mass Cat's grace@6</entry>
+    <entry>Mass Owl's wisdom@6</entry>
+    <entry>Mass Eagle's splendor@6</entry>
+    <entry>Mass Fox's cunning@6</entry>
+    <entry>Bestow curse@4</entry>
+    <entry>Binding@8</entry>
+    <entry>Black tentacles@4</entry>
+    <entry>Blight@5</entry>
+    <entry>Blindness/Deafness@2</entry>
+    <entry>Blink@3</entry>
+    <entry>Blur@2</entry>
+    <entry>Break enchantment@5</entry>
+    <entry>Burning hands@1</entry>
+    <entry>Cause fear@1</entry>
+    <entry>Chain lightning@6</entry>
+    <entry>Charm monster@4</entry>
+    <entry>Charm person@1</entry>
+    <entry>Chill touch@1</entry>
+    <entry>Circle of death@6</entry>
+    <entry>Clairaudience/Clairvoyance@3</entry>
+    <entry>Clenched fist@8</entry>
+    <entry>Clone@8</entry>
+    <entry>Cloudkill@5</entry>
+    <entry>Color spray@1</entry>
+    <entry>Command undead@2</entry>
+    <entry>Comprehend languages@1</entry>
+    <entry>Cone of cold@5</entry>
+    <entry>Confusion@4</entry>
+    <entry>Contact other plane@5</entry>
+    <entry>Contagion@4</entry>
+    <entry>Wish@9</entry>
+    <entry>Implosion@9</entry>
+    <entry>Limited wish@7</entry>
+    <entry>Contingency@6</entry>
+    <entry>Continual flame@2</entry>
+    <entry>Control undead@7</entry>
+    <entry>Control water@6</entry>
+    <entry>Control weather@7</entry>
+    <entry>Create greater undead@8</entry>
+    <entry>Create undead@6</entry>
+    <entry>Crushing despair@4</entry>
+    <entry>Crushing hand@9</entry>
+    <entry>Dancing lights@0</entry>
+    <entry>Darkness@2</entry>
+    <entry>Darkvision@2</entry>
+    <entry>Daylight@3</entry>
+    <entry>Daze monster@2</entry>
+    <entry>Daze@0</entry>
+    <entry>Deep slumber@3</entry>
+    <entry>Delayed blast fireball@7</entry>
+    <entry>Demand@8</entry>
+    <entry>Detect magic@0</entry>
+    <entry>Detect poison@0</entry>
+    <entry>Detect scrying@4</entry>
+    <entry>Detect secret doors@1</entry>
+    <entry>Detect thoughts@2</entry>
+    <entry>Detect undead@1</entry>
+    <entry>Dimension door@4</entry>
+  </collection>
+  <collection>
+    <name>Air</name>
+    <entry>Obscuring mist@1</entry>
+    <entry>Wind wall@2</entry>
+    <entry>Gaseous form@3</entry>
+    <entry>Air walk@4</entry>
+    <entry>Control winds@5</entry>
+    <entry>Chain lightning@6</entry>
+    <entry>Control weather@7</entry>
+    <entry>Whirlwind@8</entry>
+    <entry>Elemental swarm@9</entry>
+  </collection>
+  <collection>
+    <name>Animal</name>
+    <entry>Calm animals@1</entry>
+    <entry>Hold animal@2</entry>
+    <entry>Dominate animal@3</entry>
+    <entry>Summon nature's ally IV@4</entry>
+    <entry>Commune with nature@5</entry>
+    <entry>Antilife shell@6</entry>
+    <entry>Animal shapes@7</entry>
+    <entry>Summon nature's ally VIII@8</entry>
+    <entry>Shapechange@9</entry>
+  </collection>
+  <collection>
+    <name>Chaos</name>
+    <entry>Protection from law@1</entry>
+    <entry>Shatter@2</entry>
+    <entry>Magic circle against law@3</entry>
+    <entry>Chaos hammer@4</entry>
+    <entry>Dispel law@5</entry>
+    <entry>Animate objects@6</entry>
+    <entry>Word of chaos@7</entry>
+    <entry>Cloak of chaos@8</entry>
+    <entry>Summon monster IX@9</entry>
+  </collection>
+  <collection>
+    <name>Illusion</name>
+    <entry>Blur@2</entry>
+    <entry>Color spray@1</entry>
+    <entry>Disguise self@1</entry>
+    <entry>Displacement@3</entry>
+    <entry>Dream@5</entry>
+    <entry>False vision@5</entry>
+    <entry>Ghost sound@0</entry>
+    <entry>Greater invisibility@4</entry>
+    <entry>Greater shadow conjuration@7</entry>
+    <entry>Greater shadow evocation@8</entry>
+    <entry>Hallucinatory terrain@4</entry>
+    <entry>Hypnotic pattern@2</entry>
+    <entry>Illusory script@3</entry>
+    <entry>Illusory wall@4</entry>
+    <entry>Invisibility sphere@3</entry>
+    <entry>Invisibility@2</entry>
+    <entry>Magic aura@1</entry>
+    <entry>Magic mouth@2</entry>
+    <entry>Major image@3</entry>
+    <entry>Mass invisibility@7</entry>
+    <entry>Minor image@2</entry>
+    <entry>Mirage arcana@5</entry>
+    <entry>Mirror image@2</entry>
+    <entry>Misdirection@2</entry>
+    <entry>Mislead@6</entry>
+    <entry>Nightmare@5</entry>
+    <entry>Permanent image@6</entry>
+    <entry>Persistent image@5</entry>
+    <entry>Phantasmal killer@4</entry>
+    <entry>Phantom trap@2</entry>
+    <entry>Programmed image@6</entry>
+    <entry>Project image@7</entry>
+    <entry>Rainbow pattern@4</entry>
+    <entry>Scintillating pattern@8</entry>
+    <entry>Screen@8</entry>
+    <entry>Seeming@5</entry>
+    <entry>Shades@9</entry>
+    <entry>Shadow conjuration@4</entry>
+    <entry>Shadow evocation@5</entry>
+    <entry>Shadow walk@6</entry>
+    <entry>Silent image@1</entry>
+    <entry>Simulacrum@7</entry>
+    <entry>Veil@6</entry>
+    <entry>Ventriloquism@1</entry>
+    <entry>Weird@9</entry>
+  </collection>
+  <collection>
+    <name>Enchantment</name>
+    <entry>Antipathy@8</entry>
+    <entry>Binding@8</entry>
+    <entry>Charm monster@4</entry>
+    <entry>Charm person@1</entry>
+    <entry>Confusion@4</entry>
+    <entry>Crushing despair@4</entry>
+    <entry>Daze monster@2</entry>
+    <entry>Daze@0</entry>
+    <entry>Deep slumber@3</entry>
+    <entry>Demand@8</entry>
+    <entry>Dominate monster@9</entry>
+    <entry>Dominate person@5</entry>
+    <entry>Feeblemind@5</entry>
+    <entry>Geas/Quest@6</entry>
+    <entry>Greater heroism@6</entry>
+    <entry>Heroism@3</entry>
+    <entry>Hideous laughter@2</entry>
+    <entry>Hold monster@5</entry>
+    <entry>Hold person@3</entry>
+    <entry>Hypnotism@1</entry>
+    <entry>Insanity@7</entry>
+    <entry>Irresistible dance@8</entry>
+    <entry>Lesser geas@4</entry>
+    <entry>Mass charm monster@8</entry>
+    <entry>Mass hold monster@9</entry>
+    <entry>Mass hold person@7</entry>
+    <entry>Mass suggestion@6</entry>
+    <entry>Mind fog@5</entry>
+    <entry>Power word blind@7</entry>
+    <entry>Power word kill@9</entry>
+    <entry>Power word stun@8</entry>
+    <entry>Rage@3</entry>
+    <entry>Sleep@1</entry>
+    <entry>Suggestion@3</entry>
+    <entry>Symbol of insanity@8</entry>
+    <entry>Symbol of persuasion@6</entry>
+    <entry>Symbol of sleep@5</entry>
+    <entry>Symbol of stunning@7</entry>
+    <entry>Sympathy@8</entry>
+    <entry>Touch of idiocy@2</entry>
+  </collection>
+  <collection>
+    <name>Fire</name>
+    <entry>Burning hands@1</entry>
+    <entry>Produce flame@2</entry>
+    <entry>Resist energy@3</entry>
+    <entry>Wall of fire@4</entry>
+    <entry>Fire shield@5</entry>
+    <entry>Fire seeds@6</entry>
+    <entry>Fire storm@7</entry>
+    <entry>Incendiary cloud@8</entry>
+    <entry>Elemental swarm@9</entry>
+  </collection>
+  <collection>
+    <name>Destruction</name>
+    <entry>Inflict light wounds@1</entry>
+    <entry>Shatter@2</entry>
+    <entry>Contagion@3</entry>
+    <entry>Inflict critical wounds@4</entry>
+    <entry>Mass inflict light wounds@5</entry>
+    <entry>Harm@6</entry>
+    <entry>Disintegrate@7</entry>
+    <entry>Earthquake@8</entry>
+    <entry>Implosion@9</entry>
+  </collection>
+  <collection>
+    <name>Law</name>
+    <entry>Protection from chaos@1</entry>
+    <entry>Calm emotions@2</entry>
+    <entry>Magic circle against chaos@3</entry>
+    <entry>Order's wrath@4</entry>
+    <entry>Dispel chaos@5</entry>
+    <entry>Hold monster@6</entry>
+    <entry>Dictum@7</entry>
+    <entry>Shield of law@8</entry>
+    <entry>Summon monster IX@9</entry>
+  </collection>
+  <collection>
+    <name>Good</name>
+    <entry>Protection from evil@1</entry>
+    <entry>Aid@2</entry>
+    <entry>Magic circle against evil@3</entry>
+    <entry>Holy smite@4</entry>
+    <entry>Dispel evil@5</entry>
+    <entry>Blade barrier@6</entry>
+    <entry>Holy word@7</entry>
+    <entry>Holy aura@8</entry>
+    <entry>Summon monster IX@9</entry>
+  </collection>
+  <collection>
+    <name>Evil</name>
+    <entry>Protection from good@1</entry>
+    <entry>Desecrate@2</entry>
+    <entry>Magic circle against good@3</entry>
+    <entry>Unholy blight@4</entry>
+    <entry>Dispel good@5</entry>
+    <entry>Create undead@6</entry>
+    <entry>Blasphemy@7</entry>
+    <entry>Unholy aura@8</entry>
+    <entry>Summon monster IX@9</entry>
+  </collection>
+  <collection>
+    <name>Knowledge</name>
+    <entry>Detect secret doors@1</entry>
+    <entry>Detect thoughts@2</entry>
+    <entry>Clairaudience/Clairvoyance@3</entry>
+    <entry>Divination@4</entry>
+    <entry>True seeing@5</entry>
+    <entry>Find the path@6</entry>
+    <entry>Legend lore@7</entry>
+    <entry>Discern location@8</entry>
+    <entry>Foresight@9</entry>
+  </collection>
+  <collection>
+    <name>Plant</name>
+    <entry>Entangle@1</entry>
+    <entry>Barkskin@2</entry>
+    <entry>Plant growth@3</entry>
+    <entry>Command plants@4</entry>
+    <entry>Wall of thorns@5</entry>
+    <entry>Repel wood@6</entry>
+    <entry>Animate plants@7</entry>
+    <entry>Control plants@8</entry>
+    <entry>Shambler@9</entry>
+  </collection>
+  <collection>
+    <name>Sun</name>
+    <entry>Endure elements@1</entry>
+    <entry>Heat metal@2</entry>
+    <entry>Searing light@3</entry>
+    <entry>Fire shield@4</entry>
+    <entry>Flame strike@5</entry>
+    <entry>Fire seeds@6</entry>
+    <entry>Sunbeam@7</entry>
+    <entry>Sunburst@8</entry>
+    <entry>Prismatic sphere@9</entry>
+  </collection>
+  <collection>
+    <name>Water</name>
+    <entry>Obscuring mist@1</entry>
+    <entry>Fog cloud@2</entry>
+    <entry>Water breathing@3</entry>
+    <entry>Control water@4</entry>
+    <entry>Ice storm@5</entry>
+    <entry>Cone of cold@6</entry>
+    <entry>Acid fog@7</entry>
+    <entry>Horrid wilting@8</entry>
+    <entry>Elemental swarm@9</entry>
+  </collection>
+  <collection>
+    <name>War</name>
+    <entry>Magic weapon@1</entry>
+    <entry>Spiritual weapon@2</entry>
+    <entry>Magic vestment@3</entry>
+    <entry>Divine power@4</entry>
+    <entry>Flame strike@5</entry>
+    <entry>Blade barrier@6</entry>
+    <entry>Power word blind@7</entry>
+    <entry>Power word stun@8</entry>
+    <entry>Power word kill@9</entry>
+  </collection>
+  <collection>
+    <name>Trickery</name>
+    <entry>Disguise self@1</entry>
+    <entry>Invisibility@2</entry>
+    <entry>Nondetection@3</entry>
+    <entry>Confusion@4</entry>
+    <entry>False vision@5</entry>
+    <entry>Mislead@6</entry>
+    <entry>Screen@7</entry>
+    <entry>Polymorph any object@8</entry>
+    <entry>Time stop@9</entry>
+  </collection>
+  <collection>
+    <name>Luck</name>
+    <entry>Entropic shield@1</entry>
+    <entry>Aid@2</entry>
+    <entry>Protection from energy@3</entry>
+    <entry>Freedom of movement@4</entry>
+    <entry>Break enchantment@5</entry>
+    <entry>Mislead@6</entry>
+    <entry>Spell turning@7</entry>
+    <entry>Moment of prescience@8</entry>
+    <entry>Miracle@9</entry>
+  </collection>
+  <collection>
+    <name>Healing</name>
+    <entry>Cure light wounds@1</entry>
+    <entry>Cure moderate wounds@2</entry>
+    <entry>Cure serious wounds@3</entry>
+    <entry>Cure critical wounds@4</entry>
+    <entry>Mass cure light wounds@5</entry>
+    <entry>Heal@6</entry>
+    <entry>Regenerate@7</entry>
+    <entry>Mass cure critical wounds@8</entry>
+    <entry>Mass heal@9</entry>
+  </collection>
+  <collection>
+    <name>Earth</name>
+    <entry>Magic stone@1</entry>
+    <entry>Soften earth and stone@2</entry>
+    <entry>Stone shape@3</entry>
+    <entry>Spike stones@4</entry>
+    <entry>Wall of stone@5</entry>
+    <entry>Stoneskin@6</entry>
+    <entry>Earthquake@7</entry>
+    <entry>Iron body@8</entry>
+    <entry>Elemental swarm@9</entry>
+  </collection>
+  <collection>
+    <name>Protection</name>
+    <entry>Sanctuary@1</entry>
+    <entry>Shield other@2</entry>
+    <entry>Protection from energy@3</entry>
+    <entry>Spell immunity@4</entry>
+    <entry>Spell resistance@5</entry>
+    <entry>Antimagic field@6</entry>
+    <entry>Repulsion@7</entry>
+    <entry>Mind blank@8</entry>
+    <entry>Prismatic sphere@9</entry>
+  </collection>
+</collections>

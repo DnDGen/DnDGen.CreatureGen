@@ -1,4 +1,5 @@
 ﻿using DnDGen.Infrastructure.Mappers.Collections;
+using MoreLinq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         protected Dictionary<string, IEnumerable<string>> table;
         protected Dictionary<int, string> indices;
 
+        private const int EquivalentBatchSize = 100;
+
         [SetUp]
         public void CollectionSetup()
         {
@@ -25,9 +28,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         protected void AssertCollectionNames(IEnumerable<string> names)
         {
             AssertUniqueCollection(names);
-
-            //INFO: This is faster than Is.EquivalentTo() for large collections
-            Assert.That(table.Keys.OrderBy(k => k), Is.EqualTo(names.OrderBy(n => n)));
+            AssertCollection(table.Keys, names);
         }
 
         protected IEnumerable<string> GetCollection(string name)
@@ -52,15 +53,41 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         public void AssertCollection(string name, params string[] collection)
         {
             Assert.That(table, Contains.Key(name));
+            AssertCollection(table[name], collection);
+        }
 
-            if (collection.Count() <= 100)
+        private void AssertCollection(IEnumerable<string> source, IEnumerable<string> target)
+        {
+            //INFO: This is faster than Is.EquivalentTo() for large collections
+            var sourceBatches = source
+                .OrderBy(e => e)
+                .Batch(EquivalentBatchSize)
+                .ToArray();
+            var targetBatches = target
+                .OrderBy(e => e)
+                .Batch(EquivalentBatchSize)
+                .ToArray();
+
+            for (var i = 0; i < targetBatches.Length && i < sourceBatches.Length; i++)
             {
-                Assert.That(table[name], Is.EquivalentTo(collection));
+                Assert.That(sourceBatches[i], Is.EquivalentTo(targetBatches[i]), $"Batch {i + 1} of {targetBatches.Length}");
             }
-            else
+
+            if (sourceBatches.Length == targetBatches.Length)
             {
-                //INFO: This is faster than Is.EquivalentTo() for large collections
-                Assert.That(table[name].OrderBy(e => e), Is.EqualTo(collection.OrderBy(e => e)));
+                Assert.That(source.Count(), Is.EqualTo(target.Count()));
+            }
+            else if (sourceBatches.Length < targetBatches.Length)
+            {
+                var i = sourceBatches.Length;
+                var missingSet = Enumerable.Empty<string>();
+                Assert.That(missingSet, Is.EquivalentTo(targetBatches[i]), $"Batch {i + 1} of {targetBatches.Length}");
+            }
+            else if (sourceBatches.Length > targetBatches.Length)
+            {
+                var i = targetBatches.Length;
+                var missingSet = Enumerable.Empty<string>();
+                Assert.That(sourceBatches[i], Is.EquivalentTo(missingSet), $"Batch {i + 1} of {targetBatches.Length}");
             }
         }
 
