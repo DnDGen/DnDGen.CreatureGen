@@ -989,7 +989,7 @@
     <entry>Bite@2d4@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Charm monster@0@0</entry>
     <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Charm person@0@0</entry>
-    <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Cure/Inflict moderate wounds@0@0</entry>
+    <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Inflict moderate wounds@0@0</entry>
     <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@Disintegrate@0@0</entry>
     <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Fear@0@0</entry>
     <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@Finger of death@0@0</entry>
@@ -1002,7 +1002,7 @@
     <name>Gauth (Lesser Beholder)</name>
     <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Sleep@0@0</entry>
-    <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Cure/Inflict moderate wounds@0@0</entry>
+    <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Inflict moderate wounds@0@0</entry>
     <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@@@supernatural ability@Dispel magic@0@0</entry>
     <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@@@supernatural ability@Scorching ray@0@0</entry>
     <entry>Eye ray@@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@Paralysis@0@0</entry>

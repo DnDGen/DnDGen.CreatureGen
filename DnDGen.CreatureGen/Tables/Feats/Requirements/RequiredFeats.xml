@@ -630,22 +630,22 @@
     <name>Angel, Astral DevaSpell-Like AbilityContinual flame</name>
   </collection>
   <collection>
-    <name>Angel, Astral DevaSpell-Like AbilityCure/Inflict light wounds</name>
+    <name>Angel, Astral DevaSpell-Like AbilityCure light wounds</name>
   </collection>
   <collection>
-    <name>Angel, Astral DevaSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>Angel, Astral DevaSpell-Like AbilityDetect evil</name>
   </collection>
   <collection>
     <name>Angel, Astral DevaSpell-Like AbilityDiscern lies</name>
   </collection>
   <collection>
-    <name>Angel, Astral DevaSpell-Like AbilityDispel chaos/evil/good/law</name>
+    <name>Angel, Astral DevaSpell-Like AbilityDispel evil</name>
   </collection>
   <collection>
     <name>Angel, Astral DevaSpell-Like AbilityDispel magic</name>
   </collection>
   <collection>
-    <name>Angel, Astral DevaSpell-Like AbilityHeal/Harm</name>
+    <name>Angel, Astral DevaSpell-Like AbilityHeal</name>
   </collection>
   <collection>
     <name>Angel, Astral DevaSpell-Like AbilityHoly aura</name>
@@ -699,7 +699,7 @@
     <name>Angel, PlanetarSpell-Like AbilityContinual flame</name>
   </collection>
   <collection>
-    <name>Angel, PlanetarSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>Angel, PlanetarSpell-Like AbilityDetect evil</name>
   </collection>
   <collection>
     <name>Angel, PlanetarSpell-Like AbilityDetect snares and pits</name>
@@ -795,7 +795,7 @@
     <name>Angel, SolarSpell-Like AbilityContinual flame</name>
   </collection>
   <collection>
-    <name>Angel, SolarSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>Angel, SolarSpell-Like AbilityDetect evil</name>
   </collection>
   <collection>
     <name>Angel, SolarSpell-Like AbilityDetect snares and pits</name>
@@ -816,7 +816,7 @@
     <name>Angel, SolarSpell-Like AbilityGreater restoration</name>
   </collection>
   <collection>
-    <name>Angel, SolarSpell-Like AbilityHeal/Harm</name>
+    <name>Angel, SolarSpell-Like AbilityHeal</name>
   </collection>
   <collection>
     <name>Angel, SolarSpell-Like AbilityHoly smite</name>
@@ -945,7 +945,7 @@
     <name>ArchonSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only</name>
   </collection>
   <collection>
-    <name>ArchonSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
+    <name>ArchonSpell-Like AbilityMagic circle against evil</name>
   </collection>
   <collection>
     <name>ArchonSpell-Like AbilityTongues</name>
@@ -1053,7 +1053,7 @@
     <name>AvoralSpell-Like AbilityLightning bolt</name>
   </collection>
   <collection>
-    <name>AvoralSpell-Like AbilityMagic circle against chaos/evil/good/law: self only</name>
+    <name>AvoralSpell-Like AbilityMagic circle against evil: self only</name>
   </collection>
   <collection>
     <name>AvoralSpell-Like AbilityMagic missile</name>
@@ -2115,7 +2115,7 @@
     <name>BralaniSpell-Like AbilityCharm person</name>
   </collection>
   <collection>
-    <name>BralaniSpell-Like AbilityCure/Inflict serious wounds</name>
+    <name>BralaniSpell-Like AbilityCure serious wounds</name>
   </collection>
   <collection>
     <name>BralaniSpell-Like AbilityGust of wind</name>
@@ -3291,7 +3291,16 @@
     <name>CouatlTelepathy</name>
   </collection>
   <collection>
-    <name>CouatlPsionicDetect chaos/evil/good/law</name>
+    <name>CouatlPsionicDetect chaos</name>
+  </collection>
+  <collection>
+    <name>CouatlPsionicDetect evil</name>
+  </collection>
+  <collection>
+    <name>CouatlPsionicDetect good</name>
+  </collection>
+  <collection>
+    <name>CouatlPsionicDetect law</name>
   </collection>
   <collection>
     <name>CouatlPsionicDetect thoughts</name>
@@ -3366,7 +3375,7 @@
     <name>Death SlaadSpell-Like AbilityDetect magic</name>
   </collection>
   <collection>
-    <name>Death SlaadSpell-Like AbilityDispel chaos/evil/good/law</name>
+    <name>Death SlaadSpell-Like AbilityDispel law</name>
   </collection>
   <collection>
     <name>Death SlaadSpell-Like AbilityFear</name>
@@ -3387,7 +3396,7 @@
     <name>Death SlaadSpell-Like AbilityInvisibility</name>
   </collection>
   <collection>
-    <name>Death SlaadSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
+    <name>Death SlaadSpell-Like AbilityMagic circle against law</name>
   </collection>
   <collection>
     <name>Death SlaadSpell-Like AbilitySee invisibility</name>
@@ -3759,7 +3768,10 @@
     <name>DriderSpell-Like AbilityDarkness</name>
   </collection>
   <collection>
-    <name>DriderSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>DriderSpell-Like AbilityDetect law</name>
+  </collection>
+  <collection>
+    <name>DriderSpell-Like AbilityDetect good</name>
   </collection>
   <collection>
     <name>DriderSpell-Like AbilityDetect magic</name>
@@ -4406,7 +4418,7 @@
     <name>Formian MyrmarchSpell-Like AbilityClairaudience/Clairvoyance</name>
   </collection>
   <collection>
-    <name>Formian MyrmarchSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>Formian MyrmarchSpell-Like AbilityDetect chaos</name>
   </collection>
   <collection>
     <name>Formian MyrmarchSpell-Like AbilityDetect thoughts</name>
@@ -4418,7 +4430,7 @@
     <name>Formian MyrmarchSpell-Like AbilityGreater teleport</name>
   </collection>
   <collection>
-    <name>Formian MyrmarchSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
+    <name>Formian MyrmarchSpell-Like AbilityMagic circle against chaos</name>
   </collection>
   <collection>
     <name>Formian MyrmarchSpell-Like AbilityOrder's wrath</name>
@@ -4463,7 +4475,7 @@
     <name>Formian QueenSpell-Like AbilityClairaudience/Clairvoyance</name>
   </collection>
   <collection>
-    <name>Formian QueenSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>Formian QueenSpell-Like AbilityDetect chaos</name>
   </collection>
   <collection>
     <name>Formian QueenSpell-Like AbilityDetect thoughts</name>
@@ -4478,7 +4490,7 @@
     <name>Formian QueenSpell-Like AbilityHold monster</name>
   </collection>
   <collection>
-    <name>Formian QueenSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
+    <name>Formian QueenSpell-Like AbilityMagic circle against chaos</name>
   </collection>
   <collection>
     <name>Formian QueenSpell-Like AbilityOrder's wrath</name>
@@ -4568,7 +4580,7 @@
     <name>Formian WorkerImmunityPoison</name>
   </collection>
   <collection>
-    <name>Formian WorkerSpell-Like AbilityCure/Inflict serious wounds: 8 workers work together to cast the spell</name>
+    <name>Formian WorkerSpell-Like AbilityCure serious wounds: 8 workers work together to cast the spell</name>
   </collection>
   <collection>
     <name>Formian WorkerSpell-Like AbilityMake whole: 3 workers work together to cast the spell</name>
@@ -4658,13 +4670,13 @@
     <name>GhaeleSpell-Like AbilityContinual flame</name>
   </collection>
   <collection>
-    <name>GhaeleSpell-Like AbilityCure/Inflict light wounds</name>
+    <name>GhaeleSpell-Like AbilityCure light wounds</name>
   </collection>
   <collection>
     <name>GhaeleSpell-Like AbilityDancing lights</name>
   </collection>
   <collection>
-    <name>GhaeleSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>GhaeleSpell-Like AbilityDetect evil</name>
   </collection>
   <collection>
     <name>GhaeleSpell-Like AbilityDetect thoughts</name>
@@ -5295,7 +5307,7 @@
     <name>Gray SlaadSpell-Like AbilityLightning bolt</name>
   </collection>
   <collection>
-    <name>Gray SlaadSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
+    <name>Gray SlaadSpell-Like AbilityMagic circle against law</name>
   </collection>
   <collection>
     <name>Gray SlaadSpell-Like AbilitySee invisibility</name>
@@ -5307,7 +5319,7 @@
     <name>Gray SlaadSpell-Like AbilityAnimate objects</name>
   </collection>
   <collection>
-    <name>Gray SlaadSpell-Like AbilityDispel chaos/evil/good/law</name>
+    <name>Gray SlaadSpell-Like AbilityDispel law</name>
   </collection>
   <collection>
     <name>Gray SlaadSpell-Like AbilityFly</name>
@@ -5703,7 +5715,7 @@
     <name>Green SlaadSpell-Like AbilityFear</name>
   </collection>
   <collection>
-    <name>Green SlaadSpell-Like AbilityProtection from chaos/evil/good/law</name>
+    <name>Green SlaadSpell-Like AbilityProtection from law</name>
   </collection>
   <collection>
     <name>Green SlaadSpell-Like AbilitySee invisibility</name>
@@ -5712,7 +5724,7 @@
     <name>Green SlaadSpell-Like AbilityShatter</name>
   </collection>
   <collection>
-    <name>Green SlaadSpell-Like AbilityDispel chaos/evil/good/law</name>
+    <name>Green SlaadSpell-Like AbilityDispel law</name>
   </collection>
   <collection>
     <name>Green SlaadSpell-Like AbilityDeeper darkness</name>
@@ -6072,7 +6084,10 @@
     <name>Horned Devil (Cornugon)Spell Resistance</name>
   </collection>
   <collection>
-    <name>Horned Devil (Cornugon)Spell-Like AbilityDispel chaos/evil/good/law</name>
+    <name>Horned Devil (Cornugon)Spell-Like AbilityDispel good</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Spell-Like AbilityDispel chaos</name>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)Spell-Like AbilityFireball</name>
@@ -6084,7 +6099,7 @@
     <name>Horned Devil (Cornugon)Spell-Like AbilityLightning bolt</name>
   </collection>
   <collection>
-    <name>Horned Devil (Cornugon)Spell-Like AbilityMagic circle against chaos/evil/good/law</name>
+    <name>Horned Devil (Cornugon)Spell-Like AbilityMagic circle against good</name>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)Spell-Like AbilityPersistent image</name>
@@ -6117,7 +6132,7 @@
     <name>Hound ArchonSpell-Like AbilityContinual flame</name>
   </collection>
   <collection>
-    <name>Hound ArchonSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>Hound ArchonSpell-Like AbilityDetect evil</name>
   </collection>
   <collection>
     <name>Hound ArchonSpell-Like AbilityMessage</name>
@@ -6223,7 +6238,7 @@
     <name>ImpSpell-Like AbilityCommune: ask 6 questions</name>
   </collection>
   <collection>
-    <name>ImpSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>ImpSpell-Like AbilityDetect good</name>
   </collection>
   <collection>
     <name>ImpSpell-Like AbilityDetect magic</name>
@@ -6502,7 +6517,7 @@
     <name>LammasuSpell-Like AbilityGreater invisibility: self only</name>
   </collection>
   <collection>
-    <name>LammasuSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
+    <name>LammasuSpell-Like AbilityMagic circle against evil</name>
   </collection>
   <collection>
     <name>Lantern ArchonAura of Menace</name>
@@ -6517,7 +6532,7 @@
     <name>Lantern ArchonSpell-Like AbilityContinual flame</name>
   </collection>
   <collection>
-    <name>Lantern ArchonSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>Lantern ArchonSpell-Like AbilityDetect evil</name>
   </collection>
   <collection>
     <name>LemureDamage ReductionVulnerable to good or silver weapons</name>
@@ -6565,7 +6580,7 @@
     <name>LeonalSpell Resistance</name>
   </collection>
   <collection>
-    <name>LeonalSpell-Like AbilityCure/Inflict critical wounds</name>
+    <name>LeonalSpell-Like AbilityCure critical wounds</name>
   </collection>
   <collection>
     <name>LeonalSpell-Like AbilityDetect thoughts</name>
@@ -6574,7 +6589,7 @@
     <name>LeonalSpell-Like AbilityFireball</name>
   </collection>
   <collection>
-    <name>LeonalSpell-Like AbilityHeal/Harm</name>
+    <name>LeonalSpell-Like AbilityHeal</name>
   </collection>
   <collection>
     <name>LeonalSpell-Like AbilityHold monster</name>
@@ -6817,7 +6832,7 @@
     <name>MarutSpell-Like AbilityMark of justice</name>
   </collection>
   <collection>
-    <name>MarutSpell-Like AbilityMass cure/inflict light wounds</name>
+    <name>MarutSpell-Like AbilityMass inflict light wounds</name>
   </collection>
   <collection>
     <name>MarutSpell-Like AbilityPlane shift</name>
@@ -7136,7 +7151,16 @@
     <name>Night HagSpell Resistance</name>
   </collection>
   <collection>
-    <name>Night HagSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>Night HagSpell-Like AbilityDetect chaos</name>
+  </collection>
+  <collection>
+    <name>Night HagSpell-Like AbilityDetect evil</name>
+  </collection>
+  <collection>
+    <name>Night HagSpell-Like AbilityDetect good</name>
+  </collection>
+  <collection>
+    <name>Night HagSpell-Like AbilityDetect law</name>
   </collection>
   <collection>
     <name>Night HagSpell-Like AbilityDetect magic</name>
@@ -7635,7 +7659,10 @@
     <name>PegasusScent</name>
   </collection>
   <collection>
-    <name>PegasusSpell-Like AbilityDetect chaos/evil/good/law: within 60-foot radius</name>
+    <name>PegasusSpell-Like AbilityDetect good: within 60-foot radius</name>
+  </collection>
+  <collection>
+    <name>PegasusSpell-Like AbilityDetect evil: within 60-foot radius</name>
   </collection>
   <collection>
     <name>Phantom FungusSpell-Like AbilityGreater invisibility</name>
@@ -7701,7 +7728,7 @@
     <name>Pit FiendSpell-Like AbilityInvisibility</name>
   </collection>
   <collection>
-    <name>Pit FiendSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
+    <name>Pit FiendSpell-Like AbilityMagic circle against good</name>
   </collection>
   <collection>
     <name>Pit FiendSpell-Like AbilityMass hold monster</name>
@@ -7743,7 +7770,16 @@
     <name>PixieSpell-Like AbilityDancing lights</name>
   </collection>
   <collection>
-    <name>PixieSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>PixieSpell-Like AbilityDetect chaos</name>
+  </collection>
+  <collection>
+    <name>PixieSpell-Like AbilityDetect evil</name>
+  </collection>
+  <collection>
+    <name>PixieSpell-Like AbilityDetect good</name>
+  </collection>
+  <collection>
+    <name>PixieSpell-Like AbilityDetect law</name>
   </collection>
   <collection>
     <name>PixieSpell-Like AbilityDetect thoughts</name>
@@ -7785,7 +7821,16 @@
     <name>Pixie with Irresistible danceSpell Resistance</name>
   </collection>
   <collection>
-    <name>Pixie with Irresistible danceSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>Pixie with Irresistible danceSpell-Like AbilityDetect chaos</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell-Like AbilityDetect evil</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell-Like AbilityDetect good</name>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceSpell-Like AbilityDetect law</name>
   </collection>
   <collection>
     <name>Pixie with Irresistible danceSpell-Like AbilityDetect thoughts</name>
@@ -7881,7 +7926,7 @@
     <name>QuasitSpell-Like AbilityCommune: can ask 6 questions</name>
   </collection>
   <collection>
-    <name>QuasitSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>QuasitSpell-Like AbilityDetect good</name>
   </collection>
   <collection>
     <name>QuasitSpell-Like AbilityDetect magic</name>
@@ -8980,7 +9025,7 @@
     <name>SuccubusSpell-Like AbilityCharm monster</name>
   </collection>
   <collection>
-    <name>SuccubusSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>SuccubusSpell-Like AbilityDetect good</name>
   </collection>
   <collection>
     <name>SuccubusSpell-Like AbilityDetect thoughts</name>
@@ -9193,7 +9238,7 @@
     <name>TitanSpell-Like AbilityCrushing hand</name>
   </collection>
   <collection>
-    <name>TitanSpell-Like AbilityCure/Inflict critical wounds</name>
+    <name>TitanSpell-Like AbilityCure critical wounds</name>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityDaylight</name>
@@ -9307,7 +9352,7 @@
     <name>Trumpet ArchonSpell-Like AbilityContinual flame</name>
   </collection>
   <collection>
-    <name>Trumpet ArchonSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>Trumpet ArchonSpell-Like AbilityDetect evil</name>
   </collection>
   <collection>
     <name>Trumpet ArchonSpell-Like AbilityMessage</name>
@@ -9416,19 +9461,19 @@
     <name>UnicornScent</name>
   </collection>
   <collection>
-    <name>UnicornSpell-Like AbilityCure/Inflict light wounds</name>
+    <name>UnicornSpell-Like AbilityCure light wounds</name>
   </collection>
   <collection>
-    <name>UnicornSpell-Like AbilityCure/Inflict moderate wounds</name>
+    <name>UnicornSpell-Like AbilityCure moderate wounds</name>
   </collection>
   <collection>
-    <name>UnicornSpell-Like AbilityDetect chaos/evil/good/law</name>
+    <name>UnicornSpell-Like AbilityDetect evil</name>
   </collection>
   <collection>
     <name>UnicornSpell-Like AbilityGreater teleport: within its forest home</name>
   </collection>
   <collection>
-    <name>UnicornSpell-Like AbilityMagic circle against chaos/evil/good/law</name>
+    <name>UnicornSpell-Like AbilityMagic circle against evil</name>
   </collection>
   <collection>
     <name>UnicornSpell-Like AbilityNeutralize poison</name>

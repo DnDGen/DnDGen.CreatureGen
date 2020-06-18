@@ -1898,6 +1898,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Drider, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DancingLights)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Drider, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Darkness)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Drider, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectGood)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Drider, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectLaw)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Drider, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectMagic)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Drider, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelMagic)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Drider, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.FaerieFire)] = new Dictionary<string, int>();
@@ -2527,6 +2528,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SeeInDarkness, "Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell")] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelGood)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelChaos)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Fireball)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.LightningBolt)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.HornedDevil_Cornugon, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MagicCircleAgainstGood)] = new Dictionary<string, int>();
@@ -2920,6 +2922,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.Immunity, "Fear")] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellResistance, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectGood)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectChaos)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectEvil)] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectLaw)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectMagic)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MagicMissile)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.NightHag, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.RayOfEnfeeblement)] = new Dictionary<string, int>();
@@ -3065,7 +3070,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Pegasus, FeatConstants.SpecialQualities.Scent, string.Empty)] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Pegasus, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectEvil + ": within 60-foot radius")] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Pegasus, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectChaos + ": within 60-foot radius")] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Pegasus, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectGood + ": within 60-foot radius")] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.PhantomFungus, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Invisibility_Greater)] = new Dictionary<string, int>();
 

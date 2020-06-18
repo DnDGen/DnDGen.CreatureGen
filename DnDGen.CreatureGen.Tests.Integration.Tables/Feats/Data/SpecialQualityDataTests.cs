@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using Ninject;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

@@ -660,6 +660,34 @@
     <entry>Detect thoughts@2</entry>
     <entry>Detect undead@1</entry>
     <entry>Dimension door@4</entry>
+    <entry>Dimensional anchor@4</entry>
+    <entry>Dimensional lock@8</entry>
+    <entry>Discern location@8</entry>
+    <entry>Disguise self@1</entry>
+    <entry>Disintegrate@6</entry>
+    <entry>Dismissal@5</entry>
+    <entry>Dispel magic@3</entry>
+    <entry>Displacement@3</entry>
+    <entry>Disrupt undead@0</entry>
+    <entry>Dominate monster@9</entry>
+    <entry>Dominate person@5</entry>
+    <entry>Dream@5</entry>
+    <entry>Endure elements@1</entry>
+    <entry>Energy drain@9</entry>
+    <entry>Enervation@4</entry>
+    <entry>Enlarge person@1</entry>
+    <entry>Reduce person@1</entry>
+    <entry>Erase@1</entry>
+    <entry>Ethereal jaunt@7</entry>
+    <entry>Etherealness@9</entry>
+    <entry>Expeditious retreat@1</entry>
+    <entry>Explosive runes@3</entry>
+    <entry>Eyebite@6</entry>
+    <entry>Fabricate@5</entry>
+    <entry>False life@2</entry>
+    <entry>False vision@5</entry>
+    <entry>Fear@4</entry>
+    <entry>Feather fall@1</entry>
   </collection>
   <collection>
     <name>Air</name>

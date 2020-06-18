@@ -127,12 +127,12 @@
     <entry>Spell-Like Ability#0#Aid#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Blade barrier#1#Day#0#False#Charisma#Reflex#16</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cure/Inflict light wounds#7#Day#0#False#Charisma#Will#11</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cure light wounds#7#Day#0#False#Charisma#Will#11</entry>
+    <entry>Spell-Like Ability#0#Detect evil#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Discern lies#0#At Will#0#False#Charisma#Will#14</entry>
-    <entry>Spell-Like Ability#0#Dispel chaos/evil/good/law#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Dispel evil#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Heal/Harm#1#Day#0#False#Charisma#Will#16</entry>
+    <entry>Spell-Like Ability#0#Heal#1#Day#0#False#Charisma#Will#16</entry>
     <entry>Spell-Like Ability#0#Holy aura#0#At Will#0#False#Charisma#Fortitude#18</entry>
     <entry>Spell-Like Ability#0#Holy smite#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Holy word#0#At Will#0#False#Charisma#Will#17</entry>
@@ -153,7 +153,7 @@
     <entry>Spell Resistance#30##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Blade barrier#3#Day#0#False#Charisma#Reflex#16</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#Constant#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect evil#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect snares and pits#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Discern lies#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False###0</entry>
@@ -188,14 +188,14 @@
     <entry>Spell-Like Ability#0#Blade barrier#3#Day#0#False#Charisma#Reflex#16</entry>
     <entry>Spell-Like Ability#0#Commune#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#Constant#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect evil#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect snares and pits#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Dimensional anchor#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Discern lies#0#Constant#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Earthquake#3#Day#0#False#Charisma#Reflex#18</entry>
     <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater restoration#1#Day#0#False#Charisma#Will#17</entry>
-    <entry>Spell-Like Ability#0#Heal/Harm#3#Day#0#False#Charisma#Will#16</entry>
+    <entry>Spell-Like Ability#0#Heal#3#Day#0#False#Charisma#Will#16</entry>
     <entry>Spell-Like Ability#0#Holy smite#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Imprisonment#0#At Will#0#False#Charisma#Will#19</entry>
     <entry>Spell-Like Ability#0#Invisibility (self only)#0#At Will#0#False###0</entry>
@@ -661,7 +661,7 @@
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
     <entry>Low-Light Vision#0##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#Constant#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against evil#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False###0</entry>
   </collection>
   <collection>
@@ -715,7 +715,7 @@
     <entry>Spell-Like Ability#0#Hold person#0#At Will#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#Light#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Lightning bolt#3#Day#0#False#Charisma#Reflex#13</entry>
-    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law: self only#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against evil: self only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Magic missile#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Speak with animals#0#Constant#0#False###0</entry>
@@ -1219,7 +1219,7 @@
     <entry>Spell-Like Ability#0#Mirror image#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Wind wall#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Lightning bolt#2#Day#0#False#Charisma#Reflex#13</entry>
-    <entry>Spell-Like Ability#0#Cure/Inflict serious wounds#2#Day#0#False#Charisma#Will#13</entry>
+    <entry>Spell-Like Ability#0#Cure serious wounds#2#Day#0#False#Charisma#Will#13</entry>
     <entry>Spell-Like Ability#0#Tongues#0#Constant#0#False###0</entry>
   </collection>
   <collection>
@@ -1803,7 +1803,10 @@
     <entry>Change Shape#0#Any Small or Medium humanoid#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Ethereal jaunt#0#At Will#0#False###0</entry>
     <entry>Telepathy#90##0##0#False###0</entry>
-    <entry>Psionic#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Psionic#0#Detect chaos#0#At Will#0#False###0</entry>
+    <entry>Psionic#0#Detect evil#0#At Will#0#False###0</entry>
+    <entry>Psionic#0#Detect good#0#At Will#0#False###0</entry>
+    <entry>Psionic#0#Detect law#0#At Will#0#False###0</entry>
     <entry>Psionic#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
     <entry>Psionic#0#Invisibility#0#At Will#0#False###0</entry>
     <entry>Psionic#0#Plane shift#0#At Will#0#False#Charisma#Will#17</entry>
@@ -1843,14 +1846,14 @@
     <entry>Spell-Like Ability#0#Chaos hammer#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Dispel chaos/evil/good/law#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Dispel law#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Fear#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Finger of death#0#At Will#0#False#Charisma#Fortitude#17</entry>
     <entry>Spell-Like Ability#0#Fireball#0#At Will#0#False#Charisma#Reflex#13</entry>
     <entry>Spell-Like Ability#0#Fly#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Identify#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against law#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Shatter#0#At Will#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Circle of death#3#Day#0#False#Charisma#Fortitude#16</entry>
@@ -2076,7 +2079,8 @@
     <entry>Spell-Like Ability#0#Clairaudience/Clairvoyance#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False#Charisma#Will#10</entry>
     <entry>Spell-Like Ability#0#Darkness#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect good#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect law#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Faerie fire#1#Day#0#False###0</entry>
@@ -2450,11 +2454,11 @@
     <entry>Spell Resistance#25##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Clairaudience/Clairvoyance#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect chaos#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Dictum#1#Day#0#False#Charisma#Will#17</entry>
     <entry>Spell-Like Ability#0#Greater teleport#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against chaos#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Order's wrath#1#Day#0#False#Charisma#Will#14</entry>
   </collection>
   <collection>
@@ -2472,12 +2476,12 @@
     <entry>Spell-Like Ability#0#Calm emotions#0#At Will#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Clairaudience/Clairvoyance#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect chaos#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Dictum#0#At Will#0#False#Charisma#Will#17</entry>
     <entry>Spell-Like Ability#0#Divination#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Hold monster#0#At Will#0#False#Charisma#Will#15</entry>
-    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against chaos#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Order's wrath#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Shield of law#0#At Will#0#False#Charisma#Will#18</entry>
     <entry>Spell-Like Ability#0#True seeing#0#At Will#0#False###0</entry>
@@ -2516,7 +2520,7 @@
     <entry>Immunity#0#Cold#0##0#False###0</entry>
     <entry>Immunity#0#Petrification#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cure/Inflict serious wounds: 8 workers work together to cast the spell#1#Round (6 seconds)#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cure serious wounds: 8 workers work together to cast the spell#1#Round (6 seconds)#0#False###0</entry>
     <entry>Spell-Like Ability#0#Make whole: 3 workers work together to cast the spell#1#Round (6 seconds)#0#False###0</entry>
   </collection>
   <collection>
@@ -2564,9 +2568,9 @@
     <entry>Spell-Like Ability#0#Color spray#0#At Will#0#False#Charisma#Will#11</entry>
     <entry>Spell-Like Ability#0#Comprehend languages#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cure/Inflict light wounds#0#At Will#0#False#Charisma#Will#11</entry>
+    <entry>Spell-Like Ability#0#Cure light wounds#0#At Will#0#False#Charisma#Will#11</entry>
     <entry>Spell-Like Ability#0#Dancing lights#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect evil#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Disguise self#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Dispel magic#0#At Will#0#False###0</entry>
@@ -2911,11 +2915,11 @@
     <entry>Spell-Like Ability#0#Identify#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Lightning bolt#0#At Will#0#False#Charisma#Reflex#13</entry>
-    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against law#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Shatter#0#At Will#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Animate objects#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Dispel chaos/evil/good/law#3#Day#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Dispel law#3#Day#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Fly#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Power word stun#1#Day#0#False###0</entry>
   </collection>
@@ -3098,10 +3102,10 @@
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Fear#0#At Will#0#False#Charisma#Will#14</entry>
-    <entry>Spell-Like Ability#0#Protection from chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Protection from law#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#See invisibility#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Shatter#0#At Will#0#False#Charisma#Will#12</entry>
-    <entry>Spell-Like Ability#0#Dispel chaos/evil/good/law#3#Day#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Dispel law#3#Day#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Deeper darkness#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13</entry>
   </collection>
@@ -3299,9 +3303,10 @@
     <entry>See in Darkness#0#Can see perfectly in darkness of any kind, even that created by a Deeper Darkness spell#0##0#False###0</entry>
     <entry>Exotic Weapon Proficiency#0#Spiked chain#0##0#True###0</entry>
     <entry>Spell Resistance#28##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Dispel chaos/evil/good/law#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Dispel chaos#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Dispel good#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against good#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13</entry>
     <entry>Spell-Like Ability#0#Lightning bolt#3#Day#0#False#Charisma#Reflex#13</entry>
@@ -3317,7 +3322,7 @@
     <entry>Spell Resistance#16##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Aid#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect evil#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Message#0#At Will#0#False###0</entry>
   </collection>
   <collection>
@@ -3373,7 +3378,7 @@
     <entry>Fast Healing#2##1#Round (6 seconds)#0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Commune: ask 6 questions#1#Week#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect good#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility: self only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Suggestion#1#Day#0#False#Charisma#Will#13</entry>
@@ -3511,7 +3516,7 @@
     <name>Lammasu</name>
     <entry>Spell-Like Ability#0#Dimension door#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater invisibility: self only#2#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#Constant#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against evil#0#Constant#0#False###0</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
@@ -3519,7 +3524,7 @@
     <entry>Damage Reduction#10#Vulnerable to magic, evil weapons#1#Hit#0#False###0</entry>
     <entry>Spell-Like Ability#0#Aid#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect evil#0#At Will#0#False###0</entry>
   </collection>
   <collection>
     <name>Lawful</name>
@@ -3544,10 +3549,10 @@
     <entry>Lay on Hands#0##0##0#False###0</entry>
     <entry>Protective Aura#0##0##0#False###0</entry>
     <entry>Spell Resistance#28##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cure/Inflict critical wounds#3#Day#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Cure critical wounds#3#Day#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Fireball#0#At Will#0#False#Charisma#Reflex#13</entry>
-    <entry>Spell-Like Ability#0#Heal/Harm#1#Day#0#False#Charisma#Will#16</entry>
+    <entry>Spell-Like Ability#0#Heal#1#Day#0#False#Charisma#Will#16</entry>
     <entry>Spell-Like Ability#0#Hold monster#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#Neutralize poison#3#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Remove disease#3#Day#0#False###0</entry>
@@ -3680,7 +3685,7 @@
     <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Locate creature#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Mark of justice#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Mass cure/inflict light wounds#0#At Will#0#False#Charisma#Will#15</entry>
+    <entry>Spell-Like Ability#0#Mass inflict light wounds#0#At Will#0#False#Charisma#Will#15</entry>
     <entry>Spell-Like Ability#0#True seeing#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Wall of force#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Earthquake#1#Week#0#False#Charisma#Reflex#18</entry>
@@ -3929,7 +3934,10 @@
     <entry>Immunity#0#Fear#0##0#False###0</entry>
     <entry>Immunity#0#Fire#0##0#False###0</entry>
     <entry>Spell Resistance#25##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect chaos#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect evil#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect good#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect law#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Magic missile#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Ray of enfeeblement#0#At Will#0#False###0</entry>
@@ -4170,7 +4178,8 @@
   <collection>
     <name>Pegasus</name>
     <entry>Scent#0##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law: within 60-foot radius#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect good: within 60-foot radius#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect evil: within 60-foot radius#0#At Will#0#False###0</entry>
   </collection>
   <collection>
     <name>Phantom Fungus</name>
@@ -4204,7 +4213,7 @@
     <entry>Spell-Like Ability#0#Greater dispel magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against good#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Mass hold monster#0#At Will#0#False#Charisma#Will#19</entry>
     <entry>Spell-Like Ability#0#Meteor swarm#1#Day#0#False#Charisma#Reflex#19</entry>
     <entry>Spell-Like Ability#0#Persistent image#0#At Will#0#False#Charisma#Will#15</entry>
@@ -4221,7 +4230,10 @@
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True###0</entry>
     <entry>Spell Resistance#15##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect chaos#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect evil#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect good#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect law#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Entangle#1#Day#0#False#Charisma#Reflex#11</entry>
@@ -4238,7 +4250,10 @@
     <entry>Martial Weapon Proficiency#0#Short sword#0##0#True###0</entry>
     <entry>Spell Resistance#15##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Dancing lights#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect chaos#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect evil#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect good#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect law#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#1#Day#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Dispel magic#1#Day#0#False###0</entry>
     <entry>Spell-Like Ability#0#Entangle#1#Day#0#False#Charisma#Reflex#11</entry>
@@ -4291,7 +4306,7 @@
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Cause fear: 30-foot radius area from the quasit#1#Day#0#False#Charisma#Will#11</entry>
     <entry>Spell-Like Ability#0#Commune: can ask 6 questions#1#Week#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect good#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect magic#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Invisibility: self only#0#At Will#0#False###0</entry>
   </collection>
@@ -4891,7 +4906,7 @@
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Spell Resistance#18##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False#Charisma#Will#14</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect good#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Detect thoughts#0#At Will#0#False#Charisma#Will#12</entry>
     <entry>Spell-Like Ability#0#Ethereal jaunt: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater teleport: self plus 50 pounds of objects only#0#At Will#0#False###0</entry>
@@ -4998,7 +5013,7 @@
     <entry>Spell-Like Ability#0#Chain lightning#0#At Will#0#False#Charisma#Reflex#16</entry>
     <entry>Spell-Like Ability#0#Charm monster#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Crushing hand#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cure/Inflict critical wounds#0#At Will#0#False#Charisma#Will#14</entry>
+    <entry>Spell-Like Ability#0#Cure critical wounds#0#At Will#0#False#Charisma#Will#14</entry>
     <entry>Spell-Like Ability#0#Daylight#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Deeper darkness#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Etherealness#3#Day#0#False###0</entry>
@@ -5060,7 +5075,7 @@
     <entry>Martial Weapon Proficiency#0#Greatsword#0##0#True###0</entry>
     <entry>Spell Resistance#29##0##0#False###0</entry>
     <entry>Spell-Like Ability#0#Continual flame#0#At Will#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect evil#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Message#0#At Will#0#False###0</entry>
   </collection>
   <collection>
@@ -5117,11 +5132,11 @@
     <entry>Immunity#0#Compulsion#0##0#False###0</entry>
     <entry>Immunity#0#Poison#0##0#False###0</entry>
     <entry>Scent#0##0##0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cure/Inflict light wounds#3#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Cure/Inflict moderate wounds#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Detect chaos/evil/good/law#0#At Will#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cure light wounds#3#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Cure moderate wounds#1#Day#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Detect evil#0#At Will#0#False###0</entry>
     <entry>Spell-Like Ability#0#Greater teleport: within its forest home#1#Day#0#False###0</entry>
-    <entry>Spell-Like Ability#0#Magic circle against chaos/evil/good/law#0#Constant#0#False###0</entry>
+    <entry>Spell-Like Ability#0#Magic circle against evil#0#Constant#0#False###0</entry>
     <entry>Spell-Like Ability#0#Neutralize poison#1#Day#0#False#Charisma#Will#14</entry>
     <entry>Wild Empathy#0##0##0#False###0</entry>
   </collection>
