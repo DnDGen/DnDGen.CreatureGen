@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
@@ -51,12 +52,38 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             if (!string.IsNullOrEmpty(creature.Magic.Caster))
             {
+                Assert.That(creature.Magic.Caster, Is.EqualTo(SpellConstants.Casters.Bard)
+                    .Or.EqualTo(SpellConstants.Casters.Cleric)
+                    .Or.EqualTo(SpellConstants.Casters.Druid)
+                    .Or.EqualTo(SpellConstants.Casters.Sorcerer), creature.Summary);
+
                 Assert.That(creature.Magic.CasterLevel, Is.Positive, creature.Summary);
                 Assert.That(creature.Magic.ArcaneSpellFailure, Is.InRange(0, 100), creature.Summary);
+                Assert.That(creature.Magic.Domains, Is.Not.Null, creature.Summary);
+
+                var castingAbility = string.Empty;
+
+                if (creature.Magic.Caster == SpellConstants.Casters.Bard || creature.Magic.Caster == SpellConstants.Casters.Sorcerer)
+                {
+                    castingAbility = AbilityConstants.Charisma;
+                }
+                else if (creature.Magic.Caster == SpellConstants.Casters.Cleric || creature.Magic.Caster == SpellConstants.Casters.Druid)
+                {
+                    castingAbility = AbilityConstants.Wisdom;
+                }
+
+                if (creature.Abilities[castingAbility].FullScore < 10)
+                {
+                    Assert.That(creature.Magic.KnownSpells, Is.Empty, creature.Summary);
+                    Assert.That(creature.Magic.SpellsPerDay, Is.Empty, creature.Summary);
+                    Assert.That(creature.Magic.PreparedSpells, Is.Empty, creature.Summary);
+
+                    return;
+                }
+
                 Assert.That(creature.Magic.KnownSpells, Is.Not.Empty, creature.Summary);
                 Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty, creature.Summary);
                 Assert.That(creature.Magic.PreparedSpells, Is.Not.Null, creature.Summary);
-                Assert.That(creature.Magic.Domains, Is.Not.Null, creature.Summary);
 
                 if (creature.Equipment.Armor == null && creature.Equipment.Shield == null)
                 {
@@ -94,9 +121,12 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     Assert.That(spell.Level, Is.InRange(0, 9), creature.Summary);
                     Assert.That(spell.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
 
-                    var knownSpell = creature.Magic.KnownSpells.FirstOrDefault(s => s.Name == spell.Name);
-                    Assert.That(knownSpell, Is.Not.Null);
-                    Assert.That(knownSpell.Level, Is.EqualTo(spell.Level));
+                    var knownSpells = creature.Magic.KnownSpells.Where(s => s.Name == spell.Name && s.Source == spell.Source);
+                    Assert.That(knownSpells, Is.Not.Empty, creature.Summary);
+
+                    //INFO: Doing it this way for when a spell can have multiple levels due to domains
+                    var knownLevels = knownSpells.Select(s => s.Level);
+                    Assert.That(knownLevels, Contains.Item(spell.Level), $"{creature.Summary}: {spell.Name}");
                 }
             }
             else

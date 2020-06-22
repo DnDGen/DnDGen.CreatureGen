@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
-using Ninject;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -94,56 +93,52 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Types.Vermin,
             };
 
-            var alignmentGroups = new[]
+            var goodnesses = new[]
             {
-                AlignmentConstants.Modifiers.Always + AlignmentConstants.Good,
-                AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral,
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Good,
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral,
+                AlignmentConstants.Good,
+                AlignmentConstants.Neutral,
             };
 
-            var typeCreatures = GetCreaturesOfTypes(types);
-
-            var validCreatures = typeCreatures.Where(c => AlignmentMatches(c, alignmentGroups));
-            validCreatures = validCreatures.Where(c => !c.Contains("Celestial"));
-
-            var incorporealCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-            var augmentedCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
-            validCreatures = validCreatures.Except(incorporealCreatures).Except(augmentedCreatures);
-
+            var validCreatures = GetValidAlignmentBasedTemplateGroup(types, goodnesses);
             var celestialCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature);
 
             Assert.That(celestialCreatures, Is.EquivalentTo(validCreatures));
+            Assert.That(celestialCreatures, Contains.Item(CreatureConstants.Human));
         }
 
-        private bool AlignmentMatches(string creature, params string[] alignmentGroups)
+        private IEnumerable<string> GetValidAlignmentBasedTemplateGroup(IEnumerable<string> types, IEnumerable<string> goodnesses)
         {
-            var alignments = GetAlignments(alignmentGroups);
-            var creatureAlignmentGroups = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, creature);
-            if (!creatureAlignmentGroups.Any())
-                creatureAlignmentGroups = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral };
+            var typeCreatures = GetCreaturesOfTypes(types);
 
-            return creatureAlignmentGroups.Any(g => alignments.Any(a => g.Contains(a)))
-                || creatureAlignmentGroups.Intersect(alignmentGroups).Any();
+            var validCreatures = typeCreatures.Where(c => AlignmentMatches(c, goodnesses));
+
+            var incorporealCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+            var augmentedCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
+            var extraplanarCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Extraplanar);
+            validCreatures = validCreatures
+                .Except(incorporealCreatures)
+                .Except(augmentedCreatures)
+                .Except(extraplanarCreatures);
+
+            return validCreatures;
         }
 
-        private IEnumerable<string> GetAlignments(params string[] alignmentGroups)
+        private bool AlignmentMatches(string creature, IEnumerable<string> goodnesses)
         {
-            var alignments = new List<string>();
+            var creatureAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, creature);
 
-            foreach (var alignmentGroup in alignmentGroups)
-            {
-                var explodedAlignments = collectionSelector.Explode(TableNameConstants.Collection.AlignmentGroups, alignmentGroup);
-                alignments.AddRange(explodedAlignments);
-            }
-
-            return alignments;
+            return creatureAlignments.Any(a =>
+                a == AlignmentConstants.Modifiers.Any
+                || goodnesses.Any(g =>
+                    a.EndsWith(g)));
         }
 
-        private IEnumerable<string> GetCreaturesOfTypes(params string[] types)
+        private IEnumerable<string> GetCreaturesOfTypes(IEnumerable<string> types)
         {
             var creatureTypes = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
-            var creaturesOfTypes = creatureTypes.Where(kvp => types.Contains(kvp.Value.First())).Select(kvp => kvp.Key);
+            var creaturesOfTypes = creatureTypes
+                .Where(kvp => types.Contains(kvp.Value.First()))
+                .Select(kvp => kvp.Key);
 
             return creaturesOfTypes;
         }
@@ -165,26 +160,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Types.Vermin,
             };
 
-            var alignmentGroups = new[]
+            var goodnesses = new[]
             {
-                AlignmentConstants.Modifiers.Always + AlignmentConstants.Good,
-                AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral,
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Good,
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral,
+                AlignmentConstants.Good,
+                AlignmentConstants.Neutral,
             };
 
-            var typeCreatures = GetCreaturesOfTypes(types);
-
-            var validCreatures = typeCreatures.Where(c => AlignmentMatches(c, alignmentGroups));
-            validCreatures = validCreatures.Where(c => !c.Contains("Celestial"));
-
-            var incorporealCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-            var augmentedCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
-            validCreatures = validCreatures.Except(incorporealCreatures).Except(augmentedCreatures);
-
+            var validCreatures = GetValidAlignmentBasedTemplateGroup(types, goodnesses);
             var celestialCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfCelestial);
 
             Assert.That(celestialCreatures, Is.EquivalentTo(validCreatures));
+            Assert.That(celestialCreatures, Contains.Item(CreatureConstants.Human));
         }
 
         [Test]
@@ -232,26 +218,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Types.Vermin,
             };
 
-            var alignmentGroups = new[]
+            var goodnesses = new[]
             {
-                AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil,
-                AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral,
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil,
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral,
+                AlignmentConstants.Evil,
+                AlignmentConstants.Neutral,
             };
 
-            var typeCreatures = GetCreaturesOfTypes(types);
-
-            var validCreatures = typeCreatures.Where(c => AlignmentMatches(c, alignmentGroups));
-            validCreatures = validCreatures.Where(c => !c.Contains("Fiendish"));
-
-            var incorporealCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-            var augmentedCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
-            validCreatures = validCreatures.Except(incorporealCreatures).Except(augmentedCreatures);
-
+            var validCreatures = GetValidAlignmentBasedTemplateGroup(types, goodnesses);
             var fiendishCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.FiendishCreature);
 
             Assert.That(fiendishCreatures, Is.EquivalentTo(validCreatures));
+            Assert.That(fiendishCreatures, Contains.Item(CreatureConstants.Human));
         }
 
         [Test]
@@ -271,26 +248,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Types.Vermin,
             };
 
-            var alignmentGroups = new[]
+            var goodnesses = new[]
             {
-                AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil,
-                AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral,
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil,
-                AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral,
+                AlignmentConstants.Evil,
+                AlignmentConstants.Neutral,
             };
 
-            var typeCreatures = GetCreaturesOfTypes(types);
-
-            var validCreatures = typeCreatures.Where(c => AlignmentMatches(c, alignmentGroups));
-            validCreatures = validCreatures.Where(c => !c.Contains("Fiendish"));
-
-            var incorporealCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-            var augmentedCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Augmented);
-            validCreatures = validCreatures.Except(incorporealCreatures).Except(augmentedCreatures);
-
+            var validCreatures = GetValidAlignmentBasedTemplateGroup(types, goodnesses);
             var fiendishCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend);
 
             Assert.That(fiendishCreatures, Is.EquivalentTo(validCreatures));
+            Assert.That(fiendishCreatures, Contains.Item(CreatureConstants.Human));
         }
     }
 }

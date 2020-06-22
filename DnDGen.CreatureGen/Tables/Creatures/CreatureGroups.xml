@@ -411,7 +411,6 @@
     <entry>Wood Elf</entry>
     <entry>Gnome</entry>
     <entry>Halfling</entry>
-    <entry>Githzerai</entry>
     <entry>Ankheg</entry>
     <entry>Aranea</entry>
     <entry>Basilisk</entry>
@@ -422,7 +421,6 @@
     <entry>Darkmantle</entry>
     <entry>Digester</entry>
     <entry>Dragonne</entry>
-    <entry>Ethereal Marauder</entry>
     <entry>Frost Worm</entry>
     <entry>Giant Eagle</entry>
     <entry>Giant Owl</entry>
@@ -453,6 +451,7 @@
     <entry>Centaur</entry>
     <entry>Doppelganger</entry>
     <entry>Plant</entry>
+    <entry>Human</entry>
   </collection>
   <collection>
     <name>Chaotic</name>
@@ -787,7 +786,6 @@
     <entry>Troll</entry>
     <entry>Scrag</entry>
     <entry>Bugbear</entry>
-    <entry>Githzerai</entry>
     <entry>Goblin</entry>
     <entry>Hobgoblin</entry>
     <entry>Kobold</entry>
@@ -819,13 +817,11 @@
     <entry>Darkmantle</entry>
     <entry>Digester</entry>
     <entry>Dragonne</entry>
-    <entry>Ethereal Marauder</entry>
     <entry>Frost Worm</entry>
     <entry>Girallon</entry>
     <entry>Gorgon</entry>
     <entry>Gray Render</entry>
     <entry>Griffon</entry>
-    <entry>Hellwasp Swarm</entry>
     <entry>Hippogriff</entry>
     <entry>Kraken</entry>
     <entry>Krenshar</entry>
@@ -874,6 +870,7 @@
     <entry>Shrieker</entry>
     <entry>Tendriculos</entry>
     <entry>Violet Fungus</entry>
+    <entry>Human</entry>
   </collection>
   <collection>
     <name>Fire</name>
@@ -1088,7 +1085,6 @@
     <entry>Wood Elf</entry>
     <entry>Gnome</entry>
     <entry>Halfling</entry>
-    <entry>Githzerai</entry>
     <entry>Ankheg</entry>
     <entry>Aranea</entry>
     <entry>Basilisk</entry>
@@ -1099,7 +1095,6 @@
     <entry>Darkmantle</entry>
     <entry>Digester</entry>
     <entry>Dragonne</entry>
-    <entry>Ethereal Marauder</entry>
     <entry>Frost Worm</entry>
     <entry>Giant Eagle</entry>
     <entry>Giant Owl</entry>
@@ -1130,6 +1125,7 @@
     <entry>Centaur</entry>
     <entry>Doppelganger</entry>
     <entry>Plant</entry>
+    <entry>Human</entry>
   </collection>
   <collection>
     <name>Half-Dragon</name>
@@ -1195,7 +1191,6 @@
     <entry>Troll</entry>
     <entry>Scrag</entry>
     <entry>Bugbear</entry>
-    <entry>Githzerai</entry>
     <entry>Goblin</entry>
     <entry>Hobgoblin</entry>
     <entry>Kobold</entry>
@@ -1227,13 +1222,11 @@
     <entry>Darkmantle</entry>
     <entry>Digester</entry>
     <entry>Dragonne</entry>
-    <entry>Ethereal Marauder</entry>
     <entry>Frost Worm</entry>
     <entry>Girallon</entry>
     <entry>Gorgon</entry>
     <entry>Gray Render</entry>
     <entry>Griffon</entry>
-    <entry>Hellwasp Swarm</entry>
     <entry>Hippogriff</entry>
     <entry>Kraken</entry>
     <entry>Krenshar</entry>
@@ -1282,6 +1275,7 @@
     <entry>Shrieker</entry>
     <entry>Tendriculos</entry>
     <entry>Violet Fungus</entry>
+    <entry>Human</entry>
   </collection>
   <collection>
     <name>Halfling</name>
