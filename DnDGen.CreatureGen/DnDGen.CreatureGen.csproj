@@ -39,6 +39,7 @@
     <None Remove="Tables\Defenses\HitDice.xml" />
     <None Remove="Tables\Defenses\SaveBonuses.xml" />
     <None Remove="Tables\Defenses\SizeModifiers.xml" />
+    <None Remove="Tables\Equipment\ArcaneSpellFailures.xml" />
     <None Remove="Tables\Equipment\PredeterminedItems.xml" />
     <None Remove="Tables\Feats\Data\FeatData.xml" />
     <None Remove="Tables\Feats\Data\SkillSynergyFeatData.xml" />
@@ -103,6 +104,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Defenses\SizeModifiers.xml" />
+    <EmbeddedResource Include="Tables\Equipment\ArcaneSpellFailures.xml" />
     <EmbeddedResource Include="Tables\Equipment\PredeterminedItems.xml" />
     <EmbeddedResource Include="Tables\Feats\Data\FeatData.xml" />
     <EmbeddedResource Include="Tables\Feats\Data\SkillSynergyFeatData.xml" />
