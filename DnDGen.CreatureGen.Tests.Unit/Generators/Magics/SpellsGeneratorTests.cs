@@ -977,6 +977,32 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         }
 
         [Test]
+        public void BUG_GetRandomPreparedSpells_WithBonusSpells()
+        {
+            var knownSpells = new List<Spell>();
+            knownSpells.Add(new Spell { Name = classSpells[0], Level = 0, Source = "source" });
+            knownSpells.Add(new Spell { Name = classSpells[1], Level = 0, Source = "source" });
+            knownSpells.Add(new Spell { Name = "other cantrip", Level = 0, Source = "source" });
+            knownSpells.Add(new Spell { Name = classSpells[2], Level = 1, Source = "source" });
+            knownSpells.Add(new Spell { Name = "other spell", Level = 1, Source = "source" });
+
+            var spellsPerDay = new List<SpellQuantity>();
+            spellsPerDay.Add(new SpellQuantity { Level = 0, Quantity = 2, Source = "source" });
+            spellsPerDay.Add(new SpellQuantity { Level = 1, Quantity = 1, BonusSpells = 3, Source = "source" });
+
+            var spellsPrepared = spellsGenerator.GeneratePrepared(knownSpells, spellsPerDay);
+            Assert.That(spellsPrepared.Count(), Is.EqualTo(6));
+
+            var cantrips = spellsPrepared.Where(s => s.Level == 0);
+            Assert.That(cantrips.Count(), Is.EqualTo(2));
+
+            var firstLevelSpells = spellsPrepared.Where(s => s.Level == 1);
+            Assert.That(firstLevelSpells.Count(), Is.EqualTo(4));
+
+            Assert.That(spellsPrepared.Select(s => s.Source), Is.All.EqualTo("source"));
+        }
+
+        [Test]
         public void GetRandomPreparedSpecialistSpells()
         {
             var knownSpells = new List<Spell>();

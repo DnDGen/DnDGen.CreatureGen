@@ -55,6 +55,7 @@
     <None Remove="Tables\Magics\Casters.xml" />
     <None Remove="Tables\Magics\KnownSpells.xml" />
     <None Remove="Tables\Magics\SpellDomains.xml" />
+    <None Remove="Tables\Magics\SpellGroups.xml" />
     <None Remove="Tables\Magics\SpellLevels.xml" />
     <None Remove="Tables\Magics\SpellsPerDay.xml" />
     <None Remove="Tables\Skills\SkillBonuses.xml" />
@@ -126,6 +127,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Magics\KnownSpells.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Magics\SpellGroups.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Magics\SpellLevels.xml">

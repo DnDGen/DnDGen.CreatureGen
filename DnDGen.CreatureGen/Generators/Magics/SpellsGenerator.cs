@@ -253,7 +253,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             var preparedSpells = new List<Spell>();
             var knownSpellsForLevel = knownSpells.Where(s => s.Level == spellQuantity.Level && s.Source == spellQuantity.Source);
 
-            while (spellQuantity.Quantity > preparedSpells.Count)
+            while (spellQuantity.Quantity + spellQuantity.BonusSpells > preparedSpells.Count)
             {
                 var spell = collectionsSelector.SelectRandomFrom(knownSpellsForLevel);
                 preparedSpells.Add(spell);

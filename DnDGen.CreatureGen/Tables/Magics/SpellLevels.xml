@@ -600,12 +600,12 @@
     <entry>Owl's wisdom@2</entry>
     <entry>Eagle's splendor@2</entry>
     <entry>Fox's cunning@2</entry>
-    <entry>Mass Bear's endurance@6</entry>
-    <entry>Mass Bull's strength@6</entry>
-    <entry>Mass Cat's grace@6</entry>
-    <entry>Mass Owl's wisdom@6</entry>
-    <entry>Mass Eagle's splendor@6</entry>
-    <entry>Mass Fox's cunning@6</entry>
+    <entry>Mass bear's endurance@6</entry>
+    <entry>Mass bull's strength@6</entry>
+    <entry>Mass cat's grace@6</entry>
+    <entry>Mass owl's wisdom@6</entry>
+    <entry>Mass eagle's splendor@6</entry>
+    <entry>Mass fox's cunning@6</entry>
     <entry>Bestow curse@4</entry>
     <entry>Binding@8</entry>
     <entry>Black tentacles@4</entry>
@@ -633,7 +633,6 @@
     <entry>Contact other plane@5</entry>
     <entry>Contagion@4</entry>
     <entry>Wish@9</entry>
-    <entry>Implosion@9</entry>
     <entry>Limited wish@7</entry>
     <entry>Contingency@6</entry>
     <entry>Continual flame@2</entry>
@@ -688,6 +687,272 @@
     <entry>False vision@5</entry>
     <entry>Fear@4</entry>
     <entry>Feather fall@1</entry>
+    <entry>Feeblemind@5</entry>
+    <entry>Finger of death@7</entry>
+    <entry>Fire shield@4</entry>
+    <entry>Fire trap@4</entry>
+    <entry>Fireball@3</entry>
+    <entry>Flame arrow@3</entry>
+    <entry>Flaming sphere@2</entry>
+    <entry>Flare@0</entry>
+    <entry>Flesh to stone@6</entry>
+    <entry>Floating disk@1</entry>
+    <entry>Summon monster I@1</entry>
+    <entry>Summon monster II@2</entry>
+    <entry>Summon monster III@3</entry>
+    <entry>Summon monster IV@4</entry>
+    <entry>Summon monster V@5</entry>
+    <entry>Summon monster VI@6</entry>
+    <entry>Summon monster VII@7</entry>
+    <entry>Summon monster VIII@8</entry>
+    <entry>Summon monster IX@9</entry>
+    <entry>Fly@3</entry>
+    <entry>Fog cloud@2</entry>
+    <entry>Forcecage@7</entry>
+    <entry>Forceful hand@6</entry>
+    <entry>Foresight@9</entry>
+    <entry>Freedom@9</entry>
+    <entry>Freezing sphere@6</entry>
+    <entry>Gaseous form@3</entry>
+    <entry>Gate@9</entry>
+    <entry>Geas/Quest@6</entry>
+    <entry>Gentle repose@3</entry>
+    <entry>Ghost sound@0</entry>
+    <entry>Ghoul touch@2</entry>
+    <entry>Glitterdust@2</entry>
+    <entry>Globe of invulnerability@6</entry>
+    <entry>Grasping hand@7</entry>
+    <entry>Grease@1</entry>
+    <entry>Sleep@1</entry>
+    <entry>Stinking cloud@3</entry>
+    <entry>Greater arcane sight@7</entry>
+    <entry>Greater dispel magic@6</entry>
+    <entry>Greater heroism@6</entry>
+    <entry>Greater invisibility@4</entry>
+    <entry>Invisibility@2</entry>
+    <entry>Greater magic weapon@3</entry>
+    <entry>Magic weapon@1</entry>
+    <entry>Greater planar binding@8</entry>
+    <entry>Greater prying eyes@8</entry>
+    <entry>Greater scrying@7</entry>
+    <entry>Greater shadow conjuration@7</entry>
+    <entry>Greater shadow evocation@8</entry>
+    <entry>Greater shout@8</entry>
+    <entry>Greater teleport@7</entry>
+    <entry>Guards and wards@6</entry>
+    <entry>Gust of wind@2</entry>
+    <entry>Hallucinatory terrain@4</entry>
+    <entry>Phantasmal killer@4</entry>
+    <entry>Halt undead@3</entry>
+    <entry>Haste@3</entry>
+    <entry>Hideous laughter@2</entry>
+    <entry>Hold monster@5</entry>
+    <entry>Hold person@3</entry>
+    <entry>Hold portal@1</entry>
+    <entry>Horrid wilting@8</entry>
+    <entry>Heroism@3</entry>
+    <entry>Hypnotic pattern@2</entry>
+    <entry>Hypnotism@1</entry>
+    <entry>Ice storm@4</entry>
+    <entry>Identify@1</entry>
+    <entry>Illusory script@3</entry>
+    <entry>Illusory wall@4</entry>
+    <entry>Imprisonment@9</entry>
+    <entry>Incendiary cloud@8</entry>
+    <entry>Insanity@7</entry>
+    <entry>Instant summons@7</entry>
+    <entry>Interposing hand@5</entry>
+    <entry>Invisibility sphere@3</entry>
+    <entry>Iron body@8</entry>
+    <entry>Irresistible dance@8</entry>
+    <entry>Jump@1</entry>
+    <entry>Keen edge@3</entry>
+    <entry>Knock@2</entry>
+    <entry>Legend lore@6</entry>
+    <entry>Lesser geas@4</entry>
+    <entry>Lesser globe of invulnerability@4</entry>
+    <entry>Lesser planar binding@5</entry>
+    <entry>Levitate@2</entry>
+    <entry>Light@0</entry>
+    <entry>Lightning bolt@3</entry>
+    <entry>Locate creature@4</entry>
+    <entry>Locate object@2</entry>
+    <entry>Mage armor@1</entry>
+    <entry>Mage hand@0</entry>
+    <entry>Mage's disjunction@9</entry>
+    <entry>Mage's faithful hound@5</entry>
+    <entry>Mage's lucubration@6</entry>
+    <entry>Mage's magnificent mansion@7</entry>
+    <entry>Mage's private sanctum@5</entry>
+    <entry>Magic aura@1</entry>
+    <entry>Magic circle against evil@3</entry>
+    <entry>Magic circle against chaos@3</entry>
+    <entry>Magic circle against good@3</entry>
+    <entry>Magic circle against law@3</entry>
+    <entry>Mage's sword@7</entry>
+    <entry>Magic jar@5</entry>
+    <entry>Magic missile@1</entry>
+    <entry>Magic mouth@2</entry>
+    <entry>Major creation@5</entry>
+    <entry>Major image@3</entry>
+    <entry>Mass charm monster@8</entry>
+    <entry>Mass enlarge person@4</entry>
+    <entry>Mass hold monster@9</entry>
+    <entry>Mass hold person@7</entry>
+    <entry>Mass invisibility@7</entry>
+    <entry>Mass reduce person@4</entry>
+    <entry>Mass suggestion@6</entry>
+    <entry>Maze@8</entry>
+    <entry>Mending@0</entry>
+    <entry>Message@0</entry>
+    <entry>Meteor swarm@9</entry>
+    <entry>Mind blank@8</entry>
+    <entry>Mind fog@5</entry>
+    <entry>Minor creation@4</entry>
+    <entry>Minor image@2</entry>
+    <entry>Mirage arcana@5</entry>
+    <entry>Mirror image@2</entry>
+    <entry>Misdirection@2</entry>
+    <entry>Mislead@6</entry>
+    <entry>Mnemonic enhancer@4</entry>
+    <entry>Moment of prescience@8</entry>
+    <entry>Mount@1</entry>
+    <entry>Move earth@6</entry>
+    <entry>Nightmare@5</entry>
+    <entry>Nondetection@3</entry>
+    <entry>Obscure object@2</entry>
+    <entry>Obscuring mist@1</entry>
+    <entry>Open/Close@0</entry>
+    <entry>Overland flight@5</entry>
+    <entry>Passwall@5</entry>
+    <entry>Permanency@5</entry>
+    <entry>Permanent image@6</entry>
+    <entry>Persistent image@5</entry>
+    <entry>Phantom steed@3</entry>
+    <entry>Phantom trap@2</entry>
+    <entry>Phase door@7</entry>
+    <entry>Planar binding@6</entry>
+    <entry>Plane shift@7</entry>
+    <entry>Polar ray@8</entry>
+    <entry>Polymorph any object@8</entry>
+    <entry>Polymorph@4</entry>
+    <entry>Power word blind@7</entry>
+    <entry>Power word kill@9</entry>
+    <entry>Power word stun@8</entry>
+    <entry>Prestidigitation@0</entry>
+    <entry>Prismatic sphere@9</entry>
+    <entry>Prismatic spray@7</entry>
+    <entry>Prismatic wall@8</entry>
+    <entry>Programmed image@6</entry>
+    <entry>Project image@7</entry>
+    <entry>Protection from arrows@2</entry>
+    <entry>Protection from chaos@1</entry>
+    <entry>Protection from law@1</entry>
+    <entry>Protection from good@1</entry>
+    <entry>Protection from evil@1</entry>
+    <entry>Protection from energy@3</entry>
+    <entry>Protection from spells@8</entry>
+    <entry>Prying eyes@5</entry>
+    <entry>Pyrotechnics@2</entry>
+    <entry>Rage@3</entry>
+    <entry>Rainbow pattern@4</entry>
+    <entry>Ray of enfeeblement@1</entry>
+    <entry>Ray of exhaustion@3</entry>
+    <entry>Ray of frost@0</entry>
+    <entry>Read magic@0</entry>
+    <entry>Refuge@9</entry>
+    <entry>Remove curse@4</entry>
+    <entry>Repulsion@6</entry>
+    <entry>Resilient sphere@4</entry>
+    <entry>Resist energy@2</entry>
+    <entry>Resistance@0</entry>
+    <entry>Reverse gravity@7</entry>
+    <entry>Rope trick@2</entry>
+    <entry>Scare@2</entry>
+    <entry>Scintillating pattern@8</entry>
+    <entry>Scorching ray@2</entry>
+    <entry>Screen@8</entry>
+    <entry>Scrying@4</entry>
+    <entry>Secret chest@5</entry>
+    <entry>Secret page@3</entry>
+    <entry>Secure shelter@4</entry>
+    <entry>See invisibility@2</entry>
+    <entry>Seeming@5</entry>
+    <entry>Sending@5</entry>
+    <entry>Sepia snake sigil@3</entry>
+    <entry>Sequester@7</entry>
+    <entry>Shades@9</entry>
+    <entry>Shadow conjuration@4</entry>
+    <entry>Shadow evocation@5</entry>
+    <entry>Shadow walk@6</entry>
+    <entry>Shapechange@9</entry>
+    <entry>Shatter@2</entry>
+    <entry>Shield@1</entry>
+    <entry>Shocking grasp@1</entry>
+    <entry>Shout@4</entry>
+    <entry>Shrink item@3</entry>
+    <entry>Silent image@1</entry>
+    <entry>Simulacrum@7</entry>
+    <entry>Sleet storm@3</entry>
+    <entry>Slow@3</entry>
+    <entry>Solid fog@4</entry>
+    <entry>Soul bind@9</entry>
+    <entry>Spectral hand@2</entry>
+    <entry>Spell turning@7</entry>
+    <entry>Spider climb@2</entry>
+    <entry>Statue@7</entry>
+    <entry>Stone shape@4</entry>
+    <entry>Stone to flesh@6</entry>
+    <entry>Stoneskin@4</entry>
+    <entry>Suggestion@3</entry>
+    <entry>Summon swarm@2</entry>
+    <entry>Sunburst@8</entry>
+    <entry>Symbol of death@8</entry>
+    <entry>Symbol of fear@6</entry>
+    <entry>Symbol of insanity@8</entry>
+    <entry>Symbol of pain@5</entry>
+    <entry>Symbol of persuasion@6</entry>
+    <entry>Symbol of sleep@5</entry>
+    <entry>Symbol of stunning@7</entry>
+    <entry>Symbol of weakness@7</entry>
+    <entry>Sympathy@8</entry>
+    <entry>Telekinesis@5</entry>
+    <entry>Telekinetic sphere@8</entry>
+    <entry>Telepathic bond@5</entry>
+    <entry>Teleport object@7</entry>
+    <entry>Teleport@5</entry>
+    <entry>Teleportation circle@9</entry>
+    <entry>Temporal stasis@8</entry>
+    <entry>Time stop@9</entry>
+    <entry>Tiny hut@3</entry>
+    <entry>Tongues@3</entry>
+    <entry>Touch of fatigue@0</entry>
+    <entry>Touch of idiocy@2</entry>
+    <entry>Transformation@6</entry>
+    <entry>Transmute mud to rock@5</entry>
+    <entry>Transmute rock to mud@5</entry>
+    <entry>Trap the soul@8</entry>
+    <entry>True seeing@6</entry>
+    <entry>True strike@1</entry>
+    <entry>Undeath to death@6</entry>
+    <entry>Unseen servant@1</entry>
+    <entry>Vampiric touch@3</entry>
+    <entry>Veil@6</entry>
+    <entry>Ventriloquism@1</entry>
+    <entry>Vision@7</entry>
+    <entry>Wail of the banshee@9</entry>
+    <entry>Wall of fire@4</entry>
+    <entry>Wall of force@5</entry>
+    <entry>Wall of ice@4</entry>
+    <entry>Wall of iron@6</entry>
+    <entry>Wall of stone@5</entry>
+    <entry>Water breathing@3</entry>
+    <entry>Waves of exhaustion@7</entry>
+    <entry>Waves of fatigue@5</entry>
+    <entry>Web@2</entry>
+    <entry>Weird@9</entry>
+    <entry>Whispering wind@2</entry>
+    <entry>Wind wall@3</entry>
   </collection>
   <collection>
     <name>Air</name>
