@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
-using Ninject;
 using NUnit.Framework;
 using System.Linq;
 
@@ -724,7 +723,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Elf_Aquatic, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood)]
         [TestCase(CreatureConstants.Elf_Drow, AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil)]
         [TestCase(CreatureConstants.Elf_Gray, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood)]
-        [TestCase(CreatureConstants.Elf_Half, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood)]
+        [TestCase(CreatureConstants.Elf_Half,
+            AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood,
+            AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood)]
         [TestCase(CreatureConstants.Elf_High, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood)]
         [TestCase(CreatureConstants.Elf_Wild, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood)]
         [TestCase(CreatureConstants.Elf_Wood, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
@@ -878,7 +880,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Ogre_Merrow, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.OgreMage, AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Orc, AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil)]
-        [TestCase(CreatureConstants.Orc_Half, AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Orc_Half,
+            AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil,
+            AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral)]
         [TestCase(CreatureConstants.Otyugh, AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Owl, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Owl_Giant, AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood)]

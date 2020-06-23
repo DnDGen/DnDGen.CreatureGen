@@ -103,7 +103,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var celestialCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature);
 
             Assert.That(celestialCreatures, Is.EquivalentTo(validCreatures));
+
+            //These races have proven problematic in the past
             Assert.That(celestialCreatures, Contains.Item(CreatureConstants.Human));
+            Assert.That(celestialCreatures, Contains.Item(CreatureConstants.Elf_Half));
+            Assert.That(celestialCreatures, Contains.Item(CreatureConstants.Orc_Half));
         }
 
         private IEnumerable<string> GetValidAlignmentBasedTemplateGroup(IEnumerable<string> types, IEnumerable<string> goodnesses)
@@ -170,7 +174,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var celestialCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfCelestial);
 
             Assert.That(celestialCreatures, Is.EquivalentTo(validCreatures));
+
+            //These races have proven problematic in the past
             Assert.That(celestialCreatures, Contains.Item(CreatureConstants.Human));
+            Assert.That(celestialCreatures, Contains.Item(CreatureConstants.Elf_Half));
+            Assert.That(celestialCreatures, Contains.Item(CreatureConstants.Orc_Half));
         }
 
         [Test]
@@ -228,7 +236,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var fiendishCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.FiendishCreature);
 
             Assert.That(fiendishCreatures, Is.EquivalentTo(validCreatures));
+
+            //These races have proven problematic in the past
             Assert.That(fiendishCreatures, Contains.Item(CreatureConstants.Human));
+            Assert.That(fiendishCreatures, Contains.Item(CreatureConstants.Elf_Half));
+            Assert.That(fiendishCreatures, Contains.Item(CreatureConstants.Orc_Half));
         }
 
         [Test]
@@ -258,7 +270,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var fiendishCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend);
 
             Assert.That(fiendishCreatures, Is.EquivalentTo(validCreatures));
+
+            //These races have proven problematic in the past
             Assert.That(fiendishCreatures, Contains.Item(CreatureConstants.Human));
+            Assert.That(fiendishCreatures, Contains.Item(CreatureConstants.Elf_Half));
+            Assert.That(fiendishCreatures, Contains.Item(CreatureConstants.Orc_Half));
         }
     }
 }

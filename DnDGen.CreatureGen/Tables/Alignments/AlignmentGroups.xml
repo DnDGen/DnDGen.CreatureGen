@@ -1885,6 +1885,8 @@
   <collection>
     <name>Half-Elf</name>
     <entry>UsuallyChaotic Good</entry>
+    <entry>UsuallyChaotic Neutral</entry>
+    <entry>UsuallyNeutral Good</entry>
   </collection>
   <collection>
     <name>High Elf</name>
@@ -2158,6 +2160,8 @@
   <collection>
     <name>Half-Orc</name>
     <entry>OftenChaotic Evil</entry>
+    <entry>OftenChaotic Neutral</entry>
+    <entry>OftenNeutral Evil</entry>
   </collection>
   <collection>
     <name>Deep Halfling</name>

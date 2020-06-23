@@ -4,7 +4,9 @@ using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Skills;
+using DnDGen.TreasureGen.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -235,6 +237,50 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 $"subtype {Guid.NewGuid()}",
                 $"subtype {Guid.NewGuid()}",
+            };
+
+            if (creature.CanUseEquipment)
+            {
+                creature.Equipment.Armor = new Armor() { Name = "My Armor" };
+                creature.Equipment.Shield = new Armor() { Name = "My Shield" };
+                creature.Equipment.Items = new[]
+                {
+                    new Item { Name = "My Item" },
+                    new Item { Name = "My Other Item" },
+                };
+                creature.Equipment.Weapons = new[]
+                {
+                    new Weapon { Name = "My Weapon" },
+                    new Weapon { Name = "My Other Weapon" },
+                };
+            }
+
+            creature.Magic.ArcaneSpellFailure = random.Next(101);
+            creature.Magic.Caster = "my caster";
+            creature.Magic.CasterLevel = random.Next(20) + 1;
+            creature.Magic.Domains = new[]
+            {
+                "domain 1",
+                "domain 2",
+            };
+            creature.Magic.SpellsPerDay = new[]
+            {
+                new SpellQuantity { Level = 0, Quantity = 2 },
+                new SpellQuantity { Level = 1, Quantity = 2 },
+            };
+            creature.Magic.KnownSpells = new[]
+            {
+                new Spell { Name = "My Level 0 Spell", Level = 0 },
+                new Spell { Name = "My Other Level 0 Spell", Level = 0 },
+                new Spell { Name = "My Level 1 Spell", Level = 1 },
+                new Spell { Name = "My Other Level 1 Spell", Level = 1 },
+            };
+            creature.Magic.PreparedSpells = new[]
+            {
+                new Spell { Name = "My Level 0 Spell", Level = 0 },
+                new Spell { Name = "My Other Level 0 Spell", Level = 0 },
+                new Spell { Name = "My Level 1 Spell", Level = 1 },
+                new Spell { Name = "My Other Level 1 Spell", Level = 1 },
             };
 
             return this;
