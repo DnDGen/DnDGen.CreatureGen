@@ -17,7 +17,7 @@ using System.Linq;
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
 {
     [TestFixture]
-    public class CelestialCreatureApplicatorTests
+    public class FiendishCreatureApplicatorTests
     {
         private TemplateApplicator applicator;
         private Creature baseCreature;
@@ -30,7 +30,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttackGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
 
-            applicator = new CelestialCreatureApplicator(mockAttackGenerator.Object, mockFeatsGenerator.Object);
+            applicator = new FiendishCreatureApplicator(mockAttackGenerator.Object, mockFeatsGenerator.Object);
 
             baseCreature = new CreatureBuilder().WithTestValues().Build();
         }
@@ -56,12 +56,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -85,12 +85,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -144,12 +144,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -175,12 +175,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -191,16 +191,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -230,12 +229,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -246,16 +245,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 + hitDiceQuantity },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -271,8 +269,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
                 .And.SupersetOf(originalSpecialQualities));
-            Assert.That(specialQualities[5].Name, Is.EqualTo(FeatConstants.SpecialQualities.SpellResistance));
-            Assert.That(specialQualities[5].Power, Is.EqualTo(25));
+            Assert.That(specialQualities[4].Name, Is.EqualTo(FeatConstants.SpecialQualities.SpellResistance));
+            Assert.That(specialQualities[4].Power, Is.EqualTo(25));
         }
 
         [Test]
@@ -290,12 +288,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -306,16 +304,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -329,8 +326,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[5] }))
-                .And.Not.Contains(specialQualities[5])
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[4] }))
+                .And.Not.Contains(specialQualities[4])
                 .And.SupersetOf(originalSpecialQualities));
             Assert.That(spellResistance.Power, Is.EqualTo(5));
         }
@@ -350,12 +347,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -366,16 +363,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -389,8 +385,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[5] }))
-                .And.Not.Contains(specialQualities[5])
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[4] }))
+                .And.Not.Contains(specialQualities[4])
                 .And.SupersetOf(originalSpecialQualities));
             Assert.That(spellResistance.Power, Is.EqualTo(10));
         }
@@ -410,12 +406,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -426,16 +422,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -470,12 +465,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -486,16 +481,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -515,9 +509,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(darkvision.Power, Is.EqualTo(90));
         }
 
-        [TestCase(FeatConstants.Foci.Elements.Acid)]
         [TestCase(FeatConstants.Foci.Elements.Cold)]
-        [TestCase(FeatConstants.Foci.Elements.Electricity)]
+        [TestCase(FeatConstants.Foci.Elements.Fire)]
         public void IfCreatureHasWeakerEnergyResistance_Replace(string energy)
         {
             var energyResistance = new Feat
@@ -533,12 +526,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -549,16 +542,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -582,9 +574,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(energyResistance.Power, Is.EqualTo(5));
         }
 
-        [TestCase(FeatConstants.Foci.Elements.Acid)]
         [TestCase(FeatConstants.Foci.Elements.Cold)]
-        [TestCase(FeatConstants.Foci.Elements.Electricity)]
+        [TestCase(FeatConstants.Foci.Elements.Fire)]
         public void IfCreatureHasStrongerEnergyResistance_DoNotReplace(string energy)
         {
             var energyResistance = new Feat
@@ -600,12 +591,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -616,16 +607,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -649,7 +639,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(energyResistance.Power, Is.EqualTo(15));
         }
 
-        [TestCase(FeatConstants.Foci.Elements.Fire)]
+        [TestCase(FeatConstants.Foci.Elements.Acid)]
+        [TestCase(FeatConstants.Foci.Elements.Electricity)]
         [TestCase(FeatConstants.Foci.Elements.Sonic)]
         public void IfCreatureHasEnergyResistanceToDifferentEnergy_DoNotReplace(string energy)
         {
@@ -664,12 +655,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -682,16 +673,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -724,12 +714,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -742,16 +732,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -765,8 +754,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[4] }))
-                .And.Not.Contains(specialQualities[4])
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[3] }))
+                .And.Not.Contains(specialQualities[3])
                 .And.SupersetOf(originalSpecialQualities));
             Assert.That(damageReduction.Power, Is.EqualTo(5));
         }
@@ -787,12 +776,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -803,16 +792,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -826,8 +814,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[4] }))
-                .And.Not.Contains(specialQualities[4])
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[3] }))
+                .And.Not.Contains(specialQualities[3])
                 .And.SupersetOf(originalSpecialQualities));
             Assert.That(damageReduction.Power, Is.EqualTo(10));
         }
@@ -848,12 +836,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -864,16 +852,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -892,7 +879,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(damageReduction.Power, Is.EqualTo(2));
         }
 
-        [TestCaseSource(typeof(CelestialCreatureApplicatorTests), "AbilityAdjustments")]
+        [TestCaseSource(typeof(FiendishCreatureApplicatorTests), "AbilityAdjustments")]
         public void AbilityAdjusted(string ability, int raceAdjust, int baseScore, int advanced, int adjusted)
         {
             baseCreature.Abilities[ability].BaseScore = baseScore;
@@ -901,12 +888,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -970,7 +957,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             }
         }
 
-        [TestCaseSource(typeof(CelestialCreatureApplicatorTests), "ChallengeRatingAdjustments")]
+        [TestCaseSource(typeof(FiendishCreatureApplicatorTests), "ChallengeRatingAdjustments")]
         public void ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
             baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
@@ -978,12 +965,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -1041,15 +1028,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             }
         }
 
-        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good, AlignmentConstants.ChaoticGood)]
-        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Neutral, AlignmentConstants.ChaoticGood)]
-        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Evil, AlignmentConstants.ChaoticGood)]
-        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Good, AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Neutral, AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Evil, AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Good, AlignmentConstants.LawfulGood)]
-        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Neutral, AlignmentConstants.LawfulGood)]
-        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Evil, AlignmentConstants.LawfulGood)]
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good, AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Neutral, AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Evil, AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Good, AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Neutral, AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Evil, AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Good, AlignmentConstants.LawfulEvil)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Neutral, AlignmentConstants.LawfulEvil)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Evil, AlignmentConstants.LawfulEvil)]
         public void AlignmentAdjusted(string lawfulness, string goodness, string adjusted)
         {
             baseCreature.Alignment.Lawfulness = lawfulness;
@@ -1057,12 +1044,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
@@ -1087,12 +1074,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var smiteEvil = new Attack
             {
-                Name = "Smite Evil",
+                Name = "Smite Good",
                 IsSpecial = true
             };
             mockAttackGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
+                    CreatureConstants.Templates.FiendishCreature,
                     baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,

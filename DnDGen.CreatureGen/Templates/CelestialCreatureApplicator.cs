@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
 using System;
@@ -77,6 +78,11 @@ namespace DnDGen.CreatureGen.Templates
 
             foreach (var sq in specialQualities)
             {
+                if (sq.Name == FeatConstants.SpecialQualities.SpellResistance)
+                {
+                    sq.Power = Math.Min(sq.Power, 25);
+                }
+
                 var matching = creature.SpecialQualities.FirstOrDefault(f =>
                     f.Name == sq.Name
                     && !f.Foci.Except(sq.Foci).Any()
