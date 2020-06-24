@@ -106,6 +106,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(first.Save, Is.Empty);
             Assert.That(first.SaveAbility, Is.Empty);
             Assert.That(first.SaveBaseValue, Is.Zero);
+            Assert.That(first.MinHitDice, Is.Zero);
+            Assert.That(first.MaxHitDice, Is.EqualTo(int.MaxValue));
 
             Assert.That(last.Feat, Is.EqualTo("special quality 2"));
             Assert.That(last.FocusType, Is.Empty);
@@ -119,6 +121,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(last.Save, Is.Empty);
             Assert.That(last.SaveAbility, Is.Empty);
             Assert.That(last.SaveBaseValue, Is.Zero);
+            Assert.That(last.MinHitDice, Is.Zero);
+            Assert.That(last.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         private void AddSpecialQualityData(
@@ -132,9 +136,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             bool requiresEquipment = false,
             string saveAbility = "",
             string save = "",
-            int saveBaseValue = 0)
+            int saveBaseValue = 0,
+            int minHitDice = 0,
+            int maxHitDice = int.MaxValue)
         {
-            var data = helper.BuildData(featName, randomFociQuantity, focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment, saveAbility, save, saveBaseValue);
+            var data = helper.BuildData(featName, randomFociQuantity, focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment, saveAbility, save, saveBaseValue, minHitDice, maxHitDice);
             var entry = helper.BuildEntry(data);
 
             if (!specialQualitiesData.ContainsKey(source))
@@ -165,6 +171,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -189,6 +197,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -201,7 +211,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "ability", Amount = 9266 }
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality"))
+            mockTypesAndAmountsSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality0"))
                 .Returns(abilityRequirements);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
@@ -224,6 +235,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -236,7 +249,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "ability", Amount = 9266 }
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creature typespecial quality"))
+            mockTypesAndAmountsSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creature typespecial quality0"))
                 .Returns(abilityRequirements);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
@@ -259,6 +273,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -272,7 +288,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountSelection { Type = "other ability", Amount = 90210 }
             };
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality"))
+            mockTypesAndAmountsSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality0"))
                 .Returns(abilityRequirements);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
@@ -297,6 +314,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -321,6 +340,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -345,6 +366,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -357,7 +380,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 "required feat"
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality0"))
+                .Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -377,6 +402,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
 
             var requiredFeat = specialQuality.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -393,7 +420,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 "required feat"
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creature typespecial quality")).Returns(requiredFeats);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creature typespecial quality0"))
+                .Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -413,6 +442,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
 
             var requiredFeat = specialQuality.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -429,7 +460,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 "required feat/required focus"
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality0"))
+                .Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -449,6 +482,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
 
             var requiredFeat = specialQuality.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -466,7 +501,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality0"))
+                .Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -486,6 +523,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -507,7 +546,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat/other required focus",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality0"))
+                .Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -527,6 +568,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -548,7 +591,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat",
             };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality")).Returns(requiredFeats);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredFeats, "creaturespecial quality0"))
+                .Returns(requiredFeats);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -568,6 +613,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
 
             var requiredFeat = specialQuality.RequiredFeats.First();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
@@ -600,6 +647,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -624,6 +673,45 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
+        }
+
+        [TestCase(0, int.MaxValue)]
+        [TestCase(1, int.MaxValue)]
+        [TestCase(2, int.MaxValue)]
+        [TestCase(10, int.MaxValue)]
+        [TestCase(0, 20)]
+        [TestCase(1, 20)]
+        [TestCase(2, 20)]
+        [TestCase(10, 20)]
+        [TestCase(0, 10)]
+        [TestCase(1, 10)]
+        [TestCase(2, 10)]
+        [TestCase(10, 10)]
+        public void GetSpecialQualityWithHitDiceRequirements(int min, int max)
+        {
+            AddSpecialQualityData(creature, "special quality", minHitDice: min, maxHitDice: max);
+
+            var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
+            Assert.That(specialQualities.Count(), Is.EqualTo(1));
+
+            var specialQuality = specialQualities.Single();
+
+            Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
+            Assert.That(specialQuality.FocusType, Is.Empty);
+            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
+            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.MinimumAbilities, Is.Empty);
+            Assert.That(specialQuality.Power, Is.Zero);
+            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RequiredFeats, Is.Empty);
+            Assert.That(specialQuality.RequiresEquipment, Is.False);
+            Assert.That(specialQuality.Save, Is.Empty);
+            Assert.That(specialQuality.SaveAbility, Is.Empty);
+            Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.EqualTo(min));
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(max));
         }
 
         [Test]
@@ -648,6 +736,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -674,6 +764,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Save, Is.Empty);
             Assert.That(specialQuality.SaveAbility, Is.Empty);
             Assert.That(specialQuality.SaveBaseValue, Is.Zero);
+            Assert.That(specialQuality.MinHitDice, Is.Zero);
+            Assert.That(specialQuality.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -702,6 +794,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(first.Save, Is.Empty);
             Assert.That(first.SaveAbility, Is.Empty);
             Assert.That(first.SaveBaseValue, Is.Zero);
+            Assert.That(first.MinHitDice, Is.Zero);
+            Assert.That(first.MaxHitDice, Is.EqualTo(int.MaxValue));
 
             Assert.That(last.Feat, Is.EqualTo("special quality 2"));
             Assert.That(last.FocusType, Is.Empty);
@@ -715,6 +809,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(last.Save, Is.Empty);
             Assert.That(last.SaveAbility, Is.Empty);
             Assert.That(last.SaveBaseValue, Is.Zero);
+            Assert.That(last.MinHitDice, Is.Zero);
+            Assert.That(last.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -724,7 +820,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             AddSpecialQualityData(creature, "special quality 1");
             AddSpecialQualityData(creatureType.Name, "special quality 2", save: "my save", saveAbility: "save ability", saveBaseValue: 9266);
-            AddSpecialQualityData("subtype", "special quality 3");
+            AddSpecialQualityData("subtype", "special quality 3", minHitDice: 9266, maxHitDice: 90210);
             AddSpecialQualityData("other subtype", "special quality 4");
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType).ToArray();
@@ -742,6 +838,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[0].Save, Is.Empty);
             Assert.That(specialQualities[0].SaveAbility, Is.Empty);
             Assert.That(specialQualities[0].SaveBaseValue, Is.Zero);
+            Assert.That(specialQualities[0].MinHitDice, Is.Zero);
+            Assert.That(specialQualities[0].MaxHitDice, Is.EqualTo(int.MaxValue));
 
             Assert.That(specialQualities[1].Feat, Is.EqualTo("special quality 2"));
             Assert.That(specialQualities[1].FocusType, Is.Empty);
@@ -755,6 +853,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[1].Save, Is.EqualTo("my save"));
             Assert.That(specialQualities[1].SaveAbility, Is.EqualTo("save ability"));
             Assert.That(specialQualities[1].SaveBaseValue, Is.EqualTo(9266));
+            Assert.That(specialQualities[1].MinHitDice, Is.Zero);
+            Assert.That(specialQualities[1].MaxHitDice, Is.EqualTo(int.MaxValue));
 
             Assert.That(specialQualities[2].Feat, Is.EqualTo("special quality 3"));
             Assert.That(specialQualities[2].FocusType, Is.Empty);
@@ -768,6 +868,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[2].Save, Is.Empty);
             Assert.That(specialQualities[2].SaveAbility, Is.Empty);
             Assert.That(specialQualities[2].SaveBaseValue, Is.Zero);
+            Assert.That(specialQualities[2].MinHitDice, Is.EqualTo(9266));
+            Assert.That(specialQualities[2].MaxHitDice, Is.EqualTo(90210));
 
             Assert.That(specialQualities[3].Feat, Is.EqualTo("special quality 4"));
             Assert.That(specialQualities[3].FocusType, Is.Empty);
@@ -781,6 +883,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[3].Save, Is.Empty);
             Assert.That(specialQualities[3].SaveAbility, Is.Empty);
             Assert.That(specialQualities[3].SaveBaseValue, Is.Zero);
+            Assert.That(specialQualities[3].MinHitDice, Is.Zero);
+            Assert.That(specialQualities[3].MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -899,7 +1003,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             AddSpecialQualityData(creature, "special quality");
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality"))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality0"))
                 .Returns(new[] { "size" });
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
@@ -917,7 +1021,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             AddSpecialQualityData(creature, "special quality");
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality"))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredSizes, "creaturespecial quality0"))
                 .Returns(new[] { "size", "other size" });
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
@@ -948,7 +1052,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             AddSpecialQualityData(creature, "special quality");
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredAlignments, "creaturespecial quality"))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredAlignments, "creaturespecial quality0"))
                 .Returns(new[] { "lawfulness goodness" });
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
@@ -965,7 +1069,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             AddSpecialQualityData(creature, "special quality");
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredAlignments, "creaturespecial quality"))
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.RequiredAlignments, "creaturespecial quality0"))
                 .Returns(new[] { "lawfulness goodness", "other lawfulness goodness", "lawfulness other goodness", "other lawfulness other goodness" });
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);

@@ -20,9 +20,11 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
             bool requiresEquipment = false,
             string saveAbility = "",
             string save = "",
-            int saveBaseValue = 0)
+            int saveBaseValue = 0,
+            int minHitDice = 0,
+            int maxHitDice = int.MaxValue)
         {
-            return BuildData(featName, randomFociQuantity.ToString(), focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment, saveAbility, save, saveBaseValue);
+            return BuildData(featName, randomFociQuantity.ToString(), focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment, saveAbility, save, saveBaseValue, minHitDice, maxHitDice);
         }
 
         public string[] BuildData(
@@ -35,7 +37,9 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
             bool requiresEquipment = false,
             string saveAbility = "",
             string save = "",
-            int saveBaseValue = 0)
+            int saveBaseValue = 0,
+            int minHitDice = 0,
+            int maxHitDice = int.MaxValue)
         {
             var data = DataIndexConstants.SpecialQualityData.InitializeData();
 
@@ -49,13 +53,18 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
             data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex] = saveAbility;
             data[DataIndexConstants.SpecialQualityData.SaveIndex] = save;
             data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex] = Convert.ToString(saveBaseValue);
+            data[DataIndexConstants.SpecialQualityData.MinHitDiceIndex] = Convert.ToString(minHitDice);
+            data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex] = Convert.ToString(maxHitDice);
 
             return data;
         }
 
         public override string BuildKey(string creature, string[] data)
         {
-            return BuildKeyFromSections(creature, data[DataIndexConstants.SpecialQualityData.FeatNameIndex], data[DataIndexConstants.SpecialQualityData.FocusIndex]);
+            return BuildKeyFromSections(creature,
+                data[DataIndexConstants.SpecialQualityData.FeatNameIndex],
+                data[DataIndexConstants.SpecialQualityData.FocusIndex],
+                data[DataIndexConstants.SpecialQualityData.PowerIndex]);
         }
 
         public override bool ValidateEntry(string entry)

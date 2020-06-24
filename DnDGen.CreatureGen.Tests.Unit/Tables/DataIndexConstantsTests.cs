@@ -17,6 +17,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.SpecialQualityData.SaveAbilityIndex, 7)]
         [TestCase(DataIndexConstants.SpecialQualityData.SaveIndex, 8)]
         [TestCase(DataIndexConstants.SpecialQualityData.SaveBaseValueIndex, 9)]
+        [TestCase(DataIndexConstants.SpecialQualityData.MinHitDiceIndex, 10)]
+        [TestCase(DataIndexConstants.SpecialQualityData.MaxHitDiceIndex, 11)]
         public void SpecialQualityDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
@@ -32,6 +34,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.SpecialQualityData.SaveAbilityIndex)]
         [TestCase(DataIndexConstants.SpecialQualityData.SaveIndex)]
         [TestCase(DataIndexConstants.SpecialQualityData.SaveBaseValueIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.MinHitDiceIndex)]
+        [TestCase(DataIndexConstants.SpecialQualityData.MaxHitDiceIndex)]
         public void SpecialQualityDataIndicesInitialized(int index)
         {
             var data = DataIndexConstants.SpecialQualityData.InitializeData();

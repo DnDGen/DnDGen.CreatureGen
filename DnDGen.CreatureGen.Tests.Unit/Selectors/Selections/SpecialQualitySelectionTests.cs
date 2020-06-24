@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Selections;
 using NUnit.Framework;
@@ -15,6 +16,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         private Dictionary<string, Ability> abilities;
         private List<Feat> feats;
         private Alignment alignment;
+        private HitPoints hitPoints;
 
         [SetUp]
         public void Setup()
@@ -23,9 +25,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             abilities = new Dictionary<string, Ability>();
             feats = new List<Feat>();
             alignment = new Alignment();
+            hitPoints = new HitPoints();
 
             abilities["ability"] = new Ability("ability");
             abilities["ability"].BaseScore = 42;
+
+            hitPoints.HitDiceQuantity = 1;
         }
 
         [Test]
@@ -41,6 +46,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.RequiredSizes, Is.Empty);
             Assert.That(selection.RequiredAlignments, Is.Empty);
             Assert.That(selection.RequiresEquipment, Is.False);
+            Assert.That(selection.MinHitDice, Is.Zero);
+            Assert.That(selection.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
         [Test]
@@ -52,7 +59,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void RequirementsMetIfNoRequirements()
         {
-            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(met, Is.True);
         }
 
@@ -61,7 +68,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.MinimumAbilities["ability"] = 9266;
 
-            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(met, Is.False);
         }
 
@@ -73,7 +80,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             abilities["ability"] = new Ability("ability");
             abilities["ability"].BaseScore = 9267;
 
-            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(met, Is.True);
         }
 
@@ -86,7 +93,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             abilities["ability"].BaseScore = 10;
             abilities["ability"].RacialAdjustment = 9256;
 
-            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(met, Is.True);
         }
 
@@ -99,7 +106,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             abilities["ability"].BaseScore = 10;
             abilities["ability"].RacialAdjustment = 9255;
 
-            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(met, Is.False);
         }
 
@@ -112,14 +119,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             abilities["ability 2"] = new Ability("ability 2");
             abilities["ability 2"].BaseScore = 600;
 
-            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var met = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(met, Is.True);
         }
 
         [Test]
         public void MetIfNoRequiredFeats()
         {
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -130,7 +137,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             feats.Add(new Feat { Name = "feat 1" });
             feats.Add(new Feat { Name = "feat 2" });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -140,7 +147,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             selection.RequiredFeats = new[] { new RequiredFeatSelection { Feat = "feat 1" }, new RequiredFeatSelection { Feat = "feat 2" } };
             feats.Add(new Feat { Name = "feat 1" });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.False);
         }
 
@@ -149,7 +156,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredFeats = new[] { new RequiredFeatSelection { Feat = "feat 1" }, new RequiredFeatSelection { Feat = "feat 2" } };
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.False);
         }
 
@@ -165,7 +172,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             feats.Add(new Feat { Name = "feat 1", Foci = new[] { "focus 1", "focus 3" } });
             feats.Add(new Feat { Name = "feat 2", Foci = new[] { "focus 4", "focus 2" } });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -183,7 +190,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             feats.Add(new Feat { Name = "feat 3" });
             feats.Add(new Feat { Name = "feat 4", Foci = new[] { "focus 4" } });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -200,7 +207,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             feats.Add(new Feat { Name = "feat 2", Foci = new[] { "focus 2", "focus 1" } });
             feats.Add(new Feat { Name = "feat 3", Foci = new[] { "focus 1" } });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.False);
         }
 
@@ -217,7 +224,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             feats.Add(new Feat { Name = "feat 2", Foci = new[] { "focus 1" } });
             feats.Add(new Feat { Name = "feat 3", Foci = new[] { "focus 1", "focus 2" } });
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.False);
         }
 
@@ -226,7 +233,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiresEquipment = false;
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, true, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, true, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -235,7 +242,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiresEquipment = true;
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, true, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, true, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -244,7 +251,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiresEquipment = true;
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.False);
         }
 
@@ -253,7 +260,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiresEquipment = false;
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -262,7 +269,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredSizes = Enumerable.Empty<string>();
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "wrong size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "wrong size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -271,7 +278,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredSizes = new[] { "size" };
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -280,25 +287,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredSizes = new[] { "other size", "size" };
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
         [Test]
-        public void NoitMetIfSizeIsNotRequiredCreatureSize()
+        public void NotMetIfSizeIsNotRequiredCreatureSize()
         {
             selection.RequiredSizes = new[] { "size" };
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "wrong size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "wrong size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.False);
         }
 
         [Test]
-        public void NoitMetIfSizeIsNotAnyRequiredCreatureSize()
+        public void NotMetIfSizeIsNotAnyRequiredCreatureSize()
         {
             selection.RequiredSizes = new[] { "other size", "size" };
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "wrong size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "wrong size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.False);
         }
 
@@ -307,7 +314,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.RequiredAlignments = Enumerable.Empty<string>();
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "wrong size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "wrong size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -319,7 +326,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             alignment.Goodness = "goodness";
             alignment.Lawfulness = "lawfulness";
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
@@ -334,36 +341,97 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             alignment.Goodness = goodness;
             alignment.Lawfulness = lawfulness;
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);
         }
 
         [TestCase("wrong lawfulness", "goodness")]
         [TestCase("lawfulness", "wrong goodness")]
         [TestCase("wrong lawfulness", "wrong goodness")]
-        public void NoitMetIfSizeIsNotRequiredAlignment(string lawfulness, string goodness)
+        public void NotMetIfSizeIsNotRequiredAlignment(string lawfulness, string goodness)
         {
             selection.RequiredAlignments = new[] { "lawfulness goodness" };
 
             alignment.Goodness = goodness;
             alignment.Lawfulness = lawfulness;
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.False);
         }
 
         [TestCase("wrong lawfulness", "goodness")]
         [TestCase("lawfulness", "wrong goodness")]
         [TestCase("wrong lawfulness", "wrong goodness")]
-        public void NoitMetIfSizeIsNotAnyRequiredAlignment(string lawfulness, string goodness)
+        public void NotMetIfSizeIsNotAnyRequiredAlignment(string lawfulness, string goodness)
         {
             selection.RequiredAlignments = new[] { "other lawfulness goodness", "lawfulness other goodness", "lawfulness goodness", "other lawfulness other goodness" };
 
             alignment.Goodness = goodness;
             alignment.Lawfulness = lawfulness;
 
-            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment);
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.False);
+        }
+
+        [TestCase(1, 2)]
+        [TestCase(1, 3)]
+        [TestCase(2, 3)]
+        [TestCase(1, 4)]
+        [TestCase(2, 4)]
+        [TestCase(3, 4)]
+        [TestCase(42, 9266)]
+        public void NotMetIfBelowMinimumHitDice(int hd, int min)
+        {
+            selection.MinHitDice = min;
+            hitPoints.HitDiceQuantity = hd;
+
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
+            Assert.That(requirementsMet, Is.False);
+        }
+
+        [TestCase(2, 1)]
+        [TestCase(3, 1)]
+        [TestCase(3, 2)]
+        [TestCase(4, 1)]
+        [TestCase(4, 2)]
+        [TestCase(90210, 9266)]
+        public void NotMetIfAboveMaximumHitDice(int hd, int max)
+        {
+            selection.MaxHitDice = max;
+            hitPoints.HitDiceQuantity = hd;
+
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
+            Assert.That(requirementsMet, Is.False);
+        }
+
+        [TestCase(.5, 1, int.MaxValue)]
+        [TestCase(1, 0, 1)]
+        [TestCase(1, 0, 2)]
+        [TestCase(1, 0, int.MaxValue)]
+        [TestCase(1, 1, 1)]
+        [TestCase(1, 1, 2)]
+        [TestCase(1, 1, int.MaxValue)]
+        [TestCase(2, 0, 2)]
+        [TestCase(2, 0, int.MaxValue)]
+        [TestCase(2, 1, 2)]
+        [TestCase(2, 1, int.MaxValue)]
+        [TestCase(2, 2, 2)]
+        [TestCase(2, 2, int.MaxValue)]
+        [TestCase(2, 2, 4)]
+        [TestCase(3, 2, 4)]
+        [TestCase(4, 2, 4)]
+        [TestCase(4, 4, 4)]
+        [TestCase(42, 0, 9266)]
+        [TestCase(600, 42, int.MaxValue)]
+        [TestCase(600, 42, 1337)]
+        public void MetIfHitDiceInRange(double hd, int min, int max)
+        {
+            selection.MinHitDice = min;
+            selection.MaxHitDice = max;
+            hitPoints.HitDiceQuantity = hd;
+
+            var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
+            Assert.That(requirementsMet, Is.True);
         }
     }
 }

@@ -161,6 +161,8 @@ namespace DnDGen.CreatureGen.Selectors.Collections
                     specialQualitySelection.Save = data[DataIndexConstants.SpecialQualityData.SaveIndex];
                     specialQualitySelection.SaveAbility = data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex];
                     specialQualitySelection.SaveBaseValue = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex]);
+                    specialQualitySelection.MinHitDice = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.MinHitDiceIndex]);
+                    specialQualitySelection.MaxHitDice = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex]);
 
                     var requirementKey = helper.BuildKey(source, data);
                     specialQualitySelection.RequiredFeats = GetRequiredFeats(requirementKey);

@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public string SaveAbility { get; set; }
         public string Save { get; set; }
         public int SaveBaseValue { get; set; }
+        public int MinHitDice { get; set; }
+        public int MaxHitDice { get; set; }
 
         public SpecialQualitySelection()
         {
@@ -36,9 +39,10 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             RequiredAlignments = Enumerable.Empty<string>();
             SaveAbility = string.Empty;
             Save = string.Empty;
+            MaxHitDice = int.MaxValue;
         }
 
-        public bool RequirementsMet(Dictionary<string, Ability> abilities, IEnumerable<Feat> feats, bool canUseEquipment, string size, Alignment alignment)
+        public bool RequirementsMet(Dictionary<string, Ability> abilities, IEnumerable<Feat> feats, bool canUseEquipment, string size, Alignment alignment, HitPoints hitPoints)
         {
             if (!MinimumAbilityMet(abilities))
                 return false;
@@ -58,6 +62,9 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 return false;
 
             if (RequiredAlignments.Any() && !RequiredAlignments.Contains(alignment.Full))
+                return false;
+
+            if (hitPoints.RoundedHitDiceQuantity < MinHitDice || hitPoints.RoundedHitDiceQuantity > MaxHitDice)
                 return false;
 
             return !RequiresEquipment || canUseEquipment;

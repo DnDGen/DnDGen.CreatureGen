@@ -51,11 +51,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [Test]
         public void AttackDataNames()
         {
-            var names = CreatureConstants.GetAll();
+            var creatures = CreatureConstants.GetAll();
+            var templates = new[]
+            {
+                CreatureConstants.Templates.CelestialCreature,
+                CreatureConstants.Templates.FiendishCreature,
+            };
+
+            var names = creatures.Union(templates);
+
             AssertCollectionNames(names);
         }
 
         [TestCaseSource(typeof(AttackTestData), "Creatures")]
+        [TestCaseSource(typeof(AttackTestData), "Templates")]
         public void AttackData(string creature, List<string[]> entries)
         {
             if (!entries.Any())

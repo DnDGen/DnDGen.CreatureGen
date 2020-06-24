@@ -31,6 +31,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             indices[DataIndexConstants.SpecialQualityData.SaveAbilityIndex] = "Save Ability";
             indices[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex] = "Save Base Value";
             indices[DataIndexConstants.SpecialQualityData.SaveIndex] = "Save";
+            indices[DataIndexConstants.SpecialQualityData.MinHitDiceIndex] = "Minimum Hit Dice";
+            indices[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex] = "Maximum Hit Dice";
         }
 
         [SetUp]
@@ -48,8 +50,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             var creatures = CreatureConstants.GetAll();
             var types = CreatureConstants.Types.All();
             var subtypes = CreatureConstants.Types.Subtypes.All();
+            var templates = new[]
+            {
+                CreatureConstants.Templates.CelestialCreature,
+                CreatureConstants.Templates.FiendishCreature,
+            };
 
-            var names = creatures.Union(types).Union(subtypes);
+            var names = creatures.Union(types).Union(subtypes).Union(templates);
 
             AssertCollectionNames(names);
         }
@@ -57,6 +64,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(SpecialQualityTestData), "Creatures")]
         [TestCaseSource(typeof(SpecialQualityTestData), "Types")]
         [TestCaseSource(typeof(SpecialQualityTestData), "Subtypes")]
+        [TestCaseSource(typeof(SpecialQualityTestData), "Templates")]
         public void SpecialQualityData(string creature, List<string[]> entries)
         {
             if (!entries.Any())
@@ -77,6 +85,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             {
                 foreach (var value in kvp.Value)
                 {
+                    var isValid = helper.ValidateEntry(value);
+                    Assert.That(isValid, Is.True, kvp.Key);
+
                     var key = helper.BuildKey(kvp.Key, value);
                     keys.Add(key);
                 }

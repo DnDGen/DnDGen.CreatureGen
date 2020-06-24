@@ -15,6 +15,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
     {
         public const string None = "NONE";
 
+        public static IEnumerable Templates
+        {
+            get
+            {
+                var testCases = new Dictionary<string, List<string[]>>();
+                var helper = new AttackHelper();
+
+                testCases[CreatureConstants.Templates.CelestialCreature] = new List<string[]>();
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData("Smite Evil", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+
+                testCases[CreatureConstants.Templates.FiendishCreature] = new List<string[]>();
+                testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData("Smite Good", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+
+                return TestDataHelper.EnumerateTestCases(testCases);
+            }
+        }
+
         public static IEnumerable Creatures
         {
             get

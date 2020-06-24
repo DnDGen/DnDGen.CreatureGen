@@ -18,6 +18,39 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
     {
         public const string None = "NONE";
 
+        public static IEnumerable Templates
+        {
+            get
+            {
+                var testCases = new Dictionary<string, List<string[]>>();
+                var helper = new SpecialQualityHelper();
+
+                testCases[CreatureConstants.Templates.CelestialCreature] = new List<string[]>();
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 5));
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 5, maxHitDice: 7));
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 10, minHitDice: 8));
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 5, maxHitDice: 7));
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 10, minHitDice: 8));
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Electricity, power: 5, maxHitDice: 7));
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Electricity, power: 10, minHitDice: 8));
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, minHitDice: 4, maxHitDice: 11));
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, minHitDice: 12));
+
+                testCases[CreatureConstants.Templates.FiendishCreature] = new List<string[]>();
+                testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+                testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 5));
+                testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 5, maxHitDice: 7));
+                testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 10, minHitDice: 8));
+                testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 5, maxHitDice: 7));
+                testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10, minHitDice: 8));
+                testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, minHitDice: 4, maxHitDice: 11));
+                testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, minHitDice: 12));
+
+                return TestDataHelper.EnumerateTestCases(testCases);
+            }
+        }
+
         public static IEnumerable Creatures
         {
             get

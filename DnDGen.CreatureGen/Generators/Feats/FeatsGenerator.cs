@@ -57,7 +57,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
 
                 foreach (var specialQualitySelection in specialQualitySelections)
                 {
-                    if (!specialQualitySelection.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment))
+                    if (!specialQualitySelection.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment, hitPoints))
                         continue;
 
                     pickedSelections.Add(specialQualitySelection);

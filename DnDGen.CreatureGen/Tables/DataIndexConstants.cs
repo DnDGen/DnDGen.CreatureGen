@@ -48,10 +48,12 @@
             public const int SaveAbilityIndex = 7;
             public const int SaveIndex = 8;
             public const int SaveBaseValueIndex = 9;
+            public const int MinHitDiceIndex = 10;
+            public const int MaxHitDiceIndex = 11;
 
             public static string[] InitializeData()
             {
-                return DataIndexConstants.InitializeData(SaveBaseValueIndex);
+                return DataIndexConstants.InitializeData(MaxHitDiceIndex);
             }
         }
 

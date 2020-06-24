@@ -21,7 +21,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
 
         [TestCase(true)]
         [TestCase(false)]
-        public void BuildDataIntoArray_WithoutSave(bool equipment)
+        public void BuildDataIntoArray_WithoutSaveOrHitDice(bool equipment)
         {
             var data = helper.BuildData("feat name", "focus", 9266, "time period", 600, 1337, equipment);
             Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo("feat name"));
@@ -34,7 +34,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex], Is.EqualTo(0.ToString()));
-            Assert.That(data.Length, Is.EqualTo(10));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MinHitDiceIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex], Is.EqualTo(int.MaxValue.ToString()));
+            Assert.That(data.Length, Is.EqualTo(12));
         }
 
         [TestCase(true)]
@@ -52,7 +54,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex], Is.EqualTo("save ability"));
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveIndex], Is.EqualTo("my save"));
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex], Is.EqualTo(1336.ToString()));
-            Assert.That(data.Length, Is.EqualTo(10));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MinHitDiceIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex], Is.EqualTo(int.MaxValue.ToString()));
+            Assert.That(data.Length, Is.EqualTo(12));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void BuildDataIntoArray_WithHitDice(bool equipment)
+        {
+            var data = helper.BuildData("feat name", "focus", 9266, "time period", 600, 1337, equipment, minHitDice: 96, maxHitDice: 1336);
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo("feat name"));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.EqualTo("focus"));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(9266.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo("time period"));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(600.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex], Is.EqualTo(1337.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex], Is.EqualTo(equipment.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex], Is.Empty);
+            Assert.That(data[DataIndexConstants.SpecialQualityData.SaveIndex], Is.Empty);
+            Assert.That(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MinHitDiceIndex], Is.EqualTo(96.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex], Is.EqualTo(1336.ToString()));
+            Assert.That(data.Length, Is.EqualTo(12));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void BuildDataIntoArray_WithSaveAndHitDice(bool equipment)
+        {
+            var data = helper.BuildData("feat name", "focus", 9266, "time period", 600, 1337, equipment, "save ability", "my save", 1336, 96, 783);
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo("feat name"));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.EqualTo("focus"));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(9266.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo("time period"));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(600.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex], Is.EqualTo(1337.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex], Is.EqualTo(equipment.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex], Is.EqualTo("save ability"));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.SaveIndex], Is.EqualTo("my save"));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex], Is.EqualTo(1336.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MinHitDiceIndex], Is.EqualTo(96.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex], Is.EqualTo(783.ToString()));
+            Assert.That(data.Length, Is.EqualTo(12));
         }
 
         [Test]
@@ -69,7 +113,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex], Is.EqualTo(0.ToString()));
-            Assert.That(data.Length, Is.EqualTo(10));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MinHitDiceIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex], Is.EqualTo(int.MaxValue.ToString()));
+            Assert.That(data.Length, Is.EqualTo(12));
         }
 
         [Test]
@@ -111,7 +157,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
                 frequencyQuantity: 3,
                 frequencyTimePeriod: FeatConstants.Frequencies.Day);
             var entry = helper.BuildEntry(data);
-            Assert.That(entry, Is.EqualTo("Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0#False###0"));
+            Assert.That(entry, Is.EqualTo("Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0#False###0#0#2147483647"));
         }
 
         [Test]
@@ -119,7 +165,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         {
             var data = helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: GroupConstants.All, requiresEquipment: true);
             var entry = helper.BuildEntry(data);
-            Assert.That(entry, Is.EqualTo("Simple Weapon Proficiency#0#All#0##0#True###0"));
+            Assert.That(entry, Is.EqualTo("Simple Weapon Proficiency#0#All#0##0#True###0#0#2147483647"));
         }
 
         [Test]
@@ -127,7 +173,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         {
             var data = helper.BuildData(FeatConstants.SpecialQualities.AllAroundVision);
             var entry = helper.BuildEntry(data);
-            Assert.That(entry, Is.EqualTo("All-Around Vision#0##0##0#False###0"));
+            Assert.That(entry, Is.EqualTo("All-Around Vision#0##0##0#False###0#0#2147483647"));
         }
 
         [Test]
@@ -142,13 +188,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
                 save: SaveConstants.Reflex,
                 saveBaseValue: 13);
             var entry = helper.BuildEntry(data);
-            Assert.That(entry, Is.EqualTo("Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13"));
+            Assert.That(entry, Is.EqualTo("Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13#0#2147483647"));
         }
 
         [Test]
         public void ParseRealData()
         {
-            var data = helper.ParseEntry("Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0#False###0");
+            var data = helper.ParseEntry("Spell-Like Ability#0#Clairaudience/Clairvoyance#3#Day#0#False###0#0#2147483647");
             Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo(FeatConstants.SpecialQualities.SpellLikeAbility));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.EqualTo(SpellConstants.ClairaudienceClairvoyance));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(3.ToString()));
@@ -159,13 +205,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex], Is.EqualTo(0.ToString()));
-            Assert.That(data.Length, Is.EqualTo(10));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MinHitDiceIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex], Is.EqualTo(int.MaxValue.ToString()));
+            Assert.That(data.Length, Is.EqualTo(12));
         }
 
         [Test]
         public void ParseRealData_RequiringEquipment()
         {
-            var data = helper.ParseEntry("Simple Weapon Proficiency#0#All#0##0#True###0");
+            var data = helper.ParseEntry("Simple Weapon Proficiency#0#All#0##0#True###0#0#2147483647");
             Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo(FeatConstants.WeaponProficiency_Simple));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.EqualTo(GroupConstants.All));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()));
@@ -176,13 +224,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex], Is.EqualTo(0.ToString()));
-            Assert.That(data.Length, Is.EqualTo(10));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MinHitDiceIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex], Is.EqualTo(int.MaxValue.ToString()));
+            Assert.That(data.Length, Is.EqualTo(12));
         }
 
         [Test]
         public void ParseRealData_WithDefaults()
         {
-            var data = helper.ParseEntry("All-Around Vision#0##0##0#False###0");
+            var data = helper.ParseEntry("All-Around Vision#0##0##0#False###0#0#2147483647");
             Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo(FeatConstants.SpecialQualities.AllAroundVision));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()));
@@ -193,13 +243,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex], Is.EqualTo(0.ToString()));
-            Assert.That(data.Length, Is.EqualTo(10));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MinHitDiceIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex], Is.EqualTo(int.MaxValue.ToString()));
+            Assert.That(data.Length, Is.EqualTo(12));
         }
 
         [Test]
         public void ParseRealData_WithSave()
         {
-            var data = helper.ParseEntry("Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13");
+            var data = helper.ParseEntry("Spell-Like Ability#0#Fireball#3#Day#0#False#Charisma#Reflex#13#0#2147483647");
             Assert.That(data[DataIndexConstants.SpecialQualityData.FeatNameIndex], Is.EqualTo(FeatConstants.SpecialQualities.SpellLikeAbility));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.EqualTo(SpellConstants.Fireball));
             Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(3.ToString()));
@@ -210,7 +262,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveAbilityIndex], Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveIndex], Is.EqualTo(SaveConstants.Reflex));
             Assert.That(data[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex], Is.EqualTo(13.ToString()));
-            Assert.That(data.Length, Is.EqualTo(10));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MinHitDiceIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex], Is.EqualTo(int.MaxValue.ToString()));
+            Assert.That(data.Length, Is.EqualTo(12));
         }
 
         [TestCase("")]
@@ -218,9 +272,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [TestCase("Clairaudience/Clairvoyance")]
         public void BuildKey_FromData(string focus)
         {
-            var data = helper.ParseEntry($"Special Quality#0#{focus}#3#Day#0#False###0");
+            var data = helper.ParseEntry($"Special Quality#9266#{focus}#3#Day#0#False###0#0#2147483647");
             var key = helper.BuildKey("creature", data);
-            Assert.That(key, Is.EqualTo($"creatureSpecial Quality{focus}"));
+            Assert.That(key, Is.EqualTo($"creatureSpecial Quality{focus}9266"));
         }
 
         [TestCase("")]
@@ -228,8 +282,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [TestCase("Clairaudience/Clairvoyance")]
         public void BuildKey_FromEntry(string focus)
         {
-            var key = helper.BuildKey("creature", $"Special Quality#0#{focus}#3#Day#0#False###0");
-            Assert.That(key, Is.EqualTo($"creatureSpecial Quality{focus}"));
+            var key = helper.BuildKey("creature", $"Special Quality#9266#{focus}#3#Day#0#False###0#0#2147483647");
+            Assert.That(key, Is.EqualTo($"creatureSpecial Quality{focus}9266"));
         }
 
         [TestCase("")]
@@ -237,8 +291,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [TestCase("Clairaudience/Clairvoyance")]
         public void BuildKeyFromSections(string focus)
         {
-            var key = helper.BuildKeyFromSections("creature", "Special Quality", focus);
-            Assert.That(key, Is.EqualTo($"creatureSpecial Quality{focus}"));
+            var key = helper.BuildKeyFromSections("creature", "Special Quality", focus, 9266.ToString());
+            Assert.That(key, Is.EqualTo($"creatureSpecial Quality{focus}9266"));
         }
 
         [TestCase(0, false)]
@@ -251,9 +305,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [TestCase(7, false)]
         [TestCase(8, false)]
         [TestCase(9, false)]
-        [TestCase(10, true)]
+        [TestCase(10, false)]
         [TestCase(11, false)]
-        [TestCase(12, false)]
+        [TestCase(12, true)]
         [TestCase(13, false)]
         [TestCase(14, false)]
         [TestCase(15, false)]
