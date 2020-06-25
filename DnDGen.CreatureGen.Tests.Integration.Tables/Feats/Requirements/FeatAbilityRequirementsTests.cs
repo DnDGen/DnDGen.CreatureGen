@@ -202,9 +202,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Aasimar, FeatConstants.ArmorProficiency_Light, string.Empty, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Aasimar, FeatConstants.ArmorProficiency_Medium, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Aasimar, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Acid, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Aasimar, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Aasimar, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Electricity, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Aasimar, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Acid, 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Aasimar, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold, 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Aasimar, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Electricity, 5.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Aasimar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Daylight, 0.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Aboleth, FeatConstants.SpecialQualities.MucusCloud, string.Empty, 0.ToString())] = new Dictionary<string, int>();
@@ -215,14 +215,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Aboleth, FeatConstants.SpecialQualities.Psionic, SpellConstants.ProgrammedImage, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Aboleth, FeatConstants.SpecialQualities.Psionic, SpellConstants.ProjectImage, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Achaierai, FeatConstants.SpecialQualities.SpellResistance, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Achaierai, FeatConstants.SpecialQualities.SpellResistance, string.Empty, 19.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Allip, FeatConstants.SpecialQualities.TurnResistance, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Allip, FeatConstants.SpecialQualities.TurnResistance, string.Empty, 2.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_AstralDeva, FeatConstants.WeaponProficiency_Simple, WeaponConstants.HeavyMace, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_AstralDeva, FeatConstants.SpecialQualities.ChangeShape, "Small or Medium Humanoid", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_AstralDeva, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to evil", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_AstralDeva, FeatConstants.SpecialQualities.SpellResistance, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_AstralDeva, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to evil", 10.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_AstralDeva, FeatConstants.SpecialQualities.SpellResistance, string.Empty, 30.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_AstralDeva, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Aid, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_AstralDeva, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.BladeBarrier, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_AstralDeva, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ContinualFlame, 0.ToString())] = new Dictionary<string, int>();
@@ -238,9 +238,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Planetar, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Greatsword, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Planetar, FeatConstants.SpecialQualities.ChangeShape, "Small or Medium Humanoid", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Planetar, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to evil", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Planetar, FeatConstants.SpecialQualities.Regeneration, "Does not regenerate evil damage", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Planetar, FeatConstants.SpecialQualities.SpellResistance, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Planetar, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to evil", 10.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Planetar, FeatConstants.SpecialQualities.Regeneration, "Does not regenerate evil damage", 10.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Planetar, FeatConstants.SpecialQualities.SpellResistance, string.Empty, 30.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Planetar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.BladeBarrier, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Planetar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CharmMonster_Mass, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Angel_Planetar, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ContinualFlame, 0.ToString())] = new Dictionary<string, int>();
@@ -329,8 +329,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Aranea, FeatConstants.SpecialQualities.ChangeShape, "Small or Medium humanoid; or Medium spider-human hybrid (like a Lycanthrope)", 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Arrowhawk_Adult, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Arrowhawk_Adult, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Arrowhawk_Adult, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold, 10.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Arrowhawk_Adult, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire, 10.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Arrowhawk_Adult, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Acid, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Arrowhawk_Adult, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Electricity, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Arrowhawk_Adult, FeatConstants.SpecialQualities.Immunity, "Poison", 0.ToString())] = new Dictionary<string, int>();
@@ -480,10 +480,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Bat_Swarm, FeatConstants.SpecialQualities.Blindsense, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Basilisk_AbyssalGreater, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Basilisk_AbyssalGreater, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Basilisk_AbyssalGreater, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Basilisk_AbyssalGreater, FeatConstants.SpecialQualities.SpellResistance, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Basilisk_AbyssalGreater, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 10.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Basilisk_AbyssalGreater, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold, 10.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Basilisk_AbyssalGreater, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire, 10.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Basilisk_AbyssalGreater, FeatConstants.SpecialQualities.SpellResistance, string.Empty, 23.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Bear_Black, FeatConstants.SpecialQualities.Scent, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
@@ -634,7 +634,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Chimera_White, FeatConstants.SpecialQualities.Scent, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Choker, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Choker, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Choker, FeatConstants.SpecialQualities.Quickness, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Chuul, FeatConstants.SpecialQualities.Amphibious, string.Empty, 0.ToString())] = new Dictionary<string, int>();
@@ -746,7 +746,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.DisplacerBeast_PackLord, FeatConstants.SpecialQualities.Displacement, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Acid, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CreateFoodAndWater, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CreateWater + ": creates wine instead of water", 0.ToString())] = new Dictionary<string, int>();
@@ -758,7 +758,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.WindWalk, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni, FeatConstants.SpecialQualities.Telepathy, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni_Noble, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni_Noble, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni_Noble, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Acid, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni_Noble, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CreateFoodAndWater, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Djinni_Noble, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CreateWater + ": creates wine instead of water", 0.ToString())] = new Dictionary<string, int>();
@@ -1951,7 +1951,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Eagle_Giant, FeatConstants.SpecialQualities.Evasion, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Efreeti, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Efreeti, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Efreeti, FeatConstants.SpecialQualities.ChangeShape, "Any Small, Medium, or Large Humanoid or Giant", 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Efreeti, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectMagic, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Efreeti, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GaseousForm, 0.ToString())] = new Dictionary<string, int>();
@@ -1967,73 +1967,73 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elasmosaurus, FeatConstants.SpecialQualities.Scent, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Elder, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Elder, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 10.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Elder, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Elder, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Elder, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Greater, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Greater, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 10.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Greater, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Greater, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Greater, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Huge, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Huge, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 5.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Huge, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Huge, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Huge, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Large, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Large, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 5.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Large, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Large, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Large, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Medium, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Medium, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Medium, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Small, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Small, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Air_Small, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Elder, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Elder, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 10.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Elder, FeatConstants.SpecialQualities.EarthGlide, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Greater, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Greater, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 10.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Greater, FeatConstants.SpecialQualities.EarthGlide, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Huge, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Huge, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 5.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Huge, FeatConstants.SpecialQualities.EarthGlide, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Large, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Large, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 5.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Large, FeatConstants.SpecialQualities.EarthGlide, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Medium, FeatConstants.SpecialQualities.EarthGlide, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Earth_Small, FeatConstants.SpecialQualities.EarthGlide, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Elder, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Elder, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Elder, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Elder, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Elder, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 10.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Greater, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Greater, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Greater, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Greater, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Greater, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 10.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Huge, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Huge, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Huge, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Huge, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Huge, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 5.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Large, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Large, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Large, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Large, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Large, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 5.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Medium, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Medium, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Medium, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Small, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Small, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Fire_Small, FeatConstants.WeaponFinesse, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Water_Elder, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Water_Elder, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 10.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Water_Greater, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Water_Greater, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 10.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Water_Huge, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Water_Huge, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 5.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Water_Large, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Elemental_Water_Large, FeatConstants.SpecialQualities.DamageReduction, "No physical vulnerabilities", 5.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Elephant, FeatConstants.SpecialQualities.Scent, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
@@ -2627,7 +2627,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Janni, FeatConstants.ArmorProficiency_Light, string.Empty, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Janni, FeatConstants.ArmorProficiency_Medium, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Janni, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Janni, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Janni, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Longbow, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Janni, FeatConstants.WeaponProficiency_Martial, WeaponConstants.Scimitar, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Janni, FeatConstants.SpecialQualities.ElementalEndurance, string.Empty, 0.ToString())] = new Dictionary<string, int>();
@@ -2808,53 +2808,53 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Megaraptor, FeatConstants.SpecialQualities.Scent, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Air, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Air, FeatConstants.SpecialQualities.FastHealing, "Exposed to moving air", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Air, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Air, FeatConstants.SpecialQualities.FastHealing, "Exposed to moving air", 2.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Air, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Blur, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Air, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GustOfWind, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Dust, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Dust, FeatConstants.SpecialQualities.FastHealing, "In arid, dusty environment", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Dust, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Dust, FeatConstants.SpecialQualities.FastHealing, "In arid, dusty environment", 2.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Dust, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Blur, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Dust, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.WindWall, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Earth, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Earth, FeatConstants.SpecialQualities.FastHealing, "Underground or buried up to its waist in earth", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Earth, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Earth, FeatConstants.SpecialQualities.FastHealing, "Underground or buried up to its waist in earth", 2.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Earth, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.EnlargePerson + ": self only", 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Earth, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.SoftenEarthAndStone, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Fire, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Fire, FeatConstants.SpecialQualities.FastHealing, "Touching a flame at least as large as a torch", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Fire, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Fire, FeatConstants.SpecialQualities.FastHealing, "Touching a flame at least as large as a torch", 2.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Fire, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HeatMetal, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Fire, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ScorchingRay, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ice, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ice, FeatConstants.SpecialQualities.FastHealing, "Touching a piece of ice at least Tiny in size, or ambient temperature is freezing or lower", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ice, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ice, FeatConstants.SpecialQualities.FastHealing, "Touching a piece of ice at least Tiny in size, or ambient temperature is freezing or lower", 2.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ice, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ChillMetal, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ice, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.MagicMissile, 0.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Magma, FeatConstants.SpecialQualities.ChangeShape, "A pool of lava 3 feet in diameter and 6 inches deep", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Magma, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Magma, FeatConstants.SpecialQualities.FastHealing, "Touching magma, lava, or a flame at least as large as a torch", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Magma, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Magma, FeatConstants.SpecialQualities.FastHealing, "Touching magma, lava, or a flame at least as large as a torch", 2.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Magma, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Pyrotechnics, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ooze, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ooze, FeatConstants.SpecialQualities.FastHealing, "In a wet or muddy environment", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ooze, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ooze, FeatConstants.SpecialQualities.FastHealing, "In a wet or muddy environment", 2.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ooze, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AcidArrow, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Ooze, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.StinkingCloud, 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Salt, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Salt, FeatConstants.SpecialQualities.FastHealing, "In an arid environment", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Salt, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Salt, FeatConstants.SpecialQualities.FastHealing, "In an arid environment", 2.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Salt, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Glitterdust, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Salt, FeatConstants.SpecialQualities.SpellLikeAbility, "Draw moisture from the air", 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Steam, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Steam, FeatConstants.SpecialQualities.FastHealing, "Touching boiling water or in a hot, humid area", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Steam, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Steam, FeatConstants.SpecialQualities.FastHealing, "Touching boiling water or in a hot, humid area", 2.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Steam, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Blur, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Steam, FeatConstants.SpecialQualities.SpellLikeAbility, "Rainstorm of boiling water", 0.ToString())] = new Dictionary<string, int>();
 
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Water, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Water, FeatConstants.SpecialQualities.FastHealing, "Exposed to rain or submerged up to its waist in water", 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Water, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to magic weapons", 5.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Water, FeatConstants.SpecialQualities.FastHealing, "Exposed to rain or submerged up to its waist in water", 2.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Water, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.AcidArrow, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Mephit_Water, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.StinkingCloud, 0.ToString())] = new Dictionary<string, int>();
 
@@ -3592,8 +3592,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Toad, FeatConstants.SpecialQualities.Amphibious, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Tojanida_Adult, FeatConstants.SpecialQualities.AllAroundVision, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Tojanida_Adult, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Electricity, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Tojanida_Adult, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Tojanida_Adult, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Electricity, 10.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Tojanida_Adult, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Fire, 10.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Tojanida_Adult, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Acid, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Tojanida_Adult, FeatConstants.SpecialQualities.Immunity, FeatConstants.Foci.Elements.Cold, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Tojanida_Adult, FeatConstants.SpecialQualities.Immunity, "Poison", 0.ToString())] = new Dictionary<string, int>();
@@ -3659,7 +3659,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Unicorn, FeatConstants.SpecialQualities.WildEmpathy, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.VampireSpawn, FeatConstants.Alertness, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.VampireSpawn, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.VampireSpawn, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.VampireSpawn, FeatConstants.LightningReflexes, string.Empty, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.VampireSpawn, FeatConstants.SpecialQualities.DamageReduction, "Vulnerable to silver weapons", 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.VampireSpawn, FeatConstants.SpecialQualities.EnergyResistance, FeatConstants.Foci.Elements.Cold, 0.ToString())] = new Dictionary<string, int>();
@@ -3720,13 +3720,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Worg, FeatConstants.SpecialQualities.Scent, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith, FeatConstants.Alertness, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith, FeatConstants.SpecialQualities.DaylightPowerlessness, string.Empty, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith, FeatConstants.SpecialQualities.TurnResistance, string.Empty, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith, FeatConstants.SpecialQualities.UnnaturalAura, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith_Dread, FeatConstants.Alertness, string.Empty, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith_Dread, FeatConstants.Initiative_Improved, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith_Dread, FeatConstants.Initiative_Improved, string.Empty, 4.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith_Dread, FeatConstants.SpecialQualities.DaylightPowerlessness, string.Empty, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith_Dread, FeatConstants.SpecialQualities.Lifesense, string.Empty, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Wraith_Dread, FeatConstants.SpecialQualities.TurnResistance, string.Empty, 0.ToString())] = new Dictionary<string, int>();
@@ -3904,7 +3904,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Aberration, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new Dictionary<string, int>();
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Aberration, FeatConstants.WeaponProficiency_Simple, GroupConstants.All, 0.ToString())] = new Dictionary<string, int>();
-                    testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Aberration, FeatConstants.SpecialQualities.Darkvision, string.Empty, 0.ToString())] = new Dictionary<string, int>();
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Aberration, FeatConstants.SpecialQualities.Darkvision, string.Empty, 60.ToString())] = new Dictionary<string, int>();
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Animal, FeatConstants.SpecialQualities.LowLightVision, string.Empty, 0.ToString())] = new Dictionary<string, int>();
 
