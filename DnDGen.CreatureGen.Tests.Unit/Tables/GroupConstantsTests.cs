@@ -6,7 +6,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
     [TestFixture]
     public class GroupConstantsTests
     {
-        [TestCase(GroupConstants.AddHitDiceToPower, "Add Hit Dice to Power")]
         [TestCase(GroupConstants.All, "All")]
         [TestCase(GroupConstants.ArmorBonus, "Armor Bonus")]
         [TestCase(GroupConstants.ArmorCheckPenalty, "Armor Check Penalty")]

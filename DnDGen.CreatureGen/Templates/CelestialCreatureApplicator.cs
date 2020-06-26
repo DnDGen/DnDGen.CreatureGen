@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
 using System;
@@ -51,6 +50,17 @@ namespace DnDGen.CreatureGen.Templates
                 creature.ChallengeRating = challengeRatings[index + 1];
             }
 
+            // Abilities
+            while (creature.Abilities[AbilityConstants.Intelligence].FullScore < 3)
+                creature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment++;
+
+            // Level Adjustment
+            if (creature.LevelAdjustment.HasValue)
+                creature.LevelAdjustment += 2;
+
+            // Alignment
+            creature.Alignment.Goodness = AlignmentConstants.Good;
+
             // Attacks
             var attacks = attackGenerator.GenerateAttacks(
                 CreatureConstants.Templates.CelestialCreature,
@@ -78,11 +88,6 @@ namespace DnDGen.CreatureGen.Templates
 
             foreach (var sq in specialQualities)
             {
-                if (sq.Name == FeatConstants.SpecialQualities.SpellResistance)
-                {
-                    sq.Power = Math.Min(sq.Power, 25);
-                }
-
                 var matching = creature.SpecialQualities.FirstOrDefault(f =>
                     f.Name == sq.Name
                     && !f.Foci.Except(sq.Foci).Any()
@@ -97,17 +102,6 @@ namespace DnDGen.CreatureGen.Templates
                     matching.Power = sq.Power;
                 }
             }
-
-            // Abilities
-            while (creature.Abilities[AbilityConstants.Intelligence].FullScore < 3)
-                creature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment++;
-
-            // Level Adjustment
-            if (creature.LevelAdjustment.HasValue)
-                creature.LevelAdjustment += 2;
-
-            // Alignment
-            creature.Alignment.Goodness = AlignmentConstants.Good;
 
             return creature;
         }

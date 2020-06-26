@@ -1223,19 +1223,19 @@
     <name>BarghestSpell-Like AbilityRage0</name>
   </collection>
   <collection>
-    <name>BatBlindsense0</name>
+    <name>BatBlindsense20</name>
   </collection>
   <collection>
-    <name>Bat SwarmBlindsense0</name>
+    <name>Bat SwarmBlindsense20</name>
   </collection>
   <collection>
-    <name>Bearded Devil (Barbazu)Damage ReductionVulnerable to good or silver weapons0</name>
+    <name>Bearded Devil (Barbazu)Damage ReductionVulnerable to good or silver weapons5</name>
   </collection>
   <collection>
-    <name>Bearded Devil (Barbazu)Energy ResistanceAcid0</name>
+    <name>Bearded Devil (Barbazu)Energy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>Bearded Devil (Barbazu)Energy ResistanceCold0</name>
+    <name>Bearded Devil (Barbazu)Energy ResistanceCold10</name>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)ImmunityFire0</name>
@@ -1250,16 +1250,16 @@
     <name>Bearded Devil (Barbazu)See in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell0</name>
   </collection>
   <collection>
-    <name>Bearded Devil (Barbazu)Spell Resistance0</name>
+    <name>Bearded Devil (Barbazu)Spell Resistance19</name>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)Spell-Like AbilityGreater teleport: self plus 50 pounds of objects only0</name>
   </collection>
   <collection>
-    <name>Bearded Devil (Barbazu)Telepathy0</name>
+    <name>Bearded Devil (Barbazu)Telepathy100</name>
   </collection>
   <collection>
-    <name>BebilithDamage ReductionVulnerable to good weapons0</name>
+    <name>BebilithDamage ReductionVulnerable to good weapons10</name>
   </collection>
   <collection>
     <name>BebilithScent0</name>
@@ -1268,7 +1268,7 @@
     <name>BebilithSpell-Like AbilityPlane shift: self only0</name>
   </collection>
   <collection>
-    <name>BebilithTelepathy0</name>
+    <name>BebilithTelepathy100</name>
   </collection>
   <collection>
     <name>BehirImmunityElectricity0</name>
@@ -1280,7 +1280,7 @@
     <name>BehirScent0</name>
   </collection>
   <collection>
-    <name>BeholderAlertness0</name>
+    <name>BeholderAlertness2</name>
   </collection>
   <collection>
     <name>BeholderAll-Around Vision0</name>
@@ -2735,7 +2735,7 @@
     <name>Carrion CrawlerScent0</name>
   </collection>
   <collection>
-    <name>Carrion CrawlerAlertness0</name>
+    <name>Carrion CrawlerAlertness2</name>
   </collection>
   <collection>
     <name>CatScent0</name>
@@ -3641,7 +3641,7 @@
     <name>DragonneScent0</name>
   </collection>
   <collection>
-    <name>Dread WraithAlertness0</name>
+    <name>Dread WraithAlertness2</name>
   </collection>
   <collection>
     <name>Dread WraithDaylight Powerlessness0</name>
@@ -4541,7 +4541,7 @@
     <name>GargoyleFreeze0</name>
   </collection>
   <collection>
-    <name>Gauth (Lesser Beholder)Alertness0</name>
+    <name>Gauth (Lesser Beholder)Alertness2</name>
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)All-Around Vision0</name>
@@ -6386,7 +6386,7 @@
     <name>Kuo-toaAdhesive0</name>
   </collection>
   <collection>
-    <name>Kuo-toaAlertness0</name>
+    <name>Kuo-toaAlertness2</name>
   </collection>
   <collection>
     <name>Kuo-toaAmphibious0</name>
@@ -8243,7 +8243,7 @@
     <name>Salt MephitSpell-Like AbilityGlitterdust0</name>
   </collection>
   <collection>
-    <name>SatyrAlertness0</name>
+    <name>SatyrAlertness2</name>
   </collection>
   <collection>
     <name>SatyrDamage ReductionVulnerable to cold iron weapons0</name>
@@ -8255,7 +8255,7 @@
     <name>SatyrSimple Weapon ProficiencyDagger0</name>
   </collection>
   <collection>
-    <name>Satyr with pipesAlertness0</name>
+    <name>Satyr with pipesAlertness2</name>
   </collection>
   <collection>
     <name>Satyr with pipesDamage ReductionVulnerable to cold iron weapons0</name>
@@ -9422,7 +9422,7 @@
     <name>UnicornWild Empathy0</name>
   </collection>
   <collection>
-    <name>Vampire SpawnAlertness0</name>
+    <name>Vampire SpawnAlertness2</name>
   </collection>
   <collection>
     <name>Vampire SpawnDamage ReductionVulnerable to silver weapons0</name>
@@ -9890,7 +9890,7 @@
     <name>WorgScent0</name>
   </collection>
   <collection>
-    <name>WraithAlertness0</name>
+    <name>WraithAlertness2</name>
   </collection>
   <collection>
     <name>WraithDaylight Powerlessness0</name>
@@ -9947,7 +9947,7 @@
     <name>YrthakVulnerabilitySonic0</name>
   </collection>
   <collection>
-    <name>Yuan-ti AbominationAlertness0</name>
+    <name>Yuan-ti AbominationAlertness2</name>
   </collection>
   <collection>
     <name>Yuan-ti AbominationAlternate Forma Tiny to Large viper0</name>
@@ -9995,7 +9995,7 @@
     <name>Yuan-ti AbominationSpell-Like AbilitySuggestion0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Snake Head)Alertness0</name>
+    <name>Yuan-ti Halfblood (Snake Head)Alertness2</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head)Alternate Forma Tiny to Large viper0</name>
@@ -10040,7 +10040,7 @@
     <name>Yuan-ti Halfblood (Snake Head)Spell-Like AbilitySuggestion0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Alertness0</name>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Alertness2</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Alternate Forma Tiny to Large viper0</name>
@@ -10079,7 +10079,7 @@
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell-Like AbilitySuggestion0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Alertness0</name>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Alertness2</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Alternate Forma Tiny to Large viper0</name>
@@ -10124,7 +10124,7 @@
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell-Like AbilitySuggestion0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Alertness0</name>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Alertness2</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Alternate Forma Tiny to Large viper0</name>
@@ -10169,7 +10169,7 @@
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell-Like AbilitySuggestion0</name>
   </collection>
   <collection>
-    <name>Yuan-ti PurebloodAlertness0</name>
+    <name>Yuan-ti PurebloodAlertness2</name>
   </collection>
   <collection>
     <name>Yuan-ti PurebloodAlternate Forma Tiny to Large viper0</name>

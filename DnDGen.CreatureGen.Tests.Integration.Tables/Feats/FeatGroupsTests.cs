@@ -15,7 +15,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats
         {
             var names = new[]
             {
-                GroupConstants.AddHitDiceToPower,
                 GroupConstants.AttackBonus,
                 GroupConstants.Initiative,
                 GroupConstants.TakenMultipleTimes,
@@ -31,8 +30,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats
 
         [TestCase(GroupConstants.AttackBonus,
             FeatConstants.SpecialQualities.AttackBonus)]
-        [TestCase(GroupConstants.AddHitDiceToPower,
-            FeatConstants.SpecialQualities.SpellResistance)]
         [TestCase(GroupConstants.Initiative,
             FeatConstants.Initiative_Improved)]
         [TestCase(GroupConstants.TakenMultipleTimes,

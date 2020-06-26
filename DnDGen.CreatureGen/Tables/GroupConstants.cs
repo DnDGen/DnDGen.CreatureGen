@@ -2,7 +2,6 @@
 {
     internal static class GroupConstants
     {
-        public const string AddHitDiceToPower = "Add Hit Dice to Power";
         public const string All = "All";
         public const string ArmorBonus = "Armor Bonus";
         public const string ArmorCheckPenalty = "Armor Check Penalty";

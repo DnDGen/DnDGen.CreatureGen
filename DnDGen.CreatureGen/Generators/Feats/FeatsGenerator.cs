@@ -7,7 +7,6 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
-using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using System.Collections.Generic;
@@ -41,12 +40,6 @@ namespace DnDGen.CreatureGen.Generators.Feats
             Alignment alignment)
         {
             var specialQualitySelections = featsSelector.SelectSpecialQualities(creatureName, creatureType);
-            var featToIncreasePower = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower);
-
-            foreach (var selection in specialQualitySelections)
-                if (featToIncreasePower.Contains(selection.Feat))
-                    selection.Power += hitPoints.RoundedHitDiceQuantity;
-
             var specialQualities = new List<Feat>();
             var previousCount = specialQualities.Count;
             var pickedSelections = new List<SpecialQualitySelection>();

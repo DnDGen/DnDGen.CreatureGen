@@ -8,7 +8,6 @@ using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
-using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using Moq;
@@ -503,25 +502,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         }
 
         [Test]
-        public void AddHitDiceToPower()
-        {
-            var metaraceFeat = new SpecialQualitySelection();
-            metaraceFeat.Feat = "metarace feat";
-            metaraceFeat.Power = 10;
-            specialQualitySelections.Add(metaraceFeat);
-
-            hitPoints.HitDiceQuantity = 2;
-
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { metaraceFeat.Feat });
-
-            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
-            var onlyFeat = feats.Single();
-
-            Assert.That(onlyFeat.Name, Is.EqualTo("metarace feat"));
-            Assert.That(onlyFeat.Power, Is.EqualTo(12));
-        }
-
-        [Test]
         public void DoNotAddHitDiceToPower()
         {
             var specialQualitySelectionselection = new SpecialQualitySelection();
@@ -530,8 +510,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             specialQualitySelections.Add(specialQualitySelectionselection);
 
             hitPoints.HitDiceQuantity = 2;
-
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.AddHitDiceToPower)).Returns(new[] { "other feat" });
 
             var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var feat = feats.Single();
