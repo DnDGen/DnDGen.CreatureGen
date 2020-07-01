@@ -4336,7 +4336,7 @@
     <name>Dire RatWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Dire SharkKeen Scent0</name>
+    <name>Dire SharkKeen Scent180</name>
   </collection>
   <collection>
     <name>Dire TigerScent0</name>
@@ -5677,7 +5677,7 @@
     <name>Gold Dragon, AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>Gold Dragon, AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Gold Dragon, AdultDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>Gold Dragon, AdultDarkvision120</name>
@@ -5689,7 +5689,7 @@
     <name>Gold Dragon, AdultLuck Bonus0</name>
   </collection>
   <collection>
-    <name>Gold Dragon, AdultSpell Resistance0</name>
+    <name>Gold Dragon, AdultSpell Resistance23</name>
   </collection>
   <collection>
     <name>Gold Dragon, AdultSpell-Like AbilityBless0</name>
@@ -5704,7 +5704,7 @@
     <name>Gold Dragon, AncientBlindsense60</name>
   </collection>
   <collection>
-    <name>Gold Dragon, AncientDamage ReductionVulnerable to magic weapons0</name>
+    <name>Gold Dragon, AncientDamage ReductionVulnerable to magic weapons15</name>
   </collection>
   <collection>
     <name>Gold Dragon, AncientDarkvision120</name>
@@ -5716,7 +5716,7 @@
     <name>Gold Dragon, AncientLuck Bonus0</name>
   </collection>
   <collection>
-    <name>Gold Dragon, AncientSpell Resistance0</name>
+    <name>Gold Dragon, AncientSpell Resistance30</name>
   </collection>
   <collection>
     <name>Gold Dragon, AncientSpell-Like AbilityBless0</name>
@@ -5737,7 +5737,7 @@
     <name>Gold Dragon, Great WyrmBlindsense60</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Great WyrmDamage ReductionVulnerable to magic weapons0</name>
+    <name>Gold Dragon, Great WyrmDamage ReductionVulnerable to magic weapons20</name>
   </collection>
   <collection>
     <name>Gold Dragon, Great WyrmDarkvision120</name>
@@ -5749,7 +5749,7 @@
     <name>Gold Dragon, Great WyrmLuck Bonus0</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Great WyrmSpell Resistance0</name>
+    <name>Gold Dragon, Great WyrmSpell Resistance33</name>
   </collection>
   <collection>
     <name>Gold Dragon, Great WyrmSpell-Like AbilityBless0</name>
@@ -5791,7 +5791,7 @@
     <name>Gold Dragon, Mature AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Mature AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Gold Dragon, Mature AdultDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>Gold Dragon, Mature AdultDarkvision120</name>
@@ -5803,7 +5803,7 @@
     <name>Gold Dragon, Mature AdultLuck Bonus0</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Mature AdultSpell Resistance0</name>
+    <name>Gold Dragon, Mature AdultSpell Resistance25</name>
   </collection>
   <collection>
     <name>Gold Dragon, Mature AdultSpell-Like AbilityBless0</name>
@@ -5818,7 +5818,7 @@
     <name>Gold Dragon, OldBlindsense60</name>
   </collection>
   <collection>
-    <name>Gold Dragon, OldDamage ReductionVulnerable to magic weapons0</name>
+    <name>Gold Dragon, OldDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>Gold Dragon, OldDarkvision120</name>
@@ -5830,7 +5830,7 @@
     <name>Gold Dragon, OldLuck Bonus0</name>
   </collection>
   <collection>
-    <name>Gold Dragon, OldSpell Resistance0</name>
+    <name>Gold Dragon, OldSpell Resistance27</name>
   </collection>
   <collection>
     <name>Gold Dragon, OldSpell-Like AbilityBless0</name>
@@ -5848,7 +5848,7 @@
     <name>Gold Dragon, Very OldBlindsense60</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Very OldDamage ReductionVulnerable to magic weapons0</name>
+    <name>Gold Dragon, Very OldDamage ReductionVulnerable to magic weapons15</name>
   </collection>
   <collection>
     <name>Gold Dragon, Very OldDarkvision120</name>
@@ -5860,7 +5860,7 @@
     <name>Gold Dragon, Very OldLuck Bonus0</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Very OldSpell Resistance0</name>
+    <name>Gold Dragon, Very OldSpell Resistance28</name>
   </collection>
   <collection>
     <name>Gold Dragon, Very OldSpell-Like AbilityBless0</name>
@@ -5893,7 +5893,7 @@
     <name>Gold Dragon, WyrmBlindsense60</name>
   </collection>
   <collection>
-    <name>Gold Dragon, WyrmDamage ReductionVulnerable to magic weapons0</name>
+    <name>Gold Dragon, WyrmDamage ReductionVulnerable to magic weapons20</name>
   </collection>
   <collection>
     <name>Gold Dragon, WyrmDarkvision120</name>
@@ -5905,7 +5905,7 @@
     <name>Gold Dragon, WyrmLuck Bonus0</name>
   </collection>
   <collection>
-    <name>Gold Dragon, WyrmSpell Resistance0</name>
+    <name>Gold Dragon, WyrmSpell Resistance31</name>
   </collection>
   <collection>
     <name>Gold Dragon, WyrmSpell-Like AbilityBless0</name>
@@ -5956,7 +5956,7 @@
     <name>Gold Dragon, Young AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Young AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Gold Dragon, Young AdultDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>Gold Dragon, Young AdultDarkvision120</name>
@@ -5965,7 +5965,7 @@
     <name>Gold Dragon, Young AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>Gold Dragon, Young AdultSpell Resistance0</name>
+    <name>Gold Dragon, Young AdultSpell Resistance21</name>
   </collection>
   <collection>
     <name>Gold Dragon, Young AdultSpell-Like AbilityBless0</name>
@@ -6013,22 +6013,22 @@
     <name>Gray SlaadChange ShapeAny humanoid form0</name>
   </collection>
   <collection>
-    <name>Gray SlaadDamage ReductionVulnerable to lawful weapons0</name>
+    <name>Gray SlaadDamage ReductionVulnerable to lawful weapons10</name>
   </collection>
   <collection>
-    <name>Gray SlaadEnergy ResistanceAcid0</name>
+    <name>Gray SlaadEnergy ResistanceAcid5</name>
   </collection>
   <collection>
-    <name>Gray SlaadEnergy ResistanceCold0</name>
+    <name>Gray SlaadEnergy ResistanceCold5</name>
   </collection>
   <collection>
-    <name>Gray SlaadEnergy ResistanceElectricity0</name>
+    <name>Gray SlaadEnergy ResistanceElectricity5</name>
   </collection>
   <collection>
-    <name>Gray SlaadEnergy ResistanceFire0</name>
+    <name>Gray SlaadEnergy ResistanceFire5</name>
   </collection>
   <collection>
-    <name>Gray SlaadFast Healing0</name>
+    <name>Gray SlaadFast Healing5</name>
   </collection>
   <collection>
     <name>Gray SlaadImmunitySonic0</name>
@@ -6076,7 +6076,7 @@
     <name>Greater BarghestChange ShapeGoblin or wolf0</name>
   </collection>
   <collection>
-    <name>Greater BarghestDamage ReductionVulnerable to magic weapons0</name>
+    <name>Greater BarghestDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>Greater BarghestScent0</name>
@@ -6118,7 +6118,7 @@
     <name>Greater ShadowTurn Resistance2</name>
   </collection>
   <collection>
-    <name>Greater Stone GolemDamage ReductionVulnerable to adamantine weapons0</name>
+    <name>Greater Stone GolemDamage ReductionVulnerable to adamantine weapons10</name>
   </collection>
   <collection>
     <name>Greater Stone GolemImmunityMagic (see creature description)0</name>
@@ -6127,7 +6127,7 @@
     <name>Green Dragon, AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>Green Dragon, AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Green Dragon, AdultDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>Green Dragon, AdultDarkvision120</name>
@@ -6142,7 +6142,7 @@
     <name>Green Dragon, AdultSpell-Like AbilitySuggestion0</name>
   </collection>
   <collection>
-    <name>Green Dragon, AdultSpell Resistance0</name>
+    <name>Green Dragon, AdultSpell Resistance21</name>
   </collection>
   <collection>
     <name>Green Dragon, AdultWater Breathing0</name>
@@ -6151,7 +6151,7 @@
     <name>Green Dragon, AncientBlindsense60</name>
   </collection>
   <collection>
-    <name>Green Dragon, AncientDamage ReductionVulnerable to magic weapons0</name>
+    <name>Green Dragon, AncientDamage ReductionVulnerable to magic weapons15</name>
   </collection>
   <collection>
     <name>Green Dragon, AncientDarkvision120</name>
@@ -6163,7 +6163,7 @@
     <name>Green Dragon, AncientKeen Senses0</name>
   </collection>
   <collection>
-    <name>Green Dragon, AncientSpell Resistance0</name>
+    <name>Green Dragon, AncientSpell Resistance27</name>
   </collection>
   <collection>
     <name>Green Dragon, AncientSpell-Like AbilityDominate person0</name>
@@ -6181,7 +6181,7 @@
     <name>Green Dragon, Great WyrmBlindsense60</name>
   </collection>
   <collection>
-    <name>Green Dragon, Great WyrmDamage ReductionVulnerable to magic weapons0</name>
+    <name>Green Dragon, Great WyrmDamage ReductionVulnerable to magic weapons20</name>
   </collection>
   <collection>
     <name>Green Dragon, Great WyrmDarkvision120</name>
@@ -6193,7 +6193,7 @@
     <name>Green Dragon, Great WyrmKeen Senses0</name>
   </collection>
   <collection>
-    <name>Green Dragon, Great WyrmSpell Resistance0</name>
+    <name>Green Dragon, Great WyrmSpell Resistance30</name>
   </collection>
   <collection>
     <name>Green Dragon, Great WyrmSpell-Like AbilityCommand plants0</name>
@@ -6229,7 +6229,7 @@
     <name>Green Dragon, Mature AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>Green Dragon, Mature AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Green Dragon, Mature AdultDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>Green Dragon, Mature AdultDarkvision120</name>
@@ -6241,7 +6241,7 @@
     <name>Green Dragon, Mature AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>Green Dragon, Mature AdultSpell Resistance0</name>
+    <name>Green Dragon, Mature AdultSpell Resistance22</name>
   </collection>
   <collection>
     <name>Green Dragon, Mature AdultSpell-Like AbilitySuggestion0</name>
@@ -6253,7 +6253,7 @@
     <name>Green Dragon, OldBlindsense60</name>
   </collection>
   <collection>
-    <name>Green Dragon, OldDamage ReductionVulnerable to magic weapons0</name>
+    <name>Green Dragon, OldDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>Green Dragon, OldDarkvision120</name>
@@ -6265,7 +6265,7 @@
     <name>Green Dragon, OldKeen Senses0</name>
   </collection>
   <collection>
-    <name>Green Dragon, OldSpell Resistance0</name>
+    <name>Green Dragon, OldSpell Resistance24</name>
   </collection>
   <collection>
     <name>Green Dragon, OldSpell-Like AbilityPlant growth0</name>
@@ -6280,7 +6280,7 @@
     <name>Green Dragon, Very OldBlindsense60</name>
   </collection>
   <collection>
-    <name>Green Dragon, Very OldDamage ReductionVulnerable to magic weapons0</name>
+    <name>Green Dragon, Very OldDamage ReductionVulnerable to magic weapons15</name>
   </collection>
   <collection>
     <name>Green Dragon, Very OldDarkvision120</name>
@@ -6292,7 +6292,7 @@
     <name>Green Dragon, Very OldKeen Senses0</name>
   </collection>
   <collection>
-    <name>Green Dragon, Very OldSpell Resistance0</name>
+    <name>Green Dragon, Very OldSpell Resistance25</name>
   </collection>
   <collection>
     <name>Green Dragon, Very OldSpell-Like AbilityPlant growth0</name>
@@ -6322,7 +6322,7 @@
     <name>Green Dragon, WyrmBlindsense60</name>
   </collection>
   <collection>
-    <name>Green Dragon, WyrmDamage ReductionVulnerable to magic weapons0</name>
+    <name>Green Dragon, WyrmDamage ReductionVulnerable to magic weapons20</name>
   </collection>
   <collection>
     <name>Green Dragon, WyrmDarkvision120</name>
@@ -6334,7 +6334,7 @@
     <name>Green Dragon, WyrmKeen Senses0</name>
   </collection>
   <collection>
-    <name>Green Dragon, WyrmSpell Resistance0</name>
+    <name>Green Dragon, WyrmSpell Resistance28</name>
   </collection>
   <collection>
     <name>Green Dragon, WyrmSpell-Like AbilityDominate person0</name>
@@ -6382,7 +6382,7 @@
     <name>Green Dragon, Young AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>Green Dragon, Young AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Green Dragon, Young AdultDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>Green Dragon, Young AdultDarkvision120</name>
@@ -6394,16 +6394,16 @@
     <name>Green Dragon, Young AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>Green Dragon, Young AdultSpell Resistance0</name>
+    <name>Green Dragon, Young AdultSpell Resistance19</name>
   </collection>
   <collection>
     <name>Green Dragon, Young AdultWater Breathing0</name>
   </collection>
   <collection>
-    <name>Green HagDarkvision60</name>
+    <name>Green HagDarkvision90</name>
   </collection>
   <collection>
-    <name>Green HagSpell Resistance0</name>
+    <name>Green HagSpell Resistance18</name>
   </collection>
   <collection>
     <name>Green HagSpell-Like AbilityDancing lights0</name>
@@ -6430,19 +6430,19 @@
     <name>Green SlaadChange ShapeMedium or Large humanoid form0</name>
   </collection>
   <collection>
-    <name>Green SlaadEnergy ResistanceAcid0</name>
+    <name>Green SlaadEnergy ResistanceAcid5</name>
   </collection>
   <collection>
-    <name>Green SlaadEnergy ResistanceCold0</name>
+    <name>Green SlaadEnergy ResistanceCold5</name>
   </collection>
   <collection>
-    <name>Green SlaadEnergy ResistanceElectricity0</name>
+    <name>Green SlaadEnergy ResistanceElectricity5</name>
   </collection>
   <collection>
-    <name>Green SlaadEnergy ResistanceFire0</name>
+    <name>Green SlaadEnergy ResistanceFire5</name>
   </collection>
   <collection>
-    <name>Green SlaadFast Healing0</name>
+    <name>Green SlaadFast Healing5</name>
   </collection>
   <collection>
     <name>Green SlaadImmunitySonic0</name>
@@ -6478,7 +6478,7 @@
     <name>Green SlaadSpell-Like AbilityFireball0</name>
   </collection>
   <collection>
-    <name>GrickDamage ReductionVulnerable to magic weapons0</name>
+    <name>GrickDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>GrickScent0</name>
@@ -6490,10 +6490,10 @@
     <name>GriffonScent0</name>
   </collection>
   <collection>
-    <name>GrigDamage ReductionVulnerable to cold iron weapons0</name>
+    <name>GrigDamage ReductionVulnerable to cold iron weapons5</name>
   </collection>
   <collection>
-    <name>GrigDodge0</name>
+    <name>GrigDodge1</name>
   </collection>
   <collection>
     <name>GrigMartial Weapon ProficiencyLongbow0</name>
@@ -6502,7 +6502,7 @@
     <name>GrigMartial Weapon ProficiencyShort sword0</name>
   </collection>
   <collection>
-    <name>GrigSpell Resistance0</name>
+    <name>GrigSpell Resistance17</name>
   </collection>
   <collection>
     <name>GrigSpell-Like AbilityDisguise self0</name>
@@ -6523,10 +6523,10 @@
     <name>GrigWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Grig with fiddleDamage ReductionVulnerable to cold iron weapons0</name>
+    <name>Grig with fiddleDamage ReductionVulnerable to cold iron weapons5</name>
   </collection>
   <collection>
-    <name>Grig with fiddleDodge0</name>
+    <name>Grig with fiddleDodge1</name>
   </collection>
   <collection>
     <name>Grig with fiddleMartial Weapon ProficiencyLongbow0</name>
@@ -6535,7 +6535,7 @@
     <name>Grig with fiddleMartial Weapon ProficiencyShort sword0</name>
   </collection>
   <collection>
-    <name>Grig with fiddleSpell Resistance0</name>
+    <name>Grig with fiddleSpell Resistance17</name>
   </collection>
   <collection>
     <name>Grig with fiddleSpell-Like AbilityDisguise self0</name>
@@ -6556,7 +6556,7 @@
     <name>Grig with fiddleWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>GrimlockBlindsight120</name>
+    <name>GrimlockBlindsight40</name>
   </collection>
   <collection>
     <name>GrimlockImmunityAttack forms that rely on sight0</name>
@@ -6640,7 +6640,7 @@
     <name>Half-OrcOrc Blood0</name>
   </collection>
   <collection>
-    <name>HalflingAttack Bonusthrown weapons and slings0</name>
+    <name>HalflingAttack Bonusthrown weapons and slings1</name>
   </collection>
   <collection>
     <name>HalflingMartial Weapon ProficiencyLongsword0</name>
@@ -6670,10 +6670,10 @@
     <name>Hell HoundTrack0</name>
   </collection>
   <collection>
-    <name>Hellcat (Bezekira)Damage ReductionVulnerable to good weapons0</name>
+    <name>Hellcat (Bezekira)Damage ReductionVulnerable to good weapons5</name>
   </collection>
   <collection>
-    <name>Hellcat (Bezekira)Energy ResistanceFire0</name>
+    <name>Hellcat (Bezekira)Energy ResistanceFire10</name>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)Invisible in Light0</name>
@@ -6682,31 +6682,31 @@
     <name>Hellcat (Bezekira)Scent0</name>
   </collection>
   <collection>
-    <name>Hellcat (Bezekira)Spell Resistance0</name>
+    <name>Hellcat (Bezekira)Spell Resistance19</name>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)Telepathy100</name>
   </collection>
   <collection>
-    <name>Hellwasp SwarmDamage ReductionVulnerable to magic weapons0</name>
+    <name>Hellwasp SwarmDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
-    <name>Hellwasp SwarmEnergy ResistanceFire0</name>
+    <name>Hellwasp SwarmEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>Hellwasp SwarmHive Mind0</name>
   </collection>
   <collection>
-    <name>HezrouDamage ReductionVulnerable to good weapons0</name>
+    <name>HezrouDamage ReductionVulnerable to good weapons10</name>
   </collection>
   <collection>
-    <name>HezrouEnergy ResistanceAcid0</name>
+    <name>HezrouEnergy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>HezrouEnergy ResistanceCold0</name>
+    <name>HezrouEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>HezrouEnergy ResistanceFire0</name>
+    <name>HezrouEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>HezrouImmunityElectricity0</name>
@@ -6715,7 +6715,7 @@
     <name>HezrouImmunityPoison0</name>
   </collection>
   <collection>
-    <name>HezrouSpell Resistance0</name>
+    <name>HezrouSpell Resistance19</name>
   </collection>
   <collection>
     <name>HezrouSpell-Like AbilityBlasphemy0</name>
@@ -6784,7 +6784,7 @@
     <name>Hill GiantRock Catching0</name>
   </collection>
   <collection>
-    <name>Hill GiantRock Throwing0</name>
+    <name>Hill GiantRock Throwing1</name>
   </collection>
   <collection>
     <name>HippogriffScent0</name>
@@ -6802,13 +6802,13 @@
     <name>HobgoblinSimple Weapon ProficiencyJavelin0</name>
   </collection>
   <collection>
-    <name>Horned Devil (Cornugon)Damage ReductionVulnerable to good, silver weapons0</name>
+    <name>Horned Devil (Cornugon)Damage ReductionVulnerable to good, silver weapons10</name>
   </collection>
   <collection>
-    <name>Horned Devil (Cornugon)Energy ResistanceAcid0</name>
+    <name>Horned Devil (Cornugon)Energy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>Horned Devil (Cornugon)Energy ResistanceCold0</name>
+    <name>Horned Devil (Cornugon)Energy ResistanceCold10</name>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)Exotic Weapon ProficiencySpiked chain0</name>
@@ -6820,13 +6820,13 @@
     <name>Horned Devil (Cornugon)ImmunityPoison0</name>
   </collection>
   <collection>
-    <name>Horned Devil (Cornugon)RegenerationDoes not regenerate damage from good-aligned, silvered weapons0</name>
+    <name>Horned Devil (Cornugon)RegenerationDoes not regenerate damage from good-aligned, silvered weapons5</name>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)See in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell0</name>
   </collection>
   <collection>
-    <name>Horned Devil (Cornugon)Spell Resistance0</name>
+    <name>Horned Devil (Cornugon)Spell Resistance28</name>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)Spell-Like AbilityDispel good0</name>
@@ -6859,7 +6859,7 @@
     <name>Hound ArchonChange ShapeAny canine form of Small to Large size0</name>
   </collection>
   <collection>
-    <name>Hound ArchonDamage ReductionVulnerable to evil weapons0</name>
+    <name>Hound ArchonDamage ReductionVulnerable to evil weapons10</name>
   </collection>
   <collection>
     <name>Hound ArchonMartial Weapon ProficiencyGreatsword0</name>
@@ -6868,7 +6868,7 @@
     <name>Hound ArchonScent0</name>
   </collection>
   <collection>
-    <name>Hound ArchonSpell Resistance0</name>
+    <name>Hound ArchonSpell Resistance16</name>
   </collection>
   <collection>
     <name>Hound ArchonSpell-Like AbilityAid0</name>
@@ -6895,13 +6895,13 @@
     <name>HyenaScent0</name>
   </collection>
   <collection>
-    <name>Ice Devil (Gelugon)Damage ReductionVulnerable to good weapons0</name>
+    <name>Ice Devil (Gelugon)Damage ReductionVulnerable to good weapons10</name>
   </collection>
   <collection>
-    <name>Ice Devil (Gelugon)Energy ResistanceAcid0</name>
+    <name>Ice Devil (Gelugon)Energy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>Ice Devil (Gelugon)Energy ResistanceCold0</name>
+    <name>Ice Devil (Gelugon)Energy ResistanceCold10</name>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)ImmunityFire0</name>
@@ -6910,7 +6910,7 @@
     <name>Ice Devil (Gelugon)ImmunityPoison0</name>
   </collection>
   <collection>
-    <name>Ice Devil (Gelugon)RegenerationDoes not regenerate good damage0</name>
+    <name>Ice Devil (Gelugon)RegenerationDoes not regenerate good damage5</name>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)See in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell0</name>
@@ -6925,7 +6925,7 @@
     <name>Ice Devil (Gelugon)Simple Weapon ProficiencyShortspear0</name>
   </collection>
   <collection>
-    <name>Ice Devil (Gelugon)Spell Resistance0</name>
+    <name>Ice Devil (Gelugon)Spell Resistance25</name>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)Spell-Like AbilityCone of cold0</name>
@@ -6967,13 +6967,13 @@
     <name>ImpAlternate FormImp Alternate Form0</name>
   </collection>
   <collection>
-    <name>ImpDamage ReductionVulnerable to good or silver weapons0</name>
+    <name>ImpDamage ReductionVulnerable to good or silver weapons5</name>
   </collection>
   <collection>
-    <name>ImpEnergy ResistanceFire0</name>
+    <name>ImpEnergy ResistanceFire5</name>
   </collection>
   <collection>
-    <name>ImpFast Healing0</name>
+    <name>ImpFast Healing2</name>
   </collection>
   <collection>
     <name>ImpImmunityPoison0</name>
@@ -6997,10 +6997,10 @@
     <name>IncorporealImmunity50% chance to ignore any damage from a corporeal source (except for positive energy, negative energy, force effects such as magic missiles, or attacks made with ghost touch weapons)0</name>
   </collection>
   <collection>
-    <name>IncorporealImmunityBlindsense60</name>
+    <name>IncorporealImmunityBlindsense0</name>
   </collection>
   <collection>
-    <name>IncorporealImmunityBlindsight120</name>
+    <name>IncorporealImmunityBlindsight0</name>
   </collection>
   <collection>
     <name>IncorporealImmunityFalling or falling damage0</name>
@@ -7015,7 +7015,7 @@
     <name>IncorporealImmunityScent0</name>
   </collection>
   <collection>
-    <name>IncorporealImmunityTremorsense60</name>
+    <name>IncorporealImmunityTremorsense0</name>
   </collection>
   <collection>
     <name>IncorporealImmunityTrip0</name>
@@ -7027,7 +7027,7 @@
     <name>Invisible StalkerNatural Invisibility0</name>
   </collection>
   <collection>
-    <name>Iron GolemDamage ReductionVulnerable to adamantine weapons0</name>
+    <name>Iron GolemDamage ReductionVulnerable to adamantine weapons15</name>
   </collection>
   <collection>
     <name>Iron GolemImmunityMagic (see creature description)0</name>
@@ -7069,10 +7069,10 @@
     <name>JanniTelepathy100</name>
   </collection>
   <collection>
-    <name>Juvenile ArrowhawkEnergy ResistanceCold0</name>
+    <name>Juvenile ArrowhawkEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>Juvenile ArrowhawkEnergy ResistanceFire0</name>
+    <name>Juvenile ArrowhawkEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>Juvenile ArrowhawkImmunityAcid0</name>
@@ -7087,10 +7087,10 @@
     <name>Juvenile TojanidaAll-Around Vision0</name>
   </collection>
   <collection>
-    <name>Juvenile TojanidaEnergy ResistanceElectricity0</name>
+    <name>Juvenile TojanidaEnergy ResistanceElectricity10</name>
   </collection>
   <collection>
-    <name>Juvenile TojanidaEnergy ResistanceFire0</name>
+    <name>Juvenile TojanidaEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>Juvenile TojanidaImmunityAcid0</name>
@@ -7102,7 +7102,7 @@
     <name>Juvenile TojanidaImmunityPoison0</name>
   </collection>
   <collection>
-    <name>KapoacinthDamage ReductionVulnerable to magic weapons0</name>
+    <name>KapoacinthDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>KapoacinthFreeze0</name>
@@ -7129,16 +7129,16 @@
     <name>KolyarutArmor Proficiency (Heavy)0</name>
   </collection>
   <collection>
-    <name>KolyarutDamage ReductionVulnerable to chaotic weapons0</name>
+    <name>KolyarutDamage ReductionVulnerable to chaotic weapons10</name>
   </collection>
   <collection>
-    <name>KolyarutFast Healing0</name>
+    <name>KolyarutFast Healing5</name>
   </collection>
   <collection>
     <name>KolyarutMartial Weapon ProficiencyLongsword0</name>
   </collection>
   <collection>
-    <name>KolyarutSpell Resistance0</name>
+    <name>KolyarutSpell Resistance22</name>
   </collection>
   <collection>
     <name>KolyarutSpell-Like AbilityDiscern lies0</name>
@@ -7204,7 +7204,7 @@
     <name>Kuo-toaAmphibious0</name>
   </collection>
   <collection>
-    <name>Kuo-toaEnergy ResistanceElectricity0</name>
+    <name>Kuo-toaEnergy ResistanceElectricity10</name>
   </collection>
   <collection>
     <name>Kuo-toaImmunityParalysis0</name>
@@ -7267,7 +7267,7 @@
     <name>Lantern ArchonAura of Menace0</name>
   </collection>
   <collection>
-    <name>Lantern ArchonDamage ReductionVulnerable to magic, evil weapons0</name>
+    <name>Lantern ArchonDamage ReductionVulnerable to magic, evil weapons10</name>
   </collection>
   <collection>
     <name>Lantern ArchonSpell-Like AbilityAid0</name>
@@ -7279,13 +7279,13 @@
     <name>Lantern ArchonSpell-Like AbilityDetect evil0</name>
   </collection>
   <collection>
-    <name>LemureDamage ReductionVulnerable to good or silver weapons0</name>
+    <name>LemureDamage ReductionVulnerable to good or silver weapons5</name>
   </collection>
   <collection>
-    <name>LemureEnergy ResistanceAcid0</name>
+    <name>LemureEnergy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>LemureEnergy ResistanceCold0</name>
+    <name>LemureEnergy ResistanceCold10</name>
   </collection>
   <collection>
     <name>LemureImmunityFire0</name>
@@ -7300,13 +7300,13 @@
     <name>LemureSee in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell0</name>
   </collection>
   <collection>
-    <name>LeonalDamage ReductionVulnerable to evil, silver weapons0</name>
+    <name>LeonalDamage ReductionVulnerable to evil, silver weapons10</name>
   </collection>
   <collection>
-    <name>LeonalEnergy ResistanceCold0</name>
+    <name>LeonalEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>LeonalEnergy ResistanceSonic0</name>
+    <name>LeonalEnergy ResistanceSonic10</name>
   </collection>
   <collection>
     <name>LeonalImmunityElectricity0</name>
@@ -7321,7 +7321,7 @@
     <name>LeonalProtective Aura0</name>
   </collection>
   <collection>
-    <name>LeonalSpell Resistance0</name>
+    <name>LeonalSpell Resistance28</name>
   </collection>
   <collection>
     <name>LeonalSpell-Like AbilityCure critical wounds0</name>
@@ -7360,7 +7360,7 @@
     <name>Light WarhorseScent0</name>
   </collection>
   <collection>
-    <name>LillendEnergy ResistanceFire0</name>
+    <name>LillendEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>LillendImmunityPoison0</name>
@@ -7432,13 +7432,13 @@
     <name>Magma MephitSpell-Like AbilityPyrotechnics0</name>
   </collection>
   <collection>
-    <name>MagminDamage ReductionVulnerable to magic weapons0</name>
+    <name>MagminDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>MagminMelt Weapons0</name>
   </collection>
   <collection>
-    <name>MalentiBlindsense60</name>
+    <name>MalentiBlindsense30</name>
   </collection>
   <collection>
     <name>MalentiFreshwater Sensitivity0</name>
@@ -7468,16 +7468,16 @@
     <name>ManticoreTrack0</name>
   </collection>
   <collection>
-    <name>MarilithDamage ReductionVulnerable to good, cold iron weapons0</name>
+    <name>MarilithDamage ReductionVulnerable to good, cold iron weapons10</name>
   </collection>
   <collection>
-    <name>MarilithEnergy ResistanceAcid0</name>
+    <name>MarilithEnergy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>MarilithEnergy ResistanceCold0</name>
+    <name>MarilithEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>MarilithEnergy ResistanceFire0</name>
+    <name>MarilithEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>MarilithImmunityElectricity0</name>
@@ -7495,7 +7495,7 @@
     <name>MarilithSuperior Multiweapon Fighting0</name>
   </collection>
   <collection>
-    <name>MarilithSpell Resistance0</name>
+    <name>MarilithSpell Resistance25</name>
   </collection>
   <collection>
     <name>MarilithSpell-Like AbilityAlign weapon0</name>
@@ -7534,13 +7534,13 @@
     <name>MarutArmor Proficiency (Heavy)0</name>
   </collection>
   <collection>
-    <name>MarutDamage ReductionVulnerable to chaotic weapons0</name>
+    <name>MarutDamage ReductionVulnerable to chaotic weapons15</name>
   </collection>
   <collection>
-    <name>MarutFast Healing0</name>
+    <name>MarutFast Healing10</name>
   </collection>
   <collection>
-    <name>MarutSpell Resistance0</name>
+    <name>MarutSpell Resistance25</name>
   </collection>
   <collection>
     <name>MarutSpell-Like AbilityAir walk0</name>
@@ -7633,7 +7633,7 @@
     <name>MimicMimic Shape0</name>
   </collection>
   <collection>
-    <name>Mind Flayer (Illithid)Spell Resistance0</name>
+    <name>Mind Flayer (Illithid)Spell Resistance25</name>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)PsionicCharm monster0</name>
@@ -7657,13 +7657,13 @@
     <name>Minor XornAll-Around Vision0</name>
   </collection>
   <collection>
-    <name>Minor XornDamage ReductionVulnerable to bludgeoning weapons0</name>
+    <name>Minor XornDamage ReductionVulnerable to bludgeoning weapons5</name>
   </collection>
   <collection>
     <name>Minor XornEarth Glide0</name>
   </collection>
   <collection>
-    <name>Minor XornEnergy ResistanceElectricity0</name>
+    <name>Minor XornEnergy ResistanceElectricity10</name>
   </collection>
   <collection>
     <name>Minor XornImmunityCold0</name>
@@ -7813,22 +7813,22 @@
     <name>MuleScent0</name>
   </collection>
   <collection>
-    <name>MummyDamage ReductionNo physical vulnerabilities0</name>
+    <name>MummyDamage ReductionNo physical vulnerabilities5</name>
   </collection>
   <collection>
     <name>MummyVulnerabilityFire0</name>
   </collection>
   <collection>
-    <name>NalfeshneeDamage ReductionVulnerable to good weapons0</name>
+    <name>NalfeshneeDamage ReductionVulnerable to good weapons10</name>
   </collection>
   <collection>
-    <name>NalfeshneeEnergy ResistanceAcid0</name>
+    <name>NalfeshneeEnergy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>NalfeshneeEnergy ResistanceCold0</name>
+    <name>NalfeshneeEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>NalfeshneeEnergy ResistanceFire0</name>
+    <name>NalfeshneeEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>NalfeshneeImmunityElectricity0</name>
@@ -7837,7 +7837,7 @@
     <name>NalfeshneeImmunityPoison0</name>
   </collection>
   <collection>
-    <name>NalfeshneeSpell Resistance0</name>
+    <name>NalfeshneeSpell Resistance22</name>
   </collection>
   <collection>
     <name>NalfeshneeSpell-Like AbilityCall lightning0</name>
@@ -7873,7 +7873,7 @@
     <name>Night HagChange ShapeAny Small or Medium Humanoid0</name>
   </collection>
   <collection>
-    <name>Night HagDamage ReductionVulnerable to cold iron, magic weapons0</name>
+    <name>Night HagDamage ReductionVulnerable to cold iron, magic weapons10</name>
   </collection>
   <collection>
     <name>Night HagImmunityCharm0</name>
@@ -7891,7 +7891,7 @@
     <name>Night HagImmunitySleep0</name>
   </collection>
   <collection>
-    <name>Night HagSpell Resistance0</name>
+    <name>Night HagSpell Resistance25</name>
   </collection>
   <collection>
     <name>Night HagSpell-Like AbilityDetect good0</name>
@@ -7924,7 +7924,7 @@
     <name>NightcrawlerAversion to Daylight0</name>
   </collection>
   <collection>
-    <name>NightcrawlerDamage ReductionVulnerable to silver, magic weapons0</name>
+    <name>NightcrawlerDamage ReductionVulnerable to silver, magic weapons15</name>
   </collection>
   <collection>
     <name>NightcrawlerDesecrating Aura0</name>
@@ -7933,7 +7933,7 @@
     <name>NightcrawlerImmunityCold0</name>
   </collection>
   <collection>
-    <name>NightcrawlerSpell Resistance0</name>
+    <name>NightcrawlerSpell Resistance31</name>
   </collection>
   <collection>
     <name>NightcrawlerSpell-Like AbilityCone of cold0</name>
@@ -7999,7 +7999,7 @@
     <name>NightwalkerAversion to Daylight0</name>
   </collection>
   <collection>
-    <name>NightwalkerDamage ReductionVulnerable to silver, magic weapons0</name>
+    <name>NightwalkerDamage ReductionVulnerable to silver, magic weapons15</name>
   </collection>
   <collection>
     <name>NightwalkerDesecrating Aura0</name>
@@ -8008,7 +8008,7 @@
     <name>NightwalkerImmunityCold0</name>
   </collection>
   <collection>
-    <name>NightwalkerSpell Resistance0</name>
+    <name>NightwalkerSpell Resistance29</name>
   </collection>
   <collection>
     <name>NightwalkerSpell-Like AbilityCone of cold0</name>
@@ -8056,7 +8056,7 @@
     <name>NightwingAversion to Daylight0</name>
   </collection>
   <collection>
-    <name>NightwingDamage ReductionVulnerable to silver, magic weapons0</name>
+    <name>NightwingDamage ReductionVulnerable to silver, magic weapons15</name>
   </collection>
   <collection>
     <name>NightwingDesecrating Aura0</name>
@@ -8065,7 +8065,7 @@
     <name>NightwingImmunityCold0</name>
   </collection>
   <collection>
-    <name>NightwingSpell Resistance0</name>
+    <name>NightwingSpell Resistance27</name>
   </collection>
   <collection>
     <name>NightwingSpell-Like AbilityCone of cold0</name>
@@ -8140,10 +8140,10 @@
     <name>NixieAmphibious0</name>
   </collection>
   <collection>
-    <name>NixieDamage ReductionVulnerable to cold iron weapons0</name>
+    <name>NixieDamage ReductionVulnerable to cold iron weapons5</name>
   </collection>
   <collection>
-    <name>NixieDodge0</name>
+    <name>NixieDodge1</name>
   </collection>
   <collection>
     <name>NixieMartial Weapon ProficiencyShort sword0</name>
@@ -8152,7 +8152,7 @@
     <name>NixieSimple Weapon ProficiencyLight crossbow0</name>
   </collection>
   <collection>
-    <name>NixieSpell Resistance0</name>
+    <name>NixieSpell Resistance16</name>
   </collection>
   <collection>
     <name>NixieSpell-Like AbilityCharm person0</name>
@@ -8203,7 +8203,7 @@
     <name>Noble DjinniTelepathy100</name>
   </collection>
   <collection>
-    <name>Noble SalamanderDamage ReductionVulnerable to magic weapons0</name>
+    <name>Noble SalamanderDamage ReductionVulnerable to magic weapons15</name>
   </collection>
   <collection>
     <name>Noble SalamanderMultiattack0</name>
@@ -8230,7 +8230,7 @@
     <name>Noble SalamanderSimple Weapon ProficiencyLongspear0</name>
   </collection>
   <collection>
-    <name>NymphDamage ReductionVulnerable to cold iron weapons0</name>
+    <name>NymphDamage ReductionVulnerable to cold iron weapons10</name>
   </collection>
   <collection>
     <name>NymphSimple Weapon ProficiencyDagger0</name>
@@ -8287,10 +8287,10 @@
     <name>Ogre MageMartial Weapon ProficiencyLongbow0</name>
   </collection>
   <collection>
-    <name>Ogre MageRegenerationFire and acid deal normal damage0</name>
+    <name>Ogre MageRegenerationFire and acid deal normal damage5</name>
   </collection>
   <collection>
-    <name>Ogre MageSpell Resistance0</name>
+    <name>Ogre MageSpell Resistance19</name>
   </collection>
   <collection>
     <name>Ogre MageSpell-Like AbilityCharm person0</name>
@@ -8311,7 +8311,7 @@
     <name>Ogre MageSpell-Like AbilitySleep0</name>
   </collection>
   <collection>
-    <name>OozeBlindsight120</name>
+    <name>OozeBlindsight60</name>
   </collection>
   <collection>
     <name>OozeImmunityCritical hits0</name>
@@ -8428,13 +8428,13 @@
     <name>PhasmTremorsense60</name>
   </collection>
   <collection>
-    <name>Pit FiendDamage ReductionVulnerable to good, silver weapons0</name>
+    <name>Pit FiendDamage ReductionVulnerable to good, silver weapons15</name>
   </collection>
   <collection>
-    <name>Pit FiendEnergy ResistanceAcid0</name>
+    <name>Pit FiendEnergy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>Pit FiendEnergy ResistanceCold0</name>
+    <name>Pit FiendEnergy ResistanceCold10</name>
   </collection>
   <collection>
     <name>Pit FiendImmunityFire0</name>
@@ -8443,13 +8443,13 @@
     <name>Pit FiendImmunityPoison0</name>
   </collection>
   <collection>
-    <name>Pit FiendRegenerationDoes not regenerate damage from good spells or effects, or from good-aligned silvered weapons0</name>
+    <name>Pit FiendRegenerationDoes not regenerate damage from good spells or effects, or from good-aligned silvered weapons5</name>
   </collection>
   <collection>
     <name>Pit FiendSee in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell0</name>
   </collection>
   <collection>
-    <name>Pit FiendSpell Resistance0</name>
+    <name>Pit FiendSpell Resistance32</name>
   </collection>
   <collection>
     <name>Pit FiendSpell-Like AbilityBlasphemy0</name>
@@ -8494,10 +8494,10 @@
     <name>Pit FiendTelepathy100</name>
   </collection>
   <collection>
-    <name>PixieDamage ReductionVulnerable to cold iron weapons0</name>
+    <name>PixieDamage ReductionVulnerable to cold iron weapons10</name>
   </collection>
   <collection>
-    <name>PixieDodge0</name>
+    <name>PixieDodge1</name>
   </collection>
   <collection>
     <name>PixieMartial Weapon ProficiencyLongbow0</name>
@@ -8506,7 +8506,7 @@
     <name>PixieMartial Weapon ProficiencyShort sword0</name>
   </collection>
   <collection>
-    <name>PixieSpell Resistance0</name>
+    <name>PixieSpell Resistance15</name>
   </collection>
   <collection>
     <name>PixieSpell-Like AbilityDancing lights0</name>
@@ -8548,10 +8548,10 @@
     <name>Pixie with Irresistible danceSpell-Like AbilityDancing lights0</name>
   </collection>
   <collection>
-    <name>Pixie with Irresistible danceDamage ReductionVulnerable to cold iron weapons0</name>
+    <name>Pixie with Irresistible danceDamage ReductionVulnerable to cold iron weapons10</name>
   </collection>
   <collection>
-    <name>Pixie with Irresistible danceDodge0</name>
+    <name>Pixie with Irresistible danceDodge1</name>
   </collection>
   <collection>
     <name>Pixie with Irresistible danceMartial Weapon ProficiencyLongbow0</name>
@@ -8560,7 +8560,7 @@
     <name>Pixie with Irresistible danceMartial Weapon ProficiencyShort sword0</name>
   </collection>
   <collection>
-    <name>Pixie with Irresistible danceSpell Resistance0</name>
+    <name>Pixie with Irresistible danceSpell Resistance15</name>
   </collection>
   <collection>
     <name>Pixie with Irresistible danceSpell-Like AbilityDetect chaos0</name>
@@ -8638,10 +8638,10 @@
     <name>PseudodragonBlindsense60</name>
   </collection>
   <collection>
-    <name>PseudodragonSpell Resistance0</name>
+    <name>PseudodragonSpell Resistance19</name>
   </collection>
   <collection>
-    <name>PseudodragonTelepathy100</name>
+    <name>PseudodragonTelepathy60</name>
   </collection>
   <collection>
     <name>PseudodragonWeapon Finesse0</name>
@@ -8653,10 +8653,10 @@
     <name>QuasitAlternate FormBat, Small or Medium monstrous centipede, toad, and wolf0</name>
   </collection>
   <collection>
-    <name>QuasitDamage ReductionVulnerable to good or cold iron weapons0</name>
+    <name>QuasitDamage ReductionVulnerable to good or cold iron weapons5</name>
   </collection>
   <collection>
-    <name>QuasitEnergy ResistanceFire0</name>
+    <name>QuasitEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>QuasitImmunityPoison0</name>
@@ -8680,10 +8680,10 @@
     <name>RakshasaChange ShapeAny Humanoid form0</name>
   </collection>
   <collection>
-    <name>RakshasaDamage ReductionVulnerable to good, piercing weapons0</name>
+    <name>RakshasaDamage ReductionVulnerable to good, piercing weapons15</name>
   </collection>
   <collection>
-    <name>RakshasaSpell Resistance0</name>
+    <name>RakshasaSpell Resistance27</name>
   </collection>
   <collection>
     <name>RakshasaSpell-Like AbilityDetect thoughts0</name>
@@ -8716,22 +8716,22 @@
     <name>RavidSpell-Like AbilityAnimate objects0</name>
   </collection>
   <collection>
-    <name>Razor BoarDamage ReductionNo physical vulnerabilities0</name>
+    <name>Razor BoarDamage ReductionNo physical vulnerabilities5</name>
   </collection>
   <collection>
-    <name>Razor BoarFast Healing0</name>
+    <name>Razor BoarFast Healing10</name>
   </collection>
   <collection>
     <name>Razor BoarScent0</name>
   </collection>
   <collection>
-    <name>Razor BoarSpell Resistance0</name>
+    <name>Razor BoarSpell Resistance21</name>
   </collection>
   <collection>
     <name>Red Dragon, AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>Red Dragon, AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Red Dragon, AdultDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>Red Dragon, AdultDarkvision120</name>
@@ -8740,7 +8740,7 @@
     <name>Red Dragon, AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>Red Dragon, AdultSpell Resistance0</name>
+    <name>Red Dragon, AdultSpell Resistance21</name>
   </collection>
   <collection>
     <name>Red Dragon, AdultSpell-Like AbilityLocate object0</name>
@@ -8749,7 +8749,7 @@
     <name>Red Dragon, AncientBlindsense60</name>
   </collection>
   <collection>
-    <name>Red Dragon, AncientDamage ReductionVulnerable to magic weapons0</name>
+    <name>Red Dragon, AncientDamage ReductionVulnerable to magic weapons15</name>
   </collection>
   <collection>
     <name>Red Dragon, AncientDarkvision120</name>
@@ -8758,7 +8758,7 @@
     <name>Red Dragon, AncientKeen Senses0</name>
   </collection>
   <collection>
-    <name>Red Dragon, AncientSpell Resistance0</name>
+    <name>Red Dragon, AncientSpell Resistance28</name>
   </collection>
   <collection>
     <name>Red Dragon, AncientSpell-Like AbilityFind the path0</name>
@@ -8773,7 +8773,7 @@
     <name>Red Dragon, Great WyrmBlindsense60</name>
   </collection>
   <collection>
-    <name>Red Dragon, Great WyrmDamage ReductionVulnerable to magic weapons0</name>
+    <name>Red Dragon, Great WyrmDamage ReductionVulnerable to magic weapons20</name>
   </collection>
   <collection>
     <name>Red Dragon, Great WyrmDarkvision120</name>
@@ -8782,7 +8782,7 @@
     <name>Red Dragon, Great WyrmKeen Senses0</name>
   </collection>
   <collection>
-    <name>Red Dragon, Great WyrmSpell Resistance0</name>
+    <name>Red Dragon, Great WyrmSpell Resistance32</name>
   </collection>
   <collection>
     <name>Red Dragon, Great WyrmSpell-Like AbilityDiscern location0</name>
@@ -8812,7 +8812,7 @@
     <name>Red Dragon, Mature AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>Red Dragon, Mature AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Red Dragon, Mature AdultDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>Red Dragon, Mature AdultDarkvision120</name>
@@ -8821,7 +8821,7 @@
     <name>Red Dragon, Mature AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>Red Dragon, Mature AdultSpell Resistance0</name>
+    <name>Red Dragon, Mature AdultSpell Resistance23</name>
   </collection>
   <collection>
     <name>Red Dragon, Mature AdultSpell-Like AbilityLocate object0</name>
@@ -8830,7 +8830,7 @@
     <name>Red Dragon, OldBlindsense60</name>
   </collection>
   <collection>
-    <name>Red Dragon, OldDamage ReductionVulnerable to magic weapons0</name>
+    <name>Red Dragon, OldDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>Red Dragon, OldDarkvision120</name>
@@ -8839,7 +8839,7 @@
     <name>Red Dragon, OldKeen Senses0</name>
   </collection>
   <collection>
-    <name>Red Dragon, OldSpell Resistance0</name>
+    <name>Red Dragon, OldSpell Resistance24</name>
   </collection>
   <collection>
     <name>Red Dragon, OldSpell-Like AbilityLocate object0</name>
@@ -8851,7 +8851,7 @@
     <name>Red Dragon, Very OldBlindsense60</name>
   </collection>
   <collection>
-    <name>Red Dragon, Very OldDamage ReductionVulnerable to magic weapons0</name>
+    <name>Red Dragon, Very OldDamage ReductionVulnerable to magic weapons15</name>
   </collection>
   <collection>
     <name>Red Dragon, Very OldDarkvision120</name>
@@ -8860,7 +8860,7 @@
     <name>Red Dragon, Very OldKeen Senses0</name>
   </collection>
   <collection>
-    <name>Red Dragon, Very OldSpell Resistance0</name>
+    <name>Red Dragon, Very OldSpell Resistance26</name>
   </collection>
   <collection>
     <name>Red Dragon, Very OldSpell-Like AbilityLocate object0</name>
@@ -8881,7 +8881,7 @@
     <name>Red Dragon, WyrmBlindsense60</name>
   </collection>
   <collection>
-    <name>Red Dragon, WyrmDamage ReductionVulnerable to magic weapons0</name>
+    <name>Red Dragon, WyrmDamage ReductionVulnerable to magic weapons20</name>
   </collection>
   <collection>
     <name>Red Dragon, WyrmDarkvision120</name>
@@ -8890,7 +8890,7 @@
     <name>Red Dragon, WyrmKeen Senses0</name>
   </collection>
   <collection>
-    <name>Red Dragon, WyrmSpell Resistance0</name>
+    <name>Red Dragon, WyrmSpell Resistance30</name>
   </collection>
   <collection>
     <name>Red Dragon, WyrmSpell-Like AbilityFind the path0</name>
@@ -8923,7 +8923,7 @@
     <name>Red Dragon, Young AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>Red Dragon, Young AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Red Dragon, Young AdultDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>Red Dragon, Young AdultDarkvision120</name>
@@ -8932,25 +8932,25 @@
     <name>Red Dragon, Young AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>Red Dragon, Young AdultSpell Resistance0</name>
+    <name>Red Dragon, Young AdultSpell Resistance19</name>
   </collection>
   <collection>
     <name>Red Dragon, Young AdultSpell-Like AbilityLocate object0</name>
   </collection>
   <collection>
-    <name>Red SlaadEnergy ResistanceAcid0</name>
+    <name>Red SlaadEnergy ResistanceAcid5</name>
   </collection>
   <collection>
-    <name>Red SlaadEnergy ResistanceCold0</name>
+    <name>Red SlaadEnergy ResistanceCold5</name>
   </collection>
   <collection>
-    <name>Red SlaadEnergy ResistanceElectricity0</name>
+    <name>Red SlaadEnergy ResistanceElectricity5</name>
   </collection>
   <collection>
-    <name>Red SlaadEnergy ResistanceFire0</name>
+    <name>Red SlaadEnergy ResistanceFire5</name>
   </collection>
   <collection>
-    <name>Red SlaadFast Healing0</name>
+    <name>Red SlaadFast Healing5</name>
   </collection>
   <collection>
     <name>Red SlaadImmunitySonic0</name>
@@ -8962,7 +8962,7 @@
     <name>RemorhazTremorsense60</name>
   </collection>
   <collection>
-    <name>RetrieverFast Healing0</name>
+    <name>RetrieverFast Healing5</name>
   </collection>
   <collection>
     <name>Rock GnomeMartial Weapon ProficiencyLongsword0</name>
@@ -8983,13 +8983,13 @@
     <name>Rock GnomeSpell-Like AbilitySpeak with animals: burrowing mammals only, duration 1 minute0</name>
   </collection>
   <collection>
-    <name>RoperEnergy ResistanceCold0</name>
+    <name>RoperEnergy ResistanceCold10</name>
   </collection>
   <collection>
     <name>RoperImmunityElectricity0</name>
   </collection>
   <collection>
-    <name>RoperSpell Resistance0</name>
+    <name>RoperSpell Resistance30</name>
   </collection>
   <collection>
     <name>RoperVulnerabilityFire0</name>
@@ -8998,7 +8998,7 @@
     <name>Rust MonsterScent0</name>
   </collection>
   <collection>
-    <name>SahuaginBlindsense60</name>
+    <name>SahuaginBlindsense30</name>
   </collection>
   <collection>
     <name>SahuaginFreshwater Sensitivity0</name>
@@ -9022,7 +9022,7 @@
     <name>SahuaginWater Dependent0</name>
   </collection>
   <collection>
-    <name>Sahuagin MutantBlindsense60</name>
+    <name>Sahuagin MutantBlindsense30</name>
   </collection>
   <collection>
     <name>Sahuagin MutantFreshwater Sensitivity0</name>
@@ -9061,7 +9061,7 @@
     <name>SatyrAlertness2</name>
   </collection>
   <collection>
-    <name>SatyrDamage ReductionVulnerable to cold iron weapons0</name>
+    <name>SatyrDamage ReductionVulnerable to cold iron weapons5</name>
   </collection>
   <collection>
     <name>SatyrMartial Weapon ProficiencyShortbow0</name>
@@ -9073,7 +9073,7 @@
     <name>Satyr with pipesAlertness2</name>
   </collection>
   <collection>
-    <name>Satyr with pipesDamage ReductionVulnerable to cold iron weapons0</name>
+    <name>Satyr with pipesDamage ReductionVulnerable to cold iron weapons5</name>
   </collection>
   <collection>
     <name>Satyr with pipesMartial Weapon ProficiencyShortbow0</name>
@@ -9082,7 +9082,7 @@
     <name>Satyr with pipesSimple Weapon ProficiencyDagger0</name>
   </collection>
   <collection>
-    <name>ScorpionfolkEnergy ResistanceFire0</name>
+    <name>ScorpionfolkEnergy ResistanceFire5</name>
   </collection>
   <collection>
     <name>ScorpionfolkMartial Weapon ProficiencyLance0</name>
@@ -9115,7 +9115,7 @@
     <name>ScorpionfolkSimple Weapon ProficiencyLongspear0</name>
   </collection>
   <collection>
-    <name>ScorpionfolkSpell Resistance0</name>
+    <name>ScorpionfolkSpell Resistance18</name>
   </collection>
   <collection>
     <name>ScorpionfolkSpell-Like AbilityMajor image0</name>
@@ -9124,10 +9124,10 @@
     <name>ScorpionfolkSpell-Like AbilityMirror image0</name>
   </collection>
   <collection>
-    <name>ScragDarkvision60</name>
+    <name>ScragDarkvision90</name>
   </collection>
   <collection>
-    <name>ScragRegenerationFire and acid deal normal damage; only regenerates when immersed in water0</name>
+    <name>ScragRegenerationFire and acid deal normal damage; only regenerates when immersed in water5</name>
   </collection>
   <collection>
     <name>ScragScent0</name>
@@ -9142,7 +9142,7 @@
     <name>Sea HagAmphibious0</name>
   </collection>
   <collection>
-    <name>Sea HagSpell Resistance0</name>
+    <name>Sea HagSpell Resistance14</name>
   </collection>
   <collection>
     <name>Seven-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity0</name>
@@ -9187,7 +9187,7 @@
     <name>Shambling MoundDarkvision60</name>
   </collection>
   <collection>
-    <name>Shambling MoundEnergy ResistanceFire0</name>
+    <name>Shambling MoundEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>Shambling MoundImmunityElectricity0</name>
@@ -9199,25 +9199,25 @@
     <name>ShapechangerSimple Weapon ProficiencyAll0</name>
   </collection>
   <collection>
-    <name>Shark, HugeBlindsense60</name>
+    <name>Shark, HugeBlindsense30</name>
   </collection>
   <collection>
-    <name>Shark, HugeKeen Scent0</name>
+    <name>Shark, HugeKeen Scent180</name>
   </collection>
   <collection>
-    <name>Shark, LargeBlindsense60</name>
+    <name>Shark, LargeBlindsense30</name>
   </collection>
   <collection>
-    <name>Shark, LargeKeen Scent0</name>
+    <name>Shark, LargeKeen Scent180</name>
   </collection>
   <collection>
-    <name>Shark, MediumBlindsense60</name>
+    <name>Shark, MediumBlindsense30</name>
   </collection>
   <collection>
-    <name>Shark, MediumKeen Scent0</name>
+    <name>Shark, MediumKeen Scent180</name>
   </collection>
   <collection>
-    <name>Shield GuardianFast Healing0</name>
+    <name>Shield GuardianFast Healing5</name>
   </collection>
   <collection>
     <name>Shield GuardianFind Master0</name>
@@ -9247,7 +9247,7 @@
     <name>Silver Dragon, AdultCloudwalking0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Silver Dragon, AdultDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>Silver Dragon, AdultDarkvision120</name>
@@ -9259,7 +9259,7 @@
     <name>Silver Dragon, AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, AdultSpell Resistance0</name>
+    <name>Silver Dragon, AdultSpell Resistance22</name>
   </collection>
   <collection>
     <name>Silver Dragon, AdultSpell-Like AbilityFeather fall0</name>
@@ -9277,7 +9277,7 @@
     <name>Silver Dragon, AncientCloudwalking0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, AncientDamage ReductionVulnerable to magic weapons0</name>
+    <name>Silver Dragon, AncientDamage ReductionVulnerable to magic weapons15</name>
   </collection>
   <collection>
     <name>Silver Dragon, AncientDarkvision120</name>
@@ -9289,7 +9289,7 @@
     <name>Silver Dragon, AncientKeen Senses0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, AncientSpell Resistance0</name>
+    <name>Silver Dragon, AncientSpell Resistance29</name>
   </collection>
   <collection>
     <name>Silver Dragon, AncientSpell-Like AbilityControl weather0</name>
@@ -9313,7 +9313,7 @@
     <name>Silver Dragon, Great WyrmCloudwalking0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Great WyrmDamage ReductionVulnerable to magic weapons0</name>
+    <name>Silver Dragon, Great WyrmDamage ReductionVulnerable to magic weapons20</name>
   </collection>
   <collection>
     <name>Silver Dragon, Great WyrmDarkvision120</name>
@@ -9325,7 +9325,7 @@
     <name>Silver Dragon, Great WyrmKeen Senses0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Great WyrmSpell Resistance0</name>
+    <name>Silver Dragon, Great WyrmSpell Resistance32</name>
   </collection>
   <collection>
     <name>Silver Dragon, Great WyrmSpell-Like AbilityControl weather0</name>
@@ -9373,7 +9373,7 @@
     <name>Silver Dragon, Mature AdultCloudwalking0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Mature AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Silver Dragon, Mature AdultDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>Silver Dragon, Mature AdultDarkvision120</name>
@@ -9385,7 +9385,7 @@
     <name>Silver Dragon, Mature AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Mature AdultSpell Resistance0</name>
+    <name>Silver Dragon, Mature AdultSpell Resistance24</name>
   </collection>
   <collection>
     <name>Silver Dragon, Mature AdultSpell-Like AbilityFeather fall0</name>
@@ -9403,7 +9403,7 @@
     <name>Silver Dragon, OldCloudwalking0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, OldDamage ReductionVulnerable to magic weapons0</name>
+    <name>Silver Dragon, OldDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>Silver Dragon, OldDarkvision120</name>
@@ -9415,7 +9415,7 @@
     <name>Silver Dragon, OldKeen Senses0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, OldSpell Resistance0</name>
+    <name>Silver Dragon, OldSpell Resistance26</name>
   </collection>
   <collection>
     <name>Silver Dragon, OldSpell-Like AbilityControl winds0</name>
@@ -9436,7 +9436,7 @@
     <name>Silver Dragon, Very OldCloudwalking0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Very OldDamage ReductionVulnerable to magic weapons0</name>
+    <name>Silver Dragon, Very OldDamage ReductionVulnerable to magic weapons15</name>
   </collection>
   <collection>
     <name>Silver Dragon, Very OldDarkvision120</name>
@@ -9448,7 +9448,7 @@
     <name>Silver Dragon, Very OldKeen Senses0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Very OldSpell Resistance0</name>
+    <name>Silver Dragon, Very OldSpell Resistance27</name>
   </collection>
   <collection>
     <name>Silver Dragon, Very OldSpell-Like AbilityControl winds0</name>
@@ -9487,7 +9487,7 @@
     <name>Silver Dragon, WyrmCloudwalking0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, WyrmDamage ReductionVulnerable to magic weapons0</name>
+    <name>Silver Dragon, WyrmDamage ReductionVulnerable to magic weapons20</name>
   </collection>
   <collection>
     <name>Silver Dragon, WyrmDarkvision120</name>
@@ -9499,7 +9499,7 @@
     <name>Silver Dragon, WyrmKeen Senses0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, WyrmSpell Resistance0</name>
+    <name>Silver Dragon, WyrmSpell Resistance30</name>
   </collection>
   <collection>
     <name>Silver Dragon, WyrmSpell-Like AbilityControl weather0</name>
@@ -9559,7 +9559,7 @@
     <name>Silver Dragon, Young AdultCloudwalking0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Young AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>Silver Dragon, Young AdultDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>Silver Dragon, Young AdultDarkvision120</name>
@@ -9571,7 +9571,7 @@
     <name>Silver Dragon, Young AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>Silver Dragon, Young AdultSpell Resistance0</name>
+    <name>Silver Dragon, Young AdultSpell Resistance20</name>
   </collection>
   <collection>
     <name>Silver Dragon, Young AdultSpell-Like AbilityFeather fall0</name>
@@ -9622,7 +9622,7 @@
     <name>Spider EaterSpell-Like AbilityFreedom of movement0</name>
   </collection>
   <collection>
-    <name>Spider SwarmTremorsense60</name>
+    <name>Spider SwarmTremorsense30</name>
   </collection>
   <collection>
     <name>Spider SwarmWeapon Finesse0</name>
@@ -9667,7 +9667,7 @@
     <name>Stone GiantRock Catching0</name>
   </collection>
   <collection>
-    <name>Stone GiantRock Throwing0</name>
+    <name>Stone GiantRock Throwing1</name>
   </collection>
   <collection>
     <name>Stone Giant ElderArmor Proficiency (Light)0</name>
@@ -9685,7 +9685,7 @@
     <name>Stone Giant ElderRock Catching0</name>
   </collection>
   <collection>
-    <name>Stone Giant ElderRock Throwing0</name>
+    <name>Stone Giant ElderRock Throwing1</name>
   </collection>
   <collection>
     <name>Stone Giant ElderSpell-Like AbilityStone shape0</name>
@@ -9700,7 +9700,7 @@
     <name>Stone Giant ElderSpell-Like AbilityTransmute rock to mud0</name>
   </collection>
   <collection>
-    <name>Stone GolemDamage ReductionVulnerable to adamantine weapons0</name>
+    <name>Stone GolemDamage ReductionVulnerable to adamantine weapons10</name>
   </collection>
   <collection>
     <name>Stone GolemImmunityMagic (see creature description)0</name>
@@ -9745,16 +9745,16 @@
     <name>SuccubusChange ShapeAny Small or Medium Humanoid0</name>
   </collection>
   <collection>
-    <name>SuccubusDamage ReductionVulnerable to good or cold iron weapons0</name>
+    <name>SuccubusDamage ReductionVulnerable to good or cold iron weapons10</name>
   </collection>
   <collection>
-    <name>SuccubusEnergy ResistanceAcid0</name>
+    <name>SuccubusEnergy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>SuccubusEnergy ResistanceCold0</name>
+    <name>SuccubusEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>SuccubusEnergy ResistanceFire0</name>
+    <name>SuccubusEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>SuccubusImmunityElectricity0</name>
@@ -9763,7 +9763,7 @@
     <name>SuccubusImmunityPoison0</name>
   </collection>
   <collection>
-    <name>SuccubusSpell Resistance0</name>
+    <name>SuccubusSpell Resistance18</name>
   </collection>
   <collection>
     <name>SuccubusSpell-Like AbilityCharm monster0</name>
@@ -9796,13 +9796,13 @@
     <name>SvirfneblinArmor Proficiency (Medium)0</name>
   </collection>
   <collection>
-    <name>SvirfneblinDarkvision60</name>
+    <name>SvirfneblinDarkvision120</name>
   </collection>
   <collection>
     <name>SvirfneblinMartial Weapon ProficiencyHeavy pick0</name>
   </collection>
   <collection>
-    <name>SvirfneblinSpell Resistance0</name>
+    <name>SvirfneblinSpell Resistance11</name>
   </collection>
   <collection>
     <name>SvirfneblinSpell-Like AbilityBlindness/Deafness0</name>
@@ -9862,7 +9862,7 @@
     <name>TarrasqueCarapace0</name>
   </collection>
   <collection>
-    <name>TarrasqueDamage ReductionVulnerable to epic weapons0</name>
+    <name>TarrasqueDamage ReductionVulnerable to epic weapons15</name>
   </collection>
   <collection>
     <name>TarrasqueImmunityAbility Damage0</name>
@@ -9880,13 +9880,13 @@
     <name>TarrasqueImmunityPoison0</name>
   </collection>
   <collection>
-    <name>TarrasqueRegenerationNo form of attack deals lethal damage to the tarrasque0</name>
+    <name>TarrasqueRegenerationNo form of attack deals lethal damage to the tarrasque40</name>
   </collection>
   <collection>
     <name>TarrasqueScent0</name>
   </collection>
   <collection>
-    <name>TarrasqueSpell Resistance0</name>
+    <name>TarrasqueSpell Resistance32</name>
   </collection>
   <collection>
     <name>Ten-Headed CryohydraCombat ReflexesCan use all of its heads for Attacks of Opportunity0</name>
@@ -9916,7 +9916,7 @@
     <name>Ten-Headed PyrohydraScent0</name>
   </collection>
   <collection>
-    <name>TendriculosRegenerationBludgeoning weapons and acid deal normal damage0</name>
+    <name>TendriculosRegenerationBludgeoning weapons and acid deal normal damage10</name>
   </collection>
   <collection>
     <name>ThoqquaHeat0</name>
@@ -9928,13 +9928,13 @@
     <name>TieflingArmor Proficiency (Light)0</name>
   </collection>
   <collection>
-    <name>TieflingEnergy ResistanceCold0</name>
+    <name>TieflingEnergy ResistanceCold5</name>
   </collection>
   <collection>
-    <name>TieflingEnergy ResistanceElectricity0</name>
+    <name>TieflingEnergy ResistanceElectricity5</name>
   </collection>
   <collection>
-    <name>TieflingEnergy ResistanceFire0</name>
+    <name>TieflingEnergy ResistanceFire5</name>
   </collection>
   <collection>
     <name>TieflingSpell-Like AbilityDarkness0</name>
@@ -9955,7 +9955,7 @@
     <name>TitanChange ShapeAny Small or Medium Humanoid0</name>
   </collection>
   <collection>
-    <name>TitanDamage ReductionVulnerable to lawful weapons0</name>
+    <name>TitanDamage ReductionVulnerable to lawful weapons15</name>
   </collection>
   <collection>
     <name>TitanMartial Weapon ProficiencyWarhammer0</name>
@@ -9967,7 +9967,7 @@
     <name>TitanSimple Weapon ProficiencyJavelin0</name>
   </collection>
   <collection>
-    <name>TitanSpell Resistance0</name>
+    <name>TitanSpell Resistance32</name>
   </collection>
   <collection>
     <name>TitanSpell-Like AbilityBestow curse0</name>
@@ -10045,7 +10045,7 @@
     <name>ToadAmphibious0</name>
   </collection>
   <collection>
-    <name>TreantDamage ReductionVulnerable to slashing weapons0</name>
+    <name>TreantDamage ReductionVulnerable to slashing weapons10</name>
   </collection>
   <collection>
     <name>TreantVulnerabilityFire0</name>
@@ -10057,7 +10057,7 @@
     <name>TritonSpell-Like AbilitySummon nature's ally IV0</name>
   </collection>
   <collection>
-    <name>TroglodyteDarkvision60</name>
+    <name>TroglodyteDarkvision90</name>
   </collection>
   <collection>
     <name>TroglodyteMultiattack0</name>
@@ -10069,10 +10069,10 @@
     <name>TroglodyteSimple Weapon ProficiencyJavelin0</name>
   </collection>
   <collection>
-    <name>TrollDarkvision60</name>
+    <name>TrollDarkvision90</name>
   </collection>
   <collection>
-    <name>TrollRegenerationFire and acid deal normal damage0</name>
+    <name>TrollRegenerationFire and acid deal normal damage5</name>
   </collection>
   <collection>
     <name>TrollScent0</name>
@@ -10084,13 +10084,13 @@
     <name>Trumpet ArchonAura of Menace0</name>
   </collection>
   <collection>
-    <name>Trumpet ArchonDamage ReductionVulnerable to evil weapons0</name>
+    <name>Trumpet ArchonDamage ReductionVulnerable to evil weapons10</name>
   </collection>
   <collection>
     <name>Trumpet ArchonMartial Weapon ProficiencyGreatsword0</name>
   </collection>
   <collection>
-    <name>Trumpet ArchonSpell Resistance0</name>
+    <name>Trumpet ArchonSpell Resistance29</name>
   </collection>
   <collection>
     <name>Trumpet ArchonSpell-Like AbilityContinual flame0</name>
@@ -10228,22 +10228,22 @@
     <name>Vampire SpawnAlertness2</name>
   </collection>
   <collection>
-    <name>Vampire SpawnDamage ReductionVulnerable to silver weapons0</name>
+    <name>Vampire SpawnDamage ReductionVulnerable to silver weapons5</name>
   </collection>
   <collection>
-    <name>Vampire SpawnEnergy ResistanceCold0</name>
+    <name>Vampire SpawnEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>Vampire SpawnEnergy ResistanceElectricity0</name>
+    <name>Vampire SpawnEnergy ResistanceElectricity10</name>
   </collection>
   <collection>
-    <name>Vampire SpawnFast Healing0</name>
+    <name>Vampire SpawnFast Healing2</name>
   </collection>
   <collection>
     <name>Vampire SpawnImproved Initiative4</name>
   </collection>
   <collection>
-    <name>Vampire SpawnLightning Reflexes0</name>
+    <name>Vampire SpawnLightning Reflexes2</name>
   </collection>
   <collection>
     <name>Vampire SpawnSpell-Like AbilityGaseous form0</name>
@@ -10285,16 +10285,16 @@
     <name>Viper Snake, TinyWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>VrockDamage ReductionVulnerable to good weapons0</name>
+    <name>VrockDamage ReductionVulnerable to good weapons10</name>
   </collection>
   <collection>
-    <name>VrockEnergy ResistanceAcid0</name>
+    <name>VrockEnergy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>VrockEnergy ResistanceCold0</name>
+    <name>VrockEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>VrockEnergy ResistanceFire0</name>
+    <name>VrockEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>VrockImmunityElectricity0</name>
@@ -10303,7 +10303,7 @@
     <name>VrockImmunityPoison0</name>
   </collection>
   <collection>
-    <name>VrockSpell Resistance0</name>
+    <name>VrockSpell Resistance17</name>
   </collection>
   <collection>
     <name>VrockSpell-Like AbilityGreater teleport: self plus 50 pounds of objects only0</name>
@@ -10360,7 +10360,7 @@
     <name>White Dragon, AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>White Dragon, AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>White Dragon, AdultDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>White Dragon, AdultDarkvision120</name>
@@ -10372,7 +10372,7 @@
     <name>White Dragon, AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>White Dragon, AdultSpell Resistance0</name>
+    <name>White Dragon, AdultSpell Resistance18</name>
   </collection>
   <collection>
     <name>White Dragon, AdultSpell-Like AbilityFog cloud0</name>
@@ -10384,7 +10384,7 @@
     <name>White Dragon, AncientBlindsense60</name>
   </collection>
   <collection>
-    <name>White Dragon, AncientDamage ReductionVulnerable to magic weapons0</name>
+    <name>White Dragon, AncientDamage ReductionVulnerable to magic weapons15</name>
   </collection>
   <collection>
     <name>White Dragon, AncientDarkvision120</name>
@@ -10399,7 +10399,7 @@
     <name>White Dragon, AncientKeen Senses0</name>
   </collection>
   <collection>
-    <name>White Dragon, AncientSpell Resistance0</name>
+    <name>White Dragon, AncientSpell Resistance24</name>
   </collection>
   <collection>
     <name>White Dragon, AncientSpell-Like AbilityFog cloud0</name>
@@ -10414,7 +10414,7 @@
     <name>White Dragon, Great WyrmBlindsense60</name>
   </collection>
   <collection>
-    <name>White Dragon, Great WyrmDamage ReductionVulnerable to magic weapons0</name>
+    <name>White Dragon, Great WyrmDamage ReductionVulnerable to magic weapons20</name>
   </collection>
   <collection>
     <name>White Dragon, Great WyrmDarkvision120</name>
@@ -10429,7 +10429,7 @@
     <name>White Dragon, Great WyrmKeen Senses0</name>
   </collection>
   <collection>
-    <name>White Dragon, Great WyrmSpell Resistance0</name>
+    <name>White Dragon, Great WyrmSpell Resistance27</name>
   </collection>
   <collection>
     <name>White Dragon, Great WyrmSpell-Like AbilityControl weather0</name>
@@ -10462,7 +10462,7 @@
     <name>White Dragon, Mature AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>White Dragon, Mature AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>White Dragon, Mature AdultDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>White Dragon, Mature AdultDarkvision120</name>
@@ -10474,7 +10474,7 @@
     <name>White Dragon, Mature AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>White Dragon, Mature AdultSpell Resistance0</name>
+    <name>White Dragon, Mature AdultSpell Resistance20</name>
   </collection>
   <collection>
     <name>White Dragon, Mature AdultSpell-Like AbilityFog cloud0</name>
@@ -10486,7 +10486,7 @@
     <name>White Dragon, OldBlindsense60</name>
   </collection>
   <collection>
-    <name>White Dragon, OldDamage ReductionVulnerable to magic weapons0</name>
+    <name>White Dragon, OldDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>White Dragon, OldDarkvision120</name>
@@ -10501,7 +10501,7 @@
     <name>White Dragon, OldKeen Senses0</name>
   </collection>
   <collection>
-    <name>White Dragon, OldSpell Resistance0</name>
+    <name>White Dragon, OldSpell Resistance21</name>
   </collection>
   <collection>
     <name>White Dragon, OldSpell-Like AbilityFog cloud0</name>
@@ -10513,7 +10513,7 @@
     <name>White Dragon, Very OldBlindsense60</name>
   </collection>
   <collection>
-    <name>White Dragon, Very OldDamage ReductionVulnerable to magic weapons0</name>
+    <name>White Dragon, Very OldDamage ReductionVulnerable to magic weapons15</name>
   </collection>
   <collection>
     <name>White Dragon, Very OldDarkvision120</name>
@@ -10528,7 +10528,7 @@
     <name>White Dragon, Very OldKeen Senses0</name>
   </collection>
   <collection>
-    <name>White Dragon, Very OldSpell Resistance0</name>
+    <name>White Dragon, Very OldSpell Resistance23</name>
   </collection>
   <collection>
     <name>White Dragon, Very OldSpell-Like AbilityFog cloud0</name>
@@ -10552,7 +10552,7 @@
     <name>White Dragon, WyrmBlindsense60</name>
   </collection>
   <collection>
-    <name>White Dragon, WyrmDamage ReductionVulnerable to magic weapons0</name>
+    <name>White Dragon, WyrmDamage ReductionVulnerable to magic weapons20</name>
   </collection>
   <collection>
     <name>White Dragon, WyrmDarkvision120</name>
@@ -10567,7 +10567,7 @@
     <name>White Dragon, WyrmKeen Senses0</name>
   </collection>
   <collection>
-    <name>White Dragon, WyrmSpell Resistance0</name>
+    <name>White Dragon, WyrmSpell Resistance25</name>
   </collection>
   <collection>
     <name>White Dragon, WyrmSpell-Like AbilityFog cloud0</name>
@@ -10606,7 +10606,7 @@
     <name>White Dragon, Young AdultBlindsense60</name>
   </collection>
   <collection>
-    <name>White Dragon, Young AdultDamage ReductionVulnerable to magic weapons0</name>
+    <name>White Dragon, Young AdultDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>White Dragon, Young AdultDarkvision120</name>
@@ -10618,7 +10618,7 @@
     <name>White Dragon, Young AdultKeen Senses0</name>
   </collection>
   <collection>
-    <name>White Dragon, Young AdultSpell Resistance0</name>
+    <name>White Dragon, Young AdultSpell Resistance16</name>
   </collection>
   <collection>
     <name>White Dragon, Young AdultSpell-Like AbilityFog cloud0</name>
@@ -10720,10 +10720,10 @@
     <name>XillPlanewalk0</name>
   </collection>
   <collection>
-    <name>XillSpell Resistance0</name>
+    <name>XillSpell Resistance21</name>
   </collection>
   <collection>
-    <name>Yeth HoundDamage ReductionVulnerable to silver weapons0</name>
+    <name>Yeth HoundDamage ReductionVulnerable to silver weapons10</name>
   </collection>
   <collection>
     <name>Yeth HoundFlight0</name>
@@ -10756,7 +10756,7 @@
     <name>Yuan-ti AbominationAlternate Forma Tiny to Large viper0</name>
   </collection>
   <collection>
-    <name>Yuan-ti AbominationBlind-Fight0</name>
+    <name>Yuan-ti AbominationBlind-Fight2</name>
   </collection>
   <collection>
     <name>Yuan-ti AbominationChameleon Power0</name>
@@ -10771,7 +10771,7 @@
     <name>Yuan-ti AbominationScent0</name>
   </collection>
   <collection>
-    <name>Yuan-ti AbominationSpell Resistance0</name>
+    <name>Yuan-ti AbominationSpell Resistance18</name>
   </collection>
   <collection>
     <name>Yuan-ti AbominationSpell-Like AbilityAnimal trance0</name>
@@ -10804,7 +10804,7 @@
     <name>Yuan-ti Halfblood (Snake Head)Alternate Forma Tiny to Large viper0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Snake Head)Blind-Fight0</name>
+    <name>Yuan-ti Halfblood (Snake Head)Blind-Fight2</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head)Chameleon Power0</name>
@@ -10819,7 +10819,7 @@
     <name>Yuan-ti Halfblood (Snake Head)Scent0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Snake Head)Spell Resistance0</name>
+    <name>Yuan-ti Halfblood (Snake Head)Spell Resistance16</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head)Spell-Like AbilityAnimal trance0</name>
@@ -10849,7 +10849,7 @@
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Alternate Forma Tiny to Large viper0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Blind-Fight0</name>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Blind-Fight2</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Chameleon Power0</name>
@@ -10858,7 +10858,7 @@
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Scent0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell Resistance0</name>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell Resistance16</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Spell-Like AbilityAnimal trance0</name>
@@ -10888,7 +10888,7 @@
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Alternate Forma Tiny to Large viper0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Blind-Fight0</name>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Blind-Fight2</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Chameleon Power0</name>
@@ -10903,7 +10903,7 @@
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Scent0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell Resistance0</name>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell Resistance16</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Spell-Like AbilityAnimal trance0</name>
@@ -10933,7 +10933,7 @@
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Alternate Forma Tiny to Large viper0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Blind-Fight0</name>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Blind-Fight2</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Chameleon Power0</name>
@@ -10948,7 +10948,7 @@
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Scent0</name>
   </collection>
   <collection>
-    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell Resistance0</name>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell Resistance16</name>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Spell-Like AbilityAnimal trance0</name>
@@ -10978,7 +10978,7 @@
     <name>Yuan-ti PurebloodAlternate Forma Tiny to Large viper0</name>
   </collection>
   <collection>
-    <name>Yuan-ti PurebloodBlind-Fight0</name>
+    <name>Yuan-ti PurebloodBlind-Fight2</name>
   </collection>
   <collection>
     <name>Yuan-ti PurebloodMartial Weapon ProficiencyScimitar0</name>
@@ -10987,7 +10987,7 @@
     <name>Yuan-ti PurebloodMartial Weapon ProficiencyLongbow0</name>
   </collection>
   <collection>
-    <name>Yuan-ti PurebloodSpell Resistance0</name>
+    <name>Yuan-ti PurebloodSpell Resistance14</name>
   </collection>
   <collection>
     <name>Yuan-ti PurebloodSpell-Like AbilityAnimal trance0</name>
@@ -11017,19 +11017,19 @@
     <name>ZelekhutArmor Proficiency (Medium)0</name>
   </collection>
   <collection>
-    <name>ZelekhutDamage ReductionVulnerable to chaotic weapons0</name>
+    <name>ZelekhutDamage ReductionVulnerable to chaotic weapons10</name>
   </collection>
   <collection>
     <name>ZelekhutExotic Weapon ProficiencySpiked chain0</name>
   </collection>
   <collection>
-    <name>ZelekhutFast Healing0</name>
+    <name>ZelekhutFast Healing5</name>
   </collection>
   <collection>
     <name>ZelekhutMounted Combat0</name>
   </collection>
   <collection>
-    <name>ZelekhutSpell Resistance0</name>
+    <name>ZelekhutSpell Resistance20</name>
   </collection>
   <collection>
     <name>ZelekhutSpell-Like AbilityClairaudience/Clairvoyance0</name>

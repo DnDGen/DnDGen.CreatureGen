@@ -1969,7 +1969,7 @@
   </collection>
   <collection>
     <name>Dire Shark</name>
-    <entry>Keen Scent#0##0##0#False###0#0#2147483647</entry>
+    <entry>Keen Scent#180##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
     <name>Dire Tiger</name>
@@ -4617,18 +4617,18 @@
   </collection>
   <collection>
     <name>Shark, Huge</name>
-    <entry>Blindsense#0##0##0#False###0#0#2147483647</entry>
-    <entry>Keen Scent#0##0##0#False###0#0#2147483647</entry>
+    <entry>Blindsense#30##0##0#False###0#0#2147483647</entry>
+    <entry>Keen Scent#180##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
     <name>Shark, Large</name>
-    <entry>Blindsense#0##0##0#False###0#0#2147483647</entry>
-    <entry>Keen Scent#0##0##0#False###0#0#2147483647</entry>
+    <entry>Blindsense#30##0##0#False###0#0#2147483647</entry>
+    <entry>Keen Scent#180##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
     <name>Shark, Medium</name>
-    <entry>Blindsense#0##0##0#False###0#0#2147483647</entry>
-    <entry>Keen Scent#0##0##0#False###0#0#2147483647</entry>
+    <entry>Blindsense#30##0##0#False###0#0#2147483647</entry>
+    <entry>Keen Scent#180##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
     <name>Shield Guardian</name>

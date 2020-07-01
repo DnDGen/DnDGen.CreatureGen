@@ -16,21 +16,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
     [TestFixture]
     public class FeatAbilityRequirementsTests : TypesAndAmountsTests
     {
-        protected override string tableName
-        {
-            get
-            {
-                return TableNameConstants.TypeAndAmount.FeatAbilityRequirements;
-            }
-        }
-
-        private SpecialQualityHelper helper;
-
-        [SetUp]
-        public void Setup()
-        {
-            helper = new SpecialQualityHelper();
-        }
+        protected override string tableName => TableNameConstants.TypeAndAmount.FeatAbilityRequirements;
 
         [Test]
         public void FeatAbilityRequirementsNames()

@@ -3618,16 +3618,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.ShamblingMound].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
             testCases[CreatureConstants.ShamblingMound].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
 
-            testCases[CreatureConstants.Shark_Dire].Add(helper.BuildData(FeatConstants.SpecialQualities.KeenScent));
+            testCases[CreatureConstants.Shark_Dire].Add(helper.BuildData(FeatConstants.SpecialQualities.KeenScent, power: 180));
 
-            testCases[CreatureConstants.Shark_Huge].Add(helper.BuildData(FeatConstants.SpecialQualities.KeenScent));
-            testCases[CreatureConstants.Shark_Huge].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsense));
+            testCases[CreatureConstants.Shark_Huge].Add(helper.BuildData(FeatConstants.SpecialQualities.KeenScent, power: 180));
+            testCases[CreatureConstants.Shark_Huge].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 30));
 
-            testCases[CreatureConstants.Shark_Large].Add(helper.BuildData(FeatConstants.SpecialQualities.KeenScent));
-            testCases[CreatureConstants.Shark_Large].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsense));
+            testCases[CreatureConstants.Shark_Large].Add(helper.BuildData(FeatConstants.SpecialQualities.KeenScent, power: 180));
+            testCases[CreatureConstants.Shark_Large].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 30));
 
-            testCases[CreatureConstants.Shark_Medium].Add(helper.BuildData(FeatConstants.SpecialQualities.KeenScent));
-            testCases[CreatureConstants.Shark_Medium].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsense));
+            testCases[CreatureConstants.Shark_Medium].Add(helper.BuildData(FeatConstants.SpecialQualities.KeenScent, power: 180));
+            testCases[CreatureConstants.Shark_Medium].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 30));
 
             testCases[CreatureConstants.ShieldGuardian].Add(helper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.ShieldGuardian].Add(helper.BuildData(FeatConstants.SpecialQualities.FindMaster));

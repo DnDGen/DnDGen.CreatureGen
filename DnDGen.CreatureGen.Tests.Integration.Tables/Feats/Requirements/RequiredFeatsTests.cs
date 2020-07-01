@@ -12,18 +12,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
     [TestFixture]
     public class RequiredFeatsTests : CollectionTests
     {
-        protected override string tableName
-        {
-            get { return TableNameConstants.Collection.RequiredFeats; }
-        }
-
-        private SpecialQualityHelper helper;
-
-        [SetUp]
-        public void Setup()
-        {
-            helper = new SpecialQualityHelper();
-        }
+        protected override string tableName => TableNameConstants.Collection.RequiredFeats;
 
         [Test]
         public void RequiredFeatsNames()

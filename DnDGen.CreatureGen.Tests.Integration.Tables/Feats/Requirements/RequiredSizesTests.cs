@@ -15,14 +15,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
     {
         protected override string tableName => TableNameConstants.Collection.RequiredSizes;
 
-        private SpecialQualityHelper helper;
-
-        [SetUp]
-        public void Setup()
-        {
-            helper = new SpecialQualityHelper();
-        }
-
         [Test]
         public void RequiredSizesNames()
         {
