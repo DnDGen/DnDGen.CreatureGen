@@ -27,6 +27,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
             Assert.That(ability.BaseScore, Is.EqualTo(Ability.DefaultScore));
             Assert.That(ability.RacialAdjustment, Is.Zero);
             Assert.That(ability.AdvancementAdjustment, Is.Zero);
+            Assert.That(ability.TemplateAdjustment, Is.Zero);
             Assert.That(ability.Modifier, Is.Zero);
             Assert.That(ability.FullScore, Is.EqualTo(Ability.DefaultScore));
             Assert.That(ability.MaxModifier, Is.EqualTo(int.MaxValue));
@@ -610,13 +611,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
         }
 
         [Test]
-        public void AddAdvancementAndRacialAdjustment()
+        public void AddTemplateAdjustment()
+        {
+            ability.TemplateAdjustment = 9266;
+            Assert.That(ability.FullScore, Is.EqualTo(9276));
+            Assert.That(ability.Modifier, Is.EqualTo(4633));
+        }
+
+        [Test]
+        public void AddAllAdjustments()
         {
             ability.AdvancementAdjustment = 9266;
             ability.RacialAdjustment = 90210;
+            ability.TemplateAdjustment = 42;
 
-            Assert.That(ability.FullScore, Is.EqualTo(Ability.DefaultScore + 9266 + 90210));
-            Assert.That(ability.Modifier, Is.EqualTo(49738));
+            Assert.That(ability.FullScore, Is.EqualTo(Ability.DefaultScore + 9266 + 90210 + 42));
+            Assert.That(ability.Modifier, Is.EqualTo(49759));
         }
 
         [Test]
@@ -647,6 +657,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
         {
             ability.BaseScore = 0;
             Assert.That(ability.HasScore, Is.False);
+        }
+
+        [Test]
+        public void AbilityHasScore_WithTemplateAdjustment()
+        {
+            ability.BaseScore = 0;
+            ability.TemplateAdjustment = 1;
+            Assert.That(ability.HasScore, Is.True);
         }
 
         [Test]

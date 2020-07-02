@@ -186,6 +186,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     var helper = new SpecialQualityHelper();
                     var keys = SpecialQualityTestData.GetRequirementKeys();
 
+                    foreach (var key in keys)
+                    {
+                        testCases[key] = new string[0];
+                    }
+
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Aberration, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Elemental, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
@@ -203,11 +208,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Undead, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
 
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Subtypes.Shapechanger, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
-
-                    foreach (var key in keys)
-                    {
-                        testCases[key] = new string[0];
-                    }
 
                     foreach (var testCase in testCases)
                     {

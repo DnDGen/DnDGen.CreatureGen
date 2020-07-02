@@ -471,25 +471,25 @@
     <entry>Armor Proficiency (Light)</entry>
   </collection>
   <collection>
-    <name>Abyssal Greater BasiliskDamage ReductionVulnerable to magic weapons0</name>
+    <name>Abyssal Greater BasiliskDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
-    <name>Abyssal Greater BasiliskEnergy ResistanceCold0</name>
+    <name>Abyssal Greater BasiliskEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>Abyssal Greater BasiliskEnergy ResistanceFire0</name>
+    <name>Abyssal Greater BasiliskEnergy ResistanceFire10</name>
   </collection>
   <collection>
-    <name>Abyssal Greater BasiliskSpell Resistance0</name>
+    <name>Abyssal Greater BasiliskSpell Resistance23</name>
   </collection>
   <collection>
-    <name>AchaieraiSpell Resistance0</name>
+    <name>AchaieraiSpell Resistance19</name>
   </collection>
   <collection>
-    <name>Adult ArrowhawkEnergy ResistanceCold0</name>
+    <name>Adult ArrowhawkEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>Adult ArrowhawkEnergy ResistanceFire0</name>
+    <name>Adult ArrowhawkEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>Adult ArrowhawkImmunityAcid0</name>
@@ -504,10 +504,10 @@
     <name>Adult TojanidaAll-Around Vision0</name>
   </collection>
   <collection>
-    <name>Adult TojanidaEnergy ResistanceElectricity0</name>
+    <name>Adult TojanidaEnergy ResistanceElectricity10</name>
   </collection>
   <collection>
-    <name>Adult TojanidaEnergy ResistanceFire0</name>
+    <name>Adult TojanidaEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>Adult TojanidaImmunityAcid0</name>
@@ -519,58 +519,58 @@
     <name>Adult TojanidaImmunityPoison0</name>
   </collection>
   <collection>
-    <name>Air Elemental, ElderDamage ReductionNo physical vulnerabilities0</name>
+    <name>Air Elemental, ElderDamage ReductionNo physical vulnerabilities10</name>
   </collection>
   <collection>
     <name>Air Elemental, ElderWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Air Elemental, ElderImproved Initiative0</name>
+    <name>Air Elemental, ElderImproved Initiative4</name>
   </collection>
   <collection>
-    <name>Air Elemental, GreaterDamage ReductionNo physical vulnerabilities0</name>
+    <name>Air Elemental, GreaterDamage ReductionNo physical vulnerabilities10</name>
   </collection>
   <collection>
     <name>Air Elemental, GreaterWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Air Elemental, GreaterImproved Initiative0</name>
+    <name>Air Elemental, GreaterImproved Initiative4</name>
   </collection>
   <collection>
-    <name>Air Elemental, HugeDamage ReductionNo physical vulnerabilities0</name>
+    <name>Air Elemental, HugeDamage ReductionNo physical vulnerabilities5</name>
   </collection>
   <collection>
     <name>Air Elemental, HugeWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Air Elemental, HugeImproved Initiative0</name>
+    <name>Air Elemental, HugeImproved Initiative4</name>
   </collection>
   <collection>
-    <name>Air Elemental, LargeDamage ReductionNo physical vulnerabilities0</name>
+    <name>Air Elemental, LargeDamage ReductionNo physical vulnerabilities5</name>
   </collection>
   <collection>
     <name>Air Elemental, LargeWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Air Elemental, LargeImproved Initiative0</name>
+    <name>Air Elemental, LargeImproved Initiative4</name>
   </collection>
   <collection>
     <name>Air Elemental, MediumWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Air Elemental, MediumImproved Initiative0</name>
+    <name>Air Elemental, MediumImproved Initiative4</name>
   </collection>
   <collection>
     <name>Air Elemental, SmallWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Air Elemental, SmallImproved Initiative0</name>
+    <name>Air Elemental, SmallImproved Initiative4</name>
   </collection>
   <collection>
-    <name>Air MephitDamage ReductionVulnerable to magic weapons0</name>
+    <name>Air MephitDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
-    <name>Air MephitFast HealingExposed to moving air0</name>
+    <name>Air MephitFast HealingExposed to moving air2</name>
   </collection>
   <collection>
     <name>Air MephitSpell-Like AbilityBlur0</name>
@@ -585,10 +585,10 @@
     <name>AngelDarkvision60</name>
   </collection>
   <collection>
-    <name>AngelEnergy ResistanceElectricity0</name>
+    <name>AngelEnergy ResistanceElectricity10</name>
   </collection>
   <collection>
-    <name>AngelEnergy ResistanceFire0</name>
+    <name>AngelEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>AngelImmunityAcid0</name>
@@ -612,13 +612,13 @@
     <name>Angel, Astral DevaChange ShapeSmall or Medium Humanoid0</name>
   </collection>
   <collection>
-    <name>Angel, Astral DevaDamage ReductionVulnerable to evil0</name>
+    <name>Angel, Astral DevaDamage ReductionVulnerable to evil10</name>
   </collection>
   <collection>
     <name>Angel, Astral DevaSimple Weapon ProficiencyHeavy mace0</name>
   </collection>
   <collection>
-    <name>Angel, Astral DevaSpell Resistance0</name>
+    <name>Angel, Astral DevaSpell Resistance30</name>
   </collection>
   <collection>
     <name>Angel, Astral DevaSpell-Like AbilityAid0</name>
@@ -681,16 +681,16 @@
     <name>Angel, PlanetarChange ShapeSmall or Medium Humanoid0</name>
   </collection>
   <collection>
-    <name>Angel, PlanetarDamage ReductionVulnerable to evil0</name>
+    <name>Angel, PlanetarDamage ReductionVulnerable to evil10</name>
   </collection>
   <collection>
     <name>Angel, PlanetarMartial Weapon ProficiencyGreatsword0</name>
   </collection>
   <collection>
-    <name>Angel, PlanetarRegenerationDoes not regenerate evil damage0</name>
+    <name>Angel, PlanetarRegenerationDoes not regenerate evil damage10</name>
   </collection>
   <collection>
-    <name>Angel, PlanetarSpell Resistance0</name>
+    <name>Angel, PlanetarSpell Resistance30</name>
   </collection>
   <collection>
     <name>Angel, PlanetarSpell-Like AbilityBlade barrier0</name>
@@ -765,7 +765,7 @@
     <name>Angel, SolarChange ShapeSmall or Medium Humanoid0</name>
   </collection>
   <collection>
-    <name>Angel, SolarDamage ReductionVulnerable to epic evil0</name>
+    <name>Angel, SolarDamage ReductionVulnerable to epic evil15</name>
   </collection>
   <collection>
     <name>Angel, SolarMartial Weapon ProficiencyComposite longbow0</name>
@@ -774,10 +774,10 @@
     <name>Angel, SolarMartial Weapon ProficiencyGreatsword0</name>
   </collection>
   <collection>
-    <name>Angel, SolarRegenerationDoes not regenerate evil damage0</name>
+    <name>Angel, SolarRegenerationDoes not regenerate evil damage15</name>
   </collection>
   <collection>
-    <name>Angel, SolarSpell Resistance0</name>
+    <name>Angel, SolarSpell Resistance32</name>
   </collection>
   <collection>
     <name>Angel, SolarSpell-Like AbilityAid0</name>
@@ -891,10 +891,10 @@
     <name>AnkhegTremorsense60</name>
   </collection>
   <collection>
-    <name>AnnisDamage ReductionVulnerable to bludgeoning weapons0</name>
+    <name>AnnisDamage ReductionVulnerable to bludgeoning weapons2</name>
   </collection>
   <collection>
-    <name>AnnisSpell Resistance0</name>
+    <name>AnnisSpell Resistance19</name>
   </collection>
   <collection>
     <name>AnnisSpell-Like AbilityDisguise self0</name>
@@ -951,22 +951,22 @@
     <name>ArchonSpell-Like AbilityTongues0</name>
   </collection>
   <collection>
-    <name>Assassin VineBlindsight120</name>
+    <name>Assassin VineBlindsight30</name>
   </collection>
   <collection>
     <name>Assassin VineCamouflage0</name>
   </collection>
   <collection>
-    <name>Assassin VineEnergy ResistanceCold0</name>
+    <name>Assassin VineEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>Assassin VineEnergy ResistanceFire0</name>
+    <name>Assassin VineEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>Assassin VineImmunityElectricity0</name>
   </collection>
   <collection>
-    <name>Average SalamanderDamage ReductionVulnerable to magic weapons0</name>
+    <name>Average SalamanderDamage ReductionVulnerable to magic weapons10</name>
   </collection>
   <collection>
     <name>Average SalamanderMultiattack0</name>
@@ -981,13 +981,13 @@
     <name>Average XornCleave0</name>
   </collection>
   <collection>
-    <name>Average XornDamage ReductionVulnerable to bludgeoning weapons0</name>
+    <name>Average XornDamage ReductionVulnerable to bludgeoning weapons5</name>
   </collection>
   <collection>
     <name>Average XornEarth Glide0</name>
   </collection>
   <collection>
-    <name>Average XornEnergy ResistanceElectricity0</name>
+    <name>Average XornEnergy ResistanceElectricity10</name>
   </collection>
   <collection>
     <name>Average XornImmunityCold0</name>
@@ -999,13 +999,13 @@
     <name>Average XornTremorsense60</name>
   </collection>
   <collection>
-    <name>AvoralDamage ReductionVulnerable to evil or silver weapons0</name>
+    <name>AvoralDamage ReductionVulnerable to evil or silver weapons10</name>
   </collection>
   <collection>
-    <name>AvoralEnergy ResistanceCold0</name>
+    <name>AvoralEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>AvoralEnergy ResistanceSonic0</name>
+    <name>AvoralEnergy ResistanceSonic10</name>
   </collection>
   <collection>
     <name>AvoralImmunityElectricity0</name>
@@ -1020,7 +1020,7 @@
     <name>AvoralLow-Light Vision0</name>
   </collection>
   <collection>
-    <name>AvoralSpell Resistance0</name>
+    <name>AvoralSpell Resistance25</name>
   </collection>
   <collection>
     <name>AvoralSpell-Like AbilityAid0</name>
@@ -1068,7 +1068,7 @@
     <name>AvoralSpell-Like AbilityTrue seeing0</name>
   </collection>
   <collection>
-    <name>AzerSpell Resistance0</name>
+    <name>AzerSpell Resistance13</name>
   </collection>
   <collection>
     <name>AzerMartial Weapon ProficiencyLight hammer0</name>
@@ -1086,16 +1086,16 @@
     <name>AzerSimple Weapon ProficiencyLongspear0</name>
   </collection>
   <collection>
-    <name>BabauDamage ReductionVulnerable to good or cold iron weapons0</name>
+    <name>BabauDamage ReductionVulnerable to good or cold iron weapons10</name>
   </collection>
   <collection>
-    <name>BabauEnergy ResistanceAcid0</name>
+    <name>BabauEnergy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>BabauEnergy ResistanceCold0</name>
+    <name>BabauEnergy ResistanceCold10</name>
   </collection>
   <collection>
-    <name>BabauEnergy ResistanceFire0</name>
+    <name>BabauEnergy ResistanceFire10</name>
   </collection>
   <collection>
     <name>BabauImmunityElectricity0</name>
@@ -1107,7 +1107,7 @@
     <name>BabauProtective Slime0</name>
   </collection>
   <collection>
-    <name>BabauSpell Resistance0</name>
+    <name>BabauSpell Resistance14</name>
   </collection>
   <collection>
     <name>BabauSpell-Like AbilityDarkness0</name>
@@ -1143,13 +1143,13 @@
     <name>Baleen WhaleHold Breath0</name>
   </collection>
   <collection>
-    <name>BalorDamage ReductionVulnerable to good, cold iron weapons0</name>
+    <name>BalorDamage ReductionVulnerable to good, cold iron weapons15</name>
   </collection>
   <collection>
-    <name>BalorEnergy ResistanceAcid0</name>
+    <name>BalorEnergy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>BalorEnergy ResistanceCold0</name>
+    <name>BalorEnergy ResistanceCold10</name>
   </collection>
   <collection>
     <name>BalorExotic Weapon ProficiencyWhip0</name>
@@ -1170,7 +1170,7 @@
     <name>BalorMartial Weapon ProficiencyLongsword0</name>
   </collection>
   <collection>
-    <name>BalorSpell Resistance0</name>
+    <name>BalorSpell Resistance28</name>
   </collection>
   <collection>
     <name>BalorSpell-Like AbilityBlasphemy0</name>
@@ -1212,13 +1212,13 @@
     <name>Barbed Devil (Hamatula)Barbed Defense0</name>
   </collection>
   <collection>
-    <name>Barbed Devil (Hamatula)Damage ReductionVulnerable to good weapons0</name>
+    <name>Barbed Devil (Hamatula)Damage ReductionVulnerable to good weapons10</name>
   </collection>
   <collection>
-    <name>Barbed Devil (Hamatula)Energy ResistanceAcid0</name>
+    <name>Barbed Devil (Hamatula)Energy ResistanceAcid10</name>
   </collection>
   <collection>
-    <name>Barbed Devil (Hamatula)Energy ResistanceCold0</name>
+    <name>Barbed Devil (Hamatula)Energy ResistanceCold10</name>
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)ImmunityFire0</name>
@@ -1230,7 +1230,7 @@
     <name>Barbed Devil (Hamatula)See in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell0</name>
   </collection>
   <collection>
-    <name>Barbed Devil (Hamatula)Spell Resistance0</name>
+    <name>Barbed Devil (Hamatula)Spell Resistance23</name>
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)Spell-Like AbilityGreater teleport: self plus 50 pounds of objects only0</name>
@@ -1257,7 +1257,7 @@
     <name>BarghestChange ShapeGoblin or wolf0</name>
   </collection>
   <collection>
-    <name>BarghestDamage ReductionVulnerable to magic weapons0</name>
+    <name>BarghestDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
     <name>BarghestScent0</name>
@@ -1314,7 +1314,7 @@
     <name>Bearded Devil (Barbazu)See in DarknessCan see perfectly in darkness of any kind, even that created by a Deeper Darkness spell0</name>
   </collection>
   <collection>
-    <name>Bearded Devil (Barbazu)Spell Resistance19</name>
+    <name>Bearded Devil (Barbazu)Spell Resistance17</name>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)Spell-Like AbilityGreater teleport: self plus 50 pounds of objects only0</name>
@@ -2871,7 +2871,7 @@
     <name>ChokerQuickness0</name>
   </collection>
   <collection>
-    <name>ChokerImproved Initiative0</name>
+    <name>ChokerImproved Initiative4</name>
   </collection>
   <collection>
     <name>ChuulAmphibious0</name>
@@ -3624,7 +3624,7 @@
     <name>DjinniImmunityAcid0</name>
   </collection>
   <collection>
-    <name>DjinniImproved Initiative0</name>
+    <name>DjinniImproved Initiative4</name>
   </collection>
   <collection>
     <name>DjinniSpell-Like AbilityCreate food and water0</name>
@@ -3714,7 +3714,7 @@
     <name>Dread WraithLifesense60</name>
   </collection>
   <collection>
-    <name>Dread WraithImproved Initiative0</name>
+    <name>Dread WraithImproved Initiative4</name>
   </collection>
   <collection>
     <name>Dread WraithTurn Resistance2</name>
@@ -3879,10 +3879,10 @@
     <name>DuergarSpell-Like AbilityInvisibility: only self + carried items0</name>
   </collection>
   <collection>
-    <name>Dust MephitDamage ReductionVulnerable to magic weapons0</name>
+    <name>Dust MephitDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
-    <name>Dust MephitFast HealingIn arid, dusty environment0</name>
+    <name>Dust MephitFast HealingIn arid, dusty environment2</name>
   </collection>
   <collection>
     <name>Dust MephitSpell-Like AbilityBlur0</name>
@@ -3912,25 +3912,25 @@
     <name>EagleWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Earth Elemental, ElderDamage ReductionNo physical vulnerabilities0</name>
+    <name>Earth Elemental, ElderDamage ReductionNo physical vulnerabilities10</name>
   </collection>
   <collection>
     <name>Earth Elemental, ElderEarth Glide0</name>
   </collection>
   <collection>
-    <name>Earth Elemental, GreaterDamage ReductionNo physical vulnerabilities0</name>
+    <name>Earth Elemental, GreaterDamage ReductionNo physical vulnerabilities10</name>
   </collection>
   <collection>
     <name>Earth Elemental, GreaterEarth Glide0</name>
   </collection>
   <collection>
-    <name>Earth Elemental, HugeDamage ReductionNo physical vulnerabilities0</name>
+    <name>Earth Elemental, HugeDamage ReductionNo physical vulnerabilities5</name>
   </collection>
   <collection>
     <name>Earth Elemental, HugeEarth Glide0</name>
   </collection>
   <collection>
-    <name>Earth Elemental, LargeDamage ReductionNo physical vulnerabilities0</name>
+    <name>Earth Elemental, LargeDamage ReductionNo physical vulnerabilities5</name>
   </collection>
   <collection>
     <name>Earth Elemental, LargeEarth Glide0</name>
@@ -3942,10 +3942,10 @@
     <name>Earth Elemental, SmallEarth Glide0</name>
   </collection>
   <collection>
-    <name>Earth MephitDamage ReductionVulnerable to magic weapons0</name>
+    <name>Earth MephitDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
-    <name>Earth MephitFast HealingUnderground or buried up to its waist in earth0</name>
+    <name>Earth MephitFast HealingUnderground or buried up to its waist in earth2</name>
   </collection>
   <collection>
     <name>Earth MephitSpell-Like AbilityEnlarge person: self only0</name>
@@ -3957,7 +3957,7 @@
     <name>EfreetiChange ShapeAny Small, Medium, or Large Humanoid or Giant0</name>
   </collection>
   <collection>
-    <name>EfreetiImproved Initiative0</name>
+    <name>EfreetiImproved Initiative4</name>
   </collection>
   <collection>
     <name>EfreetiSpell-Like AbilityDetect magic0</name>
@@ -4241,49 +4241,49 @@
     <name>FireVulnerabilityCold0</name>
   </collection>
   <collection>
-    <name>Fire Elemental, ElderDamage ReductionNo physical vulnerabilities0</name>
+    <name>Fire Elemental, ElderDamage ReductionNo physical vulnerabilities10</name>
   </collection>
   <collection>
-    <name>Fire Elemental, ElderImproved Initiative0</name>
+    <name>Fire Elemental, ElderImproved Initiative4</name>
   </collection>
   <collection>
     <name>Fire Elemental, ElderWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Fire Elemental, GreaterDamage ReductionNo physical vulnerabilities0</name>
+    <name>Fire Elemental, GreaterDamage ReductionNo physical vulnerabilities10</name>
   </collection>
   <collection>
-    <name>Fire Elemental, GreaterImproved Initiative0</name>
+    <name>Fire Elemental, GreaterImproved Initiative4</name>
   </collection>
   <collection>
     <name>Fire Elemental, GreaterWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Fire Elemental, HugeDamage ReductionNo physical vulnerabilities0</name>
+    <name>Fire Elemental, HugeDamage ReductionNo physical vulnerabilities5</name>
   </collection>
   <collection>
-    <name>Fire Elemental, HugeImproved Initiative0</name>
+    <name>Fire Elemental, HugeImproved Initiative4</name>
   </collection>
   <collection>
     <name>Fire Elemental, HugeWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Fire Elemental, LargeDamage ReductionNo physical vulnerabilities0</name>
+    <name>Fire Elemental, LargeDamage ReductionNo physical vulnerabilities5</name>
   </collection>
   <collection>
-    <name>Fire Elemental, LargeImproved Initiative0</name>
+    <name>Fire Elemental, LargeImproved Initiative4</name>
   </collection>
   <collection>
     <name>Fire Elemental, LargeWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Fire Elemental, MediumImproved Initiative0</name>
+    <name>Fire Elemental, MediumImproved Initiative4</name>
   </collection>
   <collection>
     <name>Fire Elemental, MediumWeapon Finesse0</name>
   </collection>
   <collection>
-    <name>Fire Elemental, SmallImproved Initiative0</name>
+    <name>Fire Elemental, SmallImproved Initiative4</name>
   </collection>
   <collection>
     <name>Fire Elemental, SmallWeapon Finesse0</name>
@@ -4307,10 +4307,10 @@
     <name>Fire GiantRock Throwing1</name>
   </collection>
   <collection>
-    <name>Fire MephitDamage ReductionVulnerable to magic weapons0</name>
+    <name>Fire MephitDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
-    <name>Fire MephitFast HealingTouching a flame at least as large as a torch0</name>
+    <name>Fire MephitFast HealingTouching a flame at least as large as a torch2</name>
   </collection>
   <collection>
     <name>Fire MephitSpell-Like AbilityHeat metal0</name>
@@ -6208,10 +6208,10 @@
     <name>Ice Devil (Gelugon)Telepathy100</name>
   </collection>
   <collection>
-    <name>Ice MephitDamage ReductionVulnerable to magic weapons0</name>
+    <name>Ice MephitDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
-    <name>Ice MephitFast HealingTouching a piece of ice at least Tiny in size, or ambient temperature is freezing or lower0</name>
+    <name>Ice MephitFast HealingTouching a piece of ice at least Tiny in size, or ambient temperature is freezing or lower2</name>
   </collection>
   <collection>
     <name>Ice MephitSpell-Like AbilityChill metal0</name>
@@ -6298,7 +6298,7 @@
     <name>JanniElemental Endurance0</name>
   </collection>
   <collection>
-    <name>JanniImproved Initiative0</name>
+    <name>JanniImproved Initiative4</name>
   </collection>
   <collection>
     <name>JanniMartial Weapon ProficiencyLongbow0</name>
@@ -6679,10 +6679,10 @@
     <name>Magma MephitChange ShapeA pool of lava 3 feet in diameter and 6 inches deep0</name>
   </collection>
   <collection>
-    <name>Magma MephitDamage ReductionVulnerable to magic weapons0</name>
+    <name>Magma MephitDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
-    <name>Magma MephitFast HealingTouching magma, lava, or a flame at least as large as a torch0</name>
+    <name>Magma MephitFast HealingTouching magma, lava, or a flame at least as large as a torch2</name>
   </collection>
   <collection>
     <name>Magma MephitSpell-Like AbilityPyrotechnics0</name>
@@ -7427,7 +7427,7 @@
     <name>Noble DjinniImmunityAcid0</name>
   </collection>
   <collection>
-    <name>Noble DjinniImproved Initiative0</name>
+    <name>Noble DjinniImproved Initiative4</name>
   </collection>
   <collection>
     <name>Noble DjinniSpell-Like AbilityCreate food and water0</name>
@@ -7598,10 +7598,10 @@
     <name>OozeImmunityStunning0</name>
   </collection>
   <collection>
-    <name>Ooze MephitDamage ReductionVulnerable to magic weapons0</name>
+    <name>Ooze MephitDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
-    <name>Ooze MephitFast HealingIn a wet or muddy environment0</name>
+    <name>Ooze MephitFast HealingIn a wet or muddy environment2</name>
   </collection>
   <collection>
     <name>Ooze MephitSpell-Like AbilityAcid arrow0</name>
@@ -8301,10 +8301,10 @@
     <name>Sahuagin MutantWater Dependent0</name>
   </collection>
   <collection>
-    <name>Salt MephitDamage ReductionVulnerable to magic weapons0</name>
+    <name>Salt MephitDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
-    <name>Salt MephitFast HealingIn an arid environment0</name>
+    <name>Salt MephitFast HealingIn an arid environment2</name>
   </collection>
   <collection>
     <name>Salt MephitSpell-Like AbilityDraw moisture from the air0</name>
@@ -8893,10 +8893,10 @@
     <name>SquidJet0</name>
   </collection>
   <collection>
-    <name>Steam MephitDamage ReductionVulnerable to magic weapons0</name>
+    <name>Steam MephitDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
-    <name>Steam MephitFast HealingTouching boiling water or in a hot, humid area0</name>
+    <name>Steam MephitFast HealingTouching boiling water or in a hot, humid area2</name>
   </collection>
   <collection>
     <name>Steam MephitSpell-Like AbilityBlur0</name>
@@ -9497,7 +9497,7 @@
     <name>Vampire SpawnFast Healing2</name>
   </collection>
   <collection>
-    <name>Vampire SpawnImproved Initiative0</name>
+    <name>Vampire SpawnImproved Initiative4</name>
   </collection>
   <collection>
     <name>Vampire SpawnLightning Reflexes2</name>
@@ -9581,22 +9581,22 @@
     <name>WarponyScent0</name>
   </collection>
   <collection>
-    <name>Water Elemental, ElderDamage ReductionNo physical vulnerabilities0</name>
+    <name>Water Elemental, ElderDamage ReductionNo physical vulnerabilities10</name>
   </collection>
   <collection>
-    <name>Water Elemental, GreaterDamage ReductionNo physical vulnerabilities0</name>
+    <name>Water Elemental, GreaterDamage ReductionNo physical vulnerabilities10</name>
   </collection>
   <collection>
-    <name>Water Elemental, HugeDamage ReductionNo physical vulnerabilities0</name>
+    <name>Water Elemental, HugeDamage ReductionNo physical vulnerabilities5</name>
   </collection>
   <collection>
-    <name>Water Elemental, LargeDamage ReductionNo physical vulnerabilities0</name>
+    <name>Water Elemental, LargeDamage ReductionNo physical vulnerabilities5</name>
   </collection>
   <collection>
-    <name>Water MephitDamage ReductionVulnerable to magic weapons0</name>
+    <name>Water MephitDamage ReductionVulnerable to magic weapons5</name>
   </collection>
   <collection>
-    <name>Water MephitFast HealingExposed to rain or submerged up to its waist in water0</name>
+    <name>Water MephitFast HealingExposed to rain or submerged up to its waist in water2</name>
   </collection>
   <collection>
     <name>Water MephitSpell-Like AbilityAcid arrow0</name>
@@ -9956,7 +9956,7 @@
     <name>WraithDaylight Powerlessness0</name>
   </collection>
   <collection>
-    <name>WraithImproved Initiative0</name>
+    <name>WraithImproved Initiative4</name>
   </collection>
   <collection>
     <name>WraithTurn Resistance2</name>

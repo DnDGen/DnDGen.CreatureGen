@@ -5582,7 +5582,26 @@
   <collection>
     <name>Celestial Creature</name>
     <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
-    <entry>Spell Resistance#5##0##0#False###0#0#2147483647</entry>
+    <entry>Spell Resistance#6##0##0#False###0#1#1</entry>
+    <entry>Spell Resistance#7##0##0#False###0#2#2</entry>
+    <entry>Spell Resistance#8##0##0#False###0#3#3</entry>
+    <entry>Spell Resistance#9##0##0#False###0#4#4</entry>
+    <entry>Spell Resistance#10##0##0#False###0#5#5</entry>
+    <entry>Spell Resistance#11##0##0#False###0#6#6</entry>
+    <entry>Spell Resistance#12##0##0#False###0#7#7</entry>
+    <entry>Spell Resistance#13##0##0#False###0#8#8</entry>
+    <entry>Spell Resistance#14##0##0#False###0#9#9</entry>
+    <entry>Spell Resistance#15##0##0#False###0#10#10</entry>
+    <entry>Spell Resistance#16##0##0#False###0#11#11</entry>
+    <entry>Spell Resistance#17##0##0#False###0#12#12</entry>
+    <entry>Spell Resistance#18##0##0#False###0#13#13</entry>
+    <entry>Spell Resistance#19##0##0#False###0#14#14</entry>
+    <entry>Spell Resistance#20##0##0#False###0#15#15</entry>
+    <entry>Spell Resistance#21##0##0#False###0#16#16</entry>
+    <entry>Spell Resistance#22##0##0#False###0#17#17</entry>
+    <entry>Spell Resistance#23##0##0#False###0#18#18</entry>
+    <entry>Spell Resistance#24##0##0#False###0#19#19</entry>
+    <entry>Spell Resistance#25##0##0#False###0#20#2147483647</entry>
     <entry>Energy Resistance#5#Acid#0##0#False###0#0#7</entry>
     <entry>Energy Resistance#10#Acid#0##0#False###0#8#2147483647</entry>
     <entry>Energy Resistance#5#Cold#0##0#False###0#0#7</entry>
@@ -5595,7 +5614,26 @@
   <collection>
     <name>Fiendish Creature</name>
     <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
-    <entry>Spell Resistance#5##0##0#False###0#0#2147483647</entry>
+    <entry>Spell Resistance#6##0##0#False###0#1#1</entry>
+    <entry>Spell Resistance#7##0##0#False###0#2#2</entry>
+    <entry>Spell Resistance#8##0##0#False###0#3#3</entry>
+    <entry>Spell Resistance#9##0##0#False###0#4#4</entry>
+    <entry>Spell Resistance#10##0##0#False###0#5#5</entry>
+    <entry>Spell Resistance#11##0##0#False###0#6#6</entry>
+    <entry>Spell Resistance#12##0##0#False###0#7#7</entry>
+    <entry>Spell Resistance#13##0##0#False###0#8#8</entry>
+    <entry>Spell Resistance#14##0##0#False###0#9#9</entry>
+    <entry>Spell Resistance#15##0##0#False###0#10#10</entry>
+    <entry>Spell Resistance#16##0##0#False###0#11#11</entry>
+    <entry>Spell Resistance#17##0##0#False###0#12#12</entry>
+    <entry>Spell Resistance#18##0##0#False###0#13#13</entry>
+    <entry>Spell Resistance#19##0##0#False###0#14#14</entry>
+    <entry>Spell Resistance#20##0##0#False###0#15#15</entry>
+    <entry>Spell Resistance#21##0##0#False###0#16#16</entry>
+    <entry>Spell Resistance#22##0##0#False###0#17#17</entry>
+    <entry>Spell Resistance#23##0##0#False###0#18#18</entry>
+    <entry>Spell Resistance#24##0##0#False###0#19#19</entry>
+    <entry>Spell Resistance#25##0##0#False###0#20#2147483647</entry>
     <entry>Energy Resistance#5#Fire#0##0#False###0#0#7</entry>
     <entry>Energy Resistance#10#Fire#0##0#False###0#8#2147483647</entry>
     <entry>Energy Resistance#5#Cold#0##0#False###0#0#7</entry>

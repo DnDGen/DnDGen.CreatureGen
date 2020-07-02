@@ -56,38 +56,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
             AssertCollection(table[name], collection);
         }
 
-        private void AssertCollection(IEnumerable<string> source, IEnumerable<string> target)
+        private void AssertCollection(IEnumerable<string> source, IEnumerable<string> expected)
         {
             //INFO: This is faster than Is.EquivalentTo() for large collections
             var sourceBatches = source
                 .OrderBy(e => e)
                 .Batch(EquivalentBatchSize)
                 .ToArray();
-            var targetBatches = target
+            var expectedBatches = expected
                 .OrderBy(e => e)
                 .Batch(EquivalentBatchSize)
                 .ToArray();
 
-            for (var i = 0; i < targetBatches.Length && i < sourceBatches.Length; i++)
+            for (var i = 0; i < expectedBatches.Length && i < sourceBatches.Length; i++)
             {
-                Assert.That(sourceBatches[i], Is.EquivalentTo(targetBatches[i]), $"Batch {i + 1} of {targetBatches.Length}");
+                Assert.That(sourceBatches[i], Is.EquivalentTo(expectedBatches[i]), $"Batch {i + 1} of {expectedBatches.Length}");
             }
 
-            if (sourceBatches.Length == targetBatches.Length)
+            if (sourceBatches.Length == expectedBatches.Length)
             {
-                Assert.That(source.Count(), Is.EqualTo(target.Count()));
+                Assert.That(source.Count(), Is.EqualTo(expected.Count()));
             }
-            else if (sourceBatches.Length < targetBatches.Length)
+            else if (sourceBatches.Length < expectedBatches.Length)
             {
                 var i = sourceBatches.Length;
                 var missingSet = Enumerable.Empty<string>();
-                Assert.That(missingSet, Is.EquivalentTo(targetBatches[i]), $"Batch {i + 1} of {targetBatches.Length}");
+                Assert.That(missingSet, Is.EquivalentTo(expectedBatches[i]), $"Batch {i + 1} of {expectedBatches.Length} (Missing)");
             }
-            else if (sourceBatches.Length > targetBatches.Length)
+            else if (sourceBatches.Length > expectedBatches.Length)
             {
-                var i = targetBatches.Length;
-                var missingSet = Enumerable.Empty<string>();
-                Assert.That(sourceBatches[i], Is.EquivalentTo(missingSet), $"Batch {i + 1} of {targetBatches.Length}");
+                var i = expectedBatches.Length;
+                var extraSet = Enumerable.Empty<string>();
+                Assert.That(sourceBatches[i], Is.EquivalentTo(extraSet), $"Batch {i + 1} of {expectedBatches.Length} (Extra)");
             }
         }
 

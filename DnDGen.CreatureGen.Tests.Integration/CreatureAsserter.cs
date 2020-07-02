@@ -351,7 +351,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.AtLeast(1), creature.Summary);
             Assert.That(creature.HitPoints.DefaultRoll, Contains.Substring($"{creature.HitPoints.RoundedHitDiceQuantity}d{creature.HitPoints.HitDie}"), creature.Summary);
             Assert.That(creature.HitPoints.Total, Is.Positive
-                .And.AtLeast(creature.HitPoints.HitDiceQuantity)
+                .And.AtLeast(Math.Floor(creature.HitPoints.HitDiceQuantity))
                 .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity), creature.Summary);
             Assert.That(creature.HitPoints.DefaultTotal, Is.Positive
                 .And.AtLeast(creature.HitPoints.HitDiceQuantity + creature.Abilities[AbilityConstants.Constitution].Modifier)

@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Templates
 
             // Abilities
             while (creature.Abilities[AbilityConstants.Intelligence].FullScore < 3)
-                creature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment++;
+                creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment++;
 
             // Level Adjustment
             if (creature.LevelAdjustment.HasValue)

@@ -217,62 +217,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.SupersetOf(originalSpecialQualities));
         }
 
-        [TestCase(20)]
-        [TestCase(21)]
-        [TestCase(22)]
-        [TestCase(42)]
-        public void SpellResistanceMaxesOutAt25(int hitDiceQuantity)
-        {
-            baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
-
-            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
-
-            var smiteEvil = new Attack
-            {
-                Name = "Smite Good",
-                IsSpecial = true
-            };
-            mockAttackGenerator
-                .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.FiendishCreature,
-                    baseCreature.Size,
-                    baseCreature.Size,
-                    baseCreature.BaseAttackBonus,
-                    baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
-
-            var specialQualities = new[]
-            {
-                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Fire }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
-                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 + hitDiceQuantity },
-            };
-
-            mockFeatsGenerator
-                .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.FiendishCreature,
-                    baseCreature.Type,
-                    baseCreature.HitPoints,
-                    baseCreature.Abilities,
-                    baseCreature.Skills,
-                    baseCreature.CanUseEquipment,
-                    baseCreature.Size,
-                    baseCreature.Alignment))
-                .Returns(specialQualities);
-
-            var creature = applicator.ApplyTo(baseCreature);
-            Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
-                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
-                .And.SupersetOf(originalSpecialQualities));
-            Assert.That(specialQualities[4].Name, Is.EqualTo(FeatConstants.SpecialQualities.SpellResistance));
-            Assert.That(specialQualities[4].Power, Is.EqualTo(25));
-        }
-
         [Test]
         public void IfCreatureHasWeakerSpellResistance_Replace()
         {
@@ -880,11 +824,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [TestCaseSource(typeof(FiendishCreatureApplicatorTests), "AbilityAdjustments")]
-        public void AbilityAdjusted(string ability, int raceAdjust, int baseScore, int advanced, int adjusted)
+        public void CreatureIntelligenceAdvancedToAtLeast3(int raceAdjust, int baseScore, int advanced, int adjusted)
         {
-            baseCreature.Abilities[ability].BaseScore = baseScore;
-            baseCreature.Abilities[ability].RacialAdjustment = raceAdjust;
-            baseCreature.Abilities[ability].AdvancementAdjustment = advanced;
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = baseScore;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = raceAdjust;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = advanced;
 
             var smiteEvil = new Attack
             {
@@ -903,15 +847,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Abilities[ability].FullScore, Is.EqualTo(adjusted));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(adjusted).And.AtLeast(3));
 
-            if (ability == AbilityConstants.Intelligence
-                && adjusted == 3
-                && baseScore + raceAdjust + advanced < 3)
+            if (baseScore + raceAdjust + advanced < 3)
             {
-                Assert.That(creature.Abilities[ability].AdvancementAdjustment, Is.Positive
-                    .And.GreaterThan(advanced)
-                    .And.EqualTo(adjusted - raceAdjust - baseScore));
+                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Positive
+                    .And.EqualTo(3 - (baseScore + raceAdjust + advanced)));
             }
         }
 
@@ -922,15 +863,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 var baseScores = Enumerable.Range(3, 12);
                 var raceAdjustments = Enumerable.Range(-5, 5 + 1 + 2).Select(i => i * 2);
                 var advanceds = Enumerable.Range(0, 4);
-                var abilities = new[]
-                {
-                    AbilityConstants.Charisma,
-                    AbilityConstants.Constitution,
-                    AbilityConstants.Dexterity,
-                    AbilityConstants.Intelligence,
-                    AbilityConstants.Strength,
-                    AbilityConstants.Wisdom,
-                };
 
                 foreach (var score in baseScores)
                 {
@@ -938,23 +870,41 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     {
                         foreach (var advanced in advanceds)
                         {
-                            foreach (var ability in abilities)
-                            {
-                                var adjusted = score + race + advanced;
-
-                                if (ability == AbilityConstants.Intelligence)
-                                {
-                                    yield return new TestCaseData(ability, race, score, advanced, Math.Max(adjusted, 3));
-                                }
-                                else
-                                {
-                                    yield return new TestCaseData(ability, race, score, advanced, Math.Max(adjusted, 1));
-                                }
-                            }
+                            var adjusted = score + race + advanced;
+                            yield return new TestCaseData(race, score, advanced, Math.Max(adjusted, 3));
                         }
                     }
                 }
             }
+        }
+
+        [Test]
+        public void IfCreatureDoesNotHaveIntelligence_GainIntelligenceOf3()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteGood });
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(3));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(3));
         }
 
         [TestCaseSource(typeof(FiendishCreatureApplicatorTests), "ChallengeRatingAdjustments")]

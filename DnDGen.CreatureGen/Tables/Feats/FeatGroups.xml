@@ -2,10 +2,6 @@
 
 <collections>
   <collection>
-    <name>Add Hit Dice to Power</name>
-    <entry>Spell Resistance</entry>
-  </collection>
-  <collection>
     <name>Attack Bonus</name>
     <entry>Attack Bonus</entry>
   </collection>
