@@ -835,7 +835,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(damageReduction.Power, Is.EqualTo(2));
         }
 
-        [TestCaseSource(typeof(CelestialCreatureApplicatorTests), "AbilityAdjustments")]
+        [TestCaseSource("AbilityAdjustments")]
         public void CreatureIntelligenceAdvancedToAtLeast3(int raceAdjust, int baseScore, int advanced, int adjusted)
         {
             baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = baseScore;
@@ -919,7 +919,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(3));
         }
 
-        [TestCaseSource(typeof(CelestialCreatureApplicatorTests), "ChallengeRatingAdjustments")]
+        [TestCaseSource("ChallengeRatingAdjustments")]
         public void ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
             baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
