@@ -13,7 +13,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
         protected void AssertCreatureGroupNamesAreComplete()
         {
-            var templates = CreatureConstants.Templates.All();
+            var templates = CreatureConstants.Templates.GetAll();
             var types = CreatureConstants.Types.All();
             var subtypes = CreatureConstants.Types.Subtypes.All();
 

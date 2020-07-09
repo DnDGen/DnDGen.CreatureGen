@@ -21,12 +21,74 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             {
                 var testCases = new Dictionary<string, List<string[]>>();
                 var helper = new AttackHelper();
+                var templates = CreatureConstants.Templates.GetAll();
 
-                testCases[CreatureConstants.Templates.CelestialCreature] = new List<string[]>();
+                foreach (var template in templates)
+                {
+                    testCases[template] = new List<string[]>();
+                }
+
                 testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData("Smite Evil", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-                testCases[CreatureConstants.Templates.FiendishCreature] = new List<string[]>();
                 testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData("Smite Good", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+
+                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Corrupting Gaze", "2d10", "1d4 Charisma damage", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Corrupting Touch", "1d6", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Draining Touch", string.Empty, "1d4 Ability points (of ghost's choosing), Ghost heals 5 points of damage", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Frightful Moan", string.Empty, "Panic for 2d4 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Horrific Appearance", string.Empty, "1d4 Str, 1d4 Dex, and 1d4 Con", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Malevolence", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma, 5));
+                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Manifestation", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Telekinesis", string.Empty, "Panic for 2d4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
+
+                testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData("Smite Evil", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+
+                testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData("Breath Weapon", "6d8 acid (Black)", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData("Breath Weapon", "6d8 electricity (Blue)", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData("Breath Weapon", "6d8 acid gas (Green)", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData("Breath Weapon", "6d8 fire (Red)", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData("Breath Weapon", "6d8 cold (White)", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData("Breath Weapon", "6d8 fire (Brass)", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData("Breath Weapon", "6d8 electricity (Bronze)", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData("Breath Weapon", "6d8 acid (Copper)", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData("Breath Weapon", "6d8 fire (Gold)", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData("Breath Weapon", "6d8 cold (Silver)", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+
+                testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData("Smite Good", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+
+                testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData("Fear Aura", string.Empty, "Fear", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, SaveConstants.Will, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData("Paralyzing Touch", string.Empty, "Paralyzed", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
+
+                testCases[CreatureConstants.Templates.None].Add(new[] { None });
+
+                testCases[CreatureConstants.Templates.Skeleton].Add(new[] { None });
+
+                testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Blood Drain", string.Empty, "1d4 Con, Vampire gains 5 HP", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Children of the Night", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Dominate", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Energy Drain", string.Empty, "2 negative levels, Vampire gains 5 HP", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+
+                testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+
+                testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+
+                testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData("Disease", string.Empty, "Filth Fever", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData("Filth Fever", string.Empty, "incubation period 1d3 days; damage 1d3 Dex and 1d3 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+
+                testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+                testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData("Rake", $"1d8", string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
+
+                testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData("Trip", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+
+                testCases[CreatureConstants.Templates.Zombie].Add(new[] { None });
 
                 return TestDataHelper.EnumerateTestCases(testCases);
             }

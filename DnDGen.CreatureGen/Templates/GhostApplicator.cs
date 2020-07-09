@@ -8,9 +8,11 @@ using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using DnDGen.TreasureGen.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Templates
 {
@@ -21,19 +23,64 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IAttacksGenerator attacksGenerator;
         private readonly ICollectionSelector collectionSelector;
         private readonly IFeatsGenerator featsGenerator;
+        private readonly IItemsGenerator itemsGenerator;
 
-        public GhostApplicator(Dice dice, ISpeedsGenerator speedsGenerator, IAttacksGenerator attacksGenerator, ICollectionSelector collectionSelector, IFeatsGenerator featsGenerator)
+        public GhostApplicator(
+            Dice dice,
+            ISpeedsGenerator speedsGenerator,
+            IAttacksGenerator attacksGenerator,
+            ICollectionSelector collectionSelector,
+            IFeatsGenerator featsGenerator,
+            IItemsGenerator itemsGenerator)
         {
             this.dice = dice;
             this.speedsGenerator = speedsGenerator;
             this.attacksGenerator = attacksGenerator;
             this.collectionSelector = collectionSelector;
             this.featsGenerator = featsGenerator;
+            this.itemsGenerator = itemsGenerator;
         }
 
         public Creature ApplyTo(Creature creature)
         {
             //Type
+            UpdateCreatureType(creature);
+
+            //Abilities
+            UpdateCreatureAbilities(creature);
+
+            //Speed
+            UpdateCreatureSpeeds(creature);
+
+            //Challenge Rating
+            UpdateCreatureChallengeRating(creature);
+
+            //Level Adjustment
+            UpdateCreatureLevelAdjustment(creature);
+
+            //Skills
+            UpdateCreatureSkills(creature);
+
+            //Hit Points
+            UpdateCreatureHitPoints(creature);
+
+            //Attacks
+            UpdateCreatureAttacks(creature);
+
+            //Special Qualities
+            UpdateCreatureSpecialQualities(creature);
+
+            //Armor Class
+            UpdateCreatureArmorClass(creature);
+
+            //Equipment
+            UpdateCreatureEquipment(creature);
+
+            return creature;
+        }
+
+        private void UpdateCreatureType(Creature creature)
+        {
             creature.Type.Name = CreatureConstants.Types.Undead;
 
             if (!creature.Type.SubTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
@@ -43,20 +90,19 @@ namespace DnDGen.CreatureGen.Templates
                     CreatureConstants.Types.Subtypes.Incorporeal
                 });
             }
+        }
 
-            //Abilities
+        private void UpdateCreatureAbilities(Creature creature)
+        {
             creature.Abilities[AbilityConstants.Constitution].BaseScore = 0;
             creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment = 4;
 
             while (creature.Abilities[AbilityConstants.Charisma].FullScore < 10)
                 creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment++;
+        }
 
-            //Hit Points
-            creature.HitPoints.HitDie = 12;
-            creature.HitPoints.Roll(dice);
-            creature.HitPoints.RollDefault(dice);
-
-            //Speed
+        private void UpdateCreatureSpeeds(Creature creature)
+        {
             var ghostSpeeds = speedsGenerator.Generate(CreatureConstants.Templates.Ghost);
 
             foreach (var kvp in ghostSpeeds)
@@ -73,19 +119,94 @@ namespace DnDGen.CreatureGen.Templates
 
                 creature.Speeds[kvp.Key].Description = kvp.Value.Description;
             }
+        }
 
-            //Challenge Rating
+        private void UpdateCreatureChallengeRating(Creature creature)
+        {
             var challengeRatings = ChallengeRatingConstants.GetOrdered().ToList();
             var index = challengeRatings.IndexOf(creature.ChallengeRating);
             creature.ChallengeRating = challengeRatings[index + 2];
+        }
 
-            //Level Adjustment
+        private void UpdateCreatureLevelAdjustment(Creature creature)
+        {
             if (creature.LevelAdjustment.HasValue)
             {
                 creature.LevelAdjustment += 5;
             }
+        }
 
-            //Attacks
+        private void UpdateCreatureSkills(Creature creature)
+        {
+            var ghostSkills = new[] { SkillConstants.Hide, SkillConstants.Listen, SkillConstants.Search, SkillConstants.Spot };
+            foreach (var skill in creature.Skills)
+            {
+                if (ghostSkills.Contains(skill.Name))
+                {
+                    skill.AddBonus(8);
+                }
+            }
+        }
+
+        private void UpdateCreatureEquipment(Creature creature)
+        {
+            if (creature.CanUseEquipment)
+            {
+                if (creature.Equipment.Armor != null
+                    || creature.Equipment.Items.Any()
+                    || creature.Equipment.Shield != null
+                    || creature.Equipment.Weapons.Any())
+                {
+                    var quantity = dice.Roll(2).d4().AsSum();
+                    var ghostItems = new List<Item>();
+
+                    while (ghostItems.Count < quantity)
+                    {
+                        var items = itemsGenerator.GenerateRandomAtLevel(creature.HitPoints.RoundedHitDiceQuantity);
+                        items = items.Take(quantity - ghostItems.Count);
+
+                        ghostItems.AddRange(items);
+                    }
+
+                    creature.Equipment.Items = creature.Equipment.Items.Union(ghostItems);
+                }
+            }
+        }
+
+        private async Task UpdateCreatureEquipmentAsync(Creature creature)
+        {
+            if (creature.CanUseEquipment)
+            {
+                if (creature.Equipment.Armor != null
+                    || creature.Equipment.Items.Any()
+                    || creature.Equipment.Shield != null
+                    || creature.Equipment.Weapons.Any())
+                {
+                    var quantity = dice.Roll(2).d4().AsSum();
+                    var ghostItems = new List<Item>();
+
+                    while (ghostItems.Count < quantity)
+                    {
+                        var items = await itemsGenerator.GenerateRandomAtLevelAsync(creature.HitPoints.RoundedHitDiceQuantity);
+                        items = items.Take(quantity - ghostItems.Count);
+
+                        ghostItems.AddRange(items);
+                    }
+
+                    creature.Equipment.Items = creature.Equipment.Items.Union(ghostItems);
+                }
+            }
+        }
+
+        private void UpdateCreatureHitPoints(Creature creature)
+        {
+            creature.HitPoints.HitDie = 12;
+            creature.HitPoints.Roll(dice);
+            creature.HitPoints.RollDefault(dice);
+        }
+
+        private void UpdateCreatureAttacks(Creature creature)
+        {
             var ghostAttacks = attacksGenerator.GenerateAttacks(
                 CreatureConstants.Templates.Ghost,
                 creature.Size,
@@ -106,31 +227,10 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             creature.Attacks = creature.Attacks.Union(newAttacks);
+        }
 
-            //Skills
-            var ghostSkills = new[] { SkillConstants.Hide, SkillConstants.Listen, SkillConstants.Search, SkillConstants.Spot };
-            foreach (var skill in creature.Skills)
-            {
-                if (ghostSkills.Contains(skill.Name))
-                {
-                    skill.AddBonus(8);
-                }
-            }
-
-            //Special Qualities
-            var ghostQualities = featsGenerator.GenerateSpecialQualities(
-                CreatureConstants.Templates.Ghost,
-                creature.Type,
-                creature.HitPoints,
-                creature.Abilities,
-                creature.Skills,
-                creature.CanUseEquipment,
-                creature.Size,
-                creature.Alignment);
-
-            creature.SpecialQualities = creature.SpecialQualities.Union(ghostQualities);
-
-            //Armor Class
+        private void UpdateCreatureArmorClass(Creature creature)
+        {
             foreach (var naturalArmorBonus in creature.ArmorClass.NaturalArmorBonuses)
             {
                 if (!naturalArmorBonus.IsConditional)
@@ -145,6 +245,77 @@ namespace DnDGen.CreatureGen.Templates
 
             var deflectionBonus = Math.Max(1, creature.Abilities[AbilityConstants.Charisma].Modifier);
             creature.ArmorClass.AddBonus(ArmorClassConstants.Deflection, deflectionBonus);
+        }
+
+        private void UpdateCreatureSpecialQualities(Creature creature)
+        {
+            var ghostQualities = featsGenerator.GenerateSpecialQualities(
+                CreatureConstants.Templates.Ghost,
+                creature.Type,
+                creature.HitPoints,
+                creature.Abilities,
+                creature.Skills,
+                creature.CanUseEquipment,
+                creature.Size,
+                creature.Alignment);
+
+            creature.SpecialQualities = creature.SpecialQualities.Union(ghostQualities);
+        }
+
+        public async Task<Creature> ApplyToAsync(Creature creature)
+        {
+            var tasks = new List<Task>();
+
+            //Type
+            var typeTask = Task.Run(() => UpdateCreatureType(creature));
+            tasks.Add(typeTask);
+
+            //Abilities
+            var abilityTask = Task.Run(() => UpdateCreatureAbilities(creature));
+            tasks.Add(abilityTask);
+
+            //Speed
+            var speedTask = Task.Run(() => UpdateCreatureSpeeds(creature));
+            tasks.Add(speedTask);
+
+            //Challenge Rating
+            var challengeRatingTask = Task.Run(() => UpdateCreatureChallengeRating(creature));
+            tasks.Add(challengeRatingTask);
+
+            //Level Adjustment
+            var levelAdjustmentTask = Task.Run(() => UpdateCreatureLevelAdjustment(creature));
+            tasks.Add(levelAdjustmentTask);
+
+            //Skills
+            var skillTask = Task.Run(() => UpdateCreatureSkills(creature));
+            tasks.Add(skillTask);
+
+            //Equipment
+            var equipmentTask = UpdateCreatureEquipmentAsync(creature);
+            tasks.Add(equipmentTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
+
+            //INFO: These depend on abilities from earlier
+            //Hit Points
+            var hitPointTask = Task.Run(() => UpdateCreatureHitPoints(creature));
+            tasks.Add(hitPointTask);
+
+            //Attacks
+            var attackTask = Task.Run(() => UpdateCreatureAttacks(creature));
+            tasks.Add(attackTask);
+
+            //Armor Class
+            var armorClassTask = Task.Run(() => UpdateCreatureArmorClass(creature));
+            tasks.Add(armorClassTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
+
+            //INFO: This depends on hit points and abilities from earlier
+            //Special Qualities
+            await Task.Run(() => UpdateCreatureSpecialQualities(creature));
 
             return creature;
         }

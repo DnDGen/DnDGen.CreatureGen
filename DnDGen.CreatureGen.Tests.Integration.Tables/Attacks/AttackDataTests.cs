@@ -52,11 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         public void AttackDataNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var templates = new[]
-            {
-                CreatureConstants.Templates.CelestialCreature,
-                CreatureConstants.Templates.FiendishCreature,
-            };
+            var templates = CreatureConstants.Templates.GetAll();
 
             var names = creatures.Union(templates);
 

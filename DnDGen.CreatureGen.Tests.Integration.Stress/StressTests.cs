@@ -34,7 +34,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress
         public void StressSetup()
         {
             allCreatures = CreatureConstants.GetAll();
-            allTemplates = CreatureConstants.Templates.All();
+            allTemplates = CreatureConstants.Templates.GetAll();
             creatureVerifier = GetNewInstanceOf<ICreatureVerifier>();
         }
     }

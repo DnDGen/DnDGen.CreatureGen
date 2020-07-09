@@ -4,7 +4,9 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Templates
 {
@@ -22,6 +24,31 @@ namespace DnDGen.CreatureGen.Templates
         public Creature ApplyTo(Creature creature)
         {
             // Creature type
+            UpdateCreatureType(creature);
+
+            // Challenge ratings
+            UpdateCreatureChallengeRating(creature);
+
+            // Abilities
+            UpdateCreatureAbilities(creature);
+
+            // Level Adjustment
+            UpdateCreatureLevelAdjustment(creature);
+
+            // Alignment
+            UpdateCreatureAlignment(creature);
+
+            // Attacks
+            UpdateCreatureAttacks(creature);
+
+            // Special Qualities
+            UpdateCreatureSpecialQualities(creature);
+
+            return creature;
+        }
+
+        private void UpdateCreatureType(Creature creature)
+        {
             if (creature.Type.Name == CreatureConstants.Types.Animal
                 || creature.Type.Name == CreatureConstants.Types.Vermin)
             {
@@ -35,8 +62,21 @@ namespace DnDGen.CreatureGen.Templates
                     CreatureConstants.Types.Subtypes.Extraplanar
                 });
             }
+        }
 
-            // Challenge ratings
+        private void UpdateCreatureAbilities(Creature creature)
+        {
+            while (creature.Abilities[AbilityConstants.Intelligence].FullScore < 3)
+                creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment++;
+        }
+
+        private void UpdateCreatureAlignment(Creature creature)
+        {
+            creature.Alignment.Goodness = AlignmentConstants.Evil;
+        }
+
+        private void UpdateCreatureChallengeRating(Creature creature)
+        {
             var challengeRatings = ChallengeRatingConstants.GetOrdered();
 
             if (creature.HitPoints.HitDiceQuantity >= 8)
@@ -49,19 +89,16 @@ namespace DnDGen.CreatureGen.Templates
                 var index = challengeRatings.ToList().IndexOf(creature.ChallengeRating);
                 creature.ChallengeRating = challengeRatings[index + 1];
             }
+        }
 
-            // Abilities
-            while (creature.Abilities[AbilityConstants.Intelligence].FullScore < 3)
-                creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment++;
-
-            // Level Adjustment
+        private void UpdateCreatureLevelAdjustment(Creature creature)
+        {
             if (creature.LevelAdjustment.HasValue)
                 creature.LevelAdjustment += 2;
+        }
 
-            // Alignment
-            creature.Alignment.Goodness = AlignmentConstants.Evil;
-
-            // Attacks
+        private void UpdateCreatureAttacks(Creature creature)
+        {
             var attacks = attackGenerator.GenerateAttacks(
                 CreatureConstants.Templates.FiendishCreature,
                 creature.Size,
@@ -74,8 +111,10 @@ namespace DnDGen.CreatureGen.Templates
             smiteEvil.DamageRoll = Math.Min(creature.HitPoints.RoundedHitDiceQuantity, 20).ToString();
 
             creature.Attacks = creature.Attacks.Union(attacks);
+        }
 
-            // Special Qualities
+        private void UpdateCreatureSpecialQualities(Creature creature)
+        {
             var specialQualities = featGenerator.GenerateSpecialQualities(
                 CreatureConstants.Templates.FiendishCreature,
                 creature.Type,
@@ -102,6 +141,40 @@ namespace DnDGen.CreatureGen.Templates
                     matching.Power = sq.Power;
                 }
             }
+        }
+
+        public async Task<Creature> ApplyToAsync(Creature creature)
+        {
+            var tasks = new List<Task>();
+
+            // Creature type
+            var typeTask = Task.Run(() => UpdateCreatureType(creature));
+            tasks.Add(typeTask);
+
+            // Challenge ratings
+            var challengeRatingTask = Task.Run(() => UpdateCreatureChallengeRating(creature));
+            tasks.Add(challengeRatingTask);
+
+            // Abilities
+            var abilitiesTask = Task.Run(() => UpdateCreatureAbilities(creature));
+            tasks.Add(abilitiesTask);
+
+            // Level Adjustment
+            var levelAdjustmentTask = Task.Run(() => UpdateCreatureLevelAdjustment(creature));
+            tasks.Add(levelAdjustmentTask);
+
+            // Alignment
+            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature));
+            tasks.Add(alignmentTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
+
+            // Attacks
+            await Task.Run(() => UpdateCreatureAttacks(creature));
+
+            // Special Qualities
+            await Task.Run(() => UpdateCreatureSpecialQualities(creature));
 
             return creature;
         }

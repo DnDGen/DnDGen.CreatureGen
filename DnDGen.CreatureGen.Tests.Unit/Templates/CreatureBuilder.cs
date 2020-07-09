@@ -29,6 +29,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return creature;
         }
 
+        public CreatureBuilder CanUseEquipment(bool canUseEquipment)
+        {
+            creature.CanUseEquipment = canUseEquipment;
+
+            return this;
+        }
+
         public CreatureBuilder Clone(Creature source)
         {
             creature.Abilities = new Dictionary<string, Ability>();

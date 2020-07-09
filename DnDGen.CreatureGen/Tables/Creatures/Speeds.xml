@@ -3445,4 +3445,53 @@
     <entry>Land@50</entry>
     <entry>Fly@60</entry>
   </collection>
+  <collection>
+    <name>Ghost</name>
+    <entry>Fly@30</entry>
+  </collection>
+  <collection>
+    <name>Celestial Creature</name>
+  </collection>
+  <collection>
+    <name>Fiendish Creature</name>
+  </collection>
+  <collection>
+    <name>Half-Celestial</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon</name>
+  </collection>
+  <collection>
+    <name>Half-Fiend</name>
+  </collection>
+  <collection>
+    <name>Lich</name>
+  </collection>
+  <collection>
+    <name>Skeleton</name>
+  </collection>
+  <collection>
+    <name>Zombie</name>
+  </collection>
+  <collection>
+    <name>Vampire</name>
+  </collection>
+  <collection>
+    <name>Werebear</name>
+  </collection>
+  <collection>
+    <name>Wereboar</name>
+  </collection>
+  <collection>
+    <name>Werewolf</name>
+  </collection>
+  <collection>
+    <name>Weretiger</name>
+  </collection>
+  <collection>
+    <name>Wererat</name>
+  </collection>
+  <collection>
+    <name></name>
+  </collection>
 </collections>

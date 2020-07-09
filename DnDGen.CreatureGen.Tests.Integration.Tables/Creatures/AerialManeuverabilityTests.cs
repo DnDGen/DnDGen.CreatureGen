@@ -1,8 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Selectors.Collections;
-using Ninject;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
 using System.Linq;
 
@@ -25,7 +24,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void AerialManeuverabilityNames()
         {
             var creatures = CreatureConstants.GetAll();
-            AssertCollectionNames(creatures);
+            var templates = CreatureConstants.Templates.GetAll();
+
+            var names = creatures.Union(templates);
+            AssertCollectionNames(names);
         }
 
         [TestCase(CreatureConstants.Aasimar)]
@@ -749,45 +751,57 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs)]
         [TestCase(CreatureConstants.YuanTi_Pureblood)]
         [TestCase(CreatureConstants.Zelekhut, "Average Maneuverability")]
+        [TestCase(CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(CreatureConstants.Templates.Ghost, "Perfect Maneuverability")]
+        [TestCase(CreatureConstants.Templates.HalfCelestial, "Good Maneuverability")]
+        [TestCase(CreatureConstants.Templates.HalfDragon, "Average Maneuverability")]
+        [TestCase(CreatureConstants.Templates.HalfFiend, "Average Maneuverability")]
+        [TestCase(CreatureConstants.Templates.Lich)]
+        [TestCase(CreatureConstants.Templates.None)]
+        [TestCase(CreatureConstants.Templates.Skeleton)]
+        [TestCase(CreatureConstants.Templates.Vampire)]
+        [TestCase(CreatureConstants.Templates.Werebear)]
+        [TestCase(CreatureConstants.Templates.Wereboar)]
+        [TestCase(CreatureConstants.Templates.Wererat)]
+        [TestCase(CreatureConstants.Templates.Weretiger)]
+        [TestCase(CreatureConstants.Templates.Werewolf)]
+        [TestCase(CreatureConstants.Templates.Zombie, "Clumsy Maneuverability")]
         public void AerialManeuverability(string creature, params string[] maneuverability)
         {
-            Assert.That(maneuverability.Length, Is.Zero.Or.EqualTo(1), creature);
+            Assert.That(maneuverability, Has.Length.InRange(0, 1), creature);
             AssertDistinctCollection(creature, maneuverability);
         }
 
-        [Test]
-        public void AllCreaturesWithAerialSpeedHaveManeuverability()
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void CreatureWithAerialSpeedHaveManeuverability(string creature)
         {
-            var speeds = typesAndAmountsSelector.SelectAll(TableNameConstants.Collection.Speeds);
-            var aerialSpeeds = speeds.Where(kvp => kvp.Value.Any(s => s.Type == SpeedConstants.Fly));
-            var aerialCreatures = aerialSpeeds.Select(kvp => kvp.Key);
+            var speeds = typesAndAmountsSelector.Select(TableNameConstants.Collection.Speeds, creature);
+            var maneuverability = GetCollection(creature);
 
-            Assert.That(table.Keys, Is.SupersetOf(aerialCreatures));
-
-            foreach (var creature in aerialCreatures)
+            if (speeds.Any(s => s.Type == SpeedConstants.Fly))
             {
-                var maneuverability = GetCollection(creature);
                 Assert.That(maneuverability, Is.Not.Empty, creature);
                 Assert.That(maneuverability.Count, Is.EqualTo(1), creature);
-                Assert.That(maneuverability.Single(), Is.Not.Empty, creature);
-                Assert.That(maneuverability.Single(), Does.EndWith(" Maneuverability"), creature);
+                Assert.That(maneuverability.Single(), Is.Not.Empty.And.EndsWith(" Maneuverability"), creature);
+            }
+            else
+            {
+                Assert.That(maneuverability, Is.Empty, creature);
             }
         }
 
-        [Test]
-        public void AllCreaturesWithoutAerialSpeedHaveNoManeuverability()
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
+        public void TemplateWithAerialSpeedHaveManeuverability(string template)
         {
-            var speeds = typesAndAmountsSelector.SelectAll(TableNameConstants.Collection.Speeds);
-            var aerialSpeeds = speeds.Where(kvp => kvp.Value.Any(s => s.Type == SpeedConstants.Fly));
-            var nonAerialSpeeds = speeds.Except(aerialSpeeds);
-            var nonAerialCreatures = nonAerialSpeeds.Select(kvp => kvp.Key);
+            var speeds = typesAndAmountsSelector.Select(TableNameConstants.Collection.Speeds, template);
+            var maneuverability = GetCollection(template);
 
-            Assert.That(table.Keys, Is.SupersetOf(nonAerialCreatures));
-
-            foreach (var creature in nonAerialCreatures)
+            if (speeds.Any(s => s.Type == SpeedConstants.Fly))
             {
-                var maneuverability = GetCollection(creature);
-                Assert.That(maneuverability, Is.Empty, creature);
+                Assert.That(maneuverability, Is.Not.Empty, template);
+                Assert.That(maneuverability.Count, Is.EqualTo(1), template);
+                Assert.That(maneuverability.Single(), Is.Not.Empty.And.EndsWith(" Maneuverability"), template);
             }
         }
     }

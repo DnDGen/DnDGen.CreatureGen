@@ -2420,4 +2420,57 @@
     <name>Zelekhut</name>
     <entry>Average Maneuverability</entry>
   </collection>
+  <collection>
+    <name>Celestial Creature</name>
+  </collection>
+  <collection>
+    <name>Fiendish Creature</name>
+  </collection>
+  <collection>
+    <name>Ghost</name>
+    <entry>Perfect Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Lich</name>
+  </collection>
+  <collection>
+    <name>Vampire</name>
+  </collection>
+  <collection>
+    <name>Half-Celestial</name>
+    <entry>Good Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon</name>
+    <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Half-Fiend</name>
+    <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Skeleton</name>
+  </collection>
+  <collection>
+    <name>Zombie</name>
+    <entry>Clumsy Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Werebear</name>
+  </collection>
+  <collection>
+    <name>Wereboar</name>
+  </collection>
+  <collection>
+    <name>Wererat</name>
+  </collection>
+  <collection>
+    <name>Weretiger</name>
+  </collection>
+  <collection>
+    <name>Werewolf</name>
+  </collection>
+  <collection>
+    <name></name>
+  </collection>
 </collections>

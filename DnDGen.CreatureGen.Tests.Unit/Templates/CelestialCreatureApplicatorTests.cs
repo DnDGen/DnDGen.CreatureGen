@@ -13,6 +13,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
 {
@@ -1050,6 +1051,959 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.Dragon, CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Fey, CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant, CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid, CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Plant, CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.MagicalBeast)]
+        public async Task ApplyToAsync_CreatureTypeIsAdjusted(string original, string adjusted)
+        {
+            baseCreature.Type.Name = original;
+            baseCreature.Type.SubTypes = new[]
+            {
+                "subtype 1",
+                "subtype 2",
+            };
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Type.Name, Is.EqualTo(adjusted));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
+            Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
+                .And.Contains("subtype 2")
+                .And.Contains(CreatureConstants.Types.Subtypes.Extraplanar));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_CreatureSizeIsNotAdjusted()
+        {
+            baseCreature.Size = "my size";
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Size, Is.EqualTo("my size"));
+        }
+
+        [TestCase(.1, 1)]
+        [TestCase(.25, 1)]
+        [TestCase(.5, 1)]
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        [TestCase(4, 4)]
+        [TestCase(5, 5)]
+        [TestCase(6, 6)]
+        [TestCase(7, 7)]
+        [TestCase(8, 8)]
+        [TestCase(9, 9)]
+        [TestCase(10, 10)]
+        [TestCase(11, 11)]
+        [TestCase(12, 12)]
+        [TestCase(13, 13)]
+        [TestCase(14, 14)]
+        [TestCase(15, 15)]
+        [TestCase(16, 16)]
+        [TestCase(17, 17)]
+        [TestCase(18, 18)]
+        [TestCase(19, 19)]
+        [TestCase(20, 20)]
+        [TestCase(21, 20)]
+        [TestCase(22, 20)]
+        [TestCase(42, 20)]
+        public async Task ApplyToAsync_CreatureGainsSmiteEvilSpecialAttack(double hitDiceQuantity, int smiteDamage)
+        {
+            baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
+
+            var originalAttacks = baseCreature.Attacks
+                .Select(a => JsonConvert.SerializeObject(a))
+                .Select(a => JsonConvert.DeserializeObject<Attack>(a))
+                .ToArray();
+            var originalSpecialAttacks = baseCreature.SpecialAttacks
+                .Select(a => JsonConvert.SerializeObject(a))
+                .Select(a => JsonConvert.DeserializeObject<Attack>(a))
+                .ToArray();
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalAttacks.Length + 1));
+            Assert.That(creature.Attacks.Select(a => a.Name), Is.SupersetOf(originalAttacks.Select(a => a.Name)));
+            Assert.That(creature.Attacks, Contains.Item(smiteEvil));
+            Assert.That(creature.SpecialAttacks.Count(), Is.EqualTo(originalSpecialAttacks.Length + 1));
+            Assert.That(creature.SpecialAttacks, Contains.Item(smiteEvil));
+
+            Assert.That(smiteEvil.DamageRoll, Is.EqualTo(smiteDamage.ToString()));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_CreatureGainSpecialQualities()
+        {
+            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var specialQualities = new[]
+            {
+                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
+                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(specialQualities);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
+                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
+                .And.SupersetOf(originalSpecialQualities));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_IfCreatureHasWeakerSpellResistance_Replace()
+        {
+            var spellResistance = new Feat
+            {
+                Name = FeatConstants.SpecialQualities.SpellResistance,
+                Power = 2
+            };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { spellResistance });
+
+            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var specialQualities = new[]
+            {
+                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
+                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(specialQualities);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
+                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[5] }))
+                .And.Not.Contains(specialQualities[5])
+                .And.SupersetOf(originalSpecialQualities));
+            Assert.That(spellResistance.Power, Is.EqualTo(5));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_IfCreatureHasStrongerSpellResistance_DoNotReplace()
+        {
+            var spellResistance = new Feat
+            {
+                Name = FeatConstants.SpecialQualities.SpellResistance,
+                Power = 10
+            };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { spellResistance });
+
+            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var specialQualities = new[]
+            {
+                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
+                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(specialQualities);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
+                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[5] }))
+                .And.Not.Contains(specialQualities[5])
+                .And.SupersetOf(originalSpecialQualities));
+            Assert.That(spellResistance.Power, Is.EqualTo(10));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_IfCreatureHasWeakerDarkvision_Replace()
+        {
+            var darkvision = new Feat
+            {
+                Name = FeatConstants.SpecialQualities.Darkvision,
+                Power = 30
+            };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { darkvision });
+
+            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var specialQualities = new[]
+            {
+                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
+                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(specialQualities);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
+                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Skip(1))
+                .And.Not.Contains(specialQualities[0])
+                .And.SupersetOf(originalSpecialQualities));
+            Assert.That(darkvision.Power, Is.EqualTo(60));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_IfCreatureHasStrongerDarkvision_DoNotReplace()
+        {
+            var darkvision = new Feat
+            {
+                Name = FeatConstants.SpecialQualities.Darkvision,
+                Power = 90
+            };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { darkvision });
+
+            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var specialQualities = new[]
+            {
+                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
+                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(specialQualities);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
+                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Skip(1))
+                .And.Not.Contains(specialQualities[0])
+                .And.SupersetOf(originalSpecialQualities));
+            Assert.That(darkvision.Power, Is.EqualTo(90));
+        }
+
+        [TestCase(FeatConstants.Foci.Elements.Acid)]
+        [TestCase(FeatConstants.Foci.Elements.Cold)]
+        [TestCase(FeatConstants.Foci.Elements.Electricity)]
+        public async Task ApplyToAsync_IfCreatureHasWeakerEnergyResistance_Replace(string energy)
+        {
+            var energyResistance = new Feat
+            {
+                Name = FeatConstants.SpecialQualities.EnergyResistance,
+                Foci = new[] { energy },
+                Power = 2
+            };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { energyResistance });
+
+            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var specialQualities = new[]
+            {
+                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
+                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(specialQualities);
+
+            var celestialSpecialQuality = specialQualities.First(f =>
+                f.Name == FeatConstants.SpecialQualities.EnergyResistance
+                && f.Foci.Contains(energy));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
+                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { celestialSpecialQuality }))
+                .And.Not.Contains(celestialSpecialQuality)
+                .And.SupersetOf(originalSpecialQualities));
+            Assert.That(energyResistance.Power, Is.EqualTo(5));
+        }
+
+        [TestCase(FeatConstants.Foci.Elements.Acid)]
+        [TestCase(FeatConstants.Foci.Elements.Cold)]
+        [TestCase(FeatConstants.Foci.Elements.Electricity)]
+        public async Task ApplyToAsync_IfCreatureHasStrongerEnergyResistance_DoNotReplace(string energy)
+        {
+            var energyResistance = new Feat
+            {
+                Name = FeatConstants.SpecialQualities.EnergyResistance,
+                Foci = new[] { energy },
+                Power = 15
+            };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { energyResistance });
+
+            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var specialQualities = new[]
+            {
+                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
+                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(specialQualities);
+
+            var celestialSpecialQuality = specialQualities.First(f =>
+                f.Name == FeatConstants.SpecialQualities.EnergyResistance
+                && f.Foci.Contains(energy));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
+                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { celestialSpecialQuality }))
+                .And.Not.Contains(celestialSpecialQuality)
+                .And.SupersetOf(originalSpecialQualities));
+            Assert.That(energyResistance.Power, Is.EqualTo(15));
+        }
+
+        [TestCase(FeatConstants.Foci.Elements.Fire)]
+        [TestCase(FeatConstants.Foci.Elements.Sonic)]
+        public async Task ApplyToAsync_IfCreatureHasEnergyResistanceToDifferentEnergy_DoNotReplace(string energy)
+        {
+            var energyResistance = new Feat
+            {
+                Name = FeatConstants.SpecialQualities.EnergyResistance,
+                Foci = new[] { energy },
+                Power = 2
+            };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { energyResistance });
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+
+            var specialQualities = new[]
+            {
+                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 0 },
+                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(specialQualities);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
+                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
+                .And.SupersetOf(originalSpecialQualities));
+            Assert.That(energyResistance.Power, Is.EqualTo(2));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_IfCreatureHasWeakerDamageReduction_Replace()
+        {
+            var damageReduction = new Feat
+            {
+                Name = FeatConstants.SpecialQualities.DamageReduction,
+                Foci = new[] { "Vulnerable to magic" },
+                Power = 2
+            };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { damageReduction });
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+
+            var specialQualities = new[]
+            {
+                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(specialQualities);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
+                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[4] }))
+                .And.Not.Contains(specialQualities[4])
+                .And.SupersetOf(originalSpecialQualities));
+            Assert.That(damageReduction.Power, Is.EqualTo(5));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_IfCreatureHasStrongerDamageReduction_DoNotReplace()
+        {
+            var damageReduction = new Feat
+            {
+                Name = FeatConstants.SpecialQualities.DamageReduction,
+                Foci = new[] { "Vulnerable to magic" },
+                Power = 10
+            };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { damageReduction });
+
+            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var specialQualities = new[]
+            {
+                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(specialQualities);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
+                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[4] }))
+                .And.Not.Contains(specialQualities[4])
+                .And.SupersetOf(originalSpecialQualities));
+            Assert.That(damageReduction.Power, Is.EqualTo(10));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_IfCreatureHasDamageReductionWithDifferentVulnerability_DoNotReplace()
+        {
+            var damageReduction = new Feat
+            {
+                Name = FeatConstants.SpecialQualities.DamageReduction,
+                Foci = new[] { "Vulnerable to magic, adamantine" },
+                Power = 2
+            };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { damageReduction });
+
+            var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var specialQualities = new[]
+            {
+                new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(specialQualities);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
+                .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
+                .And.SupersetOf(originalSpecialQualities));
+            Assert.That(damageReduction.Power, Is.EqualTo(2));
+        }
+
+        [TestCaseSource("AbilityAdjustments")]
+        public async Task ApplyToAsync_CreatureIntelligenceAdvancedToAtLeast3(int raceAdjust, int baseScore, int advanced, int adjusted)
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = baseScore;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = raceAdjust;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = advanced;
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(adjusted).And.AtLeast(3));
+
+            if (baseScore + raceAdjust + advanced < 3)
+            {
+                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Positive
+                    .And.EqualTo(3 - (baseScore + raceAdjust + advanced)));
+            }
+        }
+
+        [Test]
+        public async Task ApplyToAsync_IfCreatureDoesNotHaveIntelligence_GainIntelligenceOf3()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(3));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(3));
+        }
+
+        [TestCaseSource("ChallengeRatingAdjustments")]
+        public async Task ApplyToAsync_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
+        {
+            baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
+            baseCreature.ChallengeRating = original;
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
+            Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
+        }
+
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good, AlignmentConstants.ChaoticGood)]
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Neutral, AlignmentConstants.ChaoticGood)]
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Evil, AlignmentConstants.ChaoticGood)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Good, AlignmentConstants.NeutralGood)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Neutral, AlignmentConstants.NeutralGood)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Evil, AlignmentConstants.NeutralGood)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Good, AlignmentConstants.LawfulGood)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Neutral, AlignmentConstants.LawfulGood)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Evil, AlignmentConstants.LawfulGood)]
+        public async Task ApplyToAsync_AlignmentAdjusted(string lawfulness, string goodness, string adjusted)
+        {
+            baseCreature.Alignment.Lawfulness = lawfulness;
+            baseCreature.Alignment.Goodness = goodness;
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Alignment.Full, Is.EqualTo(adjusted));
+        }
+
+        [TestCase(null, null)]
+        [TestCase(0, 2)]
+        [TestCase(1, 3)]
+        [TestCase(2, 4)]
+        [TestCase(10, 12)]
+        [TestCase(42, 44)]
+        public async Task ApplyToAsync_LevelAdjustmentIncreased(int? adjustment, int? adjusted)
+        {
+            baseCreature.LevelAdjustment = adjustment;
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }

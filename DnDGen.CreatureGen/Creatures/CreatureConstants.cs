@@ -129,7 +129,7 @@ namespace DnDGen.CreatureGen.Creatures
             public const string Werewolf = "Werewolf";
             public const string Zombie = "Zombie";
 
-            public static IEnumerable<string> All()
+            public static IEnumerable<string> GetAll()
             {
                 return new[]
                 {

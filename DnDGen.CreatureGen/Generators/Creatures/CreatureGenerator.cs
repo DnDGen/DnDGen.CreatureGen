@@ -18,6 +18,7 @@ using DnDGen.Infrastructure.Generators;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Generators.Creatures
 {
@@ -205,6 +206,113 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creatureType.SubTypes = types.Skip(1);
 
             return creatureType;
+        }
+
+        public async Task<Creature> GenerateAsync(string creatureName, string template)
+        {
+            var compatible = creatureVerifier.VerifyCompatibility(creatureName, template);
+            if (!compatible)
+                throw new IncompatibleCreatureAndTemplateException(creatureName, template);
+
+            var creature = new Creature();
+            creature.Name = creatureName;
+
+            var creatureData = creatureDataSelector.SelectFor(creatureName);
+            creature.Size = creatureData.Size;
+            creature.Space.Value = creatureData.Space;
+            creature.Reach.Value = creatureData.Reach;
+            creature.CanUseEquipment = creatureData.CanUseEquipment;
+            creature.ChallengeRating = creatureData.ChallengeRating;
+            creature.LevelAdjustment = creatureData.LevelAdjustment;
+            creature.CasterLevel = creatureData.CasterLevel;
+            creature.NumberOfHands = creatureData.NumberOfHands;
+
+            creature.Type = GetCreatureType(creatureName);
+            creature.Abilities = abilitiesGenerator.GenerateFor(creatureName);
+
+            if (advancementSelector.IsAdvanced(creatureName))
+            {
+                var advancement = advancementSelector.SelectRandomFor(creatureName, creature.Type, creature.Size, creature.ChallengeRating);
+
+                creature.Size = advancement.Size;
+                creature.Space.Value = advancement.Space;
+                creature.Reach.Value = advancement.Reach;
+                creature.CasterLevel += advancement.CasterLevelAdjustment;
+                creature.ChallengeRating = advancement.AdjustedChallengeRating;
+                creatureData.NaturalArmor += advancement.NaturalArmorAdjustment;
+
+                creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment += advancement.StrengthAdjustment;
+                creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment += advancement.DexterityAdjustment;
+                creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment += advancement.ConstitutionAdjustment;
+
+                creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution], creature.Size, advancement.AdditionalHitDice);
+            }
+            else
+            {
+                creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution], creature.Size);
+            }
+
+            creature.Alignment = alignmentGenerator.Generate(creatureName);
+            creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities, creature.CanUseEquipment, creature.Size);
+
+            creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(
+                creatureName,
+                creature.Type,
+                creature.HitPoints,
+                creature.Abilities,
+                creature.Skills,
+                creature.CanUseEquipment,
+                creature.Size,
+                creature.Alignment);
+
+            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
+            creature.Attacks = attacksGenerator.GenerateAttacks(creatureName, creatureData.Size, creature.Size, creature.BaseAttackBonus, creature.Abilities, creature.HitPoints.RoundedHitDiceQuantity);
+
+            creature.Feats = featsGenerator.GenerateFeats(
+                creature.HitPoints,
+                creature.BaseAttackBonus,
+                creature.Abilities,
+                creature.Skills,
+                creature.Attacks,
+                creature.SpecialQualities,
+                creature.CasterLevel,
+                creature.Speeds,
+                creatureData.NaturalArmor,
+                creature.NumberOfHands,
+                creature.Size,
+                creature.CanUseEquipment);
+
+            creature.Skills = skillsGenerator.ApplyBonusesFromFeats(creature.Skills, creature.Feats, creature.Abilities);
+            creature.HitPoints = hitPointsGenerator.RegenerateWith(creature.HitPoints, creature.Feats);
+
+            creature.GrappleBonus = attacksGenerator.GenerateGrappleBonus(creatureName, creature.Size, creature.BaseAttackBonus, creature.Abilities[AbilityConstants.Strength]);
+
+            var allFeats = creature.Feats.Union(creature.SpecialQualities);
+            creature.Attacks = attacksGenerator.ApplyAttackBonuses(creature.Attacks, allFeats, creature.Abilities);
+            creature.Attacks = equipmentGenerator.AddAttacks(allFeats, creature.Attacks, creature.NumberOfHands);
+            creature.Equipment = equipmentGenerator.Generate(
+                creature.Name,
+                creature.CanUseEquipment,
+                allFeats,
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Attacks,
+                creature.Abilities,
+                creature.Size);
+
+            creature.Abilities = abilitiesGenerator.SetMaxBonuses(creature.Abilities, creature.Equipment);
+            creature.Skills = skillsGenerator.SetArmorCheckPenalties(creature.Name, creature.Skills, creature.Equipment);
+
+            creature.InitiativeBonus = ComputeInitiative(creature.Abilities, creature.Feats);
+            creature.Speeds = speedsGenerator.Generate(creature.Name);
+            creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities, creature.Size, creatureName, creature.Type, allFeats, creatureData.NaturalArmor, creature.Equipment);
+            creature.Saves = savesGenerator.GenerateWith(creature.Name, creature.Type, creature.HitPoints, allFeats, creature.Abilities);
+
+            creature.Magic = magicGenerator.GenerateWith(creature.Name, creature.Alignment, creature.Abilities, creature.Equipment);
+
+            var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
+            creature = await templateApplicator.ApplyToAsync(creature);
+
+            return creature;
         }
     }
 }

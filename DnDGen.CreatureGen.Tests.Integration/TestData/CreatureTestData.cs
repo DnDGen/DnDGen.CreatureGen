@@ -23,7 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
         {
             get
             {
-                var templates = CreatureConstants.Templates.All();
+                var templates = CreatureConstants.Templates.GetAll();
 
                 foreach (var template in templates)
                 {

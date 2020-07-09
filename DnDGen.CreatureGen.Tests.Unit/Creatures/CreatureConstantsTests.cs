@@ -873,7 +873,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [Test]
         public void AllTemplates()
         {
-            var templates = CreatureConstants.Templates.All();
+            var templates = CreatureConstants.Templates.GetAll();
             var templateConstants = typeof(CreatureConstants.Templates);
             var fields = templateConstants.GetFields(BindingFlags.Public | BindingFlags.Static);
             var constantFields = fields.Where(f => f.IsLiteral && !f.IsInitOnly);

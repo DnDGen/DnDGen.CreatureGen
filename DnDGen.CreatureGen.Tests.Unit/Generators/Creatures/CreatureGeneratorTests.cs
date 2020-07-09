@@ -28,6 +28,7 @@ using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 {
@@ -214,6 +215,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var defaultTemplateApplicator = new Mock<TemplateApplicator>();
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(templateName)).Returns(defaultTemplateApplicator.Object);
             defaultTemplateApplicator.Setup(a => a.ApplyTo(It.IsAny<Creature>())).Returns((Creature c) => c);
+            defaultTemplateApplicator.Setup(a => a.ApplyToAsync(It.IsAny<Creature>())).ReturnsAsync((Creature c) => c);
 
             mockAbilitiesGenerator.Setup(g => g.GenerateFor(creatureName)).Returns(abilities);
             mockAbilitiesGenerator.Setup(g => g.SetMaxBonuses(abilities, equipment)).Returns(abilities);
@@ -1592,6 +1594,1250 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTemplateApplicator.Setup(a => a.ApplyTo(It.IsAny<Creature>())).Returns((Creature c) => c);
 
             var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature, Is.Not.EqualTo(templateCreature));
+        }
+
+        [Test]
+        public async Task GenerateAsync_InvalidCreatureTemplateComboThrowsException()
+        {
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility("creature", "template")).Returns(false);
+
+            Assert.That(async () => await creatureGenerator.GenerateAsync("creature", "template"), Throws.InstanceOf<IncompatibleCreatureAndTemplateException>());
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureName()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Name, Is.EqualTo("creature"));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureSize()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Size, Is.EqualTo("size"));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureSpace()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Space.Value, Is.EqualTo(56.78));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureReach()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Reach.Value, Is.EqualTo(67.89));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureCanUseEquipment()
+        {
+            creatureData.CanUseEquipment = true;
+
+            mockEquipmentGenerator
+                .Setup(g => g.Generate("creature",
+                    true,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    hitPoints.RoundedHitDiceQuantity,
+                    attacks,
+                    abilities,
+                    creatureData.Size))
+                .Returns(equipment);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.CanUseEquipment, Is.True);
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureCannotUseEquipment()
+        {
+            creatureData.CanUseEquipment = false;
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.CanUseEquipment, Is.False);
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureChallengeRating()
+        {
+            creatureData.ChallengeRating = "challenge rating";
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.ChallengeRating, Is.EqualTo("challenge rating"));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureLevelAdjustment()
+        {
+            creatureData.LevelAdjustment = 1234;
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.LevelAdjustment, Is.EqualTo(1234));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateNoCreatureLevelAdjustment()
+        {
+            creatureData.LevelAdjustment = null;
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.LevelAdjustment, Is.Null);
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureLevelAdjustmentOf0()
+        {
+            creatureData.LevelAdjustment = 0;
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.LevelAdjustment, Is.Zero);
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureCasterLevel()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.CasterLevel, Is.EqualTo(1029));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureNumberOfHands()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.NumberOfHands, Is.EqualTo(96));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureType()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Type.Name, Is.EqualTo("type"));
+            Assert.That(creature.Type.SubTypes, Is.Empty);
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureTypeWithSubtype()
+        {
+            types.Add("subtype");
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Type.Name, Is.EqualTo("type"));
+            Assert.That(creature.Type.SubTypes, Is.Not.Empty);
+            Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
+            Assert.That(creature.Type.SubTypes.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureTypeWithMultipleSubtypes()
+        {
+            types.Add("subtype");
+            types.Add("other subtype");
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Type.Name, Is.EqualTo("type"));
+            Assert.That(creature.Type.SubTypes, Is.Not.Empty);
+            Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
+            Assert.That(creature.Type.SubTypes, Contains.Item("other subtype"));
+            Assert.That(creature.Type.SubTypes.Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureAbilities()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Abilities, Is.EqualTo(abilities));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureHitPoints()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureEquipment()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Equipment, Is.EqualTo(equipment));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureMagic()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Magic, Is.EqualTo(magic));
+        }
+
+        [Test]
+        public async Task GenerateAsync_DoNotGenerateAdvancedCreature()
+        {
+            SetUpCreatureAdvancement();
+            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(false);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
+            Assert.That(creature.Size, Is.EqualTo("size"));
+            Assert.That(creature.Space.Value, Is.EqualTo(56.78));
+            Assert.That(creature.Reach.Value, Is.EqualTo(67.89));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.Zero);
+            Assert.That(creature.ChallengeRating, Is.EqualTo("challenge rating"));
+            Assert.That(creature.CasterLevel, Is.EqualTo(1029));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreature()
+        {
+            var advancedhitPoints = SetUpCreatureAdvancement();
+            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(true);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.HitPoints, Is.EqualTo(advancedhitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
+            Assert.That(creature.Size, Is.EqualTo("advanced size"));
+            Assert.That(creature.Space.Value, Is.EqualTo(54.32));
+            Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(3456));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(783));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(69));
+            Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
+            Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureWithExistingRacialAdjustments()
+        {
+            abilities[AbilityConstants.Strength].RacialAdjustment = 38;
+            abilities[AbilityConstants.Dexterity].RacialAdjustment = 47;
+            abilities[AbilityConstants.Constitution].RacialAdjustment = 56;
+
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(true);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
+            Assert.That(creature.Size, Is.EqualTo("advanced size"));
+            Assert.That(creature.Space.Value, Is.EqualTo(54.32));
+            Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].RacialAdjustment, Is.EqualTo(38));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].RacialAdjustment, Is.EqualTo(47));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].RacialAdjustment, Is.EqualTo(56));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(3456));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(783));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(69));
+            Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
+            Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureWithMissingAbilities()
+        {
+            abilities[AbilityConstants.Strength].BaseScore = 0;
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Constitution].BaseScore = 0;
+
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(true);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
+            Assert.That(creature.Size, Is.EqualTo("advanced size"));
+            Assert.That(creature.Space.Value, Is.EqualTo(54.32));
+            Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(3456));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(783));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(69));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].HasScore, Is.False);
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].HasScore, Is.False);
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
+            Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
+            Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureSkills()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Skills, Is.EqualTo(skills));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureSkills()
+        {
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
+            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+
+            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+
+            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
+                "creature",
+                It.Is<CreatureType>(c => c.Name == types[0]),
+                advancedHitPoints,
+                abilities,
+                advancedSkills,
+                creatureData.CanUseEquipment,
+                "advanced size",
+                alignment)
+            ).Returns(advancedSpecialQualities);
+
+            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(
+                advancedHitPoints,
+                999,
+                abilities,
+                advancedSkills,
+                advancedAttacks,
+                advancedSpecialQualities,
+                1029 + 6331,
+                speeds,
+                1336 + 8245,
+                96,
+                "advanced size",
+                creatureData.CanUseEquipment)).Returns(advancedFeats);
+
+            mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(advancedSkills, advancedFeats, abilities)).Returns(advancedSkills);
+
+            var modifiedAdvancedAttacks = new[] { new Attack() { Name = "modified advanced attack" } };
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    advancedAttacks,
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    abilities))
+                .Returns(modifiedAdvancedAttacks);
+
+            var equipmentAdvancedAttacks = new[] { new Attack() { Name = "equipment advanced attack" } };
+            mockEquipmentGenerator
+                .Setup(g => g.AddAttacks(
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    modifiedAdvancedAttacks,
+                    creatureData.NumberOfHands))
+                .Returns(equipmentAdvancedAttacks);
+
+            var advancedEquipment = new Equipment();
+            mockEquipmentGenerator
+                .Setup(g => g.Generate(
+                    "creature",
+                    creatureData.CanUseEquipment,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    advancedHitPoints.RoundedHitDiceQuantity,
+                    equipmentAdvancedAttacks,
+                    abilities,
+                    "advanced size"))
+                .Returns(advancedEquipment);
+
+            var advancedArmorClass = new ArmorClass();
+            mockArmorClassGenerator
+                .Setup(g => g.GenerateWith(
+                    abilities,
+                    "advanced size",
+                    "creature",
+                    It.Is<CreatureType>(c => c.Name == types[0]),
+                    It.IsAny<IEnumerable<Feat>>(),
+                    1336 + 8245,
+                    advancedEquipment))
+                .Returns(advancedArmorClass);
+
+            mockAbilitiesGenerator
+                .Setup(g => g.SetMaxBonuses(abilities, advancedEquipment))
+                .Returns(abilities);
+
+            mockSkillsGenerator
+                .Setup(g => g.SetArmorCheckPenalties("creature", advancedSkills, advancedEquipment))
+                .Returns(advancedSkills);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Skills, Is.EqualTo(advancedSkills));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureSpecialQualities()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.SpecialQualities, Is.EqualTo(specialQualities));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureSpecialQualities()
+        {
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+
+            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
+                "creature",
+                It.Is<CreatureType>(c => c.Name == types[0]),
+                advancedHitPoints,
+                abilities,
+                advancedSkills,
+                creatureData.CanUseEquipment,
+                "advanced size",
+                alignment)
+            ).Returns(advancedSpecialQualities);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.SpecialQualities, Is.EqualTo(advancedSpecialQualities));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureBaseAttackBonus()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.BaseAttackBonus, Is.EqualTo(753));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureBaseAttackBonus()
+        {
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(951);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.BaseAttackBonus, Is.EqualTo(951));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureAttacks()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Attacks, Is.EqualTo(attacks));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureAttacks()
+        {
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
+            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+
+            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+
+            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
+                "creature",
+                It.Is<CreatureType>(c => c.Name == types[0]),
+                advancedHitPoints,
+                abilities,
+                advancedSkills,
+                creatureData.CanUseEquipment,
+                "advanced size",
+                alignment)
+            ).Returns(advancedSpecialQualities);
+
+            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(
+                advancedHitPoints,
+                999,
+                abilities,
+                advancedSkills,
+                advancedAttacks,
+                advancedSpecialQualities,
+                1029 + 6331,
+                speeds,
+                1336 + 8245,
+                96,
+                "advanced size",
+                creatureData.CanUseEquipment)).Returns(advancedFeats);
+
+            var modifiedAdvancedAttacks = new[] { new Attack() { Name = "modified advanced attack" } };
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    advancedAttacks,
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    abilities))
+                .Returns(modifiedAdvancedAttacks);
+
+            var equipmentAdvancedAttacks = new[] { new Attack() { Name = "equipment advanced attack" } };
+            mockEquipmentGenerator
+                .Setup(g => g.AddAttacks(
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    modifiedAdvancedAttacks,
+                    creatureData.NumberOfHands))
+                .Returns(equipmentAdvancedAttacks);
+
+            var advancedEquipment = new Equipment();
+            mockEquipmentGenerator
+                .Setup(g => g.Generate(
+                    "creature",
+                    creatureData.CanUseEquipment,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    advancedHitPoints.RoundedHitDiceQuantity,
+                    equipmentAdvancedAttacks,
+                    abilities,
+                    "advanced size"))
+                .Returns(advancedEquipment);
+
+            var advancedArmorClass = new ArmorClass();
+            mockArmorClassGenerator
+                .Setup(g => g.GenerateWith(
+                    abilities,
+                    "advanced size",
+                    "creature",
+                    It.Is<CreatureType>(c => c.Name == types[0]),
+                    It.IsAny<IEnumerable<Feat>>(),
+                    1336 + 8245,
+                    advancedEquipment))
+                .Returns(advancedArmorClass);
+
+            mockAbilitiesGenerator
+                .Setup(g => g.SetMaxBonuses(abilities, advancedEquipment))
+                .Returns(abilities);
+
+            mockSkillsGenerator
+                .Setup(g => g.SetArmorCheckPenalties("creature", advancedSkills, advancedEquipment))
+                .Returns(advancedSkills);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Attacks, Is.EqualTo(equipmentAdvancedAttacks));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureFeats()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Feats, Is.EqualTo(feats));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureFeats()
+        {
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
+            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+
+            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+
+            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
+                "creature",
+                It.Is<CreatureType>(c => c.Name == types[0]),
+                advancedHitPoints,
+                abilities,
+                advancedSkills,
+                creatureData.CanUseEquipment,
+                "advanced size",
+                alignment)
+            ).Returns(advancedSpecialQualities);
+
+            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(
+                advancedHitPoints,
+                999,
+                abilities,
+                advancedSkills,
+                advancedAttacks,
+                advancedSpecialQualities,
+                1029 + 6331,
+                speeds,
+                1336 + 8245,
+                96,
+                "advanced size",
+                creatureData.CanUseEquipment)).Returns(advancedFeats);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Feats, Is.EqualTo(advancedFeats));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureHitPointsWithFeats()
+        {
+            var updatedHitPoints = new HitPoints();
+            mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, feats)).Returns(updatedHitPoints);
+
+            mockEquipmentGenerator
+                .Setup(g => g.Generate("creature",
+                    creatureData.CanUseEquipment,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    updatedHitPoints.RoundedHitDiceQuantity,
+                    attacks,
+                    abilities,
+                    creatureData.Size))
+                .Returns(equipment);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.HitPoints, Is.EqualTo(updatedHitPoints));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureHitPointsWithFeats()
+        {
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
+            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+
+            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+
+            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
+                "creature",
+                It.Is<CreatureType>(c => c.Name == types[0]),
+                advancedHitPoints,
+                abilities,
+                advancedSkills,
+                creatureData.CanUseEquipment,
+                "advanced size",
+                alignment)
+            ).Returns(advancedSpecialQualities);
+
+            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(
+                advancedHitPoints,
+                999,
+                abilities,
+                advancedSkills,
+                advancedAttacks,
+                advancedSpecialQualities,
+                1029 + 6331,
+                speeds,
+                1336 + 8245,
+                96,
+                "advanced size",
+                creatureData.CanUseEquipment)).Returns(advancedFeats);
+
+            var advancedUpdatedHitPoints = new HitPoints();
+            mockHitPointsGenerator.Setup(g => g.RegenerateWith(advancedHitPoints, advancedFeats)).Returns(advancedUpdatedHitPoints);
+
+            var modifiedAdvancedAttacks = new[] { new Attack() { Name = "modified advanced attack" } };
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    advancedAttacks,
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    abilities))
+                .Returns(modifiedAdvancedAttacks);
+
+            var equipmentAdvancedAttacks = new[] { new Attack() { Name = "equipment advanced attack" } };
+            mockEquipmentGenerator
+                .Setup(g => g.AddAttacks(
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    modifiedAdvancedAttacks,
+                    creatureData.NumberOfHands))
+                .Returns(equipmentAdvancedAttacks);
+
+            var advancedEquipment = new Equipment();
+            mockEquipmentGenerator
+                .Setup(g => g.Generate(
+                    "creature",
+                    creatureData.CanUseEquipment,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    advancedUpdatedHitPoints.RoundedHitDiceQuantity,
+                    equipmentAdvancedAttacks,
+                    abilities,
+                    "advanced size"))
+                .Returns(advancedEquipment);
+
+            var advancedArmorClass = new ArmorClass();
+            mockArmorClassGenerator
+                .Setup(g => g.GenerateWith(
+                    abilities,
+                    "advanced size",
+                    "creature",
+                    It.Is<CreatureType>(c => c.Name == types[0]),
+                    It.IsAny<IEnumerable<Feat>>(),
+                    1336 + 8245,
+                    advancedEquipment))
+                .Returns(advancedArmorClass);
+
+            mockAbilitiesGenerator
+                .Setup(g => g.SetMaxBonuses(abilities, advancedEquipment))
+                .Returns(abilities);
+
+            mockSkillsGenerator
+                .Setup(g => g.SetArmorCheckPenalties("creature", advancedSkills, advancedEquipment))
+                .Returns(advancedSkills);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.HitPoints, Is.EqualTo(advancedUpdatedHitPoints));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureSkillsUpdatedByFeats()
+        {
+            var updatedSkills = new List<Skill>() { new Skill("updated skill", abilities.First().Value, 1000) };
+            mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats, abilities)).Returns(updatedSkills);
+
+            mockSkillsGenerator
+                .Setup(g => g.SetArmorCheckPenalties(
+                    "creature",
+                    updatedSkills,
+                    equipment))
+                .Returns(updatedSkills);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Skills, Is.EqualTo(updatedSkills));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureSkillsUpdatedByFeats()
+        {
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
+            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+
+            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+
+            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
+                "creature",
+                It.Is<CreatureType>(c => c.Name == types[0]),
+                advancedHitPoints,
+                abilities,
+                advancedSkills,
+                creatureData.CanUseEquipment,
+                "advanced size",
+                alignment)
+            ).Returns(advancedSpecialQualities);
+
+            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(
+                advancedHitPoints,
+                999,
+                abilities,
+                advancedSkills,
+                advancedAttacks,
+                advancedSpecialQualities,
+                1029 + 6331,
+                speeds,
+                1336 + 8245,
+                96,
+                "advanced size",
+                creatureData.CanUseEquipment)).Returns(advancedFeats);
+
+            var updatedSkills = new List<Skill> { new Skill("updated advanced skill", abilities.First().Value, 1000) };
+            mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(advancedSkills, advancedFeats, abilities)).Returns(updatedSkills);
+
+            var modifiedAdvancedAttacks = new[] { new Attack() { Name = "modified advanced attack" } };
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    advancedAttacks,
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    abilities))
+                .Returns(modifiedAdvancedAttacks);
+
+            var equipmentAdvancedAttacks = new[] { new Attack() { Name = "equipment advanced attack" } };
+            mockEquipmentGenerator
+                .Setup(g => g.AddAttacks(
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    modifiedAdvancedAttacks,
+                    creatureData.NumberOfHands))
+                .Returns(equipmentAdvancedAttacks);
+
+            var advancedEquipment = new Equipment();
+            mockEquipmentGenerator
+                .Setup(g => g.Generate(
+                    "creature",
+                    creatureData.CanUseEquipment,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    advancedHitPoints.RoundedHitDiceQuantity,
+                    equipmentAdvancedAttacks,
+                    abilities,
+                    "advanced size"))
+                .Returns(advancedEquipment);
+
+            var advancedArmorClass = new ArmorClass();
+            mockArmorClassGenerator
+                .Setup(g => g.GenerateWith(
+                    abilities,
+                    "advanced size",
+                    "creature",
+                    It.Is<CreatureType>(c => c.Name == types[0]),
+                    It.IsAny<IEnumerable<Feat>>(),
+                    1336 + 8245,
+                    advancedEquipment))
+                .Returns(advancedArmorClass);
+
+            mockAbilitiesGenerator
+                .Setup(g => g.SetMaxBonuses(abilities, advancedEquipment))
+                .Returns(abilities);
+
+            mockSkillsGenerator
+                .Setup(g => g.SetArmorCheckPenalties("creature", updatedSkills, advancedEquipment))
+                .Returns(updatedSkills);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Skills, Is.EqualTo(updatedSkills));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureGrappleBonus()
+        {
+            mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("creature", "size", 753, abilities[AbilityConstants.Strength])).Returns(2345);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.GrappleBonus, Is.EqualTo(2345));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureGrappleBonus()
+        {
+            SetUpCreatureAdvancement();
+
+            mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("creature", "advanced size", 999, abilities[AbilityConstants.Strength])).Returns(2345);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.GrappleBonus, Is.EqualTo(2345));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateNoGrappleBonus()
+        {
+            int? noBonus = null;
+            mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("creature", "size", 753, abilities[AbilityConstants.Strength])).Returns(noBonus);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.GrappleBonus, Is.Null);
+        }
+
+        [Test]
+        public async Task GenerateAsync_ApplyAttackBonuses()
+        {
+            var modifiedAttacks = new[] { new Attack() { Name = "modified attack" } };
+            mockAttacksGenerator.Setup(g => g.ApplyAttackBonuses(attacks, feats, abilities)).Returns(modifiedAttacks);
+
+            var equipmentAttacks = new[] { new Attack() { Name = "equipment attack" } };
+            mockEquipmentGenerator.Setup(g => g.AddAttacks(feats, modifiedAttacks, creatureData.NumberOfHands)).Returns(equipmentAttacks);
+
+            mockEquipmentGenerator
+                .Setup(g => g.Generate(
+                    "creature",
+                    creatureData.CanUseEquipment,
+                    feats,
+                    hitPoints.RoundedHitDiceQuantity,
+                    equipmentAttacks,
+                    abilities,
+                    creatureData.Size))
+                .Returns(equipment);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Attacks, Is.EqualTo(equipmentAttacks));
+        }
+
+        [Test]
+        public async Task GenerateAsync_ApplyAdvancedAttackBonuses()
+        {
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
+            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+
+            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+
+            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    "creature",
+                    It.Is<CreatureType>(c => c.Name == types[0]),
+                    advancedHitPoints,
+                    abilities,
+                    advancedSkills,
+                    creatureData.CanUseEquipment,
+                    "advanced size",
+                    alignment))
+                .Returns(advancedSpecialQualities);
+
+            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            mockFeatsGenerator
+                .Setup(g => g.GenerateFeats(
+                    advancedHitPoints,
+                    999,
+                    abilities,
+                    advancedSkills,
+                    advancedAttacks,
+                    advancedSpecialQualities,
+                    1029 + 6331,
+                    speeds,
+                    1336 + 8245,
+                    96,
+                    "advanced size",
+                    creatureData.CanUseEquipment))
+                .Returns(advancedFeats);
+
+            var modifiedAttacks = new[] { new Attack() { Name = "modified advanced attack" } };
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    advancedAttacks,
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    abilities))
+                .Returns(modifiedAttacks);
+
+            var equipmentAttacks = new[] { new Attack() { Name = "equipment advanced attack" } };
+            mockEquipmentGenerator
+                .Setup(g => g.AddAttacks(
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    modifiedAttacks,
+                    creatureData.NumberOfHands))
+                .Returns(equipmentAttacks);
+
+            var advancedEquipment = new Equipment();
+            mockEquipmentGenerator
+                .Setup(g => g.Generate(
+                    "creature",
+                    creatureData.CanUseEquipment,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    advancedHitPoints.RoundedHitDiceQuantity,
+                    equipmentAttacks,
+                    abilities,
+                    "advanced size"))
+                .Returns(advancedEquipment);
+
+            var advancedArmorClass = new ArmorClass();
+            mockArmorClassGenerator
+                .Setup(g => g.GenerateWith(
+                    abilities,
+                    "advanced size",
+                    "creature",
+                    It.Is<CreatureType>(c => c.Name == types[0]),
+                    It.IsAny<IEnumerable<Feat>>(),
+                    1336 + 8245,
+                    advancedEquipment))
+                .Returns(advancedArmorClass);
+
+            mockAbilitiesGenerator
+                .Setup(g => g.SetMaxBonuses(abilities, advancedEquipment))
+                .Returns(abilities);
+
+            mockSkillsGenerator
+                .Setup(g => g.SetArmorCheckPenalties("creature", advancedSkills, advancedEquipment))
+                .Returns(advancedSkills);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Attacks, Is.EqualTo(equipmentAttacks));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureInitiativeBonus()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 4132;
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureInitiativeBonus()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 4132;
+
+            SetUpCreatureAdvancement();
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureInitiativeBonusWithImprovedInitiative()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 4132;
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+            feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier + 4));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiative()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 4132;
+
+            SetUpCreatureAdvancement();
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+            feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier + 4));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureInitiativeBonusWithoutDexterity()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Intelligence].BaseScore = 1234;
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(612));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureInitiativeBonusWithoutDexterity()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Intelligence].BaseScore = 1234;
+
+            SetUpCreatureAdvancement();
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(612));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Intelligence].BaseScore = 1234;
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+            feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
+        {
+            abilities[AbilityConstants.Dexterity].BaseScore = 0;
+            abilities[AbilityConstants.Intelligence].BaseScore = 1234;
+
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            feats.Add(new Feat { Name = "other feat", Power = 4 });
+            feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(advancedHitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureSpeeds()
+        {
+            speeds["on foot"] = new Measurement("feet per round");
+            speeds["in a car"] = new Measurement("feet per round");
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Speeds, Is.EqualTo(speeds));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureArmorClass()
+        {
+            var armorClass = new ArmorClass();
+            mockArmorClassGenerator
+                .Setup(g => g.GenerateWith(
+                    abilities,
+                    "size",
+                    "creature",
+                    It.Is<CreatureType>(c => c.Name == types[0]),
+                    feats,
+                    creatureData.NaturalArmor,
+                    equipment))
+                .Returns(armorClass);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.ArmorClass, Is.Not.Null);
+            Assert.That(creature.ArmorClass, Is.EqualTo(armorClass));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureArmorClass()
+        {
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
+            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+
+            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            mockSkillsGenerator.Setup(g => g.GenerateFor(advancedHitPoints, "creature", It.Is<CreatureType>(c => c.Name == types[0]), abilities, creatureData.CanUseEquipment, "advanced size")).Returns(advancedSkills);
+
+            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+
+            mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
+                "creature",
+                It.Is<CreatureType>(c => c.Name == types[0]),
+                advancedHitPoints,
+                abilities,
+                advancedSkills,
+                creatureData.CanUseEquipment,
+                "advanced size",
+                alignment)
+            ).Returns(advancedSpecialQualities);
+
+            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(
+                advancedHitPoints,
+                999,
+                abilities,
+                advancedSkills,
+                advancedAttacks,
+                advancedSpecialQualities,
+                1029 + 6331,
+                speeds,
+                1336 + 8245,
+                96,
+                "advanced size",
+                creatureData.CanUseEquipment)).Returns(advancedFeats);
+
+            var modifiedAdvancedAttacks = new[] { new Attack() { Name = "modified advanced attack" } };
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    advancedAttacks,
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    abilities))
+                .Returns(modifiedAdvancedAttacks);
+
+            var equipmentAdvancedAttacks = new[] { new Attack() { Name = "equipment advanced attack" } };
+            mockEquipmentGenerator
+                .Setup(g => g.AddAttacks(
+                    It.Is<IEnumerable<Feat>>(f => advancedFeats.Intersect(f).Count() == advancedFeats.Count()),
+                    modifiedAdvancedAttacks,
+                    creatureData.NumberOfHands))
+                .Returns(equipmentAdvancedAttacks);
+
+            var advancedEquipment = new Equipment();
+            mockEquipmentGenerator
+                .Setup(g => g.Generate(
+                    "creature",
+                    creatureData.CanUseEquipment,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    advancedHitPoints.RoundedHitDiceQuantity,
+                    equipmentAdvancedAttacks,
+                    abilities,
+                    "advanced size"))
+                .Returns(advancedEquipment);
+
+            var advancedArmorClass = new ArmorClass();
+            mockArmorClassGenerator
+                .Setup(g => g.GenerateWith(
+                    abilities,
+                    "advanced size",
+                    "creature",
+                    It.Is<CreatureType>(c => c.Name == types[0]),
+                    It.IsAny<IEnumerable<Feat>>(),
+                    1336 + 8245,
+                    advancedEquipment))
+                .Returns(advancedArmorClass);
+
+            mockAbilitiesGenerator
+                .Setup(g => g.SetMaxBonuses(abilities, advancedEquipment))
+                .Returns(abilities);
+
+            mockSkillsGenerator
+                .Setup(g => g.SetArmorCheckPenalties("creature", advancedSkills, advancedEquipment))
+                .Returns(advancedSkills);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.ArmorClass, Is.Not.Null);
+            Assert.That(creature.ArmorClass, Is.EqualTo(advancedArmorClass));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureSaves()
+        {
+            var saves = new Dictionary<string, Save>();
+            saves["save name"] = new Save();
+
+            mockSavesGenerator.Setup(g => g.GenerateWith("creature", It.Is<CreatureType>(c => c.Name == types[0]), hitPoints, feats, abilities)).Returns(saves);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Saves, Is.EqualTo(saves));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateAdvancedCreatureSaves()
+        {
+            var advancedHitPoints = SetUpCreatureAdvancement();
+
+            mockFeatsGenerator.Setup(g => g.GenerateFeats(advancedHitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
+
+            var saves = new Dictionary<string, Save>();
+            saves["save name"] = new Save();
+
+            mockSavesGenerator.Setup(g => g.GenerateWith("creature", It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, feats, abilities)).Returns(saves);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Saves, Is.EqualTo(saves));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureAlignment()
+        {
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.Alignment, Is.EqualTo(alignment));
+            Assert.That(creature.Alignment.Full, Is.EqualTo("creature alignment"));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureModifiedByTemplate()
+        {
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("template")).Returns(mockTemplateApplicator.Object);
+
+            var templateCreature = new Creature();
+            mockTemplateApplicator.Setup(a => a.ApplyToAsync(It.IsAny<Creature>())).ReturnsAsync(templateCreature);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature, Is.EqualTo(templateCreature));
+        }
+
+        [Test]
+        public async Task GenerateAsync_GenerateCreatureNotModifiedByTemplate()
+        {
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("template")).Returns(mockTemplateApplicator.Object);
+
+            var templateCreature = new Creature();
+            mockTemplateApplicator.Setup(a => a.ApplyToAsync(It.IsAny<Creature>())).ReturnsAsync((Creature c) => c);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
             Assert.That(creature, Is.Not.EqualTo(templateCreature));
         }
     }
