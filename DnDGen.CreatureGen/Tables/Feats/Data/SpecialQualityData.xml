@@ -5582,7 +5582,7 @@
   <collection>
     <name>Celestial Creature</name>
     <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
-    <entry>Spell Resistance#6##0##0#False###0#1#1</entry>
+    <entry>Spell Resistance#6##0##0#False###0#0#1</entry>
     <entry>Spell Resistance#7##0##0#False###0#2#2</entry>
     <entry>Spell Resistance#8##0##0#False###0#3#3</entry>
     <entry>Spell Resistance#9##0##0#False###0#4#4</entry>
@@ -5614,7 +5614,7 @@
   <collection>
     <name>Fiendish Creature</name>
     <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
-    <entry>Spell Resistance#6##0##0#False###0#1#1</entry>
+    <entry>Spell Resistance#6##0##0#False###0#0#1</entry>
     <entry>Spell Resistance#7##0##0#False###0#2#2</entry>
     <entry>Spell Resistance#8##0##0#False###0#3#3</entry>
     <entry>Spell Resistance#9##0##0#False###0#4#4</entry>
@@ -5640,5 +5640,209 @@
     <entry>Energy Resistance#10#Cold#0##0#False###0#8#2147483647</entry>
     <entry>Damage Reduction#5#Vulnerable to magic#1#Hit#0#False###0#4#11</entry>
     <entry>Damage Reduction#10#Vulnerable to magic#1#Hit#0#False###0#12#2147483647</entry>
+  </collection>
+  <collection>
+    <name></name>
+  </collection>
+  <collection>
+    <name>Half-Celestial</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Disease#0##0#False###0#0#2147483647</entry>
+    <entry>Spell Resistance#11##0##0#False###0#0#1</entry>
+    <entry>Spell Resistance#12##0##0#False###0#2#2</entry>
+    <entry>Spell Resistance#13##0##0#False###0#3#3</entry>
+    <entry>Spell Resistance#14##0##0#False###0#4#4</entry>
+    <entry>Spell Resistance#15##0##0#False###0#5#5</entry>
+    <entry>Spell Resistance#16##0##0#False###0#6#6</entry>
+    <entry>Spell Resistance#17##0##0#False###0#7#7</entry>
+    <entry>Spell Resistance#18##0##0#False###0#8#8</entry>
+    <entry>Spell Resistance#19##0##0#False###0#9#9</entry>
+    <entry>Spell Resistance#20##0##0#False###0#10#10</entry>
+    <entry>Spell Resistance#21##0##0#False###0#11#11</entry>
+    <entry>Spell Resistance#22##0##0#False###0#12#12</entry>
+    <entry>Spell Resistance#23##0##0#False###0#13#13</entry>
+    <entry>Spell Resistance#24##0##0#False###0#14#14</entry>
+    <entry>Spell Resistance#25##0##0#False###0#15#15</entry>
+    <entry>Spell Resistance#26##0##0#False###0#16#16</entry>
+    <entry>Spell Resistance#27##0##0#False###0#17#17</entry>
+    <entry>Spell Resistance#28##0##0#False###0#18#18</entry>
+    <entry>Spell Resistance#29##0##0#False###0#19#19</entry>
+    <entry>Spell Resistance#30##0##0#False###0#20#20</entry>
+    <entry>Spell Resistance#31##0##0#False###0#21#21</entry>
+    <entry>Spell Resistance#32##0##0#False###0#22#22</entry>
+    <entry>Spell Resistance#33##0##0#False###0#23#23</entry>
+    <entry>Spell Resistance#34##0##0#False###0#24#24</entry>
+    <entry>Spell Resistance#35##0##0#False###0#25#2147483647</entry>
+    <entry>Energy Resistance#10#Cold#0##0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Acid#0##0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Electricity#0##0#False###0#0#2147483647</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic#1#Hit#0#False###0#0#11</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic#1#Hit#0#False###0#12#2147483647</entry>
+    <entry>Spell-Like Ability#0#Daylight#0#At Will#0#False###0#0#2147483647</entry>
+    <entry>Spell-Like Ability#0#Protection from evil#3#Day#0#False###0#1#2147483647</entry>
+    <entry>Spell-Like Ability#0#Bless#1#Day#0#False###0#1#2147483647</entry>
+    <entry>Spell-Like Ability#0#Aid#1#Day#0#False###0#3#2147483647</entry>
+    <entry>Spell-Like Ability#0#Detect evil#1#Day#0#False###0#3#2147483647</entry>
+    <entry>Spell-Like Ability#0#Cure serious wounds#1#Day#0#False###0#5#2147483647</entry>
+    <entry>Spell-Like Ability#0#Neutralize poison#1#Day#0#False###0#5#2147483647</entry>
+    <entry>Spell-Like Ability#0#Holy smite#1#Day#0#False#Charisma#Will#14#7#2147483647</entry>
+    <entry>Spell-Like Ability#0#Remove disease#1#Day#0#False###0#7#2147483647</entry>
+    <entry>Spell-Like Ability#0#Holy aura#3#Day#0#False#Charisma#Will#18#13#2147483647</entry>
+    <entry>Spell-Like Ability#0#Hallow#1#Day#0#False###0#13#2147483647</entry>
+    <entry>Spell-Like Ability#0#Dispel evil#1#Day#0#False#Charisma#Will#15#9#2147483647</entry>
+    <entry>Spell-Like Ability#0#Holy word#1#Day#0#False#Charisma#Will#17#11#2147483647</entry>
+    <entry>Spell-Like Ability#0#Mass charm monster#1#Day#0#False#Charisma#Will#18#15#2147483647</entry>
+    <entry>Spell-Like Ability#0#Summon monster IX#1#Day#0#False###0#17#2147483647</entry>
+    <entry>Spell-Like Ability#0#Resurrection#1#Day#0#False###0#19#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Sleep#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Paralysis#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Acid (Black)#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Electricity (Blue)#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Acid (Green)#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Fire (Red)#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Cold (White)#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Fire (Brass)#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Electricity (Bronze)#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Acid (Copper)#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Fire (Gold)#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Cold (Silver)#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Fiend</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Poison#0##0#False###0#0#2147483647</entry>
+    <entry>Spell Resistance#11##0##0#False###0#0#1</entry>
+    <entry>Spell Resistance#12##0##0#False###0#2#2</entry>
+    <entry>Spell Resistance#13##0##0#False###0#3#3</entry>
+    <entry>Spell Resistance#14##0##0#False###0#4#4</entry>
+    <entry>Spell Resistance#15##0##0#False###0#5#5</entry>
+    <entry>Spell Resistance#16##0##0#False###0#6#6</entry>
+    <entry>Spell Resistance#17##0##0#False###0#7#7</entry>
+    <entry>Spell Resistance#18##0##0#False###0#8#8</entry>
+    <entry>Spell Resistance#19##0##0#False###0#9#9</entry>
+    <entry>Spell Resistance#20##0##0#False###0#10#10</entry>
+    <entry>Spell Resistance#21##0##0#False###0#11#11</entry>
+    <entry>Spell Resistance#22##0##0#False###0#12#12</entry>
+    <entry>Spell Resistance#23##0##0#False###0#13#13</entry>
+    <entry>Spell Resistance#24##0##0#False###0#14#14</entry>
+    <entry>Spell Resistance#25##0##0#False###0#15#15</entry>
+    <entry>Spell Resistance#26##0##0#False###0#16#16</entry>
+    <entry>Spell Resistance#27##0##0#False###0#17#17</entry>
+    <entry>Spell Resistance#28##0##0#False###0#18#18</entry>
+    <entry>Spell Resistance#29##0##0#False###0#19#19</entry>
+    <entry>Spell Resistance#30##0##0#False###0#20#20</entry>
+    <entry>Spell Resistance#31##0##0#False###0#21#21</entry>
+    <entry>Spell Resistance#32##0##0#False###0#22#22</entry>
+    <entry>Spell Resistance#33##0##0#False###0#23#23</entry>
+    <entry>Spell Resistance#34##0##0#False###0#24#24</entry>
+    <entry>Spell Resistance#35##0##0#False###0#25#2147483647</entry>
+    <entry>Energy Resistance#10#Fire#0##0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Cold#0##0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Acid#0##0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Electricity#0##0#False###0#0#2147483647</entry>
+    <entry>Damage Reduction#5#Vulnerable to magic#1#Hit#0#False###0#0#11</entry>
+    <entry>Damage Reduction#10#Vulnerable to magic#1#Hit#0#False###0#12#2147483647</entry>
+    <entry>Spell-Like Ability#0#Darkness#3#Day#0#False###0#1#2147483647</entry>
+    <entry>Spell-Like Ability#0#Desecrate#1#Day#0#False###0#3#2147483647</entry>
+    <entry>Spell-Like Ability#0#Unholy blight#1#Day#0#False#Charisma#Will#14#5#2147483647</entry>
+    <entry>Spell-Like Ability#0#Poison#3#Day#0#False#Charisma#Fortitude#14#7#2147483647</entry>
+    <entry>Spell-Like Ability#0#Contagion#1#Day#0#False#Charisma#Fortitude#13#9#2147483647</entry>
+    <entry>Spell-Like Ability#0#Blasphemy#1#Day#0#False#Charisma#Will#17#11#2147483647</entry>
+    <entry>Spell-Like Ability#0#Unholy aura#3#Day#0#False#Charisma#Will#18#13#2147483647</entry>
+    <entry>Spell-Like Ability#0#Unhallow#1#Day#0#False###0#13#2147483647</entry>
+    <entry>Spell-Like Ability#0#Horrid wilting#1#Day#0#False#Charisma#Fortitude#18#15#2147483647</entry>
+    <entry>Spell-Like Ability#0#Summon monster IX#1#Day#0#False###0#17#2147483647</entry>
+    <entry>Spell-Like Ability#0#Destruction#1#Day#0#False#Charisma#Fortitude#17#19#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Ghost</name>
+    <entry>Rejuvenation#0##1#2d4 Day#0#False###0#0#2147483647</entry>
+    <entry>Turn Resistance#4##0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lich</name>
+    <entry>Damage Reduction#15#Vulnerable to bludgeoning magic#1#Hit#0#False###0#0#2147483647</entry>
+    <entry>Turn Resistance#4##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Cold#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Electricity#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Polymorph#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Mind-Affecting Attacks#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Vampire</name>
+    <entry>Alternate Form#0#Bat, dire bat, wolf, or dire wolf#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Damage Reduction#10#Vulnerable to silver magic#1#Hit#0#False###0#0#2147483647</entry>
+    <entry>Turn Resistance#4##0##0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Cold#0##0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Electricity#0##0#False###0#0#2147483647</entry>
+    <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Spell-Like Ability#0#Gaseous form#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Zombie</name>
+    <entry>Damage Reduction#5#Vulnerable to slashing#1#Hit#0#False###0#0#2147483647</entry>
+    <entry>Single Actions Only#0##0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Skeleton</name>
+    <entry>Damage Reduction#5#Vulnerable to bludgeoning#1#Hit#0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Cold#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Werebear</name>
+    <entry>Alternate Form#0#Brown bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Lycanthropic Empathy#4#Bears and dire bears#0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Scent#0##0##0#False###0#0#2147483647</entry>
+    <entry>Damage Reduction#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+    <entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+    <entry>Track#0##0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Wereboar</name>
+    <entry>Alternate Form#0#Boar or boar-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Lycanthropic Empathy#4#Boars and dire boars#0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Scent#0##0##0#False###0#0#2147483647</entry>
+    <entry>Damage Reduction#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+    <entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+    <entry>Alertness#2##0##0#False###0#0#2147483647</entry>
+    <entry>Ferocity#0##0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Wererat</name>
+    <entry>Alternate Form#0#Dire rat or bipedal rat-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Lycanthropic Empathy#4#Rats and dire rats#0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Scent#0##0##0#False###0#0#2147483647</entry>
+    <entry>Damage Reduction#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+    <entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+    <entry>Weapon Finesse#0##0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Weretiger</name>
+    <entry>Alternate Form#0#Tiger or bipedal tiger-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Lycanthropic Empathy#4#Tigers and dire tigers#0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Scent#0##0##0#False###0#0#2147483647</entry>
+    <entry>Damage Reduction#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+    <entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+    <entry>Alertness#2##0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Werewolf</name>
+    <entry>Alternate Form#0#Wolf or wolf-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Lycanthropic Empathy#4#Wolves and dire wolves#0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Scent#0##0##0#False###0#0#2147483647</entry>
+    <entry>Damage Reduction#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+    <entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+    <entry>Track#0##0##0#False###0#0#2147483647</entry>
   </collection>
 </collections>

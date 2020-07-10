@@ -18,8 +18,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         public void ArmorClassBonusesNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var creatureTypes = CreatureConstants.Types.All();
-            var creatureSubtypes = CreatureConstants.Types.Subtypes.All();
+            var creatureTypes = CreatureConstants.Types.GetAll();
+            var creatureSubtypes = CreatureConstants.Types.Subtypes.GetAll();
 
             var names = creatures.Union(creatureTypes).Union(creatureSubtypes);
             AssertCollectionNames(names);

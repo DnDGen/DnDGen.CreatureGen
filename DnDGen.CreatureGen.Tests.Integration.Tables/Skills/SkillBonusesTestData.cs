@@ -1958,7 +1958,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             get
             {
                 var testCases = new Dictionary<string, Dictionary<string, int>>();
-                var types = CreatureConstants.Types.All();
+                var types = CreatureConstants.Types.GetAll();
 
                 foreach (var type in types)
                 {
@@ -2004,7 +2004,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             get
             {
                 var testCases = new Dictionary<string, Dictionary<string, int>>();
-                var subtypes = CreatureConstants.Types.Subtypes.All()
+                var subtypes = CreatureConstants.Types.Subtypes.GetAll()
                     .Except(new[]
                     {
                         CreatureConstants.Types.Subtypes.Gnoll,

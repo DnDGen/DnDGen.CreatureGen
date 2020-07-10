@@ -325,6 +325,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     .Or.EqualTo(FeatConstants.Frequencies.Minute)
                     .Or.EqualTo(FeatConstants.Frequencies.Hour)
                     .Or.EqualTo(FeatConstants.Frequencies.Day)
+                    .Or.EndsWith(FeatConstants.Frequencies.Day)
                     .Or.EqualTo(FeatConstants.Frequencies.Week)
                     .Or.EqualTo(FeatConstants.Frequencies.Month)
                     .Or.EqualTo(FeatConstants.Frequencies.Year)

@@ -693,7 +693,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             Assert.That(types[creature], Is.Not.Empty);
 
             //INFO: Have to remove types, as augmented creatures have original creature type as a subtype
-            var allTypes = CreatureConstants.Types.All();
+            var allTypes = CreatureConstants.Types.GetAll();
             var subtypes = types[creature].Skip(1).Except(allTypes);
 
             foreach (var subtype in subtypes)

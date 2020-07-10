@@ -885,7 +885,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [Test]
         public void AllTypes()
         {
-            var types = CreatureConstants.Types.All();
+            var types = CreatureConstants.Types.GetAll();
             var typeConstants = typeof(CreatureConstants.Types);
             var fields = typeConstants.GetFields(BindingFlags.Public | BindingFlags.Static);
             var constantFields = fields.Where(f => f.IsLiteral && !f.IsInitOnly);
@@ -897,7 +897,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [Test]
         public void AllSubtypes()
         {
-            var subtypes = CreatureConstants.Types.Subtypes.All();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
             var subtypeConstants = typeof(CreatureConstants.Types.Subtypes);
             var fields = subtypeConstants.GetFields(BindingFlags.Public | BindingFlags.Static);
             var constantFields = fields.Where(f => f.IsLiteral && !f.IsInitOnly);

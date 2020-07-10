@@ -35,8 +35,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         public void SkillGroupsNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var creatureTypes = CreatureConstants.Types.All();
-            var creatureSubtypes = CreatureConstants.Types.Subtypes.All();
+            var creatureTypes = CreatureConstants.Types.GetAll();
+            var creatureSubtypes = CreatureConstants.Types.Subtypes.GetAll();
 
             //INFO: Skills are here for groups of foci - therefore skills with explicit foci are not needed as names
             var featFoci = collectionMapper.Map(TableNameConstants.Collection.FeatFoci);

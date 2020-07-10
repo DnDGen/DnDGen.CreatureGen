@@ -36,7 +36,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
         {
             get
             {
-                var types = CreatureConstants.Types.All();
+                var types = CreatureConstants.Types.GetAll();
 
                 foreach (var creatureType in types)
                 {
@@ -49,7 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
         {
             get
             {
-                var subtypes = CreatureConstants.Types.Subtypes.All();
+                var subtypes = CreatureConstants.Types.Subtypes.GetAll();
 
                 foreach (var subtype in subtypes)
                 {

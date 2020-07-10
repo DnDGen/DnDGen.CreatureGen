@@ -48,13 +48,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         public void SpecialQualityDataNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var types = CreatureConstants.Types.All();
-            var subtypes = CreatureConstants.Types.Subtypes.All();
-            var templates = new[]
-            {
-                CreatureConstants.Templates.CelestialCreature,
-                CreatureConstants.Templates.FiendishCreature,
-            };
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            var templates = CreatureConstants.Templates.GetAll();
 
             var names = creatures.Union(types).Union(subtypes).Union(templates);
 

@@ -22,7 +22,7 @@ namespace DnDGen.CreatureGen.Creatures
             public const string Undead = "Undead";
             public const string Vermin = "Vermin";
 
-            public static IEnumerable<string> All()
+            public static IEnumerable<string> GetAll()
             {
                 return new[]
                 {
@@ -74,7 +74,7 @@ namespace DnDGen.CreatureGen.Creatures
                 public const string Swarm = "Swarm";
                 public const string Water = "Water";
 
-                public static IEnumerable<string> All()
+                public static IEnumerable<string> GetAll()
                 {
                     return new[]
                     {

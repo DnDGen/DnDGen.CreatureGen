@@ -268,6 +268,7 @@ namespace DnDGen.CreatureGen.Feats
             public const string EnergyResistance = "Energy Resistance";
             public const string Evasion = "Evasion";
             public const string FastHealing = "Fast Healing";
+            public const string Ferocity = "Ferocity";
             public const string FindMaster = "Find Master";
             public const string FlamingBody = "Flaming Body";
             public const string Flight = "Flight";
@@ -296,6 +297,7 @@ namespace DnDGen.CreatureGen.Feats
             public const string LowLightVision = "Low-Light Vision";
             public const string LowLightVision_Superior = "Superior Low-Light Vision";
             public const string LuckBonus = "Luck Bonus";
+            public const string LycanthropicEmpathy = "Lycanthropic Empathy";
             public const string Madness = "Madness";
             public const string MeltWeapons = "Melt Weapons";
             public const string MimicShape = "Mimic Shape";
@@ -310,6 +312,7 @@ namespace DnDGen.CreatureGen.Feats
             public const string Psionic = "Psionic";
             public const string Quickness = "Quickness";
             public const string Regeneration = "Regeneration";
+            public const string Rejuvenation = "Rejuvenation";
             public const string RockCatching = "Rock Catching";
             public const string RockThrowing = "Rock Throwing";
             public const string Scent = "Scent";
@@ -317,6 +320,7 @@ namespace DnDGen.CreatureGen.Feats
             public const string ShadowBlend = "Shadow Blend";
             public const string ShadowShift = "Shadow Shift";
             public const string Slippery = "Slippery";
+            public const string SingleActionsOnly = "Single Actions Only";
             public const string SmokeForm = "Smoke Form";
             public const string SoundImitation = "Sound Imitation";
             public const string SpeakWithSharks = "Speak With Sharks";

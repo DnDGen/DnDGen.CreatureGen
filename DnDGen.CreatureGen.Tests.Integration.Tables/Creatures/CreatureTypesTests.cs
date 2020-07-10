@@ -1279,8 +1279,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), "All")]
         public void CreaturesHasACreatureType(string creature)
         {
-            var allTypes = CreatureConstants.Types.All();
-            var allSubTypes = CreatureConstants.Types.Subtypes.All();
+            var allTypes = CreatureConstants.Types.GetAll();
+            var allSubTypes = CreatureConstants.Types.Subtypes.GetAll();
             var allTypesAndSubtypes = allTypes.Union(allSubTypes);
 
             Assert.That(table.Keys, Contains.Item(creature), "Table keys");
@@ -1296,7 +1296,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), "All")]
         public void CreatureTypeMatchesCreatureGroupType(string creature)
         {
-            var allTypes = CreatureConstants.Types.All();
+            var allTypes = CreatureConstants.Types.GetAll();
 
             Assert.That(table.Keys, Contains.Item(creature), "Table keys");
 
@@ -1312,8 +1312,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), "All")]
         public void CreatureSubtypesMatchCreatureGroupSubtypes(string creature)
         {
-            var allTypes = CreatureConstants.Types.All();
-            var allSubTypes = CreatureConstants.Types.Subtypes.All();
+            var allTypes = CreatureConstants.Types.GetAll();
+            var allSubTypes = CreatureConstants.Types.Subtypes.GetAll();
 
             Assert.That(table.Keys, Contains.Item(creature), "Table keys");
 

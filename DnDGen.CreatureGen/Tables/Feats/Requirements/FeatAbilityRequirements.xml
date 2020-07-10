@@ -11232,4 +11232,542 @@
   <collection>
     <name>Fiendish CreatureSpell Resistance25</name>
   </collection>
+  <collection>
+    <name>GhostRejuvenation0</name>
+  </collection>
+  <collection>
+    <name>GhostTurn Resistance4</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialDamage ReductionVulnerable to magic10</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialDamage ReductionVulnerable to magic5</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialDarkvision60</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialEnergy ResistanceAcid10</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialEnergy ResistanceCold10</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialEnergy ResistanceElectricity10</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialImmunityDisease0</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance11</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance12</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance13</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance14</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance15</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance16</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance17</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance18</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance19</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance20</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance21</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance22</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance23</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance24</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance25</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance26</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance27</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance28</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance29</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance30</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance31</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance32</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance33</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance34</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell Resistance35</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityDaylight0</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityProtection from evil0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityBless0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityAid0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityCure serious wounds0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityHoly word0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityHoly aura0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityHoly smite0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityHallow0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityDetect evil0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityDispel evil0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityMass charm monster0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityNeutralize poison0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityResurrection0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilitySummon monster IX0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialSpell-Like AbilityRemove disease0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-DragonDarkvision60</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunitySleep0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunityParalysis0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunityAcid (Black)0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunityElectricity (Blue)0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunityAcid (Green)0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunityFire (Red)0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunityCold (White)0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunityFire (Brass)0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunityElectricity (Bronze)0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunityAcid (Copper)0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunityFire (Gold)0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonImmunityCold (Silver)0</name>
+  </collection>
+  <collection>
+    <name>Half-DragonLow-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>Half-FiendDamage ReductionVulnerable to magic10</name>
+  </collection>
+  <collection>
+    <name>Half-FiendDamage ReductionVulnerable to magic5</name>
+  </collection>
+  <collection>
+    <name>Half-FiendDarkvision60</name>
+  </collection>
+  <collection>
+    <name>Half-FiendEnergy ResistanceFire10</name>
+  </collection>
+  <collection>
+    <name>Half-FiendEnergy ResistanceElectricity10</name>
+  </collection>
+  <collection>
+    <name>Half-FiendEnergy ResistanceCold10</name>
+  </collection>
+  <collection>
+    <name>Half-FiendEnergy ResistanceAcid10</name>
+  </collection>
+  <collection>
+    <name>Half-FiendImmunityPoison0</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance11</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance12</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance13</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance14</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance15</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance16</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance17</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance18</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance19</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance20</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance21</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance22</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance23</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance24</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance25</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance26</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance27</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance28</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance29</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance30</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance31</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance32</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance33</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance34</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell Resistance35</name>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell-Like AbilityDarkness0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell-Like AbilityBlasphemy0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell-Like AbilityUnholy aura0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell-Like AbilityUnhallow0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell-Like AbilityHorrid wilting0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell-Like AbilityPoison0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell-Like AbilityDestruction0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell-Like AbilitySummon monster IX0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell-Like AbilityContagion0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell-Like AbilityDesecrate0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendSpell-Like AbilityUnholy blight0</name>
+    <entry>Intelligence@8</entry>
+    <entry>Wisdom@8</entry>
+  </collection>
+  <collection>
+    <name>LichDamage ReductionVulnerable to bludgeoning magic15</name>
+  </collection>
+  <collection>
+    <name>LichImmunityCold0</name>
+  </collection>
+  <collection>
+    <name>LichImmunityElectricity0</name>
+  </collection>
+  <collection>
+    <name>LichImmunityPolymorph0</name>
+  </collection>
+  <collection>
+    <name>LichImmunityMind-Affecting Attacks0</name>
+  </collection>
+  <collection>
+    <name>LichTurn Resistance4</name>
+  </collection>
+  <collection>
+    <name>SkeletonDamage ReductionVulnerable to bludgeoning5</name>
+  </collection>
+  <collection>
+    <name>SkeletonImmunityCold0</name>
+  </collection>
+  <collection>
+    <name>VampireAlternate FormBat, dire bat, wolf, or dire wolf0</name>
+  </collection>
+  <collection>
+    <name>VampireDamage ReductionVulnerable to silver magic10</name>
+  </collection>
+  <collection>
+    <name>VampireEnergy ResistanceCold10</name>
+  </collection>
+  <collection>
+    <name>VampireEnergy ResistanceElectricity10</name>
+  </collection>
+  <collection>
+    <name>VampireFast Healing5</name>
+  </collection>
+  <collection>
+    <name>VampireSpell-Like AbilityGaseous form0</name>
+  </collection>
+  <collection>
+    <name>VampireSpell-Like AbilitySpider climb0</name>
+  </collection>
+  <collection>
+    <name>VampireTurn Resistance4</name>
+  </collection>
+  <collection>
+    <name>WerebearAlternate FormBrown bear or bear-humanoid hybrid0</name>
+  </collection>
+  <collection>
+    <name>WerebearLycanthropic EmpathyBears and dire bears4</name>
+  </collection>
+  <collection>
+    <name>WerebearDamage ReductionVulnerable to silver10</name>
+  </collection>
+  <collection>
+    <name>WerebearLow-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>WerebearScent0</name>
+  </collection>
+  <collection>
+    <name>WerebearTrack0</name>
+  </collection>
+  <collection>
+    <name>WerebearIron Will2</name>
+  </collection>
+  <collection>
+    <name>WereboarAlternate FormBoar or boar-humanoid hybrid0</name>
+  </collection>
+  <collection>
+    <name>WereboarLycanthropic EmpathyBoars and dire boars4</name>
+  </collection>
+  <collection>
+    <name>WereboarDamage ReductionVulnerable to silver10</name>
+  </collection>
+  <collection>
+    <name>WereboarLow-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>WereboarScent0</name>
+  </collection>
+  <collection>
+    <name>WereboarIron Will2</name>
+  </collection>
+  <collection>
+    <name>WereboarAlertness2</name>
+  </collection>
+  <collection>
+    <name>WereboarFerocity0</name>
+  </collection>
+  <collection>
+    <name>WereratAlternate FormDire rat or bipedal rat-humanoid hybrid0</name>
+  </collection>
+  <collection>
+    <name>WereratLycanthropic EmpathyRats and dire rats4</name>
+  </collection>
+  <collection>
+    <name>WereratDamage ReductionVulnerable to silver10</name>
+  </collection>
+  <collection>
+    <name>WereratLow-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>WereratScent0</name>
+  </collection>
+  <collection>
+    <name>WereratIron Will2</name>
+  </collection>
+  <collection>
+    <name>WereratWeapon Finesse0</name>
+  </collection>
+  <collection>
+    <name>WeretigerAlternate FormTiger or bipedal tiger-humanoid hybrid0</name>
+  </collection>
+  <collection>
+    <name>WeretigerLycanthropic EmpathyTigers and dire tigers4</name>
+  </collection>
+  <collection>
+    <name>WeretigerDamage ReductionVulnerable to silver10</name>
+  </collection>
+  <collection>
+    <name>WeretigerLow-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>WeretigerScent0</name>
+  </collection>
+  <collection>
+    <name>WeretigerIron Will2</name>
+  </collection>
+  <collection>
+    <name>WeretigerAlertness2</name>
+  </collection>
+  <collection>
+    <name>WerewolfAlternate FormWolf or wolf-humanoid hybrid0</name>
+  </collection>
+  <collection>
+    <name>WerewolfLycanthropic EmpathyWolves and dire wolves4</name>
+  </collection>
+  <collection>
+    <name>WerewolfDamage ReductionVulnerable to silver10</name>
+  </collection>
+  <collection>
+    <name>WerewolfLow-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>WerewolfScent0</name>
+  </collection>
+  <collection>
+    <name>WerewolfTrack0</name>
+  </collection>
+  <collection>
+    <name>WerewolfIron Will2</name>
+  </collection>
+  <collection>
+    <name>ZombieDamage ReductionVulnerable to slashing5</name>
+  </collection>
+  <collection>
+    <name>ZombieSingle Actions Only0</name>
+  </collection>
 </collections>

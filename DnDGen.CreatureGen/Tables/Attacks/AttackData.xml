@@ -5053,6 +5053,8 @@
   </collection>
   <collection>
     <name>Half-Dragon</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Breath Weapon@6d8 acid (Black)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon@6d8 electricity (Blue)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon@6d8 acid gas (Green)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -5066,16 +5068,24 @@
   </collection>
   <collection>
     <name>Half-Fiend</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Smite Good@0@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Lich</name>
+    <entry>Touch@1d8+5@True@True@True@False@1@Round (6 seconds)@Charisma@Will@melee@Paralyzing Touch@0@0</entry>
     <entry>Fear Aura@@True@False@False@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Fear@0@0</entry>
     <entry>Paralyzing Touch@@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@Paralyzed@0@0</entry>
   </collection>
   <collection>
+    <name>Skeleton</name>
+    <entry>Claw@1d4@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+  </collection>
+  <collection>
     <name>Vampire</name>
+    <entry>Slam@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Blood Drain@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@1d4 Con, Vampire gains 5 HP@0@0</entry>
     <entry>Children of the Night@@True@False@True@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
     <entry>Dominate@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@0</entry>
@@ -5083,28 +5093,29 @@
     <entry>Energy Drain@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@2 negative levels, Vampire gains 5 HP@0@0</entry>
   </collection>
   <collection>
-    <name>Skeleton</name>
-  </collection>
-  <collection>
-    <name>Zombie</name>
-  </collection>
-  <collection>
     <name>Werebear</name>
+    <entry>Claw@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
     <name>Wereboar</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
     <name>Wererat</name>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Disease, Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
     <entry>Disease@@True@True@False@True@1@Hit@@@extraordinary ability@Filth Fever@0@0</entry>
     <entry>Filth Fever@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@incubation period 1d3 days; damage 1d3 Dex and 1d3 Con@0@0</entry>
   </collection>
   <collection>
     <name>Weretiger</name>
+    <entry>Claw@1d8@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
@@ -5112,8 +5123,14 @@
   </collection>
   <collection>
     <name>Werewolf</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
     <entry>Trip@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Zombie</name>
+    <entry>Slam@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name></name>

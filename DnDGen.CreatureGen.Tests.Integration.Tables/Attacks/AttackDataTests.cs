@@ -85,11 +85,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 .Any(d => d[DataIndexConstants.AttackData.NameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility);
 
             //INFO: Want to ignore constant effects such as Doppelganger's Detect Thoughts and Copper Dragon's Spider Climb
-            var spellLikeAbilitySpecialQuality = specialQualities.FirstOrDefault(q =>
+            var hasSpellLikeAbilitySpecialQuality = specialQualities.Any(q =>
                 q.Feat == FeatConstants.SpecialQualities.SpellLikeAbility
                 && q.Frequency.TimePeriod != FeatConstants.Frequencies.Constant);
-            var hasSpellLikeAbilitySpecialQuality = spellLikeAbilitySpecialQuality != null;
-            Assert.That(hasSpellLikeAbilityAttack, Is.EqualTo(hasSpellLikeAbilitySpecialQuality), spellLikeAbilitySpecialQuality?.Feat);
+            Assert.That(hasSpellLikeAbilityAttack, Is.EqualTo(hasSpellLikeAbilitySpecialQuality));
         }
 
         private CreatureType GetCreatureType(string creatureName)

@@ -16,8 +16,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         public void SkillBonusesNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var types = CreatureConstants.Types.All();
-            var subtypes = CreatureConstants.Types.Subtypes.All();
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
 
             var foci = collectionMapper.Map(TableNameConstants.Collection.FeatFoci);
             var skills = foci[GroupConstants.Skills];

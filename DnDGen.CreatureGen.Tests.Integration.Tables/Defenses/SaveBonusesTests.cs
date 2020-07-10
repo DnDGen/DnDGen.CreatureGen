@@ -15,8 +15,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         public void SaveBonusesNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var types = CreatureConstants.Types.All();
-            var subtypes = CreatureConstants.Types.Subtypes.All();
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
 
             var names = creatures.Union(types).Union(subtypes);
 

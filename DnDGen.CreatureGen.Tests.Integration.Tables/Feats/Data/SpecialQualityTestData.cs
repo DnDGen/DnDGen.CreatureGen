@@ -81,11 +81,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         private static Dictionary<string, List<string[]>> GetTemplateData()
         {
             var testCases = new Dictionary<string, List<string[]>>();
+            var templates = CreatureConstants.Templates.GetAll();
             var helper = new SpecialQualityHelper();
 
-            testCases[CreatureConstants.Templates.CelestialCreature] = new List<string[]>();
+            foreach (var template in templates)
+            {
+                testCases[template] = new List<string[]>();
+            }
+
             testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-            testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 6, minHitDice: 1, maxHitDice: 1));
+            testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 6, maxHitDice: 1));
             testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 7, minHitDice: 2, maxHitDice: 2));
             testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 8, minHitDice: 3, maxHitDice: 3));
             testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 9, minHitDice: 4, maxHitDice: 4));
@@ -114,9 +119,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, minHitDice: 4, maxHitDice: 11));
             testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, minHitDice: 12));
 
-            testCases[CreatureConstants.Templates.FiendishCreature] = new List<string[]>();
             testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-            testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 6, minHitDice: 1, maxHitDice: 1));
+            testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 6, maxHitDice: 1));
             testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 7, minHitDice: 2, maxHitDice: 2));
             testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 8, minHitDice: 3, maxHitDice: 3));
             testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 9, minHitDice: 4, maxHitDice: 4));
@@ -142,6 +146,183 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10, minHitDice: 8));
             testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, minHitDice: 4, maxHitDice: 11));
             testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, minHitDice: 12));
+
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Disease"));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 11, maxHitDice: 1));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 12, minHitDice: 2, maxHitDice: 2));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 13, minHitDice: 3, maxHitDice: 3));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 14, minHitDice: 4, maxHitDice: 4));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 15, minHitDice: 5, maxHitDice: 5));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 16, minHitDice: 6, maxHitDice: 6));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 17, minHitDice: 7, maxHitDice: 7));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 18, minHitDice: 8, maxHitDice: 8));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19, minHitDice: 9, maxHitDice: 9));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 20, minHitDice: 10, maxHitDice: 10));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21, minHitDice: 11, maxHitDice: 11));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 22, minHitDice: 12, maxHitDice: 12));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23, minHitDice: 13, maxHitDice: 13));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24, minHitDice: 14, maxHitDice: 14));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25, minHitDice: 15, maxHitDice: 15));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 26, minHitDice: 16, maxHitDice: 16));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27, minHitDice: 17, maxHitDice: 17));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28, minHitDice: 18, maxHitDice: 18));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 29, minHitDice: 19, maxHitDice: 19));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 30, minHitDice: 20, maxHitDice: 20));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 31, minHitDice: 21, maxHitDice: 21));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 32, minHitDice: 22, maxHitDice: 22));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 33, minHitDice: 23, maxHitDice: 23));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 34, minHitDice: 24, maxHitDice: 24));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 35, minHitDice: 25));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 10));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 10));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Electricity, power: 10));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, maxHitDice: 11));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, minHitDice: 12));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Daylight, frequencyTimePeriod: FeatConstants.Frequencies.AtWill));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.ProtectionFromEvil, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 1));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Bless, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 1));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Aid, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 3));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DetectEvil, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 3));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CureSeriousWounds, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 5));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.NeutralizePoison, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 5));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HolySmite, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 7, save: SaveConstants.Will, saveAbility: AbilityConstants.Charisma, saveBaseValue: 14));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.RemoveDisease, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 7));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.DispelEvil, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 9, save: SaveConstants.Will, saveAbility: AbilityConstants.Charisma, saveBaseValue: 15));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HolyWord, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 11, save: SaveConstants.Will, saveAbility: AbilityConstants.Charisma, saveBaseValue: 17));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HolyAura, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 13, save: SaveConstants.Will, saveAbility: AbilityConstants.Charisma, saveBaseValue: 18));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Hallow, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 13));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.CharmMonster_Mass, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 15, save: SaveConstants.Will, saveAbility: AbilityConstants.Charisma, saveBaseValue: 18));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SummonMonsterIX, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 17));
+            testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Resurrection, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 19));
+
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Acid} (Black)"));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Electricity} (Blue)"));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Acid} (Green)"));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Fire} (Red)"));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Cold} (White)"));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Fire} (Brass)"));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Electricity} (Bronze)"));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Acid} (Copper)"));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Fire} (Gold)"));
+            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Cold} (Silver)"));
+
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 11, maxHitDice: 1));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 12, minHitDice: 2, maxHitDice: 2));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 13, minHitDice: 3, maxHitDice: 3));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 14, minHitDice: 4, maxHitDice: 4));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 15, minHitDice: 5, maxHitDice: 5));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 16, minHitDice: 6, maxHitDice: 6));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 17, minHitDice: 7, maxHitDice: 7));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 18, minHitDice: 8, maxHitDice: 8));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 19, minHitDice: 9, maxHitDice: 9));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 20, minHitDice: 10, maxHitDice: 10));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 21, minHitDice: 11, maxHitDice: 11));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 22, minHitDice: 12, maxHitDice: 12));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23, minHitDice: 13, maxHitDice: 13));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 24, minHitDice: 14, maxHitDice: 14));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 25, minHitDice: 15, maxHitDice: 15));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 26, minHitDice: 16, maxHitDice: 16));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 27, minHitDice: 17, maxHitDice: 17));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 28, minHitDice: 18, maxHitDice: 18));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 29, minHitDice: 19, maxHitDice: 19));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 30, minHitDice: 20, maxHitDice: 20));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 31, minHitDice: 21, maxHitDice: 21));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 32, minHitDice: 22, maxHitDice: 22));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 33, minHitDice: 23, maxHitDice: 23));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 34, minHitDice: 24, maxHitDice: 24));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 35, minHitDice: 25));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 10));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Acid, power: 10));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Electricity, power: 10));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, maxHitDice: 11));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit, minHitDice: 12));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 1));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Desecrate, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 3));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.UnholyBlight, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 5, save: SaveConstants.Will, saveAbility: AbilityConstants.Charisma, saveBaseValue: 14));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Poison, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 7, save: SaveConstants.Fortitude, saveAbility: AbilityConstants.Charisma, saveBaseValue: 14));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Contagion, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 9, save: SaveConstants.Fortitude, saveAbility: AbilityConstants.Charisma, saveBaseValue: 13));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Blasphemy, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 11, save: SaveConstants.Will, saveAbility: AbilityConstants.Charisma, saveBaseValue: 17));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.UnholyAura, frequencyQuantity: 3, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 13, save: SaveConstants.Will, saveAbility: AbilityConstants.Charisma, saveBaseValue: 18));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Unhallow, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 13));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.HorridWilting, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 15, save: SaveConstants.Fortitude, saveAbility: AbilityConstants.Charisma, saveBaseValue: 18));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SummonMonsterIX, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 17));
+            testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Destruction, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 19, save: SaveConstants.Fortitude, saveAbility: AbilityConstants.Charisma, saveBaseValue: 17));
+
+            testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData(FeatConstants.SpecialQualities.Rejuvenation, frequencyQuantity: 1, frequencyTimePeriod: $"2d4 {FeatConstants.Frequencies.Day}"));
+            testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData(FeatConstants.SpecialQualities.TurnResistance, power: 4));
+
+            testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to bludgeoning magic", power: 15, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData(FeatConstants.SpecialQualities.TurnResistance, power: 4));
+            testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+            testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+            testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Polymorph"));
+            testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Mind-Affecting Attacks"));
+
+            testCases[CreatureConstants.Templates.None].Add(helper.BuildData(None));
+
+            testCases[CreatureConstants.Templates.Skeleton].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to bludgeoning", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Skeleton].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Bat, dire bat, wolf, or dire wolf", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver magic", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.TurnResistance, power: 4));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, power: 10, focus: FeatConstants.Foci.Elements.Cold));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, power: 10, focus: FeatConstants.Foci.Elements.Electricity));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GaseousForm, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
+
+            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Brown bear or bear-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Bears and dire bears", power: 4));
+            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
+            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.Track));
+
+            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Boar or boar-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Boars and dire boars", power: 4));
+            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.Ferocity));
+            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.Alertness, power: 2));
+            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
+
+            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Dire rat or bipedal rat-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Rats and dire rats", power: 4));
+            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
+            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.WeaponFinesse));
+
+            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Tiger or bipedal tiger-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Tigers and dire tigers", power: 4));
+            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.Alertness, power: 2));
+            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
+
+            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Wolf or wolf-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Wolves and dire wolves", power: 4));
+            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
+            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.Track));
+
+            testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to slashing", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData(FeatConstants.SpecialQualities.SingleActionsOnly));
 
             return testCases;
         }
@@ -4216,7 +4397,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         private static Dictionary<string, List<string[]>> GetTypeData()
         {
             var testCases = new Dictionary<string, List<string[]>>();
-            var types = CreatureConstants.Types.All();
+            var types = CreatureConstants.Types.GetAll();
             var helper = new SpecialQualityHelper();
 
             foreach (var type in types)
@@ -4351,7 +4532,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             var testCases = new Dictionary<string, List<string[]>>();
             var helper = new SpecialQualityHelper();
 
-            var subtypes = CreatureConstants.Types.Subtypes.All()
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll()
                 .Except(new[]
                 {
                         CreatureConstants.Types.Subtypes.Gnoll,

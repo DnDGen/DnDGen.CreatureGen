@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System;
@@ -275,6 +276,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             Assert.That(fiendishCreatures, Contains.Item(CreatureConstants.Human));
             Assert.That(fiendishCreatures, Contains.Item(CreatureConstants.Elf_Half));
             Assert.That(fiendishCreatures, Contains.Item(CreatureConstants.Orc_Half));
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
+        public void TemplateGroupIsNotInfinitelyRecursive(string template)
+        {
+            var templateCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, template);
+
+            Assert.That(templateCreatures, Is.Empty);
         }
     }
 }

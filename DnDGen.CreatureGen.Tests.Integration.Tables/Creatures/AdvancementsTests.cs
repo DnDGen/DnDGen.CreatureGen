@@ -31,7 +31,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void AdvancementsNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var creatureTypes = CreatureConstants.Types.All();
+            var creatureTypes = CreatureConstants.Types.GetAll();
 
             var names = creatures.Union(creatureTypes);
 
