@@ -283,7 +283,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         {
             var templateCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, template);
 
-            Assert.That(templateCreatures, Is.Not.Empty);
+            if (template == CreatureConstants.Templates.None)
+                Assert.That(templateCreatures, Is.Empty);
+            else
+                Assert.That(templateCreatures, Is.Not.Empty);
         }
     }
 }
