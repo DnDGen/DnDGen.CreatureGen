@@ -9,12 +9,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
     [TestFixture]
     public class NoneApplicatorTests
     {
-        private TemplateApplicator template;
+        private TemplateApplicator templateApplicator;
 
         [SetUp]
         public void Setup()
         {
-            template = new NoneApplicator();
+            templateApplicator = new NoneApplicator();
         }
 
         [Test]
@@ -28,7 +28,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Clone(creature)
                 .Build();
 
-            var templatedCreature = template.ApplyTo(clone);
+            var templatedCreature = templateApplicator.ApplyTo(clone);
             Assert.That(templatedCreature, Is.EqualTo(clone));
             Assert.That(templatedCreature.Abilities, Has.Count.EqualTo(creature.Abilities.Count));
             Assert.That(templatedCreature.Abilities.Keys, Is.EquivalentTo(creature.Abilities.Keys));
@@ -217,7 +217,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Clone(creature)
                 .Build();
 
-            var templatedCreature = await template.ApplyToAsync(clone);
+            var templatedCreature = await templateApplicator.ApplyToAsync(clone);
             Assert.That(templatedCreature, Is.EqualTo(clone));
             Assert.That(templatedCreature.Abilities, Has.Count.EqualTo(creature.Abilities.Count));
             Assert.That(templatedCreature.Abilities.Keys, Is.EquivalentTo(creature.Abilities.Keys));
@@ -393,6 +393,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(templatedCreature.Template, Is.EqualTo(creature.Template));
             Assert.That(templatedCreature.Type.Name, Is.EqualTo(creature.Type.Name));
             Assert.That(templatedCreature.Type.SubTypes, Is.EquivalentTo(creature.Type.SubTypes));
+        }
+
+        [Test]
+        public void IsCompatible_ReturnsTrue()
+        {
+            var compatible = templateApplicator.IsCompatible("whatever");
+            Assert.That(compatible, Is.True);
         }
     }
 }

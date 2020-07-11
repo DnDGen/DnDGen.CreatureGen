@@ -319,5 +319,10 @@ namespace DnDGen.CreatureGen.Templates
 
             return creature;
         }
+
+        public bool IsCompatible(string creature)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

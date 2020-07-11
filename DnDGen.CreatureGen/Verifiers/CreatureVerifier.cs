@@ -1,26 +1,22 @@
-﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Selectors.Collections;
-using System.Linq;
+﻿using DnDGen.CreatureGen.Templates;
+using DnDGen.Infrastructure.Generators;
 
 namespace DnDGen.CreatureGen.Verifiers
 {
     internal class CreatureVerifier : ICreatureVerifier
     {
-        private readonly ICollectionSelector collectionsSelector;
+        private readonly JustInTimeFactory factory;
 
-        public CreatureVerifier(ICollectionSelector collectionsSelector)
+        public CreatureVerifier(JustInTimeFactory factory)
         {
-            this.collectionsSelector = collectionsSelector;
+            this.factory = factory;
         }
 
         public bool VerifyCompatibility(string creatureName, string templateName)
         {
-            if (templateName == CreatureConstants.Templates.None)
-                return true;
+            var applicator = factory.Build<TemplateApplicator>(templateName);
 
-            var templateCreatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, templateName);
-            return templateCreatures.Contains(creatureName);
+            return applicator.IsCompatible(creatureName);
         }
     }
 }

@@ -15,5 +15,10 @@ namespace DnDGen.CreatureGen.Templates
         {
             throw new NotImplementedException();
         }
+
+        public bool IsCompatible(string creature)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
