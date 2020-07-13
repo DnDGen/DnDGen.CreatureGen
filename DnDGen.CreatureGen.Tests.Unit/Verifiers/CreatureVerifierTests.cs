@@ -1,7 +1,6 @@
-﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Tables;
+﻿using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Verifiers;
-using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.Infrastructure.Generators;
 using Moq;
 using NUnit.Framework;
 
@@ -11,40 +10,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
     public class CreatureVerifierTests
     {
         private ICreatureVerifier verifier;
-        private Mock<ICollectionSelector> mockCollectionsSelector;
+        private Mock<JustInTimeFactory> mockJustInTimeFactory;
 
         [SetUp]
         public void Setup()
         {
-            mockCollectionsSelector = new Mock<ICollectionSelector>();
-            verifier = new CreatureVerifier(mockCollectionsSelector.Object);
+            mockJustInTimeFactory = new Mock<JustInTimeFactory>();
+            verifier = new CreatureVerifier(mockJustInTimeFactory.Object);
         }
 
-        [Test]
-        public void CompatibleIfNoTemplate()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void CompatibleIfNoTemplateContainsCreature(bool compatible)
         {
-            var compatible = verifier.VerifyCompatibility("creature", CreatureConstants.Templates.None);
-            Assert.That(compatible, Is.True);
-        }
+            var mockApplicator = new Mock<TemplateApplicator>();
+            mockApplicator.Setup(a => a.IsCompatible("creature")).Returns(compatible);
 
-        [Test]
-        public void CompatibleIfNoTemplateContainsCreature()
-        {
-            var creatures = new[] { "other creature", "creature" };
-            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "template")).Returns(creatures);
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>("template"))
+                .Returns(mockApplicator.Object);
 
-            var compatible = verifier.VerifyCompatibility("creature", "template");
-            Assert.That(compatible, Is.True);
-        }
-
-        [Test]
-        public void NotCompatibleIfNoTemplateDoesNotContainCreature()
-        {
-            var creatures = new[] { "wrong creature", "other creature" };
-            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "template")).Returns(creatures);
-
-            var compatible = verifier.VerifyCompatibility("creature", "template");
-            Assert.That(compatible, Is.False);
+            var isCompatible = verifier.VerifyCompatibility("creature", "template");
+            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
     }
 }

@@ -6,6 +6,8 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -33,6 +35,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<IItemsGenerator> mockItemsGenerator;
+        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
 
         [SetUp]
         public void SetUp()
@@ -43,6 +46,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockItemsGenerator = new Mock<IItemsGenerator>();
+            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
 
             applicator = new GhostApplicator(
                 mockDice.Object,
@@ -50,7 +54,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockAttacksGenerator.Object,
                 mockCollectionSelector.Object,
                 mockFeatsGenerator.Object,
-                mockItemsGenerator.Object);
+                mockItemsGenerator.Object,
+                mockTypeAndAmountSelector.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -133,6 +138,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
                 .Returns(new[] { creatureType, "subtype 1", "subtype 2" });
 
+            var adjustments = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Returns(adjustments);
+
             var isCompatible = applicator.IsCompatible("my creature");
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
@@ -140,7 +159,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void IsCompatible_MustHaveCharisma()
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            var adjustments = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Returns(adjustments);
+
+            var isCompatible = applicator.IsCompatible("my creature");
+            Assert.That(isCompatible, Is.False);
         }
 
         [TestCase(-10, false)]
@@ -157,7 +194,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(42, true)]
         public void IsCompatible_MustHaveCharismaOfAtLeast6(int charismaAdjustment, bool compatible)
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            var adjustments = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = charismaAdjustment },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Returns(adjustments);
+
+            var isCompatible = applicator.IsCompatible("my creature");
+            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
         [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Undead)]

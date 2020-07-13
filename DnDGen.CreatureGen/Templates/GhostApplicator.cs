@@ -5,7 +5,9 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Skills;
+using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
@@ -24,6 +26,8 @@ namespace DnDGen.CreatureGen.Templates
         private readonly ICollectionSelector collectionSelector;
         private readonly IFeatsGenerator featsGenerator;
         private readonly IItemsGenerator itemsGenerator;
+        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly IEnumerable<string> creatureTypes;
 
         public GhostApplicator(
             Dice dice,
@@ -31,7 +35,8 @@ namespace DnDGen.CreatureGen.Templates
             IAttacksGenerator attacksGenerator,
             ICollectionSelector collectionSelector,
             IFeatsGenerator featsGenerator,
-            IItemsGenerator itemsGenerator)
+            IItemsGenerator itemsGenerator,
+            ITypeAndAmountSelector typeAndAmountSelector)
         {
             this.dice = dice;
             this.speedsGenerator = speedsGenerator;
@@ -39,6 +44,19 @@ namespace DnDGen.CreatureGen.Templates
             this.collectionSelector = collectionSelector;
             this.featsGenerator = featsGenerator;
             this.itemsGenerator = itemsGenerator;
+            this.typeAndAmountSelector = typeAndAmountSelector;
+
+            creatureTypes = new[]
+            {
+                CreatureConstants.Types.Aberration,
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Dragon,
+                CreatureConstants.Types.Giant,
+                CreatureConstants.Types.Humanoid,
+                CreatureConstants.Types.MagicalBeast,
+                CreatureConstants.Types.MonstrousHumanoid,
+                CreatureConstants.Types.Plant,
+            };
         }
 
         public Creature ApplyTo(Creature creature)
@@ -322,7 +340,16 @@ namespace DnDGen.CreatureGen.Templates
 
         public bool IsCompatible(string creature)
         {
-            throw new NotImplementedException();
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            if (!creatureTypes.Contains(types.First()))
+                return false;
+
+            var abilityAdjustments = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creature);
+            var charismaAdjustment = abilityAdjustments.FirstOrDefault(a => a.Type == AbilityConstants.Charisma);
+            if (charismaAdjustment == null)
+                return false;
+
+            return charismaAdjustment.Amount + Ability.DefaultScore >= 6;
         }
     }
 }

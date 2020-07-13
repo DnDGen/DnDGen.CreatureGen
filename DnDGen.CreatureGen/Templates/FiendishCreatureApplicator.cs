@@ -210,9 +210,7 @@ namespace DnDGen.CreatureGen.Templates
 
             var alignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, creature);
 
-            return alignments.Any(a => a.Contains(AlignmentConstants.Evil)
-                || a.EndsWith(AlignmentConstants.Neutral)
-                || a == AlignmentConstants.Modifiers.Any);
+            return alignments.Any(a => !a.Contains(AlignmentConstants.Good));
         }
     }
 }

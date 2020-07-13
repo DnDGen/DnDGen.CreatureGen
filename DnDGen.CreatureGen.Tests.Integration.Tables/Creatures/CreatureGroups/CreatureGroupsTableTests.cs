@@ -13,7 +13,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
         protected void AssertCreatureGroupNamesAreComplete()
         {
-            var templates = CreatureConstants.Templates.GetAll();
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
 
@@ -83,7 +82,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 GroupConstants.PoorBaseAttack,
             };
 
-            var names = entries.Union(templates).Union(types).Union(subtypes);
+            var names = entries.Union(types).Union(subtypes);
 
             AssertCollectionNames(names);
         }

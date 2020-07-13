@@ -61,6 +61,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
                 .Returns(new[] { creatureType, "subtype 1", "subtype 2" });
 
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
+                .Returns(new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" });
+
             var isCompatible = applicator.IsCompatible("my creature");
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
@@ -81,6 +85,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
                 .Returns(new[] { creatureType, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2" });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
+                .Returns(new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" });
 
             var isCompatible = applicator.IsCompatible("my creature");
             Assert.That(isCompatible, Is.False);
@@ -135,7 +143,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, true)]
         [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, false)]
         [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
-        public void IsCompatible_MustHaveAlignment(string alignmentGroup, bool compatible)
+        public void IsCompatible_MustHaveNonGoodAlignment(string alignmentGroup, bool compatible)
         {
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
@@ -143,7 +151,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
-                .Returns(new[] { alignmentGroup, "other alignment group" });
+                .Returns(new[] { alignmentGroup, $"other {AlignmentConstants.Good} alignment group" });
 
             var isCompatible = applicator.IsCompatible("my creature");
             Assert.That(isCompatible, Is.EqualTo(compatible));
@@ -198,7 +206,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, true)]
         [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, false)]
         [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
-        public void IsCompatible_MustHaveAnyAlignment(string alignmentGroup, bool compatible)
+        public void IsCompatible_MustHaveAnyNonGoodAlignment(string alignmentGroup, bool compatible)
         {
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
@@ -206,7 +214,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
-                .Returns(new[] { "other alignment group", alignmentGroup });
+                .Returns(new[] { $"other {AlignmentConstants.Good} alignment group", alignmentGroup });
 
             var isCompatible = applicator.IsCompatible("my creature");
             Assert.That(isCompatible, Is.EqualTo(compatible));
