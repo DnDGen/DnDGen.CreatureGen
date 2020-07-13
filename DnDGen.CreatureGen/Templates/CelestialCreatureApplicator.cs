@@ -3,6 +3,8 @@ using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Selectors.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +16,28 @@ namespace DnDGen.CreatureGen.Templates
     {
         private readonly IAttacksGenerator attackGenerator;
         private readonly IFeatsGenerator featGenerator;
+        private readonly ICollectionSelector collectionSelector;
+        private readonly IEnumerable<string> creatureTypes;
 
-        public CelestialCreatureApplicator(IAttacksGenerator attackGenerator, IFeatsGenerator featGenerator)
+        public CelestialCreatureApplicator(IAttacksGenerator attackGenerator, IFeatsGenerator featGenerator, ICollectionSelector collectionSelector)
         {
             this.attackGenerator = attackGenerator;
             this.featGenerator = featGenerator;
+            this.collectionSelector = collectionSelector;
+
+            creatureTypes = new[]
+            {
+                CreatureConstants.Types.Aberration,
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Dragon,
+                CreatureConstants.Types.Fey,
+                CreatureConstants.Types.Giant,
+                CreatureConstants.Types.Humanoid,
+                CreatureConstants.Types.MagicalBeast,
+                CreatureConstants.Types.MonstrousHumanoid,
+                CreatureConstants.Types.Plant,
+                CreatureConstants.Types.Vermin,
+            };
         }
 
         public Creature ApplyTo(Creature creature)
@@ -181,7 +200,18 @@ namespace DnDGen.CreatureGen.Templates
 
         public bool IsCompatible(string creature)
         {
-            throw new NotImplementedException();
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
+                return false;
+
+            if (!creatureTypes.Contains(types.First()))
+                return false;
+
+            var alignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, creature);
+
+            return alignments.Any(a => a.Contains(AlignmentConstants.Good)
+                || a.EndsWith(AlignmentConstants.Neutral)
+                || a == AlignmentConstants.Modifiers.Any);
         }
     }
 }

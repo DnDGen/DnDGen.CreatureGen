@@ -5,7 +5,9 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
+using DnDGen.Infrastructure.Selectors.Collections;
 using Moq;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -24,16 +26,189 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Creature baseCreature;
         private Mock<IAttacksGenerator> mockAttackGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
+        private Mock<ICollectionSelector> mockCollectionSelector;
 
         [SetUp]
         public void SetUp()
         {
             mockAttackGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
+            mockCollectionSelector = new Mock<ICollectionSelector>();
 
-            applicator = new CelestialCreatureApplicator(mockAttackGenerator.Object, mockFeatsGenerator.Object);
+            applicator = new CelestialCreatureApplicator(mockAttackGenerator.Object, mockFeatsGenerator.Object, mockCollectionSelector.Object);
 
             baseCreature = new CreatureBuilder().WithTestValues().Build();
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration, true)]
+        [TestCase(CreatureConstants.Types.Animal, true)]
+        [TestCase(CreatureConstants.Types.Construct, false)]
+        [TestCase(CreatureConstants.Types.Dragon, true)]
+        [TestCase(CreatureConstants.Types.Elemental, false)]
+        [TestCase(CreatureConstants.Types.Fey, true)]
+        [TestCase(CreatureConstants.Types.Giant, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, true)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, true)]
+        [TestCase(CreatureConstants.Types.Ooze, false)]
+        [TestCase(CreatureConstants.Types.Outsider, false)]
+        [TestCase(CreatureConstants.Types.Plant, true)]
+        [TestCase(CreatureConstants.Types.Undead, false)]
+        [TestCase(CreatureConstants.Types.Vermin, true)]
+        public void IsCompatible_BasedOnCreatureType(string creatureType, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { creatureType, "subtype 1", "subtype 2" });
+
+            var isCompatible = applicator.IsCompatible("my creature");
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Vermin)]
+        public void IsCompatible_IncorporealIsNotValid(string creatureType)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { creatureType, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2" });
+
+            var isCompatible = applicator.IsCompatible("my creature");
+            Assert.That(isCompatible, Is.False);
+        }
+
+        [TestCase(GroupConstants.All, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Good, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Good, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
+        public void IsCompatible_MustHaveAlignment(string alignmentGroup, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
+                .Returns(new[] { alignmentGroup, "other alignment group" });
+
+            var isCompatible = applicator.IsCompatible("my creature");
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        [TestCase(GroupConstants.All, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Good, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Good, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
+        public void IsCompatible_MustHaveAnyAlignment(string alignmentGroup, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
+                .Returns(new[] { "other alignment group", alignmentGroup });
+
+            var isCompatible = applicator.IsCompatible("my creature");
+            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
         [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
