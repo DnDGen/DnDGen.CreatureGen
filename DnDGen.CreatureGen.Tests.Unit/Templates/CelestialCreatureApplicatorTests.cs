@@ -1134,7 +1134,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             get
             {
-                var hitDice = new List<double>(Enumerable.Range(1, 100)
+                var hitDice = new List<double>(Enumerable.Range(1, 20)
                     .Select(i => Convert.ToDouble(i)));
 
                 hitDice.AddRange(new[]

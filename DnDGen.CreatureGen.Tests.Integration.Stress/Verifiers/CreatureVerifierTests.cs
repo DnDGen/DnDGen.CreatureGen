@@ -18,7 +18,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             stopwatch = new Stopwatch();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
 
-            timeLimit = new TimeSpan(TimeSpan.TicksPerSecond);
+            timeLimit = TimeSpan.FromSeconds(1);
         }
 
         [Test]
