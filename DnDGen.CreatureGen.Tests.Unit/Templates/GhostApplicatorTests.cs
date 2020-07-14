@@ -224,7 +224,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Undead)]
         [TestCase(CreatureConstants.Types.MonstrousHumanoid, CreatureConstants.Types.Undead)]
         [TestCase(CreatureConstants.Types.Plant, CreatureConstants.Types.Undead)]
-        public void CreatureTypeIsAdjusted(string original, string adjusted)
+        public void ApplyTo_CreatureTypeIsAdjusted(string original, string adjusted)
         {
             baseCreature.Type.Name = original;
             baseCreature.Type.SubTypes = new[]
@@ -242,53 +242,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.Contains(CreatureConstants.Types.Subtypes.Incorporeal));
         }
 
-        [TestCaseSource("AbilityAdjustments")]
-        public void CharismaIncreasesBy4(int raceAdjust, int baseScore, int advanced, int adjusted)
+        [Test]
+        public void ApplyTo_CharismaIncreasesBy4()
         {
-            baseCreature.Abilities[AbilityConstants.Charisma].BaseScore = baseScore;
-            baseCreature.Abilities[AbilityConstants.Charisma].RacialAdjustment = raceAdjust;
-            baseCreature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment = advanced;
-
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(adjusted).And.AtLeast(10));
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.AtLeast(4));
-
-            if (baseScore + raceAdjust + advanced < 6)
-            {
-                Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.GreaterThan(4)
-                    .And.EqualTo(10 - (baseScore + raceAdjust + advanced)));
-            }
-            else
-            {
-                Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
-            }
-        }
-
-        private static IEnumerable AbilityAdjustments
-        {
-            get
-            {
-                var baseScores = Enumerable.Range(3, 18);
-                var raceAdjustments = Enumerable.Range(-5, 5 + 1 + 4).Select(i => i * 2);
-                var advanceds = Enumerable.Range(0, 4);
-
-                foreach (var score in baseScores)
-                {
-                    foreach (var race in raceAdjustments)
-                    {
-                        foreach (var advanced in advanceds)
-                        {
-                            var total = score + race + advanced;
-                            yield return new TestCaseData(race, score, advanced, Math.Max(total + 4, 10));
-                        }
-                    }
-                }
-            }
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
         }
 
         [Test]
-        public void ConstitutionGoesAway()
+        public void ApplyTo_ConstitutionGoesAway()
         {
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
@@ -298,7 +261,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(6)]
         [TestCase(8)]
         [TestCase(10)]
-        public void HitDiceChangeToD12_AndRerolled(int die)
+        public void ApplyTo_HitDiceChangeToD12_AndRerolled(int die)
         {
             baseCreature.HitPoints.HitDie = die;
 
@@ -322,7 +285,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void HitDiceChangeToD12_AndRerolled_WithoutConstitution()
+        public void ApplyTo_HitDiceChangeToD12_AndRerolled_WithoutConstitution()
         {
             baseCreature.HitPoints.HitDie = 4;
 
@@ -348,7 +311,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureGainsFlySpeed()
+        public void ApplyTo_CreatureGainsFlySpeed()
         {
             var speeds = new Dictionary<string, Measurement>();
             speeds[SpeedConstants.Fly] = new Measurement("furlongs");
@@ -368,7 +331,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureGainsFlySpeed_BetterThanOriginalFlySpeed()
+        public void ApplyTo_CreatureGainsFlySpeed_BetterThanOriginalFlySpeed()
         {
             var speeds = new Dictionary<string, Measurement>();
             speeds[SpeedConstants.Fly] = new Measurement("furlongs");
@@ -392,7 +355,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureGainsFlySpeed_SlowerThanOriginalFlySpeed()
+        public void ApplyTo_CreatureGainsFlySpeed_SlowerThanOriginalFlySpeed()
         {
             var speeds = new Dictionary<string, Measurement>();
             speeds[SpeedConstants.Fly] = new Measurement("furlongs");
@@ -416,7 +379,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureGainsFlySpeed_OriginalFlySpeedLessManeuverable()
+        public void ApplyTo_CreatureGainsFlySpeed_OriginalFlySpeedLessManeuverable()
         {
             var speeds = new Dictionary<string, Measurement>();
             speeds[SpeedConstants.Fly] = new Measurement("furlongs");
@@ -440,7 +403,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureArmorClass_NaturalArmorIsConditionalToBeOnlyEthereal()
+        public void ApplyTo_CreatureArmorClass_NaturalArmorIsConditionalToBeOnlyEthereal()
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 42);
 
@@ -455,7 +418,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureArmorClass_NaturalArmorIsConditionalToBeOnlyEthereal_MultipleBonuses()
+        public void ApplyTo_CreatureArmorClass_NaturalArmorIsConditionalToBeOnlyEthereal_MultipleBonuses()
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 42);
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 600);
@@ -474,7 +437,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureArmorClass_NaturalArmorIsConditionalToBeOnlyEthereal_NoNaturalArmor()
+        public void ApplyTo_CreatureArmorClass_NaturalArmorIsConditionalToBeOnlyEthereal_NoNaturalArmor()
         {
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
@@ -482,7 +445,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureArmorClass_NaturalArmorIsConditionalToBeOnlyEthereal_AlreadyConditional()
+        public void ApplyTo_CreatureArmorClass_NaturalArmorIsConditionalToBeOnlyEthereal_AlreadyConditional()
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 42, "only sometimes");
 
@@ -497,7 +460,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureArmorClass_DeflectionBonusOfCharisma()
+        public void ApplyTo_CreatureArmorClass_DeflectionBonusOfCharisma()
         {
             baseCreature.Abilities[AbilityConstants.Charisma].BaseScore = 42;
             baseCreature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment = 0;
@@ -527,14 +490,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(9)]
         [TestCase(10)]
         [TestCase(11)]
-        public void CreatureArmorClass_DeflectionBonusOfCharisma_AtLeast1(int charisma)
+        public void ApplyTo_CreatureArmorClass_DeflectionBonusOfCharisma_AtLeast1(int charisma)
         {
             baseCreature.Abilities[AbilityConstants.Charisma].BaseScore = charisma;
             baseCreature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Charisma].RacialAdjustment = 0;
 
             var creature = applicator.ApplyTo(baseCreature);
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Math.Max(charisma + 4, 10)));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(charisma + 4));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(charisma));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.AtLeast(4));
             Assert.That(creature.ArmorClass.DeflectionBonus, Is.Positive.And.EqualTo(Math.Max(1, creature.Abilities[AbilityConstants.Charisma].Modifier)));
@@ -549,7 +512,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
-        public void CreatureGainsSpecialAttacks_RandomAmount(int amount)
+        public void ApplyTo_CreatureGainsSpecialAttacks_RandomAmount(int amount)
         {
             //one to three
             //use attack generator to get all
@@ -599,7 +562,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureGainsSpecialQualities()
+        public void ApplyTo_CreatureGainsSpecialQualities()
         {
             var ghostQualities = new[]
             {
@@ -627,7 +590,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureSkills_GainRacialBonuses()
+        public void ApplyTo_CreatureSkills_GainRacialBonuses()
         {
             var skills = new[]
             {
@@ -682,7 +645,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureSkills_GainRacialBonuses_NoSkills()
+        public void ApplyTo_CreatureSkills_GainRacialBonuses_NoSkills()
         {
             baseCreature.Skills = new List<Skill>();
 
@@ -691,7 +654,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureSkills_GainRacialBonuses_MissingRelevantSkills()
+        public void ApplyTo_CreatureSkills_GainRacialBonuses_MissingRelevantSkills()
         {
             var skills = new[]
             {
@@ -730,7 +693,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [TestCaseSource("ChallengeRatingAdjustments")]
-        public void CreatureChallengeRating_IncreasesBy2(string original, string adjusted)
+        public void ApplyTo_CreatureChallengeRating_IncreasesBy2(string original, string adjusted)
         {
             baseCreature.ChallengeRating = original;
 
@@ -760,7 +723,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(10, 15)]
         [TestCase(20, 25)]
         [TestCase(42, 47)]
-        public void CreatureLevelAdjustment_Increases(int? original, int? adjusted)
+        public void ApplyTo_CreatureLevelAdjustment_Increases(int? original, int? adjusted)
         {
             baseCreature.LevelAdjustment = original;
 
@@ -770,7 +733,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureEquipment_CannotUseEquipment_HasNoEquipment_GainsNone()
+        public void ApplyTo_CreatureEquipment_CannotUseEquipment_HasNoEquipment_GainsNone()
         {
             baseCreature.CanUseEquipment = false;
             baseCreature.Equipment.Armor = null;
@@ -788,7 +751,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         //INFO: Example is Nessian Warhound that has barding
         [Test]
-        public void CreatureEquipment_CannotUseEquipment_HasEquipment_GainsNone()
+        public void ApplyTo_CreatureEquipment_CannotUseEquipment_HasEquipment_GainsNone()
         {
             baseCreature.CanUseEquipment = false;
             baseCreature.Equipment.Armor = new Armor { Name = "my armor" };
@@ -806,7 +769,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureEquipment_HasNone_GainsNone()
+        public void ApplyTo_CreatureEquipment_HasNone_GainsNone()
         {
             baseCreature.CanUseEquipment = true;
             baseCreature.Equipment.Armor = null;
@@ -829,7 +792,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(6)]
         [TestCase(7)]
         [TestCase(8)]
-        public void CreatureEquipment_HasWeapon_GainsGhostlyEquipment(int quantity)
+        public void ApplyTo_CreatureEquipment_HasWeapon_GainsGhostlyEquipment(int quantity)
         {
             var weapons = new[] { new Weapon { Name = "my weapon" } };
             baseCreature.CanUseEquipment = true;
@@ -885,7 +848,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(6)]
         [TestCase(7)]
         [TestCase(8)]
-        public void CreatureEquipment_HasArmor_GainsGhostlyEquipment(int quantity)
+        public void ApplyTo_CreatureEquipment_HasArmor_GainsGhostlyEquipment(int quantity)
         {
             baseCreature.CanUseEquipment = true;
             baseCreature.Equipment.Armor = new Armor { Name = "my armor" };
@@ -941,7 +904,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(6)]
         [TestCase(7)]
         [TestCase(8)]
-        public void CreatureEquipment_HasShield_GainsGhostlyEquipment(int quantity)
+        public void ApplyTo_CreatureEquipment_HasShield_GainsGhostlyEquipment(int quantity)
         {
             baseCreature.CanUseEquipment = true;
             baseCreature.Equipment.Armor = null;
@@ -997,7 +960,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(6)]
         [TestCase(7)]
         [TestCase(8)]
-        public void CreatureEquipment_HasItem_GainsGhostlyEquipment(int quantity)
+        public void ApplyTo_CreatureEquipment_HasItem_GainsGhostlyEquipment(int quantity)
         {
             var items = new[] { new Item { Name = "my item" } };
             baseCreature.CanUseEquipment = true;
@@ -1055,7 +1018,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(6)]
         [TestCase(7)]
         [TestCase(8)]
-        public void CreatureEquipment_HasItems_GainsGhostlyEquipment(int quantity)
+        public void ApplyTo_CreatureEquipment_HasItems_GainsGhostlyEquipment(int quantity)
         {
             var items = new[] { new Item { Name = "my item" }, new Item { Name = "my other item" } };
             baseCreature.CanUseEquipment = true;
@@ -1133,27 +1096,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.Contains(CreatureConstants.Types.Subtypes.Incorporeal));
         }
 
-        [TestCaseSource("AbilityAdjustments")]
-        public async Task ApplyToAsync_CharismaIncreasesBy4(int raceAdjust, int baseScore, int advanced, int adjusted)
+        [Test]
+        public async Task ApplyToAsync_CharismaIncreasesBy4()
         {
-            baseCreature.Abilities[AbilityConstants.Charisma].BaseScore = baseScore;
-            baseCreature.Abilities[AbilityConstants.Charisma].RacialAdjustment = raceAdjust;
-            baseCreature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment = advanced;
-
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(adjusted).And.AtLeast(10));
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.AtLeast(4));
-
-            if (baseScore + raceAdjust + advanced < 6)
-            {
-                Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.GreaterThan(4)
-                    .And.EqualTo(10 - (baseScore + raceAdjust + advanced)));
-            }
-            else
-            {
-                Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
-            }
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
         }
 
         [Test]
@@ -1403,7 +1351,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Charisma].RacialAdjustment = 0;
 
             var creature = await applicator.ApplyToAsync(baseCreature);
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Math.Max(charisma + 4, 10)));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(charisma + 4));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(charisma));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.AtLeast(4));
             Assert.That(creature.ArmorClass.DeflectionBonus, Is.Positive.And.EqualTo(Math.Max(1, creature.Abilities[AbilityConstants.Charisma].Modifier)));

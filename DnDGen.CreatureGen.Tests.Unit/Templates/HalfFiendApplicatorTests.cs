@@ -1,12 +1,21 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Defenses;
+using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Attacks;
+using DnDGen.CreatureGen.Generators.Creatures;
+using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
+using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Moq;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Collections;
@@ -23,18 +32,56 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Creature baseCreature;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ISpeedsGenerator> mockSpeedsGenerator;
+        private Mock<IAttacksGenerator> mockAttacksGenerator;
+        private Mock<IFeatsGenerator> mockFeatsGenerator;
+        private Mock<ISkillsGenerator> mockSkillsGenerator;
 
         [SetUp]
         public void Setup()
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
+            mockAttacksGenerator = new Mock<IAttacksGenerator>();
+            mockFeatsGenerator = new Mock<IFeatsGenerator>();
+            mockSkillsGenerator = new Mock<ISkillsGenerator>();
 
-            applicator = new HalfFiendApplicator();
+            applicator = new HalfFiendApplicator(
+                mockCollectionSelector.Object,
+                mockTypeAndAmountSelector.Object,
+                mockSpeedsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockFeatsGenerator.Object,
+                mockSkillsGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
                 .Build();
+
+            var speeds = new Dictionary<string, Measurement>();
+            speeds[SpeedConstants.Fly] = new Measurement("furlongs");
+            speeds[SpeedConstants.Fly].Description = "the goodest";
+            speeds[SpeedConstants.Fly].Value = 666;
+
+            mockSpeedsGenerator
+                .Setup(g => g.Generate(CreatureConstants.Templates.HalfFiend))
+                .Returns(speeds);
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil, new Attack { Name = "other attack" } });
         }
 
         [TestCase(CreatureConstants.Types.Aberration, true)]
@@ -343,54 +390,289 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.Types.Plant)]
         [TestCase(CreatureConstants.Types.Vermin)]
-        public void ApplyTo_CreatureTypeIsAdjusted(string original, string adjusted)
+        public void ApplyTo_CreatureTypeIsAdjusted(string original)
         {
-            Assert.Fail("not yet written");
-            //should gain the native subtype
+            baseCreature.Type.Name = original;
+            baseCreature.Type.SubTypes = new[]
+            {
+                "subtype 1",
+                "subtype 2",
+            };
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
+            Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
+                .And.Contains("subtype 2")
+                .And.Contains(CreatureConstants.Types.Subtypes.Native));
         }
 
         [Test]
         public void ApplyTo_GainsFlySpeed()
         {
-            Assert.Fail("not yet written");
-            //twice land speed
+            baseCreature.Speeds[SpeedConstants.Land].Value = 96;
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(2)
+                .And.ContainKey(SpeedConstants.Fly));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(96));
+        }
+
+        [Test]
+        public void ApplyTo_GainsBetterFlySpeed()
+        {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 96;
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
+            baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
+            baseCreature.Speeds[SpeedConstants.Fly].Value = 42;
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(2)
+                .And.ContainKey(SpeedConstants.Fly));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(96));
         }
 
         [Test]
         public void ApplyTo_UsesExistingFlySpeed()
         {
-            Assert.Fail("not yet written");
-            //same as land speed
+            baseCreature.Speeds[SpeedConstants.Land].Value = 96;
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
+            baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
+            baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(2)
+                .And.ContainKey(SpeedConstants.Fly));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(600));
         }
 
         [Test]
         public void ApplyTo_GainsNaturalArmorBonus()
         {
-            Assert.Fail("not yet written");
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(1));
+            Assert.That(bonus.IsConditional, Is.False);
         }
 
         [Test]
         public void ApplyTo_ImprovesNaturalArmorBonus()
         {
-            Assert.Fail("not yet written");
+            baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(9267));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(9267));
+            Assert.That(bonus.IsConditional, Is.False);
+        }
+
+        [Test]
+        public void ApplyTo_ImprovesBestNaturalArmorBonus()
+        {
+            baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
+            baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(90211));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
+
+            var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(9267));
+            Assert.That(bonus.IsConditional, Is.False);
+
+            bonus = creature.ArmorClass.NaturalArmorBonuses.Last();
+            Assert.That(bonus.Value, Is.EqualTo(90211));
+            Assert.That(bonus.IsConditional, Is.False);
+        }
+
+        [Test]
+        public void ApplyTo_ImprovesNaturalArmorBonus_PreserveCondition()
+        {
+            baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266, "only sometimes");
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(9267));
+            Assert.That(bonus.IsConditional, Is.True);
+            Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
         }
 
         [Test]
         public void ApplyTo_GainAttacks()
         {
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "attack 1", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "attack 2", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            var originalCount = baseCreature.Attacks.Count();
+            var creature = applicator.ApplyTo(baseCreature);
+
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length));
+            Assert.That(creature.Attacks, Is.SupersetOf(newAttacks));
+        }
+
+        [Test]
+        public void ApplyTo_GainAttacks_DuplicateClawAttacks()
+        {
             Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_GainAttacks_DuplicateBiteAttack()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainAttacks_DuplicateClawAttacks()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainAttacks_DuplicateBiteAttack()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(.1, 1)]
+        [TestCase(.25, 1)]
+        [TestCase(.5, 1)]
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        [TestCase(4, 4)]
+        [TestCase(5, 5)]
+        [TestCase(6, 6)]
+        [TestCase(7, 7)]
+        [TestCase(8, 8)]
+        [TestCase(9, 9)]
+        [TestCase(10, 10)]
+        [TestCase(11, 11)]
+        [TestCase(12, 12)]
+        [TestCase(13, 13)]
+        [TestCase(14, 14)]
+        [TestCase(15, 15)]
+        [TestCase(16, 16)]
+        [TestCase(17, 17)]
+        [TestCase(18, 18)]
+        [TestCase(19, 19)]
+        [TestCase(20, 20)]
+        [TestCase(21, 20)]
+        [TestCase(22, 20)]
+        [TestCase(42, 20)]
+        public void ApplyTo_CreatureGainsSmiteGoodSpecialAttack(double hitDiceQuantity, int smiteDamage)
+        {
+            baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
+
+            var originalAttacks = baseCreature.Attacks
+                .Select(a => JsonConvert.SerializeObject(a))
+                .Select(a => JsonConvert.DeserializeObject<Attack>(a))
+                .ToArray();
+            var originalSpecialAttacks = baseCreature.SpecialAttacks
+                .Select(a => JsonConvert.SerializeObject(a))
+                .Select(a => JsonConvert.DeserializeObject<Attack>(a))
+                .ToArray();
+
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "attack 1", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "attack 2", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalAttacks.Length + 5));
+            Assert.That(creature.Attacks.Select(a => a.Name), Is.SupersetOf(originalAttacks.Select(a => a.Name)));
+            Assert.That(creature.Attacks, Contains.Item(newAttacks[2]));
+            Assert.That(creature.SpecialAttacks.Count(), Is.EqualTo(originalSpecialAttacks.Length + 3));
+            Assert.That(creature.SpecialAttacks, Contains.Item(newAttacks[2]));
+
+            Assert.That(newAttacks[2].DamageRoll, Is.EqualTo(smiteDamage.ToString()));
         }
 
         [Test]
         public void ApplyTo_GainSpecialQualities()
         {
-            Assert.Fail("not yet written");
+            var newQualities = new[]
+            {
+                new Feat { Name = "half-Fiend quality 1" },
+                new Feat { Name = "half-Fiend quality 2" },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.HalfFiend,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(newQualities);
+
+            var originalCount = baseCreature.SpecialQualities.Count();
+            var creature = applicator.ApplyTo(baseCreature);
+
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + newQualities.Length));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(newQualities));
         }
 
         [Test]
         public void ApplyTo_AbilitiesImprove()
         {
-            Assert.Fail("not yet written");
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(4));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(4));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(4));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(2));
         }
 
         [TestCase(AbilityConstants.Charisma)]
@@ -401,20 +683,80 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AbilityConstants.Wisdom)]
         public void ApplyTo_AbilitiesImprove_DoNotImproveMissingAbility(string ability)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Abilities[ability].BaseScore = 0;
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Abilities[ability].HasScore, Is.False);
+            Assert.That(creature.Abilities[ability].TemplateAdjustment, Is.Zero);
         }
 
         [Test]
         public void ApplyTo_GainsSkillPoints()
         {
-            Assert.Fail("not yet written");
+            var ranks = 1;
+            foreach (var skill in baseCreature.Skills)
+            {
+                skill.Ranks = ranks++ % skill.RankCap;
+            }
+
+            var newSkills = new[]
+            {
+                new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
+                new Skill("my other skill", baseCreature.Abilities[AbilityConstants.Intelligence], 90210) { Ranks = 600 },
+            };
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss =>
+                        ss == baseCreature.Skills
+                        && ss.All(s => s.Ranks == 0)),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(newSkills);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Skills, Is.EqualTo(newSkills));
+        }
+
+        [Test]
+        public void ApplyTo_GainsSkillPoints_NoSkills()
+        {
+            baseCreature.Skills = Enumerable.Empty<Skill>();
+
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss =>
+                        ss == baseCreature.Skills
+                        && !ss.Any()),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(Enumerable.Empty<Skill>());
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Skills, Is.Empty);
         }
 
         [TestCaseSource("ChallengeRatingAdjustments")]
-        public void ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
+        public void ApplyTo_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
             baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
             baseCreature.ChallengeRating = original;
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil, new Attack { Name = "other attack" } });
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -466,16 +808,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             }
         }
 
-        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good, AlignmentConstants.ChaoticGood)]
-        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Neutral, AlignmentConstants.ChaoticGood)]
-        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Evil, AlignmentConstants.ChaoticGood)]
-        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Good, AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Neutral, AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Evil, AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Good, AlignmentConstants.LawfulGood)]
-        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Neutral, AlignmentConstants.LawfulGood)]
-        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Evil, AlignmentConstants.LawfulGood)]
-        public void AlignmentAdjusted(string lawfulness, string goodness, string adjusted)
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good, AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Neutral, AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Evil, AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Good, AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Neutral, AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Evil, AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Good, AlignmentConstants.LawfulEvil)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Neutral, AlignmentConstants.LawfulEvil)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Evil, AlignmentConstants.LawfulEvil)]
+        public void ApplyTo_AlignmentAdjusted(string lawfulness, string goodness, string adjusted)
         {
             baseCreature.Alignment.Lawfulness = lawfulness;
             baseCreature.Alignment.Goodness = goodness;
@@ -491,7 +833,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(2, 6)]
         [TestCase(10, 14)]
         [TestCase(42, 46)]
-        public void LevelAdjustmentIncreased(int? adjustment, int? adjusted)
+        public void ApplyTo_LevelAdjustmentIncreased(int? adjustment, int? adjusted)
         {
             baseCreature.LevelAdjustment = adjustment;
 
@@ -500,10 +842,400 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }
 
-        [Test]
-        public async Task ApplyToAsync()
+        [TestCase(CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Elemental)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Ooze)]
+        [TestCase(CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Vermin)]
+        public async Task ApplyToAsync_CreatureTypeIsAdjusted(string original)
         {
-            Assert.Fail("not yet written - NEED TO COPY");
+            baseCreature.Type.Name = original;
+            baseCreature.Type.SubTypes = new[]
+            {
+                "subtype 1",
+                "subtype 2",
+            };
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
+            Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
+                .And.Contains("subtype 2")
+                .And.Contains(CreatureConstants.Types.Subtypes.Native));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainsFlySpeed()
+        {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 96;
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(2)
+                .And.ContainKey(SpeedConstants.Fly));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(96));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainsBetterFlySpeed()
+        {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 96;
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
+            baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
+            baseCreature.Speeds[SpeedConstants.Fly].Value = 42;
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(2)
+                .And.ContainKey(SpeedConstants.Fly));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(96));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_UsesExistingFlySpeed()
+        {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 96;
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
+            baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
+            baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(2)
+                .And.ContainKey(SpeedConstants.Fly));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(600));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainsNaturalArmorBonus()
+        {
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(1));
+            Assert.That(bonus.IsConditional, Is.False);
+        }
+
+        [Test]
+        public async Task ApplyToAsync_ImprovesNaturalArmorBonus()
+        {
+            baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(9267));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(9267));
+            Assert.That(bonus.IsConditional, Is.False);
+        }
+
+        [Test]
+        public async Task ApplyToAsync_ImprovesBestNaturalArmorBonus()
+        {
+            baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
+            baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(90211));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
+
+            var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(9267));
+            Assert.That(bonus.IsConditional, Is.False);
+
+            bonus = creature.ArmorClass.NaturalArmorBonuses.Last();
+            Assert.That(bonus.Value, Is.EqualTo(90211));
+            Assert.That(bonus.IsConditional, Is.False);
+        }
+
+        [Test]
+        public async Task ApplyToAsync_ImprovesNaturalArmorBonus_PreserveCondition()
+        {
+            baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266, "only sometimes");
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
+            Assert.That(bonus.Value, Is.EqualTo(9267));
+            Assert.That(bonus.IsConditional, Is.True);
+            Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainAttacks()
+        {
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "attack 1", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "attack 2", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            var originalCount = baseCreature.Attacks.Count();
+            var creature = await applicator.ApplyToAsync(baseCreature);
+
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length));
+            Assert.That(creature.Attacks, Is.SupersetOf(newAttacks));
+        }
+
+        [TestCase(.1, 1)]
+        [TestCase(.25, 1)]
+        [TestCase(.5, 1)]
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        [TestCase(4, 4)]
+        [TestCase(5, 5)]
+        [TestCase(6, 6)]
+        [TestCase(7, 7)]
+        [TestCase(8, 8)]
+        [TestCase(9, 9)]
+        [TestCase(10, 10)]
+        [TestCase(11, 11)]
+        [TestCase(12, 12)]
+        [TestCase(13, 13)]
+        [TestCase(14, 14)]
+        [TestCase(15, 15)]
+        [TestCase(16, 16)]
+        [TestCase(17, 17)]
+        [TestCase(18, 18)]
+        [TestCase(19, 19)]
+        [TestCase(20, 20)]
+        [TestCase(21, 20)]
+        [TestCase(22, 20)]
+        [TestCase(42, 20)]
+        public async Task ApplyToAsync_CreatureGainsSmiteEvilSpecialAttack(double hitDiceQuantity, int smiteDamage)
+        {
+            baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
+
+            var originalAttacks = baseCreature.Attacks
+                .Select(a => JsonConvert.SerializeObject(a))
+                .Select(a => JsonConvert.DeserializeObject<Attack>(a))
+                .ToArray();
+            var originalSpecialAttacks = baseCreature.SpecialAttacks
+                .Select(a => JsonConvert.SerializeObject(a))
+                .Select(a => JsonConvert.DeserializeObject<Attack>(a))
+                .ToArray();
+
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "attack 1", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "attack 2", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalAttacks.Length + 5));
+            Assert.That(creature.Attacks.Select(a => a.Name), Is.SupersetOf(originalAttacks.Select(a => a.Name)));
+            Assert.That(creature.Attacks, Contains.Item(newAttacks[2]));
+            Assert.That(creature.SpecialAttacks.Count(), Is.EqualTo(originalSpecialAttacks.Length + 3));
+            Assert.That(creature.SpecialAttacks, Contains.Item(newAttacks[2]));
+
+            Assert.That(newAttacks[2].DamageRoll, Is.EqualTo(smiteDamage.ToString()));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainSpecialQualities()
+        {
+            var newQualities = new[]
+            {
+                new Feat { Name = "half-Fiend quality 1" },
+                new Feat { Name = "half-Fiend quality 2" },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.HalfFiend,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(newQualities);
+
+            var originalCount = baseCreature.SpecialQualities.Count();
+            var creature = await applicator.ApplyToAsync(baseCreature);
+
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + newQualities.Length));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(newQualities));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_AbilitiesImprove()
+        {
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(4));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(4));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(4));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(2));
+        }
+
+        [TestCase(AbilityConstants.Charisma)]
+        [TestCase(AbilityConstants.Constitution)]
+        [TestCase(AbilityConstants.Dexterity)]
+        [TestCase(AbilityConstants.Intelligence)]
+        [TestCase(AbilityConstants.Strength)]
+        [TestCase(AbilityConstants.Wisdom)]
+        public async Task ApplyToAsync_AbilitiesImprove_DoNotImproveMissingAbility(string ability)
+        {
+            baseCreature.Abilities[ability].BaseScore = 0;
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Abilities[ability].HasScore, Is.False);
+            Assert.That(creature.Abilities[ability].TemplateAdjustment, Is.Zero);
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainsSkillPoints()
+        {
+            var ranks = 1;
+            foreach (var skill in baseCreature.Skills)
+            {
+                skill.Ranks = ranks++ % skill.RankCap;
+            }
+
+            var newSkills = new[]
+            {
+                new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
+                new Skill("my other skill", baseCreature.Abilities[AbilityConstants.Intelligence], 90210) { Ranks = 600 },
+            };
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss =>
+                        ss == baseCreature.Skills
+                        && ss.All(s => s.Ranks == 0)),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(newSkills);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Skills, Is.EqualTo(newSkills));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainsSkillPoints_NoSkills()
+        {
+            baseCreature.Skills = Enumerable.Empty<Skill>();
+
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss =>
+                        ss == baseCreature.Skills
+                        && !ss.Any()),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(Enumerable.Empty<Skill>());
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Skills, Is.Empty);
+        }
+
+        [TestCaseSource("ChallengeRatingAdjustments")]
+        public async Task ApplyToAsync_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
+        {
+            baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
+            baseCreature.ChallengeRating = original;
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil, new Attack { Name = "other attack" } });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
+            Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
+        }
+
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good, AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Neutral, AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Evil, AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Good, AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Neutral, AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Evil, AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Good, AlignmentConstants.LawfulEvil)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Neutral, AlignmentConstants.LawfulEvil)]
+        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Evil, AlignmentConstants.LawfulEvil)]
+        public async Task ApplyToAsync_AlignmentAdjusted(string lawfulness, string goodness, string adjusted)
+        {
+            baseCreature.Alignment.Lawfulness = lawfulness;
+            baseCreature.Alignment.Goodness = goodness;
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Alignment.Full, Is.EqualTo(adjusted));
+        }
+
+        [TestCase(null, null)]
+        [TestCase(0, 4)]
+        [TestCase(1, 5)]
+        [TestCase(2, 6)]
+        [TestCase(10, 14)]
+        [TestCase(42, 46)]
+        public async Task ApplyToAsync_LevelAdjustmentIncreased(int? adjustment, int? adjusted)
+        {
+            baseCreature.LevelAdjustment = adjustment;
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }
     }
 }

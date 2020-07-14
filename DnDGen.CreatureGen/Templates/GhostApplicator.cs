@@ -114,9 +114,6 @@ namespace DnDGen.CreatureGen.Templates
         {
             creature.Abilities[AbilityConstants.Constitution].BaseScore = 0;
             creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment = 4;
-
-            while (creature.Abilities[AbilityConstants.Charisma].FullScore < 10)
-                creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment++;
         }
 
         private void UpdateCreatureSpeeds(Creature creature)

@@ -98,15 +98,14 @@ namespace DnDGen.CreatureGen.Templates
         private void UpdateCreatureChallengeRating(Creature creature)
         {
             var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var index = challengeRatings.ToList().IndexOf(creature.ChallengeRating);
 
             if (creature.HitPoints.HitDiceQuantity >= 8)
             {
-                var index = challengeRatings.ToList().IndexOf(creature.ChallengeRating);
                 creature.ChallengeRating = challengeRatings[index + 2];
             }
             else if (creature.HitPoints.HitDiceQuantity >= 4)
             {
-                var index = challengeRatings.ToList().IndexOf(creature.ChallengeRating);
                 creature.ChallengeRating = challengeRatings[index + 1];
             }
         }

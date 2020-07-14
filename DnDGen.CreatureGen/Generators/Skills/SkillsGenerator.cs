@@ -160,7 +160,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             return skills;
         }
 
-        private IEnumerable<Skill> ApplySkillPointsAsRanks(IEnumerable<Skill> skills, HitPoints hitPoints, CreatureType creatureType, Dictionary<string, Ability> abilities)
+        public IEnumerable<Skill> ApplySkillPointsAsRanks(IEnumerable<Skill> skills, HitPoints hitPoints, CreatureType creatureType, Dictionary<string, Ability> abilities)
         {
             var points = GetTotalSkillPoints(creatureType, hitPoints.RoundedHitDiceQuantity, abilities[AbilityConstants.Intelligence]);
             var totalRanksAvailable = skills.Count() * (hitPoints.HitDiceQuantity + 3);
