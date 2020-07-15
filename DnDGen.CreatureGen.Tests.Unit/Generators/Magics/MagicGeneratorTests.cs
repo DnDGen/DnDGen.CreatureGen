@@ -55,6 +55,11 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             classesThatPrepareSpells.Add(caster.Type);
             classesThatPrepareSpells.Add("other class");
 
+            abilities["casting ability"] = new Ability("casting ability");
+            abilities["casting ability"].BaseScore = 11;
+            abilities["other ability"] = new Ability("other ability");
+            abilities["other ability"].BaseScore = 11;
+
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, "creature"))
                 .Returns(new[] { caster });
@@ -65,6 +70,8 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells))
                 .Returns(classesThatPrepareSpells);
+
+            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AbilityGroups, $"{caster.Type}:Spellcaster")).Returns(new[] { "casting ability" });
         }
 
         [Test]
@@ -74,6 +81,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             Assert.That(magic, Is.Not.Null);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
         }
 
         [Test]
@@ -84,10 +92,10 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var preparedSpells = new List<Spell> { new Spell() };
 
             mockSpellsGenerator
-                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities))
+                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"]))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities["casting ability"]))
                 .Returns(knownSpells);
             mockSpellsGenerator
                 .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay))
@@ -96,6 +104,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.SpellsPerDay, Is.EqualTo(spellsPerDay));
             Assert.That(magic.KnownSpells, Is.EqualTo(knownSpells));
             Assert.That(magic.PreparedSpells, Is.EqualTo(preparedSpells));
@@ -113,10 +122,10 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var preparedSpells = new List<Spell> { new Spell() };
 
             mockSpellsGenerator
-                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities))
+                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"]))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities["casting ability"]))
                 .Returns(knownSpells);
             mockSpellsGenerator
                 .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay))
@@ -125,6 +134,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.Domains, Is.Empty);
             Assert.That(magic.SpellsPerDay, Is.EqualTo(spellsPerDay));
             Assert.That(magic.KnownSpells, Is.EqualTo(knownSpells));
@@ -151,10 +161,10 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var preparedSpells = new List<Spell> { new Spell() };
 
             mockSpellsGenerator
-                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities, "domain 1", "domain 2", "domain 3", "domain 4"))
+                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"], "domain 1", "domain 2", "domain 3", "domain 4"))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities, "domain 1", "domain 2", "domain 3", "domain 4"))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities["casting ability"], "domain 1", "domain 2", "domain 3", "domain 4"))
                 .Returns(knownSpells);
             mockSpellsGenerator
                 .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay, "domain 1", "domain 2", "domain 3", "domain 4"))
@@ -163,6 +173,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.Domains.Count(), Is.EqualTo(4));
             Assert.That(magic.Domains, Contains.Item("domain 1")
                 .And.Contains("domain 2")
@@ -196,10 +207,10 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var preparedSpells = new List<Spell> { new Spell() };
 
             mockSpellsGenerator
-                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities, "domain 1", "domain 3"))
+                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"], "domain 1", "domain 3"))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities, "domain 1", "domain 3"))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities["casting ability"], "domain 1", "domain 3"))
                 .Returns(knownSpells);
             mockSpellsGenerator
                 .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay, "domain 1", "domain 3"))
@@ -208,6 +219,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.Domains.Count(), Is.EqualTo(2));
             Assert.That(magic.Domains, Contains.Item("domain 1").And.Contains("domain 3"));
             Assert.That(magic.SpellsPerDay, Is.EqualTo(spellsPerDay));
@@ -235,10 +247,10 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var preparedSpells = new List<Spell> { new Spell() };
 
             mockSpellsGenerator
-                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities, "domain 3"))
+                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"], "domain 3"))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities, "domain 3"))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities["casting ability"], "domain 3"))
                 .Returns(knownSpells);
             mockSpellsGenerator
                 .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay, "domain 3"))
@@ -247,6 +259,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.Domains.Count(), Is.EqualTo(1));
             Assert.That(magic.Domains, Contains.Item("domain 3"));
             Assert.That(magic.SpellsPerDay, Is.EqualTo(spellsPerDay));
@@ -276,10 +289,10 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var preparedSpells = new List<Spell> { new Spell() };
 
             mockSpellsGenerator
-                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities, "domain 1", "domain 2"))
+                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"], "domain 1", "domain 2"))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities, "domain 1", "domain 2"))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities["casting ability"], "domain 1", "domain 2"))
                 .Returns(knownSpells);
             mockSpellsGenerator
                 .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay, "domain 1", "domain 2"))
@@ -288,6 +301,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.Domains.Count(), Is.EqualTo(2));
             Assert.That(magic.Domains, Contains.Item("domain 1").And.Contains("domain 2"));
             Assert.That(magic.SpellsPerDay, Is.EqualTo(spellsPerDay));
@@ -305,10 +319,10 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var preparedSpells = new List<Spell> { new Spell() };
 
             mockSpellsGenerator
-                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities))
+                .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"]))
                 .Returns(spellsPerDay);
             mockSpellsGenerator
-                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities))
+                .Setup(g => g.GenerateKnown("creature", caster.Type, caster.Amount, alignment, abilities["casting ability"]))
                 .Returns(knownSpells);
             mockSpellsGenerator
                 .Setup(g => g.GeneratePrepared(knownSpells, spellsPerDay))
@@ -317,6 +331,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.SpellsPerDay, Is.EqualTo(spellsPerDay));
             Assert.That(magic.KnownSpells, Is.EqualTo(knownSpells));
             Assert.That(magic.PreparedSpells, Is.Not.EqualTo(preparedSpells));
@@ -352,6 +367,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.ArcaneSpellFailure, Is.EqualTo(9266));
         }
 
@@ -367,6 +383,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.ArcaneSpellFailure, Is.Zero);
         }
 
@@ -382,6 +399,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.ArcaneSpellFailure, Is.EqualTo(9266));
         }
 
@@ -399,6 +417,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.ArcaneSpellFailure, Is.EqualTo(9266));
         }
 
@@ -421,6 +440,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.ArcaneSpellFailure, Is.EqualTo(9266 + 90210));
         }
 
@@ -437,6 +457,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.ArcaneSpellFailure, Is.EqualTo(9256));
         }
 
@@ -453,6 +474,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.ArcaneSpellFailure, Is.Zero);
         }
 
@@ -475,6 +497,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.ArcaneSpellFailure, Is.EqualTo(5));
         }
 
@@ -493,6 +516,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.ArcaneSpellFailure, Is.EqualTo(9256));
         }
 
@@ -511,6 +535,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.ArcaneSpellFailure, Is.Zero);
         }
 
@@ -533,6 +558,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
             Assert.That(magic.CasterLevel, Is.EqualTo(42));
+            Assert.That(magic.CastingAbility, Is.EqualTo(abilities["casting ability"]));
             Assert.That(magic.ArcaneSpellFailure, Is.EqualTo(5));
         }
     }

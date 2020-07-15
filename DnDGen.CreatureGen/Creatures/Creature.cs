@@ -18,7 +18,26 @@ namespace DnDGen.CreatureGen.Creatures
         public string Size { get; set; }
         public CreatureType Type { get; set; }
         public HitPoints HitPoints { get; set; }
+
         public int InitiativeBonus { get; set; }
+        public int TotalInitiativeBonus
+        {
+            get
+            {
+                if (!Abilities.Any())
+                    return 0;
+
+                var totalInitiativeBonus = Abilities[AbilityConstants.Dexterity].Modifier;
+
+                if (!Abilities[AbilityConstants.Dexterity].HasScore)
+                    totalInitiativeBonus = Abilities[AbilityConstants.Intelligence].Modifier;
+
+                totalInitiativeBonus += InitiativeBonus;
+
+                return totalInitiativeBonus;
+            }
+        }
+
         public Dictionary<string, Measurement> Speeds { get; set; }
         public ArmorClass ArmorClass { get; set; }
         public int BaseAttackBonus { get; set; }

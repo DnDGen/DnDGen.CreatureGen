@@ -19,7 +19,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<ICollectionSelector> mockCollectionsSelector;
         private ISpellsGenerator spellsGenerator;
-        private Dictionary<string, Ability> abilities;
+        private Ability castingAbility;
         private List<TypeAndAmountSelection> spellsPerDayForClass;
         private List<TypeAndAmountSelection> spellsKnownForClass;
         private List<string> classSpells;
@@ -35,7 +35,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
             mockCollectionsSelector = new Mock<ICollectionSelector>();
             spellsGenerator = new SpellsGenerator(mockCollectionsSelector.Object, mockTypeAndAmountSelector.Object);
-            abilities = new Dictionary<string, Ability>();
+            castingAbility = new Ability("casting ability");
             spellsPerDayForClass = new List<TypeAndAmountSelection>();
             spellsKnownForClass = new List<TypeAndAmountSelection>();
             classSpells = new List<string>();
@@ -49,10 +49,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 42, });
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 2, });
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
-            abilities["stat"] = new Ability("stat");
-            abilities["stat"].BaseScore = 11;
-            abilities["other stat"] = new Ability("other stat");
-            abilities["other stat"].BaseScore = 11;
+            castingAbility.BaseScore = 11;
             classSpells.Add("spell 1");
             classSpells.Add("spell 2");
             classSpells.Add("spell 3");
@@ -66,7 +63,6 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             alignment.Lawfulness = "lawly";
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Divine)).Returns(divineCasters);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AbilityGroups, $"{caster}:Spellcaster")).Returns(new[] { "stat" });
 
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellsPerDay, $"{caster}:{casterLevel}"))
@@ -93,7 +89,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         [Test]
         public void GenerateSpellsPerDay()
         {
-            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities);
+            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
             Assert.That(cantrips.Quantity, Is.EqualTo(90210));
@@ -152,8 +148,8 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         [TestCase(45, 0, 5, 4, 4, 4, 4, 3, 3, 3, 3)]
         public void AddBonusSpellsPerDayForStat(int statValue, params int[] levelBonuses)
         {
-            abilities["stat"].BaseScore = statValue + 2;
-            abilities["stat"].RacialAdjustment = -2;
+            castingAbility.BaseScore = statValue + 2;
+            castingAbility.RacialAdjustment = -2;
 
             spellsPerDayForClass.Clear();
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 10, });
@@ -167,7 +163,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "8", Amount = 2, });
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "9", Amount = 1, });
 
-            var generatedSpellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities);
+            var generatedSpellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
 
             for (var spellLevel = 0; spellLevel < levelBonuses.Length; spellLevel++)
             {
@@ -184,9 +180,9 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         [Test]
         public void CannotGetSpellsPerDayInLevelThatAbilitiesDoNotAllow()
         {
-            abilities["stat"].BaseScore = 10;
+            castingAbility.BaseScore = 10;
 
-            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities);
+            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
             Assert.That(spellsPerDay.Count, Is.EqualTo(1));
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
@@ -196,9 +192,9 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         [Test]
         public void CannotGetBonusSpellsPerDayInLevelThatCharacterCannotCast()
         {
-            abilities["stat"].BaseScore = 45;
+            castingAbility.BaseScore = 45;
 
-            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities);
+            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
             Assert.That(spellsPerDay.Count, Is.EqualTo(2));
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
@@ -213,10 +209,10 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         [Test]
         public void CanGetBonusSpellsPerDayInLevelWithQuantityOf0()
         {
-            abilities["stat"].BaseScore = 45;
+            castingAbility.BaseScore = 45;
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "2", Amount = 0, });
 
-            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities);
+            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
             Assert.That(spellsPerDay.Count, Is.EqualTo(3));
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
@@ -240,7 +236,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 90210, });
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 0, });
 
-            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities);
+            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
             var cantrips = spellsPerDay.First(s => s.Level == 0);
 
             Assert.That(cantrips.Quantity, Is.EqualTo(90210));
@@ -254,7 +250,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 90210, });
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 0, });
 
-            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities, "specialist");
+            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility, "specialist");
             Assert.That(spellsPerDay.Count, Is.EqualTo(2));
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
@@ -273,7 +269,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 90210, });
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
 
-            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities);
+            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
             Assert.That(spellsPerDay.Count, Is.EqualTo(2));
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
@@ -300,7 +296,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "8", Amount = 2, });
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "9", Amount = 1, });
 
-            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities, "specialist");
+            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility, "specialist");
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
             Assert.That(cantrips.HasDomainSpell, Is.False);
@@ -325,7 +321,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "8", Amount = 2, });
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "9", Amount = 1, });
 
-            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities, "specialist", "also specialist");
+            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility, "specialist", "also specialist");
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
             Assert.That(cantrips.HasDomainSpell, Is.False);
@@ -349,7 +345,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "8", Amount = 2, });
             spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "9", Amount = 1, });
 
-            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, abilities);
+            var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
 
             foreach (var spells in spellsPerDay)
                 Assert.That(spells.HasDomainSpell, Is.False, spells.Level.ToString());
@@ -358,7 +354,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         [Test]
         public void GenerateKnownSpells()
         {
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities);
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(3));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -377,7 +373,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 3, });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities);
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(3));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -396,7 +392,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities);
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -427,7 +423,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "special domain");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
             Assert.That(spellsKnown.Count(), Is.EqualTo(5));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -454,7 +450,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "specialist field");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "specialist field");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
             Assert.That(spellsKnown.Select(s => s.Name), Has.None.EqualTo("spell 5"));
 
@@ -481,7 +477,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "specialist field");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "specialist field");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
             Assert.That(spellsKnown.Select(s => s.Name), Has.None.EqualTo("spell 5"));
 
@@ -508,7 +504,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "specialist field");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "specialist field");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
             Assert.That(spellsKnown.Select(s => s.Name), Has.None.EqualTo("spell 5"));
 
@@ -535,7 +531,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "specialist field");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "specialist field");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
             Assert.That(spellsKnown.Select(s => s.Name), Has.None.EqualTo("spell 5"));
 
@@ -555,7 +551,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 0, });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities);
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -577,7 +573,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             classSpells.Add("spell 5");
             spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 2, });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities);
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -608,7 +604,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "special domain");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -639,7 +635,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "special domain");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
             Assert.That(spellsKnown.Count(), Is.EqualTo(5));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -652,14 +648,14 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         [Test]
         public void DivineCastersDoNotKnowSpellsBeyondWhatAbilitiesAllow()
         {
-            abilities["stat"].BaseScore = 10;
+            castingAbility.BaseScore = 10;
             divineCasters.Add(caster);
 
             spellsKnownForClass.Clear();
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities);
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(2));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -669,7 +665,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         [Test]
         public void DivineCastersDoNotKnowSpecialistSpellsBeyondWhatAbilitiesAllow()
         {
-            abilities["stat"].BaseScore = 10;
+            castingAbility.BaseScore = 10;
             divineCasters.Add(caster);
 
             spellsKnownForClass.Clear();
@@ -688,7 +684,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "special domain");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
             Assert.That(spellsKnown.Count(), Is.EqualTo(2));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -713,7 +709,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "special domain");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -740,7 +736,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "special domain");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -757,7 +753,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "domain 2:Prohibited"))
                 .Returns(new[] { classSpells[0], classSpells[2] });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "domain 2");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "domain 2");
             Assert.That(spellsKnown.Count(), Is.EqualTo(2));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -776,7 +772,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "creature:Prohibited"))
                 .Returns(new[] { classSpells[0], classSpells[2] });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "domain 2");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "domain 2");
             Assert.That(spellsKnown.Count(), Is.EqualTo(2));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -795,7 +791,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "goodly:Prohibited"))
                 .Returns(new[] { classSpells[0], classSpells[2] });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "domain 2");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "domain 2");
             Assert.That(spellsKnown.Count(), Is.EqualTo(2));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -814,7 +810,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "lawly:Prohibited"))
                 .Returns(new[] { classSpells[0], classSpells[2] });
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "domain 2");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "domain 2");
             Assert.That(spellsKnown.Count(), Is.EqualTo(2));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -844,7 +840,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "special domain");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
             Assert.That(spellsKnown.Count(), Is.EqualTo(3));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -857,9 +853,9 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         [Test]
         public void RandomKnownSpellsAreNotBeyondWhatAbilitiesAllow()
         {
-            abilities["stat"].BaseScore = 10;
+            castingAbility.BaseScore = 10;
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities);
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(2));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -869,9 +865,9 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         [Test]
         public void RandomKnownSpellsAreNotSpecialistSpellsBeyondWhatAbilitiesAllow()
         {
-            abilities["stat"].BaseScore = 10;
+            castingAbility.BaseScore = 10;
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "domain 2");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "domain 2");
             Assert.That(spellsKnown.Count(), Is.EqualTo(2));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -887,7 +883,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Returns(classSpells[2])
                 .Returns(classSpells[3]);
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities);
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(3));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);
@@ -936,7 +932,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
-            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, abilities, "other class name", "special domain");
+            var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "other class name", "special domain");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
 
             var cantrips = spellsKnown.Where(s => s.Level == 0);

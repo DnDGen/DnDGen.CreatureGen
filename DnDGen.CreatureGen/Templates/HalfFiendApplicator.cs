@@ -9,6 +9,7 @@ using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;
         private readonly ISkillsGenerator skillsGenerator;
+        private readonly Dice dice;
 
         public HalfFiendApplicator(
             ICollectionSelector collectionSelector,
@@ -32,7 +34,8 @@ namespace DnDGen.CreatureGen.Templates
             ISpeedsGenerator speedsGenerator,
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
-            ISkillsGenerator skillsGenerator)
+            ISkillsGenerator skillsGenerator,
+            Dice dice)
         {
             this.collectionSelector = collectionSelector;
             this.typeAndAmountSelector = typeAndAmountSelector;
@@ -40,6 +43,7 @@ namespace DnDGen.CreatureGen.Templates
             this.attacksGenerator = attacksGenerator;
             this.featsGenerator = featsGenerator;
             this.skillsGenerator = skillsGenerator;
+            this.dice = dice;
 
             creatureTypes = new[]
             {
@@ -78,9 +82,6 @@ namespace DnDGen.CreatureGen.Templates
             // Alignment
             UpdateCreatureAlignment(creature);
 
-            // Attacks
-            UpdateCreatureAttacks(creature);
-
             // Special Qualities
             UpdateCreatureSpecialQualities(creature);
 
@@ -89,6 +90,9 @@ namespace DnDGen.CreatureGen.Templates
 
             //Armor Class
             UpdateCreatureArmorClass(creature);
+
+            // Attacks
+            UpdateCreatureAttacks(creature);
 
             return creature;
         }
@@ -195,8 +199,43 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Abilities,
                 creature.HitPoints.RoundedHitDiceQuantity);
 
+            var allFeats = creature.Feats.Union(creature.SpecialQualities);
+            attacks = attacksGenerator.ApplyAttackBonuses(attacks, allFeats, creature.Abilities);
+
             var smiteEvil = attacks.First(a => a.Name == "Smite Good");
             smiteEvil.DamageRoll = Math.Min(creature.HitPoints.RoundedHitDiceQuantity, 20).ToString();
+
+            if (creature.Attacks.Any(a => a.Name == "Claw"))
+            {
+                var oldClaw = creature.Attacks.First(a => a.Name == "Claw");
+                var newClaw = attacks.First(a => a.Name == "Claw");
+
+                var oldMax = dice.Roll(oldClaw.DamageRoll).AsPotentialMaximum();
+                var newMax = dice.Roll(newClaw.DamageRoll).AsPotentialMaximum();
+
+                if (newMax > oldMax)
+                {
+                    oldClaw.DamageRoll = newClaw.DamageRoll;
+                }
+
+                attacks = attacks.Except(new[] { newClaw });
+            }
+
+            if (creature.Attacks.Any(a => a.Name == "Bite"))
+            {
+                var oldBite = creature.Attacks.First(a => a.Name == "Bite");
+                var newBite = attacks.First(a => a.Name == "Bite");
+
+                var oldMax = dice.Roll(oldBite.DamageRoll).AsPotentialMaximum();
+                var newMax = dice.Roll(newBite.DamageRoll).AsPotentialMaximum();
+
+                if (newMax > oldMax)
+                {
+                    oldBite.DamageRoll = newBite.DamageRoll;
+                }
+
+                attacks = attacks.Except(new[] { newBite });
+            }
 
             creature.Attacks = creature.Attacks.Union(attacks);
         }
@@ -262,10 +301,6 @@ namespace DnDGen.CreatureGen.Templates
             await Task.WhenAll(tasks);
             tasks.Clear();
 
-            // Attacks
-            var attackTask = Task.Run(() => UpdateCreatureAttacks(creature));
-            tasks.Add(attackTask);
-
             // Special Qualities
             var qualityTask = Task.Run(() => UpdateCreatureSpecialQualities(creature));
             tasks.Add(qualityTask);
@@ -280,6 +315,9 @@ namespace DnDGen.CreatureGen.Templates
 
             await Task.WhenAll(tasks);
             tasks.Clear();
+
+            // Attacks
+            await Task.Run(() => UpdateCreatureAttacks(creature));
 
             return creature;
         }

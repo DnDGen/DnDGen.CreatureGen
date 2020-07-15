@@ -116,7 +116,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             creature.HitPoints.HitDie = source.HitPoints.HitDie;
             creature.HitPoints.Total = source.HitPoints.Total;
 
-            creature.InitiativeBonus = source.InitiativeBonus;
+            creature.InitiativeBonus = source.TotalInitiativeBonus;
             creature.LevelAdjustment = source.LevelAdjustment;
             creature.Name = source.Name;
             creature.NumberOfHands = source.NumberOfHands;

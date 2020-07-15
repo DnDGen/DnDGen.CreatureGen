@@ -13,7 +13,9 @@ using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Tests.Unit.Generators.Items;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using Moq;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -36,6 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ISkillsGenerator> mockSkillsGenerator;
+        private Mock<Dice> mockDice;
 
         [SetUp]
         public void Setup()
@@ -46,6 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
+            mockDice = new Mock<Dice>();
 
             applicator = new HalfFiendApplicator(
                 mockCollectionSelector.Object,
@@ -53,7 +57,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockSpeedsGenerator.Object,
                 mockAttacksGenerator.Object,
                 mockFeatsGenerator.Object,
-                mockSkillsGenerator.Object);
+                mockSkillsGenerator.Object,
+                mockDice.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -73,6 +78,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Name = "Smite Good",
                 IsSpecial = true
             };
+            var attacks = new[]
+            {
+                smiteEvil,
+                new Attack { Name = "other attack" },
+                new Attack { Name = "Claw" },
+                new Attack { Name = "Bite" },
+            };
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
                     CreatureConstants.Templates.HalfFiend,
@@ -81,7 +93,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil, new Attack { Name = "other attack" } });
+                .Returns(attacks);
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    attacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
         }
 
         [TestCase(CreatureConstants.Types.Aberration, true)]
@@ -521,8 +539,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "attack 1", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "attack 2", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
             };
 
             mockAttacksGenerator
@@ -535,6 +553,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(newAttacks);
 
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
+
             var originalCount = baseCreature.Attacks.Count();
             var creature = applicator.ApplyTo(baseCreature);
 
@@ -543,27 +568,477 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_GainAttacks_DuplicateClawAttacks()
+        public void ApplyTo_GainAttacks_WithAttackBonuses()
         {
-            Assert.Fail("not yet written");
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            var newQualities = new[]
+            {
+                new Feat { Name = "half-Fiend quality 1" },
+                new Feat { Name = "half-Fiend quality 2" },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.HalfFiend,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(newQualities);
+
+            var attacksWithBonuses = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { -66 } },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.Is<IEnumerable<Feat>>(f =>
+                        f.IsEquivalentTo(baseCreature.Feats
+                            .Union(baseCreature.SpecialQualities)
+                            .Union(newQualities))),
+                    baseCreature.Abilities))
+                .Returns(attacksWithBonuses);
+
+            var originalCount = baseCreature.Attacks.Count();
+            var creature = applicator.ApplyTo(baseCreature);
+
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + attacksWithBonuses.Length));
+            Assert.That(creature.Attacks, Is.SupersetOf(attacksWithBonuses));
         }
 
         [Test]
-        public void ApplyTo_GainAttacks_DuplicateBiteAttack()
+        public async Task ApplyToAsync_GainAttacks_WithAttackBonuses()
         {
-            Assert.Fail("not yet written");
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            var newQualities = new[]
+            {
+                new Feat { Name = "half-Fiend quality 1" },
+                new Feat { Name = "half-Fiend quality 2" },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.HalfFiend,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(newQualities);
+
+            var attacksWithBonuses = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { -66 } },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.Is<IEnumerable<Feat>>(f =>
+                        f.IsEquivalentTo(baseCreature.Feats
+                            .Union(baseCreature.SpecialQualities)
+                            .Union(newQualities))),
+                    baseCreature.Abilities))
+                .Returns(attacksWithBonuses);
+
+            var originalCount = baseCreature.Attacks.Count();
+            var creature = await applicator.ApplyToAsync(baseCreature);
+
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + attacksWithBonuses.Length));
+            Assert.That(creature.Attacks, Is.SupersetOf(attacksWithBonuses));
         }
 
-        [Test]
-        public async Task ApplyToAsync_GainAttacks_DuplicateClawAttacks()
+        [TestCase(9266, 90210, "fiend claw roll")]
+        [TestCase(9266, 42, "base claw roll")]
+        public void ApplyTo_GainAttacks_DuplicateClawAttacks(int baseClawMax, int fiendClawMax, string expectedClawDamage)
         {
-            Assert.Fail("not yet written");
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
+
+            var claw = new Attack { Name = "Claw", DamageRoll = "base claw roll", IsSpecial = false, IsMelee = true };
+            baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw });
+
+            mockDice
+                .Setup(d => d.Roll("base claw roll").AsPotentialMaximum<int>(true))
+                .Returns(baseClawMax);
+            mockDice
+                .Setup(d => d.Roll("fiend claw roll").AsPotentialMaximum<int>(true))
+                .Returns(fiendClawMax);
+
+            var originalCount = baseCreature.Attacks.Count();
+            var creature = applicator.ApplyTo(baseCreature);
+            var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
+            var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
+
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
+            Assert.That(claws, Has.Length.EqualTo(1));
+            Assert.That(claws[0], Is.EqualTo(claw));
+            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(bites, Has.Length.EqualTo(1));
+            Assert.That(bites[0], Is.EqualTo(newAttacks[4]));
+            Assert.That(bites[0].DamageRoll, Is.EqualTo("fiend bite roll"));
         }
 
-        [Test]
-        public async Task ApplyToAsync_GainAttacks_DuplicateBiteAttack()
+        [TestCase(9266, 90210, "fiend bite roll")]
+        [TestCase(9266, 42, "base bite roll")]
+        public void ApplyTo_GainAttacks_DuplicateBiteAttack(int baseBiteMax, int fiendBiteMax, string expectedBiteDamage)
         {
-            Assert.Fail("not yet written");
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
+
+            var bite = new Attack { Name = "Bite", DamageRoll = "base bite roll", IsSpecial = false, IsMelee = true };
+            baseCreature.Attacks = baseCreature.Attacks.Union(new[] { bite });
+
+            mockDice
+                .Setup(d => d.Roll("base bite roll").AsPotentialMaximum<int>(true))
+                .Returns(baseBiteMax);
+            mockDice
+                .Setup(d => d.Roll("fiend bite roll").AsPotentialMaximum<int>(true))
+                .Returns(fiendBiteMax);
+
+            var originalCount = baseCreature.Attacks.Count();
+            var creature = applicator.ApplyTo(baseCreature);
+            var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
+            var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
+
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
+            Assert.That(claws, Has.Length.EqualTo(1));
+            Assert.That(claws[0], Is.EqualTo(newAttacks[3]));
+            Assert.That(claws[0].DamageRoll, Is.EqualTo("fiend claw roll"));
+            Assert.That(bites, Has.Length.EqualTo(1));
+            Assert.That(bites[0], Is.EqualTo(bite));
+            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
+        }
+
+        [TestCase(9266, 90210, "fiend claw roll", 1336, 1337, "fiend bite roll")]
+        [TestCase(9266, 90210, "fiend claw roll", 1336, 600, "base bite roll")]
+        [TestCase(9266, 42, "base claw roll", 1336, 1337, "fiend bite roll")]
+        [TestCase(9266, 42, "base claw roll", 1336, 600, "base bite roll")]
+        public void ApplyTo_GainAttacks_DuplicateClawAndBiteAttack(int baseClawMax, int fiendClawMax, string expectedClawDamage, int baseBiteMax, int fiendBiteMax, string expectedBiteDamage)
+        {
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
+
+            var claw = new Attack { Name = "Claw", DamageRoll = "base claw roll", IsSpecial = false, IsMelee = true };
+            var bite = new Attack { Name = "Bite", DamageRoll = "base bite roll", IsSpecial = false, IsMelee = true };
+            baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw, bite });
+
+            mockDice
+                .Setup(d => d.Roll("base claw roll").AsPotentialMaximum<int>(true))
+                .Returns(baseClawMax);
+            mockDice
+                .Setup(d => d.Roll("fiend claw roll").AsPotentialMaximum<int>(true))
+                .Returns(fiendClawMax);
+            mockDice
+                .Setup(d => d.Roll("base bite roll").AsPotentialMaximum<int>(true))
+                .Returns(baseBiteMax);
+            mockDice
+                .Setup(d => d.Roll("fiend bite roll").AsPotentialMaximum<int>(true))
+                .Returns(fiendBiteMax);
+
+            var originalCount = baseCreature.Attacks.Count();
+            var creature = applicator.ApplyTo(baseCreature);
+            var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
+            var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
+
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 2));
+            Assert.That(claws, Has.Length.EqualTo(1));
+            Assert.That(claws[0], Is.EqualTo(claw));
+            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(bites, Has.Length.EqualTo(1));
+            Assert.That(bites[0], Is.EqualTo(bite));
+            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
+        }
+
+        [TestCase(9266, 90210, "fiend claw roll")]
+        [TestCase(9266, 42, "base claw roll")]
+        public async Task ApplyToAsync_GainAttacks_DuplicateClawAttacks(int baseClawMax, int fiendClawMax, string expectedClawDamage)
+        {
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
+
+            var claw = new Attack { Name = "Claw", DamageRoll = "base claw roll", IsSpecial = false, IsMelee = true };
+            baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw });
+
+            mockDice
+                .Setup(d => d.Roll("base claw roll").AsPotentialMaximum<int>(true))
+                .Returns(baseClawMax);
+            mockDice
+                .Setup(d => d.Roll("fiend claw roll").AsPotentialMaximum<int>(true))
+                .Returns(fiendClawMax);
+
+            var originalCount = baseCreature.Attacks.Count();
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
+            var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
+
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
+            Assert.That(claws, Has.Length.EqualTo(1));
+            Assert.That(claws[0], Is.EqualTo(claw));
+            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(bites, Has.Length.EqualTo(1));
+            Assert.That(bites[0], Is.EqualTo(newAttacks[4]));
+            Assert.That(bites[0].DamageRoll, Is.EqualTo("fiend bite roll"));
+        }
+
+        [TestCase(9266, 90210, "fiend bite roll")]
+        [TestCase(9266, 42, "base bite roll")]
+        public async Task ApplyToAsync_GainAttacks_DuplicateBiteAttack(int baseBiteMax, int fiendBiteMax, string expectedBiteDamage)
+        {
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
+
+            var bite = new Attack { Name = "Bite", DamageRoll = "base bite roll", IsSpecial = false, IsMelee = true };
+            baseCreature.Attacks = baseCreature.Attacks.Union(new[] { bite });
+
+            mockDice
+                .Setup(d => d.Roll("base bite roll").AsPotentialMaximum<int>(true))
+                .Returns(baseBiteMax);
+            mockDice
+                .Setup(d => d.Roll("fiend bite roll").AsPotentialMaximum<int>(true))
+                .Returns(fiendBiteMax);
+
+            var originalCount = baseCreature.Attacks.Count();
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
+            var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
+
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
+            Assert.That(claws, Has.Length.EqualTo(1));
+            Assert.That(claws[0], Is.EqualTo(newAttacks[3]));
+            Assert.That(claws[0].DamageRoll, Is.EqualTo("fiend claw roll"));
+            Assert.That(bites, Has.Length.EqualTo(1));
+            Assert.That(bites[0], Is.EqualTo(bite));
+            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
+        }
+
+        [TestCase(9266, 90210, "fiend claw roll", 1336, 1337, "fiend bite roll")]
+        [TestCase(9266, 90210, "fiend claw roll", 1336, 600, "base bite roll")]
+        [TestCase(9266, 42, "base claw roll", 1336, 1337, "fiend bite roll")]
+        [TestCase(9266, 42, "base claw roll", 1336, 600, "base bite roll")]
+        public async Task ApplyToAsync_GainAttacks_DuplicateClawAndBiteAttack(int baseClawMax, int fiendClawMax, string expectedClawDamage, int baseBiteMax, int fiendBiteMax, string expectedBiteDamage)
+        {
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Smite Good", IsSpecial = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
+
+            var claw = new Attack { Name = "Claw", DamageRoll = "base claw roll", IsSpecial = false, IsMelee = true };
+            var bite = new Attack { Name = "Bite", DamageRoll = "base bite roll", IsSpecial = false, IsMelee = true };
+            baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw, bite });
+
+            mockDice
+                .Setup(d => d.Roll("base claw roll").AsPotentialMaximum<int>(true))
+                .Returns(baseClawMax);
+            mockDice
+                .Setup(d => d.Roll("fiend claw roll").AsPotentialMaximum<int>(true))
+                .Returns(fiendClawMax);
+            mockDice
+                .Setup(d => d.Roll("base bite roll").AsPotentialMaximum<int>(true))
+                .Returns(baseBiteMax);
+            mockDice
+                .Setup(d => d.Roll("fiend bite roll").AsPotentialMaximum<int>(true))
+                .Returns(fiendBiteMax);
+
+            var originalCount = baseCreature.Attacks.Count();
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
+            var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
+
+            Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 2));
+            Assert.That(claws, Has.Length.EqualTo(1));
+            Assert.That(claws[0], Is.EqualTo(claw));
+            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(bites, Has.Length.EqualTo(1));
+            Assert.That(bites[0], Is.EqualTo(bite));
+            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
         }
 
         [TestCase(.1, 1)]
@@ -610,8 +1085,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "attack 1", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "attack 2", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
             };
 
             mockAttacksGenerator
@@ -623,6 +1098,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(newAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -748,6 +1230,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Name = "Smite Good",
                 IsSpecial = true
             };
+            var newAttacks = new[] { smiteEvil, new Attack { Name = "other attack" } };
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
                     CreatureConstants.Templates.HalfFiend,
@@ -756,7 +1239,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil, new Attack { Name = "other attack" } });
+                .Returns(newAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -985,8 +1475,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "attack 1", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "attack 2", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
             };
 
             mockAttacksGenerator
@@ -998,6 +1488,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(newAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var originalCount = baseCreature.Attacks.Count();
             var creature = await applicator.ApplyToAsync(baseCreature);
@@ -1050,8 +1547,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "attack 1", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "attack 2", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
+                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
             };
 
             mockAttacksGenerator
@@ -1063,6 +1560,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(newAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1188,6 +1692,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Name = "Smite Good",
                 IsSpecial = true
             };
+            var newAttacks = new[] { smiteEvil, new Attack { Name = "other attack" } };
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
                     CreatureConstants.Templates.HalfFiend,
@@ -1196,7 +1701,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil, new Attack { Name = "other attack" } });
+                .Returns(newAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));

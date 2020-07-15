@@ -43,10 +43,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             Assert.That(creature.Magic, Is.Not.Null);
             Assert.That(creature.Magic.Caster, Is.Not.Empty);
             Assert.That(creature.Magic.CasterLevel, Is.Positive);
+            Assert.That(creature.Magic.CastingAbility, Is.Not.Null);
+            Assert.That(creature.Abilities.Values, Contains.Item(creature.Magic.CastingAbility), creature.Magic.CastingAbility.Name);
             Assert.That(creature.Magic.ArcaneSpellFailure, Is.InRange(0, 100));
             Assert.That(creature.Magic.Domains, Is.Not.Null);
-            Assert.That(creature.Magic.KnownSpells, Is.Not.Empty.And.All.Not.Null);
-            Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty.And.All.Not.Null);
+            Assert.That(creature.Magic.KnownSpells, Is.Not.Empty.And.All.Not.Null, $"{creature.Magic.CastingAbility.Name}: {creature.Magic.CastingAbility.FullScore}");
+            Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty.And.All.Not.Null, $"{creature.Magic.CastingAbility.Name}: {creature.Magic.CastingAbility.FullScore}");
         }
 
         [TestCase(CreatureConstants.Human)]

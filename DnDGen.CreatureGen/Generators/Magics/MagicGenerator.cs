@@ -45,6 +45,9 @@ namespace DnDGen.CreatureGen.Generators.Magics
             magic.Caster = caster.Type;
             magic.CasterLevel = caster.Amount;
 
+            var spellAbility = collectionsSelector.SelectFrom(TableNameConstants.Collection.AbilityGroups, $"{magic.Caster}:Spellcaster").Single();
+            magic.CastingAbility = abilities[spellAbility];
+
             var domainTypesAndAmounts = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.SpellDomains, creatureName);
             var domains = new List<string>();
 
@@ -69,7 +72,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
 
             magic.Domains = domains;
 
-            magic = MakeSpells(creatureName, magic, alignment, abilities);
+            magic = MakeSpells(creatureName, magic, alignment);
 
             if (equipment.Armor == null && equipment.Shield == null)
                 return magic;
@@ -91,10 +94,10 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return magic;
         }
 
-        private Magic MakeSpells(string creature, Magic magic, Alignment alignment, Dictionary<string, Ability> abilities)
+        private Magic MakeSpells(string creature, Magic magic, Alignment alignment)
         {
-            magic.SpellsPerDay = spellsGenerator.GeneratePerDay(magic.Caster, magic.CasterLevel, abilities, magic.Domains.ToArray());
-            magic.KnownSpells = spellsGenerator.GenerateKnown(creature, magic.Caster, magic.CasterLevel, alignment, abilities, magic.Domains.ToArray());
+            magic.SpellsPerDay = spellsGenerator.GeneratePerDay(magic.Caster, magic.CasterLevel, magic.CastingAbility, magic.Domains.ToArray());
+            magic.KnownSpells = spellsGenerator.GenerateKnown(creature, magic.Caster, magic.CasterLevel, alignment, magic.CastingAbility, magic.Domains.ToArray());
 
             var classesThatPrepareSpells = collectionsSelector.SelectFrom(TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells);
             if (classesThatPrepareSpells.Contains(magic.Caster))

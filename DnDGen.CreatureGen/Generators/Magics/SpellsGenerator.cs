@@ -22,23 +22,21 @@ namespace DnDGen.CreatureGen.Generators.Magics
             this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
-        public IEnumerable<SpellQuantity> GeneratePerDay(string caster, int casterLevel, Dictionary<string, Ability> abilities, params string[] domains)
+        public IEnumerable<SpellQuantity> GeneratePerDay(string caster, int casterLevel, Ability castingAbility, params string[] domains)
         {
-            var spellsPerDay = GetSpellsPerDay(caster, casterLevel, abilities, domains);
+            var spellsPerDay = GetSpellsPerDay(caster, casterLevel, castingAbility, domains);
             return spellsPerDay.Where(s => s.TotalQuantity > 0 || s.HasDomainSpell);
         }
 
-        private IEnumerable<SpellQuantity> GetSpellsPerDay(string caster, int casterLevel, Dictionary<string, Ability> abilities, IEnumerable<string> domains)
+        private IEnumerable<SpellQuantity> GetSpellsPerDay(string caster, int casterLevel, Ability castingAbility, IEnumerable<string> domains)
         {
             var spellsForClass = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.SpellsPerDay, $"{caster}:{casterLevel}");
-
-            var spellAbility = collectionsSelector.SelectFrom(TableNameConstants.Collection.AbilityGroups, $"{caster}:Spellcaster").Single();
-            var maxSpellLevel = abilities[spellAbility].FullScore - 10;
-            var spellsForCharacter = spellsForClass.Where(s => Convert.ToInt32(s.Type) <= maxSpellLevel);
+            var maxSpellLevel = castingAbility.FullScore - 10;
+            var spellsForCaster = spellsForClass.Where(s => Convert.ToInt32(s.Type) <= maxSpellLevel);
 
             var spellsPerDay = new List<SpellQuantity>();
 
-            foreach (var typeAndAmount in spellsForCharacter)
+            foreach (var typeAndAmount in spellsForCaster)
             {
                 var spellQuantity = new SpellQuantity();
                 spellQuantity.Level = Convert.ToInt32(typeAndAmount.Type);
@@ -46,9 +44,9 @@ namespace DnDGen.CreatureGen.Generators.Magics
                 spellQuantity.Source = caster;
                 spellQuantity.HasDomainSpell = domains.Any() && spellQuantity.Level > 0;
 
-                if (spellQuantity.Level > 0 && spellQuantity.Level <= abilities[spellAbility].Modifier)
+                if (spellQuantity.Level > 0 && spellQuantity.Level <= castingAbility.Modifier)
                 {
-                    spellQuantity.BonusSpells = (abilities[spellAbility].Modifier - spellQuantity.Level) / 4 + 1;
+                    spellQuantity.BonusSpells = (castingAbility.Modifier - spellQuantity.Level) / 4 + 1;
                 }
 
                 spellsPerDay.Add(spellQuantity);
@@ -57,15 +55,15 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spellsPerDay;
         }
 
-        public IEnumerable<Spell> GenerateKnown(string creature, string caster, int casterLevel, Alignment alignment, Dictionary<string, Ability> abilities, params string[] domains)
+        public IEnumerable<Spell> GenerateKnown(string creature, string caster, int casterLevel, Alignment alignment, Ability castingAbility, params string[] domains)
         {
             var spells = new List<Spell>();
 
             var divineCasters = collectionsSelector.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Divine);
             if (divineCasters.Contains(caster))
-                return GetAllKnownSpells(creature, caster, casterLevel, alignment, abilities, domains);
+                return GetAllKnownSpells(creature, caster, casterLevel, alignment, castingAbility, domains);
 
-            var quantities = GetKnownSpellQuantities(caster, casterLevel, abilities, domains);
+            var quantities = GetKnownSpellQuantities(caster, casterLevel, castingAbility, domains);
 
             foreach (var spellQuantity in quantities)
             {
@@ -76,12 +74,10 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spells;
         }
 
-        private IEnumerable<Spell> GetAllKnownSpells(string creature, string caster, int casterLevel, Alignment alignment, Dictionary<string, Ability> abilities, IEnumerable<string> domains)
+        private IEnumerable<Spell> GetAllKnownSpells(string creature, string caster, int casterLevel, Alignment alignment, Ability castingAbility, IEnumerable<string> domains)
         {
             var knownSpellQuantities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.KnownSpells, $"{caster}:{casterLevel}");
-
-            var spellAbility = collectionsSelector.SelectFrom(TableNameConstants.Collection.AbilityGroups, $"{caster}:Spellcaster").Single();
-            var maxSpellLevel = abilities[spellAbility].FullScore - 10;
+            var maxSpellLevel = castingAbility.FullScore - 10;
             var knownSpellQuantitiesForCreature = knownSpellQuantities.Where(s => Convert.ToInt32(s.Type) <= maxSpellLevel);
             var spells = new List<Spell>();
 
@@ -162,12 +158,10 @@ namespace DnDGen.CreatureGen.Generators.Magics
             return spell;
         }
 
-        private IEnumerable<SpellQuantity> GetKnownSpellQuantities(string caster, int casterLevel, Dictionary<string, Ability> abilities, IEnumerable<string> domains)
+        private IEnumerable<SpellQuantity> GetKnownSpellQuantities(string caster, int casterLevel, Ability castingAbility, IEnumerable<string> domains)
         {
             var spellsForClass = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.KnownSpells, $"{caster}:{casterLevel}");
-
-            var spellAbility = collectionsSelector.SelectFrom(TableNameConstants.Collection.AbilityGroups, $"{caster}:Spellcaster").Single();
-            var maxSpellLevel = abilities[spellAbility].FullScore - Ability.DefaultScore;
+            var maxSpellLevel = castingAbility.FullScore - Ability.DefaultScore;
             var spellQuantitiesForCharacter = spellsForClass.Where(s => Convert.ToInt32(s.Type) <= maxSpellLevel);
 
             var spellQuantities = new List<SpellQuantity>();

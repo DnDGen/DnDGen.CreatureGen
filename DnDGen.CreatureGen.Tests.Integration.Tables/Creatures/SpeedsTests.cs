@@ -61,8 +61,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[template] = new Dictionary<string, int>();
                 }
 
-                testCases[CreatureConstants.Templates.Ghost] = new Dictionary<string, int>();
                 testCases[CreatureConstants.Templates.Ghost][SpeedConstants.Fly] = 30;
+                testCases[CreatureConstants.Templates.HalfCelestial][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfDragon][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfFiend][SpeedConstants.Fly] = 666;
 
                 foreach (var testCase in testCases)
                 {

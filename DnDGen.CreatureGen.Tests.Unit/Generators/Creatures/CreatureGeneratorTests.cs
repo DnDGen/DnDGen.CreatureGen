@@ -1315,7 +1315,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = "other feat", Power = 4 });
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(creature.InitiativeBonus, Is.Zero);
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
         }
 
         [Test]
@@ -1328,7 +1329,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = "other feat", Power = 4 });
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(creature.InitiativeBonus, Is.Zero);
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
         }
 
         [Test]
@@ -1340,7 +1342,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier + 4));
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(4));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier + 4));
         }
 
         [Test]
@@ -1354,7 +1357,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier + 4));
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(4));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier + 4));
         }
 
         [Test]
@@ -1366,7 +1370,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = "other feat", Power = 4 });
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(612));
+            Assert.That(creature.InitiativeBonus, Is.Zero);
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(612));
         }
 
         [Test]
@@ -1381,7 +1386,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(612));
+            Assert.That(creature.InitiativeBonus, Is.Zero);
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(612));
         }
 
         [Test]
@@ -1394,7 +1400,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(4));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(616));
         }
 
         [Test]
@@ -1410,7 +1417,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockFeatsGenerator.Setup(g => g.GenerateFeats(advancedHitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
 
             var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(4));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(616));
         }
 
         [Test]
@@ -2559,7 +2567,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = "other feat", Power = 4 });
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
         }
 
         [Test]
@@ -2572,7 +2580,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = "other feat", Power = 4 });
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier));
         }
 
         [Test]
@@ -2584,7 +2592,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier + 4));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier + 4));
         }
 
         [Test]
@@ -2598,7 +2606,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier + 4));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(abilities[AbilityConstants.Dexterity].Modifier + 4));
         }
 
         [Test]
@@ -2610,7 +2618,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = "other feat", Power = 4 });
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(612));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(612));
         }
 
         [Test]
@@ -2625,7 +2633,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(612));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(612));
         }
 
         [Test]
@@ -2638,7 +2646,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(616));
         }
 
         [Test]
@@ -2654,7 +2662,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockFeatsGenerator.Setup(g => g.GenerateFeats(advancedHitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
-            Assert.That(creature.InitiativeBonus, Is.EqualTo(616));
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(616));
         }
 
         [Test]

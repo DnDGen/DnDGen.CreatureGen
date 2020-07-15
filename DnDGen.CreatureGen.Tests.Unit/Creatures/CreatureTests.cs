@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Attacks;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using NUnit.Framework;
 using System;
@@ -34,6 +35,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(creature.GrappleBonus, Is.Null);
             Assert.That(creature.HitPoints, Is.Not.Null);
             Assert.That(creature.InitiativeBonus, Is.Zero);
+            Assert.That(creature.TotalInitiativeBonus, Is.Zero);
             Assert.That(creature.LevelAdjustment, Is.Null);
             Assert.That(creature.MeleeAttack, Is.Null);
             Assert.That(creature.Name, Is.Empty);
@@ -53,6 +55,78 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(creature.Template, Is.Empty);
             Assert.That(creature.Type, Is.Not.Null);
             Assert.That(creature.Magic, Is.Not.Null);
+        }
+
+        [TestCase(3, -4)]
+        [TestCase(4, -3)]
+        [TestCase(6, -2)]
+        [TestCase(8, -1)]
+        [TestCase(10, 0)]
+        [TestCase(12, 1)]
+        [TestCase(14, 2)]
+        [TestCase(16, 3)]
+        [TestCase(18, 4)]
+        [TestCase(42, 16)]
+        public void TotalInitiativeBonus_DexterityModifier(int dexterity, int initiative)
+        {
+            creature.Abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity) { BaseScore = dexterity };
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(initiative));
+        }
+
+        [Test]
+        public void TotalInitiativeBonus_NoDexterity_UseIntelligence()
+        {
+            creature.Abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity) { BaseScore = 0 };
+            creature.Abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence) { BaseScore = 9266 };
+
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(4628));
+        }
+
+        [Test]
+        public void TotalInitiativeBonus_NoDexterity_NoIntelligence()
+        {
+            creature.Abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity) { BaseScore = 0 };
+            creature.Abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence) { BaseScore = 0 };
+
+            Assert.That(creature.TotalInitiativeBonus, Is.Zero);
+        }
+
+        [Test]
+        public void TotalInitiativeBonus_Bonus()
+        {
+            creature.Abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
+            creature.InitiativeBonus = 90210;
+
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(90210));
+        }
+
+        [Test]
+        public void TotalInitiativeBonus_DexterityModifierAndBonus()
+        {
+            creature.Abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity) { BaseScore = 9266 };
+            creature.InitiativeBonus = 90210;
+
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(94838));
+        }
+
+        [Test]
+        public void TotalInitiativeBonus_NoDexterityModifierAndBonus_Intelligence()
+        {
+            creature.Abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity) { BaseScore = 0 };
+            creature.Abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence) { BaseScore = 9266 };
+            creature.InitiativeBonus = 90210;
+
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(94838));
+        }
+
+        [Test]
+        public void TotalInitiativeBonus_NoDexterityModifierAndBonus_NoIntelligence()
+        {
+            creature.Abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity) { BaseScore = 0 };
+            creature.Abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence) { BaseScore = 0 };
+            creature.InitiativeBonus = 90210;
+
+            Assert.That(creature.TotalInitiativeBonus, Is.EqualTo(90210));
         }
 
         [Test]

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DnDGen.CreatureGen.Abilities;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Magics
@@ -12,6 +13,7 @@ namespace DnDGen.CreatureGen.Magics
         public string Caster { get; set; }
         public int CasterLevel { get; set; }
         public IEnumerable<string> Domains { get; set; }
+        public Ability CastingAbility { get; set; }
 
         public Magic()
         {

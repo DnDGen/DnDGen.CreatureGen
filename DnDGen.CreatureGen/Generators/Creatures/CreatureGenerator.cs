@@ -170,7 +170,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.Abilities = abilitiesGenerator.SetMaxBonuses(creature.Abilities, creature.Equipment);
             creature.Skills = skillsGenerator.SetArmorCheckPenalties(creature.Name, creature.Skills, creature.Equipment);
 
-            creature.InitiativeBonus = ComputeInitiative(creature.Abilities, creature.Feats);
+            creature.InitiativeBonus = ComputeInitiativeBonus(creature.Feats);
             creature.Speeds = speedsGenerator.Generate(creature.Name);
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities, creature.Size, creatureName, creature.Type, allFeats, creatureData.NaturalArmor, creature.Equipment);
             creature.Saves = savesGenerator.GenerateWith(creature.Name, creature.Type, creature.HitPoints, allFeats, creature.Abilities);
@@ -183,12 +183,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private int ComputeInitiative(Dictionary<string, Ability> abilities, IEnumerable<Feat> feats)
+        private int ComputeInitiativeBonus(IEnumerable<Feat> feats)
         {
-            var initiativeBonus = abilities[AbilityConstants.Dexterity].Modifier;
-
-            if (!abilities[AbilityConstants.Dexterity].HasScore)
-                initiativeBonus = abilities[AbilityConstants.Intelligence].Modifier;
+            var initiativeBonus = 0;
 
             var improvedInitiative = feats.FirstOrDefault(f => f.Name == FeatConstants.Initiative_Improved);
             if (improvedInitiative != null)
@@ -302,7 +299,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.Abilities = abilitiesGenerator.SetMaxBonuses(creature.Abilities, creature.Equipment);
             creature.Skills = skillsGenerator.SetArmorCheckPenalties(creature.Name, creature.Skills, creature.Equipment);
 
-            creature.InitiativeBonus = ComputeInitiative(creature.Abilities, creature.Feats);
+            creature.InitiativeBonus = ComputeInitiativeBonus(creature.Feats);
             creature.Speeds = speedsGenerator.Generate(creature.Name);
             creature.ArmorClass = armorClassGenerator.GenerateWith(creature.Abilities, creature.Size, creatureName, creature.Type, allFeats, creatureData.NaturalArmor, creature.Equipment);
             creature.Saves = savesGenerator.GenerateWith(creature.Name, creature.Type, creature.HitPoints, allFeats, creature.Abilities);

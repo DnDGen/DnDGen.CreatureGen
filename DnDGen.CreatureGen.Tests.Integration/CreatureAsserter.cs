@@ -384,7 +384,8 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.ArmorClass.FlatFootedBonus, Is.Positive, creature.Summary);
             Assert.That(creature.ArmorClass.TouchBonus, Is.Positive, creature.Summary);
 
-            Assert.That(creature.InitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
+            Assert.That(creature.InitiativeBonus, Is.Not.Negative, creature.Summary);
+            Assert.That(creature.TotalInitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
 
             Assert.That(creature.Saves[SaveConstants.Reflex].TotalBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
             Assert.That(creature.Saves[SaveConstants.Will].TotalBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Wisdom].Modifier), creature.Summary);
