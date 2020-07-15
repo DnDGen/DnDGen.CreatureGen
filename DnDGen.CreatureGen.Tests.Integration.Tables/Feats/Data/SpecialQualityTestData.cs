@@ -196,20 +196,65 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SummonMonsterIX, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 17));
             testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Resurrection, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day, minHitDice: 19));
 
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Acid} (Black)"));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Electricity} (Blue)"));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Acid} (Green)"));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Fire} (Red)"));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Cold} (White)"));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Fire} (Brass)"));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Electricity} (Bronze)"));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Acid} (Copper)"));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Fire} (Gold)"));
-            testCases[CreatureConstants.Templates.HalfDragon].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: $"{FeatConstants.Foci.Elements.Cold} (Silver)"));
+            testCases[CreatureConstants.Templates.HalfDragon_Black].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfDragon_Black].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.HalfDragon_Black].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+            testCases[CreatureConstants.Templates.HalfDragon_Black].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+            testCases[CreatureConstants.Templates.HalfDragon_Black].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+
+            testCases[CreatureConstants.Templates.HalfDragon_Blue].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfDragon_Blue].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.HalfDragon_Blue].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+            testCases[CreatureConstants.Templates.HalfDragon_Blue].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+            testCases[CreatureConstants.Templates.HalfDragon_Blue].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+
+            testCases[CreatureConstants.Templates.HalfDragon_Brass].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfDragon_Brass].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.HalfDragon_Brass].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+            testCases[CreatureConstants.Templates.HalfDragon_Brass].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+            testCases[CreatureConstants.Templates.HalfDragon_Brass].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+
+            testCases[CreatureConstants.Templates.HalfDragon_Bronze].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfDragon_Bronze].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.HalfDragon_Bronze].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+            testCases[CreatureConstants.Templates.HalfDragon_Bronze].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+            testCases[CreatureConstants.Templates.HalfDragon_Bronze].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
+
+            testCases[CreatureConstants.Templates.HalfDragon_Copper].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfDragon_Copper].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.HalfDragon_Copper].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+            testCases[CreatureConstants.Templates.HalfDragon_Copper].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+            testCases[CreatureConstants.Templates.HalfDragon_Copper].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+
+            testCases[CreatureConstants.Templates.HalfDragon_Gold].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfDragon_Gold].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.HalfDragon_Gold].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+            testCases[CreatureConstants.Templates.HalfDragon_Gold].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+            testCases[CreatureConstants.Templates.HalfDragon_Gold].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+
+            testCases[CreatureConstants.Templates.HalfDragon_Green].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfDragon_Green].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.HalfDragon_Green].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+            testCases[CreatureConstants.Templates.HalfDragon_Green].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+            testCases[CreatureConstants.Templates.HalfDragon_Green].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Acid));
+
+            testCases[CreatureConstants.Templates.HalfDragon_Red].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfDragon_Red].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.HalfDragon_Red].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+            testCases[CreatureConstants.Templates.HalfDragon_Red].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+            testCases[CreatureConstants.Templates.HalfDragon_Red].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
+
+            testCases[CreatureConstants.Templates.HalfDragon_Silver].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfDragon_Silver].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.HalfDragon_Silver].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+            testCases[CreatureConstants.Templates.HalfDragon_Silver].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+            testCases[CreatureConstants.Templates.HalfDragon_Silver].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+
+            testCases[CreatureConstants.Templates.HalfDragon_White].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
+            testCases[CreatureConstants.Templates.HalfDragon_White].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.HalfDragon_White].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Sleep"));
+            testCases[CreatureConstants.Templates.HalfDragon_White].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Paralysis"));
+            testCases[CreatureConstants.Templates.HalfDragon_White].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
 
             testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.Darkvision, power: 60));
             testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));
@@ -280,46 +325,46 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GaseousForm, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
 
-            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Brown bear or bear-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Bears and dire bears", power: 4));
-            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
-            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
-            testCases[CreatureConstants.Templates.Werebear].Add(helper.BuildData(FeatConstants.Track));
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Brown bear or bear-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Bears and dire bears", power: 4));
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData(FeatConstants.Track));
 
-            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Boar or boar-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Boars and dire boars", power: 4));
-            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.Ferocity));
-            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
-            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.Alertness, power: 2));
-            testCases[CreatureConstants.Templates.Wereboar].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Boar or boar-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Boars and dire boars", power: 4));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar].Add(helper.BuildData(FeatConstants.SpecialQualities.Ferocity));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar].Add(helper.BuildData(FeatConstants.Alertness, power: 2));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
-            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Dire rat or bipedal rat-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Rats and dire rats", power: 4));
-            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
-            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
-            testCases[CreatureConstants.Templates.Wererat].Add(helper.BuildData(FeatConstants.WeaponFinesse));
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Dire rat or bipedal rat-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Rats and dire rats", power: 4));
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat].Add(helper.BuildData(FeatConstants.WeaponFinesse));
 
-            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Tiger or bipedal tiger-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Tigers and dire tigers", power: 4));
-            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
-            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.Alertness, power: 2));
-            testCases[CreatureConstants.Templates.Weretiger].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Tiger or bipedal tiger-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Tigers and dire tigers", power: 4));
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData(FeatConstants.Alertness, power: 2));
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
-            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Wolf or wolf-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Wolves and dire wolves", power: 4));
-            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
-            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
-            testCases[CreatureConstants.Templates.Werewolf].Add(helper.BuildData(FeatConstants.Track));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Wolf or wolf-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Wolves and dire wolves", power: 4));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf].Add(helper.BuildData(FeatConstants.Track));
 
             testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to slashing", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
             testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData(FeatConstants.SpecialQualities.SingleActionsOnly));

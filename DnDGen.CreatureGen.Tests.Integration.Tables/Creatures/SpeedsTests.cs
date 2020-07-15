@@ -63,7 +63,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 testCases[CreatureConstants.Templates.Ghost][SpeedConstants.Fly] = 30;
                 testCases[CreatureConstants.Templates.HalfCelestial][SpeedConstants.Fly] = 666;
-                testCases[CreatureConstants.Templates.HalfDragon][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfDragon_Black][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfDragon_Blue][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfDragon_Brass][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfDragon_Bronze][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfDragon_Copper][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfDragon_Gold][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfDragon_Green][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfDragon_Red][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfDragon_Silver][SpeedConstants.Fly] = 666;
+                testCases[CreatureConstants.Templates.HalfDragon_White][SpeedConstants.Fly] = 666;
                 testCases[CreatureConstants.Templates.HalfFiend][SpeedConstants.Fly] = 666;
 
                 foreach (var testCase in testCases)

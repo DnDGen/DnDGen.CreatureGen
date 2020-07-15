@@ -2,10 +2,12 @@
 using System;
 using System.Threading.Tasks;
 
-namespace DnDGen.CreatureGen.Templates
+namespace DnDGen.CreatureGen.Templates.HalfDragons
 {
-    internal class HalfDragonApplicator : TemplateApplicator
+    internal abstract class HalfDragonApplicator : TemplateApplicator
     {
+        protected abstract string DragonSpecies { get; }
+
         public Creature ApplyTo(Creature creature)
         {
             throw new NotImplementedException();

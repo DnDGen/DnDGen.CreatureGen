@@ -9,6 +9,7 @@ using DnDGen.CreatureGen.Generators.Items;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Templates.HalfDragons;
 using DnDGen.CreatureGen.Verifiers;
 using Ninject.Modules;
 
@@ -40,17 +41,26 @@ namespace DnDGen.CreatureGen.IoC.Modules
             Bind<TemplateApplicator>().To<FiendishCreatureApplicator>().Named(CreatureConstants.Templates.FiendishCreature);
             Bind<TemplateApplicator>().To<GhostApplicator>().Named(CreatureConstants.Templates.Ghost);
             Bind<TemplateApplicator>().To<HalfCelestialApplicator>().Named(CreatureConstants.Templates.HalfCelestial);
-            Bind<TemplateApplicator>().To<HalfDragonApplicator>().Named(CreatureConstants.Templates.HalfDragon);
+            Bind<TemplateApplicator>().To<HalfDragonBlackApplicator>().Named(CreatureConstants.Templates.HalfDragon_Black);
+            Bind<TemplateApplicator>().To<HalfDragonBlueApplicator>().Named(CreatureConstants.Templates.HalfDragon_Blue);
+            Bind<TemplateApplicator>().To<HalfDragonBrassApplicator>().Named(CreatureConstants.Templates.HalfDragon_Brass);
+            Bind<TemplateApplicator>().To<HalfDragonBronzeApplicator>().Named(CreatureConstants.Templates.HalfDragon_Bronze);
+            Bind<TemplateApplicator>().To<HalfDragonCopperApplicator>().Named(CreatureConstants.Templates.HalfDragon_Copper);
+            Bind<TemplateApplicator>().To<HalfDragonGoldApplicator>().Named(CreatureConstants.Templates.HalfDragon_Gold);
+            Bind<TemplateApplicator>().To<HalfDragonGreenApplicator>().Named(CreatureConstants.Templates.HalfDragon_Green);
+            Bind<TemplateApplicator>().To<HalfDragonRedApplicator>().Named(CreatureConstants.Templates.HalfDragon_Red);
+            Bind<TemplateApplicator>().To<HalfDragonSilverApplicator>().Named(CreatureConstants.Templates.HalfDragon_Silver);
+            Bind<TemplateApplicator>().To<HalfDragonWhiteApplicator>().Named(CreatureConstants.Templates.HalfDragon_White);
             Bind<TemplateApplicator>().To<HalfFiendApplicator>().Named(CreatureConstants.Templates.HalfFiend);
             Bind<TemplateApplicator>().To<LichApplicator>().Named(CreatureConstants.Templates.Lich);
             Bind<TemplateApplicator>().To<NoneApplicator>().Named(CreatureConstants.Templates.None);
             Bind<TemplateApplicator>().To<SkeletonApplicator>().Named(CreatureConstants.Templates.Skeleton);
             Bind<TemplateApplicator>().To<VampireApplicator>().Named(CreatureConstants.Templates.Vampire);
-            Bind<TemplateApplicator>().To<WerebearApplicator>().Named(CreatureConstants.Templates.Werebear);
-            Bind<TemplateApplicator>().To<WereboarApplicator>().Named(CreatureConstants.Templates.Wereboar);
-            Bind<TemplateApplicator>().To<WereratApplicator>().Named(CreatureConstants.Templates.Wererat);
-            Bind<TemplateApplicator>().To<WeretigerApplicator>().Named(CreatureConstants.Templates.Weretiger);
-            Bind<TemplateApplicator>().To<WerewolfApplicator>().Named(CreatureConstants.Templates.Werewolf);
+            Bind<TemplateApplicator>().To<WerebearApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Bear);
+            Bind<TemplateApplicator>().To<WereboarApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Boar);
+            Bind<TemplateApplicator>().To<WereratApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Rat);
+            Bind<TemplateApplicator>().To<WeretigerApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Tiger);
+            Bind<TemplateApplicator>().To<WerewolfApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Wolf);
             Bind<TemplateApplicator>().To<ZombieApplicator>().Named(CreatureConstants.Templates.Zombie);
         }
     }

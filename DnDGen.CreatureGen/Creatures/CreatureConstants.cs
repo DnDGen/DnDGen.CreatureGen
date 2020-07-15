@@ -116,17 +116,26 @@ namespace DnDGen.CreatureGen.Creatures
             public const string FiendishCreature = "Fiendish Creature";
             public const string Ghost = "Ghost";
             public const string HalfCelestial = "Half-Celestial";
-            public const string HalfDragon = "Half-Dragon";
+            public const string HalfDragon_Black = "Half-Dragon (Black)";
+            public const string HalfDragon_Blue = "Half-Dragon (Blue)";
+            public const string HalfDragon_Green = "Half-Dragon (Green)";
+            public const string HalfDragon_Red = "Half-Dragon (Red)";
+            public const string HalfDragon_White = "Half-Dragon (White)";
+            public const string HalfDragon_Brass = "Half-Dragon (Brass)";
+            public const string HalfDragon_Bronze = "Half-Dragon (Bronze)";
+            public const string HalfDragon_Copper = "Half-Dragon (Copper)";
+            public const string HalfDragon_Gold = "Half-Dragon (Gold)";
+            public const string HalfDragon_Silver = "Half-Dragon (Silver)";
             public const string HalfFiend = "Half-Fiend";
             public const string Lich = "Lich";
+            public const string Lycanthrope_Bear = "Lycanthrope, Bear (Werebear)";
+            public const string Lycanthrope_Boar = "Lycanthrope, Boar (Wereboar)";
+            public const string Lycanthrope_Tiger = "Lycanthrope, Tiger (Weretiger)";
+            public const string Lycanthrope_Rat = "Lycanthrope, Rat (Wererat)";
+            public const string Lycanthrope_Wolf = "Lycanthrope, Wolf (Werewolf)";
             public const string None = "";
             public const string Skeleton = "Skeleton";
             public const string Vampire = "Vampire";
-            public const string Werebear = "Werebear";
-            public const string Wereboar = "Wereboar";
-            public const string Weretiger = "Weretiger";
-            public const string Wererat = "Wererat";
-            public const string Werewolf = "Werewolf";
             public const string Zombie = "Zombie";
 
             public static IEnumerable<string> GetAll()
@@ -137,17 +146,26 @@ namespace DnDGen.CreatureGen.Creatures
                     FiendishCreature,
                     Ghost,
                     HalfCelestial,
-                    HalfDragon,
+                    HalfDragon_Black,
+                    HalfDragon_Blue,
+                    HalfDragon_Brass,
+                    HalfDragon_Bronze,
+                    HalfDragon_Copper,
+                    HalfDragon_Gold,
+                    HalfDragon_Green,
+                    HalfDragon_Red,
+                    HalfDragon_Silver,
+                    HalfDragon_White,
                     HalfFiend,
                     Lich,
                     None,
                     Skeleton,
                     Vampire,
-                    Werebear,
-                    Wereboar,
-                    Weretiger,
-                    Wererat,
-                    Werewolf,
+                    Lycanthrope_Bear,
+                    Lycanthrope_Boar,
+                    Lycanthrope_Tiger,
+                    Lycanthrope_Rat,
+                    Lycanthrope_Wolf,
                     Zombie,
                 };
             }

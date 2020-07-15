@@ -306,11 +306,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Marut,
             CreatureConstants.Zelekhut)]
         [TestCase(CreatureConstants.Groups.Lycanthrope,
-            CreatureConstants.Templates.Werebear,
-            CreatureConstants.Templates.Wereboar,
-            CreatureConstants.Templates.Wererat,
-            CreatureConstants.Templates.Weretiger,
-            CreatureConstants.Templates.Werewolf)]
+            CreatureConstants.Templates.Lycanthrope_Bear,
+            CreatureConstants.Templates.Lycanthrope_Boar,
+            CreatureConstants.Templates.Lycanthrope_Rat,
+            CreatureConstants.Templates.Lycanthrope_Tiger,
+            CreatureConstants.Templates.Lycanthrope_Wolf)]
         [TestCase(CreatureConstants.Groups.Mephit,
             CreatureConstants.Mephit_Air,
             CreatureConstants.Mephit_Dust,
