@@ -37,9 +37,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         }
 
         [Test]
-        public void StressCreatureAsync()
+        public async Task StressCreatureAsync()
         {
-            stressor.Stress(async () => await GenerateAndAssertCreatureAsync());
+            await stressor.StressAsync(GenerateAndAssertCreatureAsync);
         }
 
         private async Task GenerateAndAssertCreatureAsync()
@@ -75,9 +75,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         }
 
         [Test]
-        public void StressCreatureWithTemplateAsync()
+        public async Task StressCreatureWithTemplateAsync()
         {
-            stressor.Stress(async () => await GenerateAndAssertCreatureWithTemplateAsync());
+            await stressor.StressAsync(GenerateAndAssertCreatureWithTemplateAsync);
         }
 
         private async Task GenerateAndAssertCreatureWithTemplateAsync()

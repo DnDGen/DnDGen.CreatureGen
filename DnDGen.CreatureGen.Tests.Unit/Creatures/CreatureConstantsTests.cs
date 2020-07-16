@@ -748,11 +748,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Templates.None, "")]
         [TestCase(CreatureConstants.Templates.Skeleton, "Skeleton")]
         [TestCase(CreatureConstants.Templates.Vampire, "Vampire")]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear, "Werebear")]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar, "Wereboar")]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat, "Wererat")]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger, "Weretiger")]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf, "Werewolf")]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear, "Lycanthrope, Bear (Werebear)")]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar, "Lycanthrope, Boar (Wereboar)")]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat, "Lycanthrope, Rat (Wererat)")]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger, "Lycanthrope, Tiger (Weretiger)")]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf, "Lycanthrope, Wolf (Werewolf)")]
         [TestCase(CreatureConstants.Templates.Zombie, "Zombie")]
         public void CreatureTemplateConstant(string constant, string value)
         {

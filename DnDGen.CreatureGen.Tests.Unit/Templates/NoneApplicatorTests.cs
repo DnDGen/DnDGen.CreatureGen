@@ -314,6 +314,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(templatedCreature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(creature.HitPoints.RoundedHitDiceQuantity));
             Assert.That(templatedCreature.HitPoints.Total, Is.EqualTo(creature.HitPoints.Total));
 
+            Assert.That(templatedCreature.InitiativeBonus, Is.EqualTo(creature.InitiativeBonus));
             Assert.That(templatedCreature.TotalInitiativeBonus, Is.EqualTo(creature.TotalInitiativeBonus));
             Assert.That(templatedCreature.LevelAdjustment, Is.EqualTo(creature.LevelAdjustment));
             Assert.That(templatedCreature.Name, Is.EqualTo(creature.Name));
