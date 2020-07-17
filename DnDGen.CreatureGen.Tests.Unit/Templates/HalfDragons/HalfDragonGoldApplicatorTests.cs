@@ -27,7 +27,7 @@ using System.Threading.Tasks;
 namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 {
     [TestFixture]
-    public class HalfDragonBlackApplicatorTests
+    public class HalfDragonGoldApplicatorTests
     {
         private TemplateApplicator applicator;
         private Creature baseCreature;
@@ -39,7 +39,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         private Mock<ISkillsGenerator> mockSkillsGenerator;
         private Mock<IAlignmentGenerator> mockAlignmentGenerator;
 
-        private const string template = CreatureConstants.Templates.HalfDragon_Black;
+        private const string template = CreatureConstants.Templates.HalfDragon_Gold;
 
         [SetUp]
         public void Setup()
@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
             mockAlignmentGenerator = new Mock<IAlignmentGenerator>();
 
-            applicator = new HalfDragonBlackApplicator(
+            applicator = new HalfDragonGoldApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
                 mockAttacksGenerator.Object,

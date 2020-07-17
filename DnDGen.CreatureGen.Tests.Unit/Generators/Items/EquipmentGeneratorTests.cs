@@ -5,6 +5,7 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Items;
 using DnDGen.CreatureGen.Selectors;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.Infrastructure.Generators;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.Infrastructure.Selectors.Percentiles;
@@ -4951,20 +4952,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 .And.Contains(6)
                 .And.Contains(4));
             Assert.That(updatedAttacks[1].TotalAttackBonus, Is.Zero);
-        }
-    }
-
-    public static class LinqExtensions
-    {
-        public static bool IsEquivalentTo<T>(this IEnumerable<T> source, IEnumerable<T> target)
-        {
-            if (source == null || target == null)
-            {
-                return source == target;
-            }
-
-            return source.Count() == target.Count()
-                && !source.Except(target).Any();
         }
     }
 }
