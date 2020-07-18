@@ -4167,17 +4167,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCase(CreatureConstants.Types.Aberration)]
-        [TestCase(CreatureConstants.Types.Animal)]
-        [TestCase(CreatureConstants.Types.Dragon)]
-        [TestCase(CreatureConstants.Types.Elemental)]
-        [TestCase(CreatureConstants.Types.Fey)]
-        [TestCase(CreatureConstants.Types.Giant)]
-        [TestCase(CreatureConstants.Types.Humanoid)]
-        [TestCase(CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
-        [TestCase(CreatureConstants.Types.Outsider, Ignore = "Some outsiders lack intelligence")]
-        [TestCase(CreatureConstants.Types.Plant, Ignore = "Some plants lack intelligence")]
         [TestCaseSource(typeof(CreatureTestData), "All")]
         public void HaveAllAbilities(string creature)
         {
