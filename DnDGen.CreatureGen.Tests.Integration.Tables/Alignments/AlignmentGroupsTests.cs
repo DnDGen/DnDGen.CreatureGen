@@ -1113,15 +1113,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             Assert.That(mode, Is.EqualTo(alignment));
         }
 
-        [TestCase(CreatureConstants.Types.Animal)]
-        [TestCase(CreatureConstants.Types.Vermin)]
-        public void AllCreaturesOfTypeAreTrueNeutral(string creatureType)
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void AllCreaturesOfTypeAreTrueNeutral(string creature)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var neutralTypes = new[] { CreatureConstants.Types.Animal, CreatureConstants.Types.Vermin };
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
 
-            Assert.That(table.Keys, Is.SupersetOf(creatures));
-
-            foreach (var creature in creatures)
+            if (neutralTypes.Contains(types.First()))
             {
                 var alignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
                 Assert.That(alignments, Has.Count.EqualTo(1).And.Contains(AlignmentConstants.TrueNeutral), creature);

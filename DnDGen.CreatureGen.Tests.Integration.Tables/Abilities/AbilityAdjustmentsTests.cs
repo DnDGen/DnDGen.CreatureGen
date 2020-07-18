@@ -4084,7 +4084,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
 
             foreach (var ability in abilities)
             {
-                Assert.That(ability.Amount % 2, Is.EqualTo(0), $"{creature} {ability.Type} {ability.Amount}");
+                Assert.That(ability.Amount % 2, Is.Zero, $"{creature} {ability.Type} {ability.Amount}");
             }
         }
 
@@ -4110,15 +4110,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             Assert.That(abilityNames, Is.SubsetOf(allAbilities), creature);
         }
 
-        [TestCase(CreatureConstants.Types.Construct)]
-        [TestCase(CreatureConstants.Types.Undead)]
-        public void DoNotHaveConstitution(string creatureType)
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void DoNotHaveConstitution(string creature)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var typesWithoutConstitution = new[] { CreatureConstants.Types.Construct, CreatureConstants.Types.Undead };
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
 
-            Assert.That(table.Keys, Is.SupersetOf(creatures));
-
-            foreach (var creature in creatures)
+            if (typesWithoutConstitution.Contains(types.First()))
             {
                 var abilities = typesAndAmountsSelector.Select(tableName, creature);
                 var abilityNames = abilities.Select(a => a.Type);
@@ -4126,14 +4124,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal)]
-        public void DoNotHaveStrength(string creatureType)
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void DoNotHaveStrength(string creature)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
 
-            Assert.That(table.Keys, Is.SupersetOf(creatures));
-
-            foreach (var creature in creatures)
+            if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
             {
                 var abilities = typesAndAmountsSelector.Select(tableName, creature);
                 var abilityNames = abilities.Select(a => a.Type);
@@ -4141,16 +4137,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCase(CreatureConstants.Types.Construct, Ignore = "Some constructs have intelligence")]
-        [TestCase(CreatureConstants.Types.Ooze)]
-        [TestCase(CreatureConstants.Types.Vermin)]
-        public void DoNotHaveIntelligence(string creatureType)
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void DoNotHaveIntelligence(string creature)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var typesWithoutIntelligence = new[] { CreatureConstants.Types.Ooze, CreatureConstants.Types.Vermin };
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
 
-            Assert.That(table.Keys, Is.SupersetOf(creatures));
-
-            foreach (var creature in creatures)
+            if (typesWithoutIntelligence.Contains(types.First()))
             {
                 var abilities = typesAndAmountsSelector.Select(tableName, creature);
                 var abilityNames = abilities.Select(a => a.Type);
@@ -4158,14 +4151,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [Test]
-        public void AnimalsHaveLowIntelligence()
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void AnimalsHaveLowIntelligence(string creature)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
 
-            Assert.That(table.Keys, Is.SupersetOf(creatures));
-
-            foreach (var creature in creatures)
+            if (types.First() == CreatureConstants.Types.Animal)
             {
                 var abilities = typesAndAmountsSelector.Select(tableName, creature);
                 var abilityNames = abilities.Select(a => a.Type);
@@ -4187,16 +4178,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.Types.Outsider, Ignore = "Some outsiders lack intelligence")]
         [TestCase(CreatureConstants.Types.Plant, Ignore = "Some plants lack intelligence")]
-        public void HaveAllAbilities(string creatureType)
+        [TestCaseSource(typeof(CreatureTestData), "All")]
+        public void HaveAllAbilities(string creature)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var typesWithAllAbilities = new[]
+            {
+                CreatureConstants.Types.Aberration,
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Dragon,
+                CreatureConstants.Types.Elemental,
+                CreatureConstants.Types.Fey,
+                CreatureConstants.Types.Giant,
+                CreatureConstants.Types.Humanoid,
+                CreatureConstants.Types.MagicalBeast,
+                CreatureConstants.Types.MonstrousHumanoid,
+            };
 
-            Assert.That(table.Keys, Is.SupersetOf(creatures));
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
 
             var allAbilities = typesAndAmountsSelector.Select(tableName, GroupConstants.All);
             var allAbilitiesNames = allAbilities.Select(a => a.Type);
 
-            foreach (var creature in creatures)
+            if (typesWithAllAbilities.Contains(types.First()))
             {
                 var abilities = typesAndAmountsSelector.Select(tableName, creature);
                 var abilityNames = abilities.Select(a => a.Type);

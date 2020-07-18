@@ -2441,7 +2441,43 @@
     <entry>Good Maneuverability</entry>
   </collection>
   <collection>
-    <name>Half-Dragon</name>
+    <name>Half-Dragon (Black)</name>
+    <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)</name>
+    <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)</name>
+    <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)</name>
+    <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)</name>
+    <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)</name>
+    <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)</name>
+    <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)</name>
+    <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)</name>
+    <entry>Average Maneuverability</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)</name>
     <entry>Average Maneuverability</entry>
   </collection>
   <collection>
@@ -2456,19 +2492,19 @@
     <entry>Clumsy Maneuverability</entry>
   </collection>
   <collection>
-    <name>Werebear</name>
+    <name>Lycanthrope, Bear (Werebear)</name>
   </collection>
   <collection>
-    <name>Wereboar</name>
+    <name>Lycanthrope, Boar (Wereboar)</name>
   </collection>
   <collection>
-    <name>Wererat</name>
+    <name>Lycanthrope, Rat (Wererat)</name>
   </collection>
   <collection>
-    <name>Weretiger</name>
+    <name>Lycanthrope, Tiger (Weretiger)</name>
   </collection>
   <collection>
-    <name>Werewolf</name>
+    <name>Lycanthrope, Wolf (Werewolf)</name>
   </collection>
   <collection>
     <name></name>
