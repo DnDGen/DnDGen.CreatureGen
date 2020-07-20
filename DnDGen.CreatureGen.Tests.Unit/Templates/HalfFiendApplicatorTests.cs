@@ -1749,5 +1749,41 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }
+
+        [Test]
+        public void ApplyTo_GainALanguage()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_GainALanguage_NoLanguages()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_GainALanguage_AlreadyHas()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainALanguage()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainALanguage_NoLanguages()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainALanguage_AlreadyHas()
+        {
+            Assert.Fail("not yet written");
+        }
     }
 }

@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 {
@@ -12,6 +13,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
         protected void AssertCreatureGroupNamesAreComplete()
         {
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+
             var entries = new[]
             {
                 CreatureConstants.Groups.Angel,
@@ -78,7 +82,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 GroupConstants.PoorBaseAttack,
             };
 
-            var names = entries;
+            var names = entries.Union(types).Union(subtypes);
 
             AssertCollectionNames(names);
         }

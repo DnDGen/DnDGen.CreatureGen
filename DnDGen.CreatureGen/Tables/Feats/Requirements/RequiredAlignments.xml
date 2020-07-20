@@ -10580,46 +10580,154 @@
     <name>Half-CelestialSpell-Like AbilityRemove disease0</name>
   </collection>
   <collection>
-    <name>Half-DragonDarkvision60</name>
+    <name>Half-Dragon (Black)Darkvision60</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunitySleep0</name>
+    <name>Half-Dragon (Black)ImmunitySleep0</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunityParalysis0</name>
+    <name>Half-Dragon (Black)ImmunityParalysis0</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunityAcid (Black)0</name>
+    <name>Half-Dragon (Black)ImmunityAcid0</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunityElectricity (Blue)0</name>
+    <name>Half-Dragon (Black)Low-Light Vision0</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunityAcid (Green)0</name>
+    <name>Half-Dragon (Blue)Darkvision60</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunityFire (Red)0</name>
+    <name>Half-Dragon (Blue)ImmunitySleep0</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunityCold (White)0</name>
+    <name>Half-Dragon (Blue)ImmunityParalysis0</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunityFire (Brass)0</name>
+    <name>Half-Dragon (Blue)ImmunityElectricity0</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunityElectricity (Bronze)0</name>
+    <name>Half-Dragon (Blue)Low-Light Vision0</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunityAcid (Copper)0</name>
+    <name>Half-Dragon (Green)Darkvision60</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunityFire (Gold)0</name>
+    <name>Half-Dragon (Green)ImmunitySleep0</name>
   </collection>
   <collection>
-    <name>Half-DragonImmunityCold (Silver)0</name>
+    <name>Half-Dragon (Green)ImmunityParalysis0</name>
   </collection>
   <collection>
-    <name>Half-DragonLow-Light Vision0</name>
+    <name>Half-Dragon (Green)ImmunityAcid0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)Low-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)Darkvision60</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)ImmunitySleep0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)ImmunityParalysis0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)ImmunityFire0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)Low-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)Darkvision60</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)ImmunitySleep0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)ImmunityParalysis0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)ImmunityCold0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)Low-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)Darkvision60</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)ImmunitySleep0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)ImmunityParalysis0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)ImmunityFire0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)Low-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)Darkvision60</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)ImmunitySleep0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)ImmunityParalysis0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)ImmunityElectricity0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)Low-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)Darkvision60</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)ImmunitySleep0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)ImmunityParalysis0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)ImmunityAcid0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)Low-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)Darkvision60</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)ImmunitySleep0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)ImmunityParalysis0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)ImmunityFire0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)Low-Light Vision0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)Darkvision60</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)ImmunitySleep0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)ImmunityParalysis0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)ImmunityCold0</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)Low-Light Vision0</name>
   </collection>
   <collection>
     <name>Half-FiendDamage ReductionVulnerable to magic10</name>
@@ -10802,112 +10910,112 @@
     <name>VampireTurn Resistance4</name>
   </collection>
   <collection>
-    <name>WerebearAlternate FormBrown bear or bear-humanoid hybrid0</name>
+    <name>Lycanthrope, Bear (Werebear)Alternate FormBrown bear or bear-humanoid hybrid0</name>
   </collection>
   <collection>
-    <name>WerebearLycanthropic EmpathyBears and dire bears4</name>
+    <name>Lycanthrope, Bear (Werebear)Lycanthropic EmpathyBears and dire bears4</name>
   </collection>
   <collection>
-    <name>WerebearDamage ReductionVulnerable to silver10</name>
+    <name>Lycanthrope, Bear (Werebear)Damage ReductionVulnerable to silver10</name>
   </collection>
   <collection>
-    <name>WerebearLow-Light Vision0</name>
+    <name>Lycanthrope, Bear (Werebear)Low-Light Vision0</name>
   </collection>
   <collection>
-    <name>WerebearScent0</name>
+    <name>Lycanthrope, Bear (Werebear)Scent0</name>
   </collection>
   <collection>
-    <name>WerebearTrack0</name>
+    <name>Lycanthrope, Bear (Werebear)Track0</name>
   </collection>
   <collection>
-    <name>WerebearIron Will2</name>
+    <name>Lycanthrope, Bear (Werebear)Iron Will2</name>
   </collection>
   <collection>
-    <name>WereboarAlternate FormBoar or boar-humanoid hybrid0</name>
+    <name>Lycanthrope, Boar (Wereboar)Alternate FormBoar or boar-humanoid hybrid0</name>
   </collection>
   <collection>
-    <name>WereboarLycanthropic EmpathyBoars and dire boars4</name>
+    <name>Lycanthrope, Boar (Wereboar)Lycanthropic EmpathyBoars and dire boars4</name>
   </collection>
   <collection>
-    <name>WereboarDamage ReductionVulnerable to silver10</name>
+    <name>Lycanthrope, Boar (Wereboar)Damage ReductionVulnerable to silver10</name>
   </collection>
   <collection>
-    <name>WereboarLow-Light Vision0</name>
+    <name>Lycanthrope, Boar (Wereboar)Low-Light Vision0</name>
   </collection>
   <collection>
-    <name>WereboarScent0</name>
+    <name>Lycanthrope, Boar (Wereboar)Scent0</name>
   </collection>
   <collection>
-    <name>WereboarIron Will2</name>
+    <name>Lycanthrope, Boar (Wereboar)Iron Will2</name>
   </collection>
   <collection>
-    <name>WereboarAlertness2</name>
+    <name>Lycanthrope, Boar (Wereboar)Alertness2</name>
   </collection>
   <collection>
-    <name>WereboarFerocity0</name>
+    <name>Lycanthrope, Boar (Wereboar)Ferocity0</name>
   </collection>
   <collection>
-    <name>WereratAlternate FormDire rat or bipedal rat-humanoid hybrid0</name>
+    <name>Lycanthrope, Rat (Wererat)Alternate FormDire rat or bipedal rat-humanoid hybrid0</name>
   </collection>
   <collection>
-    <name>WereratLycanthropic EmpathyRats and dire rats4</name>
+    <name>Lycanthrope, Rat (Wererat)Lycanthropic EmpathyRats and dire rats4</name>
   </collection>
   <collection>
-    <name>WereratDamage ReductionVulnerable to silver10</name>
+    <name>Lycanthrope, Rat (Wererat)Damage ReductionVulnerable to silver10</name>
   </collection>
   <collection>
-    <name>WereratLow-Light Vision0</name>
+    <name>Lycanthrope, Rat (Wererat)Low-Light Vision0</name>
   </collection>
   <collection>
-    <name>WereratScent0</name>
+    <name>Lycanthrope, Rat (Wererat)Scent0</name>
   </collection>
   <collection>
-    <name>WereratIron Will2</name>
+    <name>Lycanthrope, Rat (Wererat)Iron Will2</name>
   </collection>
   <collection>
-    <name>WereratWeapon Finesse0</name>
+    <name>Lycanthrope, Rat (Wererat)Weapon Finesse0</name>
   </collection>
   <collection>
-    <name>WeretigerAlternate FormTiger or bipedal tiger-humanoid hybrid0</name>
+    <name>Lycanthrope, Tiger (Weretiger)Alternate FormTiger or bipedal tiger-humanoid hybrid0</name>
   </collection>
   <collection>
-    <name>WeretigerLycanthropic EmpathyTigers and dire tigers4</name>
+    <name>Lycanthrope, Tiger (Weretiger)Lycanthropic EmpathyTigers and dire tigers4</name>
   </collection>
   <collection>
-    <name>WeretigerDamage ReductionVulnerable to silver10</name>
+    <name>Lycanthrope, Tiger (Weretiger)Damage ReductionVulnerable to silver10</name>
   </collection>
   <collection>
-    <name>WeretigerLow-Light Vision0</name>
+    <name>Lycanthrope, Tiger (Weretiger)Low-Light Vision0</name>
   </collection>
   <collection>
-    <name>WeretigerScent0</name>
+    <name>Lycanthrope, Tiger (Weretiger)Scent0</name>
   </collection>
   <collection>
-    <name>WeretigerIron Will2</name>
+    <name>Lycanthrope, Tiger (Weretiger)Iron Will2</name>
   </collection>
   <collection>
-    <name>WeretigerAlertness2</name>
+    <name>Lycanthrope, Tiger (Weretiger)Alertness2</name>
   </collection>
   <collection>
-    <name>WerewolfAlternate FormWolf or wolf-humanoid hybrid0</name>
+    <name>Lycanthrope, Wolf (Werewolf)Alternate FormWolf or wolf-humanoid hybrid0</name>
   </collection>
   <collection>
-    <name>WerewolfLycanthropic EmpathyWolves and dire wolves4</name>
+    <name>Lycanthrope, Wolf (Werewolf)Lycanthropic EmpathyWolves and dire wolves4</name>
   </collection>
   <collection>
-    <name>WerewolfDamage ReductionVulnerable to silver10</name>
+    <name>Lycanthrope, Wolf (Werewolf)Damage ReductionVulnerable to silver10</name>
   </collection>
   <collection>
-    <name>WerewolfLow-Light Vision0</name>
+    <name>Lycanthrope, Wolf (Werewolf)Low-Light Vision0</name>
   </collection>
   <collection>
-    <name>WerewolfScent0</name>
+    <name>Lycanthrope, Wolf (Werewolf)Scent0</name>
   </collection>
   <collection>
-    <name>WerewolfTrack0</name>
+    <name>Lycanthrope, Wolf (Werewolf)Track0</name>
   </collection>
   <collection>
-    <name>WerewolfIron Will2</name>
+    <name>Lycanthrope, Wolf (Werewolf)Iron Will2</name>
   </collection>
   <collection>
     <name>ZombieDamage ReductionVulnerable to slashing5</name>

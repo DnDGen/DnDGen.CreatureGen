@@ -161,6 +161,12 @@ namespace DnDGen.CreatureGen.Templates
                     skill.AddBonus(8);
                 }
             }
+
+            var concentration = creature.Skills.FirstOrDefault(s => s.Name == SkillConstants.Concentration);
+            if (concentration != null)
+            {
+                concentration.BaseAbility = creature.Abilities[AbilityConstants.Charisma];
+            }
         }
 
         private void UpdateCreatureEquipment(Creature creature)

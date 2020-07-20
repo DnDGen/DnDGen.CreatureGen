@@ -26,6 +26,7 @@
             public const string SpecialQualityData = "SpecialQualityData";
             public const string FeatFoci = "FeatFoci";
             public const string FeatGroups = "FeatGroups";
+            public const string LanguageGroups = "LanguageGroups";
             public const string PredeterminedItems = "PredeterminedItems";
             public const string RequiredAlignments = "RequiredAlignments";
             public const string RequiredFeats = "RequiredFeats";
@@ -55,15 +56,15 @@
             public const string SpellsPerDay = "SpellsPerDay";
         }
 
-        internal static class Percentile
-        {
-            public const string AlignmentGoodness = "AlignmentGoodness";
-            public const string AlignmentLawfulness = "AlignmentLawfulness";
-        }
+        //internal static class Percentile
+        //{
+        //    public const string AlignmentGoodness = "AlignmentGoodness";
+        //    public const string AlignmentLawfulness = "AlignmentLawfulness";
+        //}
 
-        internal static class TrueOrFalse
-        {
-            public const string Male = "Male";
-        }
+        //internal static class TrueOrFalse
+        //{
+        //    public const string Male = "Male";
+        //}
     }
 }

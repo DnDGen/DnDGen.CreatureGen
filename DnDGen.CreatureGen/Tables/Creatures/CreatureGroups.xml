@@ -2,9 +2,6 @@
 
 <collections>
   <collection>
-    <name></name>
-  </collection>
-  <collection>
     <name>Aberration</name>
     <entry>Aboleth</entry>
     <entry>Athach</entry>
@@ -52,6 +49,72 @@
     <entry>Angel, Astral Deva</entry>
     <entry>Angel, Planetar</entry>
     <entry>Angel, Solar</entry>
+  </collection>
+  <collection>
+    <name>Animal</name>
+    <entry>Ape</entry>
+    <entry>Dire Ape</entry>
+    <entry>Baboon</entry>
+    <entry>Badger</entry>
+    <entry>Dire Badger</entry>
+    <entry>Bat</entry>
+    <entry>Dire Bat</entry>
+    <entry>Bat Swarm</entry>
+    <entry>Bear</entry>
+    <entry>Bison</entry>
+    <entry>Boar</entry>
+    <entry>Dire Boar</entry>
+    <entry>Camel, Bactrian (Two-Humped)</entry>
+    <entry>Camel, Dromedary (One-Humped)</entry>
+    <entry>Cat</entry>
+    <entry>Cheetah</entry>
+    <entry>Constrictor Snake</entry>
+    <entry>Giant Constrictor Snake</entry>
+    <entry>Crocodile</entry>
+    <entry>Giant Crocodile</entry>
+    <entry>Dinosaur</entry>
+    <entry>Dog</entry>
+    <entry>Dog, Riding</entry>
+    <entry>Donkey</entry>
+    <entry>Eagle</entry>
+    <entry>Elephant</entry>
+    <entry>Hawk</entry>
+    <entry>Horse</entry>
+    <entry>Hyena</entry>
+    <entry>Leopard</entry>
+    <entry>Lion</entry>
+    <entry>Dire Lion</entry>
+    <entry>Lizard</entry>
+    <entry>Manta Ray</entry>
+    <entry>Monitor Lizard</entry>
+    <entry>Monkey</entry>
+    <entry>Mule</entry>
+    <entry>Octopus</entry>
+    <entry>Giant Octopus</entry>
+    <entry>Owl</entry>
+    <entry>Pony</entry>
+    <entry>Warpony</entry>
+    <entry>Porpoise</entry>
+    <entry>Rat</entry>
+    <entry>Dire Rat</entry>
+    <entry>Rat Swarm</entry>
+    <entry>Raven</entry>
+    <entry>Rhinoceras</entry>
+    <entry>Roc</entry>
+    <entry>Shark</entry>
+    <entry>Squid</entry>
+    <entry>Giant Squid</entry>
+    <entry>Tiger</entry>
+    <entry>Dire Tiger</entry>
+    <entry>Toad</entry>
+    <entry>Viper Snake</entry>
+    <entry>Weasel</entry>
+    <entry>Dire Weasel</entry>
+    <entry>Whale</entry>
+    <entry>Wolf</entry>
+    <entry>Dire Wolf</entry>
+    <entry>Wolverine</entry>
+    <entry>Dire Wolverine</entry>
   </collection>
   <collection>
     <name>Animated Object</name>
@@ -955,11 +1018,11 @@
   </collection>
   <collection>
     <name>Lycanthrope</name>
-    <entry>Werebear</entry>
-    <entry>Wereboar</entry>
-    <entry>Wererat</entry>
-    <entry>Weretiger</entry>
-    <entry>Werewolf</entry>
+    <entry>Lycanthrope, Bear (Werebear)</entry>
+    <entry>Lycanthrope, Boar (Wereboar)</entry>
+    <entry>Lycanthrope, Rat (Wererat)</entry>
+    <entry>Lycanthrope, Tiger (Weretiger)</entry>
+    <entry>Lycanthrope, Wolf (Werewolf)</entry>
   </collection>
   <collection>
     <name>Magical Beast</name>
@@ -1423,5 +1486,24 @@
     <name>Poor Base Attack</name>
     <entry>Fey</entry>
     <entry>Undead</entry>
+  </collection>
+  <collection>
+    <name>Undead</name>
+    <entry>Allip</entry>
+    <entry>Bodak</entry>
+    <entry>Devourer</entry>
+    <entry>Ghoul</entry>
+    <entry>Ghast</entry>
+    <entry>Lacedon</entry>
+    <entry>Mohrg</entry>
+    <entry>Mummy</entry>
+    <entry>Nightshade</entry>
+    <entry>Shadow</entry>
+    <entry>Greater Shadow</entry>
+    <entry>Spectre</entry>
+    <entry>Vampire Spawn</entry>
+    <entry>Wight</entry>
+    <entry>Wraith</entry>
+    <entry>Dread Wraith</entry>
   </collection>
 </collections>

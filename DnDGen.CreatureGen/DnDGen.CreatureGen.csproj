@@ -52,6 +52,7 @@
     <None Remove="Tables\Feats\Requirements\RequiredAlignments.xml" />
     <None Remove="Tables\Feats\Requirements\RequiredFeats.xml" />
     <None Remove="Tables\Feats\Requirements\RequiredSizes.xml" />
+    <None Remove="Tables\Languages\LanguageGroups.xml" />
     <None Remove="Tables\Magics\CasterGroups.xml" />
     <None Remove="Tables\Magics\Casters.xml" />
     <None Remove="Tables\Magics\KnownSpells.xml" />
@@ -125,6 +126,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Feats\Requirements\RequiredSizes.xml" />
+    <EmbeddedResource Include="Tables\Languages\LanguageGroups.xml" />
     <EmbeddedResource Include="Tables\Magics\CasterGroups.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -11,6 +11,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Items;
+using DnDGen.CreatureGen.Generators.Languages;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Items;
@@ -52,6 +53,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         private Mock<ISpeedsGenerator> mockSpeedsGenerator;
         private Mock<IEquipmentGenerator> mockEquipmentGenerator;
         private Mock<IMagicGenerator> mockMagicGenerator;
+        private Mock<ILanguageGenerator> mockLanguageGenerator;
 
         private Dictionary<string, Ability> abilities;
         private List<Skill> skills;
@@ -66,6 +68,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         private Alignment alignment;
         private Equipment equipment;
         private Magic magic;
+        private List<string> languages;
 
         [SetUp]
         public void Setup()
@@ -86,6 +89,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
             mockEquipmentGenerator = new Mock<IEquipmentGenerator>();
             mockMagicGenerator = new Mock<IMagicGenerator>();
+            mockLanguageGenerator = new Mock<ILanguageGenerator>();
 
             creatureGenerator = new CreatureGenerator(
                 mockAlignmentGenerator.Object,
@@ -103,7 +107,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 mockAttacksGenerator.Object,
                 mockSpeedsGenerator.Object,
                 mockEquipmentGenerator.Object,
-                mockMagicGenerator.Object);
+                mockMagicGenerator.Object,
+                mockLanguageGenerator.Object);
 
             feats = new List<Feat>();
             abilities = new Dictionary<string, Ability>();
@@ -117,6 +122,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             speeds = new Dictionary<string, Measurement>();
             equipment = new Equipment();
             magic = new Magic();
+            languages = new List<string>();
 
             alignment = new Alignment("creature alignment");
 
@@ -130,6 +136,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             creatureData.Reach = 67.89;
 
             types.Add("type");
+
+            languages.Add("English");
+            languages.Add("Deutsch");
 
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
             abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
@@ -256,6 +265,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     abilities,
                     equipment))
                 .Returns(magic);
+
+            mockLanguageGenerator
+                .Setup(g => g.GenerateWith(creatureName,
+                    abilities,
+                    skills))
+                .Returns(languages);
         }
 
         [Test]
@@ -435,6 +450,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Magic, Is.EqualTo(magic));
+        }
+
+        [Test]
+        public void GenerateCreatureLanguages()
+        {
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.Languages, Is.EqualTo(languages));
         }
 
         [Test]

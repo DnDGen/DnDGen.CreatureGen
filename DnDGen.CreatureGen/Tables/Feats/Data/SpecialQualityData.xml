@@ -5696,21 +5696,84 @@
     <entry>Spell-Like Ability#0#Resurrection#1#Day#0#False###0#19#2147483647</entry>
   </collection>
   <collection>
-    <name>Half-Dragon</name>
+    <name>Half-Dragon (Black)</name>
     <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Sleep#0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Paralysis#0##0#False###0#0#2147483647</entry>
-    <entry>Immunity#0#Acid (Black)#0##0#False###0#0#2147483647</entry>
-    <entry>Immunity#0#Electricity (Blue)#0##0#False###0#0#2147483647</entry>
-    <entry>Immunity#0#Acid (Green)#0##0#False###0#0#2147483647</entry>
-    <entry>Immunity#0#Fire (Red)#0##0#False###0#0#2147483647</entry>
-    <entry>Immunity#0#Cold (White)#0##0#False###0#0#2147483647</entry>
-    <entry>Immunity#0#Fire (Brass)#0##0#False###0#0#2147483647</entry>
-    <entry>Immunity#0#Electricity (Bronze)#0##0#False###0#0#2147483647</entry>
-    <entry>Immunity#0#Acid (Copper)#0##0#False###0#0#2147483647</entry>
-    <entry>Immunity#0#Fire (Gold)#0##0#False###0#0#2147483647</entry>
-    <entry>Immunity#0#Cold (Silver)#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Acid#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Sleep#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Paralysis#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Electricity#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Sleep#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Paralysis#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Acid#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Sleep#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Paralysis#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Fire#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Sleep#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Paralysis#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Cold#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Sleep#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Paralysis#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Fire#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Sleep#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Paralysis#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Electricity#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Sleep#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Paralysis#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Acid#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Sleep#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Paralysis#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Fire#0##0#False###0#0#2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)</name>
+    <entry>Darkvision#60##0##0#False###0#0#2147483647</entry>
+    <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Sleep#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Paralysis#0##0#False###0#0#2147483647</entry>
+    <entry>Immunity#0#Cold#0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
     <name>Half-Fiend</name>
@@ -5795,7 +5858,7 @@
     <entry>Immunity#0#Cold#0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
-    <name>Werebear</name>
+    <name>Lycanthrope, Bear (Werebear)</name>
     <entry>Alternate Form#0#Brown bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Lycanthropic Empathy#4#Bears and dire bears#0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
@@ -5805,7 +5868,7 @@
     <entry>Track#0##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
-    <name>Wereboar</name>
+    <name>Lycanthrope, Boar (Wereboar)</name>
     <entry>Alternate Form#0#Boar or boar-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Lycanthropic Empathy#4#Boars and dire boars#0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
@@ -5816,7 +5879,7 @@
     <entry>Ferocity#0##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
-    <name>Wererat</name>
+    <name>Lycanthrope, Rat (Wererat)</name>
     <entry>Alternate Form#0#Dire rat or bipedal rat-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Lycanthropic Empathy#4#Rats and dire rats#0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
@@ -5826,7 +5889,7 @@
     <entry>Weapon Finesse#0##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
-    <name>Weretiger</name>
+    <name>Lycanthrope, Tiger (Weretiger)</name>
     <entry>Alternate Form#0#Tiger or bipedal tiger-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Lycanthropic Empathy#4#Tigers and dire tigers#0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
@@ -5836,7 +5899,7 @@
     <entry>Alertness#2##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
-    <name>Werewolf</name>
+    <name>Lycanthrope, Wolf (Werewolf)</name>
     <entry>Alternate Form#0#Wolf or wolf-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Lycanthropic Empathy#4#Wolves and dire wolves#0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>

@@ -590,6 +590,62 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void ApplyTo_CreatureGainsSpecialQualities_Undead()
+        {
+            var ghostQualities = new[]
+            {
+                new Feat { Name = "ghost quality 1" },
+                new Feat { Name = "ghost quality 2" },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.Ghost,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(ghostQualities);
+
+            var originalCount = baseCreature.SpecialQualities.Count();
+            var creature = applicator.ApplyTo(baseCreature);
+
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + ghostQualities.Length));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(ghostQualities));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_CreatureGainsSpecialQualities_Undead()
+        {
+            var ghostQualities = new[]
+            {
+                new Feat { Name = "ghost quality 1" },
+                new Feat { Name = "ghost quality 2" },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.Ghost,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(ghostQualities);
+
+            var originalCount = baseCreature.SpecialQualities.Count();
+            var creature = await applicator.ApplyToAsync(baseCreature);
+
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + ghostQualities.Length));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(ghostQualities));
+        }
+
+        [Test]
         public void ApplyTo_CreatureSkills_GainRacialBonuses()
         {
             var skills = new[]
@@ -690,6 +746,46 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(skills[4].Name, Is.EqualTo("other skill 5"));
             Assert.That(skills[4].Bonus, Is.EqualTo(600));
             Assert.That(skills[4].Bonuses.Count(), Is.EqualTo(2));
+        }
+
+        [Test]
+        public void ApplyTo_CreatureSkills_SwapsAbilityForConcentrationToCharisma()
+        {
+            var concentration = new Skill(SkillConstants.Concentration, baseCreature.Abilities[AbilityConstants.Constitution], 42);
+            baseCreature.Skills = baseCreature.Skills.Union(new[] { concentration });
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Skills, Contains.Item(concentration));
+            Assert.That(concentration.BaseAbility, Is.EqualTo(creature.Abilities[AbilityConstants.Charisma]));
+        }
+
+        [Test]
+        public void ApplyTo_CreatureSkills_DoNotHaveFortitudeSave()
+        {
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Saves[SaveConstants.Fortitude].HasSave, Is.False);
+            Assert.That(creature.Saves[SaveConstants.Reflex].HasSave, Is.True);
+            Assert.That(creature.Saves[SaveConstants.Will].HasSave, Is.True);
+        }
+
+        [Test]
+        public async Task ApplyToAsync_CreatureSkills_SwapsAbilityForConcentrationToCharisma()
+        {
+            var concentration = new Skill(SkillConstants.Concentration, baseCreature.Abilities[AbilityConstants.Constitution], 42);
+            baseCreature.Skills = baseCreature.Skills.Union(new[] { concentration });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Skills, Contains.Item(concentration));
+            Assert.That(concentration.BaseAbility, Is.EqualTo(creature.Abilities[AbilityConstants.Charisma]));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_CreatureSkills_DoNotHaveFortitudeSave()
+        {
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Saves[SaveConstants.Fortitude].HasSave, Is.False);
+            Assert.That(creature.Saves[SaveConstants.Reflex].HasSave, Is.True);
+            Assert.That(creature.Saves[SaveConstants.Will].HasSave, Is.True);
         }
 
         [TestCaseSource("ChallengeRatingAdjustments")]

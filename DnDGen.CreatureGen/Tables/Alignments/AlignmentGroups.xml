@@ -3231,4 +3231,104 @@
     <name>Zelekhut</name>
     <entry>AlwaysLawful Neutral</entry>
   </collection>
+  <collection>
+    <name>Half-Dragon (Black)</name>
+    <entry>Black Dragon, Adult</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)</name>
+    <entry>Blue Dragon, Adult</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)</name>
+    <entry>Green Dragon, Adult</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)</name>
+    <entry>Red Dragon, Adult</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)</name>
+    <entry>White Dragon, Adult</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)</name>
+    <entry>Brass Dragon, Adult</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)</name>
+    <entry>Bronze Dragon, Adult</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)</name>
+    <entry>Copper Dragon, Adult</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)</name>
+    <entry>Gold Dragon, Adult</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)</name>
+    <entry>Silver Dragon, Adult</entry>
+  </collection>
+  <collection>
+    <name>Celestial Creature</name>
+    <entry>AnyGood</entry>
+  </collection>
+  <collection>
+    <name>Half-Celestial</name>
+    <entry>AnyGood</entry>
+  </collection>
+  <collection>
+    <name>Fiendish Creature</name>
+    <entry>AnyEvil</entry>
+  </collection>
+  <collection>
+    <name>Half-Fiend</name>
+    <entry>AnyEvil</entry>
+  </collection>
+  <collection>
+    <name>Lich</name>
+    <entry>AnyEvil</entry>
+  </collection>
+  <collection>
+    <name>Vampire</name>
+    <entry>AnyEvil</entry>
+  </collection>
+  <collection>
+    <name>Skeleton</name>
+    <entry>AlwaysNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Zombie</name>
+    <entry>AlwaysNeutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Ghost</name>
+    <entry>Any</entry>
+  </collection>
+  <collection>
+    <name></name>
+    <entry>Any</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Bear (Werebear)</name>
+    <entry>AlwaysLawful Good</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar)</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Rat (Wererat)</name>
+    <entry>AlwaysLawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger)</name>
+    <entry>AlwaysTrue Neutral</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf)</name>
+    <entry>AlwaysChaotic Evil</entry>
+  </collection>
 </collections>

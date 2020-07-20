@@ -5052,19 +5052,64 @@
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
-    <name>Half-Dragon</name>
+    <name>Half-Dragon (Black)</name>
     <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8 acid (Black)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Breath Weapon@6d8 electricity (Blue)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Breath Weapon@6d8 acid gas (Green)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Breath Weapon@6d8 fire (Red)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Breath Weapon@6d8 cold (White)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Breath Weapon@6d8 fire (Brass)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Breath Weapon@6d8 electricity (Bronze)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Breath Weapon@6d8 acid (Copper)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Breath Weapon@6d8 fire (Gold)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Breath Weapon@6d8 cold (Silver)@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@6d8 acid@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8 electricity@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8 acid gas@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8 fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8 cold@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8 fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8 electricity@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8 acid@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8 fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8 cold@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Fiend</name>
@@ -5093,27 +5138,27 @@
     <entry>Energy Drain@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@2 negative levels, Vampire gains 5 HP@0@0</entry>
   </collection>
   <collection>
-    <name>Werebear</name>
+    <name>Lycanthrope, Bear (Werebear)</name>
     <entry>Claw@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
-    <name>Wereboar</name>
+    <name>Lycanthrope, Boar (Wereboar)</name>
     <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Gore@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
-    <name>Wererat</name>
+    <name>Lycanthrope, Rat (Wererat)</name>
     <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Disease, Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
     <entry>Disease@@True@True@False@True@1@Hit@@@extraordinary ability@Filth Fever@0@0</entry>
     <entry>Filth Fever@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@incubation period 1d3 days; damage 1d3 Dex and 1d3 Con@0@0</entry>
   </collection>
   <collection>
-    <name>Weretiger</name>
+    <name>Lycanthrope, Tiger (Weretiger)</name>
     <entry>Claw@1d8@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
@@ -5122,7 +5167,7 @@
     <entry>Rake@1d8@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
-    <name>Werewolf</name>
+    <name>Lycanthrope, Wolf (Werewolf)</name>
     <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>

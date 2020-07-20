@@ -18,6 +18,7 @@ namespace DnDGen.CreatureGen.Creatures
         public string Size { get; set; }
         public CreatureType Type { get; set; }
         public HitPoints HitPoints { get; set; }
+        public IEnumerable<string> Languages { get; set; }
 
         public int InitiativeBonus { get; set; }
         public int TotalInitiativeBonus
@@ -132,6 +133,7 @@ namespace DnDGen.CreatureGen.Creatures
             Speeds = new Dictionary<string, Measurement>();
             Equipment = new Equipment();
             Magic = new Magic();
+            Languages = new List<string>();
         }
     }
 }

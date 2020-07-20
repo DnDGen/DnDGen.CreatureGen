@@ -1376,5 +1376,41 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }
+
+        [Test]
+        public void ApplyTo_GainDraconicAsLanguage()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_GainDraconicAsLanguage_NoLanguages()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_GainDraconicAsLanguage_AlreadyHasDraconic()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainDraconicAsLanguage()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainDraconicAsLanguage_NoLanguages()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainDraconicAsLanguage_AlreadyHasDraconic()
+        {
+            Assert.Fail("not yet written");
+        }
     }
 }

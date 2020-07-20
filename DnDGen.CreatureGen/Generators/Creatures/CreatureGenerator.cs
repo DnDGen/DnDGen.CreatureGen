@@ -7,6 +7,7 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Items;
+using DnDGen.CreatureGen.Generators.Languages;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Selectors.Collections;
@@ -40,6 +41,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private readonly ISpeedsGenerator speedsGenerator;
         private readonly IEquipmentGenerator equipmentGenerator;
         private readonly IMagicGenerator magicGenerator;
+        private readonly ILanguageGenerator languageGenerator;
 
         public CreatureGenerator(IAlignmentGenerator alignmentGenerator,
             ICreatureVerifier creatureVerifier,
@@ -56,7 +58,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             IAttacksGenerator attacksGenerator,
             ISpeedsGenerator speedsGenerator,
             IEquipmentGenerator equipmentGenerator,
-            IMagicGenerator magicGenerator)
+            IMagicGenerator magicGenerator,
+            ILanguageGenerator languageGenerator)
         {
             this.alignmentGenerator = alignmentGenerator;
             this.abilitiesGenerator = abilitiesGenerator;
@@ -74,6 +77,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             this.speedsGenerator = speedsGenerator;
             this.equipmentGenerator = equipmentGenerator;
             this.magicGenerator = magicGenerator;
+            this.languageGenerator = languageGenerator;
         }
 
         public Creature Generate(string creatureName, string template)
@@ -122,6 +126,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             creature.Alignment = alignmentGenerator.Generate(creatureName);
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities, creature.CanUseEquipment, creature.Size);
+            creature.Languages = languageGenerator.GenerateWith(creatureName, creature.Abilities, creature.Skills);
 
             creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(
                 creatureName,

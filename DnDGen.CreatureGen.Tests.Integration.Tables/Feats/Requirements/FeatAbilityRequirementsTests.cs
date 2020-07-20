@@ -56,6 +56,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
         {
             AssertTypesAndAmounts(name, typesAndAmounts);
         }
+
         public static IEnumerable Feats
         {
             get

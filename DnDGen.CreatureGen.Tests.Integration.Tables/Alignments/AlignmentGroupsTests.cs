@@ -25,6 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         public void AlignmentGroupsNames()
         {
             var creatures = CreatureConstants.GetAll();
+            var templates = CreatureConstants.Templates.GetAll();
 
             var names = new[]
             {
@@ -79,7 +80,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
                 GroupConstants.All,
             };
 
-            names = names.Union(creatures).ToArray();
+            names = names.Union(creatures).Union(templates).ToArray();
 
             AssertCollectionNames(names);
         }
@@ -1048,6 +1049,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Zelekhut, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral)]
+        [TestCase(CreatureConstants.Templates.CelestialCreature, AlignmentConstants.Modifiers.Any + AlignmentConstants.Good)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]
+        [TestCase(CreatureConstants.Templates.Ghost, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.HalfCelestial, AlignmentConstants.Modifiers.Any + AlignmentConstants.Good)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Black, CreatureConstants.Dragon_Black_Adult)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Blue, CreatureConstants.Dragon_Blue_Adult)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Brass, CreatureConstants.Dragon_Brass_Adult)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Bronze, CreatureConstants.Dragon_Bronze_Adult)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Copper, CreatureConstants.Dragon_Copper_Adult)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Dragon_Gold_Adult)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Green, CreatureConstants.Dragon_Green_Adult)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Red, CreatureConstants.Dragon_Red_Adult)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Silver, CreatureConstants.Dragon_Silver_Adult)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_White, CreatureConstants.Dragon_White_Adult)]
+        [TestCase(CreatureConstants.Templates.HalfFiend, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]
+        [TestCase(CreatureConstants.Templates.Lich, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.None, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Skeleton, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
+        [TestCase(CreatureConstants.Templates.Vampire, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]
+        [TestCase(CreatureConstants.Templates.Zombie, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
         public void AlignmentGroup(string name, params string[] collection)
         {
             AssertCollection(name, collection);
