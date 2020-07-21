@@ -1052,4 +1052,1431 @@
     <entry>Draconic</entry>
     <entry>Abyssal</entry>
   </collection>
+  <collection>
+    <name>AbolethAutomatic</name>
+    <entry>Aboleth</entry>
+    <entry>Aquan</entry>
+    <entry>Undercommon</entry>
+  </collection>
+  <collection>
+    <name>AbolethBonus</name>
+  </collection>
+  <collection>
+    <name>Abyssal Greater BasiliskAutomatic</name>
+  </collection>
+  <collection>
+    <name>Abyssal Greater BasiliskBonus</name>
+  </collection>
+  <collection>
+    <name>BasiliskAutomatic</name>
+  </collection>
+  <collection>
+    <name>BasiliskBonus</name>
+  </collection>
+  <collection>
+    <name>AchaieraiAutomatic</name>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>AchaieraiBonus</name>
+  </collection>
+  <collection>
+    <name>Adult ArrowhawkAutomatic</name>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>Adult ArrowhawkBonus</name>
+  </collection>
+  <collection>
+    <name>Adult TojanidaAutomatic</name>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>Adult TojanidaBonus</name>
+  </collection>
+  <collection>
+    <name>Juvenile ArrowhawkAutomatic</name>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>Juvenile ArrowhawkBonus</name>
+  </collection>
+  <collection>
+    <name>Juvenile TojanidaAutomatic</name>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>Juvenile TojanidaBonus</name>
+  </collection>
+  <collection>
+    <name>Elder ArrowhawkAutomatic</name>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>Elder ArrowhawkBonus</name>
+  </collection>
+  <collection>
+    <name>Elder TojanidaAutomatic</name>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>Elder TojanidaBonus</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, ElderAutomatic</name>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, ElderBonus</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, GreaterAutomatic</name>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, GreaterBonus</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, HugeAutomatic</name>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, LargeAutomatic</name>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, MediumAutomatic</name>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, SmallAutomatic</name>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, ElderAutomatic</name>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, ElderBonus</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, GreaterAutomatic</name>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, GreaterBonus</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, HugeAutomatic</name>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, LargeAutomatic</name>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, MediumAutomatic</name>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, SmallAutomatic</name>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, ElderAutomatic</name>
+    <entry>Ignan</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, ElderBonus</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, GreaterAutomatic</name>
+    <entry>Ignan</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, GreaterBonus</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, HugeAutomatic</name>
+    <entry>Ignan</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, LargeAutomatic</name>
+    <entry>Ignan</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, MediumAutomatic</name>
+    <entry>Ignan</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, SmallAutomatic</name>
+    <entry>Ignan</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, ElderAutomatic</name>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, ElderBonus</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, GreaterAutomatic</name>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, GreaterBonus</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, HugeAutomatic</name>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, LargeAutomatic</name>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, MediumAutomatic</name>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, SmallAutomatic</name>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>AllipAutomatic</name>
+  </collection>
+  <collection>
+    <name>AllipBonus</name>
+  </collection>
+  <collection>
+    <name>AndrosphinxAutomatic</name>
+    <entry>Sphinx</entry>
+    <entry>Common</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>AndrosphinxBonus</name>
+  </collection>
+  <collection>
+    <name>CriosphinxAutomatic</name>
+    <entry>Sphinx</entry>
+    <entry>Common</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>CriosphinxBonus</name>
+  </collection>
+  <collection>
+    <name>GynosphinxAutomatic</name>
+    <entry>Sphinx</entry>
+    <entry>Common</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>GynosphinxBonus</name>
+  </collection>
+  <collection>
+    <name>HieracosphinxAutomatic</name>
+    <entry>Sphinx</entry>
+    <entry>Common</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>HieracosphinxBonus</name>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaAutomatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaBonus</name>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarAutomatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarBonus</name>
+  </collection>
+  <collection>
+    <name>Angel, SolarAutomatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Angel, SolarBonus</name>
+  </collection>
+  <collection>
+    <name>Air MephitAutomatic</name>
+    <entry>Auran</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Air MephitBonus</name>
+  </collection>
+  <collection>
+    <name>Dust MephitAutomatic</name>
+    <entry>Auran</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Dust MephitBonus</name>
+  </collection>
+  <collection>
+    <name>Earth MephitAutomatic</name>
+    <entry>Terran</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Earth MephitBonus</name>
+  </collection>
+  <collection>
+    <name>Fire MephitAutomatic</name>
+    <entry>Ignan</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Fire MephitBonus</name>
+  </collection>
+  <collection>
+    <name>Ice MephitAutomatic</name>
+    <entry>Auran</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Ice MephitBonus</name>
+  </collection>
+  <collection>
+    <name>Magma MephitAutomatic</name>
+    <entry>Ignan</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Magma MephitBonus</name>
+  </collection>
+  <collection>
+    <name>Ooze MephitAutomatic</name>
+    <entry>Aquan</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Ooze MephitBonus</name>
+  </collection>
+  <collection>
+    <name>Salt MephitAutomatic</name>
+    <entry>Terran</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Salt MephitBonus</name>
+  </collection>
+  <collection>
+    <name>Steam MephitAutomatic</name>
+    <entry>Ignan</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Steam MephitBonus</name>
+  </collection>
+  <collection>
+    <name>Water MephitAutomatic</name>
+    <entry>Aquan</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Water MephitBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, ColossalAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, GargantuanAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, HugeAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, LargeAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, MediumAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, SmallAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, TinyAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, ColossalAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, GargantuanAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, HugeAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, LargeAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, MediumAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, SmallAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, TinyAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, ColossalAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, GargantuanAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, HugeAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, LargeAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, MediumAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, SmallAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, TinyAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, ColossalAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, GargantuanAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, HugeAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, LargeAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, MediumAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, SmallAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, TinyAutomatic</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, ColossalBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, GargantuanBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, HugeBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, LargeBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, MediumBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, SmallBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, TinyBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, ColossalBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, GargantuanBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, HugeBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, LargeBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, MediumBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, SmallBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, TinyBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, ColossalBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, GargantuanBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, HugeBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, LargeBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, MediumBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, SmallBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, TinyBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, ColossalBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, GargantuanBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, HugeBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, LargeBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, MediumBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, SmallBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, TinyBonus</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>AnkhegAutomatic</name>
+  </collection>
+  <collection>
+    <name>ApeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire ApeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Assassin VineAutomatic</name>
+  </collection>
+  <collection>
+    <name>BaboonAutomatic</name>
+  </collection>
+  <collection>
+    <name>BadgerAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire BadgerAutomatic</name>
+  </collection>
+  <collection>
+    <name>Baleen WhaleAutomatic</name>
+  </collection>
+  <collection>
+    <name>Cachalot WhaleAutomatic</name>
+  </collection>
+  <collection>
+    <name>Orca WhaleAutomatic</name>
+  </collection>
+  <collection>
+    <name>BatAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire BatAutomatic</name>
+  </collection>
+  <collection>
+    <name>Bat SwarmAutomatic</name>
+  </collection>
+  <collection>
+    <name>Centipede SwarmAutomatic</name>
+  </collection>
+  <collection>
+    <name>Rat SwarmAutomatic</name>
+  </collection>
+  <collection>
+    <name>Spider SwarmAutomatic</name>
+  </collection>
+  <collection>
+    <name>Locust SwarmAutomatic</name>
+  </collection>
+  <collection>
+    <name>Hellwasp SwarmAutomatic</name>
+  </collection>
+  <collection>
+    <name>BisonAutomatic</name>
+  </collection>
+  <collection>
+    <name>Black BearAutomatic</name>
+  </collection>
+  <collection>
+    <name>Brown BearAutomatic</name>
+  </collection>
+  <collection>
+    <name>Polar BearAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire BearAutomatic</name>
+  </collection>
+  <collection>
+    <name>BoarAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire BoarAutomatic</name>
+  </collection>
+  <collection>
+    <name>BuletteAutomatic</name>
+  </collection>
+  <collection>
+    <name>Black PuddingAutomatic</name>
+  </collection>
+  <collection>
+    <name>Elder Black PuddingAutomatic</name>
+  </collection>
+  <collection>
+    <name>Gelatinous CubeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Gray OozeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Ochre JellyAutomatic</name>
+  </collection>
+  <collection>
+    <name>AnkhegBonus</name>
+  </collection>
+  <collection>
+    <name>ApeBonus</name>
+  </collection>
+  <collection>
+    <name>Dire ApeBonus</name>
+  </collection>
+  <collection>
+    <name>Assassin VineBonus</name>
+  </collection>
+  <collection>
+    <name>BaboonBonus</name>
+  </collection>
+  <collection>
+    <name>BadgerBonus</name>
+  </collection>
+  <collection>
+    <name>Dire BadgerBonus</name>
+  </collection>
+  <collection>
+    <name>Baleen WhaleBonus</name>
+  </collection>
+  <collection>
+    <name>Cachalot WhaleBonus</name>
+  </collection>
+  <collection>
+    <name>Orca WhaleBonus</name>
+  </collection>
+  <collection>
+    <name>BatBonus</name>
+  </collection>
+  <collection>
+    <name>Dire BatBonus</name>
+  </collection>
+  <collection>
+    <name>Bat SwarmBonus</name>
+  </collection>
+  <collection>
+    <name>Centipede SwarmBonus</name>
+  </collection>
+  <collection>
+    <name>Rat SwarmBonus</name>
+  </collection>
+  <collection>
+    <name>Spider SwarmBonus</name>
+  </collection>
+  <collection>
+    <name>Locust SwarmBonus</name>
+  </collection>
+  <collection>
+    <name>Hellwasp SwarmBonus</name>
+  </collection>
+  <collection>
+    <name>BisonBonus</name>
+  </collection>
+  <collection>
+    <name>Black BearBonus</name>
+  </collection>
+  <collection>
+    <name>Brown BearBonus</name>
+  </collection>
+  <collection>
+    <name>Polar BearBonus</name>
+  </collection>
+  <collection>
+    <name>Dire BearBonus</name>
+  </collection>
+  <collection>
+    <name>BoarBonus</name>
+  </collection>
+  <collection>
+    <name>Dire BoarBonus</name>
+  </collection>
+  <collection>
+    <name>BuletteBonus</name>
+  </collection>
+  <collection>
+    <name>Black PuddingBonus</name>
+  </collection>
+  <collection>
+    <name>Elder Black PuddingBonus</name>
+  </collection>
+  <collection>
+    <name>Gelatinous CubeBonus</name>
+  </collection>
+  <collection>
+    <name>Gray OozeBonus</name>
+  </collection>
+  <collection>
+    <name>Ochre JellyBonus</name>
+  </collection>
 </collections>

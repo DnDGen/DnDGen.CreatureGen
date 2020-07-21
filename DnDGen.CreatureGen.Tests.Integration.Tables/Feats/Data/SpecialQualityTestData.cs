@@ -310,6 +310,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Electricity));
             testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Polymorph"));
             testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Mind-Affecting Attacks"));
+            testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData(FeatConstants.MagicItemCreation.CraftWondrousItem));
 
             testCases[CreatureConstants.Templates.None].Add(helper.BuildData(None));
 

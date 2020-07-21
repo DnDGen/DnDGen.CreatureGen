@@ -5,6 +5,7 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -2192,39 +2193,199 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_GainCelestialAsLanguage()
+        public void ApplyTo_GainARandomLanguage()
         {
-            Assert.Fail("not yet written");
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.CelestialCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic"));
         }
 
         [Test]
-        public void ApplyTo_GainCelestialAsLanguage_NoLanguages()
+        public void ApplyTo_GainALanguage_NoLanguages()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = Enumerable.Empty<string>();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.CelestialCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages, Is.Empty);
         }
 
         [Test]
-        public void ApplyTo_GainCelestialAsLanguage_AlreadyHasCelestial()
+        public void ApplyTo_GainALanguage_AlreadyHas()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Angelic" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.CelestialCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic"));
         }
 
         [Test]
-        public async Task ApplyToAsync_GainCelestialAsLanguage()
+        public async Task ApplyToAsync_GainARandomLanguage()
         {
-            Assert.Fail("not yet written");
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.CelestialCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic"));
         }
 
         [Test]
-        public async Task ApplyToAsync_GainCelestialAsLanguage_NoLanguages()
+        public async Task ApplyToAsync_GainALanguage_NoLanguages()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = Enumerable.Empty<string>();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.CelestialCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages, Is.Empty);
         }
 
         [Test]
-        public async Task ApplyToAsync_GainCelestialAsLanguage_AlreadyHasCelestial()
+        public async Task ApplyToAsync_GainALanguage_AlreadyHas()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Angelic" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.CelestialCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic"));
         }
     }
 }

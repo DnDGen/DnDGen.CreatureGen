@@ -36,6 +36,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return this;
         }
 
+        public CreatureBuilder WithCreatureType(string creatureType)
+        {
+            creature.Type.Name = creatureType;
+
+            return this;
+        }
+
         public CreatureBuilder Clone(Creature source)
         {
             creature.Abilities = new Dictionary<string, Ability>();
@@ -289,6 +296,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Spell { Name = "My Level 1 Spell", Level = 1 },
                 new Spell { Name = "My Other Level 1 Spell", Level = 1 },
             };
+
+            creature.Languages = new[] { "English", "Deutsch" };
 
             return this;
         }

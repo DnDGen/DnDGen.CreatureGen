@@ -9,6 +9,7 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Skills;
+using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -1380,37 +1381,381 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [Test]
         public void ApplyTo_GainDraconicAsLanguage()
         {
-            Assert.Fail("not yet written");
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish"));
         }
 
         [Test]
         public void ApplyTo_GainDraconicAsLanguage_NoLanguages()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = Enumerable.Empty<string>();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages, Is.Empty);
         }
 
         [Test]
         public void ApplyTo_GainDraconicAsLanguage_AlreadyHasDraconic()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Dragonish" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish"));
+        }
+
+        [Test]
+        public void ApplyTo_GainNewBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 12;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Drachensprach", "Dragonish", "Lizard", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish")
+                .And.Contains("Drachensprach"));
+        }
+
+        [Test]
+        public void ApplyTo_GainBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Drachensprach", "Dragonish", "Lizard", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish")
+                .And.Contains("Drachensprach"));
+        }
+
+        [Test]
+        public void ApplyTo_GainNoBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 8;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Drachensprach", "Dragonish", "Lizard", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish"));
+        }
+
+        [Test]
+        public void ApplyTo_GainAllBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Dragonish", "Lizard", "Latin" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Drachensprach", "Dragonish", "Lizard", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish")
+                .And.Contains("Drachensprach")
+                .And.Contains("Latin"));
         }
 
         [Test]
         public async Task ApplyToAsync_GainDraconicAsLanguage()
         {
-            Assert.Fail("not yet written");
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish"));
         }
 
         [Test]
         public async Task ApplyToAsync_GainDraconicAsLanguage_NoLanguages()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = Enumerable.Empty<string>();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages, Is.Empty);
         }
 
         [Test]
         public async Task ApplyToAsync_GainDraconicAsLanguage_AlreadyHasDraconic()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Dragonish" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainNewBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 12;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Drachensprach", "Dragonish", "Lizard", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish")
+                .And.Contains("Drachensprach"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Drachensprach", "Dragonish", "Lizard", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish")
+                .And.Contains("Drachensprach"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainNoBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 8;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Drachensprach", "Dragonish", "Lizard", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainAllBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Dragonish", "Lizard", "Latin" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Automatic))
+                .Returns("Dragonish");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    template + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Drachensprach", "Dragonish", "Lizard", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Dragonish")
+                .And.Contains("Drachensprach")
+                .And.Contains("Latin"));
         }
     }
 }

@@ -261,6 +261,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(6)]
         [TestCase(8)]
         [TestCase(10)]
+        [TestCase(12)]
         public void ApplyTo_HitDiceChangeToD12_AndRerolled(int die)
         {
             baseCreature.HitPoints.HitDie = die;

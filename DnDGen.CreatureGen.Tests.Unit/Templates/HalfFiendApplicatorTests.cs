@@ -8,6 +8,7 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Skills;
+using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
@@ -1751,39 +1752,455 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_GainALanguage()
+        public void ApplyTo_GainARandomAutomaticLanguage()
         {
-            Assert.Fail("not yet written");
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor"));
         }
 
         [Test]
         public void ApplyTo_GainALanguage_NoLanguages()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = Enumerable.Empty<string>();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages, Is.Empty);
         }
 
         [Test]
-        public void ApplyTo_GainALanguage_AlreadyHas()
+        public void ApplyTo_GainAnAutomaticLanguage_AlreadyHas()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Mordor" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor"));
         }
 
         [Test]
-        public async Task ApplyToAsync_GainALanguage()
+        public void ApplyTo_GainNewBonusLanguages()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 12;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Hellsprach", "Mordor", "Profanity", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 3));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor")
+                .And.Contains("Hellsprach")
+                .And.Contains("Latin"));
+        }
+
+        [Test]
+        public void ApplyTo_GainBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Hellsprach", "Mordor", "Profanity", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 3));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor")
+                .And.Contains("Hellsprach")
+                .And.Contains("Latin"));
+        }
+
+        [Test]
+        public void ApplyTo_GainSomeBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 8;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Hellsprach", "Mordor", "Profanity", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor")
+                .And.Contains("Hellsprach"));
+        }
+
+        [Test]
+        public void ApplyTo_GainNoBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 6;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Hellsprach", "Mordor", "Profanity", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor"));
+        }
+
+        [Test]
+        public void ApplyTo_GainAllBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Mordor", "Profanity", "Latin" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Hellsprach", "Mordor", "Profanity", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor")
+                .And.Contains("Hellsprach")
+                .And.Contains("Latin"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainARandomAutomaticLanguage()
+        {
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor"));
         }
 
         [Test]
         public async Task ApplyToAsync_GainALanguage_NoLanguages()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = Enumerable.Empty<string>();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages, Is.Empty);
         }
 
         [Test]
-        public async Task ApplyToAsync_GainALanguage_AlreadyHas()
+        public async Task ApplyToAsync_GainAnAutomaticLanguage_AlreadyHas()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Mordor" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainNewBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 12;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Hellsprach", "Mordor", "Profanity", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 3));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor")
+                .And.Contains("Hellsprach")
+                .And.Contains("Latin"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Hellsprach", "Mordor", "Profanity", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 3));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor")
+                .And.Contains("Hellsprach")
+                .And.Contains("Latin"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainSomeBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 8;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Hellsprach", "Mordor", "Profanity", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor")
+                .And.Contains("Hellsprach"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainNoBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 6;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Hellsprach", "Mordor", "Profanity", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainAllBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Mordor", "Profanity", "Latin" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Hellsprach", "Mordor", "Profanity", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor")
+                .And.Contains("Hellsprach")
+                .And.Contains("Latin"));
         }
     }
 }

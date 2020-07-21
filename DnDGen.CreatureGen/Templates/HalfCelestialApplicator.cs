@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Skills;
+using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -80,6 +81,9 @@ namespace DnDGen.CreatureGen.Templates
 
             // Alignment
             UpdateCreatureAlignment(creature);
+
+            // Languages
+            UpdateCreatureLanguages(creature);
 
             // Attacks
             UpdateCreatureAttacks(creature);
@@ -241,6 +245,40 @@ namespace DnDGen.CreatureGen.Templates
             }
         }
 
+        private void UpdateCreatureLanguages(Creature creature)
+        {
+            if (!creature.Languages.Any())
+            {
+                return;
+            }
+
+            var languages = new List<string>(creature.Languages);
+            var automaticLanguage = collectionSelector.SelectRandomFrom(
+                TableNameConstants.Collection.LanguageGroups,
+                CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic);
+
+            languages.Add(automaticLanguage);
+
+            var bonusLanguages = collectionSelector.SelectFrom(
+                TableNameConstants.Collection.LanguageGroups,
+                CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Bonus);
+            var quantity = Math.Min(1, creature.Abilities[AbilityConstants.Intelligence].Modifier);
+            var availableBonusLanguages = bonusLanguages.Except(languages);
+
+            if (availableBonusLanguages.Count() <= quantity && quantity > 0)
+            {
+                languages.AddRange(availableBonusLanguages);
+            }
+
+            while (quantity-- > 0 && availableBonusLanguages.Any())
+            {
+                var bonusLanguage = collectionSelector.SelectRandomFrom(availableBonusLanguages);
+                languages.Add(bonusLanguage);
+            }
+
+            creature.Languages = languages.Distinct();
+        }
+
         public async Task<Creature> ApplyToAsync(Creature creature)
         {
             var tasks = new List<Task>();
@@ -275,6 +313,10 @@ namespace DnDGen.CreatureGen.Templates
 
             await Task.WhenAll(tasks);
             tasks.Clear();
+
+            // Languages
+            var languageTask = Task.Run(() => UpdateCreatureLanguages(creature));
+            tasks.Add(languageTask);
 
             // Attacks
             var attackTask = Task.Run(() => UpdateCreatureAttacks(creature));

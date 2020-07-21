@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System;
@@ -56,6 +57,9 @@ namespace DnDGen.CreatureGen.Templates
 
             // Alignment
             UpdateCreatureAlignment(creature);
+
+            // Languages
+            UpdateCreatureLanguages(creature);
 
             // Attacks
             UpdateCreatureAttacks(creature);
@@ -161,6 +165,20 @@ namespace DnDGen.CreatureGen.Templates
             }
         }
 
+        private void UpdateCreatureLanguages(Creature creature)
+        {
+            if (!creature.Languages.Any())
+            {
+                return;
+            }
+
+            var language = collectionSelector.SelectRandomFrom(
+                TableNameConstants.Collection.LanguageGroups,
+                CreatureConstants.Templates.CelestialCreature + LanguageConstants.Groups.Automatic);
+
+            creature.Languages = creature.Languages.Union(new[] { language });
+        }
+
         public async Task<Creature> ApplyToAsync(Creature creature)
         {
             var tasks = new List<Task>();
@@ -184,6 +202,10 @@ namespace DnDGen.CreatureGen.Templates
             // Alignment
             var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature));
             tasks.Add(alignmentTask);
+
+            // Languages
+            var languageTask = Task.Run(() => UpdateCreatureLanguages(creature));
+            tasks.Add(languageTask);
 
             await Task.WhenAll(tasks);
             tasks.Clear();

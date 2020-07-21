@@ -26,13 +26,13 @@ namespace DnDGen.CreatureGen.Generators.Languages
             languages.AddRange(automaticLanguages);
 
             var bonusLanguages = collectionsSelector.SelectFrom(TableNameConstants.Collection.LanguageGroups, creature + LanguageConstants.Groups.Bonus);
-            var remainingBonusLanguages = bonusLanguages.Except(languages).ToList();
+            var remainingBonusLanguages = bonusLanguages.Except(languages);
             var numberOfBonusLanguages = abilities[AbilityConstants.Intelligence].Modifier;
 
             if (IsInterpreter(skills))
                 numberOfBonusLanguages = Math.Max(1, abilities[AbilityConstants.Intelligence].Modifier + 1);
 
-            if (numberOfBonusLanguages >= remainingBonusLanguages.Count)
+            if (numberOfBonusLanguages >= remainingBonusLanguages.Count())
             {
                 languages.AddRange(remainingBonusLanguages);
                 return languages;
@@ -42,7 +42,6 @@ namespace DnDGen.CreatureGen.Generators.Languages
             {
                 var language = collectionsSelector.SelectRandomFrom(remainingBonusLanguages);
                 languages.Add(language);
-                remainingBonusLanguages.Remove(language);
             }
 
             return languages;

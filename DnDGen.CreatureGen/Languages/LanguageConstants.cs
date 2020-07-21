@@ -24,6 +24,7 @@
 
         public static class Special
         {
+            public const string Aboleth = "Aboleth";
             public const string Druidic = "Druidic";
             public const string Githyanki = "Githyanki";
             public const string Githzerai = "Githzerai";
@@ -31,6 +32,7 @@
             public const string KuoToa = "Kuo-toa";
             public const string Sahuagin = "Sahuagin";
             public const string Slaad = "Slaad";
+            public const string Sphinx = "Sphinx";
             public const string YuanTi = "Yuan-ti";
         }
 

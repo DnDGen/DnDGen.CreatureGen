@@ -8,6 +8,7 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Skills;
+using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
@@ -1209,37 +1210,381 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainCelestialAsLanguage()
         {
-            Assert.Fail("not yet written");
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic"));
         }
 
         [Test]
         public void ApplyTo_GainCelestialAsLanguage_NoLanguages()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = Enumerable.Empty<string>();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages, Is.Empty);
         }
 
         [Test]
         public void ApplyTo_GainCelestialAsLanguage_AlreadyHasCelestial()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Angelic" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic"));
+        }
+
+        [Test]
+        public void ApplyTo_GainNewBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 12;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Himmelsprach", "Angelic", "Nuggets of Wisdom", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic")
+                .And.Contains("Himmelsprach"));
+        }
+
+        [Test]
+        public void ApplyTo_GainBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Himmelsprach", "Angelic", "Nuggets of Wisdom", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic")
+                .And.Contains("Himmelsprach"));
+        }
+
+        [Test]
+        public void ApplyTo_GainNoBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 8;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Himmelsprach", "Angelic", "Nuggets of Wisdom", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic"));
+        }
+
+        [Test]
+        public void ApplyTo_GainAllBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Angelic", "Nuggets of Wisdom", "Latin" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Himmelsprach", "Angelic", "Nuggets of Wisdom", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic")
+                .And.Contains("Himmelsprach")
+                .And.Contains("Latin"));
         }
 
         [Test]
         public async Task ApplyToAsync_GainCelestialAsLanguage()
         {
-            Assert.Fail("not yet written");
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic"));
         }
 
         [Test]
         public async Task ApplyToAsync_GainCelestialAsLanguage_NoLanguages()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = Enumerable.Empty<string>();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages, Is.Empty);
         }
 
         [Test]
         public async Task ApplyToAsync_GainCelestialAsLanguage_AlreadyHasCelestial()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Angelic" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainNewBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 12;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Himmelsprach", "Angelic", "Nuggets of Wisdom", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic")
+                .And.Contains("Himmelsprach"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Himmelsprach", "Angelic", "Nuggets of Wisdom", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic")
+                .And.Contains("Himmelsprach"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainNoBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 8;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Himmelsprach", "Angelic", "Nuggets of Wisdom", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic"));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GainAllBonusLanguages()
+        {
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
+
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Angelic", "Nuggets of Wisdom", "Latin" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic))
+                .Returns("Angelic");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Bonus))
+                .Returns(new[] { "Himmelsprach", "Angelic", "Nuggets of Wisdom", "Latin" });
+
+            var count = 0;
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
+                .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Angelic")
+                .And.Contains("Himmelsprach")
+                .And.Contains("Latin"));
         }
     }
 }

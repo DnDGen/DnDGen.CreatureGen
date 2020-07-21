@@ -5,6 +5,7 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -239,7 +240,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "subtype 2",
             };
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -252,7 +253,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -268,7 +269,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Size = "my size";
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -281,7 +282,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -314,7 +315,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(21, 20)]
         [TestCase(22, 20)]
         [TestCase(42, 20)]
-        public void CreatureGainsSmiteEvilSpecialAttack(double hitDiceQuantity, int smiteDamage)
+        public void CreatureGainssmiteGoodSpecialAttack(double hitDiceQuantity, int smiteDamage)
         {
             baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
 
@@ -327,7 +328,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Select(a => JsonConvert.DeserializeObject<Attack>(a))
                 .ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -340,17 +341,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalAttacks.Length + 1));
             Assert.That(creature.Attacks.Select(a => a.Name), Is.SupersetOf(originalAttacks.Select(a => a.Name)));
-            Assert.That(creature.Attacks, Contains.Item(smiteEvil));
+            Assert.That(creature.Attacks, Contains.Item(smiteGood));
             Assert.That(creature.SpecialAttacks.Count(), Is.EqualTo(originalSpecialAttacks.Length + 1));
-            Assert.That(creature.SpecialAttacks, Contains.Item(smiteEvil));
+            Assert.That(creature.SpecialAttacks, Contains.Item(smiteGood));
 
-            Assert.That(smiteEvil.DamageRoll, Is.EqualTo(smiteDamage.ToString()));
+            Assert.That(smiteGood.DamageRoll, Is.EqualTo(smiteDamage.ToString()));
         }
 
         [Test]
@@ -358,7 +359,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -371,7 +372,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -415,7 +416,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -428,7 +429,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -474,7 +475,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -487,7 +488,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -533,7 +534,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -546,7 +547,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -592,7 +593,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -605,7 +606,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -653,7 +654,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -666,7 +667,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -718,7 +719,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -731,7 +732,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -782,7 +783,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.SpecialQualities = baseCreature.SpecialQualities
                 .Union(new[] { energyResistance });
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -795,7 +796,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
@@ -841,7 +842,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.SpecialQualities = baseCreature.SpecialQualities
                 .Union(new[] { damageReduction });
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -854,7 +855,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
@@ -903,7 +904,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -916,7 +917,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -963,7 +964,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -976,7 +977,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -1015,7 +1016,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = raceAdjust;
             baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = advanced;
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1028,7 +1029,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1098,7 +1099,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
             baseCreature.ChallengeRating = original;
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1111,7 +1112,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1177,7 +1178,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Alignment.Lawfulness = lawfulness;
             baseCreature.Alignment.Goodness = goodness;
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1190,7 +1191,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1207,7 +1208,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.LevelAdjustment = adjustment;
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1220,7 +1221,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1246,7 +1247,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "subtype 2",
             };
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1259,7 +1260,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1275,7 +1276,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Size = "my size";
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1288,7 +1289,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1321,7 +1322,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(21, 20)]
         [TestCase(22, 20)]
         [TestCase(42, 20)]
-        public async Task ApplyToAsync_CreatureGainsSmiteEvilSpecialAttack(double hitDiceQuantity, int smiteDamage)
+        public async Task ApplyToAsync_CreatureGainssmiteGoodSpecialAttack(double hitDiceQuantity, int smiteDamage)
         {
             baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
 
@@ -1334,7 +1335,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Select(a => JsonConvert.DeserializeObject<Attack>(a))
                 .ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1347,17 +1348,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalAttacks.Length + 1));
             Assert.That(creature.Attacks.Select(a => a.Name), Is.SupersetOf(originalAttacks.Select(a => a.Name)));
-            Assert.That(creature.Attacks, Contains.Item(smiteEvil));
+            Assert.That(creature.Attacks, Contains.Item(smiteGood));
             Assert.That(creature.SpecialAttacks.Count(), Is.EqualTo(originalSpecialAttacks.Length + 1));
-            Assert.That(creature.SpecialAttacks, Contains.Item(smiteEvil));
+            Assert.That(creature.SpecialAttacks, Contains.Item(smiteGood));
 
-            Assert.That(smiteEvil.DamageRoll, Is.EqualTo(smiteDamage.ToString()));
+            Assert.That(smiteGood.DamageRoll, Is.EqualTo(smiteDamage.ToString()));
         }
 
         [Test]
@@ -1365,7 +1366,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1378,7 +1379,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -1422,7 +1423,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1435,7 +1436,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -1481,7 +1482,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1494,7 +1495,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -1540,7 +1541,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1553,7 +1554,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -1599,7 +1600,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1612,7 +1613,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -1660,7 +1661,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1673,7 +1674,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -1725,7 +1726,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1738,7 +1739,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -1789,7 +1790,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.SpecialQualities = baseCreature.SpecialQualities
                 .Union(new[] { energyResistance });
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1802,7 +1803,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
@@ -1848,7 +1849,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.SpecialQualities = baseCreature.SpecialQualities
                 .Union(new[] { damageReduction });
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1861,7 +1862,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
@@ -1910,7 +1911,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1923,7 +1924,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -1970,7 +1971,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -1983,7 +1984,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var specialQualities = new[]
             {
@@ -2022,7 +2023,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = raceAdjust;
             baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = advanced;
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -2035,7 +2036,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -2083,7 +2084,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
             baseCreature.ChallengeRating = original;
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -2096,7 +2097,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -2118,7 +2119,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Alignment.Lawfulness = lawfulness;
             baseCreature.Alignment.Goodness = goodness;
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -2131,7 +2132,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -2148,7 +2149,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.LevelAdjustment = adjustment;
 
-            var smiteEvil = new Attack
+            var smiteGood = new Attack
             {
                 Name = "Smite Good",
                 IsSpecial = true
@@ -2161,7 +2162,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns(new[] { smiteGood });
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -2169,39 +2170,199 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_GainALanguage()
+        public void ApplyTo_GainARandomLanguage()
         {
-            Assert.Fail("not yet written");
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.FiendishCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteGood });
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor"));
         }
 
         [Test]
         public void ApplyTo_GainALanguage_NoLanguages()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = Enumerable.Empty<string>();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.FiendishCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteGood });
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages, Is.Empty);
         }
 
         [Test]
         public void ApplyTo_GainALanguage_AlreadyHas()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Mordor" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.FiendishCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteGood });
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor"));
         }
 
         [Test]
-        public async Task ApplyToAsync_GainALanguage()
+        public async Task ApplyToAsync_GainARandomLanguage()
         {
-            Assert.Fail("not yet written");
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.FiendishCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteGood });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor"));
         }
 
         [Test]
         public async Task ApplyToAsync_GainALanguage_NoLanguages()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = Enumerable.Empty<string>();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.FiendishCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteGood });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages, Is.Empty);
         }
 
         [Test]
         public async Task ApplyToAsync_GainALanguage_AlreadyHas()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Languages = baseCreature.Languages.Union(new[] { "Mordor" });
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.FiendishCreature + LanguageConstants.Groups.Automatic))
+                .Returns("Mordor");
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteGood });
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Mordor"));
         }
     }
 }

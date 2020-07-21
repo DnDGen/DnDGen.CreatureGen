@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Skills;
+using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -83,6 +84,9 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             // Alignment
             UpdateCreatureAlignment(creature);
 
+            // Languages
+            UpdateCreatureLanguages(creature);
+
             //Hit Points
             UpdateCreatureHitPoints(creature);
 
@@ -120,6 +124,40 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
                 creature.Speeds[SpeedConstants.Fly] = speeds[SpeedConstants.Fly];
                 creature.Speeds[SpeedConstants.Fly].Value = speed;
             }
+        }
+
+        private void UpdateCreatureLanguages(Creature creature)
+        {
+            if (!creature.Languages.Any())
+            {
+                return;
+            }
+
+            var languages = new List<string>(creature.Languages);
+            var automaticLanguage = collectionSelector.SelectRandomFrom(
+                TableNameConstants.Collection.LanguageGroups,
+                DragonSpecies + LanguageConstants.Groups.Automatic);
+
+            languages.Add(automaticLanguage);
+
+            var bonusLanguages = collectionSelector.SelectFrom(
+                TableNameConstants.Collection.LanguageGroups,
+                DragonSpecies + LanguageConstants.Groups.Bonus);
+            var quantity = Math.Min(1, creature.Abilities[AbilityConstants.Intelligence].Modifier);
+            var availableBonusLanguages = bonusLanguages.Except(languages);
+
+            if (availableBonusLanguages.Count() <= quantity && quantity > 0)
+            {
+                languages.AddRange(availableBonusLanguages);
+            }
+
+            while (quantity-- > 0 && availableBonusLanguages.Any())
+            {
+                var bonusLanguage = collectionSelector.SelectRandomFrom(availableBonusLanguages);
+                languages.Add(bonusLanguage);
+            }
+
+            creature.Languages = languages.Distinct();
         }
 
         private void UpdateCreatureArmorClass(Creature creature)
@@ -307,6 +345,10 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             //Hit Points
             var hitPointTask = Task.Run(() => UpdateCreatureHitPoints(creature));
             tasks.Add(hitPointTask);
+
+            // Languages
+            var languageTask = Task.Run(() => UpdateCreatureLanguages(creature));
+            tasks.Add(languageTask);
 
             // Special Qualities
             var qualityTask = Task.Run(() => UpdateCreatureSpecialQualities(creature));
