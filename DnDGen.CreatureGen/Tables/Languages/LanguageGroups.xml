@@ -53,7 +53,12 @@
   </collection>
   <collection>
     <name>DerroAutomatic</name>
-    <entry>Common</entry>
+    <entry>Undercommon</entry>
+    <entry>Dwarven</entry>
+  </collection>
+  <collection>
+    <name>Derro (Sane)Automatic</name>
+    <entry>Undercommon</entry>
     <entry>Dwarven</entry>
   </collection>
   <collection>
@@ -389,25 +394,6 @@
   </collection>
   <collection>
     <name>Blue SlaadBonus</name>
-    <entry>Abyssal</entry>
-    <entry>Common</entry>
-    <entry>Elven</entry>
-    <entry>Celestial</entry>
-    <entry>Undercommon</entry>
-    <entry>Goblin</entry>
-    <entry>Dwarven</entry>
-    <entry>Draconic</entry>
-    <entry>Giant</entry>
-    <entry>Infernal</entry>
-    <entry>Gnome</entry>
-    <entry>Sylvan</entry>
-    <entry>Gnoll</entry>
-    <entry>Orc</entry>
-    <entry>Halfling</entry>
-    <entry>Aquan</entry>
-    <entry>Auran</entry>
-    <entry>Ignan</entry>
-    <entry>Terran</entry>
   </collection>
   <collection>
     <name>BugbearBonus</name>
@@ -440,25 +426,6 @@
   </collection>
   <collection>
     <name>Death SlaadBonus</name>
-    <entry>Abyssal</entry>
-    <entry>Common</entry>
-    <entry>Elven</entry>
-    <entry>Celestial</entry>
-    <entry>Undercommon</entry>
-    <entry>Goblin</entry>
-    <entry>Dwarven</entry>
-    <entry>Draconic</entry>
-    <entry>Giant</entry>
-    <entry>Infernal</entry>
-    <entry>Gnome</entry>
-    <entry>Sylvan</entry>
-    <entry>Gnoll</entry>
-    <entry>Orc</entry>
-    <entry>Halfling</entry>
-    <entry>Aquan</entry>
-    <entry>Auran</entry>
-    <entry>Ignan</entry>
-    <entry>Terran</entry>
   </collection>
   <collection>
     <name>Deep DwarfBonus</name>
@@ -485,7 +452,16 @@
     <entry>Giant</entry>
     <entry>Orc</entry>
     <entry>Terran</entry>
-    <entry>Undercommon</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Derro (Sane)Bonus</name>
+    <entry>Goblin</entry>
+    <entry>Gnome</entry>
+    <entry>Giant</entry>
+    <entry>Orc</entry>
+    <entry>Terran</entry>
+    <entry>Common</entry>
   </collection>
   <collection>
     <name>DoppelgangerBonus</name>
@@ -589,47 +565,9 @@
   </collection>
   <collection>
     <name>Gray SlaadBonus</name>
-    <entry>Abyssal</entry>
-    <entry>Common</entry>
-    <entry>Elven</entry>
-    <entry>Celestial</entry>
-    <entry>Undercommon</entry>
-    <entry>Goblin</entry>
-    <entry>Dwarven</entry>
-    <entry>Draconic</entry>
-    <entry>Giant</entry>
-    <entry>Infernal</entry>
-    <entry>Gnome</entry>
-    <entry>Sylvan</entry>
-    <entry>Gnoll</entry>
-    <entry>Orc</entry>
-    <entry>Halfling</entry>
-    <entry>Aquan</entry>
-    <entry>Auran</entry>
-    <entry>Ignan</entry>
-    <entry>Terran</entry>
   </collection>
   <collection>
     <name>Green SlaadBonus</name>
-    <entry>Abyssal</entry>
-    <entry>Common</entry>
-    <entry>Elven</entry>
-    <entry>Celestial</entry>
-    <entry>Undercommon</entry>
-    <entry>Goblin</entry>
-    <entry>Dwarven</entry>
-    <entry>Draconic</entry>
-    <entry>Giant</entry>
-    <entry>Infernal</entry>
-    <entry>Gnome</entry>
-    <entry>Sylvan</entry>
-    <entry>Gnoll</entry>
-    <entry>Orc</entry>
-    <entry>Halfling</entry>
-    <entry>Aquan</entry>
-    <entry>Auran</entry>
-    <entry>Ignan</entry>
-    <entry>Terran</entry>
   </collection>
   <collection>
     <name>GrimlockBonus</name>
@@ -801,23 +739,12 @@
   <collection>
     <name>Mind Flayer (Illithid)Bonus</name>
     <entry>Abyssal</entry>
-    <entry>Common</entry>
     <entry>Elven</entry>
-    <entry>Celestial</entry>
-    <entry>Undercommon</entry>
-    <entry>Goblin</entry>
     <entry>Dwarven</entry>
     <entry>Draconic</entry>
-    <entry>Giant</entry>
     <entry>Infernal</entry>
     <entry>Gnome</entry>
-    <entry>Sylvan</entry>
-    <entry>Gnoll</entry>
-    <entry>Orc</entry>
-    <entry>Halfling</entry>
     <entry>Aquan</entry>
-    <entry>Auran</entry>
-    <entry>Ignan</entry>
     <entry>Terran</entry>
   </collection>
   <collection>
@@ -870,25 +797,6 @@
   </collection>
   <collection>
     <name>Red SlaadBonus</name>
-    <entry>Abyssal</entry>
-    <entry>Common</entry>
-    <entry>Elven</entry>
-    <entry>Celestial</entry>
-    <entry>Undercommon</entry>
-    <entry>Goblin</entry>
-    <entry>Dwarven</entry>
-    <entry>Draconic</entry>
-    <entry>Giant</entry>
-    <entry>Infernal</entry>
-    <entry>Gnome</entry>
-    <entry>Sylvan</entry>
-    <entry>Gnoll</entry>
-    <entry>Orc</entry>
-    <entry>Halfling</entry>
-    <entry>Aquan</entry>
-    <entry>Auran</entry>
-    <entry>Ignan</entry>
-    <entry>Terran</entry>
   </collection>
   <collection>
     <name>Rock GnomeBonus</name>
@@ -2478,5 +2386,2509 @@
   </collection>
   <collection>
     <name>Ochre JellyBonus</name>
+  </collection>
+  <collection>
+    <name>CatBonus</name>
+  </collection>
+  <collection>
+    <name>Camel, Bactrian (Two-Humped)Bonus</name>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)Bonus</name>
+  </collection>
+  <collection>
+    <name>Carrion CrawlerBonus</name>
+  </collection>
+  <collection>
+    <name>CheetahBonus</name>
+  </collection>
+  <collection>
+    <name>Clay GolemBonus</name>
+  </collection>
+  <collection>
+    <name>Flesh GolemBonus</name>
+  </collection>
+  <collection>
+    <name>Iron GolemBonus</name>
+  </collection>
+  <collection>
+    <name>Stone GolemBonus</name>
+  </collection>
+  <collection>
+    <name>Greater Stone GolemBonus</name>
+  </collection>
+  <collection>
+    <name>CockatriceBonus</name>
+  </collection>
+  <collection>
+    <name>Constrictor SnakeBonus</name>
+  </collection>
+  <collection>
+    <name>Giant Constrictor SnakeBonus</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>CrocodileBonus</name>
+  </collection>
+  <collection>
+    <name>Giant CrocodileBonus</name>
+  </collection>
+  <collection>
+    <name>DarkmantleBonus</name>
+  </collection>
+  <collection>
+    <name>DeinonychusBonus</name>
+  </collection>
+  <collection>
+    <name>ElasmosaurusBonus</name>
+  </collection>
+  <collection>
+    <name>MegaraptorBonus</name>
+  </collection>
+  <collection>
+    <name>TriceratopsBonus</name>
+  </collection>
+  <collection>
+    <name>TyrannosaurusBonus</name>
+  </collection>
+  <collection>
+    <name>DigesterBonus</name>
+  </collection>
+  <collection>
+    <name>Dire LionBonus</name>
+  </collection>
+  <collection>
+    <name>LionBonus</name>
+  </collection>
+  <collection>
+    <name>RatBonus</name>
+  </collection>
+  <collection>
+    <name>Dire RatBonus</name>
+  </collection>
+  <collection>
+    <name>Dire SharkBonus</name>
+  </collection>
+  <collection>
+    <name>Shark, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Shark, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Shark, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>CatAutomatic</name>
+  </collection>
+  <collection>
+    <name>Camel, Bactrian (Two-Humped)Automatic</name>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)Automatic</name>
+  </collection>
+  <collection>
+    <name>Carrion CrawlerAutomatic</name>
+  </collection>
+  <collection>
+    <name>CheetahAutomatic</name>
+  </collection>
+  <collection>
+    <name>Clay GolemAutomatic</name>
+  </collection>
+  <collection>
+    <name>Flesh GolemAutomatic</name>
+  </collection>
+  <collection>
+    <name>Iron GolemAutomatic</name>
+  </collection>
+  <collection>
+    <name>Stone GolemAutomatic</name>
+  </collection>
+  <collection>
+    <name>Greater Stone GolemAutomatic</name>
+  </collection>
+  <collection>
+    <name>CockatriceAutomatic</name>
+  </collection>
+  <collection>
+    <name>Constrictor SnakeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant Constrictor SnakeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>CrocodileAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant CrocodileAutomatic</name>
+  </collection>
+  <collection>
+    <name>DarkmantleAutomatic</name>
+  </collection>
+  <collection>
+    <name>DeinonychusAutomatic</name>
+  </collection>
+  <collection>
+    <name>ElasmosaurusAutomatic</name>
+  </collection>
+  <collection>
+    <name>MegaraptorAutomatic</name>
+  </collection>
+  <collection>
+    <name>TriceratopsAutomatic</name>
+  </collection>
+  <collection>
+    <name>TyrannosaurusAutomatic</name>
+  </collection>
+  <collection>
+    <name>DigesterAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire LionAutomatic</name>
+  </collection>
+  <collection>
+    <name>LionAutomatic</name>
+  </collection>
+  <collection>
+    <name>RatAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire RatAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire SharkAutomatic</name>
+  </collection>
+  <collection>
+    <name>Shark, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Shark, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Shark, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>TigerAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire TigerAutomatic</name>
+  </collection>
+  <collection>
+    <name>WeaselAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire WeaselAutomatic</name>
+  </collection>
+  <collection>
+    <name>WolfAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire WolfAutomatic</name>
+  </collection>
+  <collection>
+    <name>WolverineAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dire WolverineAutomatic</name>
+  </collection>
+  <collection>
+    <name>DogAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dog, RidingAutomatic</name>
+  </collection>
+  <collection>
+    <name>DonkeyAutomatic</name>
+  </collection>
+  <collection>
+    <name>EagleAutomatic</name>
+  </collection>
+  <collection>
+    <name>ElephantAutomatic</name>
+  </collection>
+  <collection>
+    <name>Five-Headed HydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Six-Headed HydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed HydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed HydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed HydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed HydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed HydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed HydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Five-Headed CryohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Six-Headed CryohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed CryohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed CryohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed CryohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed CryohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed CryohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed CryohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Five-Headed PyrohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Six-Headed PyrohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed PyrohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed PyrohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed PyrohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed PyrohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed PyrohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed PyrohydraAutomatic</name>
+  </collection>
+  <collection>
+    <name>TigerBonus</name>
+  </collection>
+  <collection>
+    <name>Dire TigerBonus</name>
+  </collection>
+  <collection>
+    <name>WeaselBonus</name>
+  </collection>
+  <collection>
+    <name>Dire WeaselBonus</name>
+  </collection>
+  <collection>
+    <name>WolfBonus</name>
+  </collection>
+  <collection>
+    <name>Dire WolfBonus</name>
+  </collection>
+  <collection>
+    <name>WolverineBonus</name>
+  </collection>
+  <collection>
+    <name>Dire WolverineBonus</name>
+  </collection>
+  <collection>
+    <name>DogBonus</name>
+  </collection>
+  <collection>
+    <name>Dog, RidingBonus</name>
+  </collection>
+  <collection>
+    <name>DonkeyBonus</name>
+  </collection>
+  <collection>
+    <name>EagleBonus</name>
+  </collection>
+  <collection>
+    <name>ElephantBonus</name>
+  </collection>
+  <collection>
+    <name>Five-Headed HydraBonus</name>
+  </collection>
+  <collection>
+    <name>Six-Headed HydraBonus</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed HydraBonus</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed HydraBonus</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed HydraBonus</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed HydraBonus</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed HydraBonus</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed HydraBonus</name>
+  </collection>
+  <collection>
+    <name>Five-Headed CryohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Six-Headed CryohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed CryohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed CryohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed CryohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed CryohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed CryohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed CryohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Five-Headed PyrohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Six-Headed PyrohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed PyrohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed PyrohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed PyrohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed PyrohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed PyrohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed PyrohydraBonus</name>
+  </collection>
+  <collection>
+    <name>Frost WormBonus</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, QueenBonus</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, SoldierBonus</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, WorkerBonus</name>
+  </collection>
+  <collection>
+    <name>Giant BeeBonus</name>
+  </collection>
+  <collection>
+    <name>Giant Bombardier BeetleBonus</name>
+  </collection>
+  <collection>
+    <name>Giant Fire BeetleBonus</name>
+  </collection>
+  <collection>
+    <name>Giant Praying MantisBonus</name>
+  </collection>
+  <collection>
+    <name>Giant Stag BeetleBonus</name>
+  </collection>
+  <collection>
+    <name>Giant WaspBonus</name>
+  </collection>
+  <collection>
+    <name>OctopusBonus</name>
+  </collection>
+  <collection>
+    <name>Giant OctopusBonus</name>
+  </collection>
+  <collection>
+    <name>SquidBonus</name>
+  </collection>
+  <collection>
+    <name>Giant SquidBonus</name>
+  </collection>
+  <collection>
+    <name>GirallonBonus</name>
+  </collection>
+  <collection>
+    <name>GorgonBonus</name>
+  </collection>
+  <collection>
+    <name>Gray RenderBonus</name>
+  </collection>
+  <collection>
+    <name>GrickBonus</name>
+  </collection>
+  <collection>
+    <name>HawkBonus</name>
+  </collection>
+  <collection>
+    <name>Frost WormAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, QueenAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, SoldierAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, WorkerAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant BeeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant Bombardier BeetleAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant Fire BeetleAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant Praying MantisAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant Stag BeetleAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant WaspAutomatic</name>
+  </collection>
+  <collection>
+    <name>OctopusAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant OctopusAutomatic</name>
+  </collection>
+  <collection>
+    <name>SquidAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant SquidAutomatic</name>
+  </collection>
+  <collection>
+    <name>GirallonAutomatic</name>
+  </collection>
+  <collection>
+    <name>GorgonAutomatic</name>
+  </collection>
+  <collection>
+    <name>Gray RenderAutomatic</name>
+  </collection>
+  <collection>
+    <name>GrickAutomatic</name>
+  </collection>
+  <collection>
+    <name>HawkAutomatic</name>
+  </collection>
+  <collection>
+    <name>Heavy HorseAutomatic</name>
+  </collection>
+  <collection>
+    <name>Heavy WarhorseAutomatic</name>
+  </collection>
+  <collection>
+    <name>Light HorseAutomatic</name>
+  </collection>
+  <collection>
+    <name>Light WarhorseAutomatic</name>
+  </collection>
+  <collection>
+    <name>HippogriffAutomatic</name>
+  </collection>
+  <collection>
+    <name>HyenaAutomatic</name>
+  </collection>
+  <collection>
+    <name>LemureAutomatic</name>
+  </collection>
+  <collection>
+    <name>LeopardAutomatic</name>
+  </collection>
+  <collection>
+    <name>LizardAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monitor LizardAutomatic</name>
+  </collection>
+  <collection>
+    <name>Manta RayAutomatic</name>
+  </collection>
+  <collection>
+    <name>MonkeyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, ColossalAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, GargantuanAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, HugeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, LargeAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, MediumAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, SmallAutomatic</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, TinyAutomatic</name>
+  </collection>
+  <collection>
+    <name>Heavy HorseBonus</name>
+  </collection>
+  <collection>
+    <name>Heavy WarhorseBonus</name>
+  </collection>
+  <collection>
+    <name>Light HorseBonus</name>
+  </collection>
+  <collection>
+    <name>Light WarhorseBonus</name>
+  </collection>
+  <collection>
+    <name>HippogriffBonus</name>
+  </collection>
+  <collection>
+    <name>HyenaBonus</name>
+  </collection>
+  <collection>
+    <name>LemureBonus</name>
+  </collection>
+  <collection>
+    <name>LeopardBonus</name>
+  </collection>
+  <collection>
+    <name>LizardBonus</name>
+  </collection>
+  <collection>
+    <name>Monitor LizardBonus</name>
+  </collection>
+  <collection>
+    <name>Manta RayBonus</name>
+  </collection>
+  <collection>
+    <name>MonkeyBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, ColossalBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, GargantuanBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, HugeBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, LargeBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, MediumBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, SmallBonus</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, TinyBonus</name>
+  </collection>
+  <collection>
+    <name>Barbed Devil (Hamatula)Bonus</name>
+  </collection>
+  <collection>
+    <name>Bearded Devil (Barbazu)Bonus</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Bonus</name>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)Bonus</name>
+  </collection>
+  <collection>
+    <name>ErinyesBonus</name>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)Bonus</name>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Bonus</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Bonus</name>
+  </collection>
+  <collection>
+    <name>ImpBonus</name>
+  </collection>
+  <collection>
+    <name>Pit FiendBonus</name>
+  </collection>
+  <collection>
+    <name>Barbed Devil (Hamatula)Automatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bearded Devil (Barbazu)Automatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Automatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)Automatic</name>
+    <entry>Common</entry>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>ErinyesAutomatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)Automatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Automatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Automatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>ImpAutomatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Pit FiendAutomatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>MuleAutomatic</name>
+  </collection>
+  <collection>
+    <name>OwlAutomatic</name>
+  </collection>
+  <collection>
+    <name>OwlbearAutomatic</name>
+  </collection>
+  <collection>
+    <name>Phantom FungusAutomatic</name>
+  </collection>
+  <collection>
+    <name>PonyAutomatic</name>
+  </collection>
+  <collection>
+    <name>WarponyAutomatic</name>
+  </collection>
+  <collection>
+    <name>PorpoiseAutomatic</name>
+  </collection>
+  <collection>
+    <name>MuleBonus</name>
+  </collection>
+  <collection>
+    <name>OwlBonus</name>
+  </collection>
+  <collection>
+    <name>OwlbearBonus</name>
+  </collection>
+  <collection>
+    <name>Phantom FungusBonus</name>
+  </collection>
+  <collection>
+    <name>PonyBonus</name>
+  </collection>
+  <collection>
+    <name>WarponyBonus</name>
+  </collection>
+  <collection>
+    <name>PorpoiseBonus</name>
+  </collection>
+  <collection>
+    <name>Purple WormBonus</name>
+  </collection>
+  <collection>
+    <name>RastBonus</name>
+  </collection>
+  <collection>
+    <name>RavenBonus</name>
+  </collection>
+  <collection>
+    <name>RhinocerasBonus</name>
+  </collection>
+  <collection>
+    <name>Razor BoarBonus</name>
+  </collection>
+  <collection>
+    <name>RetrieverBonus</name>
+  </collection>
+  <collection>
+    <name>RocBonus</name>
+  </collection>
+  <collection>
+    <name>Rust MonsterBonus</name>
+  </collection>
+  <collection>
+    <name>Sea CatBonus</name>
+  </collection>
+  <collection>
+    <name>Shield GuardianBonus</name>
+  </collection>
+  <collection>
+    <name>Shocker LizardBonus</name>
+  </collection>
+  <collection>
+    <name>ShriekerBonus</name>
+  </collection>
+  <collection>
+    <name>Violet FungusBonus</name>
+  </collection>
+  <collection>
+    <name>Spider EaterBonus</name>
+  </collection>
+  <collection>
+    <name>StirgeBonus</name>
+  </collection>
+  <collection>
+    <name>TarrasqueBonus</name>
+  </collection>
+  <collection>
+    <name>Purple WormAutomatic</name>
+  </collection>
+  <collection>
+    <name>RastAutomatic</name>
+  </collection>
+  <collection>
+    <name>RavenAutomatic</name>
+  </collection>
+  <collection>
+    <name>RhinocerasAutomatic</name>
+  </collection>
+  <collection>
+    <name>Razor BoarAutomatic</name>
+  </collection>
+  <collection>
+    <name>RetrieverAutomatic</name>
+  </collection>
+  <collection>
+    <name>RocAutomatic</name>
+  </collection>
+  <collection>
+    <name>Rust MonsterAutomatic</name>
+  </collection>
+  <collection>
+    <name>Sea CatAutomatic</name>
+  </collection>
+  <collection>
+    <name>Shield GuardianAutomatic</name>
+  </collection>
+  <collection>
+    <name>Shocker LizardAutomatic</name>
+  </collection>
+  <collection>
+    <name>ShriekerAutomatic</name>
+  </collection>
+  <collection>
+    <name>Violet FungusAutomatic</name>
+  </collection>
+  <collection>
+    <name>Spider EaterAutomatic</name>
+  </collection>
+  <collection>
+    <name>StirgeAutomatic</name>
+  </collection>
+  <collection>
+    <name>TarrasqueAutomatic</name>
+  </collection>
+  <collection>
+    <name>BabauAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>BalorAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>BebilithAutomatic</name>
+  </collection>
+  <collection>
+    <name>DretchAutomatic</name>
+  </collection>
+  <collection>
+    <name>GlabrezuAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>HezrouAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>MarilithAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>NalfeshneeAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>QuasitAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>SuccubusAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>VrockAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>BabauBonus</name>
+  </collection>
+  <collection>
+    <name>BalorBonus</name>
+  </collection>
+  <collection>
+    <name>BebilithBonus</name>
+  </collection>
+  <collection>
+    <name>DretchBonus</name>
+  </collection>
+  <collection>
+    <name>GlabrezuBonus</name>
+  </collection>
+  <collection>
+    <name>HezrouBonus</name>
+  </collection>
+  <collection>
+    <name>MarilithBonus</name>
+  </collection>
+  <collection>
+    <name>NalfeshneeBonus</name>
+  </collection>
+  <collection>
+    <name>QuasitBonus</name>
+  </collection>
+  <collection>
+    <name>SuccubusBonus</name>
+  </collection>
+  <collection>
+    <name>VrockBonus</name>
+  </collection>
+  <collection>
+    <name>TendriculosAutomatic</name>
+  </collection>
+  <collection>
+    <name>ToadAutomatic</name>
+  </collection>
+  <collection>
+    <name>TendriculosBonus</name>
+  </collection>
+  <collection>
+    <name>ToadBonus</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, WyrmlingAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, JuvenileAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, AncientAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmlingAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, JuvenileAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmlingAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, JuvenileAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmlingAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, JuvenileAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmlingAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, JuvenileAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmlingAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, JuvenileAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmlingAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, JuvenileAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmlingAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, JuvenileAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmlingAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, JuvenileAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmlingAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, YoungAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, JuvenileAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, WyrmlingBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Very YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, JuvenileBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Young AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Very OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, AncientBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Black Dragon, Great WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmlingBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, JuvenileBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmlingBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Very YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, JuvenileBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Young AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmlingBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Very YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, JuvenileBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Young AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmlingBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Very YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, JuvenileBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, AncientBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmlingBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, JuvenileBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmlingBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, JuvenileBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmlingBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, JuvenileBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmlingBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, JuvenileBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmlingBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, YoungBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, JuvenileBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmBonus</name>
+    
+  </collection>
+  <collection>
+    <name>AnnisAutomatic</name>
+    <entry>Giant</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Green HagAutomatic</name>
+    <entry>Giant</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Sea HagAutomatic</name>
+    <entry>Giant</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>AraneaAutomatic</name>
+    <entry>Common</entry>
+    <entry>Sylvan</entry>
+  </collection>
+  <collection>
+    <name>Average SalamanderAutomatic</name>
+    <entry>Ignan</entry>
+  </collection>
+  <collection>
+    <name>Flamebrother SalamanderAutomatic</name>
+    <entry>Ignan</entry>
+  </collection>
+  <collection>
+    <name>Noble SalamanderAutomatic</name>
+    <entry>Ignan</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Average XornAutomatic</name>
+    <entry>Terran</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Minor XornAutomatic</name>
+    <entry>Terran</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Elder XornAutomatic</name>
+    <entry>Terran</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>AvoralAutomatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>BarghestAutomatic</name>
+    <entry>Goblin</entry>
+    <entry>Worg</entry>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>Greater BarghestAutomatic</name>
+    <entry>Goblin</entry>
+    <entry>Worg</entry>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>BehirAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>BeholderAutomatic</name>
+    <entry>Beholder</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Gauth (Lesser Beholder)Automatic</name>
+    <entry>Beholder</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>BelkerAutomatic</name>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>AnnisBonus</name>
+  </collection>
+  <collection>
+    <name>Green HagBonus</name>
+  </collection>
+  <collection>
+    <name>Sea HagBonus</name>
+  </collection>
+  <collection>
+    <name>AraneaBonus</name>
+  </collection>
+  <collection>
+    <name>Average SalamanderBonus</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Flamebrother SalamanderBonus</name>
+  </collection>
+  <collection>
+    <name>Noble SalamanderBonus</name>
+  </collection>
+  <collection>
+    <name>Average XornBonus</name>
+  </collection>
+  <collection>
+    <name>Minor XornBonus</name>
+  </collection>
+  <collection>
+    <name>Elder XornBonus</name>
+  </collection>
+  <collection>
+    <name>AvoralBonus</name>
+  </collection>
+  <collection>
+    <name>BarghestBonus</name>
+  </collection>
+  <collection>
+    <name>Greater BarghestBonus</name>
+  </collection>
+  <collection>
+    <name>BehirBonus</name>
+  </collection>
+  <collection>
+    <name>BeholderBonus</name>
+  </collection>
+  <collection>
+    <name>Gauth (Lesser Beholder)Bonus</name>
+  </collection>
+  <collection>
+    <name>BelkerBonus</name>
+  </collection>
+  <collection>
+    <name>AthachAutomatic</name>
+    <entry>Giant</entry>
+  </collection>
+  <collection>
+    <name>AthachBonus</name>
+  </collection>
+  <collection>
+    <name>Blink DogBonus</name>
+  </collection>
+  <collection>
+    <name>BodakBonus</name>
+    <entry>Elven</entry>
+    <entry>Halfling</entry>
+    <entry>Gnome</entry>
+    <entry>Dwarven</entry>
+    <entry>Orc</entry>
+  </collection>
+  <collection>
+    <name>BralaniBonus</name>
+  </collection>
+  <collection>
+    <name>Chaos BeastBonus</name>
+  </collection>
+  <collection>
+    <name>Chimera (Black Dragon head)Bonus</name>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)Bonus</name>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)Bonus</name>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)Bonus</name>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)Bonus</name>
+  </collection>
+  <collection>
+    <name>ChokerBonus</name>
+  </collection>
+  <collection>
+    <name>Blink DogAutomatic</name>
+    <entry>Blink Dog</entry>
+  </collection>
+  <collection>
+    <name>BodakAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>BralaniAutomatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Chaos BeastAutomatic</name>
+  </collection>
+  <collection>
+    <name>Chimera (Black Dragon head)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>ChokerAutomatic</name>
+    <entry>Undercommon</entry>
+  </collection>
+  <collection>
+    <name>ChuulAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>CloakerAutomatic</name>
+    <entry>Undercommon</entry>
+  </collection>
+  <collection>
+    <name>CouatlAutomatic</name>
+    <entry>Celestial</entry>
+    <entry>Common</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Dark NagaAutomatic</name>
+    <entry>Common</entry>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>Guardian NagaAutomatic</name>
+    <entry>Common</entry>
+    <entry>Celestial</entry>
+  </collection>
+  <collection>
+    <name>Spirit NagaAutomatic</name>
+    <entry>Common</entry>
+    <entry>Abyssal</entry>
+  </collection>
+  <collection>
+    <name>Water NagaAutomatic</name>
+    <entry>Common</entry>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>DelverAutomatic</name>
+    <entry>Terran</entry>
+    <entry>Undercommon</entry>
+  </collection>
+  <collection>
+    <name>DestrachanAutomatic</name>
+  </collection>
+  <collection>
+    <name>DevourerAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>ChuulBonus</name>
+  </collection>
+  <collection>
+    <name>CloakerBonus</name>
+  </collection>
+  <collection>
+    <name>CouatlBonus</name>
+  </collection>
+  <collection>
+    <name>Dark NagaBonus</name>
+  </collection>
+  <collection>
+    <name>Guardian NagaBonus</name>
+  </collection>
+  <collection>
+    <name>Spirit NagaBonus</name>
+  </collection>
+  <collection>
+    <name>Water NagaBonus</name>
+  </collection>
+  <collection>
+    <name>DelverBonus</name>
+  </collection>
+  <collection>
+    <name>DestrachanBonus</name>
+  </collection>
+  <collection>
+    <name>DevourerBonus</name>
+  </collection>
+  <collection>
+    <name>Displacer BeastAutomatic</name>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack LordAutomatic</name>
+  </collection>
+  <collection>
+    <name>DjinniAutomatic</name>
+  </collection>
+  <collection>
+    <name>Noble DjinniAutomatic</name>
+  </collection>
+  <collection>
+    <name>EfreetiAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dragon TurtleAutomatic</name>
+  </collection>
+  <collection>
+    <name>DragonneAutomatic</name>
+  </collection>
+  <collection>
+    <name>WraithAutomatic</name>
+  </collection>
+  <collection>
+    <name>Dread WraithAutomatic</name>
+  </collection>
+  <collection>
+    <name>DriderAutomatic</name>
+    <entry>Common</entry>
+    <entry>Elven</entry>
+    <entry>Undercommon</entry>
+  </collection>
+  <collection>
+    <name>DryadAutomatic</name>
+  </collection>
+  <collection>
+    <name>Ethereal FilcherAutomatic</name>
+  </collection>
+  <collection>
+    <name>Ethereal MarauderAutomatic</name>
+  </collection>
+  <collection>
+    <name>EttercapAutomatic</name>
+  </collection>
+  <collection>
+    <name>EttinAutomatic</name>
+  </collection>
+  <collection>
+    <name>Formian WorkerAutomatic</name>
+  </collection>
+  <collection>
+    <name>Formian WarriorAutomatic</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterAutomatic</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchAutomatic</name>
+    <entry>Formian</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Formian QueenAutomatic</name>
+    <entry>Formian</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Displacer BeastBonus</name>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack LordBonus</name>
+  </collection>
+  <collection>
+    <name>DjinniBonus</name>
+  </collection>
+  <collection>
+    <name>Noble DjinniBonus</name>
+  </collection>
+  <collection>
+    <name>EfreetiBonus</name>
+  </collection>
+  <collection>
+    <name>Dragon TurtleBonus</name>
+  </collection>
+  <collection>
+    <name>DragonneBonus</name>
+  </collection>
+  <collection>
+    <name>WraithBonus</name>
+  </collection>
+  <collection>
+    <name>Dread WraithBonus</name>
+  </collection>
+  <collection>
+    <name>DriderBonus</name>
+    <entry>Abyssal</entry>
+    <entry>Aquan</entry>
+    <entry>Draconic</entry>
+    <entry>Gnome</entry>
+    <entry>Goblin</entry>
+  </collection>
+  <collection>
+    <name>DryadBonus</name>
+  </collection>
+  <collection>
+    <name>Ethereal FilcherBonus</name>
+  </collection>
+  <collection>
+    <name>Ethereal MarauderBonus</name>
+  </collection>
+  <collection>
+    <name>EttercapBonus</name>
+  </collection>
+  <collection>
+    <name>EttinBonus</name>
+  </collection>
+  <collection>
+    <name>Formian WorkerBonus</name>
+  </collection>
+  <collection>
+    <name>Formian WarriorBonus</name>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterBonus</name>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchBonus</name>
+  </collection>
+  <collection>
+    <name>Formian QueenBonus</name>
   </collection>
 </collections>

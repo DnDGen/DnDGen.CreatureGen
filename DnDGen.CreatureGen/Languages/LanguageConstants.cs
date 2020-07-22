@@ -25,7 +25,10 @@
         public static class Special
         {
             public const string Aboleth = "Aboleth";
+            public const string Beholder = "Beholder";
+            public const string BlinkDog = "Blink Dog";
             public const string Druidic = "Druidic";
+            public const string Formian = "Formian";
             public const string Githyanki = "Githyanki";
             public const string Githzerai = "Githzerai";
             public const string Grimlock = "Grimlock";
@@ -33,6 +36,7 @@
             public const string Sahuagin = "Sahuagin";
             public const string Slaad = "Slaad";
             public const string Sphinx = "Sphinx";
+            public const string Worg = "Worg";
             public const string YuanTi = "Yuan-ti";
         }
 

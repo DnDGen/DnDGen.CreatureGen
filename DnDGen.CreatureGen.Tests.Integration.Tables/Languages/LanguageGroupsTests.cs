@@ -70,7 +70,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             LanguageConstants.Halfling,
             LanguageConstants.Dwarven)]
         [TestCase(CreatureConstants.Derro,
-            LanguageConstants.Common,
+            LanguageConstants.Undercommon,
+            LanguageConstants.Dwarven)]
+        [TestCase(CreatureConstants.Derro_Sane,
+            LanguageConstants.Undercommon,
             LanguageConstants.Dwarven)]
         [TestCase(CreatureConstants.Doppelganger, LanguageConstants.Common)]
         [TestCase(CreatureConstants.Elf_Drow,
@@ -509,7 +512,514 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.GrayOoze)]
         [TestCase(CreatureConstants.OchreJelly)]
         [TestCase(CreatureConstants.Bulette)]
-        public void AutomaticLanguageGroups(string creature, params string[] languages)
+        [TestCase(CreatureConstants.Camel_Bactrian)]
+        [TestCase(CreatureConstants.Camel_Dromedary)]
+        [TestCase(CreatureConstants.CarrionCrawler)]
+        [TestCase(CreatureConstants.Cat)]
+        [TestCase(CreatureConstants.Cheetah)]
+        [TestCase(CreatureConstants.Golem_Clay)]
+        [TestCase(CreatureConstants.Golem_Flesh)]
+        [TestCase(CreatureConstants.Golem_Iron)]
+        [TestCase(CreatureConstants.Golem_Stone)]
+        [TestCase(CreatureConstants.Golem_Stone_Greater)]
+        [TestCase(CreatureConstants.Cockatrice)]
+        [TestCase(CreatureConstants.Snake_Constrictor)]
+        [TestCase(CreatureConstants.Snake_Constrictor_Giant)]
+        [TestCase(CreatureConstants.Snake_Viper_Huge)]
+        [TestCase(CreatureConstants.Snake_Viper_Large)]
+        [TestCase(CreatureConstants.Snake_Viper_Medium)]
+        [TestCase(CreatureConstants.Snake_Viper_Small)]
+        [TestCase(CreatureConstants.Snake_Viper_Tiny)]
+        [TestCase(CreatureConstants.Crocodile)]
+        [TestCase(CreatureConstants.Crocodile_Giant)]
+        [TestCase(CreatureConstants.Darkmantle)]
+        [TestCase(CreatureConstants.Deinonychus)]
+        [TestCase(CreatureConstants.Elasmosaurus)]
+        [TestCase(CreatureConstants.Megaraptor)]
+        [TestCase(CreatureConstants.Triceratops)]
+        [TestCase(CreatureConstants.Tyrannosaurus)]
+        [TestCase(CreatureConstants.Digester)]
+        [TestCase(CreatureConstants.Lion)]
+        [TestCase(CreatureConstants.Lion_Dire)]
+        [TestCase(CreatureConstants.Rat)]
+        [TestCase(CreatureConstants.Rat_Dire)]
+        [TestCase(CreatureConstants.Shark_Medium)]
+        [TestCase(CreatureConstants.Shark_Large)]
+        [TestCase(CreatureConstants.Shark_Huge)]
+        [TestCase(CreatureConstants.Shark_Dire)]
+        [TestCase(CreatureConstants.Tiger)]
+        [TestCase(CreatureConstants.Tiger_Dire)]
+        [TestCase(CreatureConstants.Wolf)]
+        [TestCase(CreatureConstants.Wolf_Dire)]
+        [TestCase(CreatureConstants.Weasel)]
+        [TestCase(CreatureConstants.Weasel_Dire)]
+        [TestCase(CreatureConstants.Wolverine)]
+        [TestCase(CreatureConstants.Wolverine_Dire)]
+        [TestCase(CreatureConstants.Dog)]
+        [TestCase(CreatureConstants.Dog_Riding)]
+        [TestCase(CreatureConstants.Donkey)]
+        [TestCase(CreatureConstants.Eagle)]
+        [TestCase(CreatureConstants.Elephant)]
+        [TestCase(CreatureConstants.Hydra_5Heads)]
+        [TestCase(CreatureConstants.Hydra_6Heads)]
+        [TestCase(CreatureConstants.Hydra_7Heads)]
+        [TestCase(CreatureConstants.Hydra_8Heads)]
+        [TestCase(CreatureConstants.Hydra_9Heads)]
+        [TestCase(CreatureConstants.Hydra_10Heads)]
+        [TestCase(CreatureConstants.Hydra_11Heads)]
+        [TestCase(CreatureConstants.Hydra_12Heads)]
+        [TestCase(CreatureConstants.Cryohydra_5Heads)]
+        [TestCase(CreatureConstants.Cryohydra_6Heads)]
+        [TestCase(CreatureConstants.Cryohydra_7Heads)]
+        [TestCase(CreatureConstants.Cryohydra_8Heads)]
+        [TestCase(CreatureConstants.Cryohydra_9Heads)]
+        [TestCase(CreatureConstants.Cryohydra_10Heads)]
+        [TestCase(CreatureConstants.Cryohydra_11Heads)]
+        [TestCase(CreatureConstants.Cryohydra_12Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_5Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_6Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_7Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_8Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_9Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_10Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_11Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_12Heads)]
+        [TestCase(CreatureConstants.FrostWorm)]
+        [TestCase(CreatureConstants.Ant_Giant_Queen)]
+        [TestCase(CreatureConstants.Ant_Giant_Soldier)]
+        [TestCase(CreatureConstants.Ant_Giant_Worker)]
+        [TestCase(CreatureConstants.Bee_Giant)]
+        [TestCase(CreatureConstants.BombardierBeetle_Giant)]
+        [TestCase(CreatureConstants.FireBeetle_Giant)]
+        [TestCase(CreatureConstants.PrayingMantis_Giant)]
+        [TestCase(CreatureConstants.StagBeetle_Giant)]
+        [TestCase(CreatureConstants.Wasp_Giant)]
+        [TestCase(CreatureConstants.Octopus)]
+        [TestCase(CreatureConstants.Octopus_Giant)]
+        [TestCase(CreatureConstants.Squid)]
+        [TestCase(CreatureConstants.Squid_Giant)]
+        [TestCase(CreatureConstants.Girallon)]
+        [TestCase(CreatureConstants.Gorgon)]
+        [TestCase(CreatureConstants.GrayRender)]
+        [TestCase(CreatureConstants.Grick)]
+        [TestCase(CreatureConstants.Hawk)]
+        [TestCase(CreatureConstants.Hippogriff)]
+        [TestCase(CreatureConstants.BarbedDevil_Hamatula,
+            LanguageConstants.Infernal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.BeardedDevil_Barbazu,
+            LanguageConstants.Infernal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.BoneDevil_Osyluth,
+            LanguageConstants.Infernal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.ChainDevil_Kyton,
+            LanguageConstants.Infernal,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Erinyes,
+            LanguageConstants.Infernal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Hellcat_Bezekira,
+            LanguageConstants.Infernal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.HornedDevil_Cornugon,
+            LanguageConstants.Infernal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.IceDevil_Gelugon,
+            LanguageConstants.Infernal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Imp,
+            LanguageConstants.Infernal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Lemure)]
+        [TestCase(CreatureConstants.PitFiend,
+            LanguageConstants.Infernal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Horse_Heavy)]
+        [TestCase(CreatureConstants.Horse_Heavy_War)]
+        [TestCase(CreatureConstants.Horse_Light)]
+        [TestCase(CreatureConstants.Horse_Light_War)]
+        [TestCase(CreatureConstants.Hyena)]
+        [TestCase(CreatureConstants.Leopard)]
+        [TestCase(CreatureConstants.Lizard)]
+        [TestCase(CreatureConstants.Lizard_Monitor)]
+        [TestCase(CreatureConstants.MantaRay)]
+        [TestCase(CreatureConstants.Monkey)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Colossal)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Gargantuan)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Huge)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Large)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Medium)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Small)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Tiny)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Colossal)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Gargantuan)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Huge)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Large)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Medium)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Small)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Tiny)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Colossal)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Huge)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Large)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Medium)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Small)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Tiny)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Huge)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Large)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Medium)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Small)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny)]
+        [TestCase(CreatureConstants.Mule)]
+        [TestCase(CreatureConstants.Owl)]
+        [TestCase(CreatureConstants.Pony)]
+        [TestCase(CreatureConstants.Pony_War)]
+        [TestCase(CreatureConstants.Porpoise)]
+        [TestCase(CreatureConstants.Owlbear)]
+        [TestCase(CreatureConstants.PhantomFungus)]
+        [TestCase(CreatureConstants.PurpleWorm)]
+        [TestCase(CreatureConstants.Rast)]
+        [TestCase(CreatureConstants.RazorBoar)]
+        [TestCase(CreatureConstants.Babau,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Balor,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Bebilith)]
+        [TestCase(CreatureConstants.Dretch)]
+        [TestCase(CreatureConstants.Glabrezu,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Hezrou,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Marilith,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Nalfeshnee,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Quasit,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Retriever)]
+        [TestCase(CreatureConstants.Succubus,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Vrock,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Roc)]
+        [TestCase(CreatureConstants.RustMonster)]
+        [TestCase(CreatureConstants.SeaCat)]
+        [TestCase(CreatureConstants.ShieldGuardian)]
+        [TestCase(CreatureConstants.ShockerLizard)]
+        [TestCase(CreatureConstants.Shrieker)]
+        [TestCase(CreatureConstants.VioletFungus)]
+        [TestCase(CreatureConstants.SpiderEater)]
+        [TestCase(CreatureConstants.Stirge)]
+        [TestCase(CreatureConstants.Tarrasque)]
+        [TestCase(CreatureConstants.Rhinoceras)]
+        [TestCase(CreatureConstants.Raven)]
+        [TestCase(CreatureConstants.Tendriculos)]
+        [TestCase(CreatureConstants.Toad)]
+        [TestCase(CreatureConstants.Beholder,
+            LanguageConstants.Special.Beholder,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Beholder_Gauth,
+            LanguageConstants.Special.Beholder,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Belker,
+            LanguageConstants.Auran)]
+        [TestCase(CreatureConstants.Dragon_Black_Wyrmling, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Black_VeryYoung, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Black_Young, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Black_Juvenile, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Black_YoungAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Black_Adult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Black_MatureAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Black_Old, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Black_VeryOld, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Black_Ancient, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Black_Wyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Black_GreatWyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_Wyrmling, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_VeryYoung, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_Young, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_Juvenile, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_YoungAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_Adult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_MatureAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_Old, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_VeryOld, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_Ancient, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_Wyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Blue_GreatWyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_Wyrmling, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_VeryYoung, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_Young, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_Juvenile, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_YoungAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_Adult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_MatureAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_Old, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_VeryOld, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_Ancient, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_Wyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Green_GreatWyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_Wyrmling, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_VeryYoung, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_Young, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_Juvenile, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_YoungAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_Adult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_MatureAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_Old, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_VeryOld, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_Ancient, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_Wyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Red_GreatWyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_Wyrmling, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_VeryYoung, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_Young, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_Juvenile, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_YoungAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_Adult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_MatureAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_Old, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_VeryOld, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_Ancient, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_Wyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_White_GreatWyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_Wyrmling, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_VeryYoung, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_Young, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_Juvenile, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_YoungAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_Adult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_MatureAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_Old, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_VeryOld, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_Ancient, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_Wyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Brass_GreatWyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Wyrmling, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_VeryYoung, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Young, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Juvenile, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_YoungAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Adult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_MatureAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Old, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_VeryOld, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Ancient, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Wyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_Wyrmling, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_VeryYoung, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_Young, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_Juvenile, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_YoungAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_Adult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_MatureAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_Old, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_VeryOld, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_Ancient, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_Wyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Copper_GreatWyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_Wyrmling, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_VeryYoung, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_Young, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_Juvenile, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_YoungAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_Adult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_MatureAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_Old, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_VeryOld, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_Ancient, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_Wyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Gold_GreatWyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_Wyrmling, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_VeryYoung, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_Young, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_Juvenile, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_YoungAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_Adult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_MatureAdult, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_Old, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_VeryOld, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_Ancient, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_Wyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Dragon_Silver_GreatWyrm, LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Annis,
+            LanguageConstants.Giant,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.GreenHag,
+            LanguageConstants.Giant,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.SeaHag,
+            LanguageConstants.Giant,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Aranea,
+            LanguageConstants.Sylvan,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Athach,
+            LanguageConstants.Giant)]
+        [TestCase(CreatureConstants.Salamander_Average,
+            LanguageConstants.Ignan)]
+        [TestCase(CreatureConstants.Salamander_Flamebrother,
+            LanguageConstants.Ignan)]
+        [TestCase(CreatureConstants.Salamander_Noble,
+            LanguageConstants.Ignan,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Xorn_Average,
+            LanguageConstants.Terran,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Xorn_Elder,
+            LanguageConstants.Terran,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Xorn_Minor,
+            LanguageConstants.Terran,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Avoral,
+            LanguageConstants.Celestial,
+            LanguageConstants.Infernal,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Barghest,
+            LanguageConstants.Goblin,
+            LanguageConstants.Special.Worg,
+            LanguageConstants.Infernal)]
+        [TestCase(CreatureConstants.Barghest_Greater,
+            LanguageConstants.Goblin,
+            LanguageConstants.Special.Worg,
+            LanguageConstants.Infernal)]
+        [TestCase(CreatureConstants.Behir,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.BlinkDog,
+            LanguageConstants.Special.BlinkDog)]
+        [TestCase(CreatureConstants.Bodak,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Bralani,
+            LanguageConstants.Celestial,
+            LanguageConstants.Infernal,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.ChaosBeast)]
+        [TestCase(CreatureConstants.Chimera_Black,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Chimera_Blue,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Chimera_Green,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Chimera_Red,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Chimera_White,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Choker,
+            LanguageConstants.Undercommon)]
+        [TestCase(CreatureConstants.Chuul,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Cloaker,
+            LanguageConstants.Undercommon)]
+        [TestCase(CreatureConstants.Couatl,
+            LanguageConstants.Celestial,
+            LanguageConstants.Common,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Naga_Dark,
+            LanguageConstants.Common,
+            LanguageConstants.Infernal)]
+        [TestCase(CreatureConstants.Naga_Guardian,
+            LanguageConstants.Common,
+            LanguageConstants.Celestial)]
+        [TestCase(CreatureConstants.Naga_Spirit,
+            LanguageConstants.Common,
+            LanguageConstants.Abyssal)]
+        [TestCase(CreatureConstants.Naga_Water,
+            LanguageConstants.Common,
+            LanguageConstants.Aquan)]
+        [TestCase(CreatureConstants.Delver,
+            LanguageConstants.Terran,
+            LanguageConstants.Undercommon)]
+        [TestCase(CreatureConstants.Destrachan)]
+        [TestCase(CreatureConstants.Devourer,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.DisplacerBeast,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.DisplacerBeast_PackLord,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Djinni,
+            LanguageConstants.Auran,
+            LanguageConstants.Celestial,
+            LanguageConstants.Ignan,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Djinni_Noble,
+            LanguageConstants.Auran,
+            LanguageConstants.Celestial,
+            LanguageConstants.Ignan,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Efreeti,
+            LanguageConstants.Auran,
+            LanguageConstants.Infernal,
+            LanguageConstants.Ignan,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.DragonTurtle,
+            LanguageConstants.Aquan,
+            LanguageConstants.Draconic,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Dragonne,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Wraith,
+            LanguageConstants.Infernal,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Wraith_Dread,
+            LanguageConstants.Infernal,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Drider,
+            LanguageConstants.Elven,
+            LanguageConstants.Undercommon,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Dryad,
+            LanguageConstants.Elven,
+            LanguageConstants.Sylvan,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.EtherealFilcher)]
+        [TestCase(CreatureConstants.EtherealMarauder)]
+        [TestCase(CreatureConstants.Ettercap,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Ettin,
+            LanguageConstants.Orc,
+            LanguageConstants.Goblin,
+            LanguageConstants.Giant)]
+        [TestCase(CreatureConstants.FormianWorker)]
+        [TestCase(CreatureConstants.FormianWarrior)]
+        [TestCase(CreatureConstants.FormianTaskmaster)]
+        [TestCase(CreatureConstants.FormianMyrmarch,
+            LanguageConstants.Special.Formian,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.FormianQueen,
+            LanguageConstants.Special.Formian,
+            LanguageConstants.Common)]
+        public void AutomaticLanguages(string creature, params string[] languages)
         {
             base.AssertDistinctCollection(creature + LanguageConstants.Groups.Automatic, languages);
         }
@@ -573,7 +1083,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             LanguageConstants.Giant,
             LanguageConstants.Orc,
             LanguageConstants.Terran,
-            LanguageConstants.Undercommon)]
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Derro_Sane,
+            LanguageConstants.Goblin,
+            LanguageConstants.Gnome,
+            LanguageConstants.Giant,
+            LanguageConstants.Orc,
+            LanguageConstants.Terran,
+            LanguageConstants.Common)]
         [TestCase(CreatureConstants.Doppelganger,
             LanguageConstants.Auran,
             LanguageConstants.Dwarven,
@@ -1085,6 +1602,386 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.GrayOoze)]
         [TestCase(CreatureConstants.OchreJelly)]
         [TestCase(CreatureConstants.Bulette)]
+        [TestCase(CreatureConstants.Camel_Bactrian)]
+        [TestCase(CreatureConstants.Camel_Dromedary)]
+        [TestCase(CreatureConstants.CarrionCrawler)]
+        [TestCase(CreatureConstants.Cat)]
+        [TestCase(CreatureConstants.Cheetah)]
+        [TestCase(CreatureConstants.Golem_Clay)]
+        [TestCase(CreatureConstants.Golem_Flesh)]
+        [TestCase(CreatureConstants.Golem_Iron)]
+        [TestCase(CreatureConstants.Golem_Stone)]
+        [TestCase(CreatureConstants.Golem_Stone_Greater)]
+        [TestCase(CreatureConstants.Cockatrice)]
+        [TestCase(CreatureConstants.Snake_Constrictor)]
+        [TestCase(CreatureConstants.Snake_Constrictor_Giant)]
+        [TestCase(CreatureConstants.Snake_Viper_Huge)]
+        [TestCase(CreatureConstants.Snake_Viper_Large)]
+        [TestCase(CreatureConstants.Snake_Viper_Medium)]
+        [TestCase(CreatureConstants.Snake_Viper_Small)]
+        [TestCase(CreatureConstants.Snake_Viper_Tiny)]
+        [TestCase(CreatureConstants.Crocodile)]
+        [TestCase(CreatureConstants.Crocodile_Giant)]
+        [TestCase(CreatureConstants.Darkmantle)]
+        [TestCase(CreatureConstants.Deinonychus)]
+        [TestCase(CreatureConstants.Elasmosaurus)]
+        [TestCase(CreatureConstants.Megaraptor)]
+        [TestCase(CreatureConstants.Triceratops)]
+        [TestCase(CreatureConstants.Tyrannosaurus)]
+        [TestCase(CreatureConstants.Digester)]
+        [TestCase(CreatureConstants.Lion)]
+        [TestCase(CreatureConstants.Lion_Dire)]
+        [TestCase(CreatureConstants.Rat)]
+        [TestCase(CreatureConstants.Rat_Dire)]
+        [TestCase(CreatureConstants.Shark_Medium)]
+        [TestCase(CreatureConstants.Shark_Large)]
+        [TestCase(CreatureConstants.Shark_Huge)]
+        [TestCase(CreatureConstants.Shark_Dire)]
+        [TestCase(CreatureConstants.Tiger)]
+        [TestCase(CreatureConstants.Tiger_Dire)]
+        [TestCase(CreatureConstants.Wolf)]
+        [TestCase(CreatureConstants.Wolf_Dire)]
+        [TestCase(CreatureConstants.Weasel)]
+        [TestCase(CreatureConstants.Weasel_Dire)]
+        [TestCase(CreatureConstants.Wolverine)]
+        [TestCase(CreatureConstants.Wolverine_Dire)]
+        [TestCase(CreatureConstants.Dog)]
+        [TestCase(CreatureConstants.Dog_Riding)]
+        [TestCase(CreatureConstants.Donkey)]
+        [TestCase(CreatureConstants.Eagle)]
+        [TestCase(CreatureConstants.Elephant)]
+        [TestCase(CreatureConstants.Hydra_5Heads)]
+        [TestCase(CreatureConstants.Hydra_6Heads)]
+        [TestCase(CreatureConstants.Hydra_7Heads)]
+        [TestCase(CreatureConstants.Hydra_8Heads)]
+        [TestCase(CreatureConstants.Hydra_9Heads)]
+        [TestCase(CreatureConstants.Hydra_10Heads)]
+        [TestCase(CreatureConstants.Hydra_11Heads)]
+        [TestCase(CreatureConstants.Hydra_12Heads)]
+        [TestCase(CreatureConstants.Cryohydra_5Heads)]
+        [TestCase(CreatureConstants.Cryohydra_6Heads)]
+        [TestCase(CreatureConstants.Cryohydra_7Heads)]
+        [TestCase(CreatureConstants.Cryohydra_8Heads)]
+        [TestCase(CreatureConstants.Cryohydra_9Heads)]
+        [TestCase(CreatureConstants.Cryohydra_10Heads)]
+        [TestCase(CreatureConstants.Cryohydra_11Heads)]
+        [TestCase(CreatureConstants.Cryohydra_12Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_5Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_6Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_7Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_8Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_9Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_10Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_11Heads)]
+        [TestCase(CreatureConstants.Pyrohydra_12Heads)]
+        [TestCase(CreatureConstants.FrostWorm)]
+        [TestCase(CreatureConstants.Ant_Giant_Queen)]
+        [TestCase(CreatureConstants.Ant_Giant_Soldier)]
+        [TestCase(CreatureConstants.Ant_Giant_Worker)]
+        [TestCase(CreatureConstants.Bee_Giant)]
+        [TestCase(CreatureConstants.BombardierBeetle_Giant)]
+        [TestCase(CreatureConstants.FireBeetle_Giant)]
+        [TestCase(CreatureConstants.PrayingMantis_Giant)]
+        [TestCase(CreatureConstants.StagBeetle_Giant)]
+        [TestCase(CreatureConstants.Wasp_Giant)]
+        [TestCase(CreatureConstants.Octopus)]
+        [TestCase(CreatureConstants.Octopus_Giant)]
+        [TestCase(CreatureConstants.Squid)]
+        [TestCase(CreatureConstants.Squid_Giant)]
+        [TestCase(CreatureConstants.Girallon)]
+        [TestCase(CreatureConstants.Gorgon)]
+        [TestCase(CreatureConstants.GrayRender)]
+        [TestCase(CreatureConstants.Grick)]
+        [TestCase(CreatureConstants.Hawk)]
+        [TestCase(CreatureConstants.Hippogriff)]
+        [TestCase(CreatureConstants.BarbedDevil_Hamatula)]
+        [TestCase(CreatureConstants.BeardedDevil_Barbazu)]
+        [TestCase(CreatureConstants.BoneDevil_Osyluth)]
+        [TestCase(CreatureConstants.ChainDevil_Kyton)]
+        [TestCase(CreatureConstants.Erinyes)]
+        [TestCase(CreatureConstants.Hellcat_Bezekira)]
+        [TestCase(CreatureConstants.HornedDevil_Cornugon)]
+        [TestCase(CreatureConstants.IceDevil_Gelugon)]
+        [TestCase(CreatureConstants.Imp)]
+        [TestCase(CreatureConstants.Lemure)]
+        [TestCase(CreatureConstants.PitFiend)]
+        [TestCase(CreatureConstants.Horse_Heavy)]
+        [TestCase(CreatureConstants.Horse_Heavy_War)]
+        [TestCase(CreatureConstants.Horse_Light)]
+        [TestCase(CreatureConstants.Horse_Light_War)]
+        [TestCase(CreatureConstants.Hyena)]
+        [TestCase(CreatureConstants.Leopard)]
+        [TestCase(CreatureConstants.Lizard)]
+        [TestCase(CreatureConstants.Lizard_Monitor)]
+        [TestCase(CreatureConstants.MantaRay)]
+        [TestCase(CreatureConstants.Monkey)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Colossal)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Gargantuan)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Huge)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Large)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Medium)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Small)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Tiny)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Colossal)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Gargantuan)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Huge)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Large)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Medium)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Small)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Tiny)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Colossal)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Huge)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Large)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Medium)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Small)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Tiny)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Huge)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Large)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Medium)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Small)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny)]
+        [TestCase(CreatureConstants.Mule)]
+        [TestCase(CreatureConstants.Owl)]
+        [TestCase(CreatureConstants.Pony)]
+        [TestCase(CreatureConstants.Pony_War)]
+        [TestCase(CreatureConstants.Porpoise)]
+        [TestCase(CreatureConstants.Owlbear)]
+        [TestCase(CreatureConstants.PhantomFungus)]
+        [TestCase(CreatureConstants.PurpleWorm)]
+        [TestCase(CreatureConstants.Rast)]
+        [TestCase(CreatureConstants.RazorBoar)]
+        [TestCase(CreatureConstants.Babau)]
+        [TestCase(CreatureConstants.Balor)]
+        [TestCase(CreatureConstants.Bebilith)]
+        [TestCase(CreatureConstants.Dretch)]
+        [TestCase(CreatureConstants.Glabrezu)]
+        [TestCase(CreatureConstants.Hezrou)]
+        [TestCase(CreatureConstants.Marilith)]
+        [TestCase(CreatureConstants.Nalfeshnee)]
+        [TestCase(CreatureConstants.Quasit)]
+        [TestCase(CreatureConstants.Retriever)]
+        [TestCase(CreatureConstants.Succubus)]
+        [TestCase(CreatureConstants.Vrock)]
+        [TestCase(CreatureConstants.Roc)]
+        [TestCase(CreatureConstants.RustMonster)]
+        [TestCase(CreatureConstants.SeaCat)]
+        [TestCase(CreatureConstants.ShieldGuardian)]
+        [TestCase(CreatureConstants.ShockerLizard)]
+        [TestCase(CreatureConstants.Shrieker)]
+        [TestCase(CreatureConstants.VioletFungus)]
+        [TestCase(CreatureConstants.SpiderEater)]
+        [TestCase(CreatureConstants.Stirge)]
+        [TestCase(CreatureConstants.Tarrasque)]
+        [TestCase(CreatureConstants.Rhinoceras)]
+        [TestCase(CreatureConstants.Raven)]
+        [TestCase(CreatureConstants.Tendriculos)]
+        [TestCase(CreatureConstants.Toad)]
+        [TestCase(CreatureConstants.Beholder)]
+        [TestCase(CreatureConstants.Beholder_Gauth)]
+        [TestCase(CreatureConstants.Belker)]
+        [TestCase(CreatureConstants.Dragon_Black_Wyrmling)]
+        [TestCase(CreatureConstants.Dragon_Black_VeryYoung)]
+        [TestCase(CreatureConstants.Dragon_Black_Young)]
+        [TestCase(CreatureConstants.Dragon_Black_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_Black_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_Black_Adult)]
+        [TestCase(CreatureConstants.Dragon_Black_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_Black_Old)]
+        [TestCase(CreatureConstants.Dragon_Black_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_Black_Ancient)]
+        [TestCase(CreatureConstants.Dragon_Black_Wyrm)]
+        [TestCase(CreatureConstants.Dragon_Black_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Blue_Wyrmling)]
+        [TestCase(CreatureConstants.Dragon_Blue_VeryYoung)]
+        [TestCase(CreatureConstants.Dragon_Blue_Young)]
+        [TestCase(CreatureConstants.Dragon_Blue_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_Blue_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_Blue_Adult)]
+        [TestCase(CreatureConstants.Dragon_Blue_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_Blue_Old)]
+        [TestCase(CreatureConstants.Dragon_Blue_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_Blue_Ancient)]
+        [TestCase(CreatureConstants.Dragon_Blue_Wyrm)]
+        [TestCase(CreatureConstants.Dragon_Blue_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Green_Wyrmling)]
+        [TestCase(CreatureConstants.Dragon_Green_VeryYoung)]
+        [TestCase(CreatureConstants.Dragon_Green_Young)]
+        [TestCase(CreatureConstants.Dragon_Green_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_Green_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_Green_Adult)]
+        [TestCase(CreatureConstants.Dragon_Green_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_Green_Old)]
+        [TestCase(CreatureConstants.Dragon_Green_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_Green_Ancient)]
+        [TestCase(CreatureConstants.Dragon_Green_Wyrm)]
+        [TestCase(CreatureConstants.Dragon_Green_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Red_Wyrmling)]
+        [TestCase(CreatureConstants.Dragon_Red_VeryYoung)]
+        [TestCase(CreatureConstants.Dragon_Red_Young)]
+        [TestCase(CreatureConstants.Dragon_Red_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_Red_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_Red_Adult)]
+        [TestCase(CreatureConstants.Dragon_Red_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_Red_Old)]
+        [TestCase(CreatureConstants.Dragon_Red_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_Red_Ancient)]
+        [TestCase(CreatureConstants.Dragon_Red_Wyrm)]
+        [TestCase(CreatureConstants.Dragon_Red_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_White_Wyrmling)]
+        [TestCase(CreatureConstants.Dragon_White_VeryYoung)]
+        [TestCase(CreatureConstants.Dragon_White_Young)]
+        [TestCase(CreatureConstants.Dragon_White_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_White_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_White_Adult)]
+        [TestCase(CreatureConstants.Dragon_White_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_White_Old)]
+        [TestCase(CreatureConstants.Dragon_White_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_White_Ancient)]
+        [TestCase(CreatureConstants.Dragon_White_Wyrm)]
+        [TestCase(CreatureConstants.Dragon_White_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Brass_Wyrmling)]
+        [TestCase(CreatureConstants.Dragon_Brass_VeryYoung)]
+        [TestCase(CreatureConstants.Dragon_Brass_Young)]
+        [TestCase(CreatureConstants.Dragon_Brass_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_Brass_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_Brass_Adult)]
+        [TestCase(CreatureConstants.Dragon_Brass_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_Brass_Old)]
+        [TestCase(CreatureConstants.Dragon_Brass_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_Brass_Ancient)]
+        [TestCase(CreatureConstants.Dragon_Brass_Wyrm)]
+        [TestCase(CreatureConstants.Dragon_Brass_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Wyrmling)]
+        [TestCase(CreatureConstants.Dragon_Bronze_VeryYoung)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Young)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_Bronze_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Adult)]
+        [TestCase(CreatureConstants.Dragon_Bronze_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Old)]
+        [TestCase(CreatureConstants.Dragon_Bronze_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Ancient)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Wyrm)]
+        [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Copper_Wyrmling)]
+        [TestCase(CreatureConstants.Dragon_Copper_VeryYoung)]
+        [TestCase(CreatureConstants.Dragon_Copper_Young)]
+        [TestCase(CreatureConstants.Dragon_Copper_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_Copper_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_Copper_Adult)]
+        [TestCase(CreatureConstants.Dragon_Copper_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_Copper_Old)]
+        [TestCase(CreatureConstants.Dragon_Copper_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_Copper_Ancient)]
+        [TestCase(CreatureConstants.Dragon_Copper_Wyrm)]
+        [TestCase(CreatureConstants.Dragon_Copper_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Gold_Wyrmling)]
+        [TestCase(CreatureConstants.Dragon_Gold_VeryYoung)]
+        [TestCase(CreatureConstants.Dragon_Gold_Young)]
+        [TestCase(CreatureConstants.Dragon_Gold_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_Gold_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_Gold_Adult)]
+        [TestCase(CreatureConstants.Dragon_Gold_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_Gold_Old)]
+        [TestCase(CreatureConstants.Dragon_Gold_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_Gold_Ancient)]
+        [TestCase(CreatureConstants.Dragon_Gold_Wyrm)]
+        [TestCase(CreatureConstants.Dragon_Gold_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Silver_Wyrmling)]
+        [TestCase(CreatureConstants.Dragon_Silver_VeryYoung)]
+        [TestCase(CreatureConstants.Dragon_Silver_Young)]
+        [TestCase(CreatureConstants.Dragon_Silver_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_Silver_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_Silver_Adult)]
+        [TestCase(CreatureConstants.Dragon_Silver_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_Silver_Old)]
+        [TestCase(CreatureConstants.Dragon_Silver_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_Silver_Ancient)]
+        [TestCase(CreatureConstants.Dragon_Silver_Wyrm)]
+        [TestCase(CreatureConstants.Dragon_Silver_GreatWyrm)]
+        [TestCase(CreatureConstants.Annis)]
+        [TestCase(CreatureConstants.GreenHag)]
+        [TestCase(CreatureConstants.SeaHag)]
+        [TestCase(CreatureConstants.Aranea)]
+        [TestCase(CreatureConstants.Athach)]
+        [TestCase(CreatureConstants.Salamander_Average,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Salamander_Flamebrother)]
+        [TestCase(CreatureConstants.Salamander_Noble)]
+        [TestCase(CreatureConstants.Xorn_Average)]
+        [TestCase(CreatureConstants.Xorn_Elder)]
+        [TestCase(CreatureConstants.Xorn_Minor)]
+        [TestCase(CreatureConstants.Avoral)]
+        [TestCase(CreatureConstants.Barghest)]
+        [TestCase(CreatureConstants.Barghest_Greater)]
+        [TestCase(CreatureConstants.Behir)]
+        [TestCase(CreatureConstants.Slaad_Blue)]
+        [TestCase(CreatureConstants.Slaad_Death)]
+        [TestCase(CreatureConstants.Slaad_Gray)]
+        [TestCase(CreatureConstants.Slaad_Green)]
+        [TestCase(CreatureConstants.Slaad_Red)]
+        [TestCase(CreatureConstants.MindFlayer,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Aquan,
+            LanguageConstants.Draconic,
+            LanguageConstants.Dwarven,
+            LanguageConstants.Elven,
+            LanguageConstants.Gnome,
+            LanguageConstants.Infernal,
+            LanguageConstants.Terran)]
+        [TestCase(CreatureConstants.BlinkDog)]
+        [TestCase(CreatureConstants.Bodak,
+            LanguageConstants.Elven,
+            LanguageConstants.Halfling,
+            LanguageConstants.Gnome,
+            LanguageConstants.Orc,
+            LanguageConstants.Dwarven)]
+        [TestCase(CreatureConstants.Bralani)]
+        [TestCase(CreatureConstants.ChaosBeast)]
+        [TestCase(CreatureConstants.Chimera_Black)]
+        [TestCase(CreatureConstants.Chimera_Blue)]
+        [TestCase(CreatureConstants.Chimera_Green)]
+        [TestCase(CreatureConstants.Chimera_Red)]
+        [TestCase(CreatureConstants.Chimera_White)]
+        [TestCase(CreatureConstants.Choker)]
+        [TestCase(CreatureConstants.Chuul)]
+        [TestCase(CreatureConstants.Cloaker)]
+        [TestCase(CreatureConstants.Couatl)]
+        [TestCase(CreatureConstants.Naga_Dark)]
+        [TestCase(CreatureConstants.Naga_Guardian)]
+        [TestCase(CreatureConstants.Naga_Spirit)]
+        [TestCase(CreatureConstants.Naga_Water)]
+        [TestCase(CreatureConstants.Delver)]
+        [TestCase(CreatureConstants.Destrachan)]
+        [TestCase(CreatureConstants.Devourer)]
+        [TestCase(CreatureConstants.DisplacerBeast)]
+        [TestCase(CreatureConstants.DisplacerBeast_PackLord)]
+        [TestCase(CreatureConstants.Djinni)]
+        [TestCase(CreatureConstants.Djinni_Noble)]
+        [TestCase(CreatureConstants.Efreeti)]
+        [TestCase(CreatureConstants.DragonTurtle)]
+        [TestCase(CreatureConstants.Dragonne)]
+        [TestCase(CreatureConstants.Wraith)]
+        [TestCase(CreatureConstants.Wraith_Dread)]
+        [TestCase(CreatureConstants.Drider,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Aquan,
+            LanguageConstants.Draconic,
+            LanguageConstants.Gnome,
+            LanguageConstants.Goblin)]
+        [TestCase(CreatureConstants.Dryad)]
+        [TestCase(CreatureConstants.EtherealFilcher)]
+        [TestCase(CreatureConstants.EtherealMarauder)]
+        [TestCase(CreatureConstants.Ettercap)]
+        [TestCase(CreatureConstants.Ettin)]
+        [TestCase(CreatureConstants.FormianWorker)]
+        [TestCase(CreatureConstants.FormianWarrior)]
+        [TestCase(CreatureConstants.FormianTaskmaster)]
+        [TestCase(CreatureConstants.FormianMyrmarch)]
+        [TestCase(CreatureConstants.FormianQueen)]
         public void BonusLanguages(string creature, params string[] collection)
         {
             base.AssertDistinctCollection(creature + LanguageConstants.Groups.Bonus, collection);
@@ -1092,13 +1989,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
 
         [TestCase(CreatureConstants.Elf_Half)]
         [TestCase(CreatureConstants.Human)]
-        [TestCase(CreatureConstants.MindFlayer)]
         [TestCase(CreatureConstants.Scorpionfolk)]
-        [TestCase(CreatureConstants.Slaad_Blue)]
-        [TestCase(CreatureConstants.Slaad_Death)]
-        [TestCase(CreatureConstants.Slaad_Gray)]
-        [TestCase(CreatureConstants.Slaad_Green)]
-        [TestCase(CreatureConstants.Slaad_Red)]
         public void AllGeneralLanguagesAreBonusLanguages(string creature)
         {
             var generalLanguages = new[]
