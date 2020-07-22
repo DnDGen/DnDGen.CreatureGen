@@ -171,6 +171,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.Pixie,
             LanguageConstants.Common,
             LanguageConstants.Sylvan)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance,
+            LanguageConstants.Common,
+            LanguageConstants.Sylvan)]
         [TestCase(CreatureConstants.Rakshasa,
             LanguageConstants.Common,
             LanguageConstants.Infernal)]
@@ -179,7 +182,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             LanguageConstants.Common,
             LanguageConstants.Gnome)]
         [TestCase(CreatureConstants.Sahuagin,
-            LanguageConstants.Common,
+            LanguageConstants.Special.Sahuagin)]
+        [TestCase(CreatureConstants.Sahuagin_Malenti,
+            LanguageConstants.Special.Sahuagin)]
+        [TestCase(CreatureConstants.Sahuagin_Mutant,
             LanguageConstants.Special.Sahuagin)]
         [TestCase(CreatureConstants.Satyr, LanguageConstants.Sylvan)]
         [TestCase(CreatureConstants.Scorpionfolk,
@@ -1029,6 +1035,90 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             LanguageConstants.Common)]
         [TestCase(CreatureConstants.Ghoul_Lacedon,
             LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Eagle_Giant,
+            LanguageConstants.Common,
+            LanguageConstants.Auran)]
+        [TestCase(CreatureConstants.Owl_Giant,
+            LanguageConstants.Common,
+            LanguageConstants.Sylvan)]
+        [TestCase(CreatureConstants.GibberingMouther,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Shadow)]
+        [TestCase(CreatureConstants.Shadow_Greater)]
+        [TestCase(CreatureConstants.Griffon)]
+        [TestCase(CreatureConstants.Grig,
+            LanguageConstants.Sylvan)]
+        [TestCase(CreatureConstants.Grig_WithFiddle,
+            LanguageConstants.Sylvan)]
+        [TestCase(CreatureConstants.Nixie,
+            LanguageConstants.Aquan,
+            LanguageConstants.Sylvan)]
+        [TestCase(CreatureConstants.HellHound)]
+        [TestCase(CreatureConstants.HellHound_NessianWarhound)]
+        [TestCase(CreatureConstants.Homunculus)]
+        [TestCase(CreatureConstants.Howler)]
+        [TestCase(CreatureConstants.InvisibleStalker,
+            LanguageConstants.Auran)]
+        [TestCase(CreatureConstants.Kolyarut,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Infernal)]
+        [TestCase(CreatureConstants.Marut,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Infernal)]
+        [TestCase(CreatureConstants.Zelekhut,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Celestial,
+            LanguageConstants.Infernal)]
+        [TestCase(CreatureConstants.Kraken,
+            LanguageConstants.Aquan,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Krenshar)]
+        [TestCase(CreatureConstants.Lamia,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Sylvan,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Lammasu,
+            LanguageConstants.Draconic,
+            LanguageConstants.Celestial,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.LanternArchon,
+            LanguageConstants.Celestial)]
+        [TestCase(CreatureConstants.HoundArchon,
+            LanguageConstants.Celestial)]
+        [TestCase(CreatureConstants.TrumpetArchon,
+            LanguageConstants.Celestial)]
+        [TestCase(CreatureConstants.Leonal,
+            LanguageConstants.Draconic,
+            LanguageConstants.Celestial,
+            LanguageConstants.Infernal)]
+        [TestCase(CreatureConstants.Lillend,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Common,
+            LanguageConstants.Celestial,
+            LanguageConstants.Infernal)]
+        [TestCase(CreatureConstants.Magmin,
+            LanguageConstants.Ignan)]
+        [TestCase(CreatureConstants.Manticore,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Medusa,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Mimic,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Mohrg)]
+        [TestCase(CreatureConstants.Mummy,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.NightHag,
+            LanguageConstants.Abyssal,
+            LanguageConstants.Common,
+            LanguageConstants.Celestial,
+            LanguageConstants.Infernal)]
+        [TestCase(CreatureConstants.Nightcrawler)]
+        [TestCase(CreatureConstants.Nightwalker)]
+        [TestCase(CreatureConstants.Nightwing)]
+        [TestCase(CreatureConstants.Nightmare)]
+        [TestCase(CreatureConstants.Nightmare_Cauchemar)]
         public void AutomaticLanguages(string creature, params string[] languages)
         {
             base.AssertDistinctCollection(creature + LanguageConstants.Groups.Automatic, languages);
@@ -1296,6 +1386,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             LanguageConstants.Elven,
             LanguageConstants.Gnome,
             LanguageConstants.Halfling)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance,
+            LanguageConstants.Elven,
+            LanguageConstants.Gnome,
+            LanguageConstants.Halfling)]
         [TestCase(CreatureConstants.Rakshasa,
             LanguageConstants.Sylvan,
             LanguageConstants.Undercommon)]
@@ -1307,6 +1401,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             LanguageConstants.Giant,
             LanguageConstants.Orc)]
         [TestCase(CreatureConstants.Sahuagin,
+            LanguageConstants.Aquan,
+            LanguageConstants.Common,
+            LanguageConstants.Draconic,
+            LanguageConstants.Elven,
+            LanguageConstants.Special.KuoToa,
+            LanguageConstants.Undercommon)]
+        [TestCase(CreatureConstants.Sahuagin_Malenti,
+            LanguageConstants.Aquan,
+            LanguageConstants.Common,
+            LanguageConstants.Draconic,
+            LanguageConstants.Elven,
+            LanguageConstants.Special.KuoToa,
+            LanguageConstants.Undercommon)]
+        [TestCase(CreatureConstants.Sahuagin_Mutant,
+            LanguageConstants.Aquan,
+            LanguageConstants.Common,
             LanguageConstants.Draconic,
             LanguageConstants.Elven,
             LanguageConstants.Special.KuoToa,
@@ -2011,6 +2121,43 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             LanguageConstants.Gnome,
             LanguageConstants.Orc,
             LanguageConstants.Dwarven)]
+        [TestCase(CreatureConstants.Eagle_Giant)]
+        [TestCase(CreatureConstants.Owl_Giant)]
+        [TestCase(CreatureConstants.GibberingMouther)]
+        [TestCase(CreatureConstants.Shadow)]
+        [TestCase(CreatureConstants.Shadow_Greater)]
+        [TestCase(CreatureConstants.Griffon)]
+        [TestCase(CreatureConstants.Grig,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Grig_WithFiddle,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Nixie,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.HellHound)]
+        [TestCase(CreatureConstants.HellHound_NessianWarhound)]
+        [TestCase(CreatureConstants.Homunculus)]
+        [TestCase(CreatureConstants.Howler)]
+        [TestCase(CreatureConstants.InvisibleStalker)]
+        [TestCase(CreatureConstants.Kraken)]
+        [TestCase(CreatureConstants.Krenshar)]
+        [TestCase(CreatureConstants.Lammasu)]
+        [TestCase(CreatureConstants.LanternArchon)]
+        [TestCase(CreatureConstants.HoundArchon)]
+        [TestCase(CreatureConstants.TrumpetArchon)]
+        [TestCase(CreatureConstants.Leonal)]
+        [TestCase(CreatureConstants.Lillend)]
+        [TestCase(CreatureConstants.Magmin)]
+        [TestCase(CreatureConstants.Manticore)]
+        [TestCase(CreatureConstants.Medusa)]
+        [TestCase(CreatureConstants.Mimic)]
+        [TestCase(CreatureConstants.Mohrg)]
+        [TestCase(CreatureConstants.Mummy)]
+        [TestCase(CreatureConstants.NightHag)]
+        [TestCase(CreatureConstants.Nightcrawler)]
+        [TestCase(CreatureConstants.Nightwalker)]
+        [TestCase(CreatureConstants.Nightwing)]
+        [TestCase(CreatureConstants.Nightmare)]
+        [TestCase(CreatureConstants.Nightmare_Cauchemar)]
         public void BonusLanguages(string creature, params string[] collection)
         {
             base.AssertDistinctCollection(creature + LanguageConstants.Groups.Bonus, collection);
@@ -2019,6 +2166,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.Elf_Half)]
         [TestCase(CreatureConstants.Human)]
         [TestCase(CreatureConstants.Scorpionfolk)]
+        [TestCase(CreatureConstants.Kolyarut)]
+        [TestCase(CreatureConstants.Marut)]
+        [TestCase(CreatureConstants.Zelekhut)]
+        [TestCase(CreatureConstants.Lamia)]
         public void AllGeneralLanguagesAreBonusLanguages(string creature)
         {
             var generalLanguages = new[]

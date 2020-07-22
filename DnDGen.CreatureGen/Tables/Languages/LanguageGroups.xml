@@ -256,6 +256,11 @@
     <entry>Sylvan</entry>
   </collection>
   <collection>
+    <name>Pixie with Irresistible danceAutomatic</name>
+    <entry>Common</entry>
+    <entry>Sylvan</entry>
+  </collection>
+  <collection>
     <name>RakshasaAutomatic</name>
     <entry>Common</entry>
     <entry>Infernal</entry>
@@ -675,6 +680,94 @@
     <entry>Terran</entry>
   </collection>
   <collection>
+    <name>KolyarutBonus</name>
+    <entry>Abyssal</entry>
+    <entry>Common</entry>
+    <entry>Elven</entry>
+    <entry>Celestial</entry>
+    <entry>Undercommon</entry>
+    <entry>Goblin</entry>
+    <entry>Dwarven</entry>
+    <entry>Draconic</entry>
+    <entry>Giant</entry>
+    <entry>Infernal</entry>
+    <entry>Gnome</entry>
+    <entry>Sylvan</entry>
+    <entry>Gnoll</entry>
+    <entry>Orc</entry>
+    <entry>Halfling</entry>
+    <entry>Aquan</entry>
+    <entry>Auran</entry>
+    <entry>Ignan</entry>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>MarutBonus</name>
+    <entry>Abyssal</entry>
+    <entry>Common</entry>
+    <entry>Elven</entry>
+    <entry>Celestial</entry>
+    <entry>Undercommon</entry>
+    <entry>Goblin</entry>
+    <entry>Dwarven</entry>
+    <entry>Draconic</entry>
+    <entry>Giant</entry>
+    <entry>Infernal</entry>
+    <entry>Gnome</entry>
+    <entry>Sylvan</entry>
+    <entry>Gnoll</entry>
+    <entry>Orc</entry>
+    <entry>Halfling</entry>
+    <entry>Aquan</entry>
+    <entry>Auran</entry>
+    <entry>Ignan</entry>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>ZelekhutBonus</name>
+    <entry>Abyssal</entry>
+    <entry>Common</entry>
+    <entry>Elven</entry>
+    <entry>Celestial</entry>
+    <entry>Undercommon</entry>
+    <entry>Goblin</entry>
+    <entry>Dwarven</entry>
+    <entry>Draconic</entry>
+    <entry>Giant</entry>
+    <entry>Infernal</entry>
+    <entry>Gnome</entry>
+    <entry>Sylvan</entry>
+    <entry>Gnoll</entry>
+    <entry>Orc</entry>
+    <entry>Halfling</entry>
+    <entry>Aquan</entry>
+    <entry>Auran</entry>
+    <entry>Ignan</entry>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>LamiaBonus</name>
+    <entry>Abyssal</entry>
+    <entry>Common</entry>
+    <entry>Elven</entry>
+    <entry>Celestial</entry>
+    <entry>Undercommon</entry>
+    <entry>Goblin</entry>
+    <entry>Dwarven</entry>
+    <entry>Draconic</entry>
+    <entry>Giant</entry>
+    <entry>Infernal</entry>
+    <entry>Gnome</entry>
+    <entry>Sylvan</entry>
+    <entry>Gnoll</entry>
+    <entry>Orc</entry>
+    <entry>Halfling</entry>
+    <entry>Aquan</entry>
+    <entry>Auran</entry>
+    <entry>Ignan</entry>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
     <name>JanniBonus</name>
     <entry>Infernal</entry>
     <entry>Abyssal</entry>
@@ -786,6 +879,12 @@
   </collection>
   <collection>
     <name>PixieBonus</name>
+    <entry>Gnome</entry>
+    <entry>Elven</entry>
+    <entry>Halfling</entry>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceBonus</name>
     <entry>Gnome</entry>
     <entry>Elven</entry>
     <entry>Halfling</entry>
@@ -4964,5 +5063,140 @@
     <entry>Gnome</entry>
     <entry>Dwarven</entry>
     <entry>Orc</entry>
+  </collection>
+  <collection>
+    <name>Giant EagleAutomatic</name>
+    <entry>Auran</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Giant OwlAutomatic</name>
+    <entry>Sylvan</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Gibbering MoutherAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>ShadowAutomatic</name>
+  </collection>
+  <collection>
+    <name>Greater ShadowAutomatic</name>
+  </collection>
+  <collection>
+    <name>GriffonAutomatic</name>
+  </collection>
+  <collection>
+    <name>GrigAutomatic</name>
+    <entry>Sylvan</entry>
+  </collection>
+  <collection>
+    <name>Grig with fiddleAutomatic</name>
+    <entry>Sylvan</entry>
+  </collection>
+  <collection>
+    <name>NixieAutomatic</name>
+    <entry>Aquan</entry>
+    <entry>Sylvan</entry>
+  </collection>
+  <collection>
+    <name>Hell HoundAutomatic</name>
+  </collection>
+  <collection>
+    <name>Nessian WarhoundAutomatic</name>
+  </collection>
+  <collection>
+    <name>HomunculusAutomatic</name>
+  </collection>
+  <collection>
+    <name>HowlerAutomatic</name>
+  </collection>
+  <collection>
+    <name>Giant EagleBonus</name>
+  </collection>
+  <collection>
+    <name>Giant OwlBonus</name>
+  </collection>
+  <collection>
+    <name>Gibbering MoutherBonus</name>
+  </collection>
+  <collection>
+    <name>ShadowBonus</name>
+  </collection>
+  <collection>
+    <name>Greater ShadowBonus</name>
+  </collection>
+  <collection>
+    <name>GriffonBonus</name>
+  </collection>
+  <collection>
+    <name>GrigBonus</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Grig with fiddleBonus</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>NixieBonus</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Hell HoundBonus</name>
+  </collection>
+  <collection>
+    <name>Nessian WarhoundBonus</name>
+  </collection>
+  <collection>
+    <name>HomunculusBonus</name>
+  </collection>
+  <collection>
+    <name>HowlerBonus</name>
+  </collection>
+  <collection>
+    <name>Invisible StalkerAutomatic</name>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>KolyarutAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>MarutAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>ZelekhutAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>LamiaAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Sylvan</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Invisible StalkerBonus</name>
+  </collection>
+  <collection>
+    <name>KrakenAutomatic</name>
+    <entry>Aquan</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>KrensharAutomatic</name>
+  </collection>
+  <collection>
+    <name>KrakenBonus</name>
+  </collection>
+  <collection>
+    <name>KrensharBonus</name>
   </collection>
 </collections>
