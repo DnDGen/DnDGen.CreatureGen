@@ -4761,30 +4761,52 @@
   </collection>
   <collection>
     <name>Displacer BeastAutomatic</name>
+    <entry>Common</entry>
   </collection>
   <collection>
     <name>Displacer Beast Pack LordAutomatic</name>
+    <entry>Common</entry>
   </collection>
   <collection>
     <name>DjinniAutomatic</name>
+    <entry>Auran</entry>
+    <entry>Celestial</entry>
+    <entry>Common</entry>
+    <entry>Ignan</entry>
   </collection>
   <collection>
     <name>Noble DjinniAutomatic</name>
+    <entry>Auran</entry>
+    <entry>Celestial</entry>
+    <entry>Common</entry>
+    <entry>Ignan</entry>
   </collection>
   <collection>
     <name>EfreetiAutomatic</name>
+    <entry>Auran</entry>
+    <entry>Infernal</entry>
+    <entry>Common</entry>
+    <entry>Ignan</entry>
   </collection>
   <collection>
     <name>Dragon TurtleAutomatic</name>
+    <entry>Aquan</entry>
+    <entry>Draconic</entry>
+    <entry>Common</entry>
   </collection>
   <collection>
     <name>DragonneAutomatic</name>
+    <entry>Draconic</entry>
   </collection>
   <collection>
     <name>WraithAutomatic</name>
+    <entry>Infernal</entry>
+    <entry>Common</entry>
   </collection>
   <collection>
     <name>Dread WraithAutomatic</name>
+    <entry>Infernal</entry>
+    <entry>Common</entry>
   </collection>
   <collection>
     <name>DriderAutomatic</name>
@@ -4794,6 +4816,9 @@
   </collection>
   <collection>
     <name>DryadAutomatic</name>
+    <entry>Common</entry>
+    <entry>Elven</entry>
+    <entry>Sylvan</entry>
   </collection>
   <collection>
     <name>Ethereal FilcherAutomatic</name>
@@ -4803,9 +4828,13 @@
   </collection>
   <collection>
     <name>EttercapAutomatic</name>
+    <entry>Common</entry>
   </collection>
   <collection>
     <name>EttinAutomatic</name>
+    <entry>Giant</entry>
+    <entry>Goblin</entry>
+    <entry>Orc</entry>
   </collection>
   <collection>
     <name>Formian WorkerAutomatic</name>
@@ -4890,5 +4919,50 @@
   </collection>
   <collection>
     <name>Formian QueenBonus</name>
+  </collection>
+  <collection>
+    <name>GhaeleAutomatic</name>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>GhaeleBonus</name>
+  </collection>
+  <collection>
+    <name>GhoulAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>GhastAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>LacedonAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>GhoulBonus</name>
+    <entry>Elven</entry>
+    <entry>Halfling</entry>
+    <entry>Gnome</entry>
+    <entry>Dwarven</entry>
+    <entry>Orc</entry>
+  </collection>
+  <collection>
+    <name>GhastBonus</name>
+    <entry>Elven</entry>
+    <entry>Halfling</entry>
+    <entry>Gnome</entry>
+    <entry>Dwarven</entry>
+    <entry>Orc</entry>
+  </collection>
+  <collection>
+    <name>LacedonBonus</name>
+    <entry>Elven</entry>
+    <entry>Halfling</entry>
+    <entry>Gnome</entry>
+    <entry>Dwarven</entry>
+    <entry>Orc</entry>
   </collection>
 </collections>

@@ -1019,6 +1019,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.FormianQueen,
             LanguageConstants.Special.Formian,
             LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Ghaele,
+            LanguageConstants.Celestial,
+            LanguageConstants.Infernal,
+            LanguageConstants.Draconic)]
+        [TestCase(CreatureConstants.Ghoul,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Ghoul_Ghast,
+            LanguageConstants.Common)]
+        [TestCase(CreatureConstants.Ghoul_Lacedon,
+            LanguageConstants.Common)]
         public void AutomaticLanguages(string creature, params string[] languages)
         {
             base.AssertDistinctCollection(creature + LanguageConstants.Groups.Automatic, languages);
@@ -1982,6 +1992,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.FormianTaskmaster)]
         [TestCase(CreatureConstants.FormianMyrmarch)]
         [TestCase(CreatureConstants.FormianQueen)]
+        [TestCase(CreatureConstants.Ghaele)]
+        [TestCase(CreatureConstants.Ghoul,
+            LanguageConstants.Elven,
+            LanguageConstants.Halfling,
+            LanguageConstants.Gnome,
+            LanguageConstants.Orc,
+            LanguageConstants.Dwarven)]
+        [TestCase(CreatureConstants.Ghoul_Ghast,
+            LanguageConstants.Elven,
+            LanguageConstants.Halfling,
+            LanguageConstants.Gnome,
+            LanguageConstants.Orc,
+            LanguageConstants.Dwarven)]
+        [TestCase(CreatureConstants.Ghoul_Lacedon,
+            LanguageConstants.Elven,
+            LanguageConstants.Halfling,
+            LanguageConstants.Gnome,
+            LanguageConstants.Orc,
+            LanguageConstants.Dwarven)]
         public void BonusLanguages(string creature, params string[] collection)
         {
             base.AssertDistinctCollection(creature + LanguageConstants.Groups.Bonus, collection);
