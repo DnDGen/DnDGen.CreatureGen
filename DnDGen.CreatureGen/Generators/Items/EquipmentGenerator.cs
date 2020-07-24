@@ -182,7 +182,7 @@ namespace DnDGen.CreatureGen.Generators.Items
             var weaponSize = GetWeaponSize(feats, size);
 
             //Get predetermined items
-            var allPredeterminedItems = GetPredeterminedItems(creatureName, weaponSize);
+            var allPredeterminedItems = GetPredeterminedItems(creatureName, size, weaponSize);
             var predeterminedWeapons = allPredeterminedItems
                 .Where(i => i is Weapon)
                 .Select(i => i as Weapon)
@@ -659,11 +659,11 @@ namespace DnDGen.CreatureGen.Generators.Items
             return names;
         }
 
-        private IEnumerable<Item> GetPredeterminedItems(string creatureName, string size)
+        private IEnumerable<Item> GetPredeterminedItems(string creatureName, string size, string weaponSize)
         {
             var setItems = new List<Item>();
             var setTreasure = collectionSelector.SelectFrom(TableNameConstants.Collection.PredeterminedItems, creatureName);
-            var setItemTemplates = GetTemplates(setTreasure, size);
+            var setItemTemplates = GetTemplates(setTreasure, size, weaponSize);
 
             foreach (var template in setItemTemplates)
             {
@@ -674,7 +674,7 @@ namespace DnDGen.CreatureGen.Generators.Items
             return setItems;
         }
 
-        private IEnumerable<Item> GetTemplates(IEnumerable<string> setTreasure, string size)
+        private IEnumerable<Item> GetTemplates(IEnumerable<string> setTreasure, string size, string weaponSize)
         {
             var templates = new List<Item>();
             var sizes = SizeConstants.GetOrdered();
@@ -684,7 +684,14 @@ namespace DnDGen.CreatureGen.Generators.Items
                 var template = itemSelector.SelectFrom(setItemTemplate);
                 if (!template.Traits.Intersect(sizes).Any())
                 {
-                    template.Traits.Add(size);
+                    if (template.ItemType == ItemTypeConstants.Weapon)
+                    {
+                        template.Traits.Add(weaponSize);
+                    }
+                    else
+                    {
+                        template.Traits.Add(size);
+                    }
                 }
 
                 templates.Add(template);
