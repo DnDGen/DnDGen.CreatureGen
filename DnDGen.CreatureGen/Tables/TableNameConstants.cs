@@ -21,7 +21,6 @@
             public const string CreatureData = "CreatureData";
             public const string CreatureGroups = "CreatureGroups";
             public const string CreatureTypes = "CreatureTypes";
-            public const string DragonSpecies = "DragonSpecies";
             public const string FeatData = "FeatData";
             public const string SpecialQualityData = "SpecialQualityData";
             public const string FeatFoci = "FeatFoci";
@@ -55,16 +54,5 @@
             public const string SpellLevels = "SpellLevels";
             public const string SpellsPerDay = "SpellsPerDay";
         }
-
-        //internal static class Percentile
-        //{
-        //    public const string AlignmentGoodness = "AlignmentGoodness";
-        //    public const string AlignmentLawfulness = "AlignmentLawfulness";
-        //}
-
-        //internal static class TrueOrFalse
-        //{
-        //    public const string Male = "Male";
-        //}
     }
 }

@@ -197,6 +197,9 @@
     <entry>Common</entry>
   </collection>
   <collection>
+    <name>LichBonus</name>
+  </collection>
+  <collection>
     <name>Lightfoot HalflingAutomatic</name>
     <entry>Common</entry>
     <entry>Halfling</entry>
@@ -276,11 +279,22 @@
   </collection>
   <collection>
     <name>SahuaginAutomatic</name>
-    <entry>Common</entry>
+    <entry>Sahuagin</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin MutantAutomatic</name>
+    <entry>Sahuagin</entry>
+  </collection>
+  <collection>
+    <name>MalentiAutomatic</name>
     <entry>Sahuagin</entry>
   </collection>
   <collection>
     <name>SatyrAutomatic</name>
+    <entry>Sylvan</entry>
+  </collection>
+  <collection>
+    <name>Satyr with pipesAutomatic</name>
     <entry>Sylvan</entry>
   </collection>
   <collection>
@@ -413,12 +427,6 @@
     <entry>Common</entry>
     <entry>Gnome</entry>
     <entry>Halfling</entry>
-  </collection>
-  <collection>
-    <name>ClericBonus</name>
-    <entry>Abyssal</entry>
-    <entry>Celestial</entry>
-    <entry>Infernal</entry>
   </collection>
   <collection>
     <name>Cloud GiantBonus</name>
@@ -908,6 +916,26 @@
   </collection>
   <collection>
     <name>SahuaginBonus</name>
+    <entry>Common</entry>
+    <entry>Aquan</entry>
+    <entry>Draconic</entry>
+    <entry>Elven</entry>
+    <entry>Kuo-toa</entry>
+    <entry>Undercommon</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin MutantBonus</name>
+    <entry>Common</entry>
+    <entry>Aquan</entry>
+    <entry>Draconic</entry>
+    <entry>Elven</entry>
+    <entry>Kuo-toa</entry>
+    <entry>Undercommon</entry>
+  </collection>
+  <collection>
+    <name>MalentiBonus</name>
+    <entry>Common</entry>
+    <entry>Aquan</entry>
     <entry>Draconic</entry>
     <entry>Elven</entry>
     <entry>Kuo-toa</entry>
@@ -915,6 +943,12 @@
   </collection>
   <collection>
     <name>SatyrBonus</name>
+    <entry>Common</entry>
+    <entry>Elven</entry>
+    <entry>Gnome</entry>
+  </collection>
+  <collection>
+    <name>Satyr with pipesBonus</name>
     <entry>Common</entry>
     <entry>Elven</entry>
     <entry>Gnome</entry>
@@ -5198,5 +5232,526 @@
   </collection>
   <collection>
     <name>KrensharBonus</name>
+  </collection>
+  <collection>
+    <name>LammasuAutomatic</name>
+    <entry>Draconic</entry>
+    <entry>Celestial</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Lantern ArchonAutomatic</name>
+    <entry>Celestial</entry>
+  </collection>
+  <collection>
+    <name>Trumpet ArchonAutomatic</name>
+    <entry>Celestial</entry>
+  </collection>
+  <collection>
+    <name>LeonalAutomatic</name>
+    <entry>Draconic</entry>
+    <entry>Celestial</entry>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>LillendAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Infernal</entry>
+    <entry>Celestial</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>MagminAutomatic</name>
+    <entry>Ignan</entry>
+  </collection>
+  <collection>
+    <name>ManticoreAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>MedusaAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>MimicAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>MohrgAutomatic</name>
+  </collection>
+  <collection>
+    <name>MummyAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Night HagAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Infernal</entry>
+    <entry>Celestial</entry>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>NightcrawlerAutomatic</name>
+  </collection>
+  <collection>
+    <name>NightwalkerAutomatic</name>
+  </collection>
+  <collection>
+    <name>NightwingAutomatic</name>
+  </collection>
+  <collection>
+    <name>NightmareAutomatic</name>
+  </collection>
+  <collection>
+    <name>Nightmare, CauchemarAutomatic</name>
+  </collection>
+  <collection>
+    <name>LammasuBonus</name>
+  </collection>
+  <collection>
+    <name>Lantern ArchonBonus</name>
+    <entry>Common</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Trumpet ArchonBonus</name>
+    <entry>Common</entry>
+    <entry>Infernal</entry>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>LeonalBonus</name>
+  </collection>
+  <collection>
+    <name>LillendBonus</name>
+  </collection>
+  <collection>
+    <name>MagminBonus</name>
+  </collection>
+  <collection>
+    <name>ManticoreBonus</name>
+  </collection>
+  <collection>
+    <name>MedusaBonus</name>
+  </collection>
+  <collection>
+    <name>MimicBonus</name>
+  </collection>
+  <collection>
+    <name>MohrgBonus</name>
+  </collection>
+  <collection>
+    <name>MummyBonus</name>
+  </collection>
+  <collection>
+    <name>Night HagBonus</name>
+  </collection>
+  <collection>
+    <name>NightcrawlerBonus</name>
+  </collection>
+  <collection>
+    <name>NightwalkerBonus</name>
+  </collection>
+  <collection>
+    <name>NightwingBonus</name>
+  </collection>
+  <collection>
+    <name>NightmareBonus</name>
+  </collection>
+  <collection>
+    <name>Nightmare, CauchemarBonus</name>
+  </collection>
+  <collection>
+    <name>NymphAutomatic</name>
+    <entry>Common</entry>
+    <entry>Sylvan</entry>
+  </collection>
+  <collection>
+    <name>OtyughAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>PegasusAutomatic</name>
+  </collection>
+  <collection>
+    <name>Phase SpiderAutomatic</name>
+  </collection>
+  <collection>
+    <name>PhasmAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>PseudodragonAutomatic</name>
+  </collection>
+  <collection>
+    <name>RavidAutomatic</name>
+  </collection>
+  <collection>
+    <name>RemorhazAutomatic</name>
+  </collection>
+  <collection>
+    <name>RoperAutomatic</name>
+    <entry>Terran</entry>
+    <entry>Undercommon</entry>
+  </collection>
+  <collection>
+    <name>Shadow MastiffAutomatic</name>
+  </collection>
+  <collection>
+    <name>NymphBonus</name>
+  </collection>
+  <collection>
+    <name>OtyughBonus</name>
+  </collection>
+  <collection>
+    <name>PegasusBonus</name>
+  </collection>
+  <collection>
+    <name>Phase SpiderBonus</name>
+  </collection>
+  <collection>
+    <name>PhasmBonus</name>
+  </collection>
+  <collection>
+    <name>PseudodragonBonus</name>
+  </collection>
+  <collection>
+    <name>RavidBonus</name>
+  </collection>
+  <collection>
+    <name>RemorhazBonus</name>
+  </collection>
+  <collection>
+    <name>RoperBonus</name>
+  </collection>
+  <collection>
+    <name>Shadow MastiffBonus</name>
+  </collection>
+  <collection>
+    <name>Shambling MoundAutomatic</name>
+  </collection>
+  <collection>
+    <name>SkumAutomatic</name>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>SpectreAutomatic</name>
+  </collection>
+  <collection>
+    <name>ThoqquaAutomatic</name>
+  </collection>
+  <collection>
+    <name>TitanAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Celestial</entry>
+    <entry>Draconic</entry>
+    <entry>Common</entry>
+    <entry>Giant</entry>
+  </collection>
+  <collection>
+    <name>TreantAutomatic</name>
+    <entry>Treant</entry>
+    <entry>Common</entry>
+    <entry>Sylvan</entry>
+  </collection>
+  <collection>
+    <name>TritonAutomatic</name>
+    <entry>Common</entry>
+    <entry>Aquan</entry>
+  </collection>
+  <collection>
+    <name>Umber HulkAutomatic</name>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber HulkAutomatic</name>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>UnicornAutomatic</name>
+    <entry>Common</entry>
+    <entry>Sylvan</entry>
+  </collection>
+  <collection>
+    <name>Vampire SpawnAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>VargouilleAutomatic</name>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>WightAutomatic</name>
+    <entry>Common</entry>
+  </collection>
+  <collection>
+    <name>Will-O'-WispAutomatic</name>
+    <entry>Common</entry>
+    <entry>Auran</entry>
+  </collection>
+  <collection>
+    <name>Winter WolfAutomatic</name>
+    <entry>Common</entry>
+    <entry>Giant</entry>
+  </collection>
+  <collection>
+    <name>WorgAutomatic</name>
+    <entry>Worg</entry>
+  </collection>
+  <collection>
+    <name>WyvernAutomatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>XillAutomatic</name>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>Yeth HoundAutomatic</name>
+  </collection>
+  <collection>
+    <name>YrthakAutomatic</name>
+  </collection>
+  <collection>
+    <name>Shambling MoundBonus</name>
+  </collection>
+  <collection>
+    <name>SkumBonus</name>
+  </collection>
+  <collection>
+    <name>SpectreBonus</name>
+  </collection>
+  <collection>
+    <name>ThoqquaBonus</name>
+  </collection>
+  <collection>
+    <name>TitanBonus</name>
+  </collection>
+  <collection>
+    <name>TreantBonus</name>
+    <entry>Abyssal</entry>
+    <entry>Common</entry>
+    <entry>Elven</entry>
+    <entry>Celestial</entry>
+    <entry>Undercommon</entry>
+    <entry>Goblin</entry>
+    <entry>Dwarven</entry>
+    <entry>Draconic</entry>
+    <entry>Giant</entry>
+    <entry>Infernal</entry>
+    <entry>Gnome</entry>
+    <entry>Sylvan</entry>
+    <entry>Gnoll</entry>
+    <entry>Orc</entry>
+    <entry>Halfling</entry>
+    <entry>Aquan</entry>
+    <entry>Auran</entry>
+    <entry>Ignan</entry>
+    <entry>Terran</entry>
+  </collection>
+  <collection>
+    <name>TritonBonus</name>
+  </collection>
+  <collection>
+    <name>Umber HulkBonus</name>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber HulkBonus</name>
+  </collection>
+  <collection>
+    <name>UnicornBonus</name>
+  </collection>
+  <collection>
+    <name>Vampire SpawnBonus</name>
+  </collection>
+  <collection>
+    <name>VargouilleBonus</name>
+  </collection>
+  <collection>
+    <name>WightBonus</name>
+  </collection>
+  <collection>
+    <name>Will-O'-WispBonus</name>
+  </collection>
+  <collection>
+    <name>Winter WolfBonus</name>
+  </collection>
+  <collection>
+    <name>WorgBonus</name>
+    <entry>Common</entry>
+    <entry>Goblin</entry>
+  </collection>
+  <collection>
+    <name>WyvernBonus</name>
+  </collection>
+  <collection>
+    <name>XillBonus</name>
+  </collection>
+  <collection>
+    <name>Yeth HoundBonus</name>
+  </collection>
+  <collection>
+    <name>YrthakBonus</name>
+  </collection>
+  <collection>
+    <name>Automatic</name>
+  </collection>
+  <collection>
+    <name>Bonus</name>
+  </collection>
+  <collection>
+    <name>Celestial CreatureAutomatic</name>
+    <entry>Celestial</entry>
+  </collection>
+  <collection>
+    <name>Fiendish CreatureAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialAutomatic</name>
+    <entry>Celestial</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendAutomatic</name>
+    <entry>Abyssal</entry>
+    <entry>Infernal</entry>
+  </collection>
+  <collection>
+    <name>GhostAutomatic</name>
+  </collection>
+  <collection>
+    <name>VampireAutomatic</name>
+  </collection>
+  <collection>
+    <name>ZombieAutomatic</name>
+  </collection>
+  <collection>
+    <name>SkeletonAutomatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Bear (Werebear)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Rat (Wererat)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf)Automatic</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Black)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)Automatic</name>
+    <entry>Draconic</entry>
+  </collection>
+  <collection>
+    <name>Celestial CreatureBonus</name>
+  </collection>
+  <collection>
+    <name>Fiendish CreatureBonus</name>
+  </collection>
+  <collection>
+    <name>Half-CelestialBonus</name>
+  </collection>
+  <collection>
+    <name>Half-FiendBonus</name>
+  </collection>
+  <collection>
+    <name>GhostBonus</name>
+  </collection>
+  <collection>
+    <name>VampireBonus</name>
+  </collection>
+  <collection>
+    <name>ZombieBonus</name>
+  </collection>
+  <collection>
+    <name>SkeletonBonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Bear (Werebear)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Rat (Wererat)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf)Bonus</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Black)Bonus</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)Bonus</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)Bonus</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)Bonus</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)Bonus</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)Bonus</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)Bonus</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)Bonus</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)Bonus</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)Bonus</name>
   </collection>
 </collections>

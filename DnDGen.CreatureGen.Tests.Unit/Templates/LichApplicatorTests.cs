@@ -222,8 +222,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(2));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
+                .And.Contains(CreatureConstants.Types.Subtypes.Augmented)
                 .And.Contains("subtype 2"));
         }
 

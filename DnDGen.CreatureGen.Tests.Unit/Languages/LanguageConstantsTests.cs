@@ -37,6 +37,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Languages
         [TestCase(LanguageConstants.Special.Sahuagin, "Sahuagin")]
         [TestCase(LanguageConstants.Special.Slaad, "Slaad")]
         [TestCase(LanguageConstants.Special.Sphinx, "Sphinx")]
+        [TestCase(LanguageConstants.Special.Treant, "Treant")]
         [TestCase(LanguageConstants.Special.Worg, "Worg")]
         [TestCase(LanguageConstants.Special.YuanTi, "Yuan-ti")]
         [TestCase(LanguageConstants.Groups.Automatic, "Automatic")]

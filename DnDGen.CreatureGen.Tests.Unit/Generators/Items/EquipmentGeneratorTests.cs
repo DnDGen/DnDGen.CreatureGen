@@ -744,6 +744,46 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         }
 
         [Test]
+        public void BUG_GenerateMeleeWeapon_WithOversizedWeapon()
+        {
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+            feats.Add(new Feat { Name = FeatConstants.SpecialQualities.OversizedWeapon, Foci = new[] { "oversized" } });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var melee = WeaponConstants.GetAllMelee(false, false);
+            var simpleMelee = simple.Intersect(melee);
+            var non = melee.Except(simple);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleMelee)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("simple weapon");
+
+            var weapon = new Weapon();
+            weapon.Name = WeaponConstants.Club;
+            weapon.Damage = "my damage";
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "oversized"))
+                .Returns(weapon);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
+            Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].IsMelee, Is.True);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].AttackBonuses, Is.Empty);
+        }
+
+        [Test]
         public void GenerateMeleeWeapon_ApplyBonusFromFeat()
         {
             attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
@@ -990,6 +1030,69 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 Times.Never);
 
             Assert.That(template.Traits, Contains.Item("size"));
+        }
+
+        [Test]
+        public void GenerateMeleeWeapon_Predetermined_Mundane_WithoutSize_Oversized()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Returns(new[] { "my weapon template" });
+
+            feats.Add(new Feat { Name = FeatConstants.SpecialQualities.OversizedWeapon, Foci = new[] { "oversized" } });
+
+            var template = new Item
+            {
+                ItemType = ItemTypeConstants.Weapon,
+                Name = "my weapon template"
+            };
+            mockItemSelector
+                .Setup(s => s.SelectFrom("my weapon template"))
+                .Returns(template);
+
+            var mockMundaneItemGenerator = new Mock<MundaneItemGenerator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<MundaneItemGenerator>(ItemTypeConstants.Weapon))
+                .Returns(mockMundaneItemGenerator.Object);
+
+            var weapon = new Weapon
+            {
+                Name = WeaponConstants.Club,
+                Damage = "my predetermined damage",
+                Attributes = new[] { AttributeConstants.Melee }
+            };
+            mockMundaneItemGenerator
+                .Setup(g => g.Generate(template, false))
+                .Returns(weapon);
+
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
+            Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].IsMelee, Is.True);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].AttackBonuses, Is.Empty);
+
+            mockCollectionSelector.Verify(
+                s => s.SelectRandomFrom(
+                    It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<IEnumerable<string>>()),
+                Times.Never);
+
+            mockItemGenerator.Verify(
+                g => g.GenerateAtLevel(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>()),
+                Times.Never);
+
+            Assert.That(template.Traits, Contains.Item("oversized"));
         }
 
         [Test]
@@ -1691,6 +1794,46 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             weapon.Damage = "my damage";
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
+                .Returns(weapon);
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
+            Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].IsMelee, Is.True);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].AttackBonuses, Is.Empty);
+        }
+
+        [Test]
+        public void BUG_GenerateRangedWeapon_Oversized()
+        {
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = true });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+            feats.Add(new Feat { Name = FeatConstants.SpecialQualities.OversizedWeapon, Foci = new[] { "oversized" } });
+
+            var simple = WeaponConstants.GetAllSimple(false, false);
+            var ranged = GetRangedWithBowTemplates();
+            var simpleRanged = simple.Intersect(ranged);
+            var non = ranged.Except(simpleRanged);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => !cc.Any()),
+                    It.Is<IEnumerable<string>>(uu => uu.IsEquivalentTo(simpleRanged)),
+                    null,
+                    It.Is<IEnumerable<string>>(nn => nn.IsEquivalentTo(non))))
+                .Returns("simple weapon");
+
+            var weapon = new Weapon();
+            weapon.Name = WeaponConstants.Dart;
+            weapon.Damage = "my damage";
+            mockItemGenerator
+                .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "oversized"))
                 .Returns(weapon);
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -2552,6 +2695,69 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 Times.Never);
 
             Assert.That(template.Traits, Contains.Item("size"));
+        }
+
+        [Test]
+        public void GenerateRangedWeapon_Predetermined_Mundane_WithoutSize_Oversized()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Returns(new[] { "my weapon template" });
+
+            feats.Add(new Feat { Name = FeatConstants.SpecialQualities.OversizedWeapon, Foci = new[] { "oversized" } });
+
+            var template = new Item
+            {
+                ItemType = ItemTypeConstants.Weapon,
+                Name = "my weapon template"
+            };
+            mockItemSelector
+                .Setup(s => s.SelectFrom("my weapon template"))
+                .Returns(template);
+
+            var mockMundaneItemGenerator = new Mock<MundaneItemGenerator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<MundaneItemGenerator>(ItemTypeConstants.Weapon))
+                .Returns(mockMundaneItemGenerator.Object);
+
+            var weapon = new Weapon
+            {
+                Name = WeaponConstants.Dart,
+                Damage = "my predetermined damage",
+                Attributes = new[] { AttributeConstants.Ranged }
+            };
+            mockMundaneItemGenerator
+                .Setup(g => g.Generate(template, false))
+                .Returns(weapon);
+
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Not.Empty.And.Count.EqualTo(1));
+            Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
+
+            Assert.That(attacks, Has.Count.EqualTo(6));
+            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
+            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].IsMelee, Is.False);
+            Assert.That(attacks[5].IsNatural, Is.False);
+            Assert.That(attacks[5].IsSpecial, Is.False);
+            Assert.That(attacks[5].AttackBonuses, Is.Empty);
+
+            mockCollectionSelector.Verify(
+                s => s.SelectRandomFrom(
+                    It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<IEnumerable<string>>(),
+                    It.IsAny<IEnumerable<string>>()),
+                Times.Never);
+
+            mockItemGenerator.Verify(
+                g => g.GenerateAtLevel(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>()),
+                Times.Never);
+
+            Assert.That(template.Traits, Contains.Item("oversized"));
         }
 
         [Test]

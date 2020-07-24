@@ -78,13 +78,11 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Type.Name = CreatureConstants.Types.MagicalBeast;
             }
 
-            if (!creature.Type.SubTypes.Contains(CreatureConstants.Types.Subtypes.Extraplanar))
+            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
             {
-                creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
-                {
-                    CreatureConstants.Types.Subtypes.Extraplanar
-                });
-            }
+                CreatureConstants.Types.Subtypes.Extraplanar,
+                CreatureConstants.Types.Subtypes.Augmented,
+            });
         }
 
         private void UpdateCreatureAbilities(Creature creature)

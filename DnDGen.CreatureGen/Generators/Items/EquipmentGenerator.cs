@@ -179,8 +179,10 @@ namespace DnDGen.CreatureGen.Generators.Items
         {
             var equipment = new Equipment();
 
+            var weaponSize = GetWeaponSize(feats, size);
+
             //Get predetermined items
-            var allPredeterminedItems = GetPredeterminedItems(creatureName, size);
+            var allPredeterminedItems = GetPredeterminedItems(creatureName, weaponSize);
             var predeterminedWeapons = allPredeterminedItems
                 .Where(i => i is Weapon)
                 .Select(i => i as Weapon)
@@ -254,7 +256,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                                 proficientMeleeWeaponNames.Uncommon,
                                 null,
                                 nonProficientMeleeWeaponNames);
-                            weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName, size) as Weapon;
+                            weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName, weaponSize) as Weapon;
                         }
 
                         weapons.Add(weapon);
@@ -350,7 +352,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                                 proficientRangedWeaponNames.Uncommon,
                                 null,
                                 nonProficientRangedWeaponNames);
-                            weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName, size) as Weapon;
+                            weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName, weaponSize) as Weapon;
                         }
 
                         weapons.Add(weapon);
@@ -368,7 +370,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                             }
                             else
                             {
-                                ammo = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weapon.Ammunition, size) as Weapon;
+                                ammo = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weapon.Ammunition, weaponSize) as Weapon;
                             }
 
                             weapons.Add(ammo);
@@ -456,6 +458,17 @@ namespace DnDGen.CreatureGen.Generators.Items
             }
 
             return equipment;
+        }
+
+        private string GetWeaponSize(IEnumerable<Feat> feats, string size)
+        {
+            var oversized = feats.FirstOrDefault(f => f.Name == FeatConstants.SpecialQualities.OversizedWeapon);
+            if (oversized == null)
+            {
+                return size;
+            }
+
+            return oversized.Foci.First();
         }
 
         private List<string> GetRangedWithBowTemplates()

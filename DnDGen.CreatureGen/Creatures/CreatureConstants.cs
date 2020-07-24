@@ -169,20 +169,6 @@ namespace DnDGen.CreatureGen.Creatures
                     Zombie,
                 };
             }
-
-            public static class Species
-            {
-                public const string Black = "Black";
-                public const string Blue = "Blue";
-                public const string Brass = "Brass";
-                public const string Bronze = "Bronze";
-                public const string Copper = "Copper";
-                public const string Green = "Green";
-                public const string Gold = "Gold";
-                public const string Red = "Red";
-                public const string Silver = "Silver";
-                public const string White = "White";
-            }
         }
 
         public static class Groups

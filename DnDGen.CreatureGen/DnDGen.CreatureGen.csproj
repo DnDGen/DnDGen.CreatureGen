@@ -33,7 +33,6 @@
     <None Remove="Tables\Creatures\CreatureData.xml" />
     <None Remove="Tables\Creatures\CreatureGroups.xml" />
     <None Remove="Tables\Creatures\CreatureTypes.xml" />
-    <None Remove="Tables\Creatures\DragonSpecies.xml" />
     <None Remove="Tables\Creatures\Speeds.xml" />
     <None Remove="Tables\Defenses\ArmorClassBonuses.xml" />
     <None Remove="Tables\Defenses\HitDice.xml" />
@@ -95,7 +94,6 @@
     <EmbeddedResource Include="Tables\Creatures\CreatureTypes.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Creatures\DragonSpecies.xml" />
     <EmbeddedResource Include="Tables\Creatures\Speeds.xml" />
     <EmbeddedResource Include="Tables\Defenses\ArmorClassBonuses.xml">
       <SubType>Designer</SubType>

@@ -101,13 +101,11 @@ namespace DnDGen.CreatureGen.Templates
         {
             creature.Type.Name = CreatureConstants.Types.Undead;
 
-            if (!creature.Type.SubTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
+            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
             {
-                creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
-                {
-                    CreatureConstants.Types.Subtypes.Incorporeal
-                });
-            }
+                CreatureConstants.Types.Subtypes.Incorporeal,
+                CreatureConstants.Types.Subtypes.Augmented,
+            });
         }
 
         private void UpdateCreatureAbilities(Creature creature)

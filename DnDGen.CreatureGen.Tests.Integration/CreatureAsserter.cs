@@ -44,7 +44,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.ChallengeRating, Is.Not.Empty, creature.Summary);
             Assert.That(creature.CasterLevel, Is.Not.Negative, creature.Summary);
             Assert.That(creature.NumberOfHands, Is.Not.Negative, creature.Summary);
-            Assert.That(creature.Languages, Is.Not.Null, creature.Summary);
+            Assert.That(creature.Languages, Is.Empty.Or.Unique, creature.Summary);
         }
 
         private void VerifyMagic(Creature creature)

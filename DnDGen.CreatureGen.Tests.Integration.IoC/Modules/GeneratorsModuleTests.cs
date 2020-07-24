@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Items;
+using DnDGen.CreatureGen.Generators.Languages;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Templates;
@@ -30,6 +31,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         public void CreatureGeneratorIsNotBuiltAsSingleton()
         {
             AssertNotSingleton<ICreatureGenerator>();
+        }
+
+        [Test]
+        public void LanguageGeneratorIsNotBuiltAsSingleton()
+        {
+            AssertNotSingleton<ILanguageGenerator>();
         }
 
         [Test]

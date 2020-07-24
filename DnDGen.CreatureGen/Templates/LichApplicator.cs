@@ -80,6 +80,10 @@ namespace DnDGen.CreatureGen.Templates
         private void UpdateCreatureType(Creature creature)
         {
             creature.Type.Name = CreatureConstants.Types.Undead;
+            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
+            {
+                CreatureConstants.Types.Subtypes.Augmented,
+            });
         }
 
         private void UpdateCreatureHitPoints(Creature creature)

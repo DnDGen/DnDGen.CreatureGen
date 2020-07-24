@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Items;
+using DnDGen.CreatureGen.Generators.Languages;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Templates;
@@ -29,6 +30,7 @@ namespace DnDGen.CreatureGen.IoC.Modules
             Bind<IEquipmentGenerator>().To<EquipmentGenerator>();
             Bind<IMagicGenerator>().To<MagicGenerator>();
             Bind<ISpellsGenerator>().To<SpellsGenerator>();
+            Bind<ILanguageGenerator>().To<LanguageGenerator>();
 
             Bind<ICreatureGenerator>().To<CreatureGenerator>();
             Bind<IAlignmentGenerator>().To<AlignmentGenerator>();

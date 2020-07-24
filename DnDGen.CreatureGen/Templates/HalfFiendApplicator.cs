@@ -106,7 +106,8 @@ namespace DnDGen.CreatureGen.Templates
             creature.Type.Name = CreatureConstants.Types.Outsider;
             creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
             {
-                CreatureConstants.Types.Subtypes.Native
+                CreatureConstants.Types.Subtypes.Native,
+                CreatureConstants.Types.Subtypes.Augmented,
             });
         }
 

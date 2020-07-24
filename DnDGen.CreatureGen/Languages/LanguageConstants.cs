@@ -36,6 +36,7 @@
             public const string Sahuagin = "Sahuagin";
             public const string Slaad = "Slaad";
             public const string Sphinx = "Sphinx";
+            public const string Treant = "Treant";
             public const string Worg = "Worg";
             public const string YuanTi = "Yuan-ti";
         }
