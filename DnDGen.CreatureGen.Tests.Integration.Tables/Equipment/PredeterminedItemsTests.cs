@@ -189,7 +189,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [TestCase(CreatureConstants.Barghest)]
         [TestCase(CreatureConstants.Barghest_Greater)]
         [TestCase(CreatureConstants.Basilisk)]
-        [TestCase(CreatureConstants.Basilisk_AbyssalGreater)]
+        [TestCase(CreatureConstants.Basilisk_Greater)]
         [TestCase(CreatureConstants.Bat)]
         [TestCase(CreatureConstants.Bat_Dire)]
         [TestCase(CreatureConstants.Bat_Swarm)]

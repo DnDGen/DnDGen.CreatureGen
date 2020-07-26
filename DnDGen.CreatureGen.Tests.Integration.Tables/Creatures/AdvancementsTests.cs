@@ -254,7 +254,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[CreatureConstants.Barghest_Greater][RollHelper.GetRollWithMostEvenDistribution(9, 10, 18)] = GetData(SizeConstants.Large, 10, 5);
                     testCases[CreatureConstants.Basilisk][RollHelper.GetRollWithMostEvenDistribution(6, 7, 10)] = GetData(SizeConstants.Medium, 5, 5);
                     testCases[CreatureConstants.Basilisk][RollHelper.GetRollWithMostEvenDistribution(6, 11, 18)] = GetData(SizeConstants.Large, 10, 5);
-                    testCases[CreatureConstants.Basilisk_AbyssalGreater][None] = new string[0];
+                    testCases[CreatureConstants.Basilisk_Greater][None] = new string[0];
                     testCases[CreatureConstants.Bat][None] = new string[0];
                     testCases[CreatureConstants.Bat_Dire][RollHelper.GetRollWithMostEvenDistribution(4, 5, 12)] = GetData(SizeConstants.Large, 10, 5);
                     testCases[CreatureConstants.Bat_Swarm][None] = new string[0];

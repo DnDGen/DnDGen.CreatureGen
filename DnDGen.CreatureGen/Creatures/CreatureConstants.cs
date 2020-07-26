@@ -396,7 +396,7 @@ namespace DnDGen.CreatureGen.Creatures
         public const string Barghest = "Barghest";
         public const string Barghest_Greater = "Greater Barghest";
         public const string Basilisk = "Basilisk";
-        public const string Basilisk_AbyssalGreater = "Abyssal Greater Basilisk";
+        public const string Basilisk_Greater = "Greater Basilisk";
         public const string Bat = "Bat";
         public const string Bat_Dire = "Dire Bat";
         public const string Bat_Swarm = "Bat Swarm";
@@ -1122,7 +1122,7 @@ namespace DnDGen.CreatureGen.Creatures
                 Barghest,
                 Barghest_Greater,
                 Basilisk,
-                Basilisk_AbyssalGreater,
+                Basilisk_Greater,
                 Bat,
                 Bat_Dire,
                 Bat_Swarm,

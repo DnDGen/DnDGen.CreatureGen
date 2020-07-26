@@ -456,7 +456,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.BarbedDevil_Hamatula, "Barbed Devil (Hamatula)")]
         [TestCase(CreatureConstants.BeardedDevil_Barbazu, "Bearded Devil (Barbazu)")]
         [TestCase(CreatureConstants.Barghest_Greater, "Greater " + CreatureConstants.Barghest)]
-        [TestCase(CreatureConstants.Basilisk_AbyssalGreater, "Abyssal Greater " + CreatureConstants.Basilisk)]
+        [TestCase(CreatureConstants.Basilisk_Greater, "Abyssal Greater " + CreatureConstants.Basilisk)]
         [TestCase(CreatureConstants.BlackPudding_Elder, "Elder " + CreatureConstants.BlackPudding)]
         [TestCase(CreatureConstants.Centipede_Monstrous_Colossal, CreatureConstants.Groups.Centipede_Monstrous + ", " + SizeConstants.Colossal)]
         [TestCase(CreatureConstants.Centipede_Monstrous_Gargantuan, CreatureConstants.Groups.Centipede_Monstrous + ", " + SizeConstants.Gargantuan)]

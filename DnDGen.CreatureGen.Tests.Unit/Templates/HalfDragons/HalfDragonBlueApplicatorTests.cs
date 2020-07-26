@@ -39,6 +39,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ISkillsGenerator> mockSkillsGenerator;
         private Mock<IAlignmentGenerator> mockAlignmentGenerator;
+        private Alignment alignment;
 
         private const string template = CreatureConstants.Templates.HalfDragon_Blue;
 
@@ -85,10 +86,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     .AsPotentialAverage())
                 .Returns(90210);
 
-            var dragonAlignment = new Alignment { Lawfulness = "dragony", Goodness = "scaley" };
+            alignment = new Alignment { Lawfulness = "dragony", Goodness = "scaley" };
             mockAlignmentGenerator
                 .Setup(g => g.Generate(template))
-                .Returns(dragonAlignment);
+                .Returns(alignment);
         }
 
         [TestCase(CreatureConstants.Types.Aberration, true)]
@@ -786,9 +787,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Dragon));
-            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(2));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
-                .And.Contains("subtype 2"));
+                .And.Contains("subtype 2")
+                .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
         }
 
         [TestCase(4, 6)]
@@ -1285,7 +1287,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    new Alignment { Lawfulness = "dragony", Goodness = "scaley" }))
+                    alignment))
                 .Returns(newQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();

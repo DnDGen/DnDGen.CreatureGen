@@ -211,7 +211,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [TestCase(CreatureConstants.Barghest, 0)]
         [TestCase(CreatureConstants.Barghest_Greater, 0)]
         [TestCase(CreatureConstants.Basilisk, 0)]
-        [TestCase(CreatureConstants.Basilisk_AbyssalGreater, 0)]
+        [TestCase(CreatureConstants.Basilisk_Greater, 0)]
         [TestCase(CreatureConstants.Bat, 0)]
         [TestCase(CreatureConstants.Bat_Dire, 0)]
         [TestCase(CreatureConstants.Bat_Swarm, 0)]

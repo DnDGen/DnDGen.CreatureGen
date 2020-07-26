@@ -195,7 +195,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Barghest)]
         [TestCase(CreatureConstants.Barghest_Greater)]
         [TestCase(CreatureConstants.Basilisk)]
-        [TestCase(CreatureConstants.Basilisk_AbyssalGreater)]
+        [TestCase(CreatureConstants.Basilisk_Greater)]
         [TestCase(CreatureConstants.Bat, "Good Maneuverability")]
         [TestCase(CreatureConstants.Bat_Dire, "Good Maneuverability")]
         [TestCase(CreatureConstants.Bat_Swarm, "Good Maneuverability")]

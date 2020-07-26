@@ -207,7 +207,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Barghest, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Four, null, true, 0, 6, 2)]
         [TestCase(CreatureConstants.Barghest_Greater, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Five, null, true, 0, 9, 2)]
         [TestCase(CreatureConstants.Basilisk, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.Five, null, false, 0, 7, 0)]
-        [TestCase(CreatureConstants.Basilisk_AbyssalGreater, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Twelve, null, false, 0, 9, 0)]
+        [TestCase(CreatureConstants.Basilisk_Greater, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Twelve, null, false, 0, 9, 0)]
         [TestCase(CreatureConstants.Bat, SizeConstants.Diminutive, 1, 0, ChallengeRatingConstants.OneTenth, null, false, 0, 0, 0)]
         [TestCase(CreatureConstants.Bat_Dire, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Two, null, false, 0, 5, 0)]
         [TestCase(CreatureConstants.Bat_Swarm, SizeConstants.Diminutive, 10, 0, ChallengeRatingConstants.Two, null, false, 0, 0, 0)]

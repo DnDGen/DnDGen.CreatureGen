@@ -1188,10 +1188,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(adjusted));
-            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(4));
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
                 .And.Contains("subtype 2")
-                .And.Contains(CreatureConstants.Types.Subtypes.Incorporeal));
+                .And.Contains(CreatureConstants.Types.Subtypes.Incorporeal)
+                .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
         }
 
         [Test]

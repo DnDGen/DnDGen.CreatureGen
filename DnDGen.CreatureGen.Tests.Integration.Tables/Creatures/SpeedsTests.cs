@@ -373,7 +373,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Barghest][SpeedConstants.Land] = 30;
                 testCases[CreatureConstants.Barghest_Greater][SpeedConstants.Land] = 40;
                 testCases[CreatureConstants.Basilisk][SpeedConstants.Land] = 20;
-                testCases[CreatureConstants.Basilisk_AbyssalGreater][SpeedConstants.Land] = 20;
+                testCases[CreatureConstants.Basilisk_Greater][SpeedConstants.Land] = 20;
                 testCases[CreatureConstants.Bat][SpeedConstants.Land] = 5;
                 testCases[CreatureConstants.Bat][SpeedConstants.Fly] = 40;
                 testCases[CreatureConstants.Bat_Dire][SpeedConstants.Land] = 20;

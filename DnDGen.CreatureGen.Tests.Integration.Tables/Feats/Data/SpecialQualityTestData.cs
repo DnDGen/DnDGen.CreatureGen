@@ -939,10 +939,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
             testCases[CreatureConstants.Basilisk].Add(helper.BuildData(None));
 
-            testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-            testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
-            testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
-            testCases[CreatureConstants.Basilisk_AbyssalGreater].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
+            testCases[CreatureConstants.Basilisk_Greater].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Cold, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Basilisk_Greater].Add(helper.BuildData(FeatConstants.SpecialQualities.EnergyResistance, focus: FeatConstants.Foci.Elements.Fire, power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Basilisk_Greater].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to magic weapons", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Basilisk_Greater].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellResistance, power: 23));
 
             testCases[CreatureConstants.Bat].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsense, power: 20));
 

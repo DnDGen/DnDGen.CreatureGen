@@ -373,7 +373,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Basilisk][GetData(SkillConstants.Hide, condition: "in natural settings")] = 4;
 
-                testCases[CreatureConstants.Basilisk_AbyssalGreater][GetData(SkillConstants.Hide, condition: "in natural settings")] = 4;
+                testCases[CreatureConstants.Basilisk_Greater][GetData(SkillConstants.Hide, condition: "in natural settings")] = 4;
 
                 testCases[CreatureConstants.Bat][GetData(SkillConstants.Listen, condition: "while able to use blindsense")] = 4;
                 testCases[CreatureConstants.Bat][GetData(SkillConstants.Spot, condition: "while able to use blindsense")] = 4;

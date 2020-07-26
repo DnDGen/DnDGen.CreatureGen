@@ -204,7 +204,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.LanternArchon,
             CreatureConstants.TrumpetArchon)]
         [TestCase(CreatureConstants.Types.Subtypes.Augmented,
-            CreatureConstants.Basilisk_AbyssalGreater)]
+            CreatureConstants.Basilisk_Greater)]
         [TestCase(CreatureConstants.Types.Subtypes.Chaotic,
             CreatureConstants.ChaosBeast,
             CreatureConstants.Babau,
@@ -504,7 +504,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Azer,
                 CreatureConstants.Barghest,
                 CreatureConstants.Barghest_Greater,
-                CreatureConstants.Basilisk_AbyssalGreater,
+                CreatureConstants.Basilisk_Greater,
                 CreatureConstants.Bodak,
                 CreatureConstants.Bralani,
                 CreatureConstants.ChaosBeast,
@@ -622,7 +622,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Azer,
                 CreatureConstants.Barghest,
                 CreatureConstants.Barghest_Greater,
-                CreatureConstants.Basilisk_AbyssalGreater,
+                CreatureConstants.Basilisk_Greater,
                 CreatureConstants.Bralani,
                 CreatureConstants.ChaosBeast,
                 CreatureConstants.Couatl,

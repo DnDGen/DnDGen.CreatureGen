@@ -84,21 +84,25 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             // Alignment
             UpdateCreatureAlignment(creature);
 
-            // Languages
-            UpdateCreatureLanguages(creature);
-
-            //Hit Points
-            UpdateCreatureHitPoints(creature);
-
-            // Special Qualities
-            UpdateCreatureSpecialQualities(creature);
-
-            //Skills
-            UpdateCreatureSkills(creature);
-
             //Armor Class
             UpdateCreatureArmorClass(creature);
 
+            //INFO: These depend on abilities from earlier
+            //Hit Points
+            UpdateCreatureHitPoints(creature);
+
+            // Languages
+            UpdateCreatureLanguages(creature);
+
+            //INFO: These depend on hit points from earlier
+            //Skills
+            UpdateCreatureSkills(creature);
+
+            //INFO: These depend on skills from earlier
+            // Special Qualities
+            UpdateCreatureSpecialQualities(creature);
+
+            //INFO: These depend on special qualities from earlier
             // Attacks
             UpdateCreatureAttacks(creature);
 
@@ -342,6 +346,10 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature));
             tasks.Add(alignmentTask);
 
+            //Armor Class
+            var armorClassTask = Task.Run(() => UpdateCreatureArmorClass(creature));
+            tasks.Add(armorClassTask);
+
             await Task.WhenAll(tasks);
             tasks.Clear();
 
@@ -354,23 +362,32 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             var languageTask = Task.Run(() => UpdateCreatureLanguages(creature));
             tasks.Add(languageTask);
 
-            // Special Qualities
-            var qualityTask = Task.Run(() => UpdateCreatureSpecialQualities(creature));
-            tasks.Add(qualityTask);
+            await Task.WhenAll(tasks);
+            tasks.Clear();
 
+            //INFO: These depend on hit points from earlier
             //Skills
             var skillTask = Task.Run(() => UpdateCreatureSkills(creature));
             tasks.Add(skillTask);
 
-            //Armor Class
-            var armorClassTask = Task.Run(() => UpdateCreatureArmorClass(creature));
-            tasks.Add(armorClassTask);
+            await Task.WhenAll(tasks);
+            tasks.Clear();
+
+            //INFO: These depend on skills from earlier
+            // Special Qualities
+            var qualityTask = Task.Run(() => UpdateCreatureSpecialQualities(creature));
+            tasks.Add(qualityTask);
 
             await Task.WhenAll(tasks);
             tasks.Clear();
 
+            //INFO: These depend on special qualities from earlier
             // Attacks
-            await Task.Run(() => UpdateCreatureAttacks(creature));
+            var attackTask = Task.Run(() => UpdateCreatureAttacks(creature));
+            tasks.Add(attackTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
 
             return creature;
         }

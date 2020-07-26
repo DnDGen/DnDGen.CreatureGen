@@ -355,7 +355,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Basilisk][None] = 0;
 
-                testCases[CreatureConstants.Basilisk_AbyssalGreater][None] = 0;
+                testCases[CreatureConstants.Basilisk_Greater][None] = 0;
 
                 testCases[CreatureConstants.Bat][None] = 0;
 

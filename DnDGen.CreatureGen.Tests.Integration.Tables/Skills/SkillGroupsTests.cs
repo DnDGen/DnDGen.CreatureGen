@@ -618,7 +618,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Hide,
             SkillConstants.Listen,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Basilisk_AbyssalGreater,
+        [TestCase(CreatureConstants.Basilisk_Greater,
             SkillConstants.Hide,
             SkillConstants.Listen,
             SkillConstants.Spot)]

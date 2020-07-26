@@ -106,6 +106,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Ape_Dire, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Badger, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Badger_Dire, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Basilisk, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(CreatureConstants.Basilisk_Greater, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Bat, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Bat, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Bat_Dire, CreatureConstants.Templates.FiendishCreature)]

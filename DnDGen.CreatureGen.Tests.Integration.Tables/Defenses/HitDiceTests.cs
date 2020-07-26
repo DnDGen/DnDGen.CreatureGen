@@ -187,7 +187,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Barghest, 6)]
         [TestCase(CreatureConstants.Barghest_Greater, 9)]
         [TestCase(CreatureConstants.Basilisk, 6)]
-        [TestCase(CreatureConstants.Basilisk_AbyssalGreater, 18)]
+        [TestCase(CreatureConstants.Basilisk_Greater, 18)]
         [TestCase(CreatureConstants.Bat, .25)]
         [TestCase(CreatureConstants.Bat_Dire, 4)]
         [TestCase(CreatureConstants.Bat_Swarm, 3)]

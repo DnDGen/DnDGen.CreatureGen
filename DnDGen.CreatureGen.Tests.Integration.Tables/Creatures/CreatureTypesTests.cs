@@ -251,7 +251,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Lawful,
             CreatureConstants.Types.Subtypes.Shapechanger)]
         [TestCase(CreatureConstants.Basilisk, CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Basilisk_AbyssalGreater, CreatureConstants.Types.Outsider,
+        [TestCase(CreatureConstants.Basilisk_Greater, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Augmented,
             CreatureConstants.Types.MagicalBeast,
             CreatureConstants.Types.Subtypes.Extraplanar)]

@@ -48,7 +48,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             LanguageConstants.Aquan,
             LanguageConstants.Undercommon)]
         [TestCase(CreatureConstants.Basilisk)]
-        [TestCase(CreatureConstants.Basilisk_AbyssalGreater)]
+        [TestCase(CreatureConstants.Basilisk_Greater)]
         [TestCase(CreatureConstants.Elf_Aquatic,
             LanguageConstants.Common,
             LanguageConstants.Elven)]
@@ -1606,7 +1606,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             LanguageConstants.Abyssal)]
         [TestCase(CreatureConstants.Aboleth)]
         [TestCase(CreatureConstants.Basilisk)]
-        [TestCase(CreatureConstants.Basilisk_AbyssalGreater)]
+        [TestCase(CreatureConstants.Basilisk_Greater)]
         [TestCase(CreatureConstants.Achaierai)]
         [TestCase(CreatureConstants.Allip)]
         [TestCase(CreatureConstants.Arrowhawk_Adult)]
