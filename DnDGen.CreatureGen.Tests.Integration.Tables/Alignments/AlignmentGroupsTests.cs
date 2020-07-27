@@ -481,7 +481,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Barghest, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Barghest_Greater, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Basilisk, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.Basilisk_Greater, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Basilisk_Greater, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Bat, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Bat_Dire, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Bat_Swarm, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]

@@ -151,9 +151,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Dragon));
-            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(4));
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
                 .And.Contains("subtype 2")
+                .And.Contains(original)
                 .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
         }
 
@@ -422,6 +423,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(newAttacks);
 
+            var newSkills = new[]
+            {
+                new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
+                new Skill("my other skill", baseCreature.Abilities[AbilityConstants.Intelligence], 90210) { Ranks = 600 },
+            };
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss =>
+                        ss == baseCreature.Skills
+                        && ss.All(s => s.Ranks == 0)),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(newSkills);
+
             var newQualities = new[]
             {
                 new Feat { Name = "half-dragon quality 1" },
@@ -434,7 +450,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
-                    baseCreature.Skills,
+                    newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
                     new Alignment { Lawfulness = "dragony", Goodness = "scaley" }))
@@ -636,6 +652,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [Test]
         public void ApplyTo_GainSpecialQualities()
         {
+            var newSkills = new[]
+            {
+                new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
+                new Skill("my other skill", baseCreature.Abilities[AbilityConstants.Intelligence], 90210) { Ranks = 600 },
+            };
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss =>
+                        ss == baseCreature.Skills
+                        && ss.All(s => s.Ranks == 0)),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(newSkills);
+
             var newQualities = new[]
             {
                 new Feat { Name = "half-dragon quality 1" },
@@ -648,7 +679,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
-                    baseCreature.Skills,
+                    newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
                     new Alignment { Lawfulness = "dragony", Goodness = "scaley" }))
@@ -786,9 +817,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Dragon));
-            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(4));
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
                 .And.Contains("subtype 2")
+                .And.Contains(original)
                 .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
         }
 
@@ -1057,6 +1089,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(newAttacks);
 
+            var newSkills = new[]
+            {
+                new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
+                new Skill("my other skill", baseCreature.Abilities[AbilityConstants.Intelligence], 90210) { Ranks = 600 },
+            };
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss =>
+                        ss == baseCreature.Skills
+                        && ss.All(s => s.Ranks == 0)),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(newSkills);
+
             var newQualities = new[]
             {
                 new Feat { Name = "half-dragon quality 1" },
@@ -1069,7 +1116,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
-                    baseCreature.Skills,
+                    newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
                     new Alignment { Lawfulness = "dragony", Goodness = "scaley" }))
@@ -1271,6 +1318,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [Test]
         public async Task ApplyToAsync_GainSpecialQualities()
         {
+            var newSkills = new[]
+            {
+                new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
+                new Skill("my other skill", baseCreature.Abilities[AbilityConstants.Intelligence], 90210) { Ranks = 600 },
+            };
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss =>
+                        ss == baseCreature.Skills
+                        && ss.All(s => s.Ranks == 0)),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(newSkills);
+
             var newQualities = new[]
             {
                 new Feat { Name = "half-dragon quality 1" },
@@ -1283,7 +1345,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
-                    baseCreature.Skills,
+                    newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
                     new Alignment { Lawfulness = "dragony", Goodness = "scaley" }))

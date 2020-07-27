@@ -86,11 +86,11 @@ namespace DnDGen.CreatureGen.Templates
             // Languages
             UpdateCreatureLanguages(creature);
 
-            // Special Qualities
-            UpdateCreatureSpecialQualities(creature);
-
             //Skills
             UpdateCreatureSkills(creature);
+
+            // Special Qualities
+            UpdateCreatureSpecialQualities(creature);
 
             //Armor Class
             UpdateCreatureArmorClass(creature);
@@ -340,17 +340,19 @@ namespace DnDGen.CreatureGen.Templates
             await Task.WhenAll(tasks);
             tasks.Clear();
 
+            //INFO: These rely on abilities from earlier
             // Languages
             var languageTask = Task.Run(() => UpdateCreatureLanguages(creature));
             tasks.Add(languageTask);
 
-            // Special Qualities
-            var qualityTask = Task.Run(() => UpdateCreatureSpecialQualities(creature));
-            tasks.Add(qualityTask);
-
             //Skills
             var skillTask = Task.Run(() => UpdateCreatureSkills(creature));
             tasks.Add(skillTask);
+
+            //INFO: These rely on skills from earlier
+            // Special Qualities
+            var qualityTask = Task.Run(() => UpdateCreatureSpecialQualities(creature));
+            tasks.Add(qualityTask);
 
             //Armor Class
             var armorClassTask = Task.Run(() => UpdateCreatureArmorClass(creature));
@@ -359,6 +361,7 @@ namespace DnDGen.CreatureGen.Templates
             await Task.WhenAll(tasks);
             tasks.Clear();
 
+            //INFO: These rely on special qualities from earlier
             // Attacks
             await Task.Run(() => UpdateCreatureAttacks(creature));
 

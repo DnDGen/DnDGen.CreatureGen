@@ -16,10 +16,9 @@
     <entry>Psionic@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
-    <name>Abyssal Greater Basilisk</name>
+    <name>Greater Basilisk</name>
     <entry>Bite@2d8@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Petrifying Gaze@@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@@0@0</entry>
-    <entry>Smite Good@18@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Achaierai</name>

@@ -203,8 +203,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.HoundArchon,
             CreatureConstants.LanternArchon,
             CreatureConstants.TrumpetArchon)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented,
-            CreatureConstants.Basilisk_Greater)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
         [TestCase(CreatureConstants.Types.Subtypes.Chaotic,
             CreatureConstants.ChaosBeast,
             CreatureConstants.Babau,
@@ -504,7 +503,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Azer,
                 CreatureConstants.Barghest,
                 CreatureConstants.Barghest_Greater,
-                CreatureConstants.Basilisk_Greater,
                 CreatureConstants.Bodak,
                 CreatureConstants.Bralani,
                 CreatureConstants.ChaosBeast,
@@ -556,7 +554,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Ankheg,
                 CreatureConstants.Aranea,
                 CreatureConstants.Basilisk,
-                //CreatureConstants.Basilisk_AbyssalGreater, //INFO: This is not included in this group, even thoguh it does contain it as a subtype, since the group signifies main type of Magical Beast
+                CreatureConstants.Basilisk_Greater,
                 CreatureConstants.Behir,
                 CreatureConstants.BlinkDog,
                 CreatureConstants.Bulette,
@@ -622,7 +620,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Azer,
                 CreatureConstants.Barghest,
                 CreatureConstants.Barghest_Greater,
-                CreatureConstants.Basilisk_Greater,
                 CreatureConstants.Bralani,
                 CreatureConstants.ChaosBeast,
                 CreatureConstants.Couatl,

@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
-using Ninject;
 using NUnit.Framework;
 using System.Linq;
 
@@ -251,10 +250,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Lawful,
             CreatureConstants.Types.Subtypes.Shapechanger)]
         [TestCase(CreatureConstants.Basilisk, CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Basilisk_Greater, CreatureConstants.Types.Outsider,
-            CreatureConstants.Types.Subtypes.Augmented,
-            CreatureConstants.Types.MagicalBeast,
-            CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Basilisk_Greater, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Bat, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Bat_Dire, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Bat_Swarm, CreatureConstants.Types.Animal,

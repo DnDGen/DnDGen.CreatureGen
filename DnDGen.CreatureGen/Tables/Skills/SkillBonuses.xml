@@ -13,10 +13,6 @@
     <name>Aboleth</name>
   </collection>
   <collection>
-    <name>Abyssal Greater Basilisk</name>
-    <entry>Hide$in natural settings@4</entry>
-  </collection>
-  <collection>
     <name>Achaierai</name>
   </collection>
   <collection>
@@ -563,6 +559,10 @@
   </collection>
   <collection>
     <name>Basilisk</name>
+    <entry>Hide$in natural settings@4</entry>
+  </collection>
+  <collection>
+    <name>Greater Basilisk</name>
     <entry>Hide$in natural settings@4</entry>
   </collection>
   <collection>

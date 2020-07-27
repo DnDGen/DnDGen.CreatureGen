@@ -296,7 +296,6 @@
   </collection>
   <collection>
     <name>Augmented</name>
-    <entry>Abyssal Greater Basilisk</entry>
   </collection>
   <collection>
     <name>Bear</name>
@@ -599,7 +598,6 @@
     <entry>Azer</entry>
     <entry>Barghest</entry>
     <entry>Greater Barghest</entry>
-    <entry>Abyssal Greater Basilisk</entry>
     <entry>Bodak</entry>
     <entry>Bralani</entry>
     <entry>Chaos Beast</entry>
@@ -1029,6 +1027,7 @@
     <entry>Ankheg</entry>
     <entry>Aranea</entry>
     <entry>Basilisk</entry>
+    <entry>Greater Basilisk</entry>
     <entry>Behir</entry>
     <entry>Blink Dog</entry>
     <entry>Bulette</entry>
@@ -1191,7 +1190,6 @@
     <entry>Azer</entry>
     <entry>Barghest</entry>
     <entry>Greater Barghest</entry>
-    <entry>Abyssal Greater Basilisk</entry>
     <entry>Bralani</entry>
     <entry>Chaos Beast</entry>
     <entry>Couatl</entry>

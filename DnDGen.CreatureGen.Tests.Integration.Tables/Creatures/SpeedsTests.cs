@@ -1415,6 +1415,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 }
             }
         }
+
         [TestCaseSource(typeof(CreatureTestData), "All")]
         public void CreatureHasAtLeast1Speed(string creature)
         {

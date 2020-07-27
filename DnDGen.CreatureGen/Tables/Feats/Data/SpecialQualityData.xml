@@ -28,11 +28,7 @@
     <entry>Shield Proficiency#0##0##0#True###0#0#2147483647</entry>
   </collection>
   <collection>
-    <name>Abyssal Greater Basilisk</name>
-    <entry>Damage Reduction#10#Vulnerable to magic weapons#1#Hit#0#False###0#0#2147483647</entry>
-    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
-    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
-    <entry>Spell Resistance#23##0##0#False###0#0#2147483647</entry>
+    <name>Greater Basilisk</name>
   </collection>
   <collection>
     <name>Achaierai</name>
@@ -5835,6 +5831,7 @@
     <entry>Immunity#0#Electricity#0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Polymorph#0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Mind-Affecting Attacks#0##0#False###0#0#2147483647</entry>
+    <entry>Craft Wondrous Item#0##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
     <name>Vampire</name>
