@@ -5003,6 +5003,7 @@
     <entry>Damage Reduction#15#Vulnerable to lawful weapons#1#Hit#0#False###0#0#2147483647</entry>
     <entry>Martial Weapon Proficiency#0#Warhammer#0##0#True###0#0#2147483647</entry>
     <entry>Oversized Weapon#0#Gargantuan#0##0#True###0#0#2147483647</entry>
+    <entry>Oversized Weapon#0#Colossal#0##0#True###0#0#2147483647</entry>
     <entry>Simple Weapon Proficiency#0#Javelin#0##0#True###0#0#2147483647</entry>
     <entry>Spell Resistance#32##0##0#False###0#0#2147483647</entry>
     <entry>Spell-Like Ability#0#Bestow curse#0#At Will#0#False#Charisma#Will#14#0#2147483647</entry>

@@ -2827,6 +2827,7 @@
   </collection>
   <collection>
     <name>Cloud GiantOversized WeaponGargantuan0</name>
+    <entry>Huge</entry>
   </collection>
   <collection>
     <name>Cloud GiantRock Catching0</name>
@@ -9148,6 +9149,11 @@
   </collection>
   <collection>
     <name>TitanOversized WeaponGargantuan0</name>
+    <entry>Huge</entry>
+  </collection>
+  <collection>
+    <name>TitanOversized WeaponColossal0</name>
+    <entry>Gargantuan</entry>
   </collection>
   <collection>
     <name>TitanSimple Weapon ProficiencyJavelin0</name>

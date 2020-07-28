@@ -4067,6 +4067,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Tiger_Dire].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
 
             testCases[CreatureConstants.Titan].Add(helper.BuildData(FeatConstants.SpecialQualities.OversizedWeapon, focus: SizeConstants.Gargantuan, requiresEquipment: true));
+            testCases[CreatureConstants.Titan].Add(helper.BuildData(FeatConstants.SpecialQualities.OversizedWeapon, focus: SizeConstants.Colossal, requiresEquipment: true));
             testCases[CreatureConstants.Titan].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Warhammer, requiresEquipment: true));
             testCases[CreatureConstants.Titan].Add(helper.BuildData(FeatConstants.WeaponProficiency_Simple, focus: WeaponConstants.Javelin, requiresEquipment: true));
             testCases[CreatureConstants.Titan].Add(helper.BuildData(FeatConstants.ArmorProficiency_Heavy, requiresEquipment: true));

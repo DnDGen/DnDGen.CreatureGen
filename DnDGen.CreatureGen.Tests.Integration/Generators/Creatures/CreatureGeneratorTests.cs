@@ -62,6 +62,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Goblin)]
         [TestCase(CreatureConstants.Ogre)]
         [TestCase(CreatureConstants.Balor)]
+        [TestCase(CreatureConstants.Titan)]
+        [TestCase(CreatureConstants.Giant_Cloud)]
         public void CanGenerateWeapons(string creatureName)
         {
             var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
@@ -178,6 +180,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Black)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.HalfFiend)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lich)]
+        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear)]
+        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Boar)]
+        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Rat)]
+        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Tiger)]
+        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Skeleton)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Vampire)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Zombie)]

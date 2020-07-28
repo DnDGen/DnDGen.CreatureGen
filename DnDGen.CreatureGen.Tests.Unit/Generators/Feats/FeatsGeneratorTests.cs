@@ -473,11 +473,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         public void GetFociForSpecialQualities()
         {
             var specialQualitySelection = new SpecialQualitySelection();
-            specialQualitySelection.Feat = "racial feat";
+            specialQualitySelection.Feat = "special quality";
             specialQualitySelection.FocusType = "base focus type";
             specialQualitySelections.Add(specialQualitySelection);
 
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "base focus type", skills, abilities)).Returns("base focus");
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("special quality", "base focus type", skills, abilities)).Returns("base focus");
 
             var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var baseFeat = feats.First(f => f.Name == specialQualitySelection.Feat);
@@ -486,14 +486,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         }
 
         [Test]
+        public void BUG_GetFociForSpecialQualities_WithZeroRandomFoci_ButPreset()
+        {
+            var specialQualitySelection = new SpecialQualitySelection();
+            specialQualitySelection.Feat = "special quality";
+            specialQualitySelection.FocusType = "my specific focus";
+            specialQualitySelection.RandomFociQuantity = "0";
+
+            specialQualitySelections.Add(specialQualitySelection);
+
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("special quality", "my specific focus", skills, abilities)).Returns("my focus");
+            mockDice.Setup(d => d.Roll("0").AsSum<int>()).Returns(0);
+
+            var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
+            var baseFeat = feats.First(f => f.Name == specialQualitySelection.Feat);
+
+            Assert.That(baseFeat.Foci.Single(), Is.EqualTo("my focus"));
+        }
+
+        [Test]
         public void DoNotGetEmptyFociStrings()
         {
             var specialQualitySelectionselection = new SpecialQualitySelection();
-            specialQualitySelectionselection.Feat = "racial feat";
+            specialQualitySelectionselection.Feat = "special quality";
             specialQualitySelectionselection.FocusType = string.Empty;
             specialQualitySelections.Add(specialQualitySelectionselection);
 
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", string.Empty, skills, abilities)).Returns(string.Empty);
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("special quality", string.Empty, skills, abilities)).Returns(string.Empty);
 
             var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var baseFeat = feats.First(f => f.Name == specialQualitySelectionselection.Feat);
@@ -522,11 +541,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         public void GetOneRandomFociForSpecialQualityIfNoRandomFociQuantity()
         {
             var featSelection = new SpecialQualitySelection();
-            featSelection.Feat = "racial feat";
+            featSelection.Feat = "special quality";
             featSelection.FocusType = "focus type";
 
             var count = 1;
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("special quality", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
             mockDice.Setup(d => d.Roll("dice roll").AsSum<int>()).Returns(3);
 
             specialQualitySelections.Add(featSelection);
@@ -534,7 +553,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var feat = feats.Single();
 
-            Assert.That(feat.Name, Is.EqualTo("racial feat"));
+            Assert.That(feat.Name, Is.EqualTo("special quality"));
             Assert.That(feat.Foci.Single(), Is.EqualTo("focus 1"));
         }
 
@@ -542,12 +561,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         public void GetRandomFociForSpecialQuality()
         {
             var featSelection = new SpecialQualitySelection();
-            featSelection.Feat = "racial feat";
+            featSelection.Feat = "special quality";
             featSelection.FocusType = "focus type";
             featSelection.RandomFociQuantity = "dice roll";
 
             var count = 1;
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("special quality", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
             mockDice.Setup(d => d.Roll("dice roll").AsSum<int>()).Returns(3);
 
             specialQualitySelections.Add(featSelection);
@@ -555,7 +574,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var feat = feats.Single();
 
-            Assert.That(feat.Name, Is.EqualTo("racial feat"));
+            Assert.That(feat.Name, Is.EqualTo("special quality"));
             Assert.That(feat.Foci, Is.EquivalentTo(new[] { "focus 1", "focus 2", "focus 3" }));
         }
 
@@ -563,12 +582,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         public void GetNoDuplicateRandomFociForSpecialQuality()
         {
             var featSelection = new SpecialQualitySelection();
-            featSelection.Feat = "racial feat";
+            featSelection.Feat = "special quality";
             featSelection.FocusType = "focus type";
             featSelection.RandomFociQuantity = "dice roll";
 
             var count = 1;
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++ / 2}");
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("special quality", "focus type", skills, abilities)).Returns(() => $"focus {count++ / 2}");
             mockDice.Setup(d => d.Roll("dice roll").AsSum<int>()).Returns(3);
 
             specialQualitySelections.Add(featSelection);
@@ -576,7 +595,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var feat = feats.Single();
 
-            Assert.That(feat.Name, Is.EqualTo("racial feat"));
+            Assert.That(feat.Name, Is.EqualTo("special quality"));
             Assert.That(feat.Foci, Is.Unique);
             Assert.That(feat.Foci, Is.EquivalentTo(new[] { "focus 0", "focus 1", "focus 2" }));
         }
@@ -585,11 +604,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         public void GetNoRandomFociForSpecialQualityIfNoFocusType()
         {
             var featSelection = new SpecialQualitySelection();
-            featSelection.Feat = "racial feat";
+            featSelection.Feat = "special quality";
             featSelection.RandomFociQuantity = "dice roll";
 
             var count = 1;
-            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("racial feat", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
+            mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("special quality", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
             mockDice.Setup(d => d.Roll("dice roll").AsSum<int>()).Returns(3);
 
             specialQualitySelections.Add(featSelection);
@@ -597,7 +616,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var feat = feats.Single();
 
-            Assert.That(feat.Name, Is.EqualTo("racial feat"));
+            Assert.That(feat.Name, Is.EqualTo("special quality"));
             Assert.That(feat.Foci, Is.Empty);
         }
 

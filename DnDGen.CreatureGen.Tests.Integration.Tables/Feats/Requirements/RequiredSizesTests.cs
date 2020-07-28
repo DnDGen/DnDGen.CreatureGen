@@ -145,6 +145,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                         testCases[key] = new string[0];
                     }
 
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.OversizedWeapon, SizeConstants.Gargantuan, 0.ToString())] = new[] { SizeConstants.Huge };
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.OversizedWeapon, SizeConstants.Gargantuan, 0.ToString())] = new[] { SizeConstants.Huge };
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.OversizedWeapon, SizeConstants.Colossal, 0.ToString())] = new[] { SizeConstants.Gargantuan };
+
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.HalfDamage, AttributeConstants.DamageTypes.Piercing, 0.ToString())] = new[] { SizeConstants.Tiny };
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.HalfDamage, AttributeConstants.DamageTypes.Slashing, 0.ToString())] = new[] { SizeConstants.Tiny };
                     testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.Immunity, "Weapon damage", 0.ToString())] = new[] { SizeConstants.Diminutive, SizeConstants.Fine };

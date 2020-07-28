@@ -120,7 +120,11 @@ namespace DnDGen.CreatureGen.Generators.Feats
 
             var fociQuantity = 1;
             if (specialQualitySelection.RandomFociQuantity.Any())
-                fociQuantity = dice.Roll(specialQualitySelection.RandomFociQuantity).AsSum();
+            {
+                var roll = dice.Roll(specialQualitySelection.RandomFociQuantity).AsSum();
+                if (roll > fociQuantity)
+                    fociQuantity = roll;
+            }
 
             while (fociQuantity > foci.Count)
             {
