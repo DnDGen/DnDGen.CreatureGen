@@ -1,11 +1,22 @@
-﻿using DnDGen.CreatureGen.Alignments;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Defenses;
+using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Attacks;
+using DnDGen.CreatureGen.Generators.Defenses;
+using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using Moq;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,18 +29,45 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Creature baseCreature;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
+        private Mock<Dice> mockDice;
+        private Mock<IAttacksGenerator> mockAttacksGenerator;
+        private Mock<IFeatsGenerator> mockFeatsGenerator;
+        private Mock<ISavesGenerator> mockSavesGenerator;
 
         [SetUp]
         public void Setup()
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
+            mockDice = new Mock<Dice>();
+            mockAttacksGenerator = new Mock<IAttacksGenerator>();
+            mockFeatsGenerator = new Mock<IFeatsGenerator>();
+            mockSavesGenerator = new Mock<ISavesGenerator>();
 
-            applicator = new SkeletonApplicator();
+            applicator = new SkeletonApplicator(
+                mockCollectionSelector.Object,
+                mockAdjustmentSelector.Object,
+                mockDice.Object,
+                mockAttacksGenerator.Object,
+                mockFeatsGenerator.Object,
+                mockSavesGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
                 .Build();
+
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(12)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 9266 });
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(12)
+                    .AsPotentialAverage())
+                .Returns(90210);
         }
 
         [TestCase(CreatureConstants.Types.Aberration, true)]
@@ -155,18 +193,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
         [TestCase(CreatureConstants.Types.Subtypes.Cold)]
-        [TestCase(CreatureConstants.Types.Subtypes.Dwarf)]
         [TestCase(CreatureConstants.Types.Subtypes.Earth)]
-        [TestCase(CreatureConstants.Types.Subtypes.Elf)]
         [TestCase(CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Types.Subtypes.Fire)]
-        [TestCase(CreatureConstants.Types.Subtypes.Gnoll)]
-        [TestCase(CreatureConstants.Types.Subtypes.Gnome)]
-        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid)]
-        [TestCase(CreatureConstants.Types.Subtypes.Halfling)]
-        [TestCase(CreatureConstants.Types.Subtypes.Lawful)]
-        [TestCase(CreatureConstants.Types.Subtypes.Orc)]
-        [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
         [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
         [TestCase(CreatureConstants.Types.Subtypes.Water)]
         [TestCase(CreatureConstants.Types.Aberration)]
@@ -205,6 +234,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Good)]
         [TestCase(CreatureConstants.Types.Subtypes.Lawful)]
         [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Types.Subtypes.Dwarf)]
+        [TestCase(CreatureConstants.Types.Subtypes.Elf)]
+        [TestCase(CreatureConstants.Types.Subtypes.Gnoll)]
+        [TestCase(CreatureConstants.Types.Subtypes.Gnome)]
+        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid)]
+        [TestCase(CreatureConstants.Types.Subtypes.Halfling)]
+        [TestCase(CreatureConstants.Types.Subtypes.Orc)]
+        [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
         public void ApplyTo_LoseSubtype(string subtype)
         {
             var subtypes = new[]
@@ -229,19 +266,52 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(12)]
         public void ApplyTo_HitDiceBecomeD12(int hitDie)
         {
-            Assert.Fail("not yet written");
+            baseCreature.HitPoints.HitDie = hitDie;
+
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(12)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 9266, 90210 });
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(12)
+                    .AsPotentialAverage())
+                .Returns(42);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
         }
 
         [Test]
         public void ApplyTo_LoseFlySpeed_Wings()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
+            baseCreature.Speeds[SpeedConstants.Fly].Value = 9266;
+            baseCreature.Speeds[SpeedConstants.Fly].Description = "Superb (Wings)";
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Speeds, Is.Not.Empty
+                .And.Not.ContainKey(SpeedConstants.Fly));
         }
 
         [Test]
         public void ApplyTo_KeepFlySpeed_Magic()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
+            baseCreature.Speeds[SpeedConstants.Fly].Value = 9266;
+            baseCreature.Speeds[SpeedConstants.Fly].Description = "Superb (Magic)";
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Speeds, Is.Not.Empty
+                .And.ContainKey(SpeedConstants.Fly));
         }
 
         [TestCase(SizeConstants.Fine, 0)]
@@ -255,7 +325,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Colossal, 10)]
         public void ApplyTo_GainsNaturalArmorBasedOnSize(string size, int bonus)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Size = size;
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(bonus));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+
+            var naturalArmor = creature.ArmorClass.NaturalArmorBonuses.Single();
+            Assert.That(naturalArmor.Condition, Is.Empty);
+            Assert.That(naturalArmor.IsConditional, Is.False);
+            Assert.That(naturalArmor.Value, Is.EqualTo(bonus));
         }
 
         [TestCase(SizeConstants.Fine, 0)]
@@ -269,35 +349,32 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Colossal, 10)]
         public void ApplyTo_ReplacesNaturalArmorBasedOnSize(string size, int bonus)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Size = size;
+            baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 666);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(bonus));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+
+            var naturalArmor = creature.ArmorClass.NaturalArmorBonuses.Single();
+            Assert.That(naturalArmor.Condition, Is.Empty);
+            Assert.That(naturalArmor.IsConditional, Is.False);
+            Assert.That(naturalArmor.Value, Is.EqualTo(bonus));
         }
 
-        [TestCase(.1, 0)]
-        [TestCase(.25, 0)]
-        [TestCase(.5, 0)]
-        [TestCase(1, 0)]
-        [TestCase(2, 1)]
-        [TestCase(3, 1)]
-        [TestCase(4, 2)]
-        [TestCase(5, 2)]
-        [TestCase(6, 3)]
-        [TestCase(7, 3)]
-        [TestCase(8, 4)]
-        [TestCase(9, 4)]
-        [TestCase(10, 5)]
-        [TestCase(11, 5)]
-        [TestCase(12, 6)]
-        [TestCase(13, 6)]
-        [TestCase(14, 7)]
-        [TestCase(15, 7)]
-        [TestCase(16, 8)]
-        [TestCase(17, 8)]
-        [TestCase(18, 9)]
-        [TestCase(19, 9)]
-        [TestCase(20, 10)]
-        public void ApplyTo_BaseAttackBonus(double hitDice, int attackBonus)
+        [Test]
+        public void ApplyTo_BaseAttackBonus()
         {
-            Assert.Fail("not yet written");
+            mockAttacksGenerator
+                .Setup(g => g.GenerateBaseAttackBonus(
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints))
+                .Returns(9266);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.BaseAttackBonus, Is.EqualTo(9266));
         }
 
         [TestCase(SizeConstants.Fine, "1")]
@@ -311,11 +388,68 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Colossal, "2d8")]
         public void ApplyTo_ReplacesClawAttack_DamageBasedOnSize(string size, string damage)
         {
-            //Claw is primary
-            Assert.Fail("not yet written");
+            baseCreature.Size = size;
+            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
+            {
+                new Attack
+                {
+                    Name = "Claw",
+                    DamageRoll = "damage roll",
+                    Frequency = new Frequency
+                    {
+                        Quantity = 2,
+                        TimePeriod = FeatConstants.Frequencies.Round,
+                    }
+                }
+            });
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateBaseAttackBonus(
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints))
+                .Returns(9266);
+
+            var skeletonAttacks = new[]
+            {
+                new Attack
+                {
+                    Name = "Claw",
+                    DamageRoll = damage,
+                    Frequency = new Frequency
+                    {
+                        Quantity = 1,
+                        TimePeriod = FeatConstants.Frequencies.Round,
+                    }
+                }
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Skeleton,
+                    SizeConstants.Medium,
+                    size,
+                    9266,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(skeletonAttacks);
+
+            mockDice
+                .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
+                .Returns(42);
+
+            mockDice
+                .Setup(d => d.Roll(damage).AsPotentialMaximum<int>(true))
+                .Returns(90210);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+
+            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
+            Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
+            Assert.That(claw.DamageRoll, Is.EqualTo(damage));
+            Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
 
-        [TestCase(0)]
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
@@ -328,8 +462,165 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(10)]
         public void ApplyTo_GainClawAttacks_PerNumberOfHands(int numberOfHands)
         {
-            //Claw is primary
-            Assert.Fail("not yet written");
+            baseCreature.NumberOfHands = numberOfHands;
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateBaseAttackBonus(
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints))
+                .Returns(9266);
+
+            var skeletonAttacks = new[]
+            {
+                new Attack
+                {
+                    Name = "Claw",
+                    DamageRoll = "skeleton damage",
+                    Frequency = new Frequency
+                    {
+                        Quantity = 1,
+                        TimePeriod = FeatConstants.Frequencies.Round,
+                    }
+                }
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Skeleton,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    9266,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(skeletonAttacks);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+
+            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
+            Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
+            Assert.That(claw.DamageRoll, Is.EqualTo("skeleton damage"));
+            Assert.That(claw.Frequency.Quantity, Is.EqualTo(numberOfHands));
+        }
+
+        [Test]
+        public void ApplyTo_GainClawAttacks_WithAttackBonuses()
+        {
+            baseCreature.NumberOfHands = 2;
+
+            var skeletonQualities = new[]
+            {
+                new Feat { Name = "skeleton quality 1" },
+                new Feat { Name = "skeleton quality 2" },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.Skeleton,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    Enumerable.Empty<Skill>(),
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
+                .Returns(skeletonQualities);
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateBaseAttackBonus(
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints))
+                .Returns(9266);
+
+            var skeletonAttacks = new[]
+            {
+                new Attack
+                {
+                    Name = "Claw",
+                    DamageRoll = "skeleton damage",
+                    Frequency = new Frequency
+                    {
+                        Quantity = 1,
+                        TimePeriod = FeatConstants.Frequencies.Round,
+                    }
+                }
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Skeleton,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    9266,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(skeletonAttacks);
+
+            var attacksWithBonuses = new[]
+            {
+                new Attack { Name = "Claw", DamageRoll = "skeleton claw roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    skeletonAttacks,
+                    It.Is<IEnumerable<Feat>>(f =>
+                        f.IsEquivalentTo(baseCreature.Feats
+                            .Union(baseCreature.SpecialQualities)
+                            .Union(skeletonQualities))),
+                    baseCreature.Abilities))
+                .Returns(attacksWithBonuses);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+
+            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
+            Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
+            Assert.That(claw.DamageRoll, Is.EqualTo("skeleton claw roll"));
+            Assert.That(claw.AttackBonuses, Has.Count.EqualTo(1).And.Contains(92));
+            Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void ApplyTo_DoesNotGainClawAttacks_NoHands()
+        {
+            baseCreature.NumberOfHands = 0;
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateBaseAttackBonus(
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints))
+                .Returns(9266);
+
+            var skeletonAttacks = new[]
+            {
+                new Attack
+                {
+                    Name = "Claw",
+                    DamageRoll = "skeleton damage",
+                    Frequency = new Frequency
+                    {
+                        Quantity = 1,
+                        TimePeriod = FeatConstants.Frequencies.Round,
+                    }
+                }
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Skeleton,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    9266,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(skeletonAttacks);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+
+            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
+            Assert.That(claw, Is.Null);
         }
 
         [TestCase(SizeConstants.Fine, "1")]
@@ -343,49 +634,294 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Colossal, "2d8")]
         public void ApplyTo_ReplacesClawAttack_KeepOriginalClawDamage(string size, string damage)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Size = size;
+            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
+            {
+                new Attack
+                {
+                    Name = "Claw",
+                    DamageRoll = "damage roll",
+                    Frequency = new Frequency
+                    {
+                        Quantity = 2,
+                        TimePeriod = FeatConstants.Frequencies.Round,
+                    }
+                }
+            });
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateBaseAttackBonus(
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints))
+                .Returns(9266);
+
+            var skeletonAttacks = new[]
+            {
+                new Attack
+                {
+                    Name = "Claw",
+                    DamageRoll = damage,
+                    Frequency = new Frequency
+                    {
+                        Quantity = 1,
+                        TimePeriod = FeatConstants.Frequencies.Round,
+                    }
+                }
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Skeleton,
+                    SizeConstants.Medium,
+                    size,
+                    9266,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(skeletonAttacks);
+
+            mockDice
+                .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
+                .Returns(90210);
+
+            mockDice
+                .Setup(d => d.Roll(damage).AsPotentialMaximum<int>(true))
+                .Returns(42);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+
+            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
+            Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
+            Assert.That(claw.DamageRoll, Is.EqualTo("damage roll"));
+            Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
 
         [Test]
         public void ApplyTo_LoseSpecialAttacks()
         {
-            Assert.Fail("not yet written");
+            var specialAttack = new Attack
+            {
+                Name = "my special attack",
+                IsSpecial = true,
+            };
+            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
+            {
+                specialAttack,
+                new Attack { Name = "my nroaml attack", IsSpecial = false },
+            });
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialAttacks, Is.Empty);
+            Assert.That(creature.Attacks, Does.Not.Contain(specialAttack)
+                .And.Not.Empty);
         }
 
         [Test]
         public void ApplyTo_ReplaceSpecialQualities()
         {
-            Assert.Fail("not yet written");
+            var skeletonQualities = new[]
+            {
+                new Feat { Name = "skeleton quality 1" },
+                new Feat { Name = "skeleton quality 2" },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.Skeleton,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    Enumerable.Empty<Skill>(),
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
+                .Returns(skeletonQualities);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities, Is.EqualTo(skeletonQualities));
         }
 
         [Test]
         public void ApplyTo_ReplaceSpecialQualities_KeepAttackBonuses()
         {
-            Assert.Fail("not yet written");
+            var attackBonus = new Feat { Name = FeatConstants.SpecialQualities.AttackBonus, Power = 9266, Foci = new[] { "losers" } };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(new[]
+            {
+                attackBonus
+            });
+
+            var skeletonQualities = new[]
+            {
+                new Feat { Name = "skeleton quality 1" },
+                new Feat { Name = "skeleton quality 2" },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.Skeleton,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    Enumerable.Empty<Skill>(),
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
+                .Returns(skeletonQualities);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
+                .And.Contain(attackBonus));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+        }
+
+        [Test]
+        public void ApplyTo_ReplaceSpecialQualities_KeepWeaponProficiencies()
+        {
+            var proficiency = new Feat { Name = "weapon proficiency", Foci = new[] { "guns" } };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(new[]
+            {
+                proficiency
+            });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency))
+                .Returns(new[] { "weapon proficiency", "other weapon proficiency" });
+
+            var skeletonQualities = new[]
+            {
+                new Feat { Name = "skeleton quality 1" },
+                new Feat { Name = "skeleton quality 2" },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.Skeleton,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    Enumerable.Empty<Skill>(),
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
+                .Returns(skeletonQualities);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
+                .And.Contain(proficiency));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+        }
+
+        [Test]
+        public void ApplyTo_ReplaceSpecialQualities_KeepArmorProficiencies()
+        {
+            var proficiency = new Feat { Name = "armor proficiency" };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(new[]
+            {
+                proficiency
+            });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.ArmorProficiency))
+                .Returns(new[] { "armor proficiency", "other armor proficiency" });
+
+            var skeletonQualities = new[]
+            {
+                new Feat { Name = "skeleton quality 1" },
+                new Feat { Name = "skeleton quality 2" },
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.Skeleton,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    Enumerable.Empty<Skill>(),
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
+                .Returns(skeletonQualities);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
+                .And.Contain(proficiency));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
         }
 
         [Test]
         public void ApplyTo_SetSavingThrows()
         {
-            Assert.Fail("not yet written");
+            var skeletonSaves = new Dictionary<string, Save>();
+            skeletonSaves[SaveConstants.Fortitude] = new Save
+            {
+                BaseAbility = baseCreature.Abilities[AbilityConstants.Constitution],
+                BaseValue = 9266,
+            };
+            skeletonSaves[SaveConstants.Reflex] = new Save
+            {
+                BaseAbility = baseCreature.Abilities[AbilityConstants.Dexterity],
+                BaseValue = 90210,
+            };
+            skeletonSaves[SaveConstants.Will] = new Save
+            {
+                BaseAbility = baseCreature.Abilities[AbilityConstants.Wisdom],
+                BaseValue = 42,
+            };
+
+            mockSavesGenerator
+                .Setup(g => g.GenerateWith(
+                    CreatureConstants.Templates.Skeleton,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    baseCreature.HitPoints,
+                    Enumerable.Empty<Feat>(),
+                    baseCreature.Abilities))
+                .Returns(skeletonSaves);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Saves, Is.EqualTo(skeletonSaves));
         }
 
         [Test]
         public void ApplyTo_SetAbilities()
         {
-            Assert.Fail("not yet written");
+            var wisdomOffset = baseCreature.Abilities[AbilityConstants.Wisdom].FullScore;
+            var charismaOffset = baseCreature.Abilities[AbilityConstants.Charisma].FullScore;
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(int.MinValue));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(int.MinValue));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.EqualTo(10 - wisdomOffset));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(1 - charismaOffset));
+
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].HasScore, Is.False);
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
         }
 
         [Test]
         public void ApplyTo_LoseAllSkills()
         {
-            Assert.Fail("not yet written");
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Skills, Is.Empty);
         }
 
         [Test]
-        public void ApplyTo_LoseAllFeats_GainImprovedInitiative()
+        public void ApplyTo_LoseAllFeats()
         {
-            Assert.Fail("not yet written");
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Feats, Is.Empty);
         }
 
         [TestCase(.1, ChallengeRatingConstants.OneSixth)]
@@ -413,7 +949,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(20, ChallengeRatingConstants.Eight)]
         public void ApplyTo_AdjustChallengeRating(double hitDice, string challengeRating)
         {
-            Assert.Fail("not yet written");
+            baseCreature.HitPoints.HitDiceQuantity = hitDice;
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating));
         }
 
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good)]
@@ -427,13 +967,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Evil)]
         public void ApplyTo_ChangeAlignment(string lawfulness, string goodness)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Alignment.Lawfulness = lawfulness;
+            baseCreature.Alignment.Goodness = goodness;
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Alignment.Full, Is.EqualTo(AlignmentConstants.NeutralEvil));
         }
 
         [Test]
         public void ApplyTo_SetNoLevelAdjustment()
         {
-            Assert.Fail("not yet written");
+            baseCreature.LevelAdjustment = 9266;
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.LevelAdjustment, Is.Null);
         }
 
         [Test]

@@ -256,6 +256,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_ConstitutionGoesAway()
         {
             var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(int.MinValue));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
         }
 

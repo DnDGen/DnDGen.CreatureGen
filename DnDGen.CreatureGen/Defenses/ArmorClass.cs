@@ -109,5 +109,13 @@ namespace DnDGen.CreatureGen.Defenses
             var bonus = new Bonus { Value = value, Condition = condition };
             sourcesAndBonuses[source] = sourcesAndBonuses[source].Union(new[] { bonus });
         }
+
+        public void RemoveBonus(string source)
+        {
+            if (sourcesAndBonuses.ContainsKey(source))
+            {
+                sourcesAndBonuses[source] = Enumerable.Empty<Bonus>();
+            }
+        }
     }
 }

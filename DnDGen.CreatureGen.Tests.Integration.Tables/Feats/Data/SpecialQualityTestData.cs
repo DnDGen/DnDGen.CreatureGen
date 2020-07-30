@@ -316,6 +316,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
             testCases[CreatureConstants.Templates.Skeleton].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to bludgeoning", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
             testCases[CreatureConstants.Templates.Skeleton].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Cold));
+            testCases[CreatureConstants.Templates.Skeleton].Add(helper.BuildData(FeatConstants.Initiative_Improved, power: 4));
 
             testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Bat, dire bat, wolf, or dire wolf", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver magic", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
