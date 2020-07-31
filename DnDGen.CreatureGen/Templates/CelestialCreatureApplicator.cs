@@ -87,8 +87,8 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureAbilities(Creature creature)
         {
-            while (creature.Abilities[AbilityConstants.Intelligence].FullScore < 3)
-                creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment++;
+            if (creature.Abilities[AbilityConstants.Intelligence].FullScore < 3)
+                creature.Abilities[AbilityConstants.Intelligence].TemplateScore = 3;
         }
 
         private void UpdateCreatureAlignment(Creature creature)

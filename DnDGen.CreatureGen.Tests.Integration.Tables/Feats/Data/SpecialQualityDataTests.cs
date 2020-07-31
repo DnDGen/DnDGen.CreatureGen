@@ -95,6 +95,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
         public void BonusFeatsHaveCorrectData(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -126,6 +127,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
         public void ProficiencyFeatsHaveCorrectFoci(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -173,6 +175,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
         public void FeatsFocusingOnWeaponsOrArmorRequireEquipment(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -236,6 +239,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
         public void FastHealingHasCorrectFrequency(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -263,6 +267,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
         public void RegenerationHasCorrectFrequency(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -290,6 +295,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
         public void DamageReductionHasCorrectData(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -320,6 +326,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
         public void ImmunityHasCorrectData(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -356,6 +363,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
         public void ChangeShapeHasCorrectData(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -385,6 +393,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
         public void SpellLikeAbilityHasCorrectData(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -424,6 +433,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
         public void PsionicHasCorrectData(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -463,6 +473,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), "All")]
         [TestCaseSource(typeof(CreatureTestData), "Types")]
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), "Templates")]
         public void EnergyResistanceHasCorrectData(string creature)
         {
             Assert.That(table, Contains.Key(creature));

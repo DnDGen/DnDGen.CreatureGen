@@ -54,7 +54,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
             mockAlignmentGenerator = new Mock<IAlignmentGenerator>();
 
-            applicator = new HalfDragonBlueApplicator(
+            applicator = new HalfDragonBlackApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
                 mockAttacksGenerator.Object,
@@ -65,6 +65,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             baseCreature = new CreatureBuilder().WithTestValues().Build();
             baseCreature.HitPoints.HitDie = 8;
+
+            alignment = new Alignment { Lawfulness = "dragony", Goodness = "scaley" };
 
             var speeds = new Dictionary<string, Measurement>();
             speeds[SpeedConstants.Fly] = new Measurement("furlongs");
@@ -86,7 +88,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     .AsPotentialAverage())
                 .Returns(90210);
 
-            alignment = new Alignment { Lawfulness = "dragony", Goodness = "scaley" };
             mockAlignmentGenerator
                 .Setup(g => g.Generate(template))
                 .Returns(alignment);
@@ -186,6 +187,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
             Assert.That(creature.HitPoints.HitDie, Is.EqualTo(increased));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
@@ -219,6 +221,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
             Assert.That(creature.HitPoints.HitDie, Is.EqualTo(increased));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210 + 2 * 17));
@@ -285,11 +288,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         public void ApplyTo_AdjustAbilities()
         {
             var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(8));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(2));
         }
 
@@ -305,6 +314,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature.Abilities[ability].HasScore, Is.False);
+            Assert.That(creature.Abilities[ability].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[ability].TemplateAdjustment, Is.Zero);
         }
 
@@ -852,6 +862,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
             Assert.That(creature.HitPoints.HitDie, Is.EqualTo(increased));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
@@ -885,6 +896,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
             Assert.That(creature.HitPoints.HitDie, Is.EqualTo(increased));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210 + 2 * 17));
@@ -951,11 +963,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         public async Task ApplyToAsync_AdjustAbilities()
         {
             var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(8));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(2));
         }
 
@@ -971,6 +989,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature.Abilities[ability].HasScore, Is.False);
+            Assert.That(creature.Abilities[ability].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[ability].TemplateAdjustment, Is.Zero);
         }
 
@@ -1120,7 +1139,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    new Alignment { Lawfulness = "dragony", Goodness = "scaley" }))
+                    alignment))
                 .Returns(newQualities);
 
             var attacksWithBonuses = new[]

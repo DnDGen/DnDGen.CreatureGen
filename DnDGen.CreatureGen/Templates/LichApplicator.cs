@@ -120,7 +120,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureAbilities(Creature creature)
         {
-            creature.Abilities[AbilityConstants.Constitution].BaseScore = 0;
+            creature.Abilities[AbilityConstants.Constitution].TemplateScore = 0;
 
             if (creature.Abilities[AbilityConstants.Wisdom].HasScore)
                 creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment = 2;

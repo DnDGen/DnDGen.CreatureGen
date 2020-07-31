@@ -370,6 +370,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
             testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to slashing", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
             testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData(FeatConstants.SpecialQualities.SingleActionsOnly));
+            testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData(FeatConstants.Toughness, power: 3));
 
             return testCases;
         }

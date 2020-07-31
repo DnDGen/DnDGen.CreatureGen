@@ -1050,8 +1050,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             if (baseScore + raceAdjust + advanced < 3)
             {
-                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Positive
-                    .And.EqualTo(3 - (baseScore + raceAdjust + advanced)));
+                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(3));
+                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Zero);
+            }
+            else
+            {
+                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
+                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Zero);
             }
         }
 
@@ -1103,7 +1108,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(3));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.Zero);
-            Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(3));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(3));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Zero);
         }
 
         [TestCaseSource("ChallengeRatingAdjustments")]
@@ -2071,8 +2077,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             if (baseScore + raceAdjust + advanced < 3)
             {
-                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Positive
-                    .And.EqualTo(3 - (baseScore + raceAdjust + advanced)));
+                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(3));
+                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Zero);
+            }
+            else
+            {
+                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
+                Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Zero);
             }
         }
 

@@ -249,6 +249,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
         }
 
@@ -256,7 +257,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_ConstitutionGoesAway()
         {
             var creature = applicator.ApplyTo(baseCreature);
-            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(int.MinValue));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
         }
 
@@ -473,6 +475,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(46));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(42));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
             Assert.That(creature.ArmorClass.DeflectionBonus, Is.EqualTo(18).And.EqualTo(baseCreature.Abilities[AbilityConstants.Charisma].Modifier));
 
@@ -503,6 +506,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(charisma + 4));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(charisma));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.AtLeast(-1));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.AtLeast(4));
             Assert.That(creature.ArmorClass.DeflectionBonus, Is.Positive.And.EqualTo(Math.Max(1, creature.Abilities[AbilityConstants.Charisma].Modifier)));
 
@@ -1203,6 +1207,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
         }
 
@@ -1210,6 +1215,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_ConstitutionGoesAway()
         {
             var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
         }
 
@@ -1425,6 +1432,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(46));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(42));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
             Assert.That(creature.ArmorClass.DeflectionBonus, Is.EqualTo(18).And.EqualTo(baseCreature.Abilities[AbilityConstants.Charisma].Modifier));
 
@@ -1455,6 +1463,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(charisma + 4));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(charisma));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.AtLeast(-1));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.AtLeast(4));
             Assert.That(creature.ArmorClass.DeflectionBonus, Is.Positive.And.EqualTo(Math.Max(1, creature.Abilities[AbilityConstants.Charisma].Modifier)));
 

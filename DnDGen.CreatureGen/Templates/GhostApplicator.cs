@@ -110,7 +110,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureAbilities(Creature creature)
         {
-            creature.Abilities[AbilityConstants.Constitution].BaseScore = 0;
+            creature.Abilities[AbilityConstants.Constitution].TemplateScore = 0;
             creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment = 4;
         }
 

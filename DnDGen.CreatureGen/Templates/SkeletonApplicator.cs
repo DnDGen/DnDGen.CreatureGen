@@ -139,10 +139,10 @@ namespace DnDGen.CreatureGen.Templates
         private void UpdateCreatureAbilities(Creature creature)
         {
             creature.Abilities[AbilityConstants.Dexterity].TemplateAdjustment = 2;
-            creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment = int.MinValue;
-            creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment = int.MinValue;
-            creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment = 10 - creature.Abilities[AbilityConstants.Wisdom].FullScore;
-            creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment = 1 - creature.Abilities[AbilityConstants.Charisma].FullScore;
+            creature.Abilities[AbilityConstants.Constitution].TemplateScore = 0;
+            creature.Abilities[AbilityConstants.Intelligence].TemplateScore = 0;
+            creature.Abilities[AbilityConstants.Wisdom].TemplateScore = 10;
+            creature.Abilities[AbilityConstants.Charisma].TemplateScore = 1;
         }
 
         private void UpdateCreatureSpeeds(Creature creature)
@@ -222,8 +222,7 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Abilities,
                 creature.HitPoints.RoundedHitDiceQuantity);
 
-            var allFeats = creature.Feats.Union(creature.SpecialQualities);
-            skeletonAttacks = attacksGenerator.ApplyAttackBonuses(skeletonAttacks, allFeats, creature.Abilities);
+            skeletonAttacks = attacksGenerator.ApplyAttackBonuses(skeletonAttacks, creature.SpecialQualities, creature.Abilities);
             var newClaw = skeletonAttacks.First(a => a.Name == "Claw");
 
             if (creature.Attacks.Any(a => a.Name == "Claw"))
@@ -282,12 +281,11 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureSaves(Creature creature)
         {
-            var allFeats = creature.Feats.Union(creature.SpecialQualities);
             creature.Saves = savesGenerator.GenerateWith(
                 CreatureConstants.Templates.Skeleton,
                 creature.Type,
                 creature.HitPoints,
-                allFeats,
+                creature.SpecialQualities,
                 creature.Abilities);
         }
 
@@ -319,9 +317,75 @@ namespace DnDGen.CreatureGen.Templates
             creature.Feats = creature.Feats.Where(f => featNamesToKeep.Contains(f.Name));
         }
 
-        public Task<Creature> ApplyToAsync(Creature creature)
+        public async Task<Creature> ApplyToAsync(Creature creature)
         {
-            throw new NotImplementedException();
+            var tasks = new List<Task>();
+
+            //Type
+            var typeTask = Task.Run(() => UpdateCreatureType(creature));
+            tasks.Add(typeTask);
+
+            //Abilities
+            var abilityTask = Task.Run(() => UpdateCreatureAbilities(creature));
+            tasks.Add(abilityTask);
+
+            //Speed
+            var speedTask = Task.Run(() => UpdateCreatureSpeeds(creature));
+            tasks.Add(speedTask);
+
+            //Challenge Rating
+            var challengeRatingTask = Task.Run(() => UpdateCreatureChallengeRating(creature));
+            tasks.Add(challengeRatingTask);
+
+            //Level Adjustment
+            var levelAdjustmentTask = Task.Run(() => UpdateCreatureLevelAdjustment(creature));
+            tasks.Add(levelAdjustmentTask);
+
+            //Skills
+            var skillTask = Task.Run(() => UpdateCreatureSkills(creature));
+            tasks.Add(skillTask);
+
+            //Armor Class
+            var armorClassTask = Task.Run(() => UpdateCreatureArmorClass(creature));
+            tasks.Add(armorClassTask);
+
+            //Alignment
+            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature));
+            tasks.Add(alignmentTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
+
+            //INFO: Depends on abilities
+            //Hit Points
+            var hitPointTask = Task.Run(() => UpdateCreatureHitPoints(creature));
+            tasks.Add(hitPointTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
+
+            //INFO: Depends on type, hit points, abilities, skills, alignment
+            //Special Qualities
+            var qualityTask = Task.Run(() => UpdateCreatureSpecialQualitiesAndFeats(creature));
+            tasks.Add(qualityTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
+
+            //INFO: Depends on type, hit points, abilities, special qualities + feats
+            //Attacks
+            var attackTask = Task.Run(() => UpdateCreatureAttacks(creature));
+            tasks.Add(attackTask);
+
+            //INFO: Depends on type, hit points, abilities, special qualities + feats
+            //Saves
+            var saveTask = Task.Run(() => UpdateCreatureSaves(creature));
+            tasks.Add(saveTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
+
+            return creature;
         }
 
         public bool IsCompatible(string creature)

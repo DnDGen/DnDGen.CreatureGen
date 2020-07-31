@@ -16,6 +16,7 @@ using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using Moq;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ using System.Threading.Tasks;
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
 {
     [TestFixture]
-    public class SkeletonApplicatorTests
+    public class ZombieApplicatorTests
     {
         private TemplateApplicator applicator;
         private Creature baseCreature;
@@ -33,9 +34,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ISavesGenerator> mockSavesGenerator;
-        private Attack[] skeletonAttacks;
-        private IEnumerable<Feat> skeletonQualities;
-        private int skeletonBaseAttack;
+        private Attack[] zombieAttacks;
+        private IEnumerable<Feat> zombieQualities;
+        private int zombieBaseAttack;
 
         [SetUp]
         public void Setup()
@@ -47,7 +48,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockSavesGenerator = new Mock<ISavesGenerator>();
 
-            applicator = new SkeletonApplicator(
+            applicator = new ZombieApplicator(
                 mockCollectionSelector.Object,
                 mockAdjustmentSelector.Object,
                 mockDice.Object,
@@ -61,26 +62,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
                     .d(12)
                     .AsIndividualRolls<int>())
                 .Returns(new[] { 9266 });
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
                     .d(12)
                     .AsPotentialAverage())
                 .Returns(90210);
 
-            skeletonQualities = new[]
+            zombieQualities = new[]
             {
-                new Feat { Name = "skeleton quality 1" },
-                new Feat { Name = "skeleton quality 2" },
+                new Feat { Name = "zombie quality 1" },
+                new Feat { Name = "zombie quality 2" },
             };
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -88,7 +89,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
                     new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
-                .Returns(skeletonQualities);
+                .Returns(zombieQualities);
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateBaseAttackBonus(
@@ -96,14 +97,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints))
                 .Returns(42);
 
-            skeletonBaseAttack = 42;
+            zombieBaseAttack = 42;
 
-            skeletonAttacks = new[]
+            zombieAttacks = new[]
             {
                 new Attack
                 {
-                    Name = "Claw",
-                    DamageRoll = "skeleton damage roll",
+                    Name = "Slam",
+                    DamageRoll = "zombie damage roll",
                     Frequency = new Frequency
                     {
                         Quantity = 1,
@@ -114,22 +115,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(skeletonAttacks);
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                .Returns(zombieAttacks);
 
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(
-                    skeletonAttacks,
+                    zombieAttacks,
                     It.Is<IEnumerable<Feat>>(f =>
                         f.IsEquivalentTo(baseCreature.SpecialQualities
-                            .Union(skeletonQualities))),
+                            .Union(zombieQualities))),
                     baseCreature.Abilities))
-                .Returns(skeletonAttacks);
+                .Returns(zombieAttacks);
         }
 
         [TestCase(CreatureConstants.Types.Aberration, true)]
@@ -208,13 +209,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(0.5, true)]
         [TestCase(1, true)]
         [TestCase(2, true)]
+        [TestCase(9, true)]
         [TestCase(10, true)]
-        [TestCase(19, true)]
-        [TestCase(20, true)]
+        [TestCase(11, false)]
+        [TestCase(19, false)]
+        [TestCase(20, false)]
         [TestCase(21, false)]
         [TestCase(22, false)]
         [TestCase(96, false)]
-        public void IsCompatible_FewerThan20HitDice(double hitDice, bool compatible)
+        public void IsCompatible_FewerThan10HitDice(double hitDice, bool compatible)
         {
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
@@ -332,13 +335,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
                     .d(12)
                     .AsIndividualRolls<int>())
                 .Returns(new[] { 600, 1337 });
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
                     .d(12)
                     .AsPotentialAverage())
                 .Returns(1336);
@@ -350,30 +353,194 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
         }
 
-        [Test]
-        public void ApplyTo_LoseFlySpeed_Wings()
+        [TestCase(0.5)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        [TestCase(5)]
+        [TestCase(6)]
+        [TestCase(7)]
+        [TestCase(8)]
+        [TestCase(9)]
+        [TestCase(10)]
+        public void ApplyTo_HitDiceQuantityDoubles(double hitDice)
         {
-            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
-            baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
-            baseCreature.Speeds[SpeedConstants.Fly].Description = "Superb (Wings)";
+            baseCreature.HitPoints.HitDiceQuantity = hitDice;
+            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
+
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 600, 1337 });
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsPotentialAverage())
+                .Returns(1336);
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Zombie,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    42,
+                    baseCreature.Abilities,
+                    newRounded))
+                .Returns(zombieAttacks);
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Speeds, Is.Not.Empty
-                .And.Not.ContainKey(SpeedConstants.Fly));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(600 + 1337));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
+        }
+
+        [TestCase(0.1)]
+        [TestCase(0.25)]
+        public void ApplyTo_HitDiceQuantityDoubles_Fractional(double hitDice)
+        {
+            baseCreature.HitPoints.HitDiceQuantity = hitDice;
+            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
+
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 600, 1337 });
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsPotentialAverage())
+                .Returns(1336);
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Zombie,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    42,
+                    baseCreature.Abilities,
+                    newRounded))
+                .Returns(zombieAttacks);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo((600 + 1337) * hitDice * 2));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
+        }
+
+        [TestCase(0.5)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        [TestCase(5)]
+        [TestCase(6)]
+        [TestCase(7)]
+        [TestCase(8)]
+        [TestCase(9)]
+        [TestCase(10)]
+        public async Task ApplyToAsync_HitDiceQuantityDoubles(double hitDice)
+        {
+            baseCreature.HitPoints.HitDiceQuantity = hitDice;
+            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
+
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 600, 1337 });
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsPotentialAverage())
+                .Returns(1336);
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Zombie,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    42,
+                    baseCreature.Abilities,
+                    newRounded))
+                .Returns(zombieAttacks);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(600 + 1337));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
+        }
+
+        [TestCase(0.1)]
+        [TestCase(0.25)]
+        public async Task ApplyToAsync_HitDiceQuantityDoubles_Fractional(double hitDice)
+        {
+            baseCreature.HitPoints.HitDiceQuantity = hitDice;
+            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
+
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 600, 1337 });
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsPotentialAverage())
+                .Returns(1336);
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Zombie,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    42,
+                    baseCreature.Abilities,
+                    newRounded))
+                .Returns(zombieAttacks);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
+            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo((600 + 1337) * hitDice * 2));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
         }
 
         [Test]
-        public void ApplyTo_KeepFlySpeed_Magic()
+        public void ApplyTo_AerialManeuverability_BecomesClumsy()
         {
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
             baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
-            baseCreature.Speeds[SpeedConstants.Fly].Description = "Superb (Magic)";
+            baseCreature.Speeds[SpeedConstants.Fly].Description = "Superb Maneuverability (hoverboard)";
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Speeds, Is.Not.Empty
                 .And.ContainKey(SpeedConstants.Fly));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("Clumsy Maneuverability (hoverboard)"));
         }
 
         [TestCase(SizeConstants.Fine, 0)]
@@ -381,17 +548,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Tiny, 0)]
         [TestCase(SizeConstants.Small, 1)]
         [TestCase(SizeConstants.Medium, 2)]
-        [TestCase(SizeConstants.Large, 2)]
-        [TestCase(SizeConstants.Huge, 3)]
-        [TestCase(SizeConstants.Gargantuan, 6)]
-        [TestCase(SizeConstants.Colossal, 10)]
+        [TestCase(SizeConstants.Large, 3)]
+        [TestCase(SizeConstants.Huge, 4)]
+        [TestCase(SizeConstants.Gargantuan, 7)]
+        [TestCase(SizeConstants.Colossal, 11)]
         public void ApplyTo_GainsNaturalArmorBasedOnSize(string size, int bonus)
         {
             baseCreature.Size = size;
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -399,17 +566,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.CanUseEquipment,
                     size,
                     new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
-                .Returns(skeletonQualities);
+                .Returns(zombieQualities);
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(skeletonAttacks);
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                .Returns(zombieAttacks);
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -427,10 +594,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Tiny, 0)]
         [TestCase(SizeConstants.Small, 1)]
         [TestCase(SizeConstants.Medium, 2)]
-        [TestCase(SizeConstants.Large, 2)]
-        [TestCase(SizeConstants.Huge, 3)]
-        [TestCase(SizeConstants.Gargantuan, 6)]
-        [TestCase(SizeConstants.Colossal, 10)]
+        [TestCase(SizeConstants.Large, 3)]
+        [TestCase(SizeConstants.Huge, 4)]
+        [TestCase(SizeConstants.Gargantuan, 7)]
+        [TestCase(SizeConstants.Colossal, 11)]
         public void ApplyTo_ReplacesNaturalArmorBasedOnSize(string size, int bonus)
         {
             baseCreature.Size = size;
@@ -438,7 +605,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -446,17 +613,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.CanUseEquipment,
                     size,
                     new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
-                .Returns(skeletonQualities);
+                .Returns(zombieQualities);
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(skeletonAttacks);
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                .Returns(zombieAttacks);
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -474,7 +641,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.BaseAttackBonus, Is.EqualTo(skeletonBaseAttack));
+            Assert.That(creature.BaseAttackBonus, Is.EqualTo(zombieBaseAttack));
         }
 
         [TestCase(SizeConstants.Fine, "1")]
@@ -486,14 +653,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Huge, "1d8")]
         [TestCase(SizeConstants.Gargantuan, "2d6")]
         [TestCase(SizeConstants.Colossal, "2d8")]
-        public void ApplyTo_ReplacesClawAttack_DamageBasedOnSize(string size, string damage)
+        public void ApplyTo_ReplacesSlamAttack_DamageBasedOnSize(string size, string damage)
         {
             baseCreature.Size = size;
             baseCreature.Attacks = baseCreature.Attacks.Union(new[]
             {
                 new Attack
                 {
-                    Name = "Claw",
+                    Name = "Slam",
                     DamageRoll = "damage roll",
                     Frequency = new Frequency
                     {
@@ -505,7 +672,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -513,19 +680,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.CanUseEquipment,
                     size,
                     new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
-                .Returns(skeletonQualities);
+                .Returns(zombieQualities);
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(skeletonAttacks);
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                .Returns(zombieAttacks);
 
-            skeletonAttacks[0].DamageRoll = damage;
+            zombieAttacks[0].DamageRoll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -538,10 +705,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
 
-            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
-            Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo(damage));
-            Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
+            var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
+            Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
+            Assert.That(slam.DamageRoll, Is.EqualTo(damage));
+            Assert.That(slam.Frequency.Quantity, Is.EqualTo(2));
         }
 
         [TestCase(1)]
@@ -554,20 +721,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(8)]
         [TestCase(9)]
         [TestCase(10)]
-        public void ApplyTo_GainClawAttacks_PerNumberOfHands(int numberOfHands)
+        public void ApplyTo_GainSlamAttacks_OnlyOne(int numberOfHands)
         {
             baseCreature.NumberOfHands = numberOfHands;
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
 
-            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
-            Assert.That(claw, Is.Not.Null.And.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.Frequency.Quantity, Is.EqualTo(numberOfHands));
+            var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
+            Assert.That(slam, Is.Not.Null.And.EqualTo(zombieAttacks[0]));
+            Assert.That(slam.Frequency.Quantity, Is.EqualTo(1));
         }
 
         [Test]
-        public void ApplyTo_GainClawAttacks_WithAttackBonuses()
+        public void ApplyTo_GainSlamAttacks_WithAttackBonuses()
         {
             baseCreature.NumberOfHands = 2;
 
@@ -575,8 +742,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack
                 {
-                    Name = "Claw",
-                    DamageRoll = "skeleton claw roll",
+                    Name = "Slam",
+                    DamageRoll = "zombie slam roll",
                     Frequency = new Frequency { Quantity = 1, TimePeriod = FeatConstants.Frequencies.Round },
                     IsSpecial = false,
                     IsMelee = true,
@@ -586,34 +753,35 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(
-                    skeletonAttacks,
+                    zombieAttacks,
                     It.Is<IEnumerable<Feat>>(f =>
                         f.IsEquivalentTo(baseCreature.Feats
                             .Union(baseCreature.SpecialQualities)
-                            .Union(skeletonQualities))),
+                            .Union(zombieQualities))),
                     baseCreature.Abilities))
                 .Returns(attacksWithBonuses);
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
 
-            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
-            Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo("skeleton claw roll"));
-            Assert.That(claw.AttackBonuses, Has.Count.EqualTo(1).And.Contains(92));
-            Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
+            var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
+            Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
+            Assert.That(slam.DamageRoll, Is.EqualTo("zombie slam roll"));
+            Assert.That(slam.AttackBonuses, Has.Count.EqualTo(1).And.Contains(92));
+            Assert.That(slam.Frequency.Quantity, Is.EqualTo(1));
         }
 
         [Test]
-        public void ApplyTo_DoesNotGainClawAttacks_NoHands()
+        public void ApplyTo_GainSlamAttacks_NoHands()
         {
             baseCreature.NumberOfHands = 0;
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
 
-            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
-            Assert.That(claw, Is.Null);
+            var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
+            Assert.That(slam, Is.Not.Null.And.EqualTo(zombieAttacks[0]));
+            Assert.That(slam.Frequency.Quantity, Is.EqualTo(1));
         }
 
         [TestCase(SizeConstants.Fine, "1")]
@@ -625,14 +793,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Huge, "1d8")]
         [TestCase(SizeConstants.Gargantuan, "2d6")]
         [TestCase(SizeConstants.Colossal, "2d8")]
-        public void ApplyTo_ReplacesClawAttack_KeepOriginalClawDamage(string size, string damage)
+        public void ApplyTo_ReplacesSlamAttack_KeepOriginalSlamDamage(string size, string damage)
         {
             baseCreature.Size = size;
             baseCreature.Attacks = baseCreature.Attacks.Union(new[]
             {
                 new Attack
                 {
-                    Name = "Claw",
+                    Name = "Slam",
                     DamageRoll = "damage roll",
                     Frequency = new Frequency
                     {
@@ -644,7 +812,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -652,19 +820,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.CanUseEquipment,
                     size,
                     new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
-                .Returns(skeletonQualities);
+                .Returns(zombieQualities);
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(skeletonAttacks);
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                .Returns(zombieAttacks);
 
-            skeletonAttacks[0].DamageRoll = damage;
+            zombieAttacks[0].DamageRoll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -677,10 +845,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
 
-            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
-            Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo("damage roll"));
-            Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
+            var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
+            Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
+            Assert.That(slam.DamageRoll, Is.EqualTo("damage roll"));
+            Assert.That(slam.Frequency.Quantity, Is.EqualTo(2));
         }
 
         [Test]
@@ -709,7 +877,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.SpecialQualities, Is.EqualTo(skeletonQualities));
+            Assert.That(creature.SpecialQualities, Is.EqualTo(zombieQualities));
         }
 
         [Test]
@@ -723,7 +891,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(attackBonus));
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
         }
@@ -743,7 +911,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(proficiency));
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
         }
@@ -763,7 +931,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(proficiency));
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
         }
@@ -771,18 +939,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_SetSavingThrows()
         {
-            var skeletonSaves = new Dictionary<string, Save>();
-            skeletonSaves[SaveConstants.Fortitude] = new Save
+            var zombieSaves = new Dictionary<string, Save>();
+            zombieSaves[SaveConstants.Fortitude] = new Save
             {
                 BaseAbility = baseCreature.Abilities[AbilityConstants.Constitution],
                 BaseValue = 600,
             };
-            skeletonSaves[SaveConstants.Reflex] = new Save
+            zombieSaves[SaveConstants.Reflex] = new Save
             {
                 BaseAbility = baseCreature.Abilities[AbilityConstants.Dexterity],
                 BaseValue = 1337,
             };
-            skeletonSaves[SaveConstants.Will] = new Save
+            zombieSaves[SaveConstants.Will] = new Save
             {
                 BaseAbility = baseCreature.Abilities[AbilityConstants.Wisdom],
                 BaseValue = 1336,
@@ -790,16 +958,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockSavesGenerator
                 .Setup(g => g.GenerateWith(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints,
-                    It.Is<IEnumerable<Feat>>(ff => ff.IsEquivalentTo(baseCreature.SpecialQualities.Union(skeletonQualities))),
+                    It.Is<IEnumerable<Feat>>(ff => ff.IsEquivalentTo(baseCreature.SpecialQualities.Union(zombieQualities))),
                     baseCreature.Abilities))
-                .Returns(skeletonSaves);
+                .Returns(zombieSaves);
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Saves, Is.EqualTo(skeletonSaves));
+            Assert.That(creature.Saves, Is.EqualTo(zombieSaves));
         }
 
         [Test]
@@ -808,9 +976,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(2));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(-2));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.Zero);
@@ -842,58 +1010,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Feats, Is.Empty);
         }
 
-        [TestCase(.1, ChallengeRatingConstants.OneSixth)]
-        [TestCase(.25, ChallengeRatingConstants.OneSixth)]
-        [TestCase(.5, ChallengeRatingConstants.OneSixth)]
-        [TestCase(1, ChallengeRatingConstants.OneThird)]
+        [TestCase(.1, ChallengeRatingConstants.OneEighth)]
+        [TestCase(.25, ChallengeRatingConstants.OneEighth)]
+        [TestCase(.5, ChallengeRatingConstants.OneFourth)]
+        [TestCase(1, ChallengeRatingConstants.OneHalf)]
         [TestCase(2, ChallengeRatingConstants.One)]
-        [TestCase(3, ChallengeRatingConstants.One)]
-        [TestCase(4, ChallengeRatingConstants.Two)]
-        [TestCase(5, ChallengeRatingConstants.Two)]
-        [TestCase(6, ChallengeRatingConstants.Three)]
-        [TestCase(7, ChallengeRatingConstants.Three)]
-        [TestCase(8, ChallengeRatingConstants.Four)]
-        [TestCase(9, ChallengeRatingConstants.Four)]
-        [TestCase(10, ChallengeRatingConstants.Five)]
-        [TestCase(11, ChallengeRatingConstants.Five)]
-        [TestCase(12, ChallengeRatingConstants.Six)]
-        [TestCase(13, ChallengeRatingConstants.Six)]
-        [TestCase(14, ChallengeRatingConstants.Six)]
-        [TestCase(15, ChallengeRatingConstants.Seven)]
-        [TestCase(16, ChallengeRatingConstants.Seven)]
-        [TestCase(17, ChallengeRatingConstants.Seven)]
-        [TestCase(18, ChallengeRatingConstants.Eight)]
-        [TestCase(19, ChallengeRatingConstants.Eight)]
-        [TestCase(20, ChallengeRatingConstants.Eight)]
+        [TestCase(3, ChallengeRatingConstants.Two)]
+        [TestCase(4, ChallengeRatingConstants.Three)]
+        [TestCase(5, ChallengeRatingConstants.Three)]
+        [TestCase(6, ChallengeRatingConstants.Four)]
+        [TestCase(7, ChallengeRatingConstants.Four)]
+        [TestCase(8, ChallengeRatingConstants.Five)]
+        [TestCase(9, ChallengeRatingConstants.Six)]
+        [TestCase(10, ChallengeRatingConstants.Six)]
         public void ApplyTo_AdjustChallengeRating(double hitDice, string challengeRating)
         {
             baseCreature.HitPoints.HitDiceQuantity = hitDice;
 
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
                     .d(12)
                     .AsIndividualRolls<int>())
                 .Returns(new[] { 9266 });
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
                     .d(12)
                     .AsPotentialAverage())
                 .Returns(90210);
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(skeletonAttacks);
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                .Returns(zombieAttacks);
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating));
         }
 
@@ -1026,13 +1185,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
                     .d(12)
                     .AsIndividualRolls<int>())
                 .Returns(new[] { 600, 1337 });
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
                     .d(12)
                     .AsPotentialAverage())
                 .Returns(1336);
@@ -1045,29 +1204,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public async Task ApplyToAsync_LoseFlySpeed_Wings()
+        public async Task ApplyToAsync_AerialManeuverability_BecomesClumsy()
         {
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
             baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
-            baseCreature.Speeds[SpeedConstants.Fly].Description = "Superb (Wings)";
-
-            var creature = await applicator.ApplyToAsync(baseCreature);
-            Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Speeds, Is.Not.Empty
-                .And.Not.ContainKey(SpeedConstants.Fly));
-        }
-
-        [Test]
-        public async Task ApplyToAsync_KeepFlySpeed_Magic()
-        {
-            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
-            baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
-            baseCreature.Speeds[SpeedConstants.Fly].Description = "Superb (Magic)";
+            baseCreature.Speeds[SpeedConstants.Fly].Description = "Superb Maneuverability (hoverboard)";
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Speeds, Is.Not.Empty
                 .And.ContainKey(SpeedConstants.Fly));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("Clumsy Maneuverability (hoverboard)"));
         }
 
         [TestCase(SizeConstants.Fine, 0)]
@@ -1075,17 +1224,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Tiny, 0)]
         [TestCase(SizeConstants.Small, 1)]
         [TestCase(SizeConstants.Medium, 2)]
-        [TestCase(SizeConstants.Large, 2)]
-        [TestCase(SizeConstants.Huge, 3)]
-        [TestCase(SizeConstants.Gargantuan, 6)]
-        [TestCase(SizeConstants.Colossal, 10)]
+        [TestCase(SizeConstants.Large, 3)]
+        [TestCase(SizeConstants.Huge, 4)]
+        [TestCase(SizeConstants.Gargantuan, 7)]
+        [TestCase(SizeConstants.Colossal, 11)]
         public async Task ApplyToAsync_GainsNaturalArmorBasedOnSize(string size, int bonus)
         {
             baseCreature.Size = size;
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -1093,17 +1242,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.CanUseEquipment,
                     size,
                     new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
-                .Returns(skeletonQualities);
+                .Returns(zombieQualities);
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(skeletonAttacks);
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                .Returns(zombieAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1121,10 +1270,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Tiny, 0)]
         [TestCase(SizeConstants.Small, 1)]
         [TestCase(SizeConstants.Medium, 2)]
-        [TestCase(SizeConstants.Large, 2)]
-        [TestCase(SizeConstants.Huge, 3)]
-        [TestCase(SizeConstants.Gargantuan, 6)]
-        [TestCase(SizeConstants.Colossal, 10)]
+        [TestCase(SizeConstants.Large, 3)]
+        [TestCase(SizeConstants.Huge, 4)]
+        [TestCase(SizeConstants.Gargantuan, 7)]
+        [TestCase(SizeConstants.Colossal, 11)]
         public async Task ApplyToAsync_ReplacesNaturalArmorBasedOnSize(string size, int bonus)
         {
             baseCreature.Size = size;
@@ -1132,7 +1281,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -1140,17 +1289,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.CanUseEquipment,
                     size,
                     new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
-                .Returns(skeletonQualities);
+                .Returns(zombieQualities);
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(skeletonAttacks);
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                .Returns(zombieAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1168,7 +1317,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.BaseAttackBonus, Is.EqualTo(skeletonBaseAttack));
+            Assert.That(creature.BaseAttackBonus, Is.EqualTo(zombieBaseAttack));
         }
 
         [TestCase(SizeConstants.Fine, "1")]
@@ -1180,14 +1329,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Huge, "1d8")]
         [TestCase(SizeConstants.Gargantuan, "2d6")]
         [TestCase(SizeConstants.Colossal, "2d8")]
-        public async Task ApplyToAsync_ReplacesClawAttack_DamageBasedOnSize(string size, string damage)
+        public async Task ApplyToAsync_ReplacesSlamAttack_DamageBasedOnSize(string size, string damage)
         {
             baseCreature.Size = size;
             baseCreature.Attacks = baseCreature.Attacks.Union(new[]
             {
                 new Attack
                 {
-                    Name = "Claw",
+                    Name = "Slam",
                     DamageRoll = "damage roll",
                     Frequency = new Frequency
                     {
@@ -1199,7 +1348,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -1207,19 +1356,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.CanUseEquipment,
                     size,
                     new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
-                .Returns(skeletonQualities);
+                .Returns(zombieQualities);
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(skeletonAttacks);
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                .Returns(zombieAttacks);
 
-            skeletonAttacks[0].DamageRoll = damage;
+            zombieAttacks[0].DamageRoll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -1232,10 +1381,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
 
-            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
-            Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo(damage));
-            Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
+            var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
+            Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
+            Assert.That(slam.DamageRoll, Is.EqualTo(damage));
+            Assert.That(slam.Frequency.Quantity, Is.EqualTo(2));
         }
 
         [TestCase(1)]
@@ -1248,20 +1397,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(8)]
         [TestCase(9)]
         [TestCase(10)]
-        public async Task ApplyToAsync_GainClawAttacks_PerNumberOfHands(int numberOfHands)
+        public async Task ApplyToAsync_GainSlamAttacks_OnlyOne(int numberOfHands)
         {
             baseCreature.NumberOfHands = numberOfHands;
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
 
-            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
-            Assert.That(claw, Is.Not.Null.And.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.Frequency.Quantity, Is.EqualTo(numberOfHands));
+            var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
+            Assert.That(slam, Is.Not.Null.And.EqualTo(zombieAttacks[0]));
+            Assert.That(slam.Frequency.Quantity, Is.EqualTo(1));
         }
 
         [Test]
-        public async Task ApplyToAsync_GainClawAttacks_WithAttackBonuses()
+        public async Task ApplyToAsync_GainSlamAttacks_WithAttackBonuses()
         {
             baseCreature.NumberOfHands = 2;
 
@@ -1269,8 +1418,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack
                 {
-                    Name = "Claw",
-                    DamageRoll = "skeleton claw roll",
+                    Name = "Slam",
+                    DamageRoll = "zombie slam roll",
                     Frequency = new Frequency { Quantity = 1, TimePeriod = FeatConstants.Frequencies.Round },
                     IsSpecial = false,
                     IsMelee = true,
@@ -1280,34 +1429,35 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(
-                    skeletonAttacks,
+                    zombieAttacks,
                     It.Is<IEnumerable<Feat>>(f =>
                         f.IsEquivalentTo(baseCreature.Feats
                             .Union(baseCreature.SpecialQualities)
-                            .Union(skeletonQualities))),
+                            .Union(zombieQualities))),
                     baseCreature.Abilities))
                 .Returns(attacksWithBonuses);
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
 
-            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
-            Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo("skeleton claw roll"));
-            Assert.That(claw.AttackBonuses, Has.Count.EqualTo(1).And.Contains(92));
-            Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
+            var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
+            Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
+            Assert.That(slam.DamageRoll, Is.EqualTo("zombie slam roll"));
+            Assert.That(slam.AttackBonuses, Has.Count.EqualTo(1).And.Contains(92));
+            Assert.That(slam.Frequency.Quantity, Is.EqualTo(1));
         }
 
         [Test]
-        public async Task ApplyToAsync_DoesNotGainClawAttacks_NoHands()
+        public async Task ApplyToAsync_GainSlamAttacks_NoHands()
         {
             baseCreature.NumberOfHands = 0;
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
 
-            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
-            Assert.That(claw, Is.Null);
+            var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
+            Assert.That(slam, Is.Not.Null.And.EqualTo(zombieAttacks[0]));
+            Assert.That(slam.Frequency.Quantity, Is.EqualTo(1));
         }
 
         [TestCase(SizeConstants.Fine, "1")]
@@ -1319,14 +1469,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Huge, "1d8")]
         [TestCase(SizeConstants.Gargantuan, "2d6")]
         [TestCase(SizeConstants.Colossal, "2d8")]
-        public async Task ApplyToAsync_ReplacesClawAttack_KeepOriginalClawDamage(string size, string damage)
+        public async Task ApplyToAsync_ReplacesSlamAttack_KeepOriginalSlamDamage(string size, string damage)
         {
             baseCreature.Size = size;
             baseCreature.Attacks = baseCreature.Attacks.Union(new[]
             {
                 new Attack
                 {
-                    Name = "Claw",
+                    Name = "Slam",
                     DamageRoll = "damage roll",
                     Frequency = new Frequency
                     {
@@ -1338,7 +1488,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
@@ -1346,19 +1496,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.CanUseEquipment,
                     size,
                     new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
-                .Returns(skeletonQualities);
+                .Returns(zombieQualities);
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(skeletonAttacks);
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                .Returns(zombieAttacks);
 
-            skeletonAttacks[0].DamageRoll = damage;
+            zombieAttacks[0].DamageRoll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -1371,10 +1521,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
 
-            var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
-            Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo("damage roll"));
-            Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
+            var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
+            Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
+            Assert.That(slam.DamageRoll, Is.EqualTo("damage roll"));
+            Assert.That(slam.Frequency.Quantity, Is.EqualTo(2));
         }
 
         [Test]
@@ -1403,7 +1553,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.SpecialQualities, Is.EqualTo(skeletonQualities));
+            Assert.That(creature.SpecialQualities, Is.EqualTo(zombieQualities));
         }
 
         [Test]
@@ -1417,7 +1567,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(attackBonus));
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
         }
@@ -1437,7 +1587,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(proficiency));
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
         }
@@ -1457,7 +1607,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(proficiency));
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
         }
@@ -1465,18 +1615,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_SetSavingThrows()
         {
-            var skeletonSaves = new Dictionary<string, Save>();
-            skeletonSaves[SaveConstants.Fortitude] = new Save
+            var zombieSaves = new Dictionary<string, Save>();
+            zombieSaves[SaveConstants.Fortitude] = new Save
             {
                 BaseAbility = baseCreature.Abilities[AbilityConstants.Constitution],
                 BaseValue = 600,
             };
-            skeletonSaves[SaveConstants.Reflex] = new Save
+            zombieSaves[SaveConstants.Reflex] = new Save
             {
                 BaseAbility = baseCreature.Abilities[AbilityConstants.Dexterity],
                 BaseValue = 1337,
             };
-            skeletonSaves[SaveConstants.Will] = new Save
+            zombieSaves[SaveConstants.Will] = new Save
             {
                 BaseAbility = baseCreature.Abilities[AbilityConstants.Wisdom],
                 BaseValue = 1336,
@@ -1484,16 +1634,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockSavesGenerator
                 .Setup(g => g.GenerateWith(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints,
-                    It.Is<IEnumerable<Feat>>(ff => ff.IsEquivalentTo(baseCreature.SpecialQualities.Union(skeletonQualities))),
+                    It.Is<IEnumerable<Feat>>(ff => ff.IsEquivalentTo(baseCreature.SpecialQualities.Union(zombieQualities))),
                     baseCreature.Abilities))
-                .Returns(skeletonSaves);
+                .Returns(zombieSaves);
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Saves, Is.EqualTo(skeletonSaves));
+            Assert.That(creature.Saves, Is.EqualTo(zombieSaves));
         }
 
         [Test]
@@ -1502,9 +1652,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.Zero);
+            Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(2));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(-2));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.Zero);
@@ -1536,58 +1686,51 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Feats, Is.Empty);
         }
 
-        [TestCase(.1, ChallengeRatingConstants.OneSixth)]
-        [TestCase(.25, ChallengeRatingConstants.OneSixth)]
-        [TestCase(.5, ChallengeRatingConstants.OneSixth)]
-        [TestCase(1, ChallengeRatingConstants.OneThird)]
+        [TestCase(.1, ChallengeRatingConstants.OneEighth)]
+        [TestCase(.25, ChallengeRatingConstants.OneEighth)]
+        [TestCase(.5, ChallengeRatingConstants.OneFourth)]
+        [TestCase(1, ChallengeRatingConstants.OneHalf)]
         [TestCase(2, ChallengeRatingConstants.One)]
-        [TestCase(3, ChallengeRatingConstants.One)]
-        [TestCase(4, ChallengeRatingConstants.Two)]
-        [TestCase(5, ChallengeRatingConstants.Two)]
-        [TestCase(6, ChallengeRatingConstants.Three)]
-        [TestCase(7, ChallengeRatingConstants.Three)]
-        [TestCase(8, ChallengeRatingConstants.Four)]
-        [TestCase(9, ChallengeRatingConstants.Four)]
-        [TestCase(10, ChallengeRatingConstants.Five)]
-        [TestCase(11, ChallengeRatingConstants.Five)]
-        [TestCase(12, ChallengeRatingConstants.Six)]
-        [TestCase(13, ChallengeRatingConstants.Six)]
-        [TestCase(14, ChallengeRatingConstants.Six)]
-        [TestCase(15, ChallengeRatingConstants.Seven)]
-        [TestCase(16, ChallengeRatingConstants.Seven)]
-        [TestCase(17, ChallengeRatingConstants.Seven)]
-        [TestCase(18, ChallengeRatingConstants.Eight)]
-        [TestCase(19, ChallengeRatingConstants.Eight)]
-        [TestCase(20, ChallengeRatingConstants.Eight)]
+        [TestCase(3, ChallengeRatingConstants.Two)]
+        [TestCase(4, ChallengeRatingConstants.Three)]
+        [TestCase(5, ChallengeRatingConstants.Three)]
+        [TestCase(6, ChallengeRatingConstants.Four)]
+        [TestCase(7, ChallengeRatingConstants.Four)]
+        [TestCase(8, ChallengeRatingConstants.Five)]
+        [TestCase(9, ChallengeRatingConstants.Six)]
+        [TestCase(10, ChallengeRatingConstants.Six)]
         public async Task ApplyToAsync_AdjustChallengeRating(double hitDice, string challengeRating)
         {
             baseCreature.HitPoints.HitDiceQuantity = hitDice;
+            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
 
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
                 .Returns(new[] { 9266 });
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .Roll(newRounded)
                     .d(12)
                     .AsPotentialAverage())
                 .Returns(90210);
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Skeleton,
+                    CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(skeletonAttacks);
+                    newRounded))
+                .Returns(zombieAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating));
         }
 
