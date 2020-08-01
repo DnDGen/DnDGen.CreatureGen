@@ -111,11 +111,12 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
         private void UpdateCreatureType(Creature creature)
         {
-            creature.Type.Name = CreatureConstants.Types.Dragon;
             creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
             {
                 CreatureConstants.Types.Subtypes.Augmented,
+                creature.Type.Name,
             });
+            creature.Type.Name = CreatureConstants.Types.Dragon;
         }
 
         private void UpdateCreatureSpeeds(Creature creature)

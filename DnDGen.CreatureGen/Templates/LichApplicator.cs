@@ -84,11 +84,12 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureType(Creature creature)
         {
-            creature.Type.Name = CreatureConstants.Types.Undead;
             creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
             {
                 CreatureConstants.Types.Subtypes.Augmented,
+                creature.Type.Name,
             });
+            creature.Type.Name = CreatureConstants.Types.Undead;
         }
 
         private void UpdateCreatureHitPoints(Creature creature)
@@ -272,7 +273,12 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var creatureData = creatureDataSelector.SelectFor(creature);
-            if (creatureData.CasterLevel < PhylacterySpellLevel && !creatureData.LevelAdjustment.HasValue)
+            if (creatureData.LevelAdjustment.HasValue)
+            {
+                return true;
+            }
+
+            if (creatureData.CasterLevel < PhylacterySpellLevel)
             {
                 return false;
             }

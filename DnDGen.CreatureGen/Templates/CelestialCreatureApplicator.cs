@@ -72,17 +72,18 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureType(Creature creature)
         {
+            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
+            {
+                CreatureConstants.Types.Subtypes.Extraplanar,
+                CreatureConstants.Types.Subtypes.Augmented,
+                creature.Type.Name,
+            });
+
             if (creature.Type.Name == CreatureConstants.Types.Animal
                 || creature.Type.Name == CreatureConstants.Types.Vermin)
             {
                 creature.Type.Name = CreatureConstants.Types.MagicalBeast;
             }
-
-            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
-            {
-                CreatureConstants.Types.Subtypes.Extraplanar,
-                CreatureConstants.Types.Subtypes.Augmented,
-            });
         }
 
         private void UpdateCreatureAbilities(Creature creature)

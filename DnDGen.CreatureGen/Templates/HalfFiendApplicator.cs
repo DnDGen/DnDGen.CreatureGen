@@ -103,12 +103,14 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureType(Creature creature)
         {
-            creature.Type.Name = CreatureConstants.Types.Outsider;
             creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
             {
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
+                creature.Type.Name,
             });
+
+            creature.Type.Name = CreatureConstants.Types.Outsider;
         }
 
         private void UpdateCreatureSpeeds(Creature creature)
