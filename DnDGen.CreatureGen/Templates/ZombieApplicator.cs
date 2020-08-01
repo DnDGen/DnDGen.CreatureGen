@@ -394,7 +394,7 @@ namespace DnDGen.CreatureGen.Templates
                 return false;
 
             var hitDice = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
-            if (hitDice > 20)
+            if (hitDice > 10)
                 return false;
 
             return true;

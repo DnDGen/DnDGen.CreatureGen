@@ -436,8 +436,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
             Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo((600 + 1337) * hitDice * 2));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(Math.Floor((600 + 1337) * hitDice * 2)));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(Math.Floor(1336 * hitDice * 2)));
         }
 
         [TestCase(0.5)]
@@ -523,8 +523,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
             Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo((600 + 1337) * hitDice * 2));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(Math.Floor((600 + 1337) * hitDice * 2)));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(Math.Floor(1336 * hitDice * 2)));
         }
 
         [Test]
@@ -1026,16 +1026,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_AdjustChallengeRating(double hitDice, string challengeRating)
         {
             baseCreature.HitPoints.HitDiceQuantity = hitDice;
+            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
 
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
+                    .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
                 .Returns(new[] { 9266 });
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
+                    .Roll(newRounded)
                     .d(12)
                     .AsPotentialAverage())
                 .Returns(90210);
@@ -1047,12 +1048,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    newRounded))
                 .Returns(zombieAttacks);
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating));
         }
 
