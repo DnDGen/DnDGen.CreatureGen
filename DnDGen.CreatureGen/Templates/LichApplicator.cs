@@ -24,19 +24,24 @@ namespace DnDGen.CreatureGen.Templates
         private readonly Dice dice;
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;
+        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+
+        private const int PhylacterySpellLevel = 11;
 
         public LichApplicator(
             ICollectionSelector collectionSelector,
             ICreatureDataSelector creatureDataSelector,
             Dice dice,
             IAttacksGenerator attacksGenerator,
-            IFeatsGenerator featsGenerator)
+            IFeatsGenerator featsGenerator,
+            ITypeAndAmountSelector typeAndAmountSelector)
         {
             this.collectionSelector = collectionSelector;
             this.creatureDataSelector = creatureDataSelector;
             this.dice = dice;
             this.attacksGenerator = attacksGenerator;
             this.featsGenerator = featsGenerator;
+            this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
         public Creature ApplyTo(Creature creature)
@@ -267,7 +272,13 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var creatureData = creatureDataSelector.SelectFor(creature);
-            if (creatureData.CasterLevel < 11 && !creatureData.LevelAdjustment.HasValue)
+            if (creatureData.CasterLevel < PhylacterySpellLevel && !creatureData.LevelAdjustment.HasValue)
+            {
+                return false;
+            }
+
+            var spellcasters = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Casters, creature);
+            if (!spellcasters.Any(s => s.Amount >= PhylacterySpellLevel))
             {
                 return false;
             }

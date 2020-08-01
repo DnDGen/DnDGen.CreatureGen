@@ -34,6 +34,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<Dice> mockDice;
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
+        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
 
         [SetUp]
         public void Setup()
@@ -43,6 +44,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockDice = new Mock<Dice>();
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
+            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -54,7 +56,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockCreatureDataSelector.Object,
                 mockDice.Object,
                 mockAttacksGenerator.Object,
-                mockFeatsGenerator.Object);
+                mockFeatsGenerator.Object,
+                mockTypeAndAmountSelector.Object);
 
             mockDice
                 .Setup(d => d
@@ -96,6 +99,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(creatureData);
 
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, "my creature"))
+                .Returns(Enumerable.Empty<TypeAndAmountSelection>());
+
             var isCompatible = applicator.IsCompatible("my creature");
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
@@ -121,7 +128,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(18)]
         [TestCase(19)]
         [TestCase(20)]
-        public void IsCompatible_HasCasterLevel(int casterLevel)
+        public void IsCompatible_HasCasterLevel_CreatureData(int casterLevel)
         {
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
@@ -132,8 +139,73 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(creatureData);
 
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, "my creature"))
+                .Returns(Enumerable.Empty<TypeAndAmountSelection>());
+
             var isCompatible = applicator.IsCompatible("my creature");
             Assert.That(isCompatible, Is.EqualTo(casterLevel >= 11));
+        }
+
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        [TestCase(5)]
+        [TestCase(6)]
+        [TestCase(7)]
+        [TestCase(8)]
+        [TestCase(9)]
+        [TestCase(10)]
+        [TestCase(11)]
+        [TestCase(12)]
+        [TestCase(13)]
+        [TestCase(14)]
+        [TestCase(15)]
+        [TestCase(16)]
+        [TestCase(17)]
+        [TestCase(18)]
+        [TestCase(19)]
+        [TestCase(20)]
+        public void IsCompatible_HasCasterLevel_Spells(int casterLevel)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            var creatureData = new CreatureDataSelection { CasterLevel = 0, LevelAdjustment = null };
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(creatureData);
+
+            var spellcaster = new TypeAndAmountSelection { Type = "spellcaster", Amount = casterLevel };
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, "my creature"))
+                .Returns(new[] { spellcaster });
+
+            var isCompatible = applicator.IsCompatible("my creature");
+            Assert.That(isCompatible, Is.EqualTo(casterLevel >= 11));
+        }
+
+        [Test]
+        public void IsCompatible_ReturnsFalse_HasNoSpellcasterLevel()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            var creatureData = new CreatureDataSelection { CasterLevel = 0, LevelAdjustment = null };
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(creatureData);
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, "my creature"))
+                .Returns(Enumerable.Empty<TypeAndAmountSelection>());
+
+            var isCompatible = applicator.IsCompatible("my creature");
+            Assert.That(isCompatible, Is.False);
         }
 
         [TestCase(0)]
