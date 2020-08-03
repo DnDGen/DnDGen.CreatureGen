@@ -278,7 +278,10 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
         private void VerifySkills(Creature creature)
         {
-            Assert.That(creature.Skills, Is.Not.Empty, creature.Summary);
+            if (!creature.Skills.Any())
+            {
+                Assert.That(creature.Abilities[AbilityConstants.Intelligence].HasScore, Is.False);
+            }
 
             foreach (var skill in creature.Skills)
             {
