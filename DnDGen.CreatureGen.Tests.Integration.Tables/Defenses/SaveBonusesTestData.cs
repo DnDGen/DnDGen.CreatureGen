@@ -1611,5 +1611,47 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
                 return TestDataHelper.EnumerateTestCases(testCases);
             }
         }
+
+        public static IEnumerable Templates
+        {
+            get
+            {
+                var testCases = new Dictionary<string, Dictionary<string, int>>();
+                var templates = CreatureConstants.Templates.GetAll(); //INFO: This is duplicated from the creature entry
+
+                foreach (var template in templates)
+                {
+                    testCases[template] = new Dictionary<string, int>();
+                }
+
+                testCases[CreatureConstants.Templates.None][None] = 0;
+                testCases[CreatureConstants.Templates.CelestialCreature][None] = 0;
+                testCases[CreatureConstants.Templates.FiendishCreature][None] = 0;
+                testCases[CreatureConstants.Templates.HalfCelestial][None] = 0;
+                testCases[CreatureConstants.Templates.HalfDragon_Black][None] = 0;
+                testCases[CreatureConstants.Templates.HalfDragon_Blue][None] = 0;
+                testCases[CreatureConstants.Templates.HalfDragon_Brass][None] = 0;
+                testCases[CreatureConstants.Templates.HalfDragon_Bronze][None] = 0;
+                testCases[CreatureConstants.Templates.HalfDragon_Copper][None] = 0;
+                testCases[CreatureConstants.Templates.HalfDragon_Gold][None] = 0;
+                testCases[CreatureConstants.Templates.HalfDragon_Green][None] = 0;
+                testCases[CreatureConstants.Templates.HalfDragon_Red][None] = 0;
+                testCases[CreatureConstants.Templates.HalfDragon_Silver][None] = 0;
+                testCases[CreatureConstants.Templates.HalfDragon_White][None] = 0;
+                testCases[CreatureConstants.Templates.HalfFiend][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf][None] = 0;
+                testCases[CreatureConstants.Templates.Skeleton][None] = 0;
+                testCases[CreatureConstants.Templates.Zombie][None] = 0;
+                testCases[CreatureConstants.Templates.Vampire][None] = 0;
+                testCases[CreatureConstants.Templates.Ghost][None] = 0;
+                testCases[CreatureConstants.Templates.Lich][None] = 0;
+
+                return TestDataHelper.EnumerateTestCases(testCases);
+            }
+        }
     }
 }

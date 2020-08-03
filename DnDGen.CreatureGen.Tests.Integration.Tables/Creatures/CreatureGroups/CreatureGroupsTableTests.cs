@@ -51,6 +51,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Groups.Gnome,
                 CreatureConstants.Groups.Golem,
                 CreatureConstants.Groups.Hag,
+                CreatureConstants.Groups.HalfDragon,
                 CreatureConstants.Groups.Halfling,
                 CreatureConstants.Groups.HasSkeleton,
                 CreatureConstants.Groups.Horse,

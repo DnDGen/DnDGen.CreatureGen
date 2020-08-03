@@ -207,6 +207,7 @@ namespace DnDGen.CreatureGen.Creatures
             public const string Gnome = "Gnome";
             public const string Golem = "Golem";
             public const string Hag = "Hag";
+            public const string HalfDragon = "Half-Dragon";
             public const string Halfling = "Halfling";
             public const string HasSkeleton = "Has Skeleton";
             public const string Horse = "Horse";

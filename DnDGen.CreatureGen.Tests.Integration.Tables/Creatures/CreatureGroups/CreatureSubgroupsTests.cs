@@ -51,6 +51,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Cryohydra_7Heads,
             CreatureConstants.Cryohydra_8Heads,
             CreatureConstants.Cryohydra_9Heads)]
+        [TestCase(CreatureConstants.Groups.HalfDragon,
+            CreatureConstants.Templates.HalfDragon_Black,
+            CreatureConstants.Templates.HalfDragon_Blue,
+            CreatureConstants.Templates.HalfDragon_Brass,
+            CreatureConstants.Templates.HalfDragon_Bronze,
+            CreatureConstants.Templates.HalfDragon_Copper,
+            CreatureConstants.Templates.HalfDragon_Gold,
+            CreatureConstants.Templates.HalfDragon_Green,
+            CreatureConstants.Templates.HalfDragon_Red,
+            CreatureConstants.Templates.HalfDragon_Silver,
+            CreatureConstants.Templates.HalfDragon_White)]
         [TestCase(CreatureConstants.Groups.Demon,
             CreatureConstants.Babau,
             CreatureConstants.Balor,

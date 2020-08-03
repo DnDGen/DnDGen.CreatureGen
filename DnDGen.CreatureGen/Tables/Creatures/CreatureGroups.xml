@@ -296,6 +296,28 @@
   </collection>
   <collection>
     <name>Augmented</name>
+    <entry>Lycanthrope</entry>
+    <entry>Celestial Creature</entry>
+    <entry>Fiendish Creature</entry>
+    <entry>Half-Celestial</entry>
+    <entry>Half-Fiend</entry>
+    <entry>Half-Dragon</entry>
+    <entry>Ghost</entry>
+    <entry>Lich</entry>
+    <entry>Vampire</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon</name>
+    <entry>Half-Dragon (Black)</entry>
+    <entry>Half-Dragon (Blue)</entry>
+    <entry>Half-Dragon (Green)</entry>
+    <entry>Half-Dragon (Red)</entry>
+    <entry>Half-Dragon (White)</entry>
+    <entry>Half-Dragon (Brass)</entry>
+    <entry>Half-Dragon (Bronze)</entry>
+    <entry>Half-Dragon (Copper)</entry>
+    <entry>Half-Dragon (Gold)</entry>
+    <entry>Half-Dragon (Silver)</entry>
   </collection>
   <collection>
     <name>Bear</name>
@@ -482,6 +504,7 @@
     <entry>Pseudodragon</entry>
     <entry>White Dragon</entry>
     <entry>Wyvern</entry>
+    <entry>Half-Dragon</entry>
   </collection>
   <collection>
     <name>Dwarf</name>
@@ -636,6 +659,8 @@
     <entry>Xill</entry>
     <entry>Xorn</entry>
     <entry>Yeth Hound</entry>
+    <entry>Celestial Creature</entry>
+    <entry>Fiendish Creature</entry>
   </collection>
   <collection>
     <name>Fey</name>
@@ -973,6 +998,7 @@
     <entry>Merfolk</entry>
     <entry>Orc</entry>
     <entry>Troglodyte</entry>
+    <entry>Lycanthrope</entry>
   </collection>
   <collection>
     <name>Hydra</name>
@@ -995,6 +1021,7 @@
     <entry>Spectre</entry>
     <entry>Wraith</entry>
     <entry>Dread Wraith</entry>
+    <entry>Ghost</entry>
   </collection>
   <collection>
     <name>Inevitable</name>
@@ -1083,6 +1110,8 @@
     <entry>Planetouched</entry>
     <entry>Rakshasa</entry>
     <entry>Triton</entry>
+    <entry>Half-Celestial</entry>
+    <entry>Half-Fiend</entry>
   </collection>
   <collection>
     <name>Mephit</name>
@@ -1231,6 +1260,10 @@
     <entry>Xill</entry>
     <entry>Xorn</entry>
     <entry>Yeth Hound</entry>
+    <entry>Celestial Creature</entry>
+    <entry>Fiendish Creature</entry>
+    <entry>Half-Celestial</entry>
+    <entry>Half-Fiend</entry>
   </collection>
   <collection>
     <name>Plant</name>
@@ -1309,6 +1342,7 @@
     <entry>Doppelganger</entry>
     <entry>Mimic</entry>
     <entry>Phasm</entry>
+    <entry>Lycanthrope</entry>
   </collection>
   <collection>
     <name>Shark</name>
@@ -1503,5 +1537,10 @@
     <entry>Wight</entry>
     <entry>Wraith</entry>
     <entry>Dread Wraith</entry>
+    <entry>Ghost</entry>
+    <entry>Lich</entry>
+    <entry>Vampire</entry>
+    <entry>Skeleton</entry>
+    <entry>Zombie</entry>
   </collection>
 </collections>

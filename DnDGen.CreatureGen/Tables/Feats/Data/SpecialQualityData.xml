@@ -5599,12 +5599,12 @@
     <entry>Spell Resistance#23##0##0#False###0#18#18</entry>
     <entry>Spell Resistance#24##0##0#False###0#19#19</entry>
     <entry>Spell Resistance#25##0##0#False###0#20#2147483647</entry>
-    <entry>Energy Resistance#5#Acid#0##0#False###0#0#7</entry>
-    <entry>Energy Resistance#10#Acid#0##0#False###0#8#2147483647</entry>
-    <entry>Energy Resistance#5#Cold#0##0#False###0#0#7</entry>
-    <entry>Energy Resistance#10#Cold#0##0#False###0#8#2147483647</entry>
-    <entry>Energy Resistance#5#Electricity#0##0#False###0#0#7</entry>
-    <entry>Energy Resistance#10#Electricity#0##0#False###0#8#2147483647</entry>
+    <entry>Energy Resistance#5#Acid#1#Round (6 seconds)#0#False###0#0#7</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0#8#2147483647</entry>
+    <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0#0#7</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0#8#2147483647</entry>
+    <entry>Energy Resistance#5#Electricity#1#Round (6 seconds)#0#False###0#0#7</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0#8#2147483647</entry>
     <entry>Damage Reduction#5#Vulnerable to magic#1#Hit#0#False###0#4#11</entry>
     <entry>Damage Reduction#10#Vulnerable to magic#1#Hit#0#False###0#12#2147483647</entry>
   </collection>
@@ -5631,10 +5631,10 @@
     <entry>Spell Resistance#23##0##0#False###0#18#18</entry>
     <entry>Spell Resistance#24##0##0#False###0#19#19</entry>
     <entry>Spell Resistance#25##0##0#False###0#20#2147483647</entry>
-    <entry>Energy Resistance#5#Fire#0##0#False###0#0#7</entry>
-    <entry>Energy Resistance#10#Fire#0##0#False###0#8#2147483647</entry>
-    <entry>Energy Resistance#5#Cold#0##0#False###0#0#7</entry>
-    <entry>Energy Resistance#10#Cold#0##0#False###0#8#2147483647</entry>
+    <entry>Energy Resistance#5#Fire#1#Round (6 seconds)#0#False###0#0#7</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0#8#2147483647</entry>
+    <entry>Energy Resistance#5#Cold#1#Round (6 seconds)#0#False###0#0#7</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0#8#2147483647</entry>
     <entry>Damage Reduction#5#Vulnerable to magic#1#Hit#0#False###0#4#11</entry>
     <entry>Damage Reduction#10#Vulnerable to magic#1#Hit#0#False###0#12#2147483647</entry>
   </collection>
@@ -5670,9 +5670,9 @@
     <entry>Spell Resistance#33##0##0#False###0#23#23</entry>
     <entry>Spell Resistance#34##0##0#False###0#24#24</entry>
     <entry>Spell Resistance#35##0##0#False###0#25#2147483647</entry>
-    <entry>Energy Resistance#10#Cold#0##0#False###0#0#2147483647</entry>
-    <entry>Energy Resistance#10#Acid#0##0#False###0#0#2147483647</entry>
-    <entry>Energy Resistance#10#Electricity#0##0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Damage Reduction#5#Vulnerable to magic#1#Hit#0#False###0#0#11</entry>
     <entry>Damage Reduction#10#Vulnerable to magic#1#Hit#0#False###0#12#2147483647</entry>
     <entry>Spell-Like Ability#0#Daylight#0#At Will#0#False###0#0#2147483647</entry>
@@ -5801,10 +5801,10 @@
     <entry>Spell Resistance#33##0##0#False###0#23#23</entry>
     <entry>Spell Resistance#34##0##0#False###0#24#24</entry>
     <entry>Spell Resistance#35##0##0#False###0#25#2147483647</entry>
-    <entry>Energy Resistance#10#Fire#0##0#False###0#0#2147483647</entry>
-    <entry>Energy Resistance#10#Cold#0##0#False###0#0#2147483647</entry>
-    <entry>Energy Resistance#10#Acid#0##0#False###0#0#2147483647</entry>
-    <entry>Energy Resistance#10#Electricity#0##0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Fire#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Acid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Damage Reduction#5#Vulnerable to magic#1#Hit#0#False###0#0#11</entry>
     <entry>Damage Reduction#10#Vulnerable to magic#1#Hit#0#False###0#12#2147483647</entry>
     <entry>Spell-Like Ability#0#Darkness#3#Day#0#False###0#1#2147483647</entry>
@@ -5839,8 +5839,8 @@
     <entry>Alternate Form#0#Bat, dire bat, wolf, or dire wolf#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Damage Reduction#10#Vulnerable to silver magic#1#Hit#0#False###0#0#2147483647</entry>
     <entry>Turn Resistance#4##0##0#False###0#0#2147483647</entry>
-    <entry>Energy Resistance#10#Cold#0##0#False###0#0#2147483647</entry>
-    <entry>Energy Resistance#10#Electricity#0##0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Cold#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <entry>Energy Resistance#10#Electricity#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Spell-Like Ability#0#Gaseous form#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False###0#0#2147483647</entry>
@@ -5849,11 +5849,13 @@
     <name>Zombie</name>
     <entry>Damage Reduction#5#Vulnerable to slashing#1#Hit#0#False###0#0#2147483647</entry>
     <entry>Single Actions Only#0##0##0#False###0#0#2147483647</entry>
+    <entry>Toughness#3##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
     <name>Skeleton</name>
     <entry>Damage Reduction#5#Vulnerable to bludgeoning#1#Hit#0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Cold#0##0#False###0#0#2147483647</entry>
+    <entry>Improved Initiative#4##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Bear (Werebear)</name>

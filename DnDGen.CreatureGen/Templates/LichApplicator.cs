@@ -278,18 +278,18 @@ namespace DnDGen.CreatureGen.Templates
                 return true;
             }
 
-            if (creatureData.CasterLevel < PhylacterySpellLevel)
+            if (creatureData.CasterLevel >= PhylacterySpellLevel)
             {
-                return false;
+                return true;
             }
 
             var spellcasters = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Casters, creature);
-            if (!spellcasters.Any(s => s.Amount >= PhylacterySpellLevel))
+            if (spellcasters.Any(s => s.Amount >= PhylacterySpellLevel))
             {
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
         }
     }
 }

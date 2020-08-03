@@ -2301,4 +2301,79 @@
   <collection>
     <name>Zelekhut</name>
   </collection>
+  <collection>
+    <name>Celestial Creature</name>
+  </collection>
+  <collection>
+    <name>Fiendish Creature</name>
+  </collection>
+  <collection>
+    <name>Half-Celestial</name>
+  </collection>
+  <collection>
+    <name>Half-Fiend</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Black)</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)</name>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)</name>
+  </collection>
+  <collection>
+    <name>Lich</name>
+  </collection>
+  <collection>
+    <name>Ghost</name>
+  </collection>
+  <collection>
+    <name>Vampire</name>
+  </collection>
+  <collection>
+    <name>Skeleton</name>
+  </collection>
+  <collection>
+    <name>Zombie</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Bear (Werebear)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Rat (Wererat)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf)</name>
+  </collection>
+  <collection>
+    <name></name>
+  </collection>
 </collections>

@@ -17,8 +17,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             var creatures = CreatureConstants.GetAll();
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            var templates = CreatureConstants.Templates.GetAll();
 
-            var names = creatures.Union(types).Union(subtypes);
+            var names = creatures.Union(types).Union(subtypes).Union(templates);
 
             AssertCollectionNames(names);
         }
@@ -26,6 +27,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCaseSource(typeof(SaveBonusesTestData), "Creatures")]
         [TestCaseSource(typeof(SaveBonusesTestData), "Types")]
         [TestCaseSource(typeof(SaveBonusesTestData), "Subtypes")]
+        [TestCaseSource(typeof(SaveBonusesTestData), "Templates")]
         public void SaveBonuses(string source, Dictionary<string, int> saveAndBonus)
         {
             if (!saveAndBonus.Any())

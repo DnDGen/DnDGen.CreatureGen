@@ -227,7 +227,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         {
             var testCases = SpecialQualityTestData.Creatures.Cast<TestCaseData>()
                 .Union(SpecialQualityTestData.Types.Cast<TestCaseData>())
-                .Union(SpecialQualityTestData.Subtypes.Cast<TestCaseData>());
+                .Union(SpecialQualityTestData.Subtypes.Cast<TestCaseData>())
+                .Union(SpecialQualityTestData.Templates.Cast<TestCaseData>());
 
             var creatureTestCase = testCases.First(c => c.Arguments[0].ToString() == creature);
 

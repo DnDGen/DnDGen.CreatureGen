@@ -3403,4 +3403,135 @@
     <name>Yuan-ti Pureblood</name>
     <entry>Monstrous Humanoid</entry>
   </collection>
+  <collection>
+    <name></name>
+  </collection>
+  <collection>
+    <name>Celestial Creature</name>
+    <entry>Outsider</entry>
+    <entry>Extraplanar</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Fiendish Creature</name>
+    <entry>Outsider</entry>
+    <entry>Extraplanar</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Celestial</name>
+    <entry>Outsider</entry>
+    <entry>Native</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Fiend</name>
+    <entry>Outsider</entry>
+    <entry>Native</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Black)</name>
+    <entry>Dragon</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)</name>
+    <entry>Dragon</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)</name>
+    <entry>Dragon</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)</name>
+    <entry>Dragon</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)</name>
+    <entry>Dragon</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)</name>
+    <entry>Dragon</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)</name>
+    <entry>Dragon</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)</name>
+    <entry>Dragon</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)</name>
+    <entry>Dragon</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)</name>
+    <entry>Dragon</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Ghost</name>
+    <entry>Undead</entry>
+    <entry>Incorporeal</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Lich</name>
+    <entry>Undead</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Vampire</name>
+    <entry>Undead</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Skeleton</name>
+    <entry>Undead</entry>
+  </collection>
+  <collection>
+    <name>Zombie</name>
+    <entry>Undead</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Bear (Werebear)</name>
+    <entry>Humanoid</entry>
+    <entry>Shapechanger</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar)</name>
+    <entry>Humanoid</entry>
+    <entry>Shapechanger</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Rat (Wererat)</name>
+    <entry>Humanoid</entry>
+    <entry>Shapechanger</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger)</name>
+    <entry>Humanoid</entry>
+    <entry>Shapechanger</entry>
+    <entry>Augmented</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf)</name>
+    <entry>Humanoid</entry>
+    <entry>Shapechanger</entry>
+    <entry>Augmented</entry>
+  </collection>
 </collections>
