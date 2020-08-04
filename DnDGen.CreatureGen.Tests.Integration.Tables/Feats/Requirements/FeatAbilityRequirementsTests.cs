@@ -183,6 +183,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     testCases[key] = new Dictionary<string, int>();
                 }
 
+                testCases[helper.BuildKeyFromSections(CreatureConstants.Dwarf_Deep, FeatConstants.WeaponProficiency_Martial, WeaponConstants.DwarvenWaraxe, 0.ToString())][AbilityConstants.Strength] = 13;
+
+                testCases[helper.BuildKeyFromSections(CreatureConstants.Dwarf_Hill, FeatConstants.WeaponProficiency_Martial, WeaponConstants.DwarvenWaraxe, 0.ToString())][AbilityConstants.Strength] = 13;
+
+                testCases[helper.BuildKeyFromSections(CreatureConstants.Dwarf_Mountain, FeatConstants.WeaponProficiency_Martial, WeaponConstants.DwarvenWaraxe, 0.ToString())][AbilityConstants.Strength] = 13;
+
                 testCases[helper.BuildKeyFromSections(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DancingLights, 0.ToString())][AbilityConstants.Charisma] = 10;
                 testCases[helper.BuildKeyFromSections(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GhostSound, 0.ToString())][AbilityConstants.Charisma] = 10;
                 testCases[helper.BuildKeyFromSections(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Prestidigitation, 0.ToString())][AbilityConstants.Charisma] = 10;
@@ -267,6 +273,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             {
                 featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Martial}/{weapon}");
             }
+
+            //INFO: Adding in some exotic as martial, for weapon familiarity
+            featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Martial}/{WeaponConstants.DwarvenUrgrosh}");
+            featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Martial}/{WeaponConstants.DwarvenWaraxe}");
+            featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Martial}/{WeaponConstants.OrcDoubleAxe}");
 
             var exoticWeapons = WeaponConstants.GetAllExotic(false, false);
             foreach (var weapon in exoticWeapons)
@@ -482,6 +493,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 //Set requirements
                 testCases[$"{FeatConstants.WeaponProficiency_Exotic}/{WeaponConstants.BastardSword}"][AbilityConstants.Strength] = 13;
                 testCases[$"{FeatConstants.WeaponProficiency_Exotic}/{WeaponConstants.DwarvenWaraxe}"][AbilityConstants.Strength] = 13;
+                testCases[$"{FeatConstants.WeaponProficiency_Martial}/{WeaponConstants.DwarvenWaraxe}"][AbilityConstants.Strength] = 13;
 
                 //Return test cases
                 foreach (var testCase in testCases)

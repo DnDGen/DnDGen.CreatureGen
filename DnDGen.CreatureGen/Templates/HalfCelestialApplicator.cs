@@ -5,6 +5,7 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Selectors.Collections;
@@ -26,6 +27,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;
         private readonly ISkillsGenerator skillsGenerator;
+        private readonly IMagicGenerator magicGenerator;
 
         public HalfCelestialApplicator(
             ICollectionSelector collectionSelector,
@@ -33,7 +35,8 @@ namespace DnDGen.CreatureGen.Templates
             ISpeedsGenerator speedsGenerator,
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
-            ISkillsGenerator skillsGenerator)
+            ISkillsGenerator skillsGenerator,
+            IMagicGenerator magicGenerator)
         {
             this.collectionSelector = collectionSelector;
             this.typeAndAmountSelector = typeAndAmountSelector;
@@ -41,6 +44,7 @@ namespace DnDGen.CreatureGen.Templates
             this.attacksGenerator = attacksGenerator;
             this.featsGenerator = featsGenerator;
             this.skillsGenerator = skillsGenerator;
+            this.magicGenerator = magicGenerator;
 
             creatureTypes = new[]
             {
@@ -82,22 +86,35 @@ namespace DnDGen.CreatureGen.Templates
             // Alignment
             UpdateCreatureAlignment(creature);
 
-            // Languages
-            UpdateCreatureLanguages(creature);
-
-            // Attacks
-            UpdateCreatureAttacks(creature);
-
-            //Skills
-            UpdateCreatureSkills(creature);
-
-            // Special Qualities
-            UpdateCreatureSpecialQualities(creature);
-
             //Armor Class
             UpdateCreatureArmorClass(creature);
 
+            //INFO: Depends on abilities
+            // Languages
+            UpdateCreatureLanguages(creature);
+
+            //INFO: Depends on abilities
+            // Attacks
+            UpdateCreatureAttacks(creature);
+
+            //INFO: Depends on creature type, abilities
+            //Skills
+            UpdateCreatureSkills(creature);
+
+            //INFO: This depends on alignment, abilities
+            // Magic
+            UpdateCreatureMagic(creature);
+
+            //INFO: Depends on creature type, abilities, skills, alignment
+            // Special Qualities
+            UpdateCreatureSpecialQualities(creature);
+
             return creature;
+        }
+
+        private void UpdateCreatureMagic(Creature creature)
+        {
+            creature.Magic = magicGenerator.GenerateWith(creature.Name, creature.Alignment, creature.Abilities, creature.Equipment);
         }
 
         private void UpdateCreatureType(Creature creature)
@@ -314,33 +331,40 @@ namespace DnDGen.CreatureGen.Templates
             var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature));
             tasks.Add(alignmentTask);
 
+            //Armor Class
+            var armorClassTask = Task.Run(() => UpdateCreatureArmorClass(creature));
+            tasks.Add(armorClassTask);
+
             await Task.WhenAll(tasks);
             tasks.Clear();
 
-            //INFO: These rely on abilities from earlier
+            //INFO: Depends on abilities
             // Languages
             var languageTask = Task.Run(() => UpdateCreatureLanguages(creature));
             tasks.Add(languageTask);
 
+            //INFO: Depends on abilities
             // Attacks
             var attackTask = Task.Run(() => UpdateCreatureAttacks(creature));
             tasks.Add(attackTask);
 
+            //INFO: Depends on creature type, abilities
             //Skills
             var skillTask = Task.Run(() => UpdateCreatureSkills(creature));
             tasks.Add(skillTask);
 
+            //INFO: This depends on alignment, abilities
+            // Magic
+            var magicTask = Task.Run(() => UpdateCreatureMagic(creature));
+            tasks.Add(magicTask);
+
             await Task.WhenAll(tasks);
             tasks.Clear();
 
-            //INFO: These rely on skills from earlier
+            //INFO: Depends on creature type, abilities, skills, alignment
             // Special Qualities
             var qualityTask = Task.Run(() => UpdateCreatureSpecialQualities(creature));
             tasks.Add(qualityTask);
-
-            //Armor Class
-            var armorClassTask = Task.Run(() => UpdateCreatureArmorClass(creature));
-            tasks.Add(armorClassTask);
 
             await Task.WhenAll(tasks);
             tasks.Clear();

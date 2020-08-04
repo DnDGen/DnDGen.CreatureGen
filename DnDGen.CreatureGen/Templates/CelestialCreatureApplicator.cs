@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -19,12 +20,14 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IFeatsGenerator featGenerator;
         private readonly ICollectionSelector collectionSelector;
         private readonly IEnumerable<string> creatureTypes;
+        private readonly IMagicGenerator magicGenerator;
 
-        public CelestialCreatureApplicator(IAttacksGenerator attackGenerator, IFeatsGenerator featGenerator, ICollectionSelector collectionSelector)
+        public CelestialCreatureApplicator(IAttacksGenerator attackGenerator, IFeatsGenerator featGenerator, ICollectionSelector collectionSelector, IMagicGenerator magicGenerator)
         {
             this.attackGenerator = attackGenerator;
             this.featGenerator = featGenerator;
             this.collectionSelector = collectionSelector;
+            this.magicGenerator = magicGenerator;
 
             creatureTypes = new[]
             {
@@ -61,11 +64,17 @@ namespace DnDGen.CreatureGen.Templates
             // Languages
             UpdateCreatureLanguages(creature);
 
+            //INFO: Depends on abilities
             // Attacks
             UpdateCreatureAttacks(creature);
 
+            //INFO: Depends on abilities, alignment
             // Special Qualities
             UpdateCreatureSpecialQualities(creature);
+
+            //INFO: Depends on abilities, alignment
+            // Magic
+            UpdateCreatureMagic(creature);
 
             return creature;
         }
@@ -116,6 +125,11 @@ namespace DnDGen.CreatureGen.Templates
         {
             if (creature.LevelAdjustment.HasValue)
                 creature.LevelAdjustment += 2;
+        }
+
+        private void UpdateCreatureMagic(Creature creature)
+        {
+            creature.Magic = magicGenerator.GenerateWith(creature.Name, creature.Alignment, creature.Abilities, creature.Equipment);
         }
 
         private void UpdateCreatureAttacks(Creature creature)
@@ -209,11 +223,23 @@ namespace DnDGen.CreatureGen.Templates
             await Task.WhenAll(tasks);
             tasks.Clear();
 
+            //INFO: Depends on abilities
             // Attacks
-            await Task.Run(() => UpdateCreatureAttacks(creature));
+            var attackTask = Task.Run(() => UpdateCreatureAttacks(creature));
+            tasks.Add(attackTask);
 
+            //INFO: Depends on abilities, alignment
             // Special Qualities
-            await Task.Run(() => UpdateCreatureSpecialQualities(creature));
+            var qualityTask = Task.Run(() => UpdateCreatureSpecialQualities(creature));
+            tasks.Add(qualityTask);
+
+            //INFO: Depends on abilities, alignment
+            // Magic
+            var magicTask = Task.Run(() => UpdateCreatureMagic(creature));
+            tasks.Add(magicTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
 
             return creature;
         }

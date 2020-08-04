@@ -5,6 +5,7 @@ using DnDGen.CreatureGen.Generators.Alignments;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Tables;
@@ -29,6 +30,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
         private readonly ISkillsGenerator skillsGenerator;
         private readonly Dice dice;
         private readonly IAlignmentGenerator alignmentGenerator;
+        private readonly IMagicGenerator magicGenerator;
 
         public HalfDragonApplicator(
             ICollectionSelector collectionSelector,
@@ -37,7 +39,8 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             IFeatsGenerator featsGenerator,
             ISkillsGenerator skillsGenerator,
             IAlignmentGenerator alignmentGenerator,
-            Dice dice)
+            Dice dice,
+            IMagicGenerator magicGenerator)
         {
             this.collectionSelector = collectionSelector;
             this.speedsGenerator = speedsGenerator;
@@ -46,6 +49,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             this.skillsGenerator = skillsGenerator;
             this.alignmentGenerator = alignmentGenerator;
             this.dice = dice;
+            this.magicGenerator = magicGenerator;
 
             creatureTypes = new[]
             {
@@ -87,22 +91,27 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             //Armor Class
             UpdateCreatureArmorClass(creature);
 
-            //INFO: These depend on abilities from earlier
+            //INFO: This depends on abilities
             //Hit Points
             UpdateCreatureHitPoints(creature);
 
+            //INFO: This depends on alignment, abilities
+            // Magic
+            UpdateCreatureMagic(creature);
+
+            //INFO: This depends on abilities
             // Languages
             UpdateCreatureLanguages(creature);
 
-            //INFO: These depend on hit points from earlier
+            //INFO: This depends on hit points
             //Skills
             UpdateCreatureSkills(creature);
 
-            //INFO: These depend on skills from earlier
+            //INFO: This depends on skills
             // Special Qualities
             UpdateCreatureSpecialQualities(creature);
 
-            //INFO: These depend on special qualities from earlier
+            //INFO: This depends on special qualities
             // Attacks
             UpdateCreatureAttacks(creature);
 
@@ -282,6 +291,11 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             creature.Attacks = creature.Attacks.Union(attacks);
         }
 
+        private void UpdateCreatureMagic(Creature creature)
+        {
+            creature.Magic = magicGenerator.GenerateWith(creature.Name, creature.Alignment, creature.Abilities, creature.Equipment);
+        }
+
         private void UpdateCreatureSpecialQualities(Creature creature)
         {
             var specialQualities = featsGenerator.GenerateSpecialQualities(
@@ -354,11 +368,17 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             await Task.WhenAll(tasks);
             tasks.Clear();
 
-            //INFO: These depend on abilities from earlier
+            //INFO: This depends on abilities
             //Hit Points
             var hitPointTask = Task.Run(() => UpdateCreatureHitPoints(creature));
             tasks.Add(hitPointTask);
 
+            //INFO: This depends on alignment, abilities
+            // Magic
+            var magicTask = Task.Run(() => UpdateCreatureMagic(creature));
+            tasks.Add(magicTask);
+
+            //INFO: This depends on abilities
             // Languages
             var languageTask = Task.Run(() => UpdateCreatureLanguages(creature));
             tasks.Add(languageTask);
@@ -366,7 +386,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             await Task.WhenAll(tasks);
             tasks.Clear();
 
-            //INFO: These depend on hit points from earlier
+            //INFO: This depends on hit points
             //Skills
             var skillTask = Task.Run(() => UpdateCreatureSkills(creature));
             tasks.Add(skillTask);
@@ -374,7 +394,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             await Task.WhenAll(tasks);
             tasks.Clear();
 
-            //INFO: These depend on skills from earlier
+            //INFO: This depends on skills
             // Special Qualities
             var qualityTask = Task.Run(() => UpdateCreatureSpecialQualities(creature));
             tasks.Add(qualityTask);
@@ -382,7 +402,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             await Task.WhenAll(tasks);
             tasks.Clear();
 
-            //INFO: These depend on special qualities from earlier
+            //INFO: This depends on special qualities
             // Attacks
             var attackTask = Task.Run(() => UpdateCreatureAttacks(creature));
             tasks.Add(attackTask);

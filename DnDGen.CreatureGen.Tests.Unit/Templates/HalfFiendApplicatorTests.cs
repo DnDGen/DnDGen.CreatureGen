@@ -7,8 +7,10 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
@@ -40,6 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ISkillsGenerator> mockSkillsGenerator;
         private Mock<Dice> mockDice;
+        private Mock<IMagicGenerator> mockMagicGenerator;
 
         [SetUp]
         public void Setup()
@@ -51,6 +54,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
             mockDice = new Mock<Dice>();
+            mockMagicGenerator = new Mock<IMagicGenerator>();
 
             applicator = new HalfFiendApplicator(
                 mockCollectionSelector.Object,
@@ -59,7 +63,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockAttacksGenerator.Object,
                 mockFeatsGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockDice.Object);
+                mockDice.Object,
+                mockMagicGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -673,6 +678,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(newAttacks);
 
+            var newSkills = new[]
+            {
+                new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
+                new Skill("my other skill", baseCreature.Abilities[AbilityConstants.Intelligence], 90210) { Ranks = 600 },
+            };
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss =>
+                        ss == baseCreature.Skills
+                        && ss.All(s => s.Ranks == 0)),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(newSkills);
+
             var newQualities = new[]
             {
                 new Feat { Name = "half-Fiend quality 1" },
@@ -685,7 +705,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
-                    baseCreature.Skills,
+                    newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
                     baseCreature.Alignment))
@@ -1624,6 +1644,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_GainSpecialQualities()
         {
+            var newSkills = new[]
+            {
+                new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
+                new Skill("my other skill", baseCreature.Abilities[AbilityConstants.Intelligence], 90210) { Ranks = 600 },
+            };
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss =>
+                        ss == baseCreature.Skills
+                        && ss.All(s => s.Ranks == 0)),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(newSkills);
+
             var newQualities = new[]
             {
                 new Feat { Name = "half-Fiend quality 1" },
@@ -1636,7 +1671,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
-                    baseCreature.Skills,
+                    newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
                     baseCreature.Alignment))
@@ -2249,6 +2284,40 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.Contains("Mordor")
                 .And.Contains("Hellsprach")
                 .And.Contains("Latin"));
+        }
+
+        [Test]
+        public void ApplyTo_RegenerateMagic()
+        {
+            var newMagic = new Magic();
+            mockMagicGenerator
+                .Setup(g => g.GenerateWith(
+                    baseCreature.Name,
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Evil),
+                    baseCreature.Abilities,
+                    baseCreature.Equipment))
+                .Returns(newMagic);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Magic, Is.EqualTo(newMagic));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_RegenerateMagic()
+        {
+            var newMagic = new Magic();
+            mockMagicGenerator
+                .Setup(g => g.GenerateWith(
+                    baseCreature.Name,
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Evil),
+                    baseCreature.Abilities,
+                    baseCreature.Equipment))
+                .Returns(newMagic);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Magic, Is.EqualTo(newMagic));
         }
     }
 }

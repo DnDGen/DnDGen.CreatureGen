@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
@@ -83,6 +84,9 @@ namespace DnDGen.CreatureGen.Templates
 
             //Alignment
             UpdateCreatureAlignment(creature);
+
+            //Magic
+            UpdateCreatureMagic(creature);
 
             //INFO: Depends on abilities
             //Hit Points
@@ -279,6 +283,11 @@ namespace DnDGen.CreatureGen.Templates
             creature.Alignment.Goodness = AlignmentConstants.Evil;
         }
 
+        private void UpdateCreatureMagic(Creature creature)
+        {
+            creature.Magic = new Magic();
+        }
+
         private void UpdateCreatureSaves(Creature creature)
         {
             creature.Saves = savesGenerator.GenerateWith(
@@ -352,6 +361,10 @@ namespace DnDGen.CreatureGen.Templates
             //Alignment
             var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature));
             tasks.Add(alignmentTask);
+
+            //Magic
+            var magicTask = Task.Run(() => UpdateCreatureMagic(creature));
+            tasks.Add(magicTask);
 
             await Task.WhenAll(tasks);
             tasks.Clear();

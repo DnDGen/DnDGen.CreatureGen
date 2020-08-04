@@ -8,8 +8,10 @@ using DnDGen.CreatureGen.Generators.Alignments;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -39,6 +41,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ISkillsGenerator> mockSkillsGenerator;
         private Mock<IAlignmentGenerator> mockAlignmentGenerator;
+        private Mock<IMagicGenerator> mockMagicGenerator;
 
         private static IEnumerable<string> templates = new[]
         {
@@ -75,6 +78,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
             mockAlignmentGenerator = new Mock<IAlignmentGenerator>();
+            mockMagicGenerator = new Mock<IMagicGenerator>();
 
             applicators = new Dictionary<string, TemplateApplicator>();
             applicators[CreatureConstants.Templates.HalfDragon_Black] = new HalfDragonBlackApplicator(
@@ -84,7 +88,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockFeatsGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
-                mockDice.Object);
+                mockDice.Object,
+                mockMagicGenerator.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Blue] = new HalfDragonBlueApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -92,7 +97,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockFeatsGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
-                mockDice.Object);
+                mockDice.Object,
+                mockMagicGenerator.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Brass] = new HalfDragonBrassApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -100,7 +106,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockFeatsGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
-                mockDice.Object);
+                mockDice.Object,
+                mockMagicGenerator.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Bronze] = new HalfDragonBronzeApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -108,7 +115,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockFeatsGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
-                mockDice.Object);
+                mockDice.Object,
+                mockMagicGenerator.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Copper] = new HalfDragonCopperApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -116,7 +124,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockFeatsGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
-                mockDice.Object);
+                mockDice.Object,
+                mockMagicGenerator.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Gold] = new HalfDragonGoldApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -124,7 +133,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockFeatsGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
-                mockDice.Object);
+                mockDice.Object,
+                mockMagicGenerator.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Green] = new HalfDragonGreenApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -132,7 +142,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockFeatsGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
-                mockDice.Object);
+                mockDice.Object,
+                mockMagicGenerator.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Red] = new HalfDragonRedApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -140,7 +151,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockFeatsGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
-                mockDice.Object);
+                mockDice.Object,
+                mockMagicGenerator.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Silver] = new HalfDragonSilverApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -148,7 +160,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockFeatsGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
-                mockDice.Object);
+                mockDice.Object,
+                mockMagicGenerator.Object);
             applicators[CreatureConstants.Templates.HalfDragon_White] = new HalfDragonWhiteApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -156,7 +169,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockFeatsGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
-                mockDice.Object);
+                mockDice.Object,
+                mockMagicGenerator.Object);
 
             baseCreature = new CreatureBuilder().WithTestValues().Build();
             baseCreature.HitPoints.HitDie = 8;
@@ -2044,6 +2058,40 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains($"{template}ish")
                 .And.Contains("Drachensprach")
                 .And.Contains("Latin"));
+        }
+
+        [TestCaseSource("AllHalfDragonTemplates")]
+        public void ApplyTo_RegenerateMagic(string template)
+        {
+            var dragonMagic = new Magic();
+            mockMagicGenerator
+                .Setup(g => g.GenerateWith(
+                    baseCreature.Name,
+                    new Alignment { Lawfulness = $"{template}y", Goodness = "scaley" },
+                    baseCreature.Abilities,
+                    baseCreature.Equipment))
+                .Returns(dragonMagic);
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Magic, Is.EqualTo(dragonMagic));
+        }
+
+        [TestCaseSource("AllHalfDragonTemplates")]
+        public async Task ApplyToAsync_RegenerateMagic(string template)
+        {
+            var dragonMagic = new Magic();
+            mockMagicGenerator
+                .Setup(g => g.GenerateWith(
+                    baseCreature.Name,
+                    new Alignment { Lawfulness = $"{template}y", Goodness = "scaley" },
+                    baseCreature.Abilities,
+                    baseCreature.Equipment))
+                .Returns(dragonMagic);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Magic, Is.EqualTo(dragonMagic));
         }
     }
 }

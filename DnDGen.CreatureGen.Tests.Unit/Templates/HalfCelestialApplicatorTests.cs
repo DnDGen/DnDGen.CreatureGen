@@ -7,8 +7,10 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
@@ -37,6 +39,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ISkillsGenerator> mockSkillsGenerator;
+        private Mock<IMagicGenerator> mockMagicGenerator;
 
         [SetUp]
         public void Setup()
@@ -47,6 +50,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
+            mockMagicGenerator = new Mock<IMagicGenerator>();
 
             applicator = new HalfCelestialApplicator(
                 mockCollectionSelector.Object,
@@ -54,7 +58,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockSpeedsGenerator.Object,
                 mockAttacksGenerator.Object,
                 mockFeatsGenerator.Object,
-                mockSkillsGenerator.Object);
+                mockSkillsGenerator.Object,
+                mockMagicGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -1633,6 +1638,40 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.Contains("Angelic")
                 .And.Contains("Himmelsprach")
                 .And.Contains("Latin"));
+        }
+
+        [Test]
+        public void ApplyTo_RegenerateMagic()
+        {
+            var newMagic = new Magic();
+            mockMagicGenerator
+                .Setup(g => g.GenerateWith(
+                    baseCreature.Name,
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good),
+                    baseCreature.Abilities,
+                    baseCreature.Equipment))
+                .Returns(newMagic);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Magic, Is.EqualTo(newMagic));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_RegenerateMagic()
+        {
+            var newMagic = new Magic();
+            mockMagicGenerator
+                .Setup(g => g.GenerateWith(
+                    baseCreature.Name,
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good),
+                    baseCreature.Abilities,
+                    baseCreature.Equipment))
+                .Returns(newMagic);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Magic, Is.EqualTo(newMagic));
         }
     }
 }

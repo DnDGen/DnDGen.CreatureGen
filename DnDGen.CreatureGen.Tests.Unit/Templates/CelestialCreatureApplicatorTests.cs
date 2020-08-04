@@ -5,7 +5,9 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Languages;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -28,6 +30,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IAttacksGenerator> mockAttackGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ICollectionSelector> mockCollectionSelector;
+        private Mock<IMagicGenerator> mockMagicGenerator;
 
         [SetUp]
         public void SetUp()
@@ -35,8 +38,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttackGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockCollectionSelector = new Mock<ICollectionSelector>();
+            mockMagicGenerator = new Mock<IMagicGenerator>();
 
-            applicator = new CelestialCreatureApplicator(mockAttackGenerator.Object, mockFeatsGenerator.Object, mockCollectionSelector.Object);
+            applicator = new CelestialCreatureApplicator(mockAttackGenerator.Object, mockFeatsGenerator.Object, mockCollectionSelector.Object, mockMagicGenerator.Object);
 
             baseCreature = new CreatureBuilder().WithTestValues().Build();
         }
@@ -2402,6 +2406,70 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
                 .And.Contains("Angelic"));
+        }
+
+        [Test]
+        public void ApplyTo_RegenerateMagic()
+        {
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var newMagic = new Magic();
+            mockMagicGenerator
+                .Setup(g => g.GenerateWith(
+                    baseCreature.Name,
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good),
+                    baseCreature.Abilities,
+                    baseCreature.Equipment))
+                .Returns(newMagic);
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Magic, Is.EqualTo(newMagic));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_RegenerateMagic()
+        {
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var newMagic = new Magic();
+            mockMagicGenerator
+                .Setup(g => g.GenerateWith(
+                    baseCreature.Name,
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good),
+                    baseCreature.Abilities,
+                    baseCreature.Equipment))
+                .Returns(newMagic);
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Magic, Is.EqualTo(newMagic));
         }
     }
 }

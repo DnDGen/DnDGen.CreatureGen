@@ -6,7 +6,6 @@ using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
-using Ninject;
 using NUnit.Framework;
 using System;
 using System.Linq;
@@ -4717,10 +4716,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
         public void CreatureTypeSkillsContainSkillsCommonToAllCreatures(string creatureType)
         {
-            if (creatureType == CreatureConstants.Types.Subtypes.Augmented)
-                Assert.Pass("Augmented only applies to 1 creature, so 'common' is 'all'");
-
             var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+
+            //INFO: Excluding templates, since they have special rules
+            var templates = CreatureConstants.Templates.GetAll();
+            creatures = creatures.Except(templates);
+
+            if (!creatures.Any())
+            {
+                Assert.That(creatureType, Is.EqualTo(CreatureConstants.Types.Subtypes.Augmented));
+                Assert.Pass($"{CreatureConstants.Types.Subtypes.Augmented} only applies to templates");
+            }
 
             Assert.That(table.Keys, Contains.Item(creatureType)
                 .And.SupersetOf(creatures));

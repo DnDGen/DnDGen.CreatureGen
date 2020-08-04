@@ -7,6 +7,7 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
@@ -1618,6 +1619,54 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.Null);
+        }
+
+        [Test]
+        public void ApplyTo_RemoveMagic()
+        {
+            baseCreature.Magic.ArcaneSpellFailure = 9266;
+            baseCreature.Magic.Caster = "my caster";
+            baseCreature.Magic.CasterLevel = 90210;
+            baseCreature.Magic.CastingAbility = baseCreature.Abilities[AbilityConstants.Wisdom];
+            baseCreature.Magic.Domains = new[] { "domain 1", "domain 2" };
+            baseCreature.Magic.KnownSpells = new[] { new Spell { Level = 42, Name = "my spell", Source = "my source" } };
+            baseCreature.Magic.PreparedSpells = new[] { new Spell { Level = 600, Name = "my prepared spell", Source = "my prepared source" } };
+            baseCreature.Magic.SpellsPerDay = new[] { new SpellQuantity { BonusSpells = 1337, Level = 1336, Quantity = 96, Source = "my per day source" } };
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Magic.ArcaneSpellFailure, Is.Zero);
+            Assert.That(creature.Magic.Caster, Is.Empty);
+            Assert.That(creature.Magic.CasterLevel, Is.Zero);
+            Assert.That(creature.Magic.CastingAbility, Is.Null);
+            Assert.That(creature.Magic.Domains, Is.Empty);
+            Assert.That(creature.Magic.KnownSpells, Is.Empty);
+            Assert.That(creature.Magic.PreparedSpells, Is.Empty);
+            Assert.That(creature.Magic.SpellsPerDay, Is.Empty);
+        }
+
+        [Test]
+        public async Task ApplyToAsync_RemoveMagic()
+        {
+            baseCreature.Magic.ArcaneSpellFailure = 9266;
+            baseCreature.Magic.Caster = "my caster";
+            baseCreature.Magic.CasterLevel = 90210;
+            baseCreature.Magic.CastingAbility = baseCreature.Abilities[AbilityConstants.Wisdom];
+            baseCreature.Magic.Domains = new[] { "domain 1", "domain 2" };
+            baseCreature.Magic.KnownSpells = new[] { new Spell { Level = 42, Name = "my spell", Source = "my source" } };
+            baseCreature.Magic.PreparedSpells = new[] { new Spell { Level = 600, Name = "my prepared spell", Source = "my prepared source" } };
+            baseCreature.Magic.SpellsPerDay = new[] { new SpellQuantity { BonusSpells = 1337, Level = 1336, Quantity = 96, Source = "my per day source" } };
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Magic.ArcaneSpellFailure, Is.Zero);
+            Assert.That(creature.Magic.Caster, Is.Empty);
+            Assert.That(creature.Magic.CasterLevel, Is.Zero);
+            Assert.That(creature.Magic.CastingAbility, Is.Null);
+            Assert.That(creature.Magic.Domains, Is.Empty);
+            Assert.That(creature.Magic.KnownSpells, Is.Empty);
+            Assert.That(creature.Magic.PreparedSpells, Is.Empty);
+            Assert.That(creature.Magic.SpellsPerDay, Is.Empty);
         }
     }
 }

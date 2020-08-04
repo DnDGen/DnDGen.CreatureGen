@@ -150,6 +150,13 @@
     <entry>Strength@13</entry>
   </collection>
   <collection>
+    <name>Martial Weapon Proficiency/Dwarven urgrosh</name>
+  </collection>
+  <collection>
+    <name>Martial Weapon Proficiency/Dwarven waraxe</name>
+    <entry>Strength@13</entry>
+  </collection>
+  <collection>
     <name>Exotic Weapon Proficiency/Gnome hooked hammer</name>
   </collection>
   <collection>
@@ -172,6 +179,9 @@
   </collection>
   <collection>
     <name>Exotic Weapon Proficiency/Orc double axe</name>
+  </collection>
+  <collection>
+    <name>Martial Weapon Proficiency/Orc double axe</name>
   </collection>
   <collection>
     <name>Exotic Weapon Proficiency/Pincer staff</name>
@@ -4166,6 +4176,7 @@
   </collection>
   <collection>
     <name>Deep DwarfMartial Weapon ProficiencyDwarven waraxe0</name>
+    <entry>Strength@13</entry>
   </collection>
   <collection>
     <name>Deep DwarfMartial Weapon ProficiencyShortbow0</name>
@@ -6755,6 +6766,7 @@
   </collection>
   <collection>
     <name>Hill DwarfMartial Weapon ProficiencyDwarven waraxe0</name>
+    <entry>Strength@13</entry>
   </collection>
   <collection>
     <name>Hill DwarfMartial Weapon ProficiencyShortbow0</name>
@@ -7793,6 +7805,7 @@
   </collection>
   <collection>
     <name>Mountain DwarfMartial Weapon ProficiencyDwarven waraxe0</name>
+    <entry>Strength@13</entry>
   </collection>
   <collection>
     <name>Mountain DwarfMartial Weapon ProficiencyShortbow0</name>
