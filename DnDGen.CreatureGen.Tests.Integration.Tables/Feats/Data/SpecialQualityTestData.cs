@@ -326,6 +326,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.FastHealing, power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.GaseousForm, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.SpiderClimb, frequencyTimePeriod: FeatConstants.Frequencies.Constant));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.Alertness, power: 2));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.Initiative_Improved, power: 4));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.LightningReflexes, power: 2));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.CombatReflexes));
+            testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData(FeatConstants.Dodge, power: 1));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Brown bear or bear-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Bears and dire bears", power: 4));

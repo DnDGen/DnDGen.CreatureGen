@@ -5844,6 +5844,11 @@
     <entry>Fast Healing#5##1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Spell-Like Ability#0#Gaseous form#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Spell-Like Ability#0#Spider climb#0#Constant#0#False###0#0#2147483647</entry>
+    <entry>Alertness#2##0##0#False###0#0#2147483647</entry>
+    <entry>Improved Initiative#4##0##0#False###0#0#2147483647</entry>
+    <entry>Lightning Reflexes#2##0##0#False###0#0#2147483647</entry>
+    <entry>Combat Reflexes#0##0##0#False###0#0#2147483647</entry>
+    <entry>Dodge#1##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
     <name>Zombie</name>

@@ -11775,6 +11775,22 @@
     <name>VampireTurn Resistance4</name>
   </collection>
   <collection>
+    <name>VampireImproved Initiative4</name>
+  </collection>
+  <collection>
+    <name>VampireDodge1</name>
+    <entry>Dexterity@13</entry>
+  </collection>
+  <collection>
+    <name>VampireAlertness2</name>
+  </collection>
+  <collection>
+    <name>VampireCombat Reflexes0</name>
+  </collection>
+  <collection>
+    <name>VampireLightning Reflexes2</name>
+  </collection>
+  <collection>
     <name>Lycanthrope, Bear (Werebear)Alternate FormBrown bear or bear-humanoid hybrid0</name>
   </collection>
   <collection>

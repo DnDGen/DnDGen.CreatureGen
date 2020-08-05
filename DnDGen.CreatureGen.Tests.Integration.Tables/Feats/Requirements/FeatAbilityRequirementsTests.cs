@@ -251,6 +251,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 testCases[helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Destruction, 0.ToString())][AbilityConstants.Wisdom] = 8;
                 testCases[helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Destruction, 0.ToString())][AbilityConstants.Intelligence] = 8;
 
+                testCases[helper.BuildKeyFromSections(CreatureConstants.Templates.Vampire, FeatConstants.Dodge, string.Empty, 1.ToString())][AbilityConstants.Dexterity] = 13;
+
                 foreach (var testCase in testCases)
                 {
                     yield return new TestCaseData(testCase.Key, testCase.Value);
