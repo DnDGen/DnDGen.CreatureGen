@@ -329,7 +329,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(12)]
         public void ApplyTo_HitDiceBecomeD12(int hitDie)
         {
-            baseCreature.HitPoints.HitDie = hitDie;
+            baseCreature.HitPoints.HitDice[0].HitDie = hitDie;
 
             mockDice
                 .Setup(d => d
@@ -346,7 +346,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(600 + 1337));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
         }
@@ -868,7 +868,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(20, ChallengeRatingConstants.Eight)]
         public void ApplyTo_AdjustChallengeRating(double hitDice, string challengeRating)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDice;
+            baseCreature.HitPoints.HitDice[0].Quantity = hitDice;
 
             mockDice
                 .Setup(d => d
@@ -1023,7 +1023,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(12)]
         public async Task ApplyToAsync_HitDiceBecomeD12(int hitDie)
         {
-            baseCreature.HitPoints.HitDie = hitDie;
+            baseCreature.HitPoints.HitDice[0].HitDie = hitDie;
 
             mockDice
                 .Setup(d => d
@@ -1040,7 +1040,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(600 + 1337));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
         }
@@ -1562,7 +1562,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(20, ChallengeRatingConstants.Eight)]
         public async Task ApplyToAsync_AdjustChallengeRating(double hitDice, string challengeRating)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDice;
+            baseCreature.HitPoints.HitDice[0].Quantity = hitDice;
 
             mockDice
                 .Setup(d => d

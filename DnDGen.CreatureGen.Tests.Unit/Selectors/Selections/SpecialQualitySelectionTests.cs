@@ -30,7 +30,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             abilities["ability"] = new Ability("ability");
             abilities["ability"].BaseScore = 42;
 
-            hitPoints.HitDiceQuantity = 1;
+            hitPoints.HitDice.Add(new HitDice { Quantity = 1 });
         }
 
         [Test]
@@ -383,7 +383,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         public void NotMetIfBelowMinimumHitDice(int hd, int min)
         {
             selection.MinHitDice = min;
-            hitPoints.HitDiceQuantity = hd;
+            hitPoints.HitDice[0].Quantity = hd;
 
             var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.False);
@@ -398,7 +398,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         public void NotMetIfAboveMaximumHitDice(int hd, int max)
         {
             selection.MaxHitDice = max;
-            hitPoints.HitDiceQuantity = hd;
+            hitPoints.HitDice[0].Quantity = hd;
 
             var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.False);
@@ -428,7 +428,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             selection.MinHitDice = min;
             selection.MaxHitDice = max;
-            hitPoints.HitDiceQuantity = hd;
+            hitPoints.HitDice[0].Quantity = hd;
 
             var requirementsMet = selection.RequirementsMet(abilities, feats, false, "size", alignment, hitPoints);
             Assert.That(requirementsMet, Is.True);

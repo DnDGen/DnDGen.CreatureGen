@@ -11,6 +11,7 @@ using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Templates.HalfDragons;
+using DnDGen.CreatureGen.Templates.Lycanthropes;
 using DnDGen.CreatureGen.Verifiers;
 using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
@@ -142,11 +143,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         [TestCase(CreatureConstants.Templates.None)]
         [TestCase(CreatureConstants.Templates.Skeleton)]
         [TestCase(CreatureConstants.Templates.Vampire)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
         [TestCase(CreatureConstants.Templates.Zombie)]
         public void TemplateApplicatorIsInjected(string name)
         {
@@ -268,33 +276,75 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         }
 
         [Test]
-        public void WerebearApplicatorIsInjected()
+        public void WerebearAfflictedApplicatorIsInjected()
         {
-            AssertNamedIsInstanceOf<TemplateApplicator, WerebearApplicator>(CreatureConstants.Templates.Lycanthrope_Bear);
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeBrownBearAfflictedApplicator>(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted);
         }
 
         [Test]
-        public void WereboarApplicatorIsInjected()
+        public void WereboarAfflictedApplicatorIsInjected()
         {
-            AssertNamedIsInstanceOf<TemplateApplicator, WereboarApplicator>(CreatureConstants.Templates.Lycanthrope_Boar);
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeBoarAfflictedApplicator>(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted);
         }
 
         [Test]
-        public void WereratApplicatorIsInjected()
+        public void DireWereboarAfflictedApplicatorIsInjected()
         {
-            AssertNamedIsInstanceOf<TemplateApplicator, WereratApplicator>(CreatureConstants.Templates.Lycanthrope_Rat);
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeDireBoarAfflictedApplicator>(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted);
         }
 
         [Test]
-        public void WeretigerApplicatorIsInjected()
+        public void WereratAfflictedApplicatorIsInjected()
         {
-            AssertNamedIsInstanceOf<TemplateApplicator, WeretigerApplicator>(CreatureConstants.Templates.Lycanthrope_Tiger);
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeDireRatAfflictedApplicator>(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted);
         }
 
         [Test]
-        public void WerewolfApplicatorIsInjected()
+        public void WeretigerAfflictedApplicatorIsInjected()
         {
-            AssertNamedIsInstanceOf<TemplateApplicator, WerewolfApplicator>(CreatureConstants.Templates.Lycanthrope_Wolf);
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeTigerAfflictedApplicator>(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted);
+        }
+
+        [Test]
+        public void WerewolfAfflictedApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeWolfAfflictedApplicator>(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted);
+        }
+
+        [Test]
+        public void WerebearNaturalApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeBrownBearNaturalApplicator>(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural);
+        }
+
+        [Test]
+        public void WereboarNaturalApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeBoarNaturalApplicator>(CreatureConstants.Templates.Lycanthrope_Boar_Natural);
+        }
+
+        [Test]
+        public void DireWereboarNaturalApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeDireBoarNaturalApplicator>(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural);
+        }
+
+        [Test]
+        public void WereratNaturalApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeDireRatNaturalApplicator>(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural);
+        }
+
+        [Test]
+        public void WeretigerNaturalApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeTigerNaturalApplicator>(CreatureConstants.Templates.Lycanthrope_Tiger_Natural);
+        }
+
+        [Test]
+        public void WerewolfNaturalApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeWolfNaturalApplicator>(CreatureConstants.Templates.Lycanthrope_Wolf_Natural);
         }
 
         [Test]

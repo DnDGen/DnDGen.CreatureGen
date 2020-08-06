@@ -11,6 +11,7 @@ using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Templates.HalfDragons;
+using DnDGen.CreatureGen.Templates.Lycanthropes;
 using DnDGen.CreatureGen.Verifiers;
 using Ninject.Modules;
 
@@ -58,11 +59,18 @@ namespace DnDGen.CreatureGen.IoC.Modules
             Bind<TemplateApplicator>().To<NoneApplicator>().Named(CreatureConstants.Templates.None);
             Bind<TemplateApplicator>().To<SkeletonApplicator>().Named(CreatureConstants.Templates.Skeleton);
             Bind<TemplateApplicator>().To<VampireApplicator>().Named(CreatureConstants.Templates.Vampire);
-            Bind<TemplateApplicator>().To<WerebearApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Bear);
-            Bind<TemplateApplicator>().To<WereboarApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Boar);
-            Bind<TemplateApplicator>().To<WereratApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Rat);
-            Bind<TemplateApplicator>().To<WeretigerApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Tiger);
-            Bind<TemplateApplicator>().To<WerewolfApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Wolf);
+            Bind<TemplateApplicator>().To<LycanthropeBrownBearAfflictedApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted);
+            Bind<TemplateApplicator>().To<LycanthropeBoarAfflictedApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted);
+            Bind<TemplateApplicator>().To<LycanthropeDireBoarAfflictedApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted);
+            Bind<TemplateApplicator>().To<LycanthropeDireRatAfflictedApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted);
+            Bind<TemplateApplicator>().To<LycanthropeTigerAfflictedApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted);
+            Bind<TemplateApplicator>().To<LycanthropeWolfAfflictedApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted);
+            Bind<TemplateApplicator>().To<LycanthropeBrownBearNaturalApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural);
+            Bind<TemplateApplicator>().To<LycanthropeBoarNaturalApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Boar_Natural);
+            Bind<TemplateApplicator>().To<LycanthropeDireBoarNaturalApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural);
+            Bind<TemplateApplicator>().To<LycanthropeDireRatNaturalApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural);
+            Bind<TemplateApplicator>().To<LycanthropeTigerNaturalApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Tiger_Natural);
+            Bind<TemplateApplicator>().To<LycanthropeWolfNaturalApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Wolf_Natural);
             Bind<TemplateApplicator>().To<ZombieApplicator>().Named(CreatureConstants.Templates.Zombie);
         }
     }

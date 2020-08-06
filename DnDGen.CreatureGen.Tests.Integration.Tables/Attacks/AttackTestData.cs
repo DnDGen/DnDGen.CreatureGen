@@ -104,31 +104,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Energy Drain", string.Empty, "2 negative levels, Vampire gains 5 HP", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData("Claw", $"1d6", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData("Bite", $"1d8", "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar].Add(helper.BuildData("Gore", $"1d6", "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat].Add(helper.BuildData("Bite", $"1d6", "Disease, Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat].Add(helper.BuildData("Disease", string.Empty, "Filth Fever", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat].Add(helper.BuildData("Filth Fever", string.Empty, "incubation period 1d3 days; damage 1d3 Dex and 1d3 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData("Claw", $"1d8", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData("Bite", $"2d6", "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger].Add(helper.BuildData("Rake", $"1d8", string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf].Add(helper.BuildData("Bite", $"1d6", "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf].Add(helper.BuildData("Trip", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
                 testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData("Slam", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 

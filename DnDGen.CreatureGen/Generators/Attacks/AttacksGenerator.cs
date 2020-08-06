@@ -28,7 +28,7 @@ namespace DnDGen.CreatureGen.Generators.Attacks
 
         public int GenerateBaseAttackBonus(CreatureType creatureType, HitPoints hitPoints)
         {
-            if (hitPoints.HitDiceQuantity == 0)
+            if (hitPoints.RoundedHitDiceQuantity == 0)
                 return 0;
 
             var baseAttackQuality = collectionSelector.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, creatureType.Name, GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);

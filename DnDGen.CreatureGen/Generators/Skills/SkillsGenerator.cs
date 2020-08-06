@@ -29,7 +29,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
 
         public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, CreatureType creatureType, Dictionary<string, Ability> abilities, bool canUseEquipment, string size)
         {
-            if (hitPoints.HitDiceQuantity == 0)
+            if (hitPoints.RoundedHitDiceQuantity == 0)
                 return Enumerable.Empty<Skill>();
 
             var creatureSkillNames = GetCreatureSkillNames(creatureName, creatureType);
@@ -163,7 +163,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
         public IEnumerable<Skill> ApplySkillPointsAsRanks(IEnumerable<Skill> skills, HitPoints hitPoints, CreatureType creatureType, Dictionary<string, Ability> abilities)
         {
             var points = GetTotalSkillPoints(creatureType, hitPoints.RoundedHitDiceQuantity, abilities[AbilityConstants.Intelligence]);
-            var totalRanksAvailable = skills.Count() * (hitPoints.HitDiceQuantity + 3);
+            var totalRanksAvailable = skills.Count() * (hitPoints.RoundedHitDiceQuantity + 3);
 
             if (points >= totalRanksAvailable)
             {

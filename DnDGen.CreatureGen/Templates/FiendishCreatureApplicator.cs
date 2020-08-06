@@ -131,11 +131,11 @@ namespace DnDGen.CreatureGen.Templates
             var challengeRatings = ChallengeRatingConstants.GetOrdered();
             var index = challengeRatings.ToList().IndexOf(creature.ChallengeRating);
 
-            if (creature.HitPoints.HitDiceQuantity >= 8)
+            if (creature.HitPoints.RoundedHitDiceQuantity >= 8)
             {
                 creature.ChallengeRating = challengeRatings[index + 2];
             }
-            else if (creature.HitPoints.HitDiceQuantity >= 4)
+            else if (creature.HitPoints.RoundedHitDiceQuantity >= 4)
             {
                 creature.ChallengeRating = challengeRatings[index + 1];
             }

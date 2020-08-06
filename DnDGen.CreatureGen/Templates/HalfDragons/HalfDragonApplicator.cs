@@ -328,9 +328,13 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
         private void UpdateCreatureHitPoints(Creature creature)
         {
-            creature.HitPoints.HitDie = Math.Min(creature.HitPoints.HitDie + 2, 12);
-            creature.HitPoints.Roll(dice);
-            creature.HitPoints.RollDefault(dice);
+            foreach (var hitDice in creature.HitPoints.HitDice)
+            {
+                hitDice.HitDie = Math.Min(hitDice.HitDie + 2, 12);
+            }
+
+            creature.HitPoints.RollTotal(dice);
+            creature.HitPoints.RollDefaultTotal(dice);
         }
 
         public async Task<Creature> ApplyToAsync(Creature creature)

@@ -31,8 +31,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(hitPoints.Constitution, Is.Null);
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo("0"));
             Assert.That(hitPoints.DefaultTotal, Is.Zero);
-            Assert.That(hitPoints.HitDiceQuantity, Is.Zero);
-            Assert.That(hitPoints.HitDie, Is.Zero);
+            Assert.That(hitPoints.HitDice, Is.Empty);
             Assert.That(hitPoints.Total, Is.Zero);
         }
 
@@ -262,12 +261,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [TestCase(2.9999, 12, 18, 3, "2d12+8+3")]
         public void DefaultRoll(double quantity, int die, int constitution, int bonus, string roll)
         {
-            hitPoints.HitDiceQuantity = quantity;
-            hitPoints.HitDie = die;
+            hitPoints.HitDice.Add(new HitDice { Quantity = quantity, HitDie = die });
             hitPoints.Bonus = bonus;
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = constitution };
 
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo(roll));
+        }
+
+        [Test]
+        public void DefaultRoll_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 42, HitDie = 600 });
+            hitPoints.Bonus = 1337;
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 1336 };
+
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9266d90210+42d600+678+1337"));
         }
 
         [TestCase(0, 0)]
@@ -288,77 +297,126 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [TestCase(9266, 9266)]
         public void RoundedHitDiceQuantity(double quantity, int roundedValue)
         {
-            hitPoints.HitDiceQuantity = quantity;
+            hitPoints.HitDice.Add(new HitDice { Quantity = quantity, HitDie = 8 });
             Assert.That(hitPoints.RoundedHitDiceQuantity, Is.EqualTo(roundedValue));
+        }
+
+        [Test]
+        public void RoundedHitDiceQuantity_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = .9266, HitDie = 90210 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 4.2, HitDie = 600 });
+
+            Assert.That(hitPoints.RoundedHitDiceQuantity, Is.EqualTo(5));
+        }
+
+        [TestCase(0)]
+        [TestCase(.01)]
+        [TestCase(.1)]
+        [TestCase(.25)]
+        [TestCase(.5)]
+        [TestCase(.6)]
+        [TestCase(.9266)]
+        [TestCase(1)]
+        [TestCase(1.5)]
+        [TestCase(2)]
+        [TestCase(2.5)]
+        [TestCase(2.999999999)]
+        [TestCase(9.266)]
+        [TestCase(92.66)]
+        [TestCase(926.6)]
+        [TestCase(9266)]
+        public void HitDiceQuantity(double quantity)
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = quantity, HitDie = 8 });
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(quantity));
+        }
+
+        [Test]
+        public void HitDiceQuantity_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = .9266, HitDie = 90210 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 4.2, HitDie = 600 });
+
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(.9266 + 4.2));
         }
 
         [Test]
         public void RollTotal()
         {
-            hitPoints.HitDiceQuantity = 9266;
-            hitPoints.HitDie = 90210;
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 42 };
 
             SetUpRoll(9266, 90210, 600);
 
-            hitPoints.Roll(mockDice.Object);
-            Assert.That(hitPoints.Total, Is.EqualTo(616));
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(600 + 16));
+        }
+
+        [Test]
+        public void RollTotal_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 42, HitDie = 600 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 1337 };
+
+            SetUpRoll(9266, 90210, 1336);
+            SetUpRoll(42, 600, 96);
+
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(1336 + 96 + 663));
         }
 
         [Test]
         public void RerollTotal()
         {
-            hitPoints.HitDiceQuantity = 9266;
-            hitPoints.HitDie = 90210;
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 42 };
 
             SetUpRoll(9266, 90210, 600);
 
-            hitPoints.Roll(mockDice.Object);
-            Assert.That(hitPoints.Total, Is.EqualTo(616));
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(600 + 16));
 
             SetUpRoll(9266, 90210, 1337);
 
-            hitPoints.Roll(mockDice.Object);
-            Assert.That(hitPoints.Total, Is.EqualTo(1353));
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(1337 + 16));
         }
 
         [Test]
         public void RollTotalWithoutConstitutionScore()
         {
-            hitPoints.HitDiceQuantity = 9266;
-            hitPoints.HitDie = 90210;
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 0 };
 
             SetUpRoll(9266, 90210, 600);
 
-            hitPoints.Roll(mockDice.Object);
+            hitPoints.RollTotal(mockDice.Object);
             Assert.That(hitPoints.Total, Is.EqualTo(600));
         }
 
         [Test]
         public void RollTotalWithoutConstitutionScore_FractionalDice()
         {
-            hitPoints.HitDiceQuantity = .5;
-            hitPoints.HitDie = 8;
+            hitPoints.HitDice.Add(new HitDice { Quantity = .5, HitDie = 8 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 0 };
 
             SetUpRoll(1, 8, 5);
 
-            hitPoints.Roll(mockDice.Object);
+            hitPoints.RollTotal(mockDice.Object);
             Assert.That(hitPoints.Total, Is.EqualTo(2));
         }
 
         [Test]
         public void RollTotalWithoutConstitutionScore_LowFractionalDice()
         {
-            hitPoints.HitDiceQuantity = .25;
-            hitPoints.HitDie = 8;
+            hitPoints.HitDice.Add(new HitDice { Quantity = .25, HitDie = 8 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 0 };
 
             SetUpRoll(1, 8, 3);
 
-            hitPoints.Roll(mockDice.Object);
+            hitPoints.RollTotal(mockDice.Object);
             Assert.That(hitPoints.Total, Is.EqualTo(1));
         }
 
@@ -374,122 +432,241 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         }
 
         [Test]
-        public void ConstitutionBonusAppliedPerHitDie()
+        public void ConstitutionBonusAppliedPerHitDice()
         {
-            hitPoints.HitDiceQuantity = 2;
-            hitPoints.HitDie = 90210;
+            hitPoints.HitDice.Add(new HitDice { Quantity = 2, HitDie = 90210 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 20 };
 
             SetUpRoll(2, 90210, 42, 600);
 
-            hitPoints.Roll(mockDice.Object);
-            Assert.That(hitPoints.Total, Is.EqualTo(652));
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(42 + 600 + 5 * 2));
+        }
+
+        [Test]
+        public void ConstitutionBonusAppliedPerHitDice_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 2, HitDie = 90210 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 3, HitDie = 9266 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 20 };
+
+            SetUpRoll(2, 90210, 42, 600);
+            SetUpRoll(3, 9266, 1337, 1336, 96);
+
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(42 + 600 + 1337 + 1336 + 96 + 5 * 5));
         }
 
         [Test]
         public void ConstitutionBonusAppliedPerHitDie_FractionalDice()
         {
-            hitPoints.HitDiceQuantity = .5;
-            hitPoints.HitDie = 8;
+            hitPoints.HitDice.Add(new HitDice { Quantity = .5, HitDie = 8 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 20 };
 
             SetUpRoll(1, 8, 4);
 
-            hitPoints.Roll(mockDice.Object);
-            Assert.That(hitPoints.Total, Is.EqualTo(7));
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(2 + 5));
+        }
+
+        [Test]
+        public void ConstitutionBonusAppliedPerHitDie_FractionalDice_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = .5, HitDie = 8 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 2, HitDie = 9266 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 20 };
+
+            SetUpRoll(1, 8, 4);
+            SetUpRoll(2, 9266, 42, 600);
+
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(2 + 42 + 600 + 5 * 3));
         }
 
         [Test]
         public void ConstitutionBonusAppliedPerHitDie_LowFractionalDice()
         {
-            hitPoints.HitDiceQuantity = .25;
-            hitPoints.HitDie = 8;
+            hitPoints.HitDice.Add(new HitDice { Quantity = .25, HitDie = 8 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 20 };
 
             SetUpRoll(1, 8, 2);
 
-            hitPoints.Roll(mockDice.Object);
-            Assert.That(hitPoints.Total, Is.EqualTo(6));
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(1 + 5));
+        }
+
+        [Test]
+        public void ConstitutionBonusAppliedPerHitDie_LowFractionalDice_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = .25, HitDie = 8 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 2, HitDie = 9266 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 20 };
+
+            SetUpRoll(1, 8, 2);
+            SetUpRoll(2, 9266, 42, 600);
+
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(1 + 42 + 600 + 5 * 3));
         }
 
         [Test]
         public void CannotGainFewerThan1HitPointPerHitDie()
         {
-            hitPoints.HitDiceQuantity = 3;
-            hitPoints.HitDie = 90210;
+            hitPoints.HitDice.Add(new HitDice { Quantity = 3, HitDie = 90210 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 1 };
 
             SetUpRoll(3, 90210, 1, 3, 5);
 
-            hitPoints.Roll(mockDice.Object);
+            hitPoints.RollTotal(mockDice.Object);
             Assert.That(hitPoints.Total, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void CannotGainFewerThan1HitPointPerHitDie_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 3, HitDie = 90210 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 2, HitDie = 9266 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 1 };
+
+            SetUpRoll(3, 90210, 1, 3, 5);
+            SetUpRoll(2, 9266, 2, 4);
+
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(5));
         }
 
         [Test]
         public void CannotGainFewerThan1HitPointPerHitDie_FractionalDice()
         {
-            hitPoints.HitDiceQuantity = .5;
-            hitPoints.HitDie = 8;
+            hitPoints.HitDice.Add(new HitDice { Quantity = .5, HitDie = 8 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 1 };
 
             SetUpRoll(1, 8, 4);
 
-            hitPoints.Roll(mockDice.Object);
+            hitPoints.RollTotal(mockDice.Object);
             Assert.That(hitPoints.Total, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void CannotGainFewerThan1HitPointPerHitDie_FractionalDice_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = .5, HitDie = 8 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = .25, HitDie = 12 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 1 };
+
+            SetUpRoll(1, 8, 4);
+            SetUpRoll(1, 12, 8);
+
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(2));
         }
 
         [Test]
         public void CannotGainFewerThan1HitPointPerHitDie_LowFractionalDice()
         {
-            hitPoints.HitDiceQuantity = .25;
-            hitPoints.HitDie = 8;
+            hitPoints.HitDice.Add(new HitDice { Quantity = .25, HitDie = 8 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 1 };
 
             SetUpRoll(1, 8, 3);
 
-            hitPoints.Roll(mockDice.Object);
+            hitPoints.RollTotal(mockDice.Object);
             Assert.That(hitPoints.Total, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void CannotGainFewerThan1HitPointPerHitDie_LowFractionalDice_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = .25, HitDie = 8 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = .1, HitDie = 12 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 1 };
+
+            SetUpRoll(1, 8, 3);
+            SetUpRoll(1, 12, 4);
+
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(2));
         }
 
         [Test]
         public void MinimumCheckAppliedPerHitDieOnRoll()
         {
-            hitPoints.HitDiceQuantity = 3;
-            hitPoints.HitDie = 90210;
+            hitPoints.HitDice.Add(new HitDice { Quantity = 3, HitDie = 90210 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 6 };
 
             SetUpRoll(3, 90210, 1, 2, 4);
 
-            hitPoints.Roll(mockDice.Object);
-            Assert.That(hitPoints.Total, Is.Not.EqualTo(1) //(1 + 2 + 4) + 3 * -2 = 7 -  = 1
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.Not.EqualTo(1) //(1 + 2 + 4) + 3 * -2 = 7 - 6 = 1
                 .And.Not.EqualTo(3) //[(1 + 2 + 4) + 3 * -2, 3] = [7 - 6, 3] = 3
                 .And.EqualTo(4)); //[1-2,1]+[2-2,1]+[4-2,1] = 1 + 1 + 2 = 4
         }
 
         [Test]
+        public void MinimumCheckAppliedPerHitDieOnRoll_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 3, HitDie = 90210 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 2, HitDie = 9266 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 6 };
+
+            SetUpRoll(3, 90210, 1, 2, 4);
+            SetUpRoll(2, 9266, 3, 1);
+
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.Not.EqualTo(1) //(1 + 2 + 4) + (3 + 1) + 5 * -2 = 7 + 4 - 10 = 1
+                .And.Not.EqualTo(5) //[(1 + 2 + 4) + (3 + 1) + 5 * -2, 5] = [7 + 4 - 10, 5] = 5
+                .And.EqualTo(6)); //[1-2,1]+[2-2,1]+[4-2,1]+[3-2,1]+[1-2,1] = 1 + 1 + 2 + 1 + 1 = 6
+        }
+
+        [Test]
         public void MinimumCheckAppliedPerHitDieOnRoll_FractionalDice()
         {
-            hitPoints.HitDiceQuantity = .5;
-            hitPoints.HitDie = 8;
+            hitPoints.HitDice.Add(new HitDice { Quantity = .5, HitDie = 8 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 6 };
 
             SetUpRoll(1, 8, 2);
 
-            hitPoints.Roll(mockDice.Object);
+            hitPoints.RollTotal(mockDice.Object);
             Assert.That(hitPoints.Total, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void MinimumCheckAppliedPerHitDieOnRoll_FractionalDice_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = .5, HitDie = 8 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = .25, HitDie = 12 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 6 };
+
+            SetUpRoll(1, 8, 2);
+            SetUpRoll(1, 12, 7);
+
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(2));
         }
 
         [Test]
         public void MinimumCheckAppliedPerHitDieOnRoll_LowFractionalDice()
         {
-            hitPoints.HitDiceQuantity = .25;
-            hitPoints.HitDie = 8;
+            hitPoints.HitDice.Add(new HitDice { Quantity = .25, HitDie = 8 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 6 };
 
             SetUpRoll(1, 8, 1);
 
-            hitPoints.Roll(mockDice.Object);
+            hitPoints.RollTotal(mockDice.Object);
             Assert.That(hitPoints.Total, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void MinimumCheckAppliedPerHitDieOnRoll_LowFractionalDice_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = .25, HitDie = 8 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = .1, HitDie = 12 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 6 };
+
+            SetUpRoll(1, 8, 1);
+            SetUpRoll(1, 12, 2);
+
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(2));
         }
 
         [TestCase(0, 6, 0, 0, 1)]
@@ -879,8 +1056,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [TestCase(9266, 42, 90210, 600, (43 * 9266 / 2) + (90210 - 10) * 9266 / 2 + 600)]
         public void RollDefault(double quantity, int die, int constitution, int bonus, int defaultTotal)
         {
-            hitPoints.HitDiceQuantity = quantity;
-            hitPoints.HitDie = die;
+            hitPoints.HitDice.Add(new HitDice { Quantity = quantity, HitDie = die });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = constitution };
             hitPoints.Bonus = bonus;
 
@@ -889,8 +1065,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             mockPartialRoll.Setup(r => r.AsPotentialAverage()).Returns(average);
             mockDice.Setup(d => d.Roll(hitPoints.RoundedHitDiceQuantity).d(die)).Returns(mockPartialRoll.Object);
 
-            hitPoints.RollDefault(mockDice.Object);
+            hitPoints.RollDefaultTotal(mockDice.Object);
             Assert.That(hitPoints.DefaultTotal, Is.EqualTo(defaultTotal));
+        }
+
+        [Test]
+        public void RollDefault_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 42, HitDie = 600 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 1337 };
+            hitPoints.Bonus = 1336;
+
+            var mockPartialRoll1 = new Mock<PartialRoll>();
+            var average1 = (1 + 90210) / 2d * 9266;
+            mockPartialRoll1.Setup(r => r.AsPotentialAverage()).Returns(average1);
+            mockDice.Setup(d => d.Roll(9266).d(90210)).Returns(mockPartialRoll1.Object);
+            var mockPartialRoll2 = new Mock<PartialRoll>();
+            var average2 = (1 + 600) / 2d * 42;
+            mockPartialRoll2.Setup(r => r.AsPotentialAverage()).Returns(average2);
+            mockDice.Setup(d => d.Roll(42).d(600)).Returns(mockPartialRoll2.Object);
+
+            hitPoints.RollDefaultTotal(mockDice.Object);
+            Assert.That(hitPoints.DefaultTotal, Is.EqualTo(average1 + average2 + 663 * (9266 + 42) + 1336));
         }
 
         [TestCase(.01, 600, 6)]
@@ -947,16 +1144,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [TestCase(2.5, 11, 11)]
         [TestCase(2.5, 12, 12)]
         [TestCase(2.5, 600, 600)]
-        public void RollFractionalHitDice(double amount, int roll, int total)
+        public void RollTotal_FractionalHitDice(double quantity, int roll, int total)
         {
-            hitPoints.HitDiceQuantity = amount;
-            hitPoints.HitDie = 90210;
+            hitPoints.HitDice.Add(new HitDice { Quantity = quantity, HitDie = 90210 });
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
 
-            SetUpRoll(hitPoints.RoundedHitDiceQuantity, hitPoints.HitDie, roll);
+            SetUpRoll(hitPoints.RoundedHitDiceQuantity, 90210, roll);
 
-            hitPoints.Roll(mockDice.Object);
+            hitPoints.RollTotal(mockDice.Object);
             Assert.That(hitPoints.Total, Is.EqualTo(total));
+        }
+
+        [Test]
+        public void RollTotal_FractionHitDice_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = .5, HitDie = 90210 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = .25, HitDie = 9266 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
+
+            SetUpRoll(1, 90210, 42);
+            SetUpRoll(1, 9266, 600);
+
+            hitPoints.RollTotal(mockDice.Object);
+            Assert.That(hitPoints.Total, Is.EqualTo(42 + 600));
         }
     }
 }

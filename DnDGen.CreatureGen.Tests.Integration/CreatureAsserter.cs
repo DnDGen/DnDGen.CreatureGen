@@ -351,10 +351,26 @@ namespace DnDGen.CreatureGen.Tests.Integration
         {
             Assert.That(creature.BaseAttackBonus, Is.Not.Negative, creature.Summary);
 
+            Assert.That(creature.HitPoints.HitDice, Is.Not.Empty, creature.Summary);
+
+            foreach (var hitDice in creature.HitPoints.HitDice)
+            {
+                Assert.That(hitDice.Quantity, Is.Positive, creature.Summary);
+                Assert.That(hitDice.RoundedQuantity, Is.Positive, creature.Summary);
+                Assert.That(hitDice.HitDie, Is.EqualTo(8)
+                    .Or.EqualTo(10)
+                    .Or.EqualTo(12), creature.Summary);
+                Assert.That(hitDice.Divisor, Is.Positive, creature.Summary);
+                Assert.That(hitDice.DefaultRoll, Contains.Substring($"{hitDice.RoundedQuantity}d{hitDice.HitDie}"), creature.Summary);
+
+                Assert.That(creature.HitPoints.DefaultRoll, Contains.Substring($"{hitDice.RoundedQuantity}d{hitDice.HitDie}"), creature.Summary);
+            }
+
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.Positive, creature.Summary);
-            Assert.That(creature.HitPoints.HitDie, Is.Positive, creature.Summary);
-            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.AtLeast(1), creature.Summary);
-            Assert.That(creature.HitPoints.DefaultRoll, Contains.Substring($"{creature.HitPoints.RoundedHitDiceQuantity}d{creature.HitPoints.HitDie}"), creature.Summary);
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.Positive
+                .And.AtLeast(1)
+                .And.AtLeast(creature.HitPoints.HitDice.Count), creature.Summary);
+
             Assert.That(creature.HitPoints.Total, Is.Positive
                 .And.AtLeast(Math.Floor(creature.HitPoints.HitDiceQuantity))
                 .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity), creature.Summary);

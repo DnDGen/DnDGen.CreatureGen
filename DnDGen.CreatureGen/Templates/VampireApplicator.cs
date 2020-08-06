@@ -95,9 +95,13 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureHitPoints(Creature creature)
         {
-            creature.HitPoints.HitDie = 12;
-            creature.HitPoints.Roll(dice);
-            creature.HitPoints.RollDefault(dice);
+            foreach (var hitDice in creature.HitPoints.HitDice)
+            {
+                hitDice.HitDie = 12;
+            }
+
+            creature.HitPoints.RollTotal(dice);
+            creature.HitPoints.RollDefaultTotal(dice);
         }
 
         private void UpdateCreatureLevelAdjustment(Creature creature)

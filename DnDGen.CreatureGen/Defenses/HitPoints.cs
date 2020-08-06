@@ -1,52 +1,29 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.RollGen;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Defenses
 {
     public class HitPoints
     {
-        public int HitDie { get; set; }
-        public double HitDiceQuantity { get; set; }
+        public List<HitDice> HitDice { get; set; }
         public Ability Constitution { get; set; }
         public int Total { get; set; }
         public int DefaultTotal { get; set; }
         public int Bonus { get; set; }
 
-        public int RoundedHitDiceQuantity
-        {
-            get
-            {
-                if (HitDiceQuantity == 0)
-                    return 0;
-
-                if (HitDiceQuantity < 1)
-                    return 1;
-
-                var rawRoundedHitDiceQuantity = Math.Floor(HitDiceQuantity);
-                var roundedHitDiceQuantity = Convert.ToInt32(rawRoundedHitDiceQuantity);
-
-                return roundedHitDiceQuantity;
-            }
-        }
+        public double HitDiceQuantity => HitDice.Sum(hd => hd.Quantity);
+        public int RoundedHitDiceQuantity => HitDice.Sum(hd => hd.RoundedQuantity);
 
         public string DefaultRoll
         {
             get
             {
-                if (HitDiceQuantity == 0 || HitDie == 0)
-                {
-                    return Bonus.ToString();
-                }
+                var rolls = HitDice.Select(hd => hd.DefaultRoll);
 
-                var roll = $"{RoundedHitDiceQuantity}d{HitDie}";
-
-                if (HitDiceQuantity < 1)
-                {
-                    roll += $"/{divisor}";
-                }
-
+                var roll = string.Join("+", rolls);
                 roll = AppendBonus(roll, totalConstitutionBonus);
                 roll = AppendBonus(roll, Bonus);
 
@@ -54,23 +31,24 @@ namespace DnDGen.CreatureGen.Defenses
             }
         }
 
-        private int divisor
+        private int totalConstitutionBonus => Constitution.Modifier * RoundedHitDiceQuantity;
+
+        public IEnumerable<(string Condition, int Bonus)> ConditionalBonuses
         {
             get
             {
-                var rawDenominator = 1 / HitDiceQuantity;
-                var divisor = Convert.ToInt32(rawDenominator);
+                var conditionalBonuses = Constitution.Bonuses.Where(b => b.IsConditional);
 
-                return divisor;
+                if (!conditionalBonuses.Any())
+                    return Enumerable.Empty<(string, int)>();
+
+                return conditionalBonuses.Select(b => (b.Condition, b.Value / 2 * RoundedHitDiceQuantity));
             }
         }
 
-        private int totalConstitutionBonus
+        public HitPoints()
         {
-            get
-            {
-                return Constitution.Modifier * RoundedHitDiceQuantity;
-            }
+            HitDice = new List<HitDice>();
         }
 
         private string AppendBonus(string roll, int bonus)
@@ -84,33 +62,39 @@ namespace DnDGen.CreatureGen.Defenses
             return roll;
         }
 
-        public void Roll(Dice dice)
+        public void RollTotal(Dice dice)
         {
-            var rolls = dice.Roll(RoundedHitDiceQuantity).d(HitDie).AsIndividualRolls();
+            Total = 0;
 
-            if (0 < HitDiceQuantity && HitDiceQuantity < 1)
-                rolls = rolls.Select(r => Math.Max(1, r / divisor));
-
-            rolls = rolls.Select(r => Math.Max(r + Constitution.Modifier, 1));
-
-            Total = rolls.Sum() + Bonus;
-        }
-
-        public void RollDefault(Dice dice)
-        {
-            var average = dice.Roll(RoundedHitDiceQuantity).d(HitDie).AsPotentialAverage();
-            average = Math.Max(1, average);
-
-            if (0 < HitDiceQuantity && HitDiceQuantity < 1)
+            foreach (var hitDice in HitDice)
             {
-                average /= divisor;
+                var rolls = dice.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsIndividualRolls();
+
+                rolls = rolls.Select(r => Math.Max(1, r / hitDice.Divisor));
+                rolls = rolls.Select(r => Math.Max(r + Constitution.Modifier, 1));
+
+                Total += rolls.Sum();
             }
 
-            average = Math.Max(RoundedHitDiceQuantity, average);
-            average += Constitution.Modifier * RoundedHitDiceQuantity;
-            average = Math.Max(RoundedHitDiceQuantity, average);
+            Total += Bonus;
+        }
 
-            DefaultTotal = Convert.ToInt32(Math.Floor(average)) + Bonus;
+        public void RollDefaultTotal(Dice dice)
+        {
+            DefaultTotal = 0;
+
+            foreach (var hitDice in HitDice)
+            {
+                var average = dice.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsPotentialAverage();
+                average /= hitDice.Divisor;
+                average = Math.Max(RoundedHitDiceQuantity, average);
+                average += Constitution.Modifier * RoundedHitDiceQuantity;
+                average = Math.Max(RoundedHitDiceQuantity, average);
+
+                DefaultTotal += Convert.ToInt32(Math.Floor(average));
+            }
+
+            DefaultTotal += Bonus;
         }
     }
 }

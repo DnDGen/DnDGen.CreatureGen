@@ -76,7 +76,7 @@ namespace DnDGen.CreatureGen.Generators.Defenses
 
         private int GetSaveBaseValue(string creatureName, HitPoints hitPoints, string saveName)
         {
-            if (hitPoints.HitDiceQuantity == 0)
+            if (hitPoints.RoundedHitDiceQuantity == 0)
                 return 0;
 
             var strongSaves = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, saveName);

@@ -317,11 +317,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Marut,
             CreatureConstants.Zelekhut)]
         [TestCase(CreatureConstants.Groups.Lycanthrope,
-            CreatureConstants.Templates.Lycanthrope_Bear,
-            CreatureConstants.Templates.Lycanthrope_Boar,
-            CreatureConstants.Templates.Lycanthrope_Rat,
-            CreatureConstants.Templates.Lycanthrope_Tiger,
-            CreatureConstants.Templates.Lycanthrope_Wolf)]
+            CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted,
+            CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural,
+            CreatureConstants.Templates.Lycanthrope_Boar_Afflicted,
+            CreatureConstants.Templates.Lycanthrope_Boar_Natural,
+            CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted,
+            CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural,
+            CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted,
+            CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural,
+            CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted,
+            CreatureConstants.Templates.Lycanthrope_Tiger_Natural,
+            CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
+            CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
         [TestCase(CreatureConstants.Groups.Mephit,
             CreatureConstants.Mephit_Air,
             CreatureConstants.Mephit_Dust,

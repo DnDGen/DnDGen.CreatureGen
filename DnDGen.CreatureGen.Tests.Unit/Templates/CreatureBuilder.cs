@@ -118,9 +118,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             creature.HitPoints = new HitPoints();
             creature.HitPoints.Bonus = source.HitPoints.Bonus;
             creature.HitPoints.Constitution = creature.Abilities[AbilityConstants.Constitution];
+
+            foreach (var hitDice in source.HitPoints.HitDice)
+            {
+                creature.HitPoints.HitDice.Add(new HitDice());
+                creature.HitPoints.HitDice[0].Quantity = hitDice.Quantity;
+                creature.HitPoints.HitDice[0].HitDie = hitDice.HitDie;
+            }
+
             creature.HitPoints.DefaultTotal = source.HitPoints.DefaultTotal;
-            creature.HitPoints.HitDiceQuantity = source.HitPoints.HitDiceQuantity;
-            creature.HitPoints.HitDie = source.HitPoints.HitDie;
             creature.HitPoints.Total = source.HitPoints.Total;
 
             creature.InitiativeBonus = source.InitiativeBonus;
@@ -205,10 +211,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             creature.HitPoints = new HitPoints();
             creature.HitPoints.Constitution = creature.Abilities[AbilityConstants.Constitution];
-            creature.HitPoints.HitDiceQuantity = random.Next(20) + 1;
-            creature.HitPoints.HitDie = random.Next(12) + 1;
-            creature.HitPoints.DefaultTotal = creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDie / 2;
-            creature.HitPoints.Total = creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDie;
+            creature.HitPoints.HitDice.Add(new HitDice());
+            creature.HitPoints.HitDice[0].Quantity = random.Next(20) + 1;
+            creature.HitPoints.HitDice[0].HitDie = random.Next(12) + 1;
+            creature.HitPoints.DefaultTotal = creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie / 2;
+            creature.HitPoints.Total = creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie;
 
             creature.InitiativeBonus = random.Next(5);
             creature.Name = $"creature {Guid.NewGuid()}";

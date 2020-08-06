@@ -269,7 +269,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(12)]
         public void ApplyTo_HitDiceChangeToD12_AndRerolled(int die)
         {
-            baseCreature.HitPoints.HitDie = die;
+            baseCreature.HitPoints.HitDice[0].HitDie = die;
 
             mockDice
                 .Setup(d => d
@@ -285,7 +285,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(42);
 
             var creature = applicator.ApplyTo(baseCreature);
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
         }
@@ -293,7 +293,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_HitDiceChangeToD12_AndRerolled_WithoutConstitution()
         {
-            baseCreature.HitPoints.HitDie = 4;
+            baseCreature.HitPoints.HitDice[0].HitDie = 4;
 
             baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 600;
 
@@ -311,7 +311,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(42);
 
             var creature = applicator.ApplyTo(baseCreature);
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
         }
@@ -1226,7 +1226,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(10)]
         public async Task ApplyToAsync_HitDiceChangeToD12_AndRerolled(int die)
         {
-            baseCreature.HitPoints.HitDie = die;
+            baseCreature.HitPoints.HitDice[0].HitDie = die;
 
             mockDice
                 .Setup(d => d
@@ -1242,7 +1242,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(42);
 
             var creature = await applicator.ApplyToAsync(baseCreature);
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
         }
@@ -1250,7 +1250,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_HitDiceChangeToD12_AndRerolled_WithoutConstitution()
         {
-            baseCreature.HitPoints.HitDie = 4;
+            baseCreature.HitPoints.HitDice[0].HitDie = 4;
 
             baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 600;
 
@@ -1268,7 +1268,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(42);
 
             var creature = await applicator.ApplyToAsync(baseCreature);
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
         }

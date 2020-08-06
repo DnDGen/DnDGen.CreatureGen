@@ -60,7 +60,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             allSkills.Add("skill 4");
             allSkills.Add("skill 5");
 
-            hitPoints.HitDiceQuantity = 1;
+            hitPoints.HitDice.Add(new HitDice { Quantity = 1 });
             creatureType.Name = "creature type";
             size = SizeConstants.Medium;
 
@@ -105,7 +105,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void GetNoSkills()
         {
-            hitPoints.HitDiceQuantity = 0;
+            hitPoints.HitDice[0].Quantity = 0;
             creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
 
@@ -732,7 +732,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [TestCase(20, 8, 184)]
         public void SkillPointsDeterminedByHitDice(int hitDiceQuantity, int skillPointsPerDie, int skillPoints)
         {
-            hitPoints.HitDiceQuantity = hitDiceQuantity;
+            hitPoints.HitDice[0].Quantity = hitDiceQuantity;
             creatureTypeSkillPoints = skillPointsPerDie;
             AddCreatureSkills(hitDiceQuantity + skillPointsPerDie);
 
@@ -849,7 +849,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [TestCase(20, 18, 138)]
         public void ApplyIntelligenceBonusToSkillPoints(int hitDie, int intelligence, int skillPoints)
         {
-            hitPoints.HitDiceQuantity = hitDie;
+            hitPoints.HitDice[0].Quantity = hitDie;
             creatureTypeSkillPoints = 2;
             abilities[AbilityConstants.Intelligence].BaseScore = intelligence;
             AddCreatureSkills(hitDie + intelligence);
@@ -900,7 +900,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         public void DoNotAssignSkillPointsToSkillsThatTheCreatureDoesNotHaveDueToNotHavingTheBaseAbility()
         {
             creatureTypeSkillPoints = 1;
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
@@ -998,7 +998,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void SelectMultipleRandomFociForSkill()
         {
-            hitPoints.HitDiceQuantity = 20;
+            hitPoints.HitDice[0].Quantity = 20;
             creatureTypeSkillPoints = 0;
             creatureTypeSkillPoints = 2;
             abilities[AbilityConstants.Intelligence].BaseScore = 10;
@@ -1037,7 +1037,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void DoNotSelectRepeatedRandomFociForSkill()
         {
-            hitPoints.HitDiceQuantity = 20;
+            hitPoints.HitDice[0].Quantity = 20;
             creatureTypeSkillPoints = 0;
             creatureTypeSkillPoints = 2;
             abilities[AbilityConstants.Intelligence].BaseScore = 10;
@@ -1076,7 +1076,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void SelectAllRandomFociForSkill()
         {
-            hitPoints.HitDiceQuantity = 20;
+            hitPoints.HitDice[0].Quantity = 20;
             creatureTypeSkillPoints = 0;
             creatureTypeSkillPoints = 2;
             abilities[AbilityConstants.Intelligence].BaseScore = 10;
@@ -1359,7 +1359,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddUntrainedSkills(4);
 
             creatureTypeSkillPoints = 10;
-            hitPoints.HitDiceQuantity = 10;
+            hitPoints.HitDice[0].Quantity = 10;
 
             mockSkillSelector.Setup(s => s.SelectFor(It.IsAny<string>())).Returns((string skill) => new SkillSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Strength });
 
@@ -2411,7 +2411,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
@@ -2461,7 +2461,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var bonuses = new[]
             {
@@ -2490,7 +2490,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var skillSelection1 = new SkillSelection();
             skillSelection1.BaseAbilityName = AbilityConstants.Intelligence;
@@ -2526,7 +2526,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var bonuses = new[]
             {
@@ -2555,7 +2555,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var skillSelection1 = new SkillSelection();
             skillSelection1.BaseAbilityName = AbilityConstants.Intelligence;
@@ -2592,7 +2592,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(1);
             AddUntrainedSkills(1);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
@@ -2627,7 +2627,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(1);
             AddUntrainedSkills(1);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0], Condition = "condition" } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
@@ -2662,7 +2662,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             AddUntrainedSkills(2);
 
-            hitPoints.HitDiceQuantity = 3;
+            hitPoints.HitDice[0].Quantity = 3;
 
             var bonuses1 = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
@@ -2714,7 +2714,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             AddUntrainedSkills(2);
 
-            hitPoints.HitDiceQuantity = 3;
+            hitPoints.HitDice[0].Quantity = 3;
 
             var bonuses1 = new[]
             {
@@ -2767,7 +2767,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             AddUntrainedSkills(2);
 
-            hitPoints.HitDiceQuantity = 3;
+            hitPoints.HitDice[0].Quantity = 3;
 
             var bonuses1 = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[1] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
@@ -2818,7 +2818,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             AddUntrainedSkills(1);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var skillSelection = new SkillSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
@@ -2876,7 +2876,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             AddUntrainedSkills(2);
 
-            hitPoints.HitDiceQuantity = 3;
+            hitPoints.HitDice[0].Quantity = 3;
 
             var skillSelection = new SkillSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
@@ -2946,7 +2946,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(1);
             AddUntrainedSkills(1);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var skillSelection = new SkillSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
@@ -2995,7 +2995,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(1);
             AddUntrainedSkills(1);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var skillSelection = new SkillSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
@@ -3044,7 +3044,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(1);
             AddUntrainedSkills(1);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var skillSelection = new SkillSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
@@ -3093,7 +3093,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(1);
             AddUntrainedSkills(1);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var skillSelection = new SkillSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
@@ -3141,7 +3141,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkillPoints = 3;
             AddUntrainedSkills(2);
 
-            hitPoints.HitDiceQuantity = 7;
+            hitPoints.HitDice[0].Quantity = 7;
 
             var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[1] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(untrainedSkills[0])).Returns(bonuses);
@@ -3174,7 +3174,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = creatureSkills[1] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);

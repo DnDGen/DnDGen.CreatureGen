@@ -25,14 +25,16 @@ namespace DnDGen.CreatureGen.Generators.Defenses
         {
             var hitPoints = new HitPoints();
 
-            hitPoints.HitDiceQuantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creatureName);
-            hitPoints.HitDie = adjustmentSelector.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, creatureType.Name);
+            var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creatureName);
+            var die = adjustmentSelector.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, creatureType.Name);
+            quantity += additionalHitDice;
+
             hitPoints.Constitution = constitution;
             hitPoints.Bonus = GetBonus(creatureType, size);
-            hitPoints.HitDiceQuantity += additionalHitDice;
+            hitPoints.HitDice.Add(new HitDice { Quantity = quantity, HitDie = die });
 
-            hitPoints.RollDefault(dice);
-            hitPoints.Roll(dice);
+            hitPoints.RollDefaultTotal(dice);
+            hitPoints.RollTotal(dice);
 
             return hitPoints;
         }
@@ -61,8 +63,8 @@ namespace DnDGen.CreatureGen.Generators.Defenses
         {
             hitPoints.Bonus += feats.Where(f => f.Name == FeatConstants.Toughness).Sum(f => f.Power);
 
-            hitPoints.RollDefault(dice);
-            hitPoints.Roll(dice);
+            hitPoints.RollDefaultTotal(dice);
+            hitPoints.RollTotal(dice);
 
             return hitPoints;
         }

@@ -173,7 +173,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockMagicGenerator.Object);
 
             baseCreature = new CreatureBuilder().WithTestValues().Build();
-            baseCreature.HitPoints.HitDie = 8;
+            baseCreature.HitPoints.HitDice[0].HitDie = 8;
 
             mockSpeedsGenerator
                 .Setup(g => g.Generate(It.IsAny<string>()))
@@ -313,7 +313,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource("HitDieIncreased")]
         public void ApplyTo_HitDieIncreases(string template, int original, int increased)
         {
-            baseCreature.HitPoints.HitDie = original;
+            baseCreature.HitPoints.HitDice[0].HitDie = original;
             baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 10;
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = -4;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 2;
@@ -335,7 +335,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(increased));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(increased));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
         }
@@ -366,7 +366,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource("HitDieIncreased")]
         public void ApplyTo_HitDieIncreases_WithBoostedConstitution(string template, int original, int increased)
         {
-            baseCreature.HitPoints.HitDie = original;
+            baseCreature.HitPoints.HitDice[0].HitDie = original;
             baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 42;
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
@@ -388,7 +388,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(increased));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(increased));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210 + 2 * 17));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(96 + baseCreature.HitPoints.RoundedHitDiceQuantity * 17));
         }
@@ -1111,7 +1111,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource("HitDieIncreased")]
         public async Task ApplyToAsync_HitDieIncreases(string template, int original, int increased)
         {
-            baseCreature.HitPoints.HitDie = original;
+            baseCreature.HitPoints.HitDice[0].HitDie = original;
             baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 10;
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = -4;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 2;
@@ -1133,7 +1133,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(increased));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(increased));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
         }
@@ -1141,7 +1141,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource("HitDieIncreased")]
         public async Task ApplyToAsync_HitDieIncreases_WithBoostedConstitution(string template, int original, int increased)
         {
-            baseCreature.HitPoints.HitDie = original;
+            baseCreature.HitPoints.HitDice[0].HitDie = original;
             baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 42;
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
@@ -1163,7 +1163,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(increased));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(increased));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210 + 2 * 17));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(96 + baseCreature.HitPoints.RoundedHitDiceQuantity * 17));
         }

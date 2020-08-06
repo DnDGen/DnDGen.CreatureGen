@@ -117,7 +117,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(9266, GroupConstants.PoorBaseAttack, 4633)]
         public void GenerateBaseAttackBonus(int hitDiceQuantity, string bonusQuality, int bonus)
         {
-            hitPoints.HitDiceQuantity = hitDiceQuantity;
+            hitPoints.HitDice.Add(new HitDice { Quantity = hitDiceQuantity });
             mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, creatureType.Name,
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,

@@ -148,8 +148,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
 
             hitPoints.Constitution = abilities[AbilityConstants.Constitution];
-            hitPoints.HitDiceQuantity = 9266;
-            hitPoints.HitDie = 90210;
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
             hitPoints.DefaultTotal = 600;
             hitPoints.Total = 42;
 
@@ -433,7 +432,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(9266));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
         }
@@ -468,7 +469,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(9266));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
             Assert.That(creature.Size, Is.EqualTo("size"));
@@ -490,7 +493,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(advancedhitPoints));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(573));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
@@ -517,7 +522,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(573));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
@@ -547,7 +554,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(573));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
@@ -583,8 +592,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var advancedHitPoints = new HitPoints();
             advancedHitPoints.Constitution = abilities[AbilityConstants.Constitution];
-            advancedHitPoints.HitDiceQuantity = 681;
-            advancedHitPoints.HitDie = 573;
+            advancedHitPoints.HitDice.Add(new HitDice { Quantity = 681, HitDie = 573 });
             advancedHitPoints.DefaultTotal = 492;
             advancedHitPoints.Total = 862;
 
@@ -1787,7 +1795,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(9266));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
         }
@@ -1815,7 +1825,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(90210));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(9266));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
             Assert.That(creature.Size, Is.EqualTo("size"));
@@ -1837,7 +1849,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(advancedhitPoints));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(573));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
@@ -1864,7 +1878,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(573));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));
@@ -1894,7 +1910,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(573));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
             Assert.That(creature.Size, Is.EqualTo("advanced size"));

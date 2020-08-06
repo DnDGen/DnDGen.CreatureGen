@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Abilities
 {
@@ -14,6 +16,8 @@ namespace DnDGen.CreatureGen.Abilities
         public int TemplateAdjustment { get; set; }
         public int TemplateScore { get; set; }
         public int MaxModifier { get; set; }
+        public List<Bonus> Bonuses { get; set; }
+        public int Bonus => Bonuses.Where(b => !b.IsConditional).Sum(b => b.Value);
 
         public bool HasTemplateScore => TemplateScore > DefaultTemplateScore;
 
@@ -38,7 +42,7 @@ namespace DnDGen.CreatureGen.Abilities
                 if (HasTemplateScore)
                     return TemplateScore + TemplateAdjustment;
 
-                return Math.Max(BaseScore + TemplateAdjustment + RacialAdjustment + AdvancementAdjustment, 1);
+                return Math.Max(BaseScore + TemplateAdjustment + RacialAdjustment + AdvancementAdjustment + Bonus, 1);
             }
         }
 
@@ -61,6 +65,7 @@ namespace DnDGen.CreatureGen.Abilities
             BaseScore = DefaultScore;
             MaxModifier = int.MaxValue;
             TemplateScore = DefaultTemplateScore;
+            Bonuses = new List<Bonus>();
         }
     }
 }

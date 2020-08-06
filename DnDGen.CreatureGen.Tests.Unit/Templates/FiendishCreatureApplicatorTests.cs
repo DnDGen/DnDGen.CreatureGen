@@ -323,7 +323,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(42, 20)]
         public void CreatureGainssmiteGoodSpecialAttack(double hitDiceQuantity, int smiteDamage)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
+            baseCreature.HitPoints.HitDice[0].Quantity = hitDiceQuantity;
 
             var originalAttacks = baseCreature.Attacks
                 .Select(a => JsonConvert.SerializeObject(a))
@@ -1108,7 +1108,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCaseSource("ChallengeRatingAdjustments")]
         public void ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
+            baseCreature.HitPoints.HitDice[0].Quantity = hitDiceQuantity;
             baseCreature.ChallengeRating = original;
 
             var smiteGood = new Attack
@@ -1338,7 +1338,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(42, 20)]
         public async Task ApplyToAsync_CreatureGainssmiteGoodSpecialAttack(double hitDiceQuantity, int smiteDamage)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
+            baseCreature.HitPoints.HitDice[0].Quantity = hitDiceQuantity;
 
             var originalAttacks = baseCreature.Attacks
                 .Select(a => JsonConvert.SerializeObject(a))
@@ -2101,7 +2101,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCaseSource("ChallengeRatingAdjustments")]
         public async Task ApplyToAsync_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDiceQuantity;
+            baseCreature.HitPoints.HitDice[0].Quantity = hitDiceQuantity;
             baseCreature.ChallengeRating = original;
 
             var smiteGood = new Attack

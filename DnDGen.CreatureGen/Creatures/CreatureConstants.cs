@@ -128,11 +128,18 @@ namespace DnDGen.CreatureGen.Creatures
             public const string HalfDragon_Silver = "Half-Dragon (Silver)";
             public const string HalfFiend = "Half-Fiend";
             public const string Lich = "Lich";
-            public const string Lycanthrope_Bear = "Lycanthrope, Bear (Werebear)";
-            public const string Lycanthrope_Boar = "Lycanthrope, Boar (Wereboar)";
-            public const string Lycanthrope_Tiger = "Lycanthrope, Tiger (Weretiger)";
-            public const string Lycanthrope_Rat = "Lycanthrope, Rat (Wererat)";
-            public const string Lycanthrope_Wolf = "Lycanthrope, Wolf (Werewolf)";
+            public const string Lycanthrope_Bear_Brown_Afflicted = "Lycanthrope, Brown Bear (Werebear, Afflicted)";
+            public const string Lycanthrope_Bear_Brown_Natural = "Lycanthrope, Brown Bear (Werebear, Natural)";
+            public const string Lycanthrope_Boar_Afflicted = "Lycanthrope, Boar (Wereboar, Afflicted)";
+            public const string Lycanthrope_Boar_Natural = "Lycanthrope, Boar (Wereboar, Natural)";
+            public const string Lycanthrope_Boar_Dire_Afflicted = "Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)";
+            public const string Lycanthrope_Boar_Dire_Natural = "Lycanthrope, Dire Boar (Dire Wereboar, Natural)";
+            public const string Lycanthrope_Rat_Dire_Afflicted = "Lycanthrope, Dire Rat (Wererat, Afflicted)";
+            public const string Lycanthrope_Rat_Dire_Natural = "Lycanthrope, Dire Rat (Wererat, Natural)";
+            public const string Lycanthrope_Tiger_Afflicted = "Lycanthrope, Tiger (Weretiger, Afflicted)";
+            public const string Lycanthrope_Tiger_Natural = "Lycanthrope, Tiger (Weretiger, Natural)";
+            public const string Lycanthrope_Wolf_Afflicted = "Lycanthrope, Wolf (Werewolf, Afflicted)";
+            public const string Lycanthrope_Wolf_Natural = "Lycanthrope, Wolf (Werewolf, Natural)";
             public const string None = "";
             public const string Skeleton = "Skeleton";
             public const string Vampire = "Vampire";
@@ -161,11 +168,18 @@ namespace DnDGen.CreatureGen.Creatures
                     None,
                     Skeleton,
                     Vampire,
-                    Lycanthrope_Bear,
-                    Lycanthrope_Boar,
-                    Lycanthrope_Tiger,
-                    Lycanthrope_Rat,
-                    Lycanthrope_Wolf,
+                    Lycanthrope_Bear_Brown_Afflicted,
+                    Lycanthrope_Bear_Brown_Natural,
+                    Lycanthrope_Boar_Afflicted,
+                    Lycanthrope_Boar_Natural,
+                    Lycanthrope_Boar_Dire_Afflicted,
+                    Lycanthrope_Boar_Dire_Natural,
+                    Lycanthrope_Rat_Dire_Afflicted,
+                    Lycanthrope_Rat_Dire_Natural,
+                    Lycanthrope_Tiger_Afflicted,
+                    Lycanthrope_Tiger_Natural,
+                    Lycanthrope_Wolf_Afflicted,
+                    Lycanthrope_Wolf_Natural,
                     Zombie,
                 };
             }

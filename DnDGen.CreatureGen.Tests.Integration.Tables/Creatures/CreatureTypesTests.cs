@@ -1312,21 +1312,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Augmented)]
         [TestCase(CreatureConstants.Templates.HalfDragon_Silver, CreatureConstants.Types.Dragon,
             CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear, CreatureConstants.Types.Humanoid,
-            CreatureConstants.Types.Subtypes.Shapechanger,
-            CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar, CreatureConstants.Types.Humanoid,
-            CreatureConstants.Types.Subtypes.Shapechanger,
-            CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat, CreatureConstants.Types.Humanoid,
-            CreatureConstants.Types.Subtypes.Shapechanger,
-            CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger, CreatureConstants.Types.Humanoid,
-            CreatureConstants.Types.Subtypes.Shapechanger,
-            CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf, CreatureConstants.Types.Humanoid,
-            CreatureConstants.Types.Subtypes.Shapechanger,
-            CreatureConstants.Types.Subtypes.Augmented)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
         public void CreatureTypes(string creature, params string[] types)
         {
             AssertOrderedCollection(creature, types);

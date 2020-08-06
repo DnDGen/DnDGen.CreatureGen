@@ -78,6 +78,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Feat { Name = "zombie quality 1" },
                 new Feat { Name = "zombie quality 2" },
+                new Feat { Name = FeatConstants.Toughness, Power = 600 },
             };
 
             mockFeatsGenerator
@@ -332,24 +333,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(12)]
         public void ApplyTo_HitDiceBecomeD12(int hitDie)
         {
-            baseCreature.HitPoints.HitDie = hitDie;
+            baseCreature.HitPoints.HitDice[0].HitDie = hitDie;
+            var newQuantity = baseCreature.HitPoints.RoundedHitDiceQuantity * 2;
 
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
+                    .Roll(newQuantity)
                     .d(12)
                     .AsIndividualRolls<int>())
                 .Returns(new[] { 600, 1337 });
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
+                    .Roll(newQuantity)
                     .d(12)
                     .AsPotentialAverage())
                 .Returns(1336);
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(newQuantity));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(600 + 1337));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
         }
@@ -365,17 +369,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(8)]
         [TestCase(9)]
         [TestCase(10)]
-        public void ApplyTo_HitDiceQuantityDoubles(double hitDice)
+        public void ApplyTo_HitDiceQuantityDoubles(double quantity)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDice;
-            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
+            baseCreature.HitPoints.HitDice[0].Quantity = quantity;
+            var newRounded = Convert.ToInt32(Math.Max(1, quantity * 2));
 
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 600, 1337 });
+                .Returns(new[] { 96, 1337 });
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
@@ -395,26 +399,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(quantity * 2));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(600 + 1337));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(quantity * 2));
+            Assert.That(creature.HitPoints.HitDice[0].RoundedQuantity, Is.EqualTo(newRounded));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(96 + 1337));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
         }
 
         [TestCase(0.1)]
         [TestCase(0.25)]
-        public void ApplyTo_HitDiceQuantityDoubles_Fractional(double hitDice)
+        public void ApplyTo_HitDiceQuantityDoubles_Fractional(double quantity)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDice;
-            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
+            baseCreature.HitPoints.HitDice[0].Quantity = quantity;
+            var newRounded = Convert.ToInt32(Math.Max(1, quantity * 2));
 
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 600, 1337 });
+                .Returns(new[] { 96, 1337 });
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
@@ -434,11 +441,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(quantity * 2));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(Math.Floor((600 + 1337) * hitDice * 2)));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(Math.Floor(1336 * hitDice * 2)));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(quantity * 2));
+            Assert.That(creature.HitPoints.HitDice[0].RoundedQuantity, Is.EqualTo(newRounded));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(Math.Floor((96 + 1337) * quantity * 2)));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(Math.Floor(1336 * quantity * 2)));
         }
 
         [TestCase(0.5)]
@@ -452,17 +462,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(8)]
         [TestCase(9)]
         [TestCase(10)]
-        public async Task ApplyToAsync_HitDiceQuantityDoubles(double hitDice)
+        public async Task ApplyToAsync_HitDiceQuantityDoubles(double quantity)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDice;
-            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
+            baseCreature.HitPoints.HitDice[0].Quantity = quantity;
+            var newRounded = Convert.ToInt32(Math.Max(1, quantity * 2));
 
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 600, 1337 });
+                .Returns(new[] { 96, 1337 });
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
@@ -482,26 +492,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(quantity * 2));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(600 + 1337));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(quantity * 2));
+            Assert.That(creature.HitPoints.HitDice[0].RoundedQuantity, Is.EqualTo(newRounded));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(96 + 1337));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
         }
 
         [TestCase(0.1)]
         [TestCase(0.25)]
-        public async Task ApplyToAsync_HitDiceQuantityDoubles_Fractional(double hitDice)
+        public async Task ApplyToAsync_HitDiceQuantityDoubles_Fractional(double quantity)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDice;
-            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
+            baseCreature.HitPoints.HitDice[0].Quantity = quantity;
+            var newRounded = Convert.ToInt32(Math.Max(1, quantity * 2));
 
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 600, 1337 });
+                .Returns(new[] { 96, 1337 });
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
@@ -521,18 +534,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(quantity * 2));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(Math.Floor((600 + 1337) * hitDice * 2)));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(Math.Floor(1336 * hitDice * 2)));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(quantity * 2));
+            Assert.That(creature.HitPoints.HitDice[0].RoundedQuantity, Is.EqualTo(newRounded));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(Math.Floor((96 + 1337) * quantity * 2)));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(Math.Floor(1336 * quantity * 2)));
         }
 
         [Test]
         public void ApplyTo_AerialManeuverability_BecomesClumsy()
         {
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
-            baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Fly].Value = 1337;
             baseCreature.Speeds[SpeedConstants.Fly].Description = "Superb Maneuverability (hoverboard)";
 
             var creature = applicator.ApplyTo(baseCreature);
@@ -540,7 +556,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Speeds, Is.Not.Empty
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("furlongs"));
-            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(1337));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("Clumsy Maneuverability (hoverboard)"));
         }
 
@@ -884,7 +900,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ReplaceSpecialQualities_KeepAttackBonuses()
         {
-            var attackBonus = new Feat { Name = FeatConstants.SpecialQualities.AttackBonus, Power = 600, Foci = new[] { "losers" } };
+            var attackBonus = new Feat { Name = FeatConstants.SpecialQualities.AttackBonus, Power = 1337, Foci = new[] { "losers" } };
             baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(new[]
             {
                 attackBonus
@@ -944,7 +960,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             zombieSaves[SaveConstants.Fortitude] = new Save
             {
                 BaseAbility = baseCreature.Abilities[AbilityConstants.Constitution],
-                BaseValue = 600,
+                BaseValue = 96,
             };
             zombieSaves[SaveConstants.Reflex] = new Save
             {
@@ -1026,7 +1042,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(10, ChallengeRatingConstants.Six)]
         public void ApplyTo_AdjustChallengeRating(double hitDice, string challengeRating)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDice;
+            baseCreature.HitPoints.HitDice[0].Quantity = hitDice;
             var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
 
             mockDice
@@ -1081,7 +1097,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_SetNoLevelAdjustment()
         {
-            baseCreature.LevelAdjustment = 600;
+            baseCreature.LevelAdjustment = 96;
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1184,25 +1200,30 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(12)]
         public async Task ApplyToAsync_HitDiceBecomeD12(int hitDie)
         {
-            baseCreature.HitPoints.HitDie = hitDie;
+            baseCreature.HitPoints.HitDice[0].HitDie = hitDie;
+            var newQuantity = baseCreature.HitPoints.HitDiceQuantity * 2;
+            var newRounded = baseCreature.HitPoints.RoundedHitDiceQuantity * 2;
 
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
+                    .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 600, 1337 });
+                .Returns(new[] { 96, 1337 });
             mockDice
                 .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
+                    .Roll(newRounded)
                     .d(12)
                     .AsPotentialAverage())
                 .Returns(1336);
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.HitDie, Is.EqualTo(12));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(600 + 1337));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(newQuantity));
+            Assert.That(creature.HitPoints.HitDice[0].RoundedQuantity, Is.EqualTo(newRounded));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(96 + 1337));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336));
         }
 
@@ -1210,7 +1231,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_AerialManeuverability_BecomesClumsy()
         {
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
-            baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Fly].Value = 1337;
             baseCreature.Speeds[SpeedConstants.Fly].Description = "Superb Maneuverability (hoverboard)";
 
             var creature = await applicator.ApplyToAsync(baseCreature);
@@ -1218,7 +1239,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Speeds, Is.Not.Empty
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("furlongs"));
-            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(1337));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("Clumsy Maneuverability (hoverboard)"));
         }
 
@@ -1562,7 +1583,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_ReplaceSpecialQualities_KeepAttackBonuses()
         {
-            var attackBonus = new Feat { Name = FeatConstants.SpecialQualities.AttackBonus, Power = 600, Foci = new[] { "losers" } };
+            var attackBonus = new Feat { Name = FeatConstants.SpecialQualities.AttackBonus, Power = 1337, Foci = new[] { "losers" } };
             baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(new[]
             {
                 attackBonus
@@ -1622,7 +1643,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             zombieSaves[SaveConstants.Fortitude] = new Save
             {
                 BaseAbility = baseCreature.Abilities[AbilityConstants.Constitution],
-                BaseValue = 600,
+                BaseValue = 96,
             };
             zombieSaves[SaveConstants.Reflex] = new Save
             {
@@ -1704,7 +1725,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(10, ChallengeRatingConstants.Six)]
         public async Task ApplyToAsync_AdjustChallengeRating(double hitDice, string challengeRating)
         {
-            baseCreature.HitPoints.HitDiceQuantity = hitDice;
+            baseCreature.HitPoints.HitDice[0].Quantity = hitDice;
             var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
 
             mockDice
@@ -1759,7 +1780,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_SetNoLevelAdjustment()
         {
-            baseCreature.LevelAdjustment = 600;
+            baseCreature.LevelAdjustment = 1337;
 
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1775,7 +1796,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Magic.CastingAbility = baseCreature.Abilities[AbilityConstants.Wisdom];
             baseCreature.Magic.Domains = new[] { "domain 1", "domain 2" };
             baseCreature.Magic.KnownSpells = new[] { new Spell { Level = 42, Name = "my spell", Source = "my source" } };
-            baseCreature.Magic.PreparedSpells = new[] { new Spell { Level = 600, Name = "my prepared spell", Source = "my prepared source" } };
+            baseCreature.Magic.PreparedSpells = new[] { new Spell { Level = 783, Name = "my prepared spell", Source = "my prepared source" } };
             baseCreature.Magic.SpellsPerDay = new[] { new SpellQuantity { BonusSpells = 1337, Level = 1336, Quantity = 96, Source = "my per day source" } };
 
             var creature = applicator.ApplyTo(baseCreature);
@@ -1799,7 +1820,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Magic.CastingAbility = baseCreature.Abilities[AbilityConstants.Wisdom];
             baseCreature.Magic.Domains = new[] { "domain 1", "domain 2" };
             baseCreature.Magic.KnownSpells = new[] { new Spell { Level = 42, Name = "my spell", Source = "my source" } };
-            baseCreature.Magic.PreparedSpells = new[] { new Spell { Level = 600, Name = "my prepared spell", Source = "my prepared source" } };
+            baseCreature.Magic.PreparedSpells = new[] { new Spell { Level = 783, Name = "my prepared spell", Source = "my prepared source" } };
             baseCreature.Magic.SpellsPerDay = new[] { new SpellQuantity { BonusSpells = 1337, Level = 1336, Quantity = 96, Source = "my per day source" } };
 
             var creature = await applicator.ApplyToAsync(baseCreature);
@@ -1812,6 +1833,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Magic.KnownSpells, Is.Empty);
             Assert.That(creature.Magic.PreparedSpells, Is.Empty);
             Assert.That(creature.Magic.SpellsPerDay, Is.Empty);
+        }
+
+        //INFO: Since Zombies get Toughness as a bonus feat
+        [Test]
+        public void ApplyTo_HitDiceQuantity_RerollWithQualities()
+        {
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 600));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(90210 + 600));
+            Assert.That(creature.HitPoints.Bonus, Is.EqualTo(600));
+        }
+
+        //INFO: Since Zombies get Toughness as a bonus feat
+        [Test]
+        public async Task ApplyToAsync_HitDiceQuantity_RerollWithQualities()
+        {
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 600));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(90210 + 600));
+            Assert.That(creature.HitPoints.Bonus, Is.EqualTo(600));
         }
     }
 }

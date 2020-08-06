@@ -56,7 +56,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             creatureType = new CreatureType();
             alignment = new Alignment("creature alignment");
 
-            hitPoints.HitDiceQuantity = 1;
+            hitPoints.HitDice.Add(new HitDice { Quantity = 1 });
             creatureType.Name = "creature type";
 
             abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
@@ -70,7 +70,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         public void CreaturesWithoutIntelligenceReceiveNoFeats()
         {
             abilities[AbilityConstants.Intelligence].BaseScore = 0;
-            hitPoints.HitDiceQuantity = 20;
+            hitPoints.HitDice[0].Quantity = 20;
             AddFeatSelections(8);
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
@@ -99,7 +99,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(20, 7)]
         public void GetFeats(int hitDiceQuantity, int numberOfFeats)
         {
-            hitPoints.HitDiceQuantity = hitDiceQuantity;
+            hitPoints.HitDice[0].Quantity = hitDiceQuantity;
             AddFeatSelections(numberOfFeats + 2);
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
@@ -142,7 +142,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FeatsPickedAtRandom()
         {
-            hitPoints.HitDiceQuantity = 3;
+            hitPoints.HitDice[0].Quantity = 3;
             AddFeatSelections(3);
 
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<FeatSelection>>(fs => fs.Count() == 3)))
@@ -200,7 +200,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void ReassessPrerequisitesEveryFeat()
         {
-            hitPoints.HitDiceQuantity = 3;
+            hitPoints.HitDice[0].Quantity = 3;
             AddFeatSelections(3);
             featSelections[1].RequiredFeats = new[] { new RequiredFeatSelection { Feat = featSelections[0].Feat } };
 
@@ -247,7 +247,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FeatFociAreFilledIndividually()
         {
-            hitPoints.HitDiceQuantity = 3;
+            hitPoints.HitDice[0].Quantity = 3;
             AddFeatSelections(2);
             featSelections[0].FocusType = "focus type 1";
             featSelections[1].FocusType = "focus type 2";
@@ -277,7 +277,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FeatsWithFociCanBeFilledMoreThanOnce()
         {
-            hitPoints.HitDiceQuantity = 3;
+            hitPoints.HitDice[0].Quantity = 3;
             AddFeatSelections(1);
             featSelections[0].FocusType = "focus type";
 
@@ -297,7 +297,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         public void FeatsThatCanBeTakenMultipleTimesWithoutFociAreAllowed()
         {
             AddFeatSelections(1);
-            hitPoints.HitDiceQuantity = 3;
+            hitPoints.HitDice[0].Quantity = 3;
             featSelections[0].CanBeTakenMultipleTimes = true;
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
@@ -528,7 +528,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             specialQualitySelectionselection.Power = 10;
             specialQualitySelections.Add(specialQualitySelectionselection);
 
-            hitPoints.HitDiceQuantity = 2;
+            hitPoints.HitDice[0].Quantity = 2;
 
             var feats = featsGenerator.GenerateSpecialQualities("creature", creatureType, hitPoints, abilities, skills, false, "size", alignment);
             var feat = feats.Single();

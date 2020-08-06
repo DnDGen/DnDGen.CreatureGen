@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             creatureType = new CreatureType();
             racialBonuses = new Dictionary<string, List<BonusSelection>>();
 
-            hitPoints.HitDiceQuantity = 1;
+            hitPoints.HitDice.Add(new HitDice { Quantity = 1 });
             creatureType.Name = "creature type";
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
@@ -166,7 +166,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         [TestCaseSource(typeof(SavesGeneratorTestData), "FractionalHitDiceForBaseValues")]
         public void SaveBaseValuesBasedOnHitDice(double hitDiceQuantity, bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
         {
-            hitPoints.HitDiceQuantity = hitDiceQuantity;
+            hitPoints.HitDice[0].Quantity = hitDiceQuantity;
 
             var strongSaveBonus = hitPoints.RoundedHitDiceQuantity / 2 + 2;
             var weakSaveBonus = hitPoints.RoundedHitDiceQuantity / 3;

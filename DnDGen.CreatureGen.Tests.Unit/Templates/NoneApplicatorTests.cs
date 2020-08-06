@@ -121,7 +121,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(templatedCreature.HitPoints.DefaultRoll, Is.EqualTo(creature.HitPoints.DefaultRoll));
             Assert.That(templatedCreature.HitPoints.DefaultTotal, Is.EqualTo(creature.HitPoints.DefaultTotal));
             Assert.That(templatedCreature.HitPoints.HitDiceQuantity, Is.EqualTo(creature.HitPoints.HitDiceQuantity));
-            Assert.That(templatedCreature.HitPoints.HitDie, Is.EqualTo(creature.HitPoints.HitDie));
+            Assert.That(templatedCreature.HitPoints.HitDice, Has.Count.EqualTo(creature.HitPoints.HitDice.Count));
+
+            for (var i = 0; i < templatedCreature.HitPoints.HitDice.Count; i++)
+            {
+                Assert.That(templatedCreature.HitPoints.HitDice[i].Quantity, Is.EqualTo(creature.HitPoints.HitDice[i].Quantity));
+                Assert.That(templatedCreature.HitPoints.HitDice[i].HitDie, Is.EqualTo(creature.HitPoints.HitDice[i].HitDie));
+            }
+
             Assert.That(templatedCreature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(creature.HitPoints.RoundedHitDiceQuantity));
             Assert.That(templatedCreature.HitPoints.Total, Is.EqualTo(creature.HitPoints.Total));
 
@@ -310,7 +317,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(templatedCreature.HitPoints.DefaultRoll, Is.EqualTo(creature.HitPoints.DefaultRoll));
             Assert.That(templatedCreature.HitPoints.DefaultTotal, Is.EqualTo(creature.HitPoints.DefaultTotal));
             Assert.That(templatedCreature.HitPoints.HitDiceQuantity, Is.EqualTo(creature.HitPoints.HitDiceQuantity));
-            Assert.That(templatedCreature.HitPoints.HitDie, Is.EqualTo(creature.HitPoints.HitDie));
+            Assert.That(templatedCreature.HitPoints.HitDice, Has.Count.EqualTo(creature.HitPoints.HitDice.Count));
+
+            for (var i = 0; i < templatedCreature.HitPoints.HitDice.Count; i++)
+            {
+                Assert.That(templatedCreature.HitPoints.HitDice[i].Quantity, Is.EqualTo(creature.HitPoints.HitDice[i].Quantity));
+                Assert.That(templatedCreature.HitPoints.HitDice[i].HitDie, Is.EqualTo(creature.HitPoints.HitDice[i].HitDie));
+            }
+
             Assert.That(templatedCreature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(creature.HitPoints.RoundedHitDiceQuantity));
             Assert.That(templatedCreature.HitPoints.Total, Is.EqualTo(creature.HitPoints.Total));
 
