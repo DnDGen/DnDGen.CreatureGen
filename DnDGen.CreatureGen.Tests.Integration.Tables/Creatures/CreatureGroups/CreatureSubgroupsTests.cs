@@ -328,7 +328,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted,
             CreatureConstants.Templates.Lycanthrope_Tiger_Natural,
             CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
+            CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
+            CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted,
+            CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
         [TestCase(CreatureConstants.Groups.Mephit,
             CreatureConstants.Mephit_Air,
             CreatureConstants.Mephit_Dust,

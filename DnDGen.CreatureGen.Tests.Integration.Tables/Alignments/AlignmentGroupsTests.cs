@@ -1077,6 +1077,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.None, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Skeleton, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
         [TestCase(CreatureConstants.Templates.Vampire, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]

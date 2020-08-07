@@ -187,6 +187,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Tiger_Natural)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
+        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted)]
+        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Skeleton)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Vampire)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Zombie)]

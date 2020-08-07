@@ -760,6 +760,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural, "Lycanthrope, Tiger (Weretiger, Natural)")]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, "Lycanthrope, Wolf (Werewolf, Afflicted)")]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural, "Lycanthrope, Wolf (Werewolf, Natural)")]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, "Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)")]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, "Lycanthrope, Dire Wolf (Dire Werewolf, Natural)")]
         [TestCase(CreatureConstants.Templates.Zombie, "Zombie")]
         public void CreatureTemplateConstant(string constant, string value)
         {

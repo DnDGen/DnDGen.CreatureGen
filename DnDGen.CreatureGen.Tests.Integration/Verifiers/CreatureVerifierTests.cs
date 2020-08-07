@@ -200,6 +200,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Tiger_Natural, true)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, true)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Natural, true)]
+        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, true)]
+        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, true)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.None, true)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Skeleton, true)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Vampire, true)]

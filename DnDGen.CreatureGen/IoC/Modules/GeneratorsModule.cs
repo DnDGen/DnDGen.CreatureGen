@@ -71,6 +71,8 @@ namespace DnDGen.CreatureGen.IoC.Modules
             Bind<TemplateApplicator>().To<LycanthropeDireRatNaturalApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural);
             Bind<TemplateApplicator>().To<LycanthropeTigerNaturalApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Tiger_Natural);
             Bind<TemplateApplicator>().To<LycanthropeWolfNaturalApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Wolf_Natural);
+            Bind<TemplateApplicator>().To<LycanthropeDireWolfAfflictedApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted);
+            Bind<TemplateApplicator>().To<LycanthropeDireWolfNaturalApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural);
             Bind<TemplateApplicator>().To<ZombieApplicator>().Named(CreatureConstants.Templates.Zombie);
         }
     }

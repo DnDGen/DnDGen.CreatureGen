@@ -1336,6 +1336,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Shapechanger)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural, CreatureConstants.Types.Humanoid,
             CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, CreatureConstants.Types.Humanoid,
+            CreatureConstants.Types.Subtypes.Shapechanger)]
         public void CreatureTypes(string creature, params string[] types)
         {
             AssertOrderedCollection(creature, types);

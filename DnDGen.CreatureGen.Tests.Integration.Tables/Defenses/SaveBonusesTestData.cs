@@ -1651,6 +1651,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural][None] = 0;
                 testCases[CreatureConstants.Templates.Skeleton][None] = 0;
                 testCases[CreatureConstants.Templates.Zombie][None] = 0;
                 testCases[CreatureConstants.Templates.Vampire][None] = 0;

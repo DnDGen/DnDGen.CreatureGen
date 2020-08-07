@@ -32,6 +32,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
             Assert.That(ability.FullScore, Is.EqualTo(Ability.DefaultScore));
             Assert.That(ability.MaxModifier, Is.EqualTo(int.MaxValue));
             Assert.That(ability.TemplateScore, Is.EqualTo(-1));
+            Assert.That(ability.Bonuses, Is.Empty);
+            Assert.That(ability.Bonus, Is.Zero);
         }
 
         [TestCase(1, -5)]
@@ -1359,6 +1361,166 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
             Assert.That(ability.BaseScore, Is.Zero);
             Assert.That(ability.FullScore, Is.Zero);
             Assert.That(ability.Modifier, Is.Zero);
+        }
+
+        [Test]
+        public void Bonus_TotalsBonuses()
+        {
+            ability.Bonuses.Add(new Bonus { Value = 9266 });
+            ability.Bonuses.Add(new Bonus { Value = 90210 });
+
+            Assert.That(ability.Bonus, Is.EqualTo(9266 + 90210));
+        }
+
+        [Test]
+        public void Bonus_TotalsBonuses_WithNegative()
+        {
+            ability.Bonuses.Add(new Bonus { Value = 9266 });
+            ability.Bonuses.Add(new Bonus { Value = 90210 });
+            ability.Bonuses.Add(new Bonus { Value = -42 });
+
+            Assert.That(ability.Bonus, Is.EqualTo(9266 + 90210 - 42));
+        }
+
+        [Test]
+        public void Bonus_TotalsBonuses_WithAllNegative()
+        {
+            ability.Bonuses.Add(new Bonus { Value = -9266 });
+            ability.Bonuses.Add(new Bonus { Value = -42 });
+
+            Assert.That(ability.Bonus, Is.EqualTo(-9266 - 42));
+        }
+
+        [Test]
+        public void Bonus_TotalsBonuses_DoNotIncludeConditional()
+        {
+            ability.Bonuses.Add(new Bonus { Value = 9266 });
+            ability.Bonuses.Add(new Bonus { Value = 666, Condition = "only sometimes" });
+            ability.Bonuses.Add(new Bonus { Value = 90210 });
+
+            Assert.That(ability.Bonus, Is.EqualTo(9266 + 90210));
+        }
+
+        [Test]
+        public void Bonus_TotalsBonuses_AllConditional()
+        {
+            ability.Bonuses.Add(new Bonus { Value = 9266, Condition = "when I want" });
+            ability.Bonuses.Add(new Bonus { Value = 666, Condition = "only sometimes" });
+
+            Assert.That(ability.Bonus, Is.Zero);
+        }
+
+        [Test]
+        public void FullScore_IncludeBonus()
+        {
+            ability.Bonuses.Add(new Bonus { Value = 9266 });
+            ability.Bonuses.Add(new Bonus { Value = 90210 });
+            ability.BaseScore = 42;
+
+            Assert.That(ability.Bonus, Is.EqualTo(9266 + 90210));
+            Assert.That(ability.FullScore, Is.EqualTo(42 + 9266 + 90210));
+        }
+
+        [Test]
+        public void FullScore_IncludeBonus_NoConditional()
+        {
+            ability.Bonuses.Add(new Bonus { Value = 9266 });
+            ability.Bonuses.Add(new Bonus { Value = 90210 });
+            ability.Bonuses.Add(new Bonus { Value = 666, Condition = "only sometimes" });
+            ability.BaseScore = 42;
+
+            Assert.That(ability.Bonus, Is.EqualTo(9266 + 90210));
+            Assert.That(ability.FullScore, Is.EqualTo(42 + 9266 + 90210));
+        }
+
+        [Test]
+        public void FullScore_IncludeNegativeBonus()
+        {
+            ability.Bonuses.Add(new Bonus { Value = 9266 });
+            ability.Bonuses.Add(new Bonus { Value = -600 });
+            ability.BaseScore = 42;
+
+            Assert.That(ability.Bonus, Is.EqualTo(9266 - 600));
+            Assert.That(ability.FullScore, Is.EqualTo(42 + 9266 - 600));
+        }
+
+        [Test]
+        public void FullScore_IncludeAllNegativeBonus()
+        {
+            ability.Bonuses.Add(new Bonus { Value = -4 });
+            ability.BaseScore = 42;
+
+            Assert.That(ability.Bonus, Is.EqualTo(-4));
+            Assert.That(ability.FullScore, Is.EqualTo(42 - 4));
+        }
+
+        [Test]
+        public void FullScore_IncludeNegativeBonus_StillMin1()
+        {
+            ability.Bonuses.Add(new Bonus { Value = -600 });
+            ability.BaseScore = 42;
+
+            Assert.That(ability.Bonus, Is.EqualTo(-600));
+            Assert.That(ability.FullScore, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void Modifier_IncludeBonus()
+        {
+            ability.Bonuses.Add(new Bonus { Value = 9266 });
+            ability.Bonuses.Add(new Bonus { Value = 90210 });
+            ability.BaseScore = 42;
+
+            Assert.That(ability.Bonus, Is.EqualTo(9266 + 90210));
+            Assert.That(ability.FullScore, Is.EqualTo(42 + 9266 + 90210));
+            Assert.That(ability.Modifier, Is.EqualTo(49754));
+        }
+
+        [Test]
+        public void Modifier_IncludeBonus_NoConditional()
+        {
+            ability.Bonuses.Add(new Bonus { Value = 9266 });
+            ability.Bonuses.Add(new Bonus { Value = 90210 });
+            ability.Bonuses.Add(new Bonus { Value = 666, Condition = "only sometimes" });
+            ability.BaseScore = 42;
+
+            Assert.That(ability.Bonus, Is.EqualTo(9266 + 90210));
+            Assert.That(ability.FullScore, Is.EqualTo(42 + 9266 + 90210));
+            Assert.That(ability.Modifier, Is.EqualTo(49754));
+        }
+
+        [Test]
+        public void Modifier_IncludeNegativeBonus()
+        {
+            ability.Bonuses.Add(new Bonus { Value = 9266 });
+            ability.Bonuses.Add(new Bonus { Value = -600 });
+            ability.BaseScore = 42;
+
+            Assert.That(ability.Bonus, Is.EqualTo(9266 - 600));
+            Assert.That(ability.FullScore, Is.EqualTo(42 + 9266 - 600));
+            Assert.That(ability.Modifier, Is.EqualTo(4349));
+        }
+
+        [Test]
+        public void Modifier_IncludeAllNegativeBonus()
+        {
+            ability.Bonuses.Add(new Bonus { Value = -4 });
+            ability.BaseScore = 42;
+
+            Assert.That(ability.Bonus, Is.EqualTo(-4));
+            Assert.That(ability.FullScore, Is.EqualTo(42 - 4));
+            Assert.That(ability.Modifier, Is.EqualTo(14));
+        }
+
+        [Test]
+        public void Modifier_IncludeAllNegativeBonus_NegativeBonus()
+        {
+            ability.Bonuses.Add(new Bonus { Value = -4 });
+            ability.BaseScore = 12;
+
+            Assert.That(ability.Bonus, Is.EqualTo(-4));
+            Assert.That(ability.FullScore, Is.EqualTo(12 - 4));
+            Assert.That(ability.Modifier, Is.EqualTo(-1));
         }
     }
 }

@@ -4,6 +4,7 @@ using DnDGen.RollGen;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Defenses
 {
@@ -1167,6 +1168,159 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
 
             hitPoints.RollTotal(mockDice.Object);
             Assert.That(hitPoints.Total, Is.EqualTo(42 + 600));
+        }
+
+        [Test]
+        public void ConditionalBonuses_NoBonuses()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
+
+            Assert.That(hitPoints.ConditionalBonuses, Is.Empty);
+        }
+
+        [Test]
+        public void ConditionalBonuses_NoConditionalBonuses()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 42 });
+
+            Assert.That(hitPoints.ConditionalBonuses, Is.Empty);
+        }
+
+        [Test]
+        public void ConditionalBonuses_ConditionalBonus()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 42, Condition = "only sometimes" });
+
+            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = hitPoints.ConditionalBonuses.First();
+            Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
+            Assert.That(bonus.Bonus, Is.EqualTo(42 / 2 * 9266));
+        }
+
+        [Test]
+        public void ConditionalBonuses_ConditionalBonus_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 600, HitDie = 1337 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 42, Condition = "only sometimes" });
+
+            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = hitPoints.ConditionalBonuses.First();
+            Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
+            Assert.That(bonus.Bonus, Is.EqualTo(42 / 2 * (9266 + 600)));
+        }
+
+        [Test]
+        public void ConditionalBonuses_ConditionalBonus_FractionalHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = .9266, HitDie = 90210 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 42, Condition = "only sometimes" });
+
+            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = hitPoints.ConditionalBonuses.First();
+            Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
+            Assert.That(bonus.Bonus, Is.EqualTo(42 / 2));
+        }
+
+        [Test]
+        public void ConditionalBonuses_ConditionalBonus_NegativeBonus()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = -42, Condition = "only sometimes" });
+
+            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = hitPoints.ConditionalBonuses.First();
+            Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
+            Assert.That(bonus.Bonus, Is.EqualTo(-42 / 2 * 9266));
+        }
+
+        [Test]
+        public void ConditionalBonuses_ConditionalBonuses()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 42, Condition = "only sometimes" });
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 600, Condition = "other times" });
+
+            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(2));
+
+            var bonus = hitPoints.ConditionalBonuses.First();
+            Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
+            Assert.That(bonus.Bonus, Is.EqualTo(42 / 2 * 9266));
+
+            bonus = hitPoints.ConditionalBonuses.Last();
+            Assert.That(bonus.Condition, Is.EqualTo("other times"));
+            Assert.That(bonus.Bonus, Is.EqualTo(600 / 2 * 9266));
+        }
+
+        [Test]
+        public void ConditionalBonuses_ConditionalBonuses_MultipleHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.HitDice.Add(new HitDice { Quantity = 600, HitDie = 1337 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 42, Condition = "only sometimes" });
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 1336, Condition = "other times" });
+
+            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = hitPoints.ConditionalBonuses.First();
+            Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
+            Assert.That(bonus.Bonus, Is.EqualTo(42 / 2 * (9266 + 600)));
+
+            bonus = hitPoints.ConditionalBonuses.Last();
+            Assert.That(bonus.Condition, Is.EqualTo("other times"));
+            Assert.That(bonus.Bonus, Is.EqualTo(1336 / 2 * (9266 + 600)));
+        }
+
+        [Test]
+        public void ConditionalBonuses_ConditionalBonuses_FractionalHitDice()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = .9266, HitDie = 90210 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 42, Condition = "only sometimes" });
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 600, Condition = "other times" });
+
+            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = hitPoints.ConditionalBonuses.First();
+            Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
+            Assert.That(bonus.Bonus, Is.EqualTo(42 / 2));
+
+            bonus = hitPoints.ConditionalBonuses.Last();
+            Assert.That(bonus.Condition, Is.EqualTo("other times"));
+            Assert.That(bonus.Bonus, Is.EqualTo(600 / 2));
+        }
+
+        [Test]
+        public void ConditionalBonuses_ConditionalBonuses_NegativeBonus()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution);
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = -42, Condition = "only sometimes" });
+            hitPoints.Constitution.Bonuses.Add(new Bonus { Value = -600, Condition = "other times" });
+
+            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = hitPoints.ConditionalBonuses.First();
+            Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
+            Assert.That(bonus.Bonus, Is.EqualTo(-42 / 2 * 9266));
+
+            bonus = hitPoints.ConditionalBonuses.Last();
+            Assert.That(bonus.Condition, Is.EqualTo("other times"));
+            Assert.That(bonus.Bonus, Is.EqualTo(-600 / 2 * 9266));
         }
     }
 }

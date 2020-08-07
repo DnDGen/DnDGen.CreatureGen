@@ -782,6 +782,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
         [TestCase(CreatureConstants.Templates.Zombie, "Clumsy Maneuverability (Wings)")]
         public void AerialManeuverability(string creature, params string[] maneuverability)
         {

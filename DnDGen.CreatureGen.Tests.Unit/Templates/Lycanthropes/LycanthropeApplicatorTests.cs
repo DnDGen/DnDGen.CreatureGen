@@ -36,6 +36,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             (CreatureConstants.Templates.Lycanthrope_Tiger_Natural, CreatureConstants.Tiger),
             (CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, CreatureConstants.Wolf),
             (CreatureConstants.Templates.Lycanthrope_Wolf_Natural, CreatureConstants.Wolf),
+            (CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, CreatureConstants.Wolf_Dire),
+            (CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, CreatureConstants.Wolf_Dire),
         };
 
         private static IEnumerable AllLycanthropeTemplates
@@ -68,6 +70,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             applicators[CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = new LycanthropeTigerNaturalApplicator();
             applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted] = new LycanthropeWolfAfflictedApplicator();
             applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Natural] = new LycanthropeWolfNaturalApplicator();
+            applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted] = new LycanthropeDireWolfAfflictedApplicator();
+            applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural] = new LycanthropeDireWolfNaturalApplicator();
 
             baseCreature = new CreatureBuilder().WithTestValues().Build();
         }
@@ -166,6 +170,31 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_GainShapechangerSubtype(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddAnimalHitPoints(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_GainNaturalArmor(string template, string animal)
+        {
+            //Both new for base and from animal
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_ImproveNaturalArmor(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddAnimalBaseAttack(string template, string animal)
         {
             Assert.Fail("not yet written");
         }

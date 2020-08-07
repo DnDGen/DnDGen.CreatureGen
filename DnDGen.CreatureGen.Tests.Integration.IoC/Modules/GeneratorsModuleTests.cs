@@ -155,6 +155,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
         [TestCase(CreatureConstants.Templates.Zombie)]
         public void TemplateApplicatorIsInjected(string name)
         {
@@ -345,6 +347,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         public void WerewolfNaturalApplicatorIsInjected()
         {
             AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeWolfNaturalApplicator>(CreatureConstants.Templates.Lycanthrope_Wolf_Natural);
+        }
+
+        [Test]
+        public void DireWerewolfAfflictedApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeDireWolfAfflictedApplicator>(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted);
+        }
+
+        [Test]
+        public void DireWerewolfNaturalApplicatorIsInjected()
+        {
+            AssertNamedIsInstanceOf<TemplateApplicator, LycanthropeDireWolfNaturalApplicator>(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural);
         }
 
         [Test]
