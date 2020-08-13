@@ -181,6 +181,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddAnimalSpeed(string template, string animal)
+        {
+            //TODO: Animal speed is conditional, only in animal form
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_GainNaturalArmor(string template, string animal)
         {
             //Both new for base and from animal
@@ -190,11 +197,41 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_ImproveNaturalArmor(string template, string animal)
         {
+            //TODO: Include conditions (2 overall, animal form, hybrid form, etc.)
+            //Hybrid form is one of animal (with bonus), one of base (with bonus), since natural armor is max
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_AddAnimalBaseAttack(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddAnimalAttacks(string template, string animal)
+        {
+            //TODO: Notate in animal form on attacks
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddAnimalAttacks_WithLycanthropy(string template, string animal)
+        {
+            //TODO: Get the lycanthrope attacks.  If any animal attacks match the lycanthrope attack with "Curse of Lycanthropy",
+            //add the curse to the animal attack as well
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_ModifyBaseCreatureAttacks(string template, string animal)
+        {
+            //TODO: Notate in {creature type} form on attacks
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddLycanthropeAttacks(string template, string animal)
         {
             Assert.Fail("not yet written");
         }

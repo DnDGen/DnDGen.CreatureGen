@@ -104,21 +104,54 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Energy Drain", string.Empty, "2 negative levels, Vampire gains 5 HP", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData("Gore (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                //TODO: Need Afflicted, without lycanthropy attack
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData("Gore (in Hybrid form)", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
                 testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData("Slam", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
