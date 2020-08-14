@@ -505,6 +505,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.SpecialQualities, Is.SupersetOf(vampireQualities));
         }
 
+        //INFO: Improve Initiative is one of the bonus feats for vampires
+        [Test]
+        public void ApplyTo_RecomputeInitiativeBonus()
+        {
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.Fail("not yet written");
+        }
+
+        //INFO: Improve Initiative is one of the bonus feats for vampires
+        [Test]
+        public async Task ApplyToAsync_RecomputeInitiativeBonus()
+        {
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.Fail("not yet written");
+        }
+
         [Test]
         public void ApplyTo_ModifyAbilities()
         {

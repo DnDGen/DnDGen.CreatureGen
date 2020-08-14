@@ -10,6 +10,7 @@ using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
@@ -73,7 +74,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted] = new LycanthropeDireWolfAfflictedApplicator();
             applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural] = new LycanthropeDireWolfNaturalApplicator();
 
-            baseCreature = new CreatureBuilder().WithTestValues().Build();
+            baseCreature = new CreatureBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .Build();
         }
 
         [TestCaseSource("CreatureTypeCompatible")]
@@ -171,6 +175,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_GainShapechangerSubtype(string template, string animal)
         {
+            baseCreature.Type.SubTypes = new[]
+            {
+                "subtype 1",
+                "subtype 2",
+            };
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
+            Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
+                .And.Contains("subtype 2")
+                .And.Contains(CreatureConstants.Types.Subtypes.Shapechanger));
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_GainConditionalSize(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_SizeSameForAnimalAndBaseCreature(string template, string animal)
+        {
             Assert.Fail("not yet written");
         }
 
@@ -209,6 +236,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_RecomputeGrappleBonus(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_RecomputeGrappleBonus_WithConditionalForms(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_AddAnimalAttacks(string template, string animal)
         {
             //TODO: Notate in animal form on attacks
@@ -226,13 +265,117 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_ModifyBaseCreatureAttacks(string template, string animal)
         {
-            //TODO: Notate in {creature type} form on attacks
+            //TODO: Notate in {creature type} or Hybrid form on attacks
+            //Special attacks don't get the Hybrid addition
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_AddLycanthropeAttacks(string template, string animal)
         {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddAnimalSpecialQualities(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddAnimalSpecialQualities_RemoveDuplicates(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddLycanthropeSpecialQualities(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddAnimalSaveBonuses(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddAnimalSaveBonuses_WithBonusesFromNewFeats(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_WisdomIncreasesBy2(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_ConditionalBonusesForHybridAndAnimalForms_FromAnimalBonuses(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_IncreaseAbilityScoresFromExtraHitDice(string template, string animal)
+        {
+            //INFO: Probably want to confirm 1 per 4 with test cases
+            //Also include "original" - so 3 original + 1 bonus = 4, get ability boost (1)
+            //Also include "original" - so 11 original + 1 bonus = 4, get ability boost (1)
+            //Also include "original" - so 7 original + 5 bonus = 4, get ability boost (2)
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_GainAnimalSkills(string template, string animal)
+        {
+            //Make sure don't get the X4 bonus for first hit die
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_GainControlShapeSkill_Afflicted(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_DoNotGainControlShapeSkill_Natural(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_GainAnimalFeats(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_GainAnimalFeats_RemoveDuplicates(string template, string animal)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_IncreaseChallengeRating(string template, string animal)
+        {
+            //Animal HD 0-2, +2
+            //Animal HD 3-5, +3
+            //Animal HD 6-10, +4
+            //Animal HD 11-20, +5
+            //Animal HD 21+, +6
+            Assert.Fail("not yet written");
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_IncreaseLevelAdjustment(string template, string animal)
+        {
+            //Afflicted, +2
+            //Natural, +3
+            //Probably just pull from table, easiest
             Assert.Fail("not yet written");
         }
 

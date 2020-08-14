@@ -336,89 +336,103 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Bears and dire bears", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Boar or boar-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Boars and dire boars", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.Ferocity));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Boar or boar-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Boars and dire boars", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.Ferocity));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Dire rat or bipedal rat-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Rats and dire rats", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Tiger or bipedal tiger-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Tigers and dire tigers", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Wolf or wolf-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Wolves and dire wolves", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Brown bear or bear-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Bears and dire bears", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Boar or boar-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Boars and dire boars", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.Ferocity));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Dire Boar or boar-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Boars and dire boars", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.Ferocity));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Dire rat or bipedal rat-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Rats and dire rats", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Tiger or bipedal tiger-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Tigers and dire tigers", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Wolf or wolf-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Wolves and dire wolves", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Dire Wolf or wolf-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Wolves and dire wolves", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Wolf or wolf-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Wolves and dire wolves", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 10, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
             testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction, focus: "Vulnerable to slashing", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
             testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData(FeatConstants.SpecialQualities.SingleActionsOnly));
