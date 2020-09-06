@@ -1,10 +1,16 @@
-﻿using DnDGen.CreatureGen.Creatures;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Defenses;
+using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Defenses;
+using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Templates.Lycanthropes;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -22,6 +28,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         private Creature baseCreature;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<ICreatureDataSelector> mockCreatureDataSelector;
+        private Mock<IHitPointsGenerator> mockHitPointsGenerator;
+        private Mock<Dice> mockDice;
+        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<IFeatsGenerator> mockFeatsGenerator;
 
         private static IEnumerable<(string Template, string Animal)> templates = new[]
         {
@@ -57,6 +67,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+            mockHitPointsGenerator = new Mock<IHitPointsGenerator>();
+            mockDice = new Mock<Dice>();
+            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockFeatsGenerator = new Mock<IFeatsGenerator>();
 
             applicators = new Dictionary<string, TemplateApplicator>();
             applicators[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted] = new LycanthropeBrownBearAfflictedApplicator();
@@ -190,34 +204,193 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
-        public void ApplyTo_GainConditionalSize(string template, string animal)
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [TestCaseSource("AllLycanthropeTemplates")]
-        public void ApplyTo_SizeSameForAnimalAndBaseCreature(string template, string animal)
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_AddAnimalHitPoints(string template, string animal)
         {
-            Assert.Fail("not yet written");
+            var animalHitPoints = new HitPoints();
+            animalHitPoints.HitDice = new List<HitDice>();
+            animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(animal))
+                .Returns(new CreatureDataSelection { Size = "animal size" });
+
+            mockHitPointsGenerator
+                .Setup(g => g.GenerateFor(
+                    animal,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities[AbilityConstants.Constitution],
+                    "animal size",
+                    0))
+                .Returns(animalHitPoints);
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(1336);
+
+            mockDice
+                .Setup(d => d.Roll(42).d(600).AsIndividualRolls())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(42).d(600).AsPotentialAverage())
+                .Returns(783);
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo("9266d90210+42d600"));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336 + 783));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 42));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(9266 + 42));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1337 + 96));
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
-        public void ApplyTo_AddAnimalSpeed(string template, string animal)
+        public void ApplyTo_AddAnimalHitPoints_WithConditionalBonus(string template, string animal)
         {
-            //TODO: Animal speed is conditional, only in animal form
-            Assert.Fail("not yet written");
+            baseCreature.HitPoints.HitDice[0].Quantity = 9266;
+            baseCreature.HitPoints.HitDice[0].HitDie = 90210;
+
+            var animalHitPoints = new HitPoints();
+            animalHitPoints.HitDice = new List<HitDice>();
+            animalHitPoints.HitDice.Add(new HitDice { Quantity = 42, HitDie = 600 });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(animal))
+                .Returns(new CreatureDataSelection { Size = "animal size" });
+
+            mockHitPointsGenerator
+                .Setup(g => g.GenerateFor(
+                    animal,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities[AbilityConstants.Constitution],
+                    "animal size",
+                    0))
+                .Returns(animalHitPoints);
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(1336);
+
+            mockDice
+                .Setup(d => d.Roll(42).d(600).AsIndividualRolls())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(42).d(600).AsPotentialAverage())
+                .Returns(783);
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, animal))
+                .Returns(new[]
+                {
+                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 666 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 666 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 8245 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = -666 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = -666 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = -666 },
+                });
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo("9266d90210+42d600"));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336 + 783));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 42));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(9266 + 42));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1337 + 96));
+            Assert.That(creature.HitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = creature.HitPoints.ConditionalBonuses.Single();
+            Assert.That(bonus.Bonus, Is.EqualTo(8245 / 2 * (9266 + 42)));
+            Assert.That(bonus.Condition, Is.EqualTo("In Animal or Hybrid form"));
+        }
+
+        [TestCaseSource("AllLycanthropeTemplates")]
+        public void ApplyTo_AddAnimalHitPoints_WithFeats(string template, string animal)
+        {
+            var animalHitPoints = new HitPoints();
+            animalHitPoints.HitDice = new List<HitDice>();
+            animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(animal))
+                .Returns(new CreatureDataSelection { Size = "animal size" });
+
+            mockHitPointsGenerator
+                .Setup(g => g.GenerateFor(
+                    animal,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities[AbilityConstants.Constitution],
+                    "animal size",
+                    0))
+                .Returns(animalHitPoints);
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(1336);
+
+            mockDice
+                .Setup(d => d.Roll(42).d(600).AsIndividualRolls())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(42).d(600).AsPotentialAverage())
+                .Returns(783);
+
+            var toughness = new Feat { Name = FeatConstants.Toughness, Power = 8245 };
+            mockFeatsGenerator
+                .Setup(g => g.GenerateFeats(
+                    baseCreature.HitPoints,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.Attacks,
+                    baseCreature.SpecialQualities,
+                    baseCreature.CasterLevel,
+                    baseCreature.Speeds,
+                    666,
+                    666,
+                    "animal size",
+                    false))
+                .Returns(new[] { toughness });
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo("9266d90210+42d600+8245"));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336 + 783));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 42));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(9266 + 42));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1337 + 96));
+            Assert.That(creature.HitPoints.Bonus, Is.EqualTo(8245));
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_GainNaturalArmor(string template, string animal)
         {
             //Both new for base and from animal
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
@@ -226,24 +399,32 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             //TODO: Include conditions (2 overall, animal form, hybrid form, etc.)
             //Hybrid form is one of animal (with bonus), one of base (with bonus), since natural armor is max
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_AddAnimalBaseAttack(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_RecomputeGrappleBonus(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_RecomputeGrappleBonus_WithConditionalForms(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
@@ -251,6 +432,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         public void ApplyTo_AddAnimalAttacks(string template, string animal)
         {
             //TODO: Notate in animal form on attacks
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
@@ -259,6 +442,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             //TODO: Get the lycanthrope attacks.  If any animal attacks match the lycanthrope attack with "Curse of Lycanthropy",
             //add the curse to the animal attack as well
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
@@ -267,54 +452,72 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             //TODO: Notate in {creature type} or Hybrid form on attacks
             //Special attacks don't get the Hybrid addition
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_AddLycanthropeAttacks(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_AddAnimalSpecialQualities(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_AddAnimalSpecialQualities_RemoveDuplicates(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_AddLycanthropeSpecialQualities(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_AddAnimalSaveBonuses(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_AddAnimalSaveBonuses_WithBonusesFromNewFeats(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_WisdomIncreasesBy2(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_ConditionalBonusesForHybridAndAnimalForms_FromAnimalBonuses(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
@@ -325,6 +528,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             //Also include "original" - so 3 original + 1 bonus = 4, get ability boost (1)
             //Also include "original" - so 11 original + 1 bonus = 4, get ability boost (1)
             //Also include "original" - so 7 original + 5 bonus = 4, get ability boost (2)
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
@@ -332,30 +537,40 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         public void ApplyTo_GainAnimalSkills(string template, string animal)
         {
             //Make sure don't get the X4 bonus for first hit die
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_GainControlShapeSkill_Afflicted(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_DoNotGainControlShapeSkill_Natural(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_GainAnimalFeats(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_GainAnimalFeats_RemoveDuplicates(string template, string animal)
         {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
@@ -367,6 +582,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             //Animal HD 6-10, +4
             //Animal HD 11-20, +5
             //Animal HD 21+, +6
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
@@ -376,6 +593,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             //Afflicted, +2
             //Natural, +3
             //Probably just pull from table, easiest
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.Fail("not yet written");
         }
 
