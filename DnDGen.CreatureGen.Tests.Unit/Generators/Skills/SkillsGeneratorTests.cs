@@ -742,6 +742,78 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(totalRanks, Is.EqualTo(skillPoints));
         }
 
+        [TestCase(1, 1, 1)]
+        [TestCase(2, 1, 2)]
+        [TestCase(3, 1, 3)]
+        [TestCase(4, 1, 4)]
+        [TestCase(5, 1, 5)]
+        [TestCase(6, 1, 6)]
+        [TestCase(7, 1, 7)]
+        [TestCase(8, 1, 8)]
+        [TestCase(9, 1, 9)]
+        [TestCase(10, 1, 10)]
+        [TestCase(11, 1, 11)]
+        [TestCase(12, 1, 12)]
+        [TestCase(13, 1, 13)]
+        [TestCase(14, 1, 14)]
+        [TestCase(15, 1, 15)]
+        [TestCase(16, 1, 16)]
+        [TestCase(17, 1, 17)]
+        [TestCase(18, 1, 18)]
+        [TestCase(19, 1, 19)]
+        [TestCase(20, 1, 20)]
+        [TestCase(1, 2, 2)]
+        [TestCase(2, 2, 4)]
+        [TestCase(3, 2, 6)]
+        [TestCase(4, 2, 8)]
+        [TestCase(5, 2, 10)]
+        [TestCase(6, 2, 12)]
+        [TestCase(7, 2, 14)]
+        [TestCase(8, 2, 16)]
+        [TestCase(9, 2, 18)]
+        [TestCase(10, 2, 20)]
+        [TestCase(11, 2, 22)]
+        [TestCase(12, 2, 24)]
+        [TestCase(13, 2, 26)]
+        [TestCase(14, 2, 28)]
+        [TestCase(15, 2, 30)]
+        [TestCase(16, 2, 32)]
+        [TestCase(17, 2, 34)]
+        [TestCase(18, 2, 36)]
+        [TestCase(19, 2, 38)]
+        [TestCase(20, 2, 40)]
+        [TestCase(1, 8, 8)]
+        [TestCase(2, 8, 16)]
+        [TestCase(3, 8, 24)]
+        [TestCase(4, 8, 32)]
+        [TestCase(5, 8, 40)]
+        [TestCase(6, 8, 48)]
+        [TestCase(7, 8, 56)]
+        [TestCase(8, 8, 64)]
+        [TestCase(9, 8, 72)]
+        [TestCase(10, 8, 80)]
+        [TestCase(11, 8, 88)]
+        [TestCase(12, 8, 96)]
+        [TestCase(13, 8, 104)]
+        [TestCase(14, 8, 112)]
+        [TestCase(15, 8, 120)]
+        [TestCase(16, 8, 128)]
+        [TestCase(17, 8, 136)]
+        [TestCase(18, 8, 144)]
+        [TestCase(19, 8, 152)]
+        [TestCase(20, 8, 160)]
+        public void SkillPointsDeterminedByHitDice_NotFirstHitDie(int hitDiceQuantity, int skillPointsPerDie, int skillPoints)
+        {
+            hitPoints.HitDice[0].Quantity = hitDiceQuantity;
+            creatureTypeSkillPoints = skillPointsPerDie;
+            AddCreatureSkills(hitDiceQuantity + skillPointsPerDie);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size, false);
+            var totalRanks = skills.Sum(s => s.Ranks);
+
+            Assert.That(totalRanks, Is.EqualTo(skillPoints));
+        }
+
         [TestCase(0, 2, 0)]
         [TestCase(1, 2, 4)]
         [TestCase(2, 2, 5)]

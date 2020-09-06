@@ -27,7 +27,14 @@ namespace DnDGen.CreatureGen.Generators.Skills
             this.adjustmentsSelector = adjustmentsSelector;
         }
 
-        public IEnumerable<Skill> GenerateFor(HitPoints hitPoints, string creatureName, CreatureType creatureType, Dictionary<string, Ability> abilities, bool canUseEquipment, string size)
+        public IEnumerable<Skill> GenerateFor(
+            HitPoints hitPoints,
+            string creatureName,
+            CreatureType creatureType,
+            Dictionary<string, Ability> abilities,
+            bool canUseEquipment,
+            string size,
+            bool includeFirstHitDieBonus = true)
         {
             if (hitPoints.RoundedHitDiceQuantity == 0)
                 return Enumerable.Empty<Skill>();
