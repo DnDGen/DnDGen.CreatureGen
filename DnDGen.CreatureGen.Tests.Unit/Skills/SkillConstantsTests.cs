@@ -41,6 +41,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Skills
         [TestCase(SkillConstants.Tumble, "Tumble")]
         [TestCase(SkillConstants.UseMagicDevice, "Use Magic Device")]
         [TestCase(SkillConstants.UseRope, "Use Rope")]
+        [TestCase(SkillConstants.Special.ControlShape, "Control Shape")]
         [TestCase(SkillConstants.Foci.Craft.Alchemy, "Alchemy")]
         [TestCase(SkillConstants.Foci.Craft.Armorsmithing, "Armorsmithing")]
         [TestCase(SkillConstants.Foci.Craft.Blacksmithing, "Blacksmithing")]

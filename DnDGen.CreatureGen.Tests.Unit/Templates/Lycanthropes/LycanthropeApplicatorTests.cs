@@ -1290,17 +1290,129 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_GainControlShapeSkill_Afflicted(string template, string animal)
         {
+            if (!template.Contains("Afflicted"))
+            {
+                Assert.Pass($"{template} is not an Afflicted lycanthrope template");
+            }
+
+            var animalHitPoints = new HitPoints();
+            animalHitPoints.HitDice = new List<HitDice>();
+            animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(animal))
+                .Returns(new CreatureDataSelection { Size = "animal size" });
+
+            mockHitPointsGenerator
+                .Setup(g => g.GenerateFor(
+                    animal,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities[AbilityConstants.Constitution],
+                    "animal size",
+                    0))
+                .Returns(animalHitPoints);
+
+            var animalSkills = new[]
+            {
+                new Skill("animal skill 1", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 42 },
+                new Skill("animal skill 2", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 600 },
+            };
+            mockSkillsGenerator
+                .Setup(g => g.GenerateFor(
+                    animalHitPoints,
+                    animal,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities,
+                    baseCreature.CanUseEquipment,
+                    "animal size",
+                    false))
+                .Returns(animalSkills);
+
+            var rankedSkills = new[]
+            {
+                new Skill("ranked skill 1", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 1337 },
+                new Skill("ranked skill 2", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 1336 },
+                new Skill(SkillConstants.Special.ControlShape, baseCreature.Abilities[AbilityConstants.Wisdom], int.MaxValue) { ClassSkill = true, Ranks = 96 },
+            };
+
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss => ss.All(s => s.Ranks == 0)
+                        && ss.Any(s => s.Name == SkillConstants.Special.ControlShape
+                            && s.BaseAbility == baseCreature.Abilities[AbilityConstants.Wisdom]
+                            && s.ClassSkill
+                            && s.RankCap == baseCreature.HitPoints.HitDice[0].Quantity + 3)),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(rankedSkills);
+
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.Fail("not yet written");
+            Assert.That(creature.Skills, Is.SupersetOf(animalSkills)
+                .And.SupersetOf(rankedSkills));
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
         public void ApplyTo_DoNotGainControlShapeSkill_Natural(string template, string animal)
         {
+            if (!template.Contains("Natural"))
+            {
+                Assert.Pass($"{template} is not a Natural lycanthrope template");
+            }
+
+            var animalHitPoints = new HitPoints();
+            animalHitPoints.HitDice = new List<HitDice>();
+            animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(animal))
+                .Returns(new CreatureDataSelection { Size = "animal size" });
+
+            mockHitPointsGenerator
+                .Setup(g => g.GenerateFor(
+                    animal,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities[AbilityConstants.Constitution],
+                    "animal size",
+                    0))
+                .Returns(animalHitPoints);
+
+            var animalSkills = new[]
+            {
+                new Skill("animal skill 1", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 42 },
+                new Skill("animal skill 2", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 600 },
+            };
+            mockSkillsGenerator
+                .Setup(g => g.GenerateFor(
+                    animalHitPoints,
+                    animal,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities,
+                    baseCreature.CanUseEquipment,
+                    "animal size",
+                    false))
+                .Returns(animalSkills);
+
+            var rankedSkills = new[]
+            {
+                new Skill("ranked skill 1", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 1337 },
+                new Skill("ranked skill 2", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 1336 },
+            };
+
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss => ss.All(s => s.Ranks == 0)
+                        && !ss.Any(s => s.Name == SkillConstants.Special.ControlShape)),
+                    baseCreature.HitPoints,
+                    baseCreature.Type,
+                    baseCreature.Abilities))
+                .Returns(rankedSkills);
+
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.Fail("not yet written");
+            Assert.That(creature.Skills, Is.SupersetOf(animalSkills)
+                .And.SupersetOf(rankedSkills));
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]
@@ -1365,28 +1477,113 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.Fail("not yet written - need feats and special qualities affecting save bonuses");
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
-        public void ApplyTo_IncreaseChallengeRating(string template, string animal)
+        [TestCaseSource("ChallengeRatings")]
+        public void ApplyTo_IncreaseChallengeRating(string template, string animal, string originalChallengeRating, int animalHitDiceQuantity, string updatedChallengeRating)
         {
-            //Animal HD 0-2, +2
-            //Animal HD 3-5, +3
-            //Animal HD 6-10, +4
-            //Animal HD 11-20, +5
-            //Animal HD 21+, +6
+            baseCreature.ChallengeRating = originalChallengeRating;
+
+            var animalHitPoints = new HitPoints();
+            animalHitPoints.HitDice = new List<HitDice>();
+            animalHitPoints.HitDice.Add(new HitDice { Quantity = animalHitDiceQuantity, HitDie = 90210 });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(animal))
+                .Returns(new CreatureDataSelection { Size = "animal size" });
+
+            mockHitPointsGenerator
+                .Setup(g => g.GenerateFor(
+                    animal,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities[AbilityConstants.Constitution],
+                    "animal size",
+                    0))
+                .Returns(animalHitPoints);
+
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.Fail("not yet written");
+            Assert.That(creature.ChallengeRating, Is.EqualTo(updatedChallengeRating));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
-        public void ApplyTo_IncreaseLevelAdjustment(string template, string animal)
+        //Animal HD 0-2, +2
+        //Animal HD 3-5, +3
+        //Animal HD 6-10, +4
+        //Animal HD 11-20, +5
+        //Animal HD 21+, +6
+        private static IEnumerable ChallengeRatings
         {
-            //Afflicted, +2
-            //Natural, +3
-            //Probably just pull from table, easiest
+            get
+            {
+                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+                var animalHitDiceQuantities = Enumerable.Range(1, 24);
+
+                foreach (var template in templates)
+                {
+                    foreach (var animalQuantity in animalHitDiceQuantities)
+                    {
+                        var increase = 0;
+
+                        if (animalQuantity <= 2)
+                            increase = 2;
+                        else if (animalQuantity <= 5)
+                            increase = 3;
+                        else if (animalQuantity <= 10)
+                            increase = 4;
+                        else if (animalQuantity <= 20)
+                            increase = 5;
+                        else if (animalQuantity > 20)
+                            increase = 6;
+
+                        for (var i = 0; i < challengeRatings.Length - increase; i++)
+                        {
+                            yield return new TestCaseData(template.Template, template.Animal, challengeRatings[i], animalQuantity, challengeRatings[i + increase]);
+                        }
+                    }
+                }
+            }
+        }
+
+        [TestCaseSource("LevelAdjustments")]
+        public void ApplyTo_IncreaseLevelAdjustment(string template, string animal, int? oldLevelAdjustment, int? newLevelAdjustment)
+        {
+            baseCreature.LevelAdjustment = oldLevelAdjustment;
+
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.Fail("not yet written");
+            Assert.That(creature.LevelAdjustment, Is.EqualTo(newLevelAdjustment));
+        }
+
+        //Afflicted, +2
+        //Natural, +3
+        private static IEnumerable LevelAdjustments
+        {
+            get
+            {
+                var levelAdjustments = new int?[]
+                {
+                    null,
+                    0,
+                    1,
+                    2,
+                    10,
+                    20,
+                    42,
+                };
+
+                foreach (var template in templates)
+                {
+                    var increase = 2;
+                    if (template.Template.Contains("Natural"))
+                        increase = 3;
+
+                    foreach (var levelAdjustment in levelAdjustments)
+                    {
+                        if (levelAdjustment == null)
+                            yield return new TestCaseData(template.Template, template.Animal, levelAdjustment, levelAdjustment);
+                        else
+                            yield return new TestCaseData(template.Template, template.Animal, levelAdjustment, levelAdjustment + increase);
+                    }
+                }
+            }
         }
 
         [TestCaseSource("AllLycanthropeTemplates")]

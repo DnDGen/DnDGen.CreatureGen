@@ -40,6 +40,11 @@ namespace DnDGen.CreatureGen.Skills
         public const string UseMagicDevice = "Use Magic Device";
         public const string UseRope = "Use Rope";
 
+        public static class Special
+        {
+            public const string ControlShape = "Control Shape";
+        }
+
         public static string Build(string skill, string focus)
         {
             if (!string.IsNullOrEmpty(focus))
