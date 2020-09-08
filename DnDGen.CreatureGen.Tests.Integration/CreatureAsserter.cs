@@ -357,7 +357,8 @@ namespace DnDGen.CreatureGen.Tests.Integration
             {
                 Assert.That(hitDice.Quantity, Is.Positive, creature.Summary);
                 Assert.That(hitDice.RoundedQuantity, Is.Positive, creature.Summary);
-                Assert.That(hitDice.HitDie, Is.EqualTo(8)
+                Assert.That(hitDice.HitDie, Is.EqualTo(6)
+                    .Or.EqualTo(8)
                     .Or.EqualTo(10)
                     .Or.EqualTo(12), creature.Summary);
                 Assert.That(hitDice.Divisor, Is.Positive, creature.Summary);
