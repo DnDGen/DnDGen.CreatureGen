@@ -77,6 +77,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Feat { Name = "skeleton quality 1" },
                 new Feat { Name = "skeleton quality 2" },
+                new Feat { Name = FeatConstants.Initiative_Improved, Power = 783 }
             };
 
             mockFeatsGenerator
@@ -91,13 +92,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
                 .Returns(skeletonQualities);
 
+            skeletonBaseAttack = 42;
+
             mockAttacksGenerator
                 .Setup(g => g.GenerateBaseAttackBonus(
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints))
-                .Returns(42);
-
-            skeletonBaseAttack = 42;
+                .Returns(skeletonBaseAttack);
 
             skeletonAttacks = new[]
             {
@@ -726,7 +727,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
                 .And.Contain(attackBonus));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         [Test]
@@ -746,7 +747,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
                 .And.Contain(proficiency));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         [Test]
@@ -766,7 +767,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
                 .And.Contain(proficiency));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         //INFO: Improve Initiative is one of the bonus feats for skeletons
@@ -775,7 +776,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.Fail("not yet written");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(783));
         }
 
         //INFO: Improve Initiative is one of the bonus feats for skeletons
@@ -784,7 +785,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.Fail("not yet written");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(783));
         }
 
         [Test]
@@ -1438,7 +1439,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
                 .And.Contain(attackBonus));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         [Test]
@@ -1458,7 +1459,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
                 .And.Contain(proficiency));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         [Test]
@@ -1478,7 +1479,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(skeletonQualities)
                 .And.Contain(proficiency));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         [Test]

@@ -96,13 +96,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     new Alignment { Lawfulness = AlignmentConstants.Neutral, Goodness = AlignmentConstants.Evil }))
                 .Returns(zombieQualities);
 
+            zombieBaseAttack = 42;
+
             mockAttacksGenerator
                 .Setup(g => g.GenerateBaseAttackBonus(
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints))
                 .Returns(zombieBaseAttack);
-
-            zombieBaseAttack = 42;
 
             zombieAttacks = new[]
             {
@@ -123,7 +123,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     CreatureConstants.Templates.Zombie,
                     SizeConstants.Medium,
                     baseCreature.Size,
-                    42,
+                    zombieBaseAttack,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
                 .Returns(zombieAttacks);
@@ -138,7 +138,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(zombieAttacks);
 
             mockHitPointsGenerator
-                .Setup(g => g.RegenerateWith(baseCreature.HitPoints, zombieQualities))
+                .Setup(g => g.RegenerateWith(
+                    baseCreature.HitPoints,
+                    It.Is<IEnumerable<Feat>>(f =>
+                        f.IsEquivalentTo(baseCreature.SpecialQualities
+                            .Union(zombieQualities)))))
                 .Returns(baseCreature.HitPoints);
         }
 
@@ -917,7 +921,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(attackBonus));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         [Test]
@@ -937,7 +941,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(proficiency));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         [Test]
@@ -957,7 +961,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(proficiency));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         [Test]
@@ -1600,7 +1604,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(attackBonus));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         [Test]
@@ -1620,7 +1624,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(proficiency));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         [Test]
@@ -1640,7 +1644,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(zombieQualities)
                 .And.Contain(proficiency));
-            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(3));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(4));
         }
 
         [Test]

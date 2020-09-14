@@ -100,6 +100,10 @@ namespace DnDGen.CreatureGen.Templates
             //Attacks
             UpdateCreatureAttacks(creature);
 
+            //INFO: Depends on special qualities + feats
+            //Initiative Bonus
+            UpdateCreatureInitiativeBonus(creature);
+
             //INFO: Depends on type, hit points, abilities, special qualities + feats
             //Saves
             UpdateCreatureSaves(creature);
@@ -216,6 +220,16 @@ namespace DnDGen.CreatureGen.Templates
         private void UpdateCreatureSkills(Creature creature)
         {
             creature.Skills = Enumerable.Empty<Skill>();
+        }
+
+        private void UpdateCreatureInitiativeBonus(Creature creature)
+        {
+            var allFeats = creature.SpecialQualities.Union(creature.Feats);
+            var improvedInitiative = allFeats.FirstOrDefault(f => f.Name == FeatConstants.Initiative_Improved);
+            if (improvedInitiative != null)
+            {
+                creature.InitiativeBonus = improvedInitiative.Power;
+            }
         }
 
         private void UpdateCreatureAttacks(Creature creature)
@@ -393,6 +407,11 @@ namespace DnDGen.CreatureGen.Templates
             //Attacks
             var attackTask = Task.Run(() => UpdateCreatureAttacks(creature));
             tasks.Add(attackTask);
+
+            //INFO: Depends on special qualities + feats
+            //Initiative Bonus
+            var initiativeTask = Task.Run(() => UpdateCreatureInitiativeBonus(creature));
+            tasks.Add(initiativeTask);
 
             //INFO: Depends on type, hit points, abilities, special qualities + feats
             //Saves

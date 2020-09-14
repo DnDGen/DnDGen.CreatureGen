@@ -21,7 +21,11 @@ namespace DnDGen.CreatureGen.Defenses
         {
             get
             {
-                var rolls = HitDice.Select(hd => hd.DefaultRoll);
+                var rolls = HitDice.Select(hd => hd.DefaultRoll).Where(hd => hd != 0.ToString());
+                if (!rolls.Any())
+                {
+                    return Bonus.ToString();
+                }
 
                 var roll = string.Join("+", rolls);
                 roll = AppendBonus(roll, totalConstitutionBonus);

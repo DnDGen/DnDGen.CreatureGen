@@ -28,7 +28,7 @@ namespace DnDGen.CreatureGen.Defenses
         {
             get
             {
-                if (Quantity == 0 || HitDie == 0)
+                if (HitDie == 0)
                 {
                     return 0.ToString();
                 }

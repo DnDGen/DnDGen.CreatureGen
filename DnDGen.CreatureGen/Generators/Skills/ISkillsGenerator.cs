@@ -20,6 +20,11 @@ namespace DnDGen.CreatureGen.Generators.Skills
             bool includeFirstHitDieBonus = true);
         IEnumerable<Skill> ApplyBonusesFromFeats(IEnumerable<Skill> skills, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities);
         IEnumerable<Skill> SetArmorCheckPenalties(string creature, IEnumerable<Skill> skills, Equipment equipment);
-        IEnumerable<Skill> ApplySkillPointsAsRanks(IEnumerable<Skill> skills, HitPoints hitPoints, CreatureType creatureType, Dictionary<string, Ability> abilities);
+        IEnumerable<Skill> ApplySkillPointsAsRanks(
+            IEnumerable<Skill> skills,
+            HitPoints hitPoints,
+            CreatureType creatureType,
+            Dictionary<string, Ability> abilities,
+            bool includeFirstHitDieBonus);
     }
 }

@@ -47,7 +47,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             var skillSelections = GetSkillSelections(allSkillNames, creatureSkillNames);
             var skills = InitializeSkills(abilities, skillSelections, hitPoints, creatureSkillNames);
 
-            skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities);
+            skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities, includeFirstHitDieBonus);
             skills = ApplyBonuses(creatureName, creatureType, skills, size);
             skills = ApplySkillSynergy(skills);
 
@@ -167,10 +167,10 @@ namespace DnDGen.CreatureGen.Generators.Skills
             return skills;
         }
 
-        public IEnumerable<Skill> ApplySkillPointsAsRanks(IEnumerable<Skill> skills, HitPoints hitPoints, CreatureType creatureType, Dictionary<string, Ability> abilities)
+        public IEnumerable<Skill> ApplySkillPointsAsRanks(IEnumerable<Skill> skills, HitPoints hitPoints, CreatureType creatureType, Dictionary<string, Ability> abilities, bool includeFirstHitDieBonus)
         {
-            var points = GetTotalSkillPoints(creatureType, hitPoints.RoundedHitDiceQuantity, abilities[AbilityConstants.Intelligence]);
-            var totalRanksAvailable = skills.Count() * (hitPoints.RoundedHitDiceQuantity + 3);
+            var points = GetTotalSkillPoints(creatureType, hitPoints.RoundedHitDiceQuantity, abilities[AbilityConstants.Intelligence], includeFirstHitDieBonus);
+            var totalRanksAvailable = skills.Sum(s => s.RankCap);
 
             if (points >= totalRanksAvailable)
             {
@@ -270,14 +270,18 @@ namespace DnDGen.CreatureGen.Generators.Skills
             return skills;
         }
 
-        private int GetTotalSkillPoints(CreatureType creatureType, int hitDieQuantity, Ability intelligence)
+        private int GetTotalSkillPoints(CreatureType creatureType, int hitDieQuantity, Ability intelligence, bool includeFirstHitDieBonus)
         {
             if (hitDieQuantity == 0 || !intelligence.HasScore)
                 return 0;
 
             var points = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SkillPoints, creatureType.Name);
             var perHitDie = Math.Max(1, points + intelligence.Modifier);
-            var multiplier = hitDieQuantity + 3;
+            var multiplier = hitDieQuantity;
+
+            if (includeFirstHitDieBonus)
+                multiplier += 3;
+
             var total = perHitDie * multiplier;
 
             return total;

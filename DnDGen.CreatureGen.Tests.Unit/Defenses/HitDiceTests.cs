@@ -34,9 +34,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         }
 
         [TestCase(0, 0, "0")]
-        [TestCase(0, 8, "0")]
-        [TestCase(0, 10, "0")]
-        [TestCase(0, 12, "0")]
+        [TestCase(0, 8, "0d8")]
+        [TestCase(0, 10, "0d10")]
+        [TestCase(0, 12, "0d12")]
         [TestCase(.1, 0, "0")]
         [TestCase(.1, 8, "1d8/10")]
         [TestCase(.1, 10, "1d10/10")]

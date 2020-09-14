@@ -211,7 +211,7 @@ namespace DnDGen.CreatureGen.Templates
                 skill.Ranks = 0;
             }
 
-            creature.Skills = skillsGenerator.ApplySkillPointsAsRanks(creature.Skills, creature.HitPoints, creature.Type, creature.Abilities);
+            creature.Skills = skillsGenerator.ApplySkillPointsAsRanks(creature.Skills, creature.HitPoints, creature.Type, creature.Abilities, true);
         }
 
         private void UpdateCreatureSavingThrows(Creature creature)

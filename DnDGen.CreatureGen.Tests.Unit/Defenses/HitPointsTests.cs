@@ -36,46 +36,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(hitPoints.Total, Is.Zero);
         }
 
-        [TestCase(0, 0, 0, 0, "0")]
-        [TestCase(0, 0, 0, 3, "3")]
-        [TestCase(0, 0, 8, 0, "0")]
-        [TestCase(0, 0, 8, 3, "3")]
-        [TestCase(0, 0, 10, 0, "0")]
-        [TestCase(0, 0, 10, 3, "3")]
-        [TestCase(0, 0, 18, 0, "0")]
-        [TestCase(0, 0, 18, 3, "3")]
-        [TestCase(0, 8, 0, 0, "0")]
-        [TestCase(0, 8, 0, 3, "3")]
-        [TestCase(0, 8, 8, 0, "0")]
-        [TestCase(0, 8, 8, 3, "3")]
-        [TestCase(0, 8, 10, 0, "0")]
-        [TestCase(0, 8, 10, 3, "3")]
-        [TestCase(0, 8, 18, 0, "0")]
-        [TestCase(0, 8, 18, 3, "3")]
-        [TestCase(0, 10, 0, 0, "0")]
-        [TestCase(0, 10, 0, 3, "3")]
-        [TestCase(0, 10, 8, 0, "0")]
-        [TestCase(0, 10, 8, 3, "3")]
-        [TestCase(0, 10, 10, 0, "0")]
-        [TestCase(0, 10, 10, 3, "3")]
-        [TestCase(0, 10, 18, 0, "0")]
-        [TestCase(0, 10, 18, 3, "3")]
-        [TestCase(0, 12, 0, 0, "0")]
-        [TestCase(0, 12, 0, 3, "3")]
-        [TestCase(0, 12, 8, 0, "0")]
-        [TestCase(0, 12, 8, 3, "3")]
-        [TestCase(0, 12, 10, 0, "0")]
-        [TestCase(0, 12, 10, 3, "3")]
-        [TestCase(0, 12, 18, 0, "0")]
-        [TestCase(0, 12, 18, 3, "3")]
-        [TestCase(.25, 0, 0, 0, "0")]
-        [TestCase(.25, 0, 0, 3, "3")]
-        [TestCase(.25, 0, 8, 0, "0")]
-        [TestCase(.25, 0, 8, 3, "3")]
-        [TestCase(.25, 0, 10, 0, "0")]
-        [TestCase(.25, 0, 10, 3, "3")]
-        [TestCase(.25, 0, 18, 0, "0")]
-        [TestCase(.25, 0, 18, 3, "3")]
+        [TestCase(0, 0, "0")]
+        [TestCase(0, 3, "3")]
+        [TestCase(8, 0, "0")]
+        [TestCase(8, 3, "3")]
+        [TestCase(10, 0, "0")]
+        [TestCase(10, 3, "3")]
+        [TestCase(18, 0, "0")]
+        [TestCase(18, 3, "3")]
+        public void DefaultRoll_NoHitDice(int constitution, int bonus, string roll)
+        {
+            hitPoints.Bonus = bonus;
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = constitution };
+
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo(roll));
+        }
+
+        [TestCase(0, 0, "0")]
+        [TestCase(0, 3, "3")]
+        [TestCase(8, 0, "0")]
+        [TestCase(8, 3, "3")]
+        [TestCase(10, 0, "0")]
+        [TestCase(10, 3, "3")]
+        [TestCase(18, 0, "0")]
+        [TestCase(18, 3, "3")]
+        public void DefaultRoll_EmptyHitDice(int constitution, int bonus, string roll)
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 0, HitDie = 0 });
+            hitPoints.Bonus = bonus;
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = constitution };
+
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo(roll));
+        }
+
+        [TestCase(0, 8, 0, 0, "0d8")]
+        [TestCase(0, 8, 0, 3, "0d8+3")]
+        [TestCase(0, 8, 8, 0, "0d8")]
+        [TestCase(0, 8, 8, 3, "0d8+3")]
+        [TestCase(0, 8, 10, 0, "0d8")]
+        [TestCase(0, 8, 10, 3, "0d8+3")]
+        [TestCase(0, 8, 18, 0, "0d8")]
+        [TestCase(0, 8, 18, 3, "0d8+3")]
+        [TestCase(0, 10, 0, 0, "0d10")]
+        [TestCase(0, 10, 0, 3, "0d10+3")]
+        [TestCase(0, 10, 8, 0, "0d10")]
+        [TestCase(0, 10, 8, 3, "0d10+3")]
+        [TestCase(0, 10, 10, 0, "0d10")]
+        [TestCase(0, 10, 10, 3, "0d10+3")]
+        [TestCase(0, 10, 18, 0, "0d10")]
+        [TestCase(0, 10, 18, 3, "0d10+3")]
+        [TestCase(0, 12, 0, 0, "0d12")]
+        [TestCase(0, 12, 0, 3, "0d12+3")]
+        [TestCase(0, 12, 8, 0, "0d12")]
+        [TestCase(0, 12, 8, 3, "0d12+3")]
+        [TestCase(0, 12, 10, 0, "0d12")]
+        [TestCase(0, 12, 10, 3, "0d12+3")]
+        [TestCase(0, 12, 18, 0, "0d12")]
+        [TestCase(0, 12, 18, 3, "0d12+3")]
         [TestCase(.25, 8, 0, 0, "1d8/4")]
         [TestCase(.25, 8, 0, 3, "1d8/4+3")]
         [TestCase(.25, 8, 8, 0, "1d8/4-1")]
@@ -100,14 +117,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [TestCase(.25, 12, 10, 3, "1d12/4+3")]
         [TestCase(.25, 12, 18, 0, "1d12/4+4")]
         [TestCase(.25, 12, 18, 3, "1d12/4+4+3")]
-        [TestCase(.5, 0, 0, 0, "0")]
-        [TestCase(.5, 0, 0, 3, "3")]
-        [TestCase(.5, 0, 8, 0, "0")]
-        [TestCase(.5, 0, 8, 3, "3")]
-        [TestCase(.5, 0, 10, 0, "0")]
-        [TestCase(.5, 0, 10, 3, "3")]
-        [TestCase(.5, 0, 18, 0, "0")]
-        [TestCase(.5, 0, 18, 3, "3")]
         [TestCase(.5, 8, 0, 0, "1d8/2")]
         [TestCase(.5, 8, 0, 3, "1d8/2+3")]
         [TestCase(.5, 8, 8, 0, "1d8/2-1")]
@@ -132,14 +141,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [TestCase(.5, 12, 10, 3, "1d12/2+3")]
         [TestCase(.5, 12, 18, 0, "1d12/2+4")]
         [TestCase(.5, 12, 18, 3, "1d12/2+4+3")]
-        [TestCase(1, 0, 0, 0, "0")]
-        [TestCase(1, 0, 0, 3, "3")]
-        [TestCase(1, 0, 8, 0, "0")]
-        [TestCase(1, 0, 8, 3, "3")]
-        [TestCase(1, 0, 10, 0, "0")]
-        [TestCase(1, 0, 10, 3, "3")]
-        [TestCase(1, 0, 18, 0, "0")]
-        [TestCase(1, 0, 18, 3, "3")]
         [TestCase(1, 8, 0, 0, "1d8")]
         [TestCase(1, 8, 0, 3, "1d8+3")]
         [TestCase(1, 8, 8, 0, "1d8-1")]
@@ -164,14 +165,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [TestCase(1, 12, 10, 3, "1d12+3")]
         [TestCase(1, 12, 18, 0, "1d12+4")]
         [TestCase(1, 12, 18, 3, "1d12+4+3")]
-        [TestCase(1.5, 0, 0, 0, "0")]
-        [TestCase(1.5, 0, 0, 3, "3")]
-        [TestCase(1.5, 0, 8, 0, "0")]
-        [TestCase(1.5, 0, 8, 3, "3")]
-        [TestCase(1.5, 0, 10, 0, "0")]
-        [TestCase(1.5, 0, 10, 3, "3")]
-        [TestCase(1.5, 0, 18, 0, "0")]
-        [TestCase(1.5, 0, 18, 3, "3")]
         [TestCase(1.5, 8, 0, 0, "1d8")]
         [TestCase(1.5, 8, 0, 3, "1d8+3")]
         [TestCase(1.5, 8, 8, 0, "1d8-1")]
@@ -196,14 +189,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [TestCase(1.5, 12, 10, 3, "1d12+3")]
         [TestCase(1.5, 12, 18, 0, "1d12+4")]
         [TestCase(1.5, 12, 18, 3, "1d12+4+3")]
-        [TestCase(2, 0, 0, 0, "0")]
-        [TestCase(2, 0, 0, 3, "3")]
-        [TestCase(2, 0, 8, 0, "0")]
-        [TestCase(2, 0, 8, 3, "3")]
-        [TestCase(2, 0, 10, 0, "0")]
-        [TestCase(2, 0, 10, 3, "3")]
-        [TestCase(2, 0, 18, 0, "0")]
-        [TestCase(2, 0, 18, 3, "3")]
         [TestCase(2, 8, 0, 0, "2d8")]
         [TestCase(2, 8, 0, 3, "2d8+3")]
         [TestCase(2, 8, 8, 0, "2d8-2")]
@@ -228,14 +213,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [TestCase(2, 12, 10, 3, "2d12+3")]
         [TestCase(2, 12, 18, 0, "2d12+8")]
         [TestCase(2, 12, 18, 3, "2d12+8+3")]
-        [TestCase(2.9999, 0, 0, 0, "0")]
-        [TestCase(2.9999, 0, 0, 3, "3")]
-        [TestCase(2.9999, 0, 8, 0, "0")]
-        [TestCase(2.9999, 0, 8, 3, "3")]
-        [TestCase(2.9999, 0, 10, 0, "0")]
-        [TestCase(2.9999, 0, 10, 3, "3")]
-        [TestCase(2.9999, 0, 18, 0, "0")]
-        [TestCase(2.9999, 0, 18, 3, "3")]
         [TestCase(2.9999, 8, 0, 0, "2d8")]
         [TestCase(2.9999, 8, 0, 3, "2d8+3")]
         [TestCase(2.9999, 8, 8, 0, "2d8-2")]
@@ -277,7 +254,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             hitPoints.Bonus = 1337;
             hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 1336 };
 
-            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9266d90210+42d600+678+1337"));
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo($"9266d90210+42d600+{hitPoints.Constitution.Modifier * (9266 + 42)}+1337"));
         }
 
         [TestCase(0, 0)]
@@ -670,54 +647,54 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(hitPoints.Total, Is.EqualTo(2));
         }
 
-        [TestCase(0, 6, 0, 0, 1)]
-        [TestCase(0, 6, 0, 3, 4)]
-        [TestCase(0, 6, 4, 0, 1)]
-        [TestCase(0, 6, 4, 3, 4)]
-        [TestCase(0, 6, 8, 0, 1)]
-        [TestCase(0, 6, 8, 3, 4)]
-        [TestCase(0, 6, 10, 0, 1)]
-        [TestCase(0, 6, 10, 3, 4)]
-        [TestCase(0, 6, 12, 0, 1)]
-        [TestCase(0, 6, 12, 3, 4)]
-        [TestCase(0, 6, 18, 0, 1)]
-        [TestCase(0, 6, 18, 3, 4)]
-        [TestCase(0, 8, 0, 0, 1)]
-        [TestCase(0, 8, 0, 3, 4)]
-        [TestCase(0, 8, 4, 0, 1)]
-        [TestCase(0, 8, 4, 3, 4)]
-        [TestCase(0, 8, 8, 0, 1)]
-        [TestCase(0, 8, 8, 3, 4)]
-        [TestCase(0, 8, 10, 0, 1)]
-        [TestCase(0, 8, 10, 3, 4)]
-        [TestCase(0, 8, 12, 0, 1)]
-        [TestCase(0, 8, 12, 3, 4)]
-        [TestCase(0, 8, 18, 0, 1)]
-        [TestCase(0, 8, 18, 3, 4)]
-        [TestCase(0, 10, 0, 0, 1)]
-        [TestCase(0, 10, 0, 3, 4)]
-        [TestCase(0, 10, 4, 0, 1)]
-        [TestCase(0, 10, 4, 3, 4)]
-        [TestCase(0, 10, 8, 0, 1)]
-        [TestCase(0, 10, 8, 3, 4)]
-        [TestCase(0, 10, 10, 0, 1)]
-        [TestCase(0, 10, 10, 3, 4)]
-        [TestCase(0, 10, 12, 0, 1)]
-        [TestCase(0, 10, 12, 3, 4)]
-        [TestCase(0, 10, 18, 0, 1)]
-        [TestCase(0, 10, 18, 3, 4)]
-        [TestCase(0, 12, 0, 0, 1)]
-        [TestCase(0, 12, 0, 3, 4)]
-        [TestCase(0, 12, 4, 0, 1)]
-        [TestCase(0, 12, 4, 3, 4)]
-        [TestCase(0, 12, 8, 0, 1)]
-        [TestCase(0, 12, 8, 3, 4)]
-        [TestCase(0, 12, 10, 0, 1)]
-        [TestCase(0, 12, 10, 3, 4)]
-        [TestCase(0, 12, 12, 0, 1)]
-        [TestCase(0, 12, 12, 3, 4)]
-        [TestCase(0, 12, 18, 0, 1)]
-        [TestCase(0, 12, 18, 3, 4)]
+        [TestCase(0, 6, 0, 0, 0)]
+        [TestCase(0, 6, 0, 3, 3)]
+        [TestCase(0, 6, 4, 0, 0)]
+        [TestCase(0, 6, 4, 3, 3)]
+        [TestCase(0, 6, 8, 0, 0)]
+        [TestCase(0, 6, 8, 3, 3)]
+        [TestCase(0, 6, 10, 0, 0)]
+        [TestCase(0, 6, 10, 3, 3)]
+        [TestCase(0, 6, 12, 0, 0)]
+        [TestCase(0, 6, 12, 3, 3)]
+        [TestCase(0, 6, 18, 0, 0)]
+        [TestCase(0, 6, 18, 3, 3)]
+        [TestCase(0, 8, 0, 0, 0)]
+        [TestCase(0, 8, 0, 3, 3)]
+        [TestCase(0, 8, 4, 0, 0)]
+        [TestCase(0, 8, 4, 3, 3)]
+        [TestCase(0, 8, 8, 0, 0)]
+        [TestCase(0, 8, 8, 3, 3)]
+        [TestCase(0, 8, 10, 0, 0)]
+        [TestCase(0, 8, 10, 3, 3)]
+        [TestCase(0, 8, 12, 0, 0)]
+        [TestCase(0, 8, 12, 3, 3)]
+        [TestCase(0, 8, 18, 0, 0)]
+        [TestCase(0, 8, 18, 3, 3)]
+        [TestCase(0, 10, 0, 0, 0)]
+        [TestCase(0, 10, 0, 3, 3)]
+        [TestCase(0, 10, 4, 0, 0)]
+        [TestCase(0, 10, 4, 3, 3)]
+        [TestCase(0, 10, 8, 0, 0)]
+        [TestCase(0, 10, 8, 3, 3)]
+        [TestCase(0, 10, 10, 0, 0)]
+        [TestCase(0, 10, 10, 3, 3)]
+        [TestCase(0, 10, 12, 0, 0)]
+        [TestCase(0, 10, 12, 3, 3)]
+        [TestCase(0, 10, 18, 0, 0)]
+        [TestCase(0, 10, 18, 3, 3)]
+        [TestCase(0, 12, 0, 0, 0)]
+        [TestCase(0, 12, 0, 3, 3)]
+        [TestCase(0, 12, 4, 0, 0)]
+        [TestCase(0, 12, 4, 3, 3)]
+        [TestCase(0, 12, 8, 0, 0)]
+        [TestCase(0, 12, 8, 3, 3)]
+        [TestCase(0, 12, 10, 0, 0)]
+        [TestCase(0, 12, 10, 3, 3)]
+        [TestCase(0, 12, 12, 0, 0)]
+        [TestCase(0, 12, 12, 3, 3)]
+        [TestCase(0, 12, 18, 0, 0)]
+        [TestCase(0, 12, 18, 3, 3)]
         [TestCase(0.1, 6, 0, 0, 1)]
         [TestCase(0.1, 6, 0, 3, 4)]
         [TestCase(0.1, 6, 4, 0, 1)]
@@ -1088,7 +1065,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             mockDice.Setup(d => d.Roll(42).d(600)).Returns(mockPartialRoll2.Object);
 
             hitPoints.RollDefaultTotal(mockDice.Object);
-            Assert.That(hitPoints.DefaultTotal, Is.EqualTo(average1 + average2 + 663 * (9266 + 42) + 1336));
+            Assert.That(hitPoints.DefaultTotal, Is.EqualTo(average1 + average2 + hitPoints.Constitution.Modifier * (9266 + 42) + 1336));
         }
 
         [TestCase(.01, 600, 6)]
@@ -1274,7 +1251,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 42, Condition = "only sometimes" });
             hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 1336, Condition = "other times" });
 
-            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(2));
 
             var bonus = hitPoints.ConditionalBonuses.First();
             Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
@@ -1293,7 +1270,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 42, Condition = "only sometimes" });
             hitPoints.Constitution.Bonuses.Add(new Bonus { Value = 600, Condition = "other times" });
 
-            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(2));
 
             var bonus = hitPoints.ConditionalBonuses.First();
             Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
@@ -1312,7 +1289,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             hitPoints.Constitution.Bonuses.Add(new Bonus { Value = -42, Condition = "only sometimes" });
             hitPoints.Constitution.Bonuses.Add(new Bonus { Value = -600, Condition = "other times" });
 
-            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+            Assert.That(hitPoints.ConditionalBonuses.Count(), Is.EqualTo(2));
 
             var bonus = hitPoints.ConditionalBonuses.First();
             Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));

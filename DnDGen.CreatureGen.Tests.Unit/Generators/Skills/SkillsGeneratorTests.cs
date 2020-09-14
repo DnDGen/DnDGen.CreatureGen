@@ -3745,5 +3745,466 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[2].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[2].ArmorCheckPenalty, Is.EqualTo(-1937));
         }
+
+        [Test]
+        public void ApplySkillPointsAsRanks_AssignRankToClassSkill()
+        {
+            var unrankedSkills = new[]
+            {
+                new Skill("skill 1", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 2", abilities[AbilityConstants.Constitution], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 3", abilities[AbilityConstants.Dexterity], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 4", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 5", abilities[AbilityConstants.Strength], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 6", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+            };
+
+            var index = 0;
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => sk.ClassSkill)), It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => !sk.ClassSkill)), null, null))
+                .Returns((IEnumerable<Skill> c, IEnumerable<Skill> u, IEnumerable<Skill> r, IEnumerable<Skill> v) => c.ElementAt(index++ % c.Count()));
+
+            var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true).ToArray();
+
+            Assert.That(skills[0].Name, Is.EqualTo("untrained skill 3"));
+            Assert.That(skills[0].ClassSkill, Is.False);
+            Assert.That(skills[0].Ranks, Is.Zero);
+            Assert.That(skills[0].EffectiveRanks, Is.Zero);
+            Assert.That(skills[1].Name, Is.EqualTo("untrained skill 2"));
+            Assert.That(skills[1].ClassSkill, Is.False);
+            Assert.That(skills[1].Ranks, Is.Zero);
+            Assert.That(skills[1].EffectiveRanks, Is.Zero);
+            Assert.That(skills[2].Name, Is.EqualTo("untrained skill 1"));
+            Assert.That(skills[2].ClassSkill, Is.False);
+            Assert.That(skills[2].Ranks, Is.Zero);
+            Assert.That(skills[2].EffectiveRanks, Is.Zero);
+            Assert.That(skills[3].Name, Is.EqualTo("creature skill 3"));
+            Assert.That(skills[3].ClassSkill, Is.True);
+            Assert.That(skills[3].Ranks, Is.EqualTo(3));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(3));
+            Assert.That(skills[4].Name, Is.EqualTo("creature skill 2"));
+            Assert.That(skills[4].ClassSkill, Is.True);
+            Assert.That(skills[4].Ranks, Is.EqualTo(3));
+            Assert.That(skills[4].EffectiveRanks, Is.EqualTo(3));
+            Assert.That(skills[5].Name, Is.EqualTo("creature skill 1"));
+            Assert.That(skills[5].ClassSkill, Is.True);
+            Assert.That(skills[5].Ranks, Is.EqualTo(2));
+            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills.Length, Is.EqualTo(6));
+        }
+
+        [Test]
+        public void ApplySkillPointsAsRanks_AssignRankToUntrainedSkill()
+        {
+            var unrankedSkills = new[]
+            {
+                new Skill("skill 1", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 2", abilities[AbilityConstants.Constitution], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 3", abilities[AbilityConstants.Dexterity], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 4", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 5", abilities[AbilityConstants.Strength], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 6", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+            };
+
+            var index = 0;
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => sk.ClassSkill)), It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => !sk.ClassSkill)), null, null))
+                .Returns((IEnumerable<Skill> c, IEnumerable<Skill> u, IEnumerable<Skill> r, IEnumerable<Skill> v) => u.ElementAt(index++ % u.Count()));
+
+            var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true).ToArray();
+
+            Assert.That(skills[0].Name, Is.EqualTo("untrained skill 3"));
+            Assert.That(skills[0].ClassSkill, Is.False);
+            Assert.That(skills[0].Ranks, Is.EqualTo(3));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(1.5));
+            Assert.That(skills[1].Name, Is.EqualTo("untrained skill 2"));
+            Assert.That(skills[1].ClassSkill, Is.False);
+            Assert.That(skills[1].Ranks, Is.EqualTo(3));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(1.5));
+            Assert.That(skills[2].Name, Is.EqualTo("untrained skill 1"));
+            Assert.That(skills[2].ClassSkill, Is.False);
+            Assert.That(skills[2].Ranks, Is.EqualTo(2));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(1));
+            Assert.That(skills[3].Name, Is.EqualTo("creature skill 3"));
+            Assert.That(skills[3].ClassSkill, Is.True);
+            Assert.That(skills[3].Ranks, Is.Zero);
+            Assert.That(skills[3].EffectiveRanks, Is.Zero);
+            Assert.That(skills[4].Name, Is.EqualTo("creature skill 2"));
+            Assert.That(skills[4].ClassSkill, Is.True);
+            Assert.That(skills[4].Ranks, Is.Zero);
+            Assert.That(skills[4].EffectiveRanks, Is.Zero);
+            Assert.That(skills[5].Name, Is.EqualTo("creature skill 1"));
+            Assert.That(skills[5].ClassSkill, Is.True);
+            Assert.That(skills[5].Ranks, Is.Zero);
+            Assert.That(skills[5].EffectiveRanks, Is.Zero);
+            Assert.That(skills.Length, Is.EqualTo(6));
+        }
+
+        [Test]
+        public void ApplySkillPointsAsRanks_AssignRankToClassAndUntrainedSkill()
+        {
+            var unrankedSkills = new[]
+            {
+                new Skill("skill 1", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 2", abilities[AbilityConstants.Constitution], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 3", abilities[AbilityConstants.Dexterity], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 4", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 5", abilities[AbilityConstants.Strength], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 6", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+            };
+
+            var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true).ToArray();
+
+            Assert.That(skills[0].Name, Is.EqualTo("untrained skill 3"));
+            Assert.That(skills[0].ClassSkill, Is.False);
+            Assert.That(skills[0].Ranks, Is.EqualTo(1));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(.5));
+            Assert.That(skills[1].Name, Is.EqualTo("untrained skill 2"));
+            Assert.That(skills[1].ClassSkill, Is.False);
+            Assert.That(skills[1].Ranks, Is.EqualTo(1));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(.5));
+            Assert.That(skills[2].Name, Is.EqualTo("untrained skill 1"));
+            Assert.That(skills[2].ClassSkill, Is.False);
+            Assert.That(skills[2].Ranks, Is.EqualTo(1));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(.5));
+            Assert.That(skills[3].Name, Is.EqualTo("creature skill 3"));
+            Assert.That(skills[3].ClassSkill, Is.True);
+            Assert.That(skills[3].Ranks, Is.EqualTo(2));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[4].Name, Is.EqualTo("creature skill 2"));
+            Assert.That(skills[4].ClassSkill, Is.True);
+            Assert.That(skills[4].Ranks, Is.EqualTo(2));
+            Assert.That(skills[4].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[5].Name, Is.EqualTo("creature skill 1"));
+            Assert.That(skills[5].ClassSkill, Is.True);
+            Assert.That(skills[5].Ranks, Is.EqualTo(1));
+            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(1));
+            Assert.That(skills.Length, Is.EqualTo(6));
+        }
+
+        [Test]
+        public void ApplySkillPointsAsRanks_AllSkillsMaxedOut()
+        {
+            creatureTypeSkillPoints = 3;
+            var unrankedSkills = new[]
+            {
+                new Skill("skill 1", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 2", abilities[AbilityConstants.Constitution], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 3", abilities[AbilityConstants.Dexterity], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 4", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 5", abilities[AbilityConstants.Strength], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 6", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+            };
+
+            var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);
+
+            Assert.That(skills.Single(s => s.Name == "skill 1").Ranks, Is.EqualTo(hitPoints.HitDiceQuantity + 3));
+            Assert.That(skills.Single(s => s.Name == "skill 2").Ranks, Is.EqualTo(hitPoints.HitDiceQuantity + 3));
+        }
+
+        [TestCase(1, 1, 4)]
+        [TestCase(2, 1, 5)]
+        [TestCase(3, 1, 6)]
+        [TestCase(4, 1, 7)]
+        [TestCase(5, 1, 8)]
+        [TestCase(6, 1, 9)]
+        [TestCase(7, 1, 10)]
+        [TestCase(8, 1, 11)]
+        [TestCase(9, 1, 12)]
+        [TestCase(10, 1, 13)]
+        [TestCase(11, 1, 14)]
+        [TestCase(12, 1, 15)]
+        [TestCase(13, 1, 16)]
+        [TestCase(14, 1, 17)]
+        [TestCase(15, 1, 18)]
+        [TestCase(16, 1, 19)]
+        [TestCase(17, 1, 20)]
+        [TestCase(18, 1, 21)]
+        [TestCase(19, 1, 22)]
+        [TestCase(20, 1, 23)]
+        [TestCase(1, 2, 8)]
+        [TestCase(2, 2, 10)]
+        [TestCase(3, 2, 12)]
+        [TestCase(4, 2, 14)]
+        [TestCase(5, 2, 16)]
+        [TestCase(6, 2, 18)]
+        [TestCase(7, 2, 20)]
+        [TestCase(8, 2, 22)]
+        [TestCase(9, 2, 24)]
+        [TestCase(10, 2, 26)]
+        [TestCase(11, 2, 28)]
+        [TestCase(12, 2, 30)]
+        [TestCase(13, 2, 32)]
+        [TestCase(14, 2, 34)]
+        [TestCase(15, 2, 36)]
+        [TestCase(16, 2, 38)]
+        [TestCase(17, 2, 40)]
+        [TestCase(18, 2, 42)]
+        [TestCase(19, 2, 44)]
+        [TestCase(20, 2, 46)]
+        [TestCase(1, 8, 32)]
+        [TestCase(2, 8, 40)]
+        [TestCase(3, 8, 48)]
+        [TestCase(4, 8, 56)]
+        [TestCase(5, 8, 64)]
+        [TestCase(6, 8, 72)]
+        [TestCase(7, 8, 80)]
+        [TestCase(8, 8, 88)]
+        [TestCase(9, 8, 96)]
+        [TestCase(10, 8, 104)]
+        [TestCase(11, 8, 112)]
+        [TestCase(12, 8, 120)]
+        [TestCase(13, 8, 128)]
+        [TestCase(14, 8, 136)]
+        [TestCase(15, 8, 144)]
+        [TestCase(16, 8, 152)]
+        [TestCase(17, 8, 160)]
+        [TestCase(18, 8, 168)]
+        [TestCase(19, 8, 176)]
+        [TestCase(20, 8, 184)]
+        public void ApplySkillPointsAsRanks_SkillPointsDeterminedByHitDice(int hitDiceQuantity, int skillPointsPerDie, int skillPoints)
+        {
+            hitPoints.HitDice[0].Quantity = hitDiceQuantity;
+            creatureTypeSkillPoints = skillPointsPerDie;
+
+            var unrankedSkills = new List<Skill>();
+            while (unrankedSkills.Count < hitDiceQuantity + skillPointsPerDie)
+            {
+                var skill = new Skill($"skill {unrankedSkills.Count + 1}", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true };
+                unrankedSkills.Add((skill));
+            };
+
+            var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);
+            var totalRanks = skills.Sum(s => s.Ranks);
+
+            Assert.That(totalRanks, Is.EqualTo(skillPoints));
+        }
+
+        [TestCase(1, 1, 1)]
+        [TestCase(2, 1, 2)]
+        [TestCase(3, 1, 3)]
+        [TestCase(4, 1, 4)]
+        [TestCase(5, 1, 5)]
+        [TestCase(6, 1, 6)]
+        [TestCase(7, 1, 7)]
+        [TestCase(8, 1, 8)]
+        [TestCase(9, 1, 9)]
+        [TestCase(10, 1, 10)]
+        [TestCase(11, 1, 11)]
+        [TestCase(12, 1, 12)]
+        [TestCase(13, 1, 13)]
+        [TestCase(14, 1, 14)]
+        [TestCase(15, 1, 15)]
+        [TestCase(16, 1, 16)]
+        [TestCase(17, 1, 17)]
+        [TestCase(18, 1, 18)]
+        [TestCase(19, 1, 19)]
+        [TestCase(20, 1, 20)]
+        [TestCase(1, 2, 2)]
+        [TestCase(2, 2, 4)]
+        [TestCase(3, 2, 6)]
+        [TestCase(4, 2, 8)]
+        [TestCase(5, 2, 10)]
+        [TestCase(6, 2, 12)]
+        [TestCase(7, 2, 14)]
+        [TestCase(8, 2, 16)]
+        [TestCase(9, 2, 18)]
+        [TestCase(10, 2, 20)]
+        [TestCase(11, 2, 22)]
+        [TestCase(12, 2, 24)]
+        [TestCase(13, 2, 26)]
+        [TestCase(14, 2, 28)]
+        [TestCase(15, 2, 30)]
+        [TestCase(16, 2, 32)]
+        [TestCase(17, 2, 34)]
+        [TestCase(18, 2, 36)]
+        [TestCase(19, 2, 38)]
+        [TestCase(20, 2, 40)]
+        [TestCase(1, 8, 8)]
+        [TestCase(2, 8, 16)]
+        [TestCase(3, 8, 24)]
+        [TestCase(4, 8, 32)]
+        [TestCase(5, 8, 40)]
+        [TestCase(6, 8, 48)]
+        [TestCase(7, 8, 56)]
+        [TestCase(8, 8, 64)]
+        [TestCase(9, 8, 72)]
+        [TestCase(10, 8, 80)]
+        [TestCase(11, 8, 88)]
+        [TestCase(12, 8, 96)]
+        [TestCase(13, 8, 104)]
+        [TestCase(14, 8, 112)]
+        [TestCase(15, 8, 120)]
+        [TestCase(16, 8, 128)]
+        [TestCase(17, 8, 136)]
+        [TestCase(18, 8, 144)]
+        [TestCase(19, 8, 152)]
+        [TestCase(20, 8, 160)]
+        public void ApplySkillPointsAsRanks_SkillPointsDeterminedByHitDice_NotFirstHitDie(int hitDiceQuantity, int skillPointsPerDie, int skillPoints)
+        {
+            hitPoints.HitDice[0].Quantity = hitDiceQuantity;
+            creatureTypeSkillPoints = skillPointsPerDie;
+
+            var unrankedSkills = new List<Skill>();
+            while (unrankedSkills.Count < hitDiceQuantity + skillPointsPerDie)
+            {
+                var skill = new Skill($"skill {unrankedSkills.Count + 1}", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true };
+                unrankedSkills.Add((skill));
+            };
+
+            var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, false);
+            var totalRanks = skills.Sum(s => s.Ranks);
+
+            Assert.That(totalRanks, Is.EqualTo(skillPoints));
+        }
+
+        [TestCase(0, 2, 0)]
+        [TestCase(1, 2, 4)]
+        [TestCase(2, 2, 5)]
+        [TestCase(3, 2, 6)]
+        [TestCase(4, 2, 7)]
+        [TestCase(5, 2, 8)]
+        [TestCase(6, 2, 9)]
+        [TestCase(7, 2, 10)]
+        [TestCase(8, 2, 11)]
+        [TestCase(9, 2, 12)]
+        [TestCase(10, 2, 13)]
+        [TestCase(11, 2, 14)]
+        [TestCase(12, 2, 15)]
+        [TestCase(13, 2, 16)]
+        [TestCase(14, 2, 17)]
+        [TestCase(15, 2, 18)]
+        [TestCase(16, 2, 19)]
+        [TestCase(17, 2, 20)]
+        [TestCase(18, 2, 21)]
+        [TestCase(19, 2, 22)]
+        [TestCase(20, 2, 23)]
+        [TestCase(0, 8, 0)]
+        [TestCase(1, 8, 4)]
+        [TestCase(2, 8, 5)]
+        [TestCase(3, 8, 6)]
+        [TestCase(4, 8, 7)]
+        [TestCase(5, 8, 8)]
+        [TestCase(6, 8, 9)]
+        [TestCase(7, 8, 10)]
+        [TestCase(8, 8, 11)]
+        [TestCase(9, 8, 12)]
+        [TestCase(10, 8, 13)]
+        [TestCase(11, 8, 14)]
+        [TestCase(12, 8, 15)]
+        [TestCase(13, 8, 16)]
+        [TestCase(14, 8, 17)]
+        [TestCase(15, 8, 18)]
+        [TestCase(16, 8, 19)]
+        [TestCase(17, 8, 20)]
+        [TestCase(18, 8, 21)]
+        [TestCase(19, 8, 22)]
+        [TestCase(20, 8, 23)]
+        [TestCase(0, 10, 0)]
+        [TestCase(1, 10, 8)]
+        [TestCase(2, 10, 10)]
+        [TestCase(3, 10, 12)]
+        [TestCase(4, 10, 14)]
+        [TestCase(5, 10, 16)]
+        [TestCase(6, 10, 18)]
+        [TestCase(7, 10, 20)]
+        [TestCase(8, 10, 22)]
+        [TestCase(9, 10, 24)]
+        [TestCase(10, 10, 26)]
+        [TestCase(11, 10, 28)]
+        [TestCase(12, 10, 30)]
+        [TestCase(13, 10, 32)]
+        [TestCase(14, 10, 34)]
+        [TestCase(15, 10, 36)]
+        [TestCase(16, 10, 38)]
+        [TestCase(17, 10, 40)]
+        [TestCase(18, 10, 42)]
+        [TestCase(19, 10, 44)]
+        [TestCase(20, 10, 46)]
+        [TestCase(0, 12, 0)]
+        [TestCase(1, 12, 12)]
+        [TestCase(2, 12, 15)]
+        [TestCase(3, 12, 18)]
+        [TestCase(4, 12, 21)]
+        [TestCase(5, 12, 24)]
+        [TestCase(6, 12, 27)]
+        [TestCase(7, 12, 30)]
+        [TestCase(8, 12, 33)]
+        [TestCase(9, 12, 36)]
+        [TestCase(10, 12, 39)]
+        [TestCase(11, 12, 42)]
+        [TestCase(12, 12, 45)]
+        [TestCase(13, 12, 48)]
+        [TestCase(14, 12, 51)]
+        [TestCase(15, 12, 54)]
+        [TestCase(16, 12, 57)]
+        [TestCase(17, 12, 60)]
+        [TestCase(18, 12, 63)]
+        [TestCase(19, 12, 66)]
+        [TestCase(20, 12, 69)]
+        [TestCase(0, 18, 0)]
+        [TestCase(1, 18, 24)]
+        [TestCase(2, 18, 30)]
+        [TestCase(3, 18, 36)]
+        [TestCase(4, 18, 42)]
+        [TestCase(5, 18, 48)]
+        [TestCase(6, 18, 54)]
+        [TestCase(7, 18, 60)]
+        [TestCase(8, 18, 66)]
+        [TestCase(9, 18, 72)]
+        [TestCase(10, 18, 78)]
+        [TestCase(11, 18, 84)]
+        [TestCase(12, 18, 90)]
+        [TestCase(13, 18, 96)]
+        [TestCase(14, 18, 102)]
+        [TestCase(15, 18, 108)]
+        [TestCase(16, 18, 114)]
+        [TestCase(17, 18, 120)]
+        [TestCase(18, 18, 126)]
+        [TestCase(19, 18, 132)]
+        [TestCase(20, 18, 138)]
+        public void ApplySkillPointsAsRanks_ApplyIntelligenceBonusToSkillPoints(int hitDie, int intelligence, int skillPoints)
+        {
+            hitPoints.HitDice[0].Quantity = hitDie;
+            creatureTypeSkillPoints = 2;
+            abilities[AbilityConstants.Intelligence].BaseScore = intelligence;
+
+            var unrankedSkills = new List<Skill>();
+            while (unrankedSkills.Count < hitDie + intelligence)
+            {
+                var skill = new Skill($"skill {unrankedSkills.Count + 1}", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true };
+                unrankedSkills.Add((skill));
+            };
+
+            var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);
+            var totalRanks = skills.Sum(s => s.Ranks);
+
+            Assert.That(totalRanks, Is.EqualTo(skillPoints));
+        }
+
+        [Test]
+        public void ApplySkillPointsAsRanks_CreaturesWithoutIntelligenceReceiveNoRanksForSkills()
+        {
+            abilities[AbilityConstants.Intelligence].BaseScore = 0;
+            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
+
+            var unrankedSkills = new[]
+            {
+                new Skill("skill 1", abilities[AbilityConstants.Constitution], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 2", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 3", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 4", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+            };
+
+            creatureTypeSkillPoints = 10;
+            hitPoints.HitDice[0].Quantity = 10;
+
+            var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);
+            Assert.That(skills, Is.Not.Empty);
+            Assert.That(skills.Count, Is.EqualTo(4));
+
+            var ranks = skills.Select(s => s.Ranks);
+            Assert.That(ranks, Is.All.Zero);
+        }
     }
 }

@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
+using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
@@ -77,6 +78,10 @@ namespace DnDGen.CreatureGen.Templates
             //Armor Class
             UpdateCreatureArmorClass(creature);
 
+            //INFO: Depends on special qualities + feats
+            //Initiative Bonus
+            UpdateCreatureInitiativeBonus(creature);
+
             //Attacks
             UpdateCreatureAttacks(creature);
 
@@ -91,6 +96,16 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Type.Name,
             });
             creature.Type.Name = CreatureConstants.Types.Undead;
+        }
+
+        private void UpdateCreatureInitiativeBonus(Creature creature)
+        {
+            var allFeats = creature.SpecialQualities.Union(creature.Feats);
+            var improvedInitiative = allFeats.FirstOrDefault(f => f.Name == FeatConstants.Initiative_Improved);
+            if (improvedInitiative != null)
+            {
+                creature.InitiativeBonus = improvedInitiative.Power;
+            }
         }
 
         private void UpdateCreatureHitPoints(Creature creature)
@@ -276,8 +291,17 @@ namespace DnDGen.CreatureGen.Templates
             await Task.WhenAll(tasks);
             tasks.Clear();
 
+            //INFO: Depends on special qualities + feats
+            //Initiative Bonus
+            var initiativeTask = Task.Run(() => UpdateCreatureInitiativeBonus(creature));
+            tasks.Add(initiativeTask);
+
             //Attacks
-            await Task.Run(() => UpdateCreatureAttacks(creature));
+            var attackTask = Task.Run(() => UpdateCreatureAttacks(creature));
+            tasks.Add(attackTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
 
             return creature;
         }

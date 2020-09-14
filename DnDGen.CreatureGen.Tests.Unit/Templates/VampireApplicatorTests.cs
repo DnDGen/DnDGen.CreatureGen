@@ -509,18 +509,124 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_RecomputeInitiativeBonus()
         {
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Vampire,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            var newQualities = new[]
+            {
+                new Feat { Name = "vampire quality 1" },
+                new Feat { Name = "vampire quality 2" },
+                new Feat { Name = FeatConstants.Initiative_Improved, Power = 783 }
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.Vampire,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    new Alignment { Lawfulness = baseCreature.Alignment.Lawfulness, Goodness = AlignmentConstants.Evil }))
+                .Returns(newQualities);
+
+            var attacksWithBonuses = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.Is<IEnumerable<Feat>>(f =>
+                        f.IsEquivalentTo(baseCreature.Feats
+                            .Union(baseCreature.SpecialQualities)
+                            .Union(newQualities))),
+                    baseCreature.Abilities))
+                .Returns(attacksWithBonuses);
+
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.Fail("not yet written");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(783));
         }
 
         //INFO: Improve Initiative is one of the bonus feats for vampires
         [Test]
         public async Task ApplyToAsync_RecomputeInitiativeBonus()
         {
+            var newAttacks = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Vampire,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(newAttacks);
+
+            var newQualities = new[]
+            {
+                new Feat { Name = "vampire quality 1" },
+                new Feat { Name = "vampire quality 2" },
+                new Feat { Name = FeatConstants.Initiative_Improved, Power = 783 }
+            };
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    CreatureConstants.Templates.Vampire,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    baseCreature.Skills,
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    new Alignment { Lawfulness = baseCreature.Alignment.Lawfulness, Goodness = AlignmentConstants.Evil }))
+                .Returns(newQualities);
+
+            var attacksWithBonuses = new[]
+            {
+                new Attack { Name = "special attack 1", IsSpecial = true },
+                new Attack { Name = "special attack 2", IsSpecial = true },
+                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.Is<IEnumerable<Feat>>(f =>
+                        f.IsEquivalentTo(baseCreature.Feats
+                            .Union(baseCreature.SpecialQualities)
+                            .Union(newQualities))),
+                    baseCreature.Abilities))
+                .Returns(attacksWithBonuses);
+
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.Fail("not yet written");
+            Assert.That(creature.InitiativeBonus, Is.EqualTo(783));
         }
 
         [Test]
