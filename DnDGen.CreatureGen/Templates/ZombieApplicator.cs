@@ -28,6 +28,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IFeatsGenerator featsGenerator;
         private readonly ISavesGenerator savesGenerator;
         private readonly IEnumerable<string> creatureTypes;
+        private readonly IHitPointsGenerator hitPointsGenerator;
 
         public ZombieApplicator(
             ICollectionSelector collectionSelector,
@@ -35,7 +36,8 @@ namespace DnDGen.CreatureGen.Templates
             Dice dice,
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
-            ISavesGenerator savesGenerator)
+            ISavesGenerator savesGenerator,
+            IHitPointsGenerator hitPointsGenerator)
         {
             this.collectionSelector = collectionSelector;
             this.adjustmentSelector = adjustmentSelector;
@@ -43,6 +45,7 @@ namespace DnDGen.CreatureGen.Templates
             this.attacksGenerator = attacksGenerator;
             this.featsGenerator = featsGenerator;
             this.savesGenerator = savesGenerator;
+            this.hitPointsGenerator = hitPointsGenerator;
 
             creatureTypes = new[]
             {
@@ -98,6 +101,10 @@ namespace DnDGen.CreatureGen.Templates
             UpdateCreatureSpecialQualitiesAndFeats(creature);
 
             //INFO: Depends on type, hit points, abilities, special qualities + feats
+            //Hit Points
+            UpdateCreatureHitPointsWithSpecialQualities(creature);
+
+            //INFO: Depends on type, hit points, abilities, special qualities + feats
             //Attacks
             UpdateCreatureAttacks(creature);
 
@@ -144,6 +151,11 @@ namespace DnDGen.CreatureGen.Templates
 
             creature.HitPoints.RollTotal(dice);
             creature.HitPoints.RollDefaultTotal(dice);
+        }
+
+        private void UpdateCreatureHitPointsWithSpecialQualities(Creature creature)
+        {
+            creature.HitPoints = hitPointsGenerator.RegenerateWith(creature.HitPoints, creature.SpecialQualities);
         }
 
         private void UpdateCreatureAbilities(Creature creature)
@@ -376,6 +388,14 @@ namespace DnDGen.CreatureGen.Templates
             //Special Qualities
             var qualityTask = Task.Run(() => UpdateCreatureSpecialQualitiesAndFeats(creature));
             tasks.Add(qualityTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
+
+            //INFO: Depends on type, hit points, abilities, special qualities + feats
+            //Hit Points
+            var hitPointWithQualitiesTask = Task.Run(() => UpdateCreatureHitPointsWithSpecialQualities(creature));
+            tasks.Add(hitPointWithQualitiesTask);
 
             await Task.WhenAll(tasks);
             tasks.Clear();

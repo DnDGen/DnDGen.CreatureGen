@@ -182,6 +182,8 @@ namespace DnDGen.CreatureGen.Creatures
                     Lycanthrope_Tiger_Natural,
                     Lycanthrope_Wolf_Afflicted,
                     Lycanthrope_Wolf_Natural,
+                    Lycanthrope_Wolf_Dire_Afflicted,
+                    Lycanthrope_Wolf_Dire_Natural,
                     Zombie,
                 };
             }

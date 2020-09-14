@@ -38,6 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Attack[] zombieAttacks;
         private IEnumerable<Feat> zombieQualities;
         private int zombieBaseAttack;
+        private Mock<IHitPointsGenerator> mockHitPointsGenerator;
 
         [SetUp]
         public void Setup()
@@ -48,6 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockSavesGenerator = new Mock<ISavesGenerator>();
+            mockHitPointsGenerator = new Mock<IHitPointsGenerator>();
 
             applicator = new ZombieApplicator(
                 mockCollectionSelector.Object,
@@ -55,7 +57,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockDice.Object,
                 mockAttacksGenerator.Object,
                 mockFeatsGenerator.Object,
-                mockSavesGenerator.Object);
+                mockSavesGenerator.Object,
+                mockHitPointsGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -97,7 +100,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(g => g.GenerateBaseAttackBonus(
                     It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
                     baseCreature.HitPoints))
-                .Returns(42);
+                .Returns(zombieBaseAttack);
 
             zombieBaseAttack = 42;
 
@@ -133,6 +136,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                             .Union(zombieQualities))),
                     baseCreature.Abilities))
                 .Returns(zombieAttacks);
+
+            mockHitPointsGenerator
+                .Setup(g => g.RegenerateWith(baseCreature.HitPoints, zombieQualities))
+                .Returns(baseCreature.HitPoints);
         }
 
         [TestCase(CreatureConstants.Types.Aberration, true)]
@@ -1839,22 +1846,48 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_HitDiceQuantity_RerollWithQualities()
         {
+            var updatedHitPoints = new HitPoints();
+            updatedHitPoints.Bonus = 600;
+            updatedHitPoints.Constitution = baseCreature.HitPoints.Constitution;
+            updatedHitPoints.HitDice.AddRange(baseCreature.HitPoints.HitDice);
+
+            mockHitPointsGenerator
+                .Setup(g => g.RegenerateWith(baseCreature.HitPoints, zombieQualities))
+                .Returns(updatedHitPoints);
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateBaseAttackBonus(
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    updatedHitPoints))
+                .Returns(zombieBaseAttack);
+
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 600));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(90210 + 600));
-            Assert.That(creature.HitPoints.Bonus, Is.EqualTo(600));
+            Assert.That(creature.HitPoints, Is.EqualTo(updatedHitPoints));
         }
 
         //INFO: Since Zombies get Toughness as a bonus feat
         [Test]
         public async Task ApplyToAsync_HitDiceQuantity_RerollWithQualities()
         {
+            var updatedHitPoints = new HitPoints();
+            updatedHitPoints.Bonus = 600;
+            updatedHitPoints.Constitution = baseCreature.HitPoints.Constitution;
+            updatedHitPoints.HitDice.AddRange(baseCreature.HitPoints.HitDice);
+
+            mockHitPointsGenerator
+                .Setup(g => g.RegenerateWith(baseCreature.HitPoints, zombieQualities))
+                .Returns(updatedHitPoints);
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateBaseAttackBonus(
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Undead),
+                    updatedHitPoints))
+                .Returns(zombieBaseAttack);
+
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 600));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(90210 + 600));
-            Assert.That(creature.HitPoints.Bonus, Is.EqualTo(600));
+            Assert.That(creature.HitPoints, Is.EqualTo(updatedHitPoints));
         }
     }
 }
