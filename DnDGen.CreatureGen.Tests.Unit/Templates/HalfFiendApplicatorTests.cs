@@ -609,7 +609,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var newQualities = new[]
@@ -690,7 +691,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var newQualities = new[]
@@ -1170,7 +1172,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var newQualities = new[]
@@ -1253,7 +1256,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var creature = applicator.ApplyTo(baseCreature);
@@ -1272,7 +1276,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         && !ss.Any()),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(Enumerable.Empty<Skill>());
 
             var creature = applicator.ApplyTo(baseCreature);
@@ -1656,7 +1661,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var newQualities = new[]
@@ -1739,7 +1745,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var creature = await applicator.ApplyToAsync(baseCreature);
@@ -1758,7 +1765,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         && !ss.Any()),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(Enumerable.Empty<Skill>());
 
             var creature = await applicator.ApplyToAsync(baseCreature);

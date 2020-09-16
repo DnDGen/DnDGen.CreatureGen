@@ -1374,10 +1374,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                         && ss.Any(s => s.Name == SkillConstants.Special.ControlShape
                             && s.BaseAbility == baseCreature.Abilities[AbilityConstants.Wisdom]
                             && s.ClassSkill
-                            && s.RankCap == baseCreature.HitPoints.HitDice[0].Quantity + 3)),
-                    baseCreature.HitPoints,
-                    baseCreature.Type,
-                    baseCreature.Abilities))
+                            && s.RankCap == baseCreature.HitPoints.RoundedHitDiceQuantity + 3)),
+                    animalHitPoints,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities,
+                    false))
                 .Returns(rankedSkills);
 
             var creature = applicators[template].ApplyTo(baseCreature);
@@ -1437,9 +1438,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.ApplySkillPointsAsRanks(
                     It.Is<IEnumerable<Skill>>(ss => ss.All(s => s.Ranks == 0)
                         && !ss.Any(s => s.Name == SkillConstants.Special.ControlShape)),
-                    baseCreature.HitPoints,
-                    baseCreature.Type,
-                    baseCreature.Abilities))
+                    animalHitPoints,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities,
+                    false))
                 .Returns(rankedSkills);
 
             var creature = applicators[template].ApplyTo(baseCreature);

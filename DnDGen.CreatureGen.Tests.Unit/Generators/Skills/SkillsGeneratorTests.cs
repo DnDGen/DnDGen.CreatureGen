@@ -3751,45 +3751,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             var unrankedSkills = new[]
             {
-                new Skill("skill 1", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 2", abilities[AbilityConstants.Constitution], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
-                new Skill("skill 3", abilities[AbilityConstants.Dexterity], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 4", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
-                new Skill("skill 5", abilities[AbilityConstants.Strength], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 6", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("creature skill 1", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("untrained skill 1", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("creature skill 2", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("untrained skill 2", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("creature skill 3", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("untrained skill 3", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
             };
 
             var index = 0;
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => sk.ClassSkill)), It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => !sk.ClassSkill)), null, null))
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => sk.ClassSkill)),
+                    It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => !sk.ClassSkill)),
+                    null,
+                    null))
                 .Returns((IEnumerable<Skill> c, IEnumerable<Skill> u, IEnumerable<Skill> r, IEnumerable<Skill> v) => c.ElementAt(index++ % c.Count()));
 
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true).ToArray();
 
-            Assert.That(skills[0].Name, Is.EqualTo("untrained skill 3"));
-            Assert.That(skills[0].ClassSkill, Is.False);
-            Assert.That(skills[0].Ranks, Is.Zero);
-            Assert.That(skills[0].EffectiveRanks, Is.Zero);
-            Assert.That(skills[1].Name, Is.EqualTo("untrained skill 2"));
+            Assert.That(skills[0].Name, Is.EqualTo("creature skill 1"));
+            Assert.That(skills[0].ClassSkill, Is.True);
+            Assert.That(skills[0].Ranks, Is.EqualTo(2));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[1].ClassSkill, Is.False);
             Assert.That(skills[1].Ranks, Is.Zero);
             Assert.That(skills[1].EffectiveRanks, Is.Zero);
-            Assert.That(skills[2].Name, Is.EqualTo("untrained skill 1"));
-            Assert.That(skills[2].ClassSkill, Is.False);
-            Assert.That(skills[2].Ranks, Is.Zero);
-            Assert.That(skills[2].EffectiveRanks, Is.Zero);
-            Assert.That(skills[3].Name, Is.EqualTo("creature skill 3"));
-            Assert.That(skills[3].ClassSkill, Is.True);
-            Assert.That(skills[3].Ranks, Is.EqualTo(3));
-            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(3));
-            Assert.That(skills[4].Name, Is.EqualTo("creature skill 2"));
+            Assert.That(skills[2].Name, Is.EqualTo("creature skill 2"));
+            Assert.That(skills[2].ClassSkill, Is.True);
+            Assert.That(skills[2].Ranks, Is.EqualTo(3));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(3));
+            Assert.That(skills[3].Name, Is.EqualTo("untrained skill 2"));
+            Assert.That(skills[3].ClassSkill, Is.False);
+            Assert.That(skills[3].Ranks, Is.Zero);
+            Assert.That(skills[3].EffectiveRanks, Is.Zero);
+            Assert.That(skills[4].Name, Is.EqualTo("creature skill 3"));
             Assert.That(skills[4].ClassSkill, Is.True);
             Assert.That(skills[4].Ranks, Is.EqualTo(3));
             Assert.That(skills[4].EffectiveRanks, Is.EqualTo(3));
-            Assert.That(skills[5].Name, Is.EqualTo("creature skill 1"));
-            Assert.That(skills[5].ClassSkill, Is.True);
-            Assert.That(skills[5].Ranks, Is.EqualTo(2));
-            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[5].Name, Is.EqualTo("untrained skill 3"));
+            Assert.That(skills[5].ClassSkill, Is.False);
+            Assert.That(skills[5].Ranks, Is.Zero);
+            Assert.That(skills[5].EffectiveRanks, Is.Zero);
             Assert.That(skills.Length, Is.EqualTo(6));
         }
 
@@ -3798,45 +3802,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             var unrankedSkills = new[]
             {
-                new Skill("skill 1", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 2", abilities[AbilityConstants.Constitution], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
-                new Skill("skill 3", abilities[AbilityConstants.Dexterity], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 4", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
-                new Skill("skill 5", abilities[AbilityConstants.Strength], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 6", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("creature skill 1", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("untrained skill 1", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("creature skill 2", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("untrained skill 2", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("creature skill 3", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("untrained skill 3", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
             };
 
             var index = 0;
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => sk.ClassSkill)), It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => !sk.ClassSkill)), null, null))
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => sk.ClassSkill)),
+                    It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => !sk.ClassSkill)),
+                    null,
+                    null))
                 .Returns((IEnumerable<Skill> c, IEnumerable<Skill> u, IEnumerable<Skill> r, IEnumerable<Skill> v) => u.ElementAt(index++ % u.Count()));
 
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true).ToArray();
 
-            Assert.That(skills[0].Name, Is.EqualTo("untrained skill 3"));
-            Assert.That(skills[0].ClassSkill, Is.False);
-            Assert.That(skills[0].Ranks, Is.EqualTo(3));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(1.5));
-            Assert.That(skills[1].Name, Is.EqualTo("untrained skill 2"));
+            Assert.That(skills[0].Name, Is.EqualTo("creature skill 1"));
+            Assert.That(skills[0].ClassSkill, Is.True);
+            Assert.That(skills[0].Ranks, Is.Zero);
+            Assert.That(skills[0].EffectiveRanks, Is.Zero);
+            Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[1].ClassSkill, Is.False);
-            Assert.That(skills[1].Ranks, Is.EqualTo(3));
-            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(1.5));
-            Assert.That(skills[2].Name, Is.EqualTo("untrained skill 1"));
-            Assert.That(skills[2].ClassSkill, Is.False);
-            Assert.That(skills[2].Ranks, Is.EqualTo(2));
-            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(1));
-            Assert.That(skills[3].Name, Is.EqualTo("creature skill 3"));
-            Assert.That(skills[3].ClassSkill, Is.True);
-            Assert.That(skills[3].Ranks, Is.Zero);
-            Assert.That(skills[3].EffectiveRanks, Is.Zero);
-            Assert.That(skills[4].Name, Is.EqualTo("creature skill 2"));
+            Assert.That(skills[1].Ranks, Is.EqualTo(2));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(1));
+            Assert.That(skills[2].Name, Is.EqualTo("creature skill 2"));
+            Assert.That(skills[2].ClassSkill, Is.True);
+            Assert.That(skills[2].Ranks, Is.Zero);
+            Assert.That(skills[2].EffectiveRanks, Is.Zero);
+            Assert.That(skills[3].Name, Is.EqualTo("untrained skill 2"));
+            Assert.That(skills[3].ClassSkill, Is.False);
+            Assert.That(skills[3].Ranks, Is.EqualTo(3));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(1.5));
+            Assert.That(skills[4].Name, Is.EqualTo("creature skill 3"));
             Assert.That(skills[4].ClassSkill, Is.True);
             Assert.That(skills[4].Ranks, Is.Zero);
             Assert.That(skills[4].EffectiveRanks, Is.Zero);
-            Assert.That(skills[5].Name, Is.EqualTo("creature skill 1"));
-            Assert.That(skills[5].ClassSkill, Is.True);
-            Assert.That(skills[5].Ranks, Is.Zero);
-            Assert.That(skills[5].EffectiveRanks, Is.Zero);
+            Assert.That(skills[5].Name, Is.EqualTo("untrained skill 3"));
+            Assert.That(skills[5].ClassSkill, Is.False);
+            Assert.That(skills[5].Ranks, Is.EqualTo(3));
+            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(1.5));
             Assert.That(skills.Length, Is.EqualTo(6));
         }
 
@@ -3845,40 +3853,40 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             var unrankedSkills = new[]
             {
-                new Skill("skill 1", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 2", abilities[AbilityConstants.Constitution], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
-                new Skill("skill 3", abilities[AbilityConstants.Dexterity], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 4", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
-                new Skill("skill 5", abilities[AbilityConstants.Strength], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 6", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("creature skill 1", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("untrained skill 1", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("creature skill 2", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("untrained skill 2", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("creature skill 3", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("untrained skill 3", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
             };
 
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true).ToArray();
 
-            Assert.That(skills[0].Name, Is.EqualTo("untrained skill 3"));
-            Assert.That(skills[0].ClassSkill, Is.False);
+            Assert.That(skills[0].Name, Is.EqualTo("creature skill 1"));
+            Assert.That(skills[0].ClassSkill, Is.True);
             Assert.That(skills[0].Ranks, Is.EqualTo(1));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(.5));
-            Assert.That(skills[1].Name, Is.EqualTo("untrained skill 2"));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(1));
+            Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[1].ClassSkill, Is.False);
             Assert.That(skills[1].Ranks, Is.EqualTo(1));
             Assert.That(skills[1].EffectiveRanks, Is.EqualTo(.5));
-            Assert.That(skills[2].Name, Is.EqualTo("untrained skill 1"));
-            Assert.That(skills[2].ClassSkill, Is.False);
-            Assert.That(skills[2].Ranks, Is.EqualTo(1));
-            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(.5));
-            Assert.That(skills[3].Name, Is.EqualTo("creature skill 3"));
-            Assert.That(skills[3].ClassSkill, Is.True);
-            Assert.That(skills[3].Ranks, Is.EqualTo(2));
-            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(2));
-            Assert.That(skills[4].Name, Is.EqualTo("creature skill 2"));
+            Assert.That(skills[2].Name, Is.EqualTo("creature skill 2"));
+            Assert.That(skills[2].ClassSkill, Is.True);
+            Assert.That(skills[2].Ranks, Is.EqualTo(2));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[3].Name, Is.EqualTo("untrained skill 2"));
+            Assert.That(skills[3].ClassSkill, Is.False);
+            Assert.That(skills[3].Ranks, Is.EqualTo(1));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(.5));
+            Assert.That(skills[4].Name, Is.EqualTo("creature skill 3"));
             Assert.That(skills[4].ClassSkill, Is.True);
             Assert.That(skills[4].Ranks, Is.EqualTo(2));
             Assert.That(skills[4].EffectiveRanks, Is.EqualTo(2));
-            Assert.That(skills[5].Name, Is.EqualTo("creature skill 1"));
-            Assert.That(skills[5].ClassSkill, Is.True);
+            Assert.That(skills[5].Name, Is.EqualTo("untrained skill 3"));
+            Assert.That(skills[5].ClassSkill, Is.False);
             Assert.That(skills[5].Ranks, Is.EqualTo(1));
-            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(1));
+            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(.5));
             Assert.That(skills.Length, Is.EqualTo(6));
         }
 
@@ -3888,12 +3896,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkillPoints = 3;
             var unrankedSkills = new[]
             {
-                new Skill("skill 1", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 2", abilities[AbilityConstants.Constitution], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
-                new Skill("skill 3", abilities[AbilityConstants.Dexterity], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 4", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
-                new Skill("skill 5", abilities[AbilityConstants.Strength], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
-                new Skill("skill 6", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 1", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
+                new Skill("skill 2", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
             };
 
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);
@@ -4190,10 +4194,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var unrankedSkills = new[]
             {
-                new Skill("skill 1", abilities[AbilityConstants.Constitution], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 1", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
                 new Skill("skill 2", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
-                new Skill("skill 3", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
-                new Skill("skill 4", abilities[AbilityConstants.Wisdom], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 3", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
+                new Skill("skill 4", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
             };
 
             creatureTypeSkillPoints = 10;

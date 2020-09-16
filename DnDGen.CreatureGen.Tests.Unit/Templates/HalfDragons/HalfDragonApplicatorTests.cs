@@ -665,7 +665,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var newQualities = new[]
@@ -941,7 +942,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var newQualities = new[]
@@ -990,7 +992,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var creature = applicators[template].ApplyTo(baseCreature);
@@ -1009,7 +1012,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                         && !ss.Any()),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(Enumerable.Empty<Skill>());
 
             var creature = applicators[template].ApplyTo(baseCreature);
@@ -1350,7 +1354,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var newQualities = new[]
@@ -1576,7 +1581,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var newQualities = new[]
@@ -1625,7 +1631,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(newSkills);
 
             var creature = await applicators[template].ApplyToAsync(baseCreature);
@@ -1644,7 +1651,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                         && !ss.Any()),
                     baseCreature.HitPoints,
                     baseCreature.Type,
-                    baseCreature.Abilities))
+                    baseCreature.Abilities,
+                    true))
                 .Returns(Enumerable.Empty<Skill>());
 
             var creature = await applicators[template].ApplyToAsync(baseCreature);
