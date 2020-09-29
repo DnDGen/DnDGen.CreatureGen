@@ -1026,7 +1026,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(damageReduction.Power, Is.EqualTo(2));
         }
 
-        [TestCaseSource("AbilityAdjustments")]
+        [TestCaseSource(nameof(AbilityAdjustments))]
         public void CreatureIntelligenceAdvancedToAtLeast3(int raceAdjust, int baseScore, int advanced, int adjusted)
         {
             baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = baseScore;
@@ -1116,7 +1116,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Zero);
         }
 
-        [TestCaseSource("ChallengeRatingAdjustments")]
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public void ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = hitDiceQuantity;
@@ -2053,7 +2053,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(damageReduction.Power, Is.EqualTo(2));
         }
 
-        [TestCaseSource("AbilityAdjustments")]
+        [TestCaseSource(nameof(AbilityAdjustments))]
         public async Task ApplyToAsync_CreatureIntelligenceAdvancedToAtLeast3(int raceAdjust, int baseScore, int advanced, int adjusted)
         {
             baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = baseScore;
@@ -2121,7 +2121,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Zero);
         }
 
-        [TestCaseSource("ChallengeRatingAdjustments")]
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public async Task ApplyToAsync_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = hitDiceQuantity;

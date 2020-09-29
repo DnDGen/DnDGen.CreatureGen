@@ -35,7 +35,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource("AbilityAdjustmentsTestData")]
+        [TestCaseSource(nameof(AbilityAdjustmentsTestData))]
         public void AbilityAdjustment(string name, Dictionary<string, int> typesAndAmounts)
         {
             Assert.That(typesAndAmounts, Is.Not.Empty, $"{name}'s test was not set up");
@@ -4049,7 +4049,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 }
             }
         }
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void HaveAtLeast1Ability(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -4058,7 +4059,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             Assert.That(abilities, Is.Not.Empty, creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void HaveUniqueAbilities(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -4070,7 +4071,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             Assert.That(abilityNames, Is.Unique);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllAbilityAdjustmentsAreMultiplesOf2(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -4084,7 +4085,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllAbilityAdjustmentsAreRealAbilities(string creature)
         {
             var allAbilities = new[]
@@ -4106,7 +4107,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             Assert.That(abilityNames, Is.SubsetOf(allAbilities), creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void DoNotHaveConstitution(string creature)
         {
             var typesWithoutConstitution = new[] { CreatureConstants.Types.Construct, CreatureConstants.Types.Undead };
@@ -4120,7 +4121,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void DoNotHaveStrength(string creature)
         {
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
@@ -4133,7 +4134,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void DoNotHaveIntelligence(string creature)
         {
             var typesWithoutIntelligence = new[] { CreatureConstants.Types.Ooze, CreatureConstants.Types.Vermin };
@@ -4147,7 +4148,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AnimalsHaveLowIntelligence(string creature)
         {
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
@@ -4163,7 +4164,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void HaveAllAbilities(string creature)
         {
             var typesWithAllAbilities = new[]

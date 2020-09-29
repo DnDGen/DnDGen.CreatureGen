@@ -205,7 +205,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns((string t) => new Alignment { Lawfulness = $"{t}y", Goodness = "scaley" });
         }
 
-        [TestCaseSource("CreatureTypeCompatible")]
+        [TestCaseSource(nameof(CreatureTypeCompatible))]
         public void IsCompatible_BasedOnCreatureType(string template, string creatureType, bool compatible)
         {
             mockCollectionSelector
@@ -249,7 +249,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void IsCompatible_CannotBeIncorporeal(string template)
         {
             mockCollectionSelector
@@ -260,7 +260,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(isCompatible, Is.False);
         }
 
-        [TestCaseSource("CreatureTypeAdjusted")]
+        [TestCaseSource(nameof(CreatureTypeAdjusted))]
         public void ApplyTo_CreatureTypeIsAdjusted(string template, string original)
         {
             baseCreature.Type.Name = original;
@@ -310,7 +310,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource("HitDieIncreased")]
+        [TestCaseSource(nameof(HitDieIncreased))]
         public void ApplyTo_HitDieIncreases(string template, int original, int increased)
         {
             baseCreature.HitPoints.HitDice[0].HitDie = original;
@@ -363,7 +363,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource("HitDieIncreased")]
+        [TestCaseSource(nameof(HitDieIncreased))]
         public void ApplyTo_HitDieIncreases_WithBoostedConstitution(string template, int original, int increased)
         {
             baseCreature.HitPoints.HitDice[0].HitDie = original;
@@ -393,7 +393,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(96 + baseCreature.HitPoints.RoundedHitDiceQuantity * 17));
         }
 
-        [TestCaseSource("GainFlySpeed")]
+        [TestCaseSource(nameof(GainFlySpeed))]
         public void ApplyTo_GainFlySpeed(string template, string size, int landSpeed, int flySpeed)
         {
             baseCreature.Size = size;
@@ -450,7 +450,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource("DoNotGainFlySpeed")]
+        [TestCaseSource(nameof(DoNotGainFlySpeed))]
         public void ApplyTo_DoNotGainFlySpeed(string template, string size)
         {
             baseCreature.Size = size;
@@ -484,7 +484,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_AdjustAbilities(string template)
         {
             var creature = applicators[template].ApplyTo(baseCreature);
@@ -502,7 +502,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(2));
         }
 
-        [TestCaseSource("AbilitiesImprove_DoNotImproveMissingAbility")]
+        [TestCaseSource(nameof(AbilitiesImprove_DoNotImproveMissingAbility))]
         public void ApplyTo_AbilitiesImprove_DoNotImproveMissingAbility(string template, string ability)
         {
             baseCreature.Abilities[ability].BaseScore = 0;
@@ -537,7 +537,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainNaturalArmor(string template)
         {
             var creature = applicators[template].ApplyTo(baseCreature);
@@ -549,7 +549,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bonus.IsConditional, Is.False);
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_ImproveNaturalArmor(string template)
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
@@ -563,7 +563,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bonus.IsConditional, Is.False);
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_ImprovesBestNaturalArmorBonus(string template)
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
@@ -582,7 +582,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bonus.IsConditional, Is.False);
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_ImproveNaturalArmor_PreserveConditions(string template)
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266, "only sometimes");
@@ -597,7 +597,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainAttacks(string template)
         {
             var newAttacks = new[]
@@ -632,7 +632,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainAttacks_WithAttackBonuses(string template)
         {
             var newAttacks = new[]
@@ -712,7 +712,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Attacks, Is.SupersetOf(attacksWithBonuses));
         }
 
-        [TestCaseSource("GainAttacks_DuplicateAttack")]
+        [TestCaseSource(nameof(GainAttacks_DuplicateAttack))]
         public void ApplyTo_GainAttacks_DuplicateClawAttacks(string template, int baseClawMax, int dragonClawMax, string expectedClawDamage)
         {
             var newAttacks = new[]
@@ -784,7 +784,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource("GainAttacks_DuplicateAttack")]
+        [TestCaseSource(nameof(GainAttacks_DuplicateAttack))]
         public void ApplyTo_GainAttacks_DuplicateBiteAttack(string template, int baseBiteMax, int dragonBiteMax, string expectedBiteDamage)
         {
             var newAttacks = new[]
@@ -836,7 +836,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
         }
 
-        [TestCaseSource("GainAttacks_DuplicateAttacks")]
+        [TestCaseSource(nameof(GainAttacks_DuplicateAttacks))]
         public void ApplyTo_GainAttacks_DuplicateClawAndBiteAttack(string template,
             int baseClawMax, int dragonClawMax, string expectedClawDamage,
             int baseBiteMax, int dragonBiteMax, string expectedBiteDamage)
@@ -927,7 +927,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainSpecialQualities(string template)
         {
             var newSkills = new[]
@@ -971,7 +971,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.SpecialQualities, Is.SupersetOf(newQualities));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainsSkillPoints(string template)
         {
             var ranks = 1;
@@ -1000,7 +1000,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Skills, Is.EqualTo(newSkills));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainsSkillPoints_NoSkills(string template)
         {
             baseCreature.Skills = Enumerable.Empty<Skill>();
@@ -1020,7 +1020,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Skills, Is.Empty);
         }
 
-        [TestCaseSource("ChallengeRatingAdjustments")]
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public void ApplyTo_ChallengeRatingAdjusted(string template, string original, string adjusted)
         {
             baseCreature.ChallengeRating = original;
@@ -1050,7 +1050,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GetNewAlignment(string template)
         {
             var creature = applicators[template].ApplyTo(baseCreature);
@@ -1058,7 +1058,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Alignment.Goodness, Is.EqualTo($"scaley"));
         }
 
-        [TestCaseSource("LevelAdjustmentIncreased")]
+        [TestCaseSource(nameof(LevelAdjustmentIncreased))]
         public void ApplyTo_LevelAdjustmentIncreased(string template, int? adjustment, int? adjusted)
         {
             baseCreature.LevelAdjustment = adjustment;
@@ -1092,7 +1092,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource("CreatureTypeAdjusted")]
+        [TestCaseSource(nameof(CreatureTypeAdjusted))]
         public async Task ApplyToAsync_CreatureTypeIsAdjusted(string template, string original)
         {
             baseCreature.Type.Name = original;
@@ -1112,7 +1112,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
         }
 
-        [TestCaseSource("HitDieIncreased")]
+        [TestCaseSource(nameof(HitDieIncreased))]
         public async Task ApplyToAsync_HitDieIncreases(string template, int original, int increased)
         {
             baseCreature.HitPoints.HitDice[0].HitDie = original;
@@ -1142,7 +1142,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
         }
 
-        [TestCaseSource("HitDieIncreased")]
+        [TestCaseSource(nameof(HitDieIncreased))]
         public async Task ApplyToAsync_HitDieIncreases_WithBoostedConstitution(string template, int original, int increased)
         {
             baseCreature.HitPoints.HitDice[0].HitDie = original;
@@ -1172,7 +1172,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(96 + baseCreature.HitPoints.RoundedHitDiceQuantity * 17));
         }
 
-        [TestCaseSource("GainFlySpeed")]
+        [TestCaseSource(nameof(GainFlySpeed))]
         public async Task ApplyToAsync_GainFlySpeed(string template, string size, int landSpeed, int flySpeed)
         {
             baseCreature.Size = size;
@@ -1186,7 +1186,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(flySpeed));
         }
 
-        [TestCaseSource("DoNotGainFlySpeed")]
+        [TestCaseSource(nameof(DoNotGainFlySpeed))]
         public async Task ApplyToAsync_DoNotGainFlySpeed(string template, string size)
         {
             baseCreature.Size = size;
@@ -1197,7 +1197,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Not.ContainKey(SpeedConstants.Fly));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_AdjustAbilities(string template)
         {
             var creature = await applicators[template].ApplyToAsync(baseCreature);
@@ -1215,7 +1215,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(2));
         }
 
-        [TestCaseSource("AbilitiesImprove_DoNotImproveMissingAbility")]
+        [TestCaseSource(nameof(AbilitiesImprove_DoNotImproveMissingAbility))]
         public async Task ApplyToAsync_AbilitiesImprove_DoNotImproveMissingAbility(string template, string ability)
         {
             baseCreature.Abilities[ability].BaseScore = 0;
@@ -1226,7 +1226,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Abilities[ability].TemplateAdjustment, Is.Zero);
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainNaturalArmor(string template)
         {
             var creature = await applicators[template].ApplyToAsync(baseCreature);
@@ -1238,7 +1238,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bonus.IsConditional, Is.False);
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_ImproveNaturalArmor(string template)
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
@@ -1252,7 +1252,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bonus.IsConditional, Is.False);
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_ImprovesBestNaturalArmorBonus(string template)
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
@@ -1271,7 +1271,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bonus.IsConditional, Is.False);
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_ImproveNaturalArmor_PreserveConditions(string template)
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266, "only sometimes");
@@ -1286,7 +1286,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bonus.Condition, Is.EqualTo("only sometimes"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainAttacks(string template)
         {
             var newAttacks = new[]
@@ -1321,7 +1321,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainAttacks_WithAttackBonuses(string template)
         {
             var newAttacks = new[]
@@ -1401,7 +1401,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Attacks, Is.SupersetOf(attacksWithBonuses));
         }
 
-        [TestCaseSource("GainAttacks_DuplicateAttack")]
+        [TestCaseSource(nameof(GainAttacks_DuplicateAttack))]
         public async Task ApplyToAsync_GainAttacks_DuplicateClawAttacks(string template, int baseClawMax, int dragonClawMax, string expectedClawDamage)
         {
             var newAttacks = new[]
@@ -1453,7 +1453,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bites[0].DamageRoll, Is.EqualTo("dragon bite roll"));
         }
 
-        [TestCaseSource("GainAttacks_DuplicateAttack")]
+        [TestCaseSource(nameof(GainAttacks_DuplicateAttack))]
         public async Task ApplyToAsync_GainAttacks_DuplicateBiteAttack(string template, int baseBiteMax, int dragonBiteMax, string expectedBiteDamage)
         {
             var newAttacks = new[]
@@ -1505,7 +1505,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
         }
 
-        [TestCaseSource("GainAttacks_DuplicateAttacks")]
+        [TestCaseSource(nameof(GainAttacks_DuplicateAttacks))]
         public async Task ApplyToAsync_GainAttacks_DuplicateClawAndBiteAttack(string template,
             int baseClawMax, int dragonClawMax, string expectedClawDamage,
             int baseBiteMax, int dragonBiteMax, string expectedBiteDamage)
@@ -1566,7 +1566,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainSpecialQualities(string template)
         {
             var newSkills = new[]
@@ -1610,7 +1610,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.SpecialQualities, Is.SupersetOf(newQualities));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainsSkillPoints(string template)
         {
             var ranks = 1;
@@ -1639,7 +1639,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Skills, Is.EqualTo(newSkills));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainsSkillPoints_NoSkills(string template)
         {
             baseCreature.Skills = Enumerable.Empty<Skill>();
@@ -1659,7 +1659,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Skills, Is.Empty);
         }
 
-        [TestCaseSource("ChallengeRatingAdjustments")]
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public async Task ApplyToAsync_ChallengeRatingAdjusted(string template, string original, string adjusted)
         {
             baseCreature.ChallengeRating = original;
@@ -1669,7 +1669,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GetNewAlignment(string template)
         {
             var creature = await applicators[template].ApplyToAsync(baseCreature);
@@ -1678,7 +1678,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Alignment.Goodness, Is.EqualTo($"scaley"));
         }
 
-        [TestCaseSource("LevelAdjustmentIncreased")]
+        [TestCaseSource(nameof(LevelAdjustmentIncreased))]
         public async Task ApplyToAsync_LevelAdjustmentIncreased(string template, int? adjustment, int? adjusted)
         {
             baseCreature.LevelAdjustment = adjustment;
@@ -1688,7 +1688,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainDraconicAsLanguage(string template)
         {
             var originalLanguages = baseCreature.Languages.ToArray();
@@ -1706,7 +1706,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains($"{template}ish"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainDraconicAsLanguage_NoLanguages(string template)
         {
             baseCreature.Languages = Enumerable.Empty<string>();
@@ -1722,7 +1722,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Languages, Is.Empty);
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainDraconicAsLanguage_AlreadyHasDraconic(string template)
         {
             baseCreature.Languages = baseCreature.Languages.Union(new[] { $"{template}ish" });
@@ -1741,7 +1741,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains($"{template}ish"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainNewBonusLanguages(string template)
         {
             baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 12;
@@ -1775,7 +1775,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains("Drachensprach"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainBonusLanguages(string template)
         {
             baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
@@ -1809,7 +1809,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains("Drachensprach"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainNoBonusLanguages(string template)
         {
             baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 8;
@@ -1842,7 +1842,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains($"{template}ish"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainAllBonusLanguages(string template)
         {
             baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
@@ -1878,7 +1878,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains("Latin"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainDraconicAsLanguage(string template)
         {
             var originalLanguages = baseCreature.Languages.ToArray();
@@ -1896,7 +1896,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains($"{template}ish"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainDraconicAsLanguage_NoLanguages(string template)
         {
             baseCreature.Languages = Enumerable.Empty<string>();
@@ -1912,7 +1912,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Languages, Is.Empty);
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainDraconicAsLanguage_AlreadyHasDraconic(string template)
         {
             baseCreature.Languages = baseCreature.Languages.Union(new[] { $"{template}ish" });
@@ -1931,7 +1931,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains($"{template}ish"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainNewBonusLanguages(string template)
         {
             baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 12;
@@ -1965,7 +1965,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains("Drachensprach"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainBonusLanguages(string template)
         {
             baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
@@ -1999,7 +1999,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains("Drachensprach"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainNoBonusLanguages(string template)
         {
             baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 8;
@@ -2032,7 +2032,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains($"{template}ish"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainAllBonusLanguages(string template)
         {
             baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore = 10;
@@ -2068,7 +2068,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.Contains("Latin"));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_RegenerateMagic(string template)
         {
             var dragonMagic = new Magic();
@@ -2085,7 +2085,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Magic, Is.EqualTo(dragonMagic));
         }
 
-        [TestCaseSource("AllHalfDragonTemplates")]
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_RegenerateMagic(string template)
         {
             var dragonMagic = new Magic();

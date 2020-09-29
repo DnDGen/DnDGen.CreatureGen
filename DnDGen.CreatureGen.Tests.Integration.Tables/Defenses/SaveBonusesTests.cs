@@ -24,10 +24,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(typeof(SaveBonusesTestData), "Creatures")]
-        [TestCaseSource(typeof(SaveBonusesTestData), "Types")]
-        [TestCaseSource(typeof(SaveBonusesTestData), "Subtypes")]
-        [TestCaseSource(typeof(SaveBonusesTestData), "Templates")]
+        [TestCaseSource(typeof(SaveBonusesTestData), nameof(SaveBonusesTestData.Creatures))]
+        [TestCaseSource(typeof(SaveBonusesTestData), nameof(SaveBonusesTestData.Types))]
+        [TestCaseSource(typeof(SaveBonusesTestData), nameof(SaveBonusesTestData.Subtypes))]
+        [TestCaseSource(typeof(SaveBonusesTestData), nameof(SaveBonusesTestData.Templates))]
         public void SaveBonuses(string source, Dictionary<string, int> saveAndBonus)
         {
             if (!saveAndBonus.Any())

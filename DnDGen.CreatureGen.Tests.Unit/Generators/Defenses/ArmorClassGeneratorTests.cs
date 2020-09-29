@@ -102,7 +102,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.ArmorBonus, Is.Zero);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "BaseAbilityTestNumbers")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.BaseAbilityTestNumbers))]
         public void DexterityBonusApplied(int abilityValue)
         {
             abilities[AbilityConstants.Dexterity].BaseScore = abilityValue;
@@ -175,7 +175,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.DeflectionBonus, Is.Zero);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "AllTestValues")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllTestValues))]
         public void SizeModifiesArmorClass(int modifier)
         {
             mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(modifier);
@@ -291,7 +291,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             private static IEnumerable<string> NonNullSources => Sources.Where(s => s != null);
         }
 
-        [TestCaseSource(typeof(ArmorClassGeneratorTestData), "CreatureBonus")]
+        [TestCaseSource(typeof(ArmorClassGeneratorTestData), nameof(ArmorClassGeneratorTestData.CreatureBonus))]
         public void GetArmorClassBonusForCreature(string creatureSource, string creatureTypeSource, IEnumerable<string> subtypeSources)
         {
             var counter = 1;
@@ -358,7 +358,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
-        [TestCaseSource(typeof(ArmorClassGeneratorTestData), "CreatureBonus")]
+        [TestCaseSource(typeof(ArmorClassGeneratorTestData), nameof(ArmorClassGeneratorTestData.CreatureBonus))]
         public void GetConditionalArmorClassBonusForCreature(string creatureSource, string creatureTypeSource, IEnumerable<string> subtypeSources)
         {
             var counter = 1;
@@ -430,7 +430,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
-        [TestCaseSource(typeof(ArmorClassGeneratorTestData), "CreatureBonus")]
+        [TestCaseSource(typeof(ArmorClassGeneratorTestData), nameof(ArmorClassGeneratorTestData.CreatureBonus))]
         public void GetAllConditionalArmorClassBonusForCreature(string creatureSource, string creatureTypeSource, IEnumerable<string> subtypeSources)
         {
             var counter = 1;
@@ -497,7 +497,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
-        [TestCaseSource(typeof(ArmorClassGeneratorTestData), "CreatureBonuses")]
+        [TestCaseSource(typeof(ArmorClassGeneratorTestData), nameof(ArmorClassGeneratorTestData.CreatureBonuses))]
         public void GetArmorClassBonusesFromCreature(string source1, string source2)
         {
             var counter = 1;
@@ -547,7 +547,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
-        [TestCaseSource(typeof(ArmorClassGeneratorTestData), "CreatureBonuses")]
+        [TestCaseSource(typeof(ArmorClassGeneratorTestData), nameof(ArmorClassGeneratorTestData.CreatureBonuses))]
         public void GetArmorClassBonusesFromCreatureType(string source1, string source2)
         {
             var counter = 1;
@@ -597,7 +597,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
-        [TestCaseSource(typeof(ArmorClassGeneratorTestData), "CreatureBonuses")]
+        [TestCaseSource(typeof(ArmorClassGeneratorTestData), nameof(ArmorClassGeneratorTestData.CreatureBonuses))]
         public void GetArmorClassBonusesFromCreatureSubtype(string source1, string source2)
         {
             var counter = 1;
@@ -853,7 +853,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.Dexterity.Modifier, Is.Zero);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "BaseAbilityTestNumbers")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.BaseAbilityTestNumbers))]
         public void UnearthlyGraceAddsCharismaBonusAsDeflectionBonus(int abilityScore)
         {
             abilities[AbilityConstants.Charisma].BaseScore = abilityScore;

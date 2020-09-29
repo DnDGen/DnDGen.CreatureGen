@@ -90,14 +90,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             Assert.That(creature.Equipment.Armor, Is.Not.Null);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CanGenerateCreature(string creatureName)
         {
             var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
             creatureAsserter.AssertCreature(creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "Templates")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CanGenerateHumanTemplate(string template)
         {
             var creature = creatureGenerator.Generate(CreatureConstants.Human, template);

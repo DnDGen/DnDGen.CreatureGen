@@ -64,7 +64,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.IsConditional, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "AllValues")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllValues))]
         public void OneBonus(int value)
         {
             save.AddBonus(value);
@@ -81,7 +81,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.IsConditional, Is.False);
         }
 
-        [TestCaseSource(typeof(SaveTestData), "Bonuses")]
+        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.Bonuses))]
         public void TwoBonuses(int value1, int value2)
         {
             save.AddBonus(value1);
@@ -104,7 +104,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.IsConditional, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "AllValues")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllValues))]
         public void ConditionalBonus(int value)
         {
             save.AddBonus(value, "condition");
@@ -121,7 +121,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.IsConditional, Is.True);
         }
 
-        [TestCaseSource(typeof(SaveTestData), "Bonuses")]
+        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.Bonuses))]
         public void ConditionalBonuses(int value1, int value2)
         {
             save.AddBonus(value1, "condition 1");
@@ -144,7 +144,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.IsConditional, Is.True);
         }
 
-        [TestCaseSource(typeof(SaveTestData), "Bonuses")]
+        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.Bonuses))]
         public void BonusAndConditionalBonus(int value1, int value2)
         {
             save.AddBonus(value1);
@@ -166,7 +166,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Value, Is.EqualTo(value2));
         }
 
-        [TestCaseSource(typeof(SaveTestData), "Bonuses")]
+        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.Bonuses))]
         public void ConditionalBonusAndBonus(int value1, int value2)
         {
             save.AddBonus(value1, "condition 1");
@@ -188,7 +188,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Value, Is.EqualTo(value2));
         }
 
-        [TestCaseSource(typeof(SaveTestData), "TotalBonus")]
+        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.TotalBonus))]
         public void TotalBonus(int abilityScore, int baseValue, IEnumerable<int> bonuses)
         {
             save.BaseAbility = new Ability(AbilityConstants.Charisma);
@@ -243,7 +243,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             }
         }
 
-        [TestCaseSource(typeof(SaveTestData), "TotalBonus")]
+        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.TotalBonus))]
         public void TotalBonusWithOneConditional(int abilityScore, int baseValue, IEnumerable<int> bonuses)
         {
             save.BaseAbility = new Ability(AbilityConstants.Charisma);
@@ -260,7 +260,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.TotalBonus, Is.EqualTo(expectedTotal));
         }
 
-        [TestCaseSource(typeof(SaveTestData), "TotalBonus")]
+        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.TotalBonus))]
         public void TotalBonusWithAllConditional(int abilityScore, int baseValue, IEnumerable<int> bonuses)
         {
             save.BaseAbility = new Ability(AbilityConstants.Charisma);

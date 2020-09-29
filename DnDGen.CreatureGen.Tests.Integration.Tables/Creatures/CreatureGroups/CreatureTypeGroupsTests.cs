@@ -692,8 +692,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             base.AssertDistinctCollection(CreatureConstants.Types.Outsider, creatures);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
-        [TestCaseSource(typeof(CreatureTestData), "Templates")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CreatureTypeMatchesCreatureGroupType(string creature)
         {
             var types = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
@@ -716,8 +716,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
-        [TestCaseSource(typeof(CreatureTestData), "Templates")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CreatureSubtypesMatchCreatureGroupSubtypes(string creature)
         {
             var types = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);

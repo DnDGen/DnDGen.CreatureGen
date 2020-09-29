@@ -131,7 +131,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.True);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueLessThanPositiveRequirement))]
         public void BaseAttackRequirementNotMet(int requiredBaseAttack, int baseAttack)
         {
             selection.RequiredBaseAttack = requiredBaseAttack;
@@ -140,7 +140,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueGreaterThanOrEqualToPositiveRequirement))]
         public void BaseAttackRequirementMet(int requiredBaseAttack, int baseAttack)
         {
             selection.RequiredBaseAttack = requiredBaseAttack;
@@ -149,7 +149,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.True);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueLessThanPositiveRequirement))]
         public void CasterLevelRequirementNotMet(int requiredCasterLevel, int casterLevel)
         {
             selection.MinimumCasterLevel = requiredCasterLevel;
@@ -158,7 +158,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueGreaterThanOrEqualToPositiveRequirement))]
         public void CasterLevelRequirementMet(int requiredCasterLevel, int casterLevel)
         {
             selection.MinimumCasterLevel = requiredCasterLevel;
@@ -167,7 +167,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.True);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "SumOfValuesLessThanPositiveRequirementWithMinimumOne")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.SumOfValuesLessThanPositiveRequirementWithMinimumOne))]
         public void AbilityRequirementsNotMet(int requiredScore, int baseScore, int racialAdjustment)
         {
             selection.RequiredAbilities["ability"] = requiredScore;
@@ -181,7 +181,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "AllValuesAndAllPositiveRequirements")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllValuesAndAllPositiveRequirements))]
         public void AbilityRequirementsNotMetBecauseBaseScoreOfZero(int requiredScore, int racialAdjustment)
         {
             selection.RequiredAbilities["ability"] = requiredScore;
@@ -195,7 +195,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "SumOfValuesGreaterThanOrEqualToPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.SumOfValuesGreaterThanOrEqualToPositiveRequirement))]
         public void AbilityRequirementsMet(int requiredScore, int baseScore, int racialAdjustment)
         {
             selection.RequiredAbilities["ability"] = requiredScore;
@@ -221,7 +221,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.True);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueLessThanPositiveRequirement))]
         public void ClassSkillRequirementsNotMet(int requiredRanks, int ranks)
         {
             selection.RequiredSkills = new[] {
@@ -239,7 +239,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueLessThanPositiveRequirement))]
         public void CrossClassSkillRequirementsNotMet(int requiredRanks, int ranks)
         {
             selection.RequiredSkills = new[] {
@@ -257,7 +257,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueGreaterThanOrEqualToPositiveRequirement))]
         public void ClassSkillRequirementsMet(int requiredRanks, int ranks)
         {
             selection.RequiredSkills = new[] {
@@ -275,7 +275,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.True);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueGreaterThanOrEqualToPositiveRequirement))]
         public void CrossClassSkillRequirementsMet(int requiredRanks, int ranks)
         {
             selection.RequiredSkills = new[] {
@@ -571,7 +571,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueLessThanPositiveRequirement))]
         public void NotMetIfDoesNotHaveRequiredSpeedValue(int requiredSpeed, int speed)
         {
             speeds["speed"].Value = speed;
@@ -581,7 +581,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueGreaterThanOrEqualToPositiveRequirement))]
         public void MetIfHasRequiredSpeed(int requiredSpeed, int speed)
         {
             speeds["speed"].Value = speed;
@@ -591,7 +591,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.True);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "AllNonPositiveValues")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllNonPositiveValues))]
         public void NotMetIfNoNaturalArmor(int naturalArmor)
         {
             selection.RequiresNaturalArmor = true;
@@ -600,7 +600,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "AllPositiveValues")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllPositiveValues))]
         public void MetIfNaturalArmor(int naturalArmor)
         {
             selection.RequiresNaturalArmor = true;
@@ -618,7 +618,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.True);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueLessThanPositiveRequirement))]
         public void NotMetIfNaturalWeaponQuantityNotEnough(int requiredNaturalWeapons, int naturalWeapons)
         {
             selection.RequiredNaturalWeapons = requiredNaturalWeapons;
@@ -634,7 +634,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueGreaterThanOrEqualToPositiveRequirement))]
         public void MetIfNaturalWeaponQuantityEnough(int requiredNaturalWeapons, int naturalWeapons)
         {
             selection.RequiredNaturalWeapons = requiredNaturalWeapons;
@@ -659,7 +659,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.True);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueLessThanPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueLessThanPositiveRequirement))]
         public void NotMetIfInsufficientHands(int requiredHands, int hands)
         {
             selection.RequiredHands = requiredHands;
@@ -668,7 +668,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "ValueGreaterThanOrEqualToPositiveRequirement")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.ValueGreaterThanOrEqualToPositiveRequirement))]
         public void MetIfSufficientHands(int requiredHands, int hands)
         {
             selection.RequiredHands = requiredHands;

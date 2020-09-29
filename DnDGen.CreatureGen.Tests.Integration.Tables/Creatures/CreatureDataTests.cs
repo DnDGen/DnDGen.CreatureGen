@@ -779,14 +779,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertSegmentedData(creature, collection);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllCreaturesHaveCorrectNumberOfEntries(string creature)
         {
             var data = DataIndexConstants.CreatureData.InitializeData();
             Assert.That(table[creature].Count(), Is.EqualTo(data.Length));
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
 
         public void AllCreaturesHaveCorrectChallengeRatings(string creature)
         {
@@ -799,7 +799,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(data[DataIndexConstants.CreatureData.ChallengeRating], Is.Not.EqualTo(ChallengeRatingConstants.Zero), creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllCreaturesHaveCorrectSizes(string creature)
         {
             var sizes = new[]
@@ -821,7 +821,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(new[] { data[DataIndexConstants.CreatureData.Size] }, Is.SubsetOf(sizes), creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllCreaturesHaveCorrectReach(string creature)
         {
             var data = table[creature].ToArray();
@@ -831,7 +831,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(reach, Is.Not.Negative, creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllCreaturesHaveCorrectSpace(string creature)
         {
             var data = table[creature].ToArray();
@@ -841,7 +841,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(space, Is.Positive, creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllCreaturesHaveCorrectLevelAdjustment(string creature)
         {
             var data = table[creature].ToArray();
@@ -859,7 +859,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllCreaturesHaveCorrectCanUseEquipment(string creature)
         {
             var data = table[creature].ToArray();
@@ -868,7 +868,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString).Or.EqualTo(bool.FalseString), creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreaturesOfTypeCanUseEquipment(string creature)
         {
             var equipmentTypes = new[]
@@ -889,7 +889,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreaturesOfTypeCannotUseEquipment(string creature)
         {
             var noEquipmentTypes = new[]
@@ -909,7 +909,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllCreaturesHaveCorrectCasterLevel(string creature)
         {
             var data = table[creature].ToArray();
@@ -919,7 +919,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(casterLevel, Is.Not.Negative, creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllCreaturesHaveCorrectNaturalArmor(string creature)
         {
             var data = table[creature].ToArray();
@@ -929,7 +929,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(naturalArmor, Is.Not.Negative, creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllCreaturesHaveCorrectNumberOfHands(string creature)
         {
             var data = table[creature].ToArray();

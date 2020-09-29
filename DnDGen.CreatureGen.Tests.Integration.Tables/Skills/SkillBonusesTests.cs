@@ -35,9 +35,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(typeof(SkillBonusesTestData), "Creatures")]
-        [TestCaseSource(typeof(SkillBonusesTestData), "Types")]
-        [TestCaseSource(typeof(SkillBonusesTestData), "Subtypes")]
+        [TestCaseSource(typeof(SkillBonusesTestData), nameof(SkillBonusesTestData.Creatures))]
+        [TestCaseSource(typeof(SkillBonusesTestData), nameof(SkillBonusesTestData.Types))]
+        [TestCaseSource(typeof(SkillBonusesTestData), nameof(SkillBonusesTestData.Subtypes))]
         public void SkillBonuses(string source, Dictionary<string, int> skillAndBonus)
         {
             if (!skillAndBonus.Any())
@@ -49,7 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             AssertTypesAndAmounts(source, skillAndBonus);
         }
 
-        [TestCaseSource(typeof(SkillBonusesTestData), "SkillSynergies")]
+        [TestCaseSource(typeof(SkillBonusesTestData), nameof(SkillBonusesTestData.SkillSynergies))]
         public void SkillSynergies(string source, Dictionary<string, int> skillAndBonus)
         {
             if (!skillAndBonus.Any())

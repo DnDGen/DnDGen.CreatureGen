@@ -33,10 +33,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             return names;
         }
 
-        [TestCaseSource(typeof(SkillRankRequirementsTestData), "Feats")]
-        [TestCaseSource(typeof(SkillRankRequirementsTestData), "Metamagic")]
-        [TestCaseSource(typeof(SkillRankRequirementsTestData), "Monster")]
-        [TestCaseSource(typeof(SkillRankRequirementsTestData), "Craft")]
+        [TestCaseSource(typeof(SkillRankRequirementsTestData), nameof(SkillRankRequirementsTestData.Feats))]
+        [TestCaseSource(typeof(SkillRankRequirementsTestData), nameof(SkillRankRequirementsTestData.Metamagic))]
+        [TestCaseSource(typeof(SkillRankRequirementsTestData), nameof(SkillRankRequirementsTestData.Monster))]
+        [TestCaseSource(typeof(SkillRankRequirementsTestData), nameof(SkillRankRequirementsTestData.Craft))]
         public void SkillRankRequirements(string name, Dictionary<string, int> typesAndAmounts)
         {
             AssertTypesAndAmounts(name, typesAndAmounts);

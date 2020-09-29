@@ -20,7 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(typeof(SpellsPerDayData), "All")]
+        [TestCaseSource(typeof(SpellsPerDayData), nameof(SpellsPerDayData.All))]
         public void SpellsPerDay(string name, Dictionary<string, int> spellsPerDay)
         {
             AssertTypesAndAmounts(name, spellsPerDay);

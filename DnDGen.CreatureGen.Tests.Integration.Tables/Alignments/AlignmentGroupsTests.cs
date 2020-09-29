@@ -1148,7 +1148,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             Assert.That(mode, Is.EqualTo(alignment));
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllCreaturesOfTypeAreTrueNeutral(string creature)
         {
             var neutralTypes = new[] { CreatureConstants.Types.Animal, CreatureConstants.Types.Vermin };
@@ -1161,14 +1161,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AllCreaturesHaveAlignment(string creature)
         {
             var alignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
             Assert.That(alignments, Is.Not.Empty, creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureAlignmentGroupsBoilDownToSetAlignments(string creature)
         {
             var allAlignments = table[GroupConstants.All];

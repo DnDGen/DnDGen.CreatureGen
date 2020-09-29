@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource("AdvancementsTestData")]
+        [TestCaseSource(nameof(AdvancementsTestData))]
         public void Advancement(string creature, Dictionary<string, string[]> rollAndData)
         {
             var typesAndAmounts = new Dictionary<string, string>();
@@ -1031,7 +1031,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertTypesAndAmounts(creatureType, typesAndAmounts);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AdvancementOnlyIncreasesHitDice(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -1060,7 +1060,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AdvancementOnlyIncreasesSize(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -1081,7 +1081,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AdvancementHasDistinctSizes(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -1093,7 +1093,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(sizes, Is.Unique);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void AdvancementHasIncreasedSizeForIncreasedMinimum(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));

@@ -796,7 +796,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Saves[SaveConstants.Will].HasSave, Is.True);
         }
 
-        [TestCaseSource("ChallengeRatingAdjustments")]
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public void ApplyTo_CreatureChallengeRating_IncreasesBy2(string original, string adjusted)
         {
             baseCreature.ChallengeRating = original;
@@ -1657,7 +1657,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(skills[4].Bonuses.Count(), Is.EqualTo(2));
         }
 
-        [TestCaseSource("ChallengeRatingAdjustments")]
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public async Task ApplyToAsync_CreatureChallengeRating_IncreasesBy2(string original, string adjusted)
         {
             baseCreature.ChallengeRating = original;

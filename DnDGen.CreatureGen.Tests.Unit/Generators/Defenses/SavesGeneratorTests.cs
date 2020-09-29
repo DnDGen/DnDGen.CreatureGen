@@ -127,7 +127,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(saves[SaveConstants.Will].Bonus, Is.Zero);
         }
 
-        [TestCaseSource(typeof(SavesGeneratorTestData), "BaseValues")]
+        [TestCaseSource(typeof(SavesGeneratorTestData), nameof(SavesGeneratorTestData.BaseValues))]
         public void SaveBaseValueComesFromCreature(bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
         {
             var strongSaveBonus = 2;
@@ -162,8 +162,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(saves[SaveConstants.Will].BaseValue, Is.EqualTo(expectedWill));
         }
 
-        [TestCaseSource(typeof(SavesGeneratorTestData), "BaseValuesFromHitDice")]
-        [TestCaseSource(typeof(SavesGeneratorTestData), "FractionalHitDiceForBaseValues")]
+        [TestCaseSource(typeof(SavesGeneratorTestData), nameof(SavesGeneratorTestData.BaseValuesFromHitDice))]
+        [TestCaseSource(typeof(SavesGeneratorTestData), nameof(SavesGeneratorTestData.FractionalHitDiceForBaseValues))]
         public void SaveBaseValuesBasedOnHitDice(double hitDiceQuantity, bool isStrongFortitude, bool isStrongReflex, bool isStrongWill)
         {
             hitPoints.HitDice[0].Quantity = hitDiceQuantity;
@@ -359,7 +359,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             willSaveFeats.Add(feats[2].Name);
         }
 
-        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonus")]
+        [TestCaseSource(typeof(SavesGeneratorTestData), nameof(SavesGeneratorTestData.CreatureBonus))]
         public void GetSaveBonusForCreature(string creatureSource, string creatureTypeSource, IEnumerable<string> subtypeSources)
         {
             var counter = 1;
@@ -415,7 +415,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(saves[SaveConstants.Will].IsConditional, Is.False);
         }
 
-        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonus")]
+        [TestCaseSource(typeof(SavesGeneratorTestData), nameof(SavesGeneratorTestData.CreatureBonus))]
         public void GetConditionalSaveBonusForCreature(string creatureSource, string creatureTypeSource, IEnumerable<string> subtypeSources)
         {
             var counter = 1;
@@ -476,7 +476,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(saves[SaveConstants.Will].IsConditional, Is.EqualTo(saves[SaveConstants.Will].Bonuses.Any()));
         }
 
-        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonus")]
+        [TestCaseSource(typeof(SavesGeneratorTestData), nameof(SavesGeneratorTestData.CreatureBonus))]
         public void GetAllConditionalSaveBonusForCreature(string creatureSource, string creatureTypeSource, IEnumerable<string> subtypeSources)
         {
             var counter = 1;
@@ -523,7 +523,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(saves[SaveConstants.Will].IsConditional, Is.EqualTo(saves[SaveConstants.Will].Bonuses.Any()));
         }
 
-        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonuses")]
+        [TestCaseSource(typeof(SavesGeneratorTestData), nameof(SavesGeneratorTestData.CreatureBonuses))]
         public void GetSaveBonusesFromCreature(string source1, string source2)
         {
             var counter = 1;
@@ -556,7 +556,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(saves[SaveConstants.Will].IsConditional, Is.False);
         }
 
-        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonuses")]
+        [TestCaseSource(typeof(SavesGeneratorTestData), nameof(SavesGeneratorTestData.CreatureBonuses))]
         public void GetSaveBonusesFromCreatureType(string source1, string source2)
         {
             var counter = 1;
@@ -589,7 +589,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(saves[SaveConstants.Will].IsConditional, Is.False);
         }
 
-        [TestCaseSource(typeof(SavesGeneratorTestData), "CreatureBonuses")]
+        [TestCaseSource(typeof(SavesGeneratorTestData), nameof(SavesGeneratorTestData.CreatureBonuses))]
         public void GetSaveBonusesFromCreatureSubtype(string source1, string source2)
         {
             var counter = 1;

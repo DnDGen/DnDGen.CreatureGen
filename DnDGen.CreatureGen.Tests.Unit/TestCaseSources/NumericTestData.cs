@@ -23,7 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
 
         public static IEnumerable<int> BaseTestNumbers = new[]
         {
-            0, 1, 2
+            0, 1, 2, 10, 100, 1_000, 10_000, 100_000
         };
 
         public static IEnumerable<int> BaseAbilityTestNumbers = new[]

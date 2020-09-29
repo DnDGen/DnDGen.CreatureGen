@@ -42,11 +42,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             return names;
         }
 
-        [TestCaseSource(typeof(RequiredAlignmentsTestData), "Feats")]
-        [TestCaseSource(typeof(RequiredAlignmentsTestData), "Metamagic")]
-        [TestCaseSource(typeof(RequiredAlignmentsTestData), "Monster")]
-        [TestCaseSource(typeof(RequiredAlignmentsTestData), "Craft")]
-        [TestCaseSource(typeof(RequiredAlignmentsTestData), "SpecialQualities")]
+        [TestCaseSource(typeof(RequiredAlignmentsTestData), nameof(RequiredAlignmentsTestData.Feats))]
+        [TestCaseSource(typeof(RequiredAlignmentsTestData), nameof(RequiredAlignmentsTestData.Metamagic))]
+        [TestCaseSource(typeof(RequiredAlignmentsTestData), nameof(RequiredAlignmentsTestData.Monster))]
+        [TestCaseSource(typeof(RequiredAlignmentsTestData), nameof(RequiredAlignmentsTestData.Craft))]
+        [TestCaseSource(typeof(RequiredAlignmentsTestData), nameof(RequiredAlignmentsTestData.SpecialQualities))]
         public void RequiredAlignments(string name, params string[] alignments)
         {
             AssertCollection(name, alignments);

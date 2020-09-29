@@ -791,7 +791,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertDistinctCollection(creature, maneuverability);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureWithAerialSpeedHaveManeuverability(string creature)
         {
             var speeds = typesAndAmountsSelector.Select(TableNameConstants.Collection.Speeds, creature);
@@ -811,7 +811,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "Templates")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateWithAerialSpeedHaveManeuverability(string template)
         {
             var speeds = typesAndAmountsSelector.Select(TableNameConstants.Collection.Speeds, template);

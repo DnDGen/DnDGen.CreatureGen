@@ -36,14 +36,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource("CreatureSpeedsData")]
+        [TestCaseSource(nameof(CreatureSpeedsData))]
         public void CreatureSpeeds(string name, Dictionary<string, int> typesAndAmounts)
         {
             Assert.That(typesAndAmounts, Is.Not.Empty, name);
             AssertTypesAndAmounts(name, typesAndAmounts);
         }
 
-        [TestCaseSource("TemplateSpeedsData")]
+        [TestCaseSource(nameof(TemplateSpeedsData))]
         public void TemplateSpeeds(string name, Dictionary<string, int> typesAndAmounts)
         {
             AssertTypesAndAmounts(name, typesAndAmounts);
@@ -1416,7 +1416,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureHasAtLeast1Speed(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -1425,7 +1425,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(speeds, Is.Not.Empty, creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureHasNonNegativeSpeedsAsMultiplesOf5(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));

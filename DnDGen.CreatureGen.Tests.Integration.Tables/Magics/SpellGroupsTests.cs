@@ -113,7 +113,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             AssertCollection(group, spells);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureWithoutCasterHasNoProhibitedSpells(string creature)
         {
             var casters = collectionMapper.Map(TableNameConstants.TypeAndAmount.Casters);

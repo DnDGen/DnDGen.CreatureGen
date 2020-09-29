@@ -59,8 +59,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(typeof(AttackTestData), "Creatures")]
-        [TestCaseSource(typeof(AttackTestData), "Templates")]
+        [TestCaseSource(typeof(AttackTestData), nameof(AttackTestData.Creatures))]
+        [TestCaseSource(typeof(AttackTestData), nameof(AttackTestData.Templates))]
         public void AttackData(string creature, List<string[]> entries)
         {
             if (!entries.Any())
@@ -72,7 +72,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertData(creature, entries);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -119,7 +119,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(keys, Is.Unique);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureWithPsionicAttack_HasPsionicSpecialQuality(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -135,7 +135,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(hasPsionicAttack, Is.EqualTo(hasPsionicSpecialQuality));
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureWithSpellsAttack_HasMagicSpells(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -157,7 +157,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureWithUnnaturalAttack_CanUseEquipment(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -176,7 +176,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(hasUnnaturalAttack, Is.True.And.EqualTo(creatureData.CanUseEquipment));
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureWithUnnaturalAttack_HasNaturalAttack(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -203,7 +203,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(naturalAttack[DataIndexConstants.AttackData.DamageRollIndex], Is.Not.Empty, naturalAttack[DataIndexConstants.AttackData.NameIndex]);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureHasCorrectImprovedGrab(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -234,7 +234,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(improvedGrab[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureHasCorrectSpells(string creature)
         {
             Assert.That(table, Contains.Key(creature));
@@ -265,7 +265,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(spells[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void CreatureHasCorrectSpellLikeAbility(string creature)
         {
             Assert.That(table, Contains.Key(creature));

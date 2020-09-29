@@ -41,11 +41,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             return names;
         }
 
-        [TestCaseSource(typeof(RequiredSizesTestData), "Feats")]
-        [TestCaseSource(typeof(RequiredSizesTestData), "Metamagic")]
-        [TestCaseSource(typeof(RequiredSizesTestData), "Monster")]
-        [TestCaseSource(typeof(RequiredSizesTestData), "Craft")]
-        [TestCaseSource(typeof(RequiredSizesTestData), "SpecialQualities")]
+        [TestCaseSource(typeof(RequiredSizesTestData), nameof(RequiredSizesTestData.Feats))]
+        [TestCaseSource(typeof(RequiredSizesTestData), nameof(RequiredSizesTestData.Metamagic))]
+        [TestCaseSource(typeof(RequiredSizesTestData), nameof(RequiredSizesTestData.Monster))]
+        [TestCaseSource(typeof(RequiredSizesTestData), nameof(RequiredSizesTestData.Craft))]
+        [TestCaseSource(typeof(RequiredSizesTestData), nameof(RequiredSizesTestData.SpecialQualities))]
         public void RequiredSizes(string name, params string[] sizes)
         {
             AssertCollection(name, sizes);

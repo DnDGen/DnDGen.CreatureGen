@@ -33,11 +33,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(typeof(RequiredFeatsTestData), "Feats")]
-        [TestCaseSource(typeof(RequiredFeatsTestData), "Metamagic")]
-        [TestCaseSource(typeof(RequiredFeatsTestData), "Monster")]
-        [TestCaseSource(typeof(RequiredFeatsTestData), "Craft")]
-        [TestCaseSource(typeof(RequiredFeatsTestData), "SpecialQualities")]
+        [TestCaseSource(typeof(RequiredFeatsTestData), nameof(RequiredFeatsTestData.Feats))]
+        [TestCaseSource(typeof(RequiredFeatsTestData), nameof(RequiredFeatsTestData.Metamagic))]
+        [TestCaseSource(typeof(RequiredFeatsTestData), nameof(RequiredFeatsTestData.Monster))]
+        [TestCaseSource(typeof(RequiredFeatsTestData), nameof(RequiredFeatsTestData.Craft))]
+        [TestCaseSource(typeof(RequiredFeatsTestData), nameof(RequiredFeatsTestData.SpecialQualities))]
         public void RequiredFeats(string name, params string[] requiredFeats)
         {
             AssertDistinctCollection(name, requiredFeats);

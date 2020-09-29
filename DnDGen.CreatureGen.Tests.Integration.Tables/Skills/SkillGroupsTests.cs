@@ -4694,7 +4694,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             base.AssertDistinctCollection(SkillConstants.Profession, foci);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature)
         {
             var creatureTypes = collectionSelector.Explode(TableNameConstants.Collection.CreatureTypes, creature);
@@ -4712,8 +4712,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "Types")]
-        [TestCaseSource(typeof(CreatureTestData), "Subtypes")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         public void CreatureTypeSkillsContainSkillsCommonToAllCreatures(string creatureType)
         {
             var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);

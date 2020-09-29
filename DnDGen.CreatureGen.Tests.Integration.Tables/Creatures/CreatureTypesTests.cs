@@ -1346,8 +1346,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertDistinctCollection(creature, types);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
-        [TestCaseSource(typeof(CreatureTestData), "Templates")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CreaturesHasACreatureType(string creature)
         {
             var allTypes = CreatureConstants.Types.GetAll();
@@ -1372,8 +1372,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
-        [TestCaseSource(typeof(CreatureTestData), "Templates")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CreatureTypeMatchesCreatureGroupType(string creature)
         {
             var allTypes = CreatureConstants.Types.GetAll();
@@ -1397,8 +1397,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
-        [TestCaseSource(typeof(CreatureTestData), "Templates")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CreatureSubtypesMatchCreatureGroupSubtypes(string creature)
         {
             var allTypes = CreatureConstants.Types.GetAll();

@@ -733,7 +733,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Saves[SaveConstants.Will].HasSave, Is.True);
         }
 
-        [TestCaseSource("ChallengeRatingAdjustments")]
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public void ApplyTo_ImproveChallengeRating(string original, string adjusted)
         {
             baseCreature.ChallengeRating = original;
@@ -1280,7 +1280,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Saves[SaveConstants.Will].HasSave, Is.True);
         }
 
-        [TestCaseSource("ChallengeRatingAdjustments")]
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public async Task ApplyToAsync_ImproveChallengeRating(string original, string adjusted)
         {
             baseCreature.ChallengeRating = original;

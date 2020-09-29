@@ -63,8 +63,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(armorClass.DexterityBonus, Is.Zero);
         }
 
-        [TestCaseSource(typeof(NumericTestData), "BaseAbilityTestNumbers")]
-        [TestCaseSource(typeof(NumericTestData), "PositiveValues")]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.BaseAbilityTestNumbers))]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.PositiveValues))]
         public void DexterityBonusIsModifier(int value)
         {
             armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
@@ -73,7 +73,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(armorClass.DexterityBonus, Is.EqualTo(armorClass.Dexterity.Modifier));
         }
 
-        [TestCaseSource(typeof(DexterityBonusTestData), "TestCases")]
+        [TestCaseSource(typeof(DexterityBonusTestData), nameof(DexterityBonusTestData.TestCases))]
         public void DexterityBonusIsLimitedByMaxDexterityBonus(int value, int max)
         {
             armorClass.Dexterity = new Ability(AbilityConstants.Dexterity);
@@ -168,7 +168,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Condition, Is.EqualTo(condition2));
         }
 
-        [TestCaseSource(typeof(MaxBonusTestData), "TestCases")]
+        [TestCaseSource(typeof(MaxBonusTestData), nameof(MaxBonusTestData.TestCases))]
         public void ArmorBonusIsMaxOfNonConditionalArmorBonuses(int value1, int value2)
         {
             armorClass.AddBonus(ArmorClassConstants.Armor, value1);
@@ -263,7 +263,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Condition, Is.EqualTo(condition2));
         }
 
-        [TestCaseSource(typeof(MaxBonusTestData), "TestCases")]
+        [TestCaseSource(typeof(MaxBonusTestData), nameof(MaxBonusTestData.TestCases))]
         public void DeflectionBonusIsMaxOfNonConditionalDeflectionBonuses(int value1, int value2)
         {
             armorClass.AddBonus(ArmorClassConstants.Deflection, value1);
@@ -345,7 +345,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Condition, Is.EqualTo(condition2));
         }
 
-        [TestCaseSource(typeof(MaxBonusTestData), "TestCases")]
+        [TestCaseSource(typeof(MaxBonusTestData), nameof(MaxBonusTestData.TestCases))]
         public void DodgeBonusIsSumOfNonConditionalDodgeBonuses(int value1, int value2)
         {
             armorClass.AddBonus(ArmorClassConstants.Dodge, value1);
@@ -426,7 +426,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Condition, Is.EqualTo(condition2));
         }
 
-        [TestCaseSource(typeof(MaxBonusTestData), "TestCases")]
+        [TestCaseSource(typeof(MaxBonusTestData), nameof(MaxBonusTestData.TestCases))]
         public void NaturalArmorBonusIsMaxOfNonConditionalNaturalArmorBonuses(int value1, int value2)
         {
             armorClass.AddBonus(ArmorClassConstants.Natural, value1);
@@ -508,7 +508,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Condition, Is.EqualTo(condition2));
         }
 
-        [TestCaseSource(typeof(MaxBonusTestData), "TestCases")]
+        [TestCaseSource(typeof(MaxBonusTestData), nameof(MaxBonusTestData.TestCases))]
         public void ShieldBonusIsMaxOfNonConditionalShieldBonuses(int value1, int value2)
         {
             armorClass.AddBonus(ArmorClassConstants.Shield, value1);

@@ -33,10 +33,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             return names;
         }
 
-        [TestCaseSource(typeof(SpeedRequirementsTestData), "Feats")]
-        [TestCaseSource(typeof(SpeedRequirementsTestData), "Metamagic")]
-        [TestCaseSource(typeof(SpeedRequirementsTestData), "Monster")]
-        [TestCaseSource(typeof(SpeedRequirementsTestData), "Craft")]
+        [TestCaseSource(typeof(SpeedRequirementsTestData), nameof(SpeedRequirementsTestData.Feats))]
+        [TestCaseSource(typeof(SpeedRequirementsTestData), nameof(SpeedRequirementsTestData.Metamagic))]
+        [TestCaseSource(typeof(SpeedRequirementsTestData), nameof(SpeedRequirementsTestData.Monster))]
+        [TestCaseSource(typeof(SpeedRequirementsTestData), nameof(SpeedRequirementsTestData.Craft))]
         public void SpeedRequirements(string name, Dictionary<string, int> typesAndAmounts)
         {
             AssertTypesAndAmounts(name, typesAndAmounts);

@@ -2373,7 +2373,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             base.AssertDistinctCollection(creature + LanguageConstants.Groups.Bonus, generalLanguages);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void IfNoAutomaticLanguages_NoBonusLanguages(string creature)
         {
             var automatic = table[creature + LanguageConstants.Groups.Automatic];
@@ -2389,7 +2389,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), "All")]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
         public void IfLowOrNoIntelligence_NoLanguages(string creature)
         {
             var abilities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creature);

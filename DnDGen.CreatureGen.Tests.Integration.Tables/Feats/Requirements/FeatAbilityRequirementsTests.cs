@@ -46,12 +46,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             return names;
         }
 
-        [TestCaseSource("Feats")]
-        [TestCaseSource("Metamagic")]
-        [TestCaseSource("Monster")]
-        [TestCaseSource("Craft")]
-        [TestCaseSource("SpecialQualities")]
-        [TestCaseSource("FeatsWithFoci")]
+        [TestCaseSource(nameof(Feats))]
+        [TestCaseSource(nameof(Metamagic))]
+        [TestCaseSource(nameof(Monster))]
+        [TestCaseSource(nameof(Craft))]
+        [TestCaseSource(nameof(SpecialQualities))]
+        [TestCaseSource(nameof(FeatsWithFoci))]
         public void AbilityRequirements(string name, Dictionary<string, int> typesAndAmounts)
         {
             AssertTypesAndAmounts(name, typesAndAmounts);

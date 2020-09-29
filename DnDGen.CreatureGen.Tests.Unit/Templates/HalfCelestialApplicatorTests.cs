@@ -742,7 +742,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Skills, Is.Empty);
         }
 
-        [TestCaseSource("ChallengeRatingAdjustments")]
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public void ApplyTo_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = hitDiceQuantity;
@@ -1205,7 +1205,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Skills, Is.Empty);
         }
 
-        [TestCaseSource("ChallengeRatingAdjustments")]
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public async Task ApplyToAsync_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = hitDiceQuantity;

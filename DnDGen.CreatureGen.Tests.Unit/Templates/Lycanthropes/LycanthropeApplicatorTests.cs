@@ -107,7 +107,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Build();
         }
 
-        [TestCaseSource("CreatureTypeCompatible")]
+        [TestCaseSource(nameof(CreatureTypeCompatible))]
         public void IsCompatible_BasedOnCreatureType(string template, string animal, string creatureType, bool compatible)
         {
             mockCollectionSelector
@@ -159,7 +159,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
         }
 
-        [TestCaseSource("SizeCompatible")]
+        [TestCaseSource(nameof(SizeCompatible))]
         public void IsCompatible_BySize(string template, string animal, string creatureSize, string animalSize, bool compatible)
         {
             mockCollectionSelector
@@ -199,7 +199,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_GainShapechangerSubtype(string template, string animal)
         {
             baseCreature.Type.SubTypes = new[]
@@ -216,7 +216,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .And.Contains(CreatureConstants.Types.Subtypes.Shapechanger));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalHitPoints(string template, string animal)
         {
             var animalHitPoints = new HitPoints();
@@ -264,7 +264,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.HitPoints.Total, Is.EqualTo(1337 + 96));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalHitPoints_WithConditionalBonus(string template, string animal)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = 9266;
@@ -332,7 +332,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(bonus.Condition, Is.EqualTo("In Animal or Hybrid form"));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalHitPoints_WithFeats(string template, string animal)
         {
             var animalHitPoints = new HitPoints();
@@ -398,7 +398,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.HitPoints.Bonus, Is.EqualTo(8245));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_GainAnimalSpeeds(string template, string animal)
         {
             var animalSpeeds = new Dictionary<string, Measurement>();
@@ -428,7 +428,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_GainNaturalArmor(string template, string animal)
         {
             mockCreatureDataSelector
@@ -451,7 +451,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(bonuses[1].Value, Is.EqualTo(2));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_GainBaseNaturalArmor(string template, string animal)
         {
             mockCreatureDataSelector
@@ -474,7 +474,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(bonuses[1].Value, Is.EqualTo(9266 + 2));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_GainAnimalNaturalArmor(string template, string animal)
         {
             mockCreatureDataSelector
@@ -496,7 +496,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(bonuses[1].Value, Is.EqualTo(2));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_ImproveNaturalArmor(string template, string animal)
         {
             mockCreatureDataSelector
@@ -519,7 +519,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(bonuses[1].Value, Is.EqualTo(9266 + 2));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalBaseAttack(string template, string animal)
         {
             baseCreature.BaseAttackBonus = 600;
@@ -552,7 +552,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(600 + 42));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_RecomputeGrappleBonus(string template, string animal)
         {
             baseCreature.BaseAttackBonus = 600;
@@ -594,7 +594,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.GrappleBonus, Is.EqualTo(1337));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalAttacks(string template, string animal)
         {
             baseCreature.BaseAttackBonus = 600;
@@ -645,7 +645,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(animalAttacks[1].Name, Is.EqualTo("animal attack 2 (in Animal form)"));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddLycanthropeAttacks_BaseIsBigger(string template, string animal)
         {
             baseCreature.BaseAttackBonus = 600;
@@ -697,7 +697,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddLycanthropeAttacks_AnimalIsBigger(string template, string animal)
         {
             baseCreature.BaseAttackBonus = 600;
@@ -749,7 +749,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddLycanthropeAttacks_AnimalAndBaseAreSameSize(string template, string animal)
         {
             baseCreature.BaseAttackBonus = 600;
@@ -801,7 +801,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalAttacks_WithLycanthropy(string template, string animal)
         {
             baseCreature.BaseAttackBonus = 600;
@@ -877,7 +877,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(lycanthropeAttacks[2].DamageEffect, Is.EqualTo("my damage effect"));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_ModifyBaseCreatureAttacks_Humanoid(string template, string animal)
         {
             var baseAttacks = new[]
@@ -898,7 +898,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(baseAttacks[3].Name, Is.EqualTo("special ranged attack (in Humanoid form)"));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_ModifyBaseCreatureAttacks_Giant(string template, string animal)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Giant;
@@ -921,7 +921,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(baseAttacks[3].Name, Is.EqualTo("special ranged attack (in Giant form)"));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalSpecialQualities(string template, string animal)
         {
             var animalHitPoints = new HitPoints();
@@ -963,7 +963,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.SpecialQualities, Is.SupersetOf(animalSpecialQualities));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalSpecialQualities_RemoveDuplicates(string template, string animal)
         {
             var baseSpecialQuality = new Feat { Name = "my special quality" };
@@ -1013,7 +1013,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .And.Contains(baseSpecialQuality));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddLycanthropeSpecialQualities(string template, string animal)
         {
             var animalHitPoints = new HitPoints();
@@ -1055,7 +1055,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.SpecialQualities, Is.SupersetOf(lycanthropeSpecialQualities));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddLycanthropeSpecialQualities_RemoveDuplicates(string template, string animal)
         {
             var baseSpecialQuality = new Feat { Name = "my special quality" };
@@ -1105,7 +1105,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .And.Contains(baseSpecialQuality));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalSaveBonuses(string template, string animal)
         {
             baseCreature.Saves[SaveConstants.Fortitude].BaseValue = 1336;
@@ -1150,7 +1150,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.Saves[SaveConstants.Will].BaseValue, Is.EqualTo(783 + 42));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_WisdomIncreasesBy2(string template, string animal)
         {
             var creature = applicators[template].ApplyTo(baseCreature);
@@ -1158,7 +1158,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.EqualTo(2));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_ConditionalBonusesForHybridAndAnimalForms_FromAnimalBonuses(string template, string animal)
         {
             var animalAbilityAdjustments = new[]
@@ -1194,7 +1194,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].Bonuses[0].Condition, Is.EqualTo("In Animal or Hybrid form"));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_GainAnimalSkills(string template, string animal)
         {
             var animalHitPoints = new HitPoints();
@@ -1235,7 +1235,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.Skills, Is.SupersetOf(animalSkills));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_GainAnimalSkills_CombineWithBaseCreatureSkills(string template, string animal)
         {
             var baseSkills = new[]
@@ -1320,7 +1320,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(skills[6].RankCap, Is.EqualTo(4567 + 9266));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_GainControlShapeSkill_Afflicted(string template, string animal)
         {
             if (!template.Contains("Afflicted"))
@@ -1387,7 +1387,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .And.SupersetOf(rankedSkills));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_DoNotGainControlShapeSkill_Natural(string template, string animal)
         {
             if (!template.Contains("Natural"))
@@ -1450,7 +1450,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .And.SupersetOf(rankedSkills));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_GainAnimalFeats(string template, string animal)
         {
             baseCreature.BaseAttackBonus = 600;
@@ -1552,7 +1552,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.Feats, Is.SupersetOf(animalFeats));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_GainAnimalFeats_RemoveDuplicates(string template, string animal)
         {
             baseCreature.BaseAttackBonus = 600;
@@ -1658,7 +1658,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .And.Not.Contains(animalFeats[1]));
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalSaveBonuses_WithBonusesFromNewFeats(string template, string animal)
         {
             baseCreature.Saves[SaveConstants.Fortitude].BaseValue = 1336;
@@ -1704,7 +1704,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.Fail("not yet written - need feats and special qualities affecting save bonuses");
         }
 
-        [TestCaseSource("ChallengeRatings")]
+        [TestCaseSource(nameof(ChallengeRatings))]
         public void ApplyTo_IncreaseChallengeRating(string template, string animal, string originalChallengeRating, int animalHitDiceQuantity, string updatedChallengeRating)
         {
             baseCreature.ChallengeRating = originalChallengeRating;
@@ -1769,7 +1769,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
         }
 
-        [TestCaseSource("LevelAdjustments")]
+        [TestCaseSource(nameof(LevelAdjustments))]
         public void ApplyTo_IncreaseLevelAdjustment(string template, string animal, int? oldLevelAdjustment, int? newLevelAdjustment)
         {
             baseCreature.LevelAdjustment = oldLevelAdjustment;
@@ -1813,7 +1813,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
         }
 
-        [TestCaseSource("AllLycanthropeTemplates")]
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public async Task ApplyToAsync_Tests(string template, string animal)
         {
             Assert.Fail("need to copy");

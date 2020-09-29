@@ -150,7 +150,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(isAdvanced, Is.False);
         }
 
-        [TestCaseSource(typeof(AdvancementsTestData), "Strength")]
+        [TestCaseSource(typeof(AdvancementsTestData), nameof(AdvancementsTestData.Strength))]
         public void SelectAdvancedStrength(string originalSize, string advancedSize, int strengthAdjustment)
         {
             SetUpAdvancement(advancedSize, 42);
@@ -332,7 +332,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             }
         }
 
-        [TestCaseSource(typeof(AdvancementsTestData), "Dexterity")]
+        [TestCaseSource(typeof(AdvancementsTestData), nameof(AdvancementsTestData.Dexterity))]
         public void SelectAdvancedDexterity(string originalSize, string advancedSize, int dexterityAdjustment)
         {
             SetUpAdvancement(advancedSize, 42);
@@ -343,7 +343,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(advancement.DexterityAdjustment, Is.EqualTo(dexterityAdjustment));
         }
 
-        [TestCaseSource(typeof(AdvancementsTestData), "Constitution")]
+        [TestCaseSource(typeof(AdvancementsTestData), nameof(AdvancementsTestData.Constitution))]
         public void SelectAdvancedConstitution(string originalSize, string advancedSize, int constitutionAdjustment)
         {
             SetUpAdvancement(advancedSize, 42);
@@ -354,7 +354,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(advancement.ConstitutionAdjustment, Is.EqualTo(constitutionAdjustment));
         }
 
-        [TestCaseSource(typeof(AdvancementsTestData), "NaturalArmor")]
+        [TestCaseSource(typeof(AdvancementsTestData), nameof(AdvancementsTestData.NaturalArmor))]
         public void SelectAdvancedNaturalArmor(string originalSize, string advancedSize, int naturalArmorAdjustment)
         {
             SetUpAdvancement(advancedSize, 42);
@@ -365,7 +365,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(advancement.NaturalArmorAdjustment, Is.EqualTo(naturalArmorAdjustment));
         }
 
-        [TestCaseSource(typeof(AdvancedChallengeRatingTestData), "HitDice")]
+        [TestCaseSource(typeof(AdvancedChallengeRatingTestData), nameof(AdvancedChallengeRatingTestData.HitDice))]
         public void SelectAdvancedChallengeRatingByHitDice(string challengeRating, int hitDice, int divisor, string advancedChallengeRating)
         {
             SetUpAdvancement(SizeConstants.Medium, hitDice);
@@ -484,7 +484,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             }
         }
 
-        [TestCaseSource(typeof(AdvancedChallengeRatingTestData), "Size")]
+        [TestCaseSource(typeof(AdvancedChallengeRatingTestData), nameof(AdvancedChallengeRatingTestData.Size))]
         public void SelectAdvancedChallengeRatingBySize(string originalSize, string advancedSize, string originalChallengeRating, string advancedChallengeRating)
         {
             SetUpAdvancement(advancedSize, 1);
