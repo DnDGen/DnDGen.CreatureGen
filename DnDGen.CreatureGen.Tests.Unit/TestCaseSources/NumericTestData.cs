@@ -8,69 +8,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
 {
     public class NumericTestData
     {
-        public static IEnumerable<int> CustomTestNumbers = new[]
+        public static IEnumerable<int> BaseTestNumbers => new[]
         {
-            42,
-            96,
-            600,
-            783,
-            1336,
-            1337,
-            8245,
-            9266,
-            90210
+            0, 1, 2, 10, 100
         };
 
-        public static IEnumerable<int> BaseTestNumbers = new[]
+        public static IEnumerable<int> BaseAbilityTestNumbers => new[]
         {
-            0, 1, 2, 10, 100, 1_000, 10_000, 100_000
-        };
-
-        public static IEnumerable<int> BaseAbilityTestNumbers = new[]
-        {
-            5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+            3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18
         };
 
         public static IEnumerable<int> AllTestValues => NegativeValues.Union(NonNegativeValues);
         public static IEnumerable<int> AllBaseTestValues => BaseTestNumbers.Union(NegativeBaseValues);
         public static IEnumerable<int> NegativeValues => NonPositiveValues.Where(v => v < 0);
         public static IEnumerable<int> NegativeBaseValues => BaseTestNumbers.Select(n => n * -1);
-        public static IEnumerable<int> NonNegativeValues => CustomTestNumbers.Union(BaseTestNumbers);
+        public static IEnumerable<int> NonNegativeValues => BaseTestNumbers;
         public static IEnumerable<int> PositiveValues => NonNegativeValues.Where(v => v > 0);
         public static IEnumerable<int> NonPositiveValues => NonNegativeValues.Select(n => n * -1);
 
-        public static IEnumerable AllValues
-        {
-            get
-            {
-                foreach (var value in AllTestValues)
-                {
-                    yield return new TestCaseData(value);
-                }
-            }
-        }
-
-        public static IEnumerable AllPositiveValues
-        {
-            get
-            {
-                foreach (var value in PositiveValues)
-                {
-                    yield return new TestCaseData(value);
-                }
-            }
-        }
-
-        public static IEnumerable AllNonPositiveValues
-        {
-            get
-            {
-                foreach (var value in NonPositiveValues)
-                {
-                    yield return new TestCaseData(value);
-                }
-            }
-        }
+        public static IEnumerable AllValues => AllTestValues.Select(v => new TestCaseData(v));
+        public static IEnumerable AllPositiveValues => PositiveValues.Select(v => new TestCaseData(v));
+        public static IEnumerable AllNonPositiveValues => NonPositiveValues.Select(v => new TestCaseData(v));
 
         public static IEnumerable ValueLessThanPositiveRequirement
         {

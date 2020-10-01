@@ -77,7 +77,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> s) => s.ElementAt(index++ % s.Count()));
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<Skill>>())).Returns((IEnumerable<Skill> s) => s.ElementAt(index++ % s.Count()));
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => sk.ClassSkill)), It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => !sk.ClassSkill)), null, null))
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => sk.ClassSkill)),
+                    It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => !sk.ClassSkill)),
+                    null,
+                    null))
                 .Returns((IEnumerable<Skill> c, IEnumerable<Skill> u, IEnumerable<Skill> r, IEnumerable<Skill> v) => c.Union(u).ElementAt(index++ % c.Union(u).Count()));
 
             mockSkillSelector.Setup(s => s.SelectFor(It.IsAny<string>())).Returns((string skill) => new SkillSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Intelligence });
